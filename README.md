@@ -1,4 +1,4 @@
-* To run the code, clone the git repo, cd into the folder, and run npm install. Then, run npm install -g browserify. Then, run npm start. *
+* To run the code, clone the git repo, cd into the folder, and run npm install. Then, run npm install -g browserify. Then, run npm start.
 
 Steps to start exchanging messages:
 
