@@ -1,0 +1,16 @@
+{
+  "name": "portal-alpha",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "start": "browserify public/index.js -o public/bundle.js & node app.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "redis": "^2.7.1",
+    "simple-peer": "^5.11.4",
+    "wrtc": "0.0.62"
+  }
+}
