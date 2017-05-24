@@ -1,6 +1,6 @@
 * Make sure you have a redis server running: download redis using homebrew: brew install redis
 * Start the redis server: redis-server /usr/local/etc/redis.conf
-* To run the code, clone the git repo, cd into the folder, and run npm install. Then, run npm install -g browserify. Then, run npm start.
+* To run the code, clone the git repo, cd into the folder, and run npm install. Then, run npm start.
 
 Steps to start exchanging messages:
 
