@@ -1,3 +1,6 @@
+// TODO: delete id's out of redis server
+// TODO: make sure random id generated is not already in use
+
 const Peer = require('simple-peer');
 
 var peer;
