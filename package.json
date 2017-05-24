@@ -12,5 +12,8 @@
     "redis": "^2.7.1",
     "simple-peer": "^5.11.4",
     "wrtc": "0.0.62"
+  },
+  "devDependencies": {
+    "browserify": "^14.3.0"
   }
 }
