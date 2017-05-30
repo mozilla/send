@@ -29,7 +29,6 @@ app.get('/assets/download/:id', function(req, res) {
       res.send('error');
     } else {
       res.setHeader('Content-Disposition', 'attachment; filename=' + reply);
-      // res.setHeader('Content-Transfer-Encoding', 'binary');
       res.setHeader('Content-Type', 'application/octet-stream');
 
       res.download(__dirname + '/static/' + reply);
@@ -38,7 +37,7 @@ app.get('/assets/download/:id', function(req, res) {
   
 });
 
-app.route('/upload')
+app.route('/upload/:id')
     .post(function (req, res, next) {
 
         var fstream;
@@ -50,11 +49,11 @@ app.route('/upload')
             fstream = fs.createWriteStream(__dirname + '/static/' + filename);
             file.pipe(fstream);
             fstream.on('close', function () {  
-                let id = Math.floor(Math.random()*10000).toString();
+                let id = req.params.id;
                 client.hset(id, "filename", filename, redis.print);
                 client.hset(id, "expiration", 0, redis.print);
                 console.log("Upload Finished of " + filename);              
-                res.send(id);           //where to go next
+                res.send(id);
             });
         });
     });
@@ -62,6 +61,6 @@ app.route('/upload')
 
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+  console.log('Portal app listening on port 3000!')
 })
 
