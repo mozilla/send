@@ -1,6 +1,13 @@
+
 function download() {
+  // console.log(location.pathname.slice(10, -1));
+
+// var new_salt = ;
+// console.log(new_salt);
+// console.log(salt);
+
   var xhr = new XMLHttpRequest();
-  xhr.open('get', '/assets' + location.pathname, true);
+  xhr.open('get', '/assets' + location.pathname.slice(0, -1), true);
   xhr.responseType = 'blob';
   // $.each(SERVER.authorization(), function(k, v) {
   //     xhr.setRequestHeader(k, v);
@@ -17,12 +24,15 @@ function download() {
               arrayBuffer = this.result;
               // console.log(arrayBuffer);
               var array = new Uint8Array(arrayBuffer);
-              salt = new Uint8Array(JSON.parse(document.getElementById('salt').value));
+              salt = strToIv(location.pathname.slice(10, -1));
+              // var new_salt = strToIv(location.pathname.slice(10, -1));
+              // console.log(new_salt);
+              // console.log(salt);
               window.crypto.subtle.importKey(
                   "jwk", //can be "jwk" or "raw"
                   {   //this is an example jwk key, "raw" would be an ArrayBuffer
                       kty: "oct",
-                      k: document.getElementById('keyhash').value,
+                      k: location.hash.slice(1),
                       alg: "A128CBC",
                       ext: true,
                   },
@@ -115,17 +125,21 @@ function onChange(event) {
         //returns an ArrayBuffer containing the encrypted data
           var dataView = new DataView(encrypted);
           var blob = new Blob([dataView], { type: file.type });
-          window.data = encrypted;
+          // window.data = encrypted;
           var fd = new FormData();
           fd.append('fname', file.name);
           fd.append('data', blob, file.name);
           // console.log(blob);
           var xhr = new XMLHttpRequest();
-
-          xhr.open('post', '/upload', true);
+          var hex = ivToStr(random_iv);
+          xhr.open('post', '/upload/' + hex, true);
           xhr.onreadystatechange = function() { 
             if (xhr.readyState == XMLHttpRequest.DONE) {
-              console.log('Go to this URL: http://localhost:3000/download/'+xhr.responseText);
+              window.crypto.subtle.exportKey("jwk", key).then(function(keydata){
+                //returns the exported key data
+                console.log('Go to this URL: http://localhost:3000/download/' + hex + '/#' + keydata.k);
+                console.log(keydata.k);
+              })
             }
           };
 
@@ -136,17 +150,7 @@ function onChange(event) {
         });
 
 
-      window.crypto.subtle.exportKey(
-        "jwk", //can be "jwk" or "raw"
-        key)
-        .then(function(keydata){
-          //returns the exported key data
-          console.log('Send this key to a friend: ' + keydata.k);
-
-        })
-        .catch(function(err){
-          console.error(err);
-        });
+      
       })
     .catch(function(err){
         console.error(err);
@@ -158,3 +162,25 @@ function onChange(event) {
   reader.readAsArrayBuffer(file);
 }
 
+function ivToStr(iv) {
+  let hexStr = '';
+  for (var i in iv) {
+    if (iv[i] < 16) {
+      hexStr += '0' + iv[i].toString(16);
+    } else {
+      hexStr += iv[i].toString(16);
+    }
+  }
+  window.hexStr = hexStr;
+  return hexStr;
+}
+
+function strToIv(str) {
+  var iv = new Uint8Array(16);
+  for (var i = 0; i < str.length; i += 2) {
+    // console.log(str.charAt(i) + str.charAt(i+1));
+    iv[i/2] = parseInt((str.charAt(i) + str.charAt(i + 1)), 16);
+  }
+
+  return iv;
+}
