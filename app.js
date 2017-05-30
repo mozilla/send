@@ -1,5 +1,7 @@
 const express = require('express')
-const bodyParser = require('body-parser')
+var busboy = require('connect-busboy'); //middleware for form/file upload
+var path = require('path');     //used for file path
+var fs = require('fs-extra');       //File System - for file manipulation
 const app = express()
 var redis = require("redis"),
     client = redis.createClient();
@@ -8,76 +10,58 @@ client.on('error', function(err) {
   console.log(err);
 })
 
-app.use(bodyParser.json());
+app.use(busboy());
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.static('public'))
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
-function insert(create_key) {
-  let id = Math.floor(Math.random()*10000).toString();
-  client.set(id, create_key, redis.print);
-  return id;
-}
-
-app.post('/local_answer/:id', function(req, res) {
-  let id = req.params.id;
-  client.set(id, JSON.stringify(req.body), redis.print);
-  res.send('ok');
+app.get('/', function (req, res) {
+  res.send('Hello World!')
 })
 
-app.get('/receive_offer/:id', function(req, res) {
+app.get('/download/:id', function(req, res) {
+  res.sendFile(path.join(__dirname + '/public/download.html'));
+});
+
+app.get('/assets/download/:id', function(req, res) {
+  
   let id = req.params.id;
-  client.get(id, function(err, reply) {
+  client.hget(id, "filename", function(err, reply) { // maybe some expiration logic too
   if (!reply) {
       res.send('error');
     } else {
-      res.send(reply);
+      res.setHeader('Content-Disposition', 'attachment; filename=' + reply);
+      // res.setHeader('Content-Transfer-Encoding', 'binary');
+      res.setHeader('Content-Type', 'application/octet-stream');
+
+      res.download(__dirname + '/static/' + reply);
     }
   })
-})
+  
+});
+
+app.route('/upload')
+    .post(function (req, res, next) {
+
+        var fstream;
+        req.pipe(req.busboy);
+        req.busboy.on('file', function (fieldname, file, filename) {
+            console.log("Uploading: " + filename);
+
+            //Path where image will be uploaded
+            fstream = fs.createWriteStream(__dirname + '/static/' + filename);
+            file.pipe(fstream);
+            fstream.on('close', function () {  
+                let id = Math.floor(Math.random()*10000).toString();
+                client.hset(id, "filename", filename, redis.print);
+                client.hset(id, "expiration", 0, redis.print);
+                console.log("Upload Finished of " + filename);              
+                res.send(id);           //where to go next
+            });
+        });
+    });
 
 
-app.get('/receive_answer/:id', function(req, res) {
-  let id = req.params.id;
-  client.get(id, function(err, reply) {
-    if (!reply) {
-      res.send('error');
-    } else {
-      client.del(id);
-      res.send(reply);
-    }
-  })
-})
-
-app.post('/join/:id', function(req, res) {
-  let id = req.params.id;
-  client.get(id, function(err, reply) {
-    if (!reply) {
-      res.send('error')
-    } else {
-      res.send(reply);
-    }
-  }) 
-})
-
-app.post('/create', function(req, res) {
-  let id = insert(JSON.stringify(req.body));
-  res.send(id);
-})
-
-
-app.get('/', function (req, res) {
-  console.log('get');
-  res.send('Hello World!')
-})
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
-
 

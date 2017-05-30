@@ -1,19 +1,18 @@
 {
   "name": "portal-alpha",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "browserify public/index.js -o public/bundle.js & node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.17.2",
+    "connect-busboy": "0.0.2",
     "express": "^4.15.3",
-    "redis": "^2.7.1",
-    "simple-peer": "^5.11.4",
-    "wrtc": "0.0.62"
-  },
-  "devDependencies": {
-    "browserify": "^14.3.0"
+    "fs-extra": "^3.0.1",
+    "path": "^0.12.7",
+    "redis": "^2.7.1"
   }
 }
