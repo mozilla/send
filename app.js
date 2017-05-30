@@ -26,12 +26,12 @@ app.get('/assets/download/:id', function(req, res) {
   let id = req.params.id;
   client.hget(id, "filename", function(err, reply) { // maybe some expiration logic too
   if (!reply) {
-      res.send('error');
+      res.send('This link has expired!');
     } else {
       res.setHeader('Content-Disposition', 'attachment; filename=' + reply);
       res.setHeader('Content-Type', 'application/octet-stream');
-
-      res.download(__dirname + '/static/' + reply);
+      client.del(id);
+      res.download(__dirname + '/static/' + id, reply);
     }
   })
   
@@ -46,13 +46,14 @@ app.route('/upload/:id')
             console.log("Uploading: " + filename);
 
             //Path where image will be uploaded
-            fstream = fs.createWriteStream(__dirname + '/static/' + filename);
+            fstream = fs.createWriteStream(__dirname + '/static/' + req.params.id);
             file.pipe(fstream);
             fstream.on('close', function () {  
                 let id = req.params.id;
                 client.hset(id, "filename", filename, redis.print);
                 client.hset(id, "expiration", 0, redis.print);
-                console.log("Upload Finished of " + filename);              
+                client.expire(id, 86400000);
+                console.log("Upload Finished of " + filename);           
                 res.send(id);
             });
         });

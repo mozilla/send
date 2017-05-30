@@ -44,11 +44,13 @@ function download() {
                       var downloadUrl = URL.createObjectURL(blob);
                       var a = document.createElement("a");
                       a.href = downloadUrl;
-                      a.download = xhr.getResponseHeader('Content-Disposition').match(/filename="(.+)"/)[1];;
+                      a.download = xhr.getResponseHeader('Content-Disposition').match(/filename="(.+)"/)[1];
+                      console.log(xhr.getResponseHeader('Content-Disposition'));
                       document.body.appendChild(a);
                       a.click();
                   })
                   .catch(function(err){
+                      alert('This link is either invalid or has expired.');
                       console.error(err);
                   });
               })
