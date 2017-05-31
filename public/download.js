@@ -50,7 +50,7 @@ function download() {
                 a.click();
             })
             .catch(function(err){
-                alert("This link is either invalid or has expired.");
+                alert("This link is either invalid or has expired, or the uploader has deleted the file.");
                 console.error(err);
             });
         })
@@ -60,7 +60,7 @@ function download() {
       };
       fileReader.readAsArrayBuffer(blob);
     } else {
-      alert("Unable to download excel.")
+      alert("This link is either invalid or has expired, or the uploader has deleted the file.")
     }
   };
   xhr.send();

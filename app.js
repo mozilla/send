@@ -1,9 +1,11 @@
 const express = require("express")
-var busboy = require("connect-busboy"); //middleware for form/file upload
-var path = require("path");     //used for file path
-var fs = require("fs-extra");       //File System - for file manipulation
+const busboy = require("connect-busboy");
+const path = require("path");
+const fs = require("fs-extra");
+const bodyParser = require('body-parser');
+
 const app = express()
-var redis = require("redis"),
+const redis = require("redis"),
     client = redis.createClient();
 
 client.on("error", function(err) {
@@ -11,11 +13,8 @@ client.on("error", function(err) {
 })
 
 app.use(busboy());
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
-
-app.get("/", function (req, res) {
-  res.send("Hello World!")
-})
 
 app.get("/download/:id", function(req, res) {
   res.sendFile(path.join(__dirname + "/public/download.html"));
@@ -25,7 +24,7 @@ app.get("/assets/download/:id", function(req, res) {
   
   let id = req.params.id;
   client.hget(id, "filename", function(err, reply) { // maybe some expiration logic too
-  if (!reply) {
+    if (!reply) {
       res.sendStatus(404);
     } else {
       res.setHeader("Content-Disposition", "attachment; filename=" + reply);
@@ -42,8 +41,26 @@ app.get("/assets/download/:id", function(req, res) {
   
 });
 
-app.route("/upload/:id")
-    .post(function (req, res, next) {
+app.post("/delete/:id", function(req, res) {
+  let id = req.params.id;
+  let delete_token = req.body.delete_token;
+  
+  if (!delete_token){ 
+    res.sendStatus(404);
+  }
+
+  client.hget(id, "delete", function(err, reply) {
+    if (!reply) {
+      res.sendStatus(404);
+    } else {
+      client.del(id);
+      fs.unlinkSync(__dirname + "/static/" + id);
+      res.sendStatus(200);
+    }
+  })
+});
+
+app.post("/upload/:id", function (req, res, next) {
 
         var fstream;
         req.pipe(req.busboy);
@@ -55,16 +72,25 @@ app.route("/upload/:id")
             file.pipe(fstream);
             fstream.on("close", function () {  
                 let id = req.params.id;
-                client.hset(id, "filename", filename, redis.print);
-                client.hset(id, "expiration", 0, redis.print);
+                let uuid = Math.floor(Math.random() * 10000000).toString()
+                         + Math.floor(Math.random() * 10000000).toString()
+                         + Math.floor(Math.random() * 10000000).toString();
+
+                client.hset(id, "filename", filename);
+                client.hset(id, "expiration", 0);
+                client.hset(id, "delete", uuid);
+
+                // delete the file off the server in 24 hours
+                setTimeout(function() {
+                  fs.unlinkSync(__dirname + "/static/" + id);
+                }, 86400000);
+
                 client.expire(id, 86400000);
-                console.log("Upload Finished of " + filename);           
-                res.send(id);
+                console.log("Upload Finished of " + filename);      
+                res.send(uuid);
             });
         });
     });
-
-
 
 app.listen(3000, function () {
   console.log("Portal app listening on port 3000!")
