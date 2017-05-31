@@ -26,12 +26,17 @@ app.get('/assets/download/:id', function(req, res) {
   let id = req.params.id;
   client.hget(id, "filename", function(err, reply) { // maybe some expiration logic too
   if (!reply) {
-      res.send('This link has expired!');
+      res.sendStatus(404);
     } else {
       res.setHeader('Content-Disposition', 'attachment; filename=' + reply);
       res.setHeader('Content-Type', 'application/octet-stream');
-      client.del(id);
-      res.download(__dirname + '/static/' + id, reply);
+      
+      res.download(__dirname + '/static/' + id, reply, function(err) {
+        if (!err) {
+          client.del(id);
+          fs.unlink(__dirname + '/static/' + id);
+        }
+      });
     }
   })
   
