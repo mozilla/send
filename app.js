@@ -34,7 +34,7 @@ app.get('/assets/download/:id', function(req, res) {
       res.download(__dirname + '/static/' + id, reply, function(err) {
         if (!err) {
           client.del(id);
-          fs.unlink(__dirname + '/static/' + id);
+          fs.unlinkSync(__dirname + '/static/' + id);
         }
       });
     }
