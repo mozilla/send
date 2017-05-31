@@ -131,6 +131,7 @@ function returnBindedLI(a_element, name, link, li) {
                   xhr.onreadystatechange = function() {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                       document.getElementById("uploaded_files").removeChild(li);
+                      localStorage.removeItem(key);
                     }
 
                     if (xhr.status === 200) {
