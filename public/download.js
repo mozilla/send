@@ -7,10 +7,22 @@ function download() {
   var li = document.createElement("li");
   var progress = document.createElement("p");
   li.appendChild(progress);
+  document.getElementById("downloaded_files").appendChild(li);
   
   xhr.addEventListener("progress", returnBindedLI(li, progress));
-
+  
+              
+  
   xhr.onload = function(e) {
+
+    // maybe send a separate request before this one to get the filename?
+
+    // maybe render the html itself with the filename, since it's generated server side
+    // after a get request with the unique id
+    var name = document.createElement("p");
+    name.innerHTML = xhr.getResponseHeader("Content-Disposition").match(/filename="(.+)"/)[1];
+    li.insertBefore(name, li.firstChild);
+
     if (this.status == 200) {
       let self = this;
       var blob = new Blob([this.response]);
@@ -43,20 +55,12 @@ function download() {
                 key,
                 array)
             .then(function(decrypted){
-              var filename = xhr.getResponseHeader("Content-Disposition").match(/filename="(.+)"/)[1];
-              
-              var name = document.createElement("p");
-              name.innerHTML = filename;
-              li.insertBefore(name, li.firstChild);
-              document.getElementById("downloaded_files").appendChild(li);
-
               var dataView = new DataView(decrypted);
               var blob = new Blob([dataView]);
               var downloadUrl = URL.createObjectURL(blob);
               var a = document.createElement("a");
               a.href = downloadUrl;
-              a.download = filename
-              console.log(xhr.getResponseHeader("Content-Disposition"));
+              a.download = xhr.getResponseHeader("Content-Disposition").match(/filename="(.+)"/)[1];
               document.body.appendChild(a);
               a.click();
             })

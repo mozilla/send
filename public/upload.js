@@ -57,16 +57,7 @@ function onChange(event) {
                 link.innerHTML = "http://localhost:3000/download/" + hex + "/#" + keydata.k;
                 link.setAttribute("href", "http://localhost:3000/download/" + hex + "/#" + keydata.k);
 
-                // if (curr_name) {
-                //   localStorage.setItem(file.name, curr_name + "," + hex);
-                // } else {
-                //   localStorage.setItem(file.name, hex)
-                // }
-                
-                
-
                 console.log("Share this link with a friend: http://localhost:3000/download/" + hex + "/#" + keydata.k);
-                alert("Share this link with a friend: http://localhost:3000/download/" + hex + "/#" + keydata.k);
               })
             }
           };

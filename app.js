@@ -23,12 +23,13 @@ app.get("/download/:id", function(req, res) {
 
 app.get("/assets/download/:id", function(req, res) {
   
+  let id = req.params.id;
   if (!validateID(id)){ 
     res.send(404);
     return;
   }
 
-  let id = req.params.id;
+  
   client.hget(id, "filename", function(err, reply) { // maybe some expiration logic too
     if (!reply) {
       res.sendStatus(404);
