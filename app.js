@@ -23,6 +23,11 @@ app.get("/download/:id", function(req, res) {
 
 app.get("/assets/download/:id", function(req, res) {
   
+  if (!validateID(id)){ 
+    res.send(404);
+    return;
+  }
+
   let id = req.params.id;
   client.hget(id, "filename", function(err, reply) { // maybe some expiration logic too
     if (!reply) {
@@ -44,6 +49,12 @@ app.get("/assets/download/:id", function(req, res) {
 
 app.post("/delete/:id", function(req, res) {
   let id = req.params.id;
+
+  if (!validateID(id)){ 
+    res.send(404);
+    return;
+  }
+  
   let delete_token = req.body.delete_token;
   
   if (!delete_token){ 
@@ -62,6 +73,11 @@ app.post("/delete/:id", function(req, res) {
 });
 
 app.post("/upload/:id", function (req, res, next) {
+    
+    if (!validateID(req.params.id)){ 
+      res.send(404);
+      return;
+    }
 
     var fstream;
     req.pipe(req.busboy);
@@ -93,3 +109,6 @@ app.listen(3000, function () {
   console.log("Portal app listening on port 3000!")
 })
 
+function validateID(route_id) {
+  return route_id.match(/^[0-9a-fA-F]{32}$/) !== null;
+}

@@ -4,7 +4,11 @@ function download() {
   xhr.open("get", "/assets" + location.pathname.slice(0, -1), true);
   xhr.responseType = "blob";
 
-  xhr.addEventListener("progress", updateProgress);
+  var li = document.createElement("li");
+  var progress = document.createElement("p");
+  li.appendChild(progress);
+  
+  xhr.addEventListener("progress", returnBindedLI(li, progress));
 
   xhr.onload = function(e) {
     if (this.status == 200) {
@@ -39,19 +43,26 @@ function download() {
                 key,
                 array)
             .then(function(decrypted){
-                var dataView = new DataView(decrypted);
-                var blob = new Blob([dataView]);
-                var downloadUrl = URL.createObjectURL(blob);
-                var a = document.createElement("a");
-                a.href = downloadUrl;
-                a.download = xhr.getResponseHeader("Content-Disposition").match(/filename="(.+)"/)[1];
-                console.log(xhr.getResponseHeader("Content-Disposition"));
-                document.body.appendChild(a);
-                a.click();
+              var filename = xhr.getResponseHeader("Content-Disposition").match(/filename="(.+)"/)[1];
+              
+              var name = document.createElement("p");
+              name.innerHTML = filename;
+              li.insertBefore(name, li.firstChild);
+              document.getElementById("downloaded_files").appendChild(li);
+
+              var dataView = new DataView(decrypted);
+              var blob = new Blob([dataView]);
+              var downloadUrl = URL.createObjectURL(blob);
+              var a = document.createElement("a");
+              a.href = downloadUrl;
+              a.download = filename
+              console.log(xhr.getResponseHeader("Content-Disposition"));
+              document.body.appendChild(a);
+              a.click();
             })
             .catch(function(err){
-                alert("This link is either invalid or has expired, or the uploader has deleted the file.");
-                console.error(err);
+              alert("This link is either invalid or has expired, or the uploader has deleted the file.");
+              console.error(err);
             });
         })
         .catch(function(err){
@@ -88,9 +99,26 @@ function strToIv(str) {
   return iv;
 }
 
-function updateProgress(e) {
-  if (e.lengthComputable) { 
-    var percentComplete = Math.floor((e.loaded / e.total) * 100);
-    document.getElementById("downloadProgress").innerHTML = "Progress: " + percentComplete + "%";
-  } 
+function returnBindedLI(li, progress) {
+  return function updateProgress(e) {
+            if (e.lengthComputable) { 
+              var percentComplete = Math.floor((e.loaded / e.total) * 100);
+              progress.innerHTML = "Progress: " + percentComplete + "%";
+            } 
+
+            if (percentComplete === 100) {
+              var finished = document.createElement("p");
+              finished.innerHTML = "Your download has finished.";
+              li.appendChild(finished);
+
+              var close = document.createElement("button");
+              close.innerHTML = "Ok";
+              close.addEventListener("click", function() {
+                document.getElementById("downloaded_files").removeChild(li);
+              });
+
+              li.appendChild(close);
+            }
+
+         }
 }
