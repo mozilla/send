@@ -2,7 +2,8 @@ const express = require("express")
 const busboy = require("connect-busboy");
 const path = require("path");
 const fs = require("fs-extra");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
+const crypto = require("crypto");
 
 const app = express()
 const redis = require("redis"),
