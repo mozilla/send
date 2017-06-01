@@ -1,4 +1,3 @@
-
 const express = require("express")
 const busboy = require("connect-busboy");
 const path = require("path");
@@ -10,7 +9,7 @@ const app = express()
 const redis = require("redis"),
     client = redis.createClient();
 
-client.on("error", function(err) {
+client.on("error", (err) => {
   console.log(err);
 })
 
@@ -18,12 +17,12 @@ app.use(busboy());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
-app.get("/download/:id", function(req, res) {
+app.get("/download/:id", (req, res) => {
   res.sendFile(path.join(__dirname + "/../public/download.html"));
 });
 
-app.get("/assets/download/:id", function(req, res) {
-  
+app.get("/assets/download/:id", (req, res) => {
+
   let id = req.params.id;
   if (!validateID(id)){ 
     res.send(404);
@@ -31,14 +30,14 @@ app.get("/assets/download/:id", function(req, res) {
   }
 
   
-  client.hget(id, "filename", function(err, reply) { // maybe some expiration logic too
+  client.hget(id, "filename", (err, reply) => { // maybe some expiration logic too
     if (!reply) {
       res.sendStatus(404);
     } else {
       res.setHeader("Content-Disposition", "attachment; filename=" + reply);
       res.setHeader("Content-Type", "application/octet-stream");
       
-      res.download(__dirname + "/../static/" + id, reply, function(err) {
+      res.download(__dirname + "/../static/" + id, reply, (err) => {
         if (!err) {
           client.del(id);
           fs.unlinkSync(__dirname + "/../static/" + id);
@@ -49,7 +48,7 @@ app.get("/assets/download/:id", function(req, res) {
   
 });
 
-app.post("/delete/:id", function(req, res) {
+app.post("/delete/:id", (req, res) => {
   let id = req.params.id;
 
   if (!validateID(id)){ 
@@ -63,7 +62,7 @@ app.post("/delete/:id", function(req, res) {
     res.sendStatus(404);
   }
 
-  client.hget(id, "delete", function(err, reply) {
+  client.hget(id, "delete", (err, reply) => {
     if (!reply) {
       res.sendStatus(404);
     } else {
@@ -74,29 +73,29 @@ app.post("/delete/:id", function(req, res) {
   })
 });
 
-app.post("/upload/:id", function (req, res, next) {
+app.post("/upload/:id", (req, res, next) => {
     
     if (!validateID(req.params.id)){ 
       res.send(404);
       return;
     }
 
-    var fstream;
+    let fstream;
     req.pipe(req.busboy);
-    req.busboy.on("file", function (fieldname, file, filename) {
+    req.busboy.on("file", (fieldname, file, filename) => {
         console.log("Uploading: " + filename);
 
         //Path where image will be uploaded
         fstream = fs.createWriteStream(__dirname + "/../static/" + req.params.id);
         file.pipe(fstream);
-        fstream.on("close", function () {  
+        fstream.on("close", () => {
             let id = req.params.id;
             let uuid = crypto.randomBytes(10).toString('hex');
 
             client.hmset([id, "filename", filename, "delete", uuid]);
 
             // delete the file off the server in 24 hours
-            // setTimeout(function() {
+            // setTimeout(() => {
             //   fs.unlinkSync(__dirname + "/static/" + id);
             // }, 86400000);
 
@@ -107,10 +106,10 @@ app.post("/upload/:id", function (req, res, next) {
     });
 });
 
-app.listen(3000, function () {
+app.listen(3000, () => {
   console.log("Portal app listening on port 3000!")
 })
 
-function validateID(route_id) {
+let validateID = (route_id) => {
   return route_id.match(/^[0-9a-fA-F]{32}$/) !== null;
 }
