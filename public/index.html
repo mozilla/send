@@ -2,17 +2,17 @@
 <html>
 <head>
 <title>Firefox Fileshare</title>
-<script src="file.js"></script>
+<script src="upload.js"></script>
 
 </head>
 <body>
 
-        <form method='post' action='upload' enctype="multipart/form-data">
-        <input type='file' onchange="onChange(event)" name='fileUploaded' />
-        </form>
+  <form method="post" action="upload" enctype="multipart/form-data">
+    <input type="file" onchange="onChange(event)" name="fileUploaded" />
+  </form>
 
-
-
+  <ul id="uploaded_files">
+  </ul>
 
 </body>
 </html> 
