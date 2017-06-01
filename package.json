@@ -5,7 +5,7 @@
   "scripts": {
     "format": "prettier --single-quote --write 'public/*.js' 'app.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node server/portal_server.js"
   },
   "author": "",
   "license": "ISC",
