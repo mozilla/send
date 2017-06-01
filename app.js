@@ -62,35 +62,31 @@ app.post("/delete/:id", function(req, res) {
 
 app.post("/upload/:id", function (req, res, next) {
 
-        var fstream;
-        req.pipe(req.busboy);
-        req.busboy.on("file", function (fieldname, file, filename) {
-            console.log("Uploading: " + filename);
+    var fstream;
+    req.pipe(req.busboy);
+    req.busboy.on("file", function (fieldname, file, filename) {
+        console.log("Uploading: " + filename);
 
-            //Path where image will be uploaded
-            fstream = fs.createWriteStream(__dirname + "/static/" + req.params.id);
-            file.pipe(fstream);
-            fstream.on("close", function () {  
-                let id = req.params.id;
-                let uuid = Math.floor(Math.random() * 10000000).toString()
-                         + Math.floor(Math.random() * 10000000).toString()
-                         + Math.floor(Math.random() * 10000000).toString();
+        //Path where image will be uploaded
+        fstream = fs.createWriteStream(__dirname + "/static/" + req.params.id);
+        file.pipe(fstream);
+        fstream.on("close", function () {  
+            let id = req.params.id;
+            let uuid = crypto.randomBytes(10).toString('hex');
 
-                client.hset(id, "filename", filename);
-                client.hset(id, "expiration", 0);
-                client.hset(id, "delete", uuid);
+            client.hmset([id, "filename", filename, "delete", uuid]);
 
-                // delete the file off the server in 24 hours
-                setTimeout(function() {
-                  fs.unlinkSync(__dirname + "/static/" + id);
-                }, 86400000);
+            // delete the file off the server in 24 hours
+            // setTimeout(function() {
+            //   fs.unlinkSync(__dirname + "/static/" + id);
+            // }, 86400000);
 
-                client.expire(id, 86400000);
-                console.log("Upload Finished of " + filename);      
-                res.send(uuid);
-            });
+            client.expire(id, 86400000);
+            console.log("Upload Finished of " + filename);      
+            res.send(uuid);
         });
     });
+});
 
 app.listen(3000, function () {
   console.log("Portal app listening on port 3000!")
