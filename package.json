@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "format": "prettier --single-quote --write 'public/*.js' 'app.js'",
+    "format": "prettier --single-quote --write 'frontend/src/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "watchify frontend/src/main.js -o public/bundle.js -d | node server/portal_server.js"
   },

@@ -1,3 +1,3 @@
 require('./upload');
 require('./download');
-require('./file');
+require('./ui');

@@ -8,18 +8,17 @@ class UIWrapper extends EventEmitter {
     this.link = link;
     this.progress = progress;
 
-    this.on("name", (filename) => {
+    this.on('name', filename => {
       this.name.innerText = filename;
     });
 
-    this.on("link", (link) => {
+    this.on('link', link => {
       this.link.innerText = link;
       this.link.setAttribute('href', link);
     });
 
-    this.on("progress", (progress) => {
+    this.on('progress', progress => {
       this.progress.innerText = progress;
-      
     });
   }
 }
