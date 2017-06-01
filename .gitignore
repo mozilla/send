@@ -1,5 +1,8 @@
 .DS_Store
 node_modules
+<<<<<<< HEAD
 public/bundle.js
+=======
+>>>>>>> add gitignore
 static/*
 !static/info.txt

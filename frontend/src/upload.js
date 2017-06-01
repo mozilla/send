@@ -3,18 +3,21 @@ const FileSender = require('./fileSender');
 let onChange = event => {
   const file = event.target.files[0];
 
-  let li = document.createElement('li');
-  let name = document.createElement('p');
-  name.innerText = file.name;
-  li.appendChild(name);
+  var row = document.createElement("tr");
+  var name = document.createElement("td");
+  var link = document.createElement("td");
+  var expiry = document.createElement("td");
 
-  let link = document.createElement('a');
-  li.appendChild(link);
+  var cellText = document.createTextNode(file.name);
 
-  let progress = document.createElement('p');
-  li.appendChild(progress);
+  name.appendChild(cellText);
 
-  document.getElementById('uploaded_files').appendChild(li);
+  var progress = document.createElement("p");
+
+  row.appendChild(name);
+  row.appendChild(link);
+  row.appendChild(expiry);
+  document.getElementById("uploaded-files").appendChild(row);
 
   const fileSender = new FileSender(file);
   fileSender.on('progress', percentComplete => {
@@ -24,20 +27,21 @@ let onChange = event => {
     const url = `${window.location
       .origin}/download/${info.fileId}/#${info.secretKey}`;
     localStorage.setItem(info.fileId, info.deleteToken);
-    link.innerText = url;
-    link.setAttribute('href', url);
-    let btn = document.createElement('button');
-    btn.innerText = 'Delete from server';
+    var del = document.createElement("td");
+    var btn = document.createElement("button");
+    btn.innerHTML = "x";
+    btn.style = "padding: 0; border: none; background: none; cursor: pointer"
     btn.addEventListener('click', () => {
       FileSender.delete(
         info.fileId,
         localStorage.getItem(info.fileId)
       ).then(() => {
-        document.getElementById('uploaded_files').removeChild(li);
+        document.getElementById('uploaded-files').removeChild(row);
         localStorage.removeItem(info.fileId);
       });
     });
-    li.appendChild(btn);
+    del.appendChild(btn);
+    row.appendChild(del);
   });
 };
 
