@@ -23,6 +23,7 @@ class FileReceiver extends EventEmitter {
 
           if (xhr.status === 404) {
             reject(new Error('The file has expired, or has already been deleted.'));
+            return;
           }
 
           let blob = new Blob([this.response]);
