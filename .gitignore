@@ -1,0 +1,5 @@
+.DS_Store
+node_modules
+public/bundle.js
+static/*
+!static/info.txt
