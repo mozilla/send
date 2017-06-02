@@ -1,4 +1,6 @@
 /***     index.html     ***/
+
+/**   page-one    **/
 body {
   font-family: 'Fira Sans';
   font-weight: 300;
@@ -63,4 +65,27 @@ input[type="file"] {
 form{
   width: 45px;
   float: right;
+}
+
+/**   file-list   **/
+th{
+  font-size: 10px;
+  color: #737373;
+  font-weight: normal;
+  text-align: left;
+}
+td{
+  font-size: 12px;
+  vertical-align: top;
+}
+#uploaded-files{
+  width: 472px;
+  margin: 10px auto ;
+  float: top;
+  table-layout: fixed;
+  overflow-y: scroll;
+}
+#file-list{
+  overflow-y: scroll;
+  height: 90px;
 }
