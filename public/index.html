@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Firefox Fileshare</title>
-<script src="upload.js"></script>
-
+  <title>Firefox Fileshare</title>
+  <script src="upload.js"></script>
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+  <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
-<body>
+<body background="resources/background.png">
 
-  <form method="post" action="upload" enctype="multipart/form-data">
-    <input type="file" onchange="onChange(event)" name="fileUploaded" />
-  </form>
+  <div class="main-window">
+    <div class="title">
+      Share your files quickly, privately and securely.
+    </div>
+    <div class="upload-window">
+      <div id="upload-img"><img src='resources/upload.svg'/></div>
+      <div>
+        DRAG & DROP
+      </div>
+      <div class="upload">
+        <div id="browse-text">
+          your file/folder here or
+        </div>
+        <div id="browse">
+          <form method="post" action="upload" enctype="multipart/form-data">
+            <label for="file-upload" class="file-upload">browse.</label>
+            <input id="file-upload" type="file" onchange="onChange(event)" name="fileUploaded" />
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <ul id="uploaded_files">
   </ul>
 
 </body>
-</html> 
+</html>

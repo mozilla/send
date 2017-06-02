@@ -1,0 +1,66 @@
+/***     index.html     ***/
+body {
+  font-family: 'Fira Sans';
+  font-weight: 300;
+  font-style: normal;
+  background-size: cover;
+}
+.main-window{
+  border: 1px solid;
+  width: 606px;
+  height: 447px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: white;
+  border-radius: 5px;
+}
+.title{
+  font-size: 14px;
+  width: 50%;
+  margin: 50px auto ;
+}
+.upload-window{
+  border: 1px dashed;
+  width: 50%;
+  margin: 0 auto;
+  width: 470px;
+  height: 250px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#browse{
+  float: right;
+  color: blue;
+}
+#browse-text{
+  float: left;
+  width: 128px;
+}
+#upload-img{
+  padding-right: 20px;
+}
+.upload-window>div:nth-child(2){
+  font-size: 26px;
+}
+.upload{
+  font-size: 12px;
+  width: auto;
+  overflow: hidden;
+}
+.file-upload{
+  cursor: pointer;
+}
+input[type="file"] {
+  display: none;
+}
+form{
+  width: 45px;
+  float: right;
+}
