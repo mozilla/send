@@ -15,6 +15,8 @@ let download = () => {
     progress.innerText = `Progress: ${percentComplete}%`;
 
     if (percentComplete === 100) {
+      fileReceiver.removeAllListeners('progress');
+
       let finished = document.createElement('p');
       finished.innerText = 'Your download has finished.';
       li.appendChild(finished);
@@ -28,7 +30,13 @@ let download = () => {
     }
   });
 
-  fileReceiver.download().then(([decrypted, fname]) => {
+  fileReceiver.download()
+  .catch((err) => {
+    console.log('The file has expired, or has already been deleted.');
+    document.getElementById('downloaded_files').removeChild(li);
+    return;
+  })
+  .then(([decrypted, fname]) => {
     name.innerText = fname;
     let dataView = new DataView(decrypted);
     let blob = new Blob([dataView]);

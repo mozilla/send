@@ -20,6 +20,11 @@ class FileReceiver extends EventEmitter {
         };
 
         xhr.onload = function(e) {
+
+          if (xhr.status === 404) {
+            reject(new Error('The file has expired, or has already been deleted.'));
+          }
+
           let blob = new Blob([this.response]);
           let fileReader = new FileReader();
           fileReader.onload = function() {
@@ -52,7 +57,8 @@ class FileReceiver extends EventEmitter {
         true,
         ['encrypt', 'decrypt']
       )
-    ]).then(([fdata, key]) => {
+    ])
+    .then(([fdata, key]) => {
       let salt = this.salt;
       return Promise.all([
         window.crypto.subtle.decrypt(
