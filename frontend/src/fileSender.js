@@ -75,7 +75,6 @@ class FileSender extends EventEmitter {
           fd.append('data', blob, file.name);
 
           let xhr = new XMLHttpRequest();
-          xhr.open('post', '/upload/' + fileId, true);
 
           xhr.upload.addEventListener('progress', e => {
             if (e.lengthComputable) {
@@ -93,7 +92,8 @@ class FileSender extends EventEmitter {
               });
             }
           };
-
+          
+          xhr.open('post', '/upload/' + fileId, true);
           xhr.send(fd);
         });
       });
