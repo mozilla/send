@@ -6,13 +6,12 @@ class FileReceiver extends EventEmitter {
     super();
     this.salt = strToIv(location.pathname.slice(10, -1));
   }
-  
 
   download() {
     return Promise.all([
       new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
-        
+
         xhr.onprogress = e => {
           if (e.lengthComputable) {
             let percentComplete = Math.floor(e.loaded / e.total * 100);
@@ -26,49 +25,49 @@ class FileReceiver extends EventEmitter {
           fileReader.onload = function() {
             resolve({
               data: this.result,
-              fname: xhr.getResponseHeader('Content-Disposition').match(/filename="(.+)"/)[1]
+              fname: xhr
+                .getResponseHeader('Content-Disposition')
+                .match(/filename="(.+)"/)[1]
             });
-          }
+          };
 
           fileReader.readAsArrayBuffer(blob);
-        }
-        
+        };
+
         xhr.open('get', '/assets' + location.pathname.slice(0, -1), true);
         xhr.responseType = 'blob';
         xhr.send();
       }),
-      window.crypto.subtle
-        .importKey(
-          'jwk',
+      window.crypto.subtle.importKey(
+        'jwk',
+        {
+          kty: 'oct',
+          k: location.hash.slice(1),
+          alg: 'A128CBC',
+          ext: true
+        },
+        {
+          name: 'AES-CBC'
+        },
+        true,
+        ['encrypt', 'decrypt']
+      )
+    ]).then(([fdata, key]) => {
+      let salt = this.salt;
+      return Promise.all([
+        window.crypto.subtle.decrypt(
           {
-            kty: 'oct',
-            k: location.hash.slice(1),
-            alg: 'A128CBC',
-            ext: true
-          },
-          {
-            name: 'AES-CBC'
-          },
-          true,
-          ['encrypt', 'decrypt']
-        )
-    ])
-      .then(([fdata, key]) => {
-        let salt = this.salt;
-        return Promise.all([
-          window.crypto.subtle.decrypt(
-            {
             name: 'AES-CBC',
             iv: salt
-            },
-            key,
-            fdata.data
-          ),
-          new Promise((resolve, reject) => {
-            resolve(fdata.fname);
-          })
-        ]);
-      })
+          },
+          key,
+          fdata.data
+        ),
+        new Promise((resolve, reject) => {
+          resolve(fdata.fname);
+        })
+      ]);
+    });
   }
 }
 

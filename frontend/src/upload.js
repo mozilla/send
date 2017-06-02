@@ -21,7 +21,8 @@ let onChange = event => {
     progress.innerText = `Progress: ${percentComplete}%`;
   });
   fileSender.upload().then(info => {
-    const url = `${window.location.origin}/download/${info.fileId}/#${info.secretKey}`;
+    const url = `${window.location
+      .origin}/download/${info.fileId}/#${info.secretKey}`;
     localStorage.setItem(info.fileId, info.deleteToken);
     link.innerText = url;
     link.setAttribute('href', url);

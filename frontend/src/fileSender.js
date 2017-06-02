@@ -92,7 +92,7 @@ class FileSender extends EventEmitter {
               });
             }
           };
-          
+
           xhr.open('post', '/upload/' + fileId, true);
           xhr.send(fd);
         });
