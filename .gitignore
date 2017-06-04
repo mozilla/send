@@ -1,8 +1,11 @@
 .DS_Store
 node_modules
 <<<<<<< HEAD
+<<<<<<< HEAD
 public/bundle.js
 =======
 >>>>>>> add gitignore
+=======
+>>>>>>> d7e40776401060de6d84771a442ddb6f3ea7175d
 static/*
 !static/info.txt
