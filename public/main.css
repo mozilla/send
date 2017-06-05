@@ -2,6 +2,7 @@
 
 /**   page-one    **/
 body {
+  background: url('resources/background.png');
   font-family: 'Fira Sans';
   font-weight: 300;
   font-style: normal;
@@ -81,11 +82,16 @@ td{
 #uploaded-files{
   width: 472px;
   margin: 10px auto ;
-  float: top;
   table-layout: fixed;
   overflow-y: scroll;
 }
 #file-list{
   overflow-y: scroll;
   height: 90px;
+}
+.delete-btn{
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
