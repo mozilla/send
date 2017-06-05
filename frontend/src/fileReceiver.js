@@ -5,6 +5,7 @@ class FileReceiver extends EventEmitter {
   constructor() {
     super();
     this.salt = strToIv(location.pathname.slice(10, -1));
+    window.salt = this.salt;
   }
 
   download() {
@@ -30,11 +31,13 @@ class FileReceiver extends EventEmitter {
           let blob = new Blob([this.response]);
           let fileReader = new FileReader();
           fileReader.onload = function() {
+            window.data = this.result;
+            console.log(this.result);
             resolve({
               data: this.result,
               fname: xhr
                 .getResponseHeader('Content-Disposition')
-                .match(/filename="(.+)"/)[1]
+                .match(/="(.+)"/)[1]
             });
           };
 

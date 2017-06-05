@@ -4,8 +4,10 @@
   "version": "1.0.0",
   "author": "Mozilla (https://mozilla.org)",
   "dependencies": {
+    "aws-sdk": "^2.62.0",
     "body-parser": "^1.17.2",
     "connect-busboy": "0.0.2",
+    "convict": "^3.0.0",
     "express": "^4.15.3",
     "fs-extra": "^3.0.1",
     "path": "^0.12.7",
