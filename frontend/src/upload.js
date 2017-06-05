@@ -26,6 +26,7 @@ let onChange = event => {
   fileSender.upload().then(info => {
     const url = `${window.location
       .origin}/download/${info.fileId}/#${info.secretKey}`;
+    link.innerHTML = url;
     localStorage.setItem(info.fileId, info.deleteToken);
     var del = document.createElement("td");
     var btn = document.createElement("button");
