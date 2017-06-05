@@ -3,17 +3,17 @@ const FileSender = require('./fileSender');
 let onChange = event => {
   const file = event.target.files[0];
 
-  let fileList = document.getElementById("uploaded-files");
-  let row = document.createElement("tr");
-  let name = document.createElement("td");
-  let link = document.createElement("td");
-  let expiry = document.createElement("td");
+  let fileList = document.getElementById('uploaded-files');
+  let row = document.createElement('tr');
+  let name = document.createElement('td');
+  let link = document.createElement('td');
+  let expiry = document.createElement('td');
 
   let cellText = document.createTextNode(file.name);
 
   name.appendChild(cellText);
 
-  let progress = document.createElement("p");
+  let progress = document.createElement('p');
 
   row.appendChild(name);
   row.appendChild(link);
@@ -29,9 +29,9 @@ let onChange = event => {
       .origin}/download/${info.fileId}/#${info.secretKey}`;
     link.innerHTML = url;
     localStorage.setItem(info.fileId, info.deleteToken);
-    let del = document.createElement("td");
-    let btn = document.createElement("button");
-    btn.innerHTML = "x";
+    let del = document.createElement('td');
+    let btn = document.createElement('button');
+    btn.innerHTML = 'x';
     btn.classList.add('delete-btn');
     btn.addEventListener('click', () => {
       FileSender.delete(
