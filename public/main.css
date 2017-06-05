@@ -8,7 +8,8 @@ body {
   font-style: normal;
   background-size: cover;
 }
-.main-window{
+
+.main-window {
   border: 1px solid;
   width: 606px;
   height: 447px;
@@ -21,12 +22,14 @@ body {
   background-color: white;
   border-radius: 5px;
 }
-.title{
+
+.title {
   font-size: 14px;
   width: 50%;
   margin: 50px auto ;
 }
-.upload-window{
+
+.upload-window {
   border: 1px dashed;
   width: 50%;
   margin: 0 auto;
@@ -38,58 +41,70 @@ body {
   align-items: center;
   flex-direction: column;
 }
-#browse{
+
+#browse {
   float: right;
   color: blue;
 }
-#browse-text{
+
+#browse-text {
   float: left;
   width: 128px;
 }
-#upload-img{
+
+#upload-img {
   padding-right: 20px;
 }
-.upload-window>div:nth-child(2){
+
+.upload-window>div:nth-child(2) {
   font-size: 26px;
 }
-.upload{
+
+.upload {
   font-size: 12px;
   width: auto;
   overflow: hidden;
 }
-.file-upload{
+
+.file-upload {
   cursor: pointer;
 }
+
 input[type="file"] {
   display: none;
 }
-form{
+
+form {
   width: 45px;
   float: right;
 }
 
 /**   file-list   **/
-th{
+th {
   font-size: 10px;
   color: #737373;
   font-weight: normal;
   text-align: left;
 }
-td{
+
+td {
   font-size: 12px;
   vertical-align: top;
 }
-#uploaded-files{
+
+#uploaded-files {
   width: 472px;
   margin: 10px auto ;
   table-layout: fixed;
   overflow-y: scroll;
 }
-#file-list{
+
+#file-list {
   overflow-y: scroll;
   height: 90px;
 }
-.delete-btn{
+
+.delete-btn {
   padding: 0;
   border: none;
   background: none;
