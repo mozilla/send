@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Download your file</title>
-<script type="text/javascript" src="/bundle.js"></script>
+  <title>Download your file</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/bundle.js"></script>
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+  <link rel="stylesheet" type="text/css" href="/main.css" />
 </head>
 <body>
 
-  <button onclick="download()">DOWNLOAD</button>
+  <div class="main-window">
+    <div id="download">
+      <div class="title">
+        Your friend is sending you a file:
+      </div>
+      <div class="share-window">
+        <button id="download-btn" onclick="download()">Download File</button>
+        <img id="expired-img" src="/resources/link_expired.png"/>
+      </div>
+      <div class="send-new" id="send-file">
+        Send your own files
+      </div>
+    </div>
+  </div>
 
-  <ul id="downloaded_files">
-  </ul>
+  <!-- <ul id="downloaded_files">
+  </ul> -->
 
 </body>
-</html> 
+</html>

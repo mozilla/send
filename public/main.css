@@ -1,32 +1,35 @@
 /***     index.html     ***/
-
-/**   page-one    **/
-body {
+html {
   background: url('resources/background.png');
   font-family: 'Fira Sans';
   font-weight: 300;
   font-style: normal;
-  background-size: cover;
+  background-size: contain;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+input, select, textarea, button {
+  font-family:inherit;
 }
 
+/**   page-one    **/
 .main-window {
   border: 1px solid;
   width: 606px;
-  height: 447px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+  min-height: 447px;
   background-color: white;
   border-radius: 5px;
 }
 
 .title {
   font-size: 14px;
-  width: 50%;
-  margin: 50px auto ;
+  width: 80%;
+  margin: 50px auto;
+  text-align: center;
 }
 
 .upload-window {
@@ -44,7 +47,7 @@ body {
 
 #browse {
   float: right;
-  color: blue;
+  color: #2D7EFF;
 }
 
 #browse-text {
@@ -96,12 +99,6 @@ td {
   width: 472px;
   margin: 10px auto ;
   table-layout: fixed;
-  overflow-y: scroll;
-}
-
-#file-list {
-  overflow-y: scroll;
-  height: 90px;
 }
 
 .delete-btn {
@@ -109,4 +106,94 @@ td {
   border: none;
   background: none;
   cursor: pointer;
+}
+
+/**   upload-progress   **/
+
+
+/**   share-link    **/
+.share-window {
+  width: 50%;
+  margin: 0 auto;
+  width: 470px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#share-window-r {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#share-window-r>div {
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+
+#copy {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+#link {
+  width: 216px;
+  height: 41px;
+  border: 1px solid #979797;
+}
+
+#copy-btn {
+  width: 60px;
+  height: 45px;
+  background: #337FEB;
+  border: 1px solid #979797;
+  color: white;
+  cursor: pointer;
+}
+
+#copy-btn:disabled {
+  background: #47B04B;
+  cursor: auto;
+}
+
+.send-new {
+  font-size: 14px;
+  margin: auto;
+  width: 80%;
+  text-align: center;
+  color: #2D7EFF;
+  cursor: pointer;
+}
+
+/**   download.html **/
+#download-btn {
+  font-size: 18px;
+  color: white;
+  width: 214px;
+  height: 87px;
+  margin: 50px auto;
+  text-align: center;
+  background: #337FEB;
+  border: 1px solid #3EA050;
+  border-radius: 6px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+#download-btn:disabled {
+  background: #47B04B;
+  cursor: auto;
+}
+
+#download {
+  text-align: center;
+}
+
+#expired-img {
+  display: none;
 }
