@@ -37,36 +37,48 @@ app.get('/assets/download/:id', (req, res) => {
     return;
   }
 
-  let params = {
-    Bucket: aws_credentials.bucketName,
-    Key: req.params.id
-  }
+  redis_client.hget(id, "filename", (err, reply) => { // maybe some expiration logic too
+    if (!reply) {
+      res.sendStatus(404);
+    } else {
 
-  s3.getObject(params, function(err, data) {
-    if (err) {
-      console.log(err, err.stack); // an error occurred
-    }
-    else {
-      res.writeHead(200, {"Content-Disposition": "attachment; filename=response", //+ reply,
-                          "Content-Type": "application/octet-stream"});
-      // res.setHeader("Content-Type", "application/octet-stream");
-      res.end(new Buffer(data.Body))
+      let params = {
+        Bucket: aws_credentials.bucketName,
+        Key: id
+      }
+
+      s3.headObject(params, function(err, data) {
+        res.writeHead(200, {"Content-Disposition": "attachment; filename=" + reply,
+                            "Content-Type": "application/octet-stream",
+                            "Content-Length": data.ContentLength});
+        let file_stream = s3.getObject(params).createReadStream();
+
+        file_stream.on('finish', () => {
+          redis_client.del(id);
+          s3.deleteObject(params, function(err, data) {
+            if (!err) {
+              console.log('Deleted off s3.');
+            }
+          })
+        });
+
+        file_stream.pipe(res);
+      });
+
+      // s3.getObject(params, function(err, data) {
+      //   if (err) {
+      //     console.log(err, err.stack); // an error occurred
+      //     res.sendStatus(404);
+      //   }
+      //   else {
+
+
+
+      //   }
+      // })
+
     }
   })
-
-  // redis_client.hget(id, "filename", (err, reply) => { // maybe some expiration logic too
-  //   if (!reply) {
-  //     res.sendStatus(404);
-  //   } else {
-
-      // res.download(__dirname + "/../static/" + id, reply, (err) => {
-      //   if (!err) {
-      //     redis_client.del(id);
-      //     fs.unlinkSync(__dirname + "/../static/" + id);
-      //   }
-      // });
-  //   }
-  // })
 });
 
 app.post('/delete/:id', (req, res) => {
@@ -83,21 +95,22 @@ app.post('/delete/:id', (req, res) => {
     res.sendStatus(404);
   }
 
-<<<<<<< HEAD
-  client.hget(id, 'delete', (err, reply) => {
-    if (!reply) {
-      res.sendStatus(404);
-    } else {
-      client.del(id);
-      fs.unlinkSync(__dirname + '/../static/' + id);
-=======
   redis_client.hget(id, "delete", (err, reply) => {
-    if (!reply) {
+    if (!reply || (delete_token !== reply)) {
       res.sendStatus(404);
     } else {
       redis_client.del(id);
-      fs.unlinkSync(__dirname + "/../static/" + id);
->>>>>>> currently not working, decryption seems to fail
+      let params = {
+        Bucket: aws_credentials.bucketName,
+        Key: id
+      }
+
+      s3.deleteObject(params, function(err, data) {
+        if (!err) {
+          console.log('Deleted off s3.');
+        }
+      })
+
       res.sendStatus(200);
     }
   });
@@ -110,11 +123,9 @@ app.post("/upload/:id", (req, res, next) => {
       return;
     }
 
-    let fstream;
     req.pipe(req.busboy);
     req.busboy.on("file", (fieldname, file, filename) => {
         console.log("Uploading: " + filename);
-
 
         let params = {
           Bucket: aws_credentials.bucketName,
@@ -126,29 +137,16 @@ app.post("/upload/:id", (req, res, next) => {
           if (err) {
             console.log(err, err.stack); // an error occurred
           } else {
-            console.log(data);
-          }
-        })
-
-        return;
-
-        fstream = fs.createWriteStream(__dirname + "/../static/" + req.params.id);
-        file.pipe(fstream);
-        fstream.on("close", () => {
             let id = req.params.id;
             let uuid = crypto.randomBytes(10).toString('hex');
 
             redis_client.hmset([id, "filename", filename, "delete", uuid]);
 
-            // delete the file off the server in 24 hours
-            // setTimeout(() => {
-            //   fs.unlinkSync(__dirname + "/static/" + id);
-            // }, 86400000);
-
             redis_client.expire(id, 86400000);
             console.log("Upload Finished of " + filename);
             res.send(uuid);
-        });
+          }
+        })
     });
   });
 });
