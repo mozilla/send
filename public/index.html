@@ -2,9 +2,10 @@
 <html>
 <head>
   <title>Firefox Fileshare</title>
-  <script src="bundle.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/bundle.js"></script>
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
-  <link rel="stylesheet" type="text/css" href="main.css" />
+  <link rel="stylesheet" type="text/css" href="/main.css" />
 </head>
 <body>
 
@@ -14,7 +15,7 @@
         Share your files quickly, privately and securely.
       </div>
       <div class="upload-window">
-        <div id="upload-img"><img src="resources/upload.svg"/></div>
+        <div id="upload-img"><img src="/resources/upload.svg"/></div>
         <div>
           DRAG &amp; DROP
         </div>
@@ -24,7 +25,7 @@
           </div>
           <div id="browse">
             <form method="post" action="upload" enctype="multipart/form-data">
-              <label for="file-upload" class="file-upload">browse.</label>
+              <label for="file-upload" class="file-upload">browse</label>
               <input id="file-upload" type="file" onchange="onChange(event)" name="fileUploaded" />
             </form>
           </div>
@@ -37,12 +38,47 @@
         <tr>
           <th width=30%>File</th>
           <th width=45%>Copy URL</th>
-          <th width=20%>Expires in</th>
-          <th width=5%>Delete</th>
+          <th width=18%>Expires in</th>
+          <th width=7%>Delete</th>
         </tr>
+        <div data-role="popup" id="popupArrow" data-arrow="true">
       </table>
     </div>
 
+    <div id="upload-progress">
+      <div class="title" id="upload-filename">
+        Uploading
+      </div>
+      <div class="upload-window">
+        <div id="upload-img"><img src="/resources/upload.svg"/></div>
+        <div class="upload">
+          <!-- progress bar here -->
+        </div>
+      </div>
+    </div>
+
+    <div id="share-link">
+      <div class="title">
+        Copy the link below to share your file!
+      </div>
+      <div class="share-window">
+        <img src="/resources/share.png"/>
+        <div id="share-window-r">
+          <div id="copy">
+            <input id="link" type="url" value="" readonly/>
+            <button id="copy-btn">Copy</button>
+          </div>
+          <div>
+            This link expires after one download
+          </div>
+        </div>
+      </div>
+      <div class="send-new">
+        Send another file
+      </div>
+    </div>
+
   </div>
+
 </body>
 </html>
