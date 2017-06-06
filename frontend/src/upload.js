@@ -1,32 +1,32 @@
 const FileSender = require('./fileSender');
 
-$(document).ready(function(){
+$(document).ready(function() {
   let copyBtn = $('#copy-btn');
-  copyBtn.attr("disabled", false);
-  copyBtn.html("Copy");
+  copyBtn.attr('disabled', false);
+  copyBtn.html('Copy');
   $('#page-one').show();
   $('#file-list').hide();
   $('#upload-progress').hide();
   $('#share-link').hide();
 
-  copyBtn.click(()=>{
-    console.log("copied");
-    var aux = document.createElement("input");
-    aux.setAttribute("value", $('#link').attr("value"));
+  copyBtn.click(() => {
+    console.log('copied');
+    var aux = document.createElement('input');
+    aux.setAttribute('value', $('#link').attr('value'));
     document.body.appendChild(aux);
     aux.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     document.body.removeChild(aux);
-    copyBtn.attr("disabled", true);
-    copyBtn.html("Copied!");
+    copyBtn.attr('disabled', true);
+    copyBtn.html('Copied!');
   });
-  $('.send-new').click(()=>{
+  $('.send-new').click(() => {
     $('#page-one').show();
     $('#file-list').show();
     $('#upload-progress').hide();
     $('#share-link').hide();
-    copyBtn.attr("disabled", false);
-    copyBtn.html("Copy");
+    copyBtn.attr('disabled', false);
+    copyBtn.html('Copy');
   });
 
   let onChange = event => {
@@ -60,28 +60,28 @@ $(document).ready(function(){
     fileSender.upload().then(info => {
       const url = `${window.location
         .origin}/download/${info.fileId}/#${info.secretKey}`;
-        $('#link').attr("value", url);
-        link.innerHTML = url;
-        localStorage.setItem(info.fileId, info.deleteToken);
-        let del = document.createElement('td');
-        let btn = document.createElement('button');
-        btn.innerHTML = 'x';
-        btn.classList.add('delete-btn');
-        btn.addEventListener('click', (e) => {
-          FileSender.delete(
-            info.fileId,
-            localStorage.getItem(info.fileId)
-          ).then(() => {
-            e.target.parentNode.parentNode.remove();
-            localStorage.removeItem(info.fileId);
-          });
+      $('#link').attr('value', url);
+      link.innerHTML = url;
+      localStorage.setItem(info.fileId, info.deleteToken);
+      let del = document.createElement('td');
+      let btn = document.createElement('button');
+      btn.innerHTML = 'x';
+      btn.classList.add('delete-btn');
+      btn.addEventListener('click', e => {
+        FileSender.delete(
+          info.fileId,
+          localStorage.getItem(info.fileId)
+        ).then(() => {
+          e.target.parentNode.parentNode.remove();
+          localStorage.removeItem(info.fileId);
         });
-        del.appendChild(btn);
-        row.appendChild(del);
-        $('#upload-progress').hide();
-        $('#share-link').show();
       });
-    };
+      del.appendChild(btn);
+      row.appendChild(del);
+      $('#upload-progress').hide();
+      $('#share-link').show();
+    });
+  };
 
-    window.onChange = onChange;
-  });
+  window.onChange = onChange;
+});

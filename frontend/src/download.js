@@ -1,7 +1,7 @@
 const FileReceiver = require('./fileReceiver');
 
-$(document).ready(function(){
-  $('.send-new').click(()=>{
+$(document).ready(function() {
+  $('.send-new').click(() => {
     window.location.replace(`${window.location.origin}`);
   });
   let download = () => {
@@ -23,7 +23,7 @@ $(document).ready(function(){
       if (percentComplete === 100) {
         fileReceiver.removeAllListeners('progress');
         btn.text('Download complete!');
-        btn.attr("disabled", "true");
+        btn.attr('disabled', 'true');
         // let finished = document.createElement('p');
         // finished.innerText = 'Your download has finished.';
         // li.appendChild(finished);
@@ -37,27 +37,30 @@ $(document).ready(function(){
       }
     });
 
-    fileReceiver.download()
-    .catch((err) => {
-      $('.title').text('This link has expired or never existed in the first place.');
-      $('#download-btn').hide();
-      $('#expired-img').show();
-      console.log('The file has expired, or has already been deleted.');
-      // document.getElementById('downloaded_files').removeChild(li);
-      return;
-    })
-    .then(([decrypted, fname]) => {
-      name.innerText = fname;
-      let dataView = new DataView(decrypted);
-      let blob = new Blob([dataView]);
-      let downloadUrl = URL.createObjectURL(blob);
+    fileReceiver
+      .download()
+      .catch(err => {
+        $('.title').text(
+          'This link has expired or never existed in the first place.'
+        );
+        $('#download-btn').hide();
+        $('#expired-img').show();
+        console.log('The file has expired, or has already been deleted.');
+        // document.getElementById('downloaded_files').removeChild(li);
+        return;
+      })
+      .then(([decrypted, fname]) => {
+        name.innerText = fname;
+        let dataView = new DataView(decrypted);
+        let blob = new Blob([dataView]);
+        let downloadUrl = URL.createObjectURL(blob);
 
-      let a = document.createElement('a');
-      a.href = downloadUrl;
-      a.download = fname;
-      document.body.appendChild(a);
-      a.click();
-    });
+        let a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = fname;
+        document.body.appendChild(a);
+        a.click();
+      });
   };
 
   window.download = download;
