@@ -1,7 +1,7 @@
 const FileReceiver = require('./fileReceiver');
 
 $(document).ready(function() {
-  $('.send-new').click(() => {
+  $('#send-file').click(() => {
     window.location.replace(`${window.location.origin}`);
   });
   let download = () => {
