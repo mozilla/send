@@ -8,8 +8,6 @@ const conf = require('./config.js');
 const stream = require('stream');
 const fetch = require('node-fetch');
 
-let aws_credentials = conf.aws_credentials;
-let bitly_credentials = conf.bitly_credentials;
 let isProduction = conf.env === 'production';
 
 const AWS = require('aws-sdk');
@@ -44,7 +42,7 @@ app.get('/assets/download/:id', (req, res) => {
       res.sendStatus(404);
     } else {
       let params = {
-        Bucket: aws_credentials.bucketName,
+        Bucket: config.s3_bucket,
         Key: id
       };
 
@@ -91,7 +89,7 @@ app.post('/delete/:id', (req, res) => {
     } else {
       redis_client.del(id);
       let params = {
-        Bucket: aws_credentials.bucketName,
+        Bucket: config.s3_bucket,
         Key: id
       };
 
@@ -117,7 +115,7 @@ app.post('/upload/:id', (req, res, next) => {
     console.log('Uploading: ' + filename);
 
     let params = {
-      Bucket: aws_credentials.bucketName,
+      Bucket: config.s3_bucket,
       Key: req.params.id,
       Body: file
     };
@@ -133,18 +131,11 @@ app.post('/upload/:id', (req, res, next) => {
 
         redis_client.expire(id, 86400000);
         console.log('Upload Finished of ' + filename);
-
-        if (isProduction) {
-          let url =
-            req.protocol +
-            `://` +
-            req.get('host') +
-            '/download/' +
-            req.params.id +
-            '/';
+        let url = `${req.protocol}://${req.get('host')}/download/${req.params.id}/`;
+        if (config.bitly_key) {
           fetch(
             'https://api-ssl.bitly.com/v3/shorten?access_token=' +
-              bitly_credentials.api_key +
+              config.bitly_key +
               '&longUrl=' +
               encodeURIComponent(url) +
               '&format=txt'
@@ -169,14 +160,10 @@ app.post('/upload/:id', (req, res, next) => {
   });
 });
 
-let server = app.listen(3000, () => {
-  console.log('Portal app listening on port 3000!');
+let server = app.listen(conf.listen_port, () => {
+  console.log(`Portal app listening on port ${conf.listen_port}!`);
 });
 
 let validateID = route_id => {
   return route_id.match(/^[0-9a-fA-F]{32}$/) !== null;
 };
-
-if (bitly_credentials.api_key === 'INSERT API KEY HERE') {
-  throw new Error('Copy paste a bitly API key into server/config.js');
-}

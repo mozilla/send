@@ -1,13 +1,24 @@
 const convict = require('convict');
-let api_key = 'INSERT API KEY HERE';
 
 let conf = convict({
-  aws_credentials: {
-    region: 'us-west-2',
-    bucketName: 'testpilot-p2p'
+  bitly_key: {
+    format: String,
+    env: 'P2P_BITLY_KEY'
   },
-  bitly_credentials: {
-    api_key: api_key
+  s3_bucket: {
+    format: String,
+    env: 'P2P_S3_BUCKET'
+  },
+  redis_host: {
+    format: String,
+    default: 'localhost',
+    env: 'P2P_REDIS_HOST'
+  },
+  listen_port: {
+    format: 'port',
+    default: 1443,
+    arg: 'port',
+    env: 'P2P_LISTEN_PORT'
   },
   env: {
     format: ['production', 'development'],
