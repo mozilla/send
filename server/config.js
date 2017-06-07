@@ -3,10 +3,12 @@ const convict = require('convict');
 let conf = convict({
   bitly_key: {
     format: String,
+    default: 'localhost',
     env: 'P2P_BITLY_KEY'
   },
   s3_bucket: {
     format: String,
+    default: 'localhost',
     env: 'P2P_S3_BUCKET'
   },
   redis_host: {

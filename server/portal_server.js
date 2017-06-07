@@ -7,8 +7,12 @@ const crypto = require('crypto');
 const conf = require('./config.js');
 const stream = require('stream');
 const fetch = require('node-fetch');
+const storage = require('./storage.js');
 
-let isProduction = conf.env === 'production';
+let isProduction =
+  conf.env === 'production' &&
+  conf.s3_bucket !== 'localhost' &&
+  conf.bitly_key !== 'localhost';
 
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
@@ -37,34 +41,28 @@ app.get('/assets/download/:id', (req, res) => {
   }
 
   redis_client.hget(id, 'filename', (err, reply) => {
-    // maybe some expiration logic too
     if (!reply) {
       res.sendStatus(404);
     } else {
-      let params = {
-        Bucket: config.s3_bucket,
-        Key: id
-      };
-
-      s3.headObject(params, function(err, data) {
+      storage.length(id).then(contentLength => {
         res.writeHead(200, {
           'Content-Disposition': 'attachment; filename=' + reply,
           'Content-Type': 'application/octet-stream',
-          'Content-Length': data.ContentLength
+          'Content-Length': contentLength
         });
-        let file_stream = s3.getObject(params).createReadStream();
-
-        file_stream.on('finish', () => {
-          redis_client.del(id);
-          s3.deleteObject(params, function(err, data) {
-            if (!err) {
-              console.log('Deleted off s3.');
-            }
-          });
-        });
-
-        file_stream.pipe(res);
       });
+
+      let file_stream = storage.get(id);
+
+      file_stream.on('close', () => {
+        storage.forceDelete(id, redis_client).then(err => {
+          if (!err) {
+            console.log('Deleted.');
+          }
+        });
+      });
+
+      file_stream.pipe(res);
     }
   });
 });
@@ -83,25 +81,14 @@ app.post('/delete/:id', (req, res) => {
     res.sendStatus(404);
   }
 
-  redis_client.hget(id, 'delete', (err, reply) => {
-    if (!reply || delete_token !== reply) {
-      res.sendStatus(404);
-    } else {
-      redis_client.del(id);
-      let params = {
-        Bucket: config.s3_bucket,
-        Key: id
-      };
-
-      s3.deleteObject(params, function(err, data) {
-        if (!err) {
-          console.log('Deleted off s3.');
-        }
-      });
-
-      res.sendStatus(200);
-    }
-  });
+  storage
+    .delete(id, redis_client, delete_token)
+    .then(err => {
+      if (!err) {
+        console.log('Deleted off s3.');
+      }
+    })
+    .catch(err => res.sendStatus(404));
 });
 
 app.post('/upload/:id', (req, res, next) => {
@@ -113,50 +100,13 @@ app.post('/upload/:id', (req, res, next) => {
   req.pipe(req.busboy);
   req.busboy.on('file', (fieldname, file, filename) => {
     console.log('Uploading: ' + filename);
+    let url = `${req.protocol}://${req.get('host')}/download/${req.params.id}/`;
 
-    let params = {
-      Bucket: config.s3_bucket,
-      Key: req.params.id,
-      Body: file
-    };
-
-    s3.upload(params, function(err, data) {
-      if (err) {
-        console.log(err, err.stack); // an error occurred
-      } else {
-        let id = req.params.id;
-        let uuid = crypto.randomBytes(10).toString('hex');
-
-        redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
-
-        redis_client.expire(id, 86400000);
-        console.log('Upload Finished of ' + filename);
-        let url = `${req.protocol}://${req.get('host')}/download/${req.params.id}/`;
-        if (config.bitly_key) {
-          fetch(
-            'https://api-ssl.bitly.com/v3/shorten?access_token=' +
-              config.bitly_key +
-              '&longUrl=' +
-              encodeURIComponent(url) +
-              '&format=txt'
-          )
-            .then(res => {
-              return res.text();
-            })
-            .then(body => {
-              res.json({
-                uuid: uuid,
-                url: body
-              });
-            });
-        } else {
-          res.json({
-            uuid: uuid,
-            url: url
-          });
-        }
-      }
-    });
+    storage
+      .set(req.params.id, file, filename, redis_client, url)
+      .then(linkAndID => {
+        res.json(linkAndID);
+      });
   });
 });
 
