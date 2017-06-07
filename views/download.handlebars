@@ -11,9 +11,13 @@
 
   <div class="main-window">
     <div id="download">
+      {{#if filename}}
       <div class="title">
         Your friend is sending you a file:
       </div>
+      
+      <span> {{{filename}}} ({{{filesize}}})
+
       <div class="share-window">
         <button id="download-btn" onclick="download()">Download File</button>
         <img id="expired-img" src="/resources/link_expired.png"/>
@@ -21,6 +25,18 @@
       <div class="send-new" id="send-file">
         Send your own files
       </div>
+      {{else}}
+      <div class="title">
+        This link has expired or never existed in the first place.
+      </div>
+
+      <div class="share-window">
+        <img src="/resources/link_expired.png"/>
+      </div>
+      <div class="send-new" id="send-file">
+        Send your own files
+      </div>
+      {{/if}}
     </div>
   </div>
 

@@ -1,36 +1,50 @@
 const express = require('express');
+const exphbs = require('express-handlebars');
 const busboy = require('connect-busboy');
 const path = require('path');
 const fs = require('fs-extra');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
-const conf = require('./config.js');
 const stream = require('stream');
 const fetch = require('node-fetch');
+const bytes = require('bytes');
+const conf = require('./config.js');
 const storage = require('./storage.js');
 
-let isProduction =
+let notLocalHost =
   conf.env === 'production' &&
   conf.s3_bucket !== 'localhost' &&
   conf.bitly_key !== 'localhost';
 
-const AWS = require('aws-sdk');
-const s3 = new AWS.S3();
-
 const app = express();
-const redis = require('redis');
-const redis_client = redis.createClient();
 
-redis_client.on('error', err => {
-  console.log(err);
-});
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 
 app.use(busboy());
 app.use(bodyParser.json());
+
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
 app.get('/download/:id', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../public/download.html'));
+  let id = req.params.id;
+  storage.filename(id).then(filename => {
+    storage
+      .length(id)
+      .then(contentLength => {
+        res.render('download', {
+          filename: filename,
+          filesize: bytes(contentLength)
+        });
+      })
+      .catch(() => {
+        res.render('download');
+      });
+  });
 });
 
 app.get('/assets/download/:id', (req, res) => {
@@ -40,10 +54,9 @@ app.get('/assets/download/:id', (req, res) => {
     return;
   }
 
-  redis_client.hget(id, 'filename', (err, reply) => {
-    if (!reply) {
-      res.sendStatus(404);
-    } else {
+  storage
+    .filename(id)
+    .then(reply => {
       storage.length(id).then(contentLength => {
         res.writeHead(200, {
           'Content-Disposition': 'attachment; filename=' + reply,
@@ -54,8 +67,8 @@ app.get('/assets/download/:id', (req, res) => {
 
       let file_stream = storage.get(id);
 
-      file_stream.on('close', () => {
-        storage.forceDelete(id, redis_client).then(err => {
+      file_stream.on(notLocalHost ? 'finish' : 'close', () => {
+        storage.forceDelete(id).then(err => {
           if (!err) {
             console.log('Deleted.');
           }
@@ -63,8 +76,10 @@ app.get('/assets/download/:id', (req, res) => {
       });
 
       file_stream.pipe(res);
-    }
-  });
+    })
+    .catch(err => {
+      res.sendStatus(404);
+    });
 });
 
 app.post('/delete/:id', (req, res) => {
@@ -82,10 +97,10 @@ app.post('/delete/:id', (req, res) => {
   }
 
   storage
-    .delete(id, redis_client, delete_token)
+    .delete(id, delete_token)
     .then(err => {
       if (!err) {
-        console.log('Deleted off s3.');
+        console.log('Deleted.');
       }
     })
     .catch(err => res.sendStatus(404));
@@ -102,11 +117,9 @@ app.post('/upload/:id', (req, res, next) => {
     console.log('Uploading: ' + filename);
     let url = `${req.protocol}://${req.get('host')}/download/${req.params.id}/`;
 
-    storage
-      .set(req.params.id, file, filename, redis_client, url)
-      .then(linkAndID => {
-        res.json(linkAndID);
-      });
+    storage.set(req.params.id, file, filename, url).then(linkAndID => {
+      res.json(linkAndID);
+    });
   });
 });
 
