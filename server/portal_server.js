@@ -115,7 +115,8 @@ app.post('/upload/:id', (req, res, next) => {
   req.pipe(req.busboy);
   req.busboy.on('file', (fieldname, file, filename) => {
     console.log('Uploading: ' + filename);
-    let url = `${req.protocol}://${req.get('host')}/download/${req.params.id}/`;
+    const protocol = conf.env === 'development' ? req.protocol : 'https';
+    let url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
 
     storage.set(req.params.id, file, filename, url).then(linkAndID => {
       res.json(linkAndID);
