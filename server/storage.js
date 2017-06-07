@@ -8,7 +8,9 @@ const fetch = require('node-fetch');
 const crypto = require('crypto');
 
 const redis = require('redis');
-const redis_client = redis.createClient();
+const redis_client = redis.createClient({
+  host: conf.redis_host
+});
 
 redis_client.on('error', err => {
   console.log(err);
