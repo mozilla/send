@@ -58,8 +58,7 @@ $(document).ready(function() {
       progress.innerText = `Progress: ${percentComplete}%`;
     });
     fileSender.upload().then(info => {
-      const url = `${window.location
-        .origin}/download/${info.fileId}/#${info.secretKey}`;
+      const url = info.url.trim() + `#${info.secretKey}`.trim();
       $('#link').attr('value', url);
       link.innerHTML = url;
       localStorage.setItem(info.fileId, info.deleteToken);

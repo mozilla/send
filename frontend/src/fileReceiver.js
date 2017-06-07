@@ -34,7 +34,7 @@ class FileReceiver extends EventEmitter {
               data: this.result,
               fname: xhr
                 .getResponseHeader('Content-Disposition')
-                .match(/filename="(.+)"/)[1]
+                .match(/=(.+)/)[1]
             });
           };
 
