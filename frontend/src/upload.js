@@ -36,8 +36,8 @@ $(document).ready(function() {
   // on file upload by browse or drag & drop
   window.onUpload = event => {
     event.preventDefault();
-    let file = "";
-    if (event.type == "drop"){
+    let file = '';
+    if (event.type == 'drop') {
       file = event.dataTransfer.files[0];
     } else {
       file = event.target.files[0];
@@ -50,7 +50,7 @@ $(document).ready(function() {
     let del = document.createElement('td');
     let btn = document.createElement('button');
     let popupDiv = document.createElement('div');
-    let $popupText = $('<span>', {'class': 'popuptext'});
+    let $popupText = $('<span>', { 'class': 'popuptext' });
     let cellText = document.createTextNode(file.name);
     let progress = document.createElement('p');
 
@@ -62,7 +62,9 @@ $(document).ready(function() {
 
     // create popup
     popupDiv.classList.add('popup');
-    $popupText.html("<span class='del-file'>Delete</span><span class='nvm'> Nevermind</span>");
+    $popupText.html(
+      "<span class='del-file'>Delete</span><span class='nvm'> Nevermind</span>"
+    );
 
     // add data cells to table row
     row.appendChild(name);
@@ -90,7 +92,7 @@ $(document).ready(function() {
 
       // delete file
       console.log($popupText.first());
-      $popupText.find(".del-file").click(e => {
+      $popupText.find('.del-file').click(e => {
         FileSender.delete(
           info.fileId,
           localStorage.getItem(info.fileId)
@@ -105,7 +107,7 @@ $(document).ready(function() {
         $popupText.toggleClass('show');
       });
       // hide popup
-      $popupText.find(".nvm").click( e => {
+      $popupText.find('.nvm').click(e => {
         $popupText.toggleClass('show');
       });
       $('#upload-progress').hide();
@@ -115,6 +117,5 @@ $(document).ready(function() {
 
   window.allowDrop = function(ev) {
     ev.preventDefault();
-  }
-
+  };
 });
