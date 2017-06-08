@@ -100,6 +100,7 @@ app.post('/delete/:id', (req, res) => {
     .then(err => {
       if (!err) {
         console.log('Deleted.');
+        res.sendStatus(200);
       }
     })
     .catch(err => res.sendStatus(404));
