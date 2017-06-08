@@ -7,7 +7,6 @@ const path = require('path');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
 
-
 let notLocalHost = conf.notLocalHost;
 
 const mozlog = require('./log.js');
@@ -18,7 +17,6 @@ const redis = require('redis');
 const redis_client = redis.createClient({
   host: conf.redis_host
 });
-
 
 redis_client.on('error', err => {
   log.info('Redis: ', err);
@@ -61,7 +59,7 @@ function filename(id) {
 function exists(id) {
   return new Promise((resolve, reject) => {
     redis_client.exists(id, (rediserr, reply) => {
-      resolve(reply === 1)
+      resolve(reply === 1);
     });
   });
 }

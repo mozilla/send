@@ -35,7 +35,7 @@ app.get('/exists/:id', (req, res) => {
   let id = req.params.id;
   storage.exists(id).then(doesExist => {
     res.sendStatus(doesExist ? 200 : 404);
-  })
+  });
 });
 
 app.get('/download/:id', (req, res) => {
