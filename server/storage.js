@@ -8,10 +8,7 @@ const fetch = require('node-fetch');
 const crypto = require('crypto');
 
 
-let notLocalHost =
-  conf.env === 'production' &&
-  conf.s3_bucket !== 'localhost' &&
-  conf.bitly_key !== 'localhost';
+let notLocalHost = conf.notLocalHost;
 
 const mozlog = require('./log.js');
 
@@ -27,27 +24,25 @@ redis_client.on('error', err => {
   log.info('Redis: ', err);
 });
 
-
-
 if (notLocalHost) {
   module.exports = {
     filename: filename,
+    exists: exists,
     length: awsLength,
     get: awsGet,
     set: awsSet,
     delete: awsDelete,
-    forceDelete: awsForceDelete,
-    exists: awsExists
+    forceDelete: awsForceDelete
   };
 } else {
   module.exports = {
     filename: filename,
+    exists: exists,
     length: localLength,
     get: localGet,
     set: localSet,
     delete: localDelete,
-    forceDelete: localForceDelete,
-    exists: localExists
+    forceDelete: localForceDelete
   };
 }
 
@@ -63,10 +58,10 @@ function filename(id) {
   });
 }
 
-function localExists(id) {
+function exists(id) {
   return new Promise((resolve, reject) => {
-    redis_client.hget(id, 'filename', (rediserr, reply) => {
-      resolve(fs.existsSync(__dirname + '/../static/' + id) && !rediserr)
+    redis_client.exists(id, (rediserr, reply) => {
+      resolve(reply === 1)
     });
   });
 }
@@ -125,16 +120,6 @@ function localForceDelete(id) {
   });
 }
 
-function awsExists(id) {
-  return new Promise((resolve, reject) => {
-    s3.getObject(params, function(awserr, data) {
-      redis_client.hget(id, 'filename', (rediserr, reply) => {
-        resolve(!awserr && !rediserr);
-      })
-    })
-  })
-}
-
 function awsLength(id) {
   let params = {
     Bucket: conf.s3_bucket,
@@ -178,7 +163,7 @@ function awsSet(id, file, filename, url) {
         redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
 
         redis_client.expire(id, 86400000);
-        log('awsUploadFinish', 'Upload Finished of ' + filename);
+        log.info('awsUploadFinish', 'Upload Finished of ' + filename);
         if (conf.bitly_key) {
           fetch(
             'https://api-ssl.bitly.com/v3/shorten?access_token=' +

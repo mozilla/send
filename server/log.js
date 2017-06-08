@@ -1,9 +1,6 @@
 const conf = require('./config.js');
 
-let notLocalHost =
-  conf.env === 'production' &&
-  conf.s3_bucket !== 'localhost' &&
-  conf.bitly_key !== 'localhost';
+let notLocalHost = conf.notLocalHost;
 
 const mozlog = require('mozlog') ({
   app: 'FirefoxFileshare',

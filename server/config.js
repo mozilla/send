@@ -32,4 +32,10 @@ let conf = convict({
 // Perform validation
 conf.validate({ allowed: 'strict' });
 
-module.exports = conf.getProperties();
+let props = conf.getProperties();
+module.exports = props;
+
+module.exports.notLocalHost =
+  props.env === 'production' &&
+  props.s3_bucket !== 'localhost' &&
+  props.bitly_key !== 'localhost';

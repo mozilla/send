@@ -42,6 +42,11 @@ $(document).ready(function() {
 
         let a = document.createElement('a');
         a.href = downloadUrl;
+        if (window.navigator.msSaveBlob) {
+          // if we are in microsoft edge or IE
+          window.navigator.msSaveBlob(blob, fname);
+          return;
+        }
         a.download = fname;
         document.body.appendChild(a);
         a.click();

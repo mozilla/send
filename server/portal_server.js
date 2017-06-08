@@ -11,10 +11,7 @@ const bytes = require('bytes');
 const conf = require('./config.js');
 const storage = require('./storage.js');
 
-let notLocalHost =
-  conf.env === 'production' &&
-  conf.s3_bucket !== 'localhost' &&
-  conf.bitly_key !== 'localhost';
+let notLocalHost = conf.notLocalHost;
 
 const mozlog = require('./log.js');
 
@@ -74,19 +71,18 @@ app.get('/assets/download/:id', (req, res) => {
           'Content-Type': 'application/octet-stream',
           'Content-Length': contentLength
         });
-      });
+        let file_stream = storage.get(id);
 
-      let file_stream = storage.get(id);
-
-      file_stream.on(notLocalHost ? 'finish' : 'close', () => {
-        storage.forceDelete(id).then(err => {
-          if (!err) {
-            log.info('Deleted:', id);
-          }
+        file_stream.on(notLocalHost ? 'finish' : 'close', () => {
+          storage.forceDelete(id).then(err => {
+            if (!err) {
+              log.info('Deleted:', id);
+            }
+          });
         });
-      });
 
-      file_stream.pipe(res);
+        file_stream.pipe(res);
+      });
     })
     .catch(err => {
       res.sendStatus(404);
@@ -127,7 +123,7 @@ app.post('/upload/:id', (req, res, next) => {
   req.busboy.on('file', (fieldname, file, filename) => {
     log.info('Uploading:', req.params.id);
 
-    const protocol = !notLocalHost ? req.protocol : 'https';
+    const protocol = notLocalHost ? 'https' : req.protocol;
     let url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
 
     storage.set(req.params.id, file, filename, url).then(linkAndID => {
