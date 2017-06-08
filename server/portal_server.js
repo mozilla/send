@@ -84,9 +84,9 @@ app.get('/assets/download/:id', (req, res) => {
             log.info('Deleted:', id);
           }
         });
-
-        file_stream.pipe(res);
       });
+
+      file_stream.pipe(res);
     })
     .catch(err => {
       res.sendStatus(404);
