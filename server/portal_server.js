@@ -84,9 +84,9 @@ app.get('/assets/download/:id', (req, res) => {
             log.info('Deleted:', id);
           }
         });
-      });
 
-      file_stream.pipe(res);
+        file_stream.pipe(res);
+      });
     })
     .catch(err => {
       res.sendStatus(404);
@@ -126,7 +126,9 @@ app.post('/upload/:id', (req, res, next) => {
   req.pipe(req.busboy);
   req.busboy.on('file', (fieldname, file, filename) => {
     log.info('Uploading:', req.params.id);
-    let url = `${req.protocol}://${req.get('host')}/download/${req.params.id}/`;
+
+    const protocol = conf.env === 'development' ? req.protocol : 'https';
+    let url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
 
     storage.set(req.params.id, file, filename, url).then(linkAndID => {
       res.json(linkAndID);

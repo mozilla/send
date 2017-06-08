@@ -18,7 +18,9 @@ const mozlog = require('./log.js');
 let log = mozlog('portal.storage');
 
 const redis = require('redis');
-const redis_client = redis.createClient();
+const redis_client = redis.createClient({
+  host: conf.redis_host
+});
 
 
 redis_client.on('error', err => {
