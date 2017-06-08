@@ -14,7 +14,7 @@
       <div class="title">
         Share your files quickly, privately and securely.
       </div>
-      <div class="upload-window">
+      <div class="upload-window" ondrop="onUpload(event)" ondragover="allowDrop(event)">
         <div id="upload-img"><img src="/resources/upload.svg"/></div>
         <div>
           DRAG &amp; DROP
@@ -26,7 +26,7 @@
           <div id="browse">
             <form method="post" action="upload" enctype="multipart/form-data">
               <label for="file-upload" class="file-upload">browse</label>
-              <input id="file-upload" type="file" onchange="onChange(event)" name="fileUploaded" />
+              <input id="file-upload" type="file" onchange="onUpload(event)" name="fileUploaded" />
             </form>
           </div>
         </div>
@@ -41,7 +41,9 @@
           <th width=18%>Expires in</th>
           <th width=7%>Delete</th>
         </tr>
-        <div data-role="popup" id="popupArrow" data-arrow="true">
+        <!-- <div class="popup">
+          <span class="popuptext" id="myPopup">Popup text...</span>
+        </div> -->
       </table>
     </div>
 
