@@ -11,10 +11,11 @@ const bytes = require('bytes');
 const conf = require('./config.js');
 const storage = require('./storage.js');
 
-let notLocalHost =
-  conf.env === 'production' &&
-  conf.s3_bucket !== 'localhost' &&
-  conf.bitly_key !== 'localhost';
+let notLocalHost = conf.notLocalHost;
+
+const mozlog = require('./log.js');
+
+let log = mozlog('portal.server');
 
 const app = express();
 
@@ -28,6 +29,13 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/', (req, res) => {
   res.render('index');
+});
+
+app.get('/exists/:id', (req, res) => {
+  let id = req.params.id;
+  storage.exists(id).then(doesExist => {
+    res.sendStatus(doesExist ? 200 : 404);
+  });
 });
 
 app.get('/download/:id', (req, res) => {
@@ -68,7 +76,7 @@ app.get('/assets/download/:id', (req, res) => {
         file_stream.on(notLocalHost ? 'finish' : 'close', () => {
           storage.forceDelete(id).then(err => {
             if (!err) {
-              console.log('Deleted.');
+              log.info('Deleted:', id);
             }
           });
         });
@@ -99,7 +107,7 @@ app.post('/delete/:id', (req, res) => {
     .delete(id, delete_token)
     .then(err => {
       if (!err) {
-        console.log('Deleted.');
+        log.info('Deleted:', id);
       }
     })
     .catch(err => res.sendStatus(404));
@@ -113,8 +121,9 @@ app.post('/upload/:id', (req, res, next) => {
 
   req.pipe(req.busboy);
   req.busboy.on('file', (fieldname, file, filename) => {
-    console.log('Uploading: ' + filename);
-    const protocol = conf.env === 'development' ? req.protocol : 'https';
+    log.info('Uploading:', req.params.id);
+
+    const protocol = notLocalHost ? 'https' : req.protocol;
     let url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
 
     storage.set(req.params.id, file, filename, url).then(linkAndID => {
@@ -124,7 +133,7 @@ app.post('/upload/:id', (req, res, next) => {
 });
 
 let server = app.listen(conf.listen_port, () => {
-  console.log(`Portal app listening on port ${conf.listen_port}!`);
+  log.info('startServer:', `Portal app listening on port ${conf.listen_port}!`);
 });
 
 let validateID = route_id => {
