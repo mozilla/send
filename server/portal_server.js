@@ -63,19 +63,18 @@ app.get('/assets/download/:id', (req, res) => {
           'Content-Type': 'application/octet-stream',
           'Content-Length': contentLength
         });
-      });
+        let file_stream = storage.get(id);
 
-      let file_stream = storage.get(id);
-
-      file_stream.on(notLocalHost ? 'finish' : 'close', () => {
-        storage.forceDelete(id).then(err => {
-          if (!err) {
-            console.log('Deleted.');
-          }
+        file_stream.on(notLocalHost ? 'finish' : 'close', () => {
+          storage.forceDelete(id).then(err => {
+            if (!err) {
+              console.log('Deleted.');
+            }
+          });
         });
-      });
 
-      file_stream.pipe(res);
+        file_stream.pipe(res);
+      });
     })
     .catch(err => {
       res.sendStatus(404);
