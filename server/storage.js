@@ -7,26 +7,35 @@ const path = require('path');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
 
-const redis = require('redis');
-const redis_client = redis.createClient();
 
-redis_client.on('error', err => {
-  console.log(err);
-});
-
-let notLocalhost =
+let notLocalHost =
   conf.env === 'production' &&
   conf.s3_bucket !== 'localhost' &&
   conf.bitly_key !== 'localhost';
 
-if (notLocalhost) {
+const mozlog = require('./log.js');
+
+let log = mozlog('portal.storage');
+
+const redis = require('redis');
+const redis_client = redis.createClient();
+
+
+redis_client.on('error', err => {
+  log.info('Redis: ', err);
+});
+
+
+
+if (notLocalHost) {
   module.exports = {
     filename: filename,
     length: awsLength,
     get: awsGet,
     set: awsSet,
     delete: awsDelete,
-    forceDelete: awsForceDelete
+    forceDelete: awsForceDelete,
+    exists: awsExists
   };
 } else {
   module.exports = {
@@ -35,7 +44,8 @@ if (notLocalhost) {
     get: localGet,
     set: localSet,
     delete: localDelete,
-    forceDelete: localForceDelete
+    forceDelete: localForceDelete,
+    exists: localExists
   };
 }
 
@@ -47,6 +57,14 @@ function filename(id) {
       } else {
         reject();
       }
+    });
+  });
+}
+
+function localExists(id) {
+  return new Promise((resolve, reject) => {
+    redis_client.hget(id, 'filename', (rediserr, reply) => {
+      resolve(fs.existsSync(__dirname + '/../static/' + id) && !rediserr)
     });
   });
 }
@@ -74,7 +92,7 @@ function localSet(id, file, filename, url) {
 
       redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
       redis_client.expire(id, 86400000);
-      console.log('Upload Finished of ' + filename);
+      log.info('localSet:', 'Upload Finished of ' + id);
       resolve({
         uuid: uuid,
         url: url
@@ -103,6 +121,16 @@ function localForceDelete(id) {
     redis_client.del(id);
     resolve(fs.unlinkSync(__dirname + '/../static/' + id));
   });
+}
+
+function awsExists(id) {
+  return new Promise((resolve, reject) => {
+    s3.getObject(params, function(awserr, data) {
+      redis_client.hget(id, 'filename', (rediserr, reply) => {
+        resolve(!awserr && !rediserr);
+      })
+    })
+  })
 }
 
 function awsLength(id) {
@@ -140,7 +168,7 @@ function awsSet(id, file, filename, url) {
   return new Promise((resolve, reject) => {
     s3.upload(params, function(err, data) {
       if (err) {
-        console.log(err, err.stack); // an error occurred
+        log.info('awsUploadError:', err.stack); // an error occurred
         reject();
       } else {
         let uuid = crypto.randomBytes(10).toString('hex');
@@ -148,7 +176,7 @@ function awsSet(id, file, filename, url) {
         redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
 
         redis_client.expire(id, 86400000);
-        console.log('Upload Finished of ' + filename);
+        log('awsUploadFinish', 'Upload Finished of ' + filename);
         if (conf.bitly_key) {
           fetch(
             'https://api-ssl.bitly.com/v3/shorten?access_token=' +
