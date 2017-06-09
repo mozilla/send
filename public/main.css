@@ -143,17 +143,9 @@ td {
    border-color: #555 transparent transparent transparent;
 }
 
-/* Toggle this class when clicking on the popup container (hide and show the popup) */
 .popup .show {
    visibility: visible;
-   -webkit-animation: fadeIn 1s;
-   animation: fadeIn 1s
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-   from {opacity: 0;}
-   to {opacity: 1;}
+   animation: fadeIn 1s;
 }
 
 @keyframes fadeIn {

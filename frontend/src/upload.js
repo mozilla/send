@@ -42,7 +42,7 @@ $(document).ready(function() {
     } else {
       file = event.target.files[0];
     }
-    let fileList = $('#uploaded-files');
+    let $fileList = $('#uploaded-files');
     let row = document.createElement('tr');
     let name = document.createElement('td');
     let link = document.createElement('td');
@@ -74,7 +74,7 @@ $(document).ready(function() {
     $(popupDiv).append($popupText);
     del.appendChild(popupDiv);
     row.appendChild(del);
-    fileList.append(row); //add row to table
+    $fileList.append(row); //add row to table
 
     const fileSender = new FileSender(file);
     fileSender.on('progress', percentComplete => {
@@ -91,28 +91,32 @@ $(document).ready(function() {
       localStorage.setItem(info.fileId, info.deleteToken);
 
       // delete file
-      console.log($popupText.first());
       $popupText.find('.del-file').click(e => {
         FileSender.delete(
           info.fileId,
           localStorage.getItem(info.fileId)
-        ).then(() => {
-          e.target.parentNode.parentNode.parentNode.parentNode.remove();
+       ).then(() => {
+          //
+          $(e.target).parents('tr').remove();
           localStorage.removeItem(info.fileId);
         });
       });
 
       // show popup
       btn.addEventListener('click', e => {
-        $popupText.toggleClass('show');
+        toggleShow();
       });
       // hide popup
       $popupText.find('.nvm').click(e => {
-        $popupText.toggleClass('show');
+        toggleShow();
       });
       $('#upload-progress').hide();
       $('#share-link').show();
     });
+    
+    function toggleShow(){
+      $popupText.toggleClass('show');
+    }
   };
 
   window.allowDrop = function(ev) {
