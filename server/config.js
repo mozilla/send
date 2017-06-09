@@ -1,6 +1,6 @@
 const convict = require('convict');
 
-let conf = convict({
+const conf = convict({
   bitly_key: {
     format: String,
     default: 'localhost',
@@ -32,7 +32,7 @@ let conf = convict({
 // Perform validation
 conf.validate({ allowed: 'strict' });
 
-let props = conf.getProperties();
+const props = conf.getProperties();
 module.exports = props;
 
 module.exports.notLocalHost =

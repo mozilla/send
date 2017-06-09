@@ -5,13 +5,11 @@ $(document).ready(function() {
   $('#send-file').click(() => {
     window.location.replace(`${window.location.origin}`);
   });
-  let download = () => {
+  const download = () => {
     const fileReceiver = new FileReceiver();
-
-    let li = document.createElement('li');
-    let name = document.createElement('p');
-    let progress = document.createElement('p');
-    let btn = $('#download-btn');
+    const name = document.createElement('p');
+    const progress = document.createElement('p');
+    const btn = $('#download-btn');
 
     fileReceiver.on('progress', percentComplete => {
       progress.innerText = `Progress: ${percentComplete}%`;
@@ -25,7 +23,7 @@ $(document).ready(function() {
 
     fileReceiver
       .download()
-      .catch(err => {
+      .catch(() => {
         $('.title').text(
           'This link has expired or never existed in the first place.'
         );
@@ -36,11 +34,11 @@ $(document).ready(function() {
       })
       .then(([decrypted, fname]) => {
         name.innerText = fname;
-        let dataView = new DataView(decrypted);
-        let blob = new Blob([dataView]);
-        let downloadUrl = URL.createObjectURL(blob);
+        const dataView = new DataView(decrypted);
+        const blob = new Blob([dataView]);
+        const downloadUrl = URL.createObjectURL(blob);
 
-        let a = document.createElement('a');
+        const a = document.createElement('a');
         a.href = downloadUrl;
         if (window.navigator.msSaveBlob) {
           // if we are in microsoft edge or IE

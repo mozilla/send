@@ -10,16 +10,18 @@ class FileReceiver extends EventEmitter {
   download() {
     return Promise.all([
       new Promise((resolve, reject) => {
-        let xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
 
-        xhr.onprogress = e => {
-          if (e.lengthComputable) {
-            let percentComplete = Math.floor(e.loaded / e.total * 100);
+        xhr.onprogress = event => {
+          if (event.lengthComputable) {
+            const percentComplete = Math.floor(
+              event.loaded / event.total * 100
+            );
             this.emit('progress', percentComplete);
           }
         };
 
-        xhr.onload = function(e) {
+        xhr.onload = event => {
           if (xhr.status === 404) {
             reject(
               new Error('The file has expired, or has already been deleted.')
@@ -27,8 +29,8 @@ class FileReceiver extends EventEmitter {
             return;
           }
 
-          let blob = new Blob([this.response]);
-          let fileReader = new FileReader();
+          const blob = new Blob([this.response]);
+          const fileReader = new FileReader();
           fileReader.onload = function() {
             resolve({
               data: this.result,
@@ -60,7 +62,7 @@ class FileReceiver extends EventEmitter {
         ['encrypt', 'decrypt']
       )
     ]).then(([fdata, key]) => {
-      let salt = this.salt;
+      const salt = this.salt;
       return Promise.all([
         window.crypto.subtle.decrypt(
           {

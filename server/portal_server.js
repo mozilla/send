@@ -2,20 +2,16 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const busboy = require('connect-busboy');
 const path = require('path');
-const fs = require('fs-extra');
 const bodyParser = require('body-parser');
-const crypto = require('crypto');
-const stream = require('stream');
-const fetch = require('node-fetch');
 const bytes = require('bytes');
 const conf = require('./config.js');
 const storage = require('./storage.js');
 
-let notLocalHost = conf.notLocalHost;
+const notLocalHost = conf.notLocalHost;
 
 const mozlog = require('./log.js');
 
-let log = mozlog('portal.server');
+const log = mozlog('portal.server');
 
 const app = express();
 
@@ -32,14 +28,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/exists/:id', (req, res) => {
-  let id = req.params.id;
+  const id = req.params.id;
   storage.exists(id).then(doesExist => {
     res.sendStatus(doesExist ? 200 : 404);
   });
 });
 
 app.get('/download/:id', (req, res) => {
-  let id = req.params.id;
+  const id = req.params.id;
   storage.filename(id).then(filename => {
     storage
       .length(id)
@@ -56,7 +52,7 @@ app.get('/download/:id', (req, res) => {
 });
 
 app.get('/assets/download/:id', (req, res) => {
-  let id = req.params.id;
+  const id = req.params.id;
   if (!validateID(id)) {
     res.sendStatus(404);
     return;
@@ -71,7 +67,7 @@ app.get('/assets/download/:id', (req, res) => {
           'Content-Type': 'application/octet-stream',
           'Content-Length': contentLength
         });
-        let file_stream = storage.get(id);
+        const file_stream = storage.get(id);
 
         file_stream.on(notLocalHost ? 'finish' : 'close', () => {
           storage.forceDelete(id).then(err => {
@@ -90,14 +86,14 @@ app.get('/assets/download/:id', (req, res) => {
 });
 
 app.post('/delete/:id', (req, res) => {
-  let id = req.params.id;
+  const id = req.params.id;
 
   if (!validateID(id)) {
     res.send(404);
     return;
   }
 
-  let delete_token = req.body.delete_token;
+  const delete_token = req.body.delete_token;
 
   if (!delete_token) {
     res.sendStatus(404);
@@ -125,7 +121,7 @@ app.post('/upload/:id', (req, res, next) => {
     log.info('Uploading:', req.params.id);
 
     const protocol = notLocalHost ? 'https' : req.protocol;
-    let url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
+    const url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
 
     storage.set(req.params.id, file, filename, url).then(linkAndID => {
       res.json(linkAndID);
@@ -133,10 +129,10 @@ app.post('/upload/:id', (req, res, next) => {
   });
 });
 
-let server = app.listen(conf.listen_port, () => {
+app.listen(conf.listen_port, () => {
   log.info('startServer:', `Portal app listening on port ${conf.listen_port}!`);
 });
 
-let validateID = route_id => {
+const validateID = route_id => {
   return route_id.match(/^[0-9a-fA-F]{32}$/) !== null;
 };

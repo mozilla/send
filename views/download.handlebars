@@ -13,13 +13,13 @@
     <div id="download">
       {{#if filename}}
       <div class="title">
-        Your friend is sending you a file: <br>
+        Your friend is sending you a file: <br />
         {{{filename}}} ({{{filesize}}})
       </div>
 
       <div class="share-window">
         <button id="download-btn" onclick="download()">Download File</button>
-        <img id="expired-img" src="/resources/link_expired.png"/>
+        <img id="expired-img" src="/resources/link_expired.png" alt="Link expired" />
       </div>
       <div class="send-new" id="send-file">
         Send your own files
@@ -30,11 +30,13 @@
       </div>
 
       <div class="share-window">
-        <img src="/resources/link_expired.png"/>
+        <img src="/resources/link_expired.png" alt="Link expired" />
       </div>
+      <!-- htmllint id-no-dup="false" -->
       <div class="send-new" id="send-file">
         Send your own files
       </div>
+      <!-- htmllint tag-bans="$previous" -->
       {{/if}}
     </div>
   </div>

@@ -15,7 +15,7 @@
         Share your files quickly, privately and securely.
       </div>
       <div class="upload-window" ondrop="onUpload(event)" ondragover="allowDrop(event)">
-        <div id="upload-img"><img src="/resources/upload.svg"/></div>
+        <div id="upload-img"><img src="/resources/upload.svg" alt="Upload"/></div>
         <div>
           DRAG &amp; DROP
         </div>
@@ -36,10 +36,12 @@
     <div id="file-list">
       <table id="uploaded-files">
         <tr>
-          <th width=30%>File</th>
-          <th width=45%>Copy URL</th>
-          <th width=18%>Expires in</th>
-          <th width=7%>Delete</th>
+          <!-- htmllint attr-bans="false" -->
+          <th width="30%">File</th>
+          <th width="45%">Copy URL</th>
+          <th width="18%">Expires in</th>
+          <th width="7%">Delete</th>
+          <!-- htmllint tag-bans="$previous" -->
         </tr>
       </table>
     </div>
@@ -49,7 +51,7 @@
         Uploading
       </div>
       <div class="upload-window">
-        <div id="upload-img"><img src="/resources/upload.svg"/></div>
+        <div id="upload-img"><img src="/resources/upload.svg" alt="Upload" /></div>
         <div class="upload">
           <!-- progress bar here -->
         </div>
@@ -61,7 +63,7 @@
         Copy the link below to share your file!
       </div>
       <div class="share-window">
-        <img src="/resources/share.png"/>
+        <img src="/resources/share.png" alt="Share" />
         <div id="share-window-r">
           <div id="copy">
             <input id="link" type="url" value="" readonly/>
@@ -76,7 +78,6 @@
         Send another file
       </div>
     </div>
-
   </div>
 
 </body>
