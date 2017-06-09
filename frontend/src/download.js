@@ -1,4 +1,5 @@
 const FileReceiver = require('./fileReceiver');
+const $ = require('jquery');
 
 $(document).ready(function() {
   $('#send-file').click(() => {
@@ -12,11 +13,6 @@ $(document).ready(function() {
     let progress = document.createElement('p');
     let btn = $('#download-btn');
 
-    // li.appendChild(name);
-    // li.appendChild(progress);
-
-    //document.getElementById('downloaded_files').appendChild(li);
-
     fileReceiver.on('progress', percentComplete => {
       progress.innerText = `Progress: ${percentComplete}%`;
 
@@ -24,16 +20,6 @@ $(document).ready(function() {
         fileReceiver.removeAllListeners('progress');
         btn.text('Download complete!');
         btn.attr('disabled', 'true');
-        // let finished = document.createElement('p');
-        // finished.innerText = 'Your download has finished.';
-        // li.appendChild(finished);
-
-        // let close = document.createElement('button');
-        // close.innerText = 'Ok';
-        // close.addEventListener('click', () => {
-        //   document.getElementById('downloaded_files').removeChild(li);
-        // });
-        // li.appendChild(close);
       }
     });
 
@@ -46,7 +32,6 @@ $(document).ready(function() {
         $('#download-btn').hide();
         $('#expired-img').show();
         console.log('The file has expired, or has already been deleted.');
-        // document.getElementById('downloaded_files').removeChild(li);
         return;
       })
       .then(([decrypted, fname]) => {
@@ -57,6 +42,11 @@ $(document).ready(function() {
 
         let a = document.createElement('a');
         a.href = downloadUrl;
+        if (window.navigator.msSaveBlob) {
+          // if we are in microsoft edge or IE
+          window.navigator.msSaveBlob(blob, fname);
+          return;
+        }
         a.download = fname;
         document.body.appendChild(a);
         a.click();
