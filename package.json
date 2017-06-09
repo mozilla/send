@@ -26,6 +26,7 @@
     "eslint": "3.19.0",
     "eslint-plugin-node": "5.0.0",
     "eslint-plugin-security": "1.3.0",
+    "htmllint-cli": "0.0.6",
     "prettier": "1.4.4",
     "watchify": "^3.9.0"
   },
@@ -38,6 +39,7 @@
     "dev": "watchify frontend/src/main.js -o public/bundle.js -d | node server/portal_server.js",
     "format": "prettier 'frontend/src/*.js' 'server/*.js' 'public/*.css' --single-quote --write",
     "lint": "eslint .",
+    "lint:html": "htmllint 'views/*.handlebars'",
     "start": "watchify frontend/src/main.js -o public/bundle.js -d | cross-env NODE_ENV=production node server/portal_server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
