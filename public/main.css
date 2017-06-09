@@ -113,6 +113,7 @@ td {
    position: relative;
    display: inline-block;
    cursor: pointer;
+
 }
 
 /* The actual popup (appears on top) */
@@ -129,6 +130,8 @@ td {
    bottom: 125%;
    left: 50%;
    margin-left: -80px;
+   transition: opacity 0.5s;
+   opacity: 0;
 }
 
 /* Popup arrow */
@@ -145,12 +148,7 @@ td {
 
 .popup .show {
    visibility: visible;
-   animation: fadeIn 1s;
-}
-
-@keyframes fadeIn {
-   from {opacity: 0;}
-   to {opacity:1 ;}
+   opacity: 1;
 }
 
 /**   upload-progress   **/
