@@ -3,7 +3,7 @@ const $ = require('jquery');
 
 $(document).ready(function() {
   // reset copy button
-  let copyBtn = $('#copy-btn');
+  const copyBtn = $('#copy-btn');
   copyBtn.attr('disabled', false);
   copyBtn.html('Copy');
 
@@ -14,7 +14,7 @@ $(document).ready(function() {
 
   // copy link to clipboard
   copyBtn.click(() => {
-    var aux = document.createElement('input');
+    const aux = document.createElement('input');
     aux.setAttribute('value', $('#link').attr('value'));
     document.body.appendChild(aux);
     aux.select();
@@ -38,22 +38,22 @@ $(document).ready(function() {
   window.onUpload = event => {
     event.preventDefault();
     let file = '';
-    if (event.type == 'drop') {
+    if (event.type === 'drop') {
       file = event.dataTransfer.files[0];
     } else {
       file = event.target.files[0];
     }
-    let $fileList = $('#uploaded-files');
-    let row = document.createElement('tr');
-    let name = document.createElement('td');
-    let link = document.createElement('td');
-    let expiry = document.createElement('td');
-    let del = document.createElement('td');
-    let btn = document.createElement('button');
-    let popupDiv = document.createElement('div');
-    let $popupText = $('<span>', { 'class': 'popuptext' });
-    let cellText = document.createTextNode(file.name);
-    let progress = document.createElement('p');
+    const $fileList = $('#uploaded-files');
+    const row = document.createElement('tr');
+    const name = document.createElement('td');
+    const link = document.createElement('td');
+    const expiry = document.createElement('td');
+    const del = document.createElement('td');
+    const btn = document.createElement('button');
+    const popupDiv = document.createElement('div');
+    const $popupText = $('<span>', { class: 'popuptext' });
+    const cellText = document.createTextNode(file.name);
+    const progress = document.createElement('p');
 
     name.appendChild(cellText);
 
@@ -64,7 +64,7 @@ $(document).ready(function() {
     // create popup
     popupDiv.classList.add('popup');
     $popupText.html(
-      "<span class='del-file'>Delete</span><span class='nvm'> Nevermind</span>"
+      '<span class="del-file">Delete</span><span class="nvm" > Nevermind</span>'
     );
 
     // add data cells to table row
@@ -96,7 +96,7 @@ $(document).ready(function() {
         FileSender.delete(
           info.fileId,
           localStorage.getItem(info.fileId)
-       ).then(() => {
+        ).then(() => {
           //
           $(e.target).parents('tr').remove();
           localStorage.removeItem(info.fileId);
@@ -111,7 +111,7 @@ $(document).ready(function() {
       $('#share-link').show();
     });
 
-    function toggleShow(){
+    function toggleShow() {
       $popupText.toggleClass('show');
     }
   };

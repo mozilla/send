@@ -31,7 +31,7 @@ rules:
   eqeqeq: error
   no-console: warn
   no-path-concat: error
-  no-unused-vars: [error, {argsIgnorePattern: "^_|next"}]
+  no-unused-vars: [error, {argsIgnorePattern: "^_|err|event|next|reject"}]
   no-var: error
   one-var: [error, never]
   prefer-const: error

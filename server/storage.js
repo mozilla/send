@@ -7,11 +7,11 @@ const path = require('path');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
 
-let notLocalHost = conf.notLocalHost;
+const notLocalHost = conf.notLocalHost;
 
 const mozlog = require('./log.js');
 
-let log = mozlog('portal.storage');
+const log = mozlog('portal.storage');
 
 const redis = require('redis');
 const redis_client = redis.createClient({
@@ -67,7 +67,7 @@ function exists(id) {
 function localLength(id) {
   return new Promise((resolve, reject) => {
     try {
-      resolve(fs.statSync(__dirname + '/../static/' + id).size);
+      resolve(fs.statSync(path.join(__dirname, '../static', id)).size);
     } catch (err) {
       reject();
     }
@@ -75,15 +75,15 @@ function localLength(id) {
 }
 
 function localGet(id) {
-  return fs.createReadStream(__dirname + '/../static/' + id);
+  return fs.createReadStream(path.join(__dirname, '../static', id));
 }
 
 function localSet(id, file, filename, url) {
   return new Promise((resolve, reject) => {
-    fstream = fs.createWriteStream(__dirname + '/../static/' + id);
+    const fstream = fs.createWriteStream(path.join(__dirname, '../static', id));
     file.pipe(fstream);
     fstream.on('close', () => {
-      let uuid = crypto.randomBytes(10).toString('hex');
+      const uuid = crypto.randomBytes(10).toString('hex');
 
       redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
       redis_client.expire(id, 86400000);
@@ -105,7 +105,7 @@ function localDelete(id, delete_token) {
         reject();
       } else {
         redis_client.del(id);
-        resolve(fs.unlinkSync(__dirname + '/../static/' + id));
+        resolve(fs.unlinkSync(path.join(__dirname, '../static', id)));
       }
     });
   });
@@ -114,12 +114,12 @@ function localDelete(id, delete_token) {
 function localForceDelete(id) {
   return new Promise((resolve, reject) => {
     redis_client.del(id);
-    resolve(fs.unlinkSync(__dirname + '/../static/' + id));
+    resolve(fs.unlinkSync(path.join(__dirname, '../static', id)));
   });
 }
 
 function awsLength(id) {
-  let params = {
+  const params = {
     Bucket: conf.s3_bucket,
     Key: id
   };
@@ -135,7 +135,7 @@ function awsLength(id) {
 }
 
 function awsGet(id) {
-  let params = {
+  const params = {
     Bucket: conf.s3_bucket,
     Key: id
   };
@@ -144,19 +144,19 @@ function awsGet(id) {
 }
 
 function awsSet(id, file, filename, url) {
-  let params = {
+  const params = {
     Bucket: conf.s3_bucket,
     Key: id,
     Body: file
   };
 
   return new Promise((resolve, reject) => {
-    s3.upload(params, function(err, data) {
+    s3.upload(params, function(err, _data) {
       if (err) {
         log.info('awsUploadError:', err.stack); // an error occurred
         reject();
       } else {
-        let uuid = crypto.randomBytes(10).toString('hex');
+        const uuid = crypto.randomBytes(10).toString('hex');
 
         redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
 
@@ -197,12 +197,12 @@ function awsDelete(id, delete_token) {
         reject();
       } else {
         redis_client.del(id);
-        let params = {
+        const params = {
           Bucket: conf.s3_bucket,
           Key: id
         };
 
-        s3.deleteObject(params, function(err, data) {
+        s3.deleteObject(params, function(err, _data) {
           resolve(err);
         });
       }
@@ -213,12 +213,12 @@ function awsDelete(id, delete_token) {
 function awsForceDelete(id) {
   return new Promise((resolve, reject) => {
     redis_client.del(id);
-    let params = {
+    const params = {
       Bucket: conf.s3_bucket,
       Key: id
     };
 
-    s3.deleteObject(params, function(err, data) {
+    s3.deleteObject(params, function(err, _data) {
       resolve(err);
     });
   });
