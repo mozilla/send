@@ -1,4 +1,5 @@
 const FileSender = require('./fileSender');
+const $ = require('jquery');
 
 $(document).ready(function() {
   // reset copy button

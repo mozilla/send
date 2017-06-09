@@ -7,23 +7,25 @@ const path = require('path');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
 
+let notLocalHost = conf.notLocalHost;
+
+const mozlog = require('./log.js');
+
+let log = mozlog('portal.storage');
+
 const redis = require('redis');
 const redis_client = redis.createClient({
   host: conf.redis_host
 });
 
 redis_client.on('error', err => {
-  console.log(err);
+  log.info('Redis: ', err);
 });
 
-let notLocalhost =
-  conf.env === 'production' &&
-  conf.s3_bucket !== 'localhost' &&
-  conf.bitly_key !== 'localhost';
-
-if (notLocalhost) {
+if (notLocalHost) {
   module.exports = {
     filename: filename,
+    exists: exists,
     length: awsLength,
     get: awsGet,
     set: awsSet,
@@ -33,6 +35,7 @@ if (notLocalhost) {
 } else {
   module.exports = {
     filename: filename,
+    exists: exists,
     length: localLength,
     get: localGet,
     set: localSet,
@@ -49,6 +52,14 @@ function filename(id) {
       } else {
         reject();
       }
+    });
+  });
+}
+
+function exists(id) {
+  return new Promise((resolve, reject) => {
+    redis_client.exists(id, (rediserr, reply) => {
+      resolve(reply === 1);
     });
   });
 }
@@ -76,7 +87,7 @@ function localSet(id, file, filename, url) {
 
       redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
       redis_client.expire(id, 86400000);
-      console.log('Upload Finished of ' + filename);
+      log.info('localSet:', 'Upload Finished of ' + id);
       resolve({
         uuid: uuid,
         url: url
@@ -142,7 +153,7 @@ function awsSet(id, file, filename, url) {
   return new Promise((resolve, reject) => {
     s3.upload(params, function(err, data) {
       if (err) {
-        console.log(err, err.stack); // an error occurred
+        log.info('awsUploadError:', err.stack); // an error occurred
         reject();
       } else {
         let uuid = crypto.randomBytes(10).toString('hex');
@@ -150,7 +161,7 @@ function awsSet(id, file, filename, url) {
         redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
 
         redis_client.expire(id, 86400000);
-        console.log('Upload Finished of ' + filename);
+        log.info('awsUploadFinish', 'Upload Finished of ' + filename);
         if (conf.bitly_key) {
           fetch(
             'https://api-ssl.bitly.com/v3/shorten?access_token=' +
