@@ -13,10 +13,9 @@
     <div id="download">
       {{#if filename}}
       <div class="title">
-        Your friend is sending you a file:
+        Your friend is sending you a file: <br>
+        {{{filename}}} ({{{filesize}}})
       </div>
-      
-      <span> {{{filename}}} ({{{filesize}}})
 
       <div class="share-window">
         <button id="download-btn" onclick="download()">Download File</button>

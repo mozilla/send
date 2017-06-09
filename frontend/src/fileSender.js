@@ -11,7 +11,7 @@ class FileSender extends EventEmitter {
   static delete(fileId, token) {
     return new Promise((resolve, reject) => {
       if (!fileId || !token) {
-        return resolve();
+        return reject();
       }
       let xhr = new XMLHttpRequest();
       xhr.open('post', '/delete/' + fileId, true);
@@ -51,55 +51,55 @@ class FileSender extends EventEmitter {
         };
       })
     ])
-      .then(([secretKey, plaintext]) => {
-        return Promise.all([
-          window.crypto.subtle.encrypt(
-            {
-              name: 'AES-CBC',
-              iv: this.iv
-            },
-            secretKey,
-            plaintext
-          ),
-          window.crypto.subtle.exportKey('jwk', secretKey)
-        ]);
-      })
-      .then(([encrypted, keydata]) => {
-        return new Promise((resolve, reject) => {
-          let file = this.file;
-          let fileId = ivToStr(this.iv);
-          let dataView = new DataView(encrypted);
-          let blob = new Blob([dataView], { type: file.type });
-          let fd = new FormData();
-          fd.append('fname', file.name);
-          fd.append('data', blob, file.name);
+    .then(([secretKey, plaintext]) => {
+      return Promise.all([
+        window.crypto.subtle.encrypt(
+          {
+            name: 'AES-CBC',
+            iv: this.iv
+          },
+          secretKey,
+          plaintext
+        ),
+        window.crypto.subtle.exportKey('jwk', secretKey)
+      ]);
+    })
+    .then(([encrypted, keydata]) => {
+      return new Promise((resolve, reject) => {
+        let file = this.file;
+        let fileId = ivToStr(this.iv);
+        let dataView = new DataView(encrypted);
+        let blob = new Blob([dataView], { type: file.type });
+        let fd = new FormData();
+        fd.append('fname', file.name);
+        fd.append('data', blob, file.name);
 
-          let xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
 
-          xhr.upload.addEventListener('progress', e => {
-            if (e.lengthComputable) {
-              let percentComplete = Math.floor(e.loaded / e.total * 100);
-              this.emit('progress', percentComplete);
-            }
-          });
-
-          xhr.onreadystatechange = () => {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-              // uuid field and url field
-              let responseObj = JSON.parse(xhr.responseText);
-              resolve({
-                url: responseObj.url,
-                fileId: fileId,
-                secretKey: keydata.k,
-                deleteToken: responseObj.uuid
-              });
-            }
-          };
-
-          xhr.open('post', '/upload/' + fileId, true);
-          xhr.send(fd);
+        xhr.upload.addEventListener('progress', e => {
+          if (e.lengthComputable) {
+            let percentComplete = Math.floor(e.loaded / e.total * 100);
+            this.emit('progress', percentComplete);
+          }
         });
+
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState == XMLHttpRequest.DONE) {
+            // uuid field and url field
+            let responseObj = JSON.parse(xhr.responseText);
+            resolve({
+              url: responseObj.url,
+              fileId: fileId,
+              secretKey: keydata.k,
+              deleteToken: responseObj.uuid
+            });
+          }
+        };
+
+        xhr.open('post', '/upload/' + fileId, true);
+        xhr.send(fd);
       });
+    });
   }
 }
 
