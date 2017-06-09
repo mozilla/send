@@ -17,7 +17,9 @@
     "mozlog": "^2.1.1",
     "node-fetch": "^1.7.1",
     "path": "^0.12.7",
-    "redis": "^2.7.1"
+    "proxyquire": "^1.8.0",
+    "redis": "^2.7.1",
+    "sinon": "^2.3.2"
   },
   "devDependencies": {
     "browserify": "^14.4.0",
@@ -31,6 +33,7 @@
     "prettier": "1.4.4",
     "stylelint": "7.11.0",
     "stylelint-config-standard": "16.0.0",
+    "mocha": "^3.4.2",
     "watchify": "^3.9.0"
   },
   "engines": {
@@ -46,6 +49,6 @@
     "lint:html": "htmllint 'views/*.handlebars'",
     "lint:js": "eslint .",
     "start": "watchify frontend/src/main.js -o public/bundle.js -d | cross-env NODE_ENV=production node server/portal_server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   }
 }

@@ -19,7 +19,7 @@ const redis_client = redis.createClient({
 });
 
 redis_client.on('error', err => {
-  log.info('Redis: ', err);
+  log.info('Redis:', err);
 });
 
 if (notLocalHost) {
@@ -94,7 +94,10 @@ function localSet(id, file, filename, url) {
       });
     });
 
-    fstream.on('error', () => reject());
+    fstream.on('error', () => {
+      log.error('localSet:', 'Failed upload of ' + id);
+      reject();
+    });
   });
 }
 
