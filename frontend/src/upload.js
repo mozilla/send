@@ -103,17 +103,13 @@ $(document).ready(function() {
       });
 
       // show popup
-      btn.addEventListener('click', e => {
-        toggleShow();
-      });
+      btn.addEventListener('click', toggleShow);
       // hide popup
-      $popupText.find('.nvm').click(e => {
-        toggleShow();
-      });
+      $popupText.find('.nvm').click(toggleShow);
       $('#upload-progress').hide();
       $('#share-link').show();
     });
-    
+
     function toggleShow(){
       $popupText.toggleClass('show');
     }
