@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const busboy = require('connect-busboy');
 const path = require('path');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
 const bytes = require('bytes');
 const conf = require('./config.js');
 const storage = require('./storage.js');
@@ -18,9 +19,9 @@ const app = express();
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+app.use(helmet());
 app.use(busboy());
 app.use(bodyParser.json());
-
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/', (req, res) => {
