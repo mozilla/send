@@ -74,6 +74,8 @@ app.get('/assets/download/:id', (req, res) => {
             if (!err) {
               log.info('Deleted:', id);
             }
+          }).catch(err => {
+            log.info('DeleteError:', id);
           });
         });
 
