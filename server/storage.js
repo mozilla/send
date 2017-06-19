@@ -206,7 +206,7 @@ function awsDelete(id, delete_token) {
         };
 
         s3.deleteObject(params, function(err, _data) {
-          resolve(err);
+          err ? reject(err) : resolve(err);
         });
       }
     });
@@ -222,7 +222,7 @@ function awsForceDelete(id) {
     };
 
     s3.deleteObject(params, function(err, _data) {
-      resolve(err);
+      err ? reject(err) : resolve(err);
     });
   });
 }

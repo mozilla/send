@@ -101,7 +101,7 @@ app.post('/delete/:id', (req, res) => {
 
   storage
     .delete(id, delete_token)
-    .then(err => {
+    .then(() => {
       if (!err) {
         log.info('Deleted:', id);
         res.sendStatus(200);
@@ -112,7 +112,7 @@ app.post('/delete/:id', (req, res) => {
 
 app.post('/upload/:id', (req, res, next) => {
   if (!validateID(req.params.id)) {
-    res.send(404);
+    res.sendStatus(404);
     return;
   }
 
