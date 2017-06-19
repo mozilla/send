@@ -104,7 +104,7 @@ app.post('/delete/:id', (req, res) => {
 
   storage
     .delete(id, delete_token)
-    .then(() => {
+    .then((err) => {
       if (!err) {
         log.info('Deleted:', id);
         res.sendStatus(200);
