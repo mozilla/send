@@ -5,5 +5,7 @@ WORKDIR /app
 RUN mkdir static
 RUN npm install
 
-EXPOSE 1443
+ENV PORT=1443
+EXPOSE $PORT
+
 CMD ["npm", "start"]
