@@ -8,6 +8,7 @@ class FileSender extends EventEmitter {
     super();
     this.file = file;
     this.iv = window.crypto.getRandomValues(new Uint8Array(12));
+    this.aad = window.crypto.getRandomValues(new Uint8Array(6));
   }
 
   static delete(fileId, token) {
@@ -60,7 +61,8 @@ class FileSender extends EventEmitter {
             {
               name: 'AES-GCM',
               iv: this.iv,
-              tagLength: 128
+              tagLength: 128,
+              additionalData: this.aad
             },
             secretKey,
             plaintext
@@ -77,6 +79,7 @@ class FileSender extends EventEmitter {
           const fd = new FormData();
           fd.append('fname', file.name);
           fd.append('data', blob, file.name);
+          fd.append('aad', this.aad);
 
           const xhr = new XMLHttpRequest();
 

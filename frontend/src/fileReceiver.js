@@ -1,5 +1,5 @@
 const EventEmitter = require('events');
-const { strToIv } = require('./utils');
+const { strToIv, strToUintArr } = require('./utils');
 
 const Raven = window.Raven;
 
@@ -36,6 +36,7 @@ class FileReceiver extends EventEmitter {
           fileReader.onload = function() {
             resolve({
               data: this.result,
+              aad: xhr.getResponseHeader('Additional-Data'),
               fname: xhr
                 .getResponseHeader('Content-Disposition')
                 .match(/=(.+)/)[1]
@@ -65,12 +66,15 @@ class FileReceiver extends EventEmitter {
       )
     ]).then(([fdata, key]) => {
       const salt = this.salt;
+      console.log(strToUintArr(fdata.aad));
+      
       return Promise.all([
         window.crypto.subtle.decrypt(
           {
             name: 'AES-GCM',
             iv: salt,
-            tagLength: 128
+            tagLength: 128,
+            additionalData: strToUintArr(fdata.aad)
           },
           key,
           fdata.data

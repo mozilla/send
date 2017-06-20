@@ -20,6 +20,7 @@ function strToIv(str) {
   return iv;
 }
 
+
 function notify(str) {
   if (!('Notification' in window)) {
     return;
@@ -32,8 +33,13 @@ function notify(str) {
   }
 }
 
+function strToUintArr(str) {
+  return new Uint8Array(str.split(",").map(x => parseInt(x)));
+}
+
 module.exports = {
   ivToStr,
   strToIv,
-  notify
+  notify,
+  strToUintArr
 };

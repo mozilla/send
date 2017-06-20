@@ -78,14 +78,17 @@ app.get('/assets/download/:id', (req, res) => {
     return;
   }
 
-  storage
-    .filename(id)
-    .then(reply => {
+  Promise.all([
+    storage.filename(id),
+    storage.aad(id)])
+    .then(([reply, aad]) => {
       storage.length(id).then(contentLength => {
+        
         res.writeHead(200, {
           'Content-Disposition': 'attachment; filename=' + reply,
           'Content-Type': 'application/octet-stream',
-          'Content-Length': contentLength
+          'Content-Length': contentLength,
+          'Additional-Data': aad
         });
         const file_stream = storage.get(id);
 
@@ -142,16 +145,22 @@ app.post('/upload/:id', (req, res, next) => {
   }
 
   req.pipe(req.busboy);
+  
+  req.busboy.on('field', (fieldname, value) => {
+    storage.setField(req.params.id, fieldname, value);
+  })
+
   req.busboy.on('file', (fieldname, file, filename) => {
     log.info('Uploading:', req.params.id);
 
     const protocol = conf.env === 'production' ? 'https' : req.protocol;
     const url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
-
     storage.set(req.params.id, file, filename, url).then(linkAndID => {
       res.json(linkAndID);
     });
   });
+
+
 });
 
 app.get('/__lbheartbeat__', (req, res) => {

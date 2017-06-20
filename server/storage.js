@@ -27,6 +27,8 @@ if (conf.s3_bucket) {
     length: awsLength,
     get: awsGet,
     set: awsSet,
+    aad: aad,
+    setField: setField,
     delete: awsDelete,
     forceDelete: awsForceDelete,
     ping: awsPing
@@ -38,6 +40,8 @@ if (conf.s3_bucket) {
     length: localLength,
     get: localGet,
     set: localSet,
+    aad: aad,
+    setField: setField,
     delete: localDelete,
     forceDelete: localForceDelete,
     ping: localPing
@@ -68,6 +72,22 @@ function exists(id) {
   });
 }
 
+function setField(id, key, value) {
+  redis_client.hset(id, key, value);
+}
+
+function aad(id) {
+  return new Promise((resolve, reject) => {
+    redis_client.hget(id, 'aad', (err, reply) => {
+      if (!err) {
+        resolve(reply);
+      } else {
+        reject();
+      }
+    })
+  })
+}
+
 function localLength(id) {
   return new Promise((resolve, reject) => {
     try {
@@ -86,7 +106,7 @@ function localSet(id, file, filename, url) {
   return new Promise((resolve, reject) => {
     const fstream = fs.createWriteStream(path.join(__dirname, '../static', id));
     file.pipe(fstream);
-    fstream.on('close', () => {
+    fstream.on('close', () => {      
       const uuid = crypto.randomBytes(10).toString('hex');
 
       redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
