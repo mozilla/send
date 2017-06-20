@@ -22,6 +22,11 @@ const conf = convict({
     arg: 'port',
     env: 'P2P_LISTEN_PORT'
   },
+  analytics_id: {
+    format: String,
+    default: 'UA-101393094-1',
+    env: 'GOOGLE_ANALYTICS_ID'
+  },
   env: {
     format: ['production', 'development', 'test'],
     default: 'development',
