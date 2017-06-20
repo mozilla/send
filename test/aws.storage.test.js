@@ -1,6 +1,7 @@
 const assert = require('assert');
 const sinon = require('sinon');
 const proxyquire = require('proxyquire');
+const crypto = require('crypto');
 
 const conf = require('../server/config.js');
 conf.notLocalHost = true;
@@ -9,7 +10,7 @@ let redisStub = {};
 let exists = sinon.stub();
 let hget = sinon.stub();
 let hmset = sinon.stub();
-let expire = sinon.stub();
+let expire = sinon.spy();
 let del = sinon.stub();
 
 redisStub.createClient = function() {
@@ -56,7 +57,7 @@ describe('Testing Length using aws', function() {
   it('Filesize returns properly if id exists', function() {
     s3Stub.headObject.callsArgWith(1, null, {ContentLength: 1});
     return storage.length('123')
-                  .then(reply => assert(reply === 1))
+                  .then(reply => assert.equal(reply, 1))
                   .catch(err => assert.fail())
   })
 
@@ -69,35 +70,59 @@ describe('Testing Length using aws', function() {
 });
 
 describe('Testing Get using aws', function() {
+
   it('Should not error out when the file exists', function() {
+    let spy = sinon.spy();
     s3Stub.getObject.returns({
-      createReadStream: function() { return 1; }
+      createReadStream: spy
     });
-    assert(storage.get('123') === 1);
+
+    storage.get('123');
+    assert(spy.calledOnce);
   })
 
   it('Should error when the file does not exist', function() {
+    let err = function() { throw new Error(); }
+    let spy = sinon.spy(err);
     s3Stub.getObject.returns({
-      createReadStream: function() { return null; }
+      createReadStream: spy
     });
-    assert(storage.get('123') === null);
+
+    assert.equal(storage.get('123'), null);
+    assert(spy.threw());
   })
 });
 
 describe('Testing Set using aws', function() {
+  beforeEach(function() {
+    expire.reset();
+  })
+
+  after(function() {
+    crypto.randomBytes.restore();
+  })
+
   it('Should pass when the file is successfully uploaded and no bitly key', function() {
     conf.bitly_key = null;
+    const buf =  new Buffer(10);
+    sinon.stub(crypto, 'randomBytes').returns(buf);
     s3Stub.upload.callsArgWith(1, null, {});
     return storage.set('123', {}, 'Filename.moz', 'url.com')
-           .then(reply => assert(reply.url === 'url.com' && reply.uuid !== null))
-           .catch(err => assert.fail());
+                  .then(reply => {
+                      assert.equal(reply.uuid, buf.toString('hex'));
+                      assert.equal(reply.url, 'url.com');
+                      assert.notEqual(reply.uuid, null);
+                      assert(expire.calledOnce);
+                      assert(expire.calledWith('123', 86400000));
+                    })
+                  .catch(err => assert.fail());
   })
 
   it('Should fail if there was an error during uploading', function() {
     s3Stub.upload.callsArgWith(1, new Error(), null);
     return storage.set('123', {}, 'Filename.moz', 'url.com')
-           .then(reply => assert.fail())
-           .catch(err => assert(1));
+                  .then(reply => assert.fail())
+                  .catch(err => assert(1));
   })
 });
 

@@ -143,7 +143,12 @@ function awsGet(id) {
     Key: id
   };
 
-  return s3.getObject(params).createReadStream();
+  try {
+    return s3.getObject(params).createReadStream();
+  } catch(err) {
+    log.info('GetFailed', 'Get Object from s3 failed.');
+    return null;
+  }
 }
 
 function awsSet(id, file, filename, url) {
