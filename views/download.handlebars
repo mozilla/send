@@ -16,15 +16,29 @@
         Your friend is sending you a file: <br />
         {{{filename}}} ({{{filesize}}})
       </div>
-
-      <div class="share-window">
-        <button id="download-btn" onclick="download()">Download File</button>
-        <img id="expired-img" src="/resources/link_expired.png" alt="Link expired" />
+      <div id="download-page-one">
+        <div>
+          <button id="download-btn" onclick="download()">Download File</button>
+        </div>
       </div>
+
+      <div id="download-progress">
+        <div  id="download-text">
+          Downloading File...
+        </div>
+        <div class="upload">
+          <!-- progress bar here -->
+          <div id="progress-bar"></div>
+          <div id="progress-text"></div>
+        </div>
+      </div>
+
       <div class="send-new" id="send-file">
         Send your own files
       </div>
+
       {{else}}
+
       <div class="title">
         This link has expired or never existed in the first place.
       </div>
@@ -42,7 +56,7 @@
   </div>
 
   <!-- <ul id="downloaded_files">
-  </ul> -->
+</ul> -->
 
 </body>
 </html>

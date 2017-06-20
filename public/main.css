@@ -43,6 +43,7 @@ input, select, textarea, button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 }
 
 #browse {
@@ -151,6 +152,13 @@ td {
 }
 
 /**   upload-progress   **/
+#progress-bar {
+  width: 300px;
+  height: 5px;
+  background: linear-gradient(90deg, #FD9800, #D73000 var(--progress), white var(--progress));
+  border: 0.5px solid;
+  border-radius: 5px;
+}
 
 /**   share-link    **/
 .share-window {
@@ -230,10 +238,32 @@ td {
   cursor: auto;
 }
 
-#download {
+#download-page-one {
+  margin: 0 auto;
+  width: 470px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
 }
 
 #expired-img {
   display: none;
+}
+
+#download-progress {
+  margin: 0 auto;
+  width: 470px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#download-text {
+  margin-bottom: 40px;
 }
