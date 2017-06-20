@@ -1,0 +1,4 @@
+machine:
+  node:
+    version: 8.0.0
+

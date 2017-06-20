@@ -19,7 +19,7 @@ const redis_client = redis.createClient({
 });
 
 redis_client.on('error', err => {
-  log.info('Redis: ', err);
+  log.info('Redis:', err);
 });
 
 if (notLocalHost) {
@@ -94,7 +94,10 @@ function localSet(id, file, filename, url) {
       });
     });
 
-    fstream.on('error', () => reject());
+    fstream.on('error', () => {
+      log.error('localSet:', 'Failed upload of ' + id);
+      reject();
+    });
   });
 }
 
@@ -140,7 +143,12 @@ function awsGet(id) {
     Key: id
   };
 
-  return s3.getObject(params).createReadStream();
+  try {
+    return s3.getObject(params).createReadStream();
+  } catch(err) {
+    log.info('GetFailed', 'Get Object from s3 failed.');
+    return null;
+  }
 }
 
 function awsSet(id, file, filename, url) {
@@ -203,7 +211,7 @@ function awsDelete(id, delete_token) {
         };
 
         s3.deleteObject(params, function(err, _data) {
-          resolve(err);
+          err ? reject(err) : resolve(err);
         });
       }
     });
@@ -219,7 +227,7 @@ function awsForceDelete(id) {
     };
 
     s3.deleteObject(params, function(err, _data) {
-      resolve(err);
+      err ? reject(err) : resolve(err);
     });
   });
 }
