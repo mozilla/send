@@ -27,7 +27,7 @@ $(document).ready(function() {
         $btn.attr('disabled', 'true');
       }
     });
-    
+
     fileReceiver
     .download()
     .catch(() => {
