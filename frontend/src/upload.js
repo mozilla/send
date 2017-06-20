@@ -3,25 +3,32 @@ const $ = require('jquery');
 
 $(document).ready(function() {
   // reset copy button
-  let copyBtn = $('#copy-btn');
-  copyBtn.attr('disabled', false);
-  copyBtn.html('Copy');
+  let $copyBtn = $('#copy-btn');
+  $copyBtn.attr('disabled', false);
+  $copyBtn.html('Copy');
 
   $('#page-one').show();
   $('#file-list').hide();
   $('#upload-progress').hide();
   $('#share-link').hide();
 
+  //load existing uploads
+  for (fileId in localStorage){
+
+  }
+
   // copy link to clipboard
-  copyBtn.click(() => {
+  $copyBtn.click(() => {
     var aux = document.createElement('input');
     aux.setAttribute('value', $('#link').attr('value'));
     document.body.appendChild(aux);
     aux.select();
     document.execCommand('copy');
     document.body.removeChild(aux);
-    copyBtn.attr('disabled', true);
-    copyBtn.html('Copied!');
+    //disable button for 3s
+    $copyBtn.attr('disabled', true)
+    $copyBtn.html('Copied!');
+    
   });
 
   // link back to home page
@@ -30,8 +37,8 @@ $(document).ready(function() {
     $('#file-list').show();
     $('#upload-progress').hide();
     $('#share-link').hide();
-    copyBtn.attr('disabled', false);
-    copyBtn.html('Copy');
+    $copyBtn.attr('disabled', false);
+    $copyBtn.html('Copy');
   });
 
   // on file upload by browse or drag & drop
@@ -49,11 +56,11 @@ $(document).ready(function() {
     let link = document.createElement('td');
     let expiry = document.createElement('td');
     let del = document.createElement('td');
+    del.setAttribute('align', 'center');
     let btn = document.createElement('button');
     let popupDiv = document.createElement('div');
     let $popupText = $('<span>', { 'class': 'popuptext' });
     let cellText = document.createTextNode(file.name);
-    let progress = document.createElement('p');
 
     name.appendChild(cellText);
 
@@ -75,7 +82,6 @@ $(document).ready(function() {
     $(popupDiv).append($popupText);
     del.appendChild(popupDiv);
     row.appendChild(del);
-    $fileList.append(row); //add row to table
 
     const fileSender = new FileSender(file);
     fileSender.on('progress', percentComplete => {
@@ -83,7 +89,9 @@ $(document).ready(function() {
       $('#file-list').hide();
       $('#upload-progress').show();
       $('#upload-filename').innerHTML += file.name;
-      progress.innerText = `Progress: ${percentComplete}%`;
+      // update progress bar
+      document.querySelector('#progress-bar').style.setProperty('--progress', percentComplete+'%');
+      $('#progress-text').html(`${percentComplete}%`);
     });
     fileSender.upload().then(info => {
       const url = info.url.trim() + `#${info.secretKey}`.trim();
@@ -96,17 +104,20 @@ $(document).ready(function() {
         FileSender.delete(
           info.fileId,
           localStorage.getItem(info.fileId)
-       ).then(() => {
-          //
+        ).then(() => {
           $(e.target).parents('tr').remove();
           localStorage.removeItem(info.fileId);
         });
       });
 
       // show popup
-      btn.addEventListener('click', toggleShow);
+      del.addEventListener('click', toggleShow);
       // hide popup
       $popupText.find('.nvm').click(toggleShow);
+
+      $fileList.append(row); //add row to table
+      $('#page-one').hide();
+      $('#file-list').hide();
       $('#upload-progress').hide();
       $('#share-link').show();
     });

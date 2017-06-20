@@ -43,6 +43,7 @@ input, select, textarea, button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 }
 
 #browse {
@@ -110,49 +111,55 @@ td {
 
 /* Popup container */
 .popup {
-   position: relative;
-   display: inline-block;
-   cursor: pointer;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
 
 }
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
-   visibility: hidden;
-   width: 160px;
-   background-color: #555;
-   color: #fff;
-   text-align: center;
-   border-radius: 6px;
-   padding: 8px 0;
-   position: absolute;
-   z-index: 1;
-   bottom: 125%;
-   left: 50%;
-   margin-left: -80px;
-   transition: opacity 0.5s;
-   opacity: 0;
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+  transition: opacity 0.5s;
+  opacity: 0;
 }
 
 /* Popup arrow */
 .popup .popuptext::after {
-   content: "";
-   position: absolute;
-   top: 100%;
-   left: 50%;
-   margin-left: -5px;
-   border-width: 5px;
-   border-style: solid;
-   border-color: #555 transparent transparent transparent;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
 }
 
 .popup .show {
-   visibility: visible;
-   opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 /**   upload-progress   **/
-
+#progress-bar {
+  width: 300px;
+  height: 5px;
+  background: linear-gradient(90deg, #FD9800, #D73000 var(--progress), white var(--progress));
+  border: 0.5px solid;
+  border-radius: 5px;
+}
 
 /**   share-link    **/
 .share-window {
@@ -233,10 +240,32 @@ td {
   cursor: auto;
 }
 
-#download {
+#download-page-one {
+  margin: 0 auto;
+  width: 470px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
 }
 
 #expired-img {
   display: none;
+}
+
+#download-progress {
+  margin: 0 auto;
+  width: 470px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#download-text {
+  margin-bottom: 40px;
 }
