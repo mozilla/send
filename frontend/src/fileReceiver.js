@@ -54,36 +54,32 @@ class FileReceiver extends EventEmitter {
         {
           kty: 'oct',
           k: location.hash.slice(1),
-          alg: 'A128CBC',
+          alg: 'A256GCM',
           ext: true
         },
         {
-          name: 'AES-CBC'
+          name: 'AES-GCM'
         },
         true,
         ['encrypt', 'decrypt']
       )
-    ])
-      .then(([fdata, key]) => {
-        const salt = this.salt;
-        return Promise.all([
-          window.crypto.subtle.decrypt(
-            {
-              name: 'AES-CBC',
-              iv: salt
-            },
-            key,
-            fdata.data
-          ),
-          new Promise((resolve, reject) => {
-            resolve(fdata.fname);
-          })
-        ]);
-      })
-      .catch(err => {
-        Raven.captureException(err);
-        return Promise.reject(err);
-      });
+    ]).then(([fdata, key]) => {
+      const salt = this.salt;
+      return Promise.all([
+        window.crypto.subtle.decrypt(
+          {
+            name: 'AES-GCM',
+            iv: salt,
+            tagLength: 128
+          },
+          key,
+          fdata.data
+        ),
+        new Promise((resolve, reject) => {
+          resolve(fdata.fname);
+        })
+      ]);
+    });
   }
 }
 

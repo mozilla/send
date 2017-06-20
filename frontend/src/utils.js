@@ -12,7 +12,7 @@ function ivToStr(iv) {
 }
 
 function strToIv(str) {
-  const iv = new Uint8Array(16);
+  const iv = new Uint8Array(12);
   for (let i = 0; i < str.length; i += 2) {
     iv[i / 2] = parseInt(str.charAt(i) + str.charAt(i + 1), 16);
   }

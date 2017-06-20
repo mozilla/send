@@ -7,7 +7,7 @@ class FileSender extends EventEmitter {
   constructor(file) {
     super();
     this.file = file;
-    this.iv = window.crypto.getRandomValues(new Uint8Array(16));
+    this.iv = window.crypto.getRandomValues(new Uint8Array(12));
   }
 
   static delete(fileId, token) {
@@ -39,12 +39,13 @@ class FileSender extends EventEmitter {
     return Promise.all([
       window.crypto.subtle.generateKey(
         {
-          name: 'AES-CBC',
-          length: 128
+          name: 'AES-GCM',
+          length: 256,
+          tagLength: 128
         },
         true,
         ['encrypt', 'decrypt']
-      ),
+      ).catch(err => console.log('There was an error generating a crypto key')),
       new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsArrayBuffer(this.file);
@@ -57,12 +58,13 @@ class FileSender extends EventEmitter {
         return Promise.all([
           window.crypto.subtle.encrypt(
             {
-              name: 'AES-CBC',
-              iv: this.iv
+              name: 'AES-GCM',
+              iv: this.iv,
+              tagLength: 128
             },
             secretKey,
             plaintext
-          ),
+          ).catch(err => console.log('Error with encrypting.')),
           window.crypto.subtle.exportKey('jwk', secretKey)
         ]);
       })

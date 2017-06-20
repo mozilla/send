@@ -171,5 +171,5 @@ app.listen(conf.listen_port, () => {
 });
 
 const validateID = route_id => {
-  return route_id.match(/^[0-9a-fA-F]{32}$/) !== null;
+  return route_id.match(/^[0-9a-fA-F]{24}$/) !== null;
 };
