@@ -28,7 +28,10 @@ $(document).ready(function() {
     //disable button for 3s
     $copyBtn.attr('disabled', true)
     $copyBtn.html('Copied!');
-    
+    window.setTimeout(()=>{
+      $copyBtn.attr('disabled', false);
+      $copyBtn.html('Copy');
+    }, 3000);
   });
 
   // link back to home page
