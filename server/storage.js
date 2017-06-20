@@ -145,7 +145,7 @@ function awsGet(id) {
 
   try {
     return s3.getObject(params).createReadStream();
-  } catch(err) {
+  } catch (err) {
     log.info('GetFailed', 'Get Object from s3 failed.');
     return null;
   }

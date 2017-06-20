@@ -21,9 +21,9 @@ $(document).ready(function() {
     document.execCommand('copy');
     document.body.removeChild(aux);
     //disable button for 3s
-    $copyBtn.attr('disabled', true)
+    $copyBtn.attr('disabled', true);
     $copyBtn.html('Copied!');
-    window.setTimeout(()=>{
+    window.setTimeout(() => {
       $copyBtn.attr('disabled', false);
       $copyBtn.html('Copy');
     }, 3000);
@@ -90,7 +90,9 @@ $(document).ready(function() {
       $('#upload-progress').show();
       $('#upload-filename').innerHTML += file.name;
       // update progress bar
-      document.querySelector('#progress-bar').style.setProperty('--progress', percentComplete+'%');
+      document
+        .querySelector('#progress-bar')
+        .style.setProperty('--progress', percentComplete + '%');
       $('#progress-text').html(`${percentComplete}%`);
     });
     fileSender.upload().then(info => {

@@ -71,13 +71,16 @@ app.get('/assets/download/:id', (req, res) => {
         const file_stream = storage.get(id);
 
         file_stream.on(notLocalHost ? 'finish' : 'close', () => {
-          storage.forceDelete(id).then(err => {
-            if (!err) {
-              log.info('Deleted:', id);
-            }
-          }).catch(err => {
-            log.info('DeleteError:', id);
-          });
+          storage
+            .forceDelete(id)
+            .then(err => {
+              if (!err) {
+                log.info('Deleted:', id);
+              }
+            })
+            .catch(err => {
+              log.info('DeleteError:', id);
+            });
         });
 
         file_stream.pipe(res);
@@ -104,7 +107,7 @@ app.post('/delete/:id', (req, res) => {
 
   storage
     .delete(id, delete_token)
-    .then((err) => {
+    .then(err => {
       if (!err) {
         log.info('Deleted:', id);
         res.sendStatus(200);

@@ -155,7 +155,12 @@ td {
 #progress-bar {
   width: 300px;
   height: 5px;
-  background: linear-gradient(90deg, #FD9800, #D73000 var(--progress), white var(--progress));
+  background: linear-gradient(
+    90deg,
+    #FD9800,
+    #D73000 var(--progress),
+    white var(--progress)
+  );
   border: 0.5px solid;
   border-radius: 5px;
 }
