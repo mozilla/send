@@ -21,7 +21,7 @@ function strToIv(str) {
 }
 
 function notify(str) {
-  if (!("Notification" in window)) {
+  if (!('Notification' in window)) {
     return;
   } else if (Notification.permission === 'granted') {
     new Notification(str)

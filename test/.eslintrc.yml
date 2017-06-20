@@ -1,0 +1,21 @@
+env:
+  mocha: true
+
+extends:
+  - plugin:mocha/recommended
+
+plugins:
+  - mocha
+  - node
+
+rules:
+  node/no-unpublished-require: off
+
+  mocha/handle-done-callback: error
+  mocha/no-exclusive-tests: error
+  mocha/no-identical-title: warn
+  mocha/no-mocha-arrows: error
+  mocha/no-nested-tests: error
+  mocha/no-pending-tests: error
+  mocha/no-return-and-callback: warn
+  mocha/no-skipped-tests: error

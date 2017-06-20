@@ -1,5 +1,5 @@
 const EventEmitter = require('events');
-const { ivToStr, notify } = require('./utils');
+const { ivToStr } = require('./utils');
 
 class FileSender extends EventEmitter {
   constructor(file) {
