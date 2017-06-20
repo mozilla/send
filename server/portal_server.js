@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', {shouldRenderAnalytics: notLocalHost});
 });
 
 app.get('/exists/:id', (req, res) => {
@@ -43,7 +43,8 @@ app.get('/download/:id', (req, res) => {
       .then(contentLength => {
         res.render('download', {
           filename: filename,
-          filesize: bytes(contentLength)
+          filesize: bytes(contentLength),
+          shouldRenderAnalytics: notLocalHost
         });
       })
       .catch(() => {
