@@ -1,5 +1,5 @@
 const FileSender = require('./fileSender');
-const { notify } = require('./utils')
+const { notify } = require('./utils');
 const $ = require('jquery');
 
 $(document).ready(function() {

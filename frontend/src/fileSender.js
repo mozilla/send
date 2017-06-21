@@ -23,7 +23,7 @@ class FileSender extends EventEmitter {
         }
 
         if (xhr.status === 200) {
-          console.log('The file was successfully deleted.')
+          console.log('The file was successfully deleted.');
         } else {
           console.log('The file has expired, or has already been deleted.');
         }
