@@ -1,4 +1,5 @@
 const FileSender = require('./fileSender');
+const { notify } = require('./utils')
 const $ = require('jquery');
 
 $(document).ready(function() {
@@ -94,6 +95,9 @@ $(document).ready(function() {
         .querySelector('#progress-bar')
         .style.setProperty('--progress', percentComplete + '%');
       $('#progress-text').html(`${percentComplete}%`);
+      if (percentComplete === 100) {
+        notify('Your upload has finished.');
+      }
     });
     fileSender.upload().then(info => {
       const url = info.url.trim() + `#${info.secretKey}`.trim();

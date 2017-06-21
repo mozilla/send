@@ -1,4 +1,5 @@
 const FileReceiver = require('./fileReceiver');
+const { notify } = require('./utils');
 const $ = require('jquery');
 
 $(document).ready(function() {
@@ -27,6 +28,7 @@ $(document).ready(function() {
         $('.send-new').show();
         $btn.text('Download complete!');
         $btn.attr('disabled', 'true');
+        notify('Your download has finished.');
       }
     });
 
