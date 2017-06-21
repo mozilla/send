@@ -5,6 +5,13 @@
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
   ga('create', '{{{trackerId}}}', 'auto');
+
+  if (window.URL && document.referrer) {
+    ga("set", "referrer", (new URL(document.referrer)).origin);
+  } else {
+    ga("set", "referrer", "");
+  }
+  
   ga('set', 'anonymizeIp', true);
   ga('send', 'pageview');
 </script>
