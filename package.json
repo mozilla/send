@@ -49,7 +49,7 @@
     "lint:css": "stylelint 'public/*.css'",
     "lint:html": "htmllint 'views/*.handlebars'",
     "lint:js": "eslint .",
-    "start": "watchify frontend/src/main.js -o public/bundle.js -d | cross-env NODE_ENV=production node server/portal_server.js",
+    "start": "browserify frontend/src/main.js -o public/bundle.js -d | cross-env NODE_ENV=production node server/portal_server.js",
     "test": "mocha"
   }
 }

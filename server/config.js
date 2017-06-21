@@ -20,7 +20,7 @@ const conf = convict({
     format: 'port',
     default: 1443,
     arg: 'port',
-    env: 'P2P_LISTEN_PORT'
+    env: 'PORT'
   },
   env: {
     format: ['production', 'development', 'test'],
