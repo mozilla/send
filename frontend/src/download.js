@@ -1,4 +1,5 @@
 const FileReceiver = require('./fileReceiver');
+const { notify } = require('./utils');
 const $ = require('jquery');
 
 $(document).ready(function() {
@@ -16,6 +17,7 @@ $(document).ready(function() {
 
       if (percentComplete === 100) {
         fileReceiver.removeAllListeners('progress');
+        notify('Your download has finished.');
         btn.text('Download complete!');
         btn.attr('disabled', 'true');
       }
