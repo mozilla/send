@@ -2,3 +2,10 @@ machine:
   node:
     version: 8.0.0
 
+deployment:
+  latest:
+    branch: master
+    commands:
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+    - docker build . -t mozilla/portal:latest
+    - docker push mozilla/portal:latest
