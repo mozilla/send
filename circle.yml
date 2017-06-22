@@ -1,6 +1,8 @@
 machine:
   node:
     version: 8.0.0
+  services:
+    - docker
 
 deployment:
   latest:
