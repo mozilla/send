@@ -17,6 +17,7 @@
     "jquery": "^3.2.1",
     "mozlog": "^2.1.1",
     "node-fetch": "^1.7.1",
+    "raven-js": "^3.16.0",
     "redis": "^2.7.1",
     "uglify-es": "3.0.19"
   },

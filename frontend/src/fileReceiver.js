@@ -1,6 +1,8 @@
 const EventEmitter = require('events');
 const { strToIv } = require('./utils');
 
+const Raven = window.Raven;
+
 class FileReceiver extends EventEmitter {
   constructor() {
     super();
@@ -61,7 +63,8 @@ class FileReceiver extends EventEmitter {
         true,
         ['encrypt', 'decrypt']
       )
-    ]).then(([fdata, key]) => {
+    ])
+    .then(([fdata, key]) => {
       const salt = this.salt;
       return Promise.all([
         window.crypto.subtle.decrypt(
@@ -76,6 +79,10 @@ class FileReceiver extends EventEmitter {
           resolve(fdata.fname);
         })
       ]);
+    })
+    .catch(err => {
+      Raven.captureException(err);
+      return Promise.reject(err);
     });
   }
 }

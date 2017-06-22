@@ -1,6 +1,8 @@
 const EventEmitter = require('events');
 const { ivToStr } = require('./utils');
 
+const Raven = window.Raven;
+
 class FileSender extends EventEmitter {
   constructor(file) {
     super();
@@ -64,6 +66,10 @@ class FileSender extends EventEmitter {
           window.crypto.subtle.exportKey('jwk', secretKey)
         ]);
       })
+      .catch(err => { 
+        Raven.captureException(err) 
+        return Promise.reject(err);
+      })
       .then(([encrypted, keydata]) => {
         return new Promise((resolve, reject) => {
           const file = this.file;
@@ -99,6 +105,10 @@ class FileSender extends EventEmitter {
           xhr.open('post', '/upload/' + fileId, true);
           xhr.send(fd);
         });
+      })
+      .catch(err => { 
+        Raven.captureException(err) 
+        return Promise.reject(err);
       });
   }
 }
