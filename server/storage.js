@@ -4,7 +4,6 @@ const s3 = new AWS.S3();
 const conf = require('./config.js');
 const fs = require('fs');
 const path = require('path');
-const fetch = require('node-fetch');
 const crypto = require('crypto');
 
 const notLocalHost = conf.notLocalHost;
@@ -170,29 +169,10 @@ function awsSet(id, file, filename, url) {
 
         redis_client.expire(id, 86400000);
         log.info('awsUploadFinish', 'Upload Finished of ' + filename);
-        if (conf.bitly_key) {
-          fetch(
-            'https://api-ssl.bitly.com/v3/shorten?access_token=' +
-              conf.bitly_key +
-              '&longUrl=' +
-              encodeURIComponent(url) +
-              '&format=txt'
-          )
-            .then(res => {
-              return res.text();
-            })
-            .then(body => {
-              resolve({
-                uuid: uuid,
-                url: body
-              });
-            });
-        } else {
-          resolve({
-            uuid: uuid,
-            url: url
-          });
-        }
+        resolve({
+          uuid: uuid,
+          url: url
+        });
       }
     });
   });

@@ -1,11 +1,6 @@
 const convict = require('convict');
 
 const conf = convict({
-  bitly_key: {
-    format: String,
-    default: 'localhost',
-    env: 'P2P_BITLY_KEY'
-  },
   s3_bucket: {
     format: String,
     default: 'localhost',
@@ -47,5 +42,4 @@ module.exports = props;
 
 module.exports.notLocalHost =
   props.env === 'production' &&
-  props.s3_bucket !== 'localhost' &&
-  props.bitly_key !== 'localhost';
+  props.s3_bucket !== 'localhost';
