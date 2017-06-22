@@ -9,3 +9,8 @@ deployment:
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - docker build . -t mozilla/portal:latest
     - docker push mozilla/portal:latest
+
+test:
+  override:
+    - npm run lint
+    - npm test
