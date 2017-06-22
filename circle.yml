@@ -9,7 +9,7 @@ deployment:
     branch: master
     commands:
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-    - docker build . -t mozilla/fileshare:latest
+    - docker build -t mozilla/fileshare:latest .
     - docker push mozilla/fileshare:latest
   tags:
     tags: /.*/
