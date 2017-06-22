@@ -1,2 +1,3 @@
 public/bundle.js
 public/webcrypto-shim.js
+public/raven.min.js
