@@ -17,7 +17,6 @@
     "jquery": "^3.2.1",
     "mozlog": "^2.1.1",
     "node-fetch": "^1.7.1",
-    "path": "^0.12.7",
     "redis": "^2.7.1"
   },
   "devDependencies": {
@@ -28,7 +27,6 @@
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-security": "^1.4.0",
-    "htmllint-cli": "^0.0.6",
     "mocha": "^3.4.2",
     "npm-run-all": "^4.0.2",
     "prettier": "^1.4.4",
@@ -48,7 +46,6 @@
     "format": "prettier 'frontend/src/*.js' 'public/*.css' 'server/*.js' 'test/*.js' --single-quote --write",
     "lint": "npm-run-all lint:*",
     "lint:css": "stylelint 'public/*.css'",
-    "lint:html": "htmllint 'views/*.handlebars'",
     "lint:js": "eslint .",
     "start": "browserify frontend/src/main.js -o public/bundle.js -d | cross-env NODE_ENV=production node server/portal_server.js",
     "test": "mocha"
