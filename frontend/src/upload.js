@@ -2,6 +2,8 @@ const FileSender = require('./fileSender');
 const { notify } = require('./utils');
 const $ = require('jquery');
 
+const Raven = window.Raven;
+
 $(document).ready(function() {
   // reset copy button
   const $copyBtn = $('#copy-btn');
@@ -112,6 +114,10 @@ $(document).ready(function() {
         ).then(() => {
           $(e.target).parents('tr').remove();
           localStorage.removeItem(info.fileId);
+        })
+        .catch(err => { 
+          Raven.captureException(err);
+          return Promise.reject(err);
         });
       });
 
@@ -125,6 +131,10 @@ $(document).ready(function() {
       $('#file-list').hide();
       $('#upload-progress').hide();
       $('#share-link').show();
+    })
+    .catch(err => {
+      Raven.captureException(err);
+      return Promise.reject(err);
     });
 
     function toggleShow() {
