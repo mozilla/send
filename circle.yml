@@ -7,8 +7,14 @@ deployment:
     branch: master
     commands:
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-    - docker build . -t mozilla/portal:latest
-    - docker push mozilla/portal:latest
+    - docker build . -t mozilla/fileshare:latest
+    - docker push mozilla/fileshare:latest
+  tags:
+    tags: /.*/
+    commands:
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+    - docker build . -t mozilla/fileshare:$CIRCLE_TAG
+    - docker push mozilla/fileshare:$CIRCLE_TAG
 
 test:
   override:
