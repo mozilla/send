@@ -146,6 +146,10 @@ app.post('/upload/:id', (req, res, next) => {
   });
 });
 
+app.get('/__lbheartbeat__', (req, res) => {
+  res.sendStatus(200);
+});
+
 app.listen(conf.listen_port, () => {
   log.info('startServer:', `Portal app listening on port ${conf.listen_port}!`);
 });
