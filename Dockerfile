@@ -1,4 +1,4 @@
-FROM node:8
+FROM circleci/node:8
 
 COPY . /app
 WORKDIR /app
