@@ -107,8 +107,7 @@ describe('Testing Set using aws', function() {
     crypto.randomBytes.restore();
   });
 
-  it('Should pass when the file is successfully uploaded and no bitly key', function() {
-    conf.bitly_key = null;
+  it('Should pass when the file is successfully uploaded', function() {
     const buf = Buffer.alloc(10);
     sinon.stub(crypto, 'randomBytes').returns(buf);
     s3Stub.upload.callsArgWith(1, null, {});
