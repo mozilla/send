@@ -17,7 +17,8 @@
     "jquery": "^3.2.1",
     "mozlog": "^2.1.1",
     "node-fetch": "^1.7.1",
-    "redis": "^2.7.1"
+    "redis": "^2.7.1",
+    "uglify-es": "3.0.19"
   },
   "devDependencies": {
     "browserify": "^14.4.0",
@@ -42,12 +43,14 @@
   "license": "MPL-2.0",
   "repository": "mozilla/something-awesome",
   "scripts": {
-    "dev": "watchify frontend/src/main.js -o public/bundle.js -d | node server/portal_server.js",
+    "bundle": "browserify frontend/src/main.js | uglifyjs > public/bundle.js",
+    "dev": "watchify frontend/src/main.js -o public/bundle.js -d | node server/portal_server",
     "format": "prettier 'frontend/src/*.js' 'public/*.css' 'server/*.js' 'test/*.js' --single-quote --write",
     "lint": "npm-run-all lint:*",
     "lint:css": "stylelint 'public/*.css'",
     "lint:js": "eslint .",
-    "start": "browserify frontend/src/main.js -o public/bundle.js -d | cross-env NODE_ENV=production node server/portal_server.js",
+    "prestart": "npm run bundle",
+    "start": "cross-env NODE_ENV=production node server/portal_server",
     "test": "mocha"
   }
 }
