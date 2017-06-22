@@ -15,7 +15,7 @@ deployment:
     tags: /.*/
     commands:
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-    - docker build . -t mozilla/fileshare:$CIRCLE_TAG
+    - docker build -t mozilla/fileshare:$CIRCLE_TAG .
     - docker push mozilla/fileshare:$CIRCLE_TAG
 
 test:
