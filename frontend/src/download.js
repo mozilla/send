@@ -2,6 +2,9 @@ const FileReceiver = require('./fileReceiver');
 const { notify } = require('./utils');
 const $ = require('jquery');
 
+const Raven = window.Raven;
+
+
 $(document).ready(function() {
   $('#download-progress').hide();
   $('#send-file').click(() => {
@@ -59,6 +62,10 @@ $(document).ready(function() {
         a.download = fname;
         document.body.appendChild(a);
         a.click();
+      })
+      .catch(err => { 
+        Raven.captureException(err);
+        return Promise.reject(err);
       });
   };
 
