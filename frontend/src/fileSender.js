@@ -56,7 +56,7 @@ class FileSender extends EventEmitter {
         return Promise.all([
           window.crypto.subtle.encrypt(
             {
-              name: 'AES-CBz',
+              name: 'AES-CBC',
               iv: this.iv
             },
             secretKey,
