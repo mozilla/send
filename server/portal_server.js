@@ -30,7 +30,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.get('/', (req, res) => {
   res.render('index', {
     shouldRenderAnalytics: notLocalHost,
-    trackerId: conf.analytics_id
+    trackerId: conf.analytics_id,
+    dsn: conf.sentry_id
   });
 });
 
@@ -51,7 +52,8 @@ app.get('/download/:id', (req, res) => {
           filename: filename,
           filesize: bytes(contentLength),
           shouldRenderAnalytics: notLocalHost,
-          trackerId: conf.analytics_id
+          trackerId: conf.analytics_id,
+          dsn: conf.sentry_id
         });
       })
       .catch(() => {

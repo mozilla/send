@@ -27,6 +27,11 @@ const conf = convict({
     default: 'UA-101393094-1',
     env: 'GOOGLE_ANALYTICS_ID'
   },
+  sentry_id: {
+    format: String,
+    default: 'https://cdf9a4f43a584f759586af8ceb2194f2@sentry.prod.mozaws.net/238',
+    env: 'P2P_SENTRY_DSN'
+  },
   env: {
     format: ['production', 'development', 'test'],
     default: 'development',

@@ -59,7 +59,8 @@ $(document).ready(function() {
         a.download = fname;
         document.body.appendChild(a);
         a.click();
-      });
+      })
+      .catch(err => { Raven.captureException(err) });
   };
 
   window.download = download;

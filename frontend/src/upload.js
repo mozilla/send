@@ -113,7 +113,8 @@ $(document).ready(function() {
         ).then(() => {
           $(e.target).parents('tr').remove();
           localStorage.removeItem(info.fileId);
-        });
+        })
+        .catch(err => { Raven.captureException(err) });
       });
 
       // show popup
@@ -126,7 +127,8 @@ $(document).ready(function() {
       $('#file-list').hide();
       $('#upload-progress').hide();
       $('#share-link').show();
-    });
+    })
+    .catch(err => { Raven.captureException(err) });
 
     function toggleShow() {
       $popupText.toggleClass('show');

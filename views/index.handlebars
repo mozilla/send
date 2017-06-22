@@ -2,9 +2,11 @@
 <html>
 <head>
   <title>Firefox Fileshare</title>
+  <script src="/raven.min.js"></script>
   <script src="/bundle.js"></script>
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
   <link rel="stylesheet" type="text/css" href="/main.css" />
+  {{> sentry dsn=dsn}}
   {{#if shouldRenderAnalytics}}
     {{> analytics trackerId=trackerId}}
   {{/if}}
