@@ -21,15 +21,14 @@ function strToIv(str) {
 }
 
 function notify(str) {
-  if (!("Notification" in window)) {
+  if (!('Notification' in window)) {
     return;
   } else if (Notification.permission === 'granted') {
-    new Notification(str)
+    new Notification(str);
   } else if (Notification.permission !== 'denied') {
     Notification.requestPermission(function(permission) {
-      if (permission === 'granted')
-        new Notification(str);
-    })
+      if (permission === 'granted') new Notification(str);
+    });
   }
 }
 

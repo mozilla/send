@@ -3,7 +3,7 @@
 <head>
   <title>Download your file</title>
   <script src="/bundle.js"></script>
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="stylesheet" type="text/css" href="/main.css" />
   {{#if shouldRenderAnalytics}}
     {{> analytics trackerId=trackerId}}
@@ -48,11 +48,9 @@
       <div class="share-window">
         <img src="/resources/link_expired.png" alt="Link expired" />
       </div>
-      <!-- htmllint id-no-dup="false" -->
       <div class="send-new" id="send-file">
         Send your own files
       </div>
-      <!-- htmllint tag-bans="$previous" -->
       {{/if}}
     </div>
   </div>

@@ -3,7 +3,7 @@
 <head>
   <title>Firefox Fileshare</title>
   <script src="/bundle.js"></script>
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="stylesheet" type="text/css" href="/main.css" />
   {{#if shouldRenderAnalytics}}
     {{> analytics trackerId=trackerId}}
@@ -38,12 +38,10 @@
     <div id="file-list">
       <table id="uploaded-files">
         <tr>
-          <!-- htmllint attr-bans="false" -->
           <th width="30%">File</th>
           <th width="45%">Copy URL</th>
           <th width="18%">Expires in</th>
           <th width="7%">Delete</th>
-          <!-- htmllint tag-bans="$previous" -->
         </tr>
       </table>
     </div>
