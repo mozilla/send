@@ -78,7 +78,10 @@ class FileReceiver extends EventEmitter {
         })
       ]);
     })
-    .catch(err => { Raven.captureException(err) });
+    .catch(err => {
+      Raven.captureException(err);
+      return Promise.reject(err);
+    });
   }
 }
 

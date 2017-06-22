@@ -60,7 +60,10 @@ $(document).ready(function() {
         document.body.appendChild(a);
         a.click();
       })
-      .catch(err => { Raven.captureException(err) });
+      .catch(err => { 
+        Raven.captureException(err);
+        return Promise.reject(err);
+      });
   };
 
   window.download = download;

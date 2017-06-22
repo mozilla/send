@@ -114,7 +114,10 @@ $(document).ready(function() {
           $(e.target).parents('tr').remove();
           localStorage.removeItem(info.fileId);
         })
-        .catch(err => { Raven.captureException(err) });
+        .catch(err => { 
+          Raven.captureException(err);
+          return Promise.reject(err);
+        });
       });
 
       // show popup
@@ -128,7 +131,10 @@ $(document).ready(function() {
       $('#upload-progress').hide();
       $('#share-link').show();
     })
-    .catch(err => { Raven.captureException(err) });
+    .catch(err => {
+      Raven.captureException(err);
+      return Promise.reject(err);
+    });
 
     function toggleShow() {
       $popupText.toggleClass('show');
