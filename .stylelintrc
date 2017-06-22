@@ -2,4 +2,5 @@ extends: stylelint-config-standard
 
 rules:
   color-hex-case: upper
+  declaration-colon-newline-after: null
   selector-list-comma-newline-after: null

@@ -1,5 +1,5 @@
 const FileSender = require('./fileSender');
-const { notify } = require('./utils')
+const { notify } = require('./utils');
 const $ = require('jquery');
 
 $(document).ready(function() {
@@ -15,7 +15,7 @@ $(document).ready(function() {
 
   // copy link to clipboard
   $copyBtn.click(() => {
-    var aux = document.createElement('input');
+    const aux = document.createElement('input');
     aux.setAttribute('value', $('#link').attr('value'));
     document.body.appendChild(aux);
     aux.select();
@@ -61,7 +61,6 @@ $(document).ready(function() {
     const popupDiv = document.createElement('div');
     const $popupText = $('<span>', { class: 'popuptext' });
     const cellText = document.createTextNode(file.name);
-    const progress = document.createElement('p');
 
     name.appendChild(cellText);
 

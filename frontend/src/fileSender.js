@@ -1,5 +1,5 @@
 const EventEmitter = require('events');
-const { ivToStr, notify } = require('./utils');
+const { ivToStr } = require('./utils');
 
 
 class FileSender extends EventEmitter {
@@ -24,7 +24,7 @@ class FileSender extends EventEmitter {
         }
 
         if (xhr.status === 200) {
-          console.log('The file was successfully deleted.')
+          console.log('The file was successfully deleted.');
         } else {
           console.log('The file has expired, or has already been deleted.');
         }
