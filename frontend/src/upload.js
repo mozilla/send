@@ -1,6 +1,7 @@
 const FileSender = require('./fileSender');
 const { notify } = require('./utils');
 const $ = require('jquery');
+
 const Raven = window.Raven;
 
 $(document).ready(function() {

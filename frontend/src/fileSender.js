@@ -1,5 +1,6 @@
 const EventEmitter = require('events');
 const { ivToStr } = require('./utils');
+
 const Raven = window.Raven;
 
 class FileSender extends EventEmitter {
@@ -56,7 +57,7 @@ class FileSender extends EventEmitter {
         return Promise.all([
           window.crypto.subtle.encrypt(
             {
-              name: 'AES-CBz',
+              name: 'AES-CBC',
               iv: this.iv
             },
             secretKey,

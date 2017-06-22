@@ -1,7 +1,9 @@
 const FileReceiver = require('./fileReceiver');
 const { notify } = require('./utils');
 const $ = require('jquery');
+
 const Raven = window.Raven;
+
 
 $(document).ready(function() {
   $('#download-progress').hide();

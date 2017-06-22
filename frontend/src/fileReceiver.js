@@ -1,5 +1,6 @@
 const EventEmitter = require('events');
 const { strToIv } = require('./utils');
+
 const Raven = window.Raven;
 
 class FileReceiver extends EventEmitter {
