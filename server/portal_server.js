@@ -16,19 +16,17 @@ const log = mozlog('portal.server');
 
 const app = express();
 
-app.engine(
-  'handlebars',
-  exphbs({
-    defaultLayout: 'main',
-    partialsDir: 'views/partials/'
-  })
-);
+app.engine('handlebars', exphbs({ 
+  defaultLayout: 'main',
+  partialsDir: 'views/partials/'
+}));
 app.set('view engine', 'handlebars');
 
 app.use(helmet());
 app.use(busboy());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
+
 
 app.get('/', (req, res) => {
   res.render('index', {
