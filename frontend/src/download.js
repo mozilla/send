@@ -3,23 +3,32 @@ const { notify } = require('./utils');
 const $ = require('jquery');
 
 $(document).ready(function() {
+  $('#download-progress').hide();
   $('#send-file').click(() => {
     window.location.replace(`${window.location.origin}`);
   });
   const download = () => {
     const fileReceiver = new FileReceiver();
     const name = document.createElement('p');
-    const progress = document.createElement('p');
-    const btn = $('#download-btn');
+    const $btn = $('#download-btn');
 
     fileReceiver.on('progress', percentComplete => {
-      progress.innerText = `Progress: ${percentComplete}%`;
-
+      $('#download-page-one').hide();
+      $('.send-new').hide();
+      $('#download-progress').show();
+      // update progress bar
+      document
+        .querySelector('#progress-bar')
+        .style.setProperty('--progress', percentComplete + '%');
+      $('#progress-text').html(`${percentComplete}%`);
+      //on complete
       if (percentComplete === 100) {
         fileReceiver.removeAllListeners('progress');
+        $('#download-text').html('Download complete!');
+        $('.send-new').show();
+        $btn.text('Download complete!');
+        $btn.attr('disabled', 'true');
         notify('Your download has finished.');
-        btn.text('Download complete!');
-        btn.attr('disabled', 'true');
       }
     });
 
