@@ -10,6 +10,7 @@
     "color-convert": "^1.9.0",
     "connect-busboy": "0.0.2",
     "convict": "^3.0.0",
+    "cross-env": "^5.0.1",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
     "fs-extra": "^3.0.1",
@@ -24,7 +25,6 @@
   "devDependencies": {
     "browserify": "^14.4.0",
     "buffer-shims": "^1.0.0",
-    "cross-env": "^5.0.0",
     "eslint": "^4.0.0",
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-node": "^5.0.0",
