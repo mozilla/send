@@ -58,7 +58,11 @@ function filename(id) {
 function exists(id) {
   return new Promise((resolve, reject) => {
     redis_client.exists(id, (rediserr, reply) => {
-      reply === 1 && !rediserr ? resolve() : reject(rediserr);;
+      if (reply === 1 && !rediserr) {
+        resolve();
+      } else {
+        reject(rediserr);
+      }
     });
   });
 }

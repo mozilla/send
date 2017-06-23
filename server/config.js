@@ -44,7 +44,7 @@ conf.validate({ allowed: 'strict' });
 
 const props = conf.getProperties();
 module.exports = props;
-console.log(props.sentry_dsn)
+
 module.exports.notLocalHost =
   props.env === 'production' &&
   props.s3_bucket !== 'localhost' &&
