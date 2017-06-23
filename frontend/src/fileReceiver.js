@@ -1,5 +1,6 @@
 const EventEmitter = require('events');
-const { strToIv } = require('./utils');
+const { ivToStr, strToIv } = require('./utils');
+const { IntegrityError } = require('./errors');
 
 const Raven = window.Raven;
 
@@ -38,7 +39,8 @@ class FileReceiver extends EventEmitter {
               data: this.result,
               fname: xhr
                 .getResponseHeader('Content-Disposition')
-                .match(/=(.+)/)[1]
+                .match(/=(.+)/)[1],
+              checksum: xhr.getResponseHeader('Checksum')
             });
           };
 
@@ -66,19 +68,25 @@ class FileReceiver extends EventEmitter {
     ])
     .then(([fdata, key]) => {
       const salt = this.salt;
-      return Promise.all([
-        window.crypto.subtle.decrypt(
-          {
-            name: 'AES-CBC',
-            iv: salt
-          },
-          key,
-          fdata.data
-        ),
-        new Promise((resolve, reject) => {
-          resolve(fdata.fname);
+      return window.crypto.subtle.decrypt(
+        {
+          name: 'AES-CBC',
+          iv: salt
+        },
+        key,
+        fdata.data
+      ).then((decrypted) => {
+        return window.crypto.subtle.digest({name: 'SHA-256'}, decrypted).then(checksum => {
+          const hasIntegrity = ivToStr(new Uint8Array(checksum)) === fdata.checksum;
+          return new Promise((resolve, reject) => {
+            if (hasIntegrity) {
+              resolve([decrypted, fdata.fname]);
+            } else {
+              reject(new IntegrityError('Checksums do not match.'));
+            }
+          })
         })
-      ]);
+      });
     })
     .catch(err => {
       Raven.captureException(err);

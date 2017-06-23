@@ -55,6 +55,12 @@ class FileSender extends EventEmitter {
     ])
       .then(([secretKey, plaintext]) => {
         return Promise.all([
+          window.crypto.subtle.digest(
+            {
+              name: 'SHA-256'
+            },
+            plaintext
+          ),
           window.crypto.subtle.encrypt(
             {
               name: 'AES-CBC',
@@ -70,7 +76,7 @@ class FileSender extends EventEmitter {
         Raven.captureException(err) 
         return Promise.reject(err);
       })
-      .then(([encrypted, keydata]) => {
+      .then(([checksum, encrypted, keydata]) => {
         return new Promise((resolve, reject) => {
           const file = this.file;
           const fileId = ivToStr(this.iv);
@@ -79,6 +85,7 @@ class FileSender extends EventEmitter {
           const fd = new FormData();
           fd.append('fname', file.name);
           fd.append('data', blob, file.name);
+          fd.append('checksum', ivToStr(new Uint8Array(checksum)));
 
           const xhr = new XMLHttpRequest();
 

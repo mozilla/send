@@ -28,7 +28,9 @@ if (notLocalHost) {
     exists: exists,
     length: awsLength,
     get: awsGet,
+    getField: getField,
     set: awsSet,
+    setField: setField,
     delete: awsDelete,
     forceDelete: awsForceDelete,
     ping: awsPing
@@ -39,11 +41,29 @@ if (notLocalHost) {
     exists: exists,
     length: localLength,
     get: localGet,
+    getField: getField,
     set: localSet,
+    setField: setField,
     delete: localDelete,
     forceDelete: localForceDelete,
     ping: localPing
   };
+}
+
+function setField(id, key, value) {
+  redis_client.hset(id, key, value);
+}
+
+function getField(id, key) {
+  return new Promise((resolve, reject) => {
+    redis_client.hget(id, key, (err, reply) => {
+      if (!err) {
+        resolve(reply);
+      } else {
+        reject(err);
+      }
+    });
+  });
 }
 
 function filename(id) {
