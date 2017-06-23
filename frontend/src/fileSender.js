@@ -66,8 +66,8 @@ class FileSender extends EventEmitter {
           window.crypto.subtle.exportKey('jwk', secretKey)
         ]);
       })
-      .catch(err => { 
-        Raven.captureException(err) 
+      .catch(err => {
+        Raven.captureException(err);
         return Promise.reject(err);
       })
       .then(([encrypted, keydata]) => {
@@ -106,8 +106,8 @@ class FileSender extends EventEmitter {
           xhr.send(fd);
         });
       })
-      .catch(err => { 
-        Raven.captureException(err) 
+      .catch(err => {
+        Raven.captureException(err);
         return Promise.reject(err);
       });
   }

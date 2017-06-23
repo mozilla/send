@@ -60,11 +60,12 @@ app.get('/file/:id', (req, res) => {
           name: filename,
           filesize: bytes(contentLength),
           fileId: id
-        })
-      }).catch(() => {
+        });
+      })
+      .catch(() => {
         console.log('error retrieving id ' + id);
       });
-  })
+  });
 });
 
 app.get('/download/:id', (req, res) => {

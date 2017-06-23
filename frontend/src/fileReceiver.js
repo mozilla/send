@@ -64,26 +64,26 @@ class FileReceiver extends EventEmitter {
         ['encrypt', 'decrypt']
       )
     ])
-    .then(([fdata, key]) => {
-      const salt = this.salt;
-      return Promise.all([
-        window.crypto.subtle.decrypt(
-          {
-            name: 'AES-CBC',
-            iv: salt
-          },
-          key,
-          fdata.data
-        ),
-        new Promise((resolve, reject) => {
-          resolve(fdata.fname);
-        })
-      ]);
-    })
-    .catch(err => {
-      Raven.captureException(err);
-      return Promise.reject(err);
-    });
+      .then(([fdata, key]) => {
+        const salt = this.salt;
+        return Promise.all([
+          window.crypto.subtle.decrypt(
+            {
+              name: 'AES-CBC',
+              iv: salt
+            },
+            key,
+            fdata.data
+          ),
+          new Promise((resolve, reject) => {
+            resolve(fdata.fname);
+          })
+        ]);
+      })
+      .catch(err => {
+        Raven.captureException(err);
+        return Promise.reject(err);
+      });
   }
 }
 

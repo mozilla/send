@@ -15,7 +15,7 @@ $(document).ready(function() {
   $('#upload-progress').hide();
   $('#share-link').hide();
 
-  for(let i=0; i<localStorage.length; i++) {
+  for (let i = 0; i < localStorage.length; i++) {
     let id = localStorage.key(i);
     populateFileList(localStorage.getItem(id));
   }
@@ -68,7 +68,6 @@ $(document).ready(function() {
         .querySelector('#progress-bar')
         .style.setProperty('--progress', percentComplete + '%');
       $('#progress-text').html(`${percentComplete}%`);
-
     });
     fileSender.upload().then(info => {
       const url = info.url.trim() + `#${info.secretKey}`.trim();
@@ -97,14 +96,13 @@ $(document).ready(function() {
 
   //load previous uploads
   function checkUploads(file) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.responseType = 'json';
       xhr.onreadystatechange = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
           resolve(xhr.response);
-        }
-        else if (xhr.readyState == 4 && xhr.status == 404) {
+        } else if (xhr.readyState == 4 && xhr.status == 404) {
           reject('error code: ' + xhr.status);
         }
       };
@@ -113,11 +111,14 @@ $(document).ready(function() {
       };
       xhr.open('get', '/file/' + id, true);
       xhr.send();
-    }).then (response => {
-      populateFileList(response, url);
-    }, error => {
-      console.log(error);
-    });
+    }).then(
+      response => {
+        populateFileList(response, url);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   //update file table with current files in localStorage
@@ -142,7 +143,7 @@ $(document).ready(function() {
     // create delete button
     btn.innerHTML = 'x';
     btn.classList.add('delete-btn');
-    link.innerHTML = file.url.trim() + `#${file.secretKey}`.trim();;
+    link.innerHTML = file.url.trim() + `#${file.secretKey}`.trim();
 
     // create popup
     popupDiv.classList.add('popup');
@@ -152,10 +153,7 @@ $(document).ready(function() {
 
     // delete file
     $popupText.find('.del-file').click(e => {
-      FileSender.delete(
-        file.fileId,
-        file.deleteToken
-      ).then(() => {
+      FileSender.delete(file.fileId, file.deleteToken).then(() => {
         $(e.target).parents('tr').remove();
         localStorage.removeItem(file.fileId);
       });
@@ -173,11 +171,11 @@ $(document).ready(function() {
     // show popup
     del.addEventListener('click', toggleShow);
     // hide popup
-    $popupText.find('.nvm').click(function(e){
+    $popupText.find('.nvm').click(function(e) {
       e.stopPropagation();
       toggleShow();
     });
-    $popupText.click(function(e){
+    $popupText.click(function(e) {
       e.stopPropagation();
     });
 
@@ -187,5 +185,4 @@ $(document).ready(function() {
       $popupText.toggleClass('show');
     }
   }
-
 });
