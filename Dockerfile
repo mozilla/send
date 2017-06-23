@@ -1,6 +1,9 @@
-FROM node:8.1-alpine
+FROM node:8-alpine
 
+RUN adduser -S app
 COPY . /app
+RUN chown -R app /app
+USER app
 WORKDIR /app
 RUN mkdir static
 RUN npm install
