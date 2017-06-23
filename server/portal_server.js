@@ -7,6 +7,9 @@ const helmet = require('helmet');
 const bytes = require('bytes');
 const conf = require('./config.js');
 const storage = require('./storage.js');
+const pkg = require('../package.json');
+
+const gitSHA = require('git-rev-sync').short();
 
 const notLocalHost = conf.notLocalHost;
 
@@ -148,6 +151,14 @@ app.post('/upload/:id', (req, res, next) => {
 
 app.get('/__lbheartbeat__', (req, res) => {
   res.sendStatus(200);
+});
+
+app.get('/__version__', (req, res) => {
+  res.json({
+    commit: gitSHA,
+    source: pkg.homepage,
+    version: pkg.version
+  });
 });
 
 app.listen(conf.listen_port, () => {

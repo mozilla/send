@@ -12,6 +12,7 @@
     "cross-env": "^5.0.1",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
+    "git-rev-sync": "1.9.1",
     "helmet": "^3.6.1",
     "jquery": "^3.2.1",
     "mozlog": "^2.1.1",
@@ -37,6 +38,7 @@
   "engines": {
     "node": ">=8.0.0"
   },
+  "homepage": "https://github.com/mozilla/something-awesome/",
   "license": "MPL-2.0",
   "repository": "mozilla/something-awesome",
   "scripts": {
