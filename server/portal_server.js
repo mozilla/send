@@ -50,6 +50,23 @@ app.get('/exists/:id', (req, res) => {
   }).catch(err => res.sendStatus(404));
 });
 
+app.get('/file/:id', (req, res) => {
+  let id = req.params.id;
+  storage.filename(id).then(filename => {
+    storage
+      .length(id)
+      .then(contentLength => {
+        res.json({
+          name: filename,
+          filesize: bytes(contentLength),
+          fileId: id
+        })
+      }).catch(() => {
+        console.log('error retrieving id ' + id);
+      });
+  })
+});
+
 app.get('/download/:id', (req, res) => {
   const id = req.params.id;
   storage.filename(id).then(filename => {
