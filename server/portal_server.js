@@ -7,15 +7,14 @@ const helmet = require('helmet');
 const bytes = require('bytes');
 const conf = require('./config.js');
 const storage = require('./storage.js');
-const pkg = require('../package.json');
-
-const gitSHA = require('git-rev-sync').short();
 
 const notLocalHost = conf.notLocalHost;
 
 const mozlog = require('./log.js');
 
 const log = mozlog('portal.server');
+
+const STATIC_PATH = path.join(__dirname, '../public');
 
 const app = express();
 
@@ -28,8 +27,7 @@ app.set('view engine', 'handlebars');
 app.use(helmet());
 app.use(busboy());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../public')));
-
+app.use(express.static(STATIC_PATH));
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -154,11 +152,7 @@ app.get('/__lbheartbeat__', (req, res) => {
 });
 
 app.get('/__version__', (req, res) => {
-  res.json({
-    commit: gitSHA,
-    source: pkg.homepage,
-    version: pkg.version
-  });
+  res.sendFile(path.join(STATIC_PATH, 'version.json'));
 });
 
 app.listen(conf.listen_port, () => {
