@@ -166,7 +166,13 @@ $(document).ready(function() {
     // show popup
     del.addEventListener('click', toggleShow);
     // hide popup
-    $popupText.find('.nvm').click(toggleShow);
+    $popupText.find('.nvm').click(function(e){
+      e.stopPropagation();
+      toggleShow();
+    });
+    $popupText.click(function(e){
+      e.stopPropagation();
+    });
 
     $('tbody').append(row); //add row to table
 
