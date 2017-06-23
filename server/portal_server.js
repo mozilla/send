@@ -7,8 +7,13 @@ const helmet = require('helmet');
 const bytes = require('bytes');
 const conf = require('./config.js');
 const storage = require('./storage.js');
+const Raven = require('raven');
 
 const notLocalHost = conf.notLocalHost;
+
+if (notLocalHost) {
+  Raven.config(conf.sentry_dsn).install();
+}
 
 const mozlog = require('./log.js');
 
@@ -38,9 +43,9 @@ app.get('/', (req, res) => {
 
 app.get('/exists/:id', (req, res) => {
   const id = req.params.id;
-  storage.exists(id).then(doesExist => {
-    res.sendStatus(doesExist ? 200 : 404);
-  });
+  storage.exists(id).then(() => {
+    res.sendStatus(200);
+  }).catch(err => res.sendStatus(404));
 });
 
 app.get('/download/:id', (req, res) => {
