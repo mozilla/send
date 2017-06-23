@@ -52,7 +52,7 @@ function filename(id) {
       if (!err) {
         resolve(reply);
       } else {
-        reject();
+        reject(err);
       }
     });
   });
@@ -61,7 +61,11 @@ function filename(id) {
 function exists(id) {
   return new Promise((resolve, reject) => {
     redis_client.exists(id, (rediserr, reply) => {
-      resolve(reply === 1);
+      if (reply === 1 && !rediserr) {
+        resolve();
+      } else {
+        reject(rediserr);
+      }
     });
   });
 }
