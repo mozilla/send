@@ -1,6 +1,7 @@
 const FileReceiver = require('./fileReceiver');
 const { notify } = require('./utils');
 const $ = require('jquery');
+const { IntegrityError } = require('./errors');
 
 const Raven = window.Raven;
 
@@ -37,15 +38,6 @@ $(document).ready(function() {
 
     fileReceiver
       .download()
-      .catch(() => {
-        $('.title').text(
-          'This link has expired or never existed in the first place.'
-        );
-        $('#download-btn').hide();
-        $('#expired-img').show();
-        console.log('The file has expired, or has already been deleted.');
-        return;
-      })
       .then(([decrypted, fname]) => {
         name.innerText = fname;
         const dataView = new DataView(decrypted);
@@ -64,8 +56,19 @@ $(document).ready(function() {
         a.click();
       })
       .catch(err => { 
-        Raven.captureException(err);
-        return Promise.reject(err);
+        if (err instanceof IntegrityError) {
+          $('.title').text(
+            'This file has been tampered with by the sender, and is not safe to download.'
+          );
+          $('#download-btn').hide();
+          $('#expired-img').show();
+        } else {
+          $('.title').text(
+            'This link has expired or never existed in the first place.'
+          );
+          $('#download-btn').hide();
+          $('#expired-img').show();
+        }
       });
   };
 

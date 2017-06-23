@@ -75,14 +75,17 @@ app.get('/assets/download/:id', (req, res) => {
     return;
   }
 
-  storage
-    .filename(id)
-    .then(reply => {
+  Promise.all([
+    storage.filename(id),
+    storage.getField(id, 'checksum')
+    ])
+    .then(([reply, checksum]) => {
       storage.length(id).then(contentLength => {
         res.writeHead(200, {
           'Content-Disposition': 'attachment; filename=' + reply,
           'Content-Type': 'application/octet-stream',
-          'Content-Length': contentLength
+          'Content-Length': contentLength,
+          'Checksum': checksum
         });
         const file_stream = storage.get(id);
 
@@ -139,6 +142,11 @@ app.post('/upload/:id', (req, res, next) => {
   }
 
   req.pipe(req.busboy);
+  
+  req.busboy.on('field', (fieldname, value) => {
+    storage.setField(req.params.id, fieldname, value);
+  })
+
   req.busboy.on('file', (fieldname, file, filename) => {
     log.info('Uploading:', req.params.id);
 
