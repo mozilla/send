@@ -17,7 +17,7 @@ $(document).ready(function() {
 
   for(let i=0; i<localStorage.length; i++) {
     let id = localStorage.key(i);
-    checkUploads(id);
+    populateFileList(localStorage.getItem(id));
   }
 
   // copy link to clipboard
@@ -73,15 +73,21 @@ $(document).ready(function() {
     fileSender.upload().then(info => {
       const url = info.url.trim() + `#${info.secretKey}`.trim();
       $('#link').attr('value', url);
-
-      localStorage.setItem(info.fileId, info.deleteToken);
+      const fileData = {
+        name: file.name,
+        fileId: info.fileId,
+        url: info.url,
+        secretKey: info.secretKey,
+        deleteToken: info.deleteToken
+      };
+      localStorage.setItem(info.fileId, JSON.stringify(fileData));
 
       $('#page-one').hide();
       $('#file-list').hide();
       $('#upload-progress').hide();
       $('#share-link').show();
 
-      checkUploads(info.fileId, url);
+      populateFileList(JSON.stringify(fileData));
     });
   };
 
@@ -90,7 +96,7 @@ $(document).ready(function() {
   };
 
   //load previous uploads
-  function checkUploads(id, url='') {
+  function checkUploads(file) {
     return new Promise ((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.responseType = 'json';
@@ -115,8 +121,9 @@ $(document).ready(function() {
   }
 
   //update file table with current files in localStorage
-  function populateFileList(file, url) {
-    console.log(file);
+  function populateFileList(file) {
+    file = JSON.parse(file);
+
     const $fileList = $('#uploaded-files');
     const row = document.createElement('tr');
     const name = document.createElement('td');
@@ -135,7 +142,7 @@ $(document).ready(function() {
     // create delete button
     btn.innerHTML = 'x';
     btn.classList.add('delete-btn');
-    link.innerHTML = url;
+    link.innerHTML = file.url.trim() + `#${file.secretKey}`.trim();;
 
     // create popup
     popupDiv.classList.add('popup');
@@ -147,7 +154,7 @@ $(document).ready(function() {
     $popupText.find('.del-file').click(e => {
       FileSender.delete(
         file.fileId,
-        localStorage.getItem(file.fileId)
+        file.deleteToken
       ).then(() => {
         $(e.target).parents('tr').remove();
         localStorage.removeItem(file.fileId);
