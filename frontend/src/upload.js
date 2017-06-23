@@ -94,33 +94,6 @@ $(document).ready(function() {
     ev.preventDefault();
   };
 
-  //load previous uploads
-  function checkUploads(file) {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.responseType = 'json';
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          resolve(xhr.response);
-        } else if (xhr.readyState == 4 && xhr.status == 404) {
-          reject('error code: ' + xhr.status);
-        }
-      };
-      xhr.onerror = () => {
-        reject('There was a network error.');
-      };
-      xhr.open('get', '/file/' + id, true);
-      xhr.send();
-    }).then(
-      response => {
-        populateFileList(response, url);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
   //update file table with current files in localStorage
   function populateFileList(file) {
     file = JSON.parse(file);
