@@ -25,6 +25,11 @@ const conf = convict({
   sentry_id: {
     format: String,
     default: 'https://cdf9a4f43a584f759586af8ceb2194f2@sentry.prod.mozaws.net/238',
+    env: 'P2P_SENTRY_CLIENT'
+  },
+  sentry_dsn: {
+    format: String,
+    default: 'localhost',
     env: 'P2P_SENTRY_DSN'
   },
   env: {
@@ -39,7 +44,8 @@ conf.validate({ allowed: 'strict' });
 
 const props = conf.getProperties();
 module.exports = props;
-
+console.log(props.sentry_dsn)
 module.exports.notLocalHost =
   props.env === 'production' &&
-  props.s3_bucket !== 'localhost';
+  props.s3_bucket !== 'localhost' &&
+  props.sentry_dsn !== 'localhost';
