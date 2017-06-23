@@ -14,7 +14,8 @@ const log = mozlog('portal.storage');
 
 const redis = require('redis');
 const redis_client = redis.createClient({
-  host: conf.redis_host
+  host: conf.redis_host,
+  connect_timeout: 10000
 });
 
 redis_client.on('error', err => {
@@ -29,7 +30,8 @@ if (notLocalHost) {
     get: awsGet,
     set: awsSet,
     delete: awsDelete,
-    forceDelete: awsForceDelete
+    forceDelete: awsForceDelete,
+    ping: awsPing
   };
 } else {
   module.exports = {
@@ -39,7 +41,8 @@ if (notLocalHost) {
     get: localGet,
     set: localSet,
     delete: localDelete,
-    forceDelete: localForceDelete
+    forceDelete: localForceDelete,
+    ping: localPing
   };
 }
 
@@ -121,6 +124,14 @@ function localForceDelete(id) {
   return new Promise((resolve, reject) => {
     redis_client.del(id);
     resolve(fs.unlinkSync(path.join(__dirname, '../static', id)));
+  });
+}
+
+function localPing() {
+  return new Promise((resolve, reject) => {
+    redis_client.ping(err => {
+      return err ? reject() : resolve();
+    });
   });
 }
 
@@ -214,4 +225,10 @@ function awsForceDelete(id) {
       err ? reject(err) : resolve(err);
     });
   });
+}
+
+function awsPing() {
+  return localPing().then(() =>
+    s3.headBucket({ Bucket: conf.s3_bucket }).promise()
+  );
 }
