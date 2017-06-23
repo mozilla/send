@@ -85,7 +85,7 @@ class FileSender extends EventEmitter {
           const fd = new FormData();
           fd.append('fname', file.name);
           fd.append('data', blob, file.name);
-          fd.append('checksum', new Uint8Array(checksum));
+          fd.append('checksum', ivToStr(new Uint8Array(checksum)));
 
           const xhr = new XMLHttpRequest();
 

@@ -1,5 +1,5 @@
 const EventEmitter = require('events');
-const { strToIv } = require('./utils');
+const { ivToStr, strToIv } = require('./utils');
 const { IntegrityError } = require('./errors');
 
 const Raven = window.Raven;
@@ -77,7 +77,7 @@ class FileReceiver extends EventEmitter {
         fdata.data
       ).then((decrypted) => {
         return window.crypto.subtle.digest({name: 'SHA-256'}, decrypted).then(checksum => {
-          const hasIntegrity = new Uint8Array(checksum).toString() === fdata.checksum;
+          const hasIntegrity = ivToStr(new Uint8Array(checksum)) === fdata.checksum;
           return new Promise((resolve, reject) => {
             if (hasIntegrity) {
               resolve([decrypted, fdata.fname]);
