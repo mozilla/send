@@ -9,9 +9,7 @@ const conf = require('./config.js');
 const storage = require('./storage.js');
 const Raven = require('raven');
 
-const notLocalHost = conf.notLocalHost;
-
-if (notLocalHost) {
+if (conf.sentry_dsn) {
   Raven.config(conf.sentry_dsn).install();
 }
 
@@ -39,7 +37,6 @@ app.use(express.static(STATIC_PATH));
 
 app.get('/', (req, res) => {
   res.render('index', {
-    shouldRenderAnalytics: notLocalHost,
     trackerId: conf.analytics_id,
     dsn: conf.sentry_id
   });
@@ -64,7 +61,6 @@ app.get('/download/:id', (req, res) => {
         res.render('download', {
           filename: filename,
           filesize: bytes(contentLength),
-          shouldRenderAnalytics: notLocalHost,
           trackerId: conf.analytics_id,
           dsn: conf.sentry_id
         });
@@ -93,7 +89,7 @@ app.get('/assets/download/:id', (req, res) => {
         });
         const file_stream = storage.get(id);
 
-        file_stream.on(notLocalHost ? 'finish' : 'close', () => {
+        file_stream.on('end', () => {
           storage
             .forceDelete(id)
             .then(err => {
@@ -149,7 +145,7 @@ app.post('/upload/:id', (req, res, next) => {
   req.busboy.on('file', (fieldname, file, filename) => {
     log.info('Uploading:', req.params.id);
 
-    const protocol = notLocalHost ? 'https' : req.protocol;
+    const protocol = conf.env === 'production' ? 'https' : req.protocol;
     const url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
 
     storage.set(req.params.id, file, filename, url).then(linkAndID => {

@@ -6,8 +6,6 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const notLocalHost = conf.notLocalHost;
-
 const mozlog = require('./log.js');
 
 const log = mozlog('portal.storage');
@@ -22,7 +20,7 @@ redis_client.on('error', err => {
   log.info('Redis:', err);
 });
 
-if (notLocalHost) {
+if (conf.s3_bucket) {
   module.exports = {
     filename: filename,
     exists: exists,
