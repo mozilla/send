@@ -2,8 +2,6 @@ const FileSender = require('./fileSender');
 const { notify } = require('./utils');
 const $ = require('jquery');
 
-const Raven = window.Raven;
-
 $(document).ready(function() {
   // reset copy button
   const $copyBtn = $('#copy-btn');
@@ -16,13 +14,13 @@ $(document).ready(function() {
   $('#share-link').hide();
 
   for (let i = 0; i < localStorage.length; i++) {
-    let id = localStorage.key(i);
+    const id = localStorage.key(i);
     populateFileList(localStorage.getItem(id));
   }
 
   // copy link to clipboard
   $copyBtn.click(() => {
-    var aux = document.createElement('input');
+    const aux = document.createElement('input');
     aux.setAttribute('value', $('#link').attr('value'));
     document.body.appendChild(aux);
     aux.select();
@@ -87,6 +85,7 @@ $(document).ready(function() {
       $('#share-link').show();
 
       populateFileList(JSON.stringify(fileData));
+      notify('Your upload has finished.');
     });
   };
 
@@ -96,9 +95,11 @@ $(document).ready(function() {
 
   //update file table with current files in localStorage
   function populateFileList(file) {
-    file = JSON.parse(file);
+    try {
+      file = JSON.parse(file);
+    }
+    catch (e) { return }
 
-    const $fileList = $('#uploaded-files');
     const row = document.createElement('tr');
     const name = document.createElement('td');
     const link = document.createElement('td');
@@ -109,7 +110,6 @@ $(document).ready(function() {
     const popupDiv = document.createElement('div');
     const $popupText = $('<span>', { class: 'popuptext' });
     const cellText = document.createTextNode(file.name);
-    const progress = document.createElement('p');
 
     name.appendChild(cellText);
 

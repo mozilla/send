@@ -66,10 +66,6 @@ class FileSender extends EventEmitter {
           window.crypto.subtle.exportKey('jwk', secretKey)
         ]);
       })
-      .catch(err => {
-        Raven.captureException(err);
-        return Promise.reject(err);
-      })
       .then(([encrypted, keydata]) => {
         return new Promise((resolve, reject) => {
           const file = this.file;
