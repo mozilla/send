@@ -1,12 +1,12 @@
 const conf = require('./config.js');
 
-const notLocalHost = conf.notLocalHost;
+const isProduction = conf.env === 'production'
 
 const mozlog = require('mozlog')({
   app: 'FirefoxFileshare',
-  level: notLocalHost ? 'INFO' : 'verbose',
-  fmt: notLocalHost ? 'heka' : 'pretty',
-  debug: !notLocalHost
+  level: isProduction ? 'INFO' : 'verbose',
+  fmt: isProduction ? 'heka' : 'pretty',
+  debug: !isProduction
 });
 
 module.exports = mozlog;

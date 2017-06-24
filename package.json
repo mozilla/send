@@ -49,7 +49,7 @@
     "lint": "npm-run-all lint:*",
     "lint:css": "stylelint 'public/*.css'",
     "lint:js": "eslint .",
-    "start": "cross-env NODE_ENV=production node server/portal_server",
+    "start": "node server/portal_server",
     "test": "mocha",
     "version": "node scripts/version"
   }

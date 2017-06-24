@@ -2,8 +2,7 @@ const assert = require('assert');
 const sinon = require('sinon');
 const proxyquire = require('proxyquire');
 
-const conf = require('../server/config.js');
-conf.notLocalHost = false;
+// const conf = require('../server/config.js');
 
 const redisStub = {};
 const exists = sinon.stub();

@@ -3,7 +3,7 @@ const convict = require('convict');
 const conf = convict({
   s3_bucket: {
     format: String,
-    default: 'localhost',
+    default: '',
     env: 'P2P_S3_BUCKET'
   },
   redis_host: {
@@ -19,18 +19,17 @@ const conf = convict({
   },
   analytics_id: {
     format: String,
-    default: 'UA-101393094-1',
+    default: '',
     env: 'GOOGLE_ANALYTICS_ID'
   },
   sentry_id: {
     format: String,
-    default:
-      'https://cdf9a4f43a584f759586af8ceb2194f2@sentry.prod.mozaws.net/238',
+    default: '',
     env: 'P2P_SENTRY_CLIENT'
   },
   sentry_dsn: {
     format: String,
-    default: 'localhost',
+    default: '',
     env: 'P2P_SENTRY_DSN'
   },
   env: {
@@ -45,8 +44,3 @@ conf.validate({ allowed: 'strict' });
 
 const props = conf.getProperties();
 module.exports = props;
-
-module.exports.notLocalHost =
-  props.env === 'production' &&
-  props.s3_bucket !== 'localhost' &&
-  props.sentry_dsn !== 'localhost';

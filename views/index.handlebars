@@ -2,11 +2,13 @@
 <html>
 <head>
   <title>Firefox Fileshare</title>
-  {{> sentry dsn=dsn}}
+  {{#if dsn}}
+    {{> sentry dsn=dsn}}
+  {{/if}}
   <script src="/bundle.js"></script>
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="stylesheet" type="text/css" href="/main.css" />
-  {{#if shouldRenderAnalytics}}
+  {{#if trackerId}}
     {{> analytics trackerId=trackerId}}
   {{/if}}
 </head>

@@ -3,9 +3,6 @@ const sinon = require('sinon');
 const proxyquire = require('proxyquire');
 const crypto = require('crypto');
 
-const conf = require('../server/config.js');
-conf.notLocalHost = true;
-
 const redisStub = {};
 const exists = sinon.stub();
 const hget = sinon.stub();
@@ -52,7 +49,10 @@ const storage = proxyquire('../server/storage', {
   './log.js': function() {
     return logStub;
   },
-  'aws-sdk': awsStub
+  'aws-sdk': awsStub,
+  './config.js': {
+    s3_bucket: 'test'
+  }
 });
 
 describe('Testing Length using aws', function() {
