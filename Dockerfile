@@ -1,12 +1,12 @@
 FROM node:8-alpine
 
-RUN adduser -S app
+RUN addgroup -S -g 10001 app && adduser -S -D -G app -u 10001 app
 COPY . /app
 RUN chown -R app /app
 USER app
 WORKDIR /app
 RUN mkdir static
-RUN npm install
+RUN npm install && npm cache clean --force
 
 ENV PORT=1443
 EXPOSE $PORT
