@@ -6,7 +6,7 @@ RUN chown -R app /app
 USER app
 WORKDIR /app
 RUN mkdir static
-RUN npm install && npm cache clean --force
+RUN npm install --production && npm cache clean --force
 
 ENV PORT=1443
 EXPOSE $PORT

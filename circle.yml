@@ -8,12 +8,14 @@ deployment:
   latest:
     branch: master
     commands:
+    - npm run predocker
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - docker build -t mozilla/fileshare:latest .
     - docker push mozilla/fileshare:latest
   tags:
     tags: /.*/
     commands:
+    - npm run predocker
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - docker build -t mozilla/fileshare:$CIRCLE_TAG .
     - docker push mozilla/fileshare:$CIRCLE_TAG
