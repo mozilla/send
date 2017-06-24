@@ -24,7 +24,8 @@ const conf = convict({
   },
   sentry_id: {
     format: String,
-    default: 'https://cdf9a4f43a584f759586af8ceb2194f2@sentry.prod.mozaws.net/238',
+    default:
+      'https://cdf9a4f43a584f759586af8ceb2194f2@sentry.prod.mozaws.net/238',
     env: 'P2P_SENTRY_CLIENT'
   },
   sentry_dsn: {

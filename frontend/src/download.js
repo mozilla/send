@@ -4,7 +4,6 @@ const $ = require('jquery');
 
 const Raven = window.Raven;
 
-
 $(document).ready(function() {
   $('#download-progress').hide();
   $('#send-file').click(() => {
@@ -63,7 +62,7 @@ $(document).ready(function() {
         document.body.appendChild(a);
         a.click();
       })
-      .catch(err => { 
+      .catch(err => {
         Raven.captureException(err);
         return Promise.reject(err);
       });

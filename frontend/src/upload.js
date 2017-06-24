@@ -2,8 +2,6 @@ const FileSender = require('./fileSender');
 const { notify } = require('./utils');
 const $ = require('jquery');
 
-const Raven = window.Raven;
-
 $(document).ready(function() {
   // reset copy button
   const $copyBtn = $('#copy-btn');
@@ -11,9 +9,14 @@ $(document).ready(function() {
   $copyBtn.html('Copy');
 
   $('#page-one').show();
-  $('#file-list').hide();
+  $('#file-list').show();
   $('#upload-progress').hide();
   $('#share-link').hide();
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const id = localStorage.key(i);
+    populateFileList(localStorage.getItem(id));
+  }
 
   // copy link to clipboard
   $copyBtn.click(() => {
@@ -52,7 +55,52 @@ $(document).ready(function() {
       file = event.target.files[0];
     }
 
-    const $fileList = $('#uploaded-files');
+    const fileSender = new FileSender(file);
+    fileSender.on('progress', percentComplete => {
+      $('#page-one').hide();
+      $('#file-list').hide();
+      $('#upload-progress').show();
+      $('#upload-filename').innerHTML += file.name;
+      // update progress bar
+      document
+        .querySelector('#progress-bar')
+        .style.setProperty('--progress', percentComplete + '%');
+      $('#progress-text').html(`${percentComplete}%`);
+    });
+    fileSender.upload().then(info => {
+      const url = info.url.trim() + `#${info.secretKey}`.trim();
+      $('#link').attr('value', url);
+      const fileData = {
+        name: file.name,
+        fileId: info.fileId,
+        url: info.url,
+        secretKey: info.secretKey,
+        deleteToken: info.deleteToken
+      };
+      localStorage.setItem(info.fileId, JSON.stringify(fileData));
+
+      $('#page-one').hide();
+      $('#file-list').hide();
+      $('#upload-progress').hide();
+      $('#share-link').show();
+
+      populateFileList(JSON.stringify(fileData));
+      notify('Your upload has finished.');
+    });
+  };
+
+  window.allowDrop = function(ev) {
+    ev.preventDefault();
+  };
+
+  //update file table with current files in localStorage
+  function populateFileList(file) {
+    try {
+      file = JSON.parse(file);
+    } catch (e) {
+      return;
+    }
+
     const row = document.createElement('tr');
     const name = document.createElement('td');
     const link = document.createElement('td');
@@ -69,12 +117,21 @@ $(document).ready(function() {
     // create delete button
     btn.innerHTML = 'x';
     btn.classList.add('delete-btn');
+    link.innerHTML = file.url.trim() + `#${file.secretKey}`.trim();
 
     // create popup
     popupDiv.classList.add('popup');
     $popupText.html(
       '<span class="del-file">Delete</span><span class="nvm" > Nevermind</span>'
     );
+
+    // delete file
+    $popupText.find('.del-file').click(e => {
+      FileSender.delete(file.fileId, file.deleteToken).then(() => {
+        $(e.target).parents('tr').remove();
+        localStorage.removeItem(file.fileId);
+      });
+    });
 
     // add data cells to table row
     row.appendChild(name);
@@ -85,64 +142,21 @@ $(document).ready(function() {
     del.appendChild(popupDiv);
     row.appendChild(del);
 
-    const fileSender = new FileSender(file);
-    fileSender.on('progress', percentComplete => {
-      $('#page-one').hide();
-      $('#file-list').hide();
-      $('#upload-progress').show();
-      $('#upload-filename').innerHTML += file.name;
-      // update progress bar
-      document
-        .querySelector('#progress-bar')
-        .style.setProperty('--progress', percentComplete + '%');
-      $('#progress-text').html(`${percentComplete}%`);
-      if (percentComplete === 100) {
-        notify('Your upload has finished.');
-      }
+    // show popup
+    del.addEventListener('click', toggleShow);
+    // hide popup
+    $popupText.find('.nvm').click(function(e) {
+      e.stopPropagation();
+      toggleShow();
     });
-    fileSender.upload().then(info => {
-      const url = info.url.trim() + `#${info.secretKey}`.trim();
-      $('#link').attr('value', url);
-      link.innerHTML = url;
-      localStorage.setItem(info.fileId, info.deleteToken);
-
-      // delete file
-      $popupText.find('.del-file').click(e => {
-        FileSender.delete(
-          info.fileId,
-          localStorage.getItem(info.fileId)
-        ).then(() => {
-          $(e.target).parents('tr').remove();
-          localStorage.removeItem(info.fileId);
-        })
-        .catch(err => { 
-          Raven.captureException(err);
-          return Promise.reject(err);
-        });
-      });
-
-      // show popup
-      del.addEventListener('click', toggleShow);
-      // hide popup
-      $popupText.find('.nvm').click(toggleShow);
-
-      $fileList.append(row); //add row to table
-      $('#page-one').hide();
-      $('#file-list').hide();
-      $('#upload-progress').hide();
-      $('#share-link').show();
-    })
-    .catch(err => {
-      Raven.captureException(err);
-      return Promise.reject(err);
+    $popupText.click(function(e) {
+      e.stopPropagation();
     });
+
+    $('tbody').append(row); //add row to table
 
     function toggleShow() {
       $popupText.toggleClass('show');
     }
-  };
-
-  window.allowDrop = function(ev) {
-    ev.preventDefault();
-  };
+  }
 });
