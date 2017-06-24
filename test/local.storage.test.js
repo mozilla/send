@@ -44,16 +44,18 @@ const storage = proxyquire('../server/storage', {
 describe('Testing Exists from local filesystem', function() {
   it('Exists returns true when file exists', function() {
     exists.callsArgWith(1, null, 1);
-    return storage.exists('test')
-                  .then(() => assert(1))
-                  .catch(err => assert.fail())
+    return storage
+      .exists('test')
+      .then(() => assert(1))
+      .catch(err => assert.fail());
   });
 
   it('Exists returns false when file does not exist', function() {
     exists.callsArgWith(1, null, 0);
-    return storage.exists('test')
-                  .then(() => assert.fail())
-                  .catch(err => assert(1))
+    return storage
+      .exists('test')
+      .then(() => assert.fail())
+      .catch(err => assert(1));
   });
 });
 

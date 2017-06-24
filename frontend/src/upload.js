@@ -97,8 +97,9 @@ $(document).ready(function() {
   function populateFileList(file) {
     try {
       file = JSON.parse(file);
+    } catch (e) {
+      return;
     }
-    catch (e) { return }
 
     const row = document.createElement('tr');
     const name = document.createElement('td');

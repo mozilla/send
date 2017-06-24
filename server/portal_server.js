@@ -45,9 +45,12 @@ app.get('/', (req, res) => {
 
 app.get('/exists/:id', (req, res) => {
   const id = req.params.id;
-  storage.exists(id).then(() => {
-    res.sendStatus(200);
-  }).catch(err => res.sendStatus(404));
+  storage
+    .exists(id)
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch(err => res.sendStatus(404));
 });
 
 app.get('/download/:id', (req, res) => {
