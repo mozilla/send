@@ -13,7 +13,8 @@ deployment:
     - docker build -t mozilla/fileshare:latest .
     - docker push mozilla/fileshare:latest
   tags:
-    tags: /.*/
+    tag: /.*/
+    owner: mozilla
     commands:
     - npm run predocker
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
