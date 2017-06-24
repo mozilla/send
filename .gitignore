@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
 public/bundle.js
+public/version.json
 static/*
 !static/info.txt

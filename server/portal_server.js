@@ -19,6 +19,8 @@ const mozlog = require('./log.js');
 
 const log = mozlog('portal.server');
 
+const STATIC_PATH = path.join(__dirname, '../public');
+
 const app = express();
 
 app.engine(
@@ -33,7 +35,7 @@ app.set('view engine', 'handlebars');
 app.use(helmet());
 app.use(busboy());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(STATIC_PATH));
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -162,6 +164,10 @@ app.get('/__lbheartbeat__', (req, res) => {
 
 app.get('/__heartbeat__', (req, res) => {
   storage.ping().then(() => res.sendStatus(200), () => res.sendStatus(500));
+});
+
+app.get('/__version__', (req, res) => {
+  res.sendFile(path.join(STATIC_PATH, 'version.json'));
 });
 
 app.listen(conf.listen_port, () => {
