@@ -1,4 +1,4 @@
-function ivToStr(iv) {
+function arrayToHex(iv) {
   let hexStr = '';
   for (const i in iv) {
     if (iv[i] < 16) {
@@ -11,8 +11,8 @@ function ivToStr(iv) {
   return hexStr;
 }
 
-function strToIv(str) {
-  const iv = new Uint8Array(12);
+function hexToArray(str) {
+  const iv = new Uint8Array(str.length / 2);
   for (let i = 0; i < str.length; i += 2) {
     iv[i / 2] = parseInt(str.charAt(i) + str.charAt(i + 1), 16);
   }
@@ -33,13 +33,8 @@ function notify(str) {
   }
 }
 
-function strToUintArr(str) {
-  return new Uint8Array(str.split(",").map(x => parseInt(x)));
-}
-
 module.exports = {
-  ivToStr,
-  strToIv,
-  notify,
-  strToUintArr
+  arrayToHex,
+  hexToArray,
+  notify
 };

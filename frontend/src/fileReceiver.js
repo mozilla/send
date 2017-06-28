@@ -1,12 +1,12 @@
 const EventEmitter = require('events');
-const { strToIv, strToUintArr } = require('./utils');
+const { hexToArray } = require('./utils');
 
 const Raven = window.Raven;
 
 class FileReceiver extends EventEmitter {
   constructor() {
     super();
-    this.salt = strToIv(location.pathname.slice(10, -1));
+    this.salt = hexToArray(location.pathname.slice(10, -1));
   }
 
   download() {
@@ -55,7 +55,7 @@ class FileReceiver extends EventEmitter {
         {
           kty: 'oct',
           k: location.hash.slice(1),
-          alg: 'A256GCM',
+          alg: 'A128GCM',
           ext: true
         },
         {
@@ -66,15 +66,13 @@ class FileReceiver extends EventEmitter {
       )
     ]).then(([fdata, key]) => {
       const salt = this.salt;
-      console.log(strToUintArr(fdata.aad));
-      
+
       return Promise.all([
         window.crypto.subtle.decrypt(
           {
             name: 'AES-GCM',
             iv: salt,
-            tagLength: 128,
-            additionalData: strToUintArr(fdata.aad)
+            additionalData: hexToArray(fdata.aad)
           },
           key,
           fdata.data

@@ -1,5 +1,5 @@
 const EventEmitter = require('events');
-const { ivToStr } = require('./utils');
+const { arrayToHex } = require('./utils');
 
 const Raven = window.Raven;
 
@@ -41,8 +41,7 @@ class FileSender extends EventEmitter {
       window.crypto.subtle.generateKey(
         {
           name: 'AES-GCM',
-          length: 256,
-          tagLength: 128
+          length: 128
         },
         true,
         ['encrypt', 'decrypt']
@@ -61,7 +60,6 @@ class FileSender extends EventEmitter {
             {
               name: 'AES-GCM',
               iv: this.iv,
-              tagLength: 128,
               additionalData: this.aad
             },
             secretKey,
@@ -73,13 +71,13 @@ class FileSender extends EventEmitter {
       .then(([encrypted, keydata]) => {
         return new Promise((resolve, reject) => {
           const file = this.file;
-          const fileId = ivToStr(this.iv);
+          const fileId = arrayToHex(this.iv);
           const dataView = new DataView(encrypted);
           const blob = new Blob([dataView], { type: file.type });
           const fd = new FormData();
           fd.append('fname', file.name);
           fd.append('data', blob, file.name);
-          fd.append('aad', this.aad);
+          fd.append('aad', arrayToHex(this.aad));
 
           const xhr = new XMLHttpRequest();
 
