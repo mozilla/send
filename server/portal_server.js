@@ -78,10 +78,10 @@ app.get('/assets/download/:id', (req, res) => {
     return;
   }
 
-  storage.metadata(id)
+  storage
+    .metadata(id)
     .then(meta => {
       storage.length(id).then(contentLength => {
-
         res.writeHead(200, {
           'Content-Disposition': 'attachment; filename=' + meta.filename,
           'Content-Type': 'application/octet-stream',
@@ -142,7 +142,7 @@ app.post('/upload/:id', (req, res, next) => {
     return;
   }
   const meta = JSON.parse(req.header('X-File-Metadata'));
-  log.info('meta', meta)
+  log.info('meta', meta);
   req.pipe(req.busboy);
 
   req.busboy.on('file', (fieldname, file, filename) => {
@@ -157,8 +157,6 @@ app.post('/upload/:id', (req, res, next) => {
       });
     });
   });
-
-
 });
 
 app.get('/__lbheartbeat__', (req, res) => {

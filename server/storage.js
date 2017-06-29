@@ -58,8 +58,8 @@ function metadata(id) {
       } else {
         reject(err);
       }
-    })
-  })
+    });
+  });
 }
 
 function filename(id) {
@@ -98,8 +98,8 @@ function aad(id) {
       } else {
         reject();
       }
-    })
-  })
+    });
+  });
 }
 
 function localLength(id) {

@@ -1,8 +1,6 @@
 const EventEmitter = require('events');
 const { hexToArray } = require('./utils');
 
-const Raven = window.Raven;
-
 class FileReceiver extends EventEmitter {
   constructor() {
     super();
@@ -34,7 +32,7 @@ class FileReceiver extends EventEmitter {
           const blob = new Blob([this.response]);
           const fileReader = new FileReader();
           fileReader.onload = function() {
-            const meta = JSON.parse(xhr.getResponseHeader('X-File-Metadata'))
+            const meta = JSON.parse(xhr.getResponseHeader('X-File-Metadata'));
             resolve({
               data: this.result,
               aad: meta.aad,

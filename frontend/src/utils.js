@@ -20,7 +20,6 @@ function hexToArray(str) {
   return iv;
 }
 
-
 function notify(str) {
   if (!('Notification' in window)) {
     return;

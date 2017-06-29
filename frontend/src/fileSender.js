@@ -38,14 +38,18 @@ class FileSender extends EventEmitter {
 
   upload() {
     return Promise.all([
-      window.crypto.subtle.generateKey(
-        {
-          name: 'AES-GCM',
-          length: 128
-        },
-        true,
-        ['encrypt', 'decrypt']
-      ).catch(err => console.log('There was an error generating a crypto key')),
+      window.crypto.subtle
+        .generateKey(
+          {
+            name: 'AES-GCM',
+            length: 128
+          },
+          true,
+          ['encrypt', 'decrypt']
+        )
+        .catch(err =>
+          console.log('There was an error generating a crypto key')
+        ),
       new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsArrayBuffer(this.file);
@@ -56,15 +60,17 @@ class FileSender extends EventEmitter {
     ])
       .then(([secretKey, plaintext]) => {
         return Promise.all([
-          window.crypto.subtle.encrypt(
-            {
-              name: 'AES-GCM',
-              iv: this.iv,
-              additionalData: this.aad
-            },
-            secretKey,
-            plaintext
-          ).catch(err => console.log('Error with encrypting.')),
+          window.crypto.subtle
+            .encrypt(
+              {
+                name: 'AES-GCM',
+                iv: this.iv,
+                additionalData: this.aad
+              },
+              secretKey,
+              plaintext
+            )
+            .catch(err => console.log('Error with encrypting.')),
           window.crypto.subtle.exportKey('jwk', secretKey)
         ]);
       })
@@ -100,7 +106,14 @@ class FileSender extends EventEmitter {
           };
 
           xhr.open('post', '/upload/' + fileId, true);
-          xhr.setRequestHeader('X-File-Metadata', JSON.stringify({ aad: arrayToHex(this.aad), iv: fileId, filename: file.name }))
+          xhr.setRequestHeader(
+            'X-File-Metadata',
+            JSON.stringify({
+              aad: arrayToHex(this.aad),
+              iv: fileId,
+              filename: file.name
+            })
+          );
           xhr.send(fd);
         });
       })
