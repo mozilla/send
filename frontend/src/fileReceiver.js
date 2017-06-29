@@ -34,12 +34,11 @@ class FileReceiver extends EventEmitter {
           const blob = new Blob([this.response]);
           const fileReader = new FileReader();
           fileReader.onload = function() {
+            const meta = JSON.parse(xhr.getResponseHeader('X-File-Metadata'))
             resolve({
               data: this.result,
-              aad: xhr.getResponseHeader('Additional-Data'),
-              fname: xhr
-                .getResponseHeader('Content-Disposition')
-                .match(/=(.+)/)[1]
+              aad: meta.aad,
+              filename: meta.filename
             });
           };
 
@@ -78,7 +77,7 @@ class FileReceiver extends EventEmitter {
           fdata.data
         ),
         new Promise((resolve, reject) => {
-          resolve(fdata.fname);
+          resolve(fdata.filename);
         })
       ]);
     });

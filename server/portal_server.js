@@ -78,17 +78,15 @@ app.get('/assets/download/:id', (req, res) => {
     return;
   }
 
-  Promise.all([
-    storage.filename(id),
-    storage.aad(id)])
-    .then(([reply, aad]) => {
+  storage.metadata(id)
+    .then(meta => {
       storage.length(id).then(contentLength => {
-        
+
         res.writeHead(200, {
-          'Content-Disposition': 'attachment; filename=' + reply,
+          'Content-Disposition': 'attachment; filename=' + meta.filename,
           'Content-Type': 'application/octet-stream',
           'Content-Length': contentLength,
-          'Additional-Data': aad
+          'X-File-Metadata': JSON.stringify(meta)
         });
         const file_stream = storage.get(id);
 
@@ -143,20 +141,20 @@ app.post('/upload/:id', (req, res, next) => {
     res.sendStatus(404);
     return;
   }
-
+  const meta = JSON.parse(req.header('X-File-Metadata'));
+  log.info('meta', meta)
   req.pipe(req.busboy);
-  
-  req.busboy.on('field', (fieldname, value) => {
-    storage.setField(req.params.id, fieldname, value);
-  })
 
   req.busboy.on('file', (fieldname, file, filename) => {
     log.info('Uploading:', req.params.id);
 
-    const protocol = conf.env === 'production' ? 'https' : req.protocol;
-    const url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
-    storage.set(req.params.id, file, filename, url).then(linkAndID => {
-      res.json(linkAndID);
+    storage.set(req.params.id, file, filename, meta).then(delete_token => {
+      const protocol = conf.env === 'production' ? 'https' : req.protocol;
+      const url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
+      res.json({
+        url,
+        delete: delete_token
+      });
     });
   });
 

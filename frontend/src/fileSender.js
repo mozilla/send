@@ -75,9 +75,7 @@ class FileSender extends EventEmitter {
           const dataView = new DataView(encrypted);
           const blob = new Blob([dataView], { type: file.type });
           const fd = new FormData();
-          fd.append('fname', file.name);
           fd.append('data', blob, file.name);
-          fd.append('aad', arrayToHex(this.aad));
 
           const xhr = new XMLHttpRequest();
 
@@ -102,6 +100,7 @@ class FileSender extends EventEmitter {
           };
 
           xhr.open('post', '/upload/' + fileId, true);
+          xhr.setRequestHeader('X-File-Metadata', JSON.stringify({ aad: arrayToHex(this.aad), iv: fileId, filename: file.name }))
           xhr.send(fd);
         });
       })

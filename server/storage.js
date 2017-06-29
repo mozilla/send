@@ -31,7 +31,8 @@ if (conf.s3_bucket) {
     setField: setField,
     delete: awsDelete,
     forceDelete: awsForceDelete,
-    ping: awsPing
+    ping: awsPing,
+    metadata
   };
 } else {
   module.exports = {
@@ -44,8 +45,21 @@ if (conf.s3_bucket) {
     setField: setField,
     delete: localDelete,
     forceDelete: localForceDelete,
-    ping: localPing
+    ping: localPing,
+    metadata
   };
+}
+
+function metadata(id) {
+  return new Promise((resolve, reject) => {
+    redis_client.hgetall(id, (err, reply) => {
+      if (!err) {
+        resolve(reply);
+      } else {
+        reject(err);
+      }
+    })
+  })
 }
 
 function filename(id) {
@@ -102,20 +116,16 @@ function localGet(id) {
   return fs.createReadStream(path.join(__dirname, '../static', id));
 }
 
-function localSet(id, file, filename, url) {
+function localSet(id, file, filename, meta) {
   return new Promise((resolve, reject) => {
     const fstream = fs.createWriteStream(path.join(__dirname, '../static', id));
     file.pipe(fstream);
-    fstream.on('close', () => {      
-      const uuid = crypto.randomBytes(10).toString('hex');
-
-      redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
+    fstream.on('close', () => {
+      meta.delete = crypto.randomBytes(10).toString('hex');
+      redis_client.hmset(id, meta);
       redis_client.expire(id, 86400000);
       log.info('localSet:', 'Upload Finished of ' + id);
-      resolve({
-        uuid: uuid,
-        url: url
-      });
+      resolve(meta.delete);
     });
 
     fstream.on('error', () => {
@@ -183,7 +193,7 @@ function awsGet(id) {
   }
 }
 
-function awsSet(id, file, filename, url) {
+function awsSet(id, file, filename, meta) {
   const params = {
     Bucket: conf.s3_bucket,
     Key: id,
@@ -196,16 +206,13 @@ function awsSet(id, file, filename, url) {
         log.info('awsUploadError:', err.stack); // an error occurred
         reject();
       } else {
-        const uuid = crypto.randomBytes(10).toString('hex');
+        meta.delete = crypto.randomBytes(10).toString('hex');
 
-        redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
+        redis_client.hmset(id, meta);
 
         redis_client.expire(id, 86400000);
         log.info('awsUploadFinish', 'Upload Finished of ' + filename);
-        resolve({
-          uuid: uuid,
-          url: url
-        });
+        resolve(meta.delete);
       }
     });
   });
