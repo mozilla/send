@@ -1,3 +1,46 @@
-* Install the redis server if not installed.
-* To run the project, make sure you have a redis server running locally: redis-server /usr/local/etc/redis.conf
-* Follow instructions inside the console on the browser.
+# Firefox Fileshare
+
+[![CircleCI](https://circleci.com/gh/mozilla/something-awesome.svg?style=svg)](https://circleci.com/gh/mozilla/something-awesome)
+
+## What it does
+
+A P2P file sharing experiment which allows you to send encrypted files to other users.
+
+## Requirements
+
+- [Node.js 8+](https://nodejs.org/)
+- [Redis server](https://redis.io/)
+
+**NOTE:** To run the project, make sure you have a Redis server running locally: 
+
+```sh
+$ redis-server /usr/local/etc/redis.conf
+```
+
+## How to use it
+
+| Command          | Description |
+|------------------|-------------|
+| `npm run dev`    | Builds and starts the web server locally for development.
+| `npm run format` | Formats the frontend and server code using **prettier**.
+| `npm run lint`   | Lints the CSS and JavaScript code.
+| `npm start`      | Starts the Express web server.
+| `npm test`       | Runs the suite of mocha tests.
+
+## Localization
+
+_Coming soon_ (see [#57](https://github.com/mozilla/something-awesome/issues/57))
+
+## Contributing
+
+Pull requests are always welcome! Feel free to check out the list of ["good first bugs"](https://github.com/mozilla/something-awesome/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+bug%22).
+
+## Testing:
+
+- Production: _Coming soon_ (see [#20](https://github.com/mozilla/something-awesome/issues/20))
+- Stage: https://fileshare.stage.mozaws.net/
+- Development: https://p2p.dev.lcip.org/
+
+## License
+
+[Mozilla Public License Version 2.0](LICENSE)
