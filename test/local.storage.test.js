@@ -122,10 +122,9 @@ describe('Testing Set to local filesystem', function() {
     fsStub.createWriteStream.returns({ on: stub });
 
     return storage
-      .set('test', { pipe: sinon.stub() }, 'Filename.moz', 'moz.la')
-      .then(reply => {
-        assert(reply.uuid);
-        assert.equal(reply.url, 'moz.la');
+      .set('test', { pipe: sinon.stub() }, 'Filename.moz', {})
+      .then(deleteKey => {
+        assert(deleteKey);
       })
       .catch(err => assert.fail());
   });
