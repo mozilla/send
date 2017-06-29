@@ -55,7 +55,7 @@ $(document).ready(function() {
     } else {
       file = event.target.files[0];
     }
-    let expiration = 24*60*60*1000; //will eventually come from a field
+    const expiration = 24 * 60 * 60 * 1000; //will eventually come from a field
 
     const fileSender = new FileSender(file);
     fileSender.on('progress', percentComplete => {
@@ -100,12 +100,12 @@ $(document).ready(function() {
   function checkExistence(id, populate) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
-      if (xhr.readyState === XMLHttpRequest.DONE){
-        if (xhr.status == 200) {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
           if (populate) {
             populateFileList(localStorage.getItem(id));
           }
-        } else if (xhr.status == 404){
+        } else if (xhr.status === 404) {
           localStorage.removeItem(id);
         }
       }
@@ -140,17 +140,17 @@ $(document).ready(function() {
     btn.classList.add('delete-btn');
 
     link.innerHTML = file.url.trim() + `#${file.secretKey}`.trim();
-    //file.expiry = new Date(file.expiry);
+    
     file.creationDate = new Date(file.creationDate);
 
-    let future = new Date();
+    const future = new Date();
     future.setTime(file.creationDate.getTime() + file.expiry);
 
     let countdown = 0;
-    countdown = future.getTime() - (new Date().getTime());
-    let minutes = Math.floor(countdown/1000/60);
-    let hours = Math.floor(minutes/60);
-    let seconds = Math.floor((countdown/1000)%60);
+    countdown = future.getTime() - new Date().getTime();
+    let minutes = Math.floor(countdown / 1000 / 60);
+    let hours = Math.floor(minutes / 60);
+    let seconds = Math.floor(countdown / 1000 % 60);
 
     if (hours > 0) {
       expiry.innerHTML = hours + 'h';
@@ -158,7 +158,7 @@ $(document).ready(function() {
         poll();
         expiry.innerHTML = hours + 'h';
       }, 3600000);
-    } else if (hours == 0){
+    } else if (hours === 0) {
       expiry.innerHTML = minutes + 'm' + seconds + 's';
       window.setInterval(() => {
         poll();
@@ -167,13 +167,13 @@ $(document).ready(function() {
     }
 
     function poll() {
-      countdown = future.getTime() - (new Date().getTime());
-      minutes = Math.floor(countdown/1000/60);
-      hours = Math.floor(minutes/60);
-      seconds = Math.floor((countdown/1000)%60);
+      countdown = future.getTime() - new Date().getTime();
+      minutes = Math.floor(countdown / 1000 / 60);
+      hours = Math.floor(minutes / 60);
+      seconds = Math.floor(countdown / 1000 % 60);
 
       //remove from list when expired
-      if (hours == 0 && minutes == 0 && seconds == 0){
+      if (hours === 0 && minutes === 0 && seconds === 0) {
         localStorage.removeItem(file.fileId);
         $(expiry).parents('tr').remove();
       }
