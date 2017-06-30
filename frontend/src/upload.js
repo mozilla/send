@@ -15,7 +15,8 @@ $(document).ready(function() {
 
   for (let i = 0; i < localStorage.length; i++) {
     const id = localStorage.key(i);
-    populateFileList(localStorage.getItem(id));
+    //check if file exists before adding to list
+    checkExistence(id, true);
   }
 
   // copy link to clipboard
@@ -54,6 +55,7 @@ $(document).ready(function() {
     } else {
       file = event.target.files[0];
     }
+    const expiration = 2 * 60 * 1000; //will eventually come from a field
 
     const fileSender = new FileSender(file);
     fileSender.on('progress', percentComplete => {
@@ -75,7 +77,9 @@ $(document).ready(function() {
         fileId: info.fileId,
         url: info.url,
         secretKey: info.secretKey,
-        deleteToken: info.deleteToken
+        deleteToken: info.deleteToken,
+        creationDate: new Date(),
+        expiry: expiration
       };
       localStorage.setItem(info.fileId, JSON.stringify(fileData));
 
@@ -92,6 +96,23 @@ $(document).ready(function() {
   window.allowDrop = function(ev) {
     ev.preventDefault();
   };
+
+  function checkExistence(id, populate) {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          if (populate) {
+            populateFileList(localStorage.getItem(id));
+          }
+        } else if (xhr.status === 404) {
+          localStorage.removeItem(id);
+        }
+      }
+    };
+    xhr.open('get', '/exists/' + id, true);
+    xhr.send();
+  }
 
   //update file table with current files in localStorage
   function populateFileList(file) {
@@ -117,7 +138,52 @@ $(document).ready(function() {
     // create delete button
     btn.innerHTML = 'x';
     btn.classList.add('delete-btn');
+
     link.innerHTML = file.url.trim() + `#${file.secretKey}`.trim();
+
+    file.creationDate = new Date(file.creationDate);
+
+    const future = new Date();
+    future.setTime(file.creationDate.getTime() + file.expiry);
+
+    let countdown = 0;
+    countdown = future.getTime() - new Date().getTime();
+    let minutes = Math.floor(countdown / 1000 / 60);
+    let hours = Math.floor(minutes / 60);
+    let seconds = Math.floor(countdown / 1000 % 60);
+
+    poll();
+
+    function poll() {
+      countdown = future.getTime() - new Date().getTime();
+      minutes = Math.floor(countdown / 1000 / 60);
+      hours = Math.floor(minutes / 60);
+      seconds = Math.floor(countdown / 1000 % 60);
+      let t;
+
+      if (hours > 1) {
+        expiry.innerHTML = hours + 'h';
+        t = window.setTimeout(() => {
+          poll();
+        }, 3600000);
+      } else if (hours === 1) {
+        expiry.innerHTML = hours + 'h';
+        t = window.setTimeout(() => {
+          poll();
+        }, 60000);
+      } else if (hours === 0) {
+        expiry.innerHTML = minutes + 'm' + seconds + 's';
+        t = window.setTimeout(() => {
+          poll();
+        }, 1000);
+      }
+      //remove from list when expired
+      if (countdown <= 0) {
+        localStorage.removeItem(file.fileId);
+        $(expiry).parents('tr').remove();
+        window.clearTimeout(t);
+      }
+    }
 
     // create popup
     popupDiv.classList.add('popup');

@@ -1,6 +1,6 @@
 const conf = require('./config.js');
 
-const isProduction = conf.env === 'production'
+const isProduction = conf.env === 'production';
 
 const mozlog = require('mozlog')({
   app: 'FirefoxFileshare',
