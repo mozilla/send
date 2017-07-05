@@ -44,6 +44,11 @@ app.get('/', (req, res) => {
 
 app.get('/exists/:id', (req, res) => {
   const id = req.params.id;
+  if (!validateID(id)) {
+    res.sendStatus(404);
+    return;
+  }
+
   storage
     .exists(id)
     .then(() => {
@@ -54,6 +59,11 @@ app.get('/exists/:id', (req, res) => {
 
 app.get('/download/:id', (req, res) => {
   const id = req.params.id;
+  if (!validateID(id)) {
+    res.sendStatus(404);
+    return;
+  }
+
   storage.filename(id).then(filename => {
     storage
       .length(id)
