@@ -113,6 +113,8 @@ app.get('/assets/download/:id', (req, res) => {
         });
 
         file_stream.pipe(res);
+      }).catch(err => {
+        res.sendStatus(404);
       });
     })
     .catch(err => {

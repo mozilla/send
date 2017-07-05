@@ -2,7 +2,6 @@ const FileReceiver = require('./fileReceiver');
 const { notify } = require('./utils');
 const $ = require('jquery');
 
-const Raven = window.Raven;
 
 $(document).ready(function() {
   $('#download-progress').hide();
@@ -36,15 +35,6 @@ $(document).ready(function() {
 
     fileReceiver
       .download()
-      .catch(() => {
-        $('.title').text(
-          'This link has expired or never existed in the first place.'
-        );
-        $('#download-btn').hide();
-        $('#expired-img').show();
-        console.log('The file has expired, or has already been deleted.');
-        return;
-      })
       .then(([decrypted, fname]) => {
         name.innerText = fname;
         const dataView = new DataView(decrypted);
@@ -63,9 +53,15 @@ $(document).ready(function() {
         a.click();
       })
       .catch(err => {
-        Raven.captureException(err);
+        fileReceiver.removeAllListeners('progress');
+        $('.title').text(
+          'This link has expired or never existed in the first place.'
+        );
+        $('#download-btn').hide();
+        $('#expired-img').show();
+        console.log('The file has expired, or has already been deleted.');
         return Promise.reject(err);
-      });
+      })
   };
 
   window.download = download;
