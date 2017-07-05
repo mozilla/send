@@ -16,12 +16,13 @@
     "urls": {
       "prod": "https://fileshare.stage.mozaws.net/",
       "stage": "https://fileshare.stage.mozaws.net/",
-      "dev": "https://p2p.dev.lcip.org/"
+      "dev": "https://fileshare.dev.mozaws.net/"
     },
   "keywords": [
     "JavaScript",
     "jQuery",
     "Node",
-    "P2P"
+    "P2P",
+    "Redis"
   ]
 }
