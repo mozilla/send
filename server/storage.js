@@ -29,7 +29,9 @@ if (conf.s3_bucket) {
     set: awsSet,
     delete: awsDelete,
     forceDelete: awsForceDelete,
-    ping: awsPing
+    ping: awsPing,
+    flushall: flushall,
+    quit: quit
   };
 } else {
   module.exports = {
@@ -40,7 +42,9 @@ if (conf.s3_bucket) {
     set: localSet,
     delete: localDelete,
     forceDelete: localForceDelete,
-    ping: localPing
+    ping: localPing,
+    flushall: flushall,
+    quit: quit
   };
 }
 
@@ -66,6 +70,14 @@ function exists(id) {
       }
     });
   });
+}
+
+function flushall() {
+  redis_client.flushdb();
+}
+
+function quit() {
+  redis_client.quit();
 }
 
 function localLength(id) {
