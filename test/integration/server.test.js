@@ -2,7 +2,6 @@ const assert = require('assert');
 const sinon = require('sinon');
 const proxyquire = require('proxyquire');
 const request = require('supertest');
-const FormData = require('form-data');
 const fs = require('fs');
 
 
@@ -10,11 +9,13 @@ const logStub = {};
 logStub.info = sinon.stub();
 logStub.error = sinon.stub();
 
-let storage = proxyquire('../../server/storage', {
+const storage = proxyquire('../../server/storage', {
   './log.js': function() {
     return logStub;
   }
 });
+
+storage.flushall();
 
 describe('Server integration tests', function() {
   let server;
@@ -22,7 +23,7 @@ describe('Server integration tests', function() {
   let uuid;
 
   before(function() {
-    let app = proxyquire('../../server/portal_server', {
+    const app = proxyquire('../../server/portal_server', {
       './log.js': function() {
         return logStub;
       }
@@ -55,13 +56,17 @@ describe('Server integration tests', function() {
            .expect(404)
   })
 
-  it('Accepts a file and stores it when properly uploaded', function() {
-    return upload().then(res => {
+  it('Accepts a file and stores it when properly uploaded', function(done) {
+    upload().then(res => {
                      assert(res.body.hasOwnProperty('uuid'));
                      uuid = res.body.uuid;
                      assert(res.body.hasOwnProperty('url'));
-                     fs.exists('./static/11111111111111111111111111111111', exists => {
-                       exists ? assert(1) : assert.fail();
+                     fs.access('./static/11111111111111111111111111111111', fs.constants.F_OK, err => {
+                       if (err) {
+                         done(new Error('The file does not exist'));
+                       } else {
+                         done();
+                       }
                      })
                    })
   })
@@ -88,13 +93,17 @@ describe('Server integration tests', function() {
                   .expect(404);
   })
 
-  it('Successfully deletes if the id is valid and the delete token matches', function() {
-    return request(server).post('/delete/11111111111111111111111111111111')
+  it('Successfully deletes if the id is valid and the delete token matches', function(done) {
+    request(server).post('/delete/11111111111111111111111111111111')
                   .send({ delete_token: uuid })
                   .expect(200)
-                  .then(res => {
-                    fs.exists('./static/11111111111111111111111111111111', exists => {
-                      exists ? assert.fail() : assert(1);
+                  .then(() => {
+                    fs.access('./static/11111111111111111111111111111111', fs.constants.F_OK, err => {
+                      if (err) {
+                        done();
+                      } else {
+                        done(new Error('The file does not exist'));
+                      }
                     })
                   })
   })
@@ -104,13 +113,17 @@ describe('Server integration tests', function() {
                           .expect(404)
   })
 
-  it('Uploads properly after a delete', function() {
-    return upload().then(res => {
+  it('Uploads properly after a delete', function(done) {
+    upload().then(res => {
                       assert(res.body.hasOwnProperty('uuid'));
                       uuid = res.body.uuid;
                       assert(res.body.hasOwnProperty('url'));
-                      fs.exists('./static/11111111111111111111111111111111', exists => {
-                        exists ? assert(1) : assert.fail();
+                      fs.access('./static/11111111111111111111111111111111', fs.constants.F_OK, err => {
+                        if (err) {
+                          done(new Error('The file does not exist'));
+                        } else {
+                          done();
+                        }
                       })
                     })
   })
