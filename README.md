@@ -11,7 +11,7 @@ A P2P file sharing experiment which allows you to send encrypted files to other 
 - [Node.js 8+](https://nodejs.org/)
 - [Redis server](https://redis.io/)
 
-**NOTE:** To run the project, make sure you have a Redis server running locally: 
+**NOTE:** To run the project, make sure you have a Redis server running locally:
 
 ```sh
 $ redis-server /usr/local/etc/redis.conf
@@ -35,11 +35,13 @@ _Coming soon_ (see [#57](https://github.com/mozilla/something-awesome/issues/57)
 
 Pull requests are always welcome! Feel free to check out the list of ["good first bugs"](https://github.com/mozilla/something-awesome/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+bug%22).
 
-## Testing:
+## Testing
 
-- Production: _Coming soon_ (see [#20](https://github.com/mozilla/something-awesome/issues/20))
-- Stage: https://fileshare.stage.mozaws.net/
-- Development: https://p2p.dev.lcip.org/
+| ENVIRONMENT | URL
+|-------------|-----
+| Production  | _Coming soon_ (see [#20](https://github.com/mozilla/something-awesome/issues/20))
+| Stage       | <https://fileshare.stage.mozaws.net/>
+| Development | <https://fileshare.dev.mozaws.net/>
 
 ## License
 
