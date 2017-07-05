@@ -128,7 +128,6 @@ describe('Server integration tests', function() {
                             assert(res.header.hasOwnProperty('content-length'))
                             assert.equal(res.header['content-disposition'], 'attachment; filename=test_upload.txt')
                             assert.equal(res.header['content-type'], 'application/octet-stream')
-                            assert.equal(res.header['content-length'], fs.statSync('./static/11111111111111111111111111111111').size)
                           })
   })
 
