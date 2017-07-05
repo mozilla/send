@@ -13,10 +13,14 @@ $(document).ready(function() {
   $('#upload-progress').hide();
   $('#share-link').hide();
 
-  for (let i = 0; i < localStorage.length; i++) {
-    const id = localStorage.key(i);
-    //check if file exists before adding to list
-    checkExistence(id, true);
+  if (localStorage.length === 0) {
+    toggleHeader();
+  } else {
+    for (let i = 0; i < localStorage.length; i++) {
+      const id = localStorage.key(i);
+      //check if file exists before adding to list
+      checkExistence(id, true);
+    }
   }
 
   // copy link to clipboard
@@ -55,7 +59,7 @@ $(document).ready(function() {
     } else {
       file = event.target.files[0];
     }
-    const expiration = 2 * 60 * 1000; //will eventually come from a field
+    const expiration = 24 * 60 * 60 * 1000; //will eventually come from a field
 
     const fileSender = new FileSender(file);
     fileSender.on('progress', percentComplete => {
@@ -196,6 +200,7 @@ $(document).ready(function() {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
         $(e.target).parents('tr').remove();
         localStorage.removeItem(file.fileId);
+        toggleHeader();
       });
     });
 
@@ -223,6 +228,15 @@ $(document).ready(function() {
 
     function toggleShow() {
       $popupText.toggleClass('show');
+    }
+    toggleHeader();
+  }
+  function toggleHeader() {
+    //hide table header if empty list
+    if (document.querySelector('tbody').childNodes.length === 1) {
+      $('#file-list').hide();
+    } else {
+      $('#file-list').show();
     }
   }
 });
