@@ -96,6 +96,14 @@ td {
   vertical-align: top;
 }
 
+table {
+  table-layout: fixed;
+}
+
+tbody {
+  word-wrap: break-word;
+}
+
 #uploaded-files {
   width: 472px;
   margin: 10px auto;
