@@ -39,9 +39,9 @@ Pull requests are always welcome! Feel free to check out the list of ["good firs
 
 | ENVIRONMENT | URL
 |-------------|-----
-| Production  | _Coming soon_ (see [#20](https://github.com/mozilla/something-awesome/issues/20))
-| Stage       | <https://fileshare.stage.mozaws.net/>
-| Development | <https://fileshare.dev.mozaws.net/>
+| Production  | <https://send.firefox.com/>
+| Stage       | <https://send.stage.mozaws.net/>
+| Development | <https://send.dev.mozaws.net/>
 
 ## License
 
