@@ -18,6 +18,7 @@ const redis_client = redis.createClient({
 
 redis_client.on('error', err => {
   log.info('Redis:', err);
+  process.exit(-1);
 });
 
 if (conf.s3_bucket) {
