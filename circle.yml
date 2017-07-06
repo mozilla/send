@@ -10,16 +10,16 @@ deployment:
     commands:
     - npm run predocker
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-    - docker build -t mozilla/fileshare:latest .
-    - docker push mozilla/fileshare:latest
+    - docker build -t mozilla/send:latest .
+    - docker push mozilla/send:latest
   tags:
     tag: /.*/
     owner: mozilla
     commands:
     - npm run predocker
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-    - docker build -t mozilla/fileshare:$CIRCLE_TAG .
-    - docker push mozilla/fileshare:$CIRCLE_TAG
+    - docker build -t mozilla/send:$CIRCLE_TAG .
+    - docker push mozilla/send:$CIRCLE_TAG
 
 test:
   override:
