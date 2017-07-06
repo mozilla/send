@@ -12,6 +12,7 @@ $(document).ready(function() {
   $('#file-list').show();
   $('#upload-progress').hide();
   $('#share-link').hide();
+  $('#upload-error').hide();
 
   if (localStorage.length === 0) {
     toggleHeader();
@@ -46,6 +47,7 @@ $(document).ready(function() {
     $('#file-list').show();
     $('#upload-progress').hide();
     $('#share-link').hide();
+    $('#upload-error').hide();
     $copyBtn.attr('disabled', false);
     $copyBtn.html('Copy');
   });
@@ -66,6 +68,7 @@ $(document).ready(function() {
       $('#page-one').hide();
       $('#file-list').hide();
       $('#upload-progress').show();
+      $('#upload-error').hide();
       $('#upload-filename').innerHTML += file.name;
       // update progress bar
       document
@@ -73,28 +76,36 @@ $(document).ready(function() {
         .style.setProperty('--progress', percentComplete + '%');
       $('#progress-text').html(`${percentComplete}%`);
     });
-    fileSender.upload().then(info => {
-      const url = info.url.trim() + `#${info.secretKey}`.trim();
-      $('#link').attr('value', url);
-      const fileData = {
-        name: file.name,
-        fileId: info.fileId,
-        url: info.url,
-        secretKey: info.secretKey,
-        deleteToken: info.deleteToken,
-        creationDate: new Date(),
-        expiry: expiration
-      };
-      localStorage.setItem(info.fileId, JSON.stringify(fileData));
+    fileSender
+      .upload()
+      .then(info => {
+        const url = info.url.trim() + `#${info.secretKey}`.trim();
+        $('#link').attr('value', url);
+        const fileData = {
+          name: file.name,
+          fileId: info.fileId,
+          url: info.url,
+          secretKey: info.secretKey,
+          deleteToken: info.deleteToken,
+          creationDate: new Date(),
+          expiry: expiration
+        };
+        localStorage.setItem(info.fileId, JSON.stringify(fileData));
 
-      $('#page-one').hide();
-      $('#file-list').hide();
-      $('#upload-progress').hide();
-      $('#share-link').show();
+        $('#page-one').hide();
+        $('#file-list').hide();
+        $('#upload-progress').hide();
+        $('#share-link').show();
+        $('#upload-error').hide();
 
-      populateFileList(JSON.stringify(fileData));
-      notify('Your upload has finished.');
-    });
+        populateFileList(JSON.stringify(fileData));
+        notify('Your upload has finished.');
+      })
+      .catch(err => {
+        console.log('Upload error name: ' + err);
+        $('#page-one').hide();
+        $('#upload-error').show();
+      });
   };
 
   window.allowDrop = function(ev) {
