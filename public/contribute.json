@@ -1,5 +1,5 @@
 {
-  "name": "portal-alpha",
+  "name": "firefox-send",
   "description": "File Sharing Experiment",
   "repository": {
     "url": "https://github.com/mozilla/something-awesome/",
@@ -14,9 +14,9 @@
       "report": "https://github.com/mozilla/something-awesome/issues/new"
     },
     "urls": {
-      "prod": "https://fileshare.stage.mozaws.net/",
-      "stage": "https://fileshare.stage.mozaws.net/",
-      "dev": "https://fileshare.dev.mozaws.net/"
+      "prod": "https://send.firefox.com/",
+      "stage": "https://send.stage.mozaws.net/",
+      "dev": "https://send.dev.mozaws.net/"
     },
   "keywords": [
     "JavaScript",
