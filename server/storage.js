@@ -118,18 +118,20 @@ function localGet(id) {
 
 function localSet(id, file, filename, meta) {
   return new Promise((resolve, reject) => {
-    const fstream = fs.createWriteStream(path.join(__dirname, '../static', id));
+    const new_id = crypto.randomBytes(5).toString('hex');
+    const fstream = fs.createWriteStream(path.join(__dirname, '../static', new_id));
     file.pipe(fstream);
     fstream.on('close', () => {
       meta.delete = crypto.randomBytes(10).toString('hex');
-      redis_client.hmset(id, meta);
+      meta.id = id;
+      redis_client.hmset(new_id, meta);
       redis_client.expire(id, 86400000);
-      log.info('localSet:', 'Upload Finished of ' + id);
-      resolve(meta.delete);
+      log.info('localSet:', 'Upload Finished of ' + new_id);
+      resolve([meta.delete, new_id]);
     });
 
     fstream.on('error', () => {
-      log.error('localSet:', 'Failed upload of ' + id);
+      log.error('localSet:', 'Failed upload of ' + new_id);
       reject();
     });
   });
@@ -194,9 +196,10 @@ function awsGet(id) {
 }
 
 function awsSet(id, file, filename, meta) {
+  const new_id = crypto.randomBytes(5).toString('hex');
   const params = {
     Bucket: conf.s3_bucket,
-    Key: id,
+    Key: new_id,
     Body: file
   };
 
@@ -207,12 +210,12 @@ function awsSet(id, file, filename, meta) {
         reject();
       } else {
         meta.delete = crypto.randomBytes(10).toString('hex');
-
-        redis_client.hmset(id, meta);
+        meta.id = id;
+        redis_client.hmset(new_id, meta);
 
         redis_client.expire(id, 86400000);
         log.info('awsUploadFinish', 'Upload Finished of ' + filename);
-        resolve(meta.delete);
+        resolve([meta.delete, new_id]);
       }
     });
   });

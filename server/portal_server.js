@@ -137,7 +137,7 @@ app.post('/delete/:id', (req, res) => {
 });
 
 app.post('/upload/:id', (req, res, next) => {
-  if (!validateID(req.params.id)) {
+  if (!validateIV(req.params.id)) {
     res.sendStatus(404);
     return;
   }
@@ -148,9 +148,9 @@ app.post('/upload/:id', (req, res, next) => {
   req.busboy.on('file', (fieldname, file, filename) => {
     log.info('Uploading:', req.params.id);
 
-    storage.set(req.params.id, file, filename, meta).then(delete_token => {
+    storage.set(req.params.id, file, filename, meta).then(([delete_token, new_id]) => {
       const protocol = conf.env === 'production' ? 'https' : req.protocol;
-      const url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
+      const url = `${protocol}://${req.get('host')}/download/${new_id}/`;
       res.json({
         url,
         delete: delete_token
@@ -176,5 +176,9 @@ app.listen(conf.listen_port, () => {
 });
 
 const validateID = route_id => {
+  return route_id.match(/^[0-9a-fA-F]{10}$/) !== null;
+};
+
+const validateIV = route_id => {
   return route_id.match(/^[0-9a-fA-F]{24}$/) !== null;
 };

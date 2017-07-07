@@ -36,7 +36,8 @@ class FileReceiver extends EventEmitter {
             resolve({
               data: this.result,
               aad: meta.aad,
-              filename: meta.filename
+              filename: meta.filename,
+              iv: meta.iv
             });
           };
 
@@ -62,13 +63,11 @@ class FileReceiver extends EventEmitter {
         ['encrypt', 'decrypt']
       )
     ]).then(([fdata, key]) => {
-      const salt = this.salt;
-
       return Promise.all([
         window.crypto.subtle.decrypt(
           {
             name: 'AES-GCM',
-            iv: salt,
+            iv: hexToArray(fdata.iv),
             additionalData: hexToArray(fdata.aad)
           },
           key,
