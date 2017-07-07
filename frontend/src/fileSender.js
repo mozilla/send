@@ -51,8 +51,8 @@ class FileSender extends EventEmitter {
         reader.onload = function(event) {
           resolve(new Uint8Array(this.result));
         };
-        reader.onerror = function(event) {
-          reject(event.explicitOriginalTarget.error.name);
+        reader.onerror = function(err) {
+          reject(err);
         };
       })
     ])

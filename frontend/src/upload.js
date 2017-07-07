@@ -2,6 +2,8 @@ const FileSender = require('./fileSender');
 const { notify } = require('./utils');
 const $ = require('jquery');
 
+const Raven = window.Raven;
+
 $(document).ready(function() {
   // reset copy button
   const $copyBtn = $('#copy-btn');
@@ -102,7 +104,7 @@ $(document).ready(function() {
         notify('Your upload has finished.');
       })
       .catch(err => {
-        console.log('Upload error name: ' + err);
+        Raven.captureException(err);
         $('#page-one').hide();
         $('#upload-error').show();
       });
