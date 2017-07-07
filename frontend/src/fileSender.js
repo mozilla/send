@@ -65,7 +65,8 @@ class FileSender extends EventEmitter {
               {
                 name: 'AES-GCM',
                 iv: this.iv,
-                additionalData: this.aad
+                additionalData: this.aad,
+                tagLength: 128
               },
               secretKey,
               plaintext
