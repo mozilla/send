@@ -68,17 +68,38 @@ class FileReceiver extends EventEmitter {
           {
             name: 'AES-GCM',
             iv: hexToArray(fdata.iv),
-            additionalData: hexToArray(fdata.aad),
-            tagLength: 128
+            additionalData: hexToArray(fdata.aad)
           },
           key,
           fdata.data
         ),
         new Promise((resolve, reject) => {
           resolve(fdata.filename);
+        }),
+        new Promise((resolve, reject) => {
+          resolve(hexToArray(fdata.aad));
         })
       ]);
-    });
+    }).then(([decrypted, fname, proposedHash]) => {
+      return window.crypto.subtle.digest('SHA-256', decrypted).then(calculatedHash => {
+        const integrity = new Uint8Array(calculatedHash).toString() === proposedHash.toString();
+        if (!integrity) {
+          return new Promise((resolve, reject) => {
+            console.log('This file has been tampered with.')
+            reject();
+          })
+        }
+        
+        return Promise.all([
+          new Promise((resolve, reject) => {
+            resolve(decrypted);
+          }),
+          new Promise((resolve, reject) => {
+            resolve(fname);
+          })
+        ]);
+      })
+    })
   }
 }
 

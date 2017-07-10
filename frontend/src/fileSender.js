@@ -8,7 +8,6 @@ class FileSender extends EventEmitter {
     super();
     this.file = file;
     this.iv = window.crypto.getRandomValues(new Uint8Array(12));
-    this.aad = window.crypto.getRandomValues(new Uint8Array(6));
   }
 
   static delete(fileId, token) {
@@ -54,28 +53,32 @@ class FileSender extends EventEmitter {
         const reader = new FileReader();
         reader.readAsArrayBuffer(this.file);
         reader.onload = function(event) {
-          resolve(new Uint8Array(this.result));
+          const plaintext = new Uint8Array(this.result);
+          window.crypto.subtle.digest('SHA-256', plaintext).then(hash => {
+            resolve({plaintext: plaintext, hash: new Uint8Array(hash)});
+          })
         };
       })
     ])
-      .then(([secretKey, plaintext]) => {
+      .then(([secretKey, file]) => {
         return Promise.all([
           window.crypto.subtle
             .encrypt(
               {
                 name: 'AES-GCM',
                 iv: this.iv,
-                additionalData: this.aad,
+                additionalData: file.hash,
                 tagLength: 128
               },
               secretKey,
-              plaintext
+              file.plaintext
             )
             .catch(err => console.log('Error with encrypting.')),
-          window.crypto.subtle.exportKey('jwk', secretKey)
+          window.crypto.subtle.exportKey('jwk', secretKey),
+          new Promise((resolve, reject) => { resolve(file.hash) })
         ]);
       })
-      .then(([encrypted, keydata]) => {
+      .then(([encrypted, keydata, hash]) => {
         return new Promise((resolve, reject) => {
           const file = this.file;
           const fileId = arrayToHex(this.iv);
@@ -110,7 +113,7 @@ class FileSender extends EventEmitter {
           xhr.setRequestHeader(
             'X-File-Metadata',
             JSON.stringify({
-              aad: arrayToHex(this.aad),
+              aad: arrayToHex(hash),
               iv: fileId,
               filename: file.name
             })
