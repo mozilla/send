@@ -4,7 +4,6 @@ const { hexToArray } = require('./utils');
 class FileReceiver extends EventEmitter {
   constructor() {
     super();
-    this.salt = hexToArray(location.pathname.slice(10, -1));
   }
 
   download() {
@@ -37,7 +36,7 @@ class FileReceiver extends EventEmitter {
               data: this.result,
               aad: meta.aad,
               filename: meta.filename,
-              iv: meta.iv
+              iv: meta.id
             });
           };
 

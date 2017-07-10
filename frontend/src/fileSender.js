@@ -72,8 +72,7 @@ class FileSender extends EventEmitter {
               },
               secretKey,
               file.plaintext
-            )
-            .catch(err => console.log('Error with encrypting.')),
+            ),
           window.crypto.subtle.exportKey('jwk', secretKey),
           new Promise((resolve, reject) => { resolve(file.hash) })
         ]);
@@ -114,7 +113,7 @@ class FileSender extends EventEmitter {
             'X-File-Metadata',
             JSON.stringify({
               aad: arrayToHex(hash),
-              iv: fileId,
+              id: fileId,
               filename: file.name
             })
           );

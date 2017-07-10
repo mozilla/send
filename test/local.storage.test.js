@@ -122,7 +122,7 @@ describe('Testing Set to local filesystem', function() {
     fsStub.createWriteStream.returns({ on: stub });
 
     return storage
-      .set('test', 'test', { pipe: sinon.stub() }, 'Filename.moz', {})
+      .set('test', { pipe: sinon.stub() }, 'Filename.moz', {})
       .then(() => {
         assert(1);
       })
