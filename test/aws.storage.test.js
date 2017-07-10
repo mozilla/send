@@ -112,11 +112,8 @@ describe('Testing Set using aws', function() {
     sinon.stub(crypto, 'randomBytes').returns(buf);
     s3Stub.upload.callsArgWith(1, null, {});
     return storage
-      .set('123', {}, 'Filename.moz', {})
-      .then(([deleteKey, id]) => {
-        assert.equal(deleteKey, buf.toString('hex'));
-        assert.notEqual(id, null);
-        assert.notEqual(deleteKey, null);
+      .set('123', '123', {}, 'Filename.moz', {})
+      .then(() => {
         assert(expire.calledOnce);
         assert(expire.calledWith('123', 86400000));
       })

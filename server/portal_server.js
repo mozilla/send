@@ -139,7 +139,7 @@ app.post('/delete/:id', (req, res) => {
 
 app.post('/upload', (req, res, next) => {
   const newId = crypto.randomBytes(5).toString('hex');
-  let meta = JSON.parse(req.header('X-File-Metadata'));
+  const meta = JSON.parse(req.header('X-File-Metadata'));
   meta.delete = crypto.randomBytes(10).toString('hex');
   log.info('meta', meta);
   req.pipe(req.busboy);
@@ -177,8 +177,4 @@ app.listen(conf.listen_port, () => {
 
 const validateID = route_id => {
   return route_id.match(/^[0-9a-fA-F]{10}$/) !== null;
-};
-
-const validateIV = route_id => {
-  return route_id.match(/^[0-9a-fA-F]{24}$/) !== null;
 };
