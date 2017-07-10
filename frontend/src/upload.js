@@ -5,12 +5,10 @@ const $ = require('jquery');
 const Raven = window.Raven;
 
 $(document).ready(function() {
-
-  // added as a print statement for now, eventually move init stuff
-  // into here and display an error page if it's not compliant
   gcmCompliant().catch(err => {
     $('#page-one').hide();
     $('#compliance-error').show();
+    $('#compliance-error .send-new').hide()
   })
 
   // reset copy button
