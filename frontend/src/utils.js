@@ -46,7 +46,8 @@ function gcmCompliant() {
         {
           name: 'AES-GCM',
           iv: window.crypto.getRandomValues(new Uint8Array(12)),
-          additionalData: window.crypto.getRandomValues(new Uint8Array(6))
+          additionalData: window.crypto.getRandomValues(new Uint8Array(6)),
+          tagLength: 128
         },
         key,
         new ArrayBuffer(8)

@@ -8,7 +8,6 @@ $(document).ready(function() {
   gcmCompliant().catch(err => {
     $('#page-one').hide();
     $('#compliance-error').show();
-    $('#compliance-error .send-new').hide()
   })
 
   // reset copy button
