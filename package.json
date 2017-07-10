@@ -34,6 +34,7 @@
     "sinon": "^2.3.5",
     "stylelint": "^7.11.0",
     "stylelint-config-standard": "^16.0.0",
+    "supertest": "^3.0.0",
     "watchify": "^3.9.0"
   },
   "engines": {
@@ -50,7 +51,7 @@
     "lint:css": "stylelint 'public/*.css'",
     "lint:js": "eslint .",
     "start": "node server/portal_server",
-    "test": "mocha",
+    "test": "mocha test/integration && mocha test/unit",
     "version": "node scripts/version"
   }
 }

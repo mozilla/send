@@ -32,7 +32,7 @@ const logStub = {};
 logStub.info = sinon.stub();
 logStub.error = sinon.stub();
 
-const storage = proxyquire('../server/storage', {
+const storage = proxyquire('../../server/storage', {
   redis: redisStub,
   fs: fsStub,
   './log.js': function() {

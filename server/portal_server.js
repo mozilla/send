@@ -44,6 +44,11 @@ app.get('/', (req, res) => {
 
 app.get('/exists/:id', (req, res) => {
   const id = req.params.id;
+  if (!validateID(id)) {
+    res.sendStatus(404);
+    return;
+  }
+
   storage
     .exists(id)
     .then(() => {
@@ -54,6 +59,11 @@ app.get('/exists/:id', (req, res) => {
 
 app.get('/download/:id', (req, res) => {
   const id = req.params.id;
+  if (!validateID(id)) {
+    res.sendStatus(404);
+    return;
+  }
+
   storage.filename(id).then(filename => {
     storage
       .length(id)
@@ -103,6 +113,8 @@ app.get('/assets/download/:id', (req, res) => {
         });
 
         file_stream.pipe(res);
+      }).catch(err => {
+        res.sendStatus(404);
       });
     })
     .catch(err => {
@@ -122,8 +134,10 @@ app.post('/delete/:id', (req, res) => {
 
   if (!delete_token) {
     res.sendStatus(404);
+    return;
   }
 
+  
   storage
     .delete(id, delete_token)
     .then(err => {
@@ -166,10 +180,15 @@ app.get('/__version__', (req, res) => {
   res.sendFile(path.join(STATIC_PATH, 'version.json'));
 });
 
-app.listen(conf.listen_port, () => {
+const server = app.listen(conf.listen_port, () => {
   log.info('startServer:', `Portal app listening on port ${conf.listen_port}!`);
 });
 
 const validateID = route_id => {
   return route_id.match(/^[0-9a-fA-F]{32}$/) !== null;
 };
+
+module.exports = {
+  server: server,
+  storage: storage
+}
