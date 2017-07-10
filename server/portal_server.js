@@ -8,6 +8,7 @@ const bytes = require('bytes');
 const conf = require('./config.js');
 const storage = require('./storage.js');
 const Raven = require('raven');
+const crypto = require('crypto');
 
 if (conf.sentry_dsn) {
   Raven.config(conf.sentry_dsn).install();
@@ -136,24 +137,23 @@ app.post('/delete/:id', (req, res) => {
     .catch(err => res.sendStatus(404));
 });
 
-app.post('/upload/:id', (req, res, next) => {
-  if (!validateIV(req.params.id)) {
-    res.sendStatus(404);
-    return;
-  }
-  const meta = JSON.parse(req.header('X-File-Metadata'));
+app.post('/upload', (req, res, next) => {
+  const newId = crypto.randomBytes(5).toString('hex');
+  let meta = JSON.parse(req.header('X-File-Metadata'));
+  meta.delete = crypto.randomBytes(10).toString('hex');
   log.info('meta', meta);
   req.pipe(req.busboy);
 
   req.busboy.on('file', (fieldname, file, filename) => {
-    log.info('Uploading:', req.params.id);
+    log.info('Uploading:', newId);
 
-    storage.set(req.params.id, file, filename, meta).then(([delete_token, new_id]) => {
+    storage.set(meta.iv, newId, file, filename, meta).then(() => {
       const protocol = conf.env === 'production' ? 'https' : req.protocol;
-      const url = `${protocol}://${req.get('host')}/download/${new_id}/`;
+      const url = `${protocol}://${req.get('host')}/download/${newId}/`;
       res.json({
         url,
-        delete: delete_token
+        delete: meta.delete,
+        id: newId
       });
     });
   });

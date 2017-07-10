@@ -102,14 +102,14 @@ class FileSender extends EventEmitter {
               const responseObj = JSON.parse(xhr.responseText);
               resolve({
                 url: responseObj.url,
-                fileId: fileId,
+                fileId: responseObj.id,
                 secretKey: keydata.k,
                 deleteToken: responseObj.uuid
               });
             }
           };
 
-          xhr.open('post', '/upload/' + fileId, true);
+          xhr.open('post', '/upload', true);
           xhr.setRequestHeader(
             'X-File-Metadata',
             JSON.stringify({
