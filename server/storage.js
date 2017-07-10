@@ -4,7 +4,6 @@ const s3 = new AWS.S3();
 const conf = require('./config.js');
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
 
 const mozlog = require('./log.js');
 
@@ -27,9 +26,12 @@ if (conf.s3_bucket) {
     length: awsLength,
     get: awsGet,
     set: awsSet,
+    aad: aad,
+    setField: setField,
     delete: awsDelete,
     forceDelete: awsForceDelete,
-    ping: awsPing
+    ping: awsPing,
+    metadata
   };
 } else {
   module.exports = {
@@ -38,10 +40,25 @@ if (conf.s3_bucket) {
     length: localLength,
     get: localGet,
     set: localSet,
+    aad: aad,
+    setField: setField,
     delete: localDelete,
     forceDelete: localForceDelete,
-    ping: localPing
+    ping: localPing,
+    metadata
   };
+}
+
+function metadata(id) {
+  return new Promise((resolve, reject) => {
+    redis_client.hgetall(id, (err, reply) => {
+      if (!err) {
+        resolve(reply);
+      } else {
+        reject(err);
+      }
+    });
+  });
 }
 
 function filename(id) {
@@ -68,6 +85,22 @@ function exists(id) {
   });
 }
 
+function setField(id, key, value) {
+  redis_client.hset(id, key, value);
+}
+
+function aad(id) {
+  return new Promise((resolve, reject) => {
+    redis_client.hget(id, 'aad', (err, reply) => {
+      if (!err) {
+        resolve(reply);
+      } else {
+        reject();
+      }
+    });
+  });
+}
+
 function localLength(id) {
   return new Promise((resolve, reject) => {
     try {
@@ -82,24 +115,19 @@ function localGet(id) {
   return fs.createReadStream(path.join(__dirname, '../static', id));
 }
 
-function localSet(id, file, filename, url) {
+function localSet(newId, file, filename, meta) {
   return new Promise((resolve, reject) => {
-    const fstream = fs.createWriteStream(path.join(__dirname, '../static', id));
+    const fstream = fs.createWriteStream(path.join(__dirname, '../static', newId));
     file.pipe(fstream);
     fstream.on('close', () => {
-      const uuid = crypto.randomBytes(10).toString('hex');
-
-      redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
-      redis_client.expire(id, 86400000);
-      log.info('localSet:', 'Upload Finished of ' + id);
-      resolve({
-        uuid: uuid,
-        url: url
-      });
+      redis_client.hmset(newId, meta);
+      redis_client.expire(newId, 86400000);
+      log.info('localSet:', 'Upload Finished of ' + newId);
+      resolve(meta.delete);
     });
 
     fstream.on('error', () => {
-      log.error('localSet:', 'Failed upload of ' + id);
+      log.error('localSet:', 'Failed upload of ' + newId);
       reject();
     });
   });
@@ -163,10 +191,10 @@ function awsGet(id) {
   }
 }
 
-function awsSet(id, file, filename, url) {
+function awsSet(newId, file, filename, meta) {
   const params = {
     Bucket: conf.s3_bucket,
-    Key: id,
+    Key: newId,
     Body: file
   };
 
@@ -176,16 +204,11 @@ function awsSet(id, file, filename, url) {
         log.info('awsUploadError:', err.stack); // an error occurred
         reject();
       } else {
-        const uuid = crypto.randomBytes(10).toString('hex');
+        redis_client.hmset(newId, meta);
 
-        redis_client.hmset([id, 'filename', filename, 'delete', uuid]);
-
-        redis_client.expire(id, 86400000);
+        redis_client.expire(newId, 86400000);
         log.info('awsUploadFinish', 'Upload Finished of ' + filename);
-        resolve({
-          uuid: uuid,
-          url: url
-        });
+        resolve(meta.delete);
       }
     });
   });

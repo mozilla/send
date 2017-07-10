@@ -1,5 +1,5 @@
 const EventEmitter = require('events');
-const { ivToStr } = require('./utils');
+const { arrayToHex } = require('./utils');
 
 const Raven = window.Raven;
 
@@ -7,7 +7,7 @@ class FileSender extends EventEmitter {
   constructor(file) {
     super();
     this.file = file;
-    this.iv = window.crypto.getRandomValues(new Uint8Array(16));
+    this.iv = window.crypto.getRandomValues(new Uint8Array(12));
   }
 
   static delete(fileId, token) {
@@ -37,46 +37,56 @@ class FileSender extends EventEmitter {
 
   upload() {
     return Promise.all([
-      window.crypto.subtle.generateKey(
-        {
-          name: 'AES-CBC',
-          length: 128
-        },
-        true,
-        ['encrypt', 'decrypt']
-      ),
+      window.crypto.subtle
+        .generateKey(
+          {
+            name: 'AES-GCM',
+            length: 128
+          },
+          true,
+          ['encrypt', 'decrypt']
+        )
+        .catch(err =>
+          console.log('There was an error generating a crypto key')
+        ),
       new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsArrayBuffer(this.file);
         reader.onload = function(event) {
-          resolve(new Uint8Array(this.result));
+          const plaintext = new Uint8Array(this.result);
+          window.crypto.subtle.digest('SHA-256', plaintext).then(hash => {
+            resolve({plaintext: plaintext, hash: new Uint8Array(hash)});
+          })
         };
         reader.onerror = function(err) {
           reject(err);
         };
       })
     ])
-      .then(([secretKey, plaintext]) => {
+      .then(([secretKey, file]) => {
         return Promise.all([
-          window.crypto.subtle.encrypt(
-            {
-              name: 'AES-CBC',
-              iv: this.iv
-            },
-            secretKey,
-            plaintext
-          ),
-          window.crypto.subtle.exportKey('jwk', secretKey)
+          window.crypto.subtle
+            .encrypt(
+              {
+                name: 'AES-GCM',
+                iv: this.iv,
+                additionalData: file.hash,
+                tagLength: 128
+              },
+              secretKey,
+              file.plaintext
+            ),
+          window.crypto.subtle.exportKey('jwk', secretKey),
+          new Promise((resolve, reject) => { resolve(file.hash) })
         ]);
       })
-      .then(([encrypted, keydata]) => {
+      .then(([encrypted, keydata, hash]) => {
         return new Promise((resolve, reject) => {
           const file = this.file;
-          const fileId = ivToStr(this.iv);
+          const fileId = arrayToHex(this.iv);
           const dataView = new DataView(encrypted);
           const blob = new Blob([dataView], { type: file.type });
           const fd = new FormData();
-          fd.append('fname', file.name);
           fd.append('data', blob, file.name);
 
           const xhr = new XMLHttpRequest();
@@ -94,14 +104,22 @@ class FileSender extends EventEmitter {
               const responseObj = JSON.parse(xhr.responseText);
               resolve({
                 url: responseObj.url,
-                fileId: fileId,
+                fileId: responseObj.id,
                 secretKey: keydata.k,
                 deleteToken: responseObj.uuid
               });
             }
           };
 
-          xhr.open('post', '/upload/' + fileId, true);
+          xhr.open('post', '/upload', true);
+          xhr.setRequestHeader(
+            'X-File-Metadata',
+            JSON.stringify({
+              aad: arrayToHex(hash),
+              id: fileId,
+              filename: file.name
+            })
+          );
           xhr.send(fd);
         });
       })

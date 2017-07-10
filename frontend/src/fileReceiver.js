@@ -1,12 +1,9 @@
 const EventEmitter = require('events');
-const { strToIv } = require('./utils');
-
-const Raven = window.Raven;
+const { hexToArray } = require('./utils');
 
 class FileReceiver extends EventEmitter {
   constructor() {
     super();
-    this.salt = strToIv(location.pathname.slice(10, -1));
   }
 
   download() {
@@ -34,11 +31,12 @@ class FileReceiver extends EventEmitter {
           const blob = new Blob([this.response]);
           const fileReader = new FileReader();
           fileReader.onload = function() {
+            const meta = JSON.parse(xhr.getResponseHeader('X-File-Metadata'));
             resolve({
               data: this.result,
-              fname: xhr
-                .getResponseHeader('Content-Disposition')
-                .match(/=(.+)/)[1]
+              aad: meta.aad,
+              filename: meta.filename,
+              iv: meta.id
             });
           };
 
@@ -54,36 +52,53 @@ class FileReceiver extends EventEmitter {
         {
           kty: 'oct',
           k: location.hash.slice(1),
-          alg: 'A128CBC',
+          alg: 'A128GCM',
           ext: true
         },
         {
-          name: 'AES-CBC'
+          name: 'AES-GCM'
         },
         true,
         ['encrypt', 'decrypt']
       )
-    ])
-      .then(([fdata, key]) => {
-        const salt = this.salt;
+    ]).then(([fdata, key]) => {
+      return Promise.all([
+        window.crypto.subtle.decrypt(
+          {
+            name: 'AES-GCM',
+            iv: hexToArray(fdata.iv),
+            additionalData: hexToArray(fdata.aad)
+          },
+          key,
+          fdata.data
+        ),
+        new Promise((resolve, reject) => {
+          resolve(fdata.filename);
+        }),
+        new Promise((resolve, reject) => {
+          resolve(hexToArray(fdata.aad));
+        })
+      ]);
+    }).then(([decrypted, fname, proposedHash]) => {
+      return window.crypto.subtle.digest('SHA-256', decrypted).then(calculatedHash => {
+        const integrity = new Uint8Array(calculatedHash).toString() === proposedHash.toString();
+        if (!integrity) {
+          return new Promise((resolve, reject) => {
+            console.log('This file has been tampered with.')
+            reject();
+          })
+        }
+        
         return Promise.all([
-          window.crypto.subtle.decrypt(
-            {
-              name: 'AES-CBC',
-              iv: salt
-            },
-            key,
-            fdata.data
-          ),
           new Promise((resolve, reject) => {
-            resolve(fdata.fname);
+            resolve(decrypted);
+          }),
+          new Promise((resolve, reject) => {
+            resolve(fname);
           })
         ]);
       })
-      .catch(err => {
-        Raven.captureException(err);
-        return Promise.reject(err);
-      });
+    })
   }
 }
 

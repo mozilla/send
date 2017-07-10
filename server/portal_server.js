@@ -8,6 +8,7 @@ const bytes = require('bytes');
 const conf = require('./config.js');
 const storage = require('./storage.js');
 const Raven = require('raven');
+const crypto = require('crypto');
 
 if (conf.sentry_dsn) {
   Raven.config(conf.sentry_dsn).install();
@@ -79,13 +80,14 @@ app.get('/assets/download/:id', (req, res) => {
   }
 
   storage
-    .filename(id)
-    .then(reply => {
+    .metadata(id)
+    .then(meta => {
       storage.length(id).then(contentLength => {
         res.writeHead(200, {
-          'Content-Disposition': 'attachment; filename=' + reply,
+          'Content-Disposition': 'attachment; filename=' + meta.filename,
           'Content-Type': 'application/octet-stream',
-          'Content-Length': contentLength
+          'Content-Length': contentLength,
+          'X-File-Metadata': JSON.stringify(meta)
         });
         const file_stream = storage.get(id);
 
@@ -135,21 +137,24 @@ app.post('/delete/:id', (req, res) => {
     .catch(err => res.sendStatus(404));
 });
 
-app.post('/upload/:id', (req, res, next) => {
-  if (!validateID(req.params.id)) {
-    res.sendStatus(404);
-    return;
-  }
-
+app.post('/upload', (req, res, next) => {
+  const newId = crypto.randomBytes(5).toString('hex');
+  const meta = JSON.parse(req.header('X-File-Metadata'));
+  meta.delete = crypto.randomBytes(10).toString('hex');
+  log.info('meta', meta);
   req.pipe(req.busboy);
+
   req.busboy.on('file', (fieldname, file, filename) => {
-    log.info('Uploading:', req.params.id);
+    log.info('Uploading:', newId);
 
-    const protocol = conf.env === 'production' ? 'https' : req.protocol;
-    const url = `${protocol}://${req.get('host')}/download/${req.params.id}/`;
-
-    storage.set(req.params.id, file, filename, url).then(linkAndID => {
-      res.json(linkAndID);
+    storage.set(newId, file, filename, meta).then(() => {
+      const protocol = conf.env === 'production' ? 'https' : req.protocol;
+      const url = `${protocol}://${req.get('host')}/download/${newId}/`;
+      res.json({
+        url,
+        delete: meta.delete,
+        id: newId
+      });
     });
   });
 });
@@ -171,5 +176,5 @@ app.listen(conf.listen_port, () => {
 });
 
 const validateID = route_id => {
-  return route_id.match(/^[0-9a-fA-F]{32}$/) !== null;
+  return route_id.match(/^[0-9a-fA-F]{10}$/) !== null;
 };
