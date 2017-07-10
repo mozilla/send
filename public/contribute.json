@@ -1,0 +1,28 @@
+{
+  "name": "firefox-send",
+  "description": "File Sharing Experiment",
+  "repository": {
+    "url": "https://github.com/mozilla/something-awesome/",
+    "license": "MPL-2.0"
+  },
+    "participate": {
+      "home": "https://github.com/mozilla/something-awesome/blob/master/README.md",
+      "docs": "https://github.com/mozilla/something-awesome/blob/master/README.md"
+    },
+    "bugs": {
+      "list": "https://github.com/mozilla/something-awesome/issues",
+      "report": "https://github.com/mozilla/something-awesome/issues/new"
+    },
+    "urls": {
+      "prod": "https://send.firefox.com/",
+      "stage": "https://send.stage.mozaws.net/",
+      "dev": "https://send.dev.mozaws.net/"
+    },
+  "keywords": [
+    "JavaScript",
+    "jQuery",
+    "Node",
+    "P2P",
+    "Redis"
+  ]
+}
