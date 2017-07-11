@@ -1,10 +1,15 @@
 const FileSender = require('./fileSender');
-const { notify } = require('./utils');
+const { notify, gcmCompliant } = require('./utils');
 const $ = require('jquery');
 
 const Raven = window.Raven;
 
 $(document).ready(function() {
+  gcmCompliant().catch(err => {
+    $('#page-one').hide();
+    $('#compliance-error').show();
+  })
+
   // reset copy button
   const $copyBtn = $('#copy-btn');
   $copyBtn.attr('disabled', false);
@@ -15,6 +20,7 @@ $(document).ready(function() {
   $('#upload-progress').hide();
   $('#share-link').hide();
   $('#upload-error').hide();
+  $('#compliance-error').hide();
 
   if (localStorage.length === 0) {
     toggleHeader();
