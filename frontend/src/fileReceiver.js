@@ -62,6 +62,7 @@ class FileReceiver extends EventEmitter {
         ['encrypt', 'decrypt']
       )
     ]).then(([fdata, key]) => {
+      this.emit('decrypting', true);
       return Promise.all([
         window.crypto.subtle.decrypt(
           {
@@ -71,7 +72,12 @@ class FileReceiver extends EventEmitter {
           },
           key,
           fdata.data
-        ),
+        ).then(decrypted => {
+          this.emit('decrypting', false);
+          return new Promise((resolve, reject) => {
+            resolve(decrypted);
+          })
+        }),
         new Promise((resolve, reject) => {
           resolve(fdata.filename);
         }),
@@ -80,7 +86,9 @@ class FileReceiver extends EventEmitter {
         })
       ]);
     }).then(([decrypted, fname, proposedHash]) => {
+      this.emit('hashing', true);
       return window.crypto.subtle.digest('SHA-256', decrypted).then(calculatedHash => {
+        this.emit('hashing', false);
         const integrity = new Uint8Array(calculatedHash).toString() === proposedHash.toString();
         if (!integrity) {
           return new Promise((resolve, reject) => {

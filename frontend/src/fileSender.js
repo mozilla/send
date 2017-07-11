@@ -36,6 +36,8 @@ class FileSender extends EventEmitter {
   }
 
   upload() {
+    const self = this;
+    self.emit('loading', true);
     return Promise.all([
       window.crypto.subtle
         .generateKey(
@@ -53,8 +55,12 @@ class FileSender extends EventEmitter {
         const reader = new FileReader();
         reader.readAsArrayBuffer(this.file);
         reader.onload = function(event) {
+          self.emit('loading', false);
+          self.emit('hashing', true);
           const plaintext = new Uint8Array(this.result);
           window.crypto.subtle.digest('SHA-256', plaintext).then(hash => {
+            self.emit('hashing', false);
+            self.emit('encrypting', true);
             resolve({plaintext: plaintext, hash: new Uint8Array(hash)});
           })
         };
@@ -75,7 +81,12 @@ class FileSender extends EventEmitter {
               },
               secretKey,
               file.plaintext
-            ),
+            ).then(encrypted => {
+              self.emit('encrypting', false);
+              return new Promise((resolve, reject) => {
+                resolve(encrypted);
+              })
+            }),
           window.crypto.subtle.exportKey('jwk', secretKey),
           new Promise((resolve, reject) => { resolve(file.hash) })
         ]);
@@ -94,7 +105,7 @@ class FileSender extends EventEmitter {
           xhr.upload.addEventListener('progress', e => {
             if (e.lengthComputable) {
               const percentComplete = Math.floor(e.loaded / e.total * 100);
-              this.emit('progress', percentComplete);
+              self.emit('progress', percentComplete);
             }
           });
 

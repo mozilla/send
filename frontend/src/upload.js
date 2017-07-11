@@ -84,6 +84,34 @@ $(document).ready(function() {
         .style.setProperty('--progress', percentComplete + '%');
       $('#progress-text').html(`${percentComplete}%`);
     });
+
+    fileSender.on('loading', isStillLoading => {
+      // The file is loading into Firefox at this stage
+      if (isStillLoading) {
+        console.log('Processing')
+      } else {
+        console.log('Finished processing')
+      }
+    })
+
+    fileSender.on('hashing', isStillHashing => {
+      // The file is being hashed
+      if (isStillHashing) {
+        console.log('Hashing');
+      } else {
+        console.log('Finished hashing')
+      }
+    })
+
+    fileSender.on('encrypting', isStillEncrypting => {
+      // The file is being encrypted
+      if (isStillEncrypting) {
+        console.log('Encrypting');
+      } else {
+        console.log('Finished encrypting')
+      }
+    })
+
     fileSender
       .upload()
       .then(info => {
@@ -111,6 +139,7 @@ $(document).ready(function() {
       })
       .catch(err => {
         Raven.captureException(err);
+        console.log(err);
         $('#page-one').hide();
         $('#upload-error').show();
       });
