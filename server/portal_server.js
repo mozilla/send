@@ -153,9 +153,19 @@ app.post('/delete/:id', (req, res) => {
 
 app.post('/upload', (req, res, next) => {
   const newId = crypto.randomBytes(5).toString('hex');
-  const meta = JSON.parse(req.header('X-File-Metadata'));
+  let meta;
+  
+  try {
+    meta = JSON.parse(req.header('X-File-Metadata'));
+  } catch(err) {
+    res.sendStatus(400);
+    return;
+  }
 
-  if (!validateIV(meta.id)) {
+  if (!validateIV(meta.id) ||
+      !meta.hasOwnProperty('aad') ||
+      !meta.hasOwnProperty('id') ||
+      !meta.hasOwnProperty('filename')) {
     res.sendStatus(404);
     return;
   }
@@ -191,7 +201,7 @@ app.get('/__version__', (req, res) => {
   res.sendFile(path.join(STATIC_PATH, 'version.json'));
 });
 
-app.listen(conf.listen_port, () => {
+const server = app.listen(conf.listen_port, () => {
   log.info('startServer:', `Portal app listening on port ${conf.listen_port}!`);
 });
 
@@ -202,3 +212,8 @@ const validateID = route_id => {
 const validateIV = route_id => {
   return route_id.match(/^[0-9a-fA-F]{24}$/) !== null;
 };
+
+module.exports = {
+  server: server,
+  storage: storage
+}
