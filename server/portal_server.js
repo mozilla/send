@@ -111,7 +111,6 @@ app.get('/assets/download/:id', (req, res) => {
             })
             .catch(err => {
               log.info('DeleteError:', id);
-              res.sendStatus(404);
             });
         });
 
