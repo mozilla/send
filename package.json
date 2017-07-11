@@ -1,5 +1,5 @@
 {
-  "name": "portal-alpha",
+  "name": "firefox-send",
   "description": "File Sharing Experiment",
   "version": "0.1.2",
   "author": "Mozilla (https://mozilla.org)",
@@ -40,17 +40,17 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "homepage": "https://github.com/mozilla/something-awesome/",
+  "homepage": "https://github.com/mozilla/send/",
   "license": "MPL-2.0",
-  "repository": "mozilla/something-awesome",
+  "repository": "mozilla/send",
   "scripts": {
     "predocker": "browserify frontend/src/main.js | uglifyjs > public/bundle.js && npm run version",
-    "dev": "npm run version && watchify frontend/src/main.js -o public/bundle.js -d | node server/portal_server",
+    "dev": "npm run version && watchify frontend/src/main.js -o public/bundle.js -d | node server/server",
     "format": "prettier '{frontend/src/,scripts/,server/,test/}*.js' 'public/*.css' --single-quote --write",
     "lint": "npm-run-all lint:*",
     "lint:css": "stylelint 'public/*.css'",
     "lint:js": "eslint .",
-    "start": "node server/portal_server",
+    "start": "node server/server",
     "test": "mocha test/unit && mocha test/server",
     "version": "node scripts/version"
   }

@@ -16,7 +16,7 @@ if (conf.sentry_dsn) {
 
 const mozlog = require('./log.js');
 
-const log = mozlog('portal.server');
+const log = mozlog('send.server');
 
 const STATIC_PATH = path.join(__dirname, '../public');
 
@@ -154,7 +154,7 @@ app.post('/delete/:id', (req, res) => {
 app.post('/upload', (req, res, next) => {
   const newId = crypto.randomBytes(5).toString('hex');
   let meta;
-  
+
   try {
     meta = JSON.parse(req.header('X-File-Metadata'));
   } catch(err) {
@@ -202,7 +202,7 @@ app.get('/__version__', (req, res) => {
 });
 
 const server = app.listen(conf.listen_port, () => {
-  log.info('startServer:', `Portal app listening on port ${conf.listen_port}!`);
+  log.info('startServer:', `Send app listening on port ${conf.listen_port}!`);
 });
 
 const validateID = route_id => {
