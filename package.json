@@ -18,6 +18,7 @@
     "raven": "^2.1.0",
     "raven-js": "^3.16.0",
     "redis": "^2.7.1",
+    "supertest": "^3.0.0",
     "uglify-es": "3.0.19"
   },
   "devDependencies": {
@@ -50,7 +51,7 @@
     "lint:css": "stylelint 'public/*.css'",
     "lint:js": "eslint .",
     "start": "node server/portal_server",
-    "test": "mocha",
+    "test": "mocha test/unit && mocha test/server",
     "version": "node scripts/version"
   }
 }

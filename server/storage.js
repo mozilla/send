@@ -31,6 +31,8 @@ if (conf.s3_bucket) {
     delete: awsDelete,
     forceDelete: awsForceDelete,
     ping: awsPing,
+    flushall: flushall,
+    quit: quit,
     metadata
   };
 } else {
@@ -45,8 +47,18 @@ if (conf.s3_bucket) {
     delete: localDelete,
     forceDelete: localForceDelete,
     ping: localPing,
+    flushall: flushall,
+    quit: quit,
     metadata
   };
+}
+
+function flushall() {
+  redis_client.flushdb();
+}
+
+function quit() {
+  redis_client.quit();
 }
 
 function metadata(id) {

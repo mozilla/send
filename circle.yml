@@ -3,6 +3,7 @@ machine:
     version: 8
   services:
     - docker
+    - redis
 
 deployment:
   latest:
