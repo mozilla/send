@@ -1,6 +1,6 @@
-# Firefox Fileshare
+# Firefox Send
 
-[![CircleCI](https://circleci.com/gh/mozilla/something-awesome.svg?style=svg)](https://circleci.com/gh/mozilla/something-awesome)
+[![CircleCI](https://circleci.com/gh/mozilla/send.svg?style=svg)](https://circleci.com/gh/mozilla/send)
 
 ## What it does
 
@@ -29,11 +29,11 @@ $ redis-server /usr/local/etc/redis.conf
 
 ## Localization
 
-_Coming soon_ (see [#57](https://github.com/mozilla/something-awesome/issues/57))
+_Coming soon_ (see [#57](https://github.com/mozilla/send/issues/57))
 
 ## Contributing
 
-Pull requests are always welcome! Feel free to check out the list of ["good first bugs"](https://github.com/mozilla/something-awesome/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+bug%22).
+Pull requests are always welcome! Feel free to check out the list of ["good first bugs"](https://github.com/mozilla/send/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+bug%22).
 
 ## Testing
 
