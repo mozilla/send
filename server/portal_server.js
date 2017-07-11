@@ -45,6 +45,11 @@ app.get('/', (req, res) => {
 
 app.get('/exists/:id', (req, res) => {
   const id = req.params.id;
+  if (!validateID(id)) {
+    res.sendStatus(404);
+    return;
+  }
+
   storage
     .exists(id)
     .then(() => {
@@ -55,6 +60,11 @@ app.get('/exists/:id', (req, res) => {
 
 app.get('/download/:id', (req, res) => {
   const id = req.params.id;
+  if (!validateID(id)) {
+    res.sendStatus(404);
+    return;
+  }
+
   storage.filename(id).then(filename => {
     storage
       .length(id)
@@ -101,10 +111,14 @@ app.get('/assets/download/:id', (req, res) => {
             })
             .catch(err => {
               log.info('DeleteError:', id);
+              res.sendStatus(404);
             });
         });
 
         file_stream.pipe(res);
+      })
+      .catch(err => {
+        res.sendStatus(404);
       });
     })
     .catch(err => {
@@ -124,6 +138,7 @@ app.post('/delete/:id', (req, res) => {
 
   if (!delete_token) {
     res.sendStatus(404);
+    return;
   }
 
   storage
@@ -140,6 +155,12 @@ app.post('/delete/:id', (req, res) => {
 app.post('/upload', (req, res, next) => {
   const newId = crypto.randomBytes(5).toString('hex');
   const meta = JSON.parse(req.header('X-File-Metadata'));
+
+  if (!validateIV(meta.id)) {
+    res.sendStatus(404);
+    return;
+  }
+
   meta.delete = crypto.randomBytes(10).toString('hex');
   log.info('meta', meta);
   req.pipe(req.busboy);
@@ -177,4 +198,8 @@ app.listen(conf.listen_port, () => {
 
 const validateID = route_id => {
   return route_id.match(/^[0-9a-fA-F]{10}$/) !== null;
+};
+
+const validateIV = route_id => {
+  return route_id.match(/^[0-9a-fA-F]{24}$/) !== null;
 };

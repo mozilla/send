@@ -12,7 +12,7 @@ class FileReceiver extends EventEmitter {
         const xhr = new XMLHttpRequest();
 
         xhr.onprogress = event => {
-          if (event.lengthComputable) {
+          if (event.lengthComputable && event.target.status !== 404) {
             const percentComplete = Math.floor(
               event.loaded / event.total * 100
             );
