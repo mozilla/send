@@ -21,7 +21,7 @@ describe('Server integration tests', function() {
   let server;
   let storage;
   let uuid;
-  let fildId;
+  let fileId;
 
   before(function() {
     const app = proxyquire('../../server/portal_server', {
