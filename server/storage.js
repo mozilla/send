@@ -7,7 +7,7 @@ const path = require('path');
 
 const mozlog = require('./log.js');
 
-const log = mozlog('portal.storage');
+const log = mozlog('send.storage');
 
 const redis = require('redis');
 const redis_client = redis.createClient({

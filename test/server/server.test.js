@@ -24,11 +24,11 @@ describe('Server integration tests', function() {
   let fileId;
 
   before(function() {
-    const app = proxyquire('../../server/portal_server', {
+    const app = proxyquire('../../server/server', {
       './log.js': function() {
         return logStub;
       }
-    }); 
+    });
 
     server = app.server;
     storage = app.storage;
