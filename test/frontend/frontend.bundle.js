@@ -15,6 +15,7 @@ window.FakeFile = FakeFile;
 window.FileSender = require('../../frontend/src/fileSender');
 window.FileReceiver = require('../../frontend/src/fileReceiver');
 window.sinon = require('sinon');
+window.server = window.sinon.fakeServer.create();
 window.assert = require('assert');
 const utils = require('../../frontend/src/utils');
 window.hexToArray = utils.hexToArray;
