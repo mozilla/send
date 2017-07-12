@@ -7,7 +7,6 @@ function arrayToHex(iv) {
       hexStr += iv[i].toString(16);
     }
   }
-  window.hexStr = hexStr;
   return hexStr;
 }
 
