@@ -92,33 +92,35 @@ app.get('/assets/download/:id', (req, res) => {
   storage
     .metadata(id)
     .then(meta => {
-      storage.length(id).then(contentLength => {
-        res.writeHead(200, {
-          'Content-Disposition': 'attachment; filename=' + meta.filename,
-          'Content-Type': 'application/octet-stream',
-          'Content-Length': contentLength,
-          'X-File-Metadata': JSON.stringify(meta)
-        });
-        const file_stream = storage.get(id);
+      storage
+        .length(id)
+        .then(contentLength => {
+          res.writeHead(200, {
+            'Content-Disposition': 'attachment; filename=' + meta.filename,
+            'Content-Type': 'application/octet-stream',
+            'Content-Length': contentLength,
+            'X-File-Metadata': JSON.stringify(meta)
+          });
+          const file_stream = storage.get(id);
 
-        file_stream.on('end', () => {
-          storage
-            .forceDelete(id)
-            .then(err => {
-              if (!err) {
-                log.info('Deleted:', id);
-              }
-            })
-            .catch(err => {
-              log.info('DeleteError:', id);
-            });
-        });
+          file_stream.on('end', () => {
+            storage
+              .forceDelete(id)
+              .then(err => {
+                if (!err) {
+                  log.info('Deleted:', id);
+                }
+              })
+              .catch(err => {
+                log.info('DeleteError:', id);
+              });
+          });
 
-        file_stream.pipe(res);
-      })
-      .catch(err => {
-        res.sendStatus(404);
-      });
+          file_stream.pipe(res);
+        })
+        .catch(err => {
+          res.sendStatus(404);
+        });
     })
     .catch(err => {
       res.sendStatus(404);
@@ -157,15 +159,17 @@ app.post('/upload', (req, res, next) => {
 
   try {
     meta = JSON.parse(req.header('X-File-Metadata'));
-  } catch(err) {
+  } catch (err) {
     res.sendStatus(400);
     return;
   }
 
-  if (!validateIV(meta.id) ||
-      !meta.hasOwnProperty('aad') ||
-      !meta.hasOwnProperty('id') ||
-      !meta.hasOwnProperty('filename')) {
+  if (
+    !validateIV(meta.id) ||
+    !meta.hasOwnProperty('aad') ||
+    !meta.hasOwnProperty('id') ||
+    !meta.hasOwnProperty('filename')
+  ) {
     res.sendStatus(404);
     return;
   }
@@ -216,4 +220,4 @@ const validateIV = route_id => {
 module.exports = {
   server: server,
   storage: storage
-}
+};

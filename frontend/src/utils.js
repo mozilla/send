@@ -34,34 +34,38 @@ function notify(str) {
 
 function gcmCompliant() {
   try {
-    return window.crypto.subtle.generateKey(
-      {
-        name: 'AES-GCM',
-        length: 128
-      },
-      true,
-      ['encrypt', 'decrypt']
-    ).then(key => {
-      return window.crypto.subtle.encrypt(
+    return window.crypto.subtle
+      .generateKey(
         {
           name: 'AES-GCM',
-          iv: window.crypto.getRandomValues(new Uint8Array(12)),
-          additionalData: window.crypto.getRandomValues(new Uint8Array(6)),
-          tagLength: 128
+          length: 128
         },
-        key,
-        new ArrayBuffer(8)
+        true,
+        ['encrypt', 'decrypt']
       )
-      .then(() => {
-        return Promise.resolve()
+      .then(key => {
+        return window.crypto.subtle
+          .encrypt(
+            {
+              name: 'AES-GCM',
+              iv: window.crypto.getRandomValues(new Uint8Array(12)),
+              additionalData: window.crypto.getRandomValues(new Uint8Array(6)),
+              tagLength: 128
+            },
+            key,
+            new ArrayBuffer(8)
+          )
+          .then(() => {
+            return Promise.resolve();
+          })
+          .catch(err => {
+            return Promise.reject();
+          });
       })
       .catch(err => {
-        return Promise.reject()
-      })
-    }).catch(err => {
-      return Promise.reject();
-    })
-  } catch(err) {
+        return Promise.reject();
+      });
+  } catch (err) {
     return Promise.reject();
   }
 }
