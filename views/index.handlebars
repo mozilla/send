@@ -19,7 +19,7 @@
       <div class="title">
         Share your files quickly, privately and securely.
       </div>
-      <div class="upload-window" ondrop="onUpload(event)" ondragover="allowDrop(event)">
+      <div class="upload-window">
         <div id="upload-img"><img src="/resources/upload.svg" alt="Upload"/></div>
         <div>
           DRAG &amp; DROP
@@ -31,7 +31,7 @@
           <div id="browse">
             <form method="post" action="upload" enctype="multipart/form-data">
               <label for="file-upload" class="file-upload">browse</label>
-              <input id="file-upload" type="file" onchange="onUpload(event)" name="fileUploaded" />
+              <input id="file-upload" type="file" name="fileUploaded" />
             </form>
           </div>
         </div>

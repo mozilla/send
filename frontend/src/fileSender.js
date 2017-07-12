@@ -61,8 +61,8 @@ class FileSender extends EventEmitter {
           window.crypto.subtle.digest('SHA-256', plaintext).then(hash => {
             self.emit('hashing', false);
             self.emit('encrypting', true);
-            resolve({plaintext: plaintext, hash: new Uint8Array(hash)});
-          })
+            resolve({ plaintext: plaintext, hash: new Uint8Array(hash) });
+          });
         };
         reader.onerror = function(err) {
           reject(err);
@@ -81,14 +81,17 @@ class FileSender extends EventEmitter {
               },
               secretKey,
               file.plaintext
-            ).then(encrypted => {
+            )
+            .then(encrypted => {
               self.emit('encrypting', false);
               return new Promise((resolve, reject) => {
                 resolve(encrypted);
-              })
+              });
             }),
           window.crypto.subtle.exportKey('jwk', secretKey),
-          new Promise((resolve, reject) => { resolve(file.hash) })
+          new Promise((resolve, reject) => {
+            resolve(file.hash);
+          })
         ]);
       })
       .then(([encrypted, keydata, hash]) => {

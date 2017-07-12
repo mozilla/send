@@ -129,7 +129,9 @@ function localGet(id) {
 
 function localSet(newId, file, filename, meta) {
   return new Promise((resolve, reject) => {
-    const fstream = fs.createWriteStream(path.join(__dirname, '../static', newId));
+    const fstream = fs.createWriteStream(
+      path.join(__dirname, '../static', newId)
+    );
     file.pipe(fstream);
     fstream.on('close', () => {
       redis_client.hmset(newId, meta);

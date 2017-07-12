@@ -32,6 +32,30 @@ app.engine(
 app.set('view engine', 'handlebars');
 
 app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ['\'self\''],
+      connectSrc: [
+        '\'self\'',
+        'https://sentry.prod.mozaws.net',
+        'https://www.google-analytics.com',
+        'https://ssl.google-analytics.com'
+      ],
+      imgSrc: [
+        '\'self\'',
+        'https://www.google-analytics.com',
+        'https://ssl.google-analytics.com'
+      ],
+      scriptSrc: ['\'self\'', 'https://ssl.google-analytics.com'],
+      styleSrc: ['\'self\'', 'https://code.cdn.mozilla.net'],
+      fontSrc: ['\'self\'', 'https://code.cdn.mozilla.net'],
+      formAction: ['\'none\''],
+      frameAncestors: ['\'none\''],
+      objectSrc: ['\'none\'']
+    }
+  })
+);
 app.use(busboy());
 app.use(bodyParser.json());
 app.use(express.static(STATIC_PATH));
@@ -92,33 +116,35 @@ app.get('/assets/download/:id', (req, res) => {
   storage
     .metadata(id)
     .then(meta => {
-      storage.length(id).then(contentLength => {
-        res.writeHead(200, {
-          'Content-Disposition': 'attachment; filename=' + meta.filename,
-          'Content-Type': 'application/octet-stream',
-          'Content-Length': contentLength,
-          'X-File-Metadata': JSON.stringify(meta)
-        });
-        const file_stream = storage.get(id);
+      storage
+        .length(id)
+        .then(contentLength => {
+          res.writeHead(200, {
+            'Content-Disposition': 'attachment; filename=' + meta.filename,
+            'Content-Type': 'application/octet-stream',
+            'Content-Length': contentLength,
+            'X-File-Metadata': JSON.stringify(meta)
+          });
+          const file_stream = storage.get(id);
 
-        file_stream.on('end', () => {
-          storage
-            .forceDelete(id)
-            .then(err => {
-              if (!err) {
-                log.info('Deleted:', id);
-              }
-            })
-            .catch(err => {
-              log.info('DeleteError:', id);
-            });
-        });
+          file_stream.on('end', () => {
+            storage
+              .forceDelete(id)
+              .then(err => {
+                if (!err) {
+                  log.info('Deleted:', id);
+                }
+              })
+              .catch(err => {
+                log.info('DeleteError:', id);
+              });
+          });
 
-        file_stream.pipe(res);
-      })
-      .catch(err => {
-        res.sendStatus(404);
-      });
+          file_stream.pipe(res);
+        })
+        .catch(err => {
+          res.sendStatus(404);
+        });
     })
     .catch(err => {
       res.sendStatus(404);
@@ -157,15 +183,17 @@ app.post('/upload', (req, res, next) => {
 
   try {
     meta = JSON.parse(req.header('X-File-Metadata'));
-  } catch(err) {
+  } catch (err) {
     res.sendStatus(400);
     return;
   }
 
-  if (!validateIV(meta.id) ||
-      !meta.hasOwnProperty('aad') ||
-      !meta.hasOwnProperty('id') ||
-      !meta.hasOwnProperty('filename')) {
+  if (
+    !validateIV(meta.id) ||
+    !meta.hasOwnProperty('aad') ||
+    !meta.hasOwnProperty('id') ||
+    !meta.hasOwnProperty('filename')
+  ) {
     res.sendStatus(404);
     return;
   }
@@ -216,4 +244,4 @@ const validateIV = route_id => {
 module.exports = {
   server: server,
   storage: storage
-}
+};
