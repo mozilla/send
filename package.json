@@ -52,7 +52,7 @@
     "lint:js": "eslint .",
     "start": "node server/server",
     "test": "mocha test/unit && mocha test/server",
-    "test-browser": "watchify test/frontend/filetest.bundle.js -o test/frontend/bundle.js -d",
+    "test-browser": "watchify test/frontend/frontend.bundle.js -o test/frontend/bundle.js -d",
     "version": "node scripts/version"
   }
 }
