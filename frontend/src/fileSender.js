@@ -117,7 +117,7 @@ class FileSender extends EventEmitter {
                 url: responseObj.url,
                 fileId: responseObj.id,
                 secretKey: keydata.k,
-                deleteToken: responseObj.uuid
+                deleteToken: responseObj.delete
               });
             }
           };
