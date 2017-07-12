@@ -10,6 +10,8 @@ $(document).ready(function() {
     $('#compliance-error').show();
   });
 
+  $('#file-upload').change(onUpload);
+  $('#page-one').on('dragover', allowDrop).on('drop', onUpload);
   // reset copy button
   const $copyBtn = $('#copy-btn');
   $copyBtn.attr('disabled', false);
@@ -61,11 +63,11 @@ $(document).ready(function() {
   });
 
   // on file upload by browse or drag & drop
-  window.onUpload = event => {
+  function onUpload(event) {
     event.preventDefault();
     let file = '';
     if (event.type === 'drop') {
-      file = event.dataTransfer.files[0];
+      file = event.originalEvent.dataTransfer.files[0];
     } else {
       file = event.target.files[0];
     }
@@ -143,11 +145,11 @@ $(document).ready(function() {
         $('#page-one').hide();
         $('#upload-error').show();
       });
-  };
+  }
 
-  window.allowDrop = function(ev) {
+  function allowDrop(ev) {
     ev.preventDefault();
-  };
+  }
 
   function checkExistence(id, populate) {
     const xhr = new XMLHttpRequest();

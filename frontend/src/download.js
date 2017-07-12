@@ -9,7 +9,8 @@ $(document).ready(function() {
   $('#send-file').click(() => {
     window.location.replace(`${window.location.origin}`);
   });
-  const download = () => {
+  $('#download-btn').click(download);
+  function download() {
     const fileReceiver = new FileReceiver();
     const name = document.createElement('p');
     const $btn = $('#download-btn');
@@ -84,7 +85,5 @@ $(document).ready(function() {
         Raven.captureException(err);
         return Promise.reject(err);
       });
-  };
-
-  window.download = download;
+  }
 });

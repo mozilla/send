@@ -32,6 +32,30 @@ app.engine(
 app.set('view engine', 'handlebars');
 
 app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ['\'self\''],
+      connectSrc: [
+        '\'self\'',
+        'https://sentry.prod.mozaws.net',
+        'https://www.google-analytics.com',
+        'https://ssl.google-analytics.com'
+      ],
+      imgSrc: [
+        '\'self\'',
+        'https://www.google-analytics.com',
+        'https://ssl.google-analytics.com'
+      ],
+      scriptSrc: ['\'self\'', 'https://ssl.google-analytics.com'],
+      styleSrc: ['\'self\'', 'https://code.cdn.mozilla.net'],
+      fontSrc: ['\'self\'', 'https://code.cdn.mozilla.net'],
+      formAction: ['\'none\''],
+      frameAncestors: ['\'none\''],
+      objectSrc: ['\'none\'']
+    }
+  })
+);
 app.use(busboy());
 app.use(bodyParser.json());
 app.use(express.static(STATIC_PATH));
