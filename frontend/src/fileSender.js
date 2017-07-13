@@ -131,7 +131,7 @@ class FileSender extends EventEmitter {
             JSON.stringify({
               aad: arrayToHex(hash),
               id: fileId,
-              filename: file.name
+              filename: encodeURIComponent(file.name)
             })
           );
           xhr.send(fd);

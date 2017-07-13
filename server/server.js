@@ -94,7 +94,7 @@ app.get('/download/:id', (req, res) => {
       .length(id)
       .then(contentLength => {
         res.render('download', {
-          filename: filename,
+          filename: decodeURI(filename),
           filesize: bytes(contentLength),
           trackerId: conf.analytics_id,
           dsn: conf.sentry_id
@@ -189,10 +189,10 @@ app.post('/upload', (req, res, next) => {
   }
 
   if (
-    !validateIV(meta.id) ||
     !meta.hasOwnProperty('aad') ||
     !meta.hasOwnProperty('id') ||
-    !meta.hasOwnProperty('filename')
+    !meta.hasOwnProperty('filename' ||
+    !validateIV(meta.id))
   ) {
     res.sendStatus(404);
     return;

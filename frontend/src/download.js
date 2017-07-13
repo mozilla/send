@@ -65,7 +65,7 @@ $(document).ready(function() {
         return;
       })
       .then(([decrypted, fname]) => {
-        name.innerText = fname;
+        name.innerText = decodeURIComponent(fname);
         const dataView = new DataView(decrypted);
         const blob = new Blob([dataView]);
         const downloadUrl = URL.createObjectURL(blob);
@@ -74,10 +74,10 @@ $(document).ready(function() {
         a.href = downloadUrl;
         if (window.navigator.msSaveBlob) {
           // if we are in microsoft edge or IE
-          window.navigator.msSaveBlob(blob, fname);
+          window.navigator.msSaveBlob(blob, decodeURIComponent(fname));
           return;
         }
-        a.download = fname;
+        a.download = decodeURIComponent(fname);
         document.body.appendChild(a);
         a.click();
       })
