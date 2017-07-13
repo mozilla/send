@@ -4,3 +4,4 @@ public/bundle.js
 public/version.json
 static/*
 !static/info.txt
+test/frontend/bundle.js
