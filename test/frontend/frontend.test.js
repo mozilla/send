@@ -319,6 +319,11 @@ describe('File Receiver', function() {
           assert(isUnsafe)
         })
 
+        fr.on('safe', () => {
+          // This event should not be emitted.
+          assert.fail();
+        })
+
         fr.download().then(() => {
           assert.fail();
           done();
