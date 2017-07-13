@@ -94,7 +94,7 @@ app.get('/download/:id', (req, res) => {
       .length(id)
       .then(contentLength => {
         res.render('download', {
-          filename: decodeURI(filename),
+          filename: decodeURIComponent(filename),
           filesize: bytes(contentLength),
           trackerId: conf.analytics_id,
           dsn: conf.sentry_id
