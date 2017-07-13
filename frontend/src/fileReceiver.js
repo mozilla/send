@@ -91,20 +91,21 @@ class FileReceiver extends EventEmitter {
         this.emit('hashing', false);
         const integrity = new Uint8Array(calculatedHash).toString() === proposedHash.toString();
         if (!integrity) {
+          this.emit('unsafe', true)
           return new Promise((resolve, reject) => {
-            console.log('This file has been tampered with.')
             reject();
           })
+        } else {
+          this.emit('safe', true);
+          return Promise.all([
+            new Promise((resolve, reject) => {
+              resolve(decrypted);
+            }),
+            new Promise((resolve, reject) => {
+              resolve(fname);
+            })
+          ]);
         }
-        
-        return Promise.all([
-          new Promise((resolve, reject) => {
-            resolve(decrypted);
-          }),
-          new Promise((resolve, reject) => {
-            resolve(fname);
-          })
-        ]);
       })
     })
   }

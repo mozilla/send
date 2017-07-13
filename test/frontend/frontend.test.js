@@ -235,6 +235,10 @@ describe('File Receiver', function() {
       testDecrypting = isStillDecrypting;
     });
 
+    fr.on('safe', isSafe => {
+      assert(isSafe);
+    })
+
     return fr.download().then(([decrypted, name]) => {
       assert(decrypted);
       assert(name);
@@ -255,6 +259,10 @@ describe('File Receiver', function() {
       assert(!(!testHashing && isStillHashing));
       testHashing = isStillHashing;
     });
+
+    fr.on('safe', isSafe => {
+      assert(isSafe);
+    })
 
     return fr.download().then(([decrypted, name]) => {
       assert(decrypted);
@@ -304,6 +312,10 @@ describe('File Receiver', function() {
         file = encrypted;
         const fr = new FileReceiver();
         location.hash = secretKey;
+
+        fr.on('unsafe', isUnsafe => {
+          assert(isUnsafe)
+        })
 
         fr.download().then(() => {
           assert.fail();
