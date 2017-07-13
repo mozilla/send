@@ -8,8 +8,10 @@ $(document).ready(function() {
   gcmCompliant().catch(err => {
     $('#page-one').hide();
     $('#compliance-error').show();
-  })
+  });
 
+  $('#file-upload').change(onUpload);
+  $('#page-one').on('dragover', allowDrop).on('drop', onUpload);
   // reset copy button
   const $copyBtn = $('#copy-btn');
   $copyBtn.attr('disabled', false);
@@ -61,11 +63,11 @@ $(document).ready(function() {
   });
 
   // on file upload by browse or drag & drop
-  window.onUpload = event => {
+  function onUpload(event) {
     event.preventDefault();
     let file = '';
     if (event.type === 'drop') {
-      file = event.dataTransfer.files[0];
+      file = event.originalEvent.dataTransfer.files[0];
     } else {
       file = event.target.files[0];
     }
@@ -88,29 +90,29 @@ $(document).ready(function() {
     fileSender.on('loading', isStillLoading => {
       // The file is loading into Firefox at this stage
       if (isStillLoading) {
-        console.log('Processing')
+        console.log('Processing');
       } else {
-        console.log('Finished processing')
+        console.log('Finished processing');
       }
-    })
+    });
 
     fileSender.on('hashing', isStillHashing => {
       // The file is being hashed
       if (isStillHashing) {
         console.log('Hashing');
       } else {
-        console.log('Finished hashing')
+        console.log('Finished hashing');
       }
-    })
+    });
 
     fileSender.on('encrypting', isStillEncrypting => {
       // The file is being encrypted
       if (isStillEncrypting) {
         console.log('Encrypting');
       } else {
-        console.log('Finished encrypting')
+        console.log('Finished encrypting');
       }
-    })
+    });
 
     fileSender
       .upload()
@@ -143,11 +145,11 @@ $(document).ready(function() {
         $('#page-one').hide();
         $('#upload-error').show();
       });
-  };
+  }
 
-  window.allowDrop = function(ev) {
+  function allowDrop(ev) {
     ev.preventDefault();
-  };
+  }
 
   function checkExistence(id, populate) {
     const xhr = new XMLHttpRequest();

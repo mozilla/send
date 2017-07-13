@@ -9,7 +9,8 @@ $(document).ready(function() {
   $('#send-file').click(() => {
     window.location.replace(`${window.location.origin}`);
   });
-  const download = () => {
+  $('#download-btn').click(download);
+  function download() {
     const fileReceiver = new FileReceiver();
     const name = document.createElement('p');
     const $btn = $('#download-btn');
@@ -37,20 +38,20 @@ $(document).ready(function() {
     fileReceiver.on('decrypting', isStillDecrypting => {
       // The file is being decrypted
       if (isStillDecrypting) {
-        console.log('Decrypting')
+        console.log('Decrypting');
       } else {
-        console.log('Done decrypting')
+        console.log('Done decrypting');
       }
-    })
+    });
 
     fileReceiver.on('hashing', isStillHashing => {
       // The file is being hashed to make sure a malicious user hasn't tampered with it
       if (isStillHashing) {
-        console.log('Checking file integrity')
+        console.log('Checking file integrity');
       } else {
-        console.log('Integrity check done')
+        console.log('Integrity check done');
       }
-    })
+    });
 
     fileReceiver
       .download()
@@ -84,7 +85,5 @@ $(document).ready(function() {
         Raven.captureException(err);
         return Promise.reject(err);
       });
-  };
-
-  window.download = download;
+  }
 });
