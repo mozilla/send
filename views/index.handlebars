@@ -6,45 +6,42 @@
     {{> sentry dsn=dsn}}
   {{/if}}
   <script src="/bundle.js"></script>
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="stylesheet" type="text/css" href="/main.css" />
+  <link rel="stylesheet" type="text/css" href="/resources/fontello-24c5e6ad/css/fontello.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
   {{#if trackerId}}
     {{> analytics trackerId=trackerId}}
   {{/if}}
 </head>
 <body>
-
-  <div class="main-window">
     <div id="page-one">
       <div class="title">
-        Share your files quickly, privately and securely.
+        Private, Encrypted File Sharing
       </div>
-      <div class="upload-window">
+      <div class="description">
+        Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.<br> <a href="" class="link">Learn more</a>
+      </div>
+      <div class="upload-window" >
         <div id="upload-img"><img src="/resources/upload.svg" alt="Upload"/></div>
-        <div>
-          DRAG &amp; DROP
+        <div id="upload-text">
+          Drop your files here to start uploading
         </div>
-        <div class="upload">
-          <div id="browse-text">
-            your file/folder here or
-          </div>
-          <div id="browse">
-            <form method="post" action="upload" enctype="multipart/form-data">
-              <label for="file-upload" class="file-upload">browse</label>
-              <input id="file-upload" type="file" name="fileUploaded" />
-            </form>
-          </div>
-        </div>
+
+        <form method="post" action="upload" enctype="multipart/form-data">
+            <label for="file-upload" id="browse" title="Upload file">Select a file on your computer</label>
+            <input id="file-upload" type="file" name="fileUploaded" />
+        </form>
+
       </div>
       <div id="file-list">
         <table id="uploaded-files">
           <thead>
             <tr>
               <!-- htmllint attr-bans="false" -->
-              <th width="30%">File</th>
-              <th width="45%">Copy URL</th>
-              <th width="18%">Expires in</th>
-              <th width="7%">Delete</th>
+              <th width="35%">File</th>
+              <th width="30%">Copy URL</th>
+              <th width="25%">Expires in</th>
+              <th width="10%">Delete</th>
               <!-- htmllint tag-bans="$previous" -->
             </tr>
           </thead>
@@ -57,57 +54,74 @@
 
     <div id="upload-progress">
       <div class="title" id="upload-filename">
-        Uploading
+        Uploading Your File
       </div>
-      <div class="upload-window">
-        <div id="upload-img"><img src="/resources/upload.svg" alt="Upload" /></div>
-        <div class="upload">
-          <!-- progress bar here -->
-          <div id="progress-bar"></div>
-          <div id="progress-text"></div>
+      <div class="description">
+
+      </div>
+      <!-- progress bar here -->
+      <div class="progress-bar" id="ul-progress">
+        <div class="percentage">
+          <span class="percent-number"></span>
+          <span class="percent-sign">%</span>
         </div>
       </div>
+        <div class="upload">
+          <div class="progress-text"></div>
+          <div id="cancel-upload" title="Cancel Upload">Cancel Upload</div>
+        </div>
     </div>
 
     <div id="share-link">
       <div class="title">
-        Copy the link below to share your file!
+        This encrypted link will expire after 1 download or in 24 hours
       </div>
-      <div class="share-window">
-        <img src="/resources/share.png" alt="Share" />
-        <div id="share-window-r">
-          <div id="copy">
-            <input id="link" type="url" value="" readonly/>
-            <button id="copy-btn">Copy</button>
-          </div>
-          <div>
-            This link expires after one download
-          </div>
+      <div id="share-window">
+        <div id="copy-text">
+          Copy and share the link to send your file:
         </div>
+        <div id="copy">
+          <input id="link" type="url" value="" readonly/>
+          <button id="copy-btn" title="Copy to Clipboard">Copy to Clipboard</button>
+        </div>
+        <button id="delete-file" title="Delete file">Delete file</button>
       </div>
-      <div class="send-new">
+      <div class="send-new" title="Send another file">
         Send another file
       </div>
     </div>
 
     <div id="upload-error">
       <div class="title">
-        Upload error<br>
-        This file cannot be uploaded!
+        Something went wrong!
       </div>
-      <div class="send-new">
+      <div class="expired-description">
+        There has been an error uploading the file.
+      </div>
+      <img id="upload-error-img" src="/resources/illustration_error.svg" alt="Upload error" />
+      <div class="send-new" title="Send another file">
         Send another file
       </div>
     </div>
 
-    <div id="compliance-error">
+  </div>
+    <div id="unsupported-browser">
       <div class="title">
-        Encryption error<br>
-        Your browser does not support gcm encryption.
+        Your browser is not supported.
+      </div>
+      <div class="description">
+        Unfortunately this browser does not support the web technology that powers Firefox Send. You'll need to try another browser. We recommend Firefox!
+      </div>
+      <form action="https://www.mozilla.org/en-US/firefox/new/?scene=2" target="_blank">
+        <button id="dl-firefox" type="submit">
+          <img src="/resources/firefox_logo-only.svg" id="firefox-logo"/>
+          <div id="dl-firefox-text">Firefox<br><span>Free Download</span></div>
+        </button>
+    </form>
+      <div class="unsupported-description">
+        Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
       </div>
     </div>
-
-  </div>
 
 </body>
 </html>

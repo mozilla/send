@@ -16,7 +16,7 @@ class FileReceiver extends EventEmitter {
             const percentComplete = Math.floor(
               event.loaded / event.total * 100
             );
-            this.emit('progress', percentComplete);
+            this.emit('progress', [event.loaded, event.total]);
           }
         };
 

@@ -107,8 +107,7 @@ class FileSender extends EventEmitter {
 
           xhr.upload.addEventListener('progress', e => {
             if (e.lengthComputable) {
-              const percentComplete = Math.floor(e.loaded / e.total * 100);
-              self.emit('progress', percentComplete);
+              self.emit('progress', [e.loaded, e.total]);
             }
           });
 

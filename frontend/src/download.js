@@ -1,13 +1,21 @@
 const FileReceiver = require('./fileReceiver');
 const { notify } = require('./utils');
 const $ = require('jquery');
+require('jquery-circle-progress');
 
 const Raven = window.Raven;
 
 $(document).ready(function() {
   $('#download-progress').hide();
-  $('#send-file').click(() => {
+  $('.send-new').click(() => {
     window.location.replace(`${window.location.origin}`);
+  });
+  //initiate progress bar
+  $('#dl-progress').circleProgress({
+    value: 0.0,
+    startAngle: -Math.PI/2,
+    fill: '#00C8D7',
+    size: 158
   });
   $('#download-btn').click(download);
   function download() {
@@ -15,23 +23,19 @@ $(document).ready(function() {
     const name = document.createElement('p');
     const $btn = $('#download-btn');
 
-    fileReceiver.on('progress', percentComplete => {
+    fileReceiver.on('progress', progress => {
       $('#download-page-one').hide();
-      $('.send-new').hide();
       $('#download-progress').show();
+      let percent = progress[0]/progress[1];
       // update progress bar
-      document
-        .querySelector('#progress-bar')
-        .style.setProperty('--progress', percentComplete + '%');
-      $('#progress-text').html(`${percentComplete}%`);
+      $('#dl-progress').circleProgress('value', percent );
+      $('.percent-number').html(`${Math.floor(percent*100)}`);
+      $('.progress-text').append(` (${(progress[0]/1000000).toFixed(2)}MB of ${(progress[1]/1000000).toFixed(2)}MB)`);
       //on complete
-      if (percentComplete === 100) {
+      if (percent === 1) {
         fileReceiver.removeAllListeners('progress');
-        $('#download-text').html('Download complete!');
-        $('.send-new').show();
-        $btn.text('Download complete!');
-        $btn.attr('disabled', 'true');
         notify('Your download has finished.');
+        $('.title').html('Download Complete');
       }
     });
 
