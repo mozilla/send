@@ -1,14 +1,14 @@
 class FakeFile extends Blob {
-    constructor(name, data, opt) {
-        super(data, opt);
-        this.name = name;
-    }
+  constructor(name, data, opt) {
+    super(data, opt);
+    this.name = name;
+  }
 }
 
 window.Raven = {
-    captureException: function(err) {
-        console.error(err, err.stack);
-    }
+  captureException: function(err) {
+    console.error(err, err.stack);
+  }
 }
 
 window.FakeFile = FakeFile;
