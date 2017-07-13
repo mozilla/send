@@ -273,9 +273,9 @@ describe('File Receiver', function() {
     })
   })
 
-  it('Should catch tampered checksums', function(done) {
-    // use the secret key and file hash of the previous file to encrypt,
-    // which has a different hash than this one (different strings)
+  it('Should catch fraudulent checksums', function(done) {
+    // Use the secret key and file hash of the previous file to encrypt,
+    // which has a different hash than this one (different strings).
     const newFile = new FakeFile('hello_world.txt', 
                       ['This is some data, with a changed hash.'])
     const readRaw = new FileReader();
@@ -297,6 +297,8 @@ describe('File Receiver', function() {
         ['encrypt', 'decrypt']
       )
       .then(key => {
+        // The file hash used here is the hash of the fake
+        // file from the previous test; it's a phony checksum.
         return window.crypto.subtle.encrypt(
           {
             name: 'AES-GCM',
