@@ -13,7 +13,7 @@ $(document).ready(function() {
   //initiate progress bar
   $('#dl-progress').circleProgress({
     value: 0.0,
-    startAngle: -Math.PI/2,
+    startAngle: -Math.PI / 2,
     fill: '#00C8D7',
     size: 158
   });
@@ -21,16 +21,18 @@ $(document).ready(function() {
   function download() {
     const fileReceiver = new FileReceiver();
     const name = document.createElement('p');
-    const $btn = $('#download-btn');
 
     fileReceiver.on('progress', progress => {
       $('#download-page-one').hide();
       $('#download-progress').show();
-      let percent = progress[0]/progress[1];
+      const percent = progress[0] / progress[1];
       // update progress bar
-      $('#dl-progress').circleProgress('value', percent );
-      $('.percent-number').html(`${Math.floor(percent*100)}`);
-      $('.progress-text').append(` (${(progress[0]/1000000).toFixed(2)}MB of ${(progress[1]/1000000).toFixed(2)}MB)`);
+      $('#dl-progress').circleProgress('value', percent);
+      $('.percent-number').html(`${Math.floor(percent * 100)}`);
+      $('.progress-text').append(
+        ` (${(progress[0] / 1000000).toFixed(2)}MB of ${(progress[1] /
+          1000000).toFixed(2)}MB)`
+      );
       //on complete
       if (percent === 1) {
         fileReceiver.removeAllListeners('progress');

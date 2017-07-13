@@ -36,7 +36,7 @@ span {
   line-height: 23px;
   width: 630px;
   text-align: center;
-  margin: 0 auto 60px auto;
+  margin: 0 auto 60px;
   color: #0C0C0D;
 }
 
@@ -74,7 +74,7 @@ span {
 #upload-text {
   font-size: 22px;
   color: #737373;
-  margin: 20px 0 30px 0;
+  margin: 20px 0 30px;
 }
 
 #browse {
@@ -82,7 +82,7 @@ span {
   border-radius: 5px;
   font-family: 'SF Pro Text', sans-serif;
   font-size: 15px;
-  color: #FFFFFF;
+  color: #FFF;
   width: 240px;
   height: 44px;
   display: flex;
@@ -111,7 +111,7 @@ td {
   font-size: 15px;
   vertical-align: top;
   color: #4A4A4A;
-  padding: 17px 19px 0 19px;
+  padding: 17px 19px 0;
   line-height: 23px;
 }
 
@@ -212,7 +212,7 @@ tbody {
 .progress-text {
   font-family: 'SF Pro Text', sans-serif;
   font-size: 15px;
-  color: rgba(0,0,0,0.50);
+  color: rgba(0, 0, 0, 0.5);
   letter-spacing: -0.4px;
   margin-top: 24px;
   margin-bottom: 74px;
@@ -265,7 +265,7 @@ tbody {
 
 #link:disabled {
   border: 1px solid #05A700;
-  background: #FFFFFF;
+  background: #FFF;
 }
 
 #copy-btn {
@@ -289,8 +289,8 @@ tbody {
 #delete-file {
   width: 176px;
   height: 44px;
-  background: #FFFFFF;
-  border: 1px solid rgba(12,12,13,0.30);
+  background: #FFF;
+  border: 1px solid rgba(12, 12, 13, 0.3);
   border-radius: 5px;
   font-size: 15px;
   font-family: 'SF Pro Text';
@@ -310,7 +310,7 @@ tbody {
   text-decoration: underline;
 }
 
-/*upload-error*/
+/*    upload-error    */
 #upload-error {
   display: flex;
   justify-content: center;
@@ -324,7 +324,7 @@ tbody {
   margin-top: 5px;
 }
 
-/*unsupported-browser*/
+/*    unsupported-browser   */
 #unsupported-browser {
   display: flex;
   justify-content: center;
@@ -339,7 +339,7 @@ tbody {
   width: 630px;
   text-align: center;
   color: #7D7D7D;
-  margin: 0 auto 23px auto;
+  margin: 0 auto 23px;
 }
 
 #firefox-logo {
@@ -350,14 +350,14 @@ tbody {
   margin-bottom: 181px;
   width: 260px;
   height: 80px;
-  background: #12bc00;
+  background: #12BC00;
   border-radius: 3px;
   cursor: pointer;
   border: none;
-  box-shadow: 0 5px 3px rgb(234,234,234);
+  box-shadow: 0 5px 3px rgb(234, 234, 234);
   font-family: 'Fira Sans';
   font-weight: 500;
-  color: #FFFFFF;
+  color: #FFF;
   font-size: 26px;
   display: flex;
   justify-content: center;
@@ -370,7 +370,7 @@ tbody {
   margin-left: 20.4px;
 }
 
-#dl-firefox-text>span {
+#dl-firefox-text > span {
   font-family: 'Fira Sans';
   font-weight: 300;
   font-size: 18px;
@@ -409,7 +409,7 @@ tbody {
 }
 
 #expired-img {
-  margin: 51px 0 71px 0;
+  margin: 51px 0 71px;
 }
 
 .expired-description {
@@ -418,9 +418,8 @@ tbody {
   line-height: 23px;
   width: 630px;
   text-align: center;
-  font-size: 15px;
   color: #7D7D7D;
-  margin: 0 auto 23px auto;
+  margin: 0 auto 23px;
 }
 
 #download-progress {
