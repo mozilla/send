@@ -92,9 +92,7 @@ class FileReceiver extends EventEmitter {
         const integrity = new Uint8Array(calculatedHash).toString() === proposedHash.toString();
         if (!integrity) {
           this.emit('unsafe', true)
-          return new Promise((resolve, reject) => {
-            reject();
-          })
+          return Promise.reject();
         } else {
           this.emit('safe', true);
           return Promise.all([
