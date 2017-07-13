@@ -191,8 +191,8 @@ app.post('/upload', (req, res, next) => {
   if (
     !meta.hasOwnProperty('aad') ||
     !meta.hasOwnProperty('id') ||
-    !meta.hasOwnProperty('filename' ||
-    !validateIV(meta.id))
+    !meta.hasOwnProperty('filename') ||
+    !validateIV(meta.id)
   ) {
     res.sendStatus(404);
     return;
