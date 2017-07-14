@@ -4,12 +4,13 @@ const $ = require('jquery');
 require('jquery-circle-progress');
 
 const Raven = window.Raven;
-
 $(document).ready(function() {
   $('#download-progress').hide();
   $('.send-new').click(() => {
     window.location.replace(`${window.location.origin}`);
   });
+  const filename = $('#dl-filename').html();
+
   //initiate progress bar
   $('#dl-progress').circleProgress({
     value: 0.0,
@@ -29,10 +30,24 @@ $(document).ready(function() {
       // update progress bar
       $('#dl-progress').circleProgress('value', percent);
       $('.percent-number').html(`${Math.floor(percent * 100)}`);
-      $('.progress-text').append(
-        ` (${(progress[0] / 1000000).toFixed(2)}MB of ${(progress[1] /
-          1000000).toFixed(2)}MB)`
-      );
+      if (progress[1] < 1000000) {
+        $('.progress-text').html(
+          `${filename} (${(progress[0] / 1000).toFixed(1)}KB of ${(progress[1] /
+            1000).toFixed(1)}KB)`
+        );
+      } else if (progress[1] < 1000000000) {
+        $('.progress-text').html(
+          `${filename} (${(progress[0] / 1000000).toFixed(
+            1
+          )}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
+        );
+      } else {
+        $('.progress-text').html(
+          `${filename} (${(progress[0] / 1000000).toFixed(
+            1
+          )}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
+        );
+      }
       //on complete
       if (percent === 1) {
         fileReceiver.removeAllListeners('progress');

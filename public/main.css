@@ -1,7 +1,7 @@
 /***     index.html     ***/
 html {
-  background: url('resources/Send_bg.svg');
-  font-family: 'SF Pro Display', sans-serif;
+  background: url('resources/send_bg.svg');
+  font-family: 'SF Pro Text', sans-serif;
   font-weight: 200;
   background-size: 112%;
   background-repeat: no-repeat;
@@ -11,8 +11,22 @@ html {
 }
 
 body {
+  height: 100%;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  font-size: 15px;
+  color: #858585;
+}
+
+#all {
+  padding-top: 12%;
   overflow-y: scroll;
-  margin-top: 12%;
 }
 
 input, select, textarea, button {
@@ -28,10 +42,10 @@ span {
   font-size: 33px;
   margin: 20px auto;
   text-align: center;
+  font-family: 'SF Pro Display', sans-serif;
 }
 
 .description {
-  font-family: 'SF Pro Text', sans-serif;
   font-size: 15px;
   line-height: 23px;
   width: 630px;
@@ -41,10 +55,10 @@ span {
 }
 
 .upload-window {
-  border: 1px dashed rgb(0, 148, 251, 0.5);
+  border: 1px dashed rgba(0, 148, 251, 0.5);
   margin: 0 auto;
   width: 640px;
-  height: 254.7px;
+  height: 255px;
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -54,7 +68,7 @@ span {
 }
 
 .upload-window.ondrag {
-  border: 3px dashed rgb(0, 148, 251, 0.5);
+  border: 3px dashed rgba(0, 148, 251, 0.5);
   margin: 0 auto;
   width: 672px;
   height: 267px;
@@ -75,12 +89,12 @@ span {
   font-size: 22px;
   color: #737373;
   margin: 20px 0 30px;
+  font-family: 'SF Pro Display', sans-serif;
 }
 
 #browse {
   background: #0297F8;
   border-radius: 5px;
-  font-family: 'SF Pro Text', sans-serif;
   font-size: 15px;
   color: #FFF;
   width: 240px;
@@ -101,9 +115,9 @@ th {
   color: #858585;
   font-weight: lighter;
   text-align: left;
-  background: rgb(0, 148, 251, 0.05);
+  background: rgba(0, 148, 251, 0.05);
   height: 40px;
-  border-top: 1px solid rgb(0, 148, 251, 0.1);
+  border-top: 1px solid rgba(0, 148, 251, 0.1);
   padding: 0 19px;
 }
 
@@ -117,7 +131,7 @@ td {
 
 table {
   border-collapse: collapse;
-  font-family: Segoe UI, 'SF Pro Text', sans-serif;
+  font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
 }
 
 tbody {
@@ -184,20 +198,18 @@ tbody {
 
 .percentage {
   position: absolute;
+  letter-spacing: -0.78px;
+  font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
 }
 
 .percent-number {
   font-size: 43.2px;
-  letter-spacing: -0.78px;
   line-height: 58px;
-  font-family: Segoe UI, 'SF Pro Text', sans-serif;
 }
 
 .percent-sign {
   font-size: 28.8px;
   color: rgb(104, 104, 104);
-  letter-spacing: -0.78px;
-  font-family: Segoe UI, 'SF Pro Text', sans-serif;
 }
 
 .upload {
@@ -207,11 +219,10 @@ tbody {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  font-size: 15px;
 }
 
 .progress-text {
-  font-family: 'SF Pro Text', sans-serif;
-  font-size: 15px;
   color: rgba(0, 0, 0, 0.5);
   letter-spacing: -0.4px;
   margin-top: 24px;
@@ -219,8 +230,6 @@ tbody {
 }
 
 #cancel-upload {
-  font-family: 'SF Pro Text', sans-serif;
-  font-size: 15px;
   color: #D70022;
   cursor: pointer;
   text-decoration: underline;
@@ -260,7 +269,9 @@ tbody {
   border-radius: 6px 0 0 6px;
   font-size: 24px;
   color: #737373;
-  font-family: 'SF Pro Text';
+  font-family: 'SF Pro Display', sans-serif;
+  letter-spacing: 0;
+  line-height: 23px;
 }
 
 #link:disabled {
@@ -277,7 +288,6 @@ tbody {
   color: white;
   cursor: pointer;
   font-size: 15px;
-  font-family: 'SF Pro Text';
 }
 
 #copy-btn:disabled {
@@ -293,7 +303,6 @@ tbody {
   border: 1px solid rgba(12, 12, 13, 0.3);
   border-radius: 5px;
   font-size: 15px;
-  font-family: 'SF Pro Text';
   margin-top: 50px;
   margin-bottom: 12px;
   cursor: pointer;
@@ -333,7 +342,6 @@ tbody {
 }
 
 .unsupported-description {
-  font-family: 'SF Pro Text', sans-serif;
   font-size: 13px;
   line-height: 23px;
   width: 630px;
@@ -353,7 +361,7 @@ tbody {
   background: #12BC00;
   border-radius: 3px;
   cursor: pointer;
-  border: none;
+  border: 0;
   box-shadow: 0 5px 3px rgb(234, 234, 234);
   font-family: 'Fira Sans';
   font-weight: 500;
@@ -363,6 +371,7 @@ tbody {
   justify-content: center;
   align-items: center;
   line-height: 1;
+  text-decoration: none;
 }
 
 #dl-firefox-text {
@@ -380,7 +389,6 @@ tbody {
 /**   download.html **/
 #download-btn {
   font-size: 15px;
-  font-family: 'SF Pro Text';
   color: white;
   width: 180px;
   height: 44px;
@@ -413,7 +421,6 @@ tbody {
 }
 
 .expired-description {
-  font-family: 'SF Pro Text', sans-serif;
   font-size: 15px;
   line-height: 23px;
   width: 630px;

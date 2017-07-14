@@ -57,4 +57,4 @@
 
 .icon-cancel-1:before { content: '\e801'; font-size: 1.5em; font-weight: lighter;} /* '' */
 .icon-check:before { content: '\e802'; font-size: 1.5em;} /* '' */
-.icon-docs:before { content: '\f0c5'; color: #0A8DFF; font-weight: bolder;} /* '' */
+.icon-docs:before { content: '\f0c5'; font-weight: bolder;} /* '' */

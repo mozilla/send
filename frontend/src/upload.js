@@ -19,12 +19,12 @@ $(document).ready(function() {
   $('#link').attr('disabled', false);
   $copyBtn.html('Copy to Clipboard');
 
-  $('#page-one').show();
   $('#upload-progress').hide();
   $('#share-link').hide();
   $('#upload-error').hide();
   $('#unsupported-browser').hide();
   $('#compliance-error').hide();
+  $('#page-one').show();
 
   if (localStorage.length === 0) {
     toggleHeader();
@@ -47,7 +47,7 @@ $(document).ready(function() {
     //disable button for 3s
     $copyBtn.attr('disabled', true);
     $('#link').attr('disabled', true);
-    $copyBtn.html('<span class=\'icon-check\'></span>');
+    $copyBtn.html('<span class="icon-check"></span>');
     window.setTimeout(() => {
       $copyBtn.attr('disabled', false);
       $('#link').attr('disabled', false);
@@ -70,13 +70,14 @@ $(document).ready(function() {
   });
   // link back to home page
   $('.send-new').click(() => {
-    $('#page-one').show();
     $('#upload-progress').hide();
     $('#share-link').hide();
     $('#upload-error').hide();
     $copyBtn.attr('disabled', false);
     $('#link').attr('disabled', false);
     $copyBtn.html('Copy to Clipboard');
+    $('.upload-window').removeClass('ondrag');
+    $('#page-one').show();
   });
   //cancel the upload
   $('#cancel-upload').click(() => {});
@@ -94,13 +95,21 @@ $(document).ready(function() {
     const fileSender = new FileSender(file);
     fileSender.on('progress', progress => {
       $('#page-one').hide();
-      $('#upload-progress').show();
       $('#upload-error').hide();
+      $('#upload-progress').show();
       const percent = progress[0] / progress[1];
       // update progress bar
       $('#ul-progress').circleProgress('value', percent);
-      $('.percent-number').html(`${Math.floor(percent * 100)}`);
-      if (progress[1] < 1000000000) {
+      $('#ul-progress').circleProgress().on('circle-animation-end', function() {
+        $('.percent-number').html(`${Math.floor(percent * 100)}`);
+      });
+      if (progress[1] < 1000000) {
+        $('.progress-text').html(
+          `${file.name} (${(progress[0] / 1000).toFixed(
+            1
+          )}KB of ${(progress[1] / 1000).toFixed(1)}KB)`
+        );
+      } else if (progress[1] < 1000000000) {
         $('.progress-text').html(
           `${file.name} (${(progress[0] / 1000000).toFixed(
             1
@@ -159,8 +168,8 @@ $(document).ready(function() {
         t = window.setTimeout(() => {
           $('#page-one').hide();
           $('#upload-progress').hide();
-          $('#share-link').show();
           $('#upload-error').hide();
+          $('#share-link').show();
         }, 2000);
 
         populateFileList(JSON.stringify(fileData));
@@ -224,10 +233,10 @@ $(document).ready(function() {
     name.appendChild(cellText);
 
     // create delete button
-    del.innerHTML =
-      '<span class=\'icon-cancel-1\' title=\'Delete\' style=\'margin-left: -7px\'></span>';
+    del.innerHTML = '<span class="icon-cancel-1" title="Delete"></span>';
 
-    link.innerHTML = '<span class=\'icon-docs\' title=\'Copy URL\'></span>';
+    link.innerHTML = '<span class="icon-docs" title="Copy URL"></span>';
+    link.style.color = '#0A8DFF';
     //copy link to clipboard when icon clicked
     $(link).click(function() {
       const aux = document.createElement('input');
@@ -236,7 +245,10 @@ $(document).ready(function() {
       aux.select();
       document.execCommand('copy');
       document.body.removeChild(aux);
-      notify('The link has been copied to your clipboard.');
+      link.innerHTML = 'Copied!';
+      window.setTimeout(() => {
+        link.innerHTML = '<span class="icon-docs" title="Copy URL"></span>';
+      }, 500);
     });
 
     file.creationDate = new Date(file.creationDate);
@@ -282,7 +294,7 @@ $(document).ready(function() {
     // create popup
     popupDiv.classList.add('popup');
     $popupText.html(
-      '<span class=\'del-file\'>Delete</span><span class=\'nvm\' > Nevermind</span>'
+      '<span class="del-file">Delete</span><span class="nvm" > Nevermind</span>'
     );
 
     // delete file
@@ -296,8 +308,7 @@ $(document).ready(function() {
     document.getElementById('delete-file').onclick = () => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
         localStorage.removeItem(file.fileId);
-        toggleHeader();
-        $('.send-new').click();
+        location.reload();
       });
     };
 

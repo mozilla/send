@@ -3,17 +3,18 @@
 <head>
   <title>Firefox Send</title>
   {{#if dsn}}
-    {{> sentry dsn=dsn}}
+  {{> sentry dsn=dsn}}
   {{/if}}
   <script src="/bundle.js"></script>
   <link rel="stylesheet" type="text/css" href="/main.css" />
   <link rel="stylesheet" type="text/css" href="/resources/fontello-24c5e6ad/css/fontello.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
   {{#if trackerId}}
-    {{> analytics trackerId=trackerId}}
+  {{> analytics trackerId=trackerId}}
   {{/if}}
 </head>
 <body>
+  <div id="all">
     <div id="page-one">
       <div class="title">
         Private, Encrypted File Sharing
@@ -28,8 +29,8 @@
         </div>
 
         <form method="post" action="upload" enctype="multipart/form-data">
-            <label for="file-upload" id="browse" title="Upload file">Select a file on your computer</label>
-            <input id="file-upload" type="file" name="fileUploaded" />
+          <label for="file-upload" id="browse" title="Upload file">Select a file on your computer</label>
+          <input id="file-upload" type="file" name="fileUploaded" />
         </form>
 
       </div>
@@ -39,9 +40,9 @@
             <tr>
               <!-- htmllint attr-bans="false" -->
               <th width="35%">File</th>
-              <th width="30%">Copy URL</th>
-              <th width="25%">Expires in</th>
-              <th width="10%">Delete</th>
+              <th width="25%">Copy URL</th>
+              <th width="21%">Expires in</th>
+              <th width="12%">Delete</th>
               <!-- htmllint tag-bans="$previous" -->
             </tr>
           </thead>
@@ -62,14 +63,14 @@
       <!-- progress bar here -->
       <div class="progress-bar" id="ul-progress">
         <div class="percentage">
-          <span class="percent-number"></span>
+          <span class="percent-number">0</span>
           <span class="percent-sign">%</span>
         </div>
       </div>
-        <div class="upload">
-          <div class="progress-text"></div>
-          <div id="cancel-upload" title="Cancel Upload">Cancel Upload</div>
-        </div>
+      <div class="upload">
+        <div class="progress-text"></div>
+        <div id="cancel-upload" title="Cancel Upload">Cancel Upload</div>
+      </div>
     </div>
 
     <div id="share-link">
@@ -105,23 +106,22 @@
     </div>
 
   </div>
-    <div id="unsupported-browser">
-      <div class="title">
-        Your browser is not supported.
-      </div>
-      <div class="description">
-        Unfortunately this browser does not support the web technology that powers Firefox Send. You'll need to try another browser. We recommend Firefox!
-      </div>
-      <form action="https://www.mozilla.org/en-US/firefox/new/?scene=2" target="_blank">
-        <button id="dl-firefox" type="submit">
-          <img src="/resources/firefox_logo-only.svg" id="firefox-logo"/>
-          <div id="dl-firefox-text">Firefox<br><span>Free Download</span></div>
-        </button>
-    </form>
-      <div class="unsupported-description">
-        Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
-      </div>
+  <div id="unsupported-browser">
+    <div class="title">
+      Your browser is not supported.
     </div>
-
+    <div class="description">
+      Unfortunately this browser does not support the web technology that powers Firefox Send. You'll need to try another browser. We recommend Firefox!
+    </div>
+    <a id="dl-firefox" href="https://www.mozilla.org/firefox/new/?scene=2" target="_blank">
+      <img src="/resources/firefox_logo-only.svg" id="firefox-logo" alt="Firefox"/>
+      <div id="dl-firefox-text">Firefox<br><span>Free Download</span></div>
+    </a>
+    <div class="unsupported-description">
+      Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
+    </div>
+  </div>
+</div>
+<!-- <div class="footer"><img src="/resources/mozilla-logo.jpg"/>This footer will always be positioned at the bottom of the page, but <strong>not fixed</strong>.</div> -->
 </body>
 </html>
