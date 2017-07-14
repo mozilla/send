@@ -70,7 +70,8 @@ class FileReceiver extends EventEmitter {
               {
                 name: 'AES-GCM',
                 iv: hexToArray(fdata.iv),
-                additionalData: hexToArray(fdata.aad)
+                additionalData: hexToArray(fdata.aad),
+                tagLength: 128
               },
               key,
               fdata.data
