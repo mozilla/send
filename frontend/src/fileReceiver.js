@@ -110,7 +110,7 @@ class FileReceiver extends EventEmitter {
                 resolve(decrypted);
               }),
               new Promise((resolve, reject) => {
-                resolve(fname);
+                resolve(decodeURIComponent(fname));
               })
             ]);
           });
