@@ -32,6 +32,10 @@ app.engine(
 app.set('view engine', 'handlebars');
 
 app.use(helmet());
+app.use(helmet.hsts({
+  maxAge: 31536000,
+  force: conf.env === 'production'
+}));
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
