@@ -74,9 +74,7 @@ class FileReceiver extends EventEmitter {
           fdata.data
         ).then(decrypted => {
           this.emit('decrypting', false);
-          return new Promise((resolve, reject) => {
-            resolve(decrypted);
-          })
+          return Promise.resolve(decrypted)
         }),
         fdata.filename,
         hexToArray(fdata.aad)
