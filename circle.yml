@@ -9,9 +9,8 @@ machine:
 
 dependencies:
   pre:
-    - npm i -g get-firefox
+    - npm i -g get-firefox geckodriver
     - get-firefox --platform linux --extract --target /home/ubuntu/send
-    - npm i -g geckodriver
 
 deployment:
   latest:
