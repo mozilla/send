@@ -16,7 +16,12 @@
   <script>
     mocha.checkLeaks();
     mocha.globals(['jQuery']);
-    mocha.run();
+    mocha.run(function(err) {
+      document.title = err;
+    });
+  </script>
+
+  <script>
   </script>
   </body>
 </html>

@@ -5,6 +5,11 @@ machine:
     - docker
     - redis
 
+dependencies:
+  pre:
+    - npm i -g get-firefox
+    - get-firefox --platform linux --extract --target /home/ubuntu/send
+
 deployment:
   latest:
     branch: master
