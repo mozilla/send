@@ -13,7 +13,7 @@ driver.wait(until.titleMatches(/^[0-1]$/), 10000);
 driver.getTitle().then(title => {
   driver.quit().then(() => {
     if (title === '0') {
-      // process.exit(0);
+      console.log('Frontend tests have passed.');
     } else {
       throw new Error('Frontend tests are failing. ' + 
                 'Please open the frontend.test.html file in a browser.');
