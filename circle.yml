@@ -4,6 +4,8 @@ machine:
   services:
     - docker
     - redis
+  environment:
+    PATH: "/home/ubuntu/send/firefox:$PATH"
 
 dependencies:
   pre:
