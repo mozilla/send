@@ -1,2 +1,4 @@
 public/bundle.js
 public/webcrypto-shim.js
+test/frontend/bundle.js
+firefox

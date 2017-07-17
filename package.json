@@ -19,6 +19,7 @@
     "raven": "^2.1.0",
     "raven-js": "^3.16.0",
     "redis": "^2.7.1",
+    "selenium-webdriver": "^3.4.0",
     "supertest": "^3.0.0",
     "uglify-es": "3.0.19"
   },
@@ -52,7 +53,8 @@
     "lint:css": "stylelint 'public/*.css'",
     "lint:js": "eslint .",
     "start": "node server/server",
-    "test": "mocha test/unit && mocha test/server",
+    "test": "mocha test/unit && mocha test/server && npm run test-browser && node test/frontend/driver.js",
+    "test-browser": "browserify test/frontend/frontend.bundle.js -o test/frontend/bundle.js -d",
     "version": "node scripts/version"
   }
 }

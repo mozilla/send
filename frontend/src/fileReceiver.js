@@ -58,61 +58,41 @@ class FileReceiver extends EventEmitter {
         true,
         ['encrypt', 'decrypt']
       )
-    ])
-      .then(([fdata, key]) => {
-        this.emit('decrypting', true);
-        return Promise.all([
-          window.crypto.subtle
-            .decrypt(
-              {
-                name: 'AES-GCM',
-                iv: hexToArray(fdata.iv),
-                additionalData: hexToArray(fdata.aad),
-                tagLength: 128
-              },
-              key,
-              fdata.data
-            )
-            .then(decrypted => {
-              this.emit('decrypting', false);
-              return new Promise((resolve, reject) => {
-                resolve(decrypted);
-              });
-            }),
-          new Promise((resolve, reject) => {
-            resolve(fdata.filename);
-          }),
-          new Promise((resolve, reject) => {
-            resolve(hexToArray(fdata.aad));
-          })
-        ]);
+    ]).then(([fdata, key]) => {
+      this.emit('decrypting', true);
+      return Promise.all([
+        window.crypto.subtle.decrypt(
+          {
+            name: 'AES-GCM',
+            iv: hexToArray(fdata.iv),
+            additionalData: hexToArray(fdata.aad)
+          },
+          key,
+          fdata.data
+        ).then(decrypted => {
+          this.emit('decrypting', false);
+          return Promise.resolve(decrypted)
+        }),
+        fdata.filename,
+        hexToArray(fdata.aad)
+      ]);
+    }).then(([decrypted, fname, proposedHash]) => {
+      this.emit('hashing', true);
+      return window.crypto.subtle.digest('SHA-256', decrypted).then(calculatedHash => {
+        this.emit('hashing', false);
+        const integrity = new Uint8Array(calculatedHash).toString() === proposedHash.toString();
+        if (!integrity) {
+          this.emit('unsafe', true)
+          return Promise.reject();
+        } else {
+          this.emit('safe', true);
+          return Promise.all([
+            decrypted,
+            fname
+          ]);
+        }
       })
-      .then(([decrypted, fname, proposedHash]) => {
-        this.emit('hashing', true);
-        return window.crypto.subtle
-          .digest('SHA-256', decrypted)
-          .then(calculatedHash => {
-            this.emit('hashing', false);
-            const integrity =
-              new Uint8Array(calculatedHash).toString() ===
-              proposedHash.toString();
-            if (!integrity) {
-              return new Promise((resolve, reject) => {
-                console.log('This file has been tampered with.');
-                reject();
-              });
-            }
-
-            return Promise.all([
-              new Promise((resolve, reject) => {
-                resolve(decrypted);
-              }),
-              new Promise((resolve, reject) => {
-                resolve(fname);
-              })
-            ]);
-          });
-      });
+    })
   }
 }
 
