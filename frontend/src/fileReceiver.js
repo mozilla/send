@@ -88,7 +88,7 @@ class FileReceiver extends EventEmitter {
           this.emit('safe', true);
           return Promise.all([
             decrypted,
-            fname
+            decodeURIComponent(fname)
           ]);
         }
       })

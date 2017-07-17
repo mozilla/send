@@ -32,8 +32,8 @@ $(document).ready(function() {
       $('.percent-number').html(`${Math.floor(percent * 100)}`);
       if (progress[1] < 1000000) {
         $('.progress-text').html(
-          `${filename} (${(progress[0] / 1000).toFixed(1)}KB of ${(progress[1] /
-            1000).toFixed(1)}KB)`
+          `${filename} (${(progress[0] / 1000).toFixed(1)}KB of 
+           ${(progress[1] / 1000).toFixed(1)}KB)`
         );
       } else if (progress[1] < 1000000000) {
         $('.progress-text').html(
