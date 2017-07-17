@@ -14,6 +14,7 @@
     "express-handlebars": "^3.0.0",
     "helmet": "^3.6.1",
     "jquery": "^3.2.1",
+    "jquery-circle-progress": "^1.2.2",
     "mozlog": "^2.1.1",
     "raven": "^2.1.0",
     "raven-js": "^3.16.0",

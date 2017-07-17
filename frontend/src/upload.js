@@ -1,28 +1,30 @@
 const FileSender = require('./fileSender');
 const { notify, gcmCompliant } = require('./utils');
 const $ = require('jquery');
+require('jquery-circle-progress');
 
 const Raven = window.Raven;
 
 $(document).ready(function() {
   gcmCompliant().catch(err => {
     $('#page-one').hide();
-    $('#compliance-error').show();
+    $('#unsupported-browser').show();
   });
 
   $('#file-upload').change(onUpload);
-  $('#page-one').on('dragover', allowDrop).on('drop', onUpload);
+  $('body').on('dragover', allowDrop).on('drop', onUpload);
   // reset copy button
   const $copyBtn = $('#copy-btn');
   $copyBtn.attr('disabled', false);
-  $copyBtn.html('Copy');
+  $('#link').attr('disabled', false);
+  $copyBtn.html('Copy to Clipboard');
 
-  $('#page-one').show();
-  $('#file-list').show();
   $('#upload-progress').hide();
   $('#share-link').hide();
   $('#upload-error').hide();
+  $('#unsupported-browser').hide();
   $('#compliance-error').hide();
+  $('#page-one').show();
 
   if (localStorage.length === 0) {
     toggleHeader();
@@ -44,24 +46,41 @@ $(document).ready(function() {
     document.body.removeChild(aux);
     //disable button for 3s
     $copyBtn.attr('disabled', true);
-    $copyBtn.html('Copied!');
+    $('#link').attr('disabled', true);
+    $copyBtn.html('<span class="icon-check"></span>');
     window.setTimeout(() => {
       $copyBtn.attr('disabled', false);
-      $copyBtn.html('Copy');
+      $('#link').attr('disabled', false);
+      $copyBtn.html('Copy to Clipboard');
     }, 3000);
   });
 
+  $('.upload-window').on('dragover', () => {
+    $('.upload-window').addClass('ondrag');
+  });
+  $('.upload-window').on('dragleave', () => {
+    $('.upload-window').removeClass('ondrag');
+  });
+  //initiate progress bar
+  $('#ul-progress').circleProgress({
+    value: 0.0,
+    startAngle: -Math.PI / 2,
+    fill: '#3B9DFF',
+    size: 158
+  });
   // link back to home page
   $('.send-new').click(() => {
-    $('#page-one').show();
-    $('#file-list').show();
     $('#upload-progress').hide();
     $('#share-link').hide();
     $('#upload-error').hide();
     $copyBtn.attr('disabled', false);
-    $copyBtn.html('Copy');
+    $('#link').attr('disabled', false);
+    $copyBtn.html('Copy to Clipboard');
+    $('.upload-window').removeClass('ondrag');
+    $('#page-one').show();
   });
-
+  //cancel the upload
+  $('#cancel-upload').click(() => {});
   // on file upload by browse or drag & drop
   function onUpload(event) {
     event.preventDefault();
@@ -74,17 +93,35 @@ $(document).ready(function() {
     const expiration = 24 * 60 * 60 * 1000; //will eventually come from a field
 
     const fileSender = new FileSender(file);
-    fileSender.on('progress', percentComplete => {
+    fileSender.on('progress', progress => {
       $('#page-one').hide();
-      $('#file-list').hide();
-      $('#upload-progress').show();
       $('#upload-error').hide();
-      $('#upload-filename').innerHTML += file.name;
+      $('#upload-progress').show();
+      const percent = progress[0] / progress[1];
       // update progress bar
-      document
-        .querySelector('#progress-bar')
-        .style.setProperty('--progress', percentComplete + '%');
-      $('#progress-text').html(`${percentComplete}%`);
+      $('#ul-progress').circleProgress('value', percent);
+      $('#ul-progress').circleProgress().on('circle-animation-end', function() {
+        $('.percent-number').html(`${Math.floor(percent * 100)}`);
+      });
+      if (progress[1] < 1000000) {
+        $('.progress-text').html(
+          `${file.name} (${(progress[0] / 1000).toFixed(
+            1
+          )}KB of ${(progress[1] / 1000).toFixed(1)}KB)`
+        );
+      } else if (progress[1] < 1000000000) {
+        $('.progress-text').html(
+          `${file.name} (${(progress[0] / 1000000).toFixed(
+            1
+          )}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
+        );
+      } else {
+        $('.progress-text').html(
+          `${file.name} (${(progress[0] / 1000000).toFixed(
+            1
+          )}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
+        );
+      }
     });
 
     fileSender.on('loading', isStillLoading => {
@@ -113,12 +150,10 @@ $(document).ready(function() {
         console.log('Finished encrypting');
       }
     });
-
+    let t = '';
     fileSender
       .upload()
       .then(info => {
-        const url = info.url.trim() + `#${info.secretKey}`.trim();
-        $('#link').attr('value', url);
         const fileData = {
           name: file.name,
           fileId: info.fileId,
@@ -129,12 +164,13 @@ $(document).ready(function() {
           expiry: expiration
         };
         localStorage.setItem(info.fileId, JSON.stringify(fileData));
-
-        $('#page-one').hide();
-        $('#file-list').hide();
-        $('#upload-progress').hide();
-        $('#share-link').show();
-        $('#upload-error').hide();
+        $('#upload-filename').html('Ready to Send');
+        t = window.setTimeout(() => {
+          $('#page-one').hide();
+          $('#upload-progress').hide();
+          $('#upload-error').hide();
+          $('#share-link').show();
+        }, 2000);
 
         populateFileList(JSON.stringify(fileData));
         notify('Your upload has finished.');
@@ -143,7 +179,9 @@ $(document).ready(function() {
         Raven.captureException(err);
         console.log(err);
         $('#page-one').hide();
+        $('#upload-progress').hide();
         $('#upload-error').show();
+        window.clearTimeout(t);
       });
   }
 
@@ -181,19 +219,37 @@ $(document).ready(function() {
     const link = document.createElement('td');
     const expiry = document.createElement('td');
     const del = document.createElement('td');
-    del.setAttribute('align', 'center');
-    const btn = document.createElement('button');
     const popupDiv = document.createElement('div');
-    const $popupText = $('<span>', { class: 'popuptext' });
+    const $popupText = $('<div>', { class: 'popuptext' });
     const cellText = document.createTextNode(file.name);
+
+    const url = file.url.trim() + `#${file.secretKey}`.trim();
+    $('#link').attr('value', url);
+    $('#copy-text').html(
+      'Copy and share the link to send your file: ' + file.name
+    );
+    $popupText.attr('tabindex', '-1');
 
     name.appendChild(cellText);
 
     // create delete button
-    btn.innerHTML = 'x';
-    btn.classList.add('delete-btn');
+    del.innerHTML = '<span class="icon-cancel-1" title="Delete"></span>';
 
-    link.innerHTML = file.url.trim() + `#${file.secretKey}`.trim();
+    link.innerHTML = '<span class="icon-docs" title="Copy URL"></span>';
+    link.style.color = '#0A8DFF';
+    //copy link to clipboard when icon clicked
+    $(link).click(function() {
+      const aux = document.createElement('input');
+      aux.setAttribute('value', url);
+      document.body.appendChild(aux);
+      aux.select();
+      document.execCommand('copy');
+      document.body.removeChild(aux);
+      link.innerHTML = 'Copied!';
+      window.setTimeout(() => {
+        link.innerHTML = '<span class="icon-docs" title="Copy URL"></span>';
+      }, 500);
+    });
 
     file.creationDate = new Date(file.creationDate);
 
@@ -215,18 +271,13 @@ $(document).ready(function() {
       seconds = Math.floor(countdown / 1000 % 60);
       let t;
 
-      if (hours > 1) {
-        expiry.innerHTML = hours + 'h';
-        t = window.setTimeout(() => {
-          poll();
-        }, 3600000);
-      } else if (hours === 1) {
-        expiry.innerHTML = hours + 'h';
+      if (hours >= 1) {
+        expiry.innerHTML = hours + 'h ' + minutes % 60 + 'm';
         t = window.setTimeout(() => {
           poll();
         }, 60000);
       } else if (hours === 0) {
-        expiry.innerHTML = minutes + 'm' + seconds + 's';
+        expiry.innerHTML = minutes + 'm ' + seconds + 's';
         t = window.setTimeout(() => {
           poll();
         }, 1000);
@@ -236,6 +287,7 @@ $(document).ready(function() {
         localStorage.removeItem(file.fileId);
         $(expiry).parents('tr').remove();
         window.clearTimeout(t);
+        toggleHeader();
       }
     }
 
@@ -253,32 +305,40 @@ $(document).ready(function() {
         toggleHeader();
       });
     });
+    document.getElementById('delete-file').onclick = () => {
+      FileSender.delete(file.fileId, file.deleteToken).then(() => {
+        localStorage.removeItem(file.fileId);
+        location.reload();
+      });
+    };
 
     // add data cells to table row
     row.appendChild(name);
     row.appendChild(link);
     row.appendChild(expiry);
-    popupDiv.appendChild(btn);
     $(popupDiv).append($popupText);
     del.appendChild(popupDiv);
     row.appendChild(del);
 
     // show popup
-    del.addEventListener('click', toggleShow);
+    del.addEventListener('click', function() {
+      $popupText.addClass('show');
+      $popupText.focus();
+    });
     // hide popup
     $popupText.find('.nvm').click(function(e) {
       e.stopPropagation();
-      toggleShow();
+      $popupText.removeClass('show');
     });
     $popupText.click(function(e) {
       e.stopPropagation();
     });
-
+    //close when popup loses focus
+    $popupText.blur(() => {
+      $popupText.removeClass('show');
+    });
     $('tbody').append(row); //add row to table
 
-    function toggleShow() {
-      $popupText.toggleClass('show');
-    }
     toggleHeader();
   }
   function toggleHeader() {
