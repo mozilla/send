@@ -40,6 +40,7 @@ describe('File Sender', function() {
   })
 
   it('Should get a loading event emission', function() {
+      assert.fail();
       const file = new FakeFile('hello_world.txt', ['This is some data.'])
       const fs = new FileSender(file);
       let testLoading = true;

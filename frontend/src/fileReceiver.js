@@ -78,12 +78,8 @@ class FileReceiver extends EventEmitter {
             resolve(decrypted);
           })
         }),
-        new Promise((resolve, reject) => {
-          resolve(fdata.filename);
-        }),
-        new Promise((resolve, reject) => {
-          resolve(hexToArray(fdata.aad));
-        })
+        fdata.filename,
+        hexToArray(fdata.aad)
       ]);
     }).then(([decrypted, fname, proposedHash]) => {
       this.emit('hashing', true);
@@ -96,12 +92,8 @@ class FileReceiver extends EventEmitter {
         } else {
           this.emit('safe', true);
           return Promise.all([
-            new Promise((resolve, reject) => {
-              resolve(decrypted);
-            }),
-            new Promise((resolve, reject) => {
-              resolve(fname);
-            })
+            decrypted,
+            fname
           ]);
         }
       })
