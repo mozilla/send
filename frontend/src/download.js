@@ -1,37 +1,58 @@
 const FileReceiver = require('./fileReceiver');
 const { notify } = require('./utils');
 const $ = require('jquery');
+require('jquery-circle-progress');
 
 const Raven = window.Raven;
-
 $(document).ready(function() {
   $('#download-progress').hide();
-  $('#send-file').click(() => {
+  $('.send-new').click(() => {
     window.location.replace(`${window.location.origin}`);
+  });
+  const filename = $('#dl-filename').html();
+
+  //initiate progress bar
+  $('#dl-progress').circleProgress({
+    value: 0.0,
+    startAngle: -Math.PI / 2,
+    fill: '#00C8D7',
+    size: 158
   });
   $('#download-btn').click(download);
   function download() {
     const fileReceiver = new FileReceiver();
     const name = document.createElement('p');
-    const $btn = $('#download-btn');
 
-    fileReceiver.on('progress', percentComplete => {
+    fileReceiver.on('progress', progress => {
       $('#download-page-one').hide();
-      $('.send-new').hide();
       $('#download-progress').show();
+      const percent = progress[0] / progress[1];
       // update progress bar
-      document
-        .querySelector('#progress-bar')
-        .style.setProperty('--progress', percentComplete + '%');
-      $('#progress-text').html(`${percentComplete}%`);
+      $('#dl-progress').circleProgress('value', percent);
+      $('.percent-number').html(`${Math.floor(percent * 100)}`);
+      if (progress[1] < 1000000) {
+        $('.progress-text').html(
+          `${filename} (${(progress[0] / 1000).toFixed(1)}KB of ${(progress[1] /
+            1000).toFixed(1)}KB)`
+        );
+      } else if (progress[1] < 1000000000) {
+        $('.progress-text').html(
+          `${filename} (${(progress[0] / 1000000).toFixed(
+            1
+          )}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
+        );
+      } else {
+        $('.progress-text').html(
+          `${filename} (${(progress[0] / 1000000).toFixed(
+            1
+          )}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
+        );
+      }
       //on complete
-      if (percentComplete === 100) {
+      if (percent === 1) {
         fileReceiver.removeAllListeners('progress');
-        $('#download-text').html('Download complete!');
-        $('.send-new').show();
-        $btn.text('Download complete!');
-        $btn.attr('disabled', 'true');
         notify('Your download has finished.');
+        $('.title').html('Download Complete');
       }
     });
 

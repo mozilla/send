@@ -1,44 +1,65 @@
 /***     index.html     ***/
 html {
-  background: url('resources/background.png');
-  font-family: 'Fira Sans';
-  font-weight: 300;
-  font-style: normal;
-  background-size: contain;
+  background: url('resources/send_bg.svg');
+  font-family: 'SF Pro Text', sans-serif;
+  font-weight: 200;
+  background-size: 112%;
+  background-repeat: no-repeat;
+  background-position: center top;
+  margin-top: -25px;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-direction: column;
+}
+
+body {
+  height: 100%;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  font-size: 15px;
+  color: #858585;
+}
+
+#all {
+  padding-top: 12%;
+  overflow-y: scroll;
 }
 
 input, select, textarea, button {
   font-family: inherit;
 }
 
-/**   page-one    **/
-.main-window {
-  border: 1px solid;
-  width: 606px;
-  min-height: 447px;
-  background-color: white;
-  border-radius: 5px;
+span {
+  cursor: pointer;
 }
 
+/**   page-one    **/
 .title {
-  font-size: 14px;
-  width: 80%;
-  margin: 40px auto;
+  font-size: 33px;
+  margin: 20px auto;
   text-align: center;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+.description {
+  font-size: 15px;
+  line-height: 23px;
+  width: 630px;
+  text-align: center;
+  margin: 0 auto 60px;
+  color: #0C0C0D;
 }
 
 .upload-window {
-  border: 1px dashed;
+  border: 1px dashed rgba(0, 148, 251, 0.5);
   margin: 0 auto;
-  width: 470px;
-  height: 250px;
-  border-radius: 5px;
+  width: 640px;
+  height: 255px;
+  border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,31 +67,41 @@ input, select, textarea, button {
   text-align: center;
 }
 
+.upload-window.ondrag {
+  border: 3px dashed rgba(0, 148, 251, 0.5);
+  margin: 0 auto;
+  width: 672px;
+  height: 267px;
+  border-radius: 4.2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.link {
+  color: #0094FB;
+  text-decoration: none;
+}
+
+#upload-text {
+  font-size: 22px;
+  color: #737373;
+  margin: 20px 0 30px;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
 #browse {
-  float: right;
-  color: #2D7EFF;
-}
-
-#browse-text {
-  float: left;
-  width: 128px;
-}
-
-#upload-img {
-  padding-right: 20px;
-}
-
-.upload-window > div:nth-child(2) {
-  font-size: 26px;
-}
-
-.upload {
-  font-size: 12px;
-  width: auto;
-  overflow: hidden;
-}
-
-.file-upload {
+  background: #0297F8;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #FFF;
+  width: 240px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -78,26 +109,29 @@ input[type="file"] {
   display: none;
 }
 
-form {
-  width: 45px;
-  float: right;
-}
-
 /**   file-list   **/
 th {
-  font-size: 10px;
-  color: #737373;
-  font-weight: normal;
+  font-size: 16px;
+  color: #858585;
+  font-weight: lighter;
   text-align: left;
+  background: rgba(0, 148, 251, 0.05);
+  height: 40px;
+  border-top: 1px solid rgba(0, 148, 251, 0.1);
+  padding: 0 19px;
 }
 
 td {
-  font-size: 12px;
+  font-size: 15px;
   vertical-align: top;
+  color: #4A4A4A;
+  padding: 17px 19px 0;
+  line-height: 23px;
 }
 
 table {
-  table-layout: fixed;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
 }
 
 tbody {
@@ -105,16 +139,9 @@ tbody {
 }
 
 #uploaded-files {
-  width: 472px;
-  margin: 10px auto;
+  width: 640px;
+  margin: 45.3px auto;
   table-layout: fixed;
-}
-
-.delete-btn {
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
 }
 
 /* Popup container */
@@ -135,11 +162,12 @@ tbody {
   padding: 8px 0;
   position: absolute;
   z-index: 1;
-  bottom: 125%;
+  bottom: 20px;
   left: 50%;
-  margin-left: -80px;
+  margin-left: -96px;
   transition: opacity 0.5s;
   opacity: 0;
+  outline: 0;
 }
 
 /* Popup arrow */
@@ -160,31 +188,56 @@ tbody {
 }
 
 /**   upload-progress   **/
-#progress-bar {
-  width: 300px;
-  height: 5px;
-  background: linear-gradient(
-    90deg,
-    #FD9800,
-    #D73000 var(--progress),
-    white var(--progress)
-  );
-  border: 0.5px solid;
-  border-radius: 5px;
-}
-
-/**   share-link    **/
-.share-window {
-  margin: 0 auto;
-  width: 470px;
-  height: 250px;
+.progress-bar {
+  margin-top: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-#share-window-r {
-  width: 50%;
+.percentage {
+  position: absolute;
+  letter-spacing: -0.78px;
+  font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+}
+
+.percent-number {
+  font-size: 43.2px;
+  line-height: 58px;
+}
+
+.percent-sign {
+  font-size: 28.8px;
+  color: rgb(104, 104, 104);
+}
+
+.upload {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 15px;
+}
+
+.progress-text {
+  color: rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.4px;
+  margin-top: 24px;
+  margin-bottom: 74px;
+}
+
+#cancel-upload {
+  color: #D70022;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/**   share-link    **/
+#share-window {
+  width: 645px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -202,46 +255,149 @@ tbody {
   flex-wrap: nowrap;
 }
 
+#copy-text {
+  align-self: flex-start;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  color: #0C0C0D;
+}
+
 #link {
-  width: 216px;
-  height: 41px;
-  border: 1px solid #979797;
+  width: 480px;
+  height: 56px;
+  border: 1px solid #0297F8;
+  border-radius: 6px 0 0 6px;
+  font-size: 24px;
+  color: #737373;
+  font-family: 'SF Pro Display', sans-serif;
+  letter-spacing: 0;
+  line-height: 23px;
+}
+
+#link:disabled {
+  border: 1px solid #05A700;
+  background: #FFF;
 }
 
 #copy-btn {
-  width: 60px;
-  height: 45px;
-  background: #337FEB;
-  border: 1px solid #979797;
+  width: 165px;
+  height: 60px;
+  background: #0297F8;
+  border: 1px solid #0297F8;
+  border-radius: 0 6px 6px 0;
   color: white;
   cursor: pointer;
+  font-size: 15px;
 }
 
 #copy-btn:disabled {
-  background: #47B04B;
+  background: #05A700;
+  border: 1px solid #05A700;
   cursor: auto;
 }
 
+#delete-file {
+  width: 176px;
+  height: 44px;
+  background: #FFF;
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  border-radius: 5px;
+  font-size: 15px;
+  margin-top: 50px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  color: #313131;
+}
+
 .send-new {
-  font-size: 14px;
+  font-size: 15px;
   margin: auto;
   width: 80%;
   text-align: center;
-  color: #2D7EFF;
+  color: #0094FB;
   cursor: pointer;
+  text-decoration: underline;
+}
+
+/*    upload-error    */
+#upload-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#upload-error-img {
+  margin-bottom: 90px;
+  margin-top: 5px;
+}
+
+/*    unsupported-browser   */
+#unsupported-browser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.unsupported-description {
+  font-size: 13px;
+  line-height: 23px;
+  width: 630px;
+  text-align: center;
+  color: #7D7D7D;
+  margin: 0 auto 23px;
+}
+
+#firefox-logo {
+  width: 70px;
+}
+
+#dl-firefox {
+  margin-bottom: 181px;
+  width: 260px;
+  height: 80px;
+  background: #12BC00;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 0;
+  box-shadow: 0 5px 3px rgb(234, 234, 234);
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  color: #FFF;
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  text-decoration: none;
+}
+
+#dl-firefox-text {
+  text-align: left;
+  margin-left: 20.4px;
+}
+
+#dl-firefox-text > span {
+  font-family: 'Fira Sans';
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: -0.69px;
 }
 
 /**   download.html **/
 #download-btn {
-  font-size: 18px;
+  font-size: 15px;
   color: white;
-  width: 214px;
-  height: 87px;
-  margin: 50px auto;
+  width: 180px;
+  height: 44px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   text-align: center;
-  background: #337FEB;
-  border: 1px solid #3EA050;
-  border-radius: 6px;
+  background: #0297F8;
+  border: 1px solid #0297F8;
+  border-radius: 5px;
   font-weight: 300;
   cursor: pointer;
 }
@@ -251,10 +407,8 @@ tbody {
   cursor: auto;
 }
 
-#download-page-one {
+#download {
   margin: 0 auto;
-  width: 470px;
-  height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -263,13 +417,20 @@ tbody {
 }
 
 #expired-img {
-  display: none;
+  margin: 51px 0 71px;
+}
+
+.expired-description {
+  font-size: 15px;
+  line-height: 23px;
+  width: 630px;
+  text-align: center;
+  color: #7D7D7D;
+  margin: 0 auto 23px;
 }
 
 #download-progress {
   margin: 0 auto;
-  width: 470px;
-  height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -277,6 +438,7 @@ tbody {
   text-align: center;
 }
 
-#download-text {
-  margin-bottom: 40px;
+#download-img {
+  width: 283px;
+  height: 196px;
 }
