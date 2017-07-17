@@ -35,24 +35,24 @@ app.use(helmet());
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ['\'self\''],
+      defaultSrc: ["'self'"],
       connectSrc: [
-        '\'self\'',
+        "'self'",
         'https://sentry.prod.mozaws.net',
         'https://www.google-analytics.com',
         'https://ssl.google-analytics.com'
       ],
       imgSrc: [
-        '\'self\'',
+        "'self'",
         'https://www.google-analytics.com',
         'https://ssl.google-analytics.com'
       ],
-      scriptSrc: ['\'self\'', 'https://ssl.google-analytics.com'],
-      styleSrc: ['\'self\'', 'https://code.cdn.mozilla.net'],
-      fontSrc: ['\'self\'', 'https://code.cdn.mozilla.net'],
-      formAction: ['\'none\''],
-      frameAncestors: ['\'none\''],
-      objectSrc: ['\'none\'']
+      scriptSrc: ["'self'", 'https://ssl.google-analytics.com'],
+      styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
+      fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
+      formAction: ["'none'"],
+      frameAncestors: ["'none'"],
+      objectSrc: ["'none'"]
     }
   })
 );
