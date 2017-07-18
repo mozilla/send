@@ -21,7 +21,6 @@ $(document).ready(function() {
   $('#download-btn').click(download);
   function download() {
     const fileReceiver = new FileReceiver();
-    const name = document.createElement('p');
 
     fileReceiver.on('progress', progress => {
       $('#download-page-one').hide();
@@ -82,7 +81,6 @@ $(document).ready(function() {
         return;
       })
       .then(([decrypted, fname]) => {
-        name.innerText = fname;
         const dataView = new DataView(decrypted);
         const blob = new Blob([dataView]);
         const downloadUrl = URL.createObjectURL(blob);

@@ -109,19 +109,19 @@ $(document).ready(function() {
         $('.percent-number').html(`${Math.floor(percent * 100)}`);
       });
       if (progress[1] < 1000000) {
-        $('.progress-text').html(
+        $('.progress-text').text(
           `${file.name} (${(progress[0] / 1000).toFixed(
             1
           )}KB of ${(progress[1] / 1000).toFixed(1)}KB)`
         );
       } else if (progress[1] < 1000000000) {
-        $('.progress-text').html(
+        $('.progress-text').text(
           `${file.name} (${(progress[0] / 1000000).toFixed(
             1
           )}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
         );
       } else {
-        $('.progress-text').html(
+        $('.progress-text').text(
           `${file.name} (${(progress[0] / 1000000).toFixed(
             1
           )}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
@@ -230,7 +230,7 @@ $(document).ready(function() {
 
     const url = file.url.trim() + `#${file.secretKey}`.trim();
     $('#link').attr('value', url);
-    $('#copy-text').html(
+    $('#copy-text').text(
       'Copy and share the link to send your file: ' + file.name
     );
     $popupText.attr('tabindex', '-1');
