@@ -3,16 +3,23 @@ html {
   background: url('resources/send_bg.svg');
   font-family: 'SF Pro Text', sans-serif;
   font-weight: 200;
-  background-size: 112%;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center top;
-  margin-top: -25px;
   height: 100%;
 }
 
 body {
   min-height: 100%;
   position: relative;
+  margin: 0;
+}
+
+.send-logo {
+  position: relative;
+  top: 31px;
+  left: 31px;
+  display: inline-block;
 }
 
 .all {
@@ -445,6 +452,7 @@ tbody {
   font-size: 15px;
   display: flex;
   align-items: flex-end;
+  padding: 10px;
 }
 
 .mozilla-logo {
