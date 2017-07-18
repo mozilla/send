@@ -70,7 +70,7 @@ function gcmCompliant() {
 }
 
 function escapeHtml(string) {
-  let map = {
+  const map = {
     '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
@@ -81,7 +81,7 @@ function escapeHtml(string) {
     '=': '&#x3D;'
   };
 
-  return String(string).replace(/[&<>"'`=\/]/g, s => map[s]);
+  return String(string).replace(/[&<>"'`=/]/g, s => map[s]);
 }
 
 module.exports = {
