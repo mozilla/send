@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/mozilla/send.svg?style=svg)](https://circleci.com/gh/mozilla/send)
 
+**Docs:** [Docker](docs/docker.md), [Metrics](docs/metrics.md)
+
 ## What it does
 
 A P2P file sharing experiment which allows you to send encrypted files to other users.
