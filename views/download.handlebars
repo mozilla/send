@@ -21,7 +21,7 @@
       {{#if filename}}
       <div id="download-page-one">
         <div class="title">
-          Download <span id="dl-filename">{{{filename}}}</span> ({{{filesize}}})
+          Download <span id="dl-filename">{{filename}}</span> ({{{filesize}}})
         </div>
         <div class="description">
           Your friend is sending you a file with Firefox Send, a service that allows you to share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
@@ -34,7 +34,7 @@
 
       <div id="download-progress">
         <div class="title">
-          Downloading {{{filename}}} ({{{filesize}}})
+          Downloading {{filename}} ({{{filesize}}})
         </div>
         <div class="description">
           Please leave this tab open while we fetch your file and decrypt it.

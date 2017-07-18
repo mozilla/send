@@ -69,9 +69,25 @@ function gcmCompliant() {
   }
 }
 
+function escapeHtml(string) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+    '/': '&#x2F;',
+    '`': '&#x60;',
+    '=': '&#x3D;'
+  };
+
+  return String(string).replace(/[&<>"'`=/]/g, s => map[s]);
+}
+
 module.exports = {
   arrayToHex,
   hexToArray,
   notify,
-  gcmCompliant
+  gcmCompliant,
+  escapeHtml
 };
