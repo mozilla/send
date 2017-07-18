@@ -219,6 +219,19 @@ app.post('/upload', (req, res, next) => {
       });
     });
   });
+
+  req.on('close', err => {
+    storage
+      .forceDelete(newId)
+      .then(err => {
+        if (!err) {
+          log.info('Deleted:', newId);
+        }
+      })
+      .catch(err => {
+        log.info('DeleteError:', newId);
+      });
+  })
 });
 
 app.get('/__lbheartbeat__', (req, res) => {
