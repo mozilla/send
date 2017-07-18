@@ -17,7 +17,7 @@ $(document).ready(function() {
   const $copyBtn = $('#copy-btn');
   $copyBtn.attr('disabled', false);
   $('#link').attr('disabled', false);
-  $copyBtn.html('Copy to Clipboard');
+  $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
 
   $('#upload-progress').hide();
   $('#share-link').hide();
@@ -51,7 +51,7 @@ $(document).ready(function() {
     window.setTimeout(() => {
       $copyBtn.attr('disabled', false);
       $('#link').attr('disabled', false);
-      $copyBtn.html('Copy to Clipboard');
+      $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
     }, 3000);
   });
 
@@ -75,7 +75,7 @@ $(document).ready(function() {
     $('#upload-error').hide();
     $copyBtn.attr('disabled', false);
     $('#link').attr('disabled', false);
-    $copyBtn.html('Copy to Clipboard');
+    $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
     $('.upload-window').removeClass('ondrag');
     $('#page-one').show();
   });
@@ -164,7 +164,7 @@ $(document).ready(function() {
           expiry: expiration
         };
         localStorage.setItem(info.fileId, JSON.stringify(fileData));
-        $('#upload-filename').html('Ready to Send');
+        $('#upload-filename').attr('data-l10n-id', 'uploadSuccessConfirmHeader');
         t = window.setTimeout(() => {
           $('#page-one').hide();
           $('#upload-progress').hide();
@@ -173,7 +173,9 @@ $(document).ready(function() {
         }, 2000);
 
         populateFileList(JSON.stringify(fileData));
-        notify('Your upload has finished.');
+        document.l10n.formatValue('notifyUploadDone').then(str => {
+          notify(str);
+        });
       })
       .catch(err => {
         Raven.captureException(err);
@@ -225,17 +227,30 @@ $(document).ready(function() {
 
     const url = file.url.trim() + `#${file.secretKey}`.trim();
     $('#link').attr('value', url);
-    $('#copy-text').html(
-      'Copy and share the link to send your file: ' + file.name
+    $('#copy-text').attr(
+      'data-l10n-args',
+      '{"filename": "' + file.name + '"}'
+    );
+    $('#copy-text').attr(
+      'data-l10n-id',
+      'copyUrlFormLabelWithName'
     );
     $popupText.attr('tabindex', '-1');
 
     name.appendChild(cellText);
 
     // create delete button
-    del.innerHTML = '<span class="icon-cancel-1" title="Delete"></span>';
 
-    link.innerHTML = '<span class="icon-docs" title="Copy URL"></span>';
+    const delSpan = document.createElement('span');
+    $(delSpan).addClass('icon-cancel-1');
+    $(delSpan).attr('data-l10n-id', 'deleteButtonHover');
+    del.appendChild(delSpan);
+
+    const linkSpan = document.createElement('span');
+    $(linkSpan).addClass('icon-docs');
+    $(linkSpan).attr('data-l10n-id', 'copyUrlHover');
+    link.appendChild(linkSpan);
+
     link.style.color = '#0A8DFF';
     //copy link to clipboard when icon clicked
     $(link).click(function() {
@@ -245,9 +260,15 @@ $(document).ready(function() {
       aux.select();
       document.execCommand('copy');
       document.body.removeChild(aux);
-      link.innerHTML = 'Copied!';
+      document.l10n.formatValue('copiedUrl')
+                   .then(translated => {
+        link.innerHTML = translated;
+      })
       window.setTimeout(() => {
-        link.innerHTML = '<span class="icon-docs" title="Copy URL"></span>';
+        const linkSpan = document.createElement('span');
+        $(linkSpan).addClass('icon-docs');
+        $(linkSpan).attr('data-l10n-id', 'copyUrlHover');
+        $(link).html(linkSpan);
       }, 500);
     });
 
@@ -293,9 +314,19 @@ $(document).ready(function() {
 
     // create popup
     popupDiv.classList.add('popup');
-    $popupText.html(
-      '<span class="del-file">Delete</span><span class="nvm" > Nevermind</span>'
-    );
+    const popupDelSpan = document.createElement('span');
+    $(popupDelSpan).addClass('del-file');
+    $(popupDelSpan).attr('data-l10n-id', 'sentFilesTitle4');
+
+    const popupNvmSpan = document.createElement('span');
+    $(popupNvmSpan).addClass('nvm');
+    $(popupNvmSpan).attr('data-l10n-id', 'nevermindButton');
+
+    $popupText.html([
+      popupDelSpan,
+      '&nbsp;',
+      popupNvmSpan
+    ]);
 
     // delete file
     $popupText.find('.del-file').click(e => {

@@ -4,20 +4,18 @@
 </div>
 <div class="all">
   <div id="page-one">
-    <div class="title">
-      Private, Encrypted File Sharing
-    </div>
+    <div class="title" data-l10n-id="uploadPageHeader"></div>
     <div class="description">
-      Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.<br> <a href="https://testpilot.firefox.com/experiments/send" class="link">Learn more</a>
+      <div data-l10n-id="uploadPageExplainer"></div>
+      <a href="https://testpilot.firefox.com/experiments/send" class="link" data-l10n-id="uploadPageLearnMore"></a>
     </div>
     <div class="upload-window" >
       <div id="upload-img"><img src="/resources/upload.svg" alt="Upload"/></div>
-      <div id="upload-text">
-        Drop your files here to start uploading
-      </div>
+      <div id="upload-text" data-l10n-id="uploadPageDropMessage"></div>
 
       <form method="post" action="upload" enctype="multipart/form-data">
-        <label for="file-upload" id="browse" title="Upload file">Select a file on your computer</label>
+        <label for="file-upload" id="browse" 
+               data-l10n-id="uploadPageBrowseButton"></label>
         <input id="file-upload" type="file" name="fileUploaded" />
       </form>
     </div>
@@ -27,10 +25,10 @@
         <thead>
           <tr>
             <!-- htmllint attr-bans="false" -->
-            <th width="35%">File</th>
-            <th width="25%">Copy URL</th>
-            <th width="21%">Expires in</th>
-            <th width="12%">Delete</th>
+            <th width="35%" data-l10n-id="sentFilesTitle1"></th>
+            <th width="25%" data-l10n-id="sentFilesTitle2"></th>
+            <th width="21%" data-l10n-id="sentFilesTitle3"></th>
+            <th width="12%" data-l10n-id="sentFilesTitle4"></th>
             <!-- htmllint tag-bans="$previous" -->
           </tr>
         </thead>
@@ -42,9 +40,7 @@
   </div>
 
   <div id="upload-progress">
-    <div class="title" id="upload-filename">
-      Uploading Your File
-    </div>
+    <div class="title" id="upload-filename" data-l10n-id="uploadingPageHeader"></div>
     <div class="description">
 
     </div>
@@ -57,57 +53,41 @@
     </div>
     <div class="upload">
       <div class="progress-text"></div>
-      <div id="cancel-upload" title="Cancel Upload">Cancel Upload</div>
+      <div id="cancel-upload" 
+           data-l10n-id="uploadingPageCancel"></div>
     </div>
   </div>
 
   <div id="share-link">
-    <div class="title">
-      This encrypted link will expire after 1 download or in 24 hours
-    </div>
+    <div class="title" data-l10n-id="uploadSuccessTimingHeader"></div>
     <div id="share-window">
-      <div id="copy-text">
-        Copy and share the link to send your file:
-      </div>
+      <div id="copy-text" data-l10n-id="copyUrlFormLabel"></div>
       <div id="copy">
         <input id="link" type="url" value="" readonly/>
-        <button id="copy-btn" title="Copy to Clipboard">Copy to Clipboard</button>
+        <button id="copy-btn" data-l10n-id="copyUrlFormButton"></button>
       </div>
-      <button id="delete-file" title="Delete file">Delete file</button>
-      <div class="send-new" title="Send another file">
-        Send another file
-      </div>
+      <button id="delete-file" data-l10n-id="deleteFileButton"></button>
+      <div class="send-new" data-l10n-id="sendAnotherFileLink"></div>
     </div>
   </div>
 
   <div id="upload-error">
-    <div class="title">
-      Something went wrong!
-    </div>
-    <div class="expired-description">
-      There has been an error uploading the file.
-    </div>
+    <div class="title" data-l10n-id="errorPageHeader"></div>
+    <div class="expired-description" data-l10n-id="errorPageMessage"></div>
     <img id="upload-error-img" src="/resources/illustration_error.svg" alt="Upload error" />
-    <div class="send-new" title="Send another file">
-      Send another file
-    </div>
+    <div class="send-new" data-l10n-id="sendAnotherFileLink"></div>
   </div>
 
   <div id="unsupported-browser">
-    <div class="title">
-      Your browser is not supported.
-    </div>
-    <div class="description">
-      Unfortunately this browser does not support the web technology that powers Firefox Send. You'll need to try another browser. We recommend Firefox!
-    </div>
+    <div class="title" data-l10n-id="notSupportedHeader"></div>
+    <div class="description" data-l10n-id="notSupportedDetail"></div>
     <a id="dl-firefox" href="https://www.mozilla.org/firefox/new/?scene=2" target="_blank">
       <img src="/resources/firefox_logo-only.svg" id="firefox-logo" alt="Firefox"/>
-      <div id="dl-firefox-text">Firefox<br><span>Free Download</span></div>
+      <div id="dl-firefox-text">Firefox<br>
+        <span data-l10n-id="downloadFirefoxButtonSub"></span>
+      </div>
     </a>
-    <div class="unsupported-description">
-      Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
-    </div>
+    <div class="unsupported-description" data-l10n-id="uploadPageExplainer"></div>
   </div>
-
 </div>
 </div>
