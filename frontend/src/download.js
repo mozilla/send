@@ -6,9 +6,9 @@ require('jquery-circle-progress');
 const Raven = window.Raven;
 $(document).ready(function() {
   $('#download-progress').hide();
-  $('.send-new').click(() => {
-    window.location.replace(`${window.location.origin}`);
-  });
+  //link back to homepage
+  $('.send-new').attr('href', window.location.origin);
+
   const filename = $('#dl-filename').html();
 
   //initiate progress bar

@@ -68,17 +68,8 @@ $(document).ready(function() {
     fill: '#3B9DFF',
     size: 158
   });
-  // link back to home page
-  $('.send-new').click(() => {
-    $('#upload-progress').hide();
-    $('#share-link').hide();
-    $('#upload-error').hide();
-    $copyBtn.attr('disabled', false);
-    $('#link').attr('disabled', false);
-    $copyBtn.html('Copy to Clipboard');
-    $('.upload-window').removeClass('ondrag');
-    $('#page-one').show();
-  });
+  //link back to homepage
+  $('.send-new').attr('href', window.location);
 
   // on file upload by browse or drag & drop
   function onUpload(event) {
