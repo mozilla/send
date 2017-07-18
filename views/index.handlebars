@@ -14,7 +14,8 @@
   {{/if}}
 </head>
 <body>
-  <div id="all">
+  <div class="all">
+
     <div id="page-one">
       <div class="title">
         Private, Encrypted File Sharing
@@ -32,8 +33,8 @@
           <label for="file-upload" id="browse" title="Upload file">Select a file on your computer</label>
           <input id="file-upload" type="file" name="fileUploaded" />
         </form>
-
       </div>
+
       <div id="file-list">
         <table id="uploaded-files">
           <thead>
@@ -105,23 +106,23 @@
       </div>
     </div>
 
-  </div>
-  <div id="unsupported-browser">
-    <div class="title">
-      Your browser is not supported.
+    <div id="unsupported-browser">
+      <div class="title">
+        Your browser is not supported.
+      </div>
+      <div class="description">
+        Unfortunately this browser does not support the web technology that powers Firefox Send. You'll need to try another browser. We recommend Firefox!
+      </div>
+      <a id="dl-firefox" href="https://www.mozilla.org/firefox/new/?scene=2" target="_blank">
+        <img src="/resources/firefox_logo-only.svg" id="firefox-logo" alt="Firefox"/>
+        <div id="dl-firefox-text">Firefox<br><span>Free Download</span></div>
+      </a>
+      <div class="unsupported-description">
+        Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
+      </div>
     </div>
-    <div class="description">
-      Unfortunately this browser does not support the web technology that powers Firefox Send. You'll need to try another browser. We recommend Firefox!
-    </div>
-    <a id="dl-firefox" href="https://www.mozilla.org/firefox/new/?scene=2" target="_blank">
-      <img src="/resources/firefox_logo-only.svg" id="firefox-logo" alt="Firefox"/>
-      <div id="dl-firefox-text">Firefox<br><span>Free Download</span></div>
-    </a>
-    <div class="unsupported-description">
-      Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
-    </div>
+
   </div>
 </div>
-<!-- <div class="footer"><img src="/resources/mozilla-logo.jpg"/>This footer will always be positioned at the bottom of the page, but <strong>not fixed</strong>.</div> -->
 </body>
 </html>

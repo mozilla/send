@@ -11,26 +11,21 @@ html {
 }
 
 body {
-  height: 100%;
+  min-height: 100%;
+  position: relative;
 }
 
-.footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  font-size: 15px;
-  color: #858585;
-}
-
-#all {
+.all {
   padding-top: 12%;
   overflow-y: scroll;
 }
 
 input, select, textarea, button {
   font-family: inherit;
+}
+
+a {
+  text-decoration: none;
 }
 
 span {
@@ -371,7 +366,6 @@ tbody {
   justify-content: center;
   align-items: center;
   line-height: 1;
-  text-decoration: none;
 }
 
 #dl-firefox-text {
@@ -441,4 +435,46 @@ tbody {
 #download-img {
   width: 283px;
   height: 196px;
+}
+
+/*    footer    */
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-size: 15px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.mozilla-logo {
+  width: 112px;
+  height: 32px;
+  margin-bottom: -5px;
+}
+
+.legal-links > a {
+  margin-right: 30px;
+  color: #858585;
+}
+
+.legal-links > a:visited {
+  color: #858585;
+}
+
+.social-links {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.social-links > a {
+  margin-left: 30px;
+}
+
+.github, .twitter {
+  width: 32px;
+  height: 32px;
+  margin-bottom: -5px;
 }
