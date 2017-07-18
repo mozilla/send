@@ -79,8 +79,7 @@ $(document).ready(function() {
     $('.upload-window').removeClass('ondrag');
     $('#page-one').show();
   });
-  //cancel the upload
-  $('#cancel-upload').click(() => {});
+
   // on file upload by browse or drag & drop
   function onUpload(event) {
     event.preventDefault();
@@ -93,6 +92,12 @@ $(document).ready(function() {
     const expiration = 24 * 60 * 60 * 1000; //will eventually come from a field
 
     const fileSender = new FileSender(file);
+    $('#cancel-upload').click(() => {
+      fileSender.cancel();
+      location.reload();
+      notify('Your upload was cancelled.');
+    });
+
     fileSender.on('progress', progress => {
       $('#page-one').hide();
       $('#upload-error').hide();
