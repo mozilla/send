@@ -1,5 +1,5 @@
 const FileSender = require('./fileSender');
-const { notify, gcmCompliant } = require('./utils');
+const { notify, gcmCompliant, escapeHtml } = require('./utils');
 const $ = require('jquery');
 require('jquery-circle-progress');
 
@@ -105,19 +105,19 @@ $(document).ready(function() {
       });
       if (progress[1] < 1000000) {
         $('.progress-text').html(
-          `${file.name} (${(progress[0] / 1000).toFixed(
+          `${escapeHtml(file.name)} (${(progress[0] / 1000).toFixed(
             1
           )}KB of ${(progress[1] / 1000).toFixed(1)}KB)`
         );
       } else if (progress[1] < 1000000000) {
         $('.progress-text').html(
-          `${file.name} (${(progress[0] / 1000000).toFixed(
+          `${escapeHtml(file.name)} (${(progress[0] / 1000000).toFixed(
             1
           )}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
         );
       } else {
         $('.progress-text').html(
-          `${file.name} (${(progress[0] / 1000000).toFixed(
+          `${escapeHtml(file.name)} (${(progress[0] / 1000000).toFixed(
             1
           )}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
         );
@@ -221,12 +221,12 @@ $(document).ready(function() {
     const del = document.createElement('td');
     const popupDiv = document.createElement('div');
     const $popupText = $('<div>', { class: 'popuptext' });
-    const cellText = document.createTextNode(file.name);
 
+    const cellText = document.createTextNode(file.name);
     const url = file.url.trim() + `#${file.secretKey}`.trim();
     $('#link').attr('value', url);
     $('#copy-text').html(
-      'Copy and share the link to send your file: ' + file.name
+      'Copy and share the link to send your file: ' + escapeHtml(file.name)
     );
     $popupText.attr('tabindex', '-1');
 

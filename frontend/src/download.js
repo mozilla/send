@@ -1,5 +1,5 @@
 const FileReceiver = require('./fileReceiver');
-const { notify } = require('./utils');
+const { notify, escapeHtml } = require('./utils');
 const $ = require('jquery');
 require('jquery-circle-progress');
 
@@ -82,7 +82,7 @@ $(document).ready(function() {
         return;
       })
       .then(([decrypted, fname]) => {
-        name.innerText = fname;
+        name.innerText = escapeHtml(fname);
         const dataView = new DataView(decrypted);
         const blob = new Blob([dataView]);
         const downloadUrl = URL.createObjectURL(blob);
