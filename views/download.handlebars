@@ -1,75 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Download your file</title>
-  {{#if dsn}}
-  {{> sentry dsn=dsn}}
-  {{/if}}
-  <script src="/bundle.js"></script>
-  <link rel="stylesheet" type="text/css" href="/main.css" />
-  {{#if trackerId}}
-  {{> analytics trackerId=trackerId}}
-  {{/if}}
-</head>
-<body>
-  <div class="send-logo">
-    <img src="/resources/send_logo.svg"/>
-    <img src="/resources/send_logo_type.svg"/>
-  </div>
-  <div class="all">
-    <div id="download">
-      {{#if filename}}
-      <div id="download-page-one">
-        <div class="title">
-          Download <span id="dl-filename">{{{filename}}}</span> ({{{filesize}}})
-        </div>
-        <div class="description">
-          Your friend is sending you a file with Firefox Send, a service that allows you to share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
-        </div>
-        <img src="/resources/illustration_download.svg" id="download-img" alt="Download"/>
-        <div>
-          <button id="download-btn" title="Download">Download</button>
-        </div>
-      </div>
 
-      <div id="download-progress">
-        <div class="title">
-          Downloading {{{filename}}} ({{{filesize}}})
-        </div>
-        <div class="description">
-          Please leave this tab open while we fetch your file and decrypt it.
-        </div>
-        <!-- progress bar here -->
-        <div class="progress-bar" id="dl-progress">
-          <div class="percentage">
-            <span class="percent-number"></span>
-            <span class="percent-sign">%</span>
-          </div>
-        </div>
-        <div class="upload">
-          <div class="progress-text">{{{filename}}}</div>
-        </div>
-      </div>
-
-      <div class="send-new" title="Try Firefox Send">
-        Try Firefox Send
-      </div>
-      {{else}}
+<div class="send-logo">
+  <img src="/resources/send_logo.svg"/>
+  <img src="/resources/send_logo_type.svg"/>
+</div>
+<div class="all">
+  <div id="download">
+    {{#if filename}}
+    <div id="download-page-one">
       <div class="title">
-        This link has expired or never existed in the first place.
+        Download <span id="dl-filename">{{{filename}}}</span> ({{{filesize}}})
       </div>
-
-      <div class="share-window">
-        <img src="/resources/illustration_expired.svg" id="expired-img" alt="Link expired" />
+      <div class="description">
+        Your friend is sending you a file with Firefox Send, a service that allows you to share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
       </div>
-      <div class="expired-description">
-        Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
+      <img src="/resources/illustration_download.svg" id="download-img" alt="Download"/>
+      <div>
+        <button id="download-btn" title="Download">Download</button>
       </div>
-      <div class="send-new" title="Try Firefox Send">
-        Try Firefox Send
-      </div>
-      {{/if}}
     </div>
+
+    <div id="download-progress">
+      <div class="title">
+        Downloading {{{filename}}} ({{{filesize}}})
+      </div>
+      <div class="description">
+        Please leave this tab open while we fetch your file and decrypt it.
+      </div>
+      <!-- progress bar here -->
+      <div class="progress-bar" id="dl-progress">
+        <div class="percentage">
+          <span class="percent-number"></span>
+          <span class="percent-sign">%</span>
+        </div>
+      </div>
+      <div class="upload">
+        <div class="progress-text">{{{filename}}}</div>
+      </div>
+    </div>
+
+    <div class="send-new" title="Try Firefox Send">
+      Try Firefox Send
+    </div>
+    {{else}}
+    <div class="title">
+      This link has expired or never existed in the first place.
+    </div>
+
+    <div class="share-window">
+      <img src="/resources/illustration_expired.svg" id="expired-img" alt="Link expired" />
+    </div>
+    <div class="expired-description">
+      Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
+    </div>
+    <div class="send-new" title="Try Firefox Send">
+      Try Firefox Send
+    </div>
+    {{/if}}
   </div>
-</body>
-</html>
+</div>
