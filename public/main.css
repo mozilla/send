@@ -35,10 +35,6 @@ a {
   text-decoration: none;
 }
 
-span {
-  cursor: pointer;
-}
-
 /**   page-one    **/
 .title {
   font-size: 33px;
@@ -146,6 +142,10 @@ tbody {
   table-layout: fixed;
 }
 
+.icon-delete, .icon-copy, .icon-check {
+  cursor: pointer;
+}
+
 /* Popup container */
 .popup {
   position: relative;
@@ -166,7 +166,7 @@ tbody {
   z-index: 1;
   bottom: 20px;
   left: 50%;
-  margin-left: -96px;
+  margin-left: -88px;
   transition: opacity 0.5s;
   opacity: 0;
   outline: 0;
