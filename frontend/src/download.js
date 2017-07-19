@@ -47,8 +47,11 @@ $(document).ready(function() {
       //on complete
       if (percent === 1) {
         fileReceiver.removeAllListeners('progress');
-        notify('Your download has finished.');
-        $('.title').html('Download Complete');
+        document.l10n.formatValues('downloadNotification', 'downloadFinish')
+                     .then(translated => {
+                       notify(translated[0]);
+                       $('.title').html(translated[1]);
+                     })
       }
     });
 
@@ -73,9 +76,10 @@ $(document).ready(function() {
     fileReceiver
       .download()
       .catch(() => {
-        $('.title').text(
-          'This link has expired or never existed in the first place.'
-        );
+        document.l10n.formatValue('expiredPageHeader')
+                     .then(translated => {
+                       $('.title').text(translated);
+                     })
         $('#download-btn').hide();
         $('#expired-img').show();
         console.log('The file has expired, or has already been deleted.');

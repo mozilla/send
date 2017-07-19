@@ -45,6 +45,8 @@ downloadFileSize = ({ $size })
 downloadMessage = Your friend is sending you a file with Firefox Send, a service that allows you to share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
 downloadButtonLabel = Download
   .title = {downloadButtonLabel}
+downloadNotification = Your download has completed.
+downloadFinish = Download Complete
 
 sendYourFilesLink = Try Firefox Send
   .title = {sendYourFilesLink}
