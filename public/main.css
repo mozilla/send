@@ -24,7 +24,7 @@ body {
 
 .all {
   padding-top: 10%;
-  overflow-y: scroll;
+  padding-bottom: 51px;
 }
 
 input, select, textarea, button {
