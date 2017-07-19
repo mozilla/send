@@ -9,7 +9,7 @@ machine:
 
 dependencies:
   pre:
-    - npm i -g get-firefox geckodriver
+    - npm i -g get-firefox geckodriver nsp
     - get-firefox --platform linux --extract --target /home/ubuntu/send
 
 deployment:
@@ -33,3 +33,4 @@ test:
   override:
     - npm run lint
     - npm test
+    - nsp check
