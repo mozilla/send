@@ -5,6 +5,7 @@ uploadPageExplainer = Send files through a safe, private, and encrypted link tha
 
 uploadPageLearnMore = Learn more
 uploadPageDropMessage = Drop your files here to start uploading
+uploadPageSizeMessage = For the most reliable operation, it’s best to keep your file under 1GB
 uploadPageBrowseButton = Select a file on your computer
   .title = {uploadPageBrowseButtonTitle}
 

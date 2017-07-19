@@ -5,7 +5,6 @@ require('jquery-circle-progress');
 
 const Raven = window.Raven;
 $(document).ready(function() {
-  $('#download-progress').hide();
   //link back to homepage
   $('.send-new').attr('href', window.location.origin);
 
@@ -23,8 +22,8 @@ $(document).ready(function() {
     const fileReceiver = new FileReceiver();
 
     fileReceiver.on('progress', progress => {
-      $('#download-page-one').hide();
-      $('#download-progress').show();
+      $('#download-page-one').attr('hidden', true);
+      $('#download-progress').removeAttr('hidden');
       const percent = progress[0] / progress[1];
       // update progress bar
       $('#dl-progress').circleProgress('value', percent);
@@ -50,7 +49,7 @@ $(document).ready(function() {
                      .then(translated => {
                        notify(translated[0]);
                        $('.title').html(translated[1]);
-                     })
+                     });
       }
     });
 
@@ -78,9 +77,9 @@ $(document).ready(function() {
         document.l10n.formatValue('expiredPageHeader')
                      .then(translated => {
                        $('.title').text(translated);
-                     })
-        $('#download-btn').hide();
-        $('#expired-img').show();
+                     });
+        $('#download-btn').attr('hidden', true);
+        $('#expired-img').removeAttr('hidden');
         console.log('The file has expired, or has already been deleted.');
         return;
       })

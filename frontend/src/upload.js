@@ -7,8 +7,8 @@ const Raven = window.Raven;
 
 $(document).ready(function() {
   gcmCompliant().catch(err => {
-    $('#page-one').hide();
-    $('#unsupported-browser').show();
+    $('#page-one').attr('hidden', true);
+    $('#unsupported-browser').removeAttr('hidden');
   });
 
   $('#file-upload').change(onUpload);
@@ -19,12 +19,6 @@ $(document).ready(function() {
   $('#link').attr('disabled', false);
   $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
 
-  $('#upload-progress').hide();
-  $('#share-link').hide();
-  $('#upload-error').hide();
-  $('#unsupported-browser').hide();
-  $('#compliance-error').hide();
-  $('#page-one').show();
 
   if (localStorage.length === 0) {
     toggleHeader();
@@ -75,6 +69,12 @@ $(document).ready(function() {
   // on file upload by browse or drag & drop
   function onUpload(event) {
     event.preventDefault();
+    $('#page-one').attr('hidden', true);
+    $('#upload-error').attr('hidden', true);
+    $('#upload-progress').removeAttr('hidden');
+    //don't allow drag and drop when not on page-one
+    $('body').off('drop', onUpload);
+
     let file = '';
     if (event.type === 'drop') {
       file = event.originalEvent.dataTransfer.files[0];
@@ -89,17 +89,11 @@ $(document).ready(function() {
       location.reload();
       document.l10n.formatValue('uploadCancelNotification')
                    .then(str => {
-                     console.log('here')
                      notify(str);
-                   })
+                   });
     });
 
     fileSender.on('progress', progress => {
-      $('#page-one').hide();
-      $('#upload-error').hide();
-      $('#upload-progress').show();
-      //don't allow drag and drop when not on page-one
-      $('body').off('drop', onUpload);
       const percent = progress[0] / progress[1];
       // update progress bar
       $('#ul-progress').circleProgress('value', percent);
@@ -163,23 +157,24 @@ $(document).ready(function() {
         localStorage.setItem(info.fileId, JSON.stringify(fileData));
         $('#upload-filename').attr('data-l10n-id', 'uploadSuccessConfirmHeader');
         t = window.setTimeout(() => {
-          $('#page-one').hide();
-          $('#upload-progress').hide();
-          $('#upload-error').hide();
-          $('#share-link').show();
+          $('#page-one').attr('hidden', true);
+          $('#upload-progress').attr('hidden', true);
+          $('#upload-error').attr('hidden', true);
+          $('#share-link').removeAttr('hidden');
         }, 2000);
 
         populateFileList(JSON.stringify(fileData));
-        document.l10n.formatValue('notifyUploadDone').then(str => {
-          notify(str);
-        });
+        document.l10n.formatValue('notifyUploadDone')
+                     .then(str => {
+                       notify(str);
+                     });
       })
       .catch(err => {
         Raven.captureException(err);
         console.log(err);
-        $('#page-one').hide();
-        $('#upload-progress').hide();
-        $('#upload-error').show();
+        $('#page-one').attr('hidden', true);
+        $('#upload-progress').attr('hidden', true);
+        $('#upload-error').removeAttr('hidden');
         window.clearTimeout(t);
       });
   }
@@ -263,8 +258,8 @@ $(document).ready(function() {
       document.body.removeChild(aux);
       document.l10n.formatValue('copiedUrl')
                    .then(translated => {
-        link.innerHTML = translated;
-      })
+                     link.innerHTML = translated;
+                   });
       window.setTimeout(() => {
         const linkImg = document.createElement('img');
         $(linkImg).addClass('icon-copy');
@@ -381,9 +376,9 @@ $(document).ready(function() {
   function toggleHeader() {
     //hide table header if empty list
     if (document.querySelector('tbody').childNodes.length === 1) {
-      $('#file-list').hide();
+      $('#file-list').attr('hidden', true);
     } else {
-      $('#file-list').show();
+      $('#file-list').removeAttr('hidden');
     }
   }
 });

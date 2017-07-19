@@ -2,7 +2,7 @@
   {{#if filename}}
   <div id="download-page-one">
     <div class="title">
-      <span id="dl-filename" 
+      <span id="dl-filename"
             data-l10n-id="downloadFileName"
             data-l10n-args='{"filename": "{{filename}}"}'></span>
       <span data-l10n-id="downloadFileSize"
@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div id="download-progress">
+  <div id="download-progress" hidden="true">
     <div class="title"
           data-l10n-id="downloadingPageProgress"
           data-l10n-args='{"filename": "{{filename}}", "size": "{{filesize}}"}'>

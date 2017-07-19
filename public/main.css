@@ -87,7 +87,7 @@ a {
 #upload-text {
   font-size: 22px;
   color: #737373;
-  margin: 20px 0 30px;
+  margin: 20px 0 10px;
   font-family: 'SF Pro Display', sans-serif;
 }
 
@@ -106,6 +106,12 @@ a {
 
 input[type="file"] {
   display: none;
+}
+
+#file-size-msg {
+  font-size: 12px;
+  color: #737373;
+  margin-bottom: 22px;
 }
 
 /**   file-list   **/
@@ -330,6 +336,10 @@ tbody {
   text-align: center;
 }
 
+#upload-error[hidden], #unsupported-browser[hidden] {
+  display: none;
+}
+
 #upload-error-img {
   margin-bottom: 90px;
   margin-top: 5px;
@@ -437,6 +447,10 @@ tbody {
   align-items: center;
   flex-direction: column;
   text-align: center;
+}
+
+#download-progress[hidden] {
+  display: none;
 }
 
 #download-img {
