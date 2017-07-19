@@ -17,7 +17,7 @@ $(document).ready(function() {
   const $copyBtn = $('#copy-btn');
   $copyBtn.attr('disabled', false);
   $('#link').attr('disabled', false);
-  $copyBtn.html('Copy to Clipboard');
+  $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
 
   $('#upload-progress').hide();
   $('#share-link').hide();
@@ -51,7 +51,7 @@ $(document).ready(function() {
     window.setTimeout(() => {
       $copyBtn.attr('disabled', false);
       $('#link').attr('disabled', false);
-      $copyBtn.html('Copy to Clipboard');
+      $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
     }, 3000);
   });
 
@@ -68,6 +68,7 @@ $(document).ready(function() {
     fill: '#3B9DFF',
     size: 158
   });
+
   //link back to homepage
   $('.send-new').attr('href', window.location);
 
@@ -86,7 +87,11 @@ $(document).ready(function() {
     $('#cancel-upload').click(() => {
       fileSender.cancel();
       location.reload();
-      notify('Your upload was cancelled.');
+      document.l10n.formatValue('uploadCancelNotification')
+                   .then(str => {
+                     console.log('here')
+                     notify(str);
+                   })
     });
 
     fileSender.on('progress', progress => {
@@ -156,7 +161,7 @@ $(document).ready(function() {
           expiry: expiration
         };
         localStorage.setItem(info.fileId, JSON.stringify(fileData));
-        $('#upload-filename').html('Ready to Send');
+        $('#upload-filename').attr('data-l10n-id', 'uploadSuccessConfirmHeader');
         t = window.setTimeout(() => {
           $('#page-one').hide();
           $('#upload-progress').hide();
@@ -165,7 +170,9 @@ $(document).ready(function() {
         }, 2000);
 
         populateFileList(JSON.stringify(fileData));
-        notify('Your upload has finished.');
+        document.l10n.formatValue('notifyUploadDone').then(str => {
+          notify(str);
+        });
       })
       .catch(err => {
         Raven.captureException(err);
@@ -209,24 +216,42 @@ $(document).ready(function() {
     const row = document.createElement('tr');
     const name = document.createElement('td');
     const link = document.createElement('td');
-    const $copyIcon = $('<img>', { src: '/resources/copy-16.svg', class: 'icon-copy', title: 'Copy URL' });
+    const $copyIcon = $('<img>', { src: '/resources/copy-16.svg', class: 'icon-copy', 'data-l10n-id': 'copyUrlHover'});
     const expiry = document.createElement('td');
     const del = document.createElement('td');
-    const $delIcon = $('<img>', { src: '/resources/close-16.svg', class: 'icon-delete', title: 'Delete' });
+    const $delIcon = $('<img>', { src: '/resources/close-16.svg', class: 'icon-delete', 'data-l10n-id': 'deleteButtonHover' });
     const popupDiv = document.createElement('div');
     const $popupText = $('<div>', { class: 'popuptext' });
     const cellText = document.createTextNode(file.name);
 
     const url = file.url.trim() + `#${file.secretKey}`.trim();
+
     $('#link').attr('value', url);
-    $('#copy-text').text(
-      'Copy and share the link to send your file: ' + file.name
+    $('#copy-text').attr(
+      'data-l10n-args',
+      '{"filename": "' + file.name + '"}'
+    );
+    $('#copy-text').attr(
+      'data-l10n-id',
+      'copyUrlFormLabelWithName'
     );
     $popupText.attr('tabindex', '-1');
 
     name.appendChild(cellText);
 
-    link.style.color = '#0A8DFF'; //font colour
+    // create delete button
+
+    const delSpan = document.createElement('span');
+    $(delSpan).addClass('icon-cancel-1');
+    $(delSpan).attr('data-l10n-id', 'deleteButtonHover');
+    del.appendChild(delSpan);
+
+    const linkSpan = document.createElement('span');
+    $(linkSpan).addClass('icon-docs');
+    $(linkSpan).attr('data-l10n-id', 'copyUrlHover');
+    link.appendChild(linkSpan);
+
+    link.style.color = '#0A8DFF';
 
     //copy link to clipboard when icon clicked
     $copyIcon.click(function() {
@@ -236,9 +261,16 @@ $(document).ready(function() {
       aux.select();
       document.execCommand('copy');
       document.body.removeChild(aux);
-      link.innerHTML = 'Copied!';
+      document.l10n.formatValue('copiedUrl')
+                   .then(translated => {
+        link.innerHTML = translated;
+      })
       window.setTimeout(() => {
-        link.innerHTML = '<img src="/resources/copy-16.svg" class="icon-copy" title="Copy URL" />';
+        const linkImg = document.createElement('img');
+        $(linkImg).addClass('icon-copy');
+        $(linkImg).attr('data-l10n-id', 'copyUrlHover');
+        $(linkImg).attr('src', '/resources/copy-16.svg');
+        $(link).html(linkImg);
       }, 500);
     });
 
@@ -284,9 +316,21 @@ $(document).ready(function() {
 
     // create popup
     popupDiv.classList.add('popup');
-    $popupText.html(
-      '<span class="del-file">Delete </span><span class="nvm" > Nevermind</span>'
-    );
+    const popupDelSpan = document.createElement('span');
+    $(popupDelSpan).addClass('del-file');
+    $(popupDelSpan).attr('data-l10n-id', 'sentFilesTitle4');
+
+    const popupNvmSpan = document.createElement('span');
+    $(popupNvmSpan).addClass('nvm');
+    $(popupNvmSpan).attr('data-l10n-id', 'nevermindButton');
+
+    $popupText.html([
+      popupDelSpan,
+      '&nbsp;',
+      '&nbsp;',
+      popupNvmSpan
+    ]);
+
 
     // add data cells to table row
     row.appendChild(name);

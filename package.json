@@ -15,6 +15,7 @@
     "helmet": "^3.6.1",
     "jquery": "^3.2.1",
     "jquery-circle-progress": "^1.2.2",
+    "l20n": "^5.0.0",
     "mozlog": "^2.1.1",
     "raven": "^2.1.0",
     "raven-js": "^3.16.0",
