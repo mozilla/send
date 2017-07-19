@@ -66,8 +66,8 @@ app.use(busboy());
 app.use(bodyParser.json());
 app.use(express.static(STATIC_PATH));
 app.use('/l20n', express.static(L20N));
-app.use('/download/*/l20n', express.static(L20N));
-app.use('/download/*/locales', express.static(LOCALES));
+// app.use('/download/*/l20n', express.static(L20N));
+app.use('/locales', express.static(LOCALES));
 
 app.get('/', (req, res) => {
   res.render('index', {

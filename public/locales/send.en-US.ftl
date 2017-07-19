@@ -18,6 +18,7 @@ notifyUploadDone = Your upload has finished.
 uploadingPageMessage = Once your file uploads you will be able to set expiry options.
 uploadingPageCancel = Cancel upload
   .title = {uploadingPageCancel}
+uploadCancelNotification = Your upload was cancelled.
 
 uploadingPageLargeFileMessage = This file is large and may take awhile to upload. Sit tight!
 uploadingFileNotification = Notify me when the upload is complete.

@@ -87,7 +87,11 @@ $(document).ready(function() {
     $('#cancel-upload').click(() => {
       fileSender.cancel();
       location.reload();
-      notify('Your upload was cancelled.');
+      document.l10n.formatValue('uploadCancelNotification')
+                   .then(str => {
+                     console.log('here')
+                     notify(str);
+                   })
     });
 
     fileSender.on('progress', progress => {
@@ -212,10 +216,10 @@ $(document).ready(function() {
     const row = document.createElement('tr');
     const name = document.createElement('td');
     const link = document.createElement('td');
-    const $copyIcon = $('<img>', { src: '/resources/copy-16.svg', class: 'icon-copy', title: 'Copy URL' });
+    const $copyIcon = $('<img>', { src: '/resources/copy-16.svg', class: 'icon-copy', 'data-l10n-id': 'copyUrlHover'});
     const expiry = document.createElement('td');
     const del = document.createElement('td');
-    const $delIcon = $('<img>', { src: '/resources/close-16.svg', class: 'icon-delete', title: 'Delete' });
+    const $delIcon = $('<img>', { src: '/resources/close-16.svg', class: 'icon-delete', 'data-l10n-id': 'deleteButtonHover' });
     const popupDiv = document.createElement('div');
     const $popupText = $('<div>', { class: 'popuptext' });
     const cellText = document.createTextNode(file.name);
