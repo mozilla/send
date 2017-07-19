@@ -93,6 +93,8 @@ $(document).ready(function() {
       $('#page-one').hide();
       $('#upload-error').hide();
       $('#upload-progress').show();
+      //don't allow drag and drop when not on page-one
+      $('body').off('drop', onUpload);
       const percent = progress[0] / progress[1];
       // update progress bar
       $('#ul-progress').circleProgress('value', percent);
@@ -101,21 +103,15 @@ $(document).ready(function() {
       });
       if (progress[1] < 1000000) {
         $('.progress-text').text(
-          `${file.name} (${(progress[0] / 1000).toFixed(
-            1
-          )}KB of ${(progress[1] / 1000).toFixed(1)}KB)`
+          `${file.name} (${(progress[0] / 1000).toFixed(1)}KB of ${(progress[1] / 1000).toFixed(1)}KB)`
         );
       } else if (progress[1] < 1000000000) {
         $('.progress-text').text(
-          `${file.name} (${(progress[0] / 1000000).toFixed(
-            1
-          )}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
+          `${file.name} (${(progress[0] / 1000000).toFixed(1)}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
         );
       } else {
         $('.progress-text').text(
-          `${file.name} (${(progress[0] / 1000000).toFixed(
-            1
-          )}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
+          `${file.name} (${(progress[0] / 1000000).toFixed(1)}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
         );
       }
     });
