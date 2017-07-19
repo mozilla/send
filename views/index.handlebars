@@ -7,9 +7,9 @@
   <div class="upload-window" >
     <div id="upload-img"><img data-l10n-id="uploadSvgAlt" src="/resources/upload.svg"/></div>
     <div id="upload-text" data-l10n-id="uploadPageDropMessage"></div>
-
+    <span id="file-size-msg"><em data-l10n-id="uploadPageSizeMessage"></em></span>
     <form method="post" action="upload" enctype="multipart/form-data">
-      <label for="file-upload" id="browse" 
+      <label for="file-upload" id="browse"
               data-l10n-id="uploadPageBrowseButton"></label>
       <input id="file-upload" type="file" name="fileUploaded" />
     </form>
@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<div id="upload-progress">
+<div id="upload-progress" hidden="true">
   <div class="title" id="upload-filename" data-l10n-id="uploadingPageHeader"></div>
   <div class="description"></div>
   <!-- progress bar here -->
@@ -45,13 +45,13 @@
   </div>
   <div class="upload">
     <div class="progress-text"></div>
-    <div id="cancel-upload" 
+    <div id="cancel-upload"
           data-l10n-id="uploadingPageCancel"></div>
   </div>
-  
+
 </div>
 
-<div id="share-link">
+<div id="share-link" hidden="true">
   <div class="title" data-l10n-id="uploadSuccessTimingHeader"></div>
   <div id="share-window">
     <div id="copy-text" data-l10n-id="copyUrlFormLabel"></div>
@@ -64,14 +64,14 @@
   </div>
 </div>
 
-<div id="upload-error">
+<div id="upload-error" hidden="true">
   <div class="title" data-l10n-id="errorPageHeader"></div>
   <div class="expired-description" data-l10n-id="errorPageMessage"></div>
   <img id="upload-error-img" data-l10n-id="errorAltText" src="/resources/illustration_error.svg"/>
   <a class="send-new" data-l10n-id="sendAnotherFileLink"></a>
 </div>
 
-<div id="unsupported-browser">
+<div id="unsupported-browser" hidden="true">
   <div class="title" data-l10n-id="notSupportedHeader"></div>
   <div class="description" data-l10n-id="notSupportedDetail"></div>
   <a id="dl-firefox" href="https://www.mozilla.org/firefox/new/?scene=2" target="_blank">
