@@ -6,7 +6,7 @@
 
 ## What it does
 
-A P2P file sharing experiment which allows you to send encrypted files to other users.
+A file sharing experiment which allows you to send encrypted files to other users.
 
 ## Requirements
 
