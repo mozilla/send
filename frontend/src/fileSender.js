@@ -8,6 +8,7 @@ class FileSender extends EventEmitter {
     super();
     this.file = file;
     this.iv = window.crypto.getRandomValues(new Uint8Array(12));
+    this.uploadXHR = new XMLHttpRequest();
   }
 
   static delete(fileId, token) {
@@ -33,6 +34,10 @@ class FileSender extends EventEmitter {
 
       xhr.send(JSON.stringify({ delete_token: token }));
     });
+  }
+
+  cancel() {
+    this.uploadXHR.abort();
   }
 
   upload() {
@@ -103,7 +108,7 @@ class FileSender extends EventEmitter {
           const fd = new FormData();
           fd.append('data', blob, file.name);
 
-          const xhr = new XMLHttpRequest();
+          const xhr = self.uploadXHR;
 
           xhr.upload.addEventListener('progress', e => {
             if (e.lengthComputable) {

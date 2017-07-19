@@ -7,7 +7,6 @@
   {{/if}}
   <script src="/bundle.js"></script>
   <link rel="stylesheet" type="text/css" href="/main.css" />
-  <link rel="stylesheet" type="text/css" href="/resources/fontello-24c5e6ad/css/fontello.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
   {{#if trackerId}}
   {{> analytics trackerId=trackerId}}
@@ -19,7 +18,13 @@
   <script defer src="/l20n/dist/web/l20n.js"></script>
 </head>
 <body>
-  {{{body}}}
+  <div class="send-logo">
+    <img src="/resources/send_logo.svg"/>
+    <img src="/resources/send_logo_type.svg"/>
+  </div>
+  <div class="all">
+    {{{body}}}
+  </div>
   <div class="footer">
     <div class="legal-links">
       <a  href="https://www.mozilla.org"><img class="mozilla-logo" src="/resources/mozilla-logo.svg"/></a>

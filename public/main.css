@@ -24,7 +24,7 @@ body {
 
 .all {
   padding-top: 10%;
-  overflow-y: scroll;
+  padding-bottom: 51px;
 }
 
 input, select, textarea, button {
@@ -33,10 +33,6 @@ input, select, textarea, button {
 
 a {
   text-decoration: none;
-}
-
-span {
-  cursor: pointer;
 }
 
 /**   page-one    **/
@@ -72,8 +68,9 @@ span {
 .upload-window.ondrag {
   border: 3px dashed rgba(0, 148, 251, 0.5);
   margin: 0 auto;
-  width: 672px;
-  height: 267px;
+  width: 636px;
+  height: 251px;
+  transform: scale(1.05);
   border-radius: 4.2px;
   display: flex;
   justify-content: center;
@@ -146,6 +143,10 @@ tbody {
   table-layout: fixed;
 }
 
+.icon-delete, .icon-copy, .icon-check {
+  cursor: pointer;
+}
+
 /* Popup container */
 .popup {
   position: relative;
@@ -166,7 +167,7 @@ tbody {
   z-index: 1;
   bottom: 20px;
   left: 50%;
-  margin-left: -96px;
+  margin-left: -88px;
   transition: opacity 0.5s;
   opacity: 0;
   outline: 0;

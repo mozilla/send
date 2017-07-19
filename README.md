@@ -6,7 +6,7 @@
 
 ## What it does
 
-A P2P file sharing experiment which allows you to send encrypted files to other users.
+A file sharing experiment which allows you to send encrypted files to other users.
 
 ## Requirements
 
@@ -48,20 +48,3 @@ Pull requests are always welcome! Feel free to check out the list of ["good firs
 ## License
 
 [Mozilla Public License Version 2.0](LICENSE)
-
- **Entypo**
-
-   Copyright (C) 2012 by Daniel Bruce
-
-   Author:    Daniel Bruce
-   License:   SIL (http://scripts.sil.org/OFL)
-   Homepage:  http://www.entypo.com
-
-
- **Font Awesome**
-
-   Copyright (C) 2016 by Dave Gandy
-
-   Author:    Dave Gandy
-   License:   SIL ()
-   Homepage:  http://fortawesome.github.com/Font-Awesome/

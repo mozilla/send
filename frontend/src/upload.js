@@ -47,7 +47,7 @@ $(document).ready(function() {
     //disable button for 3s
     $copyBtn.attr('disabled', true);
     $('#link').attr('disabled', true);
-    $copyBtn.html('<span class="icon-check"></span>');
+    $copyBtn.html('<img src="/resources/check-16.svg" class="icon-check"></img>');
     window.setTimeout(() => {
       $copyBtn.attr('disabled', false);
       $('#link').attr('disabled', false);
@@ -68,19 +68,10 @@ $(document).ready(function() {
     fill: '#3B9DFF',
     size: 158
   });
-  // link back to home page
-  $('.send-new').click(() => {
-    $('#upload-progress').hide();
-    $('#share-link').hide();
-    $('#upload-error').hide();
-    $copyBtn.attr('disabled', false);
-    $('#link').attr('disabled', false);
-    $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
-    $('.upload-window').removeClass('ondrag');
-    $('#page-one').show();
-  });
-  //cancel the upload
-  $('#cancel-upload').click(() => {});
+
+  //link back to homepage
+  $('.send-new').attr('href', window.location);
+
   // on file upload by browse or drag & drop
   function onUpload(event) {
     event.preventDefault();
@@ -93,6 +84,12 @@ $(document).ready(function() {
     const expiration = 24 * 60 * 60 * 1000; //will eventually come from a field
 
     const fileSender = new FileSender(file);
+    $('#cancel-upload').click(() => {
+      fileSender.cancel();
+      location.reload();
+      notify('Your upload was cancelled.');
+    });
+
     fileSender.on('progress', progress => {
       $('#page-one').hide();
       $('#upload-error').hide();
@@ -104,19 +101,19 @@ $(document).ready(function() {
         $('.percent-number').html(`${Math.floor(percent * 100)}`);
       });
       if (progress[1] < 1000000) {
-        $('.progress-text').html(
+        $('.progress-text').text(
           `${file.name} (${(progress[0] / 1000).toFixed(
             1
           )}KB of ${(progress[1] / 1000).toFixed(1)}KB)`
         );
       } else if (progress[1] < 1000000000) {
-        $('.progress-text').html(
+        $('.progress-text').text(
           `${file.name} (${(progress[0] / 1000000).toFixed(
             1
           )}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
         );
       } else {
-        $('.progress-text').html(
+        $('.progress-text').text(
           `${file.name} (${(progress[0] / 1000000).toFixed(
             1
           )}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
@@ -219,13 +216,16 @@ $(document).ready(function() {
     const row = document.createElement('tr');
     const name = document.createElement('td');
     const link = document.createElement('td');
+    const $copyIcon = $('<img>', { src: '/resources/copy-16.svg', class: 'icon-copy', title: 'Copy URL' });
     const expiry = document.createElement('td');
     const del = document.createElement('td');
+    const $delIcon = $('<img>', { src: '/resources/close-16.svg', class: 'icon-delete', title: 'Delete' });
     const popupDiv = document.createElement('div');
     const $popupText = $('<div>', { class: 'popuptext' });
     const cellText = document.createTextNode(file.name);
 
     const url = file.url.trim() + `#${file.secretKey}`.trim();
+
     $('#link').attr('value', url);
     $('#copy-text').attr(
       'data-l10n-args',
@@ -252,8 +252,9 @@ $(document).ready(function() {
     link.appendChild(linkSpan);
 
     link.style.color = '#0A8DFF';
+
     //copy link to clipboard when icon clicked
-    $(link).click(function() {
+    $copyIcon.click(function() {
       const aux = document.createElement('input');
       aux.setAttribute('value', url);
       document.body.appendChild(aux);
@@ -265,10 +266,11 @@ $(document).ready(function() {
         link.innerHTML = translated;
       })
       window.setTimeout(() => {
-        const linkSpan = document.createElement('span');
-        $(linkSpan).addClass('icon-docs');
-        $(linkSpan).attr('data-l10n-id', 'copyUrlHover');
-        $(link).html(linkSpan);
+        const linkImg = document.createElement('img');
+        $(linkImg).addClass('icon-copy');
+        $(linkImg).attr('data-l10n-id', 'copyUrlHover');
+        $(linkImg).attr('src', '/resources/copy-16.svg');
+        $(link).html(linkImg);
       }, 500);
     });
 
@@ -325,8 +327,21 @@ $(document).ready(function() {
     $popupText.html([
       popupDelSpan,
       '&nbsp;',
+      '&nbsp;',
       popupNvmSpan
     ]);
+
+
+    // add data cells to table row
+    row.appendChild(name);
+    $(link).append($copyIcon);
+    row.appendChild(link);
+    row.appendChild(expiry);
+    $(popupDiv).append($popupText);
+    $(del).append($delIcon);
+    del.appendChild(popupDiv);
+    row.appendChild(del);
+    $('tbody').append(row); //add row to table
 
     // delete file
     $popupText.find('.del-file').click(e => {
@@ -342,17 +357,8 @@ $(document).ready(function() {
         location.reload();
       });
     };
-
-    // add data cells to table row
-    row.appendChild(name);
-    row.appendChild(link);
-    row.appendChild(expiry);
-    $(popupDiv).append($popupText);
-    del.appendChild(popupDiv);
-    row.appendChild(del);
-
     // show popup
-    del.addEventListener('click', function() {
+    $delIcon.click(function() {
       $popupText.addClass('show');
       $popupText.focus();
     });
@@ -368,7 +374,7 @@ $(document).ready(function() {
     $popupText.blur(() => {
       $popupText.removeClass('show');
     });
-    $('tbody').append(row); //add row to table
+
 
     toggleHeader();
   }

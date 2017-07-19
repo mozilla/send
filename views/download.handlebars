@@ -1,52 +1,46 @@
-<div class="send-logo">
-  <img src="/resources/send_logo.svg"/>
-  <img src="/resources/send_logo_type.svg"/>
-</div>
-<div class="all">
-  <div id="download">
-    {{#if filename}}
-    <div id="download-page-one">
-      <div class="title">
-        <span id="dl-filename" 
-              data-l10n-id="downloadFileName"
-              data-l10n-args='{"filename": "{{filename}}"}'></span>
-        <span data-l10n-id="downloadFileSize"
-              data-l10n-args='{"size": "{{filesize}}"}'></span>
-      </div>
-      <div class="description" data-l10n-id="downloadMessage"></div>
-      <img src="/resources/illustration_download.svg" id="download-img" data-l10n-id="downloadAltText"/>
-      <div>
-        <button id="download-btn" data-l10n-id="downloadButtonLabel"></button>
-      </div>
+<div id="download">
+  {{#if filename}}
+  <div id="download-page-one">
+    <div class="title">
+      <span id="dl-filename" 
+            data-l10n-id="downloadFileName"
+            data-l10n-args='{"filename": "{{filename}}"}'></span>
+      <span data-l10n-id="downloadFileSize"
+            data-l10n-args='{"size": "{{filesize}}"}'></span>
     </div>
-
-    <div id="download-progress">
-      <div class="title"
-           data-l10n-id="downloadingPageProgress"
-           data-l10n-args='{"filename": "{{filename}}", "size": "{{filesize}}"}'>
-      </div>
-      <div class="description" data-l10n-id="downloadingPageMessage"></div>
-      <!-- progress bar here -->
-      <div class="progress-bar" id="dl-progress">
-        <div class="percentage">
-          <span class="percent-number"></span>
-          <span class="percent-sign">%</span>
-        </div>
-      </div>
-      <div class="upload">
-        <div class="progress-text">{{filename}}</div>
-      </div>
+    <div class="description" data-l10n-id="downloadMessage"></div>
+    <img src="/resources/illustration_download.svg" id="download-img" data-l10n-id="downloadAltText"/>
+    <div>
+      <button id="download-btn" data-l10n-id="downloadButtonLabel"></button>
     </div>
-
-    <div class="send-new" data-l10n-id="sendYourFilesLink"></div>
-    {{else}}
-    <div class="title" data-l10n-id="expiredPageHeader"></div>
-
-    <div class="share-window">
-      <img src="/resources/illustration_expired.svg" id="expired-img" data-l10n-id="linkExpiredAlt"/>
-    </div>
-    <div class="expired-description" data-l10n-id="uploadPageExplainer"></div>
-    <div class="send-new" data-l10n-id="sendYourFilesLink"></div>
-    {{/if}}
   </div>
+
+  <div id="download-progress">
+    <div class="title"
+          data-l10n-id="downloadingPageProgress"
+          data-l10n-args='{"filename": "{{filename}}", "size": "{{filesize}}"}'>
+    </div>
+    <div class="description" data-l10n-id="downloadingPageMessage"></div>
+    <!-- progress bar here -->
+    <div class="progress-bar" id="dl-progress">
+      <div class="percentage">
+        <span class="percent-number"></span>
+        <span class="percent-sign">%</span>
+      </div>
+    </div>
+    <div class="upload">
+      <div class="progress-text">{{filename}}</div>
+    </div>
+  </div>
+
+  <a class="send-new" data-l10n-id="sendYourFilesLink"></a>
+  {{else}}
+  <div class="title" data-l10n-id="expiredPageHeader"></div>
+
+  <div class="share-window">
+    <img src="/resources/illustration_expired.svg" id="expired-img" data-l10n-id="linkExpiredAlt"/>
+  </div>
+  <div class="expired-description" data-l10n-id="uploadPageExplainer"></div>
+  <a class="send-new" data-l10n-id="sendYourFilesLink"></a>
+  {{/if}}
 </div>

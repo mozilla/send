@@ -234,13 +234,13 @@ function awsDelete(id, delete_token) {
       if (!reply || delete_token !== reply) {
         reject();
       } else {
-        redis_client.del(id);
         const params = {
           Bucket: conf.s3_bucket,
           Key: id
         };
 
         s3.deleteObject(params, function(err, _data) {
+          redis_client.del(id);
           err ? reject(err) : resolve(err);
         });
       }
@@ -250,13 +250,13 @@ function awsDelete(id, delete_token) {
 
 function awsForceDelete(id) {
   return new Promise((resolve, reject) => {
-    redis_client.del(id);
     const params = {
       Bucket: conf.s3_bucket,
       Key: id
     };
 
     s3.deleteObject(params, function(err, _data) {
+      redis_client.del(id);
       err ? reject(err) : resolve(err);
     });
   });
