@@ -68,8 +68,9 @@ a {
 .upload-window.ondrag {
   border: 3px dashed rgba(0, 148, 251, 0.5);
   margin: 0 auto;
-  width: 672px;
-  height: 267px;
+  width: 636px;
+  height: 251px;
+  transform: scale(1.05);
   border-radius: 4.2px;
   display: flex;
   justify-content: center;
