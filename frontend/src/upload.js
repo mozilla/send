@@ -60,7 +60,8 @@ $(document).ready(function() {
     value: 0.0,
     startAngle: -Math.PI / 2,
     fill: '#3B9DFF',
-    size: 158
+    size: 158,
+    animation: { duration: 300 }
   });
 
   //link back to homepage
