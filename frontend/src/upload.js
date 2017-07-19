@@ -213,8 +213,10 @@ $(document).ready(function() {
     const row = document.createElement('tr');
     const name = document.createElement('td');
     const link = document.createElement('td');
+    const $copyIcon = $('<img>', { src: '/resources/copy-16.svg', class: 'icon-copy', title: 'Copy URL' });
     const expiry = document.createElement('td');
     const del = document.createElement('td');
+    const $delIcon = $('<img>', { src: '/resources/close-16.svg', class: 'icon-delete', title: 'Delete' });
     const popupDiv = document.createElement('div');
     const $popupText = $('<div>', { class: 'popuptext' });
     const cellText = document.createTextNode(file.name);
@@ -228,13 +230,10 @@ $(document).ready(function() {
 
     name.appendChild(cellText);
 
-    // create delete button
-    del.innerHTML = '<img src="/resources/close-16.svg" class="icon-delete" title="Delete" />';
-
-    link.innerHTML = '<img src="/resources/copy-16.svg" class="icon-copy" title="Copy URL" />';
     link.style.color = '#0A8DFF'; //font colour
+
     //copy link to clipboard when icon clicked
-    $(link).click(function() {
+    $copyIcon.click(function() {
       const aux = document.createElement('input');
       aux.setAttribute('value', url);
       document.body.appendChild(aux);
@@ -290,8 +289,19 @@ $(document).ready(function() {
     // create popup
     popupDiv.classList.add('popup');
     $popupText.html(
-      '<span class="del-file">Delete</span><span class="nvm" > Nevermind</span>'
+      '<span class="del-file">Delete </span><span class="nvm" > Nevermind</span>'
     );
+
+    // add data cells to table row
+    row.appendChild(name);
+    $(link).append($copyIcon);
+    row.appendChild(link);
+    row.appendChild(expiry);
+    $(popupDiv).append($popupText);
+    $(del).append($delIcon);
+    del.appendChild(popupDiv);
+    row.appendChild(del);
+    $('tbody').append(row); //add row to table
 
     // delete file
     $popupText.find('.del-file').click(e => {
@@ -307,17 +317,8 @@ $(document).ready(function() {
         location.reload();
       });
     };
-
-    // add data cells to table row
-    row.appendChild(name);
-    row.appendChild(link);
-    row.appendChild(expiry);
-    $(popupDiv).append($popupText);
-    del.appendChild(popupDiv);
-    row.appendChild(del);
-
     // show popup
-    del.addEventListener('click', function() {
+    $delIcon.click(function() {
       $popupText.addClass('show');
       $popupText.focus();
     });
@@ -333,7 +334,7 @@ $(document).ready(function() {
     $popupText.blur(() => {
       $popupText.removeClass('show');
     });
-    $('tbody').append(row); //add row to table
+
 
     toggleHeader();
   }
