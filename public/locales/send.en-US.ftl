@@ -4,10 +4,11 @@ uploadPageHeader = Private, Encrypted File Sharing
 uploadPageExplainer = Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
 
 uploadPageLearnMore = Learn more
-uploadPageDropMessage = Drop your files here to start uploading
+uploadPageDropMessage = Drop your file here to start uploading
 uploadPageSizeMessage = For the most reliable operation, it’s best to keep your file under 1GB
 uploadPageBrowseButton = Select a file on your computer
   .title = {uploadPageBrowseButtonTitle}
+uploadPageMultipleFilesAlert = Uploading multiple files or a folder is currently not supported.
 
 uploadPageBrowseButtonTitle = Upload file
 

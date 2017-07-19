@@ -70,18 +70,32 @@ $(document).ready(function() {
   // on file upload by browse or drag & drop
   function onUpload(event) {
     event.preventDefault();
+    let file = '';
+    if (event.type === 'drop') {
+      if (event.originalEvent.dataTransfer.files.length > 1){
+        document.l10n.formatValue('uploadPageMultipleFilesAlert')
+                     .then(str => {
+                       alert(str);
+                     });
+        return;
+      }
+      file = event.originalEvent.dataTransfer.files[0];
+    } else {
+      if (event.target.files.length > 1){
+        document.l10n.formatValue('uploadPageMultipleFilesAlert')
+                     .then(str => {
+                       alert(str);
+                     });
+        return;
+      }
+      file = event.target.files[0];
+    }
+
     $('#page-one').attr('hidden', true);
     $('#upload-error').attr('hidden', true);
     $('#upload-progress').removeAttr('hidden');
     //don't allow drag and drop when not on page-one
     $('body').off('drop', onUpload);
-
-    let file = '';
-    if (event.type === 'drop') {
-      file = event.originalEvent.dataTransfer.files[0];
-    } else {
-      file = event.target.files[0];
-    }
     const expiration = 24 * 60 * 60 * 1000; //will eventually come from a field
 
     const fileSender = new FileSender(file);
