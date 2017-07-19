@@ -22,6 +22,7 @@
     "redis": "^2.7.1",
     "selenium-webdriver": "^3.4.0",
     "supertest": "^3.0.0",
+    "testpilot-ga": "^0.2.1",
     "uglify-es": "3.0.19"
   },
   "devDependencies": {

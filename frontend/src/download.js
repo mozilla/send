@@ -7,6 +7,12 @@ const Raven = window.Raven;
 $(document).ready(function() {
   //link back to homepage
   $('.send-new').attr('href', window.location.origin);
+  $('.send-new').click(function() {
+    window.analytics
+          .sendEvent('recipient', 'restarted', {
+            cd2: 'completed'
+          });
+  })
 
   const filename = $('#dl-filename').html();
 

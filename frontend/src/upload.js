@@ -6,12 +6,32 @@ require('jquery-circle-progress');
 const Raven = window.Raven;
 
 $(document).ready(function() {
-  gcmCompliant().catch(err => {
-    $('#page-one').attr('hidden', true);
-    $('#unsupported-browser').removeAttr('hidden');
+  gcmCompliant()
+    .catch(err => {
+      $('#page-one').attr('hidden', true);
+      $('#unsupported-browser').removeAttr('hidden');
+      window.analytics
+            .sendEvent('sender', 'unsupported', {
+              cd7: err
+            });
   });
 
   $('#file-upload').change(onUpload);
+
+  $('#send-new-completed').click(function() {
+    window.analytics
+          .sendEvent('sender', 'restarted', {
+            cd2: 'completed'
+          });
+  })
+
+  $('#send-new-error').click(function() {
+    window.analytics
+          .sendEvent('sender', 'restarted', {
+            cd2: 'errored'
+          });
+  })
+
   $('body').on('dragover', allowDrop).on('drop', onUpload);
   // reset copy button
   const $copyBtn = $('#copy-btn');
@@ -32,6 +52,10 @@ $(document).ready(function() {
 
   // copy link to clipboard
   $copyBtn.click(() => {
+    window.analytics
+          .sendEvent('sender', 'copied', {
+            cd6: 'success-screen'
+          });
     const aux = document.createElement('input');
     aux.setAttribute('value', $('#link').attr('value'));
     document.body.appendChild(aux);
@@ -251,6 +275,10 @@ $(document).ready(function() {
 
     //copy link to clipboard when icon clicked
     $copyIcon.click(function() {
+      window.analytics
+            .sendEvent('sender', 'copied', {
+              cd6: 'upload-list'
+            });
       const aux = document.createElement('input');
       aux.setAttribute('value', url);
       document.body.appendChild(aux);
