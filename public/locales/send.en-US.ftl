@@ -23,8 +23,10 @@ uploadingPageLargeFileMessage = This file is large and may take awhile to upload
 uploadingFileNotification = Notify me when the upload is complete.
 uploadSuccessConfirmHeader = Ready to Send
 
+uploadSvgAlt.alt = Upload
 
-//Notethe spec suggests that this string is editable. That feature will not appear at Launch
+
+//Note the spec suggests that this string is editable. That feature will not appear at Launch
 uploadSuccessTimingHeader = The link to your file will expire after 1 download or in 24 hours.
 copyUrlFormLabel = Copy and share the link to send your file:
 copyUrlFormLabelWithName = Copy and share the link to send your file: { $filename }
@@ -39,7 +41,7 @@ deleteFileButton = Delete file
 sendAnotherFileLink = Send another file
   .title = {sendAnotherFileLink}
 
-
+downloadAltText.alt = Download
 downloadFileName  = Download { $filename }
 downloadFileSize = ({ $size })
 downloadMessage = Your friend is sending you a file with Firefox Send, a service that allows you to share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
@@ -53,10 +55,13 @@ sendYourFilesLink = Try Firefox Send
 downloadingPageProgress = Downloading { $filename } ({ $size })
 downloadingPageMessage = Please leave this tab open while we fetch your file and decrypt it.
 
+errorAltText.alt = Upload error
 errorPageHeader = Something went wrong!
 errorPageMessage = There has been an error uploading the file.
 errorPageLink = Send another file
 
+
+linkExpiredAlt.alt = Link expired
 expiredPageHeader = This link has expired or never existed in the first place!
 notSupportedHeader = Your browser is not supported.
 notSupportedDetail = Unfortunately this browser does not support the web technology that powers Firefox Send. You'll need to try another browser. We recommend Firefox!
