@@ -47,7 +47,7 @@ $(document).ready(function() {
     //disable button for 3s
     $copyBtn.attr('disabled', true);
     $('#link').attr('disabled', true);
-    $copyBtn.html('<span class="icon-check"></span>');
+    $copyBtn.html('<img src="/resources/check-16.svg" class="icon-check"></img>');
     window.setTimeout(() => {
       $copyBtn.attr('disabled', false);
       $('#link').attr('disabled', false);
@@ -229,10 +229,10 @@ $(document).ready(function() {
     name.appendChild(cellText);
 
     // create delete button
-    del.innerHTML = '<span class="icon-cancel-1" title="Delete"></span>';
+    del.innerHTML = '<img src="/resources/close-16.svg" class="icon-delete" title="Delete" />';
 
-    link.innerHTML = '<span class="icon-docs" title="Copy URL"></span>';
-    link.style.color = '#0A8DFF';
+    link.innerHTML = '<img src="/resources/copy-16.svg" class="icon-copy" title="Copy URL" />';
+    link.style.color = '#0A8DFF'; //font colour
     //copy link to clipboard when icon clicked
     $(link).click(function() {
       const aux = document.createElement('input');
@@ -243,7 +243,7 @@ $(document).ready(function() {
       document.body.removeChild(aux);
       link.innerHTML = 'Copied!';
       window.setTimeout(() => {
-        link.innerHTML = '<span class="icon-docs" title="Copy URL"></span>';
+        link.innerHTML = '<img src="/resources/copy-16.svg" class="icon-copy" title="Copy URL" />';
       }, 500);
     });
 
