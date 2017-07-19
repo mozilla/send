@@ -2,15 +2,10 @@
 <html>
 <head>
   <title>Firefox Send</title>
-  {{#if dsn}}
-  {{> sentry dsn=dsn}}
-  {{/if}}
+  <script src="/jsconfig.js"></script>
   <script src="/bundle.js"></script>
   <link rel="stylesheet" type="text/css" href="/main.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
-  {{#if trackerId}}
-  {{> analytics trackerId=trackerId}}
-  {{/if}}
 
   <meta name="defaultLanguage" content="en-US">
   <meta name="availableLanguages" content="en-US">

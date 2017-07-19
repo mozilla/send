@@ -69,9 +69,15 @@ app.use('/l20n', express.static(L20N));
 app.use('/locales', express.static(LOCALES));
 
 app.get('/', (req, res) => {
-  res.render('index', {
+  res.render('index');
+});
+
+app.get('/jsconfig.js', (req, res) => {
+  res.set('Content-Type', 'application/javascript');
+  res.render('jsconfig', {
     trackerId: conf.analytics_id,
-    dsn: conf.sentry_id
+    dsn: conf.sentry_id,
+    layout: false
   });
 });
 
