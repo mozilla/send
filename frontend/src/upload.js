@@ -81,13 +81,6 @@ $(document).ready(function() {
       }
       file = event.originalEvent.dataTransfer.files[0];
     } else {
-      if (event.target.files.length > 1){
-        document.l10n.formatValue('uploadPageMultipleFilesAlert')
-                     .then(str => {
-                       alert(str);
-                     });
-        return;
-      }
       file = event.target.files[0];
     }
 
