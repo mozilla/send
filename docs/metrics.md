@@ -90,7 +90,7 @@ Triggered whenever a user stops downloading a file.
 - `cm6`
 - `cm7`
 - `cd2`
-- `cd7`
+- `cd6`
 
 #### `exited`
 Fired whenever a user follows a link external to Send.
@@ -132,4 +132,4 @@ Fired whenever a user is presented a message saying that their browser is unsupp
 
 - `ec` - `sender`
 - `ea` - `unsupported`
-- `cd7`
+- `cd6`
