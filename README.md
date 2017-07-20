@@ -1,6 +1,7 @@
 # Firefox Send
 
-[![CircleCI](https://circleci.com/gh/mozilla/send.svg?style=svg)](https://circleci.com/gh/mozilla/send)
+[![CircleCI](https://img.shields.io/circleci/project/github/mozilla/send.svg)](https://circleci.com/gh/mozilla/send)
+[![Available on Test Pilot](https://img.shields.io/badge/available_on-Test_Pilot-0996F8.svg)](https://testpilot.firefox.com/experiments/send)
 
 **Docs:** [Docker](docs/docker.md), [Metrics](docs/metrics.md)
 
