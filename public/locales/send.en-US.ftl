@@ -63,6 +63,7 @@ errorPageHeader = Something went wrong!
 errorPageMessage = There has been an error uploading the file.
 errorPageLink = Send another file
 
+fileTooBig = That file is too big to upload. It should be less than { $size }.
 
 linkExpiredAlt.alt = Link expired
 expiredPageHeader = This link has expired or never existed in the first place!

@@ -117,12 +117,12 @@ describe('Testing Get from local filesystem', function() {
 describe('Testing Set to local filesystem', function() {
   it('Successfully writes the file to the local filesystem', function() {
     const stub = sinon.stub();
-    stub.withArgs('close', sinon.match.any).callsArgWithAsync(1);
+    stub.withArgs('finish', sinon.match.any).callsArgWithAsync(1);
     stub.withArgs('error', sinon.match.any).returns(1);
     fsStub.createWriteStream.returns({ on: stub });
 
     return storage
-      .set('test', { pipe: sinon.stub() }, 'Filename.moz', {})
+      .set('test', { pipe: sinon.stub(), on: sinon.stub() }, 'Filename.moz', {})
       .then(() => {
         assert(1);
       })
