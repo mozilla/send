@@ -15,7 +15,8 @@ $(document).ready(function() {
     value: 0.0,
     startAngle: -Math.PI / 2,
     fill: '#00C8D7',
-    size: 158
+    size: 158,
+    animation: { duration: 300 }
   });
   $('#download-btn').click(download);
   function download() {
