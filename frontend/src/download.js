@@ -1,5 +1,5 @@
 const FileReceiver = require('./fileReceiver');
-const { notify, findMetric } = require('./utils');
+const { notify, findMetric, isFile } = require('./utils');
 const $ = require('jquery');
 require('jquery-circle-progress');
 
@@ -67,9 +67,7 @@ $(document).ready(function() {
 
     for (let i = 0; i < localStorage.length; i++) {
       const id = localStorage.key(i);
-      if (id !== 'totalUploads' && 
-          id !== 'totalDownloads' &&
-          id !== 'referrer') {
+      if (isFile(id)) {
           unexpiredFiles += 1;
       }
     }

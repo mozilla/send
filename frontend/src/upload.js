@@ -1,5 +1,5 @@
 const FileSender = require('./fileSender');
-const { notify, gcmCompliant, findMetric } = require('./utils');
+const { notify, gcmCompliant, findMetric, isFile, ONE_DAY_IN_MS } = require('./utils');
 const $ = require('jquery');
 require('jquery-circle-progress');
 
@@ -235,13 +235,11 @@ $(document).ready(function() {
     let t;
     const startTime = new Date().getTime();
 
-    let unexpiredFiles = 0;
+    let unexpiredFiles = 1;
 
     for (let i = 0; i < localStorage.length; i++) {
       const id = localStorage.key(i);
-      if (id !== 'totalUploads' && 
-          id !== 'totalDownloads' &&
-          id !== 'referrer') {
+      if (isFile(id)) {
           unexpiredFiles += 1;
       }
     }
@@ -347,9 +345,7 @@ $(document).ready(function() {
             populateFileList(localStorage.getItem(id));
           }
         } else if (xhr.status === 404) {
-          if (id !== 'totalUploads' && 
-              id !== 'totalDownloads' &&
-              id !== 'referrer') {
+          if (isFile(id)) {
             localStorage.removeItem(id);
           }
         }
@@ -505,9 +501,7 @@ $(document).ready(function() {
 
     for (let i = 0; i < localStorage.length; i++) {
       const id = localStorage.key(i);
-      if (id !== 'totalUploads' && 
-          id !== 'totalDownloads' &&
-          id !== 'referrer') {
+      if (isFile(id)) {
           unexpiredFiles += 1;
       }
     }
@@ -521,7 +515,7 @@ $(document).ready(function() {
     $popupText.find('.del-file').click(e => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
         $(e.target).parents('tr').remove();
-        const timeToExpiry = 86400000 - (new Date().getTime() - file.creationDate.getTime());
+        const timeToExpiry = ONE_DAY_IN_MS - (new Date().getTime() - file.creationDate.getTime());
         // record upload-deleted from file list
         window.analytics
               .sendEvent('sender', 'upload-deleted', {
@@ -544,7 +538,7 @@ $(document).ready(function() {
 
     document.getElementById('delete-file').onclick = () => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
-        const timeToExpiry = 86400000 - (new Date().getTime() - file.creationDate.getTime());
+        const timeToExpiry = ONE_DAY_IN_MS - (new Date().getTime() - file.creationDate.getTime());
         // record upload-deleted from success screen
         window.analytics
               .sendEvent('sender', 'upload-deleted', {

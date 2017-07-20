@@ -94,10 +94,21 @@ function findMetric(href) {
   }
 }
 
+function isFile(id) {
+  return !['referrer', 
+           'totalDownloads',
+           'totalUploads',
+           'testpilot_ga__cid'].includes(id);
+}
+
+const ONE_DAY_IN_MS = 86400000;
+
 module.exports = {
   arrayToHex,
   hexToArray,
   notify,
   gcmCompliant,
-  findMetric
+  findMetric,
+  isFile,
+  ONE_DAY_IN_MS
 };
