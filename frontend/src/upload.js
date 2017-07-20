@@ -19,7 +19,6 @@ $(document).ready(function() {
   $('#link').attr('disabled', false);
   $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
 
-
   if (localStorage.length === 0) {
     toggleHeader();
   } else {
@@ -72,7 +71,8 @@ $(document).ready(function() {
     event.preventDefault();
     let file = '';
     if (event.type === 'drop') {
-      if (event.originalEvent.dataTransfer.files.length > 1){
+      if (event.originalEvent.dataTransfer.files.length > 1 || event.originalEvent.dataTransfer.files[0].size === 0){
+        $('.upload-window').removeClass('ondrag');
         document.l10n.formatValue('uploadPageMultipleFilesAlert')
                      .then(str => {
                        alert(str);
@@ -169,7 +169,7 @@ $(document).ready(function() {
           $('#upload-progress').attr('hidden', true);
           $('#upload-error').attr('hidden', true);
           $('#share-link').removeAttr('hidden');
-        }, 2000);
+        }, 1000);
 
         populateFileList(JSON.stringify(fileData));
         document.l10n.formatValue('notifyUploadDone')
