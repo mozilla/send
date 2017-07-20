@@ -7,6 +7,8 @@
             data-l10n-args='{"filename": "{{filename}}"}'></span>
       <span data-l10n-id="downloadFileSize"
             data-l10n-args='{"size": "{{filesize}}"}'></span>
+      <span id="dl-bytelength" hidden="true">{{sizeInBytes}}</span>
+      <span id="dl-ttl" hidden="true">{{timeToExpiry}}</span>
     </div>
     <div class="description" data-l10n-id="downloadMessage"></div>
     <img src="/resources/illustration_download.svg" id="download-img" data-l10n-id="downloadAltText"/>
@@ -41,6 +43,6 @@
     <img src="/resources/illustration_expired.svg" id="expired-img" data-l10n-id="linkExpiredAlt"/>
   </div>
   <div class="expired-description" data-l10n-id="uploadPageExplainer"></div>
-  <a class="send-new" data-l10n-id="sendYourFilesLink"></a>
+  <a class="send-new" id = "expired-send-new" data-l10n-id="sendYourFilesLink"></a>
   {{/if}}
 </div>

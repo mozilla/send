@@ -23,6 +23,7 @@ if (conf.s3_bucket) {
   module.exports = {
     filename: filename,
     exists: exists,
+    ttl: ttl,
     length: awsLength,
     get: awsGet,
     set: awsSet,
@@ -39,6 +40,7 @@ if (conf.s3_bucket) {
   module.exports = {
     filename: filename,
     exists: exists,
+    ttl: ttl,
     length: localLength,
     get: localGet,
     set: localSet,
@@ -71,6 +73,18 @@ function metadata(id) {
       }
     });
   });
+}
+
+function ttl(id) {
+  return new Promise((resolve, reject) => {
+    redis_client.ttl(id, (err, reply) => {
+      if (!err) {
+        resolve(reply * 1000);
+      } else {
+        reject(err);
+      }
+    })
+  })
 }
 
 function filename(id) {
