@@ -34,10 +34,12 @@ app.engine(
 app.set('view engine', 'handlebars');
 
 app.use(helmet());
-app.use(helmet.hsts({
-  maxAge: 31536000,
-  force: conf.env === 'production'
-}));
+app.use(
+  helmet.hsts({
+    maxAge: 31536000,
+    force: conf.env === 'production'
+  })
+);
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -241,7 +243,7 @@ app.post('/upload', (req, res, next) => {
       .catch(err => {
         log.info('DeleteError:', newId);
       });
-  })
+  });
 });
 
 app.get('/__lbheartbeat__', (req, res) => {

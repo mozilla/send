@@ -13,10 +13,17 @@
   <script defer src="/l20n/dist/web/l20n.js"></script>
 </head>
 <body>
-  <div class="send-logo">
-    <img src="/resources/send_logo.svg"/>
-    <img src="/resources/send_logo_type.svg"/>
-  </div>
+  <header class="header"> 
+    <div class="send-logo">
+      <img src="/resources/send_logo.svg" alt="Send"/>
+      <h1 class="site-title">Send</h1>
+      <div class="site-subtitle">
+        <a href="https://testpilot.firefox.com" target="_blank">Firefox Test Pilot</a>
+        <div data-l10n-id="siteSubtitle">web experiment</div>
+      </div>
+    </div>
+    <a href="https://qsurvey.mozilla.com/s3/txp-firefox-send" rel="noreferrer noopener" class="feedback" target="_blank" data-l10n-id="siteFeedback">Feedback</a>
+  </header>
   <div class="all">
     {{{body}}}
   </div>
