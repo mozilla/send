@@ -321,7 +321,7 @@ $(document).ready(function() {
     popupDiv.classList.add('popup');
     const popupDelSpan = document.createElement('span');
     $(popupDelSpan).addClass('del-file');
-    $(popupDelSpan).attr('data-l10n-id', 'sentFilesTitle4');
+    $(popupDelSpan).attr('data-l10n-id', 'deleteFileList');
 
     const popupNvmSpan = document.createElement('span');
     $(popupNvmSpan).addClass('nvm');
