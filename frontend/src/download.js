@@ -28,7 +28,7 @@ $(document).ready(function() {
 
     $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
       target.preventDefault();
-      let metric = findMetric(target.currentTarget.href);
+      const metric = findMetric(target.currentTarget.href);
       // record exited event by recipient
       window.analytics
             .sendEvent('recipient', 'exited', {
@@ -59,7 +59,7 @@ $(document).ready(function() {
   });
   $('#download-btn').click(download);
   function download() {
-    let totalDownloads = localStorage.getItem('totalDownloads');
+    const totalDownloads = localStorage.getItem('totalDownloads');
     localStorage.setItem('totalDownloads', Number(totalDownloads) + 1);
     
     const fileReceiver = new FileReceiver();
@@ -67,9 +67,9 @@ $(document).ready(function() {
 
     for (let i = 0; i < localStorage.length; i++) {
       const id = localStorage.key(i);
-      if (id != 'totalUploads' && 
-          id != 'totalDownloads' &&
-          id != 'referrer') {
+      if (id !== 'totalUploads' && 
+          id !== 'totalDownloads' &&
+          id !== 'referrer') {
           unexpiredFiles += 1;
       }
     }

@@ -33,7 +33,7 @@ $(document).ready(function() {
 
     $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
       target.preventDefault();
-      let metric = findMetric(target.currentTarget.href);
+      const metric = findMetric(target.currentTarget.href);
       // record exited event by recipient
       window.analytics
             .sendEvent('sender', 'exited', {
@@ -134,7 +134,7 @@ $(document).ready(function() {
   function onUpload(event) {
     event.preventDefault();
 
-    let totalUploads = localStorage.getItem('totalUploads');
+    const totalUploads = localStorage.getItem('totalUploads');
     localStorage.setItem('totalUploads', Number(totalUploads) + 1);
 
     let file = '';
@@ -239,9 +239,9 @@ $(document).ready(function() {
 
     for (let i = 0; i < localStorage.length; i++) {
       const id = localStorage.key(i);
-      if (id != 'totalUploads' && 
-          id != 'totalDownloads' &&
-          id != 'referrer') {
+      if (id !== 'totalUploads' && 
+          id !== 'totalDownloads' &&
+          id !== 'referrer') {
           unexpiredFiles += 1;
       }
     }
@@ -347,9 +347,9 @@ $(document).ready(function() {
             populateFileList(localStorage.getItem(id));
           }
         } else if (xhr.status === 404) {
-          if (id != 'totalUploads' && 
-              id != 'totalDownloads' &&
-              id != 'referrer') {
+          if (id !== 'totalUploads' && 
+              id !== 'totalDownloads' &&
+              id !== 'referrer') {
             localStorage.removeItem(id);
           }
         }
@@ -505,9 +505,9 @@ $(document).ready(function() {
 
     for (let i = 0; i < localStorage.length; i++) {
       const id = localStorage.key(i);
-      if (id != 'totalUploads' && 
-          id != 'totalDownloads' &&
-          id != 'referrer') {
+      if (id !== 'totalUploads' && 
+          id !== 'totalDownloads' &&
+          id !== 'referrer') {
           unexpiredFiles += 1;
       }
     }
