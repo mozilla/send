@@ -81,6 +81,7 @@ downloadFirefoxButtonSub = Free Download
 
 uploadedFile = File
 copyFileList = Copy URL
+// expiryFileList is used as a column header
 expiryFileList = Expires In
 deleteFileList = Delete
 nevermindButton = Never mind
