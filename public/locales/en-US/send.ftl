@@ -1,4 +1,4 @@
-// We might not need to localize this if it's a brand name.
+// Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 
 uploadPageHeader = Private, Encrypted File Sharing
@@ -32,14 +32,16 @@ uploadSvgAlt
 uploadSuccessTimingHeader = The link to your file will expire after 1 download or in 24 hours.
 copyUrlFormLabelWithName = Copy and share the link to send your file: { $filename }
 
-// Note: Title text for button should be the same
+// Note: Title text for button should be the same.
 copyUrlFormButton = Copy to clipboard
     .title = Copy to clipboard
 
 copiedUrl = Copied!
 
+// Note: Title text for button should be the same.
 deleteFileButton = Delete file
     .title = Delete file
+// Note: Title text for button should be the same.
 sendAnotherFileLink = Send another file
     .title = Send another file
 
@@ -49,6 +51,7 @@ downloadAltText
 downloadFileName  = Download { $filename }
 
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
 downloadMessage = Your friend is sending you a file with Firefox Send, a service that allows you to share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
 
 // Text and title used on the download link/button (indicates an action).
@@ -57,7 +60,7 @@ downloadButtonLabel = Download
 downloadNotification = Your download has completed.
 downloadFinish = Download Complete
 
-// We might not need to localize this if it's a brand name.
+// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Try Firefox Send
     .title = Try Firefox Send
 downloadingPageProgress = Downloading { $filename } ({ $size })
@@ -74,7 +77,7 @@ linkExpiredAlt
     .alt = Link expired
 expiredPageHeader = This link has expired or never existed in the first place!
 notSupportedHeader = Your browser is not supported.
-// We might not need to localize the Firefox Send part of this string if it's a brand name.
+// Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Unfortunately this browser does not support the web technology that powers Firefox Send. You’ll need to try another browser. We recommend Firefox!
 downloadFirefoxButtonSub = Free Download
 
@@ -92,6 +95,7 @@ copyUrlHover
     .title = Copy URL
 
 footerLinkLegal = Legal
+// Test Pilot is a proper name and should not be localized.
 footerLinkAbout = About Test Pilot
 footerLinkPrivacy = Privacy
 footerLinkTerms = Terms
