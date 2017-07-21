@@ -1,3 +1,4 @@
+require('./common');
 const FileReceiver = require('./fileReceiver');
 const { notify, findMetric, sendEvent } = require('./utils');
 const bytes = require('bytes');
@@ -13,35 +14,32 @@ $(document).ready(function() {
   //link back to homepage
   $('.send-new').attr('href', window.location.origin);
 
-  if (location.pathname.toString().includes('download')) {
-    $('.send-new').click(function(target) {
-      target.preventDefault();
-      sendEvent('recipient', 'restarted', {
-        cd2: 'completed'
-      })
-      .then(() => {
-        location.href = target.currentTarget.href;
-      });
+  $('.send-new').click(function(target) {
+    target.preventDefault();
+    sendEvent('recipient', 'restarted', {
+      cd2: 'completed'
     })
+    .then(() => {
+      location.href = target.currentTarget.href;
+    });
+  })
 
 
-    $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
-      target.preventDefault();
-      const metric = findMetric(target.currentTarget.href);
-      // record exited event by recipient
-      sendEvent('recipient', 'exited', {
-        cd3: metric
-      })
-      .then(() => {
-        location.href = target.currentTarget.href;
-      });
+  $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
+    target.preventDefault();
+    const metric = findMetric(target.currentTarget.href);
+    // record exited event by recipient
+    sendEvent('recipient', 'exited', {
+      cd3: metric
     })
+    .then(() => {
+      location.href = target.currentTarget.href;
+    });
+  })
 
-    $('#expired-send-new').click(function() {
-      storage.referrer = 'errored-download';
-    })
-
-  }
+  $('#expired-send-new').click(function() {
+    storage.referrer = 'errored-download';
+  })
 
   const filename = $('#dl-filename').html();
   const bytelength = Number($('#dl-bytelength').text());
@@ -58,10 +56,10 @@ $(document).ready(function() {
   $('#download-btn').click(download);
   function download() {
     storage.totalDownloads += 1;
-    
+
     const fileReceiver = new FileReceiver();
     const unexpiredFiles = storage.numFiles;
-    
+
 
     fileReceiver.on('progress', progress => {
 

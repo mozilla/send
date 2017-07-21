@@ -124,7 +124,7 @@ app.get('/download/:id', (req, res) => {
           })
       })
       .catch(() => {
-        res.render('download');
+        res.status(404).render('notfound');
       });
   });
 });

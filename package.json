@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "author": "Mozilla (https://mozilla.org)",
   "dependencies": {
-    "aws-sdk": "^2.87.0",
+    "aws-sdk": "^2.88.0",
     "body-parser": "^1.17.2",
     "bytes": "^2.5.0",
     "connect-busboy": "0.0.2",
@@ -12,7 +12,7 @@
     "cross-env": "^5.0.1",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
-    "helmet": "^3.6.1",
+    "helmet": "^3.8.0",
     "jquery": "^3.2.1",
     "jquery-circle-progress": "^1.2.2",
     "l20n": "^5.0.0",
@@ -20,14 +20,11 @@
     "raven": "^2.1.0",
     "raven-js": "^3.17.0",
     "redis": "^2.7.1",
-    "selenium-webdriver": "^3.4.0",
-    "supertest": "^3.0.0",
-    "testpilot-ga": "^0.3.0",
-    "uglify-es": "3.0.19"
+    "testpilot-ga": "^0.3.0"
   },
   "devDependencies": {
     "browserify": "^14.4.0",
-    "eslint": "^4.2.0",
+    "eslint": "^4.3.0",
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-security": "^1.4.0",
@@ -36,10 +33,12 @@
     "npm-run-all": "^4.0.2",
     "prettier": "^1.5.3",
     "proxyquire": "^1.8.0",
+    "selenium-webdriver": "^3.4.0",
     "sinon": "^2.3.8",
     "stylelint": "^7.13.0",
     "stylelint-config-standard": "^16.0.0",
-    "watchify": "^3.9.0"
+    "supertest": "^3.0.0",
+    "uglifyify": "^4.0.3"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -48,15 +47,19 @@
   "license": "MPL-2.0",
   "repository": "mozilla/send",
   "scripts": {
-    "predocker": "browserify frontend/src/main.js | uglifyjs > public/bundle.js && npm run version",
-    "dev": "npm run version && watchify frontend/src/main.js -o public/bundle.js -d | node server/server",
+    "build": "npm-run-all build:*",
+    "build:upload": "browserify frontend/src/upload.js -g uglifyify -o public/upload.js",
+    "build:download": "browserify frontend/src/download.js -g uglifyify -o public/download.js",
+    "build:version": "node scripts/version",
+    "dev": "npm run build && npm start",
     "format": "prettier '{frontend/src/,scripts/,server/,test/}*.js' 'public/*.css' --single-quote --write",
     "lint": "npm-run-all lint:*",
     "lint:css": "stylelint 'public/*.css'",
     "lint:js": "eslint .",
     "start": "node server/server",
-    "test": "mocha test/unit && mocha test/server && npm run test-browser && node test/frontend/driver.js",
-    "test-browser": "browserify test/frontend/frontend.bundle.js -o test/frontend/bundle.js -d",
-    "version": "node scripts/version"
+    "test": "npm-run-all test:*",
+    "test:unit": "mocha test/unit",
+    "test:server": "mocha test/server",
+    "test:browser": "browserify test/frontend/frontend.bundle.js -o test/frontend/bundle.js -d && node test/frontend/driver.js"
   }
 }
