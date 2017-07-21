@@ -8,6 +8,3 @@ window.analytics = new testPilotGA({
   ds: 'web',
   tid: window.trackerId
 })
-
-require('./upload');
-require('./download');

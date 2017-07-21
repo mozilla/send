@@ -1,4 +1,5 @@
 /* global MAXFILESIZE */
+require('./common');
 const FileSender = require('./fileSender');
 const { notify, gcmCompliant, findMetric, sendEvent, ONE_DAY_IN_MS } = require('./utils');
 const bytes = require('bytes');
@@ -18,113 +19,112 @@ if (storage.has('referrer')) {
 }
 
 $(document).ready(function() {
-  if (!location.pathname.toString().includes('download')) {
-    gcmCompliant()
-      .catch(err => {
-        $('#page-one').attr('hidden', true);
-        $('#unsupported-browser').removeAttr('hidden');
-        // record unsupported event
-        sendEvent('sender', 'unsupported', {
-          cd6: err
-        });
+  
+  gcmCompliant()
+    .catch(err => {
+      $('#page-one').attr('hidden', true);
+      $('#unsupported-browser').removeAttr('hidden');
+      // record unsupported event
+      sendEvent('sender', 'unsupported', {
+        cd6: err
+      });
+  });
+
+  $('#file-upload').change(onUpload);
+
+  $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
+    target.preventDefault();
+    const metric = findMetric(target.currentTarget.href);
+    // record exited event by recipient
+    sendEvent('sender', 'exited', {
+      cd3: metric
+    })
+    .then(() => {
+      location.href = target.currentTarget.href;
     });
+  })
 
-    $('#file-upload').change(onUpload);
-
-    $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
-      target.preventDefault();
-      const metric = findMetric(target.currentTarget.href);
-      // record exited event by recipient
-      sendEvent('sender', 'exited', {
-        cd3: metric
-      })
-      .then(() => {
-        location.href = target.currentTarget.href;
-      });
+  $('#send-new-completed').click(function(target) {
+    target.preventDefault();
+    // record restarted event
+    sendEvent('sender', 'restarted', {
+      cd2: 'completed'
     })
+    .then(() => {
+      storage.referrer = 'completed-upload';
+      location.href = target.currentTarget.href;
+    });
+  })
 
-    $('#send-new-completed').click(function(target) {
-      target.preventDefault();
-      // record restarted event 
-      sendEvent('sender', 'restarted', {
-        cd2: 'completed'
-      })
-      .then(() => {
-        storage.referrer = 'completed-upload';
-        location.href = target.currentTarget.href;
-      });
+  $('#send-new-error').click(function(target) {
+    target.preventDefault();
+    // record restarted event
+    sendEvent('sender', 'restarted', {
+      cd2: 'errored'
     })
+    .then(() => {
+      storage.referrer = 'errored-upload';
+      location.href = target.currentTarget.href;
+    });
+  })
 
-    $('#send-new-error').click(function(target) {
-      target.preventDefault();
-      // record restarted event
-      sendEvent('sender', 'restarted', {
-        cd2: 'errored'
-      })
-      .then(() => {
-        storage.referrer = 'errored-upload';
-        location.href = target.currentTarget.href;
-      });
-    })
+  $('body').on('dragover', allowDrop).on('drop', onUpload);
+  // reset copy button
+  const $copyBtn = $('#copy-btn');
+  $copyBtn.attr('disabled', false);
+  $('#link').attr('disabled', false);
+  $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
 
-    $('body').on('dragover', allowDrop).on('drop', onUpload);
-    // reset copy button
-    const $copyBtn = $('#copy-btn');
-    $copyBtn.attr('disabled', false);
-    $('#link').attr('disabled', false);
-    $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
-
-    const files = storage.files;
-    console.log(files);
-    if (files.length === 0) {
-      toggleHeader();
-    } else {
-      for (const index in files) {
-        const id = files[index].fileId;
-        //check if file still exists before adding to list
-        checkExistence(id, files[index], true);
-      }
+  const files = storage.files;
+  console.log(files);
+  if (files.length === 0) {
+    toggleHeader();
+  } else {
+    for (const index in files) {
+      const id = files[index].fileId;
+      //check if file still exists before adding to list
+      checkExistence(id, files[index], true);
     }
-
-
-    // copy link to clipboard
-    $copyBtn.click(() => {
-      // record copied event from success screen
-      sendEvent('sender', 'copied', {
-        cd4: 'success-screen'
-      });
-      const aux = document.createElement('input');
-      aux.setAttribute('value', $('#link').attr('value'));
-      document.body.appendChild(aux);
-      aux.select();
-      document.execCommand('copy');
-      document.body.removeChild(aux);
-      //disable button for 3s
-      $copyBtn.attr('disabled', true);
-      $('#link').attr('disabled', true);
-      $copyBtn.html('<img src="/resources/check-16.svg" class="icon-check"></img>');
-      window.setTimeout(() => {
-        $copyBtn.attr('disabled', false);
-        $('#link').attr('disabled', false);
-        $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
-      }, 3000);
-    });
-
-    $('.upload-window').on('dragover', () => {
-      $('.upload-window').addClass('ondrag');
-    });
-    $('.upload-window').on('dragleave', () => {
-      $('.upload-window').removeClass('ondrag');
-    });
-    //initiate progress bar
-    $('#ul-progress').circleProgress({
-      value: 0.0,
-      startAngle: -Math.PI / 2,
-      fill: '#3B9DFF',
-      size: 158,
-      animation: { duration: 300 }
-    });
   }
+
+
+  // copy link to clipboard
+  $copyBtn.click(() => {
+    // record copied event from success screen
+    sendEvent('sender', 'copied', {
+      cd4: 'success-screen'
+    });
+    const aux = document.createElement('input');
+    aux.setAttribute('value', $('#link').attr('value'));
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand('copy');
+    document.body.removeChild(aux);
+    //disable button for 3s
+    $copyBtn.attr('disabled', true);
+    $('#link').attr('disabled', true);
+    $copyBtn.html('<img src="/resources/check-16.svg" class="icon-check"></img>');
+    window.setTimeout(() => {
+      $copyBtn.attr('disabled', false);
+      $('#link').attr('disabled', false);
+      $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
+    }, 3000);
+  });
+
+  $('.upload-window').on('dragover', () => {
+    $('.upload-window').addClass('ondrag');
+  });
+  $('.upload-window').on('dragleave', () => {
+    $('.upload-window').removeClass('ondrag');
+  });
+  //initiate progress bar
+  $('#ul-progress').circleProgress({
+    value: 0.0,
+    startAngle: -Math.PI / 2,
+    fill: '#3B9DFF',
+    size: 158,
+    animation: { duration: 300 }
+  });
 
   //link back to homepage
   $('.send-new').attr('href', window.location);
@@ -170,7 +170,7 @@ $(document).ready(function() {
                      notify(str);
                    });
       storage.referrer = 'cancelled-upload';
-      
+
       // record upload-stopped (cancelled) by sender
       sendEvent('sender', 'upload-stopped', {
         cm1: file.size,
