@@ -10,10 +10,6 @@ require('jquery-circle-progress');
 
 const Raven = window.Raven;
 
-if (!storage.has('totalUploads')) {
-  storage.totalUploads = 0;
-}
-
 if (storage.has('referrer')) {
   window.referrer = storage.referrer;
   storage.remove('referrer');

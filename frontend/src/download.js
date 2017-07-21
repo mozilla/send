@@ -9,10 +9,6 @@ require('jquery-circle-progress');
 
 const Raven = window.Raven;
 
-if (!storage.has('totalDownloads')) {
-  storage.totalDownloads = 0;
-}
-
 $(document).ready(function() {
   //link back to homepage
   $('.send-new').attr('href', window.location.origin);
