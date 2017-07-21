@@ -30,7 +30,7 @@ $(document).ready(function() {
       // update progress bar
       $('#dl-progress').circleProgress('value', percent);
       $('.percent-number').html(`${Math.floor(percent * 100)}`);
-      $('.progress-text').text(`${filename} (${bytes(progress[0])} of ${bytes(progress[1])})`);
+      $('.progress-text').text(`${filename} (${bytes(progress[0], {decimalPlaces: 1, fixedDecimals: true})} of ${bytes(progress[1], {decimalPlaces: 1})})`);
       //on complete
       if (percent === 1) {
         fileReceiver.removeAllListeners('progress');

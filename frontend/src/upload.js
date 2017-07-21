@@ -114,7 +114,7 @@ $(document).ready(function() {
       $('#ul-progress').circleProgress().on('circle-animation-end', function() {
         $('.percent-number').html(`${Math.floor(percent * 100)}`);
       });
-      $('.progress-text').text(`${file.name} (${bytes(progress[0])} of ${bytes(progress[1])})`);
+      $('.progress-text').text(`${file.name} (${bytes(progress[0], {decimalPlaces: 1, fixedDecimals: true})} of ${bytes(progress[1], {decimalPlaces: 1})})`);
     });
 
     fileSender.on('loading', isStillLoading => {
