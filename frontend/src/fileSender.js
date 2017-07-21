@@ -118,14 +118,16 @@ class FileSender extends EventEmitter {
 
           xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE) {
-              // uuid field and url field
-              const responseObj = JSON.parse(xhr.responseText);
-              resolve({
-                url: responseObj.url,
-                fileId: responseObj.id,
-                secretKey: keydata.k,
-                deleteToken: responseObj.delete
-              });
+              if (xhr.status === 200) {
+                const responseObj = JSON.parse(xhr.responseText);
+                return resolve({
+                  url: responseObj.url,
+                  fileId: responseObj.id,
+                  secretKey: keydata.k,
+                  deleteToken: responseObj.delete
+                });
+              }
+              reject(xhr.status);
             }
           };
 

@@ -1,5 +1,7 @@
+/* global MAXFILESIZE */
 const FileSender = require('./fileSender');
 const { notify, gcmCompliant } = require('./utils');
+const bytes = require('bytes');
 const $ = require('jquery');
 require('jquery-circle-progress');
 
@@ -84,6 +86,10 @@ $(document).ready(function() {
       file = event.target.files[0];
     }
 
+    if (file.size > MAXFILESIZE) {
+      return document.l10n.formatValue('fileTooBig', {size: bytes(MAXFILESIZE)}).then(alert);
+    }
+
     $('#page-one').attr('hidden', true);
     $('#upload-error').attr('hidden', true);
     $('#upload-progress').removeAttr('hidden');
@@ -108,19 +114,7 @@ $(document).ready(function() {
       $('#ul-progress').circleProgress().on('circle-animation-end', function() {
         $('.percent-number').html(`${Math.floor(percent * 100)}`);
       });
-      if (progress[1] < 1000000) {
-        $('.progress-text').text(
-          `${file.name} (${(progress[0] / 1000).toFixed(1)}KB of ${(progress[1] / 1000).toFixed(1)}KB)`
-        );
-      } else if (progress[1] < 1000000000) {
-        $('.progress-text').text(
-          `${file.name} (${(progress[0] / 1000000).toFixed(1)}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
-        );
-      } else {
-        $('.progress-text').text(
-          `${file.name} (${(progress[0] / 1000000).toFixed(1)}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
-        );
-      }
+      $('.progress-text').text(`${file.name} (${bytes(progress[0], {decimalPlaces: 1, fixedDecimals: true})} of ${bytes(progress[1], {decimalPlaces: 1})})`);
     });
 
     fileSender.on('loading', isStillLoading => {
