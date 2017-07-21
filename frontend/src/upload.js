@@ -1,5 +1,5 @@
 const FileSender = require('./fileSender');
-const { notify, gcmCompliant, findMetric, ONE_DAY_IN_MS } = require('./utils');
+const { notify, gcmCompliant, findMetric, sendEvent, ONE_DAY_IN_MS } = require('./utils');
 const Storage = require('./storage');
 const storage = new Storage(localStorage);
 const $ = require('jquery');
@@ -25,10 +25,9 @@ $(document).ready(function() {
         $('#page-one').attr('hidden', true);
         $('#unsupported-browser').removeAttr('hidden');
         // record unsupported event
-        window.analytics
-              .sendEvent('sender', 'unsupported', {
-                cd6: err
-              });
+        sendEvent('sender', 'unsupported', {
+          cd6: err
+        });
     });
 
     $('#file-upload').change(onUpload);
@@ -37,39 +36,36 @@ $(document).ready(function() {
       target.preventDefault();
       const metric = findMetric(target.currentTarget.href);
       // record exited event by recipient
-      window.analytics
-            .sendEvent('sender', 'exited', {
-              cd3: metric
-            })
-            .then(() => {
-              location.href = target.currentTarget.href;
-            });
+      sendEvent('sender', 'exited', {
+        cd3: metric
+      })
+      .then(() => {
+        location.href = target.currentTarget.href;
+      });
     })
 
     $('#send-new-completed').click(function(target) {
       target.preventDefault();
       // record restarted event 
-      window.analytics
-            .sendEvent('sender', 'restarted', {
-              cd2: 'completed'
-            })
-            .then(() => {
-              storage.referrer = 'completed-upload';
-              location.href = target.currentTarget.href;
-            });
+      sendEvent('sender', 'restarted', {
+        cd2: 'completed'
+      })
+      .then(() => {
+        storage.referrer = 'completed-upload';
+        location.href = target.currentTarget.href;
+      });
     })
 
     $('#send-new-error').click(function(target) {
       target.preventDefault();
       // record restarted event
-      window.analytics
-            .sendEvent('sender', 'restarted', {
-              cd2: 'errored'
-            })
-            .then(() => {
-              storage.referrer = 'errored-upload';
-              location.href = target.currentTarget.href;
-            });
+      sendEvent('sender', 'restarted', {
+        cd2: 'errored'
+      })
+      .then(() => {
+        storage.referrer = 'errored-upload';
+        location.href = target.currentTarget.href;
+      });
     })
 
     $('body').on('dragover', allowDrop).on('drop', onUpload);
@@ -95,10 +91,9 @@ $(document).ready(function() {
     // copy link to clipboard
     $copyBtn.click(() => {
       // record copied event from success screen
-      window.analytics
-            .sendEvent('sender', 'copied', {
-              cd4: 'success-screen'
-            });
+      sendEvent('sender', 'copied', {
+        cd4: 'success-screen'
+      });
       const aux = document.createElement('input');
       aux.setAttribute('value', $('#link').attr('value'));
       document.body.appendChild(aux);
@@ -174,15 +169,14 @@ $(document).ready(function() {
       storage.referrer = 'cancelled-upload';
       
       // record upload-stopped (cancelled) by sender
-      window.analytics
-            .sendEvent('sender', 'upload-stopped', {
-              cm1: file.size,
-              cm5: storage.totalUploads,
-              cm6: unexpiredFiles,
-              cm7: totalDownloads,
-              cd1: event.type === 'drop' ? 'drop' : 'click',
-              cd2: 'cancelled'
-            });
+      sendEvent('sender', 'upload-stopped', {
+        cm1: file.size,
+        cm5: storage.totalUploads,
+        cm6: unexpiredFiles,
+        cm7: storage.totalDownloads,
+        cd1: event.type === 'drop' ? 'drop' : 'click',
+        cd2: 'cancelled'
+      });
     });
 
     fileSender.on('progress', progress => {
@@ -238,24 +232,17 @@ $(document).ready(function() {
 
     let t;
     const startTime = Date.now();
-
     const unexpiredFiles = storage.numFiles + 1;
 
-    let totalDownloads = 0;
-    if (storage.has('totalDownloads')) {
-      totalDownloads = storage.totalDownloads;
-    }
-
     // record upload-started event by sender
-    window.analytics
-          .sendEvent('sender', 'upload-started', {
-            cm1: file.size,
-            cm5: storage.totalUploads,
-            cm6: unexpiredFiles,
-            cm7: totalDownloads,
-            cd1: event.type === 'drop' ? 'drop' : 'click',
-            cd5: window.referrer
-          });
+    sendEvent('sender', 'upload-started', {
+      cm1: file.size,
+      cm5: storage.totalUploads,
+      cm6: unexpiredFiles,
+      cm7: storage.totalDownloads,
+      cd1: event.type === 'drop' ? 'drop' : 'click',
+      cd5: window.referrer
+    });
 
     fileSender
       .upload()
@@ -266,17 +253,16 @@ $(document).ready(function() {
         const uploadSpeed = file.size / (uploadTime / 1000);
 
         // record upload-stopped (completed) by sender
-        window.analytics
-              .sendEvent('sender', 'upload-stopped', {
-                cm1: file.size,
-                cm2: totalTime,
-                cm3: uploadSpeed,
-                cm5: storage.totalUploads,
-                cm6: unexpiredFiles,
-                cm7: totalDownloads,
-                cd1: event.type === 'drop' ? 'drop' : 'click',
-                cd2: 'completed'
-              });
+        sendEvent('sender', 'upload-stopped', {
+            cm1: file.size,
+            cm2: totalTime,
+            cm3: uploadSpeed,
+            cm5: storage.totalUploads,
+            cm6: unexpiredFiles,
+            cm7: storage.totalDownloads,
+            cd1: event.type === 'drop' ? 'drop' : 'click',
+            cd2: 'completed'
+          });
 
         const fileData = {
           name: file.name,
@@ -316,16 +302,15 @@ $(document).ready(function() {
         window.clearTimeout(t);
 
         // record upload-stopped (errored) by sender
-        window.analytics
-              .sendEvent('sender', 'upload-stopped', {
-                cm1: file.size,
-                cm5: storage.totalUploads,
-                cm6: unexpiredFiles,
-                cm7: totalDownloads,
-                cd1: event.type === 'drop' ? 'drop' : 'click',
-                cd2: 'errored',
-                cd6: err
-              });
+        sendEvent('sender', 'upload-stopped', {
+          cm1: file.size,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd1: event.type === 'drop' ? 'drop' : 'click',
+          cd2: 'errored',
+          cd6: err
+        });
       });
   }
 
@@ -398,10 +383,9 @@ $(document).ready(function() {
     //copy link to clipboard when icon clicked
     $copyIcon.click(function() {
       // record copied event from upload list
-      window.analytics
-            .sendEvent('sender', 'copied', {
-              cd4: 'upload-list'
-            });
+      sendEvent('sender', 'copied', {
+        cd4: 'upload-list'
+      });
       const aux = document.createElement('input');
       aux.setAttribute('value', url);
       document.body.appendChild(aux);
@@ -491,32 +475,26 @@ $(document).ready(function() {
 
     const unexpiredFiles = storage.numFiles;
 
-    let totalDownloads = 0;
-    if (storage.has('totalDownloads')) {
-      totalDownloads = storage.totalDownloads;
-    }
-
     // delete file
     $popupText.find('.del-file').click(e => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
         $(e.target).parents('tr').remove();
         const timeToExpiry = ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
         // record upload-deleted from file list
-        window.analytics
-              .sendEvent('sender', 'upload-deleted', {
-                cm1: file.size,
-                cm2: file.totalTime,
-                cm3: file.uploadSpeed,
-                cm4: timeToExpiry,
-                cm5: storage.totalUploads,
-                cm6: unexpiredFiles,
-                cm7: totalDownloads,
-                cd1: file.typeOfUpload,
-                cd4: 'upload-list'
-              })
-              .then(() => {
-                storage.remove(file.fileId);
-              })
+        sendEvent('sender', 'upload-deleted', {
+          cm1: file.size,
+          cm2: file.totalTime,
+          cm3: file.uploadSpeed,
+          cm4: timeToExpiry,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd1: file.typeOfUpload,
+          cd4: 'upload-list'
+        })
+        .then(() => {
+          storage.remove(file.fileId);
+        })
         toggleHeader();
       });
     });
@@ -525,22 +503,21 @@ $(document).ready(function() {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
         const timeToExpiry = ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
         // record upload-deleted from success screen
-        window.analytics
-              .sendEvent('sender', 'upload-deleted', {
-                cm1: file.size,
-                cm2: file.totalTime,
-                cm3: file.uploadSpeed,
-                cm4: timeToExpiry,
-                cm5: storage.totalUploads,
-                cm6: unexpiredFiles,
-                cm7: totalDownloads,
-                cd1: file.typeOfUpload,
-                cd4: 'success-screen'
-              })
-              .then(() => {
-                storage.remove(file.fileId);
-                location.reload();
-              })
+        sendEvent('sender', 'upload-deleted', {
+          cm1: file.size,
+          cm2: file.totalTime,
+          cm3: file.uploadSpeed,
+          cm4: timeToExpiry,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd1: file.typeOfUpload,
+          cd4: 'success-screen'
+        })
+        .then(() => {
+          storage.remove(file.fileId);
+          location.reload();
+        })
       });
     };
     // show popup

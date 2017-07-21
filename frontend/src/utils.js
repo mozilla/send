@@ -101,6 +101,13 @@ function isFile(id) {
            'testpilot_ga__cid'].includes(id);
 }
 
+function sendEvent() {
+  return window.analytics
+               .sendEvent
+               .apply(window.analytics, arguments)
+               .catch(() => 0);
+}
+
 const ONE_DAY_IN_MS = 86400000;
 
 module.exports = {
@@ -110,5 +117,6 @@ module.exports = {
   gcmCompliant,
   findMetric,
   isFile,
+  sendEvent,
   ONE_DAY_IN_MS
 };

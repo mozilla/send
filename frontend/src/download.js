@@ -1,5 +1,5 @@
 const FileReceiver = require('./fileReceiver');
-const { notify, findMetric } = require('./utils');
+const { notify, findMetric, sendEvent } = require('./utils');
 const Storage = require('./storage');
 const storage = new Storage(localStorage);
 const $ = require('jquery');
@@ -18,13 +18,12 @@ $(document).ready(function() {
   if (location.pathname.toString().includes('download')) {
     $('.send-new').click(function(target) {
       target.preventDefault();
-      window.analytics
-            .sendEvent('recipient', 'restarted', {
-              cd2: 'completed'
-            })
-            .then(() => {
-              location.href = target.currentTarget.href;
-            });
+      sendEvent('recipient', 'restarted', {
+        cd2: 'completed'
+      })
+      .then(() => {
+        location.href = target.currentTarget.href;
+      });
     })
 
 
@@ -32,13 +31,12 @@ $(document).ready(function() {
       target.preventDefault();
       const metric = findMetric(target.currentTarget.href);
       // record exited event by recipient
-      window.analytics
-            .sendEvent('recipient', 'exited', {
-              cd3: metric
-            })
-            .then(() => {
-              location.href = target.currentTarget.href;
-            });
+      sendEvent('recipient', 'exited', {
+        cd3: metric
+      })
+      .then(() => {
+        location.href = target.currentTarget.href;
+      });
     })
 
     $('#expired-send-new').click(function() {
@@ -64,26 +62,21 @@ $(document).ready(function() {
     storage.totalDownloads += 1;
     
     const fileReceiver = new FileReceiver();
-
     const unexpiredFiles = storage.numFiles;
-    let totalUploads = 0;
-    if (storage.has('totalUploads')) {
-      totalUploads = storage.totalUploads;
-    }
+    
 
     fileReceiver.on('progress', progress => {
 
       window.onunload = function() {
         storage.referrer = 'cancelled-download';
         // record download-stopped (cancelled by tab close or reload)
-        window.analytics
-              .sendEvent('recipient', 'download-stopped', {
-                cm1: bytelength,
-                cm5: totalUploads,
-                cm6: unexpiredFiles,
-                cm7: storage.totalDownloads,
-                cd2: 'cancelled'
-              })
+        sendEvent('recipient', 'download-stopped', {
+          cm1: bytelength,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd2: 'cancelled'
+        })
       }
 
       $('#download-page-one').attr('hidden', true);
@@ -141,28 +134,26 @@ $(document).ready(function() {
     const startTime = Date.now();
 
     // record download-started by recipient
-    window.analytics
-          .sendEvent('recipient', 'download-started', {
-            cm1: bytelength,
-            cm4: timeToExpiry,
-            cm5: totalUploads,
-            cm6: unexpiredFiles,
-            cm7: storage.totalDownloads
-          });
+    sendEvent('recipient', 'download-started', {
+      cm1: bytelength,
+      cm4: timeToExpiry,
+      cm5: storage.totalUploads,
+      cm6: unexpiredFiles,
+      cm7: storage.totalDownloads
+    });
 
     fileReceiver
       .download()
       .catch(err => {
         // record download-stopped (errored) by recipient
-        window.analytics
-              .sendEvent('recipient', 'download-stopped', {
-                cm1: bytelength,
-                cm5: totalUploads,
-                cm6: unexpiredFiles,
-                cm7: storage.totalDownloads,
-                cd2: 'errored',
-                cd6: err
-              });
+        sendEvent('recipient', 'download-stopped', {
+          cm1: bytelength,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd2: 'errored',
+          cd6: err
+        });
 
         document.l10n.formatValue('expiredPageHeader')
                      .then(translated => {
@@ -181,16 +172,15 @@ $(document).ready(function() {
 
         storage.referrer = 'completed-download';
         // record download-stopped (completed) by recipient
-        window.analytics
-              .sendEvent('recipient', 'download-stopped', {
-                cm1: bytelength,
-                cm2: totalTime,
-                cm3: downloadSpeed,
-                cm5: totalUploads,
-                cm6: unexpiredFiles,
-                cm7: storage.totalDownloads,
-                cd2: 'completed'
-              });
+        sendEvent('recipient', 'download-stopped', {
+          cm1: bytelength,
+          cm2: totalTime,
+          cm3: downloadSpeed,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd2: 'completed'
+        });
 
         const dataView = new DataView(decrypted);
         const blob = new Blob([dataView]);
