@@ -80,6 +80,7 @@ $(document).ready(function() {
     $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
 
     const files = storage.files;
+    console.log(files);
     if (files.length === 0) {
       toggleHeader();
     } else {
@@ -89,6 +90,7 @@ $(document).ready(function() {
         checkExistence(id, files[index], true);
       }
     }
+
 
     // copy link to clipboard
     $copyBtn.click(() => {
@@ -341,6 +343,9 @@ $(document).ready(function() {
           }
         } else if (xhr.status === 404) {
           storage.remove(id);
+          if (storage.numFiles === 0) {
+            toggleHeader();
+          }
         }
       }
     };
