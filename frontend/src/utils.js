@@ -69,9 +69,54 @@ function gcmCompliant() {
   }
 }
 
+function findMetric(href) {
+  switch(href) {
+    case 'https://www.mozilla.org/':
+      return 'mozilla';
+    case 'https://www.mozilla.org/about/legal':
+      return 'legal';
+    case 'https://testpilot.firefox.com/about':
+      return 'about';
+    case 'https://testpilot.firefox.com/privacy':
+      return 'privacy';
+    case 'https://testpilot.firefox.com/terms':
+      return 'terms';
+    case 'https://www.mozilla.org/en-US/privacy/websites/#cookies':
+      return 'cookies';
+    case 'https://github.com/mozilla/send':
+      return 'github';
+    case 'https://twitter.com/FxTestPilot':
+      return 'twitter';
+    case 'https://www.mozilla.org/firefox/new/?scene=2':
+      return 'download-firefox';
+    default:
+      return 'other';
+  }
+}
+
+function isFile(id) {
+  return !['referrer', 
+           'totalDownloads',
+           'totalUploads',
+           'testpilot_ga__cid'].includes(id);
+}
+
+function sendEvent() {
+  return window.analytics
+               .sendEvent
+               .apply(window.analytics, arguments)
+               .catch(() => 0);
+}
+
+const ONE_DAY_IN_MS = 86400000;
+
 module.exports = {
   arrayToHex,
   hexToArray,
   notify,
-  gcmCompliant
+  gcmCompliant,
+  findMetric,
+  isFile,
+  sendEvent,
+  ONE_DAY_IN_MS
 };

@@ -112,12 +112,16 @@ app.get('/download/:id', (req, res) => {
     storage
       .length(id)
       .then(contentLength => {
-        res.render('download', {
-          filename: decodeURIComponent(filename),
-          filesize: bytes(contentLength),
-          trackerId: conf.analytics_id,
-          dsn: conf.sentry_id
-        });
+        storage
+          .ttl(id)
+          .then(timeToExpiry => {
+            res.render('download', {
+              filename: decodeURIComponent(filename),
+              filesize: bytes(contentLength),
+              sizeInBytes: contentLength,
+              timeToExpiry: timeToExpiry
+            });
+          })
       })
       .catch(() => {
         res.render('download');

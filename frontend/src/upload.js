@@ -1,69 +1,130 @@
 /* global MAXFILESIZE */
 const FileSender = require('./fileSender');
-const { notify, gcmCompliant } = require('./utils');
+const { notify, gcmCompliant, findMetric, sendEvent, ONE_DAY_IN_MS } = require('./utils');
 const bytes = require('bytes');
+const Storage = require('./storage');
+const storage = new Storage(localStorage);
+
 const $ = require('jquery');
 require('jquery-circle-progress');
 
 const Raven = window.Raven;
 
+if (storage.has('referrer')) {
+  window.referrer = storage.referrer;
+  storage.remove('referrer');
+} else {
+  window.referrer = 'external';
+}
+
 $(document).ready(function() {
-  gcmCompliant().catch(err => {
-    $('#page-one').attr('hidden', true);
-    $('#unsupported-browser').removeAttr('hidden');
-  });
+  if (!location.pathname.toString().includes('download')) {
+    gcmCompliant()
+      .catch(err => {
+        $('#page-one').attr('hidden', true);
+        $('#unsupported-browser').removeAttr('hidden');
+        // record unsupported event
+        sendEvent('sender', 'unsupported', {
+          cd6: err
+        });
+    });
 
-  $('#file-upload').change(onUpload);
-  $('body').on('dragover', allowDrop).on('drop', onUpload);
-  // reset copy button
-  const $copyBtn = $('#copy-btn');
-  $copyBtn.attr('disabled', false);
-  $('#link').attr('disabled', false);
-  $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
+    $('#file-upload').change(onUpload);
 
-  if (localStorage.length === 0) {
-    toggleHeader();
-  } else {
-    for (let i = 0; i < localStorage.length; i++) {
-      const id = localStorage.key(i);
-      //check if file exists before adding to list
-      checkExistence(id, true);
+    $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
+      target.preventDefault();
+      const metric = findMetric(target.currentTarget.href);
+      // record exited event by recipient
+      sendEvent('sender', 'exited', {
+        cd3: metric
+      })
+      .then(() => {
+        location.href = target.currentTarget.href;
+      });
+    })
+
+    $('#send-new-completed').click(function(target) {
+      target.preventDefault();
+      // record restarted event 
+      sendEvent('sender', 'restarted', {
+        cd2: 'completed'
+      })
+      .then(() => {
+        storage.referrer = 'completed-upload';
+        location.href = target.currentTarget.href;
+      });
+    })
+
+    $('#send-new-error').click(function(target) {
+      target.preventDefault();
+      // record restarted event
+      sendEvent('sender', 'restarted', {
+        cd2: 'errored'
+      })
+      .then(() => {
+        storage.referrer = 'errored-upload';
+        location.href = target.currentTarget.href;
+      });
+    })
+
+    $('body').on('dragover', allowDrop).on('drop', onUpload);
+    // reset copy button
+    const $copyBtn = $('#copy-btn');
+    $copyBtn.attr('disabled', false);
+    $('#link').attr('disabled', false);
+    $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
+
+    const files = storage.files;
+    console.log(files);
+    if (files.length === 0) {
+      toggleHeader();
+    } else {
+      for (const index in files) {
+        const id = files[index].fileId;
+        //check if file still exists before adding to list
+        checkExistence(id, files[index], true);
+      }
     }
+
+
+    // copy link to clipboard
+    $copyBtn.click(() => {
+      // record copied event from success screen
+      sendEvent('sender', 'copied', {
+        cd4: 'success-screen'
+      });
+      const aux = document.createElement('input');
+      aux.setAttribute('value', $('#link').attr('value'));
+      document.body.appendChild(aux);
+      aux.select();
+      document.execCommand('copy');
+      document.body.removeChild(aux);
+      //disable button for 3s
+      $copyBtn.attr('disabled', true);
+      $('#link').attr('disabled', true);
+      $copyBtn.html('<img src="/resources/check-16.svg" class="icon-check"></img>');
+      window.setTimeout(() => {
+        $copyBtn.attr('disabled', false);
+        $('#link').attr('disabled', false);
+        $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
+      }, 3000);
+    });
+
+    $('.upload-window').on('dragover', () => {
+      $('.upload-window').addClass('ondrag');
+    });
+    $('.upload-window').on('dragleave', () => {
+      $('.upload-window').removeClass('ondrag');
+    });
+    //initiate progress bar
+    $('#ul-progress').circleProgress({
+      value: 0.0,
+      startAngle: -Math.PI / 2,
+      fill: '#3B9DFF',
+      size: 158,
+      animation: { duration: 300 }
+    });
   }
-
-  // copy link to clipboard
-  $copyBtn.click(() => {
-    const aux = document.createElement('input');
-    aux.setAttribute('value', $('#link').attr('value'));
-    document.body.appendChild(aux);
-    aux.select();
-    document.execCommand('copy');
-    document.body.removeChild(aux);
-    //disable button for 3s
-    $copyBtn.attr('disabled', true);
-    $('#link').attr('disabled', true);
-    $copyBtn.html('<img src="/resources/check-16.svg" class="icon-check"></img>');
-    window.setTimeout(() => {
-      $copyBtn.attr('disabled', false);
-      $('#link').attr('disabled', false);
-      $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
-    }, 3000);
-  });
-
-  $('.upload-window').on('dragover', () => {
-    $('.upload-window').addClass('ondrag');
-  });
-  $('.upload-window').on('dragleave', () => {
-    $('.upload-window').removeClass('ondrag');
-  });
-  //initiate progress bar
-  $('#ul-progress').circleProgress({
-    value: 0.0,
-    startAngle: -Math.PI / 2,
-    fill: '#3B9DFF',
-    size: 158,
-    animation: { duration: 300 }
-  });
 
   //link back to homepage
   $('.send-new').attr('href', window.location);
@@ -71,6 +132,9 @@ $(document).ready(function() {
   // on file upload by browse or drag & drop
   function onUpload(event) {
     event.preventDefault();
+
+    storage.totalUploads += 1;
+
     let file = '';
     if (event.type === 'drop') {
       if (event.originalEvent.dataTransfer.files.length > 1 || event.originalEvent.dataTransfer.files[0].size === 0){
@@ -105,6 +169,17 @@ $(document).ready(function() {
                    .then(str => {
                      notify(str);
                    });
+      storage.referrer = 'cancelled-upload';
+      
+      // record upload-stopped (cancelled) by sender
+      sendEvent('sender', 'upload-stopped', {
+        cm1: file.size,
+        cm5: storage.totalUploads,
+        cm6: unexpiredFiles,
+        cm7: storage.totalDownloads,
+        cd1: event.type === 'drop' ? 'drop' : 'click',
+        cd2: 'cancelled'
+      });
     });
 
     fileSender.on('progress', progress => {
@@ -135,28 +210,66 @@ $(document).ready(function() {
       }
     });
 
+    let uploadStart;
     fileSender.on('encrypting', isStillEncrypting => {
       // The file is being encrypted
       if (isStillEncrypting) {
         console.log('Encrypting');
       } else {
         console.log('Finished encrypting');
+        uploadStart = Date.now();
       }
     });
-    let t = '';
+
+    let t;
+    const startTime = Date.now();
+    const unexpiredFiles = storage.numFiles + 1;
+
+    // record upload-started event by sender
+    sendEvent('sender', 'upload-started', {
+      cm1: file.size,
+      cm5: storage.totalUploads,
+      cm6: unexpiredFiles,
+      cm7: storage.totalDownloads,
+      cd1: event.type === 'drop' ? 'drop' : 'click',
+      cd5: window.referrer
+    });
+
     fileSender
       .upload()
       .then(info => {
+        const endTime = Date.now();
+        const totalTime = endTime - startTime;
+        const uploadTime = endTime - uploadStart;
+        const uploadSpeed = file.size / (uploadTime / 1000);
+
+        // record upload-stopped (completed) by sender
+        sendEvent('sender', 'upload-stopped', {
+            cm1: file.size,
+            cm2: totalTime,
+            cm3: uploadSpeed,
+            cm5: storage.totalUploads,
+            cm6: unexpiredFiles,
+            cm7: storage.totalDownloads,
+            cd1: event.type === 'drop' ? 'drop' : 'click',
+            cd2: 'completed'
+          });
+
         const fileData = {
           name: file.name,
+          size: file.size,
           fileId: info.fileId,
           url: info.url,
           secretKey: info.secretKey,
           deleteToken: info.deleteToken,
           creationDate: new Date(),
-          expiry: expiration
+          expiry: expiration,
+          totalTime: totalTime,
+          typeOfUpload: event.type === 'drop' ? 'drop' : 'click',
+          uploadSpeed: uploadSpeed
         };
-        localStorage.setItem(info.fileId, JSON.stringify(fileData));
+
+        storage.addFile(info.fileId, fileData);
         $('#upload-filename').attr('data-l10n-id', 'uploadSuccessConfirmHeader');
         t = window.setTimeout(() => {
           $('#page-one').attr('hidden', true);
@@ -165,7 +278,7 @@ $(document).ready(function() {
           $('#share-link').removeAttr('hidden');
         }, 1000);
 
-        populateFileList(JSON.stringify(fileData));
+        populateFileList(fileData);
         document.l10n.formatValue('notifyUploadDone')
                      .then(str => {
                        notify(str);
@@ -178,6 +291,17 @@ $(document).ready(function() {
         $('#upload-progress').attr('hidden', true);
         $('#upload-error').removeAttr('hidden');
         window.clearTimeout(t);
+
+        // record upload-stopped (errored) by sender
+        sendEvent('sender', 'upload-stopped', {
+          cm1: file.size,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd1: event.type === 'drop' ? 'drop' : 'click',
+          cd2: 'errored',
+          cd6: err
+        });
       });
   }
 
@@ -185,16 +309,19 @@ $(document).ready(function() {
     ev.preventDefault();
   }
 
-  function checkExistence(id, populate) {
+  function checkExistence(id, file, populate) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           if (populate) {
-            populateFileList(localStorage.getItem(id));
+            populateFileList(file);
           }
         } else if (xhr.status === 404) {
-          localStorage.removeItem(id);
+          storage.remove(id);
+          if (storage.numFiles === 0) {
+            toggleHeader();
+          }
         }
       }
     };
@@ -202,14 +329,8 @@ $(document).ready(function() {
     xhr.send();
   }
 
-  //update file table with current files in localStorage
+  //update file table with current files in storage
   function populateFileList(file) {
-    try {
-      file = JSON.parse(file);
-    } catch (e) {
-      return;
-    }
-
     const row = document.createElement('tr');
     const name = document.createElement('td');
     const link = document.createElement('td');
@@ -252,6 +373,10 @@ $(document).ready(function() {
 
     //copy link to clipboard when icon clicked
     $copyIcon.click(function() {
+      // record copied event from upload list
+      sendEvent('sender', 'copied', {
+        cd4: 'upload-list'
+      });
       const aux = document.createElement('input');
       aux.setAttribute('value', url);
       document.body.appendChild(aux);
@@ -277,7 +402,7 @@ $(document).ready(function() {
     future.setTime(file.creationDate.getTime() + file.expiry);
 
     let countdown = 0;
-    countdown = future.getTime() - new Date().getTime();
+    countdown = future.getTime() - Date.now();
     let minutes = Math.floor(countdown / 1000 / 60);
     let hours = Math.floor(minutes / 60);
     let seconds = Math.floor(countdown / 1000 % 60);
@@ -285,7 +410,7 @@ $(document).ready(function() {
     poll();
 
     function poll() {
-      countdown = future.getTime() - new Date().getTime();
+      countdown = future.getTime() - Date.now();
       minutes = Math.floor(countdown / 1000 / 60);
       hours = Math.floor(minutes / 60);
       seconds = Math.floor(countdown / 1000 % 60);
@@ -304,7 +429,7 @@ $(document).ready(function() {
       }
       //remove from list when expired
       if (countdown <= 0) {
-        localStorage.removeItem(file.fileId);
+        storage.remove(file.fileId);
         $(expiry).parents('tr').remove();
         window.clearTimeout(t);
         toggleHeader();
@@ -328,7 +453,6 @@ $(document).ready(function() {
       popupNvmSpan
     ]);
 
-
     // add data cells to table row
     row.appendChild(name);
     $(link).append($copyIcon);
@@ -340,18 +464,51 @@ $(document).ready(function() {
     row.appendChild(del);
     $('tbody').append(row); //add row to table
 
+    const unexpiredFiles = storage.numFiles;
+
     // delete file
     $popupText.find('.del-file').click(e => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
         $(e.target).parents('tr').remove();
-        localStorage.removeItem(file.fileId);
+        const timeToExpiry = ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
+        // record upload-deleted from file list
+        sendEvent('sender', 'upload-deleted', {
+          cm1: file.size,
+          cm2: file.totalTime,
+          cm3: file.uploadSpeed,
+          cm4: timeToExpiry,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd1: file.typeOfUpload,
+          cd4: 'upload-list'
+        })
+        .then(() => {
+          storage.remove(file.fileId);
+        })
         toggleHeader();
       });
     });
+
     document.getElementById('delete-file').onclick = () => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
-        localStorage.removeItem(file.fileId);
-        location.reload();
+        const timeToExpiry = ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
+        // record upload-deleted from success screen
+        sendEvent('sender', 'upload-deleted', {
+          cm1: file.size,
+          cm2: file.totalTime,
+          cm3: file.uploadSpeed,
+          cm4: timeToExpiry,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd1: file.typeOfUpload,
+          cd4: 'success-screen'
+        })
+        .then(() => {
+          storage.remove(file.fileId);
+          location.reload();
+        })
       });
     };
     // show popup
