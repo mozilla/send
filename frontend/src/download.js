@@ -1,12 +1,14 @@
 const FileReceiver = require('./fileReceiver');
-const { notify, findMetric, isFile } = require('./utils');
+const { notify, findMetric } = require('./utils');
+const Storage = require('./storage');
+const storage = new Storage(localStorage);
 const $ = require('jquery');
 require('jquery-circle-progress');
 
 const Raven = window.Raven;
 
-if (!localStorage.hasOwnProperty('totalDownloads')) {
-  localStorage.setItem('totalDownloads', 0);
+if (!storage.has('totalDownloads')) {
+  storage.totalDownloads = 0;
 }
 
 $(document).ready(function() {
@@ -40,14 +42,14 @@ $(document).ready(function() {
     })
 
     $('#expired-send-new').click(function() {
-      localStorage.setItem('referrer', 'errored-download');
+      storage.referrer = 'errored-download';
     })
 
   }
 
   const filename = $('#dl-filename').html();
-  const bytelength = $('#dl-bytelength').html();
-  const timeToExpiry = $('#dl-ttl').html();
+  const bytelength = Number($('#dl-bytelength').text());
+  const timeToExpiry = Number($('#dl-ttl').text());
 
   //initiate progress bar
   $('#dl-progress').circleProgress({
@@ -59,35 +61,27 @@ $(document).ready(function() {
   });
   $('#download-btn').click(download);
   function download() {
-    const totalDownloads = localStorage.getItem('totalDownloads');
-    localStorage.setItem('totalDownloads', Number(totalDownloads) + 1);
+    storage.totalDownloads += 1;
     
     const fileReceiver = new FileReceiver();
-    let unexpiredFiles = 0;
 
-    for (let i = 0; i < localStorage.length; i++) {
-      const id = localStorage.key(i);
-      if (isFile(id)) {
-          unexpiredFiles += 1;
-      }
-    }
-
+    const unexpiredFiles = storage.numFiles;
     let totalUploads = 0;
-    if (localStorage.hasOwnProperty('totalUploads')) {
-      totalUploads = localStorage.getItem('totalUploads');
+    if (storage.has('totalUploads')) {
+      totalUploads = storage.totalUploads;
     }
 
     fileReceiver.on('progress', progress => {
 
       window.onunload = function() {
-        localStorage.setItem('referrer', 'cancelled-download');
+        storage.referrer = 'cancelled-download';
         // record download-stopped (cancelled by tab close or reload)
         window.analytics
               .sendEvent('recipient', 'download-stopped', {
                 cm1: bytelength,
                 cm5: totalUploads,
                 cm6: unexpiredFiles,
-                cm7: localStorage.getItem('totalDownloads'),
+                cm7: storage.totalDownloads,
                 cd2: 'cancelled'
               })
       }
@@ -131,7 +125,7 @@ $(document).ready(function() {
         console.log('Decrypting');
       } else {
         console.log('Done decrypting');
-        downloadEnd = new Date().getTime();
+        downloadEnd = Date.now();
       }
     });
 
@@ -144,7 +138,7 @@ $(document).ready(function() {
       }
     });
 
-    const startTime = new Date().getTime();
+    const startTime = Date.now();
 
     // record download-started by recipient
     window.analytics
@@ -153,7 +147,7 @@ $(document).ready(function() {
             cm4: timeToExpiry,
             cm5: totalUploads,
             cm6: unexpiredFiles,
-            cm7: localStorage.getItem('totalDownloads')
+            cm7: storage.totalDownloads
           });
 
     fileReceiver
@@ -165,7 +159,7 @@ $(document).ready(function() {
                 cm1: bytelength,
                 cm5: totalUploads,
                 cm6: unexpiredFiles,
-                cm7: localStorage.getItem('totalDownloads'),
+                cm7: storage.totalDownloads,
                 cd2: 'errored',
                 cd6: err
               });
@@ -180,12 +174,12 @@ $(document).ready(function() {
         return;
       })
       .then(([decrypted, fname]) => {
-        const endTime = new Date().getTime();
+        const endTime = Date.now();
         const totalTime = endTime - startTime;
         const downloadTime = endTime - downloadEnd;
         const downloadSpeed = bytelength / (downloadTime / 1000);
 
-        localStorage.setItem('referrer', 'completed-download');
+        storage.referrer = 'completed-download';
         // record download-stopped (completed) by recipient
         window.analytics
               .sendEvent('recipient', 'download-stopped', {
@@ -194,7 +188,7 @@ $(document).ready(function() {
                 cm3: downloadSpeed,
                 cm5: totalUploads,
                 cm6: unexpiredFiles,
-                cm7: localStorage.getItem('totalDownloads'),
+                cm7: storage.totalDownloads,
                 cd2: 'completed'
               });
 

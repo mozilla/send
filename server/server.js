@@ -114,9 +114,7 @@ app.get('/download/:id', (req, res) => {
               filename: decodeURIComponent(filename),
               filesize: bytes(contentLength),
               sizeInBytes: contentLength,
-              timeToExpiry: timeToExpiry,
-              trackerId: conf.analytics_id,
-              dsn: conf.sentry_id
+              timeToExpiry: timeToExpiry
             });
           })
       })

@@ -1,17 +1,19 @@
 const FileSender = require('./fileSender');
-const { notify, gcmCompliant, findMetric, isFile, ONE_DAY_IN_MS } = require('./utils');
+const { notify, gcmCompliant, findMetric, ONE_DAY_IN_MS } = require('./utils');
+const Storage = require('./storage');
+const storage = new Storage(localStorage);
 const $ = require('jquery');
 require('jquery-circle-progress');
 
 const Raven = window.Raven;
 
-if (!localStorage.hasOwnProperty('totalUploads')) {
-  localStorage.setItem('totalUploads', 0);
+if (!storage.has('totalUploads')) {
+  storage.totalUploads = 0;
 }
 
-if (localStorage.hasOwnProperty('referrer')) {
-  window.referrer = localStorage.getItem('referrer');
-  localStorage.removeItem('referrer');
+if (storage.has('referrer')) {
+  window.referrer = storage.referrer;
+  storage.remove('referrer');
 } else {
   window.referrer = 'external';
 }
@@ -52,7 +54,7 @@ $(document).ready(function() {
               cd2: 'completed'
             })
             .then(() => {
-              localStorage.setItem('referrer', 'completed-upload');
+              storage.referrer = 'completed-upload';
               location.href = target.currentTarget.href;
             });
     })
@@ -65,7 +67,7 @@ $(document).ready(function() {
               cd2: 'errored'
             })
             .then(() => {
-              localStorage.setItem('referrer', 'errored-upload');
+              storage.referrer = 'errored-upload';
               location.href = target.currentTarget.href;
             });
     })
@@ -77,13 +79,14 @@ $(document).ready(function() {
     $('#link').attr('disabled', false);
     $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
 
-    if (localStorage.length === 0) {
+    const files = storage.files;
+    if (files.length === 0) {
       toggleHeader();
     } else {
-      for (let i = 0; i < localStorage.length; i++) {
-        const id = localStorage.key(i);
-        //check if file exists before adding to list
-        checkExistence(id, true);
+      for (const index in files) {
+        const id = files[index].fileId;
+        //check if file still exists before adding to list
+        checkExistence(id, files[index], true);
       }
     }
 
@@ -134,8 +137,7 @@ $(document).ready(function() {
   function onUpload(event) {
     event.preventDefault();
 
-    const totalUploads = localStorage.getItem('totalUploads');
-    localStorage.setItem('totalUploads', Number(totalUploads) + 1);
+    storage.totalUploads += 1;
 
     let file = '';
     if (event.type === 'drop') {
@@ -167,13 +169,13 @@ $(document).ready(function() {
                    .then(str => {
                      notify(str);
                    });
-      localStorage.setItem('referrer', 'cancelled-upload');
+      storage.referrer = 'cancelled-upload';
       
       // record upload-stopped (cancelled) by sender
       window.analytics
             .sendEvent('sender', 'upload-stopped', {
               cm1: file.size,
-              cm5: localStorage.getItem('totalUploads'),
+              cm5: storage.totalUploads,
               cm6: unexpiredFiles,
               cm7: totalDownloads,
               cd1: event.type === 'drop' ? 'drop' : 'click',
@@ -228,32 +230,25 @@ $(document).ready(function() {
         console.log('Encrypting');
       } else {
         console.log('Finished encrypting');
-        uploadStart = new Date().getTime();
+        uploadStart = Date.now();
       }
     });
 
     let t;
-    const startTime = new Date().getTime();
+    const startTime = Date.now();
 
-    let unexpiredFiles = 1;
-
-    for (let i = 0; i < localStorage.length; i++) {
-      const id = localStorage.key(i);
-      if (isFile(id)) {
-          unexpiredFiles += 1;
-      }
-    }
+    const unexpiredFiles = storage.numFiles + 1;
 
     let totalDownloads = 0;
-    if (localStorage.hasOwnProperty('totalDownloads')) {
-      totalDownloads = localStorage.getItem('totalDownloads');
+    if (storage.has('totalDownloads')) {
+      totalDownloads = storage.totalDownloads;
     }
 
     // record upload-started event by sender
     window.analytics
           .sendEvent('sender', 'upload-started', {
             cm1: file.size,
-            cm5: localStorage.getItem('totalUploads'),
+            cm5: storage.totalUploads,
             cm6: unexpiredFiles,
             cm7: totalDownloads,
             cd1: event.type === 'drop' ? 'drop' : 'click',
@@ -263,7 +258,7 @@ $(document).ready(function() {
     fileSender
       .upload()
       .then(info => {
-        const endTime = new Date().getTime();
+        const endTime = Date.now();
         const totalTime = endTime - startTime;
         const uploadTime = endTime - uploadStart;
         const uploadSpeed = file.size / (uploadTime / 1000);
@@ -274,7 +269,7 @@ $(document).ready(function() {
                 cm1: file.size,
                 cm2: totalTime,
                 cm3: uploadSpeed,
-                cm5: localStorage.getItem('totalUploads'),
+                cm5: storage.totalUploads,
                 cm6: unexpiredFiles,
                 cm7: totalDownloads,
                 cd1: event.type === 'drop' ? 'drop' : 'click',
@@ -295,7 +290,7 @@ $(document).ready(function() {
           uploadSpeed: uploadSpeed
         };
 
-        localStorage.setItem(info.fileId, JSON.stringify(fileData));
+        storage.addFile(info.fileId, fileData);
         $('#upload-filename').attr('data-l10n-id', 'uploadSuccessConfirmHeader');
         t = window.setTimeout(() => {
           $('#page-one').attr('hidden', true);
@@ -304,7 +299,7 @@ $(document).ready(function() {
           $('#share-link').removeAttr('hidden');
         }, 1000);
 
-        populateFileList(JSON.stringify(fileData));
+        populateFileList(fileData);
         document.l10n.formatValue('notifyUploadDone')
                      .then(str => {
                        notify(str);
@@ -322,7 +317,7 @@ $(document).ready(function() {
         window.analytics
               .sendEvent('sender', 'upload-stopped', {
                 cm1: file.size,
-                cm5: localStorage.getItem('totalUploads'),
+                cm5: storage.totalUploads,
                 cm6: unexpiredFiles,
                 cm7: totalDownloads,
                 cd1: event.type === 'drop' ? 'drop' : 'click',
@@ -336,18 +331,16 @@ $(document).ready(function() {
     ev.preventDefault();
   }
 
-  function checkExistence(id, populate) {
+  function checkExistence(id, file, populate) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           if (populate) {
-            populateFileList(localStorage.getItem(id));
+            populateFileList(file);
           }
         } else if (xhr.status === 404) {
-          if (isFile(id)) {
-            localStorage.removeItem(id);
-          }
+          storage.remove(id);
         }
       }
     };
@@ -355,14 +348,8 @@ $(document).ready(function() {
     xhr.send();
   }
 
-  //update file table with current files in localStorage
+  //update file table with current files in storage
   function populateFileList(file) {
-    try {
-      file = JSON.parse(file);
-    } catch (e) {
-      return;
-    }
-
     const row = document.createElement('tr');
     const name = document.createElement('td');
     const link = document.createElement('td');
@@ -435,7 +422,7 @@ $(document).ready(function() {
     future.setTime(file.creationDate.getTime() + file.expiry);
 
     let countdown = 0;
-    countdown = future.getTime() - new Date().getTime();
+    countdown = future.getTime() - Date.now();
     let minutes = Math.floor(countdown / 1000 / 60);
     let hours = Math.floor(minutes / 60);
     let seconds = Math.floor(countdown / 1000 % 60);
@@ -443,7 +430,7 @@ $(document).ready(function() {
     poll();
 
     function poll() {
-      countdown = future.getTime() - new Date().getTime();
+      countdown = future.getTime() - Date.now();
       minutes = Math.floor(countdown / 1000 / 60);
       hours = Math.floor(minutes / 60);
       seconds = Math.floor(countdown / 1000 % 60);
@@ -462,7 +449,7 @@ $(document).ready(function() {
       }
       //remove from list when expired
       if (countdown <= 0) {
-        localStorage.removeItem(file.fileId);
+        storage.remove(file.fileId);
         $(expiry).parents('tr').remove();
         window.clearTimeout(t);
         toggleHeader();
@@ -497,25 +484,18 @@ $(document).ready(function() {
     row.appendChild(del);
     $('tbody').append(row); //add row to table
 
-    let unexpiredFiles = 0;
-
-    for (let i = 0; i < localStorage.length; i++) {
-      const id = localStorage.key(i);
-      if (isFile(id)) {
-          unexpiredFiles += 1;
-      }
-    }
+    const unexpiredFiles = storage.numFiles;
 
     let totalDownloads = 0;
-    if (localStorage.hasOwnProperty('totalDownloads')) {
-      totalDownloads = localStorage.getItem('totalDownloads');
+    if (storage.has('totalDownloads')) {
+      totalDownloads = storage.totalDownloads;
     }
 
     // delete file
     $popupText.find('.del-file').click(e => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
         $(e.target).parents('tr').remove();
-        const timeToExpiry = ONE_DAY_IN_MS - (new Date().getTime() - file.creationDate.getTime());
+        const timeToExpiry = ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
         // record upload-deleted from file list
         window.analytics
               .sendEvent('sender', 'upload-deleted', {
@@ -523,14 +503,14 @@ $(document).ready(function() {
                 cm2: file.totalTime,
                 cm3: file.uploadSpeed,
                 cm4: timeToExpiry,
-                cm5: localStorage.getItem('totalUploads'),
+                cm5: storage.totalUploads,
                 cm6: unexpiredFiles,
                 cm7: totalDownloads,
                 cd1: file.typeOfUpload,
                 cd4: 'upload-list'
               })
               .then(() => {
-                localStorage.removeItem(file.fileId);
+                storage.remove(file.fileId);
               })
         toggleHeader();
       });
@@ -538,7 +518,7 @@ $(document).ready(function() {
 
     document.getElementById('delete-file').onclick = () => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
-        const timeToExpiry = ONE_DAY_IN_MS - (new Date().getTime() - file.creationDate.getTime());
+        const timeToExpiry = ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
         // record upload-deleted from success screen
         window.analytics
               .sendEvent('sender', 'upload-deleted', {
@@ -546,14 +526,14 @@ $(document).ready(function() {
                 cm2: file.totalTime,
                 cm3: file.uploadSpeed,
                 cm4: timeToExpiry,
-                cm5: localStorage.getItem('totalUploads'),
+                cm5: storage.totalUploads,
                 cm6: unexpiredFiles,
                 cm7: totalDownloads,
                 cd1: file.typeOfUpload,
                 cd4: 'success-screen'
               })
               .then(() => {
-                localStorage.removeItem(file.fileId);
+                storage.remove(file.fileId);
                 location.reload();
               })
       });
