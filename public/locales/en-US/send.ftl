@@ -30,7 +30,6 @@ uploadSuccessConfirmHeader = Ready to Send
 uploadSvgAlt
     .alt = Upload
 uploadSuccessTimingHeader = The link to your file will expire after 1 download or in 24 hours.
-copyUrlFormLabel = Copy and share the link to send your file:
 copyUrlFormLabelWithName = Copy and share the link to send your file: { $filename }
 
 // Note: Title text for button should be the same
@@ -44,7 +43,7 @@ deleteFileButton = Delete file
 sendAnotherFileLink = Send another file
     .title = Send another file
 
-// This alt text and the download filename string are actions.
+// Alternative text used on the download link/button (indicates an action).
 downloadAltText
     .alt = Download
 downloadFileName  = Download { $filename }
@@ -52,7 +51,7 @@ downloadFileName  = Download { $filename }
 downloadFileSize = ({ $size })
 downloadMessage = Your friend is sending you a file with Firefox Send, a service that allows you to share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
 
-// This is also an action.
+// Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Download
     .title = Download
 downloadNotification = Your download has completed.
