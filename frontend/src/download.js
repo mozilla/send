@@ -1,7 +1,9 @@
 const FileReceiver = require('./fileReceiver');
 const { notify, findMetric, sendEvent } = require('./utils');
+const bytes = require('bytes');
 const Storage = require('./storage');
 const storage = new Storage(localStorage);
+
 const $ = require('jquery');
 require('jquery-circle-progress');
 
@@ -85,20 +87,7 @@ $(document).ready(function() {
       // update progress bar
       $('#dl-progress').circleProgress('value', percent);
       $('.percent-number').html(`${Math.floor(percent * 100)}`);
-      if (progress[1] < 1000000) {
-        $('.progress-text').html(
-          `${filename} (${(progress[0] / 1000).toFixed(1)}KB of
-           ${(progress[1] / 1000).toFixed(1)}KB)`
-        );
-      } else if (progress[1] < 1000000000) {
-        $('.progress-text').html(
-          `${filename} (${(progress[0] / 1000000).toFixed(1)}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
-        );
-      } else {
-        $('.progress-text').html(
-          `${filename} (${(progress[0] / 1000000).toFixed(1)}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
-        );
-      }
+      $('.progress-text').text(`${filename} (${bytes(progress[0], {decimalPlaces: 1, fixedDecimals: true})} of ${bytes(progress[1], {decimalPlaces: 1})})`);
       //on complete
       if (percent === 1) {
         fileReceiver.removeAllListeners('progress');

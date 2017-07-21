@@ -62,7 +62,11 @@ app.use(
     }
   })
 );
-app.use(busboy());
+app.use(busboy({
+  limits: {
+    fileSize: conf.max_file_size
+  }
+}));
 app.use(bodyParser.json());
 app.use(express.static(STATIC_PATH));
 app.use('/l20n', express.static(L20N));
@@ -77,6 +81,7 @@ app.get('/jsconfig.js', (req, res) => {
   res.render('jsconfig', {
     trackerId: conf.analytics_id,
     dsn: conf.sentry_id,
+    maxFileSize: conf.max_file_size,
     layout: false
   });
 });
@@ -231,6 +236,12 @@ app.post('/upload', (req, res, next) => {
         delete: meta.delete,
         id: newId
       });
+    },
+    err => {
+      if (err.message === 'limit') {
+        return res.sendStatus(413);
+      }
+      res.sendStatus(500);
     });
   });
 
