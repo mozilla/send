@@ -329,8 +329,7 @@ $(document).ready(function() {
 
     $popupText.html([
       popupDelSpan,
-      '&nbsp;',
-      '&nbsp;',
+      '<br/>',
       popupNvmSpan
     ]);
 

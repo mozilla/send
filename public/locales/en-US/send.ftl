@@ -1,3 +1,4 @@
+// We might not need to localize this if it's a brand name.
 title = Firefox Send
 
 uploadPageHeader = Private, Encrypted File Sharing
@@ -22,7 +23,7 @@ uploadingPageCancel = Cancel upload
   .title = Cancel upload
 uploadCancelNotification = Your upload was cancelled.
 
-uploadingPageLargeFileMessage = This file is large and may take awhile to upload. Sit tight!
+uploadingPageLargeFileMessage = This file is large and may take a while to upload. Sit tight!
 uploadingFileNotification = Notify me when the upload is complete.
 uploadSuccessConfirmHeader = Ready to Send
 
@@ -43,16 +44,21 @@ deleteFileButton = Delete file
 sendAnotherFileLink = Send another file
     .title = Send another file
 
+// This alt text and the download filename string are actions.
 downloadAltText
     .alt = Download
 downloadFileName  = Download { $filename }
+
 downloadFileSize = ({ $size })
 downloadMessage = Your friend is sending you a file with Firefox Send, a service that allows you to share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
+
+// This is also an action.
 downloadButtonLabel = Download
     .title = Download
 downloadNotification = Your download has completed.
 downloadFinish = Download Complete
 
+// We might not need to localize this if it's a brand name.
 sendYourFilesLink = Try Firefox Send
     .title = Try Firefox Send
 downloadingPageProgress = Downloading { $filename } ({ $size })
@@ -69,7 +75,8 @@ linkExpiredAlt
     .alt = Link expired
 expiredPageHeader = This link has expired or never existed in the first place!
 notSupportedHeader = Your browser is not supported.
-notSupportedDetail = Unfortunately this browser does not support the web technology that powers Firefox Send. You'll need to try another browser. We recommend Firefox!
+// We might not need to localize the Firefox Send part of this string if it's a brand name.
+notSupportedDetail = Unfortunately this browser does not support the web technology that powers Firefox Send. You’ll need to try another browser. We recommend Firefox!
 downloadFirefoxButtonSub = Free Download
 
 
@@ -77,7 +84,7 @@ uploadedFile = File
 copyFileList = Copy URL
 expiryFileList = Expires In
 deleteFileList = Delete
-nevermindButton = Nevermind
+nevermindButton = Never mind
 
 deleteButtonHover
     .title = Delete
