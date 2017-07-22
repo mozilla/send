@@ -1,6 +1,6 @@
 require('./common');
 const FileReceiver = require('./fileReceiver');
-const { notify, findMetric, sendEvent } = require('./utils');
+const { notify, findMetric, gcmCompliant, sendEvent } = require('./utils');
 const bytes = require('bytes');
 const Storage = require('./storage');
 const storage = new Storage(localStorage);
@@ -11,6 +11,14 @@ require('jquery-circle-progress');
 const Raven = window.Raven;
 
 $(document).ready(function() {
+  gcmCompliant().catch(err => {
+    $('#download').attr('hidden', true);
+    sendEvent('recipient', 'unsupported', {
+      cd6: err
+    }).then(() => {
+      location.replace('/unsupported');
+    });
+  });
   //link back to homepage
   $('.send-new').attr('href', window.location.origin);
 

@@ -27,10 +27,10 @@ if (storage.has('referrer')) {
 $(document).ready(function() {
   gcmCompliant().catch(err => {
     $('#page-one').attr('hidden', true);
-    $('#unsupported-browser').removeAttr('hidden');
-    // record unsupported event
     sendEvent('sender', 'unsupported', {
       cd6: err
+    }).then(() => {
+      location.replace('/unsupported');
     });
   });
 
