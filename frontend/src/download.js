@@ -18,12 +18,10 @@ $(document).ready(function() {
     target.preventDefault();
     sendEvent('recipient', 'restarted', {
       cd2: 'completed'
-    })
-    .then(() => {
+    }).then(() => {
       location.href = target.currentTarget.href;
     });
-  })
-
+  });
 
   $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
     target.preventDefault();
@@ -31,15 +29,14 @@ $(document).ready(function() {
     // record exited event by recipient
     sendEvent('recipient', 'exited', {
       cd3: metric
-    })
-    .then(() => {
+    }).then(() => {
       location.href = target.currentTarget.href;
     });
-  })
+  });
 
   $('#expired-send-new').click(function() {
     storage.referrer = 'errored-download';
-  })
+  });
 
   const filename = $('#dl-filename').html();
   const bytelength = Number($('#dl-bytelength').text());
@@ -60,9 +57,7 @@ $(document).ready(function() {
     const fileReceiver = new FileReceiver();
     const unexpiredFiles = storage.numFiles;
 
-
     fileReceiver.on('progress', progress => {
-
       window.onunload = function() {
         storage.referrer = 'cancelled-download';
         // record download-stopped (cancelled by tab close or reload)
@@ -72,8 +67,8 @@ $(document).ready(function() {
           cm6: unexpiredFiles,
           cm7: storage.totalDownloads,
           cd2: 'cancelled'
-        })
-      }
+        });
+      };
 
       $('#download-page-one').attr('hidden', true);
       $('#download-progress').removeAttr('hidden');
@@ -81,15 +76,21 @@ $(document).ready(function() {
       // update progress bar
       $('#dl-progress').circleProgress('value', percent);
       $('.percent-number').html(`${Math.floor(percent * 100)}`);
-      $('.progress-text').text(`${filename} (${bytes(progress[0], {decimalPlaces: 1, fixedDecimals: true})} of ${bytes(progress[1], {decimalPlaces: 1})})`);
+      $('.progress-text').text(
+        `${filename} (${bytes(progress[0], {
+          decimalPlaces: 1,
+          fixedDecimals: true
+        })} of ${bytes(progress[1], { decimalPlaces: 1 })})`
+      );
       //on complete
       if (percent === 1) {
         fileReceiver.removeAllListeners('progress');
-        document.l10n.formatValues('downloadNotification', 'downloadFinish')
-                     .then(translated => {
-                       notify(translated[0]);
-                       $('.title').html(translated[1]);
-                     });
+        document.l10n
+          .formatValues('downloadNotification', 'downloadFinish')
+          .then(translated => {
+            notify(translated[0]);
+            $('.title').html(translated[1]);
+          });
         window.onunload = null;
       }
     });
@@ -138,10 +139,9 @@ $(document).ready(function() {
           cd6: err
         });
 
-        document.l10n.formatValue('expiredPageHeader')
-                     .then(translated => {
-                       $('.title').text(translated);
-                     });
+        document.l10n.formatValue('expiredPageHeader').then(translated => {
+          $('.title').text(translated);
+        });
         $('#download-btn').attr('hidden', true);
         $('#expired-img').removeAttr('hidden');
         console.log('The file has expired, or has already been deleted.');

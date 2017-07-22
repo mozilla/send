@@ -7,4 +7,4 @@ window.analytics = new testPilotGA({
   an: 'Firefox Send',
   ds: 'web',
   tid: window.trackerId
-})
+});

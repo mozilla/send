@@ -2,9 +2,9 @@ const { isFile } = require('./utils');
 
 class Storage {
   constructor(engine) {
-    this.engine = engine 
+    this.engine = engine;
   }
-  
+
   get totalDownloads() {
     return Number(this.engine.getItem('totalDownloads'));
   }
@@ -23,7 +23,7 @@ class Storage {
   set referrer(str) {
     this.engine.setItem('referrer', str);
   }
-  
+
   get files() {
     const fs = [];
     for (let i = 0; i < this.engine.length; i++) {
@@ -49,7 +49,7 @@ class Storage {
   getFileById(id) {
     return this.engine.getItem(id);
   }
-  
+
   has(property) {
     return this.engine.hasOwnProperty(property);
   }
@@ -57,7 +57,7 @@ class Storage {
   remove(property) {
     this.engine.removeItem(property);
   }
-  
+
   addFile(id, file) {
     this.engine.setItem(id, JSON.stringify(file));
   }

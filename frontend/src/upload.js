@@ -1,7 +1,13 @@
 /* global MAXFILESIZE */
 require('./common');
 const FileSender = require('./fileSender');
-const { notify, gcmCompliant, findMetric, sendEvent, ONE_DAY_IN_MS } = require('./utils');
+const {
+  notify,
+  gcmCompliant,
+  findMetric,
+  sendEvent,
+  ONE_DAY_IN_MS
+} = require('./utils');
 const bytes = require('bytes');
 const Storage = require('./storage');
 const storage = new Storage(localStorage);
@@ -19,15 +25,13 @@ if (storage.has('referrer')) {
 }
 
 $(document).ready(function() {
-  
-  gcmCompliant()
-    .catch(err => {
-      $('#page-one').attr('hidden', true);
-      $('#unsupported-browser').removeAttr('hidden');
-      // record unsupported event
-      sendEvent('sender', 'unsupported', {
-        cd6: err
-      });
+  gcmCompliant().catch(err => {
+    $('#page-one').attr('hidden', true);
+    $('#unsupported-browser').removeAttr('hidden');
+    // record unsupported event
+    sendEvent('sender', 'unsupported', {
+      cd6: err
+    });
   });
 
   $('#file-upload').change(onUpload);
@@ -38,35 +42,32 @@ $(document).ready(function() {
     // record exited event by recipient
     sendEvent('sender', 'exited', {
       cd3: metric
-    })
-    .then(() => {
+    }).then(() => {
       location.href = target.currentTarget.href;
     });
-  })
+  });
 
   $('#send-new-completed').click(function(target) {
     target.preventDefault();
     // record restarted event
     sendEvent('sender', 'restarted', {
       cd2: 'completed'
-    })
-    .then(() => {
+    }).then(() => {
       storage.referrer = 'completed-upload';
       location.href = target.currentTarget.href;
     });
-  })
+  });
 
   $('#send-new-error').click(function(target) {
     target.preventDefault();
     // record restarted event
     sendEvent('sender', 'restarted', {
       cd2: 'errored'
-    })
-    .then(() => {
+    }).then(() => {
       storage.referrer = 'errored-upload';
       location.href = target.currentTarget.href;
     });
-  })
+  });
 
   $('body').on('dragover', allowDrop).on('drop', onUpload);
   // reset copy button
@@ -87,7 +88,6 @@ $(document).ready(function() {
     }
   }
 
-
   // copy link to clipboard
   $copyBtn.click(() => {
     // record copied event from success screen
@@ -103,7 +103,9 @@ $(document).ready(function() {
     //disable button for 3s
     $copyBtn.attr('disabled', true);
     $('#link').attr('disabled', true);
-    $copyBtn.html('<img src="/resources/check-16.svg" class="icon-check"></img>');
+    $copyBtn.html(
+      '<img src="/resources/check-16.svg" class="icon-check"></img>'
+    );
     window.setTimeout(() => {
       $copyBtn.attr('disabled', false);
       $('#link').attr('disabled', false);
@@ -137,12 +139,14 @@ $(document).ready(function() {
 
     let file = '';
     if (event.type === 'drop') {
-      if (event.originalEvent.dataTransfer.files.length > 1 || event.originalEvent.dataTransfer.files[0].size === 0){
+      if (
+        event.originalEvent.dataTransfer.files.length > 1 ||
+        event.originalEvent.dataTransfer.files[0].size === 0
+      ) {
         $('.upload-window').removeClass('ondrag');
-        document.l10n.formatValue('uploadPageMultipleFilesAlert')
-                     .then(str => {
-                       alert(str);
-                     });
+        document.l10n.formatValue('uploadPageMultipleFilesAlert').then(str => {
+          alert(str);
+        });
         return;
       }
       file = event.originalEvent.dataTransfer.files[0];
@@ -151,7 +155,9 @@ $(document).ready(function() {
     }
 
     if (file.size > MAXFILESIZE) {
-      return document.l10n.formatValue('fileTooBig', {size: bytes(MAXFILESIZE)}).then(alert);
+      return document.l10n
+        .formatValue('fileTooBig', { size: bytes(MAXFILESIZE) })
+        .then(alert);
     }
 
     $('#page-one').attr('hidden', true);
@@ -165,10 +171,9 @@ $(document).ready(function() {
     $('#cancel-upload').click(() => {
       fileSender.cancel();
       location.reload();
-      document.l10n.formatValue('uploadCancelNotification')
-                   .then(str => {
-                     notify(str);
-                   });
+      document.l10n.formatValue('uploadCancelNotification').then(str => {
+        notify(str);
+      });
       storage.referrer = 'cancelled-upload';
 
       // record upload-stopped (cancelled) by sender
@@ -189,7 +194,12 @@ $(document).ready(function() {
       $('#ul-progress').circleProgress().on('circle-animation-end', function() {
         $('.percent-number').html(`${Math.floor(percent * 100)}`);
       });
-      $('.progress-text').text(`${file.name} (${bytes(progress[0], {decimalPlaces: 1, fixedDecimals: true})} of ${bytes(progress[1], {decimalPlaces: 1})})`);
+      $('.progress-text').text(
+        `${file.name} (${bytes(progress[0], {
+          decimalPlaces: 1,
+          fixedDecimals: true
+        })} of ${bytes(progress[1], { decimalPlaces: 1 })})`
+      );
     });
 
     fileSender.on('loading', isStillLoading => {
@@ -245,15 +255,15 @@ $(document).ready(function() {
 
         // record upload-stopped (completed) by sender
         sendEvent('sender', 'upload-stopped', {
-            cm1: file.size,
-            cm2: totalTime,
-            cm3: uploadSpeed,
-            cm5: storage.totalUploads,
-            cm6: unexpiredFiles,
-            cm7: storage.totalDownloads,
-            cd1: event.type === 'drop' ? 'drop' : 'click',
-            cd2: 'completed'
-          });
+          cm1: file.size,
+          cm2: totalTime,
+          cm3: uploadSpeed,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd1: event.type === 'drop' ? 'drop' : 'click',
+          cd2: 'completed'
+        });
 
         const fileData = {
           name: file.name,
@@ -270,7 +280,10 @@ $(document).ready(function() {
         };
 
         storage.addFile(info.fileId, fileData);
-        $('#upload-filename').attr('data-l10n-id', 'uploadSuccessConfirmHeader');
+        $('#upload-filename').attr(
+          'data-l10n-id',
+          'uploadSuccessConfirmHeader'
+        );
         t = window.setTimeout(() => {
           $('#page-one').attr('hidden', true);
           $('#upload-progress').attr('hidden', true);
@@ -279,10 +292,9 @@ $(document).ready(function() {
         }, 1000);
 
         populateFileList(fileData);
-        document.l10n.formatValue('notifyUploadDone')
-                     .then(str => {
-                       notify(str);
-                     });
+        document.l10n.formatValue('notifyUploadDone').then(str => {
+          notify(str);
+        });
       })
       .catch(err => {
         Raven.captureException(err);
@@ -334,10 +346,18 @@ $(document).ready(function() {
     const row = document.createElement('tr');
     const name = document.createElement('td');
     const link = document.createElement('td');
-    const $copyIcon = $('<img>', { src: '/resources/copy-16.svg', class: 'icon-copy', 'data-l10n-id': 'copyUrlHover'});
+    const $copyIcon = $('<img>', {
+      src: '/resources/copy-16.svg',
+      class: 'icon-copy',
+      'data-l10n-id': 'copyUrlHover'
+    });
     const expiry = document.createElement('td');
     const del = document.createElement('td');
-    const $delIcon = $('<img>', { src: '/resources/close-16.svg', class: 'icon-delete', 'data-l10n-id': 'deleteButtonHover' });
+    const $delIcon = $('<img>', {
+      src: '/resources/close-16.svg',
+      class: 'icon-delete',
+      'data-l10n-id': 'deleteButtonHover'
+    });
     const popupDiv = document.createElement('div');
     const $popupText = $('<div>', { class: 'popuptext' });
     const cellText = document.createTextNode(file.name);
@@ -345,14 +365,8 @@ $(document).ready(function() {
     const url = file.url.trim() + `#${file.secretKey}`.trim();
 
     $('#link').attr('value', url);
-    $('#copy-text').attr(
-      'data-l10n-args',
-      '{"filename": "' + file.name + '"}'
-    );
-    $('#copy-text').attr(
-      'data-l10n-id',
-      'copyUrlFormLabelWithName'
-    );
+    $('#copy-text').attr('data-l10n-args', '{"filename": "' + file.name + '"}');
+    $('#copy-text').attr('data-l10n-id', 'copyUrlFormLabelWithName');
     $popupText.attr('tabindex', '-1');
 
     name.appendChild(cellText);
@@ -383,10 +397,9 @@ $(document).ready(function() {
       aux.select();
       document.execCommand('copy');
       document.body.removeChild(aux);
-      document.l10n.formatValue('copiedUrl')
-                   .then(translated => {
-                     link.innerHTML = translated;
-                   });
+      document.l10n.formatValue('copiedUrl').then(translated => {
+        link.innerHTML = translated;
+      });
       window.setTimeout(() => {
         const linkImg = document.createElement('img');
         $(linkImg).addClass('icon-copy');
@@ -446,12 +459,7 @@ $(document).ready(function() {
     $(popupNvmSpan).addClass('nvm');
     $(popupNvmSpan).attr('data-l10n-id', 'nevermindButton');
 
-    $popupText.html([
-      popupDelSpan,
-      '&nbsp;',
-      '&nbsp;',
-      popupNvmSpan
-    ]);
+    $popupText.html([popupDelSpan, '&nbsp;', '&nbsp;', popupNvmSpan]);
 
     // add data cells to table row
     row.appendChild(name);
@@ -470,7 +478,8 @@ $(document).ready(function() {
     $popupText.find('.del-file').click(e => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
         $(e.target).parents('tr').remove();
-        const timeToExpiry = ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
+        const timeToExpiry =
+          ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
         // record upload-deleted from file list
         sendEvent('sender', 'upload-deleted', {
           cm1: file.size,
@@ -482,17 +491,17 @@ $(document).ready(function() {
           cm7: storage.totalDownloads,
           cd1: file.typeOfUpload,
           cd4: 'upload-list'
-        })
-        .then(() => {
+        }).then(() => {
           storage.remove(file.fileId);
-        })
+        });
         toggleHeader();
       });
     });
 
     document.getElementById('delete-file').onclick = () => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
-        const timeToExpiry = ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
+        const timeToExpiry =
+          ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
         // record upload-deleted from success screen
         sendEvent('sender', 'upload-deleted', {
           cm1: file.size,
@@ -504,11 +513,10 @@ $(document).ready(function() {
           cm7: storage.totalDownloads,
           cd1: file.typeOfUpload,
           cd4: 'success-screen'
-        })
-        .then(() => {
+        }).then(() => {
           storage.remove(file.fileId);
           location.reload();
-        })
+        });
       });
     };
     // show popup
@@ -528,7 +536,6 @@ $(document).ready(function() {
     $popupText.blur(() => {
       $popupText.removeClass('show');
     });
-
 
     toggleHeader();
   }

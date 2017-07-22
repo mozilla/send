@@ -27,7 +27,10 @@ body {
   padding-bottom: 51px;
 }
 
-input, select, textarea, button {
+input,
+select,
+textarea,
+button {
   font-family: inherit;
 }
 
@@ -49,7 +52,7 @@ a {
   width: 630px;
   text-align: center;
   margin: 0 auto 60px;
-  color: #0C0C0D;
+  color: #0c0c0d;
 }
 
 .upload-window {
@@ -80,7 +83,7 @@ a {
 }
 
 .link {
-  color: #0094FB;
+  color: #0094fb;
   text-decoration: none;
 }
 
@@ -92,10 +95,10 @@ a {
 }
 
 #browse {
-  background: #0297F8;
+  background: #0297f8;
   border-radius: 5px;
   font-size: 15px;
-  color: #FFF;
+  color: #fff;
   width: 240px;
   height: 44px;
   display: flex;
@@ -129,7 +132,7 @@ th {
 td {
   font-size: 15px;
   vertical-align: top;
-  color: #4A4A4A;
+  color: #4a4a4a;
   padding: 17px 19px 0;
   line-height: 23px;
 }
@@ -149,7 +152,9 @@ tbody {
   table-layout: fixed;
 }
 
-.icon-delete, .icon-copy, .icon-check {
+.icon-delete,
+.icon-copy,
+.icon-check {
   cursor: pointer;
 }
 
@@ -165,7 +170,7 @@ tbody {
   visibility: hidden;
   width: 160px;
   background-color: #555;
-  color: #FFF;
+  color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 8px 0;
@@ -239,7 +244,7 @@ tbody {
 }
 
 #cancel-upload {
-  color: #D70022;
+  color: #d70022;
   cursor: pointer;
   text-decoration: underline;
 }
@@ -268,13 +273,13 @@ tbody {
   align-self: flex-start;
   margin-top: 60px;
   margin-bottom: 10px;
-  color: #0C0C0D;
+  color: #0c0c0d;
 }
 
 #link {
   width: 480px;
   height: 56px;
-  border: 1px solid #0297F8;
+  border: 1px solid #0297f8;
   border-radius: 6px 0 0 6px;
   font-size: 24px;
   color: #737373;
@@ -284,15 +289,15 @@ tbody {
 }
 
 #link:disabled {
-  border: 1px solid #05A700;
-  background: #FFF;
+  border: 1px solid #05a700;
+  background: #fff;
 }
 
 #copy-btn {
   width: 165px;
   height: 60px;
-  background: #0297F8;
-  border: 1px solid #0297F8;
+  background: #0297f8;
+  border: 1px solid #0297f8;
   border-radius: 0 6px 6px 0;
   color: white;
   cursor: pointer;
@@ -300,15 +305,15 @@ tbody {
 }
 
 #copy-btn:disabled {
-  background: #05A700;
-  border: 1px solid #05A700;
+  background: #05a700;
+  border: 1px solid #05a700;
   cursor: auto;
 }
 
 #delete-file {
   width: 176px;
   height: 44px;
-  background: #FFF;
+  background: #fff;
   border: 1px solid rgba(12, 12, 13, 0.3);
   border-radius: 5px;
   font-size: 15px;
@@ -322,7 +327,7 @@ tbody {
   font-size: 15px;
   margin: auto;
   text-align: center;
-  color: #0094FB;
+  color: #0094fb;
   cursor: pointer;
   text-decoration: underline;
 }
@@ -336,7 +341,8 @@ tbody {
   text-align: center;
 }
 
-#upload-error[hidden], #unsupported-browser[hidden] {
+#upload-error[hidden],
+#unsupported-browser[hidden] {
   display: none;
 }
 
@@ -358,7 +364,7 @@ tbody {
   line-height: 23px;
   width: 630px;
   text-align: center;
-  color: #7D7D7D;
+  color: #7d7d7d;
   margin: 0 auto 23px;
 }
 
@@ -370,14 +376,14 @@ tbody {
   margin-bottom: 181px;
   width: 260px;
   height: 80px;
-  background: #12BC00;
+  background: #12bc00;
   border-radius: 3px;
   cursor: pointer;
   border: 0;
   box-shadow: 0 5px 3px rgb(234, 234, 234);
   font-family: 'Fira Sans';
   font-weight: 500;
-  color: #FFF;
+  color: #fff;
   font-size: 26px;
   display: flex;
   justify-content: center;
@@ -406,15 +412,15 @@ tbody {
   margin-top: 20px;
   margin-bottom: 30px;
   text-align: center;
-  background: #0297F8;
-  border: 1px solid #0297F8;
+  background: #0297f8;
+  border: 1px solid #0297f8;
   border-radius: 5px;
   font-weight: 300;
   cursor: pointer;
 }
 
 #download-btn:disabled {
-  background: #47B04B;
+  background: #47b04b;
   cursor: auto;
 }
 
@@ -436,7 +442,7 @@ tbody {
   line-height: 23px;
   width: 630px;
   text-align: center;
-  color: #7D7D7D;
+  color: #7d7d7d;
   margin: 0 auto 23px;
 }
 
@@ -495,7 +501,8 @@ tbody {
   margin-left: 30px;
 }
 
-.github, .twitter {
+.github,
+.twitter {
   width: 32px;
   height: 32px;
   margin-bottom: -5px;

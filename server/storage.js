@@ -83,8 +83,8 @@ function ttl(id) {
       } else {
         reject(err);
       }
-    })
-  })
+    });
+  });
 }
 
 function filename(id) {
@@ -235,8 +235,8 @@ function awsSet(newId, file, filename, meta) {
     hitLimit = true;
     upload.abort();
   });
-  return upload.promise()
-    .then(() => {
+  return upload.promise().then(
+    () => {
       redis_client.hmset(newId, meta);
       redis_client.expire(newId, 86400000);
       log.info('awsUploadFinish', 'Upload Finished of ' + filename);
@@ -247,7 +247,8 @@ function awsSet(newId, file, filename, meta) {
       } else {
         throw err;
       }
-    });
+    }
+  );
 }
 
 function awsDelete(id, delete_token) {

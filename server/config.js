@@ -39,7 +39,7 @@ const conf = convict({
   },
   max_file_size: {
     format: Number,
-    default: (1024 * 1024 * 1024) * 2,
+    default: 1024 * 1024 * 1024 * 2,
     env: 'P2P_MAX_FILE_SIZE'
   }
 });

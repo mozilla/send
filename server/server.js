@@ -34,10 +34,12 @@ app.engine(
 app.set('view engine', 'handlebars');
 
 app.use(helmet());
-app.use(helmet.hsts({
-  maxAge: 31536000,
-  force: conf.env === 'production'
-}));
+app.use(
+  helmet.hsts({
+    maxAge: 31536000,
+    force: conf.env === 'production'
+  })
+);
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -62,11 +64,13 @@ app.use(
     }
   })
 );
-app.use(busboy({
-  limits: {
-    fileSize: conf.max_file_size
-  }
-}));
+app.use(
+  busboy({
+    limits: {
+      fileSize: conf.max_file_size
+    }
+  })
+);
 app.use(bodyParser.json());
 app.use(express.static(STATIC_PATH));
 app.use('/l20n', express.static(L20N));
@@ -112,16 +116,14 @@ app.get('/download/:id', (req, res) => {
     storage
       .length(id)
       .then(contentLength => {
-        storage
-          .ttl(id)
-          .then(timeToExpiry => {
-            res.render('download', {
-              filename: decodeURIComponent(filename),
-              filesize: bytes(contentLength),
-              sizeInBytes: contentLength,
-              timeToExpiry: timeToExpiry
-            });
-          })
+        storage.ttl(id).then(timeToExpiry => {
+          res.render('download', {
+            filename: decodeURIComponent(filename),
+            filesize: bytes(contentLength),
+            sizeInBytes: contentLength,
+            timeToExpiry: timeToExpiry
+          });
+        });
       })
       .catch(() => {
         res.status(404).render('notfound');
@@ -228,21 +230,23 @@ app.post('/upload', (req, res, next) => {
   req.busboy.on('file', (fieldname, file, filename) => {
     log.info('Uploading:', newId);
 
-    storage.set(newId, file, filename, meta).then(() => {
-      const protocol = conf.env === 'production' ? 'https' : req.protocol;
-      const url = `${protocol}://${req.get('host')}/download/${newId}/`;
-      res.json({
-        url,
-        delete: meta.delete,
-        id: newId
-      });
-    },
-    err => {
-      if (err.message === 'limit') {
-        return res.sendStatus(413);
+    storage.set(newId, file, filename, meta).then(
+      () => {
+        const protocol = conf.env === 'production' ? 'https' : req.protocol;
+        const url = `${protocol}://${req.get('host')}/download/${newId}/`;
+        res.json({
+          url,
+          delete: meta.delete,
+          id: newId
+        });
+      },
+      err => {
+        if (err.message === 'limit') {
+          return res.sendStatus(413);
+        }
+        res.sendStatus(500);
       }
-      res.sendStatus(500);
-    });
+    );
   });
 
   req.on('close', err => {
@@ -256,7 +260,7 @@ app.post('/upload', (req, res, next) => {
       .catch(err => {
         log.info('DeleteError:', newId);
       });
-  })
+  });
 });
 
 app.get('/__lbheartbeat__', (req, res) => {
