@@ -3,6 +3,7 @@ node_modules
 public/upload.js
 public/download.js
 public/version.json
+public/l20n.min.js
 static/*
 !static/info.txt
 test/frontend/bundle.js

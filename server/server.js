@@ -19,8 +19,6 @@ const mozlog = require('./log.js');
 const log = mozlog('send.server');
 
 const STATIC_PATH = path.join(__dirname, '../public');
-const L20N = path.join(__dirname, '../node_modules/l20n');
-const LOCALES = path.join(__dirname, '../public/locales');
 
 const app = express();
 
@@ -73,8 +71,6 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(express.static(STATIC_PATH));
-app.use('/l20n', express.static(L20N));
-app.use('/locales', express.static(LOCALES));
 
 app.get('/', (req, res) => {
   res.render('index');
