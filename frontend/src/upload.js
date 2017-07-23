@@ -77,7 +77,6 @@ $(document).ready(function() {
   $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
 
   const files = storage.files;
-  console.log(files);
   if (files.length === 0) {
     toggleHeader();
   } else {
@@ -192,7 +191,7 @@ $(document).ready(function() {
       // update progress bar
       $('#ul-progress').circleProgress('value', percent);
       $('#ul-progress').circleProgress().on('circle-animation-end', function() {
-        $('.percent-number').html(`${Math.floor(percent * 100)}`);
+        $('.percent-number').text(`${Math.floor(percent * 100)}`);
       });
       $('.progress-text').text(
         `${file.name} (${bytes(progress[0], {
@@ -205,18 +204,22 @@ $(document).ready(function() {
     fileSender.on('loading', isStillLoading => {
       // The file is loading into Firefox at this stage
       if (isStillLoading) {
-        console.log('Processing');
-      } else {
-        console.log('Finished processing');
+        document.l10n
+          .formatValue('uploadProcessingFile')
+          .then(uploadProcessingFile => {
+            $('.progress-text').text(uploadProcessingFile);
+          });
       }
     });
 
     fileSender.on('hashing', isStillHashing => {
       // The file is being hashed
       if (isStillHashing) {
-        console.log('Hashing');
-      } else {
-        console.log('Finished hashing');
+        document.l10n
+          .formatValue('uploadHashingFile')
+          .then(uploadHashingFile => {
+            $('.progress-text').text(uploadHashingFile);
+          });
       }
     });
 
@@ -224,9 +227,12 @@ $(document).ready(function() {
     fileSender.on('encrypting', isStillEncrypting => {
       // The file is being encrypted
       if (isStillEncrypting) {
-        console.log('Encrypting');
+        document.l10n
+          .formatValue('uploadEncryptingFile')
+          .then(uploadEncryptingFile => {
+            $('.progress-text').text(uploadEncryptingFile);
+          });
       } else {
-        console.log('Finished encrypting');
         uploadStart = Date.now();
       }
     });
@@ -298,7 +304,7 @@ $(document).ready(function() {
       })
       .catch(err => {
         Raven.captureException(err);
-        console.log(err);
+        console.error(err);
         $('#page-one').attr('hidden', true);
         $('#upload-progress').attr('hidden', true);
         $('#upload-error').removeAttr('hidden');

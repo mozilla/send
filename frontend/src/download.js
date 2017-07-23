@@ -46,7 +46,7 @@ $(document).ready(function() {
     storage.referrer = 'errored-download';
   });
 
-  const filename = $('#dl-filename').html();
+  const filename = $('#dl-filename').text();
   const bytelength = Number($('#dl-bytelength').text());
   const timeToExpiry = Number($('#dl-ttl').text());
 
@@ -83,7 +83,7 @@ $(document).ready(function() {
       const percent = progress[0] / progress[1];
       // update progress bar
       $('#dl-progress').circleProgress('value', percent);
-      $('.percent-number').html(`${Math.floor(percent * 100)}`);
+      $('.percent-number').text(`${Math.floor(percent * 100)}`);
       $('.progress-text').text(
         `${filename} (${bytes(progress[0], {
           decimalPlaces: 1,
@@ -97,7 +97,7 @@ $(document).ready(function() {
           .formatValues('downloadNotification', 'downloadFinish')
           .then(translated => {
             notify(translated[0]);
-            $('.title').html(translated[1]);
+            $('.title').text(translated[1]);
           });
         window.onunload = null;
       }
@@ -107,9 +107,12 @@ $(document).ready(function() {
     fileReceiver.on('decrypting', isStillDecrypting => {
       // The file is being decrypted
       if (isStillDecrypting) {
-        console.log('Decrypting');
+        document.l10n
+          .formatValue('downloadDecryptingFile')
+          .then(downloadDecryptingFile => {
+            $('.progress-text').text(downloadDecryptingFile);
+          });
       } else {
-        console.log('Done decrypting');
         downloadEnd = Date.now();
       }
     });
@@ -117,9 +120,17 @@ $(document).ready(function() {
     fileReceiver.on('hashing', isStillHashing => {
       // The file is being hashed to make sure a malicious user hasn't tampered with it
       if (isStillHashing) {
-        console.log('Checking file integrity');
+        document.l10n
+          .formatValue('downloadHashingFile')
+          .then(downloadHashingFile => {
+            $('.progress-text').text(downloadHashingFile);
+          });
       } else {
-        console.log('Integrity check done');
+        document.l10n
+          .formatValue('downloadNotification')
+          .then(downloadNotification => {
+            $('.progress-text').text(downloadNotification);
+          });
       }
     });
 
@@ -152,7 +163,6 @@ $(document).ready(function() {
         });
         $('#download-btn').attr('hidden', true);
         $('#expired-img').removeAttr('hidden');
-        console.log('The file has expired, or has already been deleted.');
         return;
       })
       .then(([decrypted, fname]) => {
