@@ -107,9 +107,12 @@ $(document).ready(function() {
     fileReceiver.on('decrypting', isStillDecrypting => {
       // The file is being decrypted
       if (isStillDecrypting) {
-        console.log('Decrypting');
+        document.l10n
+          .formatValue('downloadDecryptingFile')
+          .then(downloadDecryptingFile => {
+            $('.progress-text').text(downloadDecryptingFile);
+          });
       } else {
-        console.log('Done decrypting');
         downloadEnd = Date.now();
       }
     });
@@ -117,9 +120,17 @@ $(document).ready(function() {
     fileReceiver.on('hashing', isStillHashing => {
       // The file is being hashed to make sure a malicious user hasn't tampered with it
       if (isStillHashing) {
-        console.log('Checking file integrity');
+        document.l10n
+          .formatValue('downloadHashingFile')
+          .then(downloadHashingFile => {
+            $('.progress-text').text(downloadHashingFile);
+          });
       } else {
-        console.log('Integrity check done');
+        document.l10n
+          .formatValue('downloadNotification')
+          .then(downloadNotification => {
+            $('.progress-text').text(downloadNotification);
+          });
       }
     });
 
@@ -152,7 +163,6 @@ $(document).ready(function() {
         });
         $('#download-btn').attr('hidden', true);
         $('#expired-img').removeAttr('hidden');
-        console.log('The file has expired, or has already been deleted.');
         return;
       })
       .then(([decrypted, fname]) => {

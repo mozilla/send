@@ -32,6 +32,9 @@ uploadProcessingFile = Processing file
 uploadHashingFile = Hashing file
 uploadEncryptingFile = Encrypting file
 
+downloadDecryptingFile = Decrypting file
+downloadHashingFile = Checking file integrity
+
 //Note the spec suggests that this string is editable. That feature will not appear at Launch
 uploadSuccessTimingHeader = The link to your file will expire after 1 download or in 24 hours.
 copyUrlFormLabel = Copy and share the link to send your file:

@@ -204,20 +204,22 @@ $(document).ready(function() {
     fileSender.on('loading', isStillLoading => {
       // The file is loading into Firefox at this stage
       if (isStillLoading) {
-        document.l10n.formatValue('uploadProcessingFile')
-        .then(uploadProcessingFile => {
-          $('.progress-text').text(uploadProcessingFile);
-        });
+        document.l10n
+          .formatValue('uploadProcessingFile')
+          .then(uploadProcessingFile => {
+            $('.progress-text').text(uploadProcessingFile);
+          });
       }
     });
 
     fileSender.on('hashing', isStillHashing => {
       // The file is being hashed
       if (isStillHashing) {
-       document.l10n.formatValue('uploadHashingFile')
-        .then(uploadHashingFile => {
-          $('.progress-text').text(uploadHashingFile);
-        });
+        document.l10n
+          .formatValue('uploadHashingFile')
+          .then(uploadHashingFile => {
+            $('.progress-text').text(uploadHashingFile);
+          });
       }
     });
 
@@ -225,10 +227,11 @@ $(document).ready(function() {
     fileSender.on('encrypting', isStillEncrypting => {
       // The file is being encrypted
       if (isStillEncrypting) {
-       document.l10n.formatValue('uploadEncryptingFile')
-        .then(uploadEncryptingFile => {
-          $('.progress-text').text(uploadEncryptingFile);
-        });
+        document.l10n
+          .formatValue('uploadEncryptingFile')
+          .then(uploadEncryptingFile => {
+            $('.progress-text').text(uploadEncryptingFile);
+          });
       } else {
         uploadStart = Date.now();
       }
