@@ -52,7 +52,7 @@
     "build:version": "node scripts/version",
     "build:l10n": "cp node_modules/l20n/dist/web/l20n.min.js public",
     "dev": "npm run build && npm start",
-    "format": "prettier '{frontend/src/,scripts/,server/,test/}*.js' 'public/*.css' --single-quote --write",
+    "format": "prettier '{frontend/src/,scripts/,server/,test/**/}*.js' 'public/*.css' --single-quote --write",
     "lint": "npm-run-all lint:*",
     "lint:css": "stylelint 'public/*.css'",
     "lint:js": "eslint .",

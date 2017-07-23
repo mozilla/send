@@ -1,5 +1,3 @@
-public/upload.js
-public/download.js
-public/webcrypto-shim.js
+public
 test/frontend/bundle.js
 firefox
