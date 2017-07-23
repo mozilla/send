@@ -46,7 +46,7 @@ $(document).ready(function() {
     storage.referrer = 'errored-download';
   });
 
-  const filename = $('#dl-filename').html();
+  const filename = $('#dl-filename').text();
   const bytelength = Number($('#dl-bytelength').text());
   const timeToExpiry = Number($('#dl-ttl').text());
 
@@ -83,7 +83,7 @@ $(document).ready(function() {
       const percent = progress[0] / progress[1];
       // update progress bar
       $('#dl-progress').circleProgress('value', percent);
-      $('.percent-number').html(`${Math.floor(percent * 100)}`);
+      $('.percent-number').text(`${Math.floor(percent * 100)}`);
       $('.progress-text').text(
         `${filename} (${bytes(progress[0], {
           decimalPlaces: 1,
@@ -97,7 +97,7 @@ $(document).ready(function() {
           .formatValues('downloadNotification', 'downloadFinish')
           .then(translated => {
             notify(translated[0]);
-            $('.title').html(translated[1]);
+            $('.title').text(translated[1]);
           });
         window.onunload = null;
       }
