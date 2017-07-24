@@ -36,6 +36,11 @@ const conf = convict({
     format: ['production', 'development', 'test'],
     default: 'development',
     env: 'NODE_ENV'
+  },
+  max_file_size: {
+    format: Number,
+    default: 1024 * 1024 * 1024 * 2,
+    env: 'P2P_MAX_FILE_SIZE'
   }
 });
 

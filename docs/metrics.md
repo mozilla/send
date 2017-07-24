@@ -32,10 +32,9 @@ Data will be collected with Google Analytics and follow [Test Pilot standards](h
 - `cd1` - the method by which the user initiated an upload. One of `drag`, `click`.
 - `cd2` - the reason that the file transfer stopped. One of `completed`, `errored`, `cancelled`.
 - `cd3` - the destination of a link click. One of `experiment-page`, `download-firefox`, `twitter`, `github`, `cookies`, `terms`, `privacy`, `about`, `legal`, `mozilla`.
-- `cd4` - from where the URL for a file was copied. One of `finished-screen`, `file-list`.
+- `cd4` - the location from which the user copied the URL to an upload file. One of `success-screen`, `upload-list`.
 - `cd5` - the referring location. One of `completed-download`, `errored-download`, `cancelled-download`, `completed-upload`, `errored-upload`, `cancelled-upload`, `testpilot`, `external`.
-- `cd6` - the location from which the user copied the URL to an upload file. One of `success-screen`, `upload-list`.
-- `cd7` - identifying information about an error. Exclude if there is no error involved. **TODO:** enumerate a list of possibilities.
+- `cd6` - identifying information about an error. Exclude if there is no error involved. **TODO:** enumerate a list of possibilities.
 
 ### Events
 
@@ -66,7 +65,7 @@ Triggered whenever a user stops uploading a file. Includes:
 - `cm7`
 - `cd1`
 - `cd2`
-- `cd7`
+- `cd6`
 
 #### `download-started`
 Triggered whenever a user begins downloading a file. Includes:
@@ -91,7 +90,7 @@ Triggered whenever a user stops downloading a file.
 - `cm6`
 - `cm7`
 - `cd2`
-- `cd7`
+- `cd6`
 
 #### `exited`
 Fired whenever a user follows a link external to Send.
@@ -113,13 +112,14 @@ Fired whenever a user deletes a file they’ve uploaded.
 - `cm6`
 - `cm7`
 - `cd1`
+- `cd4`
 
 #### `copied`
 Fired whenever a user copies the URL of an upload file.
 
 - `ec` - `sender`
 - `ea` - `copied`
-- `cd6`
+- `cd4`
 
 #### `restarted`
 Fired whenever the user interrupts any part of funnel to return to the start of it (e.g. with a “send another file” or “send your own files” link).
@@ -133,4 +133,4 @@ Fired whenever a user is presented a message saying that their browser is unsupp
 
 - `ec` - `sender`
 - `ea` - `unsupported`
-- `cd7`
+- `cd6`

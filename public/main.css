@@ -38,7 +38,8 @@ body {
 }
 
 .site-title {
-  font-size: 34px;
+  color: #3e3d40;
+  font-size: 32px;
   font-weight: 500;
   margin: 0;
   position: relative;
@@ -46,14 +47,14 @@ body {
 }
 
 .site-subtitle {
+  color: #3e3d40;
   font-size: 12px;
   margin: 0 8px;
-  color: #0c0c0d;
 }
 
 .site-subtitle a {
   font-weight: bold;
-  color: #0c0c0d;
+  color: #3e3d40;
   transition: color 50ms;
 }
 
@@ -585,7 +586,7 @@ tbody {
   margin-bottom: -5px;
 }
 
-@media (max-width: 768px) {
+@media (max-device-width: 768px) {
   .description {
     margin: 0 auto 25px;
   }
@@ -608,7 +609,16 @@ tbody {
   }
 }
 
-@media (max-width: 520px) {
+@media (max-device-width: 520px) {
+  .header {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .feedback {
+    margin-top: 10px;
+  }
+
   #copy {
     width: 100%;
     flex-direction: column;
