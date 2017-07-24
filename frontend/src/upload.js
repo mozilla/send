@@ -133,6 +133,12 @@ $(document).ready(function() {
   // on file upload by browse or drag & drop
   function onUpload(event) {
     event.preventDefault();
+
+    // don't allow upload if not on upload page
+    if ($('#page-one').attr('hidden')){
+      return;
+    }
+
     storage.totalUploads += 1;
 
     let file = '';
