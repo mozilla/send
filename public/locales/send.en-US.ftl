@@ -11,6 +11,7 @@ uploadPageSizeMessage = For the most reliable operation, it’s best to keep you
 uploadPageBrowseButton = Select a file on your computer
   .title = {uploadPageBrowseButtonTitle}
 uploadPageMultipleFilesAlert = Uploading multiple files or a folder is currently not supported.
+uploadValidFile = Please drag a valid file to upload.
 
 uploadPageBrowseButtonTitle = Upload file
 
