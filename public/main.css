@@ -216,6 +216,7 @@ td {
   color: #4a4a4a;
   padding: 17px 19px 0;
   line-height: 23px;
+  position: relative;
 }
 
 table {
@@ -241,14 +242,14 @@ tbody {
 
 /* Popup container */
 .popup {
-  position: relative;
+  position: absolute;
   display: inline-block;
 }
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
   visibility: hidden;
-  width: 115px;
+  min-width: 115px;
   background-color: #fff;
   color: #000;
   border: 1px solid #0297f8;
@@ -257,9 +258,8 @@ tbody {
   padding: 7px 8px;
   position: absolute;
   z-index: 1;
-  bottom: 20px;
-  left: 50%;
-  margin-left: -74.5px;
+  bottom: 8px;
+  right: -28px;
   transition: opacity 0.5s;
   opacity: 0;
   outline: 0;
@@ -271,7 +271,7 @@ tbody {
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  right: 30px;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -290,9 +290,8 @@ tbody {
 .popup-yes {
   color: #fff;
   background-color: #0297f8;
-  border: 1px solid #0297f8;
   border-radius: 5px;
-  padding: 1px 10px;
+  padding: 2px 11px;
   cursor: pointer;
 }
 
