@@ -42,10 +42,6 @@ $(document).ready(function() {
     });
   });
 
-  $('#expired-send-new').click(function() {
-    storage.referrer = 'errored-download';
-  });
-
   const filename = $('#dl-filename').text();
   const bytelength = Number($('#dl-bytelength').text());
   const timeToExpiry = Number($('#dl-ttl').text());
