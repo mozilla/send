@@ -46,7 +46,7 @@ $(document).ready(function() {
     storage.referrer = 'errored-download';
   });
 
-  const filename = $('#dl-filename').html();
+  const filename = $('#dl-filename').text();
   const bytelength = Number($('#dl-bytelength').text());
   const timeToExpiry = Number($('#dl-ttl').text());
 
@@ -83,31 +83,24 @@ $(document).ready(function() {
       const percent = progress[0] / progress[1];
       // update progress bar
       $('#dl-progress').circleProgress('value', percent);
-      $('.percent-number').html(`${Math.floor(percent * 100)}`);
+      $('.percent-number').text(`${Math.floor(percent * 100)}`);
       $('.progress-text').text(
         `${filename} (${bytes(progress[0], {
           decimalPlaces: 1,
           fixedDecimals: true
         })} of ${bytes(progress[1], { decimalPlaces: 1 })})`
       );
-      //on complete
-      if (percent === 1) {
-        fileReceiver.removeAllListeners('progress');
-        document.l10n
-          .formatValues('downloadNotification', 'downloadFinish')
-          .then(translated => {
-            notify(translated[0]);
-            $('.title').html(translated[1]);
-          });
-        window.onunload = null;
-      }
     });
 
     let downloadEnd;
     fileReceiver.on('decrypting', isStillDecrypting => {
       // The file is being decrypted
       if (isStillDecrypting) {
-        console.log('Decrypting');
+        fileReceiver.removeAllListeners('progress');
+        window.onunload = null;
+        document.l10n.formatValue('decryptingFile').then(decryptingFile => {
+          $('.progress-text').text(decryptingFile);
+        });
       } else {
         console.log('Done decrypting');
         downloadEnd = Date.now();
@@ -117,9 +110,17 @@ $(document).ready(function() {
     fileReceiver.on('hashing', isStillHashing => {
       // The file is being hashed to make sure a malicious user hasn't tampered with it
       if (isStillHashing) {
-        console.log('Checking file integrity');
+        document.l10n.formatValue('verifyingFile').then(verifyingFile => {
+          $('.progress-text').text(verifyingFile);
+        });
       } else {
-        console.log('Integrity check done');
+        $('.progress-text').text(' ');
+        document.l10n
+          .formatValues('downloadNotification', 'downloadFinish')
+          .then(translated => {
+            notify(translated[0]);
+            $('.title').text(translated[1]);
+          });
       }
     });
 
