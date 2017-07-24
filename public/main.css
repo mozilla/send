@@ -183,6 +183,10 @@ a {
   cursor: pointer;
 }
 
+#browse:hover {
+  background-color: #0287e8;
+}
+
 input[type="file"] {
   display: none;
 }
@@ -221,6 +225,7 @@ table {
 
 tbody {
   word-wrap: break-word;
+  word-break: break-all;
 }
 
 #uploaded-files {
@@ -238,26 +243,27 @@ tbody {
 .popup {
   position: relative;
   display: inline-block;
-  cursor: pointer;
 }
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
   visibility: hidden;
-  width: 160px;
-  background-color: #555;
-  color: #fff;
+  width: 115px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #0297f8;
   text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
+  border-radius: 5px;
+  padding: 7px 8px;
   position: absolute;
   z-index: 1;
   bottom: 20px;
   left: 50%;
-  margin-left: -88px;
+  margin-left: -74.5px;
   transition: opacity 0.5s;
   opacity: 0;
   outline: 0;
+  box-shadow: 3px 3px 7px #888;
 }
 
 /* Popup arrow */
@@ -269,12 +275,36 @@ tbody {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent;
+  border-color: #0297f8 transparent transparent;
 }
 
 .popup .show {
   visibility: visible;
   opacity: 1;
+}
+
+.popup-message {
+  margin-bottom: 4px;
+}
+
+.popup-yes {
+  color: #fff;
+  background-color: #0297f8;
+  border: 1px solid #0297f8;
+  border-radius: 5px;
+  padding: 1px 10px;
+  cursor: pointer;
+}
+
+.popup-yes:hover {
+  background-color: #0287e8;
+}
+
+.popup-no {
+  color: #4a4a4a;
+  border-radius: 6px;
+  padding: 3px 5px;
+  cursor: pointer;
 }
 
 /**   upload-progress   **/

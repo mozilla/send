@@ -303,7 +303,6 @@ $(document).ready(function() {
         })
         .catch(err => {
           Raven.captureException(err);
-          console.log(err);
           $('#page-one').attr('hidden', true);
           $('#upload-progress').attr('hidden', true);
           $('#upload-error').removeAttr('hidden');
@@ -457,15 +456,16 @@ $(document).ready(function() {
 
     // create popup
     popupDiv.classList.add('popup');
-    const popupDelSpan = document.createElement('span');
-    $(popupDelSpan).addClass('del-file');
-    $(popupDelSpan).attr('data-l10n-id', 'sentFilesTitle4');
+    const $popupMessage = $('<div>', { class: 'popup-message' });
+    $popupMessage.attr('data-l10n-id', 'deletePopupText');
 
-    const popupNvmSpan = document.createElement('span');
-    $(popupNvmSpan).addClass('nvm');
-    $(popupNvmSpan).attr('data-l10n-id', 'nevermindButton');
+    const $popupDelSpan = $('<span>', { class: 'popup-yes' });
+    $popupDelSpan.attr('data-l10n-id', 'deletePopupYes');
 
-    $popupText.html([popupDelSpan, '&nbsp;', '&nbsp;', popupNvmSpan]);
+    const $popupNvmSpan = $('<span>', { class: 'popup-no' });
+    $popupNvmSpan.attr('data-l10n-id', 'deletePopupCancel');
+
+    $popupText.html([$popupMessage, $popupDelSpan,  $popupNvmSpan]);
 
     // add data cells to table row
     row.appendChild(name);
@@ -481,7 +481,7 @@ $(document).ready(function() {
     const unexpiredFiles = storage.numFiles;
 
     // delete file
-    $popupText.find('.del-file').click(e => {
+    $popupText.find('.popup-yes').click(e => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
         $(e.target).parents('tr').remove();
         const timeToExpiry =
@@ -531,7 +531,7 @@ $(document).ready(function() {
       $popupText.focus();
     });
     // hide popup
-    $popupText.find('.nvm').click(function(e) {
+    $popupText.find('.popup-no').click(function(e) {
       e.stopPropagation();
       $popupText.removeClass('show');
     });
