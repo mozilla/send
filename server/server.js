@@ -80,6 +80,10 @@ app.get('/unsupported', (req, res) => {
   res.render('unsupported');
 });
 
+app.get('/legal', (req, res) => {
+  res.render('legal');
+});
+
 app.get('/jsconfig.js', (req, res) => {
   res.set('Content-Type', 'application/javascript');
   res.render('jsconfig', {

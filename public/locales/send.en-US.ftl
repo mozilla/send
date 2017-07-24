@@ -77,6 +77,9 @@ notSupportedHeader = Your browser is not supported.
 notSupportedDetail = Unfortunately this browser does not support the web technology that powers Firefox Send. You'll need to try another browser. We recommend Firefox!
 downloadFirefoxButtonSub = Free Download
 
+legalHeader = Terms & Privacy
+legalNoticeTestPilot = Firefox Send is currently a Test Pilot experiment, and subject to the Test Pilot <a>Terms of Service</a> and <a>Privacy Notice</a>. You can learn more about this experiment and its data collection <a>here</a>.
+legalNoticeMozilla = Use of the Firefox Send website is also subject to Mozilla’s <a>Websites Privacy Notice</a> and <a>Websites Terms of Use</a>.
 
 sentFilesTitle1 = File
 sentFilesTitle2 = Copy URL
