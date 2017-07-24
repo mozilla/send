@@ -1,4 +1,4 @@
-/* global MAXFILESIZE */
+/* global MAXFILESIZE EXPIRE_SECONDS */
 require('./common');
 const FileSender = require('./fileSender');
 const {
@@ -256,7 +256,7 @@ $(document).ready(function() {
           const totalTime = endTime - startTime;
           const uploadTime = endTime - uploadStart;
           const uploadSpeed = file.size / (uploadTime / 1000);
-          const expiration = 24 * 60 * 60 * 1000; //will eventually come from a field
+          const expiration = EXPIRE_SECONDS * 1000;
 
           // record upload-stopped (completed) by sender
           sendEvent('sender', 'upload-stopped', {

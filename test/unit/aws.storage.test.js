@@ -115,7 +115,7 @@ describe('Testing Set using aws', function() {
       .set('123', {on: sinon.stub()}, 'Filename.moz', {})
       .then(() => {
         assert(expire.calledOnce);
-        assert(expire.calledWith('123', 86400000));
+        assert(expire.calledWith('123', 86400));
       })
       .catch(err => assert.fail());
   });

@@ -86,6 +86,7 @@ app.get('/jsconfig.js', (req, res) => {
     trackerId: conf.analytics_id,
     dsn: conf.sentry_id,
     maxFileSize: conf.max_file_size,
+    expireSeconds: conf.expire_seconds,
     layout: false
   });
 });

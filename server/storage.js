@@ -152,7 +152,7 @@ function localSet(newId, file, filename, meta) {
     });
     fstream.on('finish', () => {
       redis_client.hmset(newId, meta);
-      redis_client.expire(newId, 86400000);
+      redis_client.expire(newId, conf.expire_seconds);
       log.info('localSet:', 'Upload Finished of ' + newId);
       resolve(meta.delete);
     });
@@ -238,7 +238,7 @@ function awsSet(newId, file, filename, meta) {
   return upload.promise().then(
     () => {
       redis_client.hmset(newId, meta);
-      redis_client.expire(newId, 86400000);
+      redis_client.expire(newId, conf.expire_seconds);
       log.info('awsUploadFinish', 'Upload Finished of ' + filename);
     },
     err => {
