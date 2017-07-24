@@ -1,7 +1,12 @@
 /***     index.html     ***/
 html {
   background: url('resources/send_bg.svg');
-  font-family: 'SF Pro Text', sans-serif;
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    'SF Pro Text',
+    Helvetica,
+    Arial,
+    sans-serif;
   font-weight: 200;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -10,21 +15,89 @@ html {
 }
 
 body {
-  min-height: 100%;
-  position: relative;
+  display: flex;
+  flex-direction: column;
   margin: 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+.header {
+  align-items: flex-start;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 31px;
+  width: 100%;
 }
 
 .send-logo {
+  display: flex;
   position: relative;
-  top: 31px;
-  left: 31px;
-  display: inline-block;
+  align-items: center;
+}
+
+.site-title {
+  color: #3e3d40;
+  font-size: 32px;
+  font-weight: 500;
+  margin: 0;
+  position: relative;
+  top: -1px;
+}
+
+.site-subtitle {
+  color: #3e3d40;
+  font-size: 12px;
+  margin: 0 8px;
+}
+
+.site-subtitle a {
+  font-weight: bold;
+  color: #3e3d40;
+  transition: color 50ms;
+}
+
+.send-logo:hover a {
+  color: #0297f8;
+}
+
+.feedback {
+  background-color: #0297f8;
+  background-image: url('resources/feedback.svg');
+  background-position: 4px 6px;
+  background-repeat: no-repeat;
+  background-size: 14px;
+  border-radius: 3px;
+  border: 1px solid #0297f8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  float: right;
+  font-size: 12px;
+  line-height: 12px;
+  opacity: 0.9;
+  padding: 6px 6px 5px 20px;
+}
+
+.feedback:hover,
+.feedback:focus {
+  background-color: #0287e8;
+}
+
+.feedback:active {
+  background-color: #0277d8;
 }
 
 .all {
-  padding-top: 10%;
-  padding-bottom: 51px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 630px;
+  margin: 0 auto;
+  width: 96%;
 }
 
 input,
@@ -41,24 +114,26 @@ a {
 /**   page-one    **/
 .title {
   font-size: 33px;
+  line-height: 40px;
   margin: 20px auto;
   text-align: center;
+  max-width: 520px;
   font-family: 'SF Pro Display', sans-serif;
 }
 
 .description {
   font-size: 15px;
   line-height: 23px;
-  width: 630px;
+  max-width: 630px;
   text-align: center;
   margin: 0 auto 60px;
   color: #0c0c0d;
+  width: 92%;
 }
 
 .upload-window {
   border: 1px dashed rgba(0, 148, 251, 0.5);
   margin: 0 auto;
-  width: 640px;
   height: 255px;
   border-radius: 4px;
   display: flex;
@@ -66,14 +141,15 @@ a {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  transition: transform 150ms;
+  padding: 15px;
 }
 
 .upload-window.ondrag {
   border: 3px dashed rgba(0, 148, 251, 0.5);
   margin: 0 auto;
-  width: 636px;
   height: 251px;
-  transform: scale(1.05);
+  transform: scale(1.04);
   border-radius: 4.2px;
   display: flex;
   justify-content: center;
@@ -113,6 +189,7 @@ input[type="file"] {
 
 #file-size-msg {
   font-size: 12px;
+  line-height: 16px;
   color: #737373;
   margin-bottom: 22px;
 }
@@ -147,7 +224,6 @@ tbody {
 }
 
 #uploaded-files {
-  width: 640px;
   margin: 45.3px auto;
   table-layout: fixed;
 }
@@ -251,7 +327,6 @@ tbody {
 
 /**   share-link    **/
 #share-window {
-  width: 645px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -267,6 +342,7 @@ tbody {
 #copy {
   display: flex;
   flex-wrap: nowrap;
+  width: 640px;
 }
 
 #copy-text {
@@ -277,7 +353,7 @@ tbody {
 }
 
 #link {
-  width: 480px;
+  flex: 1;
   height: 56px;
   border: 1px solid #0297f8;
   border-radius: 6px 0 0 6px;
@@ -286,6 +362,8 @@ tbody {
   font-family: 'SF Pro Display', sans-serif;
   letter-spacing: 0;
   line-height: 23px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #link:disabled {
@@ -294,14 +372,17 @@ tbody {
 }
 
 #copy-btn {
-  width: 165px;
-  height: 60px;
+  flex: 0 1 165px;
   background: #0297f8;
-  border: 1px solid #0297f8;
   border-radius: 0 6px 6px 0;
+  border: 1px solid #0297f8;
   color: white;
   cursor: pointer;
   font-size: 15px;
+  height: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  white-space: nowrap;
 }
 
 #copy-btn:disabled {
@@ -362,7 +443,6 @@ tbody {
 .unsupported-description {
   font-size: 13px;
   line-height: 23px;
-  width: 630px;
   text-align: center;
   color: #7d7d7d;
   margin: 0 auto 23px;
@@ -440,7 +520,6 @@ tbody {
 .expired-description {
   font-size: 15px;
   line-height: 23px;
-  width: 630px;
   text-align: center;
   color: #7d7d7d;
   margin: 0 auto 23px;
@@ -466,14 +545,13 @@ tbody {
 
 /*    footer    */
 .footer {
-  position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
   font-size: 15px;
   display: flex;
   align-items: flex-end;
-  padding: 10px;
+  padding: 50px 10px 10px;
 }
 
 .mozilla-logo {
@@ -506,4 +584,64 @@ tbody {
   width: 32px;
   height: 32px;
   margin-bottom: -5px;
+}
+
+@media (max-device-width: 768px) {
+  .description {
+    margin: 0 auto 25px;
+  }
+
+  #copy {
+    width: 100%;
+  }
+
+  #link {
+    font-size: 18px;
+  }
+
+  .mozilla-logo {
+    margin-left: -7px;
+  }
+
+  .legal-links > * {
+    display: block;
+    padding: 10px 0;
+  }
+}
+
+@media (max-device-width: 520px) {
+  .header {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .feedback {
+    margin-top: 10px;
+  }
+
+  #copy {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  #link {
+    font-size: 22px;
+    padding: 15px 10px;
+    border-radius: 6px 6px 0 0;
+  }
+
+  #copy-btn {
+    border-radius: 0 0 6px 6px;
+    flex: 0 1 65px;
+  }
+
+  th {
+    font-size: 14px;
+    padding: 0 5px;
+  }
+
+  td {
+    font-size: 13px;
+    padding: 17px 5px 0;
+  }
 }
