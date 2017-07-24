@@ -145,9 +145,6 @@ $(document).ready(function() {
     if (event.type === 'drop') {
       if (!event.originalEvent.dataTransfer.files[0]) {
         $('.upload-window').removeClass('ondrag');
-        document.l10n.formatValue('uploadValidFile').then(str => {
-          alert(str);
-        });
         return;
       }
       if (
