@@ -83,7 +83,9 @@ sentFilesTitle2 = Copy URL
 sentFilesTitle3 = Expires In
 sentFilesTitle4 = Delete
 
-nevermindButton = Nevermind
+deletePopupText = Delete this file?
+deletePopupYes = Yes
+deletePopupCancel = Cancel
 deleteButtonHover.title = {sentFilesTitle4}
 copyUrlHover.title = {sentFilesTitle2}
 
