@@ -143,6 +143,10 @@ $(document).ready(function() {
 
     let file = '';
     if (event.type === 'drop') {
+      if (!event.originalEvent.dataTransfer.files[0]) {
+        $('.upload-window').removeClass('ondrag');
+        return;
+      }
       if (
         event.originalEvent.dataTransfer.files.length > 1 ||
         event.originalEvent.dataTransfer.files[0].size === 0
