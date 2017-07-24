@@ -54,7 +54,7 @@ $(document).ready(function() {
   $('#dl-progress').circleProgress({
     value: 0.0,
     startAngle: -Math.PI / 2,
-    fill: '#00C8D7',
+    fill: '#3B9DFF',
     size: 158,
     animation: { duration: 300 }
   });
