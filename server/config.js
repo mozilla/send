@@ -41,6 +41,11 @@ const conf = convict({
     format: Number,
     default: 1024 * 1024 * 1024 * 2,
     env: 'MAX_FILE_SIZE'
+  },
+  expire_seconds: {
+    format: Number,
+    default: 86400,
+    env: 'EXPIRE_SECONDS'
   }
 });
 
