@@ -1,10 +1,10 @@
 {
   "name": "firefox-send",
   "description": "File Sharing Experiment",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Mozilla (https://mozilla.org)",
   "dependencies": {
-    "aws-sdk": "^2.88.0",
+    "aws-sdk": "^2.89.0",
     "body-parser": "^1.17.2",
     "bytes": "^2.5.0",
     "connect-busboy": "0.0.2",
@@ -31,7 +31,7 @@
     "prettier": "^1.5.3",
     "proxyquire": "^1.8.0",
     "raven-js": "^3.17.0",
-    "selenium-webdriver": "^3.4.0",
+    "selenium-webdriver": "^3.5.0",
     "sinon": "^2.3.8",
     "stylelint": "^7.13.0",
     "stylelint-config-standard": "^16.0.0",
