@@ -46,6 +46,11 @@ const conf = convict({
     format: Number,
     default: 86400,
     env: 'EXPIRE_SECONDS'
+  },
+  l10n_dev: {
+    format: Boolean,
+    default: false,
+    env: 'L10N_DEV'
   }
 });
 
