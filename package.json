@@ -45,6 +45,7 @@
   "homepage": "https://github.com/mozilla/send/",
   "license": "MPL-2.0",
   "repository": "mozilla/send",
+  "availableLanguages": ["en-US"],
   "scripts": {
     "build": "npm-run-all build:*",
     "build:upload": "browserify frontend/src/upload.js -g uglifyify -o public/upload.js",
