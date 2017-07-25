@@ -8,10 +8,12 @@ html {
     Arial,
     sans-serif;
   font-weight: 200;
-  background-size: 100%;
+  background-size: 110%;
   background-repeat: no-repeat;
   background-position: center top;
   height: 100%;
+  max-width: 1440px;
+  margin: auto;
 }
 
 body {
@@ -37,6 +39,11 @@ body {
   align-items: center;
 }
 
+.send-logo > a {
+  display: flex;
+  flex-direction: row;
+}
+
 .site-title {
   color: #3e3d40;
   font-size: 32px;
@@ -44,6 +51,8 @@ body {
   margin: 0;
   position: relative;
   top: -1px;
+  letter-spacing: 1px;
+  margin-left: 8px;
 }
 
 .site-subtitle {
@@ -65,9 +74,9 @@ body {
 .feedback {
   background-color: #0297f8;
   background-image: url('resources/feedback.svg');
-  background-position: 4px 6px;
+  background-position: 2px 4px;
   background-repeat: no-repeat;
-  background-size: 14px;
+  background-size: 18px;
   border-radius: 3px;
   border: 1px solid #0297f8;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -78,12 +87,20 @@ body {
   font-size: 12px;
   line-height: 12px;
   opacity: 0.9;
-  padding: 6px 6px 5px 20px;
+  padding: 5px;
+  overflow: hidden;
+  width: 12px;
+  text-indent: 17px;
+  transition: all 150ms ease-in-out;
 }
 
 .feedback:hover,
 .feedback:focus {
+  width: 57px;
+  text-indent: 2px;
+  padding: 5px 5px 5px 20px;
   background-color: #0287e8;
+  transition: all 150ms ease-in-out;
 }
 
 .feedback:active {
@@ -97,6 +114,8 @@ body {
   justify-content: flex-start;
   max-width: 630px;
   margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
   width: 96%;
 }
 
@@ -112,6 +131,7 @@ a {
 }
 
 /**   page-one    **/
+
 .title {
   font-size: 33px;
   line-height: 40px;
@@ -161,6 +181,10 @@ a {
 .link {
   color: #0094fb;
   text-decoration: none;
+}
+
+.link:hover {
+  color: #0287e8;
 }
 
 #upload-text {
@@ -391,8 +415,9 @@ tbody {
   font-family: 'SF Pro Display', sans-serif;
   letter-spacing: 0;
   line-height: 23px;
-  padding-left: 5px;
-  padding-right: 5px;
+  font-weight: 300;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #link:disabled {
@@ -414,6 +439,10 @@ tbody {
   white-space: nowrap;
 }
 
+#copy-btn:hover {
+  background-color: #0287e8;
+}
+
 #copy-btn:disabled {
   background: #05a700;
   border: 1px solid #05a700;
@@ -433,6 +462,10 @@ tbody {
   color: #313131;
 }
 
+#delete-file:hover {
+  background: #efeff1;
+}
+
 .send-new {
   font-size: 15px;
   margin: auto;
@@ -440,6 +473,12 @@ tbody {
   color: #0094fb;
   cursor: pointer;
   text-decoration: underline;
+}
+
+.send-new:hover,
+.send-new:focus,
+.send-new:active {
+  color: #0287e8;
 }
 
 /*    upload-error    */
@@ -457,8 +496,7 @@ tbody {
 }
 
 #upload-error-img {
-  margin-bottom: 90px;
-  margin-top: 5px;
+  margin: 51px 0 71px;
 }
 
 /*    unsupported-browser   */
@@ -528,6 +566,10 @@ tbody {
   cursor: pointer;
 }
 
+#download-btn:hover {
+  background-color: #0287e8;
+}
+
 #download-btn:disabled {
   background: #47b04b;
   cursor: auto;
@@ -580,7 +622,11 @@ tbody {
   font-size: 15px;
   display: flex;
   align-items: flex-end;
-  padding: 50px 10px 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 50px 31px 41px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .mozilla-logo {
@@ -589,9 +635,22 @@ tbody {
   margin-bottom: -5px;
 }
 
+.legal-links {
+  max-width: 600px;
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .legal-links > a {
-  margin-right: 30px;
   color: #858585;
+  opacity: 0.9;
+}
+
+.legal-links > a:hover {
+  opacity: 1;
 }
 
 .legal-links > a:visited {
@@ -600,12 +659,16 @@ tbody {
 
 .social-links {
   display: flex;
-  justify-content: flex-end;
-  flex: 1;
+  justify-content: space-between;
+  width: 94px;
 }
 
 .social-links > a {
-  margin-left: 30px;
+  opacity: 0.9;
+}
+
+.social-links > a:hover {
+  opacity: 1;
 }
 
 .github,
@@ -615,7 +678,7 @@ tbody {
   margin-bottom: -5px;
 }
 
-@media (max-device-width: 768px) {
+@media (max-device-width: 768px), (max-width: 768px) {
   .description {
     margin: 0 auto 25px;
   }
@@ -628,17 +691,38 @@ tbody {
     font-size: 18px;
   }
 
+  .footer {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 630px;
+    margin: auto;
+  }
+
   .mozilla-logo {
     margin-left: -7px;
+  }
+
+  .legal-links {
+    flex-direction: column;
+    margin: auto;
+    width: 100%;
+    max-width: 100%;
   }
 
   .legal-links > * {
     display: block;
     padding: 10px 0;
+    align-self: flex-start;
+  }
+
+  .social-links {
+    margin-top: 20px;
+    align-self: flex-start;
   }
 }
 
-@media (max-device-width: 520px) {
+@media (max-device-width: 520px), (max-width: 520px) {
   .header {
     flex-direction: column;
     justify-content: flex-start;
