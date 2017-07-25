@@ -3,10 +3,10 @@ title = Firefox Send
 siteSubtitle = esperimento web
 siteFeedback = Feedback
 uploadPageHeader = Condivisione di file riservata e cifrata
-uploadPageExplainer = Invia file utilizzando un link sicuro, privato e crittato che scade automaticamente per garantire che i tuoi dati non rimangano online per sempre.
+uploadPageExplainer = Invia file in modo sicuro, riservato e crittato, con un link che scade automaticamente per garantire che i tuoi dati non rimangano online per sempre.
 uploadPageLearnMore = Ulteriori informazioni
 uploadPageDropMessage = Trascina qui i tuoi file per caricarli
-uploadPageSizeMessage = Per risultati affidabili è consigliabile mantenere il file al di sotto di 1 GB
+uploadPageSizeMessage = Per un risultato affidabile è consigliabile mantenere il file al di sotto di 1 GB
 uploadPageBrowseButton = Seleziona un file sul computer
     .title = Seleziona un file sul computer
 uploadPageMultipleFilesAlert = Il caricamento di più file o cartelle non è attualmente supportato.
@@ -43,6 +43,8 @@ downloadAltText
     .alt = Scarica
 downloadFileName = Scarica { $filename }
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Qualcuno ti ha inviato un file con Firefox Send: è un servizio che permette di condividere file in modo sicuro, riservato e crittato, attraverso un link che scade automaticamente, garantendo che i tuoi dati non rimangano online per sempre.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Scarica
     .title = Scarica
