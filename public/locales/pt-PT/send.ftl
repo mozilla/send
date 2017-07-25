@@ -7,7 +7,7 @@ uploadPageExplainer = Envie ficheiros através de uma ligação segura, privada 
 uploadPageLearnMore = Saber mais
 uploadPageDropMessage = Largue o seu ficheiro aqui para começar a carregar
 uploadPageSizeMessage = Para uma operação mais confiável, é melhor manter o seu ficheiro abaixo de 1GB
-uploadPageBrowseButton
+uploadPageBrowseButton = Selecione um ficheiro no seu computador
     .title = Selecione um ficheiro no seu computador
 uploadPageMultipleFilesAlert = Carregar múltiplos ficheiros ou uma pasta não é atualmente suportado.
 uploadPageBrowseButtonTitle = Carregar ficheiro
@@ -18,7 +18,7 @@ encryptingFile = A encriptar...
 decryptingFile = A desencriptar...
 notifyUploadDone = O seu carregamento terminou.
 uploadingPageMessage = Assim que o seu ficheiro carregar irá poder definir as opções de expiração.
-uploadingPageCancel
+uploadingPageCancel = Cancelar carregamento
     .title = Cancelar carregamento
 uploadCancelNotification = O seu carregamento foi cancelado.
 uploadingPageLargeFileMessage = Este ficheiro é grande e pode demorar um pouco a carregar. Fique onde está!
@@ -29,14 +29,14 @@ uploadSvgAlt
 uploadSuccessTimingHeader = A ligação para o seu ficheiro irá expirar depois de 1 descarga ou em 24 horas.
 copyUrlFormLabelWithName = Copie e partilhe a ligação para enviar o seu ficheiro: { $filename }
 // Note: Title text for button should be the same.
-copyUrlFormButton
+copyUrlFormButton = Copiar para a área de transferência
     .title = Copiar para a área de transferência
 copiedUrl = Copiado!
 // Note: Title text for button should be the same.
-deleteFileButton
+deleteFileButton = Apagar ficheiro
     .title = Apagar ficheiro
 // Note: Title text for button should be the same.
-sendAnotherFileLink
+sendAnotherFileLink = Enviar outro ficheiro
     .title = Enviar outro ficheiro
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText
@@ -46,12 +46,12 @@ downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiro com uma ligação segura, privada e encriptada que automaticamente expira para garantir que as suas coisas não fiquem online para sempre.
 // Text and title used on the download link/button (indicates an action).
-downloadButtonLabel
+downloadButtonLabel = Descarregar
     .title = Descarregar
 downloadNotification = A sua descarga foi completada.
 downloadFinish = Descarga completada
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
-sendYourFilesLink
+sendYourFilesLink = Tentar o Firefox Send
     .title = Tentar o Firefox Send
 downloadingPageProgress = A descarregar { $filename } ({ $size })
 downloadingPageMessage = Por favor deixe este separador aberto enquanto obtemos o seu ficheiro e o desencriptamos.
