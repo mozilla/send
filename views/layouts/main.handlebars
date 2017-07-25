@@ -9,12 +9,13 @@
 
   <meta name="defaultLanguage" content="en-US">
   <meta name="availableLanguages" content="en-US">
-  <link rel="localization" href="/locales/send.{locale}.ftl">
+
   <link rel="icon" type="image/png" href="/resources/favicon-32x32.png" sizes="32x32" />
+  <link rel="localization" href="/locales/{locale}/send.ftl">
   <script defer src="/l20n.min.js"></script>
 </head>
 <body>
-  <header class="header"> 
+  <header class="header">
     <div class="send-logo">
       <a href="/">
         <img src="/resources/send_logo.svg" alt="Send"/><h1 class="site-title">Send</h1>
@@ -34,8 +35,8 @@
       <a href="https://www.mozilla.org"><img class="mozilla-logo" src="/resources/mozilla-logo.svg"/></a>
       <a href="https://www.mozilla.org/about/legal" data-l10n-id="footerLinkLegal"></a>
       <a href="https://testpilot.firefox.com/about" data-l10n-id="footerLinkAbout"></a>
-      <a href="https://testpilot.firefox.com/privacy" data-l10n-id="footerLinkPrivacy"></a>
-      <a href="https://testpilot.firefox.com/terms" data-l10n-id="footerLinkTerms"></a>
+      <a href="/legal" data-l10n-id="footerLinkPrivacy"></a>
+      <a href="/legal" data-l10n-id="footerLinkTerms"></a>
       <a href="https://www.mozilla.org/en-US/privacy/websites/#cookies" data-l10n-id="footerLinkCookies"></a>
     </div>
     <div class="social-links">

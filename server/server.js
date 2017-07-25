@@ -45,20 +45,19 @@ app.use(
       connectSrc: [
         "'self'",
         'https://sentry.prod.mozaws.net',
-        'https://www.google-analytics.com',
-        'https://ssl.google-analytics.com'
+        'https://www.google-analytics.com'
       ],
       imgSrc: [
         "'self'",
-        'https://www.google-analytics.com',
-        'https://ssl.google-analytics.com'
+        'https://www.google-analytics.com'
       ],
-      scriptSrc: ["'self'", 'https://ssl.google-analytics.com'],
+      scriptSrc: ["'self'"],
       styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
       fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
       formAction: ["'none'"],
       frameAncestors: ["'none'"],
-      objectSrc: ["'none'"]
+      objectSrc: ["'none'"],
+      reportUri: '/__cspreport__'
     }
   })
 );
@@ -78,6 +77,10 @@ app.get('/', (req, res) => {
 
 app.get('/unsupported', (req, res) => {
   res.render('unsupported');
+});
+
+app.get('/legal', (req, res) => {
+  res.render('legal');
 });
 
 app.get('/jsconfig.js', (req, res) => {

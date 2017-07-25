@@ -306,6 +306,11 @@ $(document).ready(function() {
           });
         })
         .catch(err => {
+          // err is 0 when coming from a cancel upload event
+          if (err === 0) {
+            return;
+          }
+          // only show error page when the error is anything other than user cancelling the upload
           Raven.captureException(err);
           $('#page-one').attr('hidden', true);
           $('#upload-progress').attr('hidden', true);
@@ -462,10 +467,8 @@ $(document).ready(function() {
     popupDiv.classList.add('popup');
     const $popupMessage = $('<div>', { class: 'popup-message' });
     $popupMessage.attr('data-l10n-id', 'deletePopupText');
-
     const $popupDelSpan = $('<span>', { class: 'popup-yes' });
     $popupDelSpan.attr('data-l10n-id', 'deletePopupYes');
-
     const $popupNvmSpan = $('<span>', { class: 'popup-no' });
     $popupNvmSpan.attr('data-l10n-id', 'deletePopupCancel');
 
