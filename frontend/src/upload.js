@@ -135,7 +135,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     // don't allow upload if not on upload page
-    if ($('#page-one').attr('hidden')){
+    if ($('#page-one').attr('hidden')) {
       return;
     }
 
@@ -472,7 +472,7 @@ $(document).ready(function() {
     const $popupNvmSpan = $('<span>', { class: 'popup-no' });
     $popupNvmSpan.attr('data-l10n-id', 'deletePopupCancel');
 
-    $popupText.html([$popupMessage, $popupDelSpan,  $popupNvmSpan]);
+    $popupText.html([$popupMessage, $popupDelSpan, $popupNvmSpan]);
 
     // add data cells to table row
     row.appendChild(name);

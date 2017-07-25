@@ -19,9 +19,7 @@ class FileReceiver extends EventEmitter {
 
         xhr.onload = function(event) {
           if (xhr.status === 404) {
-            reject(
-              new Error('notfound')
-            );
+            reject(new Error('notfound'));
             return;
           }
 
