@@ -7,8 +7,8 @@ const driver = new webdriver.Builder()
   .build();
 
 driver.get(path.join('file:///', __dirname, '/frontend.test.html'));
-driver.wait(until.titleIs('Mocha Tests'), 10000);
-driver.wait(until.titleMatches(/^[0-1]$/), 10000);
+driver.wait(until.titleIs('Mocha Tests'));
+driver.wait(until.titleMatches(/^[0-1]$/));
 
 driver.getTitle().then(title => {
   driver.quit().then(() => {
