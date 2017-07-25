@@ -7,7 +7,7 @@ uploadPageExplainer = Senden Sie Dateien über einen sicheren, privaten und vers
 uploadPageLearnMore = Mehr erfahren
 uploadPageDropMessage = Ziehen Sie eine Datei zum Hochladen hierher
 uploadPageSizeMessage = Dateien unter 1 GB sorgen für erhöhte Zuverlässigkeit des Betriebs
-uploadPageBrowseButton
+uploadPageBrowseButton = Wählen Sie eine Datei auf Ihrem Computer aus
     .title = Wählen Sie eine Datei auf Ihrem Computer aus
 uploadPageMultipleFilesAlert = Hochladen mehrerer Dateien oder eines Ordners wird derzeit nicht unterstützt.
 uploadPageBrowseButtonTitle = Datei hochladen
