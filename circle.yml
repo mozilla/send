@@ -16,7 +16,7 @@ deployment:
   latest:
     branch: master
     commands:
-    - npm run predocker
+    - npm run build
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - docker build -t mozilla/send:latest .
     - docker push mozilla/send:latest
@@ -24,7 +24,7 @@ deployment:
     tag: /.*/
     owner: mozilla
     commands:
-    - npm run predocker
+    - npm run build
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - docker build -t mozilla/send:$CIRCLE_TAG .
     - docker push mozilla/send:$CIRCLE_TAG

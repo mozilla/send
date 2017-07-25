@@ -1,5 +1,7 @@
 // Firefox Send is a brand name and should not be localized.
 title = Firefox Send
+siteSubtitle = web experiment
+siteFeedback = Feedback
 uploadPageHeader = Private, Encrypted File Sharing
 uploadPageExplainer = Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
 uploadPageLearnMore = Learn more
@@ -10,6 +12,10 @@ uploadPageBrowseButton = Select a file on your computer
 uploadPageMultipleFilesAlert = Uploading multiple files or a folder is currently not supported.
 uploadPageBrowseButtonTitle = Upload file
 uploadingPageHeader = Uploading Your File
+importingFile = Importing...
+verifyingFile = Verifying...
+encryptingFile = Encrypting...
+decryptingFile = Decrypting...
 notifyUploadDone = Your upload has finished.
 uploadingPageMessage = Once your file uploads you will be able to set expiry options.
 uploadingPageCancel = Cancel upload
@@ -54,8 +60,8 @@ errorAltText
 errorPageHeader = Something went wrong!
 errorPageMessage = There has been an error uploading the file.
 errorPageLink = Send another file
-linkExpiredAlt
-    .alt = Link expired
+fileTooBig = That file is too big to upload. It should be less than { $size }.
+linkExpiredAlt.alt = Link expired
 expiredPageHeader = This link has expired or never existed in the first place!
 notSupportedHeader = Your browser is not supported.
 // Firefox Send is a brand name and should not be localized.
@@ -67,6 +73,16 @@ copyFileList = Copy URL
 expiryFileList = Expires In
 deleteFileList = Delete
 nevermindButton = Never mind
+deleteButtonHover
+    .title = Delete
+copyUrlHover
+    .title = Copy URL
+legalHeader = Terms & Privacy
+legalNoticeTestPilot = Firefox Send is currently a Test Pilot experiment, and subject to the Test Pilot <a>Terms of Service</a> and <a>Privacy Notice</a>. You can learn more about this experiment and its data collection <a>here</a>.
+legalNoticeMozilla = Use of the Firefox Send website is also subject to Mozilla’s <a>Websites Privacy Notice</a> and <a>Websites Terms of Use</a>.
+deletePopupText = Delete this file?
+deletePopupYes = Yes
+deletePopupCancel = Cancel
 deleteButtonHover
     .title = Delete
 copyUrlHover

@@ -7,6 +7,6 @@ services:
     ports:
       - "1443:1443"
     environment:
-      - P2P_REDIS_HOST=redis
+      - REDIS_HOST=redis
   redis:
     image: redis:alpine

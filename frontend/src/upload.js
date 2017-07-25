@@ -1,17 +1,74 @@
+/* global MAXFILESIZE EXPIRE_SECONDS */
+require('./common');
 const FileSender = require('./fileSender');
-const { notify, gcmCompliant } = require('./utils');
+const {
+  notify,
+  gcmCompliant,
+  findMetric,
+  sendEvent,
+  ONE_DAY_IN_MS
+} = require('./utils');
+const bytes = require('bytes');
+const Storage = require('./storage');
+const storage = new Storage(localStorage);
+
 const $ = require('jquery');
 require('jquery-circle-progress');
 
 const Raven = window.Raven;
 
+if (storage.has('referrer')) {
+  window.referrer = storage.referrer;
+  storage.remove('referrer');
+} else {
+  window.referrer = 'external';
+}
+
 $(document).ready(function() {
   gcmCompliant().catch(err => {
     $('#page-one').attr('hidden', true);
-    $('#unsupported-browser').removeAttr('hidden');
+    sendEvent('sender', 'unsupported', {
+      cd6: err
+    }).then(() => {
+      location.replace('/unsupported');
+    });
   });
 
   $('#file-upload').change(onUpload);
+
+  $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
+    target.preventDefault();
+    const metric = findMetric(target.currentTarget.href);
+    // record exited event by recipient
+    sendEvent('sender', 'exited', {
+      cd3: metric
+    }).then(() => {
+      location.href = target.currentTarget.href;
+    });
+  });
+
+  $('#send-new-completed').click(function(target) {
+    target.preventDefault();
+    // record restarted event
+    sendEvent('sender', 'restarted', {
+      cd2: 'completed'
+    }).then(() => {
+      storage.referrer = 'completed-upload';
+      location.href = target.currentTarget.href;
+    });
+  });
+
+  $('#send-new-error').click(function(target) {
+    target.preventDefault();
+    // record restarted event
+    sendEvent('sender', 'restarted', {
+      cd2: 'errored'
+    }).then(() => {
+      storage.referrer = 'errored-upload';
+      location.href = target.currentTarget.href;
+    });
+  });
+
   $('body').on('dragover', allowDrop).on('drop', onUpload);
   // reset copy button
   const $copyBtn = $('#copy-btn');
@@ -19,18 +76,23 @@ $(document).ready(function() {
   $('#link').attr('disabled', false);
   $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
 
-  if (localStorage.length === 0) {
+  const files = storage.files;
+  if (files.length === 0) {
     toggleHeader();
   } else {
-    for (let i = 0; i < localStorage.length; i++) {
-      const id = localStorage.key(i);
-      //check if file exists before adding to list
-      checkExistence(id, true);
+    for (const index in files) {
+      const id = files[index].fileId;
+      //check if file still exists before adding to list
+      checkExistence(id, files[index], true);
     }
   }
 
   // copy link to clipboard
   $copyBtn.click(() => {
+    // record copied event from success screen
+    sendEvent('sender', 'copied', {
+      cd4: 'success-screen'
+    });
     const aux = document.createElement('input');
     aux.setAttribute('value', $('#link').attr('value'));
     document.body.appendChild(aux);
@@ -40,7 +102,9 @@ $(document).ready(function() {
     //disable button for 3s
     $copyBtn.attr('disabled', true);
     $('#link').attr('disabled', true);
-    $copyBtn.html('<img src="/resources/check-16.svg" class="icon-check"></img>');
+    $copyBtn.html(
+      '<img src="/resources/check-16.svg" class="icon-check"></img>'
+    );
     window.setTimeout(() => {
       $copyBtn.attr('disabled', false);
       $('#link').attr('disabled', false);
@@ -69,14 +133,28 @@ $(document).ready(function() {
   // on file upload by browse or drag & drop
   function onUpload(event) {
     event.preventDefault();
+
+    // don't allow upload if not on upload page
+    if ($('#page-one').attr('hidden')){
+      return;
+    }
+
+    storage.totalUploads += 1;
+
     let file = '';
     if (event.type === 'drop') {
-      if (event.originalEvent.dataTransfer.files.length > 1 || event.originalEvent.dataTransfer.files[0].size === 0){
+      if (!event.originalEvent.dataTransfer.files[0]) {
         $('.upload-window').removeClass('ondrag');
-        document.l10n.formatValue('uploadPageMultipleFilesAlert')
-                     .then(str => {
-                       alert(str);
-                     });
+        return;
+      }
+      if (
+        event.originalEvent.dataTransfer.files.length > 1 ||
+        event.originalEvent.dataTransfer.files[0].size === 0
+      ) {
+        $('.upload-window').removeClass('ondrag');
+        document.l10n.formatValue('uploadPageMultipleFilesAlert').then(str => {
+          alert(str);
+        });
         return;
       }
       file = event.originalEvent.dataTransfer.files[0];
@@ -84,21 +162,39 @@ $(document).ready(function() {
       file = event.target.files[0];
     }
 
+    if (file.size > MAXFILESIZE) {
+      return document.l10n
+        .formatValue('fileTooBig', { size: bytes(MAXFILESIZE) })
+        .then(alert);
+    }
+
     $('#page-one').attr('hidden', true);
     $('#upload-error').attr('hidden', true);
     $('#upload-progress').removeAttr('hidden');
+    document.l10n.formatValue('importingFile').then(importingFile => {
+      $('.progress-text').text(importingFile);
+    });
     //don't allow drag and drop when not on page-one
     $('body').off('drop', onUpload);
-    const expiration = 24 * 60 * 60 * 1000; //will eventually come from a field
 
     const fileSender = new FileSender(file);
     $('#cancel-upload').click(() => {
       fileSender.cancel();
       location.reload();
-      document.l10n.formatValue('uploadCancelNotification')
-                   .then(str => {
-                     notify(str);
-                   });
+      document.l10n.formatValue('uploadCancelNotification').then(str => {
+        notify(str);
+      });
+      storage.referrer = 'cancelled-upload';
+
+      // record upload-stopped (cancelled) by sender
+      sendEvent('sender', 'upload-stopped', {
+        cm1: file.size,
+        cm5: storage.totalUploads,
+        cm6: unexpiredFiles,
+        cm7: storage.totalDownloads,
+        cd1: event.type === 'drop' ? 'drop' : 'click',
+        cd2: 'cancelled'
+      });
     });
 
     fileSender.on('progress', progress => {
@@ -106,101 +202,152 @@ $(document).ready(function() {
       // update progress bar
       $('#ul-progress').circleProgress('value', percent);
       $('#ul-progress').circleProgress().on('circle-animation-end', function() {
-        $('.percent-number').html(`${Math.floor(percent * 100)}`);
+        $('.percent-number').text(`${Math.floor(percent * 100)}`);
       });
-      if (progress[1] < 1000000) {
-        $('.progress-text').text(
-          `${file.name} (${(progress[0] / 1000).toFixed(1)}KB of ${(progress[1] / 1000).toFixed(1)}KB)`
-        );
-      } else if (progress[1] < 1000000000) {
-        $('.progress-text').text(
-          `${file.name} (${(progress[0] / 1000000).toFixed(1)}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
-        );
-      } else {
-        $('.progress-text').text(
-          `${file.name} (${(progress[0] / 1000000).toFixed(1)}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
-        );
-      }
-    });
-
-    fileSender.on('loading', isStillLoading => {
-      // The file is loading into Firefox at this stage
-      if (isStillLoading) {
-        console.log('Processing');
-      } else {
-        console.log('Finished processing');
-      }
+      $('.progress-text').text(
+        `${file.name} (${bytes(progress[0], {
+          decimalPlaces: 1,
+          fixedDecimals: true
+        })} of ${bytes(progress[1], { decimalPlaces: 1 })})`
+      );
     });
 
     fileSender.on('hashing', isStillHashing => {
       // The file is being hashed
       if (isStillHashing) {
-        console.log('Hashing');
+        document.l10n.formatValue('verifyingFile').then(verifyingFile => {
+          $('.progress-text').text(verifyingFile);
+        });
       } else {
         console.log('Finished hashing');
       }
     });
 
+    let uploadStart;
     fileSender.on('encrypting', isStillEncrypting => {
       // The file is being encrypted
       if (isStillEncrypting) {
-        console.log('Encrypting');
+        document.l10n.formatValue('encryptingFile').then(encryptingFile => {
+          $('.progress-text').text(encryptingFile);
+        });
       } else {
         console.log('Finished encrypting');
+        uploadStart = Date.now();
       }
     });
-    let t = '';
-    fileSender
-      .upload()
-      .then(info => {
-        const fileData = {
-          name: file.name,
-          fileId: info.fileId,
-          url: info.url,
-          secretKey: info.secretKey,
-          deleteToken: info.deleteToken,
-          creationDate: new Date(),
-          expiry: expiration
-        };
-        localStorage.setItem(info.fileId, JSON.stringify(fileData));
-        $('#upload-filename').attr('data-l10n-id', 'uploadSuccessConfirmHeader');
-        t = window.setTimeout(() => {
+
+    let t;
+    const startTime = Date.now();
+    const unexpiredFiles = storage.numFiles + 1;
+
+    // record upload-started event by sender
+    sendEvent('sender', 'upload-started', {
+      cm1: file.size,
+      cm5: storage.totalUploads,
+      cm6: unexpiredFiles,
+      cm7: storage.totalDownloads,
+      cd1: event.type === 'drop' ? 'drop' : 'click',
+      cd5: window.referrer
+    });
+
+    // For large files we need to give the ui a tick to breathe and update
+    // before we kick off the FileSender
+    setTimeout(() => {
+      fileSender
+        .upload()
+        .then(info => {
+          const endTime = Date.now();
+          const totalTime = endTime - startTime;
+          const uploadTime = endTime - uploadStart;
+          const uploadSpeed = file.size / (uploadTime / 1000);
+          const expiration = EXPIRE_SECONDS * 1000;
+
+          // record upload-stopped (completed) by sender
+          sendEvent('sender', 'upload-stopped', {
+            cm1: file.size,
+            cm2: totalTime,
+            cm3: uploadSpeed,
+            cm5: storage.totalUploads,
+            cm6: unexpiredFiles,
+            cm7: storage.totalDownloads,
+            cd1: event.type === 'drop' ? 'drop' : 'click',
+            cd2: 'completed'
+          });
+
+          const fileData = {
+            name: file.name,
+            size: file.size,
+            fileId: info.fileId,
+            url: info.url,
+            secretKey: info.secretKey,
+            deleteToken: info.deleteToken,
+            creationDate: new Date(),
+            expiry: expiration,
+            totalTime: totalTime,
+            typeOfUpload: event.type === 'drop' ? 'drop' : 'click',
+            uploadSpeed: uploadSpeed
+          };
+
+          storage.addFile(info.fileId, fileData);
+          $('#upload-filename').attr(
+            'data-l10n-id',
+            'uploadSuccessConfirmHeader'
+          );
+          t = window.setTimeout(() => {
+            $('#page-one').attr('hidden', true);
+            $('#upload-progress').attr('hidden', true);
+            $('#upload-error').attr('hidden', true);
+            $('#share-link').removeAttr('hidden');
+          }, 1000);
+
+          populateFileList(fileData);
+          document.l10n.formatValue('notifyUploadDone').then(str => {
+            notify(str);
+          });
+        })
+        .catch(err => {
+          // err is 0 when coming from a cancel upload event
+          if (err === 0) {
+            return;
+          }
+          // only show error page when the error is anything other than user cancelling the upload
+          Raven.captureException(err);
           $('#page-one').attr('hidden', true);
           $('#upload-progress').attr('hidden', true);
-          $('#upload-error').attr('hidden', true);
-          $('#share-link').removeAttr('hidden');
-        }, 1000);
+          $('#upload-error').removeAttr('hidden');
+          window.clearTimeout(t);
 
-        populateFileList(JSON.stringify(fileData));
-        document.l10n.formatValue('notifyUploadDone')
-                     .then(str => {
-                       notify(str);
-                     });
-      })
-      .catch(err => {
-        Raven.captureException(err);
-        console.log(err);
-        $('#page-one').attr('hidden', true);
-        $('#upload-progress').attr('hidden', true);
-        $('#upload-error').removeAttr('hidden');
-        window.clearTimeout(t);
-      });
+          // record upload-stopped (errored) by sender
+          sendEvent('sender', 'upload-stopped', {
+            cm1: file.size,
+            cm5: storage.totalUploads,
+            cm6: unexpiredFiles,
+            cm7: storage.totalDownloads,
+            cd1: event.type === 'drop' ? 'drop' : 'click',
+            cd2: 'errored',
+            cd6: err
+          });
+        });
+    }, 10);
   }
 
   function allowDrop(ev) {
     ev.preventDefault();
   }
 
-  function checkExistence(id, populate) {
+  function checkExistence(id, file, populate) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           if (populate) {
-            populateFileList(localStorage.getItem(id));
+            populateFileList(file);
           }
         } else if (xhr.status === 404) {
-          localStorage.removeItem(id);
+          storage.remove(id);
+          if (storage.numFiles === 0) {
+            toggleHeader();
+          }
         }
       }
     };
@@ -208,21 +355,23 @@ $(document).ready(function() {
     xhr.send();
   }
 
-  //update file table with current files in localStorage
+  //update file table with current files in storage
   function populateFileList(file) {
-    try {
-      file = JSON.parse(file);
-    } catch (e) {
-      return;
-    }
-
     const row = document.createElement('tr');
     const name = document.createElement('td');
     const link = document.createElement('td');
-    const $copyIcon = $('<img>', { src: '/resources/copy-16.svg', class: 'icon-copy', 'data-l10n-id': 'copyUrlHover'});
+    const $copyIcon = $('<img>', {
+      src: '/resources/copy-16.svg',
+      class: 'icon-copy',
+      'data-l10n-id': 'copyUrlHover'
+    });
     const expiry = document.createElement('td');
     const del = document.createElement('td');
-    const $delIcon = $('<img>', { src: '/resources/close-16.svg', class: 'icon-delete', 'data-l10n-id': 'deleteButtonHover' });
+    const $delIcon = $('<img>', {
+      src: '/resources/close-16.svg',
+      class: 'icon-delete',
+      'data-l10n-id': 'deleteButtonHover'
+    });
     const popupDiv = document.createElement('div');
     const $popupText = $('<div>', { class: 'popuptext' });
     const cellText = document.createTextNode(file.name);
@@ -230,14 +379,8 @@ $(document).ready(function() {
     const url = file.url.trim() + `#${file.secretKey}`.trim();
 
     $('#link').attr('value', url);
-    $('#copy-text').attr(
-      'data-l10n-args',
-      '{"filename": "' + file.name + '"}'
-    );
-    $('#copy-text').attr(
-      'data-l10n-id',
-      'copyUrlFormLabelWithName'
-    );
+    $('#copy-text').attr('data-l10n-args', '{"filename": "' + file.name + '"}');
+    $('#copy-text').attr('data-l10n-id', 'copyUrlFormLabelWithName');
     $popupText.attr('tabindex', '-1');
 
     name.appendChild(cellText);
@@ -258,16 +401,19 @@ $(document).ready(function() {
 
     //copy link to clipboard when icon clicked
     $copyIcon.click(function() {
+      // record copied event from upload list
+      sendEvent('sender', 'copied', {
+        cd4: 'upload-list'
+      });
       const aux = document.createElement('input');
       aux.setAttribute('value', url);
       document.body.appendChild(aux);
       aux.select();
       document.execCommand('copy');
       document.body.removeChild(aux);
-      document.l10n.formatValue('copiedUrl')
-                   .then(translated => {
-                     link.innerHTML = translated;
-                   });
+      document.l10n.formatValue('copiedUrl').then(translated => {
+        link.innerHTML = translated;
+      });
       window.setTimeout(() => {
         const linkImg = document.createElement('img');
         $(linkImg).addClass('icon-copy');
@@ -283,7 +429,7 @@ $(document).ready(function() {
     future.setTime(file.creationDate.getTime() + file.expiry);
 
     let countdown = 0;
-    countdown = future.getTime() - new Date().getTime();
+    countdown = future.getTime() - Date.now();
     let minutes = Math.floor(countdown / 1000 / 60);
     let hours = Math.floor(minutes / 60);
     let seconds = Math.floor(countdown / 1000 % 60);
@@ -291,7 +437,7 @@ $(document).ready(function() {
     poll();
 
     function poll() {
-      countdown = future.getTime() - new Date().getTime();
+      countdown = future.getTime() - Date.now();
       minutes = Math.floor(countdown / 1000 / 60);
       hours = Math.floor(minutes / 60);
       seconds = Math.floor(countdown / 1000 % 60);
@@ -310,7 +456,7 @@ $(document).ready(function() {
       }
       //remove from list when expired
       if (countdown <= 0) {
-        localStorage.removeItem(file.fileId);
+        storage.remove(file.fileId);
         $(expiry).parents('tr').remove();
         window.clearTimeout(t);
         toggleHeader();
@@ -319,20 +465,14 @@ $(document).ready(function() {
 
     // create popup
     popupDiv.classList.add('popup');
-    const popupDelSpan = document.createElement('span');
-    $(popupDelSpan).addClass('del-file');
-    $(popupDelSpan).attr('data-l10n-id', 'deleteFileList');
+    const $popupMessage = $('<div>', { class: 'popup-message' });
+    $popupMessage.attr('data-l10n-id', 'deletePopupText');
+    const $popupDelSpan = $('<span>', { class: 'popup-yes' });
+    $popupDelSpan.attr('data-l10n-id', 'deletePopupYes');
+    const $popupNvmSpan = $('<span>', { class: 'popup-no' });
+    $popupNvmSpan.attr('data-l10n-id', 'deletePopupCancel');
 
-    const popupNvmSpan = document.createElement('span');
-    $(popupNvmSpan).addClass('nvm');
-    $(popupNvmSpan).attr('data-l10n-id', 'nevermindButton');
-
-    $popupText.html([
-      popupDelSpan,
-      '<br/>',
-      popupNvmSpan
-    ]);
-
+    $popupText.html([$popupMessage, $popupDelSpan,  $popupNvmSpan]);
 
     // add data cells to table row
     row.appendChild(name);
@@ -345,18 +485,51 @@ $(document).ready(function() {
     row.appendChild(del);
     $('tbody').append(row); //add row to table
 
+    const unexpiredFiles = storage.numFiles;
+
     // delete file
-    $popupText.find('.del-file').click(e => {
+    $popupText.find('.popup-yes').click(e => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
         $(e.target).parents('tr').remove();
-        localStorage.removeItem(file.fileId);
+        const timeToExpiry =
+          ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
+        // record upload-deleted from file list
+        sendEvent('sender', 'upload-deleted', {
+          cm1: file.size,
+          cm2: file.totalTime,
+          cm3: file.uploadSpeed,
+          cm4: timeToExpiry,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd1: file.typeOfUpload,
+          cd4: 'upload-list'
+        }).then(() => {
+          storage.remove(file.fileId);
+        });
         toggleHeader();
       });
     });
+
     document.getElementById('delete-file').onclick = () => {
       FileSender.delete(file.fileId, file.deleteToken).then(() => {
-        localStorage.removeItem(file.fileId);
-        location.reload();
+        const timeToExpiry =
+          ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
+        // record upload-deleted from success screen
+        sendEvent('sender', 'upload-deleted', {
+          cm1: file.size,
+          cm2: file.totalTime,
+          cm3: file.uploadSpeed,
+          cm4: timeToExpiry,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd1: file.typeOfUpload,
+          cd4: 'success-screen'
+        }).then(() => {
+          storage.remove(file.fileId);
+          location.reload();
+        });
       });
     };
     // show popup
@@ -365,7 +538,7 @@ $(document).ready(function() {
       $popupText.focus();
     });
     // hide popup
-    $popupText.find('.nvm').click(function(e) {
+    $popupText.find('.popup-no').click(function(e) {
       e.stopPropagation();
       $popupText.removeClass('show');
     });
@@ -376,7 +549,6 @@ $(document).ready(function() {
     $popupText.blur(() => {
       $popupText.removeClass('show');
     });
-
 
     toggleHeader();
   }

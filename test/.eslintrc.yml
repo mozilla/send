@@ -19,3 +19,5 @@ rules:
   mocha/no-pending-tests: error
   mocha/no-return-and-callback: warn
   mocha/no-skipped-tests: error
+
+  no-console: off # ¯\_(ツ)_/¯

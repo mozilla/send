@@ -1,90 +1,175 @@
+require('./common');
 const FileReceiver = require('./fileReceiver');
-const { notify } = require('./utils');
+const { notify, findMetric, gcmCompliant, sendEvent } = require('./utils');
+const bytes = require('bytes');
+const Storage = require('./storage');
+const storage = new Storage(localStorage);
+
 const $ = require('jquery');
 require('jquery-circle-progress');
 
 const Raven = window.Raven;
+
 $(document).ready(function() {
+  gcmCompliant().catch(err => {
+    $('#download').attr('hidden', true);
+    sendEvent('recipient', 'unsupported', {
+      cd6: err
+    }).then(() => {
+      location.replace('/unsupported');
+    });
+  });
   //link back to homepage
   $('.send-new').attr('href', window.location.origin);
 
-  const filename = $('#dl-filename').html();
+  $('.send-new').click(function(target) {
+    target.preventDefault();
+    sendEvent('recipient', 'restarted', {
+      cd2: 'completed'
+    }).then(() => {
+      location.href = target.currentTarget.href;
+    });
+  });
+
+  $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
+    target.preventDefault();
+    const metric = findMetric(target.currentTarget.href);
+    // record exited event by recipient
+    sendEvent('recipient', 'exited', {
+      cd3: metric
+    }).then(() => {
+      location.href = target.currentTarget.href;
+    });
+  });
+
+  const filename = $('#dl-filename').text();
+  const bytelength = Number($('#dl-bytelength').text());
+  const timeToExpiry = Number($('#dl-ttl').text());
 
   //initiate progress bar
   $('#dl-progress').circleProgress({
     value: 0.0,
     startAngle: -Math.PI / 2,
-    fill: '#00C8D7',
+    fill: '#3B9DFF',
     size: 158,
     animation: { duration: 300 }
   });
   $('#download-btn').click(download);
   function download() {
+    storage.totalDownloads += 1;
+
     const fileReceiver = new FileReceiver();
+    const unexpiredFiles = storage.numFiles;
 
     fileReceiver.on('progress', progress => {
+      window.onunload = function() {
+        storage.referrer = 'cancelled-download';
+        // record download-stopped (cancelled by tab close or reload)
+        sendEvent('recipient', 'download-stopped', {
+          cm1: bytelength,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd2: 'cancelled'
+        });
+      };
+
       $('#download-page-one').attr('hidden', true);
       $('#download-progress').removeAttr('hidden');
       const percent = progress[0] / progress[1];
       // update progress bar
       $('#dl-progress').circleProgress('value', percent);
-      $('.percent-number').html(`${Math.floor(percent * 100)}`);
-      if (progress[1] < 1000000) {
-        $('.progress-text').html(
-          `${filename} (${(progress[0] / 1000).toFixed(1)}KB of
-           ${(progress[1] / 1000).toFixed(1)}KB)`
-        );
-      } else if (progress[1] < 1000000000) {
-        $('.progress-text').html(
-          `${filename} (${(progress[0] / 1000000).toFixed(1)}MB of ${(progress[1] / 1000000).toFixed(1)}MB)`
-        );
-      } else {
-        $('.progress-text').html(
-          `${filename} (${(progress[0] / 1000000).toFixed(1)}MB of ${(progress[1] / 1000000000).toFixed(1)}GB)`
-        );
-      }
-      //on complete
-      if (percent === 1) {
-        fileReceiver.removeAllListeners('progress');
-        document.l10n.formatValues('downloadNotification', 'downloadFinish')
-                     .then(translated => {
-                       notify(translated[0]);
-                       $('.title').html(translated[1]);
-                     });
-      }
+      $('.percent-number').text(`${Math.floor(percent * 100)}`);
+      $('.progress-text').text(
+        `${filename} (${bytes(progress[0], {
+          decimalPlaces: 1,
+          fixedDecimals: true
+        })} of ${bytes(progress[1], { decimalPlaces: 1 })})`
+      );
     });
 
+    let downloadEnd;
     fileReceiver.on('decrypting', isStillDecrypting => {
       // The file is being decrypted
       if (isStillDecrypting) {
-        console.log('Decrypting');
+        fileReceiver.removeAllListeners('progress');
+        window.onunload = null;
+        document.l10n.formatValue('decryptingFile').then(decryptingFile => {
+          $('.progress-text').text(decryptingFile);
+        });
       } else {
         console.log('Done decrypting');
+        downloadEnd = Date.now();
       }
     });
 
     fileReceiver.on('hashing', isStillHashing => {
       // The file is being hashed to make sure a malicious user hasn't tampered with it
       if (isStillHashing) {
-        console.log('Checking file integrity');
+        document.l10n.formatValue('verifyingFile').then(verifyingFile => {
+          $('.progress-text').text(verifyingFile);
+        });
       } else {
-        console.log('Integrity check done');
+        $('.progress-text').text(' ');
+        document.l10n
+          .formatValues('downloadNotification', 'downloadFinish')
+          .then(translated => {
+            notify(translated[0]);
+            $('.title').text(translated[1]);
+          });
       }
+    });
+
+    const startTime = Date.now();
+
+    // record download-started by recipient
+    sendEvent('recipient', 'download-started', {
+      cm1: bytelength,
+      cm4: timeToExpiry,
+      cm5: storage.totalUploads,
+      cm6: unexpiredFiles,
+      cm7: storage.totalDownloads
     });
 
     fileReceiver
       .download()
-      .catch(() => {
-        document.l10n.formatValue('expiredPageHeader')
-                     .then(translated => {
-                       $('.title').text(translated);
-                     });
+      .catch(err => {
+        // record download-stopped (errored) by recipient
+        sendEvent('recipient', 'download-stopped', {
+          cm1: bytelength,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd2: 'errored',
+          cd6: err
+        });
+
+        document.l10n.formatValue('expiredPageHeader').then(translated => {
+          $('.title').text(translated);
+        });
         $('#download-btn').attr('hidden', true);
         $('#expired-img').removeAttr('hidden');
         console.log('The file has expired, or has already been deleted.');
         return;
       })
       .then(([decrypted, fname]) => {
+        const endTime = Date.now();
+        const totalTime = endTime - startTime;
+        const downloadTime = endTime - downloadEnd;
+        const downloadSpeed = bytelength / (downloadTime / 1000);
+
+        storage.referrer = 'completed-download';
+        // record download-stopped (completed) by recipient
+        sendEvent('recipient', 'download-stopped', {
+          cm1: bytelength,
+          cm2: totalTime,
+          cm3: downloadSpeed,
+          cm5: storage.totalUploads,
+          cm6: unexpiredFiles,
+          cm7: storage.totalDownloads,
+          cd2: 'completed'
+        });
+
         const dataView = new DataView(decrypted);
         const blob = new Blob([dataView]);
         const downloadUrl = URL.createObjectURL(blob);

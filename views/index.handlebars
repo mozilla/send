@@ -1,4 +1,5 @@
 <div id="page-one">
+  <script src="/upload.js"></script>
   <div class="title" data-l10n-id="uploadPageHeader"></div>
   <div class="description">
     <div data-l10n-id="uploadPageExplainer"></div>
@@ -60,7 +61,7 @@
       <button id="copy-btn" data-l10n-id="copyUrlFormButton"></button>
     </div>
     <button id="delete-file" data-l10n-id="deleteFileButton"></button>
-    <a class="send-new" data-l10n-id="sendAnotherFileLink"></a>
+    <a class="send-new" id="send-new-completed" data-l10n-id="sendAnotherFileLink"></a>
   </div>
 </div>
 
@@ -68,17 +69,5 @@
   <div class="title" data-l10n-id="errorPageHeader"></div>
   <div class="expired-description" data-l10n-id="errorPageMessage"></div>
   <img id="upload-error-img" data-l10n-id="errorAltText" src="/resources/illustration_error.svg"/>
-  <a class="send-new" data-l10n-id="sendAnotherFileLink"></a>
-</div>
-
-<div id="unsupported-browser" hidden="true">
-  <div class="title" data-l10n-id="notSupportedHeader"></div>
-  <div class="description" data-l10n-id="notSupportedDetail"></div>
-  <a id="dl-firefox" href="https://www.mozilla.org/firefox/new/?scene=2" target="_blank">
-    <img src="/resources/firefox_logo-only.svg" id="firefox-logo" alt="Firefox"/>
-    <div id="dl-firefox-text">Firefox<br>
-      <span data-l10n-id="downloadFirefoxButtonSub"></span>
-    </div>
-  </a>
-  <div class="unsupported-description" data-l10n-id="uploadPageExplainer"></div>
+  <a class="send-new" id="send-new-error" data-l10n-id="sendAnotherFileLink"></a>
 </div>

@@ -23,6 +23,7 @@ if (conf.s3_bucket) {
   module.exports = {
     filename: filename,
     exists: exists,
+    ttl: ttl,
     length: awsLength,
     get: awsGet,
     set: awsSet,
@@ -39,6 +40,7 @@ if (conf.s3_bucket) {
   module.exports = {
     filename: filename,
     exists: exists,
+    ttl: ttl,
     length: localLength,
     get: localGet,
     set: localSet,
@@ -66,6 +68,18 @@ function metadata(id) {
     redis_client.hgetall(id, (err, reply) => {
       if (!err) {
         resolve(reply);
+      } else {
+        reject(err);
+      }
+    });
+  });
+}
+
+function ttl(id) {
+  return new Promise((resolve, reject) => {
+    redis_client.ttl(id, (err, reply) => {
+      if (!err) {
+        resolve(reply * 1000);
       } else {
         reject(err);
       }
@@ -129,20 +143,24 @@ function localGet(id) {
 
 function localSet(newId, file, filename, meta) {
   return new Promise((resolve, reject) => {
-    const fstream = fs.createWriteStream(
-      path.join(__dirname, '../static', newId)
-    );
+    const filepath = path.join(__dirname, '../static', newId);
+    const fstream = fs.createWriteStream(filepath);
     file.pipe(fstream);
-    fstream.on('close', () => {
+    file.on('limit', () => {
+      file.unpipe(fstream);
+      fstream.destroy(new Error('limit'));
+    });
+    fstream.on('finish', () => {
       redis_client.hmset(newId, meta);
-      redis_client.expire(newId, 86400000);
+      redis_client.expire(newId, conf.expire_seconds);
       log.info('localSet:', 'Upload Finished of ' + newId);
       resolve(meta.delete);
     });
 
-    fstream.on('error', () => {
+    fstream.on('error', err => {
       log.error('localSet:', 'Failed upload of ' + newId);
-      reject();
+      fs.unlinkSync(filepath);
+      reject(err);
     });
   });
 }
@@ -211,21 +229,26 @@ function awsSet(newId, file, filename, meta) {
     Key: newId,
     Body: file
   };
-
-  return new Promise((resolve, reject) => {
-    s3.upload(params, function(err, _data) {
-      if (err) {
-        log.info('awsUploadError:', err.stack); // an error occurred
-        reject();
-      } else {
-        redis_client.hmset(newId, meta);
-
-        redis_client.expire(newId, 86400000);
-        log.info('awsUploadFinish', 'Upload Finished of ' + filename);
-        resolve(meta.delete);
-      }
-    });
+  let hitLimit = false;
+  const upload = s3.upload(params);
+  file.on('limit', () => {
+    hitLimit = true;
+    upload.abort();
   });
+  return upload.promise().then(
+    () => {
+      redis_client.hmset(newId, meta);
+      redis_client.expire(newId, conf.expire_seconds);
+      log.info('awsUploadFinish', 'Upload Finished of ' + filename);
+    },
+    err => {
+      if (hitLimit) {
+        throw new Error('limit');
+      } else {
+        throw err;
+      }
+    }
+  );
 }
 
 function awsDelete(id, delete_token) {

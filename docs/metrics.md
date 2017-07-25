@@ -112,6 +112,7 @@ Fired whenever a user deletes a file they’ve uploaded.
 - `cm6`
 - `cm7`
 - `cd1`
+- `cd4`
 
 #### `copied`
 Fired whenever a user copies the URL of an upload file.

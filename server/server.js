@@ -19,8 +19,6 @@ const mozlog = require('./log.js');
 const log = mozlog('send.server');
 
 const STATIC_PATH = path.join(__dirname, '../public');
-const L20N = path.join(__dirname, '../node_modules/l20n');
-const LOCALES = path.join(__dirname, '../public/locales');
 
 const app = express();
 
@@ -34,10 +32,12 @@ app.engine(
 app.set('view engine', 'handlebars');
 
 app.use(helmet());
-app.use(helmet.hsts({
-  maxAge: 31536000,
-  force: conf.env === 'production'
-}));
+app.use(
+  helmet.hsts({
+    maxAge: 31536000,
+    force: conf.env === 'production'
+  })
+);
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -45,31 +45,42 @@ app.use(
       connectSrc: [
         "'self'",
         'https://sentry.prod.mozaws.net',
-        'https://www.google-analytics.com',
-        'https://ssl.google-analytics.com'
+        'https://www.google-analytics.com'
       ],
       imgSrc: [
         "'self'",
-        'https://www.google-analytics.com',
-        'https://ssl.google-analytics.com'
+        'https://www.google-analytics.com'
       ],
-      scriptSrc: ["'self'", 'https://ssl.google-analytics.com'],
+      scriptSrc: ["'self'"],
       styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
       fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
       formAction: ["'none'"],
       frameAncestors: ["'none'"],
-      objectSrc: ["'none'"]
+      objectSrc: ["'none'"],
+      reportUri: '/__cspreport__'
     }
   })
 );
-app.use(busboy());
+app.use(
+  busboy({
+    limits: {
+      fileSize: conf.max_file_size
+    }
+  })
+);
 app.use(bodyParser.json());
 app.use(express.static(STATIC_PATH));
-app.use('/l20n', express.static(L20N));
-app.use('/locales', express.static(LOCALES));
 
 app.get('/', (req, res) => {
   res.render('index');
+});
+
+app.get('/unsupported', (req, res) => {
+  res.render('unsupported');
+});
+
+app.get('/legal', (req, res) => {
+  res.render('legal');
 });
 
 app.get('/jsconfig.js', (req, res) => {
@@ -77,6 +88,8 @@ app.get('/jsconfig.js', (req, res) => {
   res.render('jsconfig', {
     trackerId: conf.analytics_id,
     dsn: conf.sentry_id,
+    maxFileSize: conf.max_file_size,
+    expireSeconds: conf.expire_seconds,
     layout: false
   });
 });
@@ -107,15 +120,17 @@ app.get('/download/:id', (req, res) => {
     storage
       .length(id)
       .then(contentLength => {
-        res.render('download', {
-          filename: decodeURIComponent(filename),
-          filesize: bytes(contentLength),
-          trackerId: conf.analytics_id,
-          dsn: conf.sentry_id
+        storage.ttl(id).then(timeToExpiry => {
+          res.render('download', {
+            filename: decodeURIComponent(filename),
+            filesize: bytes(contentLength),
+            sizeInBytes: contentLength,
+            timeToExpiry: timeToExpiry
+          });
         });
       })
       .catch(() => {
-        res.render('download');
+        res.status(404).render('notfound');
       });
   });
 });
@@ -219,15 +234,23 @@ app.post('/upload', (req, res, next) => {
   req.busboy.on('file', (fieldname, file, filename) => {
     log.info('Uploading:', newId);
 
-    storage.set(newId, file, filename, meta).then(() => {
-      const protocol = conf.env === 'production' ? 'https' : req.protocol;
-      const url = `${protocol}://${req.get('host')}/download/${newId}/`;
-      res.json({
-        url,
-        delete: meta.delete,
-        id: newId
-      });
-    });
+    storage.set(newId, file, filename, meta).then(
+      () => {
+        const protocol = conf.env === 'production' ? 'https' : req.protocol;
+        const url = `${protocol}://${req.get('host')}/download/${newId}/`;
+        res.json({
+          url,
+          delete: meta.delete,
+          id: newId
+        });
+      },
+      err => {
+        if (err.message === 'limit') {
+          return res.sendStatus(413);
+        }
+        res.sendStatus(500);
+      }
+    );
   });
 
   req.on('close', err => {
@@ -241,7 +264,7 @@ app.post('/upload', (req, res, next) => {
       .catch(err => {
         log.info('DeleteError:', newId);
       });
-  })
+  });
 });
 
 app.get('/__lbheartbeat__', (req, res) => {
