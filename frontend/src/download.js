@@ -144,12 +144,15 @@ $(document).ready(function() {
           cd6: err
         });
 
-        document.l10n.formatValue('expiredPageHeader').then(translated => {
-          $('.title').text(translated);
-        });
-        $('#download-btn').attr('hidden', true);
-        $('#expired-img').removeAttr('hidden');
-        console.log('The file has expired, or has already been deleted.');
+        if (err.message === 'notfound') {
+          location.reload();
+        } else {
+          document.l10n.formatValue('expiredPageHeader').then(translated => {
+            $('.title').text(translated);
+          });
+          $('#download-btn').attr('hidden', true);
+          $('#expired-img').removeAttr('hidden');
+        }
         return;
       })
       .then(([decrypted, fname]) => {
