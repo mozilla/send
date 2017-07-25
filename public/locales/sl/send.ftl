@@ -1,6 +1,8 @@
 // Firefox Send is a brand name and should not be localized.
 title = Firefox Send
+siteSubtitle = poskus za splet
 siteFeedback = Povratne informacije
+uploadPageHeader = Zasebno, šifrirano deljenje datotek
 uploadPageLearnMore = Več o tem
 uploadPageBrowseButton = Izberite datoteko na računalniku
 uploadPageMultipleFilesAlert = Nalaganje več datotek ali map trenutno ni podprto.
@@ -15,6 +17,10 @@ uploadCancelNotification = Vaš prenos je preklican.
 uploadingFileNotification = Obvesti me, ko bo prenos končan.
 uploadSvgAlt
     .alt = Prenesi
+uploadSuccessTimingHeader = Povezava do vaše datoteke bo potekla po enem prenosu ali v 24 urah.
+// Note: Title text for button should be the same.
+copyUrlFormButton = Kopiraj v odložišče
+    .title = Kopiraj v odložišče
 copiedUrl = Kopirano!
 // Note: Title text for button should be the same.
 deleteFileButton = Izbriši datoteko
@@ -34,9 +40,17 @@ downloadFinish = Prenos končan
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Preskusite Firefox Send
     .title = Preskusite Firefox Send
+downloadingPageProgress = Prenašanje { $filename } ({ $size })
+errorAltText
+    .alt = Napaka pri prenosu
 errorPageHeader = Prišlo je do težave!
 errorPageLink = Pošlji drugo datoteko
+fileTooBig = Ta datoteka je prevelika za prenos. Morala bi biti manjša od { $size }.
+linkExpiredAlt
+    .alt = Povezava je potekla
 notSupportedHeader = Vaš brskalnik ni podprt.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Ta brskalnik na žalost ne podpira tehnologije, ki poganja Firefox Send. Uporabiti boste morali drug brskalnik. Priporočamo Firefox!
 downloadFirefoxButtonSub = Brezplačen prenos
 uploadedFile = Datoteka
 copyFileList = Kopiraj URL
