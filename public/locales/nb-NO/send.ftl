@@ -5,7 +5,7 @@ siteFeedback = Tilbakemelding
 uploadPageHeader = Privat, kryptert fildeling
 uploadPageLearnMore = Les mer
 uploadPageDropMessage = Slipp din fil her for å starte opplastingen
-uploadPageSizeMessage = For den mest pålitelige operasjonen, er det best å holde filen under 1 GB
+uploadPageSizeMessage = For den mest problemfrie bruken, er det best å holde filen under 1 GB
 uploadPageBrowseButton = Velg en fil på din datamaskin
     .title = Velg en fil på din datamaskin
 uploadPageBrowseButtonTitle = Last opp fil
@@ -17,6 +17,7 @@ decryptingFile = Dekrypterer...
 uploadingPageCancel = Avbryt opplasting
     .title = Avbryt opplasting
 uploadCancelNotification = Din opplasting ble avbrutt
+uploadSuccessConfirmHeader = Klar til å sende
 uploadSvgAlt
     .alt = Last opp
 // Note: Title text for button should be the same.
