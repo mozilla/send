@@ -27,7 +27,6 @@ if (conf.s3_bucket) {
     length: awsLength,
     get: awsGet,
     set: awsSet,
-    aad: aad,
     setField: setField,
     delete: awsDelete,
     forceDelete: awsForceDelete,
@@ -44,7 +43,6 @@ if (conf.s3_bucket) {
     length: localLength,
     get: localGet,
     set: localSet,
-    aad: aad,
     setField: setField,
     delete: localDelete,
     forceDelete: localForceDelete,
@@ -66,11 +64,10 @@ function quit() {
 function metadata(id) {
   return new Promise((resolve, reject) => {
     redis_client.hgetall(id, (err, reply) => {
-      if (!err) {
-        resolve(reply);
-      } else {
-        reject(err);
+      if (err || !reply) {
+        return reject(err);
       }
+      resolve(reply);
     });
   });
 }
@@ -78,11 +75,10 @@ function metadata(id) {
 function ttl(id) {
   return new Promise((resolve, reject) => {
     redis_client.ttl(id, (err, reply) => {
-      if (!err) {
-        resolve(reply * 1000);
-      } else {
-        reject(err);
+      if (err || !reply) {
+        return reject(err);
       }
+      resolve(reply * 1000);
     });
   });
 }
@@ -90,11 +86,10 @@ function ttl(id) {
 function filename(id) {
   return new Promise((resolve, reject) => {
     redis_client.hget(id, 'filename', (err, reply) => {
-      if (!err) {
-        resolve(reply);
-      } else {
-        reject(err);
+      if (err || !reply) {
+        return reject();
       }
+      resolve(reply);
     });
   });
 }
@@ -113,18 +108,6 @@ function exists(id) {
 
 function setField(id, key, value) {
   redis_client.hset(id, key, value);
-}
-
-function aad(id) {
-  return new Promise((resolve, reject) => {
-    redis_client.hget(id, 'aad', (err, reply) => {
-      if (!err) {
-        resolve(reply);
-      } else {
-        reject();
-      }
-    });
-  });
 }
 
 function localLength(id) {

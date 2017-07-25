@@ -47,10 +47,7 @@ app.use(
         'https://sentry.prod.mozaws.net',
         'https://www.google-analytics.com'
       ],
-      imgSrc: [
-        "'self'",
-        'https://www.google-analytics.com'
-      ],
+      imgSrc: ["'self'", 'https://www.google-analytics.com'],
       scriptSrc: ["'self'"],
       styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
       fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
@@ -116,10 +113,10 @@ app.get('/download/:id', (req, res) => {
     return;
   }
 
-  storage.filename(id).then(filename => {
-    storage
-      .length(id)
-      .then(contentLength => {
+  storage
+    .filename(id)
+    .then(filename => {
+      return storage.length(id).then(contentLength => {
         storage.ttl(id).then(timeToExpiry => {
           res.render('download', {
             filename: decodeURIComponent(filename),
@@ -128,11 +125,11 @@ app.get('/download/:id', (req, res) => {
             timeToExpiry: timeToExpiry
           });
         });
-      })
-      .catch(() => {
-        res.status(404).render('notfound');
       });
-  });
+    })
+    .catch(() => {
+      res.status(404).render('notfound');
+    });
 });
 
 app.get('/assets/download/:id', (req, res) => {
