@@ -1,0 +1,19 @@
+// Firefox Send is a brand name and should not be localized.
+title = Firefox Send
+siteSubtitle = ウェブ実験
+siteFeedback = フィードバック
+uploadPageHeader = プライベートな暗号化されたファイル共有
+uploadPageExplainer = 安全で、プライベートで、暗号化されたリンクを通じてファイルを送信。あなたのものがずっとオンラインに残らないよう、リンクは自動的に期限切れとなります。
+uploadPageLearnMore = 詳しくはこちら
+uploadPageDropMessage = ここにファイルをドロップしてアップロードを開始
+uploadPageSizeMessage = 確実に処理できるよう、ファイルサイズは 1GB 以下にすることを推奨します。
+uploadPageBrowseButton = コンピューター上のファイルを選択
+uploadPageMultipleFilesAlert = 今のところ複数ファイルやフォルダーのアップロードには対応していません。
+uploadPageBrowseButtonTitle = ファイルをアップロード
+uploadingPageHeader = ファイルをアップロードしています
+importingFile = インポート中...
+verifyingFile = 検証中...
+encryptingFile = 暗号化中...
+decryptingFile = 復号化中...
+notifyUploadDone = アップロードが完了しました。
+uploadingPageMessage = ファイルのアップロード完了後に期限を設定できます。
