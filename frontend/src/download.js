@@ -147,7 +147,7 @@ $(document).ready(function() {
         if (err.message === 'notfound') {
           location.reload();
         } else {
-          document.l10n.formatValue('expiredPageHeader').then(translated => {
+          document.l10n.formatValue('errorPageHeader').then(translated => {
             $('.title').text(translated);
           });
           $('#download-btn').attr('hidden', true);
