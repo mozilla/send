@@ -5,6 +5,7 @@ siteFeedback = Povratne informacije
 uploadPageHeader = Zasebno, šifrirano deljenje datotek
 uploadPageLearnMore = Več o tem
 uploadPageBrowseButton = Izberite datoteko na računalniku
+    .title = Izberite datoteko na računalniku
 uploadPageMultipleFilesAlert = Nalaganje več datotek ali map trenutno ni podprto.
 uploadPageBrowseButtonTitle = Prenesi datoteko
 importingFile = Uvažanje …
