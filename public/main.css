@@ -114,6 +114,8 @@ body {
   justify-content: flex-start;
   max-width: 630px;
   margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
   width: 96%;
 }
 
@@ -129,10 +131,6 @@ a {
 }
 
 /**   page-one    **/
-
-#page-one {
-  padding: 0 20px;
-}
 
 .title {
   font-size: 33px;
@@ -692,8 +690,10 @@ tbody {
 
   .footer {
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 630px;
+    margin: auto;
   }
 
   .mozilla-logo {
@@ -703,6 +703,8 @@ tbody {
   .legal-links {
     flex-direction: column;
     margin: auto;
+    width: 100%;
+    max-width: 100%;
   }
 
   .legal-links > * {
