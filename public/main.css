@@ -8,10 +8,12 @@ html {
     Arial,
     sans-serif;
   font-weight: 200;
-  background-size: 100%;
+  background-size: 110%;
   background-repeat: no-repeat;
   background-position: center top;
   height: 100%;
+  max-width: 1440px;
+  margin: auto;
 }
 
 body {
@@ -37,6 +39,11 @@ body {
   align-items: center;
 }
 
+.send-logo > a {
+  display: flex;
+  flex-direction: row;
+}
+
 .site-title {
   color: #3e3d40;
   font-size: 32px;
@@ -44,6 +51,8 @@ body {
   margin: 0;
   position: relative;
   top: -1px;
+  letter-spacing: 1px;
+  margin-left: 8px;
 }
 
 .site-subtitle {
@@ -78,12 +87,20 @@ body {
   font-size: 12px;
   line-height: 12px;
   opacity: 0.9;
-  padding: 6px 6px 5px 20px;
+  padding: 5px 5px 5px 5px;
+  overflow: hidden;
+  width: 12px;
+  text-indent: 20px;
+  transition: all 150ms ease-in-out;
 }
 
 .feedback:hover,
 .feedback:focus {
+  width: 57px;
+  text-indent: 0px;
+  padding: 5px 5px 5px 20px;
   background-color: #0287e8;
+  transition: all 150ms ease-in-out;
 }
 
 .feedback:active {
@@ -112,6 +129,11 @@ a {
 }
 
 /**   page-one    **/
+
+#page-one {
+  padding: 0 20px;
+}
+
 .title {
   font-size: 33px;
   line-height: 40px;
@@ -161,6 +183,10 @@ a {
 .link {
   color: #0094fb;
   text-decoration: none;
+}
+
+.link:hover {
+  color: #0287e8;
 }
 
 #upload-text {
@@ -391,8 +417,9 @@ tbody {
   font-family: 'SF Pro Display', sans-serif;
   letter-spacing: 0;
   line-height: 23px;
-  padding-left: 5px;
-  padding-right: 5px;
+  font-weight: 300;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #link:disabled {
@@ -414,6 +441,10 @@ tbody {
   white-space: nowrap;
 }
 
+#copy-btn:hover {
+  background-color: #0287e8;
+}
+
 #copy-btn:disabled {
   background: #05a700;
   border: 1px solid #05a700;
@@ -433,6 +464,10 @@ tbody {
   color: #313131;
 }
 
+#delete-file:hover {
+  background: #efeff1;
+}
+
 .send-new {
   font-size: 15px;
   margin: auto;
@@ -440,6 +475,12 @@ tbody {
   color: #0094fb;
   cursor: pointer;
   text-decoration: underline;
+}
+
+.send-new:hover,
+.send-new:focus,
+.send-new:active {
+  color: #0287e8;
 }
 
 /*    upload-error    */
@@ -580,7 +621,11 @@ tbody {
   font-size: 15px;
   display: flex;
   align-items: flex-end;
-  padding: 50px 10px 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 50px 31px 41px 31px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .mozilla-logo {
@@ -589,10 +634,24 @@ tbody {
   margin-bottom: -5px;
 }
 
-.legal-links > a {
-  margin-right: 30px;
-  color: #858585;
+.legal-links {
+  max-width: 600px;
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
+.legal-links > a {
+  color: #858585;
+  opacity: 0.9;
+}
+
+.legal-links > a:hover {
+  opacity: 1;
+}
+
 
 .legal-links > a:visited {
   color: #858585;
@@ -600,12 +659,16 @@ tbody {
 
 .social-links {
   display: flex;
-  justify-content: flex-end;
-  flex: 1;
+  justify-content: space-between;
+  width: 94px;
 }
 
-.social-links > a {
-  margin-left: 30px;
+.social-links > a{
+  opacity: .9;
+}
+
+.social-links > a:hover {
+  opacity: 1;
 }
 
 .github,
@@ -615,7 +678,7 @@ tbody {
   margin-bottom: -5px;
 }
 
-@media (max-device-width: 768px) {
+@media (max-width: 768px) {
   .description {
     margin: 0 auto 25px;
   }
@@ -628,17 +691,33 @@ tbody {
     font-size: 18px;
   }
 
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
   .mozilla-logo {
     margin-left: -7px;
+  }
+
+  .legal-links {
+    flex-direction: column;
+    margin: auto;
   }
 
   .legal-links > * {
     display: block;
     padding: 10px 0;
   }
+
+  .social-links {
+    margin: auto;
+    margin-top: 20px;
+  }
 }
 
-@media (max-device-width: 520px) {
+@media (max-width: 520px) {
   .header {
     flex-direction: column;
     justify-content: flex-start;
