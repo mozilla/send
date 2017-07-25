@@ -8,6 +8,7 @@ uploadPageLearnMore = Dalše informacije
 uploadPageDropMessage = Ćehńće swoju dataju sem, zo byšće ju nahrał
 uploadPageSizeMessage = Wužiwajće najlěpje dataje, kotrež su mjeńše hač 1 GB za lěpšu spušćomnosć.
 uploadPageBrowseButton = Wubjerće dataju na swojim ličaku
+    .title = Wubjerće dataju na swojim ličaku
 uploadPageMultipleFilesAlert = Nahrawanje wjacorych datajow abo rjadowaka so tuchwilu njepodpěruje.
 uploadPageBrowseButtonTitle = Dataju nahrać
 uploadingPageHeader = Waša dataja so nahrawa
@@ -18,6 +19,7 @@ decryptingFile = Dešifruje so...
 notifyUploadDone = Waše nahraće je dokónčene.
 uploadingPageMessage = Hdyž do waša dataja nahrawa, móžeće nastajenja spadnjenja postajić.
 uploadingPageCancel = Nahraće přetorhnyć
+    .title = Nahraće přetorhnyć
 uploadCancelNotification = Waše nahraće je so přetorhnyło.
 uploadingFileNotification = Zdźělić, hdyž nahraće je dokónčene.
 uploadSuccessConfirmHeader = Hotowy za słanje
@@ -27,11 +29,14 @@ uploadSuccessTimingHeader = Wotkaz k wašej dataji po 1 sćehnjenju abo 24 hodź
 copyUrlFormLabelWithName = Kopěrujće a dźělće wotkaz, zo byšće swoju dataju pósłał: { $filename }
 // Note: Title text for button should be the same.
 copyUrlFormButton = Do mjezyskłada kopěrować
+    .title = Do mjezyskłada kopěrować
 copiedUrl = Kopěrowany!
 // Note: Title text for button should be the same.
 deleteFileButton = Dataju zhašeć
+    .title = Dataju zhašeć
 // Note: Title text for button should be the same.
 sendAnotherFileLink = Druhu dataju pósłać
+    .title = Druhu dataju pósłać
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText
     .alt = Sćahnyć
@@ -39,10 +44,12 @@ downloadFileName = { $filename } sćahnyć
 downloadFileSize = ({ $size })
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Sćahnyć
+    .title = Sćahnyć
 downloadNotification = Waše sćehnjenje je dokónčene.
 downloadFinish = Sćehnjenje dokónčene
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Firefox Send wupruwować
+    .title = Firefox Send wupruwować
 downloadingPageProgress = { $filename } ({ $size }) so sćahuje
 errorAltText
     .alt = Nahrawanski zmylk
