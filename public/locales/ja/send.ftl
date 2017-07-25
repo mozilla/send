@@ -8,6 +8,7 @@ uploadPageLearnMore = 詳しくはこちら
 uploadPageDropMessage = ここにファイルをドロップしてアップロードを開始
 uploadPageSizeMessage = 確実に処理できるよう、ファイルサイズは 1GB 以下にすることを推奨します。
 uploadPageBrowseButton = コンピューター上のファイルを選択
+    .title = コンピューター上のファイルを選択
 uploadPageMultipleFilesAlert = 今のところ複数ファイルやフォルダーのアップロードには対応していません。
 uploadPageBrowseButtonTitle = ファイルをアップロード
 uploadingPageHeader = ファイルをアップロードしています
@@ -18,6 +19,7 @@ decryptingFile = 復号化中...
 notifyUploadDone = アップロードが完了しました。
 uploadingPageMessage = ファイルのアップロード完了後に期限を設定できます。
 uploadingPageCancel = アップロードを中止
+    .title = アップロードを中止
 uploadCancelNotification = アップロードは中止されました。
 uploadingPageLargeFileMessage = このファイルは大きいのでアップロードに多少時間が掛かるかもしれません。しばらくお待ちください。
 uploadingFileNotification = アップロード完了時に通知を受け取る
@@ -28,11 +30,14 @@ uploadSuccessTimingHeader = ファイルへのリンクは、1 回ダウンロ�
 copyUrlFormLabelWithName = ファイルを送信するにはこのリンクをコピー、共有してください: { $filename }
 // Note: Title text for button should be the same.
 copyUrlFormButton = クリップボードへコピー
+    .title = クリップボードへコピー
 copiedUrl = コピー完了！
 // Note: Title text for button should be the same.
 deleteFileButton = ファイルを削除
+    .title = ファイルを削除
 // Note: Title text for button should be the same.
 sendAnotherFileLink = 他のファイルを送信
+    .title = 他のファイルを送信
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText
     .alt = ダウンロード
@@ -42,10 +47,12 @@ downloadFileSize = ({ $size })
 downloadMessage = あなたの友人が Firefox Send を通じてファイルを送ってきています。これは、安全で、プライベートで、暗号化されたリンクを通じてファイルを共有できるサービスです。あなたのものがずっとオンラインに残らないよう、リンクは自動的に期限切れとなります。
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = ダウンロード
+    .title = ダウンロード
 downloadNotification = ダウンロードが完了しました。
 downloadFinish = ダウンロード完了
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Firefox Send を試す
+    .title = Firefox Send を試す
 downloadingPageProgress = { $filename } ({ $size }) をダウンロードしています
 downloadingPageMessage = ファイルの取得と暗号化が完了するまでこのタブを開いたままにしておいてください。
 errorAltText
