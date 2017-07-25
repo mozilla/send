@@ -29,3 +29,28 @@ sendAnotherFileLink
 downloadAltText
     .alt = Last ned
 downloadFileName = Last ned { $filename }
+downloadFileSize = ({ $size })
+// Text and title used on the download link/button (indicates an action).
+downloadButtonLabel
+    .title = Last ned
+downloadNotification = Nedlastingen er fullført.
+uploadedFile = Fil
+copyFileList = Kopier URL
+// expiryFileList is used as a column header
+expiryFileList = Utløper om
+deleteFileList = Slett
+nevermindButton = Glem det
+deleteButtonHover
+    .title = Slett
+copyUrlHover
+    .title = Kopier URL
+deletePopupText = Slett denne filen?
+deletePopupYes = Ja
+deletePopupCancel = Avbryt
+deleteButtonHover
+    .title = Slett
+copyUrlHover
+    .title = Kopier URL
+footerLinkLegal = Juridisk informasjon
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Om Test Pilot
