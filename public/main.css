@@ -87,7 +87,7 @@ body {
   font-size: 12px;
   line-height: 12px;
   opacity: 0.9;
-  padding: 5px 5px 5px 5px;
+  padding: 5px;
   overflow: hidden;
   width: 12px;
   text-indent: 20px;
@@ -97,7 +97,7 @@ body {
 .feedback:hover,
 .feedback:focus {
   width: 57px;
-  text-indent: 0px;
+  text-indent: 0;
   padding: 5px 5px 5px 20px;
   background-color: #0287e8;
   transition: all 150ms ease-in-out;
@@ -623,7 +623,7 @@ tbody {
   align-items: flex-end;
   flex-direction: row;
   justify-content: space-between;
-  padding: 50px 31px 41px 31px;
+  padding: 50px 31px 41px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -652,7 +652,6 @@ tbody {
   opacity: 1;
 }
 
-
 .legal-links > a:visited {
   color: #858585;
 }
@@ -663,8 +662,8 @@ tbody {
   width: 94px;
 }
 
-.social-links > a{
-  opacity: .9;
+.social-links > a {
+  opacity: 0.9;
 }
 
 .social-links > a:hover {
