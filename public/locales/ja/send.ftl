@@ -64,8 +64,26 @@ downloadFirefoxButtonSub = 無料ダウンロード
 uploadedFile = ファイル
 copyFileList = URL をコピー
 // expiryFileList is used as a column header
-expiryFileList = 期限切れ:
+expiryFileList = 有効期限:
 deleteFileList = 削除
 nevermindButton = 気にしないでください
-legalHeader = 利用規約 & プライバシー
+deleteButtonHover
+    .title = 削除
+copyUrlHover
+    .title = URL をコピー
+legalHeader = 利用規約とプライバシー
 legalNoticeTestPilot = Firefox Send は今のところ Test Pilot 実験のひとつであり、Test Pilot <a>利用規約</a> と <a>プライバシー通知</a> が適用されます。この実験とそのデータ収集に関する詳細は <a>こちら</a> をご覧ください。
+legalNoticeMozilla = Firefox Send のサイトの利用には、Mozilla の <a>ウェブサイトプライバシー通知</a> と <a>ウェブサイト利用規約</a> も適用されます。
+deletePopupText = このファイルを削除しますか？
+deletePopupYes = はい
+deletePopupCancel = キャンセル
+deleteButtonHover
+    .title = 削除
+copyUrlHover
+    .title = URL をコピー
+footerLinkLegal = 法的情報
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Test Pilot について
+footerLinkPrivacy = プライバシー
+footerLinkTerms = 利用規約
+footerLinkCookies = Cookie
