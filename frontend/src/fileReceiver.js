@@ -20,7 +20,7 @@ class FileReceiver extends EventEmitter {
         xhr.onload = function(event) {
           if (xhr.status === 404) {
             reject(
-              new Error('The file has expired, or has already been deleted.')
+              new Error('notfound')
             );
             return;
           }
