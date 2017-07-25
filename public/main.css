@@ -678,7 +678,7 @@ tbody {
   margin-bottom: -5px;
 }
 
-@media (max-width: 768px) {
+@media (max-device-width: 768px), (max-width: 768px) {
   .description {
     margin: 0 auto 25px;
   }
@@ -722,7 +722,7 @@ tbody {
   }
 }
 
-@media (max-width: 520px) {
+@media (max-device-width: 520px), (max-width: 520px) {
   .header {
     flex-direction: column;
     justify-content: flex-start;
