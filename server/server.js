@@ -117,7 +117,7 @@ app.get('/download/:id', (req, res) => {
   }
 
   storage.filename(id).then(filename => {
-    storage
+    return storage
       .length(id)
       .then(contentLength => {
         storage.ttl(id).then(timeToExpiry => {
@@ -128,11 +128,11 @@ app.get('/download/:id', (req, res) => {
             timeToExpiry: timeToExpiry
           });
         });
-      })
-      .catch(() => {
-        res.status(404).render('notfound');
       });
-  });
+  })
+  .catch(() => {
+    res.status(404).render('notfound');
+  });;
 });
 
 app.get('/assets/download/:id', (req, res) => {

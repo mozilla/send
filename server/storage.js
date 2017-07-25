@@ -90,11 +90,10 @@ function ttl(id) {
 function filename(id) {
   return new Promise((resolve, reject) => {
     redis_client.hget(id, 'filename', (err, reply) => {
-      if (!err) {
-        resolve(reply);
-      } else {
-        reject(err);
+      if (err || !reply) {
+        return reject();
       }
+      resolve(reply);
     });
   });
 }
