@@ -7,7 +7,7 @@ uploadPageExplainer = Skicka filer via en säker, privat och krypterad länk som
 uploadPageLearnMore = Läs mer
 uploadPageDropMessage = Släpp filen här för att börja ladda upp
 uploadPageSizeMessage = För den mest tillförlitliga driften är det bäst att hålla din fil under 1 GB
-uploadPageBrowseButton
+uploadPageBrowseButton = Välj en fil på din dator
     .title = Välj en fil på din dator
 uploadPageMultipleFilesAlert = Överföring av flera filer eller en mapp stöds för närvarande inte.
 uploadPageBrowseButtonTitle = Ladda upp fil
@@ -18,7 +18,7 @@ encryptingFile = Krypterar…
 decryptingFile = Avkodar…
 notifyUploadDone = Din uppladdning har slutförts.
 uploadingPageMessage = När din filuppladdning är klar kommer du att kunna ange alternativ för upphörande.
-uploadingPageCancel
+uploadingPageCancel = Avbryt uppladdning
     .title = Avbryt uppladdning
 uploadCancelNotification = Din uppladdning avbröts.
 uploadingPageLargeFileMessage = Den här filen är stor och kan ta ett tag att ladda upp. Ha tålamod!
@@ -29,14 +29,14 @@ uploadSvgAlt
 uploadSuccessTimingHeader = Länken till din fil upphör att gälla efter 1 nedladdning eller om 24 timmar.
 copyUrlFormLabelWithName = Kopiera och dela länken för att skicka din fil: { $filename }
 // Note: Title text for button should be the same.
-copyUrlFormButton
+copyUrlFormButton = Kopiera till urklipp
     .title = Kopiera till urklipp
 copiedUrl = Kopierad!
 // Note: Title text for button should be the same.
-deleteFileButton
+deleteFileButton = Ta bort fil
     .title = Ta bort fil
 // Note: Title text for button should be the same.
-sendAnotherFileLink
+sendAnotherFileLink = Skicka en annan fil
     .title = Skicka en annan fil
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText
@@ -46,12 +46,12 @@ downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Din vän skickar dig en fil med Firefox Send, en tjänst som låter dig dela filer med en säker, privat och krypterad länk som automatiskt upphör för att säkerställa att dina saker inte förblir på nätet för alltid.
 // Text and title used on the download link/button (indicates an action).
-downloadButtonLabel
+downloadButtonLabel = Ladda ner
     .title = Ladda ner
 downloadNotification = Din nedladdning har slutförts.
 downloadFinish = Nedladdning klar
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
-sendYourFilesLink
+sendYourFilesLink = Testa Firefox Send
     .title = Testa Firefox Send
 downloadingPageProgress = Laddar ner { $filename } ({ $size })
 downloadingPageMessage = Lämna den här fliken öppen medan vi laddar ner din fil och dekrypterar den.
