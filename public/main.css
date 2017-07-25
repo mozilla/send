@@ -567,6 +567,10 @@ tbody {
   cursor: pointer;
 }
 
+#download-btn:hover {
+  background-color: #0287e8;
+}
+
 #download-btn:disabled {
   background: #47b04b;
   cursor: auto;
