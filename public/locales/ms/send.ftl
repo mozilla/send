@@ -54,3 +54,8 @@ downloadFinish = Muat turun Selesai
 sendYourFilesLink = Cuba Firefox Send
     .title = Cuba Firefox Send
 downloadingPageProgress = Memuat turun { $filename } ({ $size })
+downloadingPageMessage = Sila biarkan tab ini terbuka semasa kami mengambil fail anda dan menghuraikannya.
+errorAltText
+    .alt = Ralat memuat naik
+errorPageHeader = Ada sesuatu yang tidak kena!
+errorPageMessage = Ada ralat semasa memuat naik fail.
