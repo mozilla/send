@@ -63,7 +63,7 @@ errorPageLink = Druhu dataju pósłać
 fileTooBig = Tuta dataja je přewulka za nahraće. Měła mjeńša hač { $size } być.
 linkExpiredAlt
     .alt = Wotkaz je spadnjeny
-expiredPageHeader = Tutón wotkaz je spadnjeny abo njeje ženje eksistował.
+expiredPageHeader = Tutón wotkaz je spadnjeny abo njeje ženje eksistował!
 notSupportedHeader = Waš wobhladowak so njepodpěruje.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Bohužel tutón wobhladowak webtechnologiju njepodpěruje, na kotrejž Firefox Send bazuje. Dyrbiće druhi wobhladowak wužiwać. My Firefox doporučemy!
