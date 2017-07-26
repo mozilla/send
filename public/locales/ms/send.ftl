@@ -14,6 +14,7 @@ uploadPageBrowseButtonTitle = Muat naik fail
 uploadingPageHeader = Memuat naik Fail Anda
 importingFile = Mengimport…
 verifyingFile = Mengesahkan...
+encryptingFile = Mengenkripsi...
 decryptingFile = Mengenkripsi...
 notifyUploadDone = Muat naik anda sudah siap.
 uploadingPageMessage = Setelah siap fail anda dimuat naik, akan boleh tetapkan pilihan luput.
@@ -49,3 +50,7 @@ downloadButtonLabel = Muat turun
     .title = Muat turun
 downloadNotification = Muat turun anda sudah siap.
 downloadFinish = Muat turun Selesai
+// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+sendYourFilesLink = Cuba Firefox Send
+    .title = Cuba Firefox Send
+downloadingPageProgress = Memuat turun { $filename } ({ $size })
