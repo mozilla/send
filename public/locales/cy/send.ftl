@@ -74,4 +74,23 @@ copyFileList = Copïo URL
 expiryFileList = Daw i ben ymhen
 deleteFileList = Dileu
 nevermindButton = Dim ots
+deleteButtonHover
+    .title = Dileu
+copyUrlHover
+    .title = Copïo'r URL
 legalHeader = Amodau a Phreifatrwydd
+legalNoticeTestPilot = Ar hyn o mae Firefox Send yn arbrawf  o fewn rhaglen Test Pilot ac yn destun <a>Amodau Gwasanaeth</a> a <a>Hysbysiad Preifatrwydd</a> Test Pilot . Gallwch ddysgu rhagor am yr arbrawf a'i gasglu data <a>yma</a>.
+legalNoticeMozilla = Mae'r defnydd o wefan Firefox Send hefyd yn destun <a>Hysbysiad Preifatrwydd Gwefannau</a> ac <a>Amodau Defnydd Gwefannau</a> Mozilla.
+deletePopupText = Dileu'r ffeil?
+deletePopupYes = Iawn
+deletePopupCancel = Diddymu
+deleteButtonHover
+    .title = Dileu
+copyUrlHover
+    .title = Copïo'r URL
+footerLinkLegal = Cyfreithiol
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Ynghylch Test Pilot
+footerLinkPrivacy = Preifatrwydd
+footerLinkTerms = Amodau
+footerLinkCookies = Cwcis
