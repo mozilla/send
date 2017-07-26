@@ -17,3 +17,61 @@ verifyingFile = Wrthi'n gwirio
 encryptingFile = Wrthi'n amgryptio...
 decryptingFile = Wrthi'n dadgryptio
 notifyUploadDone = Mae eich llwytho wedi gorffen.
+uploadingPageMessage = Unwaith y bydd eich ffeil wedi llwytho bydd modd gosod manylion dod i ben.
+uploadingPageCancel = Diddymu'r llwytho
+    .title = Diddymu'r llwytho
+uploadCancelNotification = Cafodd eich llwytho ei ddiddymu.
+uploadingPageLargeFileMessage = Mae'r ffeil yn fawr a gall gymryd peth amser i'w llwytho. Arhoswch!
+uploadingFileNotification = Dweud wrtha i pan fydd y llwytho wedi gorffen.
+uploadSuccessConfirmHeader = Yn Barod i Anfon
+uploadSvgAlt
+    .alt = LLwytho i Fyny
+uploadSuccessTimingHeader = Bydd y ddolen i'ch ffeil y dod i ben ar ôl 1 llwytho neu o fewn 24 awr.
+copyUrlFormLabelWithName = Copïo a rhannu'r ddolen i anfon eich ffeil: { $filename }
+// Note: Title text for button should be the same.
+copyUrlFormButton = Copïo i'r clipfwrdd
+    .title = Copïo i'r clipfwrdd
+copiedUrl = Wedi eu copïo!
+// Note: Title text for button should be the same.
+deleteFileButton = Dileu ffeil
+    .title = Dileu ffeil
+// Note: Title text for button should be the same.
+sendAnotherFileLink = Anfon ffeil arall
+    .title = Anfon ffeil arall
+// Alternative text used on the download link/button (indicates an action).
+downloadAltText
+    .alt = Llwytho i lawr
+downloadFileName = Llwytho i lawr { $filename }
+downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Mae ffrind i chi yn anfon ffeil atoch drwy Firefox Send, gwasanaeth sy'n caniatáu i chi rannu ffeiliau drwy ddolen ddiogel, breifat ac wedi ei amgryptio sy'n dod i ben yn awtomatig er mwyn sicrhau nad yw eich deunydd yn aros ar-lein am byth.
+// Text and title used on the download link/button (indicates an action).
+downloadButtonLabel = Llwytho i Lawr
+    .title = Llwytho i Lawr
+downloadNotification = Mae eich llwytho wedi gorffen
+downloadFinish = Llwytho wedi Gorffen
+// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+sendYourFilesLink = Profwch Firefox Send
+    .title = Profwch Firefox Send
+downloadingPageProgress = Llwytho i lawr { $filename } ({ $size })
+downloadingPageMessage = Gadewch y tab yma ar agor tra fyddwn yn estyn eich ffeil a'i dad-amgryptio.
+errorAltText
+    .alt = Gwall llwytho
+errorPageHeader = Aeth rhywbeth o'i le!
+errorPageMessage = Bu gwall wrth lwytho'r ffeil.
+errorPageLink = Anfon ffeil arall
+fileTooBig = Mae'r ffeil yn rhy fawr i'w llwytho. Dylai fod yn llai na { $size }.
+linkExpiredAlt
+    .alt = Mae'r ddolen wedi dod i ben
+expiredPageHeader = Mae'r ddolen wedi dod i ben neu nad yw wedi bodoli erioed!
+notSupportedHeader = Nid yw eich porwr yn cael ei gynnal.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Yn anffodus nid yw'r porwr hwn yn cynnal y technoleg gwe sy'n cynnal Firefox Send. Bydd angen i chi ddefnyddio porwr arall. Rydym ni'n argymell Firefox!
+downloadFirefoxButtonSub = Llwytho i Lawr am Ddim
+uploadedFile = Ffeil
+copyFileList = Copïo URL
+// expiryFileList is used as a column header
+expiryFileList = Daw i ben ymhen
+deleteFileList = Dileu
+nevermindButton = Dim ots
+legalHeader = Amodau a Phreifatrwydd
