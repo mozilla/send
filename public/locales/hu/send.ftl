@@ -68,6 +68,22 @@ copyFileList = URL másolása
 // expiryFileList is used as a column header
 expiryFileList = Lejár:
 deleteFileList = Törlés
+nevermindButton = Mindegy
+deleteButtonHover
+    .title = Törlés
+copyUrlHover
+    .title = URL másolása
 legalHeader = Feltételek és adatvédelem
 deletePopupText = Törli ezt a fájlt?
 deletePopupYes = Igen
+deletePopupCancel = Mégse
+deleteButtonHover
+    .title = Törlés
+copyUrlHover
+    .title = URL másolása
+footerLinkLegal = Jogi információk
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = A Tesztpilóta névjegye
+footerLinkPrivacy = Adatvédelem
+footerLinkTerms = Feltételek
+footerLinkCookies = Sütik
