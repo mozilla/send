@@ -11,3 +11,16 @@ uploadPageMultipleFilesAlert = Cargar múltiples archivos o una carpeta todavía
 uploadPageBrowseButtonTitle = Subir archivo
 uploadingPageHeader = Subiendo el archivo
 importingFile = Importando…
+verifyingFile = Verificando…
+encryptingFile = Cifrando…
+decryptingFile = Descifrando…
+notifyUploadDone = La carga ha terminado.
+uploadingPageMessage = Una vez que se cargue el archivo podrás modificar las opciones de expiración.
+uploadingPageCancel = Cancelar subida
+    .title = Cancelar subida
+uploadCancelNotification = La subida fue cancelada.
+uploadingPageLargeFileMessage = El archivo es grande y puede tardar un rato en subir. ¡Quedate quieto!
+uploadingFileNotification = Notificarme cuando la subida se complete.
+uploadSuccessConfirmHeader = Listo para enviar
+uploadSvgAlt
+    .alt = Subir
