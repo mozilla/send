@@ -619,7 +619,7 @@ tbody {
   right: 0;
   bottom: 0;
   left: 0;
-  font-size: 15px;
+  font-size: 13px;
   display: flex;
   align-items: flex-end;
   flex-direction: row;
@@ -636,17 +636,17 @@ tbody {
 }
 
 .legal-links {
-  max-width: 600px;
-  width: 80vw;
+  width: 81vw;
   display: flex;
   align-items: center;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .legal-links > a {
   color: #858585;
   opacity: 0.9;
+  white-space: nowrap;
+  margin-right: 2vw;
 }
 
 .legal-links > a:hover {
@@ -660,7 +660,8 @@ tbody {
 .social-links {
   display: flex;
   justify-content: space-between;
-  width: 94px;
+  width: 9vw;
+  max-width: 94px;
 }
 
 .social-links > a {
