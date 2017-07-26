@@ -43,6 +43,8 @@ downloadAltText
     .alt = Letöltés
 downloadFileName = { $filename } letöltése
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Az ismerőse egy fájlt küld a Firefox Senddel, egy olyan fájlmegosztó szolgáltatással, amely biztonságos, privát és titkosított hivatkozáson keresztül működik, amely automatikusan elévül, így biztosítva hogy a dolga ne maradjon örökre online.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Letöltés
     .title = Letöltés
@@ -52,6 +54,7 @@ downloadFinish = A letöltés befejeződött
 sendYourFilesLink = Próbálja ki a Firefox Sendet
     .title = Próbálja ki a Firefox Sendet
 downloadingPageProgress = { $filename } letöltése ({ $size })
+downloadingPageMessage = Hagyja nyitva ezt a lapot, amíg lekérésre és visszafejtésre kerül a fájlja.
 errorAltText
     .alt = Feltöltési hiba
 errorPageHeader = Hiba történt!
@@ -62,6 +65,8 @@ linkExpiredAlt
     .alt = A hivatkozás lejárt
 expiredPageHeader = Ez a hivatkozás lejárt, vagy sosem létezett!
 notSupportedHeader = A böngésző nem támogatott.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Sajnos ez a böngésző nem támogatja a Firefox Send alapját képező webes technológiát. Egy másik böngészőben kell megpróbálnia. Mi a Firefoxot javasoljuk! 
 downloadFirefoxButtonSub = Ingyenes letöltés
 uploadedFile = Fájl
 copyFileList = URL másolása
@@ -74,6 +79,8 @@ deleteButtonHover
 copyUrlHover
     .title = URL másolása
 legalHeader = Feltételek és adatvédelem
+legalNoticeTestPilot = A Firefox Send pillanatnyilag egy Tesztpilóta kísérlet, és a <a>Szolgáltatási feltételek</a> valamint az <a>Adatvédelmi nyilatkozat</a> vonatkozik rá. Többet tudhat meg a kísérletről, és az adatgyűjtéséről <a>itt</a>.
+legalNoticeMozilla = A Firefox Send weboldal használatakor a Mozilla <a>Webhelyekre vonatkozó adatvédelmi nyilatkozata</a> és a <a>Weboldalak felhasználási feltételei</a> is vonatkoznak Önre.
 deletePopupText = Törli ezt a fájlt?
 deletePopupYes = Igen
 deletePopupCancel = Mégse
