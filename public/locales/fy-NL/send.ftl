@@ -41,3 +41,23 @@ downloadAltText
     .alt = Downloade
 downloadFileName = { $filename } downloade
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Jo freon stjoert jo in best^n mei Firefox Send, in tsjinst dy't jo yn steat stelt bestannen te dielen mei in feilige, privee en fersifere keppeling dy't automatysk ferrint om wis te wêzen dat jo guod net foar altyd online bliuwt.
+// Text and title used on the download link/button (indicates an action).
+downloadButtonLabel = Downloade
+    .title = Downloade
+downloadNotification = Jo download is foltôge.
+downloadFinish = Download foltôge
+// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+sendYourFilesLink = Firefox Send probearje
+    .title = Firefox Send probearje
+downloadingPageProgress = { $filename } ({ $size }) wurdt download
+downloadingPageMessage = Lit dit ljepblêd iepen wylst wy jo bestân krije en ûntsiferje.
+errorAltText
+    .alt = Oplaadflater
+errorPageHeader = Der is wat misgien!
+errorPageMessage = Der is in flater bard wylst it opladen fan jo bestân.
+errorPageLink = Noch in bestân ferstjoere
+fileTooBig = It bestân is te grut om op te laden. It moat lytser wêze as { $size }.
+linkExpiredAlt
+    .alt = Keppeling ferrûn
