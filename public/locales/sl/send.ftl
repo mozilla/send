@@ -19,6 +19,7 @@ uploadingPageMessage = Ko bo vaša datoteka prenesena, boste lahko nastavili mo�
 uploadingPageCancel = Prekliči prenos
     .title = Prekliči prenos
 uploadCancelNotification = Vaš prenos je preklican.
+uploadingPageLargeFileMessage = Datoteka je velika in lahko traja nekaj časa, da se naloži. Počakajte trenutek!
 uploadingFileNotification = Obvesti me, ko bo prenos končan.
 uploadSuccessConfirmHeader = Pripravljeno za pošiljanje
 uploadSvgAlt
@@ -50,6 +51,7 @@ downloadFinish = Prenos končan
 sendYourFilesLink = Preskusite Firefox Send
     .title = Preskusite Firefox Send
 downloadingPageProgress = Prenašanje { $filename } ({ $size })
+downloadingPageMessage = Medtem ko pridobivamo vašo datoteko in jo dešifriramo, pustite ta zavihek odprt.
 errorAltText
     .alt = Napaka pri prenosu
 errorPageHeader = Prišlo je do težave!
@@ -65,6 +67,8 @@ notSupportedDetail = Ta brskalnik na žalost ne podpira tehnologije, ki poganja 
 downloadFirefoxButtonSub = Brezplačen prenos
 uploadedFile = Datoteka
 copyFileList = Kopiraj URL
+// expiryFileList is used as a column header
+expiryFileList = Poteče
 deleteFileList = Izbriši
 nevermindButton = Pozabi
 deleteButtonHover
