@@ -49,39 +49,58 @@ app.engine(
     partialsDir: 'views/partials/',
     helpers: {
       availableLanguages,
-      l10nDev: conf.l10n_dev
+      maybePontoon: function() {
+        return conf.l10n_dev
+          ? '<script src="https://pontoon.mozilla.org/pontoon.js"></script>'
+          : null;
+      }
     }
   })
 );
 app.set('view engine', 'handlebars');
 
-app.use(helmet());
+app.use(
+  helmet({
+    frameguard: {
+      action: 'allow-from',
+      domain: 'https://pontoon.mozilla.org'
+    }
+  })
+);
 app.use(
   helmet.hsts({
     maxAge: 31536000,
     force: conf.env === 'production'
   })
 );
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      connectSrc: [
-        "'self'",
-        'https://sentry.prod.mozaws.net',
-        'https://www.google-analytics.com'
-      ],
-      imgSrc: ["'self'", 'https://www.google-analytics.com'],
-      scriptSrc: ["'self'"],
-      styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
-      fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
-      formAction: ["'none'"],
-      frameAncestors: ["'none'"],
-      objectSrc: ["'none'"],
-      reportUri: '/__cspreport__'
-    }
-  })
-);
+const cspPolicy = {
+  directives: {
+    defaultSrc: ["'self'"],
+    connectSrc: [
+      "'self'",
+      'https://sentry.prod.mozaws.net',
+      'https://www.google-analytics.com'
+    ],
+    imgSrc: ["'self'", 'https://www.google-analytics.com'],
+    scriptSrc: ["'self'"],
+    styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
+    fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
+    formAction: ["'none'"],
+    frameAncestors: ["'none'"],
+    objectSrc: ["'none'"],
+    reportUri: '/__cspreport__'
+  }
+};
+
+if (conf.l10n_dev) {
+  const d = cspPolicy.directives;
+  d.scriptSrc.push('https://pontoon.mozilla.org');
+  d.imgSrc.push('https://pontoon.mozilla.org');
+  d.styleSrc.push('https://pontoon.mozilla.org');
+  d.frameAncestors = ['https://pontoon.mozilla.org'];
+}
+
+app.use(helmet.contentSecurityPolicy(cspPolicy));
 app.use(
   busboy({
     limits: {
