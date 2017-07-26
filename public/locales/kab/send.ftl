@@ -3,8 +3,10 @@ title = Firefox Send
 siteSubtitle = Tarmit web
 siteFeedback = Tikti
 uploadPageHeader = Beṭṭu n ifuyla s uwgelhen akked tbaḍnit
+uploadPageExplainer = Azen ifuyla s wudem aɣelsant, s tbaḍnit akked uwgelhen, s useqdec n useɣwen ara yemten s wudem awurman akken talqut-ik ur tettɣimi ara srid i lebda.
 uploadPageLearnMore = Issin ugar
 uploadPageDropMessage = Zuɣeṛ afaylu-ik ar dagi akken ad tebduḍ asali
+uploadPageSizeMessage = I ugmuḍ ufrin, yelha ad tesqedceḍ ifuyla daw n 1 GAṬ
 uploadPageBrowseButton = Fren afaylu sef uselkim-ik
     .title = Fren afaylu seg uselkim-ik
 uploadPageMultipleFilesAlert = Asali n ddeqs n ifuyla neɣ ikaramen ur ittusefrak ara yakan.
@@ -41,6 +43,8 @@ downloadAltText
     .alt = Sider
 downloadFileName = Sider { $filename }
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Amdakel-ik yuzen-ak-d afaylu s Firefox Firefox Send, ameẓlu ara yeǧǧen tuzna n ifuyla s wudem aɣelsan, s tbadnit akked uwgelhen s useqdec n useqwen ara yeùten s wudem awurman akken talqut-ik ur tettɣimi ara srid i lebda.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Sider
     .title = Sider
@@ -61,6 +65,8 @@ linkExpiredAlt
     .alt = Aseɣwen yemmut
 expiredPageHeader = Aseɣwen-agi yemmut neɣ wurǧin yella seg tazwara!
 notSupportedHeader = Iminig-ik ur ittusefrak ara
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Ad nesḥissef imi iminig-ik ur isefrak ara tatiknulujit web iseqdac Firefox Send. Yessefk ad tesqedceḍ iminig-nniḍen. Seqdec Firefox!
 downloadFirefoxButtonSub = Asider ilelli
 uploadedFile = Afaylu
 copyFileList = Nɣel URL
@@ -73,6 +79,7 @@ deleteButtonHover
 copyUrlHover
     .title = Nɣel URL.
 legalHeader = Tiwtilin &tabaḍnit
+legalNoticeTestPilot = Firefox Send yettwasekyad akka tura am tarmit Test Pilot, ihi ad yili daw n <a>n tewtilin n useqdec </a> n  Test Pilot akked <a>Tasertit n tbaḍnit</a>. Tzemreḍ ad teẓreḍ ugar ɣeef tarmit-agi akked ulqaḍ n isefka<a> dagihere</a>.
 legalNoticeMozilla = Aseqdec n usmel n Firefox Send yella daw n <a> ilugan tbaḍnit n yismal web </a> n Mozilla akked <a> Tiwtilin n useqdec n yismal Web</a> n Mozilla.
 deletePopupText = Kkes afaylu-agi?
 deletePopupYes = Ih
