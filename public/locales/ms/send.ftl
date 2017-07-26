@@ -74,4 +74,13 @@ copyFileList = Salin URL
 expiryFileList = Luput Pada
 deleteFileList = Padam
 nevermindButton = Tak apalah
+deleteButtonHover
+    .title = Padam
 legalHeader = Terma & Privasi
+legalNoticeTestPilot = Firefox Send adalah eksperimen Ujian Perintis, dan tertakluk kepada <a>Terma Perkhidmatan</a> dan <a>Privacy Notice</a> Ujian Perintis. Anda boleh ketahui selanjutnya perihal eksperimen ini dan pengumpulan data <a>di sini</a>.
+legalNoticeMozilla = Penggunaan laman web Firefox Send juga tertakluk kepada <a>Notis Privasi Laman web</a> dan <a>Terma Penggunaan Laman web</a> Mozilla.
+deletePopupText = Padam fail ini?
+deletePopupYes = Ya
+deletePopupCancel = Batal
+deleteButtonHover
+    .title = Padam
