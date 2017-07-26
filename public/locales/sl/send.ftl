@@ -17,7 +17,7 @@ uploadingPageCancel = Prekliči prenos
 uploadCancelNotification = Vaš prenos je preklican.
 uploadingFileNotification = Obvesti me, ko bo prenos končan.
 uploadSvgAlt
-    .alt = Prenesi
+    .alt = Naloži
 uploadSuccessTimingHeader = Povezava do vaše datoteke bo potekla po enem prenosu ali v 24 urah.
 // Note: Title text for button should be the same.
 copyUrlFormButton = Kopiraj v odložišče
@@ -45,6 +45,7 @@ downloadingPageProgress = Prenašanje { $filename } ({ $size })
 errorAltText
     .alt = Napaka pri prenosu
 errorPageHeader = Prišlo je do težave!
+errorPageMessage = Pri nalaganju vaše datoteke je prišlo do napake.
 errorPageLink = Pošlji drugo datoteko
 fileTooBig = Ta datoteka je prevelika za prenos. Morala bi biti manjša od { $size }.
 linkExpiredAlt
@@ -71,7 +72,7 @@ copyUrlHover
     .title = Kopiraj URL
 footerLinkLegal = Pravno obvestilo
 // Test Pilot is a proper name and should not be localized.
-footerLinkAbout = O Test Pilotu
+footerLinkAbout = O programu Test Pilot
 footerLinkPrivacy = Zasebnost
 footerLinkTerms = Pogoji
 footerLinkCookies = Piškotki
