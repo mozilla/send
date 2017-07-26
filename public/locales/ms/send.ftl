@@ -44,3 +44,8 @@ downloadFileName = Muat turun { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Rakan anda menghantar satu fail kepada anda menggunakan Firefox Send, satu perkhidmatan yang membolehkan anda berkongsi fail dengan pautan yang selamat, peribadi dan dienkrip, yang secara automatik akan luput bagi memastikan fail anda tidak terus berada dalam talian selama-lamanya.
+// Text and title used on the download link/button (indicates an action).
+downloadButtonLabel = Muat turun
+    .title = Muat turun
+downloadNotification = Muat turun anda sudah siap.
+downloadFinish = Muat turun Selesai
