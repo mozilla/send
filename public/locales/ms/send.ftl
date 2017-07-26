@@ -59,3 +59,19 @@ errorAltText
     .alt = Ralat memuat naik
 errorPageHeader = Ada sesuatu yang tidak kena!
 errorPageMessage = Ada ralat semasa memuat naik fail.
+errorPageLink = Hantar fail lain
+fileTooBig = Fail terlalu besar untuk dimuat naik. Perlu kurang daripada { $size }.
+linkExpiredAlt
+    .alt = Pautan sudah luput
+expiredPageHeader = Pautan ini sudah luput atau pun tidak pernah wujud!
+notSupportedHeader = Pelayar anda tidak disokong.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Malangnya, pelayar ini tidak menyokong teknologi web yang melaksanakan Firefox Send. Anda perlu cuba pelayar lain. Kami syorkan Firefox!
+downloadFirefoxButtonSub = Muat turun Percuma
+uploadedFile = Fail
+copyFileList = Salin URL
+// expiryFileList is used as a column header
+expiryFileList = Luput Pada
+deleteFileList = Padam
+nevermindButton = Tak apalah
+legalHeader = Terma & Privasi
