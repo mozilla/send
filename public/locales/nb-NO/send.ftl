@@ -20,6 +20,7 @@ uploadCancelNotification = Din opplasting ble avbrutt
 uploadSuccessConfirmHeader = Klar til å sende
 uploadSvgAlt
     .alt = Last opp
+uploadSuccessTimingHeader = Lenken til filen din utløper etter 1 nedlasting eller om 24 timer.
 // Note: Title text for button should be the same.
 copyUrlFormButton = Kopier til utklippstavle
     .title = Kopier til utklippstavle
