@@ -2,8 +2,8 @@
 title = Firefox Send
 siteSubtitle = webeksperiment
 siteFeedback = Komentar
-uploadPageHeader = Priwatne, zaklucowane źělenje datajow
-uploadPageExplainer = Pósćelśo dataje pśez wěsty, priwatny a zaklucowany wótkaz, kótaryž awtomatiski spadnjo, až njeby waše daty na pśecej online wóstawali.
+uploadPageHeader = Priwatne, skoděrowane źělenje datajow
+uploadPageExplainer = Pósćelśo dataje pśez wěsty, priwatny a skoděrowany wótkaz, kótaryž awtomatiski spadnjo, až njeby waše daty na pśecej online wóstawali.
 uploadPageLearnMore = Dalšne informacije
 uploadPageDropMessage = Śěgniśo swóju dataju sem, aby ju nagrał
 uploadPageSizeMessage = Wužywajśo nejlěpje dataje, kótarež su mjeńše ako 1 GB za lěpšu spušćobnosć.
@@ -63,3 +63,34 @@ errorPageLink = Drugu dataju pósłaś
 fileTooBig = Toś ta dataja jo pśewjelika za nagraśe. Měła mjeńša ako { $size } byś.
 linkExpiredAlt
     .alt = Wótkaz spadnjony
+expiredPageHeader = Toś ten wótkaz jo spadnjony abo njejo nigda eksistěrował!
+notSupportedHeader = Waš wobglědowak se njepódpěra.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Bóžko toś ten wobglědowak webtechnologiju njepódpěra, na kótarejž Firefox Send bazěrujo. Musyśo drugi wobglědowak wužywaś. My Firefox dopórucujomy!
+downloadFirefoxButtonSub = Dermotne ześěgnjenje
+uploadedFile = Dataja
+copyFileList = URL kopěrowaś
+// expiryFileList is used as a column header
+expiryFileList = Spadnjo za
+deleteFileList = Wulašowaś
+nevermindButton = Wšojadno
+deleteButtonHover
+    .title = Wulašowaś
+copyUrlHover
+    .title = URL kopěrowaś
+legalHeader = Wuměnjenja a priwatnosć
+legalNoticeTestPilot = Firefox jo tuchylu eksperiment Test Pilot, a pódlažy <a>wužywańskim wuměnjenjam</a> a <a>pokazce priwatnosći</a> Test Pilot. Wěcej wó toś tom eksperimenśe a daty, kótarež gromaźi, <a>how</a> zgónijośo.
+legalNoticeMozilla = Teke wužywanje websedła Firefox Send <a>pokazce priwatnosći za websedła</a> a <a>wužywańskim wuměnjenjam za websedła</a> Mozilla pódlažy. 
+deletePopupText = Toś tu dataju lašowaś?
+deletePopupYes = Jo
+deletePopupCancel = Pśetergnuś
+deleteButtonHover
+    .title = Wulašowaś
+copyUrlHover
+    .title = URL kopěrowaś
+footerLinkLegal = Pšawniske
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Wó Test Pilot
+footerLinkPrivacy = Priwatnosć
+footerLinkTerms = Wuměnjenja
+footerLinkCookies = Cookieje
