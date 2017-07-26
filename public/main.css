@@ -89,18 +89,20 @@ body {
   opacity: 0.9;
   padding: 5px;
   overflow: hidden;
-  width: 12px;
+  min-width: 12px;
+  max-width: 12px;
   text-indent: 17px;
-  transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
+  white-space: nowrap;
 }
 
 .feedback:hover,
 .feedback:focus {
-  width: 57px;
+  min-width: 30px;
+  max-width: 300px;
   text-indent: 2px;
   padding: 5px 5px 5px 20px;
   background-color: #0287e8;
-  transition: all 150ms ease-in-out;
 }
 
 .feedback:active {
