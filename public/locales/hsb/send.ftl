@@ -65,6 +65,8 @@ linkExpiredAlt
     .alt = Wotkaz je spadnjeny
 expiredPageHeader = Tutón wotkaz je spadnjeny abo njeje ženje eksistował.
 notSupportedHeader = Waš wobhladowak so njepodpěruje.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Bohužel tutón wobhladowak webtechnologiju njepodpěruje, na kotrejž Firefox Send bazuje. Dyrbiće druhi wobhladowak wužiwać. My Firefox doporučemy!
 downloadFirefoxButtonSub = Darmotne sćehnjenje
 uploadedFile = Dataja
 copyFileList = URL kopěrować
@@ -77,6 +79,8 @@ deleteButtonHover
 copyUrlHover
     .title = URL kopěrować
 legalHeader = Wuměnjenja a priwatnosć
+legalNoticeTestPilot = Firefox je tuchwilu eksperiment Test Pilot, a podleži <a>wužiwanskim wuměnjenjam</a> a <a>pokazce priwatnosće</a> Test Pilot. Wjace wo tutym eksperimenće a daty, kotrež hromadźi, <a>tu</a> zhoniće.
+legalNoticeMozilla = Tež wužiwanje websydła Firefox Send <a>pokazce priwatnosće za websydła</a> a <a>wužiwanskim wuměnjenjam za websydła</a> Mozilla podleži. 
 deletePopupText = Tutu dataju zhašeć?
 deletePopupYes = Haj
 deletePopupCancel = Přetorhnyć
