@@ -92,5 +92,5 @@ footerLinkLegal = Mentions légales
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = À propos de Test Pilot
 footerLinkPrivacy = Confidentialité
-footerLinkTerms = Conditions
+footerLinkTerms = Conditions d’utilisation
 footerLinkCookies = Cookies
