@@ -3,10 +3,13 @@ title = Firefox Send
 siteSubtitle = expérience web
 siteFeedback = Votre avis
 uploadPageHeader = Partage de fichiers de façon confidentielle et chiffrée
+uploadPageExplainer = Envoyez des fichiers de façon sécurisée, confidentielle et chiffrée, via un lien qui expire automatiquement pour que vos informations ne restent pas en ligne indéfiniment.
 uploadPageLearnMore = En savoir plus
 uploadPageDropMessage = Déposez votre fichier ici pour l’envoyer
+uploadPageSizeMessage = Pour un résultat fiable, il est conseillé de ne pas utiliser de fichiers dont la taille est supérieure à 1 Go
 uploadPageBrowseButton
     .title = Sélectionner un fichier sur l’ordinateur
+uploadPageMultipleFilesAlert = L’envoi de plusieurs fichier ou de dossiers n’est pas pris en charge pour le moment.
 uploadPageBrowseButtonTitle = Envoyer le fichier
 uploadingPageHeader = Envoi du fichier en cours
 importingFile = Importation…
@@ -20,8 +23,10 @@ uploadingPageCancel
 uploadCancelNotification = L’envoi a été annulé.
 uploadingPageLargeFileMessage = Ce fichier est volumineux et son envoi peut prendre un peu de temps.
 uploadingFileNotification = M’envoyer une notification lorsque l’envoi est terminé.
+uploadSuccessConfirmHeader = Paré à l’envoi
 uploadSvgAlt
     .alt = Envoyer
+uploadSuccessTimingHeader = Le lien vers votre fichier expirera après le premier téléchargement ou au bout de 24 heures.
 copyUrlFormLabelWithName = Copiez et partagez le lien pour envoyer votre fichier : { $filename }
 // Note: Title text for button should be the same.
 copyUrlFormButton
@@ -38,6 +43,8 @@ downloadAltText
     .alt = Télécharger
 downloadFileName = Télécharger { $filename }
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Votre ami vous a envoyé un fichier avec Firefox Send, un service qui permet d’envoyer des fichiers de façon sécurisée, confidentielle et chiffrée via un lien qui expire automatiquement pour que vos informations ne restent pas en ligne indéfiniment.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel
     .title = Télécharger
