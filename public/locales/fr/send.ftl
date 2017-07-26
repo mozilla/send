@@ -6,8 +6,8 @@ uploadPageHeader = Partage de fichiers de façon confidentielle et chiffrée
 uploadPageExplainer = Envoyez des fichiers de façon sécurisée, confidentielle et chiffrée, via un lien qui expire automatiquement pour que vos informations ne restent pas en ligne indéfiniment.
 uploadPageLearnMore = En savoir plus
 uploadPageDropMessage = Déposez votre fichier ici pour l’envoyer
-uploadPageSizeMessage = Pour un résultat fiable, il est conseillé de ne pas utiliser de fichiers dont la taille est supérieure à 1 Go
-uploadPageBrowseButton
+uploadPageSizeMessage = Pour un résultat fiable, il est conseillé d’utiliser des fichiers de taille inférieure à 1 Go
+uploadPageBrowseButton = Sélectionner un fichier sur l’ordinateur
     .title = Sélectionner un fichier sur l’ordinateur
 uploadPageMultipleFilesAlert = L’envoi de plusieurs fichier ou de dossiers n’est pas pris en charge pour le moment.
 uploadPageBrowseButtonTitle = Envoyer le fichier
@@ -18,7 +18,7 @@ encryptingFile = Chiffrement…
 decryptingFile = Déchiffrement…
 notifyUploadDone = L’envoi est terminé.
 uploadingPageMessage = Une fois l’envoi terminé, vous serez en mesure de régler les options d’expiration.
-uploadingPageCancel
+uploadingPageCancel = Annuler l’envoi
     .title = Annuler l’envoi
 uploadCancelNotification = L’envoi a été annulé.
 uploadingPageLargeFileMessage = Ce fichier est volumineux et son envoi peut prendre un peu de temps.
@@ -29,7 +29,7 @@ uploadSvgAlt
 uploadSuccessTimingHeader = Le lien vers votre fichier expirera après le premier téléchargement ou au bout de 24 heures.
 copyUrlFormLabelWithName = Copiez et partagez le lien pour envoyer votre fichier : { $filename }
 // Note: Title text for button should be the same.
-copyUrlFormButton
+copyUrlFormButton = Copier dans le presse-papiers
     .title = Copier dans le presse-papiers
 copiedUrl = Lien copié !
 // Note: Title text for button should be the same.
@@ -46,12 +46,12 @@ downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Votre ami vous a envoyé un fichier avec Firefox Send, un service qui permet d’envoyer des fichiers de façon sécurisée, confidentielle et chiffrée via un lien qui expire automatiquement pour que vos informations ne restent pas en ligne indéfiniment.
 // Text and title used on the download link/button (indicates an action).
-downloadButtonLabel
+downloadButtonLabel = Télécharger
     .title = Télécharger
 downloadNotification = Le téléchargement est terminé.
 downloadFinish = Téléchargement terminé
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
-sendYourFilesLink
+sendYourFilesLink = Essayer Firefox Send
     .title = Essayer Firefox Send
 downloadingPageProgress = Téléchargement en cours de { $filename } ({ $size })
 downloadingPageMessage = Merci de laisser cet onglet ouvert pendant que nous récupérons le fichier et que nous le déchiffrons.
