@@ -33,3 +33,11 @@ copiedUrl = Kopiearre!
 // Note: Title text for button should be the same.
 deleteFileButton = Bestân fuortsmite
     .title = Bestân fuortsmite
+// Note: Title text for button should be the same.
+sendAnotherFileLink = Noch in bestân ferstjoere
+    .title = Noch in bestân ferstjoere
+// Alternative text used on the download link/button (indicates an action).
+downloadAltText
+    .alt = Downloade
+downloadFileName = { $filename } downloade
+downloadFileSize = ({ $size })
