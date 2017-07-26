@@ -5,6 +5,7 @@ siteFeedback = Povratne informacije
 uploadPageHeader = Zasebno, šifrirano deljenje datotek
 uploadPageExplainer = Pošljite datoteke preko varne, zasebne in šifrirane povezave, ki samodejno poteče, kar vam zagotavlja, da vaše datoteke ne bodo ostale za vedno na spletu.
 uploadPageLearnMore = Več o tem
+uploadPageSizeMessage = Za najbolj zanesljivo delovanje, je najbolje, da datoteka ne presega 1GB
 uploadPageBrowseButton = Izberite datoteko na računalniku
     .title = Izberite datoteko na računalniku
 uploadPageMultipleFilesAlert = Nalaganje več datotek ali map trenutno ni podprto.
@@ -38,6 +39,8 @@ downloadAltText
     .alt = Prenesi
 downloadFileName = Prenesi { $filename }
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Prijatelj vam pošilja datoteko preko storitve Firefox Send, ki vam omogoča deljenje datotek preko varne, zasebne in šifrirane povezave, ki samodejno poteče, kar vam zagotavlja, da vaše stvari ne ostanejo na spletu za vedno.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Prenesi
     .title = Prenesi
