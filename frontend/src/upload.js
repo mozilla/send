@@ -180,10 +180,6 @@ $(document).ready(function() {
     const fileSender = new FileSender(file);
     $('#cancel-upload').click(() => {
       fileSender.cancel();
-      location.reload();
-      document.l10n.formatValue('uploadCancelNotification').then(str => {
-        notify(str);
-      });
       storage.referrer = 'cancelled-upload';
 
       // record upload-stopped (cancelled) by sender
@@ -195,6 +191,7 @@ $(document).ready(function() {
         cd1: event.type === 'drop' ? 'drop' : 'click',
         cd2: 'cancelled'
       });
+      location.reload();
     });
 
     fileSender.on('progress', progress => {

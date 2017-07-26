@@ -20,6 +20,8 @@ function hexToArray(str) {
 }
 
 function notify(str) {
+  return str;
+  /* TODO: enable once we have an opt-in ui element
   if (!('Notification' in window)) {
     return;
   } else if (Notification.permission === 'granted') {
@@ -29,6 +31,7 @@ function notify(str) {
       if (permission === 'granted') new Notification(str);
     });
   }
+  */
 }
 
 function gcmCompliant() {
