@@ -1,0 +1,19 @@
+// Firefox Send is a brand name and should not be localized.
+title = Firefox Send
+siteSubtitle = arbrawf gwe
+siteFeedback = Adborth
+uploadPageHeader = Rhannu Ffeiliau wedi eu Hamgryptio Preifat
+uploadPageExplainer = Anfon ffeiliau drwy ddolen diogel, breifat ac wedi ei amgryptio sy'n dod i ben yn awtomatig er mwyn sicrhau nad yw eich pethau'n bodoli ar lein am byth.
+uploadPageLearnMore = Dysgu rhagor
+uploadPageDropMessage = Gollyngwch eich ffeiliau yma i gychwyn llwytho i fyny
+uploadPageSizeMessage = Mae'n well cadw maint y ffeiliau o dan 1GB er mwyn iddo weithio ar ei orau.
+uploadPageBrowseButton = Dewiswch ffeil ar eich cyfrifiadur
+    .title = Dewiswch ffeil ar eich cyfrifiadur
+uploadPageMultipleFilesAlert = Nid yw llwytho nifer lluosog o ffeilia neu ffolder yn cael ei gynnal ar hyn o bryd.
+uploadPageBrowseButtonTitle = Llwytho ffeil i fyny
+uploadingPageHeader = Llwytho eich Ffeiliau i Fyny
+importingFile = Mewnforio…
+verifyingFile = Wrthi'n gwirio
+encryptingFile = Wrthi'n amgryptio...
+decryptingFile = Wrthi'n dadgryptio
+notifyUploadDone = Mae eich llwytho wedi gorffen.
