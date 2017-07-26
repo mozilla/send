@@ -2,7 +2,10 @@
 title = Firefox Send
 siteSubtitle = 網頁實驗
 siteFeedback = 意見回饋
+uploadPageHeader = 私密、有加密的檔案分享服務
 uploadPageLearnMore = 了解更多
+uploadPageDropMessage = 將檔案放到此處開始上傳
+uploadPageSizeMessage = 為了讓系統能最穩定地執行，請盡量將檔案控制在 1GB 以下。
 uploadPageBrowseButton = 選擇您電腦上的檔案
     .title = 選擇您電腦上的檔案
 uploadPageBrowseButtonTitle = 上傳檔案
