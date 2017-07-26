@@ -14,10 +14,12 @@ verifyingFile = Preverjanje …
 encryptingFile = Šifriranje ...
 decryptingFile = Dešifriranje ...
 notifyUploadDone = Vaš prenos je končan.
+uploadingPageMessage = Ko bo vaša datoteka prenesena, boste lahko nastavili možnosti poteka.
 uploadingPageCancel = Prekliči prenos
     .title = Prekliči prenos
 uploadCancelNotification = Vaš prenos je preklican.
 uploadingFileNotification = Obvesti me, ko bo prenos končan.
+uploadSuccessConfirmHeader = Pripravljeno za pošiljanje
 uploadSvgAlt
     .alt = Naloži
 uploadSuccessTimingHeader = Povezava do vaše datoteke bo potekla po enem prenosu ali v 24 urah.
@@ -39,6 +41,7 @@ downloadFileSize = ({ $size })
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Prenesi
     .title = Prenesi
+downloadNotification = Vaš prenos je končan.
 downloadFinish = Prenos končan
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Preskusite Firefox Send
@@ -52,6 +55,7 @@ errorPageLink = Pošlji drugo datoteko
 fileTooBig = Ta datoteka je prevelika za prenos. Morala bi biti manjša od { $size }.
 linkExpiredAlt
     .alt = Povezava je potekla
+expiredPageHeader = Ta povezava je potekla ali pa sploh ni obstajala!
 notSupportedHeader = Vaš brskalnik ni podprt.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Ta brskalnik na žalost ne podpira tehnologije, ki poganja Firefox Send. Uporabiti boste morali drug brskalnik. Priporočamo Firefox!
