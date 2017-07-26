@@ -21,6 +21,7 @@ uploadingPageMessage = Hdyž do waša dataja nahrawa, móžeće nastajenja spadn
 uploadingPageCancel = Nahraće přetorhnyć
     .title = Nahraće přetorhnyć
 uploadCancelNotification = Waše nahraće je so přetorhnyło.
+uploadingPageLargeFileMessage = Tuta dataja je wulka a nahrawanje móhło chwilku trać. Budźće sćerpliwy!
 uploadingFileNotification = Zdźělić, hdyž nahraće je dokónčene.
 uploadSuccessConfirmHeader = Hotowy za słanje
 uploadSvgAlt
@@ -42,6 +43,8 @@ downloadAltText
     .alt = Sćahnyć
 downloadFileName = { $filename } sćahnyć
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Waš přećel wam dataju z Firefox Send sćele, słužba, kotraž wam zmóžnja, dataje přez wěsty, priwatny a zaklučowany wotkaz dźělić, kotryž awtomatisce spadnje, zo njebychu waše daty na přeco online wostawali.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Sćahnyć
     .title = Sćahnyć
@@ -51,6 +54,7 @@ downloadFinish = Sćehnjenje dokónčene
 sendYourFilesLink = Firefox Send wupruwować
     .title = Firefox Send wupruwować
 downloadingPageProgress = { $filename } ({ $size }) so sćahuje
+downloadingPageMessage = Prošu wostajće tutón rajtark wočinjeny, mjeztym zo wašu dataju sćahujemy a dešifrujemy.
 errorAltText
     .alt = Nahrawanski zmylk
 errorPageHeader = Něšto je so nimokuliło!
