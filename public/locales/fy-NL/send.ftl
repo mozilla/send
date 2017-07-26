@@ -21,3 +21,6 @@ uploadingPageCancel = Opladen annulearje
     .title = Opladen annulearje
 uploadCancelNotification = Jo oplaad is annulearre.
 uploadingPageLargeFileMessage = Dit is in grut bestân en it opladen kin efkes duorje. In amerijke!
+uploadSuccessConfirmHeader = Ree om te ferstjoeren
+uploadSvgAlt
+    .alt = Oplaad
