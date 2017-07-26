@@ -24,3 +24,12 @@ uploadingPageLargeFileMessage = Dit is in grut bestân en it opladen kin efkes d
 uploadSuccessConfirmHeader = Ree om te ferstjoeren
 uploadSvgAlt
     .alt = Oplaad
+uploadSuccessTimingHeader = De keppeling nei jo bestân sil nei 1 download ferrinne of nei 24 oeren.
+copyUrlFormLabelWithName = Kopiearje en diel de keppeling om jo bestân te ferstjoeren: { $filename }
+// Note: Title text for button should be the same.
+copyUrlFormButton = Nei klamboerd kopiearje
+    .title = Nei klamboerd kopiearje
+copiedUrl = Kopiearre!
+// Note: Title text for button should be the same.
+deleteFileButton = Bestân fuortsmite
+    .title = Bestân fuortsmite
