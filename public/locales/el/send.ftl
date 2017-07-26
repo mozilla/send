@@ -3,6 +3,7 @@ title = Firefox Send
 siteSubtitle = πείραμα διαδικτύου
 siteFeedback = Σχόλια
 uploadPageLearnMore = Μάθετε περισσότερα
+uploadPageDropMessage = Εναποθέστε το αρχείο σας εδώ για έναρξη μεταφόρτωσης
 uploadPageBrowseButton = Επιλέξτε αρχείο από τον υπολογιστή σας
     .title = Επιλέξτε αρχείο από τον υπολογιστή σας
 uploadPageMultipleFilesAlert = Η μεταφόρτωση πολλαπλών αρχείων ή φακέλου δεν υποστηρίζεται αυτή τη στιγμή.
