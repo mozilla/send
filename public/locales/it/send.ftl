@@ -1,12 +1,12 @@
 // Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteSubtitle = esperimento web
+siteSubtitle = un esperimento web
 siteFeedback = Feedback
-uploadPageHeader = Condivisione di file riservata e cifrata
+uploadPageHeader = Condivisione di file riservata e crittata
 uploadPageExplainer = Invia file in modo sicuro, riservato e crittato, con un link che scade automaticamente per garantire che i tuoi dati non rimangano online per sempre.
 uploadPageLearnMore = Ulteriori informazioni
-uploadPageDropMessage = Trascina qui i tuoi file per caricarli
-uploadPageSizeMessage = Per un risultato affidabile è consigliabile mantenere il file al di sotto di 1 GB
+uploadPageDropMessage = Trascina qui un file per caricarlo
+uploadPageSizeMessage = Per evitare problemi è consigliabile caricare file di dimensione inferiore a 1 GB
 uploadPageBrowseButton = Seleziona un file sul computer
     .title = Seleziona un file sul computer
 uploadPageMultipleFilesAlert = Il caricamento di più file o cartelle non è attualmente supportato.
@@ -14,20 +14,20 @@ uploadPageBrowseButtonTitle = Carica file
 uploadingPageHeader = Caricamento file
 importingFile = Importazione in corso…
 verifyingFile = Verifica in corso…
-encryptingFile = Crittografia in corso...
-decryptingFile = Decrittografia in corso...
-notifyUploadDone = Il caricamento è stato completato.
+encryptingFile = Crittazione in corso...
+decryptingFile = Decrittazione in corso...
+notifyUploadDone = Caricamento completato.
 uploadingPageMessage = È possibile impostare le opzioni di scadenza una volta caricato il file.
 uploadingPageCancel = Annulla caricamento
     .title = Annulla caricamento
-uploadCancelNotification = Il caricamento è stato annullato.
+uploadCancelNotification = Caricamento annullato.
 uploadingPageLargeFileMessage = Si tratta di un file di grandi dimensioni e potrebbe volerci un po' di tempo.
-uploadingFileNotification = Invia una notifica quando il caricamento è completato.
+uploadingFileNotification = Invia una notifica quando il caricamento viene completato.
 uploadSuccessConfirmHeader = Pronto per l'invio
 uploadSvgAlt
     .alt = Carica
-uploadSuccessTimingHeader = Il link al file scadrà dopo 1 download o in 24 ore.
-copyUrlFormLabelWithName = Copia e condividi il link per inviare il tuo file: { $filename }
+uploadSuccessTimingHeader = Il link al file scadrà dopo 1 download o in 24 ore.
+copyUrlFormLabelWithName = Copia e condividi il link per condividere il tuo file: { $filename }
 // Note: Title text for button should be the same.
 copyUrlFormButton = Copia negli appunti
     .title = Copia negli appunti
