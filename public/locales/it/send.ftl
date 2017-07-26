@@ -27,7 +27,7 @@ uploadSuccessConfirmHeader = Pronto per l'invio
 uploadSvgAlt
     .alt = Carica
 uploadSuccessTimingHeader = Il link al file scadrà dopo 1 download o in 24 ore.
-copyUrlFormLabelWithName = Copia e condividi il link per condividere il tuo file: { $filename }
+copyUrlFormLabelWithName = Copia e condividi il link per inviare il tuo file: { $filename }
 // Note: Title text for button should be the same.
 copyUrlFormButton = Copia negli appunti
     .title = Copia negli appunti
