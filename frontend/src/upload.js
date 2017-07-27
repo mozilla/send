@@ -80,6 +80,7 @@ $(document).ready(function() {
   if (files.length === 0) {
     toggleHeader();
   } else {
+    // eslint-disable-next-line prefer-const
     for (let index in files) {
       const id = files[index].fileId;
       //check if file still exists before adding to list
