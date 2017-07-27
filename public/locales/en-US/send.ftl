@@ -74,10 +74,6 @@ copyFileList = Copy URL
 expiryFileList = Expires In
 deleteFileList = Delete
 nevermindButton = Never mind
-deleteButtonHover
-    .title = Delete
-copyUrlHover
-    .title = Copy URL
 legalHeader = Terms & Privacy
 legalNoticeTestPilot = Firefox Send is currently a Test Pilot experiment, and subject to the Test Pilot <a>Terms of Service</a> and <a>Privacy Notice</a>. You can learn more about this experiment and its data collection <a>here</a>.
 legalNoticeMozilla = Use of the Firefox Send website is also subject to Mozilla’s <a>Websites Privacy Notice</a> and <a>Websites Terms of Use</a>.
