@@ -141,6 +141,7 @@ a {
   text-align: center;
   max-width: 520px;
   font-family: 'SF Pro Display', sans-serif;
+  word-wrap: break-word;
 }
 
 .description {
@@ -450,6 +451,8 @@ tbody {
   margin-top: 60px;
   margin-bottom: 10px;
   color: #0c0c0d;
+  max-width: 614px;
+  word-wrap: break-word;
 }
 
 #link {
@@ -644,12 +647,7 @@ tbody {
 }
 
 #download-progress {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
+  width: 590px;
 }
 
 #download-progress[hidden] {
