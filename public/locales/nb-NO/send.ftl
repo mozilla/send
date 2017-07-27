@@ -67,7 +67,7 @@ deleteButtonHover
 copyUrlHover
     .title = Kopier URL
 legalHeader = Vilkår og personvern
-deletePopupText = Slett denne filen?
+deletePopupText = Slette denne filen?
 deletePopupYes = Ja
 deletePopupCancel = Avbryt
 deleteButtonHover
