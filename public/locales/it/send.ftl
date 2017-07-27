@@ -23,7 +23,7 @@ uploadingPageCancel = Annulla caricamento
 uploadCancelNotification = Caricamento annullato.
 uploadingPageLargeFileMessage = Si tratta di un file di grandi dimensioni e potrebbe volerci un po' di tempo.
 uploadingFileNotification = Invia una notifica quando il caricamento viene completato.
-uploadSuccessConfirmHeader = Pronto per l'invio
+uploadSuccessConfirmHeader = Pronto per l’invio
 uploadSvgAlt
     .alt = Carica
 uploadSuccessTimingHeader = Il link al file scadrà dopo 1 download o in 24 ore.
@@ -44,7 +44,7 @@ downloadAltText
 downloadFileName = Scarica { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
-downloadMessage = Qualcuno ti ha inviato un file con Firefox Send: è un servizio che permette di condividere file in modo sicuro, riservato e crittato, attraverso un link che scade automaticamente, garantendo che i tuoi dati non rimangano online per sempre.
+downloadMessage = Qualcuno ha utilizzato Firefox Send per inviarti un file. Si tratta di un servizio che permette di condividere file in modo sicuro, riservato e crittato, utilizzando un link che smette di funzionare automaticamente dopo un certo periodo di tempo, garantendo così che i tuoi dati non rimangano online per sempre.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Scarica
     .title = Scarica
