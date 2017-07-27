@@ -275,33 +275,39 @@ tbody {
 /* The actual popup (appears on top) */
 .popup .popuptext {
   visibility: hidden;
-  min-width: 115px;
+  min-width: 204px;
+  min-height: 105px;
   background-color: #fff;
   color: #000;
-  border: 1px solid #0297f8;
+  border: 1px solid #d7d7db;
+  padding: 15px 24px;
+  box-sizing: content-box;
   text-align: center;
   border-radius: 5px;
-  padding: 7px 8px;
   position: absolute;
   z-index: 1;
-  bottom: 8px;
-  right: -28px;
+  bottom: 20px;
+  left: -40px;
   transition: opacity 0.5s;
   opacity: 0;
   outline: 0;
-  box-shadow: 3px 3px 7px #888;
+  box-shadow: 3px 3px 7px rgba(136, 136, 136, 0.3);
 }
 
 /* Popup arrow */
 .popup .popuptext::after {
   content: "";
   position: absolute;
-  top: 100%;
-  right: 30px;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #0297f8 transparent transparent;
+  bottom: -11px;
+  left: 20px;
+  background-color: #fff;
+  display: block;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  border-radius: 0 0 5px;
+  border-right: 1px solid #d7d7db;
+  border-bottom: 1px solid #d7d7db;
 }
 
 .popup .show {
@@ -310,15 +316,39 @@ tbody {
 }
 
 .popup-message {
-  margin-bottom: 4px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px #ebebeb solid;
+  color: #0c0c0d;
+  font-size: 15px;
+  font-weight: normal;
+  padding-bottom: 15px;
+  white-space: nowrap;
+  width: calc(100% + 48px);
+  margin-left: -24px;
+}
+
+.popup-action {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .popup-yes {
   color: #fff;
   background-color: #0297f8;
   border-radius: 5px;
-  padding: 2px 11px;
+  padding: 5px 25px;
+  font-weight: normal;
   cursor: pointer;
+  min-width: 94px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  margin-left: 12px;
 }
 
 .popup-yes:hover {
@@ -327,9 +357,19 @@ tbody {
 
 .popup-no {
   color: #4a4a4a;
-  border-radius: 6px;
-  padding: 3px 5px;
+  background-color: #fbfbfb;
+  border: 1px #c1c1c1 solid;
+  border-radius: 5px;
+  padding: 5px 25px;
+  font-weight: normal;
+  min-width: 94px;
+  box-sizing: border-box;
   cursor: pointer;
+  white-space: nowrap;
+}
+
+.popup-no:hover {
+  background-color: #efeff1;
 }
 
 /**   upload-progress   **/
@@ -662,8 +702,7 @@ tbody {
 .social-links {
   display: flex;
   justify-content: space-between;
-  width: 9vw;
-  max-width: 94px;
+  width: 94px;
 }
 
 .social-links > a {
@@ -692,6 +731,18 @@ tbody {
 
   #link {
     font-size: 18px;
+  }
+
+  /* The actual popup (appears on top) */
+  .popup .popuptext {
+    left: auto;
+    right: -40px;
+  }
+
+  /* Popup arrow */
+  .popup .popuptext::after {
+    left: auto;
+    right: 36px;
   }
 
   .footer {
@@ -733,6 +784,10 @@ tbody {
 
   .feedback {
     margin-top: 10px;
+    min-width: 30px;
+    max-width: 300px;
+    text-indent: 2px;
+    padding: 5px 5px 5px 20px;
   }
 
   #copy {

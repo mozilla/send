@@ -464,12 +464,14 @@ $(document).ready(function() {
     popupDiv.classList.add('popup');
     const $popupMessage = $('<div>', { class: 'popup-message' });
     $popupMessage.attr('data-l10n-id', 'deletePopupText');
-    const $popupDelSpan = $('<span>', { class: 'popup-yes' });
-    $popupDelSpan.attr('data-l10n-id', 'deletePopupYes');
+    const $popupAction = $('<div>', { class: 'popup-action' });
     const $popupNvmSpan = $('<span>', { class: 'popup-no' });
     $popupNvmSpan.attr('data-l10n-id', 'deletePopupCancel');
+    const $popupDelSpan = $('<span>', { class: 'popup-yes' });
+    $popupDelSpan.attr('data-l10n-id', 'deletePopupYes');
 
-    $popupText.html([$popupMessage, $popupDelSpan, $popupNvmSpan]);
+    $popupText.html([$popupMessage, $popupAction]);
+    $popupAction.html([$popupNvmSpan, $popupDelSpan]);
 
     // add data cells to table row
     row.appendChild(name);
