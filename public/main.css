@@ -391,6 +391,9 @@ tbody {
   top: 53px;
   left: 246.75px;
   width: 98.5px;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .percent-number {
