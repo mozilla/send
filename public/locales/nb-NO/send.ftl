@@ -62,10 +62,6 @@ copyFileList = Kopier URL
 expiryFileList = Utløper om
 deleteFileList = Slett
 nevermindButton = Glem det
-deleteButtonHover
-    .title = Slett
-copyUrlHover
-    .title = Kopier URL
 legalHeader = Vilkår og personvern
 deletePopupText = Slette denne filen?
 deletePopupYes = Ja

@@ -74,10 +74,6 @@ copyFileList = URL をコピー
 expiryFileList = 有効期限:
 deleteFileList = 削除
 nevermindButton = 気にしないでください
-deleteButtonHover
-    .title = 削除
-copyUrlHover
-    .title = URL をコピー
 legalHeader = 利用規約とプライバシー
 legalNoticeTestPilot = Firefox Send は今のところ Test Pilot 実験のひとつであり、Test Pilot <a>利用規約</a> と <a>プライバシー通知</a> が適用されます。この実験とそのデータ収集に関する詳細は <a>こちら</a> をご覧ください。
 legalNoticeMozilla = Firefox Send のサイトの利用には、Mozilla の <a>ウェブサイトプライバシー通知</a> と <a>ウェブサイト利用規約</a> も適用されます。

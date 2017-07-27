@@ -60,11 +60,7 @@ copyFileList = Αντιγραφή URL
 // expiryFileList is used as a column header
 expiryFileList = Λήγει σε
 deleteFileList = Διαγραφή
-nevermindButton = Μην ανησυχείτε 
-deleteButtonHover
-    .title = Διαγραφή
-copyUrlHover
-    .title = Αντιγραφή URL
+nevermindButton = Μην ανησυχείτε
 legalHeader = Όροι & απόρρητο
 deletePopupText = Διαγραφή αρχείου;
 deletePopupYes = Ναι

@@ -65,10 +65,6 @@ copyFileList = Copiar URL
 // expiryFileList is used as a column header
 expiryFileList = Expira en
 deleteFileList = Borrar
-deleteButtonHover
-    .title = Borrar
-copyUrlHover
-    .title = Copiar URL
 legalHeader = Términos y privacidad
 deletePopupText = ¿Borrar este archivo?
 deletePopupYes = Si

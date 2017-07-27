@@ -66,7 +66,7 @@ linkExpiredAlt
 expiredPageHeader = Ez a hivatkozás lejárt, vagy sosem létezett!
 notSupportedHeader = A böngésző nem támogatott.
 // Firefox Send is a brand name and should not be localized.
-notSupportedDetail = Sajnos ez a böngésző nem támogatja a Firefox Send alapját képező webes technológiát. Egy másik böngészőben kell megpróbálnia. Mi a Firefoxot javasoljuk! 
+notSupportedDetail = Sajnos ez a böngésző nem támogatja a Firefox Send alapját képező webes technológiát. Egy másik böngészőben kell megpróbálnia. Mi a Firefoxot javasoljuk!
 downloadFirefoxButtonSub = Ingyenes letöltés
 uploadedFile = Fájl
 copyFileList = URL másolása
@@ -74,10 +74,6 @@ copyFileList = URL másolása
 expiryFileList = Lejár:
 deleteFileList = Törlés
 nevermindButton = Mindegy
-deleteButtonHover
-    .title = Törlés
-copyUrlHover
-    .title = URL másolása
 legalHeader = Feltételek és adatvédelem
 legalNoticeTestPilot = A Firefox Send pillanatnyilag egy Tesztpilóta kísérlet, és a <a>Szolgáltatási feltételek</a> valamint az <a>Adatvédelmi nyilatkozat</a> vonatkozik rá. Többet tudhat meg a kísérletről, és az adatgyűjtéséről <a>itt</a>.
 legalNoticeMozilla = A Firefox Send weboldal használatakor a Mozilla <a>Webhelyekre vonatkozó adatvédelmi nyilatkozata</a> és a <a>Weboldalak felhasználási feltételei</a> is vonatkoznak Önre.
