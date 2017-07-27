@@ -1,3 +1,5 @@
+// Firefox Send is a brand name and should not be localized.
+title = Firefox Send
 siteSubtitle = experimento web
 siteFeedback = Comentario
 uploadPageHeader = Compartir archivos encriptados y privados
@@ -63,6 +65,8 @@ linkExpiredAlt
     .alt = Enlace caducado
 expiredPageHeader = ¡El enlace ha caducado o nunca existió!
 notSupportedHeader = Tu navegador no está admitido.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Lamentablemente, este navegador no admite la tecnología web que necesita Firefox Send. Tendrás que probar otro navegador. ¡Te recomendamos Firefox!
 downloadFirefoxButtonSub = Descarga gratuita
 uploadedFile = Archivo
 copyFileList = Copiar URL
@@ -70,3 +74,23 @@ copyFileList = Copiar URL
 expiryFileList = Caduca en
 deleteFileList = Eliminar
 nevermindButton = Da igual
+deleteButtonHover
+    .title = Eliminar
+copyUrlHover
+    .title = Copiar URL
+legalHeader = Términos y privacidad
+legalNoticeTestPilot = Firefox Send sigue siendo un experimento de Test Pilot y está sujero a las <a>Condiciones del servicio</a> y al <a>Aviso de privacidad</a> de Test Pilot.
+legalNoticeMozilla = El uso de la página de Firefox Send también está sujeto al <a>Aviso de privacidad sobre sitios web</a> y a los <a>Términos de uso sobre sitios web</a>.
+deletePopupText = ¿Eliminar el archivo?
+deletePopupYes = Sí
+deletePopupCancel = Cancelar
+deleteButtonHover
+    .title = Eliminar
+copyUrlHover
+    .title = Copiar URL
+footerLinkLegal = Legal
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Sobre Test Pilot
+footerLinkPrivacy = Privacidad
+footerLinkTerms = Términos
+footerLinkCookies = Cookies
