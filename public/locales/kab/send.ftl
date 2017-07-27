@@ -74,10 +74,6 @@ copyFileList = Nɣel URL
 expiryFileList = Ad ifak di
 deleteFileList = Kkes
 nevermindButton = Wicqa
-deleteButtonHover
-    .title = Kkes
-copyUrlHover
-    .title = Nɣel URL.
 legalHeader = Tiwtilin &tabaḍnit
 legalNoticeTestPilot = Firefox Send yettwasekyad akka tura am tarmit Test Pilot, ihi ad yili daw n <a>n tewtilin n useqdec </a> n  Test Pilot akked <a>Tasertit n tbaḍnit</a>. Tzemreḍ ad teẓreḍ ugar ɣeef tarmit-agi akked ulqaḍ n isefka<a> dagihere</a>.
 legalNoticeMozilla = Aseqdec n usmel n Firefox Send yella daw n <a> ilugan tbaḍnit n yismal web </a> n Mozilla akked <a> Tiwtilin n useqdec n yismal Web</a> n Mozilla.

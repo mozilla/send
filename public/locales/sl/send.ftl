@@ -74,10 +74,6 @@ copyFileList = Kopiraj spletni naslov
 expiryFileList = Poteče
 deleteFileList = Izbriši
 nevermindButton = Pozabi
-deleteButtonHover
-    .title = Izbriši
-copyUrlHover
-    .title = Kopiraj spletni naslov
 legalHeader = Pogoji in zasebnost
 legalNoticeTestPilot = Firefox Send je trenutno poskus projekta Test Pilot ter zanj veljajo <a>pogoji uporabe</a> in <a>obvestilo o zasebnosti</a> Test Pilota. Več o tem poskusu in njegovem zbiranju podatkov lahko izveste <a>tukaj</a>.
 legalNoticeMozilla = Za uporabo spletne strani Firefox Send veljajo Mozillini <a>obvestilo o zasebnosti za spletne strani</a> in <a>pogoji uporabe spletnih strani</a>.

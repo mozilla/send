@@ -74,10 +74,6 @@ copyFileList = 複製網址
 expiryFileList = 失效於
 deleteFileList = 刪除
 nevermindButton = 沒關係
-deleteButtonHover
-    .title = 刪除
-copyUrlHover
-    .title = 複製網址
 legalHeader = 使用條款及隱私權
 legalNoticeTestPilot = Firefox Send 目前是一個 Test Pilot 實驗，依照 Test Pilot 的<a>服務條款</a>及<a>隱私權公告</a>提供服務。您可以在<a>此處</a>了解實驗內容，以及所收集資料的詳細資訊。
 legalNoticeMozilla = 使用 Firefox Send 網站時，亦受到 Mozilla 的<a>網站隱私權公告</a>以及<a>網站使用條款</a>約束。

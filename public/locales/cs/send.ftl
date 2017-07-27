@@ -74,10 +74,6 @@ copyFileList = Kopírovat URL
 expiryFileList = Platnost vyprší za
 deleteFileList = Smazat
 nevermindButton = Nevadí
-deleteButtonHover
-    .title = Smazat
-copyUrlHover
-    .title = Kopírovat URL
 legalHeader = Podmínky a ochrana soukromí
 legalNoticeTestPilot = Firefox Send je ve fázi experimentu projektu Test Pilot a platí tak pro něj stejné <a>Podmínky používání</a> a <a>Zásady ochrany soukromí</a>. Více o tomto experimentu a sbíraných datech se dozvíte <a>zde</a>.
 legalNoticeMozilla = Používání webové služby Firefox Send se řídí <a>Zásadami ochrany soukromí</a> a <a>Podmínkami používání</a> webových stránek Mozilly.

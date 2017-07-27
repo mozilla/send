@@ -74,10 +74,6 @@ copyFileList = 复制网址
 expiryFileList = 过期时间
 deleteFileList = 删除
 nevermindButton = 没关系
-deleteButtonHover
-    .title = 删除
-copyUrlHover
-    .title = 复制网址
 legalHeader = 条款和隐私
 legalNoticeTestPilot = Firefox Send 目前是一个 Test Pilot 实验，并遵守 Test Pilot <a>服务条款</a>和<a>隐私声明</a>。您可以在<a>这里</a>了解此实验及数据收集的有关信息。
 legalNoticeMozilla = 使用 Firefox Send 网站亦受到 Mozilla <a>网站隐私声明</a>和<a>网站使用条款</a>的约束。

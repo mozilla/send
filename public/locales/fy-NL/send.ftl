@@ -74,10 +74,6 @@ copyFileList = URL kopiearje
 expiryFileList = Ferrint oer
 deleteFileList = Fuortsmite
 nevermindButton = Lit mar
-deleteButtonHover
-    .title = Fuortsmite
-copyUrlHover
-    .title = URL kopiearje
 legalHeader = Betingsten en privacy
 legalNoticeTestPilot = Firefox Send is op dit stuit in Test Pilot-eksperimint en falt ûnder de <a>Betingsten</a> en <a>Privacybelied</a> fan Test Pilot. Mear ynformaasje oer dit eksperimint en de gegevenssamling stiet<a>hjir</a>.
 legalNoticeMozilla = Gebrûk fan de Firefox Send-website falt ek ûnder it <a>Websites Privacybelied</a> en <a>Websites Gebrûksbetingsten</a> fan Mozilla.

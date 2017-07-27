@@ -74,13 +74,9 @@ copyFileList = URL kopěrowaś
 expiryFileList = Spadnjo za
 deleteFileList = Wulašowaś
 nevermindButton = Wšojadno
-deleteButtonHover
-    .title = Wulašowaś
-copyUrlHover
-    .title = URL kopěrowaś
 legalHeader = Wuměnjenja a priwatnosć
 legalNoticeTestPilot = Firefox jo tuchylu eksperiment Test Pilot, a pódlažy <a>wužywańskim wuměnjenjam</a> a <a>pokazce priwatnosći</a> Test Pilot. Wěcej wó toś tom eksperimenśe a daty, kótarež gromaźi, <a>how</a> zgónijośo.
-legalNoticeMozilla = Teke wužywanje websedła Firefox Send <a>pokazce priwatnosći za websedła</a> a <a>wužywańskim wuměnjenjam za websedła</a> Mozilla pódlažy. 
+legalNoticeMozilla = Teke wužywanje websedła Firefox Send <a>pokazce priwatnosći za websedła</a> a <a>wužywańskim wuměnjenjam za websedła</a> Mozilla pódlažy.
 deletePopupText = Toś tu dataju lašowaś?
 deletePopupYes = Jo
 deletePopupCancel = Pśetergnuś

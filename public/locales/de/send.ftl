@@ -74,10 +74,6 @@ copyFileList = Adresse kopieren
 expiryFileList = Läuft ab in
 deleteFileList = Löschen
 nevermindButton = Egal
-deleteButtonHover
-    .title = Löschen
-copyUrlHover
-    .title = Adresse kopieren
 legalHeader = Nutzungsbedingungen und Datenschutz
 legalNoticeTestPilot = Firefox Send ist aktuell ein Test-Pilot-Experiment und unterliegt den <a>Nutzungsbedingungen</a> und dem <a>Datenschutzhinweis</a> von Test Pilot. Mehr über diese Experiment und die Daten, die es sammelt, erfahren Sie <a>hier</a>.
 legalNoticeMozilla = Die Nutzung der Website von Firefox Send unterliegt außerdem Mozillas <a>Datenschutzhinweis für Websites</a> und <a>Nutzungsbedingungen für Websites</a>.
