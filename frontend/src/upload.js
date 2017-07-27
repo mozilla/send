@@ -80,7 +80,7 @@ $(document).ready(function() {
   if (files.length === 0) {
     toggleHeader();
   } else {
-    for (const index in files) {
+    for (let index in files) {
       const id = files[index].fileId;
       //check if file still exists before adding to list
       checkExistence(id, files[index], true);

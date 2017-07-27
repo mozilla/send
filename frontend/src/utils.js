@@ -1,6 +1,6 @@
 function arrayToHex(iv) {
   let hexStr = '';
-  for (const i in iv) {
+  for (let i in iv) {
     if (iv[i] < 16) {
       hexStr += '0' + iv[i].toString(16);
     } else {
