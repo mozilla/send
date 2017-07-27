@@ -22,5 +22,9 @@ gcmCompliant().catch(err => {
 
 if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1 &&
     parseInt(navigator.userAgent.toLowerCase().match(/firefox\/*([^\n\r]*)\./)[1]) <= 49) {
-    location.replace('/unsupported');
+    sendEvent('sender', 'unsupported', {
+      cd6: 'Unsupported Firefox'
+    }).then(() => {
+      location.replace('/unsupported');
+    });
 }
