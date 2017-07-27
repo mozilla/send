@@ -10,11 +10,9 @@ window.analytics = new testPilotGA({
   tid: window.trackerId
 });
 
-const isSender = location.pathname.includes('/download');
+const isSender = !location.pathname.includes('/download');
 
 gcmCompliant().catch(err => {
-  $('#page-one').attr('hidden', true);
-  $('#download').attr('hidden', true);
   sendEvent(isSender ? 'sender' : 'recipient', 'unsupported', {
     cd6: err
   }).then(() => {
