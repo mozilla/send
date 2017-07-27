@@ -1,5 +1,6 @@
 function arrayToHex(iv) {
   let hexStr = '';
+  // eslint-disable-next-line prefer-const
   for (let i in iv) {
     if (iv[i] < 16) {
       hexStr += '0' + iv[i].toString(16);
