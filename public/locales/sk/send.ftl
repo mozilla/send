@@ -1,8 +1,8 @@
 // Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteSubtitle = webový experiment
+siteSubtitle = experiment pre web
 siteFeedback = Spätná väzba
-uploadPageHeader = Súkromné, šifrované zdieľanie súborov
+uploadPageHeader = Súkromné a šifrované zdieľanie súborov
 uploadPageExplainer = Odosielajte súbory pomocou bezpečného, súkromného a šifrovaného odkazu, ktorého platnosť automaticky vyprší. Vďaka tomu máte istotu, že vaše súbory nezostanú na internete naveky.
 uploadPageLearnMore = Ďalšie informácie
 uploadPageDropMessage = Presunutím súboru sem začnete nahrávanie
