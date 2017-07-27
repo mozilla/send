@@ -33,10 +33,10 @@ copyUrlFormButton = Copier dans le presse-papiers
     .title = Copier dans le presse-papiers
 copiedUrl = Lien copié !
 // Note: Title text for button should be the same.
-deleteFileButton
+deleteFileButton = Supprimer le fichier
     .title = Supprimer le fichier
 // Note: Title text for button should be the same.
-sendAnotherFileLink
+sendAnotherFileLink = Envoyer un autre fichier
     .title = Envoyer un autre fichier
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText
