@@ -34,6 +34,7 @@ copyUrlFormButton = In Zwischenablage kopieren
 copiedUrl = Kopiert!
 // Note: Title text for button should be the same.
 deleteFileButton = Datei löschen
+    .title = Datei löschen
 // Note: Title text for button should be the same.
 sendAnotherFileLink = Eine weitere Datei senden
     .title = Eine weitere Datei senden
