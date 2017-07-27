@@ -17,6 +17,7 @@ decryptingFile = Dekrypterer...
 uploadingPageCancel = Avbryt opplasting
     .title = Avbryt opplasting
 uploadCancelNotification = Din opplasting ble avbrutt
+uploadingFileNotification = Varsle meg når opplastingen er ferdig.
 uploadSuccessConfirmHeader = Klar til å sende
 uploadSvgAlt
     .alt = Last opp
