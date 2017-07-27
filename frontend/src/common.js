@@ -16,7 +16,7 @@ gcmCompliant().catch(err => {
   sendEvent(isSender ? 'sender' : 'recipient', 'unsupported', {
     cd6: err
   }).then(() => {
-    location.replace('/unsupported');
+    location.replace('/unsupported/gcm');
   });
 });
 
@@ -25,6 +25,6 @@ if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1 &&
     sendEvent(isSender ? 'sender' : 'recipient', 'unsupported', {
       cd6: new Error('Firefox is outdated.')
     }).then(() => {
-      location.replace('/unsupported');
+      location.replace('/unsupported/outdated');
     });
 }

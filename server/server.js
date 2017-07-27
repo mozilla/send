@@ -96,8 +96,11 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/unsupported', (req, res) => {
-  res.render('unsupported');
+app.get('/unsupported/:reason', (req, res) => {
+  const outdated = req.params.reason === 'outdated'? true : false;
+  res.render('unsupported', {
+    outdated: outdated
+  });
 });
 
 app.get('/legal', (req, res) => {

@@ -517,13 +517,13 @@ tbody {
   margin: 0 auto 23px;
 }
 
-#firefox-logo {
+.firefox-logo {
   width: 70px;
 }
 
-#dl-firefox {
+#dl-firefox,
+#update-firefox {
   margin-bottom: 181px;
-  width: 260px;
   height: 80px;
   background: #12bc00;
   border-radius: 3px;
@@ -538,14 +538,15 @@ tbody {
   justify-content: center;
   align-items: center;
   line-height: 1;
+  padding: 0 25px;
 }
 
-#dl-firefox-text {
+.unsupported-button-text {
   text-align: left;
   margin-left: 20.4px;
 }
 
-#dl-firefox-text > span {
+.unsupported-button-text > span {
   font-family: 'Fira Sans';
   font-weight: 300;
   font-size: 18px;
