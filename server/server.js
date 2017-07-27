@@ -97,7 +97,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/unsupported/:reason', (req, res) => {
-  const outdated = req.params.reason === 'outdated'? true : false;
+  const outdated = req.params.reason === 'outdated';
   res.render('unsupported', {
     outdated: outdated
   });
