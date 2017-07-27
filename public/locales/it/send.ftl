@@ -17,12 +17,12 @@ verifyingFile = Verifica in corso…
 encryptingFile = Crittazione in corso...
 decryptingFile = Decrittazione in corso...
 notifyUploadDone = Caricamento completato.
-uploadingPageMessage = È possibile impostare le opzioni di scadenza una volta caricato il file.
+uploadingPageMessage = È possibile impostare le opzioni di scadenza del file al termine del caricamento.
 uploadingPageCancel = Annulla caricamento
     .title = Annulla caricamento
 uploadCancelNotification = Caricamento annullato.
-uploadingPageLargeFileMessage = Si tratta di un file di grandi dimensioni e potrebbe volerci un po' di tempo.
-uploadingFileNotification = Invia una notifica quando il caricamento viene completato.
+uploadingPageLargeFileMessage = Si tratta di un file di grandi dimensioni e potrebbe richiedere un po' di tempo.
+uploadingFileNotification = Invia una notifica quando il caricamento è completato.
 uploadSuccessConfirmHeader = Pronto per l’invio
 uploadSvgAlt
     .alt = Carica
