@@ -720,6 +720,18 @@ tbody {
   margin-bottom: -5px;
 }
 
+@media (max-device-width: 992px), (max-width: 992px) {
+  .popup .popuptext {
+    left: auto;
+    right: -40px;
+  }
+
+  .popup .popuptext::after {
+    left: auto;
+    right: 36px;
+  }
+}
+
 @media (max-device-width: 768px), (max-width: 768px) {
   .description {
     margin: 0 auto 25px;
@@ -731,18 +743,6 @@ tbody {
 
   #link {
     font-size: 18px;
-  }
-
-  /* The actual popup (appears on top) */
-  .popup .popuptext {
-    left: auto;
-    right: -40px;
-  }
-
-  /* Popup arrow */
-  .popup .popuptext::after {
-    left: auto;
-    right: 36px;
   }
 
   .footer {
