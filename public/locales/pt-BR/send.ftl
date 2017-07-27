@@ -67,6 +67,7 @@ expiredPageHeader = Esse link expirou, ou talvez nunca tenha existido!
 notSupportedHeader = Seu navegador não tem suporte.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Infelizmente esse navegador não suporta a tecnologia utilizada pelo Firefox Send. Tente com outro navegador. Nós recomendamos o Firefox! ;-)
+downloadFirefoxButtonSub = Download gratuito
 uploadedFile = Arquivo
 copyFileList = Copiar URL
 // expiryFileList is used as a column header
@@ -79,6 +80,7 @@ copyUrlHover
     .title = Copiar URL
 legalHeader = Termos e privacidade
 legalNoticeTestPilot = Firefox Send é um experimento do Test Pilot, e sujeito aos <a>Termos de Serviço</a> e <a>Políticas de Privacidade</a> do Test Pilot. Você pode aprender mais sobre esse experimento e a coleta de dados <a>aqui</a>.
+legalNoticeMozilla = O uso do site Firefox Send também está sujeito a <a>Política de Privacidade</a> e <a>Websites Terms of Use</a> da Mozilla.
 deletePopupText = Excluir este arquivo
 deletePopupYes = Sim
 deletePopupCancel = Cancelar
