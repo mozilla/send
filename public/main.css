@@ -234,6 +234,7 @@ th {
   height: 40px;
   border-top: 1px solid rgba(0, 148, 251, 0.1);
   padding: 0 19px;
+  white-space: nowrap;
 }
 
 td {
