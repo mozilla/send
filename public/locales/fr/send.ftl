@@ -44,7 +44,7 @@ downloadAltText
 downloadFileName = Télécharger { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
-downloadMessage = Votre ami vous a envoyé un fichier avec Firefox Send, un service qui permet d’envoyer des fichiers de façon sécurisée, confidentielle et chiffrée via un lien qui expire automatiquement pour que vos informations ne restent pas en ligne indéfiniment.
+downloadMessage = Votre ami⋅e vous a envoyé un fichier avec Firefox Send, un service qui permet d’envoyer des fichiers de façon sécurisée, confidentielle et chiffrée via un lien qui expire automatiquement pour que vos informations ne restent pas en ligne indéfiniment.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Télécharger
     .title = Télécharger
