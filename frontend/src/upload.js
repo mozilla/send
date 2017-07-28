@@ -3,7 +3,6 @@ require('./common');
 const FileSender = require('./fileSender');
 const {
   notify,
-  gcmCompliant,
   findMetric,
   sendEvent,
   ONE_DAY_IN_MS
@@ -25,15 +24,6 @@ if (storage.has('referrer')) {
 }
 
 $(document).ready(function() {
-  gcmCompliant().catch(err => {
-    $('#page-one').attr('hidden', true);
-    sendEvent('sender', 'unsupported', {
-      cd6: err
-    }).then(() => {
-      location.replace('/unsupported');
-    });
-  });
-
   $('#file-upload').change(onUpload);
 
   $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {

@@ -1,11 +1,19 @@
 <div id="unsupported-browser">
   <div class="title" data-l10n-id="notSupportedHeader"></div>
-  <div class="description" data-l10n-id="notSupportedDetail"></div>
-  <a id="dl-firefox" href="https://www.mozilla.org/firefox/new/?scene=2" target="_blank">
-    <img src="/resources/firefox_logo-only.svg" id="firefox-logo" alt="Firefox"/>
-    <div id="dl-firefox-text">Firefox<br>
-      <span data-l10n-id="downloadFirefoxButtonSub"></span>
-    </div>
-  </a>
+  {{#if outdated}}
+    <div class="description" data-l10n-id="notSupportedOutdatedDetail"></div>
+    <a id="update-firefox" href="https://support.mozilla.org/kb/update-firefox-latest-version">
+      <img src="/resources/firefox_logo-only.svg" class="firefox-logo" alt="Firefox"/>
+      <div class="unsupported-button-text" data-l10n-id="updateFirefox"></div>
+    </a>
+  {{else}}
+    <div class="description" data-l10n-id="notSupportedDetail"></div>
+    <a id="dl-firefox" href="https://www.mozilla.org/firefox/new/?scene=2" target="_blank">
+      <img src="/resources/firefox_logo-only.svg" class="firefox-logo" alt="Firefox"/>
+      <div class="unsupported-button-text">Firefox<br>
+        <span data-l10n-id="downloadFirefoxButtonSub"></span>
+      </div>
+    </a>
+  {{/if}}
   <div class="unsupported-description" data-l10n-id="uploadPageExplainer"></div>
 </div>

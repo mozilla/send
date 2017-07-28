@@ -67,6 +67,8 @@ expiredPageHeader = This link has expired or never existed in the first place!
 notSupportedHeader = Your browser is not supported.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Unfortunately this browser does not support the web technology that powers Firefox Send. You’ll need to try another browser. We recommend Firefox!
+notSupportedOutdatedDetail = Unfortunately this version of Firefox does not support the web technology that powers Firefox Send. You’ll need to update your browser.
+updateFirefox = Update Firefox
 downloadFirefoxButtonSub = Free Download
 uploadedFile = File
 copyFileList = Copy URL
