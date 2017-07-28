@@ -67,6 +67,8 @@ expiredPageHeader = Pautan ini sudah luput atau pun tidak pernah wujud!
 notSupportedHeader = Pelayar anda tidak disokong.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Malangnya, pelayar ini tidak menyokong teknologi web yang melaksanakan Firefox Send. Anda perlu cuba pelayar lain. Kami syorkan Firefox!
+notSupportedOutdatedDetail = Malangnya versi Firefox ini tidak menyokong teknologi web yang menguasakan Firefox Send. Anda perlu mengemaskini pelayar anda.
+updateFirefox = Kemaskini Firefox
 downloadFirefoxButtonSub = Muat turun Percuma
 uploadedFile = Fail
 copyFileList = Salin URL
