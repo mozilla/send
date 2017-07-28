@@ -1,8 +1,15 @@
+{{!-- This file should be es5 only --}}
+var isIE = /trident\/7\.|msie/i.test(navigator.userAgent);
+var isUnsupportedPage = /\/unsupported/.test(location.pathname);
+if (isIE && !isUnsupportedPage) {
+  window.location.replace('/unsupported/ie');
+}
+
 {{#if dsn}}
 window.dsn = '{{{dsn}}}';
 {{/if}}
 {{#if trackerId}}
 window.trackerId = '{{{trackerId}}}';
 {{/if}}
-const MAXFILESIZE = {{{maxFileSize}}};
-const EXPIRE_SECONDS = {{{expireSeconds}}};
+var MAXFILESIZE = {{{maxFileSize}}};
+var EXPIRE_SECONDS = {{{expireSeconds}}};
