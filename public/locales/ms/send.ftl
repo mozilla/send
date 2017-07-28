@@ -33,8 +33,8 @@ copyUrlFormButton = Salin ke Klipbod
     .title = Salin ke Klipbod
 copiedUrl = Disalin!
 // Note: Title text for button should be the same.
-deleteFileButton = Padam fail
-    .title = Padam fail
+deleteFileButton = Hapus fail
+    .title = Hapus fail
 // Note: Title text for button should be the same.
 sendAnotherFileLink = Hantar fail lain
     .title = Hantar fail lain
@@ -72,16 +72,16 @@ uploadedFile = Fail
 copyFileList = Salin URL
 // expiryFileList is used as a column header
 expiryFileList = Luput Pada
-deleteFileList = Padam
+deleteFileList = Hapus
 nevermindButton = Tak apalah
 legalHeader = Terma & Privasi
 legalNoticeTestPilot = Firefox Send adalah eksperimen Ujian Perintis, dan tertakluk kepada <a>Terma Perkhidmatan</a> dan <a>Privacy Notice</a> Ujian Perintis. Anda boleh ketahui selanjutnya perihal eksperimen ini dan pengumpulan data <a>di sini</a>.
 legalNoticeMozilla = Penggunaan laman web Firefox Send juga tertakluk kepada <a>Notis Privasi Laman web</a> dan <a>Terma Penggunaan Laman web</a> Mozilla.
-deletePopupText = Padam fail ini?
+deletePopupText = Hapus fail ini?
 deletePopupYes = Ya
 deletePopupCancel = Batal
 deleteButtonHover
-    .title = Padam
+    .title = Hapus
 copyUrlHover
     .title = Salin URL
 footerLinkLegal = Perundangan
