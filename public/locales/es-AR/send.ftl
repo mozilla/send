@@ -2,6 +2,7 @@
 title = Firefox Send
 siteSubtitle = experimento web
 siteFeedback = Opinión
+uploadPageExplainer = Enviá archivos a través de un enlace cifrado, privado y seguro que expirará automáticamente para que tus datos no queden en línea para siempre.
 uploadPageLearnMore = Conocer más
 uploadPageDropMessage = Arrastrá el archivo hasta acá para empezar a subir
 uploadPageSizeMessage = Para una operación más confiable, es mejor que el archivo tenga menos de 1GB
