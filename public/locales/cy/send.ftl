@@ -67,6 +67,8 @@ expiredPageHeader = Mae'r ddolen wedi dod i ben neu nad yw wedi bodoli erioed!
 notSupportedHeader = Nid yw eich porwr yn cael ei gynnal.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Yn anffodus nid yw'r porwr hwn yn cynnal y technoleg gwe sy'n cynnal Firefox Send. Bydd angen i chi ddefnyddio porwr arall. Rydym ni'n argymell Firefox!
+notSupportedOutdatedDetail = Yn anffodus nid yw'r fersiwn yma o Firefox yn cynnal y technoleg gwe sy'n gyrru Firefox Send. Bydd angen i chi ddiweddaru eich porwr.
+updateFirefox = Diweddaru Firefox
 downloadFirefoxButtonSub = Llwytho i Lawr am Ddim
 uploadedFile = Ffeil
 copyFileList = Copïo URL
