@@ -66,7 +66,9 @@ linkExpiredAlt
 expiredPageHeader = このリンクは期限切れとなったか元々存在していません。
 notSupportedHeader = お使いのブラウザーには対応していません。
 // Firefox Send is a brand name and should not be localized.
-notSupportedDetail = 残念ながらこのブラウザーは Firefox Send が活用しているウェブ技術に対応していません。他のブラウザーで試してください。私たちは Firefox をお勧めします！
+notSupportedDetail = 残念ながらお使いのブラウザーは Firefox Send が活用しているウェブ技術に対応していません。他のブラウザーで試してください。私たちは Firefox をお勧めします！
+notSupportedOutdatedDetail = 残念ながらお使いのバージョンの Firefox は Firefox Send が活用しているウェブ技術に対応していません。ブラウザーを更新する必要があります。
+updateFirefox = Firefox を更新
 downloadFirefoxButtonSub = 無料ダウンロード
 uploadedFile = ファイル
 copyFileList = URL をコピー
