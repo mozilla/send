@@ -26,7 +26,7 @@ uploadingFileNotification = 上传完成后通知我。
 uploadSuccessConfirmHeader = 准备好发送
 uploadSvgAlt
     .alt = 上传
-uploadSuccessTimingHeader = 您的文件的链接将在第一次下载的 24 小时后过期。
+uploadSuccessTimingHeader = 您的文件的链接将在首次下载或 24 小时后过期。
 copyUrlFormLabelWithName = 复制并分享链接以发送您的文件：{ $filename }
 // Note: Title text for button should be the same.
 copyUrlFormButton = 复制到剪贴板
