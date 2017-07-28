@@ -4,6 +4,7 @@ public/upload.js
 public/download.js
 public/version.json
 public/l20n.min.js
+public/ie.js
 static/*
 !static/info.txt
 test/frontend/bundle.js
