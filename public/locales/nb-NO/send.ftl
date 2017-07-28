@@ -67,6 +67,8 @@ expiredPageHeader = Denne lenken er utløpt eller har aldri eksistert i utgangsp
 notSupportedHeader = Din nettleser er ikke støttet.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Dessverre støtter denne nettleseren ikke webteknologien som driver Firefox Send. Du må prøve en annen nettleser. Vi anbefaler Firefox!
+notSupportedOutdatedDetail = Dessverre støtter ikke denne versjonen av Firefox netteknologien som driver Firefox Send. Du trenger å oppdatere nettleseren din.
+updateFirefox = Oppdater Firefox
 downloadFirefoxButtonSub = Gratis nedlasting
 uploadedFile = Fil
 copyFileList = Kopier URL
