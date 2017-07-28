@@ -37,6 +37,14 @@ downloadFileName = { $filename } dosyasını indir
 downloadFileSize = ({ $size })
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = İndir
+downloadNotification = İndirme tamamlandı.
+downloadFinish = İndirme tamamlandı
+errorAltText
+    .alt = Yükleme hatası
+errorPageHeader = Bir şeyler ters gitti!
+errorPageMessage = Dosyanız yüklenirken bir hata oluştu.
+errorPageLink = Başka bir dosya gönder
+notSupportedHeader = Tarayıcınız desteklenmiyor.
 downloadFirefoxButtonSub = Ücretsiz indirin
 uploadedFile = Dosya
 deleteFileList = Sil
@@ -45,6 +53,9 @@ deletePopupYes = Evet
 deletePopupCancel = Vazgeç
 deleteButtonHover
     .title = Sil
+footerLinkLegal = Yasal Bilgiler
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Test Pilotu hakkında
 footerLinkPrivacy = Gizlilik
 footerLinkTerms = Şartlar
 footerLinkCookies = Çerezler
