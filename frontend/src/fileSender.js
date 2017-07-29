@@ -46,10 +46,6 @@ class FileSender extends EventEmitter {
           },
           true,
           ['encrypt', 'decrypt']
-        )
-        .catch(err =>
-          // eslint-disable-next-line no-console
-          console.error('There was an error generating a crypto key')
         ),
       new Promise((resolve, reject) => {
         const reader = new FileReader();
