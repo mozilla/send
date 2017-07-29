@@ -2,13 +2,13 @@
 title = Firefox Send
 siteSubtitle = Web 实验
 siteFeedback = 反馈
-uploadPageHeader = 私密、安全的文件分享
-uploadPageExplainer = 通过一个安全、私密且已加密的链接发送文件，文件将在有效期后自动清除。
+uploadPageHeader = 私密、安全的文件分享服务
+uploadPageExplainer = 通过一个安全、私密且受加密的链接发送文件，链接到期后文件将从网上彻底抹去。
 uploadPageLearnMore = 详细了解
 uploadPageDropMessage = 拖放您的文件到此处以开始上传
 uploadPageSizeMessage = 为保证运行稳定，建议文件大小不超过 1GB
-uploadPageBrowseButton = 选择一个在您的计算机上的文件
-    .title = 选择一个在您的计算机上的文件
+uploadPageBrowseButton = 选择一个您电脑上的文件
+    .title = 选择一个您电脑上的文件
 uploadPageMultipleFilesAlert = 目前不支持上传多个文件或上传文件夹。
 uploadPageBrowseButtonTitle = 上传文件
 uploadingPageHeader = 正在上传您的文件
@@ -44,7 +44,7 @@ downloadAltText
 downloadFileName = 下载 { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
-downloadMessage = 您的朋友使用 Firefox Send 向您发送一个文件。该服务允许用户安全、私密、加密的以链接分享一个文件，链接将会自动过期失效。
+downloadMessage = 您的朋友使用 Firefox Send 向您发送一个文件。该服务允许用户以安全、私密、受加密的链接分享一个文件，链接到期后文件将从网上彻底抹去。
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = 下载
     .title = 下载
@@ -60,14 +60,14 @@ errorAltText
 errorPageHeader = 我们遇到错误。
 errorPageMessage = 上传文件时发生错误。
 errorPageLink = 发送其他文件
-fileTooBig = 此文件太大，它应该小于 { $size }。
+fileTooBig = 此文件太大。文件大小上限为 { $size }。
 linkExpiredAlt
     .alt = 链接已过期
 expiredPageHeader = 此链接已过期或者从未生效。
 notSupportedHeader = 不支持您的浏览器。
 // Firefox Send is a brand name and should not be localized.
-notSupportedDetail = 很遗憾，您的浏览器不支持 Firefox Send 所使用的技术。您需要尝试其他浏览器。我们推荐使用 Firefox。
-notSupportedOutdatedDetail = 很遗憾，此版本的 Firefox 不支持 Firefox Send 所使用的 Web 技术。您需要更新浏览器才能使用它。
+notSupportedDetail = 很可惜，您的浏览器不支持 Firefox Send 所使用的 Web 技术。请改用其他浏览器。我们推荐使用 Firefox！
+notSupportedOutdatedDetail = 很可惜，此版本的 Firefox 不支持 Firefox Send 所使用的 Web 技术。您需要更新浏览器才能使用它。
 updateFirefox = 更新 Firefox
 downloadFirefoxButtonSub = 免费下载
 uploadedFile = 文件
