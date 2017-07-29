@@ -67,6 +67,8 @@ expiredPageHeader = 此链接已过期或者从未生效。
 notSupportedHeader = 不支持您的浏览器。
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = 很遗憾，您的浏览器不支持 Firefox Send 所使用的技术。您需要尝试其他浏览器。我们推荐使用 Firefox。
+notSupportedOutdatedDetail = 很遗憾，此版本的 Firefox 不支持 Firefox Send 所使用的 Web 技术。您需要更新浏览器才能使用它。
+updateFirefox = 更新 Firefox
 downloadFirefoxButtonSub = 免费下载
 uploadedFile = 文件
 copyFileList = 复制网址
