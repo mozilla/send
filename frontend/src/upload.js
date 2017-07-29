@@ -206,8 +206,6 @@ $(document).ready(function() {
         document.l10n.formatValue('verifyingFile').then(verifyingFile => {
           $('.progress-text').text(verifyingFile);
         });
-      } else {
-        console.log('Finished hashing');
       }
     });
 
@@ -219,7 +217,6 @@ $(document).ready(function() {
           $('.progress-text').text(encryptingFile);
         });
       } else {
-        console.log('Finished encrypting');
         uploadStart = Date.now();
       }
     });

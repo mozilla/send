@@ -24,12 +24,6 @@ class FileSender extends EventEmitter {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           resolve();
         }
-
-        if (xhr.status === 200) {
-          console.log('The file was successfully deleted.');
-        } else {
-          console.log('The file has expired, or has already been deleted.');
-        }
       };
 
       xhr.send(JSON.stringify({ delete_token: token }));
@@ -54,7 +48,8 @@ class FileSender extends EventEmitter {
           ['encrypt', 'decrypt']
         )
         .catch(err =>
-          console.log('There was an error generating a crypto key')
+          // eslint-disable-next-line no-console
+          console.error('There was an error generating a crypto key')
         ),
       new Promise((resolve, reject) => {
         const reader = new FileReader();

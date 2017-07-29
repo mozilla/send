@@ -33,6 +33,7 @@ function allLangs() {
 }
 
 function prodLangs() {
+  // eslint-disable-next-line security/detect-non-literal-require
   return require(path.join(
     __dirname,
     '..',

@@ -90,7 +90,6 @@ $(document).ready(function() {
           $('.progress-text').text(decryptingFile);
         });
       } else {
-        console.log('Done decrypting');
         downloadEnd = Date.now();
       }
     });
