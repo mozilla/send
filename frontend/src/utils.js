@@ -85,7 +85,7 @@ function findMetric(href) {
       return 'privacy';
     case 'https://testpilot.firefox.com/terms':
       return 'terms';
-    case 'https://www.mozilla.org/en-US/privacy/websites/#cookies':
+    case 'https://www.mozilla.org/privacy/websites/#cookies':
       return 'cookies';
     case 'https://github.com/mozilla/send':
       return 'github';
