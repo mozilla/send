@@ -67,6 +67,8 @@ expiredPageHeader = Ez a hivatkozás lejárt, vagy sosem létezett!
 notSupportedHeader = A böngésző nem támogatott.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Sajnos ez a böngésző nem támogatja a Firefox Send alapját képező webes technológiát. Egy másik böngészőben kell megpróbálnia. Mi a Firefoxot javasoljuk!
+notSupportedOutdatedDetail = Sajnos a Firefox ezen verziója nem támogatja a Firefox Send alapját képező technológiát. Frissítenie kell a böngészőjét.
+updateFirefox = Firefox frissítése
 downloadFirefoxButtonSub = Ingyenes letöltés
 uploadedFile = Fájl
 copyFileList = URL másolása
