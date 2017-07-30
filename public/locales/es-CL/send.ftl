@@ -40,6 +40,24 @@ downloadFileName = Descargar { $filename }
 downloadFileSize = ({ $size })
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descargar
+downloadNotification = Tu descarga se completó.
+downloadFinish = Descarga completa
+// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+sendYourFilesLink = Probar Firefox Send
+downloadingPageProgress = Descargando { $filename } ({ $size })
+downloadingPageMessage = Por favor, deja esta pestaña abierta mientras recibimos tu archivo y lo desciframos.
+errorAltText = Error de subida
+errorPageHeader = ¡Algo se fue a las pailas!
+errorPageMessage = Hubo un error al subir el archivo.
+errorPageLink = Enviar otro archivo
+fileTooBig = Ese archivo es muy grande para ser subido. Debiera tener un tamaño menor a { $size }.
+linkExpiredAlt
+    .alt = Enlace expirado
+expiredPageHeader = ¡Este enlace ha expirado o quizá jamás existió!
+notSupportedHeader = Tu navegador no está soportado.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Lamentablemente este navegador no soporta la tecnología web que potencia a Firefox Send. Deberás probar en otro navegador. ¡Recomendamos Firefox!
+notSupportedOutdatedDetail = Lamentablemente esta versión de Firefox no soporta la tecnología web que potencia a Firefox Send. Deberás actualizar tu navegador.
 updateFirefox = Actualizar Firefox
 downloadFirefoxButtonSub = Descarga gratuita
 uploadedFile = Archivo
