@@ -6,6 +6,7 @@ uploadPageHeader = Kişiye özel, şifrelenmiş dosya paylaşımı
 uploadPageLearnMore = Daha fazla bilgi edin
 uploadPageDropMessage = Yüklemeyi başlamak için dosyanızı buraya bırakın
 uploadPageBrowseButton = Bilgisayarınızdan bir dosya seçin
+    .title = Bilgisayarınızdan bir dosya seçin
 uploadPageMultipleFilesAlert = Birden fazla dosya veya klasör yükleme şimdilik desteklenmiyor.
 uploadPageBrowseButtonTitle = Dosyayı yükle
 uploadingPageHeader = Dosyanız yükleniyor
@@ -15,6 +16,7 @@ encryptingFile = Şifreleniyor...
 decryptingFile = Şifre çözülüyor...
 notifyUploadDone = Yüklemeniz tamamlandı.
 uploadingPageCancel = Yüklemeyi iptal et
+    .title = Yüklemeyi iptal et
 uploadCancelNotification = Yüklemeniz iptal edildi.
 uploadingPageLargeFileMessage = Bu dosya büyük olduğu için yüklenmesi zaman alabilir. Sayfayı kapatmayın!
 uploadingFileNotification = Yükleme bitince bana haber ver.
@@ -25,11 +27,14 @@ uploadSuccessTimingHeader = Dosyanız 1 kez indirildikten veya 24 saat geçtikte
 copyUrlFormLabelWithName = Dosyanızı başkasına göndermek için bu linki kopyalayın: { $filename }
 // Note: Title text for button should be the same.
 copyUrlFormButton = Panoya kopyala
+    .title = Panoya kopyala
 copiedUrl = Kopyalandı!
 // Note: Title text for button should be the same.
 deleteFileButton = Dosyayı sil
+    .title = Dosyayı sil
 // Note: Title text for button should be the same.
 sendAnotherFileLink = Başka bir dosya daha gönder
+    .title = Başka bir dosya daha gönder
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText
     .alt = İndir
@@ -37,6 +42,7 @@ downloadFileName = { $filename } dosyasını indir
 downloadFileSize = ({ $size })
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = İndir
+    .title = İndir
 downloadNotification = İndirme tamamlandı.
 downloadFinish = İndirme tamamlandı
 errorAltText
