@@ -27,3 +27,39 @@ uploadSuccessConfirmHeader = Listo para enviar
 uploadSvgAlt
     .alt = Subir
 uploadSuccessTimingHeader = El enlace a tu archivo expirará después de una descarga o en 24 horas.
+copyUrlFormLabelWithName = Copiar y compartir el enlace para enviar tu archivo: ($filename)
+// Note: Title text for button should be the same.
+copyUrlFormButton = Copiar a portapapeles
+    .title = Copiar a portapapeles
+copiedUrl = ¡Copiado!
+// Note: Title text for button should be the same.
+deleteFileButton = Eliminar archivo
+    .title = Eliminar archivo
+// Note: Title text for button should be the same.
+sendAnotherFileLink = Enviar otro archivo
+    .title = Enviar otro archivo
+// Alternative text used on the download link/button (indicates an action).
+downloadAltText
+    .alt = Descargar
+downloadFileName = Descargar ($filename)
+downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Tu amigo te está enviando un archivo a través de Firefox Send, un servicio que te permite compartir archivos con un enlace seguro, privado y encriptado que caduca automáticamente para que tus cosas no sean accesibles en línea de por vida.
+// Text and title used on the download link/button (indicates an action).
+downloadButtonLabel = Descargar
+    .title = Descargar
+downloadNotification = Tu descarga se ha completado
+downloadFinish = Descarga completa
+// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+sendYourFilesLink = Prueba Firefox Send
+    .title = Prueba Firefox Send
+downloadingPageProgress = Descargando { $filename } ({ $size })
+downloadingPageMessage = Deja esta pestaña abierta mientras buscamos tu archivo y lo desencriptamos.
+errorAltText
+    .alt = Error en la subida
+errorPageHeader = ¡Algo salió mal!
+errorPageMessage = Ha ocurrido un error mientras subiamos tu archivo.
+errorPageLink = Enviar otro archivo
+fileTooBig = Ese archivo es muy grande. Debería ocupar menos de { $size }.
+linkExpiredAlt
+    .alt = Enlace caducado
