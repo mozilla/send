@@ -26,3 +26,4 @@ uploadingFileNotification = Avísame cuando la subida del archivo esté completa
 uploadSuccessConfirmHeader = Listo para enviar
 uploadSvgAlt
     .alt = Subir
+uploadSuccessTimingHeader = El enlace a tu archivo expirará después de una descarga o en 24 horas.
