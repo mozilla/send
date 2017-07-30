@@ -2,6 +2,7 @@
 title = Firefox Send
 siteSubtitle = experimento web
 siteFeedback = Opinión
+uploadPageHeader = Compartir archivos cifrados y privados
 uploadPageExplainer = Enviá archivos a través de un enlace cifrado, privado y seguro que expirará automáticamente para que tus datos no queden en línea para siempre.
 uploadPageLearnMore = Conocer más
 uploadPageDropMessage = Arrastrá el archivo hasta acá para empezar a subir
@@ -41,6 +42,8 @@ downloadAltText
     .alt = Descargar
 downloadFileName = Descargar { $filename }
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Tu amigo te está enviando un archivo con Firefox Send, un servicio que permite compartir archivos con un enlace cifrado, seguro y privado que expira automáticamente para asegurar que tus datos no quedan en línea para siempre.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descargar
     .title = Descargar
@@ -50,6 +53,7 @@ downloadFinish = Descarga completa
 sendYourFilesLink = Probá Firefox Send
     .title = Probá Firefox Send
 downloadingPageProgress = Descargando { $filename } ({ $size })
+downloadingPageMessage = Dejá esta pestaña abierta mientras descargamos el archivo y lo desciframos.
 errorAltText
     .alt = Error de subida
 errorPageHeader = ¡Algo falló!
@@ -60,6 +64,7 @@ linkExpiredAlt
     .alt = Enlace explirado
 expiredPageHeader = ¡Este enlace ha expirado o nunca existió en primer lugar!
 notSupportedHeader = El navegador no está soportado.
+updateFirefox = Actualizar Firefox
 downloadFirefoxButtonSub = Descarga gratuita
 uploadedFile = Archivo
 copyFileList = Copiar URL
