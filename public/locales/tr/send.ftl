@@ -64,15 +64,27 @@ linkExpiredAlt
     .alt = Bağlantı zaman aşımına uğramış
 expiredPageHeader = Bu bağlantı zaman aşımına uğramış veya böyle bir bağlantı hiç yoktu.
 notSupportedHeader = Tarayıcınız desteklenmiyor.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Ne yazık ki tarayıcınız Firefox Send için gereken web teknolojilerini desteklemiyor. Başka bir tarayıcıyla deneyebilirsiniz. Önerimiz tabii ki Firefox!
+notSupportedOutdatedDetail = Kullandığınız Firefox sürümü Firefox Send için gereken web teknolojilerini desteklemiyor. Tarayıcınızı güncellemeniz gerekiyor.
 updateFirefox = Firefox’u güncelle
 downloadFirefoxButtonSub = Ücretsiz indirin
 uploadedFile = Dosya
+copyFileList = Adresi kopyala
+// expiryFileList is used as a column header
+expiryFileList = Bitiş süresi
 deleteFileList = Sil
+nevermindButton = Boş ver
+legalHeader = Şart ve Koşullar
+legalNoticeTestPilot = Firefox Send bir Test Pilotu deneyidir ve  Test Pilotu <a>Hizmet Koşulları</a> ile <a>Gizlilik Bildirimi</a>’ne tabidir. Bu deney ve topladığı veriler hakkında daha fazla bilgi almak isterseniz <a>buraya</a> bakabilirsiniz.
+legalNoticeMozilla = Firefox Send’i kullanmak Mozilla’nın <a>Web Siteleri Gizlilik Bildirimi</a> ve <a>Web Siteleri Kullanım Koşulları</a>’na da tabidir.
 deletePopupText = Bu dosya silinsin mi?
 deletePopupYes = Evet
 deletePopupCancel = Vazgeç
 deleteButtonHover
     .title = Sil
+copyUrlHover
+    .title = Adresi kopyala
 footerLinkLegal = Yasal Bilgiler
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Test Pilotu hakkında
