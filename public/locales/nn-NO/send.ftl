@@ -8,6 +8,7 @@ uploadPageLearnMore = Les meir
 uploadPageDropMessage = Slepp fila di her for å starte opplastinga
 uploadPageSizeMessage = For mest problemfrie bruk, er det best å halde fila under 1 GB
 uploadPageBrowseButton = Vel ei fil på datamaskina di
+    .title = Vel ei fil på datamaskina di
 uploadPageMultipleFilesAlert = Opplasting av fleire filer eller ei mappe er for tida ikkje støtta.
 uploadPageBrowseButtonTitle = Last opp fil
 uploadingPageHeader = Lastar opp fila di
@@ -29,11 +30,14 @@ uploadSuccessTimingHeader = Lenka til fila di går ut etter 1 nedlasting eller o
 copyUrlFormLabelWithName = Kopier og del lenka for å sende fila: { $filename }
 // Note: Title text for button should be the same.
 copyUrlFormButton = Kopier til utklippstavla
+    .title = Kopier til utklippstavla
 copiedUrl = Kopiert!
 // Note: Title text for button should be the same.
 deleteFileButton = Slett fil
+    .title = Slett fil
 // Note: Title text for button should be the same.
 sendAnotherFileLink = Send ei anna fil
+    .title = Send ei anna fil
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText
     .alt = Last ned
@@ -43,10 +47,12 @@ downloadFileSize = ({ $size })
 downloadMessage = Vennen din sender deg eni fil med Firefox Send, ei teneste som lar deg dele filer med ei sikker, privat og kryptert lenke, som automatisk går ut, for å sikre at ting ikkje vert verande på nettet for alltid.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Last ned
+    .title = Last ned
 downloadNotification = Nedlastinga er fullført.
 downloadFinish = Nedlastinga er fullført.
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Prøv Firefox Send
+    .title = Prøv Firefox Send
 downloadingPageProgress = Lastar ned { $filename } ({ $size })
 downloadingPageMessage = La denne fana vere open mens vi hentar filen og dekrypterar henne.
 errorAltText
