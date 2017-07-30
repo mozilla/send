@@ -38,6 +38,8 @@ downloadAltText
     .alt = Descargar
 downloadFileName = Descargar { $filename }
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Tu amigo te está enviando un archivo con Firefox Send, un servicio que te permite compartir archivos con un enlace seguro, privado y cifrado que expira automáticamente para asegurar que tus cosas no queden en línea de por vida.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descargar
 downloadNotification = Tu descarga se completó.
@@ -67,6 +69,11 @@ expiryFileList = Expira en
 deleteFileList = Eliminar
 nevermindButton = Da lo mismo
 legalHeader = Términos y privacidad
+legalNoticeTestPilot =
+    Firefox Send es actualmente un experimento de Test Pilot, y está sujeto a los <a>Términos del servicio</a> y la <a>Política de privacidad</a> de Test Pilot. Puedes aprender más sobre este experimento y su recolección de datos <a>aquí</a>.
+    
+
+legalNoticeMozilla = El uso del sitio web de Firefox Send también está sujeto a la <a>Política de privacidad de sitios web</a> y los <a>Términos de uso de sitios web</a> de Mozilla.
 deletePopupText = ¿Eliminar este archivo?
 deletePopupYes = Sí
 deletePopupCancel = Cancelar
