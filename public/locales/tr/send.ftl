@@ -4,8 +4,8 @@ siteSubtitle = web deneyi
 siteFeedback = Görüş bildir
 uploadPageHeader = Kişiye özel, şifrelenmiş dosya paylaşımı
 uploadPageExplainer = Dosyalarınızı güvenli, size özel, şifrelenmiş ve otomatik olarak silinen bir bağlantıyla gönderin. Özel dosyalarınız sonsuza dek internette kalmasın.
-uploadPageLearnMore = Daha fazla bilgi edin
-uploadPageDropMessage = Yüklemeyi başlamak için dosyanızı buraya bırakın
+uploadPageLearnMore = Daha fazla bilgi alın
+uploadPageDropMessage = Yüklemeyi başlatmak için dosyanızı buraya bırakın
 uploadPageSizeMessage = Sorun yaşamamak adına dosyanızın 1 GB’den küçük olmasını öneririz
 uploadPageBrowseButton = Bilgisayarınızdan bir dosya seçin
     .title = Bilgisayarınızdan bir dosya seçin
@@ -27,14 +27,12 @@ uploadSuccessConfirmHeader = Göndermeye hazır
 uploadSvgAlt
     .alt = Yükle
 uploadSuccessTimingHeader = Dosyanız 1 kez indirildikten veya 24 saat geçtikten sonra linkiniz geçersiz olacaktır.
-copyUrlFormLabelWithName = Dosyanızı başkasına göndermek için bu linki kopyalayın: { $filename }
+copyUrlFormLabelWithName = { $filename } dosyanızı başkasına göndermek için aşağıdaki linki kopyalayın.
 // Note: Title text for button should be the same.
 copyUrlFormButton = Panoya kopyala
-    .title = Panoya kopyala
 copiedUrl = Kopyalandı!
 // Note: Title text for button should be the same.
 deleteFileButton = Dosyayı sil
-    .title = Dosyayı sil
 // Note: Title text for button should be the same.
 sendAnotherFileLink = Başka bir dosya daha gönder
     .title = Başka bir dosya daha gönder
