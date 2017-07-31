@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const { exec } = require('child_process');
 const fs = require('fs');
 
@@ -25,10 +27,10 @@ exec(compareLocales, (err, stdout, stderr) => {
     .sort();
 
   if (locales.join(',') !== availableLanguages.join(',')) {
-    const missingLocales = missingLocales(locales, availableLanguages);
+    const missing = missingLocales(locales, availableLanguages);
     console.log('current 100%:', JSON.stringify(locales));
     console.log('package.json:', JSON.stringify(availableLanguages));
-    console.log('missing prod:', JSON.stringify(missingLocales));
+    console.log('missing prod:', JSON.stringify(missing));
 
     if (process.argv.includes('--write')) {
       const pkgPath = require.resolve('../package.json');
