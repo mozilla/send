@@ -33,11 +33,7 @@ function allLangs() {
 }
 
 function prodLangs() {
-  return require(path.join(
-    __dirname,
-    '..',
-    'package.json'
-  )).availableLanguages.join(',');
+  return require('../package.json').availableLanguages.join(',');
 }
 
 const availableLanguages = conf.l10n_dev ? allLangs() : prodLangs();
