@@ -19,6 +19,7 @@ rules:
   security/detect-non-literal-fs-filename: off
   security/detect-object-injection: off
 
+  eol-last: [error, always]
   eqeqeq: error
   no-console: warn
   no-path-concat: error
