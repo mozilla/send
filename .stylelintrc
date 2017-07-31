@@ -4,3 +4,4 @@ rules:
   color-hex-case: lower
   declaration-colon-newline-after: null
   selector-list-comma-newline-after: null
+  value-list-comma-newline-after: null
