@@ -32,7 +32,11 @@ class Storage {
         fs.push(JSON.parse(this.engine.getItem(k))); // parse or whatever else
       }
     }
-    return fs;
+    return fs.sort((file1, file2) => {
+      const creationDate1 = new Date(file1.creationDate);
+      const creationDate2 = new Date(file2.creationDate);
+      return creationDate1 - creationDate2;
+    });
   }
 
   get numFiles() {
