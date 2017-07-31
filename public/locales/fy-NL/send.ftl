@@ -67,6 +67,8 @@ expiredPageHeader = Dizze keppeling is ferrûn of hat nea bestien!
 notSupportedHeader = Jo browser wurdt net stipe.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Spitigernôch stipet dizze browser de webtechnology dy't Firefox Send mooglik makket net. Jo moatte in oare browser probearje. Wy rekommandearje Firefox!
+notSupportedOutdatedDetail = Spitigernôch stipet dizze ferzje fan Firefox de webtechnology dy't Firefox Send mooflik makket net. Jo moatte jo browser fernije.
+updateFirefox = Firefox fernije
 downloadFirefoxButtonSub = Fergese download
 uploadedFile = Bestân
 copyFileList = URL kopiearje
