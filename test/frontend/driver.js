@@ -2,9 +2,7 @@ const webdriver = require('selenium-webdriver');
 const path = require('path');
 const until = webdriver.until;
 
-const driver = new webdriver.Builder()
-  .forBrowser('firefox')
-  .build();
+const driver = new webdriver.Builder().forBrowser('firefox').build();
 
 driver.get(path.join('file:///', __dirname, '/frontend.test.html'));
 driver.wait(until.titleIs('Mocha Tests'));
@@ -15,8 +13,10 @@ driver.getTitle().then(title => {
     if (title === '0') {
       console.log('Frontend tests have passed.');
     } else {
-      throw new Error('Frontend tests are failing. ' + 
-                'Please open the frontend.test.html file in a browser.');
+      throw new Error(
+        'Frontend tests are failing. ' +
+          'Please open the frontend.test.html file in a browser.'
+      );
     }
-  })
-})
+  });
+});
