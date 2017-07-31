@@ -63,3 +63,32 @@ errorPageLink = Enviar otro archivo
 fileTooBig = Ese archivo es muy grande. Debería ocupar menos de { $size }.
 linkExpiredAlt
     .alt = Enlace caducado
+expiredPageHeader = ¡Este enlace ha caducado o nunca existió en primer lugar!
+notSupportedHeader = Tu navegador no está soportado.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Lamentablemente, este navegador no admite la tecnología web que necesita Firefox Send. Tendrás que probar otro navegador. ¡Te recomendamos Firefox!
+notSupportedOutdatedDetail = Lamentablemente esta versión de Firefox no soporta la tecnología web que potencia a Firefox Send. Deberás actualizar tu navegador.
+updateFirefox = Actualizar Firefox
+downloadFirefoxButtonSub = Descarga gratuita
+uploadedFile = Archivo
+copyFileList = Copiar URL
+// expiryFileList is used as a column header
+expiryFileList = Caduca en
+deleteFileList = Eliminar
+nevermindButton = Da igual
+legalHeader = Términos y privacidad
+legalNoticeTestPilot = Firefox Send sigue siendo un experimento de Test Pilot y está sujeto a las <a>Condiciones del servicio</a> y al <a>Aviso de privacidad</a> de Test Pilot. Puedes saber más acerca de este experimento y si recolección de datos <a>aquí</a>.
+legalNoticeMozilla = El uso de la página de Firefox Send también está sujeto al <a>Aviso de privacidad sobre sitios web</a> y a los <a>Términos de uso sobre sitios web</a>.
+deletePopupText = ¿Eliminar este archivo?
+deletePopupYes = Sí
+deletePopupCancel = Cancelar
+deleteButtonHover
+    .title = Eliminar
+copyUrlHover
+    .title = Copiar URL
+footerLinkLegal = Legal
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Acerca de Test Pilot
+footerLinkPrivacy = Privacidad
+footerLinkTerms = Términos
+footerLinkCookies = Cookies
