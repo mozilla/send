@@ -131,6 +131,6 @@ Fired whenever the user interrupts any part of funnel to return to the start of 
 #### `unsupported`
 Fired whenever a user is presented a message saying that their browser is unsupported due to missing crypto APIs.
 
-- `ec` - `sender`
+- `ec` - `recipient` or `sender`, as applicable.
 - `ea` - `unsupported`
 - `cd6`
