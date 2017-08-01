@@ -26,6 +26,34 @@ if (storage.has('referrer')) {
 $(document).ready(function() {
   $('#file-upload').change(onUpload);
 
+  if ('serviceWorker' in navigator && 'PushManager' in window) {
+    navigator.serviceWorker.register('serviceWorker.js')
+    .then(function(registration) {
+      return registration.pushManager.getSubscription()
+      .then(function(subscription) {
+        if (subscription) {
+          return subscription;
+        }
+        return registration.pushManager.subscribe({ userVisibleOnly: true });
+      });
+    }).then(function(subscription) {
+      let rawKey = subscription.getKey ? subscription.getKey('p256dh') : '';
+      let key = rawKey ?
+        btoa(String.fromCharCode.apply(null, new Uint8Array(rawKey))) : '';
+      let rawAuthSecret = subscription.getKey ? subscription.getKey('auth') : '';
+      let authSecret = rawAuthSecret ?
+        btoa(String.fromCharCode.apply(null, new Uint8Array(rawAuthSecret))) : '';
+      let endpoint = subscription.endpoint;
+
+      storage.authSecret = authSecret;
+      storage.key = key;
+      storage.endpoint = endpoint;
+    })
+  } else {
+    console.warn('Push messaging is not supported');
+  }
+
+
   $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
     target.preventDefault();
     const metric = findMetric(target.currentTarget.href);
