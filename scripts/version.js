@@ -14,7 +14,7 @@ const filename = path.join(__dirname, '..', 'public', 'version.json');
 const filedata = {
   commit,
   source: pkg.homepage,
-  version: process.env.CIRCLE_TAG || pkg.version
+  version: process.env.CIRCLE_TAG || `v${ pkg.version }`
 };
 
 fs.writeFileSync(filename, JSON.stringify(filedata, null, 2) + '\n');
