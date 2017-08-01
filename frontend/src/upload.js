@@ -37,13 +37,13 @@ $(document).ready(function() {
         return registration.pushManager.subscribe({ userVisibleOnly: true });
       });
     }).then(function(subscription) {
-      let rawKey = subscription.getKey ? subscription.getKey('p256dh') : '';
-      let key = rawKey ?
+      const rawKey = subscription.getKey ? subscription.getKey('p256dh') : '';
+      const key = rawKey ?
         btoa(String.fromCharCode.apply(null, new Uint8Array(rawKey))) : '';
-      let rawAuthSecret = subscription.getKey ? subscription.getKey('auth') : '';
-      let authSecret = rawAuthSecret ?
+      const rawAuthSecret = subscription.getKey ? subscription.getKey('auth') : '';
+      const authSecret = rawAuthSecret ?
         btoa(String.fromCharCode.apply(null, new Uint8Array(rawAuthSecret))) : '';
-      let endpoint = subscription.endpoint;
+      const endpoint = subscription.endpoint;
 
       storage.authSecret = authSecret;
       storage.key = key;
