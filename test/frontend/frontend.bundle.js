@@ -9,7 +9,7 @@ window.Raven = {
   captureException: function(err) {
     console.error(err, err.stack);
   }
-}
+};
 
 window.FakeFile = FakeFile;
 window.FileSender = require('../../frontend/src/fileSender');

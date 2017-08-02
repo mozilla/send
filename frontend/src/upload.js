@@ -1,12 +1,7 @@
 /* global MAXFILESIZE EXPIRE_SECONDS */
 require('./common');
 const FileSender = require('./fileSender');
-const {
-  notify,
-  findMetric,
-  sendEvent,
-  ONE_DAY_IN_MS
-} = require('./utils');
+const { notify, findMetric, sendEvent, ONE_DAY_IN_MS } = require('./utils');
 const bytes = require('bytes');
 const Storage = require('./storage');
 const storage = new Storage(localStorage);

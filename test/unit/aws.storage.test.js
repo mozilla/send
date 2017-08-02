@@ -110,9 +110,9 @@ describe('Testing Set using aws', function() {
   it('Should pass when the file is successfully uploaded', function() {
     const buf = Buffer.alloc(10);
     sinon.stub(crypto, 'randomBytes').returns(buf);
-    s3Stub.upload.returns({promise: () => Promise.resolve()});
+    s3Stub.upload.returns({ promise: () => Promise.resolve() });
     return storage
-      .set('123', {on: sinon.stub()}, 'Filename.moz', {})
+      .set('123', { on: sinon.stub() }, 'Filename.moz', {})
       .then(() => {
         assert(expire.calledOnce);
         assert(expire.calledWith('123', 86400));
@@ -121,9 +121,9 @@ describe('Testing Set using aws', function() {
   });
 
   it('Should fail if there was an error during uploading', function() {
-    s3Stub.upload.returns({promise: () => Promise.reject()});
+    s3Stub.upload.returns({ promise: () => Promise.reject() });
     return storage
-      .set('123', {on: sinon.stub()}, 'Filename.moz', 'url.com')
+      .set('123', { on: sinon.stub() }, 'Filename.moz', 'url.com')
       .then(_reply => assert.fail())
       .catch(err => assert(1));
   });

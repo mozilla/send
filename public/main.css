@@ -1,12 +1,8 @@
 /***     index.html     ***/
 html {
   background: url('resources/send_bg.svg');
-  font-family: -apple-system,
-    BlinkMacSystemFont,
-    'SF Pro Text',
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', Helvetica,
+    Arial, sans-serif;
   font-weight: 200;
   background-size: 110%;
   background-repeat: no-repeat;
