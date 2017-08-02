@@ -17,6 +17,7 @@
     "redis": "^2.7.1"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.23.0",
     "browserify": "^14.4.0",
     "eslint": "^4.3.0",
     "eslint-plugin-mocha": "^4.11.0",
@@ -76,7 +77,7 @@
     "build:upload": "browserify frontend/src/upload.js -g uglifyify -o public/upload.js",
     "build:download": "browserify frontend/src/download.js -g uglifyify -o public/download.js",
     "build:version": "node scripts/version",
-    "build:l10n": "cp node_modules/l20n/dist/web/l20n.min.js public",
+    "build:vendor": "cp node_modules/l20n/dist/web/l20n.min.js node_modules/babel-polyfill/dist/polyfill.min.js public",
     "dev": "npm run build && npm start",
     "format": "prettier '{frontend/src/,scripts/,server/,test/**/!(bundle)}*.js' 'public/*.css' --single-quote --write",
     "get-prod-locales": "node scripts/get-prod-locales",
