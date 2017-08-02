@@ -31,6 +31,7 @@ deployment:
 
 test:
   override:
+    - npm run build:version
     - npm run lint
     - npm test
     - nsp check

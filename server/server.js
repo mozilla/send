@@ -10,6 +10,7 @@ const storage = require('./storage.js');
 const Raven = require('raven');
 const crypto = require('crypto');
 const fs = require('fs');
+const version = require('../public/version.json');
 
 if (conf.sentry_dsn) {
   Raven.config(conf.sentry_dsn).install();
@@ -106,8 +107,10 @@ app.get('/legal', (req, res) => {
 app.get('/jsconfig.js', (req, res) => {
   res.set('Content-Type', 'application/javascript');
   res.render('jsconfig', {
-    trackerId: conf.analytics_id,
-    dsn: conf.sentry_id,
+    googleAnalyticsId: conf.analytics_id,
+    sentryId: conf.sentry_id,
+    version: version.version,
+    commit: version.commit,
     maxFileSize: conf.max_file_size,
     expireSeconds: conf.expire_seconds,
     layout: false

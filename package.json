@@ -92,6 +92,6 @@
     "test": "npm-run-all test:*",
     "test:unit": "mocha test/unit",
     "test:server": "mocha test/server",
-    "test:browser": "browserify test/frontend/frontend.bundle.js -o test/frontend/bundle.js -d && node test/frontend/driver.js"
+    "test--browser": "browserify test/frontend/frontend.bundle.js -o test/frontend/bundle.js -d && node test/frontend/driver.js"
   }
 }
