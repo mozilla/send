@@ -133,10 +133,6 @@ class FileSender extends EventEmitter {
           );
           xhr.send(fd);
         });
-      })
-      .catch(err => {
-        Raven.captureException(err);
-        return Promise.reject(err);
       });
   }
 }

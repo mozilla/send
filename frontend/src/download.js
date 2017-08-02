@@ -144,7 +144,7 @@ $(document).ready(function() {
           $('#download-btn').attr('hidden', true);
           $('#expired-img').removeAttr('hidden');
         }
-        return;
+        throw err;
       })
       .then(([decrypted, fname]) => {
         const endTime = Date.now();
