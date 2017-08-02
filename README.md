@@ -32,7 +32,7 @@ $ redis-server /usr/local/etc/redis.conf
 
 ## Localization
 
-_Coming soon_ (see [#57](https://github.com/mozilla/send/issues/57))
+Firefox Send localizations are managed via [Pontoon](https://pontoon.mozilla.org/projects/test-pilot-firefox-send/).
 
 ## Contributing
 
