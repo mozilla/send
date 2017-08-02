@@ -1,13 +1,14 @@
 window.Raven = require('raven-js');
-window.Raven.config(window.dsn).install();
-window.dsn = undefined;
+if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
+  window.Raven.config(window.SENTRY_ID, window.RAVEN_CONFIG).install();
+}
 
 const testPilotGA = require('testpilot-ga');
 const { gcmCompliant, sendEvent } = require('./utils');
 window.analytics = new testPilotGA({
   an: 'Firefox Send',
   ds: 'web',
-  tid: window.trackerId
+  tid: window.GOOGLE_ANALYTICS_ID
 });
 
 const isSender = !location.pathname.includes('/download');

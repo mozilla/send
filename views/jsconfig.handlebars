@@ -5,11 +5,24 @@ if (isIE && !isUnsupportedPage) {
   window.location.replace('/unsupported/ie');
 }
 
-{{#if dsn}}
-window.dsn = '{{{dsn}}}';
+{{#if sentryId}}
+var RAVEN_CONFIG = {
+  release: '{{{version}}}',
+  tags: {
+    commit: '{{{commit}}}'
+  },
+  dataCallback: function (data) {
+    var hash = window.location.hash;
+    if (hash) {
+      return JSON.parse(JSON.stringify(data).replace(new RegExp(hash.slice(1), 'g'), ''));
+    }
+    return data;
+  }
+}
+var SENTRY_ID = '{{{sentryId}}}';
 {{/if}}
-{{#if trackerId}}
-window.trackerId = '{{{trackerId}}}';
+{{#if googleAnalyticsId}}
+var GOOGLE_ANALYTICS_ID = '{{{googleAnalyticsId}}}';
 {{/if}}
 var MAXFILESIZE = {{{maxFileSize}}};
 var EXPIRE_SECONDS = {{{expireSeconds}}};
