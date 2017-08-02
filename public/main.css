@@ -39,9 +39,12 @@ body {
   align-items: center;
 }
 
+.send-logo h1 {
+  transition: color 50ms;
+}
+
 .send-logo h1:hover {
   color: #0297f8;
-  transition: color 50ms;
 }
 
 .send-logo > a {
