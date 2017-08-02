@@ -53,3 +53,26 @@ sendYourFilesLink = Firefox Send Yoxla
     .title = Firefox Send Yoxla
 downloadingPageProgress = { $filename } faylı ({ $size }) endirilir
 downloadingPageMessage = Lütfən faylı endirib şifrəsini açarkən vərəqi açıq buraxın.
+errorAltText
+    .alt = Yükləmə xətası
+errorPageHeader = Nəsə səhv getdi!
+errorPageMessage = Faylı yüklərkən xəta baş verdi.
+errorPageLink = Başqa fayl göndər
+fileTooBig = Fayl yükləmək üçün çox böyükdür. Fayl { $size }-dan az olmalıdır.
+linkExpiredAlt
+    .alt = Keçidin vaxtı çıxıb
+expiredPageHeader = Keçidin vaxtı çıxıb və ya heç vaxt olmayıb!
+notSupportedHeader = Səyyahınız dəstəklənmir.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Heyf ki, bu səyyah Firefox Send-ə güc verən web texnologiyalarını dəstəkləmir. Fərqli bir səyyah yoxlamalısınız. Biz Firefox məsləhət görürük!
+notSupportedOutdatedDetail = Heyf ki, Firefox səyyahının bu versiyası Firefox Send-ə güc verən web texnologiyalarını dəstəkləmir. Səyyahınızı yeniləməlisiniz.
+updateFirefox = Firefox-u Yenilə
+downloadFirefoxButtonSub = Pulsuz Endir
+uploadedFile = Fayl
+copyFileList = Keçidi Köçürt
+// expiryFileList is used as a column header
+expiryFileList = Vaxtı çıxma tarixi
+deleteFileList = Sil
+nevermindButton = Vacib deyil
+legalHeader = Şərtlər və Məxfilik
+legalNoticeTestPilot = Firefox Send Test Pilot eksperimentidir və Test Pilot <a>Xidmət Şə</a>
