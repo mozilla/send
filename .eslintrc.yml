@@ -21,6 +21,7 @@ rules:
 
   eol-last: [error, always]
   eqeqeq: error
+  no-alert: warn
   no-console: warn
   no-path-concat: error
   no-unused-vars: [error, {argsIgnorePattern: "^_|err|event|next|reject"}]
