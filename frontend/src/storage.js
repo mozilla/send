@@ -29,7 +29,12 @@ class Storage {
     for (let i = 0; i < this.engine.length; i++) {
       const k = this.engine.key(i);
       if (isFile(k)) {
-        fs.push(JSON.parse(this.engine.getItem(k))); // parse or whatever else
+        try {
+          fs.push(JSON.parse(this.engine.getItem(k)));
+        } catch (err) {
+          // obviously you're not a golfer
+          this.engine.removeItem(k);
+        }
       }
     }
     return fs.sort((file1, file2) => {
