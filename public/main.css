@@ -39,6 +39,14 @@ body {
   align-items: center;
 }
 
+.send-logo h1 {
+  transition: color 50ms;
+}
+
+.send-logo h1:hover {
+  color: #0297f8;
+}
+
 .send-logo > a {
   display: flex;
   flex-direction: row;
@@ -67,7 +75,7 @@ body {
   transition: color 50ms;
 }
 
-.send-logo:hover a {
+.site-subtitle a:hover {
   color: #0297f8;
 }
 
