@@ -99,12 +99,7 @@ function findMetric(href) {
 }
 
 function isFile(id) {
-  return ![
-    'referrer',
-    'totalDownloads',
-    'totalUploads',
-    'testpilot_ga__cid'
-  ].includes(id);
+  return /^[0-9a-fA-F]{10}$/.test(id);
 }
 
 function sendEvent() {
