@@ -9,6 +9,7 @@ const conf = require('./config.js');
 const storage = require('./storage.js');
 const Raven = require('raven');
 const crypto = require('crypto');
+const webPush = require('web-push');
 const fs = require('fs');
 
 if (conf.sentry_dsn) {
@@ -177,6 +178,17 @@ app.get('/assets/download/:id', (req, res) => {
           const file_stream = storage.get(id);
 
           file_stream.on('end', () => {
+            webPush.sendNotification({
+              endpoint: meta.endpoint,
+              keys: {
+                p256dh: meta.key,
+                auth: meta.authSecret
+              }
+            },
+            meta.filename)
+            .catch(err => {
+              console.log(err);
+            });
             storage
               .forceDelete(id)
               .then(err => {

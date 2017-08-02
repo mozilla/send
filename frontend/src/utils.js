@@ -103,7 +103,10 @@ function isFile(id) {
     'referrer',
     'totalDownloads',
     'totalUploads',
-    'testpilot_ga__cid'
+    'testpilot_ga__cid',
+    'authSecret',
+    'key',
+    'endpoint'
   ].includes(id);
 }
 

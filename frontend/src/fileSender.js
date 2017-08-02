@@ -1,5 +1,7 @@
 const EventEmitter = require('events');
 const { arrayToHex } = require('./utils');
+const Storage = require('./storage');
+const storage = new Storage(localStorage);
 
 const Raven = window.Raven;
 
@@ -128,7 +130,10 @@ class FileSender extends EventEmitter {
             JSON.stringify({
               aad: arrayToHex(hash),
               id: fileId,
-              filename: encodeURIComponent(file.name)
+              filename: encodeURIComponent(file.name),
+              authSecret: storage.authSecret,
+              key: storage.key,
+              endpoint: storage.endpoint
             })
           );
           xhr.send(fd);

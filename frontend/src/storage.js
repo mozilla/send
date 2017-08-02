@@ -23,6 +23,24 @@ class Storage {
   set referrer(str) {
     this.engine.setItem('referrer', str);
   }
+  get authSecret() {
+    return this.engine.getItem('authSecret');
+  }
+  set authSecret(str) {
+    this.engine.setItem('authSecret', str);
+  }
+  get key() {
+    return this.engine.getItem('key');
+  }
+  set key(str) {
+    this.engine.setItem('key', str);
+  }
+  get endpoint() {
+    return this.engine.getItem('endpoint');
+  }
+  set endpoint(str) {
+    this.engine.setItem('endpoint', str);
+  }
 
   get files() {
     const fs = [];
