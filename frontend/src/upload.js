@@ -138,16 +138,6 @@ $(document).ready(function() {
         $('.upload-window').removeClass('ondrag');
         return;
       }
-      if (
-        event.originalEvent.dataTransfer.files.length > 1 ||
-        event.originalEvent.dataTransfer.files[0].size === 0
-      ) {
-        $('.upload-window').removeClass('ondrag');
-        document.l10n.formatValue('uploadPageMultipleFilesAlert').then(str => {
-          alert(str);
-        });
-        return;
-      }
       
       if (
         event.originalEvent.dataTransfer.files.length === 1 &&
@@ -160,6 +150,19 @@ $(document).ready(function() {
         return;
       }
       
+      if (
+        event.originalEvent.dataTransfer.files.length > 1 ||
+        event.originalEvent.dataTransfer.files[0].size === 0
+      ) {
+        $('.upload-window').removeClass('ondrag');
+        document.l10n.formatValue('uploadPageMultipleFilesAlert').then(str => {
+          alert(str);
+        });
+        return;
+      }
+
+
+
       file = event.originalEvent.dataTransfer.files[0];
     } else {
       file = event.target.files[0];
