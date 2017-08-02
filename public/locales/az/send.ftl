@@ -43,6 +43,8 @@ downloadAltText
     .alt = Endir
 downloadFileName = { $filename } faylını endir
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Yoldaşınız Firefox Send ilə sizə fayl göndərir, fayllarınızı təhlükəsiz, məxfi, şifrələnmiş və daima onlayn qalmaması üçün avtomatik silən fayl göndərmə xidməti.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Endir
     .title = Endir
@@ -75,4 +77,18 @@ expiryFileList = Vaxtı çıxma tarixi
 deleteFileList = Sil
 nevermindButton = Vacib deyil
 legalHeader = Şərtlər və Məxfilik
-legalNoticeTestPilot = Firefox Send Test Pilot eksperimentidir və Test Pilot <a>Xidmət Şə</a>
+legalNoticeTestPilot = Firefox Send Test Pilot eksperimentidir, Test Pilot <a>Xidmət Şərtləri</a> və <a>Məxfilik Bildirişi</a>-nə tabedir. Bu eksperiment və məlumat yığma haqqında <a>buradan</a> öyrənə bilərsiz.
+legalNoticeMozilla = Firefox Send saytının istifadəsi həmçinin Mozilla-nın <a>Saytlar üçün Məxfilik Bildirişi</a> və <a>Sayt İstifadə Şərtləri</a>-nə tabedir.
+deletePopupText = Fayl silinsin?
+deletePopupYes = Bəli
+deletePopupCancel = Ləğv et
+deleteButtonHover
+    .title = Sil
+copyUrlHover
+    .title = Keçidi Köçürt
+footerLinkLegal = Hüquqi
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Test Pilot Haqqında
+footerLinkPrivacy = Məxfilik
+footerLinkTerms = Şərtlər
+footerLinkCookies = Çərəzlər
