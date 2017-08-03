@@ -14,23 +14,17 @@ $(document).ready(function() {
   //link back to homepage
   $('.send-new').attr('href', window.location.origin);
 
-  $('.send-new').click(function(target) {
-    target.preventDefault();
+  $('.send-new').click(function() {
     sendEvent('recipient', 'restarted', {
       cd2: 'completed'
-    }).then(() => {
-      location.href = target.currentTarget.href;
     });
   });
 
   $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
-    target.preventDefault();
     const metric = findMetric(target.currentTarget.href);
     // record exited event by recipient
     sendEvent('recipient', 'exited', {
       cd3: metric
-    }).then(() => {
-      location.href = target.currentTarget.href;
     });
   });
 
