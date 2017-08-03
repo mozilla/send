@@ -67,6 +67,7 @@ expiredPageHeader = Ta povezava je potekla ali pa sploh ni obstajala!
 notSupportedHeader = Vaš brskalnik ni podprt.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Ta brskalnik na žalost ne podpira tehnologije, na kateri temelji Firefox Send. Uporabiti boste morali drug brskalnik. Priporočamo Firefox!
+notSupportedLink = Zakaj moj brskalnik ni podprt?
 notSupportedOutdatedDetail = Ta brskalnik žal ne podpira tehnologije, na kateri temelji Firefox Send. Svoj brskalnik boste morali posodobiti.
 updateFirefox = Posodobi Firefox
 downloadFirefoxButtonSub = Brezplačen prenos
