@@ -3,7 +3,13 @@ title = Firefox Send
 siteSubtitle = eksperimen web
 siteFeedback = Saran
 uploadPageHeader = Pribadi, Berbagi Berkas Terenskripsi 
+uploadPageExplainer = Kirim berkas melalui tautan yang aman, pribadi, dan terenkripsi yang secara otomatis kedaluwarsa untuk memastikan berkas Anda tidak daring selamanya.
 uploadPageLearnMore = Pelajari lebih lanjut
+uploadPageDropMessage = Lepas berkas Anda di sini untuk mulai mengunggah
+uploadPageSizeMessage = Untuk pengoperasian yang paling andal, sebaiknya jaga berkas Anda di bawah 1GB
+uploadPageBrowseButton = Pilih berkas pada komputer Anda
+    .title = Pilih berkas pada komputer Anda
+uploadPageMultipleFilesAlert = Saat ini belum mendukung pengunggahan beberapa berkas atau folder.
 uploadPageBrowseButtonTitle = Unggah berkas
 uploadingPageHeader = Mengunggah Berkas Anda
 importingFile = Mengimpor…
@@ -37,6 +43,8 @@ downloadAltText
     .alt = Unduh
 downloadFileName = Unduh { $filename }
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Teman Anda mengirimkan berkas dengan Firefox Send, layanan yang memungkinkan Anda berbagi berkas dengan tautan yang aman, pribadi, dan terenkripsi yang secara otomatis berakhir untuk memastikan berkas Anda tidak daring selamanya.
 downloadNotification = Unduhan Anda telah selesai.
 downloadFinish = Unduhan Selesai
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
@@ -54,6 +62,9 @@ linkExpiredAlt
     .alt = Tautan kedaluwarsa
 expiredPageHeader = Tautan ini telah kedaluwarsa atau tidak pernah ada!
 notSupportedHeader = Peramban Anda tidak mendukung.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Sayangnya peramban ini tidak mendukung teknologi web yang menggerakkan Firefox Send. Anda perlu mencoba peramban lain. Kami merekomendasikan Firefox!
+notSupportedOutdatedDetail = Sayangnya Firefox versi ini tidak mendukung teknologi web yang menggerakkan Firefox Send. Anda perlu memperbarui peramban Anda.
 updateFirefox = Perbarui Firefox
 downloadFirefoxButtonSub = Unduh Gratis
 uploadedFile = Berkas
@@ -63,6 +74,8 @@ expiryFileList = Kedaluwarsa Pada
 deleteFileList = Hapus
 nevermindButton = Abaikan
 legalHeader = Syarat & Privasi
+legalNoticeTestPilot = Saat ini Firefox Send merupakan eksperimen Test Pilot, dan merupakan subyek dari <a>Ketentuan Layanan</a> dan <a>Pemberitahuan Privasi</a> Test Pilot. Anda dapat mempelajari lebih lanjut tentang eksperimen ini dan pengumpulan datanya <a>di sini</a>.
+legalNoticeMozilla = Penggunaan situs Firefox Send juga merupakan subyek dari <a>Pemberitahuan Privasi Situs Web</a> dan <a>Persyaratan Penggunaan Situs Web</a> Mozilla.
 deletePopupText = Hapus berkas ini?
 deletePopupYes = Ya
 deletePopupCancel = Batal
