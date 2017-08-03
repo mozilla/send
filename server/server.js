@@ -205,7 +205,7 @@ app.post('/delete/:id', async (req, res) => {
   }
 
   try {
-   const err = await storage.delete(id, delete_token);
+    const err = await storage.delete(id, delete_token);
     if (!err) {
       log.info('Deleted:', id);
       res.sendStatus(200);
