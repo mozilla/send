@@ -117,93 +117,79 @@ app.get('/jsconfig.js', (req, res) => {
   });
 });
 
-app.get('/exists/:id', (req, res) => {
+app.get('/exists/:id', async (req, res) => {
   const id = req.params.id;
   if (!validateID(id)) {
     res.sendStatus(404);
     return;
   }
 
-  storage
-    .exists(id)
-    .then(() => {
-      res.sendStatus(200);
-    })
-    .catch(err => res.sendStatus(404));
+  try {
+    await storage.exists(id);
+    res.sendStatus(200);
+  } catch (e) {
+    res.sendStatus(404);
+  }
 });
 
-app.get('/download/:id', (req, res) => {
+app.get('/download/:id', async (req, res) => {
   const id = req.params.id;
   if (!validateID(id)) {
     res.sendStatus(404);
     return;
   }
 
-  storage
-    .filename(id)
-    .then(filename => {
-      return storage.length(id).then(contentLength => {
-        storage.ttl(id).then(timeToExpiry => {
-          res.render('download', {
-            filename: decodeURIComponent(filename),
-            filesize: bytes(contentLength),
-            sizeInBytes: contentLength,
-            timeToExpiry: timeToExpiry
-          });
-        });
-      });
-    })
-    .catch(() => {
-      res.status(404).render('notfound');
+  try {
+    const filename = await storage.filename(id);
+    const contentLength = await storage.length(id);
+    const timeToExpiry = storage.ttl(id);
+    res.render('download', {
+      filename: decodeURIComponent(filename),
+      filesize: bytes(contentLength),
+      sizeInBytes: contentLength,
+      timeToExpiry: timeToExpiry
     });
+  } catch (e) {
+    res.status(404).render('notfound');
+  }
 });
 
-app.get('/assets/download/:id', (req, res) => {
+app.get('/assets/download/:id', async (req, res) => {
   const id = req.params.id;
   if (!validateID(id)) {
     res.sendStatus(404);
     return;
   }
 
-  storage
-    .metadata(id)
-    .then(meta => {
-      storage
-        .length(id)
-        .then(contentLength => {
-          res.writeHead(200, {
-            'Content-Disposition': 'attachment; filename=' + meta.filename,
-            'Content-Type': 'application/octet-stream',
-            'Content-Length': contentLength,
-            'X-File-Metadata': JSON.stringify(meta)
-          });
-          const file_stream = storage.get(id);
-
-          file_stream.on('end', () => {
-            storage
-              .forceDelete(id)
-              .then(err => {
-                if (!err) {
-                  log.info('Deleted:', id);
-                }
-              })
-              .catch(err => {
-                log.info('DeleteError:', id);
-              });
-          });
-
-          file_stream.pipe(res);
-        })
-        .catch(err => {
-          res.sendStatus(404);
-        });
-    })
-    .catch(err => {
-      res.sendStatus(404);
+  try {
+    const meta = await storage.metadata(id);
+    const contentLength = await storage.length(id);
+    res.writeHead(200, {
+      'Content-Disposition': `attachment; filename=${meta.filename}`,
+      'Content-Type': 'application/octet-stream',
+      'Content-Length': contentLength,
+      'X-File-Metadata': JSON.stringify(meta)
     });
+    const file_stream = storage.get(id);
+
+    file_stream.on('end', async () => {
+      try {
+        const err = await storage.forceDelete(id);
+        if (!err) {
+          log.info('Deleted:', id);
+        }
+      } catch (e) {
+        log.info('DeleteError:', id);
+      }
+    });
+
+    file_stream.pipe(res);
+  } catch (e) {
+    res.sendStatus(404);
+  }
 });
 
-app.post('/delete/:id', (req, res) => {
+app.post('/delete/:id', async (req, res) => {
   const id = req.params.id;
 
   if (!validateID(id)) {
@@ -218,15 +204,15 @@ app.post('/delete/:id', (req, res) => {
     return;
   }
 
-  storage
-    .delete(id, delete_token)
-    .then(err => {
-      if (!err) {
-        log.info('Deleted:', id);
-        res.sendStatus(200);
-      }
-    })
-    .catch(err => res.sendStatus(404));
+  try {
+   const err = await storage.delete(id, delete_token);
+    if (!err) {
+      log.info('Deleted:', id);
+      res.sendStatus(200);
+    }
+  } catch (e) {
+    res.sendStatus(404);
+  }
 });
 
 app.post('/upload', (req, res, next) => {
@@ -235,7 +221,7 @@ app.post('/upload', (req, res, next) => {
 
   try {
     meta = JSON.parse(req.header('X-File-Metadata'));
-  } catch (err) {
+  } catch (e) {
     res.sendStatus(400);
     return;
   }
@@ -254,39 +240,36 @@ app.post('/upload', (req, res, next) => {
   log.info('meta', meta);
   req.pipe(req.busboy);
 
-  req.busboy.on('file', (fieldname, file, filename) => {
+  req.busboy.on('file', async (fieldname, file, filename) => {
     log.info('Uploading:', newId);
 
-    storage.set(newId, file, filename, meta).then(
-      () => {
-        const protocol = conf.env === 'production' ? 'https' : req.protocol;
-        const url = `${protocol}://${req.get('host')}/download/${newId}/`;
-        res.json({
-          url,
-          delete: meta.delete,
-          id: newId
-        });
-      },
-      err => {
-        if (err.message === 'limit') {
-          return res.sendStatus(413);
-        }
-        res.sendStatus(500);
+    try {
+      await storage.set(newId, file, filename, meta);
+
+      const protocol = conf.env === 'production' ? 'https' : req.protocol;
+      const url = `${protocol}://${req.get('host')}/download/${newId}/`;
+      res.json({
+        url,
+        delete: meta.delete,
+        id: newId
+      });
+    } catch (e) {
+      if (e.message === 'limit') {
+        return res.sendStatus(413);
       }
-    );
+      res.sendStatus(500);
+    }
   });
 
-  req.on('close', err => {
-    storage
-      .forceDelete(newId)
-      .then(err => {
-        if (!err) {
-          log.info('Deleted:', newId);
-        }
-      })
-      .catch(err => {
-        log.info('DeleteError:', newId);
-      });
+  req.on('close', async err => {
+    try {
+      const err = await storage.forceDelete(newId);
+      if (!err) {
+        log.info('Deleted:', newId);
+      }
+    } catch (e) {
+      log.info('DeleteError:', newId);
+    }
   });
 });
 
@@ -294,8 +277,13 @@ app.get('/__lbheartbeat__', (req, res) => {
   res.sendStatus(200);
 });
 
-app.get('/__heartbeat__', (req, res) => {
-  storage.ping().then(() => res.sendStatus(200), () => res.sendStatus(500));
+app.get('/__heartbeat__', async (req, res) => {
+  try {
+    await storage.ping();
+    res.sendStatus(200);
+  } catch (e) {
+    res.sendStatus(500);
+  }
 });
 
 app.get('/__version__', (req, res) => {
