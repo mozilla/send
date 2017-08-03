@@ -389,7 +389,8 @@ tbody {
   letter-spacing: -0.78px;
   font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
   top: 53px;
-  width: 98.5px;
+  left: 50%;
+  transform: translateX(-50%);
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
