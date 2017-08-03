@@ -17,6 +17,7 @@
     "redis": "^2.7.1"
   },
   "devDependencies": {
+    "asmcrypto.js": "0.0.11",
     "babel-polyfill": "^6.23.0",
     "browserify": "^14.4.0",
     "eslint": "^4.3.0",
@@ -38,7 +39,8 @@
     "stylelint-config-standard": "^17.0.0",
     "supertest": "^3.0.0",
     "testpilot-ga": "^0.3.0",
-    "uglifyify": "^4.0.3"
+    "uglifyify": "^4.0.3",
+    "webcrypto-liner": "^0.1.25"
   },
   "engines": {
     "node": ">=8.0.0"

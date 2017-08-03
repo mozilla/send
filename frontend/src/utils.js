@@ -60,16 +60,22 @@ function gcmCompliant() {
           )
           .then(() => {
             return Promise.resolve();
-          })
-          .catch(err => {
-            return Promise.reject();
           });
       })
       .catch(err => {
-        return Promise.reject();
+        return loadShim();
       });
   } catch (err) {
-    return Promise.reject();
+    return loadShim();
+  }
+  function loadShim() {
+    return new Promise((resolve, reject) => {
+      const shim = document.createElement('script');
+      shim.src = '/cryptofill.js';
+      shim.addEventListener('load', resolve);
+      shim.addEventListener('error', reject);
+      document.head.appendChild(shim);
+    });
   }
 }
 
