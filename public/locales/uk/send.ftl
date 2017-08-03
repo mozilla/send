@@ -3,6 +3,7 @@ title = Firefox Send
 siteSubtitle = веб-експеримент
 siteFeedback = Відгуки
 uploadPageHeader = Приватний, зашифрований обмін файлами
+uploadPageExplainer = Надсилайте файли, використовуючи безпечні, приватні та зашифровані посилання, термін дії яких автоматично закінчується, щоб ваші файли не лишився в Інтернеті назавжди.
 uploadPageLearnMore = Докладніше
 uploadPageDropMessage = Перетягніть свій файл сюди, щоб почати вивантаження
 uploadPageSizeMessage = Для більш надійної роботи сервісу, розмір вашого файлу не має перевищувати 1ГБ.
@@ -42,6 +43,8 @@ downloadAltText
     .alt = Завантаживи
 downloadFileName = Завантажити { $filename }
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Ваш друг надіслав файл за допомогою Firefox Send, який дозволяє ділитися файлами, використовуючи безпечні, приватні та зашифровані посилання, термін дії яких автоматично закінчується, щоб ваші файли не лишилися в Інтернеті назавжди.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Завантажити
     .title = Завантажити
@@ -74,6 +77,7 @@ expiryFileList = Термін дії закінчується
 deleteFileList = Видалити
 nevermindButton = Не важливо
 legalHeader = Умови та конфіденційність
+legalNoticeTestPilot = Firefox Send в даний час є експериментом Test Pilot, і тому підпадає під <a>умови служби</ a> і <a>повідомлення про приватність</a> Test Pilot. Ви можете дізнатись більше про цей експеримент і його збір даних <a>тут</a>.
 legalNoticeMozilla = Використання сайту Firefox Send також підпадає під <a>повідомлення про конфіденційність веб-сайтів</ a> та <a>правила використання веб-сайтів</a> Mozilla.
 deletePopupText = Видалити цей файл?
 deletePopupYes = Так
