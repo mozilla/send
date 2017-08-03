@@ -23,35 +23,26 @@ $(document).ready(function() {
   $('#file-upload').change(onUpload);
 
   $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
-    target.preventDefault();
     const metric = findMetric(target.currentTarget.href);
     // record exited event by recipient
     sendEvent('sender', 'exited', {
       cd3: metric
-    }).then(() => {
-      location.href = target.currentTarget.href;
     });
   });
 
-  $('#send-new-completed').click(function(target) {
-    target.preventDefault();
+  $('#send-new-completed').click(function() {
     // record restarted event
+    storage.referrer = 'errored-upload';
     sendEvent('sender', 'restarted', {
       cd2: 'completed'
-    }).then(() => {
-      storage.referrer = 'completed-upload';
-      location.href = target.currentTarget.href;
     });
   });
 
-  $('#send-new-error').click(function(target) {
-    target.preventDefault();
+  $('#send-new-error').click(function() {
     // record restarted event
+    storage.referrer = 'errored-upload';
     sendEvent('sender', 'restarted', {
       cd2: 'errored'
-    }).then(() => {
-      storage.referrer = 'errored-upload';
-      location.href = target.currentTarget.href;
     });
   });
 
