@@ -67,6 +67,7 @@ expiredPageHeader = Keçidin vaxtı çıxıb və ya heç vaxt olmayıb!
 notSupportedHeader = Səyyahınız dəstəklənmir.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Heyf ki, bu səyyah Firefox Send-ə güc verən web texnologiyalarını dəstəkləmir. Fərqli bir səyyah yoxlamalısınız. Biz Firefox məsləhət görürük!
+notSupportedLink = Səyyahım niyə dəstəklənmir?
 notSupportedOutdatedDetail = Heyf ki, Firefox səyyahının bu versiyası Firefox Send-ə güc verən web texnologiyalarını dəstəkləmir. Səyyahınızı yeniləməlisiniz.
 updateFirefox = Firefox-u Yenilə
 downloadFirefoxButtonSub = Pulsuz Endir
