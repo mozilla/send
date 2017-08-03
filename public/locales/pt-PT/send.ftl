@@ -3,12 +3,12 @@ title = Firefox Send
 siteSubtitle = experiência web
 siteFeedback = Feedback
 uploadPageHeader = Partilha de ficheiros privada e encriptada
-uploadPageExplainer = Envie ficheiros através de uma ligação segura, privada e encriptada que automaticamente expira para garantir que as suas coisas não fiquem online para sempre.
+uploadPageExplainer = Envie ficheiros através de uma ligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
 uploadPageLearnMore = Saber mais
 uploadPageDropMessage = Largue o seu ficheiro aqui para começar a carregar
 uploadPageSizeMessage = Para uma operação mais confiável, é melhor manter o seu ficheiro abaixo de 1GB
-uploadPageBrowseButton = Selecione um ficheiro no seu computador
-    .title = Selecione um ficheiro no seu computador
+uploadPageBrowseButton = Selecionar um ficheiro no seu computador
+    .title = Selecionar um ficheiro no seu computador
 uploadPageMultipleFilesAlert = Carregar múltiplos ficheiros ou uma pasta não é atualmente suportado.
 uploadPageBrowseButtonTitle = Carregar ficheiro
 uploadingPageHeader = A carregar o seu ficheiro
@@ -44,7 +44,7 @@ downloadAltText
 downloadFileName = Descarregar { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
-downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiro com uma ligação segura, privada e encriptada que automaticamente expira para garantir que as suas coisas não fiquem online para sempre.
+downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiro com uma ligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descarregar
     .title = Descarregar
