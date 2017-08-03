@@ -67,6 +67,7 @@ expiredPageHeader = Esse link expirou, ou talvez nunca tenha existido!
 notSupportedHeader = Seu navegador não tem suporte.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Infelizmente esse navegador não suporta a tecnologia utilizada pelo Firefox Send. Tente com outro navegador. Nós recomendamos o Firefox! ;-)
+notSupportedLink = Por que meu navegador não é suportado?
 notSupportedOutdatedDetail = Infelizmente esta versão do Firefox não suporta a tecnologia web que faz o Firefox Send funcionar. Você precisa atualizar o seu navegador.
 updateFirefox = Atualizar o Firefox
 downloadFirefoxButtonSub = Download gratuito
