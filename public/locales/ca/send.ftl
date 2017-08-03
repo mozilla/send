@@ -41,3 +41,25 @@ sendAnotherFileLink = Envieu un altre fitxer
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText
     .alt = Baixa
+downloadFileName = Baixeu { $filename }
+downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Un amic us ha enviat un fitxer amb el Firefox Send, un servei que permet compartir fitxers mitjançant un enllaç segur, privat i xifrat que caduca automàticament per tal que les vostres dades no es conservin a Internet per sempre.
+// Text and title used on the download link/button (indicates an action).
+downloadButtonLabel = Baixa
+    .title = Baixa
+downloadNotification = La baixada ha acabat.
+downloadFinish = Ha acabat la baixada
+// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+sendYourFilesLink = Proveu el Firefox Send
+    .title = Proveu el Firefox Send
+downloadingPageProgress = S'està baixant { $filename } ({ $size })
+downloadingPageMessage = Deixeu aquesta pestanya oberta per tal que el fitxer es pugui baixar i desxifrar.
+errorAltText
+    .alt = S'ha produït un error en pujar
+errorPageHeader = Hi ha hagut un problema
+errorPageMessage = S'ha produït un error en pujar el fitxer.
+errorPageLink = Envieu un altre fitxer
+fileTooBig = Aquest fitxer és massa gros per pujar-lo. Ha de tenir menys de { $size }.
+linkExpiredAlt
+    .alt = L'enllaç ha caducat
