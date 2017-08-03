@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Firefox Send</title>
-  <script src="/jsconfig.js"></script>
-  <link rel="stylesheet" type="text/css" href="/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <meta name="defaultLanguage" content="en-US">
   <meta name="availableLanguages" content="{{availableLanguages}}">
 
+  <title>Firefox Send</title>
+
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+  {{#if fira}}
+  <link rel="stylesheet" type="text/css" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  {{/if}}
+
   <link rel="icon" type="image/png" href="/resources/favicon-32x32.png" sizes="32x32" />
   <link rel="localization" href="/locales/{locale}/send.ftl">
+
+  <script src="/jsconfig.js"></script>
   <script src="/polyfill.min.js"></script>
   <script defer src="/l20n.min.js"></script>
 </head>
