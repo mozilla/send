@@ -19,6 +19,7 @@ if (storage.has('referrer')) {
 }
 
 $(document).ready(function() {
+  $('#page-one').removeAttr('hidden');
   $('#file-upload').change(onUpload);
 
   $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
