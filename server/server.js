@@ -142,7 +142,7 @@ app.get('/download/:id', async (req, res) => {
   try {
     const filename = await storage.filename(id);
     const contentLength = await storage.length(id);
-    const timeToExpiry = storage.ttl(id);
+    const timeToExpiry = await storage.ttl(id);
     res.render('download', {
       filename: decodeURIComponent(filename),
       filesize: bytes(contentLength),
