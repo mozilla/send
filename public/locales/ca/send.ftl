@@ -63,3 +63,33 @@ errorPageLink = Envieu un altre fitxer
 fileTooBig = Aquest fitxer és massa gros per pujar-lo. Ha de tenir menys de { $size }.
 linkExpiredAlt
     .alt = L'enllaç ha caducat
+expiredPageHeader = Aquest enllaç ha caducat o no existeix.
+notSupportedHeader = El vostre navegador no és compatible.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Aquest navegador no admet la tecnologia web amb què funciona el Firefox Send. Haureu d'utilitzar un altre navegador. Us recomanem el Firefox!
+notSupportedLink = Per què el meu navegador no és compatible?
+notSupportedOutdatedDetail = Aquesta versió del Firefox no admet la tecnologia web amb què funciona el Firefox Send. Haureu d'actualitzar el navegador.
+updateFirefox = Actualitza el Firefox
+downloadFirefoxButtonSub = Baixada gratuïta
+uploadedFile = Fitxer
+copyFileList = Copia l'URL
+// expiryFileList is used as a column header
+expiryFileList = Caduca d'aquí
+deleteFileList = Suprimeix
+nevermindButton = No, gràcies
+legalHeader = Condicions d'ús i privadesa
+legalNoticeTestPilot = Actualment el Firefox Send és un experiment del Test Pilot i està subjecte a les <a>Condicions del servei</a> i a l'<a>Avís de privadesa</a> del Test Pilot. Podeu obtenir més informació sobre aquest experiment i la recollida de dades <a>aquí</a>.
+legalNoticeMozilla = L'ús del Firefox Send també està subjecte a l'<a>Avís de privadesa de llocs web</a> i a les <a>Condicions d'ús de llocs web</a> de Mozilla.
+deletePopupText = Voleu suprimir aquest fitxer?
+deletePopupYes = Sí
+deletePopupCancel = Cancel·la
+deleteButtonHover
+    .title = Suprimeix
+copyUrlHover
+    .title = Copia l'URL
+footerLinkLegal = Avís legal
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Quant al Test Pilot
+footerLinkPrivacy = Privadesa
+footerLinkTerms = Condicions d'ús
+footerLinkCookies = Galetes
