@@ -27,6 +27,7 @@ uploadSuccessConfirmHeader = Listo para enviar
 uploadSvgAlt
     .alt = Subir
 uploadSuccessTimingHeader = El enlace al archivo expirará después de 1 descarga o en 24 horas.
+copyUrlFormLabelWithName = Copiá y compartí el enlace para enviar tu archivo: { $filename }
 // Note: Title text for button should be the same.
 copyUrlFormButton = Copiar al portapapeles
     .title = Copiar al portapapeles
@@ -64,6 +65,8 @@ linkExpiredAlt
     .alt = Enlace explirado
 expiredPageHeader = ¡Este enlace ha expirado o nunca existió en primer lugar!
 notSupportedHeader = El navegador no está soportado.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Desafortunadamente este navegador no soporta la tecnología web que necesita Firefox Send. Deberías probar otro navegador. ¡Te recomendamos Firefox!
 updateFirefox = Actualizar Firefox
 downloadFirefoxButtonSub = Descarga gratuita
 uploadedFile = Archivo
