@@ -64,6 +64,7 @@ expiredPageHeader = Bu bağlantı zaman aşımına uğramış veya böyle bir ba
 notSupportedHeader = Tarayıcınız desteklenmiyor.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Ne yazık ki tarayıcınız Firefox Send için gereken web teknolojilerini desteklemiyor. Başka bir tarayıcıyla deneyebilirsiniz. Önerimiz tabii ki Firefox!
+notSupportedLink = Tarayıcım neden desteklenmiyor?
 notSupportedOutdatedDetail = Kullandığınız Firefox sürümü Firefox Send için gereken web teknolojilerini desteklemiyor. Tarayıcınızı güncellemeniz gerekiyor.
 updateFirefox = Firefox’u güncelle
 downloadFirefoxButtonSub = Ücretsiz indirin
