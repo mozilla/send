@@ -19,10 +19,12 @@ particular).
 
 ## Why does Firefox Send require JavaScript?
 
-- We use JavaScript to encrypt and decrypt files locally on the client instead of the server.
-- We use JavaScript to render the user interface of Send.
-- We use JavaScript to manage translate the website into [various different languages](https://github.com/mozilla/send#localization).
-- We use JavaScript to collect data to help us improve Send in accordance with our [Terms &amp; Privacy](https://send.firefox.com/legal).
+Firefox Send uses JavaScript to:
+
+- Encrypt and decrypt files locally on the client instead of the server.
+- Render the user interface.
+- Manage translations on the website into [various different languages](https://github.com/mozilla/send#localization).
+- Collect data to help us improve Send in accordance with our [Terms & Privacy](https://send.firefox.com/legal).
 
 Since Send is an open source project, you can see all of the cool ways we use JavaScript by [examining our code](https://github.com/mozilla/send/).
 
