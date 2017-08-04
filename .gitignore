@@ -8,3 +8,4 @@ public/polyfill.min.js
 static/*
 !static/info.txt
 test/frontend/bundle.js
+public/main.css
