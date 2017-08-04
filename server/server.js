@@ -175,10 +175,7 @@ app.get('/assets/download/:id', async (req, res) => {
 
     file_stream.on('end', async () => {
       try {
-        const err = await storage.forceDelete(id);
-        if (!err) {
-          log.info('Deleted:', id);
-        }
+        await storage.forceDelete(id);
       } catch (e) {
         log.info('DeleteError:', id);
       }
@@ -208,7 +205,6 @@ app.post('/delete/:id', async (req, res) => {
   try {
     const err = await storage.delete(id, delete_token);
     if (!err) {
-      log.info('Deleted:', id);
       res.sendStatus(200);
     }
   } catch (e) {
@@ -238,12 +234,9 @@ app.post('/upload', (req, res, next) => {
   }
 
   meta.delete = crypto.randomBytes(10).toString('hex');
-  log.info('meta', meta);
   req.pipe(req.busboy);
 
   req.busboy.on('file', async (fieldname, file, filename) => {
-    log.info('Uploading:', newId);
-
     try {
       await storage.set(newId, file, filename, meta);
 
@@ -264,10 +257,7 @@ app.post('/upload', (req, res, next) => {
 
   req.on('close', async err => {
     try {
-      const err = await storage.forceDelete(newId);
-      if (!err) {
-        log.info('Deleted:', newId);
-      }
+      await storage.forceDelete(newId);
     } catch (e) {
       log.info('DeleteError:', newId);
     }
