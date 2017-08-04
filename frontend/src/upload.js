@@ -26,21 +26,30 @@ const allowedCopy = () => {
   return support ? document.queryCommandSupported('copy') : false;
 };
 
-$(document).ready(function() {
+$(() => {
   gcmCompliant()
-    .then(function() {
-      $('#page-one').removeAttr('hidden');
-      $('#file-upload').change(onUpload);
+    .then(function () {
+      const $pageOne = $('#page-one');
+      const $copyBtn = $('#copy-btn');
+      const $link = $('#link');
+      const $uploadWindow = $('.upload-window');
+      const $ulProgress = $('#ul-progress');
+      const $uploadError = $('#upload-error');
+      const $uploadProgress = $('#upload-progress');
+      const $progressText = $('.progress-text');
+      const $fileList = $('#file-list');
 
-      $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
-        const metric = findMetric(target.currentTarget.href);
+      $pageOne.removeAttr('hidden');
+      $('#file-upload').on('change', onUpload);
+
+      $('.legal-links a, .social-links a, #dl-firefox').on('click', function(target) {
         // record exited event by recipient
         sendEvent('sender', 'exited', {
-          cd3: metric
+          cd3: findMetric(target.currentTarget.href)
         });
       });
 
-      $('#send-new-completed').click(function() {
+      $('#send-new-completed').on('click', function() {
         // record restarted event
         storage.referrer = 'errored-upload';
         sendEvent('sender', 'restarted', {
@@ -48,7 +57,7 @@ $(document).ready(function() {
         });
       });
 
-      $('#send-new-error').click(function() {
+      $('#send-new-error').on('click', function() {
         // record restarted event
         storage.referrer = 'errored-upload';
         sendEvent('sender', 'restarted', {
@@ -56,12 +65,26 @@ $(document).ready(function() {
         });
       });
 
-      $('body').on('dragover', allowDrop).on('drop', onUpload);
+      $(document.body)
+        .on('dragover', allowDrop)
+        .on('drop', onUpload);
+
       // reset copy button
-      const $copyBtn = $('#copy-btn');
-      $copyBtn.attr('disabled', false);
-      $('#link').attr('disabled', false);
-      $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
+      $copyBtn.attr({
+        disabled: !allowedCopy(),
+        'data-l10n-id': 'copyUrlFormButton'
+      })
+
+      $link.attr('disabled', false);
+
+      const toggleHeader = () => {
+        //hide table header if empty list
+        if (document.querySelector('tbody').childNodes.length === 1) {
+          $fileList.attr('hidden', true);
+        } else {
+          $fileList.removeAttr('hidden');
+        }
+      }
 
       const files = storage.files;
       if (files.length === 0) {
@@ -76,34 +99,38 @@ $(document).ready(function() {
       }
 
       // copy link to clipboard
-      $copyBtn.click(() => {
-        if (allowedCopy() && copyToClipboard($('#link').attr('value'))) {
+      $copyBtn.on('click', () => {
+        if (allowedCopy() && copyToClipboard($link.attr('value'))) {
           // record copied event from success screen
           sendEvent('sender', 'copied', {
             cd4: 'success-screen'
           });
+
           //disable button for 3s
           $copyBtn.attr('disabled', true);
-          $('#link').attr('disabled', true);
+          $link.attr('disabled', true);
           $copyBtn.html(
             '<img src="/resources/check-16.svg" class="icon-check"></img>'
           );
-          window.setTimeout(() => {
-            $copyBtn.attr('disabled', false);
-            $('#link').attr('disabled', false);
-            $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
+          setTimeout(() => {
+            $copyBtn.attr({
+              disabled: false,
+              'data-l10n-id': 'copyUrlFormButton'
+            });
+            $link.attr('disabled', false);
           }, 3000);
         }
       });
 
-      $('.upload-window').on('dragover', () => {
-        $('.upload-window').addClass('ondrag');
+      $uploadWindow.on('dragover', () => {
+        $uploadWindow.addClass('ondrag');
+      })
+      .on('dragleave', () => {
+        $uploadWindow.removeClass('ondrag');
       });
-      $('.upload-window').on('dragleave', () => {
-        $('.upload-window').removeClass('ondrag');
-      });
+
       //initiate progress bar
-      $('#ul-progress').circleProgress({
+      $ulProgress.circleProgress({
         value: 0.0,
         startAngle: -Math.PI / 2,
         fill: '#3B9DFF',
@@ -119,7 +146,7 @@ $(document).ready(function() {
         event.preventDefault();
 
         // don't allow upload if not on upload page
-        if ($('#page-one').attr('hidden')) {
+        if ($pageOne.attr('hidden')) {
           return;
         }
 
@@ -128,14 +155,14 @@ $(document).ready(function() {
         let file = '';
         if (event.type === 'drop') {
           if (!event.originalEvent.dataTransfer.files[0]) {
-            $('.upload-window').removeClass('ondrag');
+            $uploadWindow.removeClass('ondrag');
             return;
           }
           if (
             event.originalEvent.dataTransfer.files.length > 1 ||
             event.originalEvent.dataTransfer.files[0].size === 0
           ) {
-            $('.upload-window').removeClass('ondrag');
+            $uploadWindow.removeClass('ondrag');
             document.l10n
               .formatValue('uploadPageMultipleFilesAlert')
               .then(str => {
@@ -154,17 +181,17 @@ $(document).ready(function() {
             .then(alert);
         }
 
-        $('#page-one').attr('hidden', true);
-        $('#upload-error').attr('hidden', true);
-        $('#upload-progress').removeAttr('hidden');
+        $pageOne.attr('hidden', true);
+        $uploadError.attr('hidden', true);
+        $uploadProgress.removeAttr('hidden');
         document.l10n.formatValue('importingFile').then(importingFile => {
-          $('.progress-text').text(importingFile);
+          $progressText.text(importingFile);
         });
         //don't allow drag and drop when not on page-one
-        $('body').off('drop', onUpload);
+        $(document.body).off('drop', onUpload);
 
         const fileSender = new FileSender(file);
-        $('#cancel-upload').click(() => {
+        $('#cancel-upload').on('click', () => {
           fileSender.cancel();
           storage.referrer = 'cancelled-upload';
 
@@ -183,13 +210,11 @@ $(document).ready(function() {
         fileSender.on('progress', progress => {
           const percent = progress[0] / progress[1];
           // update progress bar
-          $('#ul-progress').circleProgress('value', percent);
-          $('#ul-progress')
-            .circleProgress()
-            .on('circle-animation-end', function() {
-              $('.percent-number').text(`${Math.floor(percent * 100)}`);
-            });
-          $('.progress-text').text(
+          $ulProgress.circleProgress('value', percent);
+          $ulProgress.circleProgress().on('circle-animation-end', function() {
+            $('.percent-number').text(`${Math.floor(percent * 100)}`);
+          });
+          $progressText.text(
             `${file.name} (${bytes(progress[0], {
               decimalPlaces: 1,
               fixedDecimals: true
@@ -201,7 +226,7 @@ $(document).ready(function() {
           // The file is being hashed
           if (isStillHashing) {
             document.l10n.formatValue('verifyingFile').then(verifyingFile => {
-              $('.progress-text').text(verifyingFile);
+              $progressText.text(verifyingFile);
             });
           }
         });
@@ -211,7 +236,7 @@ $(document).ready(function() {
           // The file is being encrypted
           if (isStillEncrypting) {
             document.l10n.formatValue('encryptingFile').then(encryptingFile => {
-              $('.progress-text').text(encryptingFile);
+              $progressText.text(encryptingFile);
             });
           } else {
             uploadStart = Date.now();
@@ -276,9 +301,9 @@ $(document).ready(function() {
                 'uploadSuccessConfirmHeader'
               );
               t = window.setTimeout(() => {
-                $('#page-one').attr('hidden', true);
-                $('#upload-progress').attr('hidden', true);
-                $('#upload-error').attr('hidden', true);
+                $pageOne.attr('hidden', true);
+                $uploadProgress.attr('hidden', true);
+                $uploadError.attr('hidden', true);
                 $('#share-link').removeAttr('hidden');
               }, 1000);
 
@@ -294,9 +319,9 @@ $(document).ready(function() {
               }
               // only show error page when the error is anything other than user cancelling the upload
               Raven.captureException(err);
-              $('#page-one').attr('hidden', true);
-              $('#upload-progress').attr('hidden', true);
-              $('#upload-error').removeAttr('hidden');
+              $pageOne.attr('hidden', true);
+              $uploadProgress.attr('hidden', true);
+              $uploadError.removeAttr('hidden');
               window.clearTimeout(t);
 
               // record upload-stopped (errored) by sender
@@ -338,7 +363,7 @@ $(document).ready(function() {
       }
 
       //update file table with current files in storage
-      function populateFileList(file) {
+      const populateFileList = (file) => {
         const row = document.createElement('tr');
         const name = document.createElement('td');
         const link = document.createElement('td');
@@ -360,13 +385,12 @@ $(document).ready(function() {
         const cellText = document.createTextNode(file.name);
 
         const url = file.url.trim() + `#${file.secretKey}`.trim();
+    
+        $link.attr('value', url);
+        $('#copy-text')
+          .attr('data-l10n-args', `{"filename": "${file.name}"}`)
+          .attr('data-l10n-id', 'copyUrlFormLabelWithName');
 
-        $('#link').attr('value', url);
-        $('#copy-text').attr(
-          'data-l10n-args',
-          '{"filename": "' + file.name + '"}'
-        );
-        $('#copy-text').attr('data-l10n-id', 'copyUrlFormLabelWithName');
         $popupText.attr('tabindex', '-1');
 
         name.appendChild(cellText);
@@ -374,19 +398,21 @@ $(document).ready(function() {
         // create delete button
 
         const delSpan = document.createElement('span');
-        $(delSpan).addClass('icon-cancel-1');
-        $(delSpan).attr('data-l10n-id', 'deleteButtonHover');
+        $(delSpan)
+          .addClass('icon-cancel-1')
+          .attr('data-l10n-id', 'deleteButtonHover');
         del.appendChild(delSpan);
 
         const linkSpan = document.createElement('span');
-        $(linkSpan).addClass('icon-docs');
-        $(linkSpan).attr('data-l10n-id', 'copyUrlHover');
-        link.appendChild(linkSpan);
+        $(linkSpan)
+          .addClass('icon-docs')
+          .attr('data-l10n-id', 'copyUrlHover');
 
+        link.appendChild(linkSpan);
         link.style.color = '#0A8DFF';
 
         //copy link to clipboard when icon clicked
-        $copyIcon.click(function() {
+        $copyIcon.on('click', () => {
           // record copied event from upload list
           sendEvent('sender', 'copied', {
             cd4: 'upload-list'
@@ -395,11 +421,13 @@ $(document).ready(function() {
           document.l10n.formatValue('copiedUrl').then(translated => {
             link.innerHTML = translated;
           });
-          window.setTimeout(() => {
+          setTimeout(() => {
             const linkImg = document.createElement('img');
-            $(linkImg).addClass('icon-copy');
-            $(linkImg).attr('data-l10n-id', 'copyUrlHover');
-            $(linkImg).attr('src', '/resources/copy-16.svg');
+            $(linkImg)
+              .addClass('icon-copy')
+              .attr('data-l10n-id', 'copyUrlHover')
+              .attr('src', '/resources/copy-16.svg');
+
             $(link).html(linkImg);
           }, 500);
         });
@@ -415,9 +443,7 @@ $(document).ready(function() {
         let hours = Math.floor(minutes / 60);
         let seconds = Math.floor(countdown / 1000 % 60);
 
-        poll();
-
-        function poll() {
+        const poll = () => {
           countdown = future.getTime() - Date.now();
           minutes = Math.floor(countdown / 1000 / 60);
           hours = Math.floor(minutes / 60);
@@ -426,7 +452,7 @@ $(document).ready(function() {
 
           if (hours >= 1) {
             expiry.innerHTML = hours + 'h ' + minutes % 60 + 'm';
-            t = window.setTimeout(() => {
+            t = setTimeout(() => {
               poll();
             }, 60000);
           } else if (hours === 0) {
@@ -443,6 +469,8 @@ $(document).ready(function() {
             toggleHeader();
           }
         }
+
+        poll();
 
         // create popup
         popupDiv.classList.add('popup');
@@ -471,7 +499,7 @@ $(document).ready(function() {
         const unexpiredFiles = storage.numFiles;
 
         // delete file
-        $popupText.find('.popup-yes').click(e => {
+        $popupText.find('.popup-yes').on('click', e => {
           FileSender.delete(file.fileId, file.deleteToken).then(() => {
             $(e.target).parents('tr').remove();
             const timeToExpiry =
@@ -494,7 +522,7 @@ $(document).ready(function() {
           });
         });
 
-        document.getElementById('delete-file').onclick = () => {
+        $('#delete-file').on('click', () => {
           FileSender.delete(file.fileId, file.deleteToken).then(() => {
             const timeToExpiry =
               ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
@@ -514,34 +542,31 @@ $(document).ready(function() {
               location.reload();
             });
           });
-        };
-        // show popup
-        $delIcon.click(function() {
-          $popupText.addClass('show');
-          $popupText.focus();
         });
+
+        // show popup
+        $delIcon.on('click', () => {
+          $popupText
+            .addClass('show')
+            .focus();
+        });
+
         // hide popup
-        $popupText.find('.popup-no').click(function(e) {
+        $popupText.find('.popup-no').on('click', e => {
           e.stopPropagation();
           $popupText.removeClass('show');
         });
-        $popupText.click(function(e) {
+
+        $popupText.on('click', e => {
           e.stopPropagation();
         });
+
         //close when popup loses focus
-        $popupText.blur(() => {
+        $popupText.on('blur', () => {
           $popupText.removeClass('show');
         });
 
         toggleHeader();
-      }
-      function toggleHeader() {
-        //hide table header if empty list
-        if (document.querySelector('tbody').childNodes.length === 1) {
-          $('#file-list').attr('hidden', true);
-        } else {
-          $('#file-list').removeAttr('hidden');
-        }
       }
     })
     .catch(err => {
