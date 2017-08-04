@@ -25,6 +25,11 @@ if (storage.has('referrer')) {
   window.referrer = 'external';
 }
 
+const allowedCopy = () => {
+  const support = !!document.queryCommandSupported;
+  return support ? document.queryCommandSupported('copy') : false;
+};
+
 $(document).ready(function() {
   gcmCompliant()
     .then(function() {
@@ -76,22 +81,23 @@ $(document).ready(function() {
 
       // copy link to clipboard
       $copyBtn.click(() => {
-        // record copied event from success screen
-        sendEvent('sender', 'copied', {
-          cd4: 'success-screen'
-        });
-        copyToClipboard($('#link').attr('value'));
-        //disable button for 3s
-        $copyBtn.attr('disabled', true);
-        $('#link').attr('disabled', true);
-        $copyBtn.html(
-          '<img src="/resources/check-16.svg" class="icon-check"></img>'
-        );
-        window.setTimeout(() => {
-          $copyBtn.attr('disabled', false);
-          $('#link').attr('disabled', false);
-          $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
-        }, 3000);
+        if (allowedCopy() && copyToClipboard($('#link').attr('value'))) {
+          // record copied event from success screen
+          sendEvent('sender', 'copied', {
+            cd4: 'success-screen'
+          });
+          //disable button for 3s
+          $copyBtn.attr('disabled', true);
+          $('#link').attr('disabled', true);
+          $copyBtn.html(
+            '<img src="/resources/check-16.svg" class="icon-check"></img>'
+          );
+          window.setTimeout(() => {
+            $copyBtn.attr('disabled', false);
+            $('#link').attr('disabled', false);
+            $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
+          }, 3000);
+        }
       });
 
       $('.upload-window').on('dragover', () => {
@@ -343,7 +349,8 @@ $(document).ready(function() {
         const $copyIcon = $('<img>', {
           src: '/resources/copy-16.svg',
           class: 'icon-copy',
-          'data-l10n-id': 'copyUrlHover'
+          'data-l10n-id': 'copyUrlHover',
+          disabled: !allowedCopy()
         });
         const expiry = document.createElement('td');
         const del = document.createElement('td');

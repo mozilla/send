@@ -127,12 +127,12 @@ function copyToClipboard(str) {
     sel.removeAllRanges();
     sel.addRange(range);
     aux.setSelectionRange(0, str.length);
-  }
-  else {
+  } else {
     aux.select();
   }
-  document.execCommand('copy');
+  const result = document.execCommand('copy');
   document.body.removeChild(aux);
+  return result;
 }
 
 const ONE_DAY_IN_MS = 86400000;

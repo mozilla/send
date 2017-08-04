@@ -272,6 +272,11 @@ tbody {
   cursor: pointer;
 }
 
+.icon-copy[disabled="disabled"] {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
 /* Popup container */
 .popup {
   position: absolute;
@@ -504,6 +509,7 @@ tbody {
   background: #05a700;
   border: 1px solid #05a700;
   cursor: auto;
+  opacity: 0.3;
 }
 
 #delete-file {

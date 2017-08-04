@@ -16,7 +16,7 @@ const redis_client = redis.createClient({
 });
 
 redis_client.on('error', err => {
-  log.info('Redis:', err);
+  log.error('Redis:', err);
 });
 
 if (conf.s3_bucket) {
@@ -155,6 +155,7 @@ function localDelete(id, delete_token) {
         reject();
       } else {
         redis_client.del(id);
+        log.info('Deleted:', id);
         resolve(fs.unlinkSync(path.join(__dirname, '../static', id)));
       }
     });
@@ -201,7 +202,6 @@ function awsGet(id) {
   try {
     return s3.getObject(params).createReadStream();
   } catch (err) {
-    log.info('GetFailed', 'Get Object from s3 failed.');
     return null;
   }
 }
@@ -222,7 +222,6 @@ function awsSet(newId, file, filename, meta) {
     () => {
       redis_client.hmset(newId, meta);
       redis_client.expire(newId, conf.expire_seconds);
-      log.info('awsUploadFinish', 'Upload Finished of ' + filename);
     },
     err => {
       if (hitLimit) {
@@ -263,7 +262,7 @@ function awsForceDelete(id) {
 
     s3.deleteObject(params, function(err, _data) {
       redis_client.del(id);
-      err ? reject(err) : resolve(err);
+      err ? reject(err) : resolve();
     });
   });
 }

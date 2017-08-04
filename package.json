@@ -86,6 +86,7 @@
     "build:download": "browserify frontend/src/download.js -g uglifyify -o public/download.js",
     "build:version": "node scripts/version",
     "build:vendor": "cp node_modules/l20n/dist/web/l20n.min.js node_modules/babel-polyfill/dist/polyfill.min.js public",
+    "contributors": "git shortlog -s -n | awk -F\\t '{print $2}' > CONTRIBUTORS",
     "dev": "npm run build && npm start",
     "format": "prettier '{frontend/src/,scripts/,server/,test/**/!(bundle)}*.js' 'public/*.css' --single-quote --write",
     "get-prod-locales": "node scripts/get-prod-locales",
