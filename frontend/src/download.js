@@ -42,6 +42,9 @@ $(document).ready(function() {
   });
   $('#download-btn').click(download);
   function download() {
+    // Disable the download button to avoid accidental double clicks.
+    $('#download-btn').attr('disabled', 'disabled');
+
     storage.totalDownloads += 1;
 
     const fileReceiver = new FileReceiver();
