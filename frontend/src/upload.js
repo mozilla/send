@@ -18,6 +18,21 @@ if (storage.has('referrer')) {
   window.referrer = 'external';
 }
 
+const allowedCopy = () => {
+  const support = !!document.queryCommandSupported;
+  return support ? document.queryCommandSupported('copy') : false;
+}
+
+const copyToClipboard = (value) => {
+  const aux = document.createElement('input');
+  aux.setAttribute('value', value);
+  document.body.appendChild(aux);
+  aux.select();
+  const result = document.execCommand('copy');
+  document.body.removeChild(aux);
+  return result;
+}
+
 $(document).ready(function() {
   $('#page-one').removeAttr('hidden');
   $('#file-upload').change(onUpload);
@@ -49,7 +64,7 @@ $(document).ready(function() {
   $('body').on('dragover', allowDrop).on('drop', onUpload);
   // reset copy button
   const $copyBtn = $('#copy-btn');
-  $copyBtn.attr('disabled', false);
+  $copyBtn.attr('disabled', !allowedCopy());
   $('#link').attr('disabled', false);
   $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
 
@@ -67,35 +82,34 @@ $(document).ready(function() {
 
   // copy link to clipboard
   $copyBtn.click(() => {
-    // record copied event from success screen
-    sendEvent('sender', 'copied', {
-      cd4: 'success-screen'
-    });
-    const aux = document.createElement('input');
-    aux.setAttribute('value', $('#link').attr('value'));
-    document.body.appendChild(aux);
-    aux.select();
-    document.execCommand('copy');
-    document.body.removeChild(aux);
-    //disable button for 3s
-    $copyBtn.attr('disabled', true);
-    $('#link').attr('disabled', true);
-    $copyBtn.html(
-      '<img src="/resources/check-16.svg" class="icon-check"></img>'
-    );
-    window.setTimeout(() => {
-      $copyBtn.attr('disabled', false);
-      $('#link').attr('disabled', false);
-      $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
-    }, 3000);
+    if (allowedCopy() && copyToClipboard($('#link').attr('value'))) {
+      // record copied event from success screen
+      sendEvent('sender', 'copied', {
+        cd4: 'success-screen'
+      });
+
+      //disable button for 3s
+      $copyBtn.attr('disabled', true);
+      $('#link').attr('disabled', true);
+      $copyBtn.html(
+        '<img src="/resources/check-16.svg" class="icon-check"></img>'
+      );
+      window.setTimeout(() => {
+        $copyBtn.attr('disabled', false);
+        $('#link').attr('disabled', false);
+        $copyBtn.attr('data-l10n-id', 'copyUrlFormButton');
+      }, 3000);
+    }
   });
 
-  $('.upload-window').on('dragover', () => {
-    $('.upload-window').addClass('ondrag');
+  const $uploadWindow = $('.upload-window');
+  $uploadWindow.on('dragover', () => {
+    $uploadWindow.addClass('ondrag');
+  })
+  .on('dragleave', () => {
+    $uploadWindow.removeClass('ondrag');
   });
-  $('.upload-window').on('dragleave', () => {
-    $('.upload-window').removeClass('ondrag');
-  });
+
   //initiate progress bar
   $('#ul-progress').circleProgress({
     value: 0.0,
@@ -122,14 +136,14 @@ $(document).ready(function() {
     let file = '';
     if (event.type === 'drop') {
       if (!event.originalEvent.dataTransfer.files[0]) {
-        $('.upload-window').removeClass('ondrag');
+        $uploadWindow.removeClass('ondrag');
         return;
       }
       if (
         event.originalEvent.dataTransfer.files.length > 1 ||
         event.originalEvent.dataTransfer.files[0].size === 0
       ) {
-        $('.upload-window').removeClass('ondrag');
+        $uploadWindow.removeClass('ondrag');
         document.l10n.formatValue('uploadPageMultipleFilesAlert').then(str => {
           alert(str);
         });
@@ -335,8 +349,10 @@ $(document).ready(function() {
     const $copyIcon = $('<img>', {
       src: '/resources/copy-16.svg',
       class: 'icon-copy',
-      'data-l10n-id': 'copyUrlHover'
+      'data-l10n-id': 'copyUrlHover',
+      disabled: !allowedCopy()
     });
+
     const expiry = document.createElement('td');
     const del = document.createElement('td');
     const $delIcon = $('<img>', {
@@ -372,17 +388,12 @@ $(document).ready(function() {
     link.style.color = '#0A8DFF';
 
     //copy link to clipboard when icon clicked
-    $copyIcon.click(function() {
+    $copyIcon.on('click', function() {
       // record copied event from upload list
       sendEvent('sender', 'copied', {
         cd4: 'upload-list'
       });
-      const aux = document.createElement('input');
-      aux.setAttribute('value', url);
-      document.body.appendChild(aux);
-      aux.select();
-      document.execCommand('copy');
-      document.body.removeChild(aux);
+      copyToClipboard(url);
       document.l10n.formatValue('copiedUrl').then(translated => {
         link.innerHTML = translated;
       });
