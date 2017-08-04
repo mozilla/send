@@ -45,6 +45,9 @@ downloadFileName = Unduh { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Teman Anda mengirimkan berkas dengan Firefox Send, layanan yang memungkinkan Anda berbagi berkas dengan tautan yang aman, pribadi, dan terenkripsi yang secara otomatis berakhir untuk memastikan berkas Anda tidak daring selamanya.
+// Text and title used on the download link/button (indicates an action).
+downloadButtonLabel = Unduh
+    .title = Unduh
 downloadNotification = Unduhan Anda telah selesai.
 downloadFinish = Unduhan Selesai
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
@@ -64,6 +67,7 @@ expiredPageHeader = Tautan ini telah kedaluwarsa atau tidak pernah ada!
 notSupportedHeader = Peramban Anda tidak mendukung.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Sayangnya peramban ini tidak mendukung teknologi web yang menggerakkan Firefox Send. Anda perlu mencoba peramban lain. Kami merekomendasikan Firefox!
+notSupportedLink = Mengapa peramban saya tidak didukung?
 notSupportedOutdatedDetail = Sayangnya Firefox versi ini tidak mendukung teknologi web yang menggerakkan Firefox Send. Anda perlu memperbarui peramban Anda.
 updateFirefox = Perbarui Firefox
 downloadFirefoxButtonSub = Unduh Gratis
