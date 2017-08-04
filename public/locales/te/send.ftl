@@ -76,3 +76,8 @@ deleteButtonHover
 copyUrlHover
     .title = URLను నకలు చేయండి
 footerLinkLegal = చట్టపరమైన
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = టెస్ట్ పైలట్ గురించి
+footerLinkPrivacy = గోప్యత
+footerLinkTerms = నియమాలు
+footerLinkCookies = కుకీలు
