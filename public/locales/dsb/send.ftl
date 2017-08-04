@@ -67,6 +67,7 @@ expiredPageHeader = Toś ten wótkaz jo spadnjony abo njejo nigda eksistěrował
 notSupportedHeader = Waš wobglědowak se njepódpěra.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Bóžko toś ten wobglědowak webtechnologiju njepódpěra, na kótarejž Firefox Send bazěrujo. Musyśo drugi wobglědowak wužywaś. My Firefox dopórucujomy!
+notSupportedLink = Cogodla se mój wobglědowak njepódpěra?
 notSupportedOutdatedDetail = Bóžko toś ta wersija Firefox webtechnologiju njepódpěra, na kótarejž Firefox Send bazěrujo. Musyśo swój wobglědowak aktualizěrowaś.
 updateFirefox = Firefox aktualizěrowaś
 downloadFirefoxButtonSub = Dermotne ześěgnjenje
