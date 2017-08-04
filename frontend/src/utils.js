@@ -114,9 +114,31 @@ function sendEvent() {
     .catch(() => 0);
 }
 
+function copyToClipboard(str) {
+  const aux = document.createElement('input');
+  aux.setAttribute('value', str);
+  aux.contentEditable = true;
+  aux.readOnly = true;
+  document.body.appendChild(aux);
+  if (navigator.userAgent.match(/iphone|ipad|ipod/i)) {
+    const range = document.createRange();
+    range.selectNodeContents(aux);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    aux.setSelectionRange(0, str.length);
+  }
+  else {
+    aux.select();
+  }
+  document.execCommand('copy');
+  document.body.removeChild(aux);
+}
+
 const ONE_DAY_IN_MS = 86400000;
 
 module.exports = {
+  copyToClipboard,
   arrayToHex,
   hexToArray,
   notify,

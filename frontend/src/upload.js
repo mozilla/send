@@ -2,6 +2,7 @@
 require('./common');
 const FileSender = require('./fileSender');
 const {
+  copyToClipboard,
   notify,
   gcmCompliant,
   findMetric,
@@ -79,12 +80,7 @@ $(document).ready(function() {
         sendEvent('sender', 'copied', {
           cd4: 'success-screen'
         });
-        const aux = document.createElement('input');
-        aux.setAttribute('value', $('#link').attr('value'));
-        document.body.appendChild(aux);
-        aux.select();
-        document.execCommand('copy');
-        document.body.removeChild(aux);
+        copyToClipboard($('#link').attr('value'));
         //disable button for 3s
         $copyBtn.attr('disabled', true);
         $('#link').attr('disabled', true);
@@ -392,12 +388,7 @@ $(document).ready(function() {
           sendEvent('sender', 'copied', {
             cd4: 'upload-list'
           });
-          const aux = document.createElement('input');
-          aux.setAttribute('value', url);
-          document.body.appendChild(aux);
-          aux.select();
-          document.execCommand('copy');
-          document.body.removeChild(aux);
+          copyToClipboard(url);
           document.l10n.formatValue('copiedUrl').then(translated => {
             link.innerHTML = translated;
           });
