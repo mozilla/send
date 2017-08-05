@@ -79,15 +79,15 @@ deleteFileList = Excluir
 nevermindButton = Esqueça
 legalHeader = Termos e privacidade
 legalNoticeTestPilot = Firefox Send é um experimento do Test Pilot, e sujeito aos <a>Termos de Serviço</a> e <a>Políticas de Privacidade</a> do Test Pilot. Você pode aprender mais sobre esse experimento e a coleta de dados <a>aqui</a>.
-legalNoticeMozilla = O uso do site Firefox Send também está sujeito a <a>Política de Privacidade</a> e ao <a>Termos de Uso</a> da Mozilla.
-deletePopupText = Excluir este arquivo
+legalNoticeMozilla = O uso do site Firefox Send também está sujeito a <a>Política de Privacidade</a> e ao <a>Termos de Uso de Sites</a> da Mozilla.
+deletePopupText = Excluir este arquivo?
 deletePopupYes = Sim
 deletePopupCancel = Cancelar
 deleteButtonHover
     .title = Excluir
 copyUrlHover
     .title = Copiar URL
-footerLinkLegal = Legal
+footerLinkLegal = Jurídico
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Sobre o Test Pilot
 footerLinkPrivacy = Privacidade
