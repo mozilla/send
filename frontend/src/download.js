@@ -1,20 +1,17 @@
-require('./common');
+const { Raven, findMetric, sendEvent } = require('./common');
 const FileReceiver = require('./fileReceiver');
-const { notify, findMetric, sendEvent, gcmCompliant } = require('./utils');
+const { notify, gcmCompliant } = require('./utils');
 const bytes = require('bytes');
 const Storage = require('./storage');
 const storage = new Storage(localStorage);
+const links = require('./links');
 
 const $ = require('jquery');
 require('jquery-circle-progress');
 
-const Raven = window.Raven;
-
 $(document).ready(function() {
   gcmCompliant()
     .then(function() {
-      //link back to homepage
-      $('.send-new').attr('href', window.location.origin);
 
       $('.send-new').click(function() {
         sendEvent('recipient', 'restarted', {
@@ -46,7 +43,8 @@ $(document).ready(function() {
       function download() {
         // Disable the download button to avoid accidental double clicks.
         $('#download-btn').attr('disabled', 'disabled');
-        
+        links.setOpenInNewTab(true);
+
         storage.totalDownloads += 1;
 
         const fileReceiver = new FileReceiver();
@@ -181,7 +179,8 @@ $(document).ready(function() {
           .catch(err => {
             Raven.captureException(err);
             return Promise.reject(err);
-          });
+          })
+          .then(() => links.setOpenInNewTab(false));
       }
     })
     .catch(err => {

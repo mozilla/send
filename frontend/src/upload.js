@@ -1,12 +1,10 @@
 /* global MAXFILESIZE EXPIRE_SECONDS */
-require('./common');
+const { Raven, findMetric, sendEvent } = require('./common');
 const FileSender = require('./fileSender');
 const {
   copyToClipboard,
   notify,
   gcmCompliant,
-  findMetric,
-  sendEvent,
   ONE_DAY_IN_MS
 } = require('./utils');
 const bytes = require('bytes');
@@ -15,8 +13,6 @@ const storage = new Storage(localStorage);
 
 const $ = require('jquery');
 require('jquery-circle-progress');
-
-const Raven = window.Raven;
 
 if (storage.has('referrer')) {
   window.referrer = storage.referrer;
