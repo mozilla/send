@@ -2,8 +2,11 @@
 title = Firefox Send
 siteSubtitle = πείραμα διαδικτύου
 siteFeedback = Σχόλια
+uploadPageHeader = Ιδιωτική, κρυπτογραφημένη κοινή χρήση αρχείων
+uploadPageExplainer = Στείλτε αρχεία μέσω ασφαλούς, ιδιωτικού και κρυπτογραφημένου συνδέσμου που λήγει αυτόματα ώστε να διασφαλίσετε ότι τα περιεχόμενά σας δεν θα παραμείνουν στο διαδίκτυο για πάντα.
 uploadPageLearnMore = Μάθετε περισσότερα
 uploadPageDropMessage = Εναποθέστε το αρχείο σας εδώ για έναρξη μεταφόρτωσης
+uploadPageSizeMessage = Για περισσότερο αξιόπιστη λειτουργία, προτείνεται να διατηρήσετε το αρχείο κάτω από 1GB
 uploadPageBrowseButton = Επιλέξτε αρχείο από τον υπολογιστή σας
     .title = Επιλέξτε αρχείο από τον υπολογιστή σας
 uploadPageMultipleFilesAlert = Η μεταφόρτωση πολλαπλών αρχείων ή φακέλου δεν υποστηρίζεται αυτή τη στιγμή.
@@ -14,6 +17,7 @@ verifyingFile = Επαλήθευση...
 encryptingFile = Κρυπτογράφηση…
 decryptingFile = Αποκρυπτογράφηση…
 notifyUploadDone = Η μεταφόρτωσή σας ολοκληρώθηκε.
+uploadingPageMessage = Αφού μεταφορτωθούν τα αρχεία σας, θα μπορείτε να ορίσετε επιλογές λήξης.
 uploadingPageCancel = Ακύρωση μεταφόρτωσης
     .title = Ακύρωση μεταφόρτωσης
 uploadCancelNotification = Η μεταφόρτωσή σας ακυρώθηκε.
@@ -22,6 +26,8 @@ uploadingFileNotification = Ειδοποίηση όταν ολοκληρωθεί
 uploadSuccessConfirmHeader = Έτοιμο για αποστολή
 uploadSvgAlt
     .alt = Μεταφόρτωση
+uploadSuccessTimingHeader = Ο σύνδεσμος του αρχείου σας θα λήξει έπειτα από 1 λήψη ή 24 ώρες.
+copyUrlFormLabelWithName = Αντιγράψτε και μοιραστείτε τον σύνδεσμο για αποστολή του αρχείου σας : { $filename }
 // Note: Title text for button should be the same.
 copyUrlFormButton = Αντιγραφή στο πρόχειρο
     .title = Αντιγραφή στο πρόχειρο
