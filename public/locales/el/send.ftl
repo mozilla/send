@@ -43,6 +43,8 @@ downloadAltText
     .alt = Λήψη
 downloadFileName = Λήψη του { $filename }
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Ο/Η φίλος/-η σας, σάς στέλνει ένα αρχείο με τη βοήθεια του Firefox Send, μιας υπηρεσίας που επιτρέπει τον διαμοιρασμό αρχείων μέσω ενός ασφαλούς, ιδιωτικού και κρυπτογραφημένου συνδέσμου που λήγει αυτόματα, ώστε να είστε σίγουροι ότι τα αρχεία σας δεν θα παραμείνουν στο διαδίκτυο για πάντα.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Λήψη
     .title = Λήψη
@@ -52,14 +54,21 @@ downloadFinish = Η λήψη ολοκληρώθηκε
 sendYourFilesLink = Δοκιμάστε το Firefox Send
     .title = Δοκιμάστε το Firefox Send
 downloadingPageProgress = Γίνεται λήψη του { $filename } ({ $size })
+downloadingPageMessage = Παρακαλώ αφήστε ανοικτή αυτή την καρτέλα όσο λαμβάνουμε και αποκρυπτογραφούμε το αρχείο σας.
 errorAltText
     .alt = Σφάλμα μεταφόρτωσης
 errorPageHeader = Κάτι πήγε στραβά!
 errorPageMessage = Παρουσιάστηκε σφάλμα κατά τη μεταφόρτωση του αρχείου.
 errorPageLink = Αποστολή άλλου αρχείου
+fileTooBig = Αυτό το αρχείο είναι πολύ μεγάλο για μεταφόρτωση. Πρέπει να είναι μικρότερο από { $size }.
 linkExpiredAlt
     .alt = Ο σύνδεσμος έληξε
+expiredPageHeader = Αυτός ο σύνδεσμος έχει λήξει ή δεν υπήρξε ποτέ!
 notSupportedHeader = Το πρόγραμμα περιήγησής σας δεν υποστηρίζεται.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Δυστυχώς, αυτό το πρόγραμμα περιήγησης δεν υποστηρίζει την τεχνολογία ιστού στην οποία βασίζεται το Firefox Send. Θα πρέπει να δοκιμάσετε ένα άλλο πρόγραμμα περιήγησης. Προτείνουμε το Firefox!
+notSupportedLink = Γιατί δεν υποστηρίζεται το πρόγραμμα περιήγησής μου;
+notSupportedOutdatedDetail = Δυστυχώς, αυτή η έκδοση του Firefox δεν υποστηρίζει την τεχνολογία ιστού στην οποία βασίζεται το Firefox Send. Πρέπει να ενημερώσετε το πρόγραμμα περιήγησής σας.
 updateFirefox = Ενημέρωση Firefox
 downloadFirefoxButtonSub = Δωρεάν λήψη
 uploadedFile = Αρχείο
@@ -69,6 +78,8 @@ expiryFileList = Λήγει σε
 deleteFileList = Διαγραφή
 nevermindButton = Μην ανησυχείτε
 legalHeader = Όροι & απόρρητο
+legalNoticeTestPilot = Το Firefox Send αποτελεί προς το παρόν ένα πείραμα Test Pilot και υπόκειται στους <a>όρους υπηρεσίας</a> και την <a>πολιτική απορρήτου</a> του Test Pilot. Μπορείτε να μάθετε περισσότερα γι' αυτό το πείραμα και τη συλλογή δεδομένων <a>εδώ</a>.
+legalNoticeMozilla = Η χρήση της ιστοσελίδας Firefox Send υπόκειται επίσης στην <a>πολιτική απορρήτου ιστοσελίδων</a> και τους <a>όρους χρήσης ιστοσελίδων</a> της Mozilla.
 deletePopupText = Διαγραφή αρχείου;
 deletePopupYes = Ναι
 deletePopupCancel = Ακύρωση
