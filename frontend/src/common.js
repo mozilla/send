@@ -12,9 +12,7 @@ const analytics = new testPilotGA({
 });
 
 function sendEvent() {
-  return analytics.sendEvent
-    .apply(analytics, arguments)
-    .catch(() => 0);
+  return analytics.sendEvent.apply(analytics, arguments).catch(() => 0);
 }
 
 function findMetric(href) {
@@ -60,4 +58,4 @@ module.exports = {
   Raven,
   sendEvent,
   findMetric
-}
+};

@@ -12,7 +12,6 @@ require('jquery-circle-progress');
 $(document).ready(function() {
   gcmCompliant()
     .then(function() {
-
       $('.send-new').click(function() {
         sendEvent('recipient', 'restarted', {
           cd2: 'completed'
