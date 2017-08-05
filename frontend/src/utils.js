@@ -60,41 +60,22 @@ function gcmCompliant() {
           )
           .then(() => {
             return Promise.resolve();
-          })
-          .catch(err => {
-            return Promise.reject();
           });
       })
       .catch(err => {
-        return Promise.reject();
+        return loadShim();
       });
   } catch (err) {
-    return Promise.reject();
+    return loadShim();
   }
-}
-
-function findMetric(href) {
-  switch (href) {
-    case 'https://www.mozilla.org/':
-      return 'mozilla';
-    case 'https://www.mozilla.org/about/legal':
-      return 'legal';
-    case 'https://testpilot.firefox.com/about':
-      return 'about';
-    case 'https://testpilot.firefox.com/privacy':
-      return 'privacy';
-    case 'https://testpilot.firefox.com/terms':
-      return 'terms';
-    case 'https://www.mozilla.org/privacy/websites/#cookies':
-      return 'cookies';
-    case 'https://github.com/mozilla/send':
-      return 'github';
-    case 'https://twitter.com/FxTestPilot':
-      return 'twitter';
-    case 'https://www.mozilla.org/firefox/new/?scene=2':
-      return 'download-firefox';
-    default:
-      return 'other';
+  function loadShim() {
+    return new Promise((resolve, reject) => {
+      const shim = document.createElement('script');
+      shim.src = '/cryptofill.js';
+      shim.addEventListener('load', resolve);
+      shim.addEventListener('error', reject);
+      document.head.appendChild(shim);
+    });
   }
 }
 
@@ -102,21 +83,35 @@ function isFile(id) {
   return /^[0-9a-fA-F]{10}$/.test(id);
 }
 
-function sendEvent() {
-  return window.analytics.sendEvent
-    .apply(window.analytics, arguments)
-    .catch(() => 0);
+function copyToClipboard(str) {
+  const aux = document.createElement('input');
+  aux.setAttribute('value', str);
+  aux.contentEditable = true;
+  aux.readOnly = true;
+  document.body.appendChild(aux);
+  if (navigator.userAgent.match(/iphone|ipad|ipod/i)) {
+    const range = document.createRange();
+    range.selectNodeContents(aux);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    aux.setSelectionRange(0, str.length);
+  } else {
+    aux.select();
+  }
+  const result = document.execCommand('copy');
+  document.body.removeChild(aux);
+  return result;
 }
 
 const ONE_DAY_IN_MS = 86400000;
 
 module.exports = {
+  copyToClipboard,
   arrayToHex,
   hexToArray,
   notify,
   gcmCompliant,
-  findMetric,
   isFile,
-  sendEvent,
   ONE_DAY_IN_MS
 };
