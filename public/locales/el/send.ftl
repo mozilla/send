@@ -60,6 +60,7 @@ errorPageLink = Αποστολή άλλου αρχείου
 linkExpiredAlt
     .alt = Ο σύνδεσμος έληξε
 notSupportedHeader = Το πρόγραμμα περιήγησής σας δεν υποστηρίζεται.
+updateFirefox = Ενημέρωση Firefox
 downloadFirefoxButtonSub = Δωρεάν λήψη
 uploadedFile = Αρχείο
 copyFileList = Αντιγραφή URL
