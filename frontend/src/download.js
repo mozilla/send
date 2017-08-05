@@ -9,16 +9,22 @@ const links = require('./links');
 const $ = require('jquery');
 require('jquery-circle-progress');
 
-$(document).ready(function() {
+$(() => {
   gcmCompliant()
-    .then(function() {
-      $('.send-new').click(function() {
+    .then(() => {
+      const $downloadBtn = $('#download-btn');
+      const $sendNew = $('.send-new');
+      const $dlProgress = $('#dl-progress');
+      const $progressText = $('.progress-text');
+      const $title = $('.title');
+
+      $sendNew.on('click', () => {
         sendEvent('recipient', 'restarted', {
           cd2: 'completed'
         });
       });
 
-      $('.legal-links a, .social-links a, #dl-firefox').click(function(target) {
+      $('.legal-links a, .social-links a, #dl-firefox').on('click', function(target) {
         const metric = findMetric(target.currentTarget.href);
         // record exited event by recipient
         sendEvent('recipient', 'exited', {
@@ -31,17 +37,17 @@ $(document).ready(function() {
       const timeToExpiry = Number($('#dl-ttl').text());
 
       //initiate progress bar
-      $('#dl-progress').circleProgress({
+      $dlProgress.circleProgress({
         value: 0.0,
         startAngle: -Math.PI / 2,
         fill: '#3B9DFF',
         size: 158,
         animation: { duration: 300 }
       });
-      $('#download-btn').click(download);
-      function download() {
+
+      const download = () => {
         // Disable the download button to avoid accidental double clicks.
-        $('#download-btn').attr('disabled', 'disabled');
+        $downloadBtn.attr('disabled', 'disabled');
         links.setOpenInNewTab(true);
 
         storage.totalDownloads += 1;
@@ -66,9 +72,9 @@ $(document).ready(function() {
           $('#download-progress').removeAttr('hidden');
           const percent = progress[0] / progress[1];
           // update progress bar
-          $('#dl-progress').circleProgress('value', percent);
+          $dlProgress.circleProgress('value', percent);
           $('.percent-number').text(`${Math.floor(percent * 100)}`);
-          $('.progress-text').text(
+          $progressText.text(
             `${filename} (${bytes(progress[0], {
               decimalPlaces: 1,
               fixedDecimals: true
@@ -83,7 +89,7 @@ $(document).ready(function() {
             fileReceiver.removeAllListeners('progress');
             window.onunload = null;
             document.l10n.formatValue('decryptingFile').then(decryptingFile => {
-              $('.progress-text').text(decryptingFile);
+              $progressText.text(decryptingFile);
             });
           } else {
             downloadEnd = Date.now();
@@ -94,15 +100,15 @@ $(document).ready(function() {
           // The file is being hashed to make sure a malicious user hasn't tampered with it
           if (isStillHashing) {
             document.l10n.formatValue('verifyingFile').then(verifyingFile => {
-              $('.progress-text').text(verifyingFile);
+              $progressText.text(verifyingFile);
             });
           } else {
-            $('.progress-text').text(' ');
+            $progressText.text(' ');
             document.l10n
               .formatValues('downloadNotification', 'downloadFinish')
               .then(translated => {
                 notify(translated[0]);
-                $('.title').text(translated[1]);
+                $title.text(translated[1]);
               });
           }
         });
@@ -135,9 +141,9 @@ $(document).ready(function() {
               location.reload();
             } else {
               document.l10n.formatValue('errorPageHeader').then(translated => {
-                $('.title').text(translated);
+                $title.text(translated);
               });
-              $('#download-btn').attr('hidden', true);
+              $downloadBtn.attr('hidden', true);
               $('#expired-img').removeAttr('hidden');
             }
             throw err;
@@ -181,6 +187,8 @@ $(document).ready(function() {
           })
           .then(() => links.setOpenInNewTab(false));
       }
+
+      $downloadBtn.on('click', download);
     })
     .catch(err => {
       sendEvent('sender', 'unsupported', {
