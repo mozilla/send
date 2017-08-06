@@ -8,6 +8,7 @@ uploadPageLearnMore = Aprender más
 uploadPageDropMessage = Suelta tu archivo aquí para empezar a subirlo
 uploadPageSizeMessage = Para una operación más confiable, es mejor mantener el tamaño del archivo bajo 1 GB
 uploadPageBrowseButton = Selecciona un archivo en tu computador
+    .title = Selecciona un archivo en tu computador
 uploadPageMultipleFilesAlert = Subir múltiples archivos o una carpeta actualmente no es posible.
 uploadPageBrowseButtonTitle = Subir archivo
 uploadingPageHeader = Subiendo tu archivo
@@ -18,6 +19,7 @@ decryptingFile = Descifrando…
 notifyUploadDone = Tu subida ha terminado.
 uploadingPageMessage = Una vez que tu archivo sea subido podrás ajustar las opciones de expiración.
 uploadingPageCancel = Cancelar subida
+    .title = Cancelar subida
 uploadCancelNotification = Tu subida fue cancelada.
 uploadingPageLargeFileMessage = Este archivo es grande y puede tardar un rato en subir. ¡Aprovecha de hacer algo mientras!
 uploadingFileNotification = Notificarme cuando la subida sea completada.
@@ -28,11 +30,14 @@ uploadSuccessTimingHeader = El enlace a tu archivo expirará tras 1 descarga o e
 copyUrlFormLabelWithName = Copia y comparte el enlace para enviar tu archivo: { $filename }
 // Note: Title text for button should be the same.
 copyUrlFormButton = Copiar al portapapeles
+    .title = Copiar al portapapeles
 copiedUrl = ¡Copiado!
 // Note: Title text for button should be the same.
 deleteFileButton = Eliminar archivo
+    .title = Eliminar archivo
 // Note: Title text for button should be the same.
 sendAnotherFileLink = Enviar otro archivo
+    .title = Enviar otro archivo
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText
     .alt = Descargar
@@ -42,13 +47,16 @@ downloadFileSize = ({ $size })
 downloadMessage = Tu amigo te está enviando un archivo con Firefox Send, un servicio que te permite compartir archivos con un enlace seguro, privado y cifrado que expira automáticamente para asegurar que tus cosas no queden en línea de por vida.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descargar
+    .title = Descargar
 downloadNotification = Tu descarga se completó.
 downloadFinish = Descarga completa
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Probar Firefox Send
+    .title = Probar Firefox Send
 downloadingPageProgress = Descargando { $filename } ({ $size })
 downloadingPageMessage = Por favor, deja esta pestaña abierta mientras recibimos tu archivo y lo desciframos.
-errorAltText = Error de subida
+errorAltText
+    .alt = Error de subida
 errorPageHeader = ¡Algo se fue a las pailas!
 errorPageMessage = Hubo un error al subir el archivo.
 errorPageLink = Enviar otro archivo
