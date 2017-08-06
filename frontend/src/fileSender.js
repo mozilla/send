@@ -34,7 +34,7 @@ class FileSender extends EventEmitter {
 
   upload() {
     const self = this;
-    self.emit('loading', true);
+    self.emit('loading');
     return Promise.all([
       window.crypto.subtle.generateKey(
         {
@@ -48,12 +48,10 @@ class FileSender extends EventEmitter {
         const reader = new FileReader();
         reader.readAsArrayBuffer(this.file);
         reader.onload = function(event) {
-          self.emit('loading', false);
-          self.emit('hashing', true);
+          self.emit('hashing');
           const plaintext = new Uint8Array(this.result);
           window.crypto.subtle.digest('SHA-256', plaintext).then(hash => {
-            self.emit('hashing', false);
-            self.emit('encrypting', true);
+            self.emit('encrypting');
             resolve({ plaintext: plaintext, hash: new Uint8Array(hash) });
           });
         };
@@ -64,23 +62,16 @@ class FileSender extends EventEmitter {
     ])
       .then(([secretKey, file]) => {
         return Promise.all([
-          window.crypto.subtle
-            .encrypt(
-              {
-                name: 'AES-GCM',
-                iv: this.iv,
-                additionalData: file.hash,
-                tagLength: 128
-              },
-              secretKey,
-              file.plaintext
-            )
-            .then(encrypted => {
-              self.emit('encrypting', false);
-              return new Promise((resolve, reject) => {
-                resolve(encrypted);
-              });
-            }),
+          window.crypto.subtle.encrypt(
+            {
+              name: 'AES-GCM',
+              iv: this.iv,
+              additionalData: file.hash,
+              tagLength: 128
+            },
+            secretKey,
+            file.plaintext
+          ),
           window.crypto.subtle.exportKey('jwk', secretKey),
           new Promise((resolve, reject) => {
             resolve(file.hash);
