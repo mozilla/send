@@ -67,9 +67,8 @@ expiredPageHeader = Den här länken har upphört eller har aldrig existerat i f
 notSupportedHeader = Din webbläsare stöds inte.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Tyvärr stöder inte webbläsaren den webbteknologi som används av Firefox Send. Du måste försöka med en annan webbläsare. Vi rekommenderar Firefox!
-notSupportedOutdatedDetail =
-    Tyvärr stödjer den här versionen av Firefox inte webbtekniken som driver Firefox Send. Du måste uppdatera din webbläsare.
-
+notSupportedLink = Varför stödjs inte min webbläsare?
+notSupportedOutdatedDetail = Tyvärr stödjer den här versionen av Firefox inte webbtekniken som driver Firefox Send. Du måste uppdatera din webbläsare.
 updateFirefox = Uppdatera Firefox
 downloadFirefoxButtonSub = Gratis nedladdning
 uploadedFile = Fil
