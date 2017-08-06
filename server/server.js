@@ -143,12 +143,12 @@ app.get('/download/:id', async (req, res) => {
   try {
     const filename = await storage.filename(id);
     const contentLength = await storage.length(id);
-    const timeToExpiry = await storage.ttl(id);
+    const ttl = await storage.ttl(id);
     res.render('download', {
       filename: decodeURIComponent(filename),
       filesize: bytes(contentLength),
       sizeInBytes: contentLength,
-      timeToExpiry: timeToExpiry
+      ttl
     });
   } catch (e) {
     res.status(404).render('notfound');

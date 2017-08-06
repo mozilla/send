@@ -1,5 +1,5 @@
 /* global MAXFILESIZE EXPIRE_SECONDS */
-const { Raven, findMetric, sendEvent } = require('./common');
+const { Raven } = require('./common');
 const FileSender = require('./fileSender');
 const {
   copyToClipboard,
@@ -10,16 +10,10 @@ const {
 const bytes = require('bytes');
 const Storage = require('./storage');
 const storage = new Storage(localStorage);
+const metrics = require('./metrics');
 
 const $ = require('jquery');
 require('jquery-circle-progress');
-
-if (storage.has('referrer')) {
-  window.referrer = storage.referrer;
-  storage.remove('referrer');
-} else {
-  window.referrer = 'external';
-}
 
 const allowedCopy = () => {
   const support = !!document.queryCommandSupported;
@@ -28,7 +22,7 @@ const allowedCopy = () => {
 
 $(() => {
   gcmCompliant()
-    .then(function () {
+    .then(function() {
       const $pageOne = $('#page-one');
       const $copyBtn = $('#copy-btn');
       const $link = $('#link');
@@ -42,38 +36,13 @@ $(() => {
       $pageOne.removeAttr('hidden');
       $('#file-upload').on('change', onUpload);
 
-      $('.legal-links a, .social-links a, #dl-firefox').on('click', function(target) {
-        // record exited event by recipient
-        sendEvent('sender', 'exited', {
-          cd3: findMetric(target.currentTarget.href)
-        });
-      });
-
-      $('#send-new-completed').on('click', function() {
-        // record restarted event
-        storage.referrer = 'errored-upload';
-        sendEvent('sender', 'restarted', {
-          cd2: 'completed'
-        });
-      });
-
-      $('#send-new-error').on('click', function() {
-        // record restarted event
-        storage.referrer = 'errored-upload';
-        sendEvent('sender', 'restarted', {
-          cd2: 'errored'
-        });
-      });
-
-      $(document.body)
-        .on('dragover', allowDrop)
-        .on('drop', onUpload);
+      $(document.body).on('dragover', allowDrop).on('drop', onUpload);
 
       // reset copy button
       $copyBtn.attr({
         disabled: !allowedCopy(),
         'data-l10n-id': 'copyUrlFormButton'
-      })
+      });
 
       $link.attr('disabled', false);
 
@@ -84,7 +53,7 @@ $(() => {
         } else {
           $fileList.removeAttr('hidden');
         }
-      }
+      };
 
       const files = storage.files;
       if (files.length === 0) {
@@ -101,10 +70,7 @@ $(() => {
       // copy link to clipboard
       $copyBtn.on('click', () => {
         if (allowedCopy() && copyToClipboard($link.attr('value'))) {
-          // record copied event from success screen
-          sendEvent('sender', 'copied', {
-            cd4: 'success-screen'
-          });
+          metrics.copiedLink({ location: 'success-screen' });
 
           //disable button for 3s
           $copyBtn.attr('disabled', true);
@@ -122,12 +88,13 @@ $(() => {
         }
       });
 
-      $uploadWindow.on('dragover', () => {
-        $uploadWindow.addClass('ondrag');
-      })
-      .on('dragleave', () => {
-        $uploadWindow.removeClass('ondrag');
-      });
+      $uploadWindow
+        .on('dragover', () => {
+          $uploadWindow.addClass('ondrag');
+        })
+        .on('dragleave', () => {
+          $uploadWindow.removeClass('ondrag');
+        });
 
       //initiate progress bar
       $ulProgress.circleProgress({
@@ -144,6 +111,7 @@ $(() => {
       // on file upload by browse or drag & drop
       function onUpload(event) {
         event.preventDefault();
+        const clickOrDrop = event.type === 'drop' ? 'drop' : 'click';
 
         // don't allow upload if not on upload page
         if ($pageOne.attr('hidden')) {
@@ -153,7 +121,7 @@ $(() => {
         storage.totalUploads += 1;
 
         let file = '';
-        if (event.type === 'drop') {
+        if (clickOrDrop === 'drop') {
           if (!event.originalEvent.dataTransfer.files[0]) {
             $uploadWindow.removeClass('ondrag');
             return;
@@ -193,16 +161,9 @@ $(() => {
         const fileSender = new FileSender(file);
         $('#cancel-upload').on('click', () => {
           fileSender.cancel();
-          storage.referrer = 'cancelled-upload';
-
-          // record upload-stopped (cancelled) by sender
-          sendEvent('sender', 'upload-stopped', {
-            cm1: file.size,
-            cm5: storage.totalUploads,
-            cm6: unexpiredFiles,
-            cm7: storage.totalDownloads,
-            cd1: event.type === 'drop' ? 'drop' : 'click',
-            cd2: 'cancelled'
+          metrics.cancelledUpload({
+            size: file.size,
+            type: clickOrDrop
           });
           location.reload();
         });
@@ -245,18 +206,10 @@ $(() => {
 
         let t;
         const startTime = Date.now();
-        const unexpiredFiles = storage.numFiles + 1;
-
-        // record upload-started event by sender
-        sendEvent('sender', 'upload-started', {
-          cm1: file.size,
-          cm5: storage.totalUploads,
-          cm6: unexpiredFiles,
-          cm7: storage.totalDownloads,
-          cd1: event.type === 'drop' ? 'drop' : 'click',
-          cd5: window.referrer
+        metrics.startedUpload({
+          size: file.size,
+          type: clickOrDrop
         });
-
         // For large files we need to give the ui a tick to breathe and update
         // before we kick off the FileSender
         setTimeout(() => {
@@ -264,21 +217,16 @@ $(() => {
             .upload()
             .then(info => {
               const endTime = Date.now();
-              const totalTime = endTime - startTime;
+              const time = endTime - startTime;
               const uploadTime = endTime - uploadStart;
-              const uploadSpeed = file.size / (uploadTime / 1000);
+              const speed = file.size / (uploadTime / 1000);
               const expiration = EXPIRE_SECONDS * 1000;
 
-              // record upload-stopped (completed) by sender
-              sendEvent('sender', 'upload-stopped', {
-                cm1: file.size,
-                cm2: totalTime,
-                cm3: uploadSpeed,
-                cm5: storage.totalUploads,
-                cm6: unexpiredFiles,
-                cm7: storage.totalDownloads,
-                cd1: event.type === 'drop' ? 'drop' : 'click',
-                cd2: 'completed'
+              metrics.completedUpload({
+                size: file.size,
+                time,
+                speed,
+                type: clickOrDrop
               });
 
               const fileData = {
@@ -290,9 +238,9 @@ $(() => {
                 deleteToken: info.deleteToken,
                 creationDate: new Date(),
                 expiry: expiration,
-                totalTime: totalTime,
-                typeOfUpload: event.type === 'drop' ? 'drop' : 'click',
-                uploadSpeed: uploadSpeed
+                totalTime: time,
+                typeOfUpload: clickOrDrop,
+                uploadSpeed: speed
               };
 
               storage.addFile(info.fileId, fileData);
@@ -324,15 +272,10 @@ $(() => {
               $uploadError.removeAttr('hidden');
               window.clearTimeout(t);
 
-              // record upload-stopped (errored) by sender
-              sendEvent('sender', 'upload-stopped', {
-                cm1: file.size,
-                cm5: storage.totalUploads,
-                cm6: unexpiredFiles,
-                cm7: storage.totalDownloads,
-                cd1: event.type === 'drop' ? 'drop' : 'click',
-                cd2: 'errored',
-                cd6: err
+              metrics.stoppedUpload({
+                size: file.size,
+                type: clickOrDrop,
+                err
               });
             });
         }, 10);
@@ -363,7 +306,7 @@ $(() => {
       }
 
       //update file table with current files in storage
-      const populateFileList = (file) => {
+      const populateFileList = file => {
         const row = document.createElement('tr');
         const name = document.createElement('td');
         const link = document.createElement('td');
@@ -385,7 +328,7 @@ $(() => {
         const cellText = document.createTextNode(file.name);
 
         const url = file.url.trim() + `#${file.secretKey}`.trim();
-    
+
         $link.attr('value', url);
         $('#copy-text')
           .attr('data-l10n-args', `{"filename": "${file.name}"}`)
@@ -404,9 +347,7 @@ $(() => {
         del.appendChild(delSpan);
 
         const linkSpan = document.createElement('span');
-        $(linkSpan)
-          .addClass('icon-docs')
-          .attr('data-l10n-id', 'copyUrlHover');
+        $(linkSpan).addClass('icon-docs').attr('data-l10n-id', 'copyUrlHover');
 
         link.appendChild(linkSpan);
         link.style.color = '#0A8DFF';
@@ -414,9 +355,7 @@ $(() => {
         //copy link to clipboard when icon clicked
         $copyIcon.on('click', () => {
           // record copied event from upload list
-          sendEvent('sender', 'copied', {
-            cd4: 'upload-list'
-          });
+          metrics.copiedLink({ location: 'upload-list' });
           copyToClipboard(url);
           document.l10n.formatValue('copiedUrl').then(translated => {
             link.innerHTML = translated;
@@ -468,7 +407,7 @@ $(() => {
             window.clearTimeout(t);
             toggleHeader();
           }
-        }
+        };
 
         poll();
 
@@ -496,59 +435,51 @@ $(() => {
         row.appendChild(del);
         $('tbody').append(row); //add row to table
 
-        const unexpiredFiles = storage.numFiles;
-
         // delete file
         $popupText.find('.popup-yes').on('click', e => {
           FileSender.delete(file.fileId, file.deleteToken).then(() => {
             $(e.target).parents('tr').remove();
-            const timeToExpiry =
+            const ttl =
               ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
-            // record upload-deleted from file list
-            sendEvent('sender', 'upload-deleted', {
-              cm1: file.size,
-              cm2: file.totalTime,
-              cm3: file.uploadSpeed,
-              cm4: timeToExpiry,
-              cm5: storage.totalUploads,
-              cm6: unexpiredFiles,
-              cm7: storage.totalDownloads,
-              cd1: file.typeOfUpload,
-              cd4: 'upload-list'
-            }).then(() => {
-              storage.remove(file.fileId);
-            });
+            metrics
+              .deletedUpload({
+                size: file.size,
+                time: file.totalTime,
+                speed: file.uploadSpeed,
+                type: file.typeOfUpload,
+                location: 'upload-list',
+                ttl
+              })
+              .then(() => {
+                storage.remove(file.fileId);
+              });
             toggleHeader();
           });
         });
 
         $('#delete-file').on('click', () => {
           FileSender.delete(file.fileId, file.deleteToken).then(() => {
-            const timeToExpiry =
+            const ttl =
               ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
-            // record upload-deleted from success screen
-            sendEvent('sender', 'upload-deleted', {
-              cm1: file.size,
-              cm2: file.totalTime,
-              cm3: file.uploadSpeed,
-              cm4: timeToExpiry,
-              cm5: storage.totalUploads,
-              cm6: unexpiredFiles,
-              cm7: storage.totalDownloads,
-              cd1: file.typeOfUpload,
-              cd4: 'success-screen'
-            }).then(() => {
-              storage.remove(file.fileId);
-              location.reload();
-            });
+            metrics
+              .deletedUpload({
+                size: file.size,
+                time: file.totalTime,
+                speed: file.uploadSpeed,
+                type: file.typeOfUpload,
+                location: 'success-screen',
+                ttl
+              })
+              .then(() => {
+                storage.remove(file.fileId);
+                location.reload();
+              });
           });
         });
 
         // show popup
         $delIcon.on('click', () => {
-          $popupText
-            .addClass('show')
-            .focus();
+          $popupText.addClass('show').focus();
         });
 
         // hide popup
@@ -567,12 +498,10 @@ $(() => {
         });
 
         toggleHeader();
-      }
+      };
     })
     .catch(err => {
-      sendEvent('sender', 'unsupported', {
-        cd6: err
-      }).then(() => {
+      metrics.unsupported({ err }).then(() => {
         location.replace('/unsupported/gcm');
       });
     });

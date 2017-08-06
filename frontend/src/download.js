@@ -1,10 +1,11 @@
-const { Raven, findMetric, sendEvent } = require('./common');
+const { Raven } = require('./common');
 const FileReceiver = require('./fileReceiver');
 const { notify, gcmCompliant } = require('./utils');
 const bytes = require('bytes');
 const Storage = require('./storage');
 const storage = new Storage(localStorage);
 const links = require('./links');
+const metrics = require('./metrics');
 
 const $ = require('jquery');
 require('jquery-circle-progress');
@@ -13,28 +14,13 @@ $(() => {
   gcmCompliant()
     .then(() => {
       const $downloadBtn = $('#download-btn');
-      const $sendNew = $('.send-new');
       const $dlProgress = $('#dl-progress');
       const $progressText = $('.progress-text');
       const $title = $('.title');
 
-      $sendNew.on('click', () => {
-        sendEvent('recipient', 'restarted', {
-          cd2: 'completed'
-        });
-      });
-
-      $('.legal-links a, .social-links a, #dl-firefox').on('click', function(target) {
-        const metric = findMetric(target.currentTarget.href);
-        // record exited event by recipient
-        sendEvent('recipient', 'exited', {
-          cd3: metric
-        });
-      });
-
       const filename = $('#dl-filename').text();
-      const bytelength = Number($('#dl-bytelength').text());
-      const timeToExpiry = Number($('#dl-ttl').text());
+      const size = Number($('#dl-size').text());
+      const ttl = Number($('#dl-ttl').text());
 
       //initiate progress bar
       $dlProgress.circleProgress({
@@ -50,22 +36,11 @@ $(() => {
         $downloadBtn.attr('disabled', 'disabled');
         links.setOpenInNewTab(true);
 
-        storage.totalDownloads += 1;
-
         const fileReceiver = new FileReceiver();
-        const unexpiredFiles = storage.numFiles;
 
         fileReceiver.on('progress', progress => {
           window.onunload = function() {
-            storage.referrer = 'cancelled-download';
-            // record download-stopped (cancelled by tab close or reload)
-            sendEvent('recipient', 'download-stopped', {
-              cm1: bytelength,
-              cm5: storage.totalUploads,
-              cm6: unexpiredFiles,
-              cm7: storage.totalDownloads,
-              cd2: 'cancelled'
-            });
+            metrics.cancelledDownload({ size });
           };
 
           $('#download-page-one').attr('hidden', true);
@@ -115,27 +90,12 @@ $(() => {
 
         const startTime = Date.now();
 
-        // record download-started by recipient
-        sendEvent('recipient', 'download-started', {
-          cm1: bytelength,
-          cm4: timeToExpiry,
-          cm5: storage.totalUploads,
-          cm6: unexpiredFiles,
-          cm7: storage.totalDownloads
-        });
+        metrics.startedDownload({ size, ttl });
 
         fileReceiver
           .download()
           .catch(err => {
-            // record download-stopped (errored) by recipient
-            sendEvent('recipient', 'download-stopped', {
-              cm1: bytelength,
-              cm5: storage.totalUploads,
-              cm6: unexpiredFiles,
-              cm7: storage.totalDownloads,
-              cd2: 'errored',
-              cd6: err
-            });
+            metrics.stoppedDownload({ size, err });
 
             if (err.message === 'notfound') {
               location.reload();
@@ -150,21 +110,11 @@ $(() => {
           })
           .then(([decrypted, fname]) => {
             const endTime = Date.now();
-            const totalTime = endTime - startTime;
+            const time = endTime - startTime;
             const downloadTime = endTime - downloadEnd;
-            const downloadSpeed = bytelength / (downloadTime / 1000);
-
-            storage.referrer = 'completed-download';
-            // record download-stopped (completed) by recipient
-            sendEvent('recipient', 'download-stopped', {
-              cm1: bytelength,
-              cm2: totalTime,
-              cm3: downloadSpeed,
-              cm5: storage.totalUploads,
-              cm6: unexpiredFiles,
-              cm7: storage.totalDownloads,
-              cd2: 'completed'
-            });
+            const speed = size / (downloadTime / 1000);
+            storage.totalDownloads += 1;
+            metrics.completedDownload({ size, time, speed });
 
             const dataView = new DataView(decrypted);
             const blob = new Blob([dataView]);
@@ -186,14 +136,12 @@ $(() => {
             return Promise.reject(err);
           })
           .then(() => links.setOpenInNewTab(false));
-      }
+      };
 
       $downloadBtn.on('click', download);
     })
     .catch(err => {
-      sendEvent('sender', 'unsupported', {
-        cd6: err
-      }).then(() => {
+      metrics.unsupported({ err }).then(() => {
         location.replace('/unsupported/gcm');
       });
     });
