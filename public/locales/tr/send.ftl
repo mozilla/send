@@ -30,9 +30,11 @@ uploadSuccessTimingHeader = Dosyanız 1 kez indirildikten veya 24 saat geçtikte
 copyUrlFormLabelWithName = { $filename } dosyanızı başkasına göndermek için aşağıdaki linki kopyalayın.
 // Note: Title text for button should be the same.
 copyUrlFormButton = Panoya kopyala
+    .title = Panoya kopyala
 copiedUrl = Kopyalandı!
 // Note: Title text for button should be the same.
 deleteFileButton = Dosyayı sil
+    .title = Dosyayı sil
 // Note: Title text for button should be the same.
 sendAnotherFileLink = Başka bir dosya daha gönder
     .title = Başka bir dosya daha gönder
@@ -50,6 +52,7 @@ downloadNotification = İndirme tamamlandı.
 downloadFinish = İndirme tamamlandı
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Firefox Send’i deneyin
+    .title = Firefox Send’i deneyin
 downloadingPageProgress = { $filename } indiriliyor ({ $size })
 downloadingPageMessage = Dosyanız indirilip şifresi çözülürken lütfen bu sekmeyi açık bırakın.
 errorAltText
