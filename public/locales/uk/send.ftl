@@ -11,7 +11,7 @@ uploadPageBrowseButton = Виберіть файл на комп'ютері
     .title = Виберіть файл на комп'ютері
 uploadPageMultipleFilesAlert = Вивантаження кількох файлів чи тек на даний момент не підтримується.
 uploadPageBrowseButtonTitle = Вивантажити файл
-uploadingPageHeader = Вивантажуємо ваш файл
+uploadingPageProgress = Вивантажуємо { $filename } ({ $size })
 importingFile = Імпортуємо...
 verifyingFile = Перевіряємо...
 encryptingFile = Шифруємо...
@@ -50,6 +50,8 @@ downloadButtonLabel = Завантажити
     .title = Завантажити
 downloadNotification = Ваше завантаження готово.
 downloadFinish = Завантаження готово
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } з { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Спробуйте Firefox Send
     .title = Спробуйте Firefox Send
