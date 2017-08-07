@@ -11,7 +11,7 @@ uploadPageBrowseButton = Selecteer een bestand op uw computer
     .title = Selecteer een bestand op uw computer
 uploadPageMultipleFilesAlert = Het uploaden van meerdere bestanden of een map wordt momenteel niet ondersteund.
 uploadPageBrowseButtonTitle = bestand uploaden
-uploadingPageHeader = Uw bestand wordt geüpload
+uploadingPageProgress = { $filename } ({ $size }) wordt geüpload
 importingFile = Importeren…
 verifyingFile = Verifiëren…
 encryptingFile = Versleutelen…
@@ -50,6 +50,8 @@ downloadButtonLabel = Downloaden
     .title = Downloaden
 downloadNotification = Uw download is voltooid.
 downloadFinish = Downloaden voltooid
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } van { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Firefox Send proberen
     .title = Firefox Send proberen
