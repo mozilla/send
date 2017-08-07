@@ -11,7 +11,7 @@ uploadPageBrowseButton = Válasszon egy fájlt a számítógépén
     .title = Válasszon egy fájlt a számítógépén
 uploadPageMultipleFilesAlert = Több fájl vagy mappa feltöltése pillanatnyilag nem támogatott.
 uploadPageBrowseButtonTitle = Fájl feltöltése
-uploadingPageHeader = A fájlja feltöltése
+uploadingPageProgress = { $filename } ({ $size }) feltöltése
 importingFile = Importálás…
 verifyingFile = Ellenőrzés…
 encryptingFile = Titkosítás…
@@ -50,6 +50,8 @@ downloadButtonLabel = Letöltés
     .title = Letöltés
 downloadNotification = A letöltés befejeződött.
 downloadFinish = A letöltés befejeződött
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } / { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Próbálja ki a Firefox Sendet
     .title = Próbálja ki a Firefox Sendet
