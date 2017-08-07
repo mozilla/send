@@ -11,7 +11,7 @@ uploadPageBrowseButton = コンピューター上のファイルを選択
     .title = コンピューター上のファイルを選択
 uploadPageMultipleFilesAlert = 今のところ複数ファイルやフォルダーのアップロードには対応していません。
 uploadPageBrowseButtonTitle = ファイルをアップロード
-uploadingPageHeader = ファイルをアップロードしています
+uploadingPageProgress = { $filename } ({ $size }) をアップロード中
 importingFile = インポート中...
 verifyingFile = 検証中...
 encryptingFile = 暗号化中...
@@ -50,6 +50,8 @@ downloadButtonLabel = ダウンロード
     .title = ダウンロード
 downloadNotification = ダウンロードが完了しました。
 downloadFinish = ダウンロード完了
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } / { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Firefox Send を試す
     .title = Firefox Send を試す
