@@ -94,9 +94,6 @@ $(() => {
           $uploadWindow.removeClass('ondrag');
         });
 
-      //link back to homepage
-      $('.send-new').attr('href', window.location);
-
       // on file upload by browse or drag & drop
       function onUpload(event) {
         event.preventDefault();
@@ -218,6 +215,30 @@ $(() => {
                 typeOfUpload: clickOrDrop,
                 uploadSpeed: speed
               };
+
+              $('#delete-file').on('click', () => {
+                FileSender.delete(
+                  fileData.fileId,
+                  fileData.deleteToken
+                ).then(() => {
+                  const ttl =
+                    ONE_DAY_IN_MS -
+                    (Date.now() - fileData.creationDate.getTime());
+                  metrics
+                    .deletedUpload({
+                      size: fileData.size,
+                      time: fileData.totalTime,
+                      speed: fileData.uploadSpeed,
+                      type: fileData.typeOfUpload,
+                      location: 'success-screen',
+                      ttl
+                    })
+                    .then(() => {
+                      storage.remove(fileData.fileId);
+                      location.reload();
+                    });
+                });
+              });
 
               storage.addFile(info.fileId, fileData);
 
@@ -425,26 +446,6 @@ $(() => {
                 storage.remove(file.fileId);
               });
             toggleHeader();
-          });
-        });
-
-        $('#delete-file').on('click', () => {
-          FileSender.delete(file.fileId, file.deleteToken).then(() => {
-            const ttl =
-              ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
-            metrics
-              .deletedUpload({
-                size: file.size,
-                time: file.totalTime,
-                speed: file.uploadSpeed,
-                type: file.typeOfUpload,
-                location: 'success-screen',
-                ttl
-              })
-              .then(() => {
-                storage.remove(file.fileId);
-                location.reload();
-              });
           });
         });
 
