@@ -105,7 +105,7 @@
     "get-prod-locales": "node scripts/get-prod-locales",
     "get-prod-locales:write": "npm run get-prod-locales -- --write",
     "lint": "npm-run-all lint:*",
-    "lint:css": "stylelint 'public/*.css'",
+    "lint:css": "stylelint 'frontend/src/*.css'",
     "lint:js": "eslint .",
     "lint-locales": "node scripts/lint-locales",
     "lint-locales:dev": "npm run lint-locales",
