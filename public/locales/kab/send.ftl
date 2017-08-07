@@ -67,6 +67,7 @@ expiredPageHeader = Aseɣwen-agi yemmut neɣ wurǧin yella seg tazwara!
 notSupportedHeader = Iminig-ik ur ittusefrak ara
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Ad nesḥissef imi iminig-ik ur isefrak ara tatiknulujit web iseqdac Firefox Send. Yessefk ad tesqedceḍ iminig-nniḍen. Seqdec Firefox!
+notSupportedLink = Ayγer iminig inu ur yettwasefrek ara?
 notSupportedOutdatedDetail = Ad nesḥissef imilqem-agi n Firefox Firefox ur isefrak ara titiknulujiyin web yettwaseqdacen di Firefox Send. Yessefk ad tleqmeḍ iminig-ik.
 updateFirefox = Leqqem Firefox
 downloadFirefoxButtonSub = Asider ilelli
