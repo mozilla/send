@@ -47,7 +47,7 @@
     "webpack": "^3.4.1"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=8.2.0"
   },
   "homepage": "https://github.com/mozilla/send/",
   "license": "MPL-2.0",
