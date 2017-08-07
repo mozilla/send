@@ -54,7 +54,7 @@ downloadFinish = ダウンロード完了
 sendYourFilesLink = Firefox Send を試す
     .title = Firefox Send を試す
 downloadingPageProgress = { $filename } ({ $size }) をダウンロードしています
-downloadingPageMessage = ファイルの取得と暗号化が完了するまでこのタブを開いたままにしておいてください。
+downloadingPageMessage = ファイルの取得と復号化が完了するまでこのタブを開いたままにしておいてください。
 errorAltText
     .alt = アップロードエラー
 errorPageHeader = 何か問題が発生しました。
