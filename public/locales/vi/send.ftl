@@ -11,7 +11,7 @@ uploadPageBrowseButton = Chọn một tập tin từ máy tính
     .title = Chọn một tập tin từ máy tính
 uploadPageMultipleFilesAlert = Tải lên nhiều tập tin một lúc hoặc tải lên một thư mục chưa được hỗ trợ.
 uploadPageBrowseButtonTitle = Tải tập tin lên
-uploadingPageHeader = Đang tải lên tập tin của bạn
+uploadingPageProgress = Đang tải lên { $filename } ({ $size })
 importingFile = Đang nhập...
 verifyingFile = Đang xác thực...
 encryptingFile = Đang mã hóa...
@@ -50,6 +50,8 @@ downloadButtonLabel = Tải về
     .title = Tải về
 downloadNotification = Quá trình tải về đã hoàn tất.
 downloadFinish = Tải về hoàn tất
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } trong { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Dùng thử Firefox Send
     .title = Dùng thử Firefox Send
