@@ -40,9 +40,12 @@ downloadAltText
     .alt = Tải về
 downloadFileName = Tải về { $filename }
 downloadFileSize = ({ $size })
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Bạn của bạn đang gửi một tập tin thông qua Firefox Send, một dịch vụ cho phép bạn chia sẻ tập tin một cách an toàn, riêng tư, có liên kết được mã hóa và sẽ tự động hết hạn để chắc chắn rằng dữ liệu của bạn không nằm mãi mãi trên Internet.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Tải về
     .title = Tải về
+downloadNotification = Quá trình tải về đã hoàn tất.
 downloadFinish = Tải về hoàn tất
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Dùng thử Firefox Send
@@ -69,7 +72,18 @@ copyFileList = Sao chép URL
 expiryFileList = Hết hạn trong
 deleteFileList = Xóa
 legalHeader = Điều khoản & Quyền riêng tư
+legalNoticeTestPilot = Firefox Send hiện tại đang là một thử nghiệm Test Pilot, và phải tuân theo <a>Điều khoản dịch vụ</a> và <a>Lưu ý về Quyền riêng tư</a>. Bạn có thể tìm hiểu thêm về thử nghiệm này và dữ liệu được thu thập <a>tại đây</a>.
+legalNoticeMozilla = Sử dụng trang web Firefox Send cũng phải tuân theo Mozilla's <a>Lưu ý về Quyền riêng tư của trang web</a> và <a>Điều khoản sử dụng của trang web</a>.
+deletePopupText = Xóa tập tin này?
 deletePopupYes = Đồng ý
 deletePopupCancel = Hủy bỏ
 deleteButtonHover
     .title = Xóa
+copyUrlHover
+    .title = Sao chép URL
+footerLinkLegal = Pháp lý
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Về Test Pilot
+footerLinkPrivacy = Quyền riêng tư
+footerLinkTerms = Điều khoản
+footerLinkCookies = Cookies
