@@ -11,7 +11,7 @@ uploadPageBrowseButton = Vyberte súbor vo vašom počítači
     .title = Vyberte súbor vo vašom počítači
 uploadPageMultipleFilesAlert = Nahrávanie viacerých súborov alebo priečinkov momentálne nie je podporované.
 uploadPageBrowseButtonTitle = Nahrať súbor
-uploadingPageHeader = Nahrávanie vášho súboru
+uploadingPageProgress = Nahrávanie súboru { $filename } ({ $size })
 importingFile = Importuje sa…
 verifyingFile = Overuje sa…
 encryptingFile = Šifruje sa…
@@ -50,6 +50,8 @@ downloadButtonLabel = Prevziať
     .title = Prevziať
 downloadNotification = Vaše preberanie bolo dokončené.
 downloadFinish = Preberanie bolo dokončené
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } z { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Vyskúšajte Firefox Send
     .title = Vyskúšajte Firefox Send
