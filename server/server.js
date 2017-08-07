@@ -225,7 +225,6 @@ app.post('/upload', (req, res, next) => {
   }
 
   if (
-    !meta.hasOwnProperty('aad') ||
     !meta.hasOwnProperty('id') ||
     !meta.hasOwnProperty('filename') ||
     !validateIV(meta.id)

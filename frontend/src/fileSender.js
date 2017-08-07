@@ -48,37 +48,30 @@ class FileSender extends EventEmitter {
         const reader = new FileReader();
         reader.readAsArrayBuffer(this.file);
         reader.onload = function(event) {
-          self.emit('hashing');
           const plaintext = new Uint8Array(this.result);
-          window.crypto.subtle.digest('SHA-256', plaintext).then(hash => {
-            self.emit('encrypting');
-            resolve({ plaintext: plaintext, hash: new Uint8Array(hash) });
-          });
+          resolve(plaintext);
         };
         reader.onerror = function(err) {
           reject(err);
         };
       })
     ])
-      .then(([secretKey, file]) => {
+      .then(([secretKey, plaintext]) => {
+        self.emit('encrypting');
         return Promise.all([
           window.crypto.subtle.encrypt(
             {
               name: 'AES-GCM',
               iv: this.iv,
-              additionalData: file.hash,
               tagLength: 128
             },
             secretKey,
-            file.plaintext
+            plaintext
           ),
-          window.crypto.subtle.exportKey('jwk', secretKey),
-          new Promise((resolve, reject) => {
-            resolve(file.hash);
-          })
+          window.crypto.subtle.exportKey('jwk', secretKey)
         ]);
       })
-      .then(([encrypted, keydata, hash]) => {
+      .then(([encrypted, keydata]) => {
         return new Promise((resolve, reject) => {
           const file = this.file;
           const fileId = arrayToHex(this.iv);
@@ -114,7 +107,6 @@ class FileSender extends EventEmitter {
           xhr.setRequestHeader(
             'X-File-Metadata',
             JSON.stringify({
-              aad: arrayToHex(hash),
               id: fileId,
               filename: encodeURIComponent(file.name)
             })

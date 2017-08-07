@@ -45,7 +45,6 @@ class FileReceiver extends EventEmitter {
               resolve([
                 {
                   data: this.result,
-                  aad: meta.aad,
                   filename: meta.filename,
                   iv: meta.id
                 },
@@ -69,7 +68,6 @@ class FileReceiver extends EventEmitter {
               {
                 name: 'AES-GCM',
                 iv: hexToArray(fdata.iv),
-                additionalData: hexToArray(fdata.aad),
                 tagLength: 128
               },
               key,
@@ -78,26 +76,8 @@ class FileReceiver extends EventEmitter {
             .then(decrypted => {
               return Promise.resolve(decrypted);
             }),
-          fdata.filename,
-          hexToArray(fdata.aad)
+          decodeURIComponent(fdata.filename)
         ]);
-      })
-      .then(([decrypted, fname, proposedHash]) => {
-        this.emit('hashing');
-        return window.crypto.subtle
-          .digest('SHA-256', decrypted)
-          .then(calculatedHash => {
-            const integrity =
-              new Uint8Array(calculatedHash).toString() ===
-              proposedHash.toString();
-            if (!integrity) {
-              this.emit('unsafe', true);
-              return Promise.reject();
-            } else {
-              this.emit('safe', true);
-              return Promise.all([decrypted, decodeURIComponent(fname)]);
-            }
-          });
       });
   }
 }
