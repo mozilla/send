@@ -6,7 +6,7 @@ const driver = new webdriver.Builder().forBrowser('firefox').build();
 
 driver.get(path.join('file:///', __dirname, '/frontend.test.html'));
 driver.wait(until.titleIs('Mocha Tests'));
-driver.wait(until.titleMatches(/^[0-1]$/));
+driver.wait(until.titleMatches(/^[0-9]$/));
 
 driver.getTitle().then(title => {
   driver.quit().then(() => {
