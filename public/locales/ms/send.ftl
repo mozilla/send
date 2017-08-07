@@ -11,7 +11,7 @@ uploadPageBrowseButton = Pilih fail dalam komputer anda
     .title = Pilih fail dalam komputer anda
 uploadPageMultipleFilesAlert = Memuat naik pelbagai fail atau satu folder masih belum disokong.
 uploadPageBrowseButtonTitle = Muat naik fail
-uploadingPageHeader = Memuat naik Fail Anda
+uploadingPageProgress = Memuat naik { $filename } ({ $size })
 importingFile = Mengimport…
 verifyingFile = Mengesahkan...
 encryptingFile = Mengenkripsi...
@@ -50,6 +50,8 @@ downloadButtonLabel = Muat turun
     .title = Muat turun
 downloadNotification = Muat turun anda sudah siap.
 downloadFinish = Muat turun Selesai
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } daripada { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Cuba Firefox Send
     .title = Cuba Firefox Send
