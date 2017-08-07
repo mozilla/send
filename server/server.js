@@ -4,7 +4,6 @@ const busboy = require('connect-busboy');
 const path = require('path');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-const bytes = require('bytes');
 const conf = require('./config.js');
 const storage = require('./storage.js');
 const Raven = require('raven');
@@ -141,13 +140,15 @@ app.get('/download/:id', async (req, res) => {
   }
 
   try {
-    const filename = await storage.filename(id);
-    const contentLength = await storage.length(id);
+    const efilename = await storage.filename(id);
+    const filename = decodeURIComponent(efilename);
+    const filenameJson = JSON.stringify({ filename });
+    const sizeInBytes = await storage.length(id);
     const ttl = await storage.ttl(id);
     res.render('download', {
-      filename: decodeURIComponent(filename),
-      filesize: bytes(contentLength),
-      sizeInBytes: contentLength,
+      filename,
+      filenameJson,
+      sizeInBytes,
       ttl
     });
   } catch (e) {

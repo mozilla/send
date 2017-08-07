@@ -6,7 +6,6 @@
   "dependencies": {
     "aws-sdk": "^2.89.0",
     "body-parser": "^1.17.2",
-    "bytes": "^2.5.0",
     "connect-busboy": "0.0.2",
     "convict": "^3.0.0",
     "express": "^4.15.3",

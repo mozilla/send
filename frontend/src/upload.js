@@ -2,18 +2,18 @@
 const { Raven } = require('./common');
 const FileSender = require('./fileSender');
 const {
+  bytes,
   copyToClipboard,
   notify,
   gcmCompliant,
   ONE_DAY_IN_MS
 } = require('./utils');
-const bytes = require('bytes');
 const Storage = require('./storage');
 const storage = new Storage(localStorage);
 const metrics = require('./metrics');
+const progress = require('./progress');
 
 const $ = require('jquery');
-require('jquery-circle-progress');
 
 const allowedCopy = () => {
   const support = !!document.queryCommandSupported;
@@ -27,10 +27,8 @@ $(() => {
       const $copyBtn = $('#copy-btn');
       const $link = $('#link');
       const $uploadWindow = $('.upload-window');
-      const $ulProgress = $('#ul-progress');
       const $uploadError = $('#upload-error');
       const $uploadProgress = $('#upload-progress');
-      const $progressText = $('.progress-text');
       const $fileList = $('#file-list');
 
       $pageOne.removeAttr('hidden');
@@ -96,15 +94,6 @@ $(() => {
           $uploadWindow.removeClass('ondrag');
         });
 
-      //initiate progress bar
-      $ulProgress.circleProgress({
-        value: 0.0,
-        startAngle: -Math.PI / 2,
-        fill: '#3B9DFF',
-        size: 158,
-        animation: { duration: 300 }
-      });
-
       //link back to homepage
       $('.send-new').attr('href', window.location);
 
@@ -152,9 +141,15 @@ $(() => {
         $pageOne.attr('hidden', true);
         $uploadError.attr('hidden', true);
         $uploadProgress.removeAttr('hidden');
-        document.l10n.formatValue('importingFile').then(importingFile => {
-          $progressText.text(importingFile);
-        });
+        document.l10n
+          .formatValue('uploadingPageProgress', {
+            size: bytes(file.size),
+            filename: file.name
+          })
+          .then(str => {
+            $('#upload-filename').text(str);
+          });
+        document.l10n.formatValue('importingFile').then(progress.setText);
         //don't allow drag and drop when not on page-one
         $(document.body).off('drop', onUpload);
 
@@ -168,40 +163,21 @@ $(() => {
           location.reload();
         });
 
-        fileSender.on('progress', progress => {
-          const percent = progress[0] / progress[1];
-          // update progress bar
-          $ulProgress.circleProgress('value', percent);
-          $ulProgress.circleProgress().on('circle-animation-end', function() {
-            $('.percent-number').text(`${Math.floor(percent * 100)}`);
-          });
-          $progressText.text(
-            `${file.name} (${bytes(progress[0], {
-              decimalPlaces: 1,
-              fixedDecimals: true
-            })} of ${bytes(progress[1], { decimalPlaces: 1 })})`
-          );
-        });
-
-        fileSender.on('hashing', isStillHashing => {
-          // The file is being hashed
-          if (isStillHashing) {
-            document.l10n.formatValue('verifyingFile').then(verifyingFile => {
-              $progressText.text(verifyingFile);
-            });
-          }
-        });
-
         let uploadStart;
-        fileSender.on('encrypting', isStillEncrypting => {
-          // The file is being encrypted
-          if (isStillEncrypting) {
-            document.l10n.formatValue('encryptingFile').then(encryptingFile => {
-              $progressText.text(encryptingFile);
-            });
-          } else {
-            uploadStart = Date.now();
-          }
+        fileSender.on('progress', data => {
+          uploadStart = uploadStart || Date.now();
+          progress.setProgress({
+            complete: data[0],
+            total: data[1]
+          });
+        });
+
+        fileSender.on('hashing', () => {
+          document.l10n.formatValue('verifyingFile').then(progress.setText);
+        });
+
+        fileSender.on('encrypting', () => {
+          document.l10n.formatValue('encryptingFile').then(progress.setText);
         });
 
         let t;
@@ -244,16 +220,11 @@ $(() => {
               };
 
               storage.addFile(info.fileId, fileData);
-              $('#upload-filename').attr(
-                'data-l10n-id',
-                'uploadSuccessConfirmHeader'
-              );
-              t = window.setTimeout(() => {
-                $pageOne.attr('hidden', true);
-                $uploadProgress.attr('hidden', true);
-                $uploadError.attr('hidden', true);
-                $('#share-link').removeAttr('hidden');
-              }, 1000);
+
+              $pageOne.attr('hidden', true);
+              $uploadProgress.attr('hidden', true);
+              $uploadError.attr('hidden', true);
+              $('#share-link').removeAttr('hidden');
 
               populateFileList(fileData);
               document.l10n.formatValue('notifyUploadDone').then(str => {
@@ -331,7 +302,7 @@ $(() => {
 
         $link.attr('value', url);
         $('#copy-text')
-          .attr('data-l10n-args', `{"filename": "${file.name}"}`)
+          .attr('data-l10n-args', JSON.stringify({ filename: file.name }))
           .attr('data-l10n-id', 'copyUrlFormLabelWithName');
 
         $popupText.attr('tabindex', '-1');

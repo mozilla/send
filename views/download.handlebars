@@ -2,13 +2,13 @@
   <script src="/download.js"></script>
   <div id="download-page-one">
     <div class="title">
-      <span id="dl-filename"
+      <span id="dl-file"
+            data-filename="{{filename}}"
+            data-size="{{sizeInBytes}}"
+            data-ttl="{{ttl}}"
             data-l10n-id="downloadFileName"
-            data-l10n-args='{"filename": "{{filename}}"}'></span>
-      <span data-l10n-id="downloadFileSize"
-            data-l10n-args='{"size": "{{filesize}}"}'></span>
-      <span id="dl-size" hidden="true">{{sizeInBytes}}</span>
-      <span id="dl-ttl" hidden="true">{{ttl}}</span>
+            data-l10n-args='{{filenameJson}}'></span>
+      <span id="dl-filesize"></span>
     </div>
     <div class="description" data-l10n-id="downloadMessage"></div>
     <img src="/resources/illustration_download.svg" id="download-img" data-l10n-id="downloadAltText"/>
@@ -18,10 +18,7 @@
   </div>
 
   <div id="download-progress" hidden="true">
-    <div class="title"
-          data-l10n-id="downloadingPageProgress"
-          data-l10n-args='{"filename": "{{filename}}", "size": "{{filesize}}"}'>
-    </div>
+    <div id="dl-title" class="title"></div>
     <div class="description" data-l10n-id="downloadingPageMessage"></div>
     <!-- progress bar here -->
     <div class="progress-bar" id="dl-progress">

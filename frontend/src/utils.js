@@ -104,9 +104,29 @@ function copyToClipboard(str) {
   return result;
 }
 
+const LOCALIZE_NUMBERS = !!(
+  typeof Intl === 'object' &&
+  Intl &&
+  typeof Intl.NumberFormat === 'function'
+);
+
+const UNITS = ['B', 'kB', 'MB', 'GB'];
+function bytes(num) {
+  const exponent = Math.min(Math.floor(Math.log10(num) / 3), UNITS.length - 1);
+  const n = Number(num / Math.pow(1000, exponent));
+  const nStr = LOCALIZE_NUMBERS
+    ? n.toLocaleString(navigator.languages, {
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 1
+      })
+    : n.toFixed(1);
+  return `${nStr}${UNITS[exponent]}`;
+}
+
 const ONE_DAY_IN_MS = 86400000;
 
 module.exports = {
+  bytes,
   copyToClipboard,
   arrayToHex,
   hexToArray,
