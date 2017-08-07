@@ -11,7 +11,7 @@ uploadPageBrowseButton = 选择一个您电脑上的文件
     .title = 选择一个您电脑上的文件
 uploadPageMultipleFilesAlert = 目前不支持上传多个文件或上传文件夹。
 uploadPageBrowseButtonTitle = 上传文件
-uploadingPageHeader = 正在上传您的文件
+uploadingPageProgress = 正在上传 { $filename } ({ $size })
 importingFile = 正在导入…
 verifyingFile = 正在验证…
 encryptingFile = 正在加密…
@@ -50,6 +50,8 @@ downloadButtonLabel = 下载
     .title = 下载
 downloadNotification = 您的下载已完成。
 downloadFinish = 下载完成
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } / { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = 尝试 Firefox Send
     .title = 尝试 Firefox Send
