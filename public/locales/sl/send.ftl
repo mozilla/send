@@ -11,7 +11,7 @@ uploadPageBrowseButton = Izberite datoteko na računalniku
     .title = Izberite datoteko na računalniku
 uploadPageMultipleFilesAlert = Nalaganje več datotek ali map trenutno ni podprto.
 uploadPageBrowseButtonTitle = Naloži datoteko
-uploadingPageHeader = Nalaganje datoteke
+uploadingPageProgress = Nalaganje { $filename } ({ $size })
 importingFile = Uvažanje …
 verifyingFile = Preverjanje …
 encryptingFile = Šifriranje ...
@@ -50,6 +50,8 @@ downloadButtonLabel = Prenesi
     .title = Prenesi
 downloadNotification = Vaš prenos je končan.
 downloadFinish = Prenos končan
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } od { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Preskusite Firefox Send
     .title = Preskusite Firefox Send
