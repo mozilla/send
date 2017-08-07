@@ -266,6 +266,22 @@ tbody {
   table-layout: fixed;
 }
 
+#uploaded-file {
+  width: 35%;
+}
+
+#copy-file-list {
+  width: 25%;
+}
+
+#expiry-file-list {
+  width: 21%;
+}
+
+#delete-file-list {
+  width: 12%;
+}
+
 .icon-delete,
 .icon-copy,
 .icon-check {
