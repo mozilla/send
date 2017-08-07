@@ -28,6 +28,9 @@ uploadSvgAlt
     .alt = Tải lên
 uploadSuccessTimingHeader = Liên kết đến tập tin của bạn sẽ hết hạn sau 1 lượt tải về hoặc trong 24 giờ.
 copyUrlFormLabelWithName = Sao chép và chia sẻ liên kết để gửi tập tin của bạn: { $filename }
+// Note: Title text for button should be the same.
+copyUrlFormButton = Sao chép vào vùng nhớ tạm
+    .title = Sao chép vào vùng nhớ tạm
 copiedUrl = Đã sao chép!
 // Note: Title text for button should be the same.
 deleteFileButton = Xóa tập tin
@@ -52,6 +55,8 @@ sendYourFilesLink = Dùng thử Firefox Send
     .title = Dùng thử Firefox Send
 downloadingPageProgress = Đang tải về { $filename } ({ $size })
 downloadingPageMessage = Vui lòng giữ cửa sổ này mở trong khi chúng tôi lấy tập tin và giải mã chúng.
+errorAltText
+    .alt = Lỗi tải lên
 errorPageHeader = Có gì đó không ổn!
 errorPageMessage = Đã có lỗi trong quá trình tải lên tập tin.
 errorPageLink = Gửi tập tin khác
@@ -71,6 +76,7 @@ copyFileList = Sao chép URL
 // expiryFileList is used as a column header
 expiryFileList = Hết hạn trong
 deleteFileList = Xóa
+nevermindButton = Đừng bận tâm
 legalHeader = Điều khoản & Quyền riêng tư
 legalNoticeTestPilot = Firefox Send hiện tại đang là một thử nghiệm Test Pilot, và phải tuân theo <a>Điều khoản dịch vụ</a> và <a>Lưu ý về Quyền riêng tư</a>. Bạn có thể tìm hiểu thêm về thử nghiệm này và dữ liệu được thu thập <a>tại đây</a>.
 legalNoticeMozilla = Sử dụng trang web Firefox Send cũng phải tuân theo Mozilla's <a>Lưu ý về Quyền riêng tư của trang web</a> và <a>Điều khoản sử dụng của trang web</a>.
