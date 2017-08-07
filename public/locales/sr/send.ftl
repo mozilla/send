@@ -11,7 +11,7 @@ uploadPageBrowseButton = Изаберите датотеку на рачунар
     .title = Изаберите датотеку на рачунару
 uploadPageMultipleFilesAlert = Отпремање фасцикли или више датотека тренутно није подржано.
 uploadPageBrowseButtonTitle = Отпреми датотеку
-uploadingPageHeader = Ваша датотека се отпрема
+uploadingPageProgress = Отпремам { $filename } ({ $size })
 importingFile = Увозим…
 verifyingFile = Потврђујем…
 encryptingFile = Шифрујем…
@@ -50,6 +50,8 @@ downloadButtonLabel = Преузми
     .title = Преузми
 downloadNotification = Ваше преузимање је завршено.
 downloadFinish = Преузимање је завршено.
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } од { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Испробајте Firefox Send
     .title = Испробајте Firefox Send
