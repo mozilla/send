@@ -11,7 +11,7 @@ uploadPageBrowseButton = Wubjeŕśo dataju na swójom licadle
     .title = Wubjeŕśo dataju na swójom licadle
 uploadPageMultipleFilesAlert = Nagrawanje někotarych datajow abo zarědnika se tuchylu njepódpěra.
 uploadPageBrowseButtonTitle = Dataju nagraś
-uploadingPageHeader = Waša dataja se nagrawa
+uploadingPageProgress = { $filename } ({ $size }) se nagrawa
 importingFile = Importěrujo se...
 verifyingFile = Pśespytujo se...
 encryptingFile = Koděrujo se...
@@ -50,6 +50,8 @@ downloadButtonLabel = Ześěgnuś
     .title = Ześěgnuś
 downloadNotification = Wašo ześěgnjenje jo dokóńcone.
 downloadFinish = Ześěgnjenje dokóńcone
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } z { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Firefox Send wopytaś
     .title = Firefox Send wopytaś
