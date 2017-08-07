@@ -169,10 +169,6 @@ $(() => {
           });
         });
 
-        fileSender.on('hashing', () => {
-          document.l10n.formatValue('verifyingFile').then(progress.setText);
-        });
-
         fileSender.on('encrypting', () => {
           document.l10n.formatValue('encryptingFile').then(progress.setText);
         });

@@ -41,10 +41,6 @@ function download() {
     document.l10n.formatValue('decryptingFile').then(progress.setText);
   });
 
-  fileReceiver.on('hashing', () => {
-    document.l10n.formatValue('verifyingFile').then(progress.setText);
-  });
-
   fileReceiver
     .download()
     .catch(err => {
