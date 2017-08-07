@@ -46,7 +46,6 @@ describe('Server integration tests', function() {
       .set(
         'X-File-Metadata',
         JSON.stringify({
-          aad: '11111',
           id: '111111111111111111111111',
           filename: 'test_upload.txt'
         })

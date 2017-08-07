@@ -4,7 +4,6 @@ const FakeFile = window.FakeFile;
 const assert = window.assert;
 const server = window.server;
 const hexToArray = window.hexToArray;
-const arrayToHex = window.arrayToHex;
 const sinon = window.sinon;
 
 let file;
