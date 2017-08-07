@@ -1,4 +1,4 @@
-const testPilotGA = require('testpilot-ga');
+const testPilotGA = require('testpilot-ga/src/TestPilotGA');
 const Storage = require('./storage');
 const storage = new Storage(localStorage);
 
@@ -196,7 +196,7 @@ function exitEvent(target) {
 }
 
 function addExitHandlers() {
-  const links = document.querySelectorAll('a');
+  const links = Array.from(document.querySelectorAll('a'));
   links.forEach(l => {
     if (/^http/.test(l.href)) {
       l.addEventListener('click', exitEvent);
@@ -212,7 +212,7 @@ function restartEvent(state) {
 }
 
 function addRestartHandlers() {
-  const elements = document.querySelectorAll('.send-new');
+  const elements = Array.from(document.querySelectorAll('.send-new'));
   elements.forEach(el => {
     const state = el.getAttribute('data-state');
     el.addEventListener('click', restartEvent.bind(null, state));

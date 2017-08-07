@@ -1,7 +1,7 @@
 let links = [];
 
 document.addEventListener('DOMContentLoaded', function() {
-  links = document.querySelectorAll('a:not([target])');
+  links = Array.from(document.querySelectorAll('a:not([target])'));
 });
 
 function setOpenInNewTab(bool) {
