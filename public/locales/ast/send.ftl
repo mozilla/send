@@ -78,6 +78,7 @@ copyFileList = Copiar URL
 // expiryFileList is used as a column header
 expiryFileList = Caduca en
 deleteFileList = Desaniciar
+nevermindButton = Nun m'importa
 legalHeader = Términos y privacidá
 legalNoticeTestPilot = Anguaño Firefox Send ye un esperimentu de Test Pilot y ta suxetu a los <a>Términos de serviciu</a> y l'<a>Avisu de privacidá</a> de Test Pilot. <a>Equí</a> pues deprender más tocante a esti esperimentu y la so recoyida de datos.
 legalNoticeMozilla = L'usu de Firefox Send tamién ta suxetu al <a>Avisu de privacidá</a> y a los <a>Términos d'usu de la páxina web</a> de Mozilla.
