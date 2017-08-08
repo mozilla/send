@@ -11,7 +11,7 @@ uploadPageBrowseButton = Velg en fil på din datamaskin
     .title = Velg en fil på din datamaskin
 uploadPageMultipleFilesAlert = Opplasting av flere filer eller en mappe støttes ikke for øyeblikket.
 uploadPageBrowseButtonTitle = Last opp fil
-uploadingPageHeader = Laster opp din fil
+uploadingPageProgress = Laster opp { $filename } ({ $size })
 importingFile = Importerer…
 verifyingFile = Verifiserer...
 encryptingFile = Krypterer...
@@ -50,6 +50,8 @@ downloadButtonLabel = Last ned
     .title = Last ned
 downloadNotification = Nedlastingen er fullført.
 downloadFinish = Nedlastingen er fullført.
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } av { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Prøv Firefox Send
     .title = Prøv Firefox Send
