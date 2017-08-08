@@ -11,7 +11,7 @@ uploadPageBrowseButton = Trieu un fitxer de l'ordinador
     .title = Trieu un fitxer de l'ordinador
 uploadPageMultipleFilesAlert = Actualment no es permet pujar diversos fitxers ni una carpeta.
 uploadPageBrowseButtonTitle = Puja el fitxer
-uploadingPageHeader = S'està pujant el fitxer
+uploadingPageProgress = S'està pujant { $filename } ({ $size })
 importingFile = S'està important…
 verifyingFile = S'està verificant…
 encryptingFile = S'està xifrant…
@@ -50,6 +50,8 @@ downloadButtonLabel = Baixa
     .title = Baixa
 downloadNotification = La baixada ha acabat.
 downloadFinish = Ha acabat la baixada
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } de { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Proveu el Firefox Send
     .title = Proveu el Firefox Send
