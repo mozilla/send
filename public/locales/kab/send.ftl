@@ -11,7 +11,7 @@ uploadPageBrowseButton = Fren afaylu sef uselkim-ik
     .title = Fren afaylu seg uselkim-ik
 uploadPageMultipleFilesAlert = Asali n ddeqs n ifuyla neɣ ikaramen ur ittusefrak ara yakan.
 uploadPageBrowseButtonTitle = Sali ifuyla
-uploadingPageHeader = Asali n ufaylu-ik
+uploadingPageProgress = Tuzna n { $filename } ({ $size })
 importingFile = Akter...
 verifyingFile = Asenqed...
 encryptingFile = Awgelhen...
@@ -50,6 +50,8 @@ downloadButtonLabel = Sider
     .title = Sider
 downloadNotification = Asider-ik yemmed.
 downloadFinish = Asider yemmed
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } seg { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Ɛreḍ Firefox Send
     .title = Ɛreḍ Firefox Send
