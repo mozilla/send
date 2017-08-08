@@ -1,7 +1,7 @@
 {
   "name": "firefox-send",
   "description": "File Sharing Experiment",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "author": "Mozilla (https://mozilla.org)",
   "dependencies": {
     "aws-sdk": "^2.89.0",
@@ -72,6 +72,7 @@
     "it",
     "ja",
     "kab",
+    "ko",
     "ms",
     "nb-NO",
     "nl",
@@ -85,6 +86,7 @@
     "sv-SE",
     "tr",
     "uk",
+    "vi",
     "zh-CN",
     "zh-TW"
   ],
