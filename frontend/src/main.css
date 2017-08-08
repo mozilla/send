@@ -138,6 +138,10 @@ a {
   text-decoration: none;
 }
 
+.btn {
+  font-weight: 500;
+}
+
 /**   page-one    **/
 
 .title {
@@ -644,7 +648,6 @@ tbody {
   background: #0297f8;
   border: 1px solid #0297f8;
   border-radius: 5px;
-  font-weight: 300;
   cursor: pointer;
 }
 
