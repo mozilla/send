@@ -11,7 +11,7 @@ uploadPageBrowseButton = Bilgisayarınızdan bir dosya seçin
     .title = Bilgisayarınızdan bir dosya seçin
 uploadPageMultipleFilesAlert = Birden fazla dosya veya klasör yükleme şimdilik desteklenmiyor.
 uploadPageBrowseButtonTitle = Dosyayı yükle
-uploadingPageHeader = Dosyanız yükleniyor
+uploadingPageProgress = { $filename } yükleniyor ({ $size })
 importingFile = İçe aktarılıyor…
 verifyingFile = Doğrulanıyor…
 encryptingFile = Şifreleniyor…
@@ -50,6 +50,8 @@ downloadButtonLabel = İndir
     .title = İndir
 downloadNotification = İndirme tamamlandı.
 downloadFinish = İndirme tamamlandı
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } / { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Firefox Send’i deneyin
     .title = Firefox Send’i deneyin
