@@ -123,10 +123,17 @@ function bytes(num) {
   return `${nStr}${UNITS[exponent]}`;
 }
 
+function percent(ratio) {
+  return LOCALIZE_NUMBERS
+    ? ratio.toLocaleString(navigator.languages, { style: 'percent' })
+    : `${Math.floor(ratio * 100)}%`;
+}
+
 const ONE_DAY_IN_MS = 86400000;
 
 module.exports = {
   bytes,
+  percent,
   copyToClipboard,
   arrayToHex,
   hexToArray,

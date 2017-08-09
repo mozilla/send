@@ -1,10 +1,12 @@
-const { bytes } = require('./utils');
+const { bytes, percent } = require('./utils');
 const $ = require('jquery');
 require('jquery-circle-progress');
 
 let $progress = null;
 let $percent = null;
 let $text = null;
+let title = null;
+let updateTitle = false;
 
 document.addEventListener('DOMContentLoaded', function() {
   $percent = $('.percent-number');
@@ -17,12 +19,25 @@ document.addEventListener('DOMContentLoaded', function() {
     size: 158,
     animation: { duration: 300 }
   });
+  title = document.querySelector('title');
+});
+
+document.addEventListener('blur', function() {
+  updateTitle = true;
+});
+
+document.addEventListener('focus', function() {
+  updateTitle = false;
+  return title && (title.textContent = 'Firefox Send');
 });
 
 function setProgress(params) {
-  const percent = params.complete / params.total;
-  $progress.circleProgress('value', percent);
-  $percent.text(`${Math.floor(percent * 100)}`);
+  const ratio = params.complete / params.total;
+  $progress.circleProgress('value', ratio);
+  $percent.text(Math.floor(ratio * 100));
+  if (updateTitle) {
+    title.textContent = percent(ratio);
+  }
   document.l10n
     .formatValue('fileSizeProgress', {
       partialSize: bytes(params.complete),
