@@ -537,18 +537,18 @@ tbody {
 #delete-file {
   width: 176px;
   height: 44px;
-  background: #fff;
+  background: #b80606;
   border: 1px solid rgba(12, 12, 13, 0.3);
   border-radius: 5px;
   font-size: 15px;
   margin-top: 50px;
   margin-bottom: 12px;
   cursor: pointer;
-  color: #313131;
+  color: #fff;
 }
 
 #delete-file:hover {
-  background: #efeff1;
+  background: #d00000;
 }
 
 .send-new {
