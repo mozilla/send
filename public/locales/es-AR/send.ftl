@@ -78,6 +78,7 @@ copyFileList = Copiar URL
 // expiryFileList is used as a column header
 expiryFileList = Expira en
 deleteFileList = Borrar
+nevermindButton = No importa
 legalHeader = Términos y privacidad
 legalNoticeTestPilot = Firefox Send es actualmente un experimento de Test Pilot y está sujeto a los <a>términos de servicio</a> y la <a>nota de privacidad</a> de Test Pilot. Podés conocer más sobre este experimento y su recolección de datos <a>aquí</a>.
 legalNoticeMozilla = El uso del sitio web de Firefox Send también está sujeto a la <a>nota de privacidad de sitios web</a> y los <a>términos de uso de sitios web</a> de Mozilla.
