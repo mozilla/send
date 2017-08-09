@@ -39,13 +39,15 @@ class FileReceiver extends EventEmitter {
             }
 
             const blob = new Blob([this.response]);
+            const type = xhr.getResponseHeader('Content-Type');
+            const meta = JSON.parse(xhr.getResponseHeader('X-File-Metadata'));
             const fileReader = new FileReader();
             fileReader.onload = function() {
-              const meta = JSON.parse(xhr.getResponseHeader('X-File-Metadata'));
               resolve([
                 {
                   data: this.result,
                   filename: meta.filename,
+                  type,
                   iv: meta.id
                 },
                 key
@@ -76,7 +78,10 @@ class FileReceiver extends EventEmitter {
             .then(decrypted => {
               return Promise.resolve(decrypted);
             }),
-          decodeURIComponent(fdata.filename)
+          {
+            name: decodeURIComponent(fdata.filename),
+            type: fdata.type
+          }
         ]);
       });
   }

@@ -57,7 +57,8 @@ function download() {
       }
       throw err;
     })
-    .then(([decrypted, fname]) => {
+    .then(([decrypted, file]) => {
+      const fname = file.name;
       const endTime = Date.now();
       const time = endTime - startTime;
       const downloadTime = endTime - downloadEnd;
@@ -73,7 +74,7 @@ function download() {
         });
 
       const dataView = new DataView(decrypted);
-      const blob = new Blob([dataView]);
+      const blob = new Blob([dataView], { type: file.type });
       const downloadUrl = URL.createObjectURL(blob);
 
       const a = document.createElement('a');

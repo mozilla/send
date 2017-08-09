@@ -168,7 +168,7 @@ app.get('/assets/download/:id', async (req, res) => {
     const contentLength = await storage.length(id);
     res.writeHead(200, {
       'Content-Disposition': `attachment; filename=${meta.filename}`,
-      'Content-Type': 'application/octet-stream',
+      'Content-Type': meta.mimeType,
       'Content-Length': contentLength,
       'X-File-Metadata': JSON.stringify(meta)
     });
@@ -236,24 +236,27 @@ app.post('/upload', (req, res, next) => {
   meta.delete = crypto.randomBytes(10).toString('hex');
   req.pipe(req.busboy);
 
-  req.busboy.on('file', async (fieldname, file, filename) => {
-    try {
-      await storage.set(newId, file, filename, meta);
-
-      const protocol = conf.env === 'production' ? 'https' : req.protocol;
-      const url = `${protocol}://${req.get('host')}/download/${newId}/`;
-      res.json({
-        url,
-        delete: meta.delete,
-        id: newId
-      });
-    } catch (e) {
-      if (e.message === 'limit') {
-        return res.sendStatus(413);
+  req.busboy.on(
+    'file',
+    async (fieldname, file, filename, encoding, mimeType) => {
+      try {
+        meta.mimeType = mimeType || 'application/octet-stream';
+        await storage.set(newId, file, filename, meta);
+        const protocol = conf.env === 'production' ? 'https' : req.protocol;
+        const url = `${protocol}://${req.get('host')}/download/${newId}/`;
+        res.json({
+          url,
+          delete: meta.delete,
+          id: newId
+        });
+      } catch (e) {
+        if (e.message === 'limit') {
+          return res.sendStatus(413);
+        }
+        res.sendStatus(500);
       }
-      res.sendStatus(500);
     }
-  });
+  );
 
   req.on('close', async err => {
     try {
