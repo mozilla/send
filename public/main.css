@@ -533,7 +533,7 @@ tbody {
 #delete-file {
   width: 176px;
   height: 44px;
-  background: #D00000 ;
+  background: #d00000;
   border: 1px solid rgba(12, 12, 13, 0.3);
   border-radius: 5px;
   font-size: 15px;
@@ -544,7 +544,7 @@ tbody {
 }
 
 #delete-file:hover {
-  background: #B80607;
+  background: #b80607;
   color: #fff;
 }
 
