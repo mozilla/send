@@ -4,7 +4,7 @@
   "version": "1.1.0",
   "author": "Mozilla (https://mozilla.org)",
   "dependencies": {
-    "aws-sdk": "^2.89.0",
+    "aws-sdk": "^2.95.0",
     "body-parser": "^1.17.2",
     "connect-busboy": "0.0.2",
     "convict": "^3.0.0",
@@ -13,7 +13,7 @@
     "helmet": "^3.8.0",
     "mozlog": "^2.1.1",
     "raven": "^2.1.0",
-    "redis": "^2.7.1"
+    "redis": "^2.8.0"
   },
   "devDependencies": {
     "asmcrypto.js": "0.0.11",
@@ -25,6 +25,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "browserify": "^14.4.0",
+    "cross-env": "^5.0.5",
     "css-mqpacker": "^6.0.1",
     "cssnano": "^3.10.0",
     "eslint": "^4.3.0",
@@ -49,7 +50,8 @@
     "supertest": "^3.0.0",
     "testpilot-ga": "^0.3.0",
     "webcrypto-liner": "^0.1.25",
-    "webpack": "^3.4.1"
+    "webpack": "^3.5.2",
+    "webpack-dev-middleware": "^1.12.0"
   },
   "engines": {
     "node": ">=8.2.0"
@@ -113,7 +115,7 @@
     "lint-locales:dev": "npm run lint-locales",
     "lint-locales:prod": "npm run lint-locales -- --production",
     "start": "node server/server",
-    "test": "npm-run-all test:*",
+    "test": "cross-env NODE_ENV=test npm-run-all test:*",
     "test:unit": "mocha test/unit",
     "test:server": "mocha test/server",
     "test--browser": "browserify test/frontend/frontend.bundle.js -o test/frontend/bundle.js -d && node test/frontend/driver.js"

@@ -38,6 +38,17 @@ function prodLangs() {
 
 const availableLanguages = conf.l10n_dev ? allLangs() : prodLangs();
 
+if (conf.env === 'development') {
+  const webpack = require('webpack');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const config = require('../webpack.config.js');
+  config.devtool = 'inline-source-map';
+  const compiler = webpack(config);
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath
+  }));
+}
+
 app.engine(
   'handlebars',
   exphbs({
