@@ -2,7 +2,7 @@ const { Raven } = require('./common');
 const FileReceiver = require('./fileReceiver');
 const { bytes, notify, gcmCompliant } = require('./utils');
 const Storage = require('./storage');
-const storage = new Storage(localStorage);
+const storage = new Storage();
 const links = require('./links');
 const metrics = require('./metrics');
 const progress = require('./progress');
@@ -87,6 +87,7 @@ function download() {
       a.download = fname;
       document.body.appendChild(a);
       a.click();
+      URL.revokeObjectURL(downloadUrl);
     })
     .catch(err => {
       Raven.captureException(err);
