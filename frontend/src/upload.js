@@ -13,7 +13,7 @@ import * as metrics from './metrics';
 import * as progress from './progress';
 import $ from 'jquery';
 
-const storage = new Storage(localStorage);
+const storage = new Storage();
 
 const allowedCopy = () => {
   const support = !!document.queryCommandSupported;
