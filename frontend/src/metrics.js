@@ -51,6 +51,11 @@ function urlToMetric(url) {
       return 'twitter';
     case 'https://www.mozilla.org/firefox/new/?scene=2':
       return 'download-firefox';
+    case 'https://qsurvey.mozilla.com/s3/txp-firefox-send':
+      return 'survey';
+    case 'https://testpilot.firefox.com/':
+    case 'https://testpilot.firefox.com/experiments/send':
+      return 'testpilot';
     default:
       return 'other';
   }
@@ -208,7 +213,7 @@ function exitEvent(target) {
 function addExitHandlers() {
   const links = Array.from(document.querySelectorAll('a'));
   links.forEach(l => {
-    if (/^http/.test(l.href)) {
+    if (/^http/.test(l.getAttribute('href'))) {
       l.addEventListener('click', exitEvent);
     }
   });
