@@ -99,7 +99,7 @@
   ],
   "scripts": {
     "build": "npm-run-all build:*",
-    "build:css": "postcss 'frontend/src/*.css' -d public",
+    "build:css": "postcss frontend/src/*.css -d public",
     "build:js": "webpack -p",
     "build:vendor": "cp node_modules/l20n/dist/web/l20n.min.js node_modules/babel-polyfill/dist/polyfill.min.js public",
     "build:version": "node scripts/version",
