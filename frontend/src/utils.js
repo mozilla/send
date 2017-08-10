@@ -131,7 +131,7 @@ function percent(ratio) {
 
 const ONE_DAY_IN_MS = 86400000;
 
-module.exports = {
+export {
   bytes,
   percent,
   copyToClipboard,

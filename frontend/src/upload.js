@@ -1,19 +1,19 @@
 /* global MAXFILESIZE EXPIRE_SECONDS */
-const { Raven } = require('./common');
-const FileSender = require('./fileSender');
-const {
+import { Raven } from './common';
+import FileSender from './fileSender';
+import {
   bytes,
   copyToClipboard,
   notify,
   gcmCompliant,
   ONE_DAY_IN_MS
-} = require('./utils');
-const Storage = require('./storage');
-const storage = new Storage();
-const metrics = require('./metrics');
-const progress = require('./progress');
+} from './utils';
+import Storage from './storage';
+import * as metrics from './metrics';
+import * as progress from './progress';
+import $ from 'jquery';
 
-const $ = require('jquery');
+const storage = new Storage(localStorage);
 
 const allowedCopy = () => {
   const support = !!document.queryCommandSupported;

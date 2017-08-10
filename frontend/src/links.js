@@ -18,6 +18,4 @@ function setOpenInNewTab(bool) {
   }
 }
 
-module.exports = {
-  setOpenInNewTab
-};
+export { setOpenInNewTab };

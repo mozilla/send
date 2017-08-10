@@ -1,5 +1,5 @@
-const testPilotGA = require('testpilot-ga/src/TestPilotGA');
-const Storage = require('./storage');
+import testPilotGA from 'testpilot-ga/src/TestPilotGA';
+import Storage from './storage';
 const storage = new Storage();
 
 let hasLocalStorage = false;
@@ -234,7 +234,7 @@ function addRestartHandlers() {
   });
 }
 
-module.exports = {
+export {
   copiedLink,
   startedUpload,
   cancelledUpload,

@@ -1,6 +1,6 @@
-const { bytes, percent } = require('./utils');
-const $ = require('jquery');
-require('jquery-circle-progress');
+import { bytes, percent } from './utils';
+import $ from 'jquery';
+import 'jquery-circle-progress';
 
 let $progress = null;
 let $percent = null;
@@ -50,7 +50,4 @@ function setText(str) {
   $text.text(str);
 }
 
-module.exports = {
-  setProgress,
-  setText
-};
+export { setProgress, setText };

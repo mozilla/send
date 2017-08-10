@@ -1,4 +1,4 @@
-const { isFile } = require('./utils');
+import { isFile } from './utils';
 
 class Mem {
   constructor() {
@@ -26,7 +26,7 @@ class Mem {
   }
 }
 
-class Storage {
+export default class Storage {
   constructor() {
     try {
       this.engine = localStorage || new Mem();
@@ -97,5 +97,3 @@ class Storage {
     this.engine.setItem(id, JSON.stringify(file));
   }
 }
-
-module.exports = Storage;
