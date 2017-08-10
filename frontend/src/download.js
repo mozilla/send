@@ -1,13 +1,13 @@
-const { Raven } = require('./common');
-const FileReceiver = require('./fileReceiver');
-const { bytes, notify, gcmCompliant } = require('./utils');
-const Storage = require('./storage');
-const storage = new Storage();
-const links = require('./links');
-const metrics = require('./metrics');
-const progress = require('./progress');
-const $ = require('jquery');
+import { Raven } from './common';
+import FileReceiver from './fileReceiver';
+import { bytes, notify, gcmCompliant } from './utils';
+import Storage from './storage';
+import * as links from './links';
+import * as metrics from './metrics';
+import * as progress from './progress';
+import $ from 'jquery';
 
+const storage = new Storage(localStorage);
 function onUnload(size) {
   metrics.cancelledDownload({ size });
 }

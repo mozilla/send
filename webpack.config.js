@@ -21,8 +21,7 @@ module.exports = {
         ],
         query: {
           babelrc: false,
-          presets: ['es2015', 'stage-2'],
-          plugins: ['add-module-exports']
+          presets: [['es2015', { modules: false }], 'stage-2']
         }
       }
     ]

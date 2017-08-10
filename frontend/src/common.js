@@ -1,5 +1,5 @@
-const Raven = require('raven-js');
-const { unsupported } = require('./metrics');
+import Raven from 'raven-js';
+import { unsupported } from './metrics';
 
 if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
   Raven.config(window.SENTRY_ID, window.RAVEN_CONFIG).install();
@@ -17,6 +17,4 @@ if (
   });
 }
 
-module.exports = {
-  Raven
-};
+export { Raven };

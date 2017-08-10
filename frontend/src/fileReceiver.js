@@ -1,7 +1,7 @@
-const EventEmitter = require('events');
-const { hexToArray } = require('./utils');
+import EventEmitter from 'events';
+import { hexToArray } from './utils';
 
-class FileReceiver extends EventEmitter {
+export default class FileReceiver extends EventEmitter {
   constructor() {
     super();
   }
@@ -86,5 +86,3 @@ class FileReceiver extends EventEmitter {
       });
   }
 }
-
-module.exports = FileReceiver;

@@ -1,7 +1,7 @@
-const EventEmitter = require('events');
-const { arrayToHex } = require('./utils');
+import EventEmitter from 'events';
+import { arrayToHex } from './utils';
 
-class FileSender extends EventEmitter {
+export default class FileSender extends EventEmitter {
   constructor(file) {
     super();
     this.file = file;
@@ -116,5 +116,3 @@ class FileSender extends EventEmitter {
       });
   }
 }
-
-module.exports = FileSender;

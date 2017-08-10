@@ -44,9 +44,11 @@ if (conf.env === 'development') {
   const config = require('../webpack.config.js');
   config.devtool = 'inline-source-map';
   const compiler = webpack(config);
-  app.use(webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath
-  }));
+  app.use(
+    webpackDevMiddleware(compiler, {
+      publicPath: config.output.publicPath
+    })
+  );
 }
 
 app.engine(
