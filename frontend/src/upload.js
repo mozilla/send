@@ -9,7 +9,7 @@ const {
   ONE_DAY_IN_MS
 } = require('./utils');
 const Storage = require('./storage');
-const storage = new Storage(localStorage);
+const storage = new Storage();
 const metrics = require('./metrics');
 const progress = require('./progress');
 

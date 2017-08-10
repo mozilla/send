@@ -1,6 +1,13 @@
 const testPilotGA = require('testpilot-ga/src/TestPilotGA');
 const Storage = require('./storage');
-const storage = new Storage(localStorage);
+const storage = new Storage();
+
+let hasLocalStorage = false;
+try {
+  hasLocalStorage = !!localStorage;
+} catch (e) {
+  // don't care
+}
 
 const analytics = new testPilotGA({
   an: 'Firefox Send',
@@ -18,7 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function sendEvent() {
-  return analytics.sendEvent.apply(analytics, arguments).catch(() => 0);
+  return (
+    hasLocalStorage &&
+    analytics.sendEvent.apply(analytics, arguments).catch(() => 0)
+  );
 }
 
 function urlToMetric(url) {

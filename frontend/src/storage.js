@@ -1,8 +1,38 @@
 const { isFile } = require('./utils');
 
+class Mem {
+  constructor() {
+    this.items = new Map();
+  }
+
+  get length() {
+    return this.items.size;
+  }
+
+  getItem(key) {
+    return this.items.get(key);
+  }
+
+  setItem(key, value) {
+    return this.items.set(key, value);
+  }
+
+  removeItem(key) {
+    return this.items.delete(key);
+  }
+
+  key(i) {
+    return this.items.keys()[i];
+  }
+}
+
 class Storage {
-  constructor(engine) {
-    this.engine = engine;
+  constructor() {
+    try {
+      this.engine = localStorage || new Mem();
+    } catch (e) {
+      this.engine = new Mem();
+    }
   }
 
   get totalDownloads() {
@@ -57,10 +87,6 @@ class Storage {
 
   getFileById(id) {
     return this.engine.getItem(id);
-  }
-
-  has(property) {
-    return this.engine.hasOwnProperty(property);
   }
 
   remove(property) {
