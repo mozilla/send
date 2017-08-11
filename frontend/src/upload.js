@@ -98,7 +98,9 @@ $(() => {
       function onUpload(event) {
         event.preventDefault();
         const clickOrDrop = event.type === 'drop' ? 'drop' : 'click';
-
+        event.currentTarget.style.cursor = 'default';
+        event.originalEvent.dataTransfer.effectAllowed = 'uninitialized';
+        event.originalEvent.dataTransfer.dropEffect = 'all';
         // don't allow upload if not on upload page
         if ($pageOne.attr('hidden')) {
           return;
@@ -117,6 +119,8 @@ $(() => {
             event.originalEvent.dataTransfer.files[0].size === 0
           ) {
             $uploadWindow.removeClass('ondrag');
+            event.originalEvent.dataTransfer.dropEffect = 'none';
+            event.currentTarget.style.cursor = 'no-drop';
             document.l10n
               .formatValue('uploadPageMultipleFilesAlert')
               .then(str => {
