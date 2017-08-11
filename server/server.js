@@ -133,7 +133,7 @@ app.get('/jsconfig.js', (req, res) => {
 app.get('/exists/:id', async (req, res) => {
   const id = req.params.id;
   if (!validateID(id)) {
-    res.sendStatus(404);
+    res.status(404).render('notfound');
     return;
   }
 
@@ -141,7 +141,7 @@ app.get('/exists/:id', async (req, res) => {
     await storage.exists(id);
     res.sendStatus(200);
   } catch (e) {
-    res.sendStatus(404);
+    res.status(404).render('notfound');
   }
 });
 
@@ -172,7 +172,7 @@ app.get('/download/:id', async (req, res) => {
 app.get('/assets/download/:id', async (req, res) => {
   const id = req.params.id;
   if (!validateID(id)) {
-    res.sendStatus(404);
+    res.status(404).render('notfound');
     return;
   }
 
@@ -197,7 +197,7 @@ app.get('/assets/download/:id', async (req, res) => {
 
     file_stream.pipe(res);
   } catch (e) {
-    res.sendStatus(404);
+    res.status(404).render('notfound');
   }
 });
 
@@ -205,14 +205,14 @@ app.post('/delete/:id', async (req, res) => {
   const id = req.params.id;
 
   if (!validateID(id)) {
-    res.sendStatus(404);
+    res.status(404).render('notfound');
     return;
   }
 
   const delete_token = req.body.delete_token;
 
   if (!delete_token) {
-    res.sendStatus(404);
+    res.status(404).render('notfound');
     return;
   }
 
@@ -222,7 +222,7 @@ app.post('/delete/:id', async (req, res) => {
       res.sendStatus(200);
     }
   } catch (e) {
-    res.sendStatus(404);
+    res.status(404).render('notfound');
   }
 });
 
@@ -242,7 +242,7 @@ app.post('/upload', (req, res, next) => {
     !meta.hasOwnProperty('filename') ||
     !validateIV(meta.id)
   ) {
-    res.sendStatus(404);
+    res.status(404).render('notfound');
     return;
   }
 
