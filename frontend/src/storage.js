@@ -86,7 +86,11 @@ export default class Storage {
   }
 
   getFileById(id) {
-    return this.engine.getItem(id);
+    try {
+      return JSON.parse(this.engine.getItem(id));
+    } catch (e) {
+      return null;
+    }
   }
 
   remove(property) {
