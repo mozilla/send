@@ -46,6 +46,18 @@ $(() => {
 
       $link.attr('disabled', false);
 
+      const getCurrentTarget =  function(e) {
+        if (e.toElement) {
+            return e.toElement;
+        } else if (e.currentTarget) {
+            return e.currentTarget;
+        } else if (e.srcElement) {
+            return e.srcElement;
+        } else {
+            return null;
+        }
+    };
+
       const toggleHeader = () => {
         //hide table header if empty list
         if (document.querySelector('tbody').childNodes.length === 1) {
@@ -89,10 +101,11 @@ $(() => {
       });
 
       $uploadWindow
-        .on('dragover', () => {
+
+        .on('dragover', function(event) {
           $uploadWindow.addClass('ondrag');
         })
-        .on('dragleave', () => {
+        .on('dragleave', (event) => {
           $uploadWindow.removeClass('ondrag');
         });
 
@@ -111,8 +124,8 @@ $(() => {
       // on file upload by browse or drag & drop
       function onUpload(event) {
         event.preventDefault();
+        event.currentTarget.style.cursor = 'default'
         const clickOrDrop = event.type === 'drop' ? 'drop' : 'click';
-
         // don't allow upload if not on upload page
         if ($pageOne.attr('hidden')) {
           return;
@@ -131,6 +144,8 @@ $(() => {
             event.originalEvent.dataTransfer.files[0].size === 0
           ) {
             $uploadWindow.removeClass('ondrag');
+            event.originalEvent.dataTransfer.dropEffect = 'none';
+            event.currentTarget.style.cursor = 'no-drop'
             document.l10n
               .formatValue('uploadPageMultipleFilesAlert')
               .then(str => {

@@ -177,12 +177,15 @@ a {
   margin: 0 auto;
   height: 251px;
   transform: scale(1.04);
-  border-radius: 4.2px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
+}
+
+.upload-window.nodrop {
+  cursor: not-allowed !important;
 }
 
 .link {
