@@ -212,12 +212,13 @@ a {
   border-radius: 5px;
   font-size: 15px;
   color: #fff;
-  width: 240px;
+  min-width: 240px;
   height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding: 0 10px;
 }
 
 #browse:hover {
