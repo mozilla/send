@@ -43,7 +43,7 @@ $(() => {
             metrics.cancelledDownload({ size });
           };
 
-          $('#download-page-one').attr('hidden', false);
+          $('#download-page-one').attr('hidden', true);
           $('#download-progress').removeAttr('hidden');
           const percent = progress[0] / progress[1];
           // update progress bar
