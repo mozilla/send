@@ -9,9 +9,11 @@ uploadPageDropMessage = Εναποθέστε το αρχείο σας εδώ γ�
 uploadPageSizeMessage = Για περισσότερο αξιόπιστη λειτουργία, προτείνεται να διατηρήσετε το αρχείο κάτω από 1GB
 uploadPageBrowseButton = Επιλέξτε αρχείο από τον υπολογιστή σας
     .title = Επιλέξτε αρχείο από τον υπολογιστή σας
+uploadPageBrowseButton1 = Επιλέξτε ένα αρχείο για μεταφόρτωση
+    .title = Επιλέξτε ένα αρχείο για μεταφόρτωση
 uploadPageMultipleFilesAlert = Η μεταφόρτωση πολλαπλών αρχείων ή φακέλου δεν υποστηρίζεται αυτή τη στιγμή.
 uploadPageBrowseButtonTitle = Μεταφόρτωση αρχείου
-uploadingPageHeader = Γίνετε μεταφόρτωση του αρχείου σας
+uploadingPageProgress = Μεταφόρτωση του { $filename } ({ $size })
 importingFile = Εισαγωγή…
 verifyingFile = Επαλήθευση...
 encryptingFile = Κρυπτογράφηση…
@@ -50,6 +52,8 @@ downloadButtonLabel = Λήψη
     .title = Λήψη
 downloadNotification = Η λήψη σας ολοκληρώθηκε.
 downloadFinish = Η λήψη ολοκληρώθηκε
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } από { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Δοκιμάστε το Firefox Send
     .title = Δοκιμάστε το Firefox Send
