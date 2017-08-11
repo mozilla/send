@@ -148,7 +148,7 @@ app.get('/exists/:id', async (req, res) => {
 app.get('/download/:id', async (req, res) => {
   const id = req.params.id;
   if (!validateID(id)) {
-    res.sendStatus(404);
+    res.status(404).render('notfound');
     return;
   }
 
