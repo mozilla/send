@@ -38,16 +38,6 @@ function prodLangs() {
 
 const availableLanguages = conf.l10n_dev ? allLangs() : prodLangs();
 
-const envURL = (env) => {
-  switch (env) {
-    case 'test':
-      return 'https://send.stage.mozaws.net';
-    case 'development':
-      return 'https://testpilot.dev.mozaws.net';
-  }
-  return 'https://send.firefox.com';
-}
-
 if (conf.env === 'development') {
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -69,7 +59,7 @@ app.engine(
     helpers: {
       availableLanguages,
       l10nDev: conf.l10n_dev,
-      envURL: envURL(conf.env),
+      baseUrl: conf.base_url,
       title: 'Firefox Send',
       description: 'Encrypt and send files with a link that automatically expires to ensure your important documents don’t stay online forever.'
     }

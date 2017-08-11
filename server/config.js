@@ -51,6 +51,11 @@ const conf = convict({
     format: Boolean,
     default: false,
     env: 'L10N_DEV'
+  },
+  base_url: {
+    format: 'url',
+    default: 'https://send.firefox.com',
+    env: 'BASE_URL'
   }
 });
 
