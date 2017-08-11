@@ -129,9 +129,15 @@ function percent(ratio) {
     : `${Math.floor(ratio * 100)}%`;
 }
 
+function allowedCopy() {
+  const support = !!document.queryCommandSupported;
+  return support ? document.queryCommandSupported('copy') : false;
+}
+
 const ONE_DAY_IN_MS = 86400000;
 
 export {
+  allowedCopy,
   bytes,
   percent,
   copyToClipboard,
