@@ -32,9 +32,11 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-security": "^1.4.0",
     "git-rev-sync": "^1.9.1",
+    "husky": "^0.14.3",
     "jquery": "^3.2.1",
     "jquery-circle-progress": "^1.2.2",
     "l20n": "^5.0.0",
+    "lint-staged": "^4.0.3",
     "mocha": "^3.4.2",
     "npm-run-all": "^4.0.2",
     "postcss-cli": "^4.1.0",
@@ -97,6 +99,7 @@
     "zh-TW"
   ],
   "scripts": {
+    "precommit": "lint-staged",
     "build": "npm-run-all build:*",
     "build:css": "postcss frontend/src/*.css -d public",
     "build:js": "webpack -p",
@@ -118,5 +121,17 @@
     "test:unit": "mocha test/unit",
     "test:server": "mocha test/server",
     "test--browser": "browserify test/frontend/frontend.bundle.js -o test/frontend/bundle.js -d && node test/frontend/driver.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --write",
+      "eslint",
+      "git add"
+    ],
+    "*.css": [
+      "prettier --single-quote --write",
+      "stylelint",
+      "git add"
+    ]
   }
 }
