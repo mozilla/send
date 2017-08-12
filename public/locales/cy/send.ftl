@@ -9,9 +9,11 @@ uploadPageDropMessage = Gollyngwch eich ffeiliau yma i gychwyn llwytho i fyny
 uploadPageSizeMessage = Mae'n well cadw maint y ffeiliau o dan 1GB er mwyn iddo weithio ar ei orau.
 uploadPageBrowseButton = Dewiswch ffeil ar eich cyfrifiadur
     .title = Dewiswch ffeil ar eich cyfrifiadur
+uploadPageBrowseButton1 = Dewiswch ffeil i'w llwytho i fyny
+    .title = Dewiswch ffeil i'w llwytho i fyny
 uploadPageMultipleFilesAlert = Nid yw llwytho nifer lluosog o ffeilia neu ffolder yn cael ei gynnal ar hyn o bryd.
 uploadPageBrowseButtonTitle = Llwytho ffeil i fyny
-uploadingPageHeader = Llwytho eich Ffeiliau i Fyny
+uploadingPageProgress = Llwytho $filename}  i fyny ({ $size })
 importingFile = Mewnforio…
 verifyingFile = Wrthi'n gwirio…
 encryptingFile = Wrthi'n amgryptio…
@@ -50,6 +52,8 @@ downloadButtonLabel = Llwytho i Lawr
     .title = Llwytho i Lawr
 downloadNotification = Mae eich llwytho wedi gorffen
 downloadFinish = Llwytho wedi Gorffen
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } o { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Profwch Firefox Send
     .title = Profwch Firefox Send
@@ -67,6 +71,7 @@ expiredPageHeader = Mae'r ddolen wedi dod i ben neu nad yw wedi bodoli erioed!
 notSupportedHeader = Nid yw eich porwr yn cael ei gynnal.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Yn anffodus nid yw'r porwr hwn yn cynnal y technoleg gwe sy'n cynnal Firefox Send. Bydd angen i chi ddefnyddio porwr arall. Rydym ni'n argymell Firefox!
+notSupportedLink = Pam nad yw fy mhorwr yn cael ei gynnal?
 notSupportedOutdatedDetail = Yn anffodus nid yw'r fersiwn yma o Firefox yn cynnal y technoleg gwe sy'n gyrru Firefox Send. Bydd angen i chi ddiweddaru eich porwr.
 updateFirefox = Diweddaru Firefox
 downloadFirefoxButtonSub = Llwytho i Lawr am Ddim
