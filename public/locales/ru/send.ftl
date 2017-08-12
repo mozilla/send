@@ -9,9 +9,11 @@ uploadPageDropMessage = Перетащите свой файл сюда, что�
 uploadPageSizeMessage = Для более надёжной работы сервиса, размер вашего файла не должен превышать 1ГБ.
 uploadPageBrowseButton = Выбрать файл с моего компьютера
     .title = Выбрать файл с моего компьютера
+uploadPageBrowseButton1 = Выбрать файл для загрузки
+    .title = Выбрать файл для загрузки
 uploadPageMultipleFilesAlert = Загрузка нескольких файлов или папок в настоящее время не поддерживается.
 uploadPageBrowseButtonTitle = Загрузить файл
-uploadingPageHeader = Загрузка вашего файла
+uploadingPageProgress = Загружаю { $filename } ({ $size })
 importingFile = Импортирование...
 verifyingFile = Проверка...
 encryptingFile = Шифрование...
@@ -50,6 +52,8 @@ downloadButtonLabel = Скачать
     .title = Скачать
 downloadNotification = Ваша загрузка завершена.
 downloadFinish = Загрузка завершена
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } из { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Попробовать Firefox Send
     .title = Попробовать Firefox Send
