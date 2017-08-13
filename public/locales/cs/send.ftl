@@ -9,9 +9,11 @@ uploadPageDropMessage = Přesunutím souboru sem spustíte jeho nahrávání
 uploadPageSizeMessage = Nahrávání funguje nejlépe pro soubory do velikosti 1 GB.
 uploadPageBrowseButton = Vybrat soubor z počítače
     .title = Výběr souboru z počítače
+uploadPageBrowseButton1 = Zvolte soubor k nahrání
+    .title = Zvolte soubor k nahrání
 uploadPageMultipleFilesAlert = Nahrávání více souborů najednou nebo celých složek zatím není podporováno.
 uploadPageBrowseButtonTitle = Nahrát soubor
-uploadingPageHeader = Nahrávání vašeho souboru
+uploadingPageProgress = Nahrávání souboru { $filename } ({ $size })
 importingFile = Probíhá import…
 verifyingFile = Probíhá ověřování…
 encryptingFile = Probíhá šifrování…
@@ -50,6 +52,8 @@ downloadButtonLabel = Stáhnout
     .title = Stáhnout
 downloadNotification = Stahování bylo dokončeno.
 downloadFinish = Stahování dokončeno
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } z { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Vyzkoušejte Firefox Send
     .title = Vyzkoušejte Firefox Send
@@ -67,6 +71,7 @@ expiredPageHeader = Platnost tohoto odkazu buď vypršela, nebo vůbec nikdy nee
 notSupportedHeader = Váš prohlížeč není podporován.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Bohužel tento prohlížeč nepodporuje technologii, kterou Firefox Send používá. Zkuste prosím jiný prohlížeč, doporučujeme Firefox!
+notSupportedLink = Proč není můj prohlížeč podporovaný?
 notSupportedOutdatedDetail = Tato verze Firefoxu bohužel nepodporuje webovou technologii, která pohání Firefox Send. Musíte aktualizovat svůj prohlížeč.
 updateFirefox = Aktualizovat Firefox
 downloadFirefoxButtonSub = Stáhnout zdarma
