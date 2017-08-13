@@ -22,6 +22,16 @@ body {
   position: relative;
 }
 
+#progress circle {
+  stroke: #eee;
+  stroke-width: 0.75em;
+}
+
+#progress #bar {
+  transition: stroke-dashoffset 300ms linear;
+  stroke: #3b9dff;
+}
+
 .header {
   align-items: flex-start;
   box-sizing: border-box;
@@ -420,7 +430,7 @@ tbody {
   position: absolute;
   letter-spacing: -0.78px;
   font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
-  top: 53px;
+  top: 58px;
   left: 50%;
   transform: translateX(-50%);
   -moz-user-select: none;

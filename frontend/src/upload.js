@@ -13,7 +13,7 @@ import Storage from './storage';
 import * as metrics from './metrics';
 import * as progress from './progress';
 import * as fileList from './fileList';
-import $ from 'jquery';
+import $ from 'jquery/dist/jquery.slim';
 
 const storage = new Storage();
 
