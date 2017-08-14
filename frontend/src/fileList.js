@@ -2,7 +2,7 @@ import FileSender from './fileSender';
 import Storage from './storage';
 import * as metrics from './metrics';
 import { allowedCopy, copyToClipboard, ONE_DAY_IN_MS } from './utils';
-import $ from 'jquery';
+import $ from 'jquery/dist/jquery.slim';
 
 const storage = new Storage();
 let fileList = null;

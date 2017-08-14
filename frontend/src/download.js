@@ -5,7 +5,7 @@ import Storage from './storage';
 import * as links from './links';
 import * as metrics from './metrics';
 import * as progress from './progress';
-import $ from 'jquery';
+import $ from 'jquery/dist/jquery.slim';
 
 const storage = new Storage();
 function onUnload(size) {

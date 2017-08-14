@@ -37,8 +37,11 @@
 <div id="upload-progress" hidden="true">
   <div class="title" id="upload-filename"></div>
   <div class="description"></div>
-  <!-- progress bar here -->
-  <div class="progress-bar" id="ul-progress">
+  <div class="progress-bar">
+    <svg id="progress" width="166" height="166" viewPort="0 0 166 166" version="1.1">
+      <circle r="73" cx="83" cy="83" fill="transparent"/>
+      <circle id="bar" r="73" cx="83" cy="83" fill="transparent" transform="rotate(-90 83 83)" stroke-dasharray="458.67" stroke-dashoffset="458.67"/>
+    </svg>
     <div class="percentage">
       <span class="percent-number">0</span>
       <span class="percent-sign">%</span>
