@@ -11,7 +11,7 @@ uploadPageBrowseButton = Seleccionar un archivo en el equipo
     .title = Seleccionar un archivo en el equipo
 uploadPageMultipleFilesAlert = Aún no se pueden subir varios archivos o una carpeta.
 uploadPageBrowseButtonTitle = Subir archivo
-uploadingPageHeader = Subiendo archivo
+uploadingPageProgress = Subiendo { $filename } ({ $size })
 importingFile = Imporando...
 verifyingFile = Comprobando...
 encryptingFile = Encriptando...
@@ -50,6 +50,8 @@ downloadButtonLabel = Descargar
     .title = Descargar
 downloadNotification = Se completó la descarga.
 downloadFinish = Descarga completa
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } de { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Prueba Firefox Send
     .title = Prueba Firefox Send
