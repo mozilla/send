@@ -11,15 +11,15 @@ module.exports = {
     publicPath: '/'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loaders: 'babel-loader',
+        loader: 'babel-loader',
         include: [
           path.resolve(__dirname, 'frontend'),
           path.resolve(__dirname, 'node_modules/testpilot-ga/src')
         ],
-        query: {
+        options: {
           babelrc: false,
           presets: [['es2015', { modules: false }], 'stage-2']
         }
