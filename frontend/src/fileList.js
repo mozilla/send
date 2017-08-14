@@ -13,16 +13,20 @@ document.addEventListener('DOMContentLoaded', function() {
   fileList = document.getElementById('file-list');
   toggleHeader();
   // eslint-disable-next-line prefer-const
-  for (let file of storage.files) {
-    const id = file.fileId;
-    checkExistence(id).then(exists => {
-      if (exists) {
-        addFile(storage.getFileById(id));
-      } else {
-        storage.remove(id);
-      }
-    });
-  }
+  Promise.all(
+    storage.files.map(file => {
+      const id = file.fileId;
+      return checkExistence(id).then(exists => {
+        if (exists) {
+          addFile(storage.getFileById(id));
+        } else {
+          storage.remove(id);
+        }
+      });
+    })
+  )
+    .catch(err => console.error(err))
+    .then(toggleHeader);
 });
 
 function toggleHeader() {
@@ -209,11 +213,14 @@ async function checkExistence(id) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
         resolve(xhr.status === 200);
       }
     };
+    xhr.onerror = reject;
+    xhr.ontimeout = reject;
     xhr.open('get', '/exists/' + id);
+    xhr.timeout = 2000;
     xhr.send();
   });
 }
