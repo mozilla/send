@@ -310,6 +310,10 @@ tbody {
   opacity: 0.3;
 }
 
+.text-copied {
+  color: #0a8dff;
+}
+
 /* Popup container */
 .popup {
   position: absolute;

@@ -2,17 +2,15 @@ import FileSender from './fileSender';
 import Storage from './storage';
 import * as metrics from './metrics';
 import { allowedCopy, copyToClipboard, ONE_DAY_IN_MS } from './utils';
-import $ from 'jquery/dist/jquery.slim';
+import bel from 'bel';
 
+const HOUR = 1000 * 60 * 60;
 const storage = new Storage();
 let fileList = null;
-let $link = null;
 
 document.addEventListener('DOMContentLoaded', function() {
-  $link = $('#link');
   fileList = document.getElementById('file-list');
   toggleHeader();
-  // eslint-disable-next-line prefer-const
   Promise.all(
     storage.files.map(file => {
       const id = file.fileId;
@@ -33,180 +31,115 @@ function toggleHeader() {
   fileList.hidden = storage.files.length === 0;
 }
 
+function timeLeft(milliseconds) {
+  const minutes = Math.floor(milliseconds / 1000 / 60);
+  const hours = Math.floor(minutes / 60);
+  const seconds = Math.floor(milliseconds / 1000 % 60);
+  if (hours >= 1) {
+    return `${hours}h ${minutes % 60}m`;
+  } else if (hours === 0) {
+    return `${minutes}m ${seconds}s`;
+  }
+  return 'Expired';
+}
+
 function addFile(file) {
   if (!file) {
     return;
   }
-  const row = document.createElement('tr');
-  const name = document.createElement('td');
-  const link = document.createElement('td');
-  const $copyIcon = $('<img>', {
-    src: '/resources/copy-16.svg',
-    class: 'icon-copy',
-    'data-l10n-id': 'copyUrlHover',
-    disabled: !allowedCopy()
-  });
-  const expiry = document.createElement('td');
-  const del = document.createElement('td');
-  const $delIcon = $('<img>', {
-    src: '/resources/close-16.svg',
-    class: 'icon-delete',
-    'data-l10n-id': 'deleteButtonHover'
-  });
-  const popupDiv = document.createElement('div');
-  const $popupText = $('<div>', { class: 'popuptext' });
-  const cellText = document.createTextNode(file.name);
-
-  const url = file.url.trim() + `#${file.secretKey}`.trim();
-
-  $link.attr('value', url);
-  $('#copy-text')
-    .attr('data-l10n-args', `{"filename": "${file.name}"}`)
-    .attr('data-l10n-id', 'copyUrlFormLabelWithName');
-
-  $popupText.attr('tabindex', '-1');
-
-  name.appendChild(cellText);
-
-  // create delete button
-
-  const delSpan = document.createElement('span');
-  $(delSpan)
-    .addClass('icon-cancel-1')
-    .attr('data-l10n-id', 'deleteButtonHover');
-  del.appendChild(delSpan);
-
-  const linkSpan = document.createElement('span');
-  $(linkSpan).addClass('icon-docs').attr('data-l10n-id', 'copyUrlHover');
-
-  link.appendChild(linkSpan);
-  link.style.color = '#0A8DFF';
-
-  //copy link to clipboard when icon clicked
-  $copyIcon.on('click', () => {
-    // record copied event from upload list
-    metrics.copiedLink({ location: 'upload-list' });
-    copyToClipboard(url);
-    document.l10n.formatValue('copiedUrl').then(translated => {
-      link.innerHTML = translated;
-    });
-    setTimeout(() => {
-      const linkImg = document.createElement('img');
-      $(linkImg)
-        .addClass('icon-copy')
-        .attr('data-l10n-id', 'copyUrlHover')
-        .attr('src', '/resources/copy-16.svg');
-
-      $(link).html(linkImg);
-    }, 500);
-  });
-
   file.creationDate = new Date(file.creationDate);
-
+  const url = `${file.url}#${file.secretKey}`;
   const future = new Date();
   future.setTime(file.creationDate.getTime() + file.expiry);
+  const countdown = future.getTime() - Date.now();
 
-  let countdown = 0;
-  countdown = future.getTime() - Date.now();
-  let minutes = Math.floor(countdown / 1000 / 60);
-  let hours = Math.floor(minutes / 60);
-  let seconds = Math.floor(countdown / 1000 % 60);
+  const row = bel`
+  <tr>
+    <td>${file.name}</td>
+    <td>
+      <span class="icon-docs" data-l10n-id="copyUrlHover"></span>
+      <img onclick=${copyClick} src="/resources/copy-16.svg" class="icon-copy" data-l10n-id="copyUrlHover">
+      <span data-l10n-id="copiedUrl" class="text-copied" hidden="true"></span>
+    </td>
+    <td>${timeLeft(countdown)}</td>
+    <td>
+      <span class="icon-cancel-1" data-l10n-id="deleteButtonHover" title="Delete"></span>
+      <img onclick=${showPopup} src="/resources/close-16.svg" class="icon-delete" data-l10n-id="deleteButtonHover" title="Delete">
+      <div class="popup">
+        <div class="popuptext" onclick=${stopProp} onblur=${cancel} tabindex="-1">
+          <div class="popup-message" data-l10n-id="deletePopupText"></div>
+          <div class="popup-action">
+            <span class="popup-no" onclick=${cancel} data-l10n-id="deletePopupCancel"></span>
+            <span class="popup-yes" onclick=${deleteFile} data-l10n-id="deletePopupYes"></span>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  `;
+  const popup = row.querySelector('.popuptext');
+  const timeCol = row.querySelectorAll('td')[2];
+  if (!allowedCopy()) {
+    row.querySelector('.icon-copy').disabled = true;
+  }
 
-  const poll = () => {
-    countdown = future.getTime() - Date.now();
-    minutes = Math.floor(countdown / 1000 / 60);
-    hours = Math.floor(minutes / 60);
-    seconds = Math.floor(countdown / 1000 % 60);
-    let t;
-
-    if (hours >= 1) {
-      expiry.innerHTML = hours + 'h ' + minutes % 60 + 'm';
-      t = setTimeout(() => {
-        poll();
-      }, 60000);
-    } else if (hours === 0) {
-      expiry.innerHTML = minutes + 'm ' + seconds + 's';
-      t = window.setTimeout(() => {
-        poll();
-      }, 1000);
-    }
-    //remove from list when expired
-    if (countdown <= 0) {
-      storage.remove(file.fileId);
-      $(expiry).parents('tr').remove();
-      window.clearTimeout(t);
-      toggleHeader();
-    }
-  };
-
+  fileList.querySelector('tbody').appendChild(row);
+  toggleHeader();
   poll();
 
-  // create popup
-  popupDiv.classList.add('popup');
-  const $popupMessage = $('<div>', { class: 'popup-message' });
-  $popupMessage.attr('data-l10n-id', 'deletePopupText');
-  const $popupAction = $('<div>', { class: 'popup-action' });
-  const $popupNvmSpan = $('<span>', { class: 'popup-no' });
-  $popupNvmSpan.attr('data-l10n-id', 'deletePopupCancel');
-  const $popupDelSpan = $('<span>', { class: 'popup-yes' });
-  $popupDelSpan.attr('data-l10n-id', 'deletePopupYes');
+  function copyClick(e) {
+    metrics.copiedLink({ location: 'upload-list' });
+    copyToClipboard(url);
+    const icon = e.target;
+    const text = e.target.nextSibling;
+    icon.hidden = true;
+    text.hidden = false;
+    setTimeout(() => {
+      icon.hidden = false;
+      text.hidden = true;
+    }, 500);
+  }
 
-  $popupText.html([$popupMessage, $popupAction]);
-  $popupAction.html([$popupNvmSpan, $popupDelSpan]);
-
-  // add data cells to table row
-  row.appendChild(name);
-  $(link).append($copyIcon);
-  row.appendChild(link);
-  row.appendChild(expiry);
-  $(popupDiv).append($popupText);
-  $(del).append($delIcon);
-  del.appendChild(popupDiv);
-  row.appendChild(del);
-  $('tbody').append(row); //add row to table
-
-  // delete file
-  $popupText.find('.popup-yes').on('click', e => {
-    FileSender.delete(file.fileId, file.deleteToken).then(() => {
-      $(e.target).parents('tr').remove();
-      const ttl = ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
-      metrics
-        .deletedUpload({
-          size: file.size,
-          time: file.totalTime,
-          speed: file.uploadSpeed,
-          type: file.typeOfUpload,
-          location: 'upload-list',
-          ttl
-        })
-        .then(() => {
-          storage.remove(file.fileId);
-        });
+  function poll() {
+    const countdown = future.getTime() - Date.now();
+    if (countdown <= 0) {
+      storage.remove(file.fileId);
+      row.parentNode.removeChild(row);
       toggleHeader();
+    }
+    timeCol.textContent = timeLeft(countdown);
+    setTimeout(poll, countdown >= HOUR ? 60000 : 1000);
+  }
+
+  function deleteFile() {
+    FileSender.delete(file.fileId, file.deleteToken);
+    const ttl = ONE_DAY_IN_MS - (Date.now() - file.creationDate.getTime());
+    metrics.deletedUpload({
+      size: file.size,
+      time: file.totalTime,
+      speed: file.uploadSpeed,
+      type: file.typeOfUpload,
+      location: 'upload-list',
+      ttl
     });
-  });
+    row.parentNode.removeChild(row);
+    storage.remove(file.fileId);
+    toggleHeader();
+  }
 
-  // show popup
-  $delIcon.on('click', () => {
-    $popupText.addClass('show').focus();
-  });
+  function showPopup() {
+    popup.classList.add('show');
+    popup.focus();
+  }
 
-  // hide popup
-  $popupText.find('.popup-no').on('click', e => {
+  function cancel(e) {
     e.stopPropagation();
-    $popupText.removeClass('show');
-  });
+    popup.classList.remove('show');
+  }
 
-  $popupText.on('click', e => {
+  function stopProp(e) {
     e.stopPropagation();
-  });
-
-  //close when popup loses focus
-  $popupText.on('blur', () => {
-    $popupText.removeClass('show');
-  });
-
-  toggleHeader();
+  }
 }
 
 async function checkExistence(id) {
