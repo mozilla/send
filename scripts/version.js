@@ -10,7 +10,7 @@ try {
   // Whatever...
 }
 
-const filename = path.join(__dirname, '..', 'public', 'version.json');
+const filename = path.join(__dirname, '..', 'dist', 'version.json');
 const filedata = {
   commit,
   source: pkg.homepage,

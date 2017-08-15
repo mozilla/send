@@ -9,7 +9,8 @@ const storage = require('./storage.js');
 const Raven = require('raven');
 const crypto = require('crypto');
 const fs = require('fs');
-const version = require('../public/version.json');
+const version = require('../dist/version.json');
+const assets = require('../dist/manifest.json');
 
 if (conf.sentry_dsn) {
   Raven.config(conf.sentry_dsn).install();
@@ -19,7 +20,7 @@ const mozlog = require('./log.js');
 
 const log = mozlog('send.server');
 
-const STATIC_PATH = path.join(__dirname, '../public');
+const STATIC_PATH = path.join(__dirname, '../dist');
 
 const app = express();
 
@@ -36,6 +37,8 @@ function prodLangs() {
   return require('../package.json').availableLanguages.join(',');
 }
 
+let asset = name => assets[name];
+
 const availableLanguages = conf.l10n_dev ? allLangs() : prodLangs();
 
 if (conf.env === 'development') {
@@ -44,11 +47,16 @@ if (conf.env === 'development') {
   const config = require('../webpack.config.js');
   config.devtool = 'inline-source-map';
   const compiler = webpack(config);
-  app.use(
-    webpackDevMiddleware(compiler, {
-      publicPath: config.output.publicPath
-    })
-  );
+  const wdm = webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath
+  });
+  app.use(wdm);
+  asset = name => {
+    const f = wdm.fileSystem.readFileSync(
+      wdm.getFilenameFromUrl('/manifest.json')
+    );
+    return JSON.parse(f)[name];
+  };
 }
 
 app.engine(
@@ -57,6 +65,7 @@ app.engine(
     defaultLayout: 'main',
     partialsDir: 'views/partials/',
     helpers: {
+      asset,
       availableLanguages,
       l10nDev: conf.l10n_dev,
       baseUrl: conf.base_url,

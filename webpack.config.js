@@ -1,4 +1,5 @@
 const path = require('path');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
@@ -6,8 +7,8 @@ module.exports = {
     download: ['./frontend/src/download.js']
   },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'public'),
+    filename: '[name].[chunkhash].js',
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
   module: {
@@ -25,5 +26,6 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [new ManifestPlugin()]
 };

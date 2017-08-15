@@ -51,7 +51,8 @@
     "testpilot-ga": "^0.3.0",
     "webcrypto-liner": "^0.1.25",
     "webpack": "^3.5.4",
-    "webpack-dev-middleware": "^1.12.0"
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-manifest-plugin": "^1.3.1"
   },
   "engines": {
     "node": ">=8.2.0"
@@ -99,13 +100,15 @@
   ],
   "scripts": {
     "precommit": "lint-staged",
+    "clean": "rm -rf dist/",
     "build": "npm-run-all build:*",
-    "build:css": "postcss frontend/src/*.css -d public",
+    "build:css": "postcss frontend/src/*.css -d dist",
     "build:js": "webpack -p",
-    "build:vendor": "cp node_modules/l20n/dist/web/l20n.min.js node_modules/babel-polyfill/dist/polyfill.min.js public",
+    "build:vendor": "cp node_modules/l20n/dist/web/l20n.min.js node_modules/babel-polyfill/dist/polyfill.min.js dist",
     "build:version": "node scripts/version",
+    "build:public": "cp -R public/ dist",
     "contributors": "git shortlog -s | awk -F\\t '{print $2}' > CONTRIBUTORS",
-    "dev": "npm run build && npm start",
+    "dev": "npm run clean && npm run build && npm start",
     "format": "prettier '{,frontend/src/,scripts/,server/,test/**/!(bundle)}*.{js,css}' --single-quote --write",
     "get-prod-locales": "node scripts/get-prod-locales",
     "get-prod-locales:write": "npm run get-prod-locales -- --write",
