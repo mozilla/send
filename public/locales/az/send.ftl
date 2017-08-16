@@ -9,9 +9,11 @@ uploadPageDropMessage = Yükləmək üçün faylınızı buraya daşıyın
 uploadPageSizeMessage = Xidmətin daha yaxşı işləməsi üçün faylınız 1 GB-dan az olmalıdır
 uploadPageBrowseButton = Kompüterinizdən fayl seçin
     .title = Kompüterinizdən fayl seçin
+uploadPageBrowseButton1 = Yüklənəcək faylı seçin
+    .title = Yüklənəcək faylı seçin
 uploadPageMultipleFilesAlert = Birdən çox fayl və ya qovluq yükləmə hələlik dəstəklənmir.
 uploadPageBrowseButtonTitle = Fayl yüklə
-uploadingPageHeader = Faylınız yüklənir
+uploadingPageProgress = { $filename } ({ $size }) yüklənir
 importingFile = İdxal edilir…
 verifyingFile = Təsdiqlənir…
 encryptingFile = Şifrələnir...
@@ -50,6 +52,8 @@ downloadButtonLabel = Endir
     .title = Endir
 downloadNotification = Endirməniz tamamlandı.
 downloadFinish = Endirmə Tamamlandı
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } / { $totalSize })
 // Firefox Send is a brand name and should not be localized. Title text for button should be the same.
 sendYourFilesLink = Firefox Send Yoxla
     .title = Firefox Send Yoxla
