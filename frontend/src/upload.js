@@ -34,13 +34,13 @@ async function upload(event) {
 
   let file = '';
   if (clickOrDrop === 'drop') {
-    if (!event.originalEvent.dataTransfer.files[0]) {
+    if (!event.dataTransfer.files[0]) {
       uploadWindow.classList.remove('ondrag');
       return;
     }
     if (
-      event.originalEvent.dataTransfer.files.length > 1 ||
-      event.originalEvent.dataTransfer.files[0].size === 0
+      event.dataTransfer.files.length > 1 ||
+      event.dataTransfer.files[0].size === 0
     ) {
       uploadWindow.classList.remove('ondrag');
       document.l10n.formatValue('uploadPageMultipleFilesAlert').then(str => {
@@ -48,7 +48,7 @@ async function upload(event) {
       });
       return;
     }
-    file = event.originalEvent.dataTransfer.files[0];
+    file = event.dataTransfer.files[0];
   } else {
     file = event.target.files[0];
   }
