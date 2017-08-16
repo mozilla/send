@@ -32,7 +32,7 @@ async function upload(event) {
 
   storage.totalUploads += 1;
 
-  let file = null;
+  let file = '';
   if (clickOrDrop === 'drop') {
     if (!event.originalEvent.dataTransfer.files[0]) {
       uploadWindow.classList.remove('ondrag');
