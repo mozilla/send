@@ -16,7 +16,6 @@ deployment:
   latest:
     branch: master
     commands:
-    - npm run build
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - docker build -t mozilla/send:latest .
     - docker push mozilla/send:latest
@@ -24,14 +23,13 @@ deployment:
     tag: /.*/
     owner: mozilla
     commands:
-    - npm run build
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - docker build -t mozilla/send:$CIRCLE_TAG .
     - docker push mozilla/send:$CIRCLE_TAG
 
 test:
   override:
-    - npm run build:version
+    - npm run build
     - npm run lint
     - npm test
     - nsp check

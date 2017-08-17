@@ -1,12 +1,11 @@
 <div id="page-one" hidden>
-  <script defer src="/upload.js"></script>
   <div class="title" data-l10n-id="uploadPageHeader"></div>
   <div class="description">
     <div data-l10n-id="uploadPageExplainer"></div>
     <a href="https://testpilot.firefox.com/experiments/send" class="link" data-l10n-id="uploadPageLearnMore"></a>
   </div>
   <div class="upload-window" >
-    <div id="upload-img"><img data-l10n-id="uploadSvgAlt" src="/resources/upload.svg"/></div>
+    <div id="upload-img"><img data-l10n-id="uploadSvgAlt" src="../public/resources/upload.svg"/></div>
     <div id="upload-text" data-l10n-id="uploadPageDropMessage"></div>
     <span id="file-size-msg"><em data-l10n-id="uploadPageSizeMessage"></em></span>
     <form method="post" action="upload" enctype="multipart/form-data">
@@ -71,6 +70,6 @@
 <div id="upload-error" hidden="true">
   <div class="title" data-l10n-id="errorPageHeader"></div>
   <div class="expired-description" data-l10n-id="errorPageMessage"></div>
-  <img id="upload-error-img" data-l10n-id="errorAltText" src="/resources/illustration_error.svg"/>
+  <img id="upload-error-img" data-l10n-id="errorAltText" src="../public/resources/illustration_error.svg"/>
   <a class="send-new" href="/" data-state="errored" data-l10n-id="sendAnotherFileLink"></a>
 </div>

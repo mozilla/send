@@ -8,5 +8,6 @@ services:
       - "1443:1443"
     environment:
       - REDIS_HOST=redis
+      - NODE_ENV=production
   redis:
     image: redis:alpine

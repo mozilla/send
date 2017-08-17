@@ -13,29 +13,28 @@
   <meta property="og:description" content="{{description}}"/>
   <meta name="twitter:description" content="{{description}}"/>
   <meta name="twitter:card" content="summary"/>
-  <meta property="og:image" content="{{baseUrl}}/resources/send-fb.jpg"/>
-  <meta name="twitter:image" content="{{baseUrl}}/resources/send-twitter.jpg"/>
+  <meta property="og:image" content="{{baseUrl}}${require('../public/resources/send-fb.jpg')}"/>
+  <meta name="twitter:image" content="{{baseUrl}}${require('../public/resources/send-twitter.jpg')}"/>
   <meta property="og:url" content="{{baseUrl}}"/>
 
   <title>{{title}}</title>
 
-  <link rel="stylesheet" type="text/css" href="/main.css" />
+  <link rel="stylesheet" type="text/css" href="${require('../frontend/src/main.css')}" />
   {{#if fira}}
   <link rel="stylesheet" type="text/css" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   {{/if}}
 
-  <link rel="icon" type="image/png" href="/resources/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="${require('../public/resources/favicon-32x32.png')}" sizes="32x32" />
   <link rel="localization" href="/locales/{locale}/send.ftl">
 
   <script src="/jsconfig.js"></script>
-  <script src="/polyfill.min.js"></script>
   <script defer src="/l20n.min.js"></script>
 </head>
 <body>
   <header class="header">
     <div class="send-logo">
       <a href="/">
-        <img src="/resources/send_logo.svg" alt="Send"/><h1 class="site-title">Send</h1>
+        <img src="../public/resources/send_logo.svg" alt="Send"/><h1 class="site-title">Send</h1>
       </a>
       <div class="site-subtitle">
         <a href="https://testpilot.firefox.com">Firefox Test Pilot</a>
@@ -54,7 +53,7 @@
   </div>
   <div class="footer">
     <div class="legal-links">
-      <a href="https://www.mozilla.org" role="presentation"><img class="mozilla-logo" src="/resources/mozilla-logo.svg" alt="mozilla"/></a>
+      <a href="https://www.mozilla.org" role="presentation"><img class="mozilla-logo" src="../public/resources/mozilla-logo.svg" alt="mozilla"/></a>
       <a href="https://www.mozilla.org/about/legal" data-l10n-id="footerLinkLegal">Legal</a>
       <a href="https://testpilot.firefox.com/about" data-l10n-id="footerLinkAbout">About Test Pilot</a>
       <a href="/legal" data-l10n-id="footerLinkPrivacy">Privacy</a>
@@ -62,8 +61,8 @@
       <a href="https://www.mozilla.org/privacy/websites/#cookies" data-l10n-id="footerLinkCookies">Cookies</a>
     </div>
     <div class="social-links">
-      <a href="https://github.com/mozilla/send" role="presentation"><img class="github" src="/resources/github-icon.svg" alt="github"/></a>
-      <a href="https://twitter.com/FxTestPilot" role="presentation"><img class="twitter" src="/resources/twitter-icon.svg" alt="twitter"/></a>
+      <a href="https://github.com/mozilla/send" role="presentation"><img class="github" src="../public/resources/github-icon.svg" alt="github"/></a>
+      <a href="https://twitter.com/FxTestPilot" role="presentation"><img class="twitter" src="../public/resources/twitter-icon.svg" alt="twitter"/></a>
     </div>
   </div>
 </body>
