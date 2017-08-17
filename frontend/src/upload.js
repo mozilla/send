@@ -227,7 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
           //disable button for 3s
           copyBtn.disabled = true;
           link.disabled = true;
-          copyBtn.removeAttribute('data-l10n-id');
           copyBtn.innerHTML = `<img src="${checkImg}" class="icon-check"></img>`;
           setTimeout(() => {
             copyBtn.disabled = !allowedCopy();
