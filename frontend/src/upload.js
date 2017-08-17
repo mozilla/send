@@ -13,6 +13,7 @@ import Storage from './storage';
 import * as metrics from './metrics';
 import * as progress from './progress';
 import * as fileList from './fileList';
+import checkImg from '../../public/resources/check-16.svg';
 
 const storage = new Storage();
 
@@ -219,8 +220,8 @@ document.addEventListener('DOMContentLoaded', function() {
           //disable button for 3s
           copyBtn.disabled = true;
           link.disabled = true;
-          copyBtn.innerHtml =
-            '<img src="/resources/check-16.svg" class="icon-check"></img>';
+          copyBtn.removeAttribute('data-l10n-id');
+          copyBtn.innerHTML = `<img src="${checkImg}" class="icon-check"></img>`;
           setTimeout(() => {
             copyBtn.disabled = !allowedCopy();
             copyBtn.setAttribute('data-l10n-id', 'copyUrlFormButton');
