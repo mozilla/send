@@ -33,7 +33,6 @@ async function download() {
   window.addEventListener('unload', unloadHandler);
 
   fileReceiver.on('progress', data => {
-    console.log(`${data[0]}/${data[1]}`);
     progress.setProgress({ complete: data[0], total: data[1] });
   });
 

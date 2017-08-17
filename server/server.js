@@ -194,7 +194,7 @@ app.get('/assets/download/:id', async (req, res) => {
     const contentLength = await storage.length(id);
     res.writeHead(200, {
       'Content-Disposition': `attachment; filename=${meta.filename}`,
-      'Content-Type': meta.mimeType,
+      'Content-Type': 'application/octet-stream',
       'Content-Length': contentLength,
       'X-File-Metadata': JSON.stringify(meta)
     });
