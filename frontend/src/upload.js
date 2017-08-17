@@ -118,6 +118,13 @@ async function upload(event) {
 
         link.setAttribute('value', `${info.url}#${info.secretKey}`);
 
+        const copyText = document.getElementById('copy-text');
+        copyText.setAttribute(
+          'data-l10n-args',
+          JSON.stringify({ filename: file.name })
+        );
+        copyText.setAttribute('data-l10n-id', 'copyUrlFormLabelWithName');
+
         metrics.completedUpload({
           size: file.size,
           time,
