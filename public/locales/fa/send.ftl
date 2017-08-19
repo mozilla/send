@@ -5,6 +5,7 @@ siteFeedback = بازخورد
 uploadPageHeader = اشتراک‌گذاری پرونده‌ها، رمزنگاری شده و خصوصی
 uploadPageLearnMore = بیشتر بدانید
 uploadPageDropMessage = برای شروع بارگذاری پرونده‌های خود را اینجا بیاندازید
+uploadPageSizeMessage = برای بیشترین قابلیت اطمینان، بهتر است که پرونده‌تان کمتر از ۱ گیگابایت باشد
 uploadPageBrowseButtonTitle = بارگذاری پرونده
 uploadingPageProgress = در حال بارگذاری پرونده { $filename } ({ $size })
 importingFile = در حال وارد کردن…
