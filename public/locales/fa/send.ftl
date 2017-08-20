@@ -83,6 +83,7 @@ deleteFileList = حذف
 nevermindButton = بیخیال
 legalHeader = شرایط و حریم‌خصوصی
 legalNoticeTestPilot = Firefox Send در حال حاضر در نسخه آزمایشی خود به صورت می‌دهد و تحت عنوان خلبان آموزشی <a>شرایط و خدمات</a> و <a>موارد حریم خصوصی </a> کار می‌کند. شما می‌توانید اطلاعات بیشتر در مورد این آزمایش و اطلاعات که ذخیره می‌کنید را از <a> اینجا </a> کسب کنید.
+legalNoticeMozilla = استفاده از Firefox Send همچنین منصوب به موزیلا است.  <a>پایگاه اینترنتی نکات حریم شخصی </a> و <a> پایگاه اطلاع رسانی شرایط خدمات و استفاده </a>.
 deletePopupText = حذف این پرونده؟
 deletePopupYes = بله
 deletePopupCancel = انصراف
