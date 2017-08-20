@@ -49,3 +49,5 @@ Pull requests are always welcome! Feel free to check out the list of ["good firs
 ## License
 
 [Mozilla Public License Version 2.0](LICENSE)
+
+<img src="http://cdn.ttgtmedia.com/ITKE/cwblogs/open-source-insider/Mozilla%20PL.png" width="150"></img>
