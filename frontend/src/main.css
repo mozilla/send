@@ -160,7 +160,7 @@ a {
   margin: 20px auto;
   text-align: center;
   max-width: 520px;
-  font-family: 'SF Pro Display', sans-serif;
+  font-family: 'SF Pro Text', sans-serif;
   word-wrap: break-word;
 }
 
@@ -214,7 +214,7 @@ a {
   font-size: 22px;
   color: #737373;
   margin: 20px 0 10px;
-  font-family: 'SF Pro Display', sans-serif;
+  font-family: 'SF Pro Text', sans-serif;
 }
 
 #browse {
@@ -434,9 +434,9 @@ tbody {
   position: absolute;
   letter-spacing: -0.78px;
   font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
-  top: 58px;
+  top: 50px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-45%);
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -482,6 +482,8 @@ tbody {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+  max-width: 640px;
 }
 
 #share-window-r > div {
@@ -492,7 +494,7 @@ tbody {
 #copy {
   display: flex;
   flex-wrap: nowrap;
-  width: 640px;
+  width: 100%;
 }
 
 #copy-text {
@@ -509,9 +511,9 @@ tbody {
   height: 56px;
   border: 1px solid #0297f8;
   border-radius: 6px 0 0 6px;
-  font-size: 24px;
+  font-size: 20px;
   color: #737373;
-  font-family: 'SF Pro Display', sans-serif;
+  font-family: 'SF Pro Text', sans-serif;
   letter-spacing: 0;
   line-height: 23px;
   font-weight: 300;
@@ -546,7 +548,6 @@ tbody {
   background: #05a700;
   border: 1px solid #05a700;
   cursor: auto;
-  opacity: 0.3;
 }
 
 #delete-file {
@@ -731,7 +732,7 @@ tbody {
 }
 
 .legal-links {
-  width: 81vw;
+  max-width: 81vw;
   display: flex;
   align-items: center;
   flex-direction: row;
