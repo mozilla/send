@@ -12,4 +12,4 @@ RUN npm install --production && npm cache clean --force
 ENV PORT=1443
 EXPOSE $PORT
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "prod"]

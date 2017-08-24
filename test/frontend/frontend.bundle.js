@@ -12,11 +12,11 @@ window.Raven = {
 };
 
 window.FakeFile = FakeFile;
-window.FileSender = require('../../frontend/src/fileSender');
-window.FileReceiver = require('../../frontend/src/fileReceiver');
+window.FileSender = require('../../app/fileSender');
+window.FileReceiver = require('../../app/fileReceiver');
 window.sinon = require('sinon');
 window.server = window.sinon.fakeServer.create();
 window.assert = require('assert');
-const utils = require('../../frontend/src/utils');
+const utils = require('../../app/utils');
 window.hexToArray = utils.hexToArray;
 window.arrayToHex = utils.arrayToHex;

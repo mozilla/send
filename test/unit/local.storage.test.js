@@ -2,8 +2,6 @@ const assert = require('assert');
 const sinon = require('sinon');
 const proxyquire = require('proxyquire');
 
-// const conf = require('../server/config.js');
-
 const redisStub = {};
 const exists = sinon.stub();
 const hget = sinon.stub();
@@ -35,7 +33,7 @@ logStub.error = sinon.stub();
 const storage = proxyquire('../../server/storage', {
   redis: redisStub,
   fs: fsStub,
-  './log.js': function() {
+  './log': function() {
     return logStub;
   }
 });

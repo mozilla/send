@@ -1,6 +1,2 @@
-.DS_Store
-dist
 node_modules
-static/*
-!static/info.txt
-test/frontend/bundle.js
+dist

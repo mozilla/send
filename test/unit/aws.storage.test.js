@@ -46,11 +46,11 @@ const awsStub = {
 const storage = proxyquire('../../server/storage', {
   redis: redisStub,
   fs: fsStub,
-  './log.js': function() {
+  './log': function() {
     return logStub;
   },
   'aws-sdk': awsStub,
-  './config.js': {
+  './config': {
     s3_bucket: 'test'
   }
 });

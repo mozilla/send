@@ -2,13 +2,13 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const mqpacker = require('css-mqpacker');
 
-const conf = require('./server/config');
+const config = require('./server/config');
 
 const options = {
   plugins: [autoprefixer, mqpacker, cssnano]
 };
 
-if (conf.env === 'development') {
+if (config.env === 'development') {
   options.map = { inline: true };
 }
 
