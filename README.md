@@ -11,7 +11,7 @@ A file sharing experiment which allows you to send encrypted files to other user
 
 ## Requirements
 
-- [Node.js 8+](https://nodejs.org/)
+- [Node.js 8.2+](https://nodejs.org/)
 - [Redis server](https://redis.io/)
 
 **NOTE:** To run the project, make sure you have a Redis server running locally:
