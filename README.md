@@ -47,7 +47,7 @@ npm start
 
 ## Configuration
 
-The server is configured with environment variables. See [server/config.js] for all options and [docs/docker.md](doc/docker.md) for examples.
+The server is configured with environment variables. See [server/config.js](server/config.js) for all options and [docs/docker.md](doc/docker.md) for examples.
 
 ---
 
