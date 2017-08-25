@@ -16,17 +16,23 @@ A file sharing experiment which allows you to send encrypted files to other user
 ## Requirements
 
 - [Node.js 8.2+](https://nodejs.org/)
-- [Redis server](https://redis.io/)
+- [Redis server](https://redis.io/) (optional for development)
+- [AWS S3](https://aws.amazon.com/s3/) or compatible service. (optional)
 
-**NOTE:** To run the project, make sure you have a Redis server running locally:
+---
+
+## Development
+
+To start an ephemeral development server run:
 
 ```sh
-$ redis-server /usr/local/etc/redis.conf
+npm install
+npm start
 ```
 
 ---
 
-## How to use it
+## Commands
 
 | Command          | Description |
 |------------------|-------------|
@@ -36,6 +42,12 @@ $ redis-server /usr/local/etc/redis.conf
 | `npm start`      | Runs the server in development configuration.
 | `npm run build`  | Builds the production assets.
 | `npm run prod`   | Runs the server in production configuration.
+
+---
+
+## Configuration
+
+The server is configured with environment variables. See [server/config.js] for all options and [docs/docker.md](doc/docker.md) for examples.
 
 ---
 

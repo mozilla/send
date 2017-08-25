@@ -10,7 +10,12 @@ const mozlog = require('./log');
 
 const log = mozlog('send.storage');
 
-const redis = require('redis');
+const redis_lib =
+  config.env === 'development' && config.redis_host === 'localhost'
+    ? 'redis-mock'
+    : 'redis';
+
+const redis = require(redis_lib);
 const redis_client = redis.createClient({
   host: config.redis_host,
   connect_timeout: 10000
