@@ -7,9 +7,7 @@ module.exports = function(state) {
     <div id="download">
       <div class="title">${state.translate('expiredPageHeader')}</div>
       <div class="share-window">
-        <img src="${assets.get(
-          'illustration_expired.svg'
-        )}" id="expired-img" data-l10n-id="linkExpiredAlt"/>
+        <img src="${assets.get('illustration_expired.svg')}" id="expired-img">
       </div>
       <div class="expired-description">${state.translate(
         'uploadPageExplainer'
