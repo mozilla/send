@@ -69,7 +69,7 @@ module.exports = function(app) {
     res.sendStatus(200);
   });
 
-  app.get('__heartbeat__', async (req, res) => {
+  app.get('/__heartbeat__', async (req, res) => {
     try {
       await storage.ping();
       res.sendStatus(200);
