@@ -1,4 +1,4 @@
-const conf = require('./config.js');
+const conf = require('./config');
 
 const isProduction = conf.env === 'production';
 

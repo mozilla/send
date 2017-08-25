@@ -1,17 +1,18 @@
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
-const conf = require('./config.js');
+const config = require('./config');
+const { tmpdir } = require('os');
 const fs = require('fs');
 const path = require('path');
 
-const mozlog = require('./log.js');
+const mozlog = require('./log');
 
 const log = mozlog('send.storage');
 
 const redis = require('redis');
 const redis_client = redis.createClient({
-  host: conf.redis_host,
+  host: config.redis_host,
   connect_timeout: 10000
 });
 
@@ -19,7 +20,9 @@ redis_client.on('error', err => {
   log.error('Redis:', err);
 });
 
-if (conf.s3_bucket) {
+let tempDir = null;
+
+if (config.s3_bucket) {
   module.exports = {
     filename: filename,
     exists: exists,
@@ -36,6 +39,8 @@ if (conf.s3_bucket) {
     metadata
   };
 } else {
+  tempDir = fs.mkdtempSync(`${tmpdir()}${path.sep}send-`);
+  log.info('tempDir', tempDir);
   module.exports = {
     filename: filename,
     exists: exists,
@@ -113,7 +118,7 @@ function setField(id, key, value) {
 function localLength(id) {
   return new Promise((resolve, reject) => {
     try {
-      resolve(fs.statSync(path.join(__dirname, '../static', id)).size);
+      resolve(fs.statSync(path.join(tempDir, id)).size);
     } catch (err) {
       reject();
     }
@@ -121,12 +126,12 @@ function localLength(id) {
 }
 
 function localGet(id) {
-  return fs.createReadStream(path.join(__dirname, '../static', id));
+  return fs.createReadStream(path.join(tempDir, id));
 }
 
 function localSet(newId, file, filename, meta) {
   return new Promise((resolve, reject) => {
-    const filepath = path.join(__dirname, '../static', newId);
+    const filepath = path.join(tempDir, newId);
     const fstream = fs.createWriteStream(filepath);
     file.pipe(fstream);
     file.on('limit', () => {
@@ -135,7 +140,7 @@ function localSet(newId, file, filename, meta) {
     });
     fstream.on('finish', () => {
       redis_client.hmset(newId, meta);
-      redis_client.expire(newId, conf.expire_seconds);
+      redis_client.expire(newId, config.expire_seconds);
       log.info('localSet:', 'Upload Finished of ' + newId);
       resolve(meta.delete);
     });
@@ -156,7 +161,7 @@ function localDelete(id, delete_token) {
       } else {
         redis_client.del(id);
         log.info('Deleted:', id);
-        resolve(fs.unlinkSync(path.join(__dirname, '../static', id)));
+        resolve(fs.unlinkSync(path.join(tempDir, id)));
       }
     });
   });
@@ -165,7 +170,7 @@ function localDelete(id, delete_token) {
 function localForceDelete(id) {
   return new Promise((resolve, reject) => {
     redis_client.del(id);
-    resolve(fs.unlinkSync(path.join(__dirname, '../static', id)));
+    resolve(fs.unlinkSync(path.join(tempDir, id)));
   });
 }
 
@@ -179,7 +184,7 @@ function localPing() {
 
 function awsLength(id) {
   const params = {
-    Bucket: conf.s3_bucket,
+    Bucket: config.s3_bucket,
     Key: id
   };
   return new Promise((resolve, reject) => {
@@ -195,7 +200,7 @@ function awsLength(id) {
 
 function awsGet(id) {
   const params = {
-    Bucket: conf.s3_bucket,
+    Bucket: config.s3_bucket,
     Key: id
   };
 
@@ -208,7 +213,7 @@ function awsGet(id) {
 
 function awsSet(newId, file, filename, meta) {
   const params = {
-    Bucket: conf.s3_bucket,
+    Bucket: config.s3_bucket,
     Key: newId,
     Body: file
   };
@@ -221,7 +226,7 @@ function awsSet(newId, file, filename, meta) {
   return upload.promise().then(
     () => {
       redis_client.hmset(newId, meta);
-      redis_client.expire(newId, conf.expire_seconds);
+      redis_client.expire(newId, config.expire_seconds);
     },
     err => {
       if (hitLimit) {
@@ -240,7 +245,7 @@ function awsDelete(id, delete_token) {
         reject();
       } else {
         const params = {
-          Bucket: conf.s3_bucket,
+          Bucket: config.s3_bucket,
           Key: id
         };
 
@@ -256,7 +261,7 @@ function awsDelete(id, delete_token) {
 function awsForceDelete(id) {
   return new Promise((resolve, reject) => {
     const params = {
-      Bucket: conf.s3_bucket,
+      Bucket: config.s3_bucket,
       Key: id
     };
 
@@ -269,6 +274,6 @@ function awsForceDelete(id) {
 
 function awsPing() {
   return localPing().then(() =>
-    s3.headBucket({ Bucket: conf.s3_bucket }).promise()
+    s3.headBucket({ Bucket: config.s3_bucket }).promise()
   );
 }

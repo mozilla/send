@@ -30,11 +30,12 @@ $ redis-server /usr/local/etc/redis.conf
 
 | Command          | Description |
 |------------------|-------------|
-| `npm run dev`    | Builds and starts the web server locally for development.
 | `npm run format` | Formats the frontend and server code using **prettier**.
 | `npm run lint`   | Lints the CSS and JavaScript code.
-| `npm start`      | Starts the Express web server.
 | `npm test`       | Runs the suite of mocha tests.
+| `npm start`      | Runs the server in development configuration.
+| `npm run build`  | Builds the production assets.
+| `npm run prod`   | Runs the server in production configuration.
 
 ---
 
