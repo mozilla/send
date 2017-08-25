@@ -1,3 +1,14 @@
+## Setup
+
+Before building the Docker image, you must build the production assets:
+
+```sh
+npm run build
+```
+
+Then you can run either `docker build` or `docker-compose up`.
+
+
 ## Environment variables:
 
 | Name             | Description
