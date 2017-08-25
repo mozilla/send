@@ -4,7 +4,9 @@ const fs = require('fs');
 const path = require('path');
 
 function allLangs() {
-  const langs = fs.readdirSync(path.join(__dirname, '..', 'public', 'locales'));
+  const langs = fs.readdirSync(
+    path.join(__dirname, '..', 'dist', 'public', 'locales')
+  );
   langs.unshift('en-US'); // default first, TODO change for fluent-langneg
   return langs;
 }
