@@ -17,42 +17,49 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [
-          path.resolve(__dirname, 'app'),
-          path.resolve(__dirname, 'common'),
-          path.resolve(__dirname, 'node_modules/testpilot-ga/src')
-        ],
-        options: {
-          babelrc: false,
-          presets: [['env', { modules: false }], 'stage-2'],
-          plugins: ['yo-yoify']
-        }
-      },
-      {
-        test: /\.js$/,
-        include: [path.dirname(require.resolve('fluent'))],
-        use: [
+        oneOf: [
           {
-            loader: 'expose-loader',
-            options: 'fluent'
+            include: require.resolve('./assets/cryptofill'),
+            use: [
+              {
+                loader: 'file-loader',
+                options: {
+                  name: '[name].[hash:8].[ext]'
+                }
+              }
+            ]
+          },
+          {
+            include: [path.dirname(require.resolve('fluent'))],
+            use: [
+              {
+                loader: 'expose-loader',
+                options: 'fluent'
+              },
+              {
+                loader: 'babel-loader',
+                options: {
+                  presets: [['env', { modules: false }]]
+                }
+              }
+            ]
           },
           {
             loader: 'babel-loader',
+            include: [
+              path.resolve(__dirname, 'app'),
+              path.resolve(__dirname, 'common'),
+              path.resolve(__dirname, 'node_modules/testpilot-ga/src')
+            ],
             options: {
-              presets: [['env', { modules: false }]]
+              babelrc: false,
+              presets: [['env', { modules: false }], 'stage-2'],
+              plugins: ['yo-yoify']
             }
-          }
-        ]
-      },
-      {
-        test: require.resolve('./assets/cryptofill'),
-        use: [
+          },
           {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[hash:8].[ext]'
-            }
+            include: [path.resolve(__dirname, 'node_modules')],
+            loader: 'webpack-unassert-loader'
           }
         ]
       },
