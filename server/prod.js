@@ -23,4 +23,4 @@ routes(app);
 
 app.use(pages.notfound);
 
-app.listen(1443);
+app.listen(config.listen_port);
