@@ -24,7 +24,7 @@ var SENTRY_ID = '${config.sentry_id}';
 
 let ga = '';
 if (config.analytics_id) {
-  ga = `var GOOGLE_ANALYTICS_ID = ${config.analytics_id};`;
+  ga = `var GOOGLE_ANALYTICS_ID = '${config.analytics_id}';`;
 }
 
 /* eslint-disable no-useless-escape */
