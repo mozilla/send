@@ -5,7 +5,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
-    vendor: ['babel-polyfill', 'raven-js', 'fluent', 'choo'],
+    vendor: ['babel-polyfill', 'fluent'],
     app: ['./app/main.js']
   },
   output: {
@@ -124,7 +124,8 @@ module.exports = {
     new webpack.IgnorePlugin(/require-from-string/),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
+      name: 'vendor',
+      minChunks: ({ resource }) => /node_modules/.test(resource)
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'runtime'
