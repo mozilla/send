@@ -8,9 +8,7 @@ uploadPageLearnMore = Les mer
 uploadPageDropMessage = Slipp din fil her for å starte opplastingen
 uploadPageSizeMessage = For den mest problemfrie bruken, er det best å holde filen under 1 GB
 uploadPageBrowseButton = Velg en fil på din datamaskin
-    .title = Velg en fil på din datamaskin
 uploadPageBrowseButton1 = Velg en fil til å laste opp
-    .title = Velg en fil til å laste opp
 uploadPageMultipleFilesAlert = Opplasting av flere filer eller en mappe støttes ikke for øyeblikket.
 uploadPageBrowseButtonTitle = Last opp fil
 uploadingPageProgress = Laster opp { $filename } ({ $size })
@@ -21,52 +19,39 @@ decryptingFile = Dekrypterer...
 notifyUploadDone = Opplastingen din er ferdig.
 uploadingPageMessage = Når filopplastingen din er ferdig, kan du angi utløpsalternativer.
 uploadingPageCancel = Avbryt opplasting
-    .title = Avbryt opplasting
 uploadCancelNotification = Din opplasting ble avbrutt
 uploadingPageLargeFileMessage = Denne filen er stor, og det kan ta litt tid å laste opp. Vent litt!
 uploadingFileNotification = Varsle meg når opplastingen er ferdig.
 uploadSuccessConfirmHeader = Klar til å sende
-uploadSvgAlt
-    .alt = Last opp
+uploadSvgAlt = Last opp
 uploadSuccessTimingHeader = Lenken til filen din utløper etter 1 nedlasting eller om 24 timer.
 copyUrlFormLabelWithName = Kopier og del linken for å sende filen: { $filename }
-// Note: Title text for button should be the same.
 copyUrlFormButton = Kopier til utklippstavle
-    .title = Kopier til utklippstavle
 copiedUrl = Kopiert!
-// Note: Title text for button should be the same.
 deleteFileButton = Slett fil
-    .title = Slett fil
-// Note: Title text for button should be the same.
 sendAnotherFileLink = Send en annen fil
-    .title = Send en annen fil
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText
-    .alt = Last ned
+downloadAltText = Last ned
 downloadFileName = Last ned { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Din venn sender deg en fil med Firefox Send, en tjeneste som lar deg dele filer med en sikker, privat og kryptert lenke, som automatisk utløper, for å sikre at ting ikke forblir på nettet for alltid.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Last ned
-    .title = Last ned
 downloadNotification = Nedlastingen er fullført.
 downloadFinish = Nedlastingen er fullført.
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } av { $totalSize })
-// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+// Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Prøv Firefox Send
-    .title = Prøv Firefox Send
 downloadingPageProgress = Laster ned { $filename } ({ $size })
 downloadingPageMessage = La denne fanen være åpen mens vi henter filen og dekrypterer den.
-errorAltText
-    .alt = Opplastingsfeil
+errorAltText = Opplastingsfeil
 errorPageHeader = Det oppstod en feil.
 errorPageMessage = Det har oppstått en feil under opplasting av filen.
 errorPageLink = Send en annen fil
 fileTooBig = Filen er for stor til å laste opp. Det må være mindre enn { $size }.
-linkExpiredAlt
-    .alt = Lenke utløpt
+linkExpiredAlt = Lenke utløpt
 expiredPageHeader = Denne lenken er utløpt eller har aldri eksistert i utgangspunktet!
 notSupportedHeader = Din nettleser er ikke støttet.
 // Firefox Send is a brand name and should not be localized.
@@ -87,10 +72,8 @@ legalNoticeMozilla = Bruk av Firefox Send-nettsiden er også underlagt Mozillas 
 deletePopupText = Slette denne filen?
 deletePopupYes = Ja
 deletePopupCancel = Avbryt
-deleteButtonHover
-    .title = Slett
-copyUrlHover
-    .title = Kopier URL
+deleteButtonHover = Slett
+copyUrlHover = Kopier URL
 footerLinkLegal = Juridisk informasjon
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Om Test Pilot

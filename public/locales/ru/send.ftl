@@ -8,9 +8,7 @@ uploadPageLearnMore = Подробнее
 uploadPageDropMessage = Перетащите свой файл сюда, чтобы начать загрузку
 uploadPageSizeMessage = Для более надёжной работы сервиса, размер вашего файла не должен превышать 1ГБ.
 uploadPageBrowseButton = Выбрать файл с моего компьютера
-    .title = Выбрать файл с моего компьютера
 uploadPageBrowseButton1 = Выбрать файл для загрузки
-    .title = Выбрать файл для загрузки
 uploadPageMultipleFilesAlert = Загрузка нескольких файлов или папок в настоящее время не поддерживается.
 uploadPageBrowseButtonTitle = Загрузить файл
 uploadingPageProgress = Загружаю { $filename } ({ $size })
@@ -21,52 +19,39 @@ decryptingFile = Расшифровка...
 notifyUploadDone = Ваша загрузка завершена.
 uploadingPageMessage = Как только вы загрузите свой файл, вы сможете установить срок хранения.
 uploadingPageCancel = Отменить загрузку
-    .title = Отменить загрузку
 uploadCancelNotification = Ваша загрузка была отменена.
 uploadingPageLargeFileMessage = Этот файл довольно большой и его загрузка может занять продолжительное время. Держитесь!
 uploadingFileNotification = Оповестить меня, когда загрузка завершится.
 uploadSuccessConfirmHeader = Готов к отправке
-uploadSvgAlt
-    .alt = Загрузить
+uploadSvgAlt = Загрузить
 uploadSuccessTimingHeader = Ссылка на ваш файл просрочится после 1 загрузки файла или через 24 часа.
 copyUrlFormLabelWithName = Скопировать и поделиться ссылкой на отправку вашего файла: { $filename }
-// Note: Title text for button should be the same.
 copyUrlFormButton = Скопировать в буфер обмена
-    .title = Скопировать в буфер обмена
 copiedUrl = Скопировано!
-// Note: Title text for button should be the same.
 deleteFileButton = Удалить файл
-    .title = Удалить файл
-// Note: Title text for button should be the same.
 sendAnotherFileLink = Отправить другой файл
-    .title = Отправить другой файл
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText
-    .alt = Загрузить
+downloadAltText = Загрузить
 downloadFileName = Загрузить { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Ваш друг отправил вам файл с помощью Firefox Send, сервиса, который позволяет вам делиться файлами, используя безопасные, приватные и зашифрованные ссылки, которые автоматически просрачиваются, чтобы ваши файлы не остались в онлайне навсегда.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Скачать
-    .title = Скачать
 downloadNotification = Ваша загрузка завершена.
 downloadFinish = Загрузка завершена
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } из { $totalSize })
-// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+// Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Попробовать Firefox Send
-    .title = Попробовать Firefox Send
 downloadingPageProgress = Загрузка { $filename } ({ $size })
 downloadingPageMessage = Пожалуйста, оставьте эту вкладку открытой, пока мы загружаем ваш файл и расшифровываем его.
-errorAltText
-    .alt = Ошибка загрузки
+errorAltText = Ошибка загрузки
 errorPageHeader = Что-то пошло не так!
 errorPageMessage = Произошла ошибка при загрузке файла.
 errorPageLink = Отправить другой файл.
 fileTooBig = Этот файл слишком большой для загрузки. Он должен быть меньше { $size }.
-linkExpiredAlt
-    .alt = Ссылка просрочена
+linkExpiredAlt = Ссылка просрочена
 expiredPageHeader = Это ссылка просрочена или никогда не существовала!
 notSupportedHeader = Ваш браузер не поддерживается.
 // Firefox Send is a brand name and should not be localized.
@@ -87,10 +72,8 @@ legalNoticeMozilla = Использование сайта Firefox Send такж
 deletePopupText = Удалить этот файл?
 deletePopupYes = Да
 deletePopupCancel = Отмена
-deleteButtonHover
-    .title = Удалить
-copyUrlHover
-    .title = Скопировать URL
+deleteButtonHover = Удалить
+copyUrlHover = Скопировать URL
 footerLinkLegal = Права
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = О программе Лётчика-испытателя

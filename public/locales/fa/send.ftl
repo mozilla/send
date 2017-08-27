@@ -8,9 +8,7 @@ uploadPageLearnMore = بیشتر بدانید
 uploadPageDropMessage = برای شروع بارگذاری پرونده‌های خود را اینجا بیاندازید
 uploadPageSizeMessage = برای بیشترین قابلیت اطمینان، بهتر است که پرونده‌تان کمتر از ۱ گیگابایت باشد
 uploadPageBrowseButton = یک پرونده را از روی کامپیوتر خود انتخاب کنید
-    .title = یک پرونده را از روی کامپیوتر خود انتخاب کنید
 uploadPageBrowseButton1 = یک پرونده را برای بارگذاری انتخاب کنید
-    .title = یک پرونده را برای بارگذاری انتخاب کنید
 uploadPageMultipleFilesAlert = بارگذاری چندین پرونده یا یک پوشه در حال حاضر پشتیبانی نمی‌شود.
 uploadPageBrowseButtonTitle = بارگذاری پرونده
 uploadingPageProgress = در حال بارگذاری پرونده { $filename } ({ $size })
@@ -21,52 +19,39 @@ decryptingFile = در حال رمزگشایی…
 notifyUploadDone = بارگذاری شما پایان یافت.
 uploadingPageMessage = به محض بارگذاری پرونده شما قادر خواهید بود برای آن گزینه انقضا تعیین کنید.
 uploadingPageCancel = لغو بارگذاری
-    .title = لغو بارگذاری
 uploadCancelNotification = بارگذاری شما لغو شد
 uploadingPageLargeFileMessage = پرونده بزرگ است و ممکن است بارگذاری آن مدتی طول بکشد. محکم بشینید!
 uploadingFileNotification = هر وقت بارگذاری تمام شد به من اطلاع بده.
 uploadSuccessConfirmHeader = آماده برای ارسال
 uploadSvgAlt = بارگذاری
-    .alt = بارگذاری
 uploadSuccessTimingHeader = پیوند به پرونده شما بعد از ۱ بار دانلود یا ۲۴ ساعت حذف خواهد شد.
 copyUrlFormLabelWithName = برای ارسال پرونده پیوند آن را رونوشت و به اشتراک بگذارید: { $filename }
-// Note: Title text for button should be the same.
 copyUrlFormButton = رونوشت به کلیپ‌بورد
-    .title = رونوشت به کلیپ‌بورد
 copiedUrl = رونوشت شد!
-// Note: Title text for button should be the same.
 deleteFileButton = حذف پرونده
-    .title = حذف پرونده
-// Note: Title text for button should be the same.
 sendAnotherFileLink = ارسال پرونده دیگر
-    .title = ارسال پرونده دیگر
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = دریافت
-    .alt = دریافت
 downloadFileName = بارگیری { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = دوست شما درحال ارسال پرونده ای به وسیله Firefox Send است،‌ این سرویس این امکان را به شما می‌دهد تا پرونده‌های خود را به صورت ایمن،‌خصوصی و رمزنگاری شده به همراه پیوند انقضا خودکار همرسانی کنید تا اطمینان حاصل کنید چیزهای شما برای همیشه آنلاین باقی نخواهد ماند.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = بارگیری
-    .title = بارگیری
 downloadNotification = بارگیری شما کامل شد.
 downloadFinish = بارگیری کامل شد
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } از { $totalSize })
-// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+// Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Firefox Send را امتحان کنید
-    .title = Firefox Send را امتحان کنید
 downloadingPageProgress = دریافت { $filename } ({ $size })
 downloadingPageMessage = لطفا این زبانه را باز بگذارید در حالی که ما فایل شما را دریافت می‌کنیم و کدگذاری می‌کنیم.
-errorAltText
-    .alt = خطا در بارگذاری
+errorAltText = خطا در بارگذاری
 errorPageHeader = چیزی دچار اشکال شده است!
 errorPageMessage = خطایی در هنگام بارگذاری پرونده شما رخ داده است.
 errorPageLink = پرونده دیگری ارسال کنید.
 fileTooBig = این پرونده بسیار حجیم است. حجم آن می‌بایستی کم تر { $size } باشد.
-linkExpiredAlt
-    .alt = پیوند منقضی شده است
+linkExpiredAlt = پیوند منقضی شده است
 expiredPageHeader = پیوند منقضی شده است یا در از همان ابتدا وجود نداشته است!
 notSupportedHeader = مرورگر شما پشتیبانی نمی‌کند.
 // Firefox Send is a brand name and should not be localized.
@@ -87,10 +72,8 @@ legalNoticeMozilla = استفاده از Firefox Send همچنین منصوب ب
 deletePopupText = حذف این پرونده؟
 deletePopupYes = بله
 deletePopupCancel = انصراف
-deleteButtonHover
-    .title = حذف
-copyUrlHover
-    .title = رونوشت از نشانی
+deleteButtonHover = حذف
+copyUrlHover = رونوشت از نشانی
 footerLinkLegal = ملاحظات حقوقی
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = درباره Test Pilot

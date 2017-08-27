@@ -8,9 +8,7 @@ uploadPageLearnMore = Zjistit více
 uploadPageDropMessage = Přesunutím souboru sem spustíte jeho nahrávání
 uploadPageSizeMessage = Nahrávání funguje nejlépe pro soubory do velikosti 1 GB.
 uploadPageBrowseButton = Vybrat soubor z počítače
-    .title = Výběr souboru z počítače
 uploadPageBrowseButton1 = Zvolte soubor k nahrání
-    .title = Zvolte soubor k nahrání
 uploadPageMultipleFilesAlert = Nahrávání více souborů najednou nebo celých složek zatím není podporováno.
 uploadPageBrowseButtonTitle = Nahrát soubor
 uploadingPageProgress = Nahrávání souboru { $filename } ({ $size })
@@ -21,52 +19,39 @@ decryptingFile = Probíhá dešifrování…
 notifyUploadDone = Nahrávání vašeho souboru bylo dokončeno.
 uploadingPageMessage = Po dokončení nahrávání můžete nastavit dobu expirace souboru.
 uploadingPageCancel = Zrušit nahrávání
-    .title = Zrušit nahrávání
 uploadCancelNotification = Nahrávání vašeho souboru bylo zrušeno.
 uploadingPageLargeFileMessage = Tento soubor je veliký a jeho nahrávání může chvíli trvat. Posaďte se na chvilku.
 uploadingFileNotification = Upozornit, až bude nahrávání dokončeno.
 uploadSuccessConfirmHeader = Připraveno k odeslání
-uploadSvgAlt
-    .alt = Nahrát
+uploadSvgAlt = Nahrát
 uploadSuccessTimingHeader = Platnost odkazu na váš soubor vyprší po jeho prvním stažení, nebo po 24 hodinách.
 copyUrlFormLabelWithName = Zkopírujte a sdílejte odkaz na váš soubor: { $filename }
-// Note: Title text for button should be the same.
 copyUrlFormButton = Zkopírovat do schránky
-    .title = Zkopírovat do schránky
 copiedUrl = Zkopírováno!
-// Note: Title text for button should be the same.
 deleteFileButton = Smazat soubor
-    .title = Smazání souboru
-// Note: Title text for button should be the same.
 sendAnotherFileLink = Poslat další soubor
-    .title = Poslat další soubor
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText
-    .alt = Stáhnout
+downloadAltText = Stáhnout
 downloadFileName = Stáhnout { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Někdo vám posílá soubor pomocí služby Firefox Send, které umožňuje bezpečné, soukromí a šifrované sdílení souborů, které jsou pak automaticky smazány, aby nezůstaly na internetu navěky.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Stáhnout
-    .title = Stáhnout
 downloadNotification = Stahování bylo dokončeno.
 downloadFinish = Stahování dokončeno
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } z { $totalSize })
-// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+// Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Vyzkoušejte Firefox Send
-    .title = Vyzkoušejte Firefox Send
 downloadingPageProgress = Stahování { $filename } ({ $size })
 downloadingPageMessage = Ponechte prosím tento panel otevřený, dokud nepřipravíme váš soubor a nedešifrujeme ho.
-errorAltText
-    .alt = Chyba při nahrávání souboru
+errorAltText = Chyba při nahrávání souboru
 errorPageHeader = Nastala chyba!
 errorPageMessage = Při nahrávání souboru se vyskytl problém.
 errorPageLink = Poslat další soubor
 fileTooBig = Tento soubor je příliš veliký. Velikost nahrávaných souborů by neměla překročit { $size }.
-linkExpiredAlt
-    .alt = Platnost odkazu vypršela
+linkExpiredAlt = Platnost odkazu vypršela
 expiredPageHeader = Platnost tohoto odkazu buď vypršela, nebo vůbec nikdy neexistoval.
 notSupportedHeader = Váš prohlížeč není podporován.
 // Firefox Send is a brand name and should not be localized.
@@ -87,10 +72,8 @@ legalNoticeMozilla = Používání webové služby Firefox Send se řídí <a>Z�
 deletePopupText = Smazat tento soubor?
 deletePopupYes = Ano
 deletePopupCancel = Zrušit
-deleteButtonHover
-    .title = Smazat
-copyUrlHover
-    .title = Kopírovat URL
+deleteButtonHover = Smazat
+copyUrlHover = Kopírovat URL
 footerLinkLegal = Právní informace
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = O programu Test Pilot

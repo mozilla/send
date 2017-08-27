@@ -8,9 +8,7 @@ uploadPageLearnMore = Ətraflı öyrən
 uploadPageDropMessage = Yükləmək üçün faylınızı buraya daşıyın
 uploadPageSizeMessage = Xidmətin daha yaxşı işləməsi üçün faylınız 1 GB-dan az olmalıdır
 uploadPageBrowseButton = Kompüterinizdən fayl seçin
-    .title = Kompüterinizdən fayl seçin
 uploadPageBrowseButton1 = Yüklənəcək faylı seçin
-    .title = Yüklənəcək faylı seçin
 uploadPageMultipleFilesAlert = Birdən çox fayl və ya qovluq yükləmə hələlik dəstəklənmir.
 uploadPageBrowseButtonTitle = Fayl yüklə
 uploadingPageProgress = { $filename } ({ $size }) yüklənir
@@ -21,52 +19,39 @@ decryptingFile = Şifrə açılır...
 notifyUploadDone = Yükləməniz hazırdır.
 uploadingPageMessage = Faylınız yükləndikdən sonra vaxtı çıxma seçimlərini qura biləcəksiz.
 uploadingPageCancel = Yükləməni ləğv et
-    .title = Yükləməni ləğv et
 uploadCancelNotification = Yükləməniz ləğv edildi.
 uploadingPageLargeFileMessage = Fayl böyükdür və yükləmək çox vaxt ala bilər. Səbirli olun!
 uploadingFileNotification = Yükləmə bitdiyində xəbər ver.
 uploadSuccessConfirmHeader = Göndərməyə hazır
-uploadSvgAlt
-    .alt = Yüklə
+uploadSvgAlt = Yüklə
 uploadSuccessTimingHeader = Faylınızın keçidinin 1 endirmədən və ya 24 saatdan sonra vaxtı çıxacaq.
 copyUrlFormLabelWithName = Faylınızı göndərmək üçün keçidi köçürün: { $filename }
-// Note: Title text for button should be the same.
 copyUrlFormButton = Buferə köçür
-    .title = Mübadilə buferinə köçür
 copiedUrl = Köçürüldü!
-// Note: Title text for button should be the same.
 deleteFileButton = Faylı sil
-    .title = Faylı sil
-// Note: Title text for button should be the same.
 sendAnotherFileLink = Başqa fayl göndər
-    .title = Başqa fayl göndər
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText
-    .alt = Endir
+downloadAltText = Endir
 downloadFileName = { $filename } faylını endir
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Yoldaşınız Firefox Send ilə sizə fayl göndərir, fayllarınızı təhlükəsiz, məxfi, şifrələnmiş və daima onlayn qalmaması üçün avtomatik silən fayl göndərmə xidməti.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Endir
-    .title = Endir
 downloadNotification = Endirməniz tamamlandı.
 downloadFinish = Endirmə Tamamlandı
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } / { $totalSize })
-// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+// Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Firefox Send Yoxla
-    .title = Firefox Send Yoxla
 downloadingPageProgress = { $filename } faylı ({ $size }) endirilir
 downloadingPageMessage = Lütfən faylı endirib şifrəsini açarkən vərəqi açıq buraxın.
-errorAltText
-    .alt = Yükləmə xətası
+errorAltText = Yükləmə xətası
 errorPageHeader = Nəsə səhv getdi!
 errorPageMessage = Faylı yüklərkən xəta baş verdi.
 errorPageLink = Başqa fayl göndər
 fileTooBig = Fayl yükləmək üçün çox böyükdür. Fayl { $size }-dan az olmalıdır.
-linkExpiredAlt
-    .alt = Keçidin vaxtı çıxıb
+linkExpiredAlt = Keçidin vaxtı çıxıb
 expiredPageHeader = Keçidin vaxtı çıxıb və ya heç vaxt olmayıb!
 notSupportedHeader = Səyyahınız dəstəklənmir.
 // Firefox Send is a brand name and should not be localized.
@@ -87,10 +72,8 @@ legalNoticeMozilla = Firefox Send saytının istifadəsi həmçinin Mozilla-nın
 deletePopupText = Fayl silinsin?
 deletePopupYes = Bəli
 deletePopupCancel = Ləğv et
-deleteButtonHover
-    .title = Sil
-copyUrlHover
-    .title = Keçidi Köçürt
+deleteButtonHover = Sil
+copyUrlHover = Keçidi Köçürt
 footerLinkLegal = Hüquqi
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Test Pilot Haqqında

@@ -8,9 +8,7 @@ uploadPageLearnMore = Saber mais
 uploadPageDropMessage = Largue o seu ficheiro aqui para começar a carregar
 uploadPageSizeMessage = Para uma operação mais confiável, é melhor manter o seu ficheiro abaixo de 1GB
 uploadPageBrowseButton = Selecionar um ficheiro no seu computador
-    .title = Selecionar um ficheiro no seu computador
 uploadPageBrowseButton1 = Selecione um ficheiro a enviar
-    .title = Selecione um ficheiro a enviar
 uploadPageMultipleFilesAlert = Carregar múltiplos ficheiros ou uma pasta não é atualmente suportado.
 uploadPageBrowseButtonTitle = Carregar ficheiro
 uploadingPageProgress = A carregar { $filename } ({ $size })
@@ -21,52 +19,39 @@ decryptingFile = A desencriptar...
 notifyUploadDone = O seu carregamento terminou.
 uploadingPageMessage = Assim que o seu ficheiro carregar irá poder definir as opções de expiração.
 uploadingPageCancel = Cancelar carregamento
-    .title = Cancelar carregamento
 uploadCancelNotification = O seu carregamento foi cancelado.
 uploadingPageLargeFileMessage = Este ficheiro é grande e pode demorar um pouco a carregar. Fique onde está!
 uploadingFileNotification = Notificar-me quando o carregamento estiver completo.
 uploadSuccessConfirmHeader = Pronto para enviar
-uploadSvgAlt
-    .alt = Carregar
+uploadSvgAlt = Carregar
 uploadSuccessTimingHeader = A ligação para o seu ficheiro irá expirar depois de 1 descarga ou em 24 horas.
 copyUrlFormLabelWithName = Copie e partilhe a ligação para enviar o seu ficheiro: { $filename }
-// Note: Title text for button should be the same.
 copyUrlFormButton = Copiar para a área de transferência
-    .title = Copiar para a área de transferência
 copiedUrl = Copiado!
-// Note: Title text for button should be the same.
 deleteFileButton = Apagar ficheiro
-    .title = Apagar ficheiro
-// Note: Title text for button should be the same.
 sendAnotherFileLink = Enviar outro ficheiro
-    .title = Enviar outro ficheiro
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText
-    .alt = Descarregar
+downloadAltText = Descarregar
 downloadFileName = Descarregar { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiro com uma ligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descarregar
-    .title = Descarregar
 downloadNotification = A sua descarga foi completada.
 downloadFinish = Descarga completada
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
-// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+// Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Tentar o Firefox Send
-    .title = Tentar o Firefox Send
 downloadingPageProgress = A descarregar { $filename } ({ $size })
 downloadingPageMessage = Por favor deixe este separador aberto enquanto obtemos o seu ficheiro e o desencriptamos.
-errorAltText
-    .alt = Erro ao carregar
+errorAltText = Erro ao carregar
 errorPageHeader = Algo correu mal.
 errorPageMessage = Houve um erro ao carregar o ficheiro.
 errorPageLink = Enviar outro ficheiro
 fileTooBig = Esse ficheiro é muito grande para carregar. Deve ser menor do que { $size }.
-linkExpiredAlt
-    .alt = Ligação expirada
+linkExpiredAlt = Ligação expirada
 expiredPageHeader = Esta ligação expirou ou nunca existiu em primeiro lugar!
 notSupportedHeader = O seu navegador não é suportado.
 // Firefox Send is a brand name and should not be localized.
@@ -87,10 +72,8 @@ legalNoticeMozilla = A utilização do website do Firefox Send está também suj
 deletePopupText = Apagar este ficheiro?
 deletePopupYes = Sim
 deletePopupCancel = Cancelar
-deleteButtonHover
-    .title = Apagar
-copyUrlHover
-    .title = Copiar URL
+deleteButtonHover = Apagar
+copyUrlHover = Copiar URL
 footerLinkLegal = Legal
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Acerca do Test Pilot

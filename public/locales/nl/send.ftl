@@ -8,9 +8,7 @@ uploadPageLearnMore = Meer info
 uploadPageDropMessage = Sleep uw bestand hiernaartoe om het te uploaden
 uploadPageSizeMessage = Voor de meest betrouwbare werking kunt u uw bestand het beste onder de 1 GB houden
 uploadPageBrowseButton = Selecteer een bestand op uw computer
-    .title = Selecteer een bestand op uw computer
 uploadPageBrowseButton1 = Selecteer een bestand om te uploaden
-    .title = Selecteer een bestand om te uploaden
 uploadPageMultipleFilesAlert = Het uploaden van meerdere bestanden of een map wordt momenteel niet ondersteund.
 uploadPageBrowseButtonTitle = bestand uploaden
 uploadingPageProgress = { $filename } ({ $size }) wordt geüpload
@@ -21,52 +19,39 @@ decryptingFile = Ontcijferen…
 notifyUploadDone = Uw upload is voltooid.
 uploadingPageMessage = Zodra uw bestand wordt geüpload, kunt u vervalopties instellen.
 uploadingPageCancel = Uploaden annuleren
-    .title = Uploaden annuleren
 uploadCancelNotification = Uw upload is geannuleerd.
 uploadingPageLargeFileMessage = Dit bestand is groot en het uploaden kan even duren. Even geduld…
 uploadingFileNotification = Mij waarschuwen zodra het uploaden is voltooid
 uploadSuccessConfirmHeader = Gereed voor verzending
-uploadSvgAlt
-    .alt = Uploaden
+uploadSvgAlt = Uploaden
 uploadSuccessTimingHeader = De koppeling naar uw bestand zal na 1 download of 24 uur verlopen.
 copyUrlFormLabelWithName = Kopieer en deel de koppeling om uw bestand te verzenden: { $filename }
-// Note: Title text for button should be the same.
 copyUrlFormButton = Kopiëren naar klembord
-    .title = Kopiëren naar klembord
 copiedUrl = Gekopieerd!
-// Note: Title text for button should be the same.
 deleteFileButton = Bestand verwijderen
-    .title = Bestand verwijderen
-// Note: Title text for button should be the same.
 sendAnotherFileLink = Nog een bestand verzenden
-    .title = Nog een bestand verzenden
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText
-    .alt = Downloaden
+downloadAltText = Downloaden
 downloadFileName = { $filename } downloaden
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Uw vriend(in) stuurt u een bestand met Firefox Send, een dienst waarmee u bestanden kunt verzenden met een veilige, private en versleutelde koppeling die automatisch verloopt, zodat u zeker weet dat uw zaken niet onbeperkt online blijven.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Downloaden
-    .title = Downloaden
 downloadNotification = Uw download is voltooid.
 downloadFinish = Downloaden voltooid
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } van { $totalSize })
-// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+// Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Firefox Send proberen
-    .title = Firefox Send proberen
 downloadingPageProgress = { $filename } ({ $size }) wordt gedownload
 downloadingPageMessage = Laat dit tabblad geopend terwijl uw bestand wordt opgehaald en ontcijferd.
-errorAltText
-    .alt = Uploadfout
+errorAltText = Uploadfout
 errorPageHeader = Er is iets misgegaan!
 errorPageMessage = Er is een fout opgetreden bij het uploaden van het bestand.
 errorPageLink = Nog een bestand verzenden
 fileTooBig = Dat bestand is te groot om te worden geüpload. Het moet kleiner zijn dan { $size }.
-linkExpiredAlt
-    .alt = Koppeling verlopen
+linkExpiredAlt = Koppeling verlopen
 expiredPageHeader = Deze koppeling is verlopen of heeft überhaupt nooit bestaan!
 notSupportedHeader = Uw browser wordt niet ondersteund.
 // Firefox Send is a brand name and should not be localized.
@@ -87,10 +72,8 @@ legalNoticeMozilla = Gebruik van de Firefox Send-website is ook onderhevig aan d
 deletePopupText = Dit bestand verwijderen?
 deletePopupYes = Ja
 deletePopupCancel = Annuleren
-deleteButtonHover
-    .title = Verwijderen
-copyUrlHover
-    .title = URL kopiëren
+deleteButtonHover = Verwijderen
+copyUrlHover = URL kopiëren
 footerLinkLegal = Juridisch
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Over Test Pilot
