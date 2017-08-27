@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const IS_DEV = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: {
@@ -13,6 +14,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
+  devtool: IS_DEV && 'inline-source-map',
   module: {
     rules: [
       {
@@ -141,9 +143,6 @@ module.exports = {
   ],
   devServer: {
     compress: true,
-    setup:
-      process.env.NODE_ENV === 'development'
-        ? require('./server/dev')
-        : undefined
+    setup: IS_DEV ? require('./server/dev') : undefined
   }
 };
