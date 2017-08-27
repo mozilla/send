@@ -8,9 +8,7 @@ uploadPageLearnMore = Ketahui selanjutnya
 uploadPageDropMessage = Letakkan fail anda di sini untuk mulakan memuat naik
 uploadPageSizeMessage = Untuk operasi yang paling selamat, lebih baik pastikan fail anda itu kurang 1GB
 uploadPageBrowseButton = Pilih fail dalam komputer anda
-    .title = Pilih fail dalam komputer anda
 uploadPageBrowseButton1 = Pilih fail untuk dimuat naik
-    .title = Pilih fail untuk dimuat naik
 uploadPageMultipleFilesAlert = Memuat naik pelbagai fail atau satu folder masih belum disokong.
 uploadPageBrowseButtonTitle = Muat naik fail
 uploadingPageProgress = Memuat naik { $filename } ({ $size })
@@ -21,52 +19,39 @@ decryptingFile = Mengenkripsi...
 notifyUploadDone = Muat naik anda sudah siap.
 uploadingPageMessage = Setelah siap fail anda dimuat naik, akan boleh tetapkan pilihan luput.
 uploadingPageCancel = Batal muat naik
-    .title = Batal muat naik
 uploadCancelNotification = Muat naik anda dibatalkan.
 uploadingPageLargeFileMessage = Fail ini besar dan mungkin mengambil masa untuk dimuat naik. Tunggu!
 uploadingFileNotification = Maklumkan saya apabila muat naik selesai.
 uploadSuccessConfirmHeader = Sedia untuk Hantar
-uploadSvgAlt
-    .alt = Muat naik
+uploadSvgAlt = Muat naik
 uploadSuccessTimingHeader = Pautan ke fail anda akan luput selepas 1 muat turun atau dalam 24 jam.
 copyUrlFormLabelWithName = Salin dan kongsi pautan untuk menghantar fail anda: { $filename }
-// Note: Title text for button should be the same.
 copyUrlFormButton = Salin ke Klipbod
-    .title = Salin ke Klipbod
 copiedUrl = Disalin!
-// Note: Title text for button should be the same.
 deleteFileButton = Hapus fail
-    .title = Hapus fail
-// Note: Title text for button should be the same.
 sendAnotherFileLink = Hantar fail lain
-    .title = Hantar fail lain
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText
-    .alt = Muat turun
+downloadAltText = Muat turun
 downloadFileName = Muat turun { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Rakan anda menghantar satu fail kepada anda menggunakan Firefox Send, satu perkhidmatan yang membolehkan anda berkongsi fail dengan pautan yang selamat, peribadi dan dienkrip, yang secara automatik akan luput bagi memastikan fail anda tidak terus berada dalam talian selama-lamanya.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Muat turun
-    .title = Muat turun
 downloadNotification = Muat turun anda sudah siap.
 downloadFinish = Muat turun Selesai
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } daripada { $totalSize })
-// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+// Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Cuba Firefox Send
-    .title = Cuba Firefox Send
 downloadingPageProgress = Memuat turun { $filename } ({ $size })
 downloadingPageMessage = Sila biarkan tab ini terbuka semasa kami mengambil fail anda dan menghuraikannya.
-errorAltText
-    .alt = Ralat memuat naik
+errorAltText = Ralat memuat naik
 errorPageHeader = Ada sesuatu yang tidak kena!
 errorPageMessage = Ada ralat semasa memuat naik fail.
 errorPageLink = Hantar fail lain
 fileTooBig = Fail terlalu besar untuk dimuat naik. Perlu kurang daripada { $size }.
-linkExpiredAlt
-    .alt = Pautan sudah luput
+linkExpiredAlt = Pautan sudah luput
 expiredPageHeader = Pautan ini sudah luput atau pun tidak pernah wujud!
 notSupportedHeader = Pelayar anda tidak disokong.
 // Firefox Send is a brand name and should not be localized.
@@ -87,10 +72,8 @@ legalNoticeMozilla = Penggunaan laman web Firefox Send juga tertakluk kepada <a>
 deletePopupText = Hapus fail ini?
 deletePopupYes = Ya
 deletePopupCancel = Batal
-deleteButtonHover
-    .title = Hapus
-copyUrlHover
-    .title = Salin URL
+deleteButtonHover = Hapus
+copyUrlHover = Salin URL
 footerLinkLegal = Perundangan
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Perihal Ujian Perintis

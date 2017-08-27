@@ -8,9 +8,7 @@ uploadPageLearnMore = Saiba mais
 uploadPageDropMessage = Arraste o arquivo para cá para iniciar o envio
 uploadPageSizeMessage = Para uma operação mais confiável, é melhor manter seu arquivo menor que 1GB
 uploadPageBrowseButton = Selecione um arquivo em seu computador
-    .title = Selecione um arquivo em seu computador
 uploadPageBrowseButton1 = Selecione um arquivo para carregar
-    .title = Selecione um arquivo para carregar
 uploadPageMultipleFilesAlert = Enviar múltiplos arquivos ou uma pasta ainda não é suportado.
 uploadPageBrowseButtonTitle = Enviar arquivo
 uploadingPageProgress = Enviando { $filename } ({ $size })
@@ -21,52 +19,39 @@ decryptingFile = Descriptografando…
 notifyUploadDone = Arquivo enviado.
 uploadingPageMessage = Uma vez que seu arquivo seja enviado você poderá definir opções de expiração.
 uploadingPageCancel = Cancelar envio
-    .title = Cancelar envio
 uploadCancelNotification = Você cancelou o envio.
 uploadingPageLargeFileMessage = Esse arquivo é grande e pode demorar para ser enviado. Aguarde!
 uploadingFileNotification = Me avise quando completar o envio.
 uploadSuccessConfirmHeader = Pronto para enviar
-uploadSvgAlt
-    .alt = Enviado
+uploadSvgAlt = Enviado
 uploadSuccessTimingHeader = O link para o seu arquivo expirará após 1 download ou em 24 horas.
 copyUrlFormLabelWithName = Copie e compartilhe o link para enviar o seu arquivo: { $filename }
-// Note: Title text for button should be the same.
 copyUrlFormButton = Copiar para área de transferência
-    .title = Copiar para área de transferência
 copiedUrl = Copiado!
-// Note: Title text for button should be the same.
 deleteFileButton = Excluir arquivo
-    .title = Excluir arquivo
-// Note: Title text for button should be the same.
 sendAnotherFileLink = Enviar outro arquivo
-    .title = Enviar outro arquivo
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText
-    .alt = Baixar
+downloadAltText = Baixar
 downloadFileName = Baixar { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Seu amigo está te enviando um arquivo através do Firefox Send, um serviço que permite compartilhar arquivos com um link seguro, privado e criptografado que automaticamente expira para garantir que suas coisas não permaneçam on-line eternamente.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Baixar
-    .title = Baixar
 downloadNotification = Seu download terminou.
 downloadFinish = Download completo
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
-// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+// Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Experimente o Firefox Send
-    .title = Experimente o Firefox Send
 downloadingPageProgress = Baixando { $filename } ({ $size })
 downloadingPageMessage = Por favor, deixe essa aba aberta enquanto buscamos seu arquivo e o descriptografamos.
-errorAltText
-    .alt = Erro no envio
+errorAltText = Erro no envio
 errorPageHeader = Oops, ocorreu um erro!
 errorPageMessage = Houve um erro ao enviar o arquivo.
 errorPageLink = Enviar outro arquivo
 fileTooBig = Esse arquivo é muito grande. Ele deve ser menor que { $size }.
-linkExpiredAlt
-    .alt = Link expirou
+linkExpiredAlt = Link expirou
 expiredPageHeader = Esse link expirou, ou talvez nunca tenha existido!
 notSupportedHeader = Seu navegador não tem suporte.
 // Firefox Send is a brand name and should not be localized.
@@ -87,10 +72,8 @@ legalNoticeMozilla = O uso do site Firefox Send também está sujeito a <a>Polí
 deletePopupText = Excluir este arquivo?
 deletePopupYes = Sim
 deletePopupCancel = Cancelar
-deleteButtonHover
-    .title = Excluir
-copyUrlHover
-    .title = Copiar URL
+deleteButtonHover = Excluir
+copyUrlHover = Copiar URL
 footerLinkLegal = Jurídico
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Sobre o Test Pilot

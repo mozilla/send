@@ -8,9 +8,7 @@ uploadPageLearnMore = Aprender más
 uploadPageDropMessage = Suelta tu archivo aquí para empezar a subirlo
 uploadPageSizeMessage = Para una operación más confiable, es mejor mantener el tamaño del archivo bajo 1 GB
 uploadPageBrowseButton = Selecciona un archivo en tu computador
-    .title = Selecciona un archivo en tu computador
 uploadPageBrowseButton1 = Selecciona un archivo a subir
-    .title = Selecciona un archivo a subir
 uploadPageMultipleFilesAlert = Subir múltiples archivos o una carpeta actualmente no es posible.
 uploadPageBrowseButtonTitle = Subir archivo
 uploadingPageProgress = Subiendo { $filename } ({ $size })
@@ -21,52 +19,39 @@ decryptingFile = Descifrando…
 notifyUploadDone = Tu subida ha terminado.
 uploadingPageMessage = Una vez que tu archivo sea subido podrás ajustar las opciones de expiración.
 uploadingPageCancel = Cancelar subida
-    .title = Cancelar subida
 uploadCancelNotification = Tu subida fue cancelada.
 uploadingPageLargeFileMessage = Este archivo es grande y puede tardar un rato en subir. ¡Aprovecha de hacer algo mientras!
 uploadingFileNotification = Notificarme cuando la subida sea completada.
 uploadSuccessConfirmHeader = Listo para enviar
-uploadSvgAlt
-    .alt = Subir
+uploadSvgAlt = Subir
 uploadSuccessTimingHeader = El enlace a tu archivo expirará tras 1 descarga o en 24 horas.
 copyUrlFormLabelWithName = Copia y comparte el enlace para enviar tu archivo: { $filename }
-// Note: Title text for button should be the same.
 copyUrlFormButton = Copiar al portapapeles
-    .title = Copiar al portapapeles
 copiedUrl = ¡Copiado!
-// Note: Title text for button should be the same.
 deleteFileButton = Eliminar archivo
-    .title = Eliminar archivo
-// Note: Title text for button should be the same.
 sendAnotherFileLink = Enviar otro archivo
-    .title = Enviar otro archivo
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText
-    .alt = Descargar
+downloadAltText = Descargar
 downloadFileName = Descargar { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Tu amigo te está enviando un archivo con Firefox Send, un servicio que te permite compartir archivos con un enlace seguro, privado y cifrado que expira automáticamente para asegurar que tus cosas no queden en línea de por vida.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descargar
-    .title = Descargar
 downloadNotification = Tu descarga se completó.
 downloadFinish = Descarga completa
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
-// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+// Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Probar Firefox Send
-    .title = Probar Firefox Send
 downloadingPageProgress = Descargando { $filename } ({ $size })
 downloadingPageMessage = Por favor, deja esta pestaña abierta mientras recibimos tu archivo y lo desciframos.
-errorAltText
-    .alt = Error de subida
+errorAltText = Error de subida
 errorPageHeader = ¡Algo se fue a las pailas!
 errorPageMessage = Hubo un error al subir el archivo.
 errorPageLink = Enviar otro archivo
 fileTooBig = Ese archivo es muy grande para ser subido. Debiera tener un tamaño menor a { $size }.
-linkExpiredAlt
-    .alt = Enlace expirado
+linkExpiredAlt = Enlace expirado
 expiredPageHeader = ¡Este enlace ha expirado o quizá jamás existió!
 notSupportedHeader = Tu navegador no está soportado.
 // Firefox Send is a brand name and should not be localized.
@@ -87,10 +72,8 @@ legalNoticeMozilla = El uso del sitio web de Firefox Send también está sujeto 
 deletePopupText = ¿Eliminar este archivo?
 deletePopupYes = Sí
 deletePopupCancel = Cancelar
-deleteButtonHover
-    .title = Eliminar
-copyUrlHover
-    .title = Copiar URL
+deleteButtonHover = Eliminar
+copyUrlHover = Copiar URL
 footerLinkLegal = Legal
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Acerca de Test Pilot

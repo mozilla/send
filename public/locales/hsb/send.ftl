@@ -8,9 +8,7 @@ uploadPageLearnMore = Dalše informacije
 uploadPageDropMessage = Ćehńće swoju dataju sem, zo byšće ju nahrał
 uploadPageSizeMessage = Wužiwajće najlěpje dataje, kotrež su mjeńše hač 1 GB za lěpšu spušćomnosć.
 uploadPageBrowseButton = Wubjerće dataju na swojim ličaku
-    .title = Wubjerće dataju na swojim ličaku
 uploadPageBrowseButton1 = Wubjerće dataju za nahraće
-    .title = Wubjerće dataju za nahraće
 uploadPageMultipleFilesAlert = Nahrawanje wjacorych datajow abo rjadowaka so tuchwilu njepodpěruje.
 uploadPageBrowseButtonTitle = Dataju nahrać
 uploadingPageProgress = { $filename } ({ $size }) so nahrawa
@@ -21,52 +19,39 @@ decryptingFile = Dešifruje so...
 notifyUploadDone = Waše nahraće je dokónčene.
 uploadingPageMessage = Hdyž so waša dataja nahrawa, móžeće nastajenja spadnjenja postajić.
 uploadingPageCancel = Nahraće přetorhnyć
-    .title = Nahraće přetorhnyć
 uploadCancelNotification = Waše nahraće je so přetorhnyło.
 uploadingPageLargeFileMessage = Tuta dataja je wulka a nahrawanje móhło chwilku trać. Budźće sćerpliwy!
 uploadingFileNotification = Zdźělić, hdyž nahraće je dokónčene.
 uploadSuccessConfirmHeader = Hotowy za słanje
-uploadSvgAlt
-    .alt = Nahrać
+uploadSvgAlt = Nahrać
 uploadSuccessTimingHeader = Wotkaz k wašej dataji po 1 sćehnjenju abo 24 hodźinach spadnje.
 copyUrlFormLabelWithName = Kopěrujće a dźělće wotkaz, zo byšće swoju dataju pósłał: { $filename }
-// Note: Title text for button should be the same.
 copyUrlFormButton = Do mjezyskłada kopěrować
-    .title = Do mjezyskłada kopěrować
 copiedUrl = Kopěrowany!
-// Note: Title text for button should be the same.
 deleteFileButton = Dataju zhašeć
-    .title = Dataju zhašeć
-// Note: Title text for button should be the same.
 sendAnotherFileLink = Druhu dataju pósłać
-    .title = Druhu dataju pósłać
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText
-    .alt = Sćahnyć
+downloadAltText = Sćahnyć
 downloadFileName = { $filename } sćahnyć
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Waš přećel wam dataju z Firefox Send sćele, słužba, kotraž wam zmóžnja, dataje přez wěsty, priwatny a zaklučowany wotkaz dźělić, kotryž awtomatisce spadnje, zo njebychu waše daty na přeco online wostawali.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Sćahnyć
-    .title = Sćahnyć
 downloadNotification = Waše sćehnjenje je dokónčene.
 downloadFinish = Sćehnjenje dokónčene
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } z { $totalSize })
-// Firefox Send is a brand name and should not be localized. Title text for button should be the same.
+// Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Firefox Send wupruwować
-    .title = Firefox Send wupruwować
 downloadingPageProgress = { $filename } ({ $size }) so sćahuje
 downloadingPageMessage = Prošu wostajće tutón rajtark wočinjeny, mjeztym zo wašu dataju sćahujemy a dešifrujemy.
-errorAltText
-    .alt = Nahrawanski zmylk
+errorAltText = Nahrawanski zmylk
 errorPageHeader = Něšto je so nimokuliło!
 errorPageMessage = Při nahrawanju dataje je zmylk wustupił.
 errorPageLink = Druhu dataju pósłać
 fileTooBig = Tuta dataja je přewulka za nahraće. Měła mjeńša hač { $size } być.
-linkExpiredAlt
-    .alt = Wotkaz je spadnjeny
+linkExpiredAlt = Wotkaz je spadnjeny
 expiredPageHeader = Tutón wotkaz je spadnjeny abo njeje ženje eksistował!
 notSupportedHeader = Waš wobhladowak so njepodpěruje.
 // Firefox Send is a brand name and should not be localized.
@@ -87,10 +72,8 @@ legalNoticeMozilla = Tež wužiwanje websydła Firefox Send <a>pokazce priwatnos
 deletePopupText = Tutu dataju zhašeć?
 deletePopupYes = Haj
 deletePopupCancel = Přetorhnyć
-deleteButtonHover
-    .title = Zhašeć
-copyUrlHover
-    .title = URL kopěrować
+deleteButtonHover = Zhašeć
+copyUrlHover = URL kopěrować
 footerLinkLegal = Prawniske
 // Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Wo Test Pilot
