@@ -8,9 +8,10 @@ uploadPageLearnMore = Mear ynfo
 uploadPageDropMessage = Sleep jo bestân hjir hinne om opladen te starten
 uploadPageSizeMessage = Foar de meast betroubere wurking, is it it bêste om jo bestân lytser as 1 GB te hâlden
 uploadPageBrowseButton = Selektearje in bestân op jo kompjûter
+uploadPageBrowseButton1 = Selektearje in bestân om op te laden
 uploadPageMultipleFilesAlert = Opladen fan mear bestannen tagelyk of in map wurdt op dit stuit net stipe.
 uploadPageBrowseButtonTitle = Bestân oplade
-uploadingPageHeader = Jo bestân wurdt opladen
+uploadingPageProgress = { $filename } ({ $size }) wurdt oplaad
 importingFile = Ymportearje…
 verifyingFile = Ferifiearje…
 encryptingFile = Fersiferje…
@@ -39,6 +40,8 @@ downloadMessage = Jo freon stjoert jo in best^n mei Firefox Send, in tsjinst dy'
 downloadButtonLabel = Downloade
 downloadNotification = Jo download is foltôge.
 downloadFinish = Download foltôge
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } fan { $totalSize })
 // Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Firefox Send probearje
 downloadingPageProgress = { $filename } ({ $size }) wurdt download
