@@ -44,6 +44,9 @@ module.exports = function(state, emit) {
     event.preventDefault();
     const target = event.target;
     const file = target.files[0];
+    if (file.size === 0) {
+      return;
+    }
     await fadeOut('page-one');
     emit('upload', { file, type: 'click' });
   }
