@@ -7,6 +7,7 @@ const storage = require('../storage');
 const config = require('../config');
 const pages = require('./pages');
 // const lang = require('fluent-langneg')
+const IS_DEV = config.env === 'development';
 
 module.exports = function(app) {
   app.use(
@@ -18,29 +19,31 @@ module.exports = function(app) {
   app.use(
     helmet.hsts({
       maxAge: 31536000,
-      force: config.env === 'production'
+      force: !IS_DEV
     })
   );
-  app.use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        defaultSrc: ["'self'"],
-        connectSrc: [
-          "'self'",
-          'https://sentry.prod.mozaws.net',
-          'https://www.google-analytics.com'
-        ],
-        imgSrc: ["'self'", 'https://www.google-analytics.com'],
-        scriptSrc: ["'self'"],
-        styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
-        fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
-        formAction: ["'none'"],
-        frameAncestors: ["'none'"],
-        objectSrc: ["'none'"],
-        reportUri: '/__cspreport__'
-      }
-    })
-  );
+  if (!IS_DEV) {
+    app.use(
+      helmet.contentSecurityPolicy({
+        directives: {
+          defaultSrc: ["'self'"],
+          connectSrc: [
+            "'self'",
+            'https://sentry.prod.mozaws.net',
+            'https://www.google-analytics.com'
+          ],
+          imgSrc: ["'self'", 'https://www.google-analytics.com'],
+          scriptSrc: ["'self'"],
+          styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
+          fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
+          formAction: ["'none'"],
+          frameAncestors: ["'none'"],
+          objectSrc: ["'none'"],
+          reportUri: '/__cspreport__'
+        }
+      })
+    );
+  }
   app.use(
     busboy({
       limits: {
