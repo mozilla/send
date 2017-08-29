@@ -40,6 +40,8 @@ module.exports = function(state, emit) {
   async function copyLink() {
     if (allowedCopy()) {
       emit('copy', { url: file.url, location: 'success-screen' });
+      const input = document.getElementById('link');
+      input.disabled = true;
       const copyBtn = document.getElementById('copy-btn');
       copyBtn.disabled = true;
       copyBtn.replaceChild(
@@ -47,6 +49,7 @@ module.exports = function(state, emit) {
         copyBtn.firstChild
       );
       await delay(2000);
+      input.disabled = false;
       copyBtn.disabled = false;
       copyBtn.textContent = state.translate('copyUrlFormButton');
     }
