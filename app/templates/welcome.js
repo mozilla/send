@@ -33,11 +33,13 @@ module.exports = function(state, emit) {
   `;
 
   function dragover(event) {
-    event.target.classList.add('ondrag');
+    const div = document.querySelector('.upload-window');
+    div.classList.add('ondrag');
   }
 
   function dragleave(event) {
-    event.target.classList.remove('ondrag');
+    const div = document.querySelector('.upload-window');
+    div.classList.remove('ondrag');
   }
 
   async function upload(event) {
