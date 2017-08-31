@@ -9,24 +9,31 @@ module.exports = function(state, emit) {
     <div class="title">${state.translate('uploadPageHeader')}</div>
     <div class="description">
       <div>${state.translate('uploadPageExplainer')}</div>
-      <a href="https://testpilot.firefox.com/experiments/send" class="link">${state.translate(
-        'uploadPageLearnMore'
-      )}</a>
+      <a href="https://testpilot.firefox.com/experiments/send"
+        class="link">${state.translate('uploadPageLearnMore')}</a>
     </div>
-    <div class="upload-window" ondragover=${dragover} ondragleave=${dragleave}>
-      <div id="upload-img"><img src="${assets.get(
-        'upload.svg'
-      )}" title="${state.translate('uploadSvgAlt')}"/></div>
+    <div class="upload-window"
+      ondragover=${dragover}
+      ondragleave=${dragleave}>
+      <div id="upload-img">
+        <img src="${assets.get('upload.svg')}"
+          title="${state.translate('uploadSvgAlt')}"/>
+      </div>
       <div id="upload-text">${state.translate('uploadPageDropMessage')}</div>
-      <span id="file-size-msg"><em>${state.translate(
-        'uploadPageSizeMessage'
-      )}</em></span>
-      <form method="post" action="upload" enctype="multipart/form-data">
-        <input id="file-upload" type="file" name="fileUploaded" onchange=${upload} onfocus=${onfocus} onblur=${onblur} />
-        <label for="file-upload" id="browse" class="btn browse" title="${state.translate(
-          'uploadPageBrowseButton1'
-        )}">${state.translate('uploadPageBrowseButton1')}</label>
-      </form>
+      <span id="file-size-msg">
+        <em>${state.translate('uploadPageSizeMessage')}</em>
+      </span>
+      <label for="file-upload"
+        id="browse"
+        class="btn browse"
+        title="${state.translate('uploadPageBrowseButton1')}">
+        ${state.translate('uploadPageBrowseButton1')}</label>
+      <input id="file-upload"
+        type="file"
+        name="fileUploaded"
+        onfocus=${onfocus}
+        onblur=${onblur}
+        onchange=${upload} />
     </div>
     ${fileList(state, emit)}
   </div>

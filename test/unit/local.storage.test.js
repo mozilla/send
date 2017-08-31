@@ -56,24 +56,6 @@ describe('Testing Exists from local filesystem', function() {
   });
 });
 
-describe('Testing Filename from local filesystem', function() {
-  it('Filename returns properly if id exists', function() {
-    hget.callsArgWith(2, null, 'Filename.moz');
-    return storage
-      .filename('test')
-      .then(_reply => assert(1))
-      .catch(err => assert.fail());
-  });
-
-  it('Filename fails if id does not exist', function() {
-    hget.callsArgWith(2, null, 'Filename.moz');
-    return storage
-      .filename('test')
-      .then(_reply => assert.fail())
-      .catch(err => assert(1));
-  });
-});
-
 describe('Testing Length from local filesystem', function() {
   it('Filesize returns properly if id exists', function() {
     fsStub.statSync.returns({ size: 10 });

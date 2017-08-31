@@ -28,16 +28,14 @@ module.exports = {
     }
 
     try {
-      const efilename = await storage.filename(id);
-      const name = decodeURIComponent(efilename);
-      const size = await storage.length(id);
-      const ttl = await storage.ttl(id);
+      const { nonce, pwd } = await storage.metadata(id);
+      res.set('WWW-Authenticate', `send-v1 ${nonce}`);
       res.send(
         stripEvents(
           routes.toString(
             `/download/${req.params.id}`,
             Object.assign(state(req), {
-              fileInfo: { name, size, ttl }
+              fileInfo: { nonce, pwd: +pwd }
             })
           )
         )

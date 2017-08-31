@@ -1,23 +1,18 @@
-function arrayToHex(iv) {
-  let hexStr = '';
-  // eslint-disable-next-line prefer-const
-  for (let i in iv) {
-    if (iv[i] < 16) {
-      hexStr += '0' + iv[i].toString(16);
-    } else {
-      hexStr += iv[i].toString(16);
-    }
-  }
-  return hexStr;
+const b64 = require('base64-js');
+
+function arrayToB64(array) {
+  return b64
+    .fromByteArray(array)
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=/g, '');
 }
 
-function hexToArray(str) {
-  const iv = new Uint8Array(str.length / 2);
-  for (let i = 0; i < str.length; i += 2) {
-    iv[i / 2] = parseInt(str.charAt(i) + str.charAt(i + 1), 16);
-  }
-
-  return iv;
+function b64ToArray(str) {
+  str = (str + '==='.slice((str.length + 3) % 4))
+    .replace(/-/g, '+')
+    .replace(/_/g, '/');
+  return b64.toByteArray(str);
 }
 
 function notify(str) {
@@ -105,6 +100,9 @@ const LOCALIZE_NUMBERS = !!(
 
 const UNITS = ['B', 'kB', 'MB', 'GB'];
 function bytes(num) {
+  if (num < 1) {
+    return '0B';
+  }
   const exponent = Math.min(Math.floor(Math.log10(num) / 3), UNITS.length - 1);
   const n = Number(num / Math.pow(1000, exponent));
   const nStr = LOCALIZE_NUMBERS
@@ -147,8 +145,8 @@ module.exports = {
   bytes,
   percent,
   copyToClipboard,
-  arrayToHex,
-  hexToArray,
+  arrayToB64,
+  b64ToArray,
   notify,
   canHasSend,
   isFile,

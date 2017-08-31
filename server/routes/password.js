@@ -1,6 +1,4 @@
 const storage = require('../storage');
-const mozlog = require('../log');
-const log = mozlog('send.download');
 const crypto = require('crypto');
 
 function validateID(route_id) {
@@ -11,6 +9,9 @@ module.exports = async function(req, res) {
   const id = req.params.id;
   if (!validateID(id)) {
     return res.sendStatus(404);
+  }
+  if (!req.body.auth) {
+    return res.sendStatus(400);
   }
 
   try {
@@ -25,26 +26,10 @@ module.exports = async function(req, res) {
       res.set('WWW-Authenticate', `send-v1 ${nonce}`);
       return res.sendStatus(401);
     }
-    const contentLength = await storage.length(id);
-    res.writeHead(200, {
-      'Content-Disposition': 'attachment',
-      'Content-Type': 'application/octet-stream',
-      'Content-Length': contentLength,
-      'X-File-Metadata': meta.metadata,
-      'WWW-Authenticate': `send-v1 ${nonce}`
-    });
-    const file_stream = storage.get(id);
-
-    file_stream.on('end', async () => {
-      try {
-        await storage.forceDelete(id);
-      } catch (e) {
-        log.info('DeleteError:', id);
-      }
-    });
-
-    file_stream.pipe(res);
   } catch (e) {
     res.sendStatus(404);
   }
+  storage.setField(id, 'auth', req.body.auth);
+  storage.setField(id, 'pwd', 1);
+  res.sendStatus(200);
 };
