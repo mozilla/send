@@ -66,3 +66,4 @@ copyFileList = Tiwachib'ëx URL
 expiryFileList = Nik'is Ruq'ijul Pa
 deleteFileList = Tiyuj
 nevermindButton = Junam nub'än
+legalHeader = Ojqanem chuqa' Ichinanem
