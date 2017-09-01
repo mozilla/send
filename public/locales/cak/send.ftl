@@ -39,3 +39,30 @@ downloadMessage = Jun awachib'il xutäq jun yakb'äl chawe rik'in ri Firefox Sen
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Tiqasäx
 downloadNotification = Xtz'aqät ri aqasanik.
+downloadFinish = Xtz'aqät qasanïk
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } richin { $totalSize })
+// Firefox Send is a brand name and should not be localized.
+sendYourFilesLink = Titojtob'ëx Firefox Send
+downloadingPageProgress = Tajin niqasäx { $filename } ({ $size })
+downloadingPageMessage = Tijaq kan re ruwi' re' richin niqaqasaj ri yakb'äl chuqa' richin niqetamaj rusik'ixik. 
+errorAltText = Xsach toq nijotob'äx
+errorPageHeader = ¡K'o ri man ütz ta xub'än!
+errorPageMessage = Xk'ulwachitäj jun sachoj toq tajin nijotob'äx ri yakb'äl.
+errorPageLink = Titaq jun chik yakb'äl
+fileTooBig = Yalan nïm re yakb'äl re' richin nijotob'äx. K'o ta chi man nik'o ta chi re ri { $size }.
+linkExpiredAlt = Xk'is ruq'ijul ri ximonel
+expiredPageHeader = ¡Xk'is ruq'ijul re ximonel re' o rik'in jub'a' majub'ey xk'oje'!
+notSupportedHeader = Man koch'el ta ri awokik'amaya'l.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = K'ayew ruma re okik'amaya'l re' man nuköch' ta ajk'amaya'l na'ob'äl nik'atzin chi re ri Firefox Send. K'o chi natojtob'ej jun chik okik'amaya'l. ¡Niqachilab'ej chawe ri Firefox!
+notSupportedLink = ¿Achike ruma man nikoch' taq ri wokik'amaya'l?
+notSupportedOutdatedDetail = K'ayew ruma re ruwäch Firefox re' man nuköch' ta ri ajk'amaya'l na'ob'äl nrajo' ri Firefox Send. Rajowaxik nak'ëx ri awokik'amaya'l.
+updateFirefox = Tik'ex ri Firefox
+downloadFirefoxButtonSub = Sipan Ruqasaxik
+uploadedFile = Yakb'äl
+copyFileList = Tiwachib'ëx URL
+// expiryFileList is used as a column header
+expiryFileList = Nik'is Ruq'ijul Pa
+deleteFileList = Tiyuj
+nevermindButton = Junam nub'än
