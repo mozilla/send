@@ -67,3 +67,16 @@ expiryFileList = Nik'is Ruq'ijul Pa
 deleteFileList = Tiyuj
 nevermindButton = Junam nub'än
 legalHeader = Ojqanem chuqa' Ichinanem
+legalNoticeTestPilot = Firefox Send k'a jun rutojtob'enik Test Pilot, chuqa' rutaqen rutzij ri <a>Rojqanem Samaj</a> chuqa' rik'in ri <a>Rutzijol Ichinanem</a>. Yatikïr nawetamaj ch'aq'a' chik chi rij re solna'oj re' chuqa' ri rumolik tzij <a>wawe'</a>.
+legalNoticeMozilla = Richin nokisäx ri ruxaq ruk'amaya'l Firefox Send k'o chi nitaqëx ri <a>Rutzijol Richinanem Ajk'amaya'l Ruxaq</a> chuqa' <a>Rojqanem rokisaxik Ajk'amaya'l Ruxaq</a>.
+deletePopupText = ¿La niyuj el re yakb'äl re'?
+deletePopupYes = Ja'
+deletePopupCancel = Tiq'at
+deleteButtonHover = Tiyuj
+copyUrlHover = Tiwachib'ëx URL
+footerLinkLegal = Taqanel tzijol
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Chi rij Test Pilot
+footerLinkPrivacy = Ichinanem
+footerLinkTerms = Taq ojqanem
+footerLinkCookies = Taq kaxlanwey
