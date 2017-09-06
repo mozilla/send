@@ -296,6 +296,10 @@ td {
   padding: 17px 19px 0;
   line-height: 23px;
   position: relative;
+  text-overflow: ellipsis;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 table {
@@ -327,6 +331,10 @@ tbody {
 
 #delete-file-list {
   width: 12%;
+}
+
+.center-col {
+  text-align: center;
 }
 
 .icon-delete,
