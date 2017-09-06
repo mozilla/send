@@ -18,7 +18,7 @@ module.exports = function(file, state, emit) {
   const remaining = timeLeft(ttl) || state.translate('linkExpiredAlt');
   const row = html`
   <tr id="${file.id}">
-    <td title="${file.name}">${file.name}</td>
+    <td class="overflow-col" title="${file.name}">${file.name}</td>
     <td class="center-col">
       <img onclick=${copyClick} src="${assets.get(
     'copy-16.svg'
