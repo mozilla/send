@@ -1,8 +1,8 @@
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
+const mkdirp = require('mkdirp');
 
 const config = require('./config');
-const { tmpdir } = require('os');
 const fs = require('fs');
 const path = require('path');
 
@@ -25,7 +25,7 @@ redis_client.on('error', err => {
   log.error('Redis:', err);
 });
 
-let tempDir = null;
+const fileDir = config.file_dir;
 
 if (config.s3_bucket) {
   module.exports = {
@@ -44,8 +44,8 @@ if (config.s3_bucket) {
     metadata
   };
 } else {
-  tempDir = fs.mkdtempSync(`${tmpdir()}${path.sep}send-`);
-  log.info('tempDir', tempDir);
+  mkdirp.sync(config.file_dir);
+  log.info('fileDir', fileDir);
   module.exports = {
     filename: filename,
     exists: exists,
@@ -123,7 +123,7 @@ function setField(id, key, value) {
 function localLength(id) {
   return new Promise((resolve, reject) => {
     try {
-      resolve(fs.statSync(path.join(tempDir, id)).size);
+      resolve(fs.statSync(path.join(fileDir, id)).size);
     } catch (err) {
       reject();
     }
@@ -131,12 +131,12 @@ function localLength(id) {
 }
 
 function localGet(id) {
-  return fs.createReadStream(path.join(tempDir, id));
+  return fs.createReadStream(path.join(fileDir, id));
 }
 
 function localSet(newId, file, filename, meta) {
   return new Promise((resolve, reject) => {
-    const filepath = path.join(tempDir, newId);
+    const filepath = path.join(fileDir, newId);
     const fstream = fs.createWriteStream(filepath);
     file.pipe(fstream);
     file.on('limit', () => {
@@ -166,7 +166,7 @@ function localDelete(id, delete_token) {
       } else {
         redis_client.del(id);
         log.info('Deleted:', id);
-        resolve(fs.unlinkSync(path.join(tempDir, id)));
+        resolve(fs.unlinkSync(path.join(fileDir, id)));
       }
     });
   });
@@ -175,7 +175,7 @@ function localDelete(id, delete_token) {
 function localForceDelete(id) {
   return new Promise((resolve, reject) => {
     redis_client.del(id);
-    resolve(fs.unlinkSync(path.join(tempDir, id)));
+    resolve(fs.unlinkSync(path.join(fileDir, id)));
   });
 }
 

@@ -102,6 +102,7 @@
     "fluent": "^0.4.1",
     "fluent-langneg": "^0.1.0",
     "helmet": "^3.8.1",
+    "mkdirp": "^0.5.1",
     "mozlog": "^2.1.1",
     "raven": "^2.1.2",
     "redis": "^2.8.0"

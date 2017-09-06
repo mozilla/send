@@ -1,4 +1,7 @@
 const convict = require('convict');
+const { tmpdir } = require('os');
+const path = require('path');
+const { randomBytes } = require('crypto');
 
 const conf = convict({
   s3_bucket: {
@@ -56,6 +59,11 @@ const conf = convict({
     format: 'url',
     default: 'https://send.firefox.com',
     env: 'BASE_URL'
+  },
+  file_dir: {
+    format: 'String',
+    default: `${tmpdir()}${path.sep}send-${randomBytes(4).toString('hex')}`,
+    env: 'FILE_DIR'
   }
 });
 
