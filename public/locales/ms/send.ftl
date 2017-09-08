@@ -28,7 +28,7 @@ uploadSuccessTimingHeader = Pautan ke fail anda akan luput selepas 1 muat turun 
 copyUrlFormLabelWithName = Salin dan kongsi pautan untuk menghantar fail anda: { $filename }
 copyUrlFormButton = Salin ke Klipbod
 copiedUrl = Disalin!
-deleteFileButton = Hapus fail
+deleteFileButton = Buang Fail
 sendAnotherFileLink = Hantar fail lain
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Muat turun
@@ -64,15 +64,15 @@ uploadedFile = Fail
 copyFileList = Salin URL
 // expiryFileList is used as a column header
 expiryFileList = Luput Pada
-deleteFileList = Hapus
+deleteFileList = Buang
 nevermindButton = Tak apalah
 legalHeader = Terma & Privasi
 legalNoticeTestPilot = Firefox Send adalah eksperimen Ujian Perintis, dan tertakluk kepada <a>Terma Perkhidmatan</a> dan <a>Privacy Notice</a> Ujian Perintis. Anda boleh ketahui selanjutnya perihal eksperimen ini dan pengumpulan data <a>di sini</a>.
 legalNoticeMozilla = Penggunaan laman web Firefox Send juga tertakluk kepada <a>Notis Privasi Laman web</a> dan <a>Terma Penggunaan Laman web</a> Mozilla.
-deletePopupText = Hapus fail ini?
+deletePopupText = Buang fail ini?
 deletePopupYes = Ya
 deletePopupCancel = Batal
-deleteButtonHover = Hapus
+deleteButtonHover = Buang
 copyUrlHover = Salin URL
 footerLinkLegal = Perundangan
 // Test Pilot is a proper name and should not be localized.
