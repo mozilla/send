@@ -2,8 +2,8 @@
 title = Firefox Send
 siteSubtitle = experimento web
 siteFeedback = Comentario
-uploadPageHeader = Compartir archivos encriptados y privados
-uploadPageExplainer = Envía archivos a través de un enlace encriptado, privado y seguro que caducará automáticamente para que tus datos no sean accesibles en línea de por vida.
+uploadPageHeader = Compartir archivos cifrados y privados
+uploadPageExplainer = Envía archivos a través de un enlace cifrado, privado y seguro que caducará automáticamente para que tus datos no sean accesibles en línea de por vida.
 uploadPageLearnMore = Descubre más
 uploadPageDropMessage = Suelta aquí tu archivo para empezar a subirlo
 uploadPageSizeMessage = Para que la operación sea más segura, el archivo debería ocupar menos de 1GB
@@ -35,7 +35,7 @@ downloadAltText = Descargar
 downloadFileName = Descargar { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
-downloadMessage = Tu amigo te está enviando un archivo a través de Firefox Send, un servicio que te permite compartir archivos con un enlace seguro, privado y encriptado que caduca automáticamente para que tus cosas no sean accesibles en línea de por vida.
+downloadMessage = Tu amigo te está enviando un archivo a través de Firefox Send, un servicio que te permite compartir archivos con un enlace seguro, privado y cifrado que caduca automáticamente para que tus cosas no sean accesibles en línea de por vida.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descargar
 downloadNotification = Se completó la descarga.
