@@ -44,14 +44,14 @@ fileSizeProgress = ({ $partialSize }/{ $totalSize })
 // Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Proovi Firefox Sendi
 downloadingPageProgress = Faili { $filename } ({ $size }) allalaadimine
-downloadingPageMessage = Palun jäta see kaart lahti kuni fail on alla laaditud ja dekrüptitud.
+downloadingPageMessage = Palun jäta see kaart lahti, kuni fail on alla laaditud ja dekrüptitud.
 errorAltText = Viga üleslaadimisel
 errorPageHeader = Midagi läks valesti!
 errorPageMessage = Faili üleslaadimisel esines viga.
 errorPageLink = Saada järgmine fail
 fileTooBig = Fail on üleslaadimiseks liiga suur. See peaks olema väiksem kui { $size }.
 linkExpiredAlt = Link on aegunud
-expiredPageHeader = See ling on aegunud või seda pole kunagi olnudki!
+expiredPageHeader = See link on aegunud või seda pole kunagi olnudki!
 notSupportedHeader = Sinu brauser pole toetatud.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Kahjuks ei toeta see brauser veebitehnoloogiaid, mis teevad Firefox Sendi toimimise võimalikuks. Sa pead proovima teise brauseriga. Me soovitame Firefoxi!
