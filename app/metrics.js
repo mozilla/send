@@ -15,23 +15,44 @@ const analytics = new testPilotGA({
 });
 
 let appState = null;
+let experiment = null;
 
 export default function initialize(state, emitter) {
   appState = state;
   emitter.on('DOMContentLoaded', () => {
     addExitHandlers();
+    experiment = storage.enrolled[0];
+    sendEvent(category(), 'visit', {
+      cm5: storage.totalUploads,
+      cm6: storage.files.length,
+      cm7: storage.totalDownloads
+    });
     //TODO restart handlers... somewhere
   });
 }
 
 function category() {
-  return appState.route === '/' ? 'sender' : 'recipient';
+  switch (appState.route) {
+    case '/':
+    case '/share/:id':
+      return 'sender';
+    case '/download/:id/:key':
+    case '/download/:id':
+    case '/completed':
+      return 'recipient';
+    default:
+      return 'other';
+  }
 }
 
 function sendEvent() {
+  const args = Array.from(arguments);
+  if (experiment && args[2]) {
+    args[2].xid = experiment[0];
+    args[2].xvar = experiment[1];
+  }
   return (
-    hasLocalStorage &&
-    analytics.sendEvent.apply(analytics, arguments).catch(() => 0)
+    hasLocalStorage && analytics.sendEvent.apply(analytics, args).catch(() => 0)
   );
 }
 

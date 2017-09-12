@@ -13,7 +13,8 @@ module.exports = function(state, emit) {
         'uploadPageLearnMore'
       )}</a>
     </div>
-    <div class="upload-window" ondragover=${dragover} ondragleave=${dragleave}>
+    <div class="${state.config
+      .uploadWindowStyle}" ondragover=${dragover} ondragleave=${dragleave}>
       <div id="upload-img"><img src="${assets.get(
         'upload.svg'
       )}" title="${state.translate('uploadSvgAlt')}"/></div>
@@ -22,9 +23,10 @@ module.exports = function(state, emit) {
         'uploadPageSizeMessage'
       )}</em></span>
       <form method="post" action="upload" enctype="multipart/form-data">
-        <label for="file-upload" id="browse" class="btn">${state.translate(
-          'uploadPageBrowseButton1'
-        )}</label>
+        <label for="file-upload" id="browse" class="${state.config
+          .uploadButtonStyle}">${state.translate(
+    'uploadPageBrowseButton1'
+  )}</label>
         <input id="file-upload" type="file" name="fileUploaded" onchange=${upload} />
       </form>
     </div>

@@ -42,7 +42,11 @@ class Storage {
       const k = this.engine.key(i);
       if (isFile(k)) {
         try {
-          fs.push(JSON.parse(this.engine.getItem(k)));
+          const f = JSON.parse(this.engine.getItem(k));
+          if (!f.id) {
+            f.id = f.fileId;
+          }
+          fs.push(f);
         } catch (err) {
           // obviously you're not a golfer
           this.engine.removeItem(k);
@@ -70,6 +74,18 @@ class Storage {
   set referrer(str) {
     this.engine.setItem('referrer', str);
   }
+  get enrolled() {
+    return JSON.parse(this.engine.getItem('experiments') || '[]');
+  }
+
+  enroll(id, variant) {
+    const enrolled = this.enrolled;
+    // eslint-disable-next-line no-unused-vars
+    if (!enrolled.find(([i, v]) => i === id)) {
+      enrolled.push([id, variant]);
+      this.engine.setItem('experiments', JSON.stringify(enrolled));
+    }
+  }
 
   get files() {
     return this._files;
@@ -81,6 +97,10 @@ class Storage {
     } catch (e) {
       return null;
     }
+  }
+
+  get(id) {
+    return this.engine.getItem(id);
   }
 
   remove(property) {

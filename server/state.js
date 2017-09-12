@@ -15,6 +15,10 @@ module.exports = function(req) {
     storage: {
       files: []
     },
+    config: {
+      uploadWindowStyle: 'upload-window',
+      uploadButtonStyle: 'browse btn'
+    },
     layout
   };
 };
