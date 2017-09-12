@@ -23,11 +23,11 @@ module.exports = function(state, emit) {
         'uploadPageSizeMessage'
       )}</em></span>
       <form method="post" action="upload" enctype="multipart/form-data">
+        <input id="file-upload" type="file" name="fileUploaded" onchange=${upload} onfocus=${onfocus} onblur=${onblur} />
         <label for="file-upload" id="browse" class="${state.config
           .uploadButtonStyle}" title="${state.translate(
     'uploadPageBrowseButton1'
   )}">${state.translate('uploadPageBrowseButton1')}</label>
-        <input id="file-upload" type="file" name="fileUploaded" onchange=${upload} />
       </form>
     </div>
     ${fileList(state, emit)}
@@ -42,6 +42,14 @@ module.exports = function(state, emit) {
   function dragleave(event) {
     const div = document.querySelector('.upload-window');
     div.classList.remove('ondrag');
+  }
+
+  function onfocus(event) {
+    event.target.classList.add('has-focus');
+  }
+
+  function onblur(event) {
+    event.target.classList.remove('has-focus');
   }
 
   async function upload(event) {
