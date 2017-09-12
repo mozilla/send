@@ -231,6 +231,14 @@ a {
   text-align: center;
 }
 
+.upload-window-b {
+  border: 3px dashed rgba(0, 148, 251, 0.5);
+}
+
+.upload-window-b.ondrag {
+  border: 5px dashed rgba(0, 148, 251, 0.5);
+}
+
 .link {
   color: #0094fb;
   text-decoration: none;
@@ -247,7 +255,7 @@ a {
   font-family: 'SF Pro Text', sans-serif;
 }
 
-#browse {
+.browse {
   background: #0297f8;
   border-radius: 5px;
   font-size: 15px;
@@ -261,8 +269,13 @@ a {
   padding: 0 10px;
 }
 
-#browse:hover {
+.browse:hover {
   background-color: #0287e8;
+}
+
+.browse-b {
+  height: 60px;
+  font-size: 20px;
 }
 
 input[type="file"] {

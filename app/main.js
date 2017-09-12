@@ -7,6 +7,7 @@ import { canHasSend } from './utils';
 import assets from '../common/assets';
 import storage from './storage';
 import metrics from './metrics';
+import experiments from './experiments';
 import Raven from 'raven-js';
 
 if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
@@ -22,6 +23,10 @@ app.use((state, emitter) => {
   state.translate = locale.getTranslator();
   state.storage = storage;
   state.raven = Raven;
+  state.config = {
+    uploadWindowStyle: 'upload-window',
+    uploadButtonStyle: 'browse btn'
+  };
   emitter.on('DOMContentLoaded', async () => {
     const ok = await canHasSend(assets.get('cryptofill.js'));
     if (!ok) {
@@ -34,5 +39,6 @@ app.use((state, emitter) => {
 app.use(metrics);
 app.use(fileManager);
 app.use(dragManager);
+app.use(experiments);
 
 app.mount('#page-one');
