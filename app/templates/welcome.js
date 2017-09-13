@@ -24,9 +24,9 @@ module.exports = function(state, emit) {
       )}</em></span>
       <form method="post" action="upload" enctype="multipart/form-data">
         <label for="file-upload" id="browse" class="${state.config
-          .uploadButtonStyle}">${state.translate(
+          .uploadButtonStyle}" title="${state.translate(
     'uploadPageBrowseButton1'
-  )}</label>
+  )}">${state.translate('uploadPageBrowseButton1')}</label>
         <input id="file-upload" type="file" name="fileUploaded" onchange=${upload} />
       </form>
     </div>

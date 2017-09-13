@@ -54,7 +54,9 @@ describe('Server integration tests', function() {
   }
 
   it('Responds with a 200 when the service is up', function() {
-    return request(server).get('/').expect(200);
+    return request(server)
+      .get('/')
+      .expect(200);
   });
 
   it('Rejects with a 404 when a file id is not valid', function() {
@@ -89,7 +91,9 @@ describe('Server integration tests', function() {
   });
 
   it('Responds with a 200 if a file exists', function() {
-    return request(server).get('/exists/' + fileId).expect(200);
+    return request(server)
+      .get('/exists/' + fileId)
+      .expect(200);
   });
 
   it('Exists in the redis server', function() {
@@ -107,7 +111,9 @@ describe('Server integration tests', function() {
   });
 
   it('Fails delete if the id is invalid', function() {
-    return request(server).post('/delete/1').expect(404);
+    return request(server)
+      .post('/delete/1')
+      .expect(404);
   });
 
   it('Successfully deletes if the id is valid and the delete token matches', function(
@@ -129,7 +135,9 @@ describe('Server integration tests', function() {
   });
 
   it('Responds with a 404 if a file does not exist', function() {
-    return request(server).get('/exists/notfound').expect(404);
+    return request(server)
+      .get('/exists/notfound')
+      .expect(404);
   });
 
   it('Uploads properly after a delete', function(done) {
@@ -150,21 +158,25 @@ describe('Server integration tests', function() {
   });
 
   it('Responds with a 200 for the download page', function() {
-    return request(server).get('/download/' + fileId).expect(200);
+    return request(server)
+      .get('/download/' + fileId)
+      .expect(200);
   });
 
   it('Downloads a file properly', function() {
-    return request(server).get('/assets/download/' + fileId).then(res => {
-      assert(res.header.hasOwnProperty('content-disposition'));
-      assert(res.header.hasOwnProperty('content-type'));
-      assert(res.header.hasOwnProperty('content-length'));
-      assert(res.header.hasOwnProperty('x-file-metadata'));
-      assert.equal(
-        res.header['content-disposition'],
-        'attachment; filename=test_upload.txt'
-      );
-      assert.equal(res.header['content-type'], 'application/octet-stream');
-    });
+    return request(server)
+      .get('/assets/download/' + fileId)
+      .then(res => {
+        assert(res.header.hasOwnProperty('content-disposition'));
+        assert(res.header.hasOwnProperty('content-type'));
+        assert(res.header.hasOwnProperty('content-length'));
+        assert(res.header.hasOwnProperty('x-file-metadata'));
+        assert.equal(
+          res.header['content-disposition'],
+          'attachment; filename=test_upload.txt'
+        );
+        assert.equal(res.header['content-type'], 'application/octet-stream');
+      });
   });
 
   it('The file is deleted after one download', function() {

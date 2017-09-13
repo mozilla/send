@@ -1,7 +1,7 @@
 /* global EXPIRE_SECONDS */
 import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
-import { copyToClipboard, delay, fadeOut } from './utils';
+import { copyToClipboard, delay, fadeOut, percent } from './utils';
 import * as metrics from './metrics';
 
 function saveFile(file) {
@@ -54,6 +54,7 @@ function exists(id) {
 
 export default function(state, emitter) {
   let lastRender = 0;
+  let updateTitle = false;
 
   function render() {
     emitter.emit('render');
@@ -74,7 +75,21 @@ export default function(state, emitter) {
     }
   }
 
-  emitter.on('DOMContentLoaded', checkFiles);
+  function updateProgress() {
+    if (updateTitle) {
+      emitter.emit('DOMTitleChange', percent(state.transfer.progressRatio));
+    }
+    render();
+  }
+
+  emitter.on('DOMContentLoaded', () => {
+    document.addEventListener('blur', () => (updateTitle = true));
+    document.addEventListener('focus', () => {
+      updateTitle = false;
+      emitter.emit('DOMTitleChange', 'Firefox Send');
+    });
+    checkFiles();
+  });
 
   emitter.on('navigate', checkFiles);
 
@@ -107,7 +122,7 @@ export default function(state, emitter) {
   emitter.on('upload', async ({ file, type }) => {
     const size = file.size;
     const sender = new FileSender(file);
-    sender.on('progress', render);
+    sender.on('progress', updateProgress);
     sender.on('encrypting', render);
     state.transfer = sender;
     render();
@@ -153,7 +168,7 @@ export default function(state, emitter) {
     const size = file.size;
     const url = `/api/download/${file.id}`;
     const receiver = new FileReceiver(url, file.key);
-    receiver.on('progress', render);
+    receiver.on('progress', updateProgress);
     receiver.on('decrypting', render);
     state.transfer = receiver;
     const links = openLinksInNewTab();

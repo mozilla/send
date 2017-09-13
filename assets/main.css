@@ -278,7 +278,7 @@ a {
   font-size: 20px;
 }
 
-input[type="file"] {
+input[type='file'] {
   display: none;
 }
 
@@ -359,7 +359,7 @@ tbody {
   cursor: pointer;
 }
 
-.icon-copy[disabled="disabled"] {
+.icon-copy[disabled='disabled'] {
   pointer-events: none;
   opacity: 0.3;
 }
@@ -398,7 +398,7 @@ tbody {
 
 /* Popup arrow */
 .popup .popuptext::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -11px;
   left: 20px;

@@ -51,7 +51,7 @@ export default function initialize(state, emitter) {
   emitter.on('DOMContentLoaded', () => {
     const xp = experiments[state.query.x];
     if (xp) {
-      xp.run(state.query.v, state, emitter);
+      xp.run(+state.query.v, state, emitter);
     }
   });
 

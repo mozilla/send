@@ -4,7 +4,7 @@ const assets = require('../../common/assets');
 function timeLeft(milliseconds) {
   const minutes = Math.floor(milliseconds / 1000 / 60);
   const hours = Math.floor(minutes / 60);
-  const seconds = Math.floor(milliseconds / 1000 % 60);
+  const seconds = Math.floor((milliseconds / 1000) % 60);
   if (hours >= 1) {
     return `${hours}h ${minutes % 60}m`;
   } else if (hours === 0) {

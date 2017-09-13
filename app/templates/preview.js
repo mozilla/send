@@ -40,11 +40,16 @@ module.exports = function(state, emit) {
           state.translate('downloadFileSize', { size })}</span>
         </div>
         <div class="description">${state.translate('downloadMessage')}</div>
-        <img src="${assets.get(
-          'illustration_download.svg'
-        )}" id="download-img" alt="${state.translate('downloadAltText')}"/>
+        <img
+          src="${assets.get('illustration_download.svg')}"
+          id="download-img"
+          alt="${state.translate('downloadAltText')}"/>
         <div>
-          <button id="download-btn" class="btn" onclick=${download}>${state.translate(
+          <button
+            id="download-btn"
+            class="btn"
+            title="${state.translate('downloadButtonLabel')}"
+            onclick=${download}>${state.translate(
     'downloadButtonLabel'
   )}</button>
         </div>

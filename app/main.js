@@ -28,6 +28,13 @@ app.use((state, emitter) => {
     uploadButtonStyle: 'browse btn'
   };
   emitter.on('DOMContentLoaded', async () => {
+    if (
+      /firefox/i.test(navigator.userAgent) &&
+      parseInt(navigator.userAgent.match(/firefox\/*([^\n\r]*)\./i)[1], 10) <=
+        49
+    ) {
+      return emitter.emit('replaceState', '/unsupported/outdated');
+    }
     const ok = await canHasSend(assets.get('cryptofill.js'));
     if (!ok) {
       const reason = /firefox/i.test(navigator.userAgent) ? 'outdated' : 'gcm';

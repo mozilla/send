@@ -21,9 +21,9 @@ module.exports = function(state, emit) {
         transfer.msg,
         transfer.sizes
       )}</div>
-      <button id="cancel-upload" onclick=${cancel}>${state.translate(
-    'uploadingPageCancel'
-  )}</button>
+      <button id="cancel-upload" title="${state.translate(
+        'uploadingPageCancel'
+      )}" onclick=${cancel}>${state.translate('uploadingPageCancel')}</button>
     </div>
   </div>
   `;

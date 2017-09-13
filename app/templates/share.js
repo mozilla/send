@@ -17,13 +17,13 @@ module.exports = function(state, emit) {
       })}</div>
       <div id="copy">
         <input id="link" type="url" value="${file.url}" readonly="true"/>
-        <button id="copy-btn" class="btn" onclick=${copyLink}>${state.translate(
-    'copyUrlFormButton'
-  )}</button>
+        <button id="copy-btn" class="btn" title="${state.translate(
+          'copyUrlFormButton'
+        )}" onclick=${copyLink}>${state.translate('copyUrlFormButton')}</button>
       </div>
-      <button id="delete-file" class="btn" onclick=${deleteFile}>${state.translate(
-    'deleteFileButton'
-  )}</button>
+      <button id="delete-file" class="btn" title="${state.translate(
+        'deleteFileButton'
+      )}" onclick=${deleteFile}>${state.translate('deleteFileButton')}</button>
       <a class="send-new" data-state="completed" href="/" onclick=${sendNew}>${state.translate(
     'sendAnotherFileLink'
   )}</a>
