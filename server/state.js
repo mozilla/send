@@ -19,6 +19,8 @@ module.exports = function(req) {
       uploadWindowStyle: 'upload-window',
       uploadButtonStyle: 'browse btn'
     },
+    fira: false,
+    fileInfo: {},
     layout
   };
 };
