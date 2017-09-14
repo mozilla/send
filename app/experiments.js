@@ -22,7 +22,7 @@ const experiments = {
       return this.luckyNumber(state) >= 0.5;
     },
     variant: function(state) {
-      return this.luckyNumber(state) < 0.5 ? 0 : 1;
+      return this.luckyNumber(state) < 0.75 ? 0 : 1;
     },
     luckyNumber: function(state) {
       return luckyNumber(
