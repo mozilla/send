@@ -20,6 +20,14 @@ function saveFile(file) {
   URL.revokeObjectURL(downloadUrl);
 }
 
+function convertPlainText(file) {
+  if (file.type === 'text/plain') {
+    const plaintextView = new TextDecoder().decode(file.plaintext);
+    return plaintextView;
+  }
+  return;
+}
+
 function openLinksInNewTab(links, should = true) {
   links = links || Array.from(document.querySelectorAll('a:not([target])'));
   if (should) {
@@ -181,10 +189,17 @@ export default function(state, emitter) {
       const speed = size / (time / 1000);
       await delay(1000);
       await fadeOut('download-progress');
-      saveFile(f);
-      state.storage.totalDownloads += 1;
-      metrics.completedDownload({ size, time, speed });
-      emitter.emit('pushState', '/completed');
+      const pt = convertPlainText(f);
+      if (pt !== null) {
+        state.fileInfo.plaintext = convertPlainText(f);
+        render();
+      } else {
+        saveFile(f);
+        state.storage.totalDownloads += 1;
+        metrics.completedDownload({ size, time, speed });
+        emitter.emit('pushState', '/completed');
+        state.transfer = null;
+      }
     } catch (err) {
       // TODO cancelled download
       const location = err.message === 'notfound' ? '/404' : '/error';
@@ -193,8 +208,8 @@ export default function(state, emitter) {
         metrics.stoppedDownload({ size, err });
       }
       emitter.emit('replaceState', location);
-    } finally {
       state.transfer = null;
+    } finally {
       openLinksInNewTab(links, false);
     }
   });
