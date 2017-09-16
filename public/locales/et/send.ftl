@@ -21,6 +21,7 @@ uploadingPageMessage = Aegumise sätteid saab muuta siis, kui faili üles laadit
 uploadingPageCancel = Katkesta üleslaadimine
 uploadCancelNotification = Üleslaadimine katkestati
 uploadingPageLargeFileMessage = Fail on suur ja selle üleslaadimine võib aega võtta.
+uploadingFileNotification = Teavita mind üleslaadimise lõppemisest.
 uploadSuccessConfirmHeader = Saatmiseks valmis
 uploadSvgAlt = Laadi üles
 uploadSuccessTimingHeader = Link failile aegub pärast 1. allalaadimist või 24 tunni möödumisel.
@@ -64,6 +65,7 @@ copyFileList = Kopeeri URL
 // expiryFileList is used as a column header
 expiryFileList = Aegub
 deleteFileList = Kustuta
+nevermindButton = Ära pane tähele
 legalHeader = Tingimused ja privaatsusreeglid
 legalNoticeTestPilot = Firefox Send on praegu Test Piloti eksperiment ja sellele rakenduvad Test Piloti <a>teenusetingimused</a> ning <a>privaatsusreeglid</a>. Rohkem teavet selle eksperimendi ja kogutavate andmete kohta leiab <a>siit</a>.
 legalNoticeMozilla = Firefox Sendi veebilehe kasutamisele rakenduvad ka Mozilla <a>veebilehtede privaatsusreeglid</a> ja <a>veebilehtede teenusetingimused</a>.
