@@ -4,7 +4,7 @@ const { fadeOut } = require('../utils');
 
 module.exports = function(state, emit) {
   const div = html`
-  <div id="download" class="fadeIn">
+  <div id="download" class="fadeIn singlepane">
     <div id="download-progress">
       <div id="dl-title" class="title">${state.translate(
         'downloadFinish'

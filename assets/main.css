@@ -130,7 +130,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  max-width: 630px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
@@ -182,6 +181,59 @@ a {
   100% {
     opacity: 1;
   }
+}
+
+.singlepane {
+  max-width: 630px;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: center;
+  padding: 20px;
+  margin: auto;
+  max-width: 800px;
+}
+
+.left {
+  margin-right: 10px;
+  width: 390px;
+}
+
+.right {
+  margin-left: 10px;
+  width: 390px;
+}
+
+.left {
+  border: 1px dashed rgba(0, 148, 251, 0.5);
+  height: 255px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  transition: transform 150ms;
+  padding: 15px;
+  font-family: 'SF Pro Text', sans-serif;
+}
+
+.left .browse {
+  border: none;
+  width: 100%;
+}
+
+.left textarea,
+.pt-textarea {
+  resize: none;
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
 }
 
 .title {
@@ -249,10 +301,9 @@ a {
 }
 
 #upload-text {
-  font-size: 22px;
-  color: #737373;
-  margin: 20px 0 10px;
-  font-family: 'SF Pro Text', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, SF Pro Text, segoe ui,
+    helvetica neue, helvetica, ubuntu, roboto, noto, arial, sans-serif;
+  font-weight: 200;
 }
 
 .browse {
@@ -842,6 +893,16 @@ tbody {
   .popup .popuptext::after {
     left: auto;
     right: 36px;
+  }
+
+  .container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .left {
+    margin-bottom: 30px;
+    margin-right: 0;
   }
 }
 

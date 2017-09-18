@@ -9,7 +9,7 @@ module.exports = function(state, emit) {
     return notFound(state, emit);
   }
   const div = html`
-  <div id="share-link" class="fadeIn">
+  <div id="share-link" class="fadeIn singlepane">
     <div class="title">${state.translate('uploadSuccessTimingHeader')}</div>
     <div id="share-window">
       <div id="copy-text">${state.translate('copyUrlFormLabelWithName', {
