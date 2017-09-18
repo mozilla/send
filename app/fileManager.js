@@ -25,7 +25,7 @@ function convertPlainText(file) {
     const plaintextView = new TextDecoder().decode(file.plaintext);
     return plaintextView;
   }
-  return;
+  return null;
 }
 
 function openLinksInNewTab(links, should = true) {
