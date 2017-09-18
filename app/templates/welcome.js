@@ -43,9 +43,9 @@ module.exports = function(state, emit) {
             <input id="file-upload" type="file" name="fileUploaded" onchange=${upload} />
           </form>
         </div>
-        ${fileList(state, emit)}
       </div>
     </div>
+    ${fileList(state, emit)}
   </div>
   `;
 
