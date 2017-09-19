@@ -48,6 +48,7 @@ linkExpiredAlt = లంకె గడువు ముగిసింది
 expiredPageHeader = ఈ లంకె గడువు ముగిసింది లేదా ముందు ఎప్పుడూ ఉనికిలో లేదు!
 notSupportedHeader = మీ విహారిణికి మద్దతు లేదు.
 notSupportedLink = నా విహారిణికి ఎందుకు మద్దతు లేదు?
+notSupportedOutdatedDetail = దురదృష్టవశాత్తు Firefox యొక్క ఈ వెర్షన్ Firefox సాంకేతికతను పంపే వెబ్ సాంకేతికతకు మద్దతు ఇవ్వదు. మీరు మీ బ్రౌజర్ని నవీకరించాలి.
 updateFirefox = Firefoxను నవీకరించు
 downloadFirefoxButtonSub = ఉచిత దిగుమతులు
 uploadedFile = దస్త్రం
