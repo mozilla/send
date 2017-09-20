@@ -1,7 +1,6 @@
 const html = require('choo/html');
 const progress = require('./progress');
-const { bytes } = require('../utils');
-const { fadeOut } = require('../utils');
+const { bytes, fadeOut } = require('../utils');
 
 module.exports = function(state, emit) {
   const transfer = state.transfer;
@@ -32,9 +31,11 @@ module.exports = function(state, emit) {
   } else {
     div = html`
       <div id="download-progress" class="fadeIn singlepane">
-        <div id="dl-title" class="title">Download Complete</div>
+        <div id="dl-title" class="title">
+          ${state.translate('downloadFinish')}
+        </div>
         <div class="description">
-          <textarea class=pt-textarea>${state.fileInfo.plaintext}</textarea>
+          <textarea class="pt-textarea">${state.fileInfo.plaintext}</textarea>
         </div>
         <div class="description">
             <a class="send-new" data-state="completed" href="/" onclick=${sendNew}>${state.translate(

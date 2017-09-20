@@ -191,7 +191,7 @@ export default function(state, emitter) {
       await fadeOut('download-progress');
       const pt = convertPlainText(f);
       if (pt !== null) {
-        state.fileInfo.plaintext = convertPlainText(f);
+        state.fileInfo.plaintext = pt;
         render();
       } else {
         saveFile(f);
