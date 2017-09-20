@@ -1,5 +1,4 @@
 import app from './routes';
-import log from 'choo-log';
 import locale from '../common/locales';
 import fileManager from './fileManager';
 import dragManager from './dragManager';
@@ -13,8 +12,6 @@ import Raven from 'raven-js';
 if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
   Raven.config(window.SENTRY_ID, window.RAVEN_CONFIG).install();
 }
-
-app.use(log());
 
 app.use((state, emitter) => {
   // init state
