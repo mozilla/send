@@ -97,7 +97,7 @@
     "choo": "^6.1.0",
     "connect-busboy": "0.0.2",
     "convict": "^4.0.0",
-    "express": "^4.15.4",
+    "express": "^4.15.5",
     "express-request-language": "^1.1.12",
     "fluent": "^0.4.1",
     "fluent-langneg": "^0.1.0",
