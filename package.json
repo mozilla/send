@@ -1,7 +1,7 @@
 {
   "name": "firefox-send",
   "description": "File Sharing Experiment",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "author": "Mozilla (https://mozilla.org)",
   "repository": "mozilla/send",
   "homepage": "https://github.com/mozilla/send/",
@@ -122,6 +122,7 @@
     "es-CL",
     "es-ES",
     "es-MX",
+    "et",
     "fa",
     "fr",
     "fy-NL",
