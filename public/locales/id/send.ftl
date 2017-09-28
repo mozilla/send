@@ -8,9 +8,11 @@ uploadPageLearnMore = Pelajari lebih lanjut
 uploadPageDropMessage = Lepas berkas Anda di sini untuk mulai mengunggah
 uploadPageSizeMessage = Untuk pengoperasian yang paling andal, sebaiknya jaga berkas Anda di bawah 1GB
 uploadPageBrowseButton = Pilih berkas pada komputer Anda
+uploadPageBrowseButton1 = Pilih berkas untuk diunggah
+    .title = Pilih berkas untuk diunggah
 uploadPageMultipleFilesAlert = Saat ini belum mendukung pengunggahan beberapa berkas atau folder.
 uploadPageBrowseButtonTitle = Unggah berkas
-uploadingPageHeader = Mengunggah Berkas Anda
+uploadingPageProgress = Mengunggah { $filename } ({ $size })
 importingFile = Mengimpor…
 verifyingFile = Memverifikasi…
 encryptingFile = Mengenkripsi...
@@ -39,6 +41,8 @@ downloadMessage = Teman Anda mengirimkan berkas dengan Firefox Send, layanan yan
 downloadButtonLabel = Unduh
 downloadNotification = Unduhan Anda telah selesai.
 downloadFinish = Unduhan Selesai
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } dari { $totalSize })
 // Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Coba Firefox Send
 downloadingPageProgress = Mengunduh { $filename } ({ $size })
