@@ -35,7 +35,7 @@ downloadAltText = Prevziať
 downloadFileName = Prevziať { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
-downloadMessage = Váš priateľ vám odoslal súbor pomocou služby Firefox Sync - táto vám umožňuje zdieľať súbory pomocou bezpečného, súkromného a zašifrovaného odkazu, ktorého platnosť automaticky vyprší. Vďaka tomu máte istotu, že vaše súbory neostanú na internete naveky.
+downloadMessage = Váš priateľ vám odoslal súbor pomocou služby Firefox Send - táto vám umožňuje zdieľať súbory pomocou bezpečného, súkromného a zašifrovaného odkazu, ktorého platnosť automaticky vyprší. Vďaka tomu máte istotu, že vaše súbory neostanú na internete naveky.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Prevziať
 downloadNotification = Vaše preberanie bolo dokončené.
