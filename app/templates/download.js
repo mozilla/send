@@ -1,28 +1,57 @@
 const html = require('choo/html');
 const progress = require('./progress');
-const { bytes } = require('../utils');
+const { bytes, fadeOut } = require('../utils');
 
-module.exports = function(state) {
+module.exports = function(state, emit) {
   const transfer = state.transfer;
-  const div = html`
-  <div id="download-progress" class="fadeIn">
-    <div id="dl-title" class="title">${state.translate(
-      'downloadingPageProgress',
-      {
-        filename: state.fileInfo.name,
-        size: bytes(state.fileInfo.size)
-      }
-    )}</div>
-    <div class="description">${state.translate('downloadingPageMessage')}</div>
-    ${progress(transfer.progressRatio)}
-    <div class="upload">
-      <div class="progress-text">${state.translate(
-        transfer.msg,
-        transfer.sizes
-      )}</div>
-    </div>
-  </div>
-  `;
+  let div = null;
+
+  if (state.fileInfo.plaintext === undefined) {
+    div = html`
+      <div id="download-progress" class="fadeIn singlepane">
+        <div id="dl-title" class="title">${state.translate(
+          'downloadingPageProgress',
+          {
+            filename: state.fileInfo.name,
+            size: bytes(state.fileInfo.size)
+          }
+        )}</div>
+        <div class="description">${state.translate(
+          'downloadingPageMessage'
+        )}</div>
+        ${progress(transfer.progressRatio)}
+        <div class="upload">
+          <div class="progress-text">${state.translate(
+            transfer.msg,
+            transfer.sizes
+          )}</div>
+        </div>
+      </div>
+    `;
+  } else {
+    div = html`
+      <div id="download-progress" class="fadeIn singlepane">
+        <div id="dl-title" class="title">
+          ${state.translate('downloadFinish')}
+        </div>
+        <div class="description">
+          <textarea class="pt-textarea">${state.fileInfo.plaintext}</textarea>
+        </div>
+        <div class="description">
+            <a class="send-new" data-state="completed" href="/" onclick=${sendNew}>${state.translate(
+      'sendYourFilesLink'
+    )}</a>
+        </div>
+      </div>
+    `;
+  }
+
+  async function sendNew(e) {
+    e.preventDefault();
+    await fadeOut('download-progress');
+    state.transfer = null;
+    emit('pushState', '/');
+  }
 
   return div;
 };

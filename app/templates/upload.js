@@ -6,7 +6,7 @@ module.exports = function(state, emit) {
   const transfer = state.transfer;
 
   const div = html`
-  <div id="upload-progress" class="fadeIn">
+  <div id="upload-progress" class="fadeIn singlepane">
     <div class="title" id="upload-filename">${state.translate(
       'uploadingPageProgress',
       {
