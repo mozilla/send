@@ -279,7 +279,17 @@ a {
 }
 
 input[type='file'] {
-  display: none;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+input[type='file'].has-focus + #browse,
+input[type='file']:focus + #browse {
+  background-color: #0287e8;
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
 }
 
 #file-size-msg {
