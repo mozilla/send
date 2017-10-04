@@ -135,6 +135,7 @@ export default function(state, emitter) {
       const time = Date.now() - start;
       const speed = size / (time / 1000);
       metrics.completedUpload({ size, time, speed, type });
+      document.getElementById('cancel-upload').hidden = 'hidden';
       await delay(1000);
       await fadeOut('upload-progress');
       info.name = file.name;
