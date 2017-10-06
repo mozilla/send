@@ -31,9 +31,39 @@ module.exports = function(state, body = '') {
     <title>${state.title}</title>
 
     <link rel="stylesheet" type="text/css" href="${assets.get('main.css')}" />
-    <link rel="icon" type="image/png" href="${assets.get(
-      'favicon-32x32.png'
-    )}" sizes="32x32" />
+    
+    <!-- generic favicons -->
+    <link rel="icon" href="${assets.get('favicon-32.png')}" sizes="32x32">
+    <link rel="icon" href="${assets.get('favicon-96.png')}" sizes="96x96">
+    <link rel="icon" href="${assets.get('favicon-128.png')}" sizes="128x128">
+    <link rel="icon" href="${assets.get('favicon-228.png')}" sizes="228x228">
+
+    <!-- Android -->
+    <link rel="shortcut icon" href="${assets.get(
+      'favicon-196.png'
+    )}" sizes="196x196">
+
+    <!-- iOS -->
+    <link rel="apple-touch-icon" href="${assets.get(
+      'favicon-120.png'
+    )}" sizes="120x120">
+    <link rel="apple-touch-icon" href="${assets.get(
+      'favicon-152.png'
+    )}" sizes="152x152">
+    <link rel="apple-touch-icon" href="${assets.get(
+      'favicon-180.png'
+    )}" sizes="180x180">
+
+    <!-- Windows 8 IE 10-->
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="${assets.get(
+      'favicon-144.png'
+    )}">
+
+    <!— Windows 8.1 + IE11 and above —>
+    <meta name="msapplication-config" content="/browserconfig.xml"/>
+    
+    
     ${firaTag}
     <script defer src="/jsconfig.js"></script>
     <script defer src="${assets.get('runtime.js')}"></script>
