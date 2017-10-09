@@ -7,6 +7,20 @@
 
 ---
 
+## Table of Contents
+
+* [What it does](#what-it-does)
+* [Requirements](#requirements)
+* [Development](#development)
+* [Commands](#commands)
+* [Configuration](#configuration)
+* [Localization](#localization)
+* [Contributing](#contributing)
+* [Testing](#testing)
+* [License](#license)
+
+---
+
 ## What it does
 
 A file sharing experiment which allows you to send encrypted files to other users.
