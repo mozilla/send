@@ -20,10 +20,6 @@ app.use((state, emitter) => {
   state.translate = locale.getTranslator();
   state.storage = storage;
   state.raven = Raven;
-  state.config = {
-    uploadWindowStyle: 'upload-window',
-    uploadButtonStyle: 'browse btn'
-  };
   emitter.on('DOMContentLoaded', async () => {
     if (
       /firefox/i.test(navigator.userAgent) &&

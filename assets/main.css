@@ -205,7 +205,7 @@ a {
 }
 
 .upload-window {
-  border: 1px dashed rgba(0, 148, 251, 0.5);
+  border: 3px dashed rgba(0, 148, 251, 0.5);
   margin: 0 auto;
   height: 255px;
   border-radius: 4px;
@@ -219,7 +219,7 @@ a {
 }
 
 .upload-window.ondrag {
-  border: 3px dashed rgba(0, 148, 251, 0.5);
+  border: 5px dashed rgba(0, 148, 251, 0.5);
   margin: 0 auto;
   height: 251px;
   transform: scale(1.04);
@@ -229,14 +229,6 @@ a {
   align-items: center;
   flex-direction: column;
   text-align: center;
-}
-
-.upload-window-b {
-  border: 3px dashed rgba(0, 148, 251, 0.5);
-}
-
-.upload-window-b.ondrag {
-  border: 5px dashed rgba(0, 148, 251, 0.5);
 }
 
 .link {
@@ -258,10 +250,10 @@ a {
 .browse {
   background: #0297f8;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 20px;
   color: #fff;
   min-width: 240px;
-  height: 44px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -271,11 +263,6 @@ a {
 
 .browse:hover {
   background-color: #0287e8;
-}
-
-.browse-b {
-  height: 60px;
-  font-size: 20px;
 }
 
 input[type='file'] {

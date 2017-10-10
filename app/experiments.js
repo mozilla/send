@@ -1,38 +1,9 @@
 import hash from 'string-hash';
 
-const experiments = {
-  '5YHCzn2CQTmBwWwTmZupBA': {
-    id: '5YHCzn2CQTmBwWwTmZupBA',
-    run: function(variant, state, emitter) {
-      state.experiment = {
-        xid: this.id,
-        xvar: variant
-      };
-      // Beefy UI
-      if (variant === 1) {
-        state.config.uploadWindowStyle = 'upload-window upload-window-b';
-        state.config.uploadButtonStyle = 'btn browse browse-b';
-      } else {
-        state.config.uploadWindowStyle = 'upload-window';
-        state.config.uploadButtonStyle = 'btn browse';
-      }
-      emitter.emit('render');
-    },
-    eligible: function(state) {
-      return this.luckyNumber(state) >= 0.5;
-    },
-    variant: function(state) {
-      return this.luckyNumber(state) < 0.75 ? 0 : 1;
-    },
-    luckyNumber: function(state) {
-      return luckyNumber(
-        `${this.id}:${state.storage.get('testpilot_ga__cid')}`
-      );
-    }
-  }
-};
+const experiments = {};
 
 //Returns a number between 0 and 1
+// eslint-disable-next-line no-unused-vars
 function luckyNumber(str) {
   return hash(str) / 0xffffffff;
 }
