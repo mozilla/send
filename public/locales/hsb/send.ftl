@@ -34,6 +34,10 @@ sendAnotherFileLink = Druhu dataju pósłać
 downloadAltText = Sćahnyć
 downloadFileName = { $filename } sćahnyć
 downloadFileSize = ({ $size })
+unlockInputLabel = Hesło zapodać
+unlockInputPlaceholder = Hesło
+unlockButtonLabel = Wotewrěć
+downloadFileTitle = Zaklučowanu dataju sćahnyć
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Waš přećel wam dataju z Firefox Send sćele, słužba, kotraž wam zmóžnja, dataje přez wěsty, priwatny a zaklučowany wotkaz dźělić, kotryž awtomatisce spadnje, zo njebychu waše daty na přeco online wostawali.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Wo Test Pilot
 footerLinkPrivacy = Priwatnosć
 footerLinkTerms = Wuměnjenja
 footerLinkCookies = Placki
+requirePasswordCheckbox = Žadajće sej hesło za sćehnjenje tuteje dataje
+addPasswordButton = Hesło přidać
+incorrectPassword = Wopačne hesło. Hišće raz spytać?
