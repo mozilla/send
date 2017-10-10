@@ -34,6 +34,10 @@ sendAnotherFileLink = Пошаљи другу датотеку
 downloadAltText = Преузми
 downloadFileName = Преузимање датотеке { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Унесите лозинку
+unlockInputPlaceholder = Лозинка
+unlockButtonLabel = Откључај
+downloadFileTitle = Преузми шифровану датотеку
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Ваш пријатељ вам је послао датотеку преко услуге Firefox Send која вам омогућава да делите датотеке преко безбедне, приватне и шифроване везе која самостално истиче да ваше ствари не би остале на нету заувек.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = О Тест Пилоту
 footerLinkPrivacy = Приватност
 footerLinkTerms = Услови
 footerLinkCookies = Колачићи
+requirePasswordCheckbox = Захтевај лозинку да би преузео ову датотеку
+addPasswordButton = Додај лозинку
+incorrectPassword = Погрешна лозинка. Покушати поново?
