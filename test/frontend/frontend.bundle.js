@@ -18,5 +18,5 @@ window.sinon = require('sinon');
 window.server = window.sinon.fakeServer.create();
 window.assert = require('assert');
 const utils = require('../../app/utils');
-window.hexToArray = utils.hexToArray;
-window.arrayToHex = utils.arrayToHex;
+window.b64ToArray = utils.b64ToArray;
+window.arrayToB64 = utils.arrayToB64;

@@ -638,6 +638,23 @@ tbody {
   color: #0287e8;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.selectPassword {
+  padding: 10px 0;
+  align-self: left;
+}
+
+.setPassword {
+  align-self: left;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 80%;
+  padding: 10px 20px;
+}
+
 /*    upload-error    */
 #upload-error {
   display: flex;
@@ -764,6 +781,55 @@ tbody {
 #download-img {
   width: 283px;
   height: 196px;
+}
+
+.enterPassword {
+  text-align: left;
+  padding: 40px;
+}
+
+.red {
+  color: red;
+}
+
+#unlock {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 10px 0;
+}
+
+#unlock-input {
+  flex: 1;
+  height: 46px;
+  border: 1px solid #0297f8;
+  border-radius: 6px 0 0 6px;
+  font-size: 20px;
+  color: #737373;
+  font-family: 'SF Pro Text', sans-serif;
+  letter-spacing: 0;
+  line-height: 23px;
+  font-weight: 300;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#unlock-btn {
+  flex: 0 1 165px;
+  background: #0297f8;
+  border-radius: 0 6px 6px 0;
+  border: 1px solid #0297f8;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+#unlock-btn:hover {
+  background-color: #0287e8;
 }
 
 /*    footer    */

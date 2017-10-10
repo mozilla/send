@@ -1,6 +1,7 @@
 const html = require('choo/html');
 const assets = require('../../common/assets');
 const notFound = require('./notFound');
+const downloadPassword = require('./downloadPassword');
 const { bytes } = require('../utils');
 
 function getFileFromDOM() {
@@ -8,11 +9,9 @@ function getFileFromDOM() {
   if (!el) {
     return null;
   }
-  const data = el.dataset;
   return {
-    name: data.name,
-    size: parseInt(data.size, 10),
-    ttl: parseInt(data.ttl, 10)
+    nonce: el.getAttribute('data-nonce'),
+    pwd: !!+el.getAttribute('data-requires-password')
   };
 }
 
@@ -24,40 +23,47 @@ module.exports = function(state, emit) {
   state.fileInfo.id = state.params.id;
   state.fileInfo.key = state.params.key;
   const fileInfo = state.fileInfo;
-  const size = bytes(fileInfo.size);
+  const size = fileInfo.size
+    ? state.translate('downloadFileSize', { size: bytes(fileInfo.size) })
+    : '';
+  let action = html`
+  <div>
+    <img src="${assets.get('illustration_download.svg')}"
+      id="download-img"
+      alt="${state.translate('downloadAltText')}"/>
+    <div>
+      <button id="download-btn"
+        class="btn"
+        onclick=${download}>${state.translate('downloadButtonLabel')}
+      </button>
+    </div>
+  </div>`;
+  if (fileInfo.pwd && !fileInfo.password) {
+    action = downloadPassword(state, emit);
+  } else if (!state.transfer) {
+    emit('preview');
+  }
+  const title = fileInfo.name
+    ? state.translate('downloadFileName', { filename: fileInfo.name })
+    : state.translate('downloadFileTitle');
   const div = html`
   <div id="page-one">
     <div id="download">
       <div id="download-page-one">
         <div class="title">
           <span id="dl-file"
-            data-name="${fileInfo.name}"
-            data-size="${fileInfo.size}"
-            data-ttl="${fileInfo.ttl}">${state.translate('downloadFileName', {
-    filename: fileInfo.name
-  })}</span>
-        <span id="dl-filesize">${' ' +
-          state.translate('downloadFileSize', { size })}</span>
+            data-nonce="${fileInfo.nonce}"
+            data-requires-password="${fileInfo.pwd}">${title}</span>
+        <span id="dl-filesize">${' ' + size}</span>
         </div>
         <div class="description">${state.translate('downloadMessage')}</div>
-        <img
-          src="${assets.get('illustration_download.svg')}"
-          id="download-img"
-          alt="${state.translate('downloadAltText')}"/>
-        <div>
-          <button
-            id="download-btn"
-            class="btn"
-            title="${state.translate('downloadButtonLabel')}"
-            onclick=${download}>${state.translate(
-    'downloadButtonLabel'
-  )}</button>
-        </div>
+        ${action}
       </div>
       <a class="send-new" href="/">${state.translate('sendYourFilesLink')}</a>
     </div>
   </div>
   `;
+
   function download(event) {
     event.preventDefault();
     emit('download', fileInfo);

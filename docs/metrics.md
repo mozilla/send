@@ -67,6 +67,14 @@ Triggered whenever a user stops uploading a file. Includes:
 - `cd2`
 - `cd6`
 
+#### `password-added`
+Triggered whenever a password is added to a file. Includes:
+
+- `cm1`
+- `cm5`
+- `cm6`
+- `cm7`
+
 #### `download-started`
 Triggered whenever a user begins downloading a file. Includes:
 

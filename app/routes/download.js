@@ -3,7 +3,10 @@ const download = require('../templates/download');
 
 module.exports = function(state, emit) {
   if (state.transfer) {
-    return download(state, emit);
+    const s = state.transfer.state;
+    if (s === 'downloading' || s === 'complete') {
+      return download(state, emit);
+    }
   }
   return preview(state, emit);
 };

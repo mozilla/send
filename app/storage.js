@@ -92,11 +92,7 @@ class Storage {
   }
 
   getFileById(id) {
-    try {
-      return JSON.parse(this.engine.getItem(id));
-    } catch (e) {
-      return null;
-    }
+    return this._files.find(f => f.id === id);
   }
 
   get(id) {
@@ -113,6 +109,10 @@ class Storage {
   addFile(file) {
     this._files.push(file);
     this.engine.setItem(file.id, JSON.stringify(file));
+  }
+
+  writeFiles() {
+    this._files.forEach(f => this.engine.setItem(f.id, JSON.stringify(f)));
   }
 }
 

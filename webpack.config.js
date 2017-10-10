@@ -143,6 +143,6 @@ module.exports = {
   ],
   devServer: {
     compress: true,
-    setup: IS_DEV ? require('./server/dev') : undefined
+    before: IS_DEV ? require('./server/dev') : undefined
   }
 };

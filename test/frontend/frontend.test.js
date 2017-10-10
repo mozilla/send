@@ -3,7 +3,7 @@ const FileReceiver = window.FileReceiver;
 const FakeFile = window.FakeFile;
 const assert = window.assert;
 const server = window.server;
-const hexToArray = window.hexToArray;
+const b64ToArray = window.b64ToArray;
 const sinon = window.sinon;
 
 let file;
@@ -112,7 +112,7 @@ describe('File Sender', function() {
               .encrypt(
                 {
                   name: 'AES-GCM',
-                  iv: hexToArray(IV),
+                  iv: b64ToArray(IV),
                   tagLength: 128
                 },
                 cryptoKey,

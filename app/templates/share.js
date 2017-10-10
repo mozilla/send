@@ -1,6 +1,7 @@
 const html = require('choo/html');
 const assets = require('../../common/assets');
 const notFound = require('./notFound');
+const uploadPassword = require('./uploadPassword');
 const { allowedCopy, delay, fadeOut } = require('../utils');
 
 module.exports = function(state, emit) {
@@ -8,25 +9,37 @@ module.exports = function(state, emit) {
   if (!file) {
     return notFound(state, emit);
   }
+  const passwordComplete = html`
+  <div class="selectPassword">
+    Password: ${file.password}
+  </div>`;
+  const passwordSection = file.password
+    ? passwordComplete
+    : uploadPassword(state, emit);
   const div = html`
   <div id="share-link" class="fadeIn">
     <div class="title">${state.translate('uploadSuccessTimingHeader')}</div>
     <div id="share-window">
-      <div id="copy-text">${state.translate('copyUrlFormLabelWithName', {
-        filename: file.name
-      })}</div>
+      <div id="copy-text">
+        ${state.translate('copyUrlFormLabelWithName', {
+          filename: file.name
+        })}</div>
       <div id="copy">
         <input id="link" type="url" value="${file.url}" readonly="true"/>
-        <button id="copy-btn" class="btn" title="${state.translate(
-          'copyUrlFormButton'
-        )}" onclick=${copyLink}>${state.translate('copyUrlFormButton')}</button>
+        <button id="copy-btn"
+          class="btn"
+          title="${state.translate('copyUrlFormButton')}"
+          onclick=${copyLink}>${state.translate('copyUrlFormButton')}</button>
       </div>
-      <button id="delete-file" class="btn" title="${state.translate(
-        'deleteFileButton'
-      )}" onclick=${deleteFile}>${state.translate('deleteFileButton')}</button>
-      <a class="send-new" data-state="completed" href="/" onclick=${sendNew}>${state.translate(
-    'sendAnotherFileLink'
-  )}</a>
+      ${passwordSection}
+      <button id="delete-file"
+        class="btn"
+        title="${state.translate('deleteFileButton')}"
+        onclick=${deleteFile}>${state.translate('deleteFileButton')}</button>
+      <a class="send-new"
+        data-state="completed"
+        href="/"
+        onclick=${sendNew}>${state.translate('sendAnotherFileLink')}</a>
     </div>
   </div>
   `;

@@ -147,6 +147,15 @@ function completedUpload(params) {
   });
 }
 
+function addedPassword(params) {
+  return sendEvent('sender', 'password-added', {
+    cm1: params.size,
+    cm5: storage.totalUploads,
+    cm6: storage.files.length,
+    cm7: storage.totalDownloads
+  });
+}
+
 function startedDownload(params) {
   return sendEvent('recipient', 'download-started', {
     cm1: params.size,
@@ -262,6 +271,7 @@ export {
   cancelledDownload,
   stoppedDownload,
   completedDownload,
+  addedPassword,
   restart,
   unsupported
 };
