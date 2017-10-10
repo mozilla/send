@@ -36,6 +36,8 @@ downloadFileName = Muat turun { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Masukkan Kata Laluan
 unlockInputPlaceholder = Kata laluan
+unlockButtonLabel = Buka
+downloadFileTitle = Muat turun Fail Enkripsi
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Rakan anda menghantar satu fail kepada anda menggunakan Firefox Send, satu perkhidmatan yang membolehkan anda berkongsi fail dengan pautan yang selamat, peribadi dan dienkrip, yang secara automatik akan luput bagi memastikan fail anda tidak terus berada dalam talian selama-lamanya.
 // Text and title used on the download link/button (indicates an action).
@@ -82,3 +84,6 @@ footerLinkAbout = Perihal Ujian Perintis
 footerLinkPrivacy = Privasi
 footerLinkTerms = Terma
 footerLinkCookies = Kuki
+requirePasswordCheckbox = Perlu kata laluan untuk memuat turun fail ini
+addPasswordButton = Tambah Kata laluan
+incorrectPassword = Kata laluan tidak betul. Cuba lagi?
