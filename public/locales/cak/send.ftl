@@ -34,6 +34,10 @@ sendAnotherFileLink = Titaq jun chik yakb'äl
 downloadAltText = Tiqasäx
 downloadFileName = Tiqasäx { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Titz'ib'äx Ewan Tzij
+unlockInputPlaceholder = Ewan tzij
+unlockButtonLabel = Titzij chik
+downloadFileTitle = Tiqasäx Yakb'äl Ewan Rusik'ixik
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Jun awachib'il xutäq jun yakb'äl chawe rik'in ri Firefox Send, jun samaj ri nuya' q'ij chawe ye'akomonij taq yakb'äl rik'in jun jikïl, ichinan chuqa' ewan rusik'ixik ximonel, ri nik'is ruq'ijul pa ruyonil richin chi ri taq awachinaq man junelïk ta e okel pa k'amab'ey.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Chi rij Test Pilot
 footerLinkPrivacy = Ichinanem
 footerLinkTerms = Taq ojqanem
 footerLinkCookies = Taq kaxlanwey
+requirePasswordCheckbox = Tik'utüx jun ewan tzij richin niqasäx re yakb'äl re'
+addPasswordButton = Titz'aqatisäx Ewan Tzij
+incorrectPassword = Man ütz ta ri ewan tzij. ¿La nitojtob'ëx chik?
