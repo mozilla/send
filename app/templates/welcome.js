@@ -13,8 +13,7 @@ module.exports = function(state, emit) {
         'uploadPageLearnMore'
       )}</a>
     </div>
-    <div class="${state.config
-      .uploadWindowStyle}" ondragover=${dragover} ondragleave=${dragleave}>
+    <div class="upload-window" ondragover=${dragover} ondragleave=${dragleave}>
       <div id="upload-img"><img src="${assets.get(
         'upload.svg'
       )}" title="${state.translate('uploadSvgAlt')}"/></div>
@@ -24,10 +23,9 @@ module.exports = function(state, emit) {
       )}</em></span>
       <form method="post" action="upload" enctype="multipart/form-data">
         <input id="file-upload" type="file" name="fileUploaded" onchange=${upload} onfocus=${onfocus} onblur=${onblur} />
-        <label for="file-upload" id="browse" class="${state.config
-          .uploadButtonStyle}" title="${state.translate(
-    'uploadPageBrowseButton1'
-  )}">${state.translate('uploadPageBrowseButton1')}</label>
+        <label for="file-upload" id="browse" class="btn browse" title="${state.translate(
+          'uploadPageBrowseButton1'
+        )}">${state.translate('uploadPageBrowseButton1')}</label>
       </form>
     </div>
     ${fileList(state, emit)}
