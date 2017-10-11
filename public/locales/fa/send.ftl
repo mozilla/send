@@ -34,6 +34,10 @@ sendAnotherFileLink = ارسال پرونده دیگر
 downloadAltText = دریافت
 downloadFileName = بارگیری { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = گذرواژه را وارد کنید
+unlockInputPlaceholder = گذرواژه
+unlockButtonLabel = باز کردن
+downloadFileTitle = دریافت پروندهٔ رمزنگاری شده
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = دوست شما درحال ارسال پرونده ای به وسیله Firefox Send است،‌ این سرویس این امکان را به شما می‌دهد تا پرونده‌های خود را به صورت ایمن،‌خصوصی و رمزنگاری شده به همراه پیوند انقضا خودکار همرسانی کنید تا اطمینان حاصل کنید چیزهای شما برای همیشه آنلاین باقی نخواهد ماند.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = درباره Test Pilot
 footerLinkPrivacy = حریم‌خصوصی
 footerLinkTerms = شرایط
 footerLinkCookies = کوکی‌ها
+requirePasswordCheckbox = دریافت این پرونده نیاز به گذرواژه دارد
+addPasswordButton = افزودن گذرواژه
+incorrectPassword = گذرواژهٔ نادرست. دوباره تلاش می‌کنید؟
