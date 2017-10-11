@@ -34,6 +34,10 @@ sendAnotherFileLink = Anfon ffeil arall
 downloadAltText = Llwytho i lawr
 downloadFileName = Llwytho i lawr { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Rhowch Gyfrinair
+unlockInputPlaceholder = Cyfrinair
+unlockButtonLabel = Datgloi
+downloadFileTitle = Llwythwch Ffeil wedi ei Hamgryptio i Lawr
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Mae ffrind i chi yn anfon ffeil atoch drwy Firefox Send, gwasanaeth sy'n caniatáu i chi rannu ffeiliau drwy ddolen ddiogel, breifat ac wedi ei amgryptio sy'n dod i ben yn awtomatig er mwyn sicrhau nad yw eich deunydd yn aros ar-lein am byth.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Ynghylch Test Pilot
 footerLinkPrivacy = Preifatrwydd
 footerLinkTerms = Amodau
 footerLinkCookies = Cwcis
+requirePasswordCheckbox = Gosod angen cyfrinair i lwytho'r ffeil hon i lawr
+addPasswordButton = Ychwanegu Cyfrinair
+incorrectPassword = Cyfrinair Anghywir. Ceisiwch eto?
