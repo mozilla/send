@@ -34,6 +34,10 @@ sendAnotherFileLink = Envoyer un autre fichier
 downloadAltText = Télécharger
 downloadFileName = Télécharger { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Saisissez un mot de passe
+unlockInputPlaceholder = Mot de passe
+unlockButtonLabel = Déverrouiller
+downloadFileTitle = Télécharger le fichier chiffré
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Votre ami⋅e vous a envoyé un fichier avec Firefox Send, un service qui permet d’envoyer des fichiers de façon sécurisée, confidentielle et chiffrée via un lien qui expire automatiquement pour que vos informations ne restent pas en ligne indéfiniment.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = À propos de Test Pilot
 footerLinkPrivacy = Confidentialité
 footerLinkTerms = Conditions d’utilisation
 footerLinkCookies = Cookies
+requirePasswordCheckbox = Exiger un mot de passe pour télécharger ce fichier
+addPasswordButton = Ajouter un mot de passe
+incorrectPassword = Code d’accès incorrect. Veuillez réessayer.
