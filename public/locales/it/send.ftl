@@ -37,6 +37,7 @@ downloadFileSize = ({ $size })
 unlockInputLabel = Inserire la password
 unlockInputPlaceholder = Password
 unlockButtonLabel = Sblocca
+downloadFileTitle = Scarica il file crittato
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Qualcuno ha utilizzato Firefox Send per inviarti un file. Si tratta di un servizio che permette di condividere file in modo sicuro, riservato e crittato, utilizzando un link che smette di funzionare automaticamente dopo un certo periodo di tempo, garantendo così che i tuoi dati non rimangano online per sempre.
 // Text and title used on the download link/button (indicates an action).
