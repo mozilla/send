@@ -34,6 +34,10 @@ sendAnotherFileLink = Отправить другой файл
 downloadAltText = Загрузить
 downloadFileName = Загрузить { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Введите пароль
+unlockInputPlaceholder = Пароль
+unlockButtonLabel = Разблокировать
+downloadFileTitle = Загрузить зашифрованный файл
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Ваш друг отправил вам файл с помощью Firefox Send, сервиса, который позволяет вам делиться файлами, используя безопасные, приватные и зашифрованные ссылки, по истечении срока действия которых ваши файлы не остаются в сети навсегда.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = О программе лётчика-испытателя
 footerLinkPrivacy = Приватность
 footerLinkTerms = Условия
 footerLinkCookies = Куки
+requirePasswordCheckbox = Требовать пароль для загрузки этого файла
+addPasswordButton = Добавить пароль
+incorrectPassword = Неверный пароль. Повторить попытку?
