@@ -34,6 +34,10 @@ sendAnotherFileLink = Noch in bestân ferstjoere
 downloadAltText = Downloade
 downloadFileName = { $filename } downloade
 downloadFileSize = ({ $size })
+unlockInputLabel = Wachtwurd ynfiere
+unlockInputPlaceholder = Wachtwurd
+unlockButtonLabel = Deblokkearje
+downloadFileTitle = Fersifere bestân downloade
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Jo freon stjoert jo in best^n mei Firefox Send, in tsjinst dy't jo yn steat stelt bestannen te dielen mei in feilige, privee en fersifere keppeling dy't automatysk ferrint om wis te wêzen dat jo guod net foar altyd online bliuwt.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Oer Test Pilot
 footerLinkPrivacy = Privacy
 footerLinkTerms = Betingsten
 footerLinkCookies = Cookies
+requirePasswordCheckbox = Om dit bestân te downloaden is in wachtwurd fereaske
+addPasswordButton = Wachtwurd tafoegje
+incorrectPassword = Net korrekt wachtwurd. Opnij probearje?
