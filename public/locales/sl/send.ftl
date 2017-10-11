@@ -34,6 +34,9 @@ sendAnotherFileLink = Pošlji drugo datoteko
 downloadAltText = Prenesi
 downloadFileName = Prenesi { $filename }
 downloadFileSize = ({ $size })
+unlockInputPlaceholder = Geslo
+unlockButtonLabel = Odkleni
+downloadFileTitle = Prenesi šifrirano datoteko
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Prijatelj vam pošilja datoteko preko storitve Firefox Send, ki vam omogoča deljenje datotek preko varne, zasebne in šifrirane povezave, ki samodejno poteče, kar vam zagotavlja, da vaše stvari ne ostanejo na spletu za vedno.
 // Text and title used on the download link/button (indicates an action).
