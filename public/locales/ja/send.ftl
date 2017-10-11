@@ -34,6 +34,10 @@ sendAnotherFileLink = 他のファイルを送信
 downloadAltText = ダウンロード
 downloadFileName = { $filename } をダウンロード
 downloadFileSize = ({ $size })
+unlockInputLabel = パスワードを入力
+unlockInputPlaceholder = パスワード
+unlockButtonLabel = ロック解除
+downloadFileTitle = 暗号化されたファイルをダウンロード
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = あなたの友人が Firefox Send を通じてファイルを送ってきています。これは、安全で、プライベートで、暗号化されたリンクを通じてファイルを共有できるサービスです。あなたのものがずっとオンラインに残らないよう、リンクは自動的に期限切れとなります。
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Test Pilot について
 footerLinkPrivacy = プライバシー
 footerLinkTerms = 利用規約
 footerLinkCookies = Cookie
+requirePasswordCheckbox = このファイルをダウンロードするにはパスワードが必要です
+addPasswordButton = パスワードを追加
+incorrectPassword = パスワードが違います。再度入力してください。
