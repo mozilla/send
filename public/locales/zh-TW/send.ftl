@@ -34,6 +34,10 @@ sendAnotherFileLink = 傳送另一個檔案
 downloadAltText = 下載
 downloadFileName = 下載 { $filename }
 downloadFileSize = （{ $size }）
+unlockInputLabel = 輸入密碼
+unlockInputPlaceholder = 密碼
+unlockButtonLabel = 解鎖
+downloadFileTitle = 下載加密過的檔案
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = 您的朋友正透過 Firefox Send 傳送檔案給您。這是一個可讓您透過安全、隱密、並且會將鏈結加密過，自動失效以確保檔案不會在網路上無限停留的檔案分享服務。
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = 關於 Test Pilot
 footerLinkPrivacy = 隱私權
 footerLinkTerms = 使用條款
 footerLinkCookies = Cookie
+requirePasswordCheckbox = 需要密碼才能下載此檔案
+addPasswordButton = 新增密碼
+incorrectPassword = 密碼不正確，要再試一次嗎？
