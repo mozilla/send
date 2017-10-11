@@ -34,6 +34,10 @@ sendAnotherFileLink = Başka bir dosya daha gönder
 downloadAltText = İndir
 downloadFileName = { $filename } dosyasını indir
 downloadFileSize = ({ $size })
+unlockInputLabel = Parolayı yazın
+unlockInputPlaceholder = Parola
+unlockButtonLabel = Kilidi aç
+downloadFileTitle = Şifrelenmiş dosyayı indir
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Arkadaşınız size Firefox Send ile bir dosya gönderdi. Firefox Send; dosyalarınızı güvenli, size özel, şifrelenmiş ve otomatik olarak silinen bir bağlantıyla paylaşmayı sağlar. Böylece özel dosyalarınız sonsuza dek internette kalmaz.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Test Pilotu hakkında
 footerLinkPrivacy = Gizlilik
 footerLinkTerms = Şartlar
 footerLinkCookies = Çerezler
+requirePasswordCheckbox = Bu dosyayı indirmek için parola iste
+addPasswordButton = Parola ekle
+incorrectPassword = Parola yanlış. Yeniden denemek ister misiniz?
