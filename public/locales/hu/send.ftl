@@ -34,6 +34,9 @@ sendAnotherFileLink = Még egy fájl küldése
 downloadAltText = Letöltés
 downloadFileName = { $filename } letöltése
 downloadFileSize = ({ $size })
+unlockInputLabel = Adja meg a jelszót
+unlockInputPlaceholder = Jelszó
+unlockButtonLabel = Feloldás
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Az ismerőse egy fájlt küld a Firefox Senddel, egy olyan fájlmegosztó szolgáltatással, amely biztonságos, privát és titkosított hivatkozáson keresztül működik, amely automatikusan elévül, így biztosítva hogy a dolga ne maradjon örökre online.
 // Text and title used on the download link/button (indicates an action).
