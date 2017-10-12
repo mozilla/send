@@ -34,6 +34,10 @@ sendAnotherFileLink = Drugu dataju pósłaś
 downloadAltText = Ześěgnuś
 downloadFileName = { $filename } ześěgnuś
 downloadFileSize = ({ $size })
+unlockInputLabel = Gronidło zapódaś
+unlockInputPlaceholder = Gronidło
+unlockButtonLabel = Wótwóriś
+downloadFileTitle = Skoděrowanu dataju ześěgnuś
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Waš pśijaśel wam dataju z Firefox Send sćelo, słužba, kótaraž wam zmóžnja, dataje pśez wěsty, priwatny a skoděrowany wótkaz źěliś, kótaryž awtomatiski spadnjo, až njeby waše daty na pśecej online wóstawali.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Wó Test Pilot
 footerLinkPrivacy = Priwatnosć
 footerLinkTerms = Wuměnjenja
 footerLinkCookies = Cookieje
+requirePasswordCheckbox = Gronidło za ześěgnjenje toś teje dataje pominaś
+addPasswordButton = Gronidło pśidaś
+incorrectPassword = Wopacne gronidło. Wopytajśo hyšći raz.
