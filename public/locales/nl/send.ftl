@@ -34,6 +34,10 @@ sendAnotherFileLink = Nog een bestand verzenden
 downloadAltText = Downloaden
 downloadFileName = { $filename } downloaden
 downloadFileSize = ({ $size })
+unlockInputLabel = Voer wachtwoord in
+unlockInputPlaceholder = Wachtwoord
+unlockButtonLabel = Ontgrendelen
+downloadFileTitle = Versleuteld bestand downloaden
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Uw vriend(in) stuurt u een bestand met Firefox Send, een dienst waarmee u bestanden kunt verzenden met een veilige, private en versleutelde koppeling die automatisch verloopt, zodat u zeker weet dat uw zaken niet onbeperkt online blijven.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Over Test Pilot
 footerLinkPrivacy = Privacy
 footerLinkTerms = Voorwaarden
 footerLinkCookies = Cookies
+requirePasswordCheckbox = Een wachtwoord vereisen om dit bestand te downloaden
+addPasswordButton = Wachtwoord toevoegen
+incorrectPassword = Onjuist wachtwoord. Opnieuw proberen?
