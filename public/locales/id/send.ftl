@@ -35,6 +35,9 @@ sendAnotherFileLink = Kirim berkas lain
 downloadAltText = Unduh
 downloadFileName = Unduh { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Masukkan Sandi
+unlockInputPlaceholder = Sandi
+downloadFileTitle = Unduh Berkas Terenkripsi
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Teman Anda mengirimkan berkas dengan Firefox Send, layanan yang memungkinkan Anda berbagi berkas dengan tautan yang aman, pribadi, dan terenkripsi yang secara otomatis berakhir untuk memastikan berkas Anda tidak daring selamanya.
 // Text and title used on the download link/button (indicates an action).
@@ -81,3 +84,5 @@ footerLinkAbout = Tentang Test Pilot
 footerLinkPrivacy = Privasi
 footerLinkTerms = Ketentuan
 footerLinkCookies = Kuki
+addPasswordButton = Tambahkan Sandi
+incorrectPassword = Sandi salah. Coba lagi?
