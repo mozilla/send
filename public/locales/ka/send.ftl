@@ -49,3 +49,41 @@ fileSizeProgress = ({ $partialSize } { $totalSize }-იდან)
 // Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = გამოცადეთ Firefox Send
 downloadingPageProgress = მიმდინარეობს ჩამოტვირთვა { $filename } ({ $size })
+downloadingPageMessage = გთხოვთ დატოვოთ ეს ჩანართი გახსნილი, სანამ ფაილი ჩამოიტვირთება და გაიშიფრება.
+errorAltText = შეცდომა ატვირთვისას
+errorPageHeader = რაღაც ხარვეზია!
+errorPageMessage = ფაილის ატვირთვისას წარმოიშვა შეცდომა.
+errorPageLink = სხვა ფაილის გაგზავნა
+fileTooBig = ფაილი ზედმეტად დიდია. უნდა იყოს { $size } ზომაზე ნაკლები.
+linkExpiredAlt = ბმული ვადაგასულია
+expiredPageHeader = ბმული ან ვადაგასულია, ან არ არსებობს!
+notSupportedHeader = თქვენი ბრაუზერი არაა მხარდაჭერილი.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = სამწუხაროდ, ამ ბრაუზერს არ გააჩნია ის ტექნოლოგია, რომელიც აუცილებელია Firefox Send-ის მუშაობისთვის. გესაჭიროებათ სხვა ბრაუზერი. ჩვენ შეგვიძლია გირჩიოთ Firefox!
+notSupportedLink = რატომ არაა ჩემი ბრაუზერი მხარდაჭერილი?
+notSupportedOutdatedDetail = სამწუხაროდ, Firefox-ის ამ ვერსიას არ გააჩნია ის ტექნოლოგია, რომელიც აუცილებელია Firefox Send-ის მუშაობისთვის. გესაჭიროებათ, ბრაუზერის განახლება.
+updateFirefox = Firefox-ის განახლება
+downloadFirefoxButtonSub = უფასო ჩამოტვირთვა
+uploadedFile = ფაილი
+copyFileList = URL ბმულის დაკოპირება
+// expiryFileList is used as a column header
+expiryFileList = ვადის გასვლის დრო
+deleteFileList = წაშლა
+nevermindButton = არ აქვს მნიშვნელობა
+legalHeader = პირობები და პირადულობა
+legalNoticeTestPilot = Firefox Send ამჟამად Test Pilot-ის საცდელი პროექტია და ექვემდებარება Test Pilot-ის <a>მომსახურების პირობებსა</a> და <a>პირადი მონაცემების დაცვის დებულებას</a>. ვრცლად, ამ საცდელი პროექტისა და მონაცემების აღრიცხვის შესახებ, შეგიძლიათ იხილოთ <a>აქ</a>.
+legalNoticeMozilla = Firefox Send ვებსაიტი, ასევე ექვემდებარება Mozilla-ს <a>ვებსაიტების პირადი მონაცემების შესახებ დებულებას</a> და <a>ვებსაიტების გამოყენების პირობებს</a>.
+deletePopupText = გსურთ ამ ფაილის წაშლა?
+deletePopupYes = დიახ
+deletePopupCancel = გაუქმება
+deleteButtonHover = წაშლა
+copyUrlHover = URL-ს დაკოპირება
+footerLinkLegal = იურიდიული ინფორმაცია
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Test Pilot-ის შესახებ
+footerLinkPrivacy = პირადულობა
+footerLinkTerms = პირობები
+footerLinkCookies = ფუნთუშები
+requirePasswordCheckbox = პაროლის მოთხოვნა, ფაილის ჩამოტვირთვისას
+addPasswordButton = პაროლის დამატება
+incorrectPassword = არასწორი პაროლი. სცდით ხელახლა?
