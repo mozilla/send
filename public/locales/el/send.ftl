@@ -34,6 +34,10 @@ sendAnotherFileLink = Αποστολή άλλου αρχείου
 downloadAltText = Λήψη
 downloadFileName = Λήψη του { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Εισαγωγή κωδικού πρόσβασης
+unlockInputPlaceholder = Κωδικός πρόσβασης
+unlockButtonLabel = Ξεκλείδωμα
+downloadFileTitle = Λήψη κρυπτογραφημένου αρχείου
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Ο/Η φίλος/-η σας, σάς στέλνει ένα αρχείο με τη βοήθεια του Firefox Send, μιας υπηρεσίας που επιτρέπει τον διαμοιρασμό αρχείων μέσω ενός ασφαλούς, ιδιωτικού και κρυπτογραφημένου συνδέσμου που λήγει αυτόματα, ώστε να είστε σίγουροι ότι τα αρχεία σας δεν θα παραμείνουν στο διαδίκτυο για πάντα.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Σχετικά με το Test Pilot
 footerLinkPrivacy = Απόρρητο
 footerLinkTerms = Όροι
 footerLinkCookies = Cookies
+requirePasswordCheckbox = Απαίτηση κωδικού πρόσβασης για λήψη του αρχείου
+addPasswordButton = Προσθήκη κωδικού πρόσβασης
+incorrectPassword = Λάθος κωδικός πρόσβασης. Προσπάθεια ξανά;
