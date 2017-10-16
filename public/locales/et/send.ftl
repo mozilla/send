@@ -36,6 +36,8 @@ downloadFileName = Laadi fail { $filename } alla
 downloadFileSize = ({ $size })
 unlockInputLabel = Sisesta parool
 unlockInputPlaceholder = Parool
+unlockButtonLabel = Ava
+downloadFileTitle = Krüptitud faili allalaadimine
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Sulle on saadetud fail Firefox Sendiga - teenusega, mis lubab faile ohutult, privaatselt ja krüpteeritult jagada. Failid kustutatakse automaatselt, et need ei jääks internetti igaveseks.
 // Text and title used on the download link/button (indicates an action).
@@ -82,3 +84,6 @@ footerLinkAbout = Test Pilotist
 footerLinkPrivacy = Privaatsusest
 footerLinkTerms = Teenusetingimused
 footerLinkCookies = Küpsistest
+requirePasswordCheckbox = Selle faili allalaadimiseks nõutakse parooli
+addPasswordButton = Lisa parool
+incorrectPassword = Vale parool. Kas soovid uuesti proovida?
