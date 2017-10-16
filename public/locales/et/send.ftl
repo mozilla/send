@@ -34,6 +34,8 @@ sendAnotherFileLink = Saada järgmine fail
 downloadAltText = Laadi alla
 downloadFileName = Laadi fail { $filename } alla
 downloadFileSize = ({ $size })
+unlockInputLabel = Sisesta parool
+unlockInputPlaceholder = Parool
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Sulle on saadetud fail Firefox Sendiga - teenusega, mis lubab faile ohutult, privaatselt ja krüpteeritult jagada. Failid kustutatakse automaatselt, et need ei jääks internetti igaveseks.
 // Text and title used on the download link/button (indicates an action).
