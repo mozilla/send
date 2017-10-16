@@ -34,6 +34,10 @@ sendAnotherFileLink = Başqa fayl göndər
 downloadAltText = Endir
 downloadFileName = { $filename } faylını endir
 downloadFileSize = ({ $size })
+unlockInputLabel = Parol daxil edin
+unlockInputPlaceholder = Parol
+unlockButtonLabel = Aç
+downloadFileTitle = Şifrələnmiş Faylı Endir
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Yoldaşınız Firefox Send ilə sizə fayl göndərir, fayllarınızı təhlükəsiz, məxfi, şifrələnmiş və daima onlayn qalmaması üçün avtomatik silən fayl göndərmə xidməti.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Test Pilot Haqqında
 footerLinkPrivacy = Məxfilik
 footerLinkTerms = Şərtlər
 footerLinkCookies = Çərəzlər
+requirePasswordCheckbox = Bu faylı endirmək üçün parol tələb et
+addPasswordButton = Parol əlavə et
+incorrectPassword = Xətalı parol. Təkrar yoxlayın.
