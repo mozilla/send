@@ -34,6 +34,10 @@ sendAnotherFileLink = Poslat další soubor
 downloadAltText = Stáhnout
 downloadFileName = Stáhnout { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Zadejte heslo
+unlockInputPlaceholder = Heslo
+unlockButtonLabel = Odemknout
+downloadFileTitle = Stáhnout šifrovaný soubor
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Někdo vám posílá soubor pomocí služby Firefox Send, které umožňuje bezpečné, soukromé a šifrované sdílení souborů, které jsou pak automaticky smazány, aby nezůstaly na internetu navěky.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = O programu Test Pilot
 footerLinkPrivacy = Soukromí
 footerLinkTerms = Podmínky
 footerLinkCookies = Cookies
+requirePasswordCheckbox = Vyžadovat heslo pro stažení tohoto souboru
+addPasswordButton = Přidat heslo
+incorrectPassword = Nesprávné heslo. Chcete to zkusit znovu?
