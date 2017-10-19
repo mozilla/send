@@ -94,3 +94,5 @@ Pull requests are always welcome! Feel free to check out the list of ["good firs
 [Mozilla Public License Version 2.0](LICENSE)
 
 ---
+
+<img src="https://avatars2.githubusercontent.com/u/131524?s=200&v=4" width="50"></img>
