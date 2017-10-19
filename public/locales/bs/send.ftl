@@ -60,3 +60,15 @@ expiredPageHeader = Veza je istekla ili nikad nije postojala!
 notSupportedHeader = Vaš pretraživač nije podržan.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Ovaj pretraživač nažalost ne podržava web tehnologiju koja omogućava Firefox Send. Trebate probati drugi pretraživač. Preporučujemo Firefox!
+notSupportedLink = Zašto moj pretraživač nije podržan?
+notSupportedOutdatedDetail = Nažalost ova verzija Firefoxa ne podržava web tehnologiju koja omogućava Firefox Send. Morate ažurirati vaš pretraživač.
+updateFirefox = Ažuriraj Firefox
+downloadFirefoxButtonSub = Besplatno preuzimanje
+uploadedFile = Datoteka
+copyFileList = Kopiraj URL
+// expiryFileList is used as a column header
+expiryFileList = Ističe za
+deleteFileList = Izbriši
+nevermindButton = Zanemari
+legalHeader = Uvjeti i privatnost
+legalNoticeTestPilot = Firefox Send je trenutno Test Pilot eksperiment i podržan je <a>uvjetima korištenja</a> i <a>obavještenjem o privatnosti</a>. Možete saznati više o ovom eksperimentu i o njegovom sakupljanju podataka <a>ovdje</a>.
