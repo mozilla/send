@@ -34,6 +34,10 @@ sendAnotherFileLink = Unviar otru ficheru
 downloadAltText = Baxar
 downloadFileName = Baxar { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Introducir contraseña
+unlockInputPlaceholder = Contraseña
+unlockButtonLabel = Desbloquiar
+downloadFileTitle = Baxar ficheru cifráu
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = El to collaciu unvióte un ficheru usando Firefox Send, un serviciu que te permite compartir ficheros con un enllaz seguru, priváu y cifráu que caduca automáticamente p'asegurar que les to coses nun queden siempres na rede.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Tocante a Test Pilot
 footerLinkPrivacy = Privacidá
 footerLinkTerms = Términos
 footerLinkCookies = Cookies
+requirePasswordCheckbox = Riquir una contraseña pa baxar esti ficheru
+addPasswordButton = Amestar contraseña
+incorrectPassword = Contraseña incorreuta. ¿Tentalo de nueves?
