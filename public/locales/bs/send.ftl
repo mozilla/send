@@ -57,3 +57,6 @@ errorPageLink = Pošalji drugu datoteku
 fileTooBig = Ta datoteka je prevelika za otpremanje. Treba biti manja od { $size }.
 linkExpiredAlt = Veza istekla
 expiredPageHeader = Veza je istekla ili nikad nije postojala!
+notSupportedHeader = Vaš pretraživač nije podržan.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Ovaj pretraživač nažalost ne podržava web tehnologiju koja omogućava Firefox Send. Trebate probati drugi pretraživač. Preporučujemo Firefox!
