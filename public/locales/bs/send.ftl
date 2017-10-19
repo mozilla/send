@@ -21,3 +21,5 @@ uploadingPageMessage = Nakon što se vaša datoteka otpremi, moći ćete da pode
 uploadingPageCancel = Otkaži otpremanje
 uploadCancelNotification = Vaše otpremanje je otkazano.
 uploadingPageLargeFileMessage = Ova datoteka je velika i otpremanje može potrajati. Budite strpljivi!
+uploadingFileNotification = Obavijesti me kada otpremanje bude gotovo.
+uploadSuccessConfirmHeader = Spremno za slanje
