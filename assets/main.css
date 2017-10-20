@@ -652,7 +652,7 @@ tbody {
   display: flex;
   flex-wrap: nowrap;
   width: 80%;
-  padding: 10px 20px;
+  padding: 10px 5px;
 }
 
 /*    upload-error    */
