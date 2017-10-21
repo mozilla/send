@@ -84,5 +84,6 @@ footerLinkAbout = Tentang Test Pilot
 footerLinkPrivacy = Privasi
 footerLinkTerms = Ketentuan
 footerLinkCookies = Kuki
+requirePasswordCheckbox = Membutuhkan sandi untuk mengunduh berkas ini
 addPasswordButton = Tambahkan Sandi
 incorrectPassword = Sandi salah. Coba lagi?
