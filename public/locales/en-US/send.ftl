@@ -85,5 +85,5 @@ footerLinkPrivacy = Privacy
 footerLinkTerms = Terms
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Require a password to download this file
-addPasswordButton = Add Password
-incorrectPassword = Incorrect password. Try again?
+addPasswordButton = Add password
+passwordTryAgain = Incorrect password. Try again.

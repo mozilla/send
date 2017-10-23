@@ -896,6 +896,50 @@ tbody {
   margin-bottom: -5px;
 }
 
+#addPasswordWrapper {
+  height: 24px;
+}
+
+#addPassword {
+  position: absolute;
+  visibility: collapse;
+}
+
+#addPasswordWrapper label {
+  line-height: 20px;
+  cursor: pointer;
+  position: relative;
+  opacity: 0.6;
+}
+
+#addPassword:checked + label {
+  opacity: 1;
+}
+
+#addPasswordWrapper label::after {
+  content: '';
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  margin-left: 5px;
+  float: left;
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  border-radius: 2px;
+}
+
+#addPassword:not(:checked) + label > img {
+  height: 0;
+  width: 0;
+}
+
+#addPassword:checked + label > img {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: -29px;
+  top: 2px;
+}
+
 @media (max-device-width: 992px), (max-width: 992px) {
   .popup .popuptext {
     left: auto;

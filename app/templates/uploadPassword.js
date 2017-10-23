@@ -4,11 +4,11 @@ module.exports = function(state, emit) {
   const file = state.storage.getFileById(state.params.id);
   const div = html`
   <div class="selectPassword">
-    <div>
+    <div id="addPasswordWrapper">
       <input id="addPassword" type="checkbox" onchange=${togglePasswordInput}/>
-      <label for="addPassword">${state.translate(
-        'requirePasswordCheckbox'
-      )}</label>
+      <label for="addPassword">
+        <img src="/assets/check-16-blue.svg"/>
+        ${state.translate('requirePasswordCheckbox')}</label>
     </div>
     <form class="setPassword hidden" onsubmit=${setPassword}>
       <input id="unlock-input"
