@@ -21,14 +21,20 @@ module.exports = function(state, emit) {
     </form>
   </div>`;
 
-  function togglePasswordInput() {
+  function togglePasswordInput(e) {
     document.querySelector('.setPassword').classList.toggle('hidden');
+    document
+      .getElementById('copy')
+      .classList.toggle('wait-password', e.target.checked);
+    document.getElementById('copy-btn').disabled = e.target.checked;
   }
 
   function setPassword(event) {
     event.preventDefault();
     const password = document.getElementById('unlock-input').value;
     if (password.length > 0) {
+      document.getElementById('copy').classList.remove('wait-password');
+      document.getElementById('copy-btn').disabled = false;
       emit('password', { password, file });
     }
   }
