@@ -64,7 +64,9 @@ module.exports = function(state, emit) {
       );
       await delay(2000);
       input.disabled = false;
-      copyBtn.disabled = false;
+      if (!copyBtn.parentNode.classList.contains('wait-password')) {
+        copyBtn.disabled = false;
+      }
       copyBtn.classList.remove('success');
       copyBtn.textContent = state.translate('copyUrlFormButton');
     }

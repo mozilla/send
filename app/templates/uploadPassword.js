@@ -22,13 +22,17 @@ module.exports = function(state, emit) {
   </div>`;
 
   function togglePasswordInput(e) {
+    const unlockInput = document.getElementById('unlock-input');
+    const boxChecked = e.target.checked;
     document.querySelector('.setPassword').classList.toggle('hidden');
     document
       .getElementById('copy')
-      .classList.toggle('wait-password', e.target.checked);
-    document.getElementById('copy-btn').disabled = e.target.checked;
-    if (e.target.checked) {
-      document.getElementById('unlock-input').focus();
+      .classList.toggle('wait-password', boxChecked);
+    document.getElementById('copy-btn').disabled = boxChecked;
+    if (boxChecked) {
+      unlockInput.focus();
+    } else {
+      unlockInput.value = '';
     }
   }
 
