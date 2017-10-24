@@ -7,7 +7,6 @@ module.exports = function(state, emit) {
     <div id="addPasswordWrapper">
       <input id="addPassword" type="checkbox" onchange=${togglePasswordInput}/>
       <label for="addPassword">
-        <img src="/assets/check-16-blue.svg"/>
         ${state.translate('requirePasswordCheckbox')}</label>
     </div>
     <form class="setPassword hidden" onsubmit=${setPassword}>

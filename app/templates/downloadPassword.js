@@ -6,7 +6,7 @@ module.exports = function(state, emit) {
     fileInfo.password === null
       ? html`
           <label class="red"
-            for="unlock-input">${state.translate('incorrectPassword')}</label>`
+            for="unlock-input">${state.translate('passwordTryAgain')}</label>`
       : html`
           <label for="unlock-input">
             ${state.translate('unlockInputLabel')}

@@ -590,7 +590,6 @@ tbody {
   color: white;
   cursor: pointer;
   font-size: 15px;
-  height: 60px;
   padding-left: 10px;
   padding-right: 10px;
   white-space: nowrap;
@@ -645,6 +644,7 @@ tbody {
 .selectPassword {
   padding: 10px 0;
   align-self: left;
+  max-width: 100%;
 }
 
 .setPassword {
@@ -822,7 +822,6 @@ tbody {
   color: white;
   cursor: pointer;
   font-size: 15px;
-  height: 50px;
   padding-left: 10px;
   padding-right: 10px;
   white-space: nowrap;
@@ -897,7 +896,7 @@ tbody {
 }
 
 #addPasswordWrapper {
-  height: 24px;
+  min-height: 24px;
 }
 
 #addPassword {
@@ -916,7 +915,7 @@ tbody {
   opacity: 1;
 }
 
-#addPasswordWrapper label::after {
+#addPasswordWrapper label::before {
   content: '';
   height: 20px;
   width: 20px;
@@ -927,17 +926,9 @@ tbody {
   border-radius: 2px;
 }
 
-#addPassword:not(:checked) + label > img {
-  height: 0;
-  width: 0;
-}
-
-#addPassword:checked + label > img {
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  left: -29px;
-  top: 2px;
+#addPassword:checked + label::before {
+  background-image: url('/assets/check-16-blue.svg');
+  background-position: 2px 1px;
 }
 
 @media (max-device-width: 992px), (max-width: 992px) {
@@ -1010,20 +1001,38 @@ tbody {
     padding: 5px 5px 5px 20px;
   }
 
-  #copy {
+  #copy,
+  .setPassword,
+  #unlock {
     width: 100%;
     flex-direction: column;
+    padding-left: 0;
   }
 
-  #link {
+  .selectPassword {
+    align-self: center;
+    min-width: 95%;
+  }
+
+  #addPasswordWrapper label::before {
+    margin-left: 0;
+  }
+
+  #link,
+  #unlock-input {
     font-size: 22px;
     padding: 15px 10px;
     border-radius: 6px 6px 0 0;
   }
 
-  #copy-btn {
+  #copy-btn,
+  #unlock-btn {
     border-radius: 0 0 6px 6px;
     flex: 0 1 65px;
+  }
+
+  #copy-text {
+    text-align: center;
   }
 
   th {
