@@ -27,6 +27,9 @@ module.exports = function(state, emit) {
       .getElementById('copy')
       .classList.toggle('wait-password', e.target.checked);
     document.getElementById('copy-btn').disabled = e.target.checked;
+    if (e.target.checked) {
+      document.getElementById('unlock-input').focus();
+    }
   }
 
   function setPassword(event) {
