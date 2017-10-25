@@ -9,10 +9,11 @@ module.exports = function(state, emit) {
   if (!file) {
     return notFound(state, emit);
   }
-  const passwordComplete = html`
-  <div class="selectPassword">
-    Password: ${file.password}
-  </div>`;
+
+  file.password = file.password || '';
+  const passwordComplete = html`<div class="selectPassword"></div>`;
+  passwordComplete.innerHTML = file.password.replace(/ /g, '&nbsp;');
+
   const passwordSection = file.password
     ? passwordComplete
     : uploadPassword(state, emit);
