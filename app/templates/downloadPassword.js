@@ -16,6 +16,7 @@ module.exports = function(state, emit) {
       ${label}
       <form id="unlock" onsubmit=${checkPassword}>
         <input id="unlock-input"
+          maxlength="64"
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"
           type="password"/>

@@ -11,6 +11,7 @@ module.exports = function(state, emit) {
     </div>
     <form class="setPassword hidden" onsubmit=${setPassword}>
       <input id="unlock-input"
+        maxlength="64"
         autocomplete="off"
         placeholder="${state.translate('unlockInputPlaceholder')}"/>
       <input type="submit"
