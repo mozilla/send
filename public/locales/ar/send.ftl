@@ -66,5 +66,7 @@ deleteButtonHover
     .title = احذف
 copyUrlHover
     .title = انسخ الرابط
+footerLinkTerms = الشروط
+footerLinkCookies = الكعكات
 requirePasswordCheckbox = اطلب كلمة سر لتنزيل هذا الملف
 addPasswordButton = أضِف كلمة سر
