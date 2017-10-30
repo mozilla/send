@@ -86,4 +86,4 @@ footerLinkTerms = 利用規約
 footerLinkCookies = Cookie
 requirePasswordCheckbox = このファイルをダウンロードするにはパスワードが必要です
 addPasswordButton = パスワードを追加
-incorrectPassword = パスワードが違います。再度入力してください。
+passwordTryAgain = パスワードが正しくありません。再度入力してください。
