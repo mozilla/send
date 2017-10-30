@@ -929,7 +929,7 @@ tbody {
 }
 
 #addPassword:checked + label::before {
-  background-image: url('/assets/check-16-blue.svg');
+  background-image: url('./check-16-blue.svg');
   background-position: 2px 1px;
 }
 
