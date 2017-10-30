@@ -553,6 +553,11 @@ tbody {
   width: 100%;
 }
 
+#copy.wait-password #link,
+#copy.wait-password #copy-btn {
+  opacity: 0.5;
+}
+
 #copy-text {
   align-self: flex-start;
   margin-top: 60px;
@@ -596,13 +601,16 @@ tbody {
   white-space: nowrap;
 }
 
-#copy-btn:hover {
+#copy-btn:not(:disabled):hover {
   background-color: #0287e8;
 }
 
-#copy-btn:disabled {
+#copy-btn.success {
   background: #05a700;
   border: 1px solid #05a700;
+}
+
+#copy-btn:disabled {
   cursor: auto;
 }
 

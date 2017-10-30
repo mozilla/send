@@ -57,13 +57,17 @@ module.exports = function(state, emit) {
       input.disabled = true;
       const copyBtn = document.getElementById('copy-btn');
       copyBtn.disabled = true;
+      copyBtn.classList.add('success');
       copyBtn.replaceChild(
         html`<img src="${assets.get('check-16.svg')}" class="icon-check">`,
         copyBtn.firstChild
       );
       await delay(2000);
       input.disabled = false;
-      copyBtn.disabled = false;
+      if (!copyBtn.parentNode.classList.contains('wait-password')) {
+        copyBtn.disabled = false;
+      }
+      copyBtn.classList.remove('success');
       copyBtn.textContent = state.translate('copyUrlFormButton');
     }
   }

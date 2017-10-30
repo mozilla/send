@@ -21,14 +21,27 @@ module.exports = function(state, emit) {
     </form>
   </div>`;
 
-  function togglePasswordInput() {
+  function togglePasswordInput(e) {
+    const unlockInput = document.getElementById('unlock-input');
+    const boxChecked = e.target.checked;
     document.querySelector('.setPassword').classList.toggle('hidden');
+    document
+      .getElementById('copy')
+      .classList.toggle('wait-password', boxChecked);
+    document.getElementById('copy-btn').disabled = boxChecked;
+    if (boxChecked) {
+      unlockInput.focus();
+    } else {
+      unlockInput.value = '';
+    }
   }
 
   function setPassword(event) {
     event.preventDefault();
     const password = document.getElementById('unlock-input').value;
     if (password.length > 0) {
+      document.getElementById('copy').classList.remove('wait-password');
+      document.getElementById('copy-btn').disabled = false;
       emit('password', { password, file });
     }
   }
