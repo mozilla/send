@@ -86,4 +86,4 @@ footerLinkTerms = Betingsten
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Om dit bestân te downloaden is in wachtwurd fereaske
 addPasswordButton = Wachtwurd tafoegje
-incorrectPassword = Net korrekt wachtwurd. Opnij probearje?
+passwordTryAgain = Net krekt wachtwurd. Probearje it opnij.
