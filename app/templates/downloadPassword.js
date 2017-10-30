@@ -6,7 +6,7 @@ module.exports = function(state, emit) {
     fileInfo.password === null
       ? html`
           <label class="red"
-            for="unlock-input">${state.translate('incorrectPassword')}</label>`
+            for="unlock-input">${state.translate('passwordTryAgain')}</label>`
       : html`
           <label for="unlock-input">
             ${state.translate('unlockInputLabel')}
@@ -16,6 +16,7 @@ module.exports = function(state, emit) {
       ${label}
       <form id="unlock" onsubmit=${checkPassword}>
         <input id="unlock-input"
+          maxlength="64"
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"
           type="password"/>

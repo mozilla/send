@@ -142,6 +142,7 @@ select,
 textarea,
 button {
   font-family: inherit;
+  margin: 0;
 }
 
 a {
@@ -595,7 +596,6 @@ tbody {
   color: white;
   cursor: pointer;
   font-size: 15px;
-  height: 60px;
   padding-left: 10px;
   padding-right: 10px;
   white-space: nowrap;
@@ -653,6 +653,8 @@ tbody {
 .selectPassword {
   padding: 10px 0;
   align-self: left;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .setPassword {
@@ -830,7 +832,6 @@ tbody {
   color: white;
   cursor: pointer;
   font-size: 15px;
-  height: 50px;
   padding-left: 10px;
   padding-right: 10px;
   white-space: nowrap;
@@ -904,6 +905,42 @@ tbody {
   margin-bottom: -5px;
 }
 
+#addPasswordWrapper {
+  min-height: 24px;
+}
+
+#addPassword {
+  position: absolute;
+  visibility: collapse;
+}
+
+#addPasswordWrapper label {
+  line-height: 20px;
+  cursor: pointer;
+  position: relative;
+  opacity: 0.6;
+}
+
+#addPassword:checked + label {
+  opacity: 1;
+}
+
+#addPasswordWrapper label::before {
+  content: '';
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  margin-left: 5px;
+  float: left;
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  border-radius: 2px;
+}
+
+#addPassword:checked + label::before {
+  background-image: url('./check-16-blue.svg');
+  background-position: 2px 1px;
+}
+
 @media (max-device-width: 992px), (max-width: 992px) {
   .popup .popuptext {
     left: auto;
@@ -974,20 +1011,38 @@ tbody {
     padding: 5px 5px 5px 20px;
   }
 
-  #copy {
+  #copy,
+  .setPassword,
+  #unlock {
     width: 100%;
     flex-direction: column;
+    padding-left: 0;
   }
 
-  #link {
+  .selectPassword {
+    align-self: center;
+    min-width: 95%;
+  }
+
+  #addPasswordWrapper label::before {
+    margin-left: 0;
+  }
+
+  #link,
+  #unlock-input {
     font-size: 22px;
     padding: 15px 10px;
     border-radius: 6px 6px 0 0;
   }
 
-  #copy-btn {
+  #copy-btn,
+  #unlock-btn {
     border-radius: 0 0 6px 6px;
     flex: 0 1 65px;
+  }
+
+  #copy-text {
+    text-align: center;
   }
 
   th {
