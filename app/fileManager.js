@@ -213,6 +213,7 @@ export default function(state, emitter) {
       await fadeOut('download-progress');
       saveFile(f);
       state.storage.totalDownloads += 1;
+      state.transfer = null;
       metrics.completedDownload({ size, time, speed });
       emitter.emit('pushState', '/completed');
     } catch (err) {
