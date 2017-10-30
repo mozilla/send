@@ -86,4 +86,4 @@ footerLinkTerms = Voorwaarden
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Een wachtwoord vereisen om dit bestand te downloaden
 addPasswordButton = Wachtwoord toevoegen
-incorrectPassword = Onjuist wachtwoord. Opnieuw proberen?
+passwordTryAgain = Onjuist wachtwoord. Probeer het opnieuw.
