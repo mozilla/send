@@ -35,6 +35,10 @@ sendAnotherFileLink = 다른 파일 보내기
 downloadAltText = 다운로드
 downloadFileName = { $filename } 다운로드
 downloadFileSize = ({ $size })
+unlockInputLabel = 비밀번호 입력
+unlockInputPlaceholder = 비밀번호
+unlockButtonLabel = 잠금 해제
+downloadFileTitle = 암호화된 파일 다운로드
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = 당신의 친구가 Firefox Send를 통해 파일을 보내고 있습니다. 이 서비스는 안전하고, 개인적이며, 암호화된 링크를 통해 파일을 공유하는 서비스입니다. 사용자의 파일이 더 이상 온라인 상에 남지 않도록 링크는 자동적으로 만료됩니다.
 // Text and title used on the download link/button (indicates an action).
@@ -81,3 +85,6 @@ footerLinkAbout = Test Pilot 정보
 footerLinkPrivacy = 개인정보 보호
 footerLinkTerms = 이용 약관
 footerLinkCookies = 쿠키
+requirePasswordCheckbox = 이 파일을 다운로드하려면 비밀번호가 필요함
+addPasswordButton = 비밀번호 추가
+incorrectPassword = 비밀번호가 일치하지 않습니다. 다시 시도해주세요.
