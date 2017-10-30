@@ -86,4 +86,4 @@ footerLinkTerms = Wuměnjenja
 footerLinkCookies = Placki
 requirePasswordCheckbox = Žadajće sej hesło za sćehnjenje tuteje dataje
 addPasswordButton = Hesło přidać
-incorrectPassword = Wopačne hesło. Hišće raz spytać?
+passwordTryAgain = Wopačne hesło. Prošu spytajće hišće raz.
