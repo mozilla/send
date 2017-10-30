@@ -86,4 +86,4 @@ footerLinkTerms = Wuměnjenja
 footerLinkCookies = Cookieje
 requirePasswordCheckbox = Gronidło za ześěgnjenje toś teje dataje pominaś
 addPasswordButton = Gronidło pśidaś
-incorrectPassword = Wopacne gronidło. Wopytajśo hyšći raz.
+passwordTryAgain = Wopacne gronidło. Wopytajśo hyšći raz.
