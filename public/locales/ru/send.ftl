@@ -86,4 +86,4 @@ footerLinkTerms = Условия
 footerLinkCookies = Куки
 requirePasswordCheckbox = Требовать пароль для загрузки этого файла
 addPasswordButton = Добавить пароль
-incorrectPassword = Неверный пароль. Повторить попытку?
+passwordTryAgain = Неверный пароль. Попробуйте снова.
