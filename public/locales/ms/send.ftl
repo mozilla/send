@@ -86,4 +86,4 @@ footerLinkTerms = Terma
 footerLinkCookies = Kuki
 requirePasswordCheckbox = Perlu kata laluan untuk memuat turun fail ini
 addPasswordButton = Tambah Kata laluan
-incorrectPassword = Kata laluan tidak betul. Cuba lagi?
+passwordTryAgain = Kata laluan tidak betul. Cuba lagi.
