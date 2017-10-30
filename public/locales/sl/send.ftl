@@ -86,4 +86,4 @@ footerLinkTerms = Pogoji
 footerLinkCookies = Piškotki
 requirePasswordCheckbox = Zahtevaj geslo za prenos te datoteke
 addPasswordButton = Dodaj geslo
-incorrectPassword = Napačno geslo. Želite poskusiti znova?
+passwordTryAgain = Napačno geslo. Poskusite znova.
