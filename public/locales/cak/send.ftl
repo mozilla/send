@@ -86,4 +86,4 @@ footerLinkTerms = Taq ojqanem
 footerLinkCookies = Taq kaxlanwey
 requirePasswordCheckbox = Tik'utüx jun ewan tzij richin niqasäx re yakb'äl re'
 addPasswordButton = Titz'aqatisäx Ewan Tzij
-incorrectPassword = Man ütz ta ri ewan tzij. ¿La nitojtob'ëx chik?
+passwordTryAgain = Itzel ri ewan tzij. Tatojtob'ej chik.
