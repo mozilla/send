@@ -86,4 +86,4 @@ footerLinkTerms = Villkor
 footerLinkCookies = Kakor
 requirePasswordCheckbox = Kräver ett lösenord för att ladda ner den här filen
 addPasswordButton = Lägg till lösenord
-incorrectPassword = Felaktigt lösenord. Försök igen?
+passwordTryAgain = Felaktigt lösenord. Försök igen.
