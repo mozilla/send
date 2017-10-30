@@ -86,4 +86,4 @@ footerLinkTerms = Feltételek
 footerLinkCookies = Sütik
 requirePasswordCheckbox = Jelszó megkövetelése a fájl letöltéséhez
 addPasswordButton = Jelszó hozzáadása
-incorrectPassword = Helytelen jelszó. Megpróbálja újra?
+passwordTryAgain = Helytelen jelszó. Próbálja meg újra.
