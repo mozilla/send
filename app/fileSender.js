@@ -194,7 +194,7 @@ export default class FileSender extends Nanobus {
         JSON.stringify({
           iv: arrayToB64(this.iv),
           name: this.file.name,
-          type: this.file.type
+          type: this.file.type || 'application/octet-stream'
         })
       )
     );
