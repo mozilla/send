@@ -86,4 +86,4 @@ footerLinkTerms = Condizioni di utilizzo
 footerLinkCookies = Cookie
 requirePasswordCheckbox = Richiedi una password per poter scaricare questo file
 addPasswordButton = Aggiungi password
-incorrectPassword = Password errata. Riprovare.
+passwordTryAgain = Password errata, riprovare.
