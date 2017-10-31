@@ -86,4 +86,4 @@ footerLinkTerms = Uslovi
 footerLinkCookies = Kolačići
 requirePasswordCheckbox = Zahtjevaj lozinku za preuzimanje ove datoteke
 addPasswordButton = Dodaj lozinku
-incorrectPassword = Netačna lozinka. Pokušati ponovo?
+passwordTryAgain = Netačna lozinka. Pokušajte ponovo.
