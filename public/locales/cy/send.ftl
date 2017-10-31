@@ -86,4 +86,4 @@ footerLinkTerms = Amodau
 footerLinkCookies = Cwcis
 requirePasswordCheckbox = Gosod angen cyfrinair i lwytho'r ffeil hon i lawr
 addPasswordButton = Ychwanegu Cyfrinair
-incorrectPassword = Cyfrinair Anghywir. Ceisiwch eto?
+passwordTryAgain = Cyfrinair anghywir. Ceisiwch eto.
