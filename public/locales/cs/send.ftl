@@ -86,4 +86,4 @@ footerLinkTerms = Podmínky
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Vyžadovat heslo pro stažení tohoto souboru
 addPasswordButton = Přidat heslo
-incorrectPassword = Nesprávné heslo. Chcete to zkusit znovu?
+passwordTryAgain = Špatné heslo. Zkuste to znovu.
