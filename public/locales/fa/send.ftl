@@ -86,4 +86,4 @@ footerLinkTerms = شرایط
 footerLinkCookies = کوکی‌ها
 requirePasswordCheckbox = دریافت این پرونده نیاز به گذرواژه دارد
 addPasswordButton = افزودن گذرواژه
-incorrectPassword = گذرواژهٔ نادرست. دوباره تلاش می‌کنید؟
+passwordTryAgain = کلمه عبور اشتباه است. مجدد تلاش کنید.
