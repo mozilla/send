@@ -86,4 +86,4 @@ footerLinkTerms = Şartlar
 footerLinkCookies = Çerezler
 requirePasswordCheckbox = Bu dosyayı indirmek için parola iste
 addPasswordButton = Parola ekle
-incorrectPassword = Parola yanlış. Yeniden denemek ister misiniz?
+passwordTryAgain = Yanlış parola. Yeniden deneyin.
