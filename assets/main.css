@@ -657,6 +657,10 @@ tbody {
   overflow-wrap: break-word;
 }
 
+.selectPassword span {
+  font-weight: 600;
+}
+
 .setPassword {
   align-self: left;
   display: flex;
