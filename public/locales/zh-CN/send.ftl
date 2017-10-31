@@ -86,4 +86,4 @@ footerLinkTerms = 条款
 footerLinkCookies = Cookie
 requirePasswordCheckbox = 持有密码才能下载此文件
 addPasswordButton = 添加密码
-incorrectPassword = 密码不正确。重试？
+passwordTryAgain = 密码不正确。请重试。
