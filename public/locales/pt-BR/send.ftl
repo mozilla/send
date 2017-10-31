@@ -86,4 +86,4 @@ footerLinkTerms = Termos
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Para baixar esse arquivo é necessário uma senha
 addPasswordButton = Adicionar senha
-incorrectPassword = Senha incorreta. Tentar novamente?
+passwordTryAgain = Senha incorreta. Tente novamente.
