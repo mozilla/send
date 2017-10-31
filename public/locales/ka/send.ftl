@@ -86,4 +86,4 @@ footerLinkTerms = პირობები
 footerLinkCookies = ფუნთუშები
 requirePasswordCheckbox = პაროლის მოთხოვნა, ფაილის ჩამოტვირთვისას
 addPasswordButton = პაროლის დამატება
-incorrectPassword = არასწორი პაროლი. სცდით ხელახლა?
+passwordTryAgain = პაროლი არასწორია. სცადეთ ხელახლა.
