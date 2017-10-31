@@ -86,4 +86,4 @@ footerLinkTerms = Vilkår
 footerLinkCookies = Infokapsler
 requirePasswordCheckbox = Krever et passord for å laste ned denne filen
 addPasswordButton = Legg til passord
-incorrectPassword = Feil passord. Prøv igjen?
+passwordTryAgain = Feil passord. Prøv igjen.
