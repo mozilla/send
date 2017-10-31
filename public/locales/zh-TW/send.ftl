@@ -86,4 +86,4 @@ footerLinkTerms = 使用條款
 footerLinkCookies = Cookie
 requirePasswordCheckbox = 需要密碼才能下載此檔案
 addPasswordButton = 新增密碼
-incorrectPassword = 密碼不正確，要再試一次嗎？
+passwordTryAgain = 密碼不正確，請再試一次。
