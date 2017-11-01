@@ -25,10 +25,7 @@ uploadingFileNotification = Abisuhan ako kapag nakumpleto na ang pag-upload.
 uploadSuccessConfirmHeader = Handa nang Ipadala
 uploadSvgAlt = I-upload
 uploadSuccessTimingHeader = Mag-e-expire ang link sa iyong file pagkatapos ng 1 pag-download o sa loob ng 24 na oras.
-copyUrlFormLabelWithName =
-    Kopyahin at ibahagi ang link upang ipadala ang iyong file: { $filename }
-    
-
+copyUrlFormLabelWithName = Kopyahin at ibahagi ang link upang ipadala ang iyong file: { $filename }
 copyUrlFormButton = Kopyahin sa clipboard
 copiedUrl = Naikopya!
 deleteFileButton = Burahin ang file
@@ -38,3 +35,55 @@ downloadAltText = I-download
 downloadFileName = I-download { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Ilagay ang Password
+unlockInputPlaceholder = Password
+unlockButtonLabel = I-unlock
+downloadFileTitle = I-download ang Na-encrypt na File
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Ang iyong kaibigan ay nagpapadala sa iyo ng isang file na may Firefox Send, isang serbisyo na nagbibigay-daan sa iyo upang magbahagi ng mga file sa isang ligtas, pribado, at naka-encrypt na link na awtomatikong mawawalan ng bisa upang matiyak na ang iyong mga bagay-bagay ay hindi mananatiling online magpakailanman.
+// Text and title used on the download link/button (indicates an action).
+downloadButtonLabel = I-download
+downloadNotification = Nakumpleto na ang iyong pag-download.
+downloadFinish = Kumpleto ang Download
+// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+fileSizeProgress = ({ $partialSize } ng { $totalSize })
+// Firefox Send is a brand name and should not be localized.
+sendYourFilesLink = Subukan ang Firefox Ipadala
+downloadingPageProgress = Downloading { $filename } ({ $size })
+downloadingPageMessage = Paki-iwan ang tab na ito habang binuksan namin ang iyong file at i-decrypt ito.
+errorAltText = Mag-upload ng error
+errorPageHeader = May nagkamali!
+errorPageMessage = Nagkaroon ng error sa pag-upload ng file.
+errorPageLink = Magpadala ng isang file
+fileTooBig = Ang file na iyon ay masyadong malaki upang mag-upload. Dapat itong mas mababa sa { $size }.
+linkExpiredAlt = Nag-expire na ang link
+expiredPageHeader = Nag-expire na ang link na ito o hindi kailanman umiiral sa unang lugar!
+notSupportedHeader = Ang iyong browser ay hindi suportado.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Sa kasamaang palad hindi sinusuportahan ng browser na ito ang teknolohiya sa web na nagpapagana ng Firefox Send. Kailangan mong subukan ang ibang browser. Inirerekomenda namin ang Firefox!
+notSupportedLink = Bakit hindi suportado ang aking browser?
+notSupportedOutdatedDetail = Sa kasamaang palad ang bersyon na ito ng Firefox ay hindi sumusuporta sa teknolohiya ng web na nagpapagana ng Firefox Send. Kailangan mong i-update ang iyong browser.
+updateFirefox = I-update ang Firefox
+downloadFirefoxButtonSub = Libreng Download
+uploadedFile = File
+copyFileList = Kopyahin ang URL
+// expiryFileList is used as a column header
+expiryFileList = Magtatapos Sa 
+deleteFileList = I-delete
+nevermindButton = Hindi bale
+legalHeader = Mga Tuntunin at Pagkapribado
+legalNoticeTestPilot = Ang Firefox Ipadala ay kasalukuyang eksperimentong Test Pilot, at napapailalim sa <a>Mga Tuntunin ng Serbisyo</a> at <a> Paunawa sa Privacy</a>. Maaari kang matuto nang higit pa tungkol sa eksperimentong ito at ang koleksyon ng data nito <a>dito</a>.
+legalNoticeMozilla = Ang paggamit ng website ng Ipadala ang Firefox ay napapailalim din sa <a>Mga Patakaran sa Privacy ng Website</a> ng Mozilla at <a>Mga Tuntunin ng Paggamit ng Website</a>.
+deletePopupText = Tanggalin ang file na ito?
+deletePopupYes = Oo
+deletePopupCancel = Kanselahin
+deleteButtonHover = I-delete
+copyUrlHover = Kopyahin ang URL
+footerLinkLegal = Legal
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Tungkol sa Test Pilot
+footerLinkPrivacy = Privacy
+footerLinkTerms = Mga term
+footerLinkCookies = Mga cookie
+requirePasswordCheckbox = Mangailangan ng isang password upang i-download ang file na ito
+addPasswordButton = Magdagdag ng password
+passwordTryAgain = Maling password. Subukan muli.
