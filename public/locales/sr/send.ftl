@@ -86,4 +86,4 @@ footerLinkTerms = Услови
 footerLinkCookies = Колачићи
 requirePasswordCheckbox = Захтевај лозинку да би преузео ову датотеку
 addPasswordButton = Додај лозинку
-incorrectPassword = Погрешна лозинка. Покушати поново?
+passwordTryAgain = Нетачна лозинка. Пробајте поново.
