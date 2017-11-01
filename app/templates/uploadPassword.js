@@ -24,7 +24,9 @@ module.exports = function(state, emit) {
   function togglePasswordInput(e) {
     const unlockInput = document.getElementById('unlock-input');
     const boxChecked = e.target.checked;
-    document.querySelector('.setPassword').classList.toggle('hidden');
+    document
+      .querySelector('.setPassword')
+      .classList.toggle('hidden', !boxChecked);
     document
       .getElementById('copy')
       .classList.toggle('wait-password', boxChecked);
