@@ -12,7 +12,9 @@ module.exports = function(state, emit) {
 
   file.password = file.password || '';
   const passwordComplete = html`<div class="selectPassword"></div>`;
-  passwordComplete.innerHTML = file.password.replace(/ /g, '&nbsp;');
+  passwordComplete.innerHTML = `${state.translate(
+    'passwordResult'
+  )} <span>${file.password.replace(/ /g, '&nbsp;')}</span>`;
 
   const passwordSection = file.password
     ? passwordComplete
