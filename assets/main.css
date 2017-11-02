@@ -137,12 +137,18 @@ body {
   width: 96%;
 }
 
+pre,
 input,
 select,
 textarea,
 button {
   font-family: inherit;
   margin: 0;
+}
+
+pre {
+  font-weight: 600;
+  display: inline-block;
 }
 
 a {
@@ -809,7 +815,7 @@ tbody {
   padding: 10px 0;
 }
 
-#unlock-input {
+.unlock-input {
   flex: 1;
   height: 46px;
   border: 1px solid #0297f8;
@@ -839,6 +845,14 @@ tbody {
 
 #unlock-btn:hover {
   background-color: #0287e8;
+}
+
+.btn-hidden {
+  visibility: hidden;
+}
+
+.input-no-btn {
+  border-radius: 6px;
 }
 
 /*    footer    */

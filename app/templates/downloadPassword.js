@@ -16,16 +16,30 @@ module.exports = function(state, emit) {
       ${label}
       <form id="unlock" onsubmit=${checkPassword}>
         <input id="unlock-input"
+          class="unlock-input input-no-btn"
           maxlength="64"
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"
+          oninput=${inputChanged}
           type="password"/>
         <input type="submit"
           id="unlock-btn"
-          class="btn"
+          class="btn btn-hidden"
           value="${state.translate('unlockButtonLabel')}"/>
       </form>
     </div>`;
+
+  function inputChanged() {
+    const input = document.getElementById('unlock-input');
+    const btn = document.getElementById('unlock-btn');
+    if (input.value.length > 0) {
+      btn.classList.remove('btn-hidden');
+      input.classList.remove('input-no-btn');
+    } else {
+      btn.classList.add('btn-hidden');
+      input.classList.add('input-no-btn');
+    }
+  }
 
   function checkPassword(event) {
     event.preventDefault();

@@ -4,6 +4,16 @@ const notFound = require('./notFound');
 const uploadPassword = require('./uploadPassword');
 const { allowedCopy, delay, fadeOut } = require('../utils');
 
+function passwordComplete(state, password) {
+  const el = html([
+    `<div class="selectPassword">${state.translate('passwordResult', {
+      password: '<pre></pre>'
+    })}</div>`
+  ]);
+  el.lastElementChild.textContent = password;
+  return el;
+}
+
 module.exports = function(state, emit) {
   const file = state.storage.getFileById(state.params.id);
   if (!file) {
@@ -11,11 +21,9 @@ module.exports = function(state, emit) {
   }
 
   file.password = file.password || '';
-  const passwordComplete = html`<div class="selectPassword"></div>`;
-  passwordComplete.innerHTML = file.password.replace(/ /g, '&nbsp;');
 
   const passwordSection = file.password
-    ? passwordComplete
+    ? passwordComplete(state, file.password)
     : uploadPassword(state, emit);
   const div = html`
   <div id="share-link" class="fadeIn">
