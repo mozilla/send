@@ -86,4 +86,4 @@ footerLinkTerms = Términos
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Requerir una contraseña para descargar este archivo
 addPasswordButton = Añadir contraseña
-incorrectPassword = Contraseña incorrecta. ¿Volver a intentarlo?
+passwordTryAgain = Contraseña incorrecta. Vuelve a intentarlo.
