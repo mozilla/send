@@ -5,7 +5,7 @@ module.exports = function(state, emit) {
   const div = html`
   <div class="selectPassword">
     <div id="addPasswordWrapper">
-      <input id="addPassword" type="checkbox" onchange=${togglePasswordInput}/>
+      <input id="addPassword" type="checkbox" autocomplete="off" onchange=${togglePasswordInput}/>
       <label for="addPassword">
         ${state.translate('requirePasswordCheckbox')}</label>
     </div>
@@ -24,7 +24,9 @@ module.exports = function(state, emit) {
   function togglePasswordInput(e) {
     const unlockInput = document.getElementById('unlock-input');
     const boxChecked = e.target.checked;
-    document.querySelector('.setPassword').classList.toggle('hidden');
+    document
+      .querySelector('.setPassword')
+      .classList.toggle('hidden', !boxChecked);
     document
       .getElementById('copy')
       .classList.toggle('wait-password', boxChecked);
