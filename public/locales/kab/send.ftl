@@ -34,6 +34,10 @@ sendAnotherFileLink = Azen afaylu-nniḍen
 downloadAltText = Sider
 downloadFileName = Sider { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Sekcem awal uffir
+unlockInputPlaceholder = Awal uffir
+unlockButtonLabel = Serreḥ
+downloadFileTitle = Sider afaylu awgelhan
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Amdakel-ik yuzen-ak-d afaylu s Firefox Firefox Send, ameẓlu ara yeǧǧen tuzna n ifuyla s wudem aɣelsan, s tbadnit akked uwgelhen s useqdec n useqwen ara yeùten s wudem awurman akken talqut-ik ur tettɣimi ara srid i lebda.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +84,6 @@ footerLinkAbout = Ɣef Test Pilot
 footerLinkPrivacy = Tabaḍnit
 footerLinkTerms = Tiwtilin
 footerLinkCookies = Inagan n tuqqna
+requirePasswordCheckbox = YEsra awal uffir akken ad isider afaylu-agi
+addPasswordButton = rnu awal uffir
+passwordTryAgain = Yir awal uffir. Ɛreḍ tikelt nniḍen.
