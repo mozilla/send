@@ -86,4 +86,4 @@ footerLinkTerms = Teenusetingimused
 footerLinkCookies = Küpsistest
 requirePasswordCheckbox = Selle faili allalaadimiseks nõutakse parooli
 addPasswordButton = Lisa parool
-incorrectPassword = Vale parool. Kas soovid uuesti proovida?
+passwordTryAgain = Vale parool. Palun proovi uuesti.
