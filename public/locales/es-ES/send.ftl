@@ -87,3 +87,5 @@ footerLinkCookies = Cookies
 requirePasswordCheckbox = Requerir una contraseña para descargar este archivo
 addPasswordButton = Añadir contraseña
 passwordTryAgain = Contraseña incorrecta. Inténtelo de nuevo.
+// This label is followed by the password needed to download a file
+passwordResult = Contraseña: { $password }
