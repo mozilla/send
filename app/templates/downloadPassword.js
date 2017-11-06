@@ -14,7 +14,7 @@ module.exports = function(state, emit) {
   const div = html`
     <div class="enterPassword">
       ${label}
-      <form id="unlock" onsubmit=${checkPassword}>
+      <form id="unlock" onsubmit=${checkPassword} data-no-csrf>
         <input id="unlock-input"
           class="unlock-input input-no-btn"
           maxlength="64"

@@ -11,15 +11,16 @@ if (config.sentry_dsn) {
 
 const app = express();
 
+routes(app);
+
 app.use(
   express.static(path.resolve(__dirname, '../dist/'), {
     setHeaders: function(res) {
       res.set('Cache-Control', 'public, max-age=31536000, immutable');
+      res.removeHeader('Pragma');
     }
   })
 );
-
-routes(app);
 
 app.use(pages.notfound);
 

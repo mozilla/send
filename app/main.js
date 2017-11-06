@@ -28,6 +28,9 @@ app.use((state, emitter) => {
     ) {
       return emitter.emit('replaceState', '/unsupported/outdated');
     }
+    if (/edge\/\d+/i.test(navigator.userAgent)) {
+      return emitter.emit('replaceState', '/unsupported/edge');
+    }
     const ok = await canHasSend(assets.get('cryptofill.js'));
     if (!ok) {
       const reason = /firefox/i.test(navigator.userAgent) ? 'outdated' : 'gcm';

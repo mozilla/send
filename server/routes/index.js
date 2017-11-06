@@ -51,6 +51,11 @@ module.exports = function(app) {
       }
     })
   );
+  app.use(function(req, res, next) {
+    res.set('Pragma', 'no-cache');
+    res.set('Cache-Control', 'no-cache');
+    next();
+  });
   app.use(bodyParser.json());
   app.get('/', pages.index);
   app.get('/legal', pages.legal);

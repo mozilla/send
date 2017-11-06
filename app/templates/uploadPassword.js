@@ -9,7 +9,7 @@ module.exports = function(state, emit) {
       <label for="addPassword">
         ${state.translate('requirePasswordCheckbox')}</label>
     </div>
-    <form class="setPassword hidden" onsubmit=${setPassword}>
+    <form class="setPassword hidden" onsubmit=${setPassword} data-no-csrf>
       <input id="unlock-input"
         class="unlock-input input-no-btn"
         maxlength="64"
