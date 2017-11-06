@@ -23,17 +23,17 @@ module.exports = function(state, emit) {
       <span id="file-size-msg">
         <em>${state.translate('uploadPageSizeMessage')}</em>
       </span>
-      <label for="file-upload"
-        id="browse"
-        class="btn browse"
-        title="${state.translate('uploadPageBrowseButton1')}">
-        ${state.translate('uploadPageBrowseButton1')}</label>
       <input id="file-upload"
         type="file"
         name="fileUploaded"
         onfocus=${onfocus}
         onblur=${onblur}
         onchange=${upload} />
+      <label for="file-upload"
+        id="browse"
+        class="btn browse"
+        title="${state.translate('uploadPageBrowseButton1')}">
+        ${state.translate('uploadPageBrowseButton1')}</label>
     </div>
     ${fileList(state, emit)}
   </div>
