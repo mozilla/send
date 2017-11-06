@@ -87,3 +87,5 @@ footerLinkCookies = Cookie
 requirePasswordCheckbox = 持有密码才能下载此文件
 addPasswordButton = 添加密码
 passwordTryAgain = 密码不正确。请重试。
+// This label is followed by the password needed to download a file
+passwordResult = 密码：{ $password }
