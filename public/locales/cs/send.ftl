@@ -87,3 +87,5 @@ footerLinkCookies = Cookies
 requirePasswordCheckbox = Vyžadovat heslo pro stažení tohoto souboru
 addPasswordButton = Přidat heslo
 passwordTryAgain = Špatné heslo. Zkuste to znovu.
+// This label is followed by the password needed to download a file
+passwordResult = Heslo: { $password }
