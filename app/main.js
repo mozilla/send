@@ -21,20 +21,23 @@ app.use((state, emitter) => {
   state.storage = storage;
   state.raven = Raven;
   emitter.on('DOMContentLoaded', async () => {
+    let reason = null;
     if (
       /firefox/i.test(navigator.userAgent) &&
       parseInt(navigator.userAgent.match(/firefox\/*([^\n\r]*)\./i)[1], 10) <=
         49
     ) {
-      return emitter.emit('replaceState', '/unsupported/outdated');
+      reason = 'outdated';
     }
     if (/edge\/\d+/i.test(navigator.userAgent)) {
-      return emitter.emit('replaceState', '/unsupported/edge');
+      reason = 'edge';
     }
     const ok = await canHasSend(assets.get('cryptofill.js'));
     if (!ok) {
-      const reason = /firefox/i.test(navigator.userAgent) ? 'outdated' : 'gcm';
-      emitter.emit('replaceState', `/unsupported/${reason}`);
+      reason = /firefox/i.test(navigator.userAgent) ? 'outdated' : 'gcm';
+    }
+    if (reason) {
+      setTimeout(() => emitter.emit('replaceState', `/unsupported/${reason}`));
     }
   });
 });
