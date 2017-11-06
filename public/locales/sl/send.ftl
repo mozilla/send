@@ -87,3 +87,5 @@ footerLinkCookies = Piškotki
 requirePasswordCheckbox = Zahtevaj geslo za prenos te datoteke
 addPasswordButton = Dodaj geslo
 passwordTryAgain = Napačno geslo. Poskusite znova.
+// This label is followed by the password needed to download a file
+passwordResult = Geslo: { $password }
