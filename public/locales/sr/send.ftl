@@ -87,3 +87,5 @@ footerLinkCookies = Колачићи
 requirePasswordCheckbox = Захтевај лозинку да би преузео ову датотеку
 addPasswordButton = Додај лозинку
 passwordTryAgain = Нетачна лозинка. Пробајте поново.
+// This label is followed by the password needed to download a file
+passwordResult = Лозинка: { $password }
