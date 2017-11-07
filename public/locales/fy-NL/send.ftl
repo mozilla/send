@@ -87,3 +87,5 @@ footerLinkCookies = Cookies
 requirePasswordCheckbox = Om dit bestân te downloaden is in wachtwurd fereaske
 addPasswordButton = Wachtwurd tafoegje
 passwordTryAgain = Net krekt wachtwurd. Probearje it opnij.
+// This label is followed by the password needed to download a file
+passwordResult = Wachtwurd: { $password }
