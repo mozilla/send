@@ -87,3 +87,5 @@ footerLinkCookies = Cwcis
 requirePasswordCheckbox = Gosod angen cyfrinair i lwytho'r ffeil hon i lawr
 addPasswordButton = Ychwanegu Cyfrinair
 passwordTryAgain = Cyfrinair anghywir. Ceisiwch eto.
+// This label is followed by the password needed to download a file
+passwordResult = Cyfrinair: { $password }
