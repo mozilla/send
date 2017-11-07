@@ -87,3 +87,5 @@ footerLinkCookies = ფუნთუშები
 requirePasswordCheckbox = პაროლის მოთხოვნა, ფაილის ჩამოტვირთვისას
 addPasswordButton = პაროლის დამატება
 passwordTryAgain = პაროლი არასწორია. სცადეთ ხელახლა.
+// This label is followed by the password needed to download a file
+passwordResult = პაროლი: { $password }
