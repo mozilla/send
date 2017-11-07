@@ -30,9 +30,5 @@ module.exports = function(state) {
       </div>
     </div>
   `;
-
-  if (state.layout) {
-    return state.layout(state, div);
-  }
   return div;
 };

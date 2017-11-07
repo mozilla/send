@@ -1,6 +1,7 @@
 const html = require('choo/html');
 const assets = require('../../common/assets');
 const fileList = require('./fileList');
+const fxPromo = require('./fxPromo');
 const { fadeOut } = require('../utils');
 
 module.exports = function(state, emit) {
@@ -35,6 +36,7 @@ module.exports = function(state, emit) {
         title="${state.translate('uploadPageBrowseButton1')}">
         ${state.translate('uploadPageBrowseButton1')}</label>
     </div>
+    ${state.promo === 'body' ? fxPromo(state, emit) : ''}
     ${fileList(state, emit)}
   </div>
   `;
@@ -66,10 +68,6 @@ module.exports = function(state, emit) {
     }
     await fadeOut('page-one');
     emit('upload', { file, type: 'click' });
-  }
-
-  if (state.layout) {
-    return state.layout(state, div);
   }
   return div;
 };

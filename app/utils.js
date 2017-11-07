@@ -108,7 +108,8 @@ function bytes(num) {
   let nStr = n.toFixed(1);
   if (LOCALIZE_NUMBERS) {
     try {
-      nStr = n.toLocaleString(navigator.languages.map(l => l.split(';')[0]), {
+      const locale = document.querySelector('html').lang;
+      nStr = n.toLocaleString(locale, {
         minimumFractionDigits: 1,
         maximumFractionDigits: 1
       });
@@ -122,10 +123,8 @@ function bytes(num) {
 function percent(ratio) {
   if (LOCALIZE_NUMBERS) {
     try {
-      return ratio.toLocaleString(
-        navigator.languages.map(l => l.split(';')[0]),
-        { style: 'percent' }
-      );
+      const locale = document.querySelector('html').lang;
+      return ratio.toLocaleString(locale, { style: 'percent' });
     } catch (e) {
       // fall through
     }

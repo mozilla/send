@@ -42,9 +42,5 @@ module.exports = function(state) {
       )}</div>
     </div>`;
   const div = html`<div id="page-one">${msg}</div>`;
-
-  if (state.layout) {
-    return state.layout(state, div);
-  }
   return div;
 };

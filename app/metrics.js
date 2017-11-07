@@ -20,7 +20,7 @@ let experiment = null;
 export default function initialize(state, emitter) {
   appState = state;
   emitter.on('DOMContentLoaded', () => {
-    addExitHandlers();
+    // addExitHandlers();
     experiment = storage.enrolled[0];
     sendEvent(category(), 'visit', {
       cm5: storage.totalUploads,
@@ -28,6 +28,9 @@ export default function initialize(state, emitter) {
       cm7: storage.totalDownloads
     });
     //TODO restart handlers... somewhere
+  });
+  emitter.on('exit', evt => {
+    exitEvent(evt);
   });
 }
 
@@ -81,6 +84,8 @@ function urlToMetric(url) {
     case 'https://testpilot.firefox.com/':
     case 'https://testpilot.firefox.com/experiments/send':
       return 'testpilot';
+    case 'https://www.mozilla.org/firefox/new/?utm_campaign=send-acquisition&utm_medium=referral&utm_source=send.firefox.com':
+      return 'promo';
     default:
       return 'other';
   }
@@ -244,6 +249,7 @@ function exitEvent(target) {
   });
 }
 
+// eslint-disable-next-line no-unused-vars
 function addExitHandlers() {
   const links = Array.from(document.querySelectorAll('a'));
   links.forEach(l => {

@@ -1,10 +1,12 @@
 const html = require('choo/html');
 const progress = require('./progress');
 const { bytes } = require('../utils');
+const fxPromo = require('./fxPromo');
 
-module.exports = function(state) {
+module.exports = function(state, emit) {
   const transfer = state.transfer;
   const div = html`
+  <div id="page-one">
   <div id="download-progress" class="fadeIn">
     <div id="dl-title" class="title">${state.translate(
       'downloadingPageProgress',
@@ -21,6 +23,8 @@ module.exports = function(state) {
         transfer.sizes
       )}</div>
     </div>
+    </div>
+    ${state.promo === 'body' ? fxPromo(state, emit) : ''}
   </div>
   `;
 
