@@ -76,3 +76,5 @@ footerLinkTerms = الشروط
 footerLinkCookies = الكعكات
 requirePasswordCheckbox = اطلب كلمة سر لتنزيل هذا الملف
 addPasswordButton = أضِف كلمة سر
+// This label is followed by the password needed to download a file
+passwordResult = كلمة السر: { $password }
