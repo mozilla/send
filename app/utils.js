@@ -105,19 +105,32 @@ function bytes(num) {
   }
   const exponent = Math.min(Math.floor(Math.log10(num) / 3), UNITS.length - 1);
   const n = Number(num / Math.pow(1000, exponent));
-  const nStr = LOCALIZE_NUMBERS
-    ? n.toLocaleString(navigator.languages, {
+  let nStr = n.toFixed(1);
+  if (LOCALIZE_NUMBERS) {
+    try {
+      nStr = n.toLocaleString(navigator.languages.map(l => l.split(';')[0]), {
         minimumFractionDigits: 1,
         maximumFractionDigits: 1
-      })
-    : n.toFixed(1);
+      });
+    } catch (e) {
+      // fall through
+    }
+  }
   return `${nStr}${UNITS[exponent]}`;
 }
 
 function percent(ratio) {
-  return LOCALIZE_NUMBERS
-    ? ratio.toLocaleString(navigator.languages, { style: 'percent' })
-    : `${Math.floor(ratio * 100)}%`;
+  if (LOCALIZE_NUMBERS) {
+    try {
+      return ratio.toLocaleString(
+        navigator.languages.map(l => l.split(';')[0]),
+        { style: 'percent' }
+      );
+    } catch (e) {
+      // fall through
+    }
+  }
+  return `${Math.floor(ratio * 100)}%`;
 }
 
 function allowedCopy() {
