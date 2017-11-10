@@ -5,7 +5,9 @@ module.exports = function(state, emit) {
   const div = html`
   <div class="selectPassword">
     <div id="addPasswordWrapper">
-      <input id="addPassword" type="checkbox" autocomplete="off" onchange=${togglePasswordInput}/>
+      <input id="addPassword" type="checkbox" autocomplete="off" onchange=${
+        togglePasswordInput
+      }/>
       <label for="addPassword">
         ${state.translate('requirePasswordCheckbox')}</label>
     </div>

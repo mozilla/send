@@ -1,20 +1,40 @@
 const busboy = require('connect-busboy');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
-const requestLanguage = require('express-request-language');
 const languages = require('../languages');
 const storage = require('../storage');
 const config = require('../config');
 const pages = require('./pages');
-// const lang = require('fluent-langneg')
+const { negotiateLanguages } = require('fluent-langneg');
 const IS_DEV = config.env === 'development';
+const acceptLanguages = /(([a-zA-Z]+(-[a-zA-Z0-9]+){0,2})|\*)(;q=[0-1](\.[0-9]+)?)?/g;
+const langData = require('cldr-core/supplemental/likelySubtags.json');
 
 module.exports = function(app) {
-  app.use(
-    requestLanguage({
-      languages
-    })
-  );
+  app.use(function(req, res, next) {
+    const header = req.headers['accept-language'] || 'en-US';
+    if (header.length > 255) {
+      req.language = 'en-US';
+      return next();
+    }
+    const langs = header.replace(/\s/g, '').match(acceptLanguages);
+    const preferred = langs
+      .map(l => {
+        const parts = l.split(';');
+        return {
+          locale: parts[0],
+          q: parts[1] ? parseFloat(parts[1].split('=')[1]) : 1
+        };
+      })
+      .sort((a, b) => b.q - a.q)
+      .map(x => x.locale);
+    req.language = negotiateLanguages(preferred, languages, {
+      strategy: 'lookup',
+      likelySubtags: langData.supplemental.likelySubtags,
+      defaultLocale: 'en-US'
+    })[0];
+    next();
+  });
   app.use(helmet());
   app.use(
     helmet.hsts({

@@ -15,9 +15,9 @@ module.exports = function(state, emit) {
         <div class="progress-text"></div>
       </div>
     </div>
-    <a class="send-new" data-state="completed" href="/" onclick=${sendNew}>${state.translate(
-    'sendYourFilesLink'
-  )}</a>
+    <a class="send-new" data-state="completed" href="/" onclick=${
+      sendNew
+    }>${state.translate('sendYourFilesLink')}</a>
   </div>
   `;
 
