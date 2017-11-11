@@ -87,3 +87,5 @@ footerLinkCookies = Küpsistest
 requirePasswordCheckbox = Selle faili allalaadimiseks nõutakse parooli
 addPasswordButton = Lisa parool
 passwordTryAgain = Vale parool. Palun proovi uuesti.
+// This label is followed by the password needed to download a file
+passwordResult = Parool: { $password }
