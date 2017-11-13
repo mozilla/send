@@ -31,6 +31,9 @@ sendAnotherFileLink = మరో ఫైలును పంపండి
 downloadAltText = దిగుమతి
 downloadFileName = దిగుమతి { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = సంకేతపదాన్ని తెలపండి
+unlockInputPlaceholder = సంకేతపదం
+unlockButtonLabel = తాళం తీయి
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = దిగుమతి
 downloadNotification = మీ దిగుమతి పూర్తయ్యింది.
@@ -69,3 +72,8 @@ footerLinkAbout = టెస్ట్ పైలట్ గురించి
 footerLinkPrivacy = గోప్యత
 footerLinkTerms = నియమాలు
 footerLinkCookies = కుకీలు
+requirePasswordCheckbox = ఈ ఫైల్ను దింపుకోటానికి సంకేతపదం అవసరం
+addPasswordButton = సంకేతపదం జోడించండి
+passwordTryAgain = సరికాని సంకేతపదం. మళ్ళీ ప్రయత్నించండి.
+// This label is followed by the password needed to download a file
+passwordResult = సంకేతపదం: { $password }
