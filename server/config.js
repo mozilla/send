@@ -14,6 +14,11 @@ const conf = convict({
     default: 'localhost',
     env: 'REDIS_HOST'
   },
+  redis_event_expire: {
+    format: Boolean,
+    default: false,
+    env: 'REDIS_EVENT_EXPIRE'
+  },
   listen_port: {
     format: 'port',
     default: 1443,

@@ -61,6 +61,20 @@ if (config.s3_bucket) {
   };
 }
 
+if (config.redis_event_expire) {
+  const forceDelete = config.s3_bucket ? awsForceDelete : localForceDelete;
+  const redis_sub = redis_client.duplicate();
+  const subKey = '__keyevent@0__:expired';
+  redis_sub.psubscribe(subKey, function() {
+    log.info('Redis:', 'subscribed to expired key events');
+  });
+
+  redis_sub.on('pmessage', function(channel, message, id) {
+    log.info('RedisExpired:', id);
+    forceDelete(id);
+  });
+}
+
 function flushall() {
   redis_client.flushdb();
 }
