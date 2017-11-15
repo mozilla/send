@@ -47,4 +47,4 @@ app.use(fileManager);
 app.use(dragManager);
 app.use(experiments);
 
-app.mount('#page-one');
+app.mount('body');

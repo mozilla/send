@@ -17,9 +17,5 @@ module.exports = function(state) {
       )}</a>
     </div>
   </div>`;
-
-  if (state.layout) {
-    return state.layout(state, div);
-  }
   return div;
 };

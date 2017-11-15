@@ -8,7 +8,6 @@ html {
   background-repeat: no-repeat;
   background-position: center top;
   height: 100%;
-  max-width: 1440px;
   margin: auto;
 }
 
@@ -130,7 +129,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  max-width: 630px;
+  max-width: 650px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
@@ -213,7 +212,7 @@ a {
 
 .upload-window {
   border: 3px dashed rgba(0, 148, 251, 0.5);
-  margin: 0 auto;
+  margin: 0 auto 10px;
   height: 255px;
   border-radius: 4px;
   display: flex;
@@ -709,6 +708,10 @@ tbody {
   width: 70px;
 }
 
+.firefox-logo-small {
+  width: 24px;
+}
+
 #dl-firefox,
 #update-firefox {
   margin-bottom: 181px;
@@ -766,7 +769,7 @@ tbody {
 }
 
 #download {
-  margin: 0 auto;
+  margin: 0 auto 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -953,6 +956,29 @@ tbody {
 #addPassword:checked + label::before {
   background-image: url('./check-16-blue.svg');
   background-position: 2px 1px;
+}
+
+.banner {
+  padding: 0 15px;
+  height: 48px;
+  background-color: #efeff1;
+  color: #4a4a4f;
+  font-size: 13px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner > div {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.banner > div > span {
+  margin-left: 10px;
 }
 
 @media (max-device-width: 992px), (max-width: 992px) {
