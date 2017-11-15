@@ -43,10 +43,6 @@ module.exports = function(state, emit) {
     document
       .querySelector('.setPassword')
       .classList.toggle('hidden', !boxChecked);
-    document
-      .getElementById('copy')
-      .classList.toggle('wait-password', boxChecked);
-    document.getElementById('copy-btn').disabled = boxChecked;
     if (boxChecked) {
       unlockInput.focus();
     } else {
