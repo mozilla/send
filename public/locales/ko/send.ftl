@@ -87,4 +87,6 @@ footerLinkTerms = 이용 약관
 footerLinkCookies = 쿠키
 requirePasswordCheckbox = 이 파일을 다운로드하려면 비밀번호가 필요함
 addPasswordButton = 비밀번호 추가
-incorrectPassword = 비밀번호가 일치하지 않습니다. 다시 시도해주세요.
+passwordTryAgain = 비밀번호가 맞지 않습니다. 다시 시도해 주세요.
+// This label is followed by the password needed to download a file
+passwordResult = 비밀번호: { $password }
