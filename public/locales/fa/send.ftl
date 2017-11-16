@@ -87,3 +87,5 @@ footerLinkCookies = کوکی‌ها
 requirePasswordCheckbox = دریافت این پرونده نیاز به گذرواژه دارد
 addPasswordButton = افزودن گذرواژه
 passwordTryAgain = کلمه عبور اشتباه است. مجدد تلاش کنید.
+// This label is followed by the password needed to download a file
+passwordResult = گذرواژه: { $password }
