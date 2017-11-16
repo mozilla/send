@@ -31,7 +31,6 @@ export default class FileReceiver extends Nanobus {
     });
     if (file.pwd) {
       const encoder = new TextEncoder();
-      console.log(file.password + file.url);
       this.authKeyPromise = window.crypto.subtle
         .importKey(
           'raw',
