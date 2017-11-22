@@ -600,6 +600,7 @@ tbody {
   color: white;
   cursor: pointer;
   font-size: 15px;
+  padding-bottom: 4px;
   padding-left: 10px;
   padding-right: 10px;
   white-space: nowrap;
@@ -840,6 +841,7 @@ tbody {
   color: white;
   cursor: pointer;
   font-size: 15px;
+  padding-bottom: 3px;
   padding-left: 10px;
   padding-right: 10px;
   white-space: nowrap;
