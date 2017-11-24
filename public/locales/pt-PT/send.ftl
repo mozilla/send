@@ -1,9 +1,9 @@
 // Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteSubtitle = experiência web
+siteSubtitle = experiência Web
 siteFeedback = Feedback
 uploadPageHeader = Partilha de ficheiros privada e encriptada
-uploadPageExplainer = Envie ficheiros através de uma ligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
+uploadPageExplainer = Envie ficheiros através de uma hiperligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
 uploadPageLearnMore = Saber mais
 uploadPageDropMessage = Largue o seu ficheiro aqui para começar a carregar
 uploadPageSizeMessage = Para uma operação mais confiável, é melhor manter o seu ficheiro abaixo de 1GB
@@ -24,8 +24,8 @@ uploadingPageLargeFileMessage = Este ficheiro é grande e pode demorar um pouco 
 uploadingFileNotification = Notificar-me quando o carregamento estiver completo.
 uploadSuccessConfirmHeader = Pronto para enviar
 uploadSvgAlt = Carregar
-uploadSuccessTimingHeader = A ligação para o seu ficheiro irá expirar depois de 1 descarga ou em 24 horas.
-copyUrlFormLabelWithName = Copie e partilhe a ligação para enviar o seu ficheiro: { $filename }
+uploadSuccessTimingHeader = A hiperligação para o seu ficheiro irá expirar depois de 1 descarregamento ou em 24 horas.
+copyUrlFormLabelWithName = Copie e partilhe a hiperligação para enviar o seu ficheiro: { $filename }
 copyUrlFormButton = Copiar para a área de transferência
 copiedUrl = Copiado!
 deleteFileButton = Apagar ficheiro
@@ -39,29 +39,29 @@ unlockInputPlaceholder = Palavra-passe
 unlockButtonLabel = Desbloquear
 downloadFileTitle = Descarregar ficheiro encriptado
 // Firefox Send is a brand name and should not be localized.
-downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiro com uma ligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
+downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiro com uma hiperligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descarregar
-downloadNotification = A sua descarga foi completada.
-downloadFinish = Descarga completada
+downloadNotification = O seu descarregamento foi completado.
+downloadFinish = Descarregamento completado
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
 // Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Tentar o Firefox Send
-downloadingPageProgress = A descarregar { $filename } ({ $size })
+downloadingPageProgress = Descarregamento gratuito { $filename } ({ $size })
 downloadingPageMessage = Por favor deixe este separador aberto enquanto obtemos o seu ficheiro e o desencriptamos.
 errorAltText = Erro ao carregar
 errorPageHeader = Algo correu mal.
 errorPageMessage = Houve um erro ao carregar o ficheiro.
 errorPageLink = Enviar outro ficheiro
 fileTooBig = Esse ficheiro é muito grande para carregar. Deve ser menor do que { $size }.
-linkExpiredAlt = Ligação expirada
-expiredPageHeader = Esta ligação expirou ou nunca existiu em primeiro lugar!
+linkExpiredAlt = Hiperligação expirada
+expiredPageHeader = Esta hiperligação expirou ou nunca existiu em primeiro lugar!
 notSupportedHeader = O seu navegador não é suportado.
 // Firefox Send is a brand name and should not be localized.
-notSupportedDetail = Infelizmente este navegador não suporta a tecnologia web que faz o Firefox Send funcionar. Irá precisar de tentar outro navegador. Nós recomendamos o Firefox!
+notSupportedDetail = Infelizmente, este navegador não suporta a tecnologia Web que faz o Firefox Send funcionar. Irá precisar de tentar outro navegador. Nós recomendamos o Firefox!
 notSupportedLink = Porque é que o meu navegador não é suportado?
-notSupportedOutdatedDetail = Infelizmente esta versão do Firefox não suporta a tecnologia web que faz o Firefox Send funcionar. Precisa de atualizar o seu navegador.
+notSupportedOutdatedDetail = Infelizmente, esta versão do Firefox não suporta a tecnologia Web que faz o Firefox Send funcionar. Precisa de atualizar o seu navegador.
 updateFirefox = Atualizar o Firefox
 downloadFirefoxButtonSub = Descarga gratuita
 uploadedFile = Ficheiro
@@ -71,7 +71,7 @@ expiryFileList = Expira em
 deleteFileList = Apagar
 nevermindButton = Esquecer
 legalHeader = Termos e privacidade
-legalNoticeTestPilot = O Firefox Send é atualmente uma experiência do Test Pilot, e sujeita aos <a>Termos de serviço</a> e <a>Aviso de privacidade</a> do Test Pilot. Pode saber mais acerca desta experiência e a sua recolha de dados <a>aqui</a>.
+legalNoticeTestPilot = Firefox Send é atualmente uma experiência do Test Pilot, e sujeita aos <a>Termos de serviço</a> e <a>Aviso de privacidade</a> do Test Pilot. Pode saber mais acerca desta experiência e a sua recolha de dados <a>aqui</a>.
 legalNoticeMozilla = A utilização do website do Firefox Send está também sujeita ao <a>Aviso de privacidade dos websites</a> e <a>Termos de serviço dos websites</a> da Mozilla.
 deletePopupText = Apagar este ficheiro?
 deletePopupYes = Sim
