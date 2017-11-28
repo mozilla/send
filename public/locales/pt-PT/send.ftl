@@ -24,31 +24,31 @@ uploadingPageLargeFileMessage = Este ficheiro é grande e pode demorar um pouco 
 uploadingFileNotification = Notificar-me quando o carregamento estiver completo.
 uploadSuccessConfirmHeader = Pronto para enviar
 uploadSvgAlt = Carregar
-uploadSuccessTimingHeader = A ligação para o seu ficheiro irá expirar depois de 1 descarga ou em 24 horas.
+uploadSuccessTimingHeader = A ligação para o seu ficheiro irá expirar depois de 1 transferência ou em 24 horas.
 copyUrlFormLabelWithName = Copie e partilhe a ligação para enviar o seu ficheiro: { $filename }
 copyUrlFormButton = Copiar para a área de transferência
 copiedUrl = Copiado!
 deleteFileButton = Apagar ficheiro
 sendAnotherFileLink = Enviar outro ficheiro
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText = Descarregar
-downloadFileName = Descarregar { $filename }
+downloadAltText = Transferir
+downloadFileName = Transferir { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Digitar palavra-passe
 unlockInputPlaceholder = Palavra-passe
 unlockButtonLabel = Desbloquear
-downloadFileTitle = Descarregar ficheiro encriptado
+downloadFileTitle = Transferir ficheiro encriptado
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiro com uma ligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
 // Text and title used on the download link/button (indicates an action).
-downloadButtonLabel = Descarregar
-downloadNotification = O seu descarregamento foi completado.
-downloadFinish = Descarregamento completado
+downloadButtonLabel = Transferir
+downloadNotification = A sua transferência foi concluída.
+downloadFinish = Transferência concluída
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
 // Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Tentar o Firefox Send
-downloadingPageProgress = Descarregamento gratuito { $filename } ({ $size })
+downloadingPageProgress = A transferir { $filename } ({ $size })
 downloadingPageMessage = Por favor deixe este separador aberto enquanto obtemos o seu ficheiro e o desencriptamos.
 errorAltText = Erro ao carregar
 errorPageHeader = Algo correu mal.
@@ -63,7 +63,7 @@ notSupportedDetail = Infelizmente este navegador não suporta a tecnologia web q
 notSupportedLink = Porque é que o meu navegador não é suportado?
 notSupportedOutdatedDetail = Infelizmente esta versão do Firefox não suporta a tecnologia web que faz o Firefox Send funcionar. Precisa de atualizar o seu navegador.
 updateFirefox = Atualizar o Firefox
-downloadFirefoxButtonSub = Descarga gratuita
+downloadFirefoxButtonSub = Transferência gratuita
 uploadedFile = Ficheiro
 copyFileList = Copiar URL
 // expiryFileList is used as a column header
@@ -84,7 +84,7 @@ footerLinkAbout = Acerca do Test Pilot
 footerLinkPrivacy = Privacidade
 footerLinkTerms = Termos
 footerLinkCookies = Cookies
-requirePasswordCheckbox = Requerer uma palavra-passe para descarregar este ficheiro
+requirePasswordCheckbox = Requerer uma palavra-passe para transferir este ficheiro
 addPasswordButton = Adicionar palavra-passe
 passwordTryAgain = Palavra-passe incorreta. Tente novamente.
 // This label is followed by the password needed to download a file
