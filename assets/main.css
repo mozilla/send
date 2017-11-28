@@ -840,6 +840,9 @@ tbody {
   border: 1px solid #0297f8;
   color: white;
   cursor: pointer;
+
+  /* Force flat button look */
+  -webkit-appearance: none;
   font-size: 15px;
   padding-bottom: 3px;
   padding-left: 10px;
