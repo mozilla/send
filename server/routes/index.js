@@ -42,26 +42,32 @@ module.exports = function(app) {
       force: !IS_DEV
     })
   );
-  app.use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        defaultSrc: ["'self'"],
-        connectSrc: [
-          "'self'",
-          'https://sentry.prod.mozaws.net',
-          'https://www.google-analytics.com'
-        ],
-        imgSrc: ["'self'", 'https://www.google-analytics.com'],
-        scriptSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'", 'https://code.cdn.mozilla.net'],
-        fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
-        formAction: ["'none'"],
-        frameAncestors: ["'none'"],
-        objectSrc: ["'none'"],
-        reportUri: '/__cspreport__'
-      }
-    })
-  );
+  if (!IS_DEV) {
+    app.use(
+      helmet.contentSecurityPolicy({
+        directives: {
+          defaultSrc: ["'self'"],
+          connectSrc: [
+            "'self'",
+            'https://sentry.prod.mozaws.net',
+            'https://www.google-analytics.com'
+          ],
+          imgSrc: ["'self'", 'https://www.google-analytics.com'],
+          scriptSrc: ["'self'"],
+          styleSrc: [
+            "'self'",
+            "'unsafe-inline'",
+            'https://code.cdn.mozilla.net'
+          ],
+          fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
+          formAction: ["'none'"],
+          frameAncestors: ["'none'"],
+          objectSrc: ["'none'"],
+          reportUri: '/__cspreport__'
+        }
+      })
+    );
+  }
   app.use(
     busboy({
       limits: {
@@ -88,6 +94,7 @@ module.exports = function(app) {
   app.post('/api/upload', require('./upload'));
   app.post('/api/delete/:id', require('./delete'));
   app.post('/api/password/:id', require('./password'));
+  app.post('/api/params/:id', require('./params'));
 
   app.get('/__version__', function(req, res) {
     res.sendFile(require.resolve('../../dist/version.json'));

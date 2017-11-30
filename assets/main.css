@@ -938,12 +938,11 @@ tbody {
 #addPasswordWrapper label {
   line-height: 20px;
   cursor: pointer;
-  position: relative;
-  opacity: 0.6;
+  color: #737373;
 }
 
 #addPassword:checked + label {
-  opacity: 1;
+  color: #000;
 }
 
 #addPasswordWrapper label::before {
@@ -983,6 +982,47 @@ tbody {
 
 .banner > div > span {
   margin-left: 10px;
+}
+
+.selectbox {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.selectSelected {
+  cursor: pointer;
+}
+
+.selectOptions {
+  display: none;
+}
+
+.selectOptions.active {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 40px 0;
+  background-color: white;
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  border-radius: 4px;
+  box-shadow: 1px 2px 4px rgba(12, 12, 13, 0.3);
+}
+
+.selectOption {
+  color: #737373;
+  font-size: 12pt;
+  list-style: none;
+  user-select: none;
+  white-space: nowrap;
+  padding: 0 60px;
+  border-bottom: 1px solid rgba(12, 12, 13, 0.3);
+}
+
+.selectOption:hover {
+  background-color: #f4f4f4;
 }
 
 @media (max-device-width: 992px), (max-width: 992px) {

@@ -20,12 +20,13 @@ module.exports = async function(req, res) {
     const hmac = crypto.createHmac('sha256', Buffer.from(meta.auth, 'base64'));
     hmac.update(Buffer.from(meta.nonce, 'base64'));
     const verifyHash = hmac.digest();
-    const nonce = crypto.randomBytes(16).toString('base64');
-    storage.setField(id, 'nonce', nonce);
     if (!verifyHash.equals(Buffer.from(auth, 'base64'))) {
-      res.set('WWW-Authenticate', `send-v1 ${nonce}`);
+      res.set('WWW-Authenticate', `send-v1 ${meta.nonce}`);
       return res.sendStatus(401);
     }
+    const nonce = crypto.randomBytes(16).toString('base64');
+    storage.setField(id, 'nonce', nonce);
+    res.set('WWW-Authenticate', `send-v1 ${nonce}`);
   } catch (e) {
     res.sendStatus(404);
   }

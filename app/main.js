@@ -1,3 +1,4 @@
+import 'fluent-intl-polyfill';
 import app from './routes';
 import locale from '../common/locales';
 import fileManager from './fileManager';

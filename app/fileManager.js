@@ -97,6 +97,13 @@ export default function(state, emitter) {
     lastRender = Date.now();
   });
 
+  emitter.on('changeLimit', async ({ file, value }) => {
+    await FileSender.changeLimit(file.id, file.ownerToken, value);
+    file.dlimit = value;
+    state.storage.writeFiles();
+    metrics.changedDownloadLimit(file);
+  });
+
   emitter.on('delete', async ({ file, location }) => {
     try {
       metrics.deletedUpload({
@@ -108,7 +115,7 @@ export default function(state, emitter) {
         location
       });
       state.storage.remove(file.id);
-      await FileSender.delete(file.id, file.deleteToken);
+      await FileSender.delete(file.id, file.ownerToken);
     } catch (e) {
       state.raven.captureException(e);
     }

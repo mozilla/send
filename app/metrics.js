@@ -205,6 +205,16 @@ function stoppedUpload(params) {
   });
 }
 
+function changedDownloadLimit(params) {
+  return sendEvent('sender', 'download-limit-changed', {
+    cm1: params.size,
+    cm5: storage.totalUploads,
+    cm6: storage.files.length,
+    cm7: storage.totalDownloads,
+    cm8: params.dlimit
+  });
+}
+
 function completedDownload(params) {
   return sendEvent('recipient', 'download-stopped', {
     cm1: params.size,
@@ -272,6 +282,7 @@ export {
   cancelledUpload,
   stoppedUpload,
   completedUpload,
+  changedDownloadLimit,
   deletedUpload,
   startedDownload,
   cancelledDownload,

@@ -35,7 +35,26 @@ export default class FileSender extends Nanobus {
         }
       };
 
-      xhr.send(JSON.stringify({ delete_token: token }));
+      xhr.send(JSON.stringify({ owner_token: token }));
+    });
+  }
+
+  static changeLimit(id, owner_token, dlimit) {
+    return new Promise((resolve, reject) => {
+      if (!id || !owner_token) {
+        return reject();
+      }
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', `/api/params/${id}`);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          resolve();
+        }
+      };
+
+      xhr.send(JSON.stringify({ owner_token, dlimit }));
     });
   }
 
@@ -100,7 +119,7 @@ export default class FileSender extends Nanobus {
               url: responseObj.url,
               id: responseObj.id,
               secretKey: arrayToB64(this.rawSecret),
-              deleteToken: responseObj.delete,
+              ownerToken: responseObj.owner,
               nonce
             });
           }
@@ -205,6 +224,17 @@ export default class FileSender extends Nanobus {
     return this.uploadFile(encrypted, metadata, new Uint8Array(rawAuth));
   }
 
+  async getAuthHeader(authKey, nonce) {
+    const sig = await window.crypto.subtle.sign(
+      {
+        name: 'HMAC'
+      },
+      authKey,
+      b64ToArray(nonce)
+    );
+    return `send-v1 ${arrayToB64(new Uint8Array(sig))}`;
+  }
+
   static async setPassword(password, file) {
     const encoder = new TextEncoder();
     const secretKey = await window.crypto.subtle.importKey(
@@ -229,13 +259,7 @@ export default class FileSender extends Nanobus {
       true,
       ['sign']
     );
-    const sig = await window.crypto.subtle.sign(
-      {
-        name: 'HMAC'
-      },
-      authKey,
-      b64ToArray(file.nonce)
-    );
+    const authHeader = await this.getAuthHeader(authKey, file.nonce);
     const pwdKey = await window.crypto.subtle.importKey(
       'raw',
       encoder.encode(password),
@@ -278,10 +302,7 @@ export default class FileSender extends Nanobus {
       xhr.onerror = () => reject(new Error(0));
       xhr.ontimeout = () => reject(new Error(0));
       xhr.open('post', `/api/password/${file.id}`);
-      xhr.setRequestHeader(
-        'Authorization',
-        `send-v1 ${arrayToB64(new Uint8Array(sig))}`
-      );
+      xhr.setRequestHeader('Authorization', authHeader);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.responseType = 'json';
       xhr.timeout = 2000;
