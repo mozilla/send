@@ -25,6 +25,13 @@ uploadingFileNotification = アップロード完了時に通知を受け取る
 uploadSuccessConfirmHeader = 送信準備完了
 uploadSvgAlt = アップロード
 uploadSuccessTimingHeader = ファイルへのリンクは、1 回ダウンロードされた後、もしくは 24 時間以内に期限切れとなります。
+expireInfo = このファイルへのリンクは { $downloadCount } あるいは { $timespan } 後に期限切れとなります。
+downloadCount = { $num ->
+       *[other] { $number } 回のダウンロード
+    }
+timespanHours = { $num ->
+       *[other] { $number } 時間
+    }
 copyUrlFormLabelWithName = ファイルを送信するにはこのリンクをコピー、共有してください: { $filename }
 copyUrlFormButton = クリップボードへコピー
 copiedUrl = コピー完了！
