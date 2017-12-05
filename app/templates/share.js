@@ -2,6 +2,7 @@ const html = require('choo/html');
 const assets = require('../../common/assets');
 const notFound = require('./notFound');
 const uploadPassword = require('./uploadPassword');
+const selectbox = require('./selectbox');
 const { allowedCopy, delay, fadeOut } = require('../utils');
 
 function passwordComplete(state, password) {
@@ -11,6 +12,24 @@ function passwordComplete(state, password) {
     })}</div>`
   ]);
   el.lastElementChild.textContent = password;
+  return el;
+}
+
+function expireInfo(file, translate, emit) {
+  const el = html([
+    `<div>${translate('expireInfo', {
+      downloadCount: '<select></select>',
+      timespan: translate('timespanHours', { number: 24 })
+    })}</div>`
+  ]);
+  const select = el.querySelector('select');
+  const options = [1, 2, 3, 4, 5, 20];
+  const t = number => translate('downloadCount', { number });
+  const changed = value => emit('changeLimit', { file, value });
+  select.parentNode.replaceChild(
+    selectbox(file.dlimit || 1, options, t, changed),
+    select
+  );
   return el;
 }
 
@@ -27,7 +46,7 @@ module.exports = function(state, emit) {
     : uploadPassword(state, emit);
   const div = html`
   <div id="share-link" class="fadeIn">
-    <div class="title">${state.translate('uploadSuccessTimingHeader')}</div>
+    <div class="title">${expireInfo(file, state.translate, emit)}</div>
     <div id="share-window">
       <div id="copy-text">
         ${state.translate('copyUrlFormLabelWithName', {

@@ -134,7 +134,7 @@ function localSet(newId, file, meta) {
       redis_client.hmset(newId, meta);
       redis_client.expire(newId, config.expire_seconds);
       log.info('localSet:', 'Upload Finished of ' + newId);
-      resolve(meta.delete);
+      resolve(meta.owner);
     });
 
     fstream.on('error', err => {
@@ -145,10 +145,10 @@ function localSet(newId, file, meta) {
   });
 }
 
-function localDelete(id, delete_token) {
+function localDelete(id, ownerToken) {
   return new Promise((resolve, reject) => {
     redis_client.hget(id, 'delete', (err, reply) => {
-      if (!reply || delete_token !== reply) {
+      if (!reply || ownerToken !== reply) {
         reject();
       } else {
         redis_client.del(id);
@@ -230,10 +230,10 @@ function awsSet(newId, file, meta) {
   );
 }
 
-function awsDelete(id, delete_token) {
+function awsDelete(id, ownerToken) {
   return new Promise((resolve, reject) => {
     redis_client.hget(id, 'delete', (err, reply) => {
-      if (!reply || delete_token !== reply) {
+      if (!reply || ownerToken !== reply) {
         reject();
       } else {
         const params = {

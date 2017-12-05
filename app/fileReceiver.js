@@ -116,7 +116,8 @@ export default class FileReceiver extends Nanobus {
     // TODO
   }
 
-  fetchMetadata(sig) {
+  async fetchMetadata(nonce) {
+    const authHeader = await this.getAuthHeader(nonce);
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = () => {
@@ -132,7 +133,7 @@ export default class FileReceiver extends Nanobus {
       xhr.onerror = () => reject(new Error(0));
       xhr.ontimeout = () => reject(new Error(0));
       xhr.open('get', `/api/metadata/${this.file.id}`);
-      xhr.setRequestHeader('Authorization', `send-v1 ${arrayToB64(sig)}`);
+      xhr.setRequestHeader('Authorization', authHeader);
       xhr.responseType = 'json';
       xhr.timeout = 2000;
       xhr.send();
@@ -140,16 +141,16 @@ export default class FileReceiver extends Nanobus {
   }
 
   async getMetadata(nonce) {
+    let data = null;
     try {
-      const authKey = await this.authKeyPromise;
-      const sig = await window.crypto.subtle.sign(
-        {
-          name: 'HMAC'
-        },
-        authKey,
-        b64ToArray(nonce)
-      );
-      const data = await this.fetchMetadata(new Uint8Array(sig));
+      try {
+        data = await this.fetchMetadata(nonce);
+      } catch (e) {
+        if (e.message === '401') {
+          // allow one retry for changed nonce
+          data = await this.fetchMetadata(e.nonce);
+        }
+      }
       const metaKey = await this.metaKeyPromise;
       const json = await window.crypto.subtle.decrypt(
         {
@@ -174,7 +175,8 @@ export default class FileReceiver extends Nanobus {
     }
   }
 
-  downloadFile(sig) {
+  async downloadFile(nonce) {
+    const authHeader = await this.getAuthHeader(nonce);
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
@@ -190,9 +192,10 @@ export default class FileReceiver extends Nanobus {
           reject(new Error('notfound'));
           return;
         }
-
         if (xhr.status !== 200) {
-          return reject(new Error(xhr.status));
+          const err = new Error(xhr.status);
+          err.nonce = xhr.getResponseHeader('WWW-Authenticate').split(' ')[1];
+          return reject(err);
         }
 
         const blob = new Blob([xhr.response]);
@@ -205,10 +208,22 @@ export default class FileReceiver extends Nanobus {
       };
 
       xhr.open('get', this.url);
-      xhr.setRequestHeader('Authorization', `send-v1 ${arrayToB64(sig)}`);
+      xhr.setRequestHeader('Authorization', authHeader);
       xhr.responseType = 'blob';
       xhr.send();
     });
+  }
+
+  async getAuthHeader(nonce) {
+    const authKey = await this.authKeyPromise;
+    const sig = await window.crypto.subtle.sign(
+      {
+        name: 'HMAC'
+      },
+      authKey,
+      b64ToArray(nonce)
+    );
+    return `send-v1 ${arrayToB64(new Uint8Array(sig))}`;
   }
 
   async download(nonce) {
@@ -216,15 +231,14 @@ export default class FileReceiver extends Nanobus {
     this.emit('progress', this.progress);
     try {
       const encryptKey = await this.encryptKeyPromise;
-      const authKey = await this.authKeyPromise;
-      const sig = await window.crypto.subtle.sign(
-        {
-          name: 'HMAC'
-        },
-        authKey,
-        b64ToArray(nonce)
-      );
-      const ciphertext = await this.downloadFile(new Uint8Array(sig));
+      let ciphertext = null;
+      try {
+        ciphertext = await this.downloadFile(nonce);
+      } catch (e) {
+        if (e.message === '401') {
+          ciphertext = await this.downloadFile(e.nonce);
+        }
+      }
       this.msg = 'decryptingFile';
       this.emit('decrypting');
       const plaintext = await window.crypto.subtle.decrypt(

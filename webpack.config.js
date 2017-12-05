@@ -51,7 +51,9 @@ module.exports = {
             include: [
               path.resolve(__dirname, 'app'),
               path.resolve(__dirname, 'common'),
-              path.resolve(__dirname, 'node_modules/testpilot-ga/src')
+              path.resolve(__dirname, 'node_modules/testpilot-ga/src'),
+              path.resolve(__dirname, 'node_modules/fluent-intl-polyfill'),
+              path.resolve(__dirname, 'node_modules/intl-pluralrules')
             ],
             options: {
               babelrc: false,

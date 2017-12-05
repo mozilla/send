@@ -27,6 +27,7 @@ Data will be collected with Google Analytics and follow [Test Pilot standards](h
 - `cm5` - the number of files the user has ever uploaded.
 - `cm6` - the number of unexpired files the user has uploaded.
 - `cm7` - the number of files the user has ever downloaded.
+- `cm8` - the number of downloads permitted by the uploader.
 
 ### Custom Dimensions
 - `cd1` - the method by which the user initiated an upload. One of `drag`, `click`.
@@ -66,6 +67,17 @@ Triggered whenever a user stops uploading a file. Includes:
 - `cd1`
 - `cd2`
 - `cd6`
+
+#### `download-limit-changed`
+Triggered whenever the sender changes the download limit. Includes:
+
+- `ec` - `sender`
+- `ea` - `download-limit-changed`
+- `cm1`
+- `cm5`
+- `cm6`
+- `cm7`
+- `cm8`
 
 #### `password-added`
 Triggered whenever a password is added to a file. Includes:
