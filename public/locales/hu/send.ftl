@@ -25,6 +25,15 @@ uploadingFileNotification = Értesítsen, ha a feltöltés elkészült.
 uploadSuccessConfirmHeader = Küldésre kész
 uploadSvgAlt = Feltöltés
 uploadSuccessTimingHeader = A fájl hivatkozása lejár 1 letöltés vagy 24 óra múlva.
+expireInfo = A fájlhoz tartozó hivatkozás { $downloadCount } vagy { $timespan } múlva lejár.
+downloadCount = { $num ->
+        [one] 1 letöltés
+       *[other] { $number } letöltés
+    }
+timespanHours = { $num ->
+        [one] 1 óra
+       *[other] { $number }  óra
+    }
 copyUrlFormLabelWithName = Másolja és ossza meg a hivatkozást a fájl küldéséhez: { $filename }
 copyUrlFormButton = Vágólapra másolás
 copiedUrl = Másolva!
