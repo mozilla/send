@@ -25,6 +25,14 @@ uploadingFileNotification = Abisuhan ako kapag nakumpleto na ang pag-upload.
 uploadSuccessConfirmHeader = Handa nang Ipadala
 uploadSvgAlt = I-upload
 uploadSuccessTimingHeader = Mag-e-expire ang link sa iyong file pagkatapos ng 1 pag-download o sa loob ng 24 na oras.
+expireInfo = Mag-e-expire ang link sa iyong file pagkatapos ng { $downloadCount } o { $timespan }.
+downloadCount = { $num ->
+        [one] 1 pag-download
+       *[other] { $number } na mga pag-download
+    }
+timespanHours = { $num ->
+       *[one] 1 oras
+    }
 copyUrlFormLabelWithName = Kopyahin at ibahagi ang link upang ipadala ang iyong file: { $filename }
 copyUrlFormButton = Kopyahin sa clipboard
 copiedUrl = Naikopya!
