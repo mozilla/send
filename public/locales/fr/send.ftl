@@ -25,6 +25,15 @@ uploadingFileNotification = M’envoyer une notification lorsque l’envoi est t
 uploadSuccessConfirmHeader = Paré à l’envoi
 uploadSvgAlt = Envoyer
 uploadSuccessTimingHeader = Le lien vers votre fichier expirera après le premier téléchargement ou au bout de 24 heures.
+expireInfo = Le lien vers votre fichier expirera après { $downloadCount } ou { $timespan }.
+downloadCount = { $num ->
+        [one] 1 téléchargement
+       *[other] { $number } téléchargements
+    }
+timespanHours = { $num ->
+        [one] 1 heure
+       *[other] { $number } heures
+    }
 copyUrlFormLabelWithName = Copiez et partagez le lien pour envoyer votre fichier : { $filename }
 copyUrlFormButton = Copier dans le presse-papiers
 copiedUrl = Lien copié !
