@@ -18,6 +18,9 @@ module.exports = function(state) {
       <a href="https://www.mozilla.org/privacy/websites/#cookies">${state.translate(
         'footerLinkCookies'
       )}</a>
+      <a href="https://www.mozilla.org/about/legal/report-infringement/">${state.translate(
+        'reportIPInfringement'
+      )}</a>
     </div>
     <div class="social-links">
       <a href="https://github.com/mozilla/send" role="presentation"><img class="github" src="${assets.get(

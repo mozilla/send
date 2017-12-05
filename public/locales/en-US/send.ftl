@@ -98,3 +98,4 @@ addPasswordButton = Add password
 passwordTryAgain = Incorrect password. Try again.
 // This label is followed by the password needed to download a file
 passwordResult = Password: { $password }
+reportIPInfringement = Report IP Infringement
