@@ -98,3 +98,4 @@ addPasswordButton = Ajouter un mot de passe
 passwordTryAgain = Mot de passe incorrect. Veuillez réessayer.
 // This label is followed by the password needed to download a file
 passwordResult = Mot de passe : { $password }
+reportIPInfringement = Signaler une violation de la p.i.
