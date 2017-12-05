@@ -53,7 +53,7 @@ downloadFinish = Transferência concluída
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
 // Firefox Send is a brand name and should not be localized.
-sendYourFilesLink = Tentar o Firefox Send
+sendYourFilesLink = Experimentar o Firefox Send
 downloadingPageProgress = A transferir { $filename } ({ $size })
 downloadingPageMessage = Por favor deixe este separador aberto enquanto obtemos o seu ficheiro e o desencriptamos.
 errorAltText = Erro ao carregar
@@ -78,7 +78,7 @@ deleteFileList = Apagar
 nevermindButton = Esquecer
 legalHeader = Termos e privacidade
 legalNoticeTestPilot = O Firefox Send é atualmente uma experiência do Test Pilot, e sujeita aos <a>Termos de serviço</a> e <a>Aviso de privacidade</a> do Test Pilot. Pode saber mais acerca desta experiência e a sua recolha de dados <a>aqui</a>.
-legalNoticeMozilla = A utilização do website do Firefox Send está também sujeita ao <a>Aviso de privacidade dos websites</a> e <a>Termos de serviço dos websites</a> da Mozilla.
+legalNoticeMozilla = A utilização do website do Firefox Send está também sujeita ao <a>Aviso de privacidade dos websites</a> e <a>Termos de utilização dos websites</a> da Mozilla.
 deletePopupText = Apagar este ficheiro?
 deletePopupYes = Sim
 deletePopupCancel = Cancelar
