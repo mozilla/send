@@ -96,3 +96,4 @@ addPasswordButton = პაროლის დამატება
 passwordTryAgain = პაროლი არასწორია. სცადეთ ხელახლა.
 // This label is followed by the password needed to download a file
 passwordResult = პაროლი: { $password }
+reportIPInfringement = მოხსენება დარღვევაზე
