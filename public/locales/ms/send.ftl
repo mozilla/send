@@ -96,3 +96,4 @@ addPasswordButton = Tambah Kata laluan
 passwordTryAgain = Kata laluan tidak betul. Cuba lagi.
 // This label is followed by the password needed to download a file
 passwordResult = Kata laluan: { $password }
+reportIPInfringement = Lapor Pencerobohan IP
