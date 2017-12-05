@@ -25,6 +25,7 @@ uploadingFileNotification = Обавести ме када се отпремањ
 uploadSuccessConfirmHeader = Спреман за слање
 uploadSvgAlt = Отпреми
 uploadSuccessTimingHeader = Веза ка вашој датотеци ће истећи након једног преузимања или након 24 сата.
+expireInfo = Веза ка вашој датотеци ће истећи након { $downloadCount } или { $timespan }.
 copyUrlFormLabelWithName = Ископирајте и поделите везу да бисте послали вашу датотеку: { $filename }
 copyUrlFormButton = Копирај у оставу
 copiedUrl = Ископирано!
