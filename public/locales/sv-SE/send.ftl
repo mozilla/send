@@ -26,7 +26,7 @@ uploadSuccessConfirmHeader = Klar för att skicka
 uploadSvgAlt = Ladda upp
 uploadSuccessTimingHeader = Länken till din fil upphör att gälla efter 1 nedladdning eller om 24 timmar.
 expireInfo = Länken till din fil upphör att gälla efter { $downloadCount } eller { $timespan }.
-timespanHours = { $num ->
+timespanHours = { $number ->
         [one] 1 timme
        *[other] { $number } timmar
     }

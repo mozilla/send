@@ -26,11 +26,11 @@ uploadSuccessConfirmHeader = Gereed voor verzending
 uploadSvgAlt = Uploaden
 uploadSuccessTimingHeader = De koppeling naar uw bestand zal na 1 download of 24 uur verlopen.
 expireInfo = De koppeling naar uw bestand zal na { $downloadCount } of { $timespan } verlopen.
-downloadCount = { $num ->
+downloadCount = { $number ->
         [one] 1 download
        *[other] { $number } downloads
     }
-timespanHours = { $num ->
+timespanHours = { $number ->
         [one] 1 uur
        *[other] { $number } uur
     }

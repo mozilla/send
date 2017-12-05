@@ -26,11 +26,11 @@ uploadSuccessConfirmHeader = Bereit zum Senden
 uploadSvgAlt = Hochladen
 uploadSuccessTimingHeader = Der Link zu Ihrer Datei läuft nach einem Download oder in 24 Stunden ab.
 expireInfo = Der Link zu Ihrer Datei läuft nach { $downloadCount } oder { $timespan } ab.
-downloadCount = { $num ->
+downloadCount = { $number ->
         [one] einem Download
        *[other] { $number } Downloads
     }
-timespanHours = { $num ->
+timespanHours = { $number ->
         [one] einer Stunde
        *[other] { $number } Stunden
     }

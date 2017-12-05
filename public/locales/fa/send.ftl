@@ -26,10 +26,10 @@ uploadSuccessConfirmHeader = آماده برای ارسال
 uploadSvgAlt = بارگذاری
 uploadSuccessTimingHeader = پیوند به پرونده شما بعد از ۱ بار دانلود یا ۲۴ ساعت حذف خواهد شد.
 expireInfo = این پیوند به فایل شما پس از { $downloadCount } یا { $timespan } منقضی خواهد شد.
-downloadCount = { $num ->
+downloadCount = { $number ->
        *[other] ۱ بارگذاری
     }
-timespanHours = { $num ->
+timespanHours = { $number ->
        *[other] ۱ ساعت
     }
 copyUrlFormLabelWithName = برای ارسال پرونده پیوند آن را رونوشت و به اشتراک بگذارید: { $filename }

@@ -26,7 +26,7 @@ uploadSuccessConfirmHeader = Pronto para enviar
 uploadSvgAlt = Carregar
 uploadSuccessTimingHeader = A ligação para o seu ficheiro irá expirar depois de 1 transferência ou em 24 horas.
 expireInfo = A ligação para o seu ficheiro irá expirar depois de { $downloadCount } or { $timespan }.
-downloadCount = { $num ->
+downloadCount = { $number ->
         [one] 1 transferência
        *[other] { $number } transferências
     }

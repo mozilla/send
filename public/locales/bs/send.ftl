@@ -26,7 +26,7 @@ uploadSuccessConfirmHeader = Spremno za slanje
 uploadSvgAlt = Otpremi
 uploadSuccessTimingHeader = Veza prema vašoj datoteci će isteći nakon prvog preuzimanja ili za 24 sata.
 expireInfo = Link za vašu datoteku će isteći nakon { $downloadCount } ili { $timespan }.
-downloadCount = { $num ->
+downloadCount = { $number ->
         [one] 1 preuzimanja
         [few] { $number } preuzimanja
        *[other] { $number } preuzimanja

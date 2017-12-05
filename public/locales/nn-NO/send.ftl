@@ -26,11 +26,11 @@ uploadSuccessConfirmHeader = Klår til å senda
 uploadSvgAlt = Last opp
 uploadSuccessTimingHeader = Lenka til fila di går ut etter 1 nedlasting eller om 24 timar.
 expireInfo = Lenka til fila di vil gå ut etter { $downloadCount } eller { $timespan }.
-downloadCount = { $num ->
+downloadCount = { $number ->
         [one] 1 nedlasting
        *[other] { $number } nedlastingar
     }
-timespanHours = { $num ->
+timespanHours = { $number ->
         [one] 1 time
        *[other] { $number } timar
     }

@@ -26,11 +26,11 @@ uploadSuccessConfirmHeader = Küldésre kész
 uploadSvgAlt = Feltöltés
 uploadSuccessTimingHeader = A fájl hivatkozása lejár 1 letöltés vagy 24 óra múlva.
 expireInfo = A fájlhoz tartozó hivatkozás { $downloadCount } vagy { $timespan } múlva lejár.
-downloadCount = { $num ->
+downloadCount = { $number ->
         [one] 1 letöltés
        *[other] { $number } letöltés
     }
-timespanHours = { $num ->
+timespanHours = { $number ->
         [one] 1 óra
        *[other] { $number }  óra
     }

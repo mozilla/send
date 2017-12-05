@@ -26,11 +26,11 @@ uploadSuccessConfirmHeader = Paré à l’envoi
 uploadSvgAlt = Envoyer
 uploadSuccessTimingHeader = Le lien vers votre fichier expirera après le premier téléchargement ou au bout de 24 heures.
 expireInfo = Le lien vers votre fichier expirera après { $downloadCount } ou { $timespan }.
-downloadCount = { $num ->
+downloadCount = { $number ->
         [one] 1 téléchargement
        *[other] { $number } téléchargements
     }
-timespanHours = { $num ->
+timespanHours = { $number ->
         [one] 1 heure
        *[other] { $number } heures
     }

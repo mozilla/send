@@ -26,10 +26,10 @@ uploadSuccessConfirmHeader = მზადაა გასაგზავნა�
 uploadSvgAlt = ატვირთვა
 uploadSuccessTimingHeader = ფაილს ვადა გაუვა 1 ჩამოტვირთვის, ან 24 საათის მერე.
 expireInfo = ფაილის ბმულს, ვადა გაუვა { $downloadCount }, ან { $timespan } მერე.
-downloadCount = { $num ->
+downloadCount = { $number ->
        *[other] { $number } ჩამოტვირთვა
     }
-timespanHours = { $num ->
+timespanHours = { $number ->
        *[other] { $number } საათი
     }
 copyUrlFormLabelWithName = დააკოპირეთ და გააზიარეთ ბმული, ფაილის გასაგზავნად: { $filename }
@@ -39,7 +39,7 @@ deleteFileButton = ფაილის წაშლა
 sendAnotherFileLink = სხვა ფაილის გაგზავნა
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = ჩამოტვირთვა
-downloadFileName = { $filename } ჩამოტვირთვა 
+downloadFileName = { $filename } ჩამოტვირთვა
 downloadFileSize = ({ $size })
 unlockInputLabel = შეიყვანეთ პაროლი
 unlockInputPlaceholder = პაროლი
