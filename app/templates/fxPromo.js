@@ -19,8 +19,10 @@ module.exports = function(state, emit) {
     emit('exit', evt);
   }
 
+  const classes = state.promo === 'blue' ? 'banner banner-blue' : 'banner';
+
   return html`
-    <div class="banner">
+    <div class="${classes}">
       <div>
         <img
         src="${assets.get('firefox_logo-only.svg')}"

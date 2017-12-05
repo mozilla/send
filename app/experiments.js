@@ -1,10 +1,10 @@
 import hash from 'string-hash';
 
 const experiments = {
-  'SyI-hI7gT9agiH-f3f0BYg': {
-    id: 'SyI-hI7gT9agiH-f3f0BYg',
+  XnN0idVWSxO6A0kiNkxzGw: {
+    id: 'XnN0idVWSxO6A0kiNkxzGw',
     run: function(variant, state, emitter) {
-      state.promo = variant === 1 ? 'body' : 'header';
+      state.promo = variant === 1 ? 'blue' : 'grey';
       emitter.emit('render');
     },
     eligible: function() {

@@ -1,9 +1,8 @@
 const html = require('choo/html');
 const progress = require('./progress');
 const { bytes } = require('../utils');
-const fxPromo = require('./fxPromo');
 
-module.exports = function(state, emit) {
+module.exports = function(state) {
   const transfer = state.transfer;
   const div = html`
   <div id="page-one">
@@ -24,7 +23,6 @@ module.exports = function(state, emit) {
       )}</div>
     </div>
     </div>
-    ${state.promo === 'body' ? fxPromo(state, emit) : ''}
   </div>
   `;
 

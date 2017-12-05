@@ -10,7 +10,7 @@ const app = choo();
 function body(template) {
   return function(state, emit) {
     const b = html`<body>
-      ${state.promo === 'header' ? fxPromo(state, emit) : ''}
+      ${state.promo ? fxPromo(state, emit) : ''}
       ${header(state)}
       <div class="all">
         <noscript>

@@ -3,7 +3,6 @@ const assets = require('../../common/assets');
 const notFound = require('./notFound');
 const downloadPassword = require('./downloadPassword');
 const { bytes } = require('../utils');
-const fxPromo = require('./fxPromo');
 
 function getFileFromDOM() {
   const el = document.getElementById('dl-file');
@@ -62,7 +61,6 @@ module.exports = function(state, emit) {
       </div>
       <a class="send-new" href="/">${state.translate('sendYourFilesLink')}</a>
     </div>
-    ${state.promo === 'body' ? fxPromo(state, emit) : ''}
   </div>
   `;
 

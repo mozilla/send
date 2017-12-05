@@ -1,7 +1,6 @@
 const html = require('choo/html');
 const progress = require('./progress');
 const { fadeOut } = require('../utils');
-const fxPromo = require('./fxPromo');
 
 module.exports = function(state, emit) {
   const div = html`
@@ -21,7 +20,6 @@ module.exports = function(state, emit) {
       sendNew
     }>${state.translate('sendYourFilesLink')}</a>
   </div>
-  ${state.promo === 'body' ? fxPromo(state, emit) : ''}
   </div>
   `;
 

@@ -984,6 +984,21 @@ tbody {
   margin-left: 10px;
 }
 
+.banner-blue {
+  background-color: #0098f7;
+  color: #fff;
+}
+
+.banner-blue a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.banner-blue a:hover {
+  color: #eee;
+  font-weight: bold;
+}
+
 .selectbox {
   display: inline-block;
   position: relative;
