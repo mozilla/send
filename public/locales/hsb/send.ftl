@@ -25,6 +25,19 @@ uploadingFileNotification = Zdźělić, hdyž nahraće je dokónčene.
 uploadSuccessConfirmHeader = Hotowy za słanje
 uploadSvgAlt = Nahrać
 uploadSuccessTimingHeader = Wotkaz k wašej dataji po 1 sćehnjenju abo 24 hodźinach spadnje.
+expireInfo = Wotkaz k wašej dataji po { $downloadCount } abo { $timespan } spadnje.
+downloadCount = { $num ->
+        [one] 1 sćehnjenje
+        [two] { $number } sćehnjeni
+        [few] { $number } sćehnjenja
+       *[other] { $number } sćehnjenjow
+    }
+timespanHours = { $num ->
+        [one] 1 hodźina
+        [two] { $number } hodźinje
+        [few] { $number } hodźiny
+       *[other] { $number } hodźin
+    }
 copyUrlFormLabelWithName = Kopěrujće a dźělće wotkaz, zo byšće swoju dataju pósłał: { $filename }
 copyUrlFormButton = Do mjezyskłada kopěrować
 copiedUrl = Kopěrowany!
@@ -89,3 +102,4 @@ addPasswordButton = Hesło přidać
 passwordTryAgain = Wopačne hesło. Prošu spytajće hišće raz.
 // This label is followed by the password needed to download a file
 passwordResult = Hesło: { $password }
+reportIPInfringement = Zranjenje IP zdźělić
