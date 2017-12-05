@@ -96,3 +96,4 @@ addPasswordButton = 添加密码
 passwordTryAgain = 密码不正确。请重试。
 // This label is followed by the password needed to download a file
 passwordResult = 密码：{ $password }
+reportIPInfringement = 举报知识产权侵权
