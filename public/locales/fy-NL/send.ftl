@@ -25,6 +25,7 @@ uploadingFileNotification = Jou in melding as de oplaad foltôge is.
 uploadSuccessConfirmHeader = Ree om te ferstjoeren
 uploadSvgAlt = Oplaad
 uploadSuccessTimingHeader = De keppeling nei jo bestân sil nei 1 download ferrinne of nei 24 oeren.
+expireInfo = De keppeling nei jo bestân sil nei { $downloadCount } of { $timespan } ferrinne.
 downloadCount = { $num ->
         [one] 1 download
        *[other] { $number } downloads
