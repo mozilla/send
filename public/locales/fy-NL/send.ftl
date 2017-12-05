@@ -25,6 +25,14 @@ uploadingFileNotification = Jou in melding as de oplaad foltôge is.
 uploadSuccessConfirmHeader = Ree om te ferstjoeren
 uploadSvgAlt = Oplaad
 uploadSuccessTimingHeader = De keppeling nei jo bestân sil nei 1 download ferrinne of nei 24 oeren.
+downloadCount = { $num ->
+        [one] 1 download
+       *[other] { $number } downloads
+    }
+timespanHours = { $num ->
+        [one] 1 oer
+       *[other] { $number } oeren
+    }
 copyUrlFormLabelWithName = Kopiearje en diel de keppeling om jo bestân te ferstjoeren: { $filename }
 copyUrlFormButton = Nei klamboerd kopiearje
 copiedUrl = Kopiearre!
