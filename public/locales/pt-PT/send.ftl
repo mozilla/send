@@ -95,3 +95,4 @@ addPasswordButton = Adicionar palavra-passe
 passwordTryAgain = Palavra-passe incorreta. Tente novamente.
 // This label is followed by the password needed to download a file
 passwordResult = Palavra-passe: { $password }
+reportIPInfringement = Reportar violação de PI
