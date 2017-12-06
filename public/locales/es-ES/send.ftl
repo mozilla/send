@@ -26,13 +26,13 @@ uploadSuccessConfirmHeader = Listo para enviar
 uploadSvgAlt = Subir
 uploadSuccessTimingHeader = El enlace al archivo caducará tras descargarlo una vez o en 24 horas.
 expireInfo = El enlace al archivo expirará tras { $downloadCount } o { $timespan }.
-downloadCount = { $number ->
+downloadCount = { $num ->
         [one] 1 descarga
-       *[other] { $number } descargas
+       *[other] { $num } descargas
     }
-timespanHours = { $number ->
+timespanHours = { $num ->
         [one] 1 hora
-       *[other] { $number } horas
+       *[other] { $num } horas
     }
 copyUrlFormLabelWithName = Copiar y compartir el enlace para enviar tu archivo: { $filename }
 copyUrlFormButton = Copiar en el portapapeles

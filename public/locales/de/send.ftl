@@ -26,13 +26,13 @@ uploadSuccessConfirmHeader = Bereit zum Senden
 uploadSvgAlt = Hochladen
 uploadSuccessTimingHeader = Der Link zu Ihrer Datei läuft nach einem Download oder in 24 Stunden ab.
 expireInfo = Der Link zu Ihrer Datei läuft nach { $downloadCount } oder { $timespan } ab.
-downloadCount = { $number ->
+downloadCount = { $num ->
         [one] einem Download
-       *[other] { $number } Downloads
+       *[other] { $num } Downloads
     }
-timespanHours = { $number ->
+timespanHours = { $num ->
         [one] einer Stunde
-       *[other] { $number } Stunden
+       *[other] { $num } Stunden
     }
 copyUrlFormLabelWithName = Kopieren und teilen Sie den Link, um Ihre Datei zu senden: { $filename }
 copyUrlFormButton = In Zwischenablage kopieren

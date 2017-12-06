@@ -28,15 +28,15 @@ uploadSuccessTimingHeader = Wotkaz k wašej dataji po 1 sćehnjenju abo 24 hodź
 expireInfo = Wotkaz k wašej dataji po { $downloadCount } abo { $timespan } spadnje.
 downloadCount = { $num ->
         [one] 1 sćehnjenje
-        [two] { $number } sćehnjeni
-        [few] { $number } sćehnjenja
-       *[other] { $number } sćehnjenjow
+        [two] { $num } sćehnjeni
+        [few] { $num } sćehnjenja
+       *[other] { $num } sćehnjenjow
     }
 timespanHours = { $num ->
         [one] 1 hodźina
-        [two] { $number } hodźinje
-        [few] { $number } hodźiny
-       *[other] { $number } hodźin
+        [two] { $num } hodźinje
+        [few] { $num } hodźiny
+       *[other] { $num } hodźin
     }
 copyUrlFormLabelWithName = Kopěrujće a dźělće wotkaz, zo byšće swoju dataju pósłał: { $filename }
 copyUrlFormButton = Do mjezyskłada kopěrować

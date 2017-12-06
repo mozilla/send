@@ -26,13 +26,13 @@ uploadSuccessConfirmHeader = Ree om te ferstjoeren
 uploadSvgAlt = Oplaad
 uploadSuccessTimingHeader = De keppeling nei jo bestân sil nei 1 download ferrinne of nei 24 oeren.
 expireInfo = De keppeling nei jo bestân sil nei { $downloadCount } of { $timespan } ferrinne.
-downloadCount = { $number ->
+downloadCount = { $num ->
         [one] 1 download
-       *[other] { $number } downloads
+       *[other] { $num } downloads
     }
-timespanHours = { $number ->
+timespanHours = { $num ->
         [one] 1 oer
-       *[other] { $number } oeren
+       *[other] { $num } oeren
     }
 copyUrlFormLabelWithName = Kopiearje en diel de keppeling om jo bestân te ferstjoeren: { $filename }
 copyUrlFormButton = Nei klamboerd kopiearje

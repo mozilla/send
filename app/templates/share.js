@@ -19,12 +19,12 @@ function expireInfo(file, translate, emit) {
   const el = html([
     `<div>${translate('expireInfo', {
       downloadCount: '<select></select>',
-      timespan: translate('timespanHours', { number: 24 })
+      timespan: translate('timespanHours', { num: 24 })
     })}</div>`
   ]);
   const select = el.querySelector('select');
   const options = [1, 2, 3, 4, 5, 20];
-  const t = number => translate('downloadCount', { number });
+  const t = num => translate('downloadCount', { num });
   const changed = value => emit('changeLimit', { file, value });
   select.parentNode.replaceChild(
     selectbox(file.dlimit || 1, options, t, changed),

@@ -26,13 +26,13 @@ uploadSuccessConfirmHeader = Gereed voor verzending
 uploadSvgAlt = Uploaden
 uploadSuccessTimingHeader = De koppeling naar uw bestand zal na 1 download of 24 uur verlopen.
 expireInfo = De koppeling naar uw bestand zal na { $downloadCount } of { $timespan } verlopen.
-downloadCount = { $number ->
+downloadCount = { $num ->
         [one] 1 download
-       *[other] { $number } downloads
+       *[other] { $num } downloads
     }
-timespanHours = { $number ->
+timespanHours = { $num ->
         [one] 1 uur
-       *[other] { $number } uur
+       *[other] { $num } uur
     }
 copyUrlFormLabelWithName = Kopieer en deel de koppeling om uw bestand te verzenden: { $filename }
 copyUrlFormButton = Kopiëren naar klembord
