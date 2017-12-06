@@ -25,6 +25,17 @@ uploadingFileNotification = Оповестить меня, когда загру
 uploadSuccessConfirmHeader = Готов к отправке
 uploadSvgAlt = Загрузить
 uploadSuccessTimingHeader = Ссылка на ваш файл станет недоступна после 1 загрузки файла или через 24 часа.
+expireInfo = Ссылка на ваш файл станет недоступна после { $downloadCount } файла или через { $timespan }.
+downloadCount = { $num ->
+        [one] { $number } загрузки
+        [few] { $number } загрузок
+       *[other] { $number } загрузок
+    }
+timespanHours = { $num ->
+        [one] { $number } час
+        [few] { $number } часа
+       *[other] { $number } часов
+    }
 copyUrlFormLabelWithName = Скопировать и поделиться ссылкой на отправку вашего файла: { $filename }
 copyUrlFormButton = Скопировать в буфер обмена
 copiedUrl = Скопировано!
@@ -89,3 +100,4 @@ addPasswordButton = Добавить пароль
 passwordTryAgain = Неверный пароль. Попробуйте снова.
 // This label is followed by the password needed to download a file
 passwordResult = Пароль: { $password }
+reportIPInfringement = Сообщить о нарушении прав на интеллектуальную собственность
