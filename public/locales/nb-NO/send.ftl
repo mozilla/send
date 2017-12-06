@@ -98,3 +98,4 @@ addPasswordButton = Legg til passord
 passwordTryAgain = Feil passord. Prøv igjen.
 // This label is followed by the password needed to download a file
 passwordResult = Passord: { $password }
+reportIPInfringement = Rapporter brudd på åndsverk
