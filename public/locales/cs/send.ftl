@@ -25,6 +25,11 @@ uploadingFileNotification = Upozornit, až bude nahrávání dokončeno.
 uploadSuccessConfirmHeader = Připraveno k odeslání
 uploadSvgAlt = Nahrát
 uploadSuccessTimingHeader = Platnost odkazu na váš soubor vyprší po jeho prvním stažení, nebo po 24 hodinách.
+timespanHours = { $num ->
+        [one] hodina
+        [few] hodiny
+       *[other] hodin
+    }
 copyUrlFormLabelWithName = Zkopírujte a sdílejte odkaz na váš soubor: { $filename }
 copyUrlFormButton = Zkopírovat do schránky
 copiedUrl = Zkopírováno!
