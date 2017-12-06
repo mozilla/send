@@ -98,3 +98,4 @@ addPasswordButton = Jelszó hozzáadása
 passwordTryAgain = Helytelen jelszó. Próbálja meg újra.
 // This label is followed by the password needed to download a file
 passwordResult = Jelszó: { $password }
+reportIPInfringement = Szellemi tulajdon megsértésének bejelentése
