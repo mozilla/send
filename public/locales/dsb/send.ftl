@@ -25,6 +25,19 @@ uploadingFileNotification = K wěsći daś, gaž nagraśe jo dokóńcone.
 uploadSuccessConfirmHeader = Gótowy za słanje
 uploadSvgAlt = Nagraś
 uploadSuccessTimingHeader = Wótkaz k wašej dataji pó 1 ześěgnjenju abo 24 góźinach spadnjo.
+expireInfo = Wótkaz k wašej dataji pó { $downloadCount } abo { $timespan } spadnjo.
+downloadCount = { $num ->
+        [one] 1 ześěgnjenje
+        [two] { $num } ześěgnjeni
+        [few] { $num } ześěgnjenja
+       *[other] { $num } ześěgnjenjow
+    }
+timespanHours = { $num ->
+        [one] 1 góźina
+        [two] { $num } góźinje
+        [few] { $num } góźiny
+       *[other] { $num } góźin
+    }
 copyUrlFormLabelWithName = Kopěrujśo a źělśo wótkaz, aby swóju dataju pósłał: { $filename }
 copyUrlFormButton = Do mjazywótkłada kopěrowaś
 copiedUrl = Kopěrowany!
@@ -89,3 +102,4 @@ addPasswordButton = Gronidło pśidaś
 passwordTryAgain = Wopacne gronidło. Wopytajśo hyšći raz.
 // This label is followed by the password needed to download a file
 passwordResult = Gronidło: { $password }
+reportIPInfringement = Pśekśiwjenje IP k wěsći daś
