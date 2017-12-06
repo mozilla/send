@@ -25,6 +25,15 @@ uploadingFileNotification = Varsle meg når opplastingen er ferdig.
 uploadSuccessConfirmHeader = Klar til å sende
 uploadSvgAlt = Last opp
 uploadSuccessTimingHeader = Lenken til filen din utløper etter 1 nedlasting eller om 24 timer.
+expireInfo = Lenken til filen din vil gå ut etter { $downloadCount } eller { $timespan }.
+downloadCount = { $num ->
+        [one] 1 nedlasting
+       *[other] { $num } nedlastinger
+    }
+timespanHours = { $num ->
+        [one] 1 time
+       *[other] { $num } timer
+    }
 copyUrlFormLabelWithName = Kopier og del linken for å sende filen: { $filename }
 copyUrlFormButton = Kopier til utklippstavle
 copiedUrl = Kopiert!
