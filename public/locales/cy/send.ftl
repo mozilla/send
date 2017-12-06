@@ -25,6 +25,19 @@ uploadingFileNotification = Dweud pan fydd y llwytho wedi gorffen.
 uploadSuccessConfirmHeader = Yn Barod i Anfon
 uploadSvgAlt = Llwytho i Fyny
 uploadSuccessTimingHeader = Bydd y ddolen i'ch ffeil y dod i ben ar ôl 1 llwytho neu o fewn 24 awr.
+expireInfo = Bydd y ddolen i'ch ffeil yn dod i ben ym mhen { $downloadCount } neu { $timespan }.
+downloadCount = { $num ->
+        [one] Llwyth i lawr
+        [two] Lwyth i lawr
+        [few] Llwyth i lawr
+       *[other] Llwyth i lawr
+    }
+timespanHours = { $num ->
+        [one] awr
+        [two] awr
+        [few] awr
+       *[other] awr
+    }
 copyUrlFormLabelWithName = Copïo a rhannu'r ddolen i anfon eich ffeil: { $filename }
 copyUrlFormButton = Copïo i'r clipfwrdd
 copiedUrl = Wedi eu copïo!
@@ -89,3 +102,4 @@ addPasswordButton = Ychwanegu Cyfrinair
 passwordTryAgain = Cyfrinair anghywir. Ceisiwch eto.
 // This label is followed by the password needed to download a file
 passwordResult = Cyfrinair: { $password }
+reportIPInfringement = Adrodd ar Gamddefnydd o'r IP
