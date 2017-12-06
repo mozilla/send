@@ -25,6 +25,19 @@ uploadingFileNotification = Obvesti me, ko bo nalaganje končano.
 uploadSuccessConfirmHeader = Pripravljeno za pošiljanje
 uploadSvgAlt = Naloži
 uploadSuccessTimingHeader = Povezava do vaše datoteke bo potekla po enem prenosu ali v 24 urah.
+expireInfo = Povezava do vaše datoteke bo potekla čez { $downloadCount } ali { $timespan }.
+downloadCount = { $num ->
+        [one] 1 prenos
+        [two] { $num } prenosa
+        [few] { $num } prenosi
+       *[other] { $num } prenosov
+    }
+timespanHours = { $num ->
+        [one] 1 ura
+        [two] { $num } uri
+        [few] { $num } ure
+       *[other] { $num } ur
+    }
 copyUrlFormLabelWithName = Kopirajte in delite to povezavo, da pošljete datoteko: { $filename }
 copyUrlFormButton = Kopiraj v odložišče
 copiedUrl = Kopirano!
@@ -89,3 +102,4 @@ addPasswordButton = Dodaj geslo
 passwordTryAgain = Napačno geslo. Poskusite znova.
 // This label is followed by the password needed to download a file
 passwordResult = Geslo: { $password }
+reportIPInfringement = Prijavite kršitev naslova IP
