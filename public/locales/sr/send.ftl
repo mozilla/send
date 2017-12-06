@@ -26,6 +26,16 @@ uploadSuccessConfirmHeader = Спреман за слање
 uploadSvgAlt = Отпреми
 uploadSuccessTimingHeader = Веза ка вашој датотеци ће истећи након једног преузимања или након 24 сата.
 expireInfo = Веза ка вашој датотеци ће истећи након { $downloadCount } или { $timespan }.
+downloadCount = { $num ->
+        [one] преузимања
+        [few] преузимања
+       *[other] преузимања
+    }
+timespanHours = { $num ->
+        [one] сата
+        [few] сата
+       *[other] сати
+    }
 copyUrlFormLabelWithName = Ископирајте и поделите везу да бисте послали вашу датотеку: { $filename }
 copyUrlFormButton = Копирај у оставу
 copiedUrl = Ископирано!
@@ -90,3 +100,4 @@ addPasswordButton = Додај лозинку
 passwordTryAgain = Нетачна лозинка. Пробајте поново.
 // This label is followed by the password needed to download a file
 passwordResult = Лозинка: { $password }
+reportIPInfringement = Пријавите IP прекршај
