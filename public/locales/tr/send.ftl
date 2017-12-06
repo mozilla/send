@@ -25,6 +25,11 @@ uploadingFileNotification = Yükleme bitince bana haber ver.
 uploadSuccessConfirmHeader = Göndermeye hazır
 uploadSvgAlt = Yükle
 uploadSuccessTimingHeader = Dosyanız 1 kez indirildikten veya 24 saat geçtikten sonra linkiniz geçersiz olacaktır.
+expireInfo = Dosyanızın bağlantısı { $downloadCount } sonra veya { $timespan } zaman aşımına uğrayacaktır.
+downloadCount = { $num } indirme
+timespanHours = { $num ->
+       *[one] { $num } saat
+    }
 copyUrlFormLabelWithName = { $filename } dosyanızı başkasına göndermek için aşağıdaki linki kopyalayın.
 copyUrlFormButton = Panoya kopyala
 copiedUrl = Kopyalandı!
@@ -89,3 +94,4 @@ addPasswordButton = Parola ekle
 passwordTryAgain = Yanlış parola. Yeniden deneyin.
 // This label is followed by the password needed to download a file
 passwordResult = Parola: { $password }
+reportIPInfringement = Telif hakkı ihlali bildir
