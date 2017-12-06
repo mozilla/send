@@ -98,3 +98,4 @@ addPasswordButton = Wachtwoord toevoegen
 passwordTryAgain = Onjuist wachtwoord. Probeer het opnieuw.
 // This label is followed by the password needed to download a file
 passwordResult = Wachtwoord: { $password }
+reportIPInfringement = IE-inbreuk melden
