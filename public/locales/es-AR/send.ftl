@@ -25,6 +25,15 @@ uploadingFileNotification = Notificarme cuando la subida se complete.
 uploadSuccessConfirmHeader = Listo para enviar
 uploadSvgAlt = Subir
 uploadSuccessTimingHeader = El enlace al archivo expirará después de 1 descarga o en 24 horas.
+expireInfo = El enlace a tu archivo expirará después de { $downloadCount } o { $timespan }.
+downloadCount = { $num ->
+        [one] 1 descarga
+       *[other] { $num } descargas
+    }
+timespanHours = { $num ->
+        [one] 1 hora
+       *[other] { $num } horas
+    }
 copyUrlFormLabelWithName = Copiá y compartí el enlace para enviar tu archivo: { $filename }
 copyUrlFormButton = Copiar al portapapeles
 copiedUrl = ¡Copiado!
@@ -89,3 +98,4 @@ addPasswordButton = Agregar contraseña
 passwordTryAgain = Contraseña incorrecta. Intentá nuevamente.
 // This label is followed by the password needed to download a file
 passwordResult = Contraseña: { $password }
+reportIPInfringement = Informar violación de propiedad intelectual
