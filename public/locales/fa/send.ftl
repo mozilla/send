@@ -96,3 +96,4 @@ addPasswordButton = افزودن گذرواژه
 passwordTryAgain = کلمه عبور اشتباه است. مجدد تلاش کنید.
 // This label is followed by the password needed to download a file
 passwordResult = گذرواژه: { $password }
+reportIPInfringement = گزارش تخلف IP
