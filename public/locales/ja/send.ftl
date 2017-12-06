@@ -96,3 +96,4 @@ addPasswordButton = パスワードを追加
 passwordTryAgain = パスワードが正しくありません。再度入力してください。
 // This label is followed by the password needed to download a file
 passwordResult = パスワード: { $password }
+reportIPInfringement = 知的財産侵害報告
