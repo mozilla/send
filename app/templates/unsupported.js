@@ -29,7 +29,7 @@ module.exports = function(state) {
       <div class="description"><a href="https://github.com/mozilla/send/blob/master/docs/faq.md#why-is-my-browser-not-supported">${state.translate(
         'notSupportedLink'
       )}</a></div>
-      <a id="dl-firefox" href="https://www.mozilla.org/firefox/new/?scene=2">
+      <a id="dl-firefox" href="https://www.mozilla.org/firefox/new/?utm_campaign=send-acquisition&utm_medium=referral&utm_source=send.firefox.com">
         <img src="${assets.get(
           'firefox_logo-only.svg'
         )}" class="firefox-logo" alt="Firefox"/>
