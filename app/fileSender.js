@@ -1,6 +1,17 @@
 import Nanobus from 'nanobus';
 import { arrayToB64, b64ToArray, bytes } from './utils';
 
+async function getAuthHeader(authKey, nonce) {
+  const sig = await window.crypto.subtle.sign(
+    {
+      name: 'HMAC'
+    },
+    authKey,
+    b64ToArray(nonce)
+  );
+  return `send-v1 ${arrayToB64(new Uint8Array(sig))}`;
+}
+
 export default class FileSender extends Nanobus {
   constructor(file) {
     super('FileSender');
@@ -224,17 +235,6 @@ export default class FileSender extends Nanobus {
     return this.uploadFile(encrypted, metadata, new Uint8Array(rawAuth));
   }
 
-  async getAuthHeader(authKey, nonce) {
-    const sig = await window.crypto.subtle.sign(
-      {
-        name: 'HMAC'
-      },
-      authKey,
-      b64ToArray(nonce)
-    );
-    return `send-v1 ${arrayToB64(new Uint8Array(sig))}`;
-  }
-
   static async setPassword(password, file) {
     const encoder = new TextEncoder();
     const secretKey = await window.crypto.subtle.importKey(
@@ -259,7 +259,7 @@ export default class FileSender extends Nanobus {
       true,
       ['sign']
     );
-    const authHeader = await this.getAuthHeader(authKey, file.nonce);
+    const authHeader = await getAuthHeader(authKey, file.nonce);
     const pwdKey = await window.crypto.subtle.importKey(
       'raw',
       encoder.encode(password),

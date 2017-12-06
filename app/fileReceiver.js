@@ -127,7 +127,9 @@ export default class FileReceiver extends Nanobus {
           if (xhr.status === 200) {
             return resolve(xhr.response);
           }
-          reject(new Error(xhr.status));
+          const err = new Error(xhr.status);
+          err.nonce = nonce;
+          reject(err);
         }
       };
       xhr.onerror = () => reject(new Error(0));
@@ -146,9 +148,11 @@ export default class FileReceiver extends Nanobus {
       try {
         data = await this.fetchMetadata(nonce);
       } catch (e) {
-        if (e.message === '401') {
+        if (e.message === '401' && nonce !== e.nonce) {
           // allow one retry for changed nonce
           data = await this.fetchMetadata(e.nonce);
+        } else {
+          throw e;
         }
       }
       const metaKey = await this.metaKeyPromise;
@@ -235,8 +239,10 @@ export default class FileReceiver extends Nanobus {
       try {
         ciphertext = await this.downloadFile(nonce);
       } catch (e) {
-        if (e.message === '401') {
+        if (e.message === '401' && nonce !== e.nonce) {
           ciphertext = await this.downloadFile(e.nonce);
+        } else {
+          throw e;
         }
       }
       this.msg = 'decryptingFile';
