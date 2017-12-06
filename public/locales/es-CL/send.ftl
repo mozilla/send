@@ -98,3 +98,4 @@ addPasswordButton = Añadir contraseña
 passwordTryAgain = Contraseña incorrecta. Vuelve a intentarlo.
 // This label is followed by the password needed to download a file
 passwordResult = Contraseña: { $password }
+reportIPInfringement = Reportar infracción de PI
