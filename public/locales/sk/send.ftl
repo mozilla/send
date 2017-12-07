@@ -25,6 +25,17 @@ uploadingFileNotification = Upozorniť ma na ukončenie nahrávania
 uploadSuccessConfirmHeader = Pripravené na odoslanie
 uploadSvgAlt = Nahrať
 uploadSuccessTimingHeader = Platnosť odkazu vyprší po 1 prevzatí alebo po uplynutí 24 hodín.
+expireInfo = Platnosť odkazu na váš súbor vyprší po { $downloadCount } alebo po { $timespan }.
+downloadCount = { $num ->
+        [one] 1 prevzatí
+        [few] { $num } prevzatiach
+       *[other] { $num } prevzatiach
+    }
+timespanHours = { $num ->
+        [one] 1 hodine
+        [few] { $num } hodinách
+       *[other] { $num } hodinách
+    }
 copyUrlFormLabelWithName = Skopírovaním a zdieľaním odkazu odošlete váš súbor: { $filename }
 copyUrlFormButton = Kopírovať do schránky
 copiedUrl = Skopírované!
@@ -89,3 +100,4 @@ addPasswordButton = Pridať heslo
 passwordTryAgain = Nesprávne heslo. Skúste to znova.
 // This label is followed by the password needed to download a file
 passwordResult = Heslo: { $password }
+reportIPInfringement = Nahlásiť porušenie práv duševného vlastníctva
