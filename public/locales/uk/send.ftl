@@ -25,6 +25,12 @@ uploadingFileNotification = Сповістити мене, коли вивант
 uploadSuccessConfirmHeader = Готовий до надсилання
 uploadSvgAlt = Вивантажити
 uploadSuccessTimingHeader = Час дії цього посилання закінчиться після 1 завантаження, або через 24 години.
+expireInfo = Посилання на ваш файл стане недійсним після { $downloadCount } файла, або через { $timespan }.
+downloadCount = { $num ->
+        [one] 1 завантаження
+        [few] { $num } завантаження
+       *[other] { $num } завантажень
+    }
 copyUrlFormLabelWithName = Скопіювати і поділитися посиланням на ваш файл: { $filename }
 copyUrlFormButton = Копіювати у буфер обміну
 copiedUrl = Скопійовано!
