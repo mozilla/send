@@ -31,6 +31,11 @@ downloadCount = { $num ->
         [few] { $num } завантаження
        *[other] { $num } завантажень
     }
+timespanHours = { $num ->
+        [one] 1 година
+        [few] { $num } години
+       *[other] { $num } годин
+    }
 copyUrlFormLabelWithName = Скопіювати і поділитися посиланням на ваш файл: { $filename }
 copyUrlFormButton = Копіювати у буфер обміну
 copiedUrl = Скопійовано!
