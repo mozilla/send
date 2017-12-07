@@ -89,3 +89,4 @@ addPasswordButton = Додати пароль
 passwordTryAgain = Невірний пароль. Спробуйте знову.
 // This label is followed by the password needed to download a file
 passwordResult = Пароль: { $password }
+reportIPInfringement = Повідомити про порушення прав на інтелектуальну власність
