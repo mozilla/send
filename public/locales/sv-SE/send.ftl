@@ -26,6 +26,7 @@ uploadSuccessConfirmHeader = Klar för att skicka
 uploadSvgAlt = Ladda upp
 uploadSuccessTimingHeader = Länken till din fil upphör att gälla efter 1 nedladdning eller om 24 timmar.
 expireInfo = Länken till din fil upphör att gälla efter { $downloadCount } eller { $timespan }.
+downloadCount = 1 nedladdning;{ $num } nedladdningar
 timespanHours = { $num ->
         [one] 1 timme
        *[other] { $num } timmar
@@ -94,3 +95,4 @@ addPasswordButton = Lägg till lösenord
 passwordTryAgain = Felaktigt lösenord. Försök igen.
 // This label is followed by the password needed to download a file
 passwordResult = Lösenord: { $password }
+reportIPInfringement = Rapportera IP-överträdelse
