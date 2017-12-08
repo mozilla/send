@@ -236,6 +236,10 @@ a {
   text-align: center;
 }
 
+.upload-window.ondrag * {
+  pointer-events: none;
+}
+
 .link {
   color: #0094fb;
   text-decoration: none;
