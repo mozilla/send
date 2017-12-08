@@ -12,6 +12,33 @@ async function getAuthHeader(authKey, nonce) {
   return `send-v1 ${arrayToB64(new Uint8Array(sig))}`;
 }
 
+async function sendPassword(file, authKey, rawAuth) {
+  const authHeader = await getAuthHeader(authKey, file.nonce);
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          return resolve(xhr.response);
+        }
+        if (xhr.status === 401) {
+          const nonce = xhr.getResponseHeader('WWW-Authenticate').split(' ')[1];
+          file.nonce = nonce;
+        }
+        reject(new Error(xhr.status));
+      }
+    };
+    xhr.onerror = () => reject(new Error(0));
+    xhr.ontimeout = () => reject(new Error(0));
+    xhr.open('post', `/api/password/${file.id}`);
+    xhr.setRequestHeader('Authorization', authHeader);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.responseType = 'json';
+    xhr.timeout = 2000;
+    xhr.send(JSON.stringify({ auth: arrayToB64(new Uint8Array(rawAuth)) }));
+  });
+}
+
 export default class FileSender extends Nanobus {
   constructor(file) {
     super('FileSender');
@@ -259,7 +286,6 @@ export default class FileSender extends Nanobus {
       true,
       ['sign']
     );
-    const authHeader = await getAuthHeader(authKey, file.nonce);
     const pwdKey = await window.crypto.subtle.importKey(
       'raw',
       encoder.encode(password),
@@ -283,30 +309,14 @@ export default class FileSender extends Nanobus {
       ['sign']
     );
     const rawAuth = await window.crypto.subtle.exportKey('raw', newAuthKey);
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            return resolve(xhr.response);
-          }
-          if (xhr.status === 401) {
-            const nonce = xhr
-              .getResponseHeader('WWW-Authenticate')
-              .split(' ')[1];
-            file.nonce = nonce;
-          }
-          reject(new Error(xhr.status));
-        }
-      };
-      xhr.onerror = () => reject(new Error(0));
-      xhr.ontimeout = () => reject(new Error(0));
-      xhr.open('post', `/api/password/${file.id}`);
-      xhr.setRequestHeader('Authorization', authHeader);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.responseType = 'json';
-      xhr.timeout = 2000;
-      xhr.send(JSON.stringify({ auth: arrayToB64(new Uint8Array(rawAuth)) }));
-    });
+    try {
+      await sendPassword(file, authKey, rawAuth);
+    } catch (e) {
+      if (e.message === '401' && file.nonce !== e.nonce) {
+        await sendPassword(file, authKey, rawAuth);
+      } else {
+        throw e;
+      }
+    }
   }
 }

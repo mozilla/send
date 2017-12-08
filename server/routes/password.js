@@ -24,12 +24,12 @@ module.exports = async function(req, res) {
       res.set('WWW-Authenticate', `send-v1 ${meta.nonce}`);
       return res.sendStatus(401);
     }
-    const nonce = crypto.randomBytes(16).toString('base64');
-    storage.setField(id, 'nonce', nonce);
-    res.set('WWW-Authenticate', `send-v1 ${nonce}`);
   } catch (e) {
-    res.sendStatus(404);
+    return res.sendStatus(404);
   }
+  const nonce = crypto.randomBytes(16).toString('base64');
+  storage.setField(id, 'nonce', nonce);
+  res.set('WWW-Authenticate', `send-v1 ${nonce}`);
   storage.setField(id, 'auth', req.body.auth);
   storage.setField(id, 'pwd', 1);
   res.sendStatus(200);
