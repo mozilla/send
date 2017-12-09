@@ -58,3 +58,22 @@ sendYourFilesLink = Provoni Firefox Send
 downloadingPageProgress = Po shkarkohet { $filename } ({ $size })
 downloadingPageMessage = Ju lutemi, lëreni hapur këtë skedë ndërkohë që ne sjellim dhe shfshehtëzojmë kartelën tuaj.
 errorAltText = Gabim ngarkimi
+errorPageHeader = Diç shkoi ters!
+errorPageMessage = Pati një gabim gjatë ngarkimit të kartelës.
+errorPageLink = Dërgoni një kartelë tjetër
+fileTooBig = Kjo kartelë është shumë e madhe për ngarkim. Do të duhej të ishte më pak se { $size }.
+linkExpiredAlt = Lidhja skadoi
+expiredPageHeader = Kjo lidhje ka skaduar ose s’ka ekzistuar kurrë!
+notSupportedHeader = Shfletuesi juaj nuk mbulohet.
+// Firefox Send is a brand name and should not be localized.
+notSupportedDetail = Mjerisht, ky shfletues nuk mbulon teknologjinë web mbi të cilën bazohet Firefox Send.Do t’ju duhet të provoni një shfletues tjetër. Ju këshillojmë Firefox-in!
+notSupportedLink = Pse nuk mbulohet ky shfletues?
+notSupportedOutdatedDetail = Mjerisht, ky version i Firefox-it nuk e mbulon teknologjinë web mbi të cilën bazohet Firefox Send. Do t’ju duhet të përditësoni shfletuesin tuaj.
+updateFirefox = Përditësojeni Firefox-in
+downloadFirefoxButtonSub = Shkarkim Falas
+uploadedFile = Kartelë
+copyFileList = Kopjo URL-në
+// expiryFileList is used as a column header
+expiryFileList = Skadon Më
+deleteFileList = Fshije
+nevermindButton = S’prish punë
