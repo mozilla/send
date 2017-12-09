@@ -47,6 +47,8 @@ unlockInputLabel = Jepni Fjalëkalimin
 unlockInputPlaceholder = Fjalëkalim
 unlockButtonLabel = Zhbllokoje
 downloadFileTitle = Shkarko Kartelën e Fshehtëzuar
+// Firefox Send is a brand name and should not be localized.
+downloadMessage = Shoku juaj po ju dërgon një kartelë me Firefox Send, një shërbim që ju lejon të shkëmbeni kartela përmes një lidhjeje të parrezik, private, dhe të fshehtëzuar, që skadon automatikisht, për të garantuar që gjërat tuaja të mos mbeten në internet përgjithmonë.
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Shkarkoje
 downloadNotification = Shkarkimi juaj u plotësua.
@@ -77,3 +79,23 @@ copyFileList = Kopjo URL-në
 expiryFileList = Skadon Më
 deleteFileList = Fshije
 nevermindButton = S’prish punë
+legalHeader = Kushte & Privatësi
+legalNoticeTestPilot = Firefox Send është një eksperiment Test Pilot dhe subjekt i <a>Kushteve të Shërbimit</a> dhe <a>Shënim Privacësie</a> të Test Pilot-it. You can learn more about this experiment and its data collection <a>Këtu</a> mund të mësoni më tepër mbi këtë eksperiment dhe grumbullimit të të dhënave që ai kryen.
+legalNoticeMozilla = Përdorimi i sajtit Firefox Send është gjithashtu subjekt i <a>Shënimit Mbi Privatësi Sajtesh</a> të Mozilla-s dhe <a>Kushteve të Përdorimit të Sajtit</a>.
+deletePopupText = Të fshihet kjo kartelë?
+deletePopupYes = Po
+deletePopupCancel = Anuloje
+deleteButtonHover = Fshije
+copyUrlHover = Kopjoji URL-në
+footerLinkLegal = Ligjore
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Rreth Test Pilot
+footerLinkPrivacy = Privatësi
+footerLinkTerms = Kushte
+footerLinkCookies = Cookies
+requirePasswordCheckbox = Kërko doemos një fjalëkalim për shkarkim të kësaj kartele
+addPasswordButton = Shtoni fjalëkalim
+passwordTryAgain = Fjalëkalim i pasaktë. Riprovoni.
+// This label is followed by the password needed to download a file
+passwordResult = Fjalëkalim: { $password }
+reportIPInfringement = Raportoni Cenim IP-je
