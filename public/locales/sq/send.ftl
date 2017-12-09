@@ -80,7 +80,7 @@ expiryFileList = Skadon Më
 deleteFileList = Fshije
 nevermindButton = S’prish punë
 legalHeader = Kushte & Privatësi
-legalNoticeTestPilot = Firefox Send është një eksperiment Test Pilot dhe subjekt i <a>Kushteve të Shërbimit</a> dhe <a>Shënim Privacësie</a> të Test Pilot-it. You can learn more about this experiment and its data collection <a>Këtu</a> mund të mësoni më tepër mbi këtë eksperiment dhe grumbullimit të të dhënave që ai kryen.
+legalNoticeTestPilot = Firefox Send është një eksperiment Pilot Testesh dhe subjekt i <a>Kushteve të Shërbimit</a> dhe <a>Shënim Privacësie</a> për Pilot Testesh. <a>Këtu</a> mund të mësoni më tepër mbi këtë eksperiment dhe grumbullimit të të dhënave që ai kryen.
 legalNoticeMozilla = Përdorimi i sajtit Firefox Send është gjithashtu subjekt i <a>Shënimit Mbi Privatësi Sajtesh</a> të Mozilla-s dhe <a>Kushteve të Përdorimit të Sajtit</a>.
 deletePopupText = Të fshihet kjo kartelë?
 deletePopupYes = Po
@@ -89,7 +89,7 @@ deleteButtonHover = Fshije
 copyUrlHover = Kopjoji URL-në
 footerLinkLegal = Ligjore
 // Test Pilot is a proper name and should not be localized.
-footerLinkAbout = Rreth Test Pilot
+footerLinkAbout = Rreth Pilot Testesh
 footerLinkPrivacy = Privatësi
 footerLinkTerms = Kushte
 footerLinkCookies = Cookies
