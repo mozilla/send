@@ -86,4 +86,3 @@ footerLinkTerms = Şərtlər
 footerLinkCookies = Çərəzlər
 requirePasswordCheckbox = Bu faylı endirmək üçün parol tələb et
 addPasswordButton = Parol əlavə et
-incorrectPassword = Xətalı parol. Təkrar yoxlayın.
