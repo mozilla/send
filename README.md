@@ -23,7 +23,7 @@
 
 ## What it does
 
-A file sharing experiment which allows you to send encrypted files to other users.
+An experiment on encryption for file sharing.
 
 ---
 
@@ -37,11 +37,21 @@ A file sharing experiment which allows you to send encrypted files to other user
 
 ## Development
 
-To start an ephemeral development server run:
+To start the project you shall
+
+- clone the project into your workspace
+- set the terminal path to the project workspace
+
+You should then:
 
 ```sh
-npm install
-npm start
+$ cd project-path && ls -lR && pwd && clear
+```
+
+You should then run the following Node Package Manager Commands:
+
+```sh
+$ npm install && npm start
 ```
 
 Then browse to http://localhost:8080
