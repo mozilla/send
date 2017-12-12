@@ -28,10 +28,7 @@ uploadSuccessConfirmHeader = جاهز للإرسال
 uploadSvgAlt
     .alt = ارفع
 uploadSuccessTimingHeader = ستنتهي صلاحية الرابط الذي يشير إلى الملف في حال: نُزِّل لأول مرة، أو مرّ ٢٤ ساعة على رفعه.
-expireInfo =
-    ستنتهي صلاحية رابط الملف بعد { $downloadCount } أو { $timespan }.
-    
-
+expireInfo = ستنتهي صلاحية رابط الملف بعد { $downloadCount } أو { $timespan }.
 downloadCount = { $num ->
         [zero] لا تنزيلات
         [one] تنزيل واحد
@@ -60,8 +57,10 @@ sendAnotherFileLink = أرسل ملفّا آخر
 downloadAltText
     .alt = نزّل
 downloadFileName = نزّل { $filename }
+downloadFileSize = ({ $size })
 unlockInputLabel = أدخل كلمة السر
 unlockInputPlaceholder = كلمة السر
+unlockButtonLabel = افتح القفل
 downloadFileTitle = نزِّل الملف المعمّى
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = يُرسل إليك صديقك ملفا عبر «فَيَرفُكس سِنْد»، وهي خدمة تتيح لك مشاركة الملفات عبر رابط آمن وخاص ومعمّى، حيث تنتهي صلاحياتها تلقائيا لتضمن عدم بقاء ما ترسله إلى الأبد.
@@ -74,6 +73,7 @@ downloadFinish = اكتمل التنزيل
 fileSizeProgress = ({ $partialSize } من أصل { $totalSize })
 // Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = جرِّب «فَيَرفُكس سِنْد»
+downloadingPageProgress = ينزّل { $filename } ({ $size })
 downloadingPageMessage = رجاء أبقِ هذا اللسان مفتوحا حتى نجلب الملف ونفك تعميته.
 errorAltText
     .alt = خطأ أثناء الرفع
@@ -81,14 +81,21 @@ errorPageHeader = حدث خطب ما.
 errorPageMessage = حدث خطب ما أثناء رفع الملف.
 errorPageLink = أرسل ملفا آخر
 fileTooBig = حجم الملف كبير للغاية لرفعه. يجب أن يكون أصغر من { $size }.
+linkExpiredAlt = انتهت صلاحية الرابط
+expiredPageHeader = انتهت صلاحية هذا الرابط أو لم يكن موجودا في المقام الأول!
 notSupportedHeader = متصفحك غير مدعوم.
 // Firefox Send is a brand name and should not be localized.
 notSupportedDetail = للأسف فإن متصفحك لا يدعم تقنية الوِب التي يعتمد عليها «فَيَرفُكس سِنْد». عليك تجربة متصفح آخر، ونحن ننصحك بِفَيَرفُكس!
 notSupportedLink = لماذا متصفحي غير مدعوم؟
 notSupportedOutdatedDetail = للأسف فإن إصدارة فَيَرفُكس هذه لا تدعم تقنية الوِب التي يعتمد عليها «فَيَرفُكس سِنْد». عليك تحديث متصفحك.
 updateFirefox = حدّث فَيَرفُكس
+downloadFirefoxButtonSub = تنزيل مجاني
+uploadedFile = ملف
 copyFileList = انسخ الرابط
+// expiryFileList is used as a column header
+expiryFileList = ينتهي في
 deleteFileList = احذف
+nevermindButton = لا بأس
 legalHeader = الشروط والخصوصية
 deletePopupText = أأحذف هذا الملف؟
 deletePopupYes = نعم
@@ -97,10 +104,15 @@ deleteButtonHover
     .title = احذف
 copyUrlHover
     .title = انسخ الرابط
+footerLinkLegal = القانونية
+// Test Pilot is a proper name and should not be localized.
+footerLinkAbout = حول الاختبار التجريبي
+footerLinkPrivacy = الخصوصية
 footerLinkTerms = الشروط
 footerLinkCookies = الكعكات
 requirePasswordCheckbox = اطلب كلمة سر لتنزيل هذا الملف
 addPasswordButton = أضِف كلمة سر
+passwordTryAgain = كلمة السر خاطئة. أعِد المحاولة.
 // This label is followed by the password needed to download a file
 passwordResult = كلمة السر: { $password }
 reportIPInfringement = أبلغ عن انتهاك للملكية الفكرية
