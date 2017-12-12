@@ -11,7 +11,10 @@ uploadPageBrowseButton = اختر ملفّا على حاسوبك
     .title = اختر ملفّا على حاسوبك
 uploadPageBrowseButton1 = اختر ملفّا لرفعه
 uploadPageMultipleFilesAlert = رفع عدة ملفات (أو رفع مجلد) ليس مدعوما حاليا.
+uploadPageBrowseButtonTitle = ارفع ملفًا
+uploadingPageProgress = يرفع { $filename } ({ $size })
 importingFile = يستورد…
+verifyingFile = يتحقق…
 encryptingFile = يعمّي…
 decryptingFile = يفك التعمية…
 notifyUploadDone = انتهى الرفع.
@@ -21,8 +24,30 @@ uploadingPageCancel = ألغِ الرفع
 uploadCancelNotification = أُلغي الرفع.
 uploadingPageLargeFileMessage = هذا الملف كبير الحجم وسيأخذ رفعه وقتا. انتظر رجاءً.
 uploadingFileNotification = أعلِمني عندما يكتمل الرفع.
+uploadSuccessConfirmHeader = جاهز للإرسال
 uploadSvgAlt
     .alt = ارفع
+uploadSuccessTimingHeader = ستنتهي صلاحية الرابط الذي يشير إلى الملف في حال: نُزِّل لأول مرة، أو مرّ ٢٤ ساعة على رفعه.
+expireInfo =
+    ستنتهي صلاحية رابط الملف بعد { $downloadCount } أو { $timespan }.
+    
+
+downloadCount = { $num ->
+        [zero] لا تنزيلات
+        [one] تنزيل واحد
+        [two] تنزيلين
+        [few] { $num } تنزيلات
+        [many] { $num } تنزيلًا
+       *[other] { $num } تنزيل
+    }
+timespanHours = { $num ->
+        [zero] أقل من ساعة
+        [one] ساعة
+        [two] ساعتين
+        [few] { $num } ساعات
+        [many] { $num } ساعة
+       *[other] { $num } ساعة
+    }
 copyUrlFormLabelWithName = انسخ الرابط وشاركه لإرسال الملف: { $filename }
 copyUrlFormButton = انسخ إلى الحافظة
     .title = انسخ إلى الحافظة
@@ -78,3 +103,4 @@ requirePasswordCheckbox = اطلب كلمة سر لتنزيل هذا الملف
 addPasswordButton = أضِف كلمة سر
 // This label is followed by the password needed to download a file
 passwordResult = كلمة السر: { $password }
+reportIPInfringement = أبلغ عن انتهاك للملكية الفكرية
