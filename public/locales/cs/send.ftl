@@ -25,6 +25,12 @@ uploadingFileNotification = Upozornit, až bude nahrávání dokončeno.
 uploadSuccessConfirmHeader = Připraveno k odeslání
 uploadSvgAlt = Nahrát
 uploadSuccessTimingHeader = Platnost odkazu na váš soubor vyprší po jeho prvním stažení, nebo po 24 hodinách.
+expireInfo = Platnost odkazu na váš soubor vyprší po { $downloadCount } nebo { $timespan }.
+downloadCount = { $num ->
+        [one] jednom stažení
+        [few] { $num } staženích
+       *[other] { $num } staženích
+    }
 timespanHours = { $num ->
         [one] hodina
         [few] hodiny
@@ -94,3 +100,4 @@ addPasswordButton = Přidat heslo
 passwordTryAgain = Špatné heslo. Zkuste to znovu.
 // This label is followed by the password needed to download a file
 passwordResult = Heslo: { $password }
+reportIPInfringement = Nahlásit porušení autorských práv
