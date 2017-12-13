@@ -26,6 +26,7 @@ uploadingFileNotification = 업로드가 완료되면 알림을 표시해 주세
 uploadSuccessConfirmHeader = 보낼 준비 완료
 uploadSvgAlt = 업로드
 uploadSuccessTimingHeader = 이 파일의 링크는 한 번의 다운로드 후 또는 24시간이 지난 뒤에 만료됩니다.
+expireInfo = 이 파일의 링크는 { $downloadCount }나 { $timespan } 후에 만료됩니다.
 downloadCount = 1 다운로드
 timespanHours = 1 시간
 copyUrlFormLabelWithName = 파일을 보내기 위해 이 링크를 복사하고 공유하세요: { $filename }
@@ -92,3 +93,4 @@ addPasswordButton = 비밀번호 추가
 passwordTryAgain = 비밀번호가 맞지 않습니다. 다시 시도해 주세요.
 // This label is followed by the password needed to download a file
 passwordResult = 비밀번호: { $password }
+reportIPInfringement = 지적 재산권 침해 신고
