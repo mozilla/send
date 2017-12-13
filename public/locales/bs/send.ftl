@@ -95,3 +95,4 @@ addPasswordButton = Dodaj lozinku
 passwordTryAgain = Netačna lozinka. Pokušajte ponovo.
 // This label is followed by the password needed to download a file
 passwordResult = Lozinka: { $password }
+reportIPInfringement = Prijavite IP prekršaj
