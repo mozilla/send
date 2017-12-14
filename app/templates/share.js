@@ -1,3 +1,4 @@
+/* global EXPIRE_SECONDS */
 const html = require('choo/html');
 const assets = require('../../common/assets');
 const notFound = require('./notFound');
@@ -16,10 +17,11 @@ function passwordComplete(state, password) {
 }
 
 function expireInfo(file, translate, emit) {
+  const hours = Math.floor(EXPIRE_SECONDS / 60 / 60);
   const el = html([
     `<div>${translate('expireInfo', {
       downloadCount: '<select></select>',
-      timespan: translate('timespanHours', { num: 24 })
+      timespan: translate('timespanHours', { num: hours })
     })}</div>`
   ]);
   const select = el.querySelector('select');
