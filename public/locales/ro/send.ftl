@@ -3,8 +3,10 @@ title = Firefox Send
 siteSubtitle = un experiment web
 siteFeedback = Feedback
 uploadPageHeader = Partajare de fișiere privată și criptată
+uploadPageExplainer = Trimite file printr-un link sigur, privat și criptat care expiră automat pentru ca informațiile să rămână în siguranță.
 uploadPageLearnMore = Află mai multe
 uploadPageDropMessage = Aruncă fișierul aici pentru a începe încărcarea.
+uploadPageSizeMessage = Pentru a lucra mai ușor, recomandăm să păstrezi fișierul sub 1GB
 uploadPageBrowseButton = Alege un fișier din calculator.
 uploadPageBrowseButton1 = Selectează un fișier pentru încărcare
 uploadPageMultipleFilesAlert = Încărcarea mai multor fișiere deodată sau a dosarelor nu este suportată.
@@ -23,6 +25,14 @@ uploadingFileNotification = Notifică-mă când încărcarea este încheiată.
 uploadSuccessConfirmHeader = Pregătit pentru trimitere
 uploadSvgAlt = Încarcă
 uploadSuccessTimingHeader = Linkul către fișierul tău va expira după 1 descărcare sau în 24 de ore.
+expireInfo = Linkul la fișier va expira după { $downloadCount } sau { $timespan }.
+downloadCount = 
+timespanHours = { $num ->
+        [one] 1 oră
+        [few] ore
+       *[other] de ore
+    }
+copyUrlFormLabelWithName = Copiază și împărtășește linkul de la fișierul de trimis: { $filename }
 copyUrlFormButton = Copiază în clipboard
 copiedUrl = Copiat!
 deleteFileButton = Șterge fișierul
