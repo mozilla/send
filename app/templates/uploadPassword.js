@@ -13,6 +13,7 @@ module.exports = function(state, emit) {
     </div>
     <form class="setPassword hidden" onsubmit=${setPassword} data-no-csrf>
       <input id="unlock-input"
+        type="password"
         class="unlock-input input-no-btn"
         maxlength="64"
         autocomplete="off"
