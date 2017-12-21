@@ -16,7 +16,7 @@ const conf = convict({
   },
   listen_address: {
   format: 'ipaddress',
-  default: '127.0.0.1',
+  default: '0.0.0.0',
   env: 'IP_ADDRESS'
   },
   listen_port: {
