@@ -729,7 +729,7 @@ tbody {
   cursor: pointer;
   border: 0;
   box-shadow: 0 5px 3px rgb(234, 234, 234);
-  font-family: 'Fira Sans';
+  font-family: 'Fira Sans', 'segoe ui', sans-serif;
   font-weight: 500;
   color: #fff;
   font-size: 26px;
@@ -746,7 +746,7 @@ tbody {
 }
 
 .unsupported-button-text > span {
-  font-family: 'Fira Sans';
+  font-family: 'Fira Sans', 'segoe ui', sans-serif;
   font-weight: 300;
   font-size: 18px;
   letter-spacing: -0.69px;
