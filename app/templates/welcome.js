@@ -1,7 +1,8 @@
+/* global MAXFILESIZE */
 const html = require('choo/html');
 const assets = require('../../common/assets');
 const fileList = require('./fileList');
-const { fadeOut } = require('../utils');
+const { bytes, fadeOut } = require('../utils');
 
 module.exports = function(state, emit) {
   const div = html`
@@ -64,6 +65,11 @@ module.exports = function(state, emit) {
     if (file.size === 0) {
       return;
     }
+    if (file.size > MAXFILESIZE) {
+      window.alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
+      return;
+    }
+
     await fadeOut('page-one');
     emit('upload', { file, type: 'click' });
   }
