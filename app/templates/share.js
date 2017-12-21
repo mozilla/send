@@ -66,7 +66,7 @@ module.exports = function(state, emit) {
         onclick=${deleteFile}>${state.translate('deleteFileButton')}</button>
       <a class="send-new"
         data-state="completed"
-        href="/"
+        href="/"send
         onclick=${sendNew}>${state.translate('sendAnotherFileLink')}</a>
     </div>
   </div>

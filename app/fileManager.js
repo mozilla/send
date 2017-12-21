@@ -148,6 +148,7 @@ export default function(state, emitter) {
       info.name = file.name;
       info.size = size;
       info.type = type;
+      info.dlimit = file.dlimit;
       info.time = time;
       info.speed = speed;
       info.createdAt = Date.now();
@@ -220,6 +221,7 @@ export default function(state, emitter) {
       await fadeOut('download-progress');
       saveFile(f);
       state.storage.totalDownloads += 1;
+      file.dlimit = state.storage.totalDownloads;
       state.transfer = null;
       metrics.completedDownload({ size, time, speed });
       emitter.emit('pushState', '/completed');

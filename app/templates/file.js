@@ -15,7 +15,14 @@ function timeLeft(milliseconds) {
 
 module.exports = function(file, state, emit) {
   const ttl = file.expiresAt - Date.now();
-  const remaining = timeLeft(ttl) || state.translate('linkExpiredAlt');
+  const remainingTime = timeLeft(ttl) || state.translate('linkExpiredAlt');
+  let remainingDownloads = file.dlimit;
+  if (remainingDownloads === undefined) {
+    remainingDownloads = 1 + " d'load";
+  } else {
+    remainingDownloads += " d'loads";
+  }
+
   const row = html`
   <tr id="${file.id}">
     <td class="overflow-col" title="${
@@ -29,7 +36,8 @@ module.exports = function(file, state, emit) {
         'copiedUrl'
       )}</span>
     </td>
-    <td>${remaining}</td>
+    <td>${remainingTime}</td>
+    <td>${remainingDownloads}</td>
     <td class="center-col">
       <img onclick=${showPopup} src="${assets.get(
     'close-16.svg'
@@ -81,6 +89,5 @@ module.exports = function(file, state, emit) {
     emit('delete', { file, location: 'upload-list' });
     emit('render');
   }
-
   return row;
 };
