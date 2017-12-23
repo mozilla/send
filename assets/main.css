@@ -943,6 +943,10 @@ tbody {
   visibility: collapse;
 }
 
+#addPasswordWrapper:hover label::before {
+  border: 1px solid #0297f8;
+}
+
 #addPasswordWrapper label {
   line-height: 23px;
   cursor: pointer;
