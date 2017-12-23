@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     const meta = await storage.metadata(id);
     res.set('WWW-Authenticate', `send-v1 ${meta.nonce}`);
     res.send({
-      password: meta.pwd
+      password: meta.pwd !== '0'
     });
   } catch (e) {
     res.sendStatus(404);
