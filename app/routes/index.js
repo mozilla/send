@@ -14,7 +14,7 @@ function body(template) {
       ${header(state)}
       <div class="all">
         <noscript>
-          <h2>Firefox Send requires JavaScript</h2>
+          <h2>${state.title} requires JavaScript</h2>
           <p><a href="https://github.com/mozilla/send/blob/master/docs/faq.md#why-does-firefox-send-require-javascript">Why does Firefox Send require JavaScript?</a></p>
           <p>Please enable JavaScript and try again.</p>
         </noscript>
