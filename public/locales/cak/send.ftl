@@ -25,6 +25,15 @@ uploadingFileNotification = Tiya' pe rutzijol chwe toq xtitz'aqät rujotob'axik.
 uploadSuccessConfirmHeader = Ütz chik richin Nitaq
 uploadSvgAlt = Tijotob'äx
 uploadSuccessTimingHeader = Ri ruximonel yakb'äl xtik'is ruq'ijul toq xtiqasäx jumul o pa 24 ramaj.
+expireInfo = Ri ruximöy ayakb'al xtik'is ruq'ijul chi rij ri { $downloadCount } o { $timespan }.
+downloadCount = { $num ->
+        [one] 1 qasanïk
+       *[other] { $num } taq qasanïk
+    }
+timespanHours = { $num ->
+        [one] 1 ramaj
+       *[other] { $num } taq ramaj
+    }
 copyUrlFormLabelWithName = Tiwachib'ëx  chuqa' tikomonïx ri ximonel richin nitaq ri ayakb'äl: { $filename }
 copyUrlFormButton = Tiwachib'ëx pa molwuj
 copiedUrl = ¡Xwachib'ëx!
@@ -89,3 +98,4 @@ addPasswordButton = Titz'aqatisäx Ewan Tzij
 passwordTryAgain = Itzel ri ewan tzij. Tatojtob'ej chik.
 // This label is followed by the password needed to download a file
 passwordResult = Ewan tzij: { $password }
+reportIPInfringement = Tiya' rutzijol ri Ritzelanik Ajna'oj Ichinil
