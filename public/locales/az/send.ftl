@@ -25,6 +25,15 @@ uploadingFileNotification = Yükləmə bitdiyində xəbər ver.
 uploadSuccessConfirmHeader = Göndərməyə hazır
 uploadSvgAlt = Yüklə
 uploadSuccessTimingHeader = Faylınızın keçidinin 1 endirmədən və ya 24 saatdan sonra vaxtı çıxacaq.
+expireInfo = Faylınız üçün keçidin vaxtı { $downloadCount } sonra və ya { $timespan } tarixində keçəcək.
+downloadCount = { $num ->
+        [one] 1 endirmə
+       *[other] { $num } endirmə
+    }
+timespanHours = { $num ->
+        [one] 1 saat
+       *[other] { $num } saat
+    }
 copyUrlFormLabelWithName = Faylınızı göndərmək üçün keçidi köçürün: { $filename }
 copyUrlFormButton = Buferə köçür
 copiedUrl = Köçürüldü!
@@ -86,3 +95,7 @@ footerLinkTerms = Şərtlər
 footerLinkCookies = Çərəzlər
 requirePasswordCheckbox = Bu faylı endirmək üçün parol tələb et
 addPasswordButton = Parol əlavə et
+passwordTryAgain = Səhv parol. Təkrar yoxlayın.
+// This label is followed by the password needed to download a file
+passwordResult = Parol: { $password }
+reportIPInfringement = Əqli-mülkiyyət pozuntusu bildir
