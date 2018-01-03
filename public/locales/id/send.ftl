@@ -26,6 +26,7 @@ uploadingFileNotification = Beri tahu saya ketika unggahan telah selesai.
 uploadSuccessConfirmHeader = Siap untuk Dikirim
 uploadSvgAlt = Unggah
 uploadSuccessTimingHeader = Tautan ke berkas Anda akan berakhir setelah 1 unduhan atau dalam 24 jam.
+expireInfo = Tautan ke berkas Anda akan kedaluwarsa setelah { $downloadCount } atau { $timespan }.
 copyUrlFormLabelWithName = Salin dan bagikan tautan untuk mengirim berkas Anda: { $filename }
 copyUrlFormButton = Salin ke papan klip
 copiedUrl = Tersalin!
@@ -86,3 +87,6 @@ footerLinkTerms = Ketentuan
 footerLinkCookies = Kuki
 requirePasswordCheckbox = Membutuhkan sandi untuk mengunduh berkas ini
 addPasswordButton = Tambahkan Sandi
+passwordTryAgain = Sandi salah. Silakan coba lagi.
+// This label is followed by the password needed to download a file
+passwordResult = Sandi: { $password }
