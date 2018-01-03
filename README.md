@@ -75,7 +75,7 @@ Firefox Send localization is managed via [Pontoon](https://pontoon.mozilla.org/p
 
 ## Contributing
 
-Pull requests are always welcome! Feel free to check out the list of ["good first bugs"](https://github.com/mozilla/send/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+bug%22).
+Pull requests are always welcome! Feel free to check out the list of ["good first issues"](https://github.com/mozilla/send/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
 
 ---
 
