@@ -86,7 +86,7 @@ export default function(state, emitter) {
     document.addEventListener('blur', () => (updateTitle = true));
     document.addEventListener('focus', () => {
       updateTitle = false;
-      emitter.emit('DOMTitleChange', 'Firefox Send');
+      emitter.emit('DOMTitleChange', state.title);
     });
     checkFiles();
   });
