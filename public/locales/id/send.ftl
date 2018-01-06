@@ -27,6 +27,12 @@ uploadSuccessConfirmHeader = Siap untuk Dikirim
 uploadSvgAlt = Unggah
 uploadSuccessTimingHeader = Tautan ke berkas Anda akan berakhir setelah 1 unduhan atau dalam 24 jam.
 expireInfo = Tautan ke berkas Anda akan kedaluwarsa setelah { $downloadCount } atau { $timespan }.
+downloadCount = { $num ->
+       *[other] { $number } unduhan
+    }
+timespanHours = { $num ->
+       *[other] { $number } jam
+    }
 copyUrlFormLabelWithName = Salin dan bagikan tautan untuk mengirim berkas Anda: { $filename }
 copyUrlFormButton = Salin ke papan klip
 copiedUrl = Tersalin!
@@ -38,6 +44,7 @@ downloadFileName = Unduh { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Masukkan Sandi
 unlockInputPlaceholder = Sandi
+unlockButtonLabel = Buka
 downloadFileTitle = Unduh Berkas Terenkripsi
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Teman Anda mengirimkan berkas dengan Firefox Send, layanan yang memungkinkan Anda berbagi berkas dengan tautan yang aman, pribadi, dan terenkripsi yang secara otomatis berakhir untuk memastikan berkas Anda tidak daring selamanya.
@@ -90,3 +97,4 @@ addPasswordButton = Tambahkan Sandi
 passwordTryAgain = Sandi salah. Silakan coba lagi.
 // This label is followed by the password needed to download a file
 passwordResult = Sandi: { $password }
+reportIPInfringement = Laporkan Pelanggaran IP
