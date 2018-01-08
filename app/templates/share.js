@@ -81,7 +81,23 @@ module.exports = function(state, emit) {
       <button id="delete-file"
         class="btn"
         title="${state.translate('deleteFileButton')}"
-        onclick=${deleteFile}>${state.translate('deleteFileButton')}</button>
+        onclick=${showPopup}>${state.translate('deleteFileButton')}
+        <div class="popup">
+          <div class="popuptext" onblur=${cancel} tabindex="-1">
+            <div class="popup-message">${state.translate(
+              'deletePopupText'
+            )}</div>
+            <div class="popup-action">
+              <span class="popup-no" onclick=${cancel}>${state.translate(
+    'deletePopupCancel'
+  )}</span>
+              <span class="popup-yes" onclick=${deleteFile}>${state.translate(
+    'deletePopupYes'
+  )}</span>
+            </div>
+          </div>
+        </div>
+      </button>
       <a class="send-new"
         data-state="completed"
         href="/"
@@ -89,6 +105,17 @@ module.exports = function(state, emit) {
     </div>
   </div>
   `;
+
+  function showPopup() {
+    const popupText = document.querySelector('.popuptext');
+    popupText.classList.add('show');
+  }
+
+  function cancel(e) {
+    e.stopPropagation();
+    const popupText = e.target.parentElement.parentElement;
+    popupText.classList.remove('show');
+  }
 
   async function sendNew(e) {
     e.preventDefault();
