@@ -666,6 +666,18 @@ tbody {
   overflow-wrap: break-word;
 }
 
+.passwordOriginal {
+  display: none;
+}
+
+.selectPassword :hover .passwordOriginal {
+  display: block;
+}
+
+.selectPassword :hover .passwordStar {
+  display: none;
+}
+
 .setPassword {
   align-self: left;
   display: flex;

@@ -5,9 +5,7 @@ module.exports = function(state, emit) {
   const div = html`
   <div class="selectPassword">
     <div id="addPasswordWrapper">
-      <input id="addPassword" type="checkbox" autocomplete="off" onchange=${
-        togglePasswordInput
-      }/>
+      <input id="addPassword" type="checkbox" autocomplete="off" onchange=${togglePasswordInput}/>
       <label for="addPassword">
         ${state.translate('requirePasswordCheckbox')}</label>
     </div>
@@ -17,6 +15,7 @@ module.exports = function(state, emit) {
         maxlength="64"
         autocomplete="off"
         placeholder="${state.translate('unlockInputPlaceholder')}"
+        type="password"
         oninput=${inputChanged}/>
       <input type="submit"
         id="unlock-btn"
