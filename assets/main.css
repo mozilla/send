@@ -416,6 +416,8 @@ tbody {
   border-radius: 0 0 5px;
   border-right: 1px solid #d7d7db;
   border-bottom: 1px solid #d7d7db;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
 }
 
 .popup .show {

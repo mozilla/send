@@ -110,6 +110,7 @@ module.exports = function(state, emit) {
   function showPopup() {
     const popupText = document.querySelector('.popuptext');
     popupText.classList.add('show');
+    popupText.focus();
   }
 
   function cancel(e) {
