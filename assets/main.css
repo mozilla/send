@@ -640,6 +640,11 @@ tbody {
   color: #313131;
 }
 
+#deletePopup {
+  position: relative;
+  bottom: 50px;
+}
+
 #delete-file:hover {
   background: #efeff1;
 }

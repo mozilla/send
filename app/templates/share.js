@@ -82,22 +82,23 @@ module.exports = function(state, emit) {
         class="btn"
         title="${state.translate('deleteFileButton')}"
         onclick=${showPopup}>${state.translate('deleteFileButton')}
-        <div class="popup">
-          <div class="popuptext" onblur=${cancel} tabindex="-1">
-            <div class="popup-message">${state.translate(
-              'deletePopupText'
-            )}</div>
-            <div class="popup-action">
-              <span class="popup-no" onclick=${cancel}>${state.translate(
-    'deletePopupCancel'
-  )}</span>
-              <span class="popup-yes" onclick=${deleteFile}>${state.translate(
-    'deletePopupYes'
-  )}</span>
-            </div>
-          </div>
-        </div>
       </button>
+      <div id="deletePopup" class="popup">
+         <div class="popuptext" onblur=${cancel} tabindex="-1">
+           <div class="popup-message">${state.translate('deletePopupText')}
+           </div>
+           <div class="popup-action">
+             <span class="popup-no" onclick=${cancel}>${state.translate(
+    'deletePopupCancel'
+  )}
+             </span>
+             <span class="popup-yes" onclick=${deleteFile}>${state.translate(
+    'deletePopupYes'
+  )}
+             </span>
+           </div>
+         </div>
+      </div>
       <a class="send-new"
         data-state="completed"
         href="/"
@@ -113,7 +114,7 @@ module.exports = function(state, emit) {
 
   function cancel(e) {
     e.stopPropagation();
-    const popupText = e.target.parentElement.parentElement;
+    const popupText = document.querySelector('.popuptext');
     popupText.classList.remove('show');
   }
 
