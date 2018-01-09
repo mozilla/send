@@ -25,6 +25,14 @@ uploadingFileNotification = Notifica'm quan s'acabi de pujar.
 uploadSuccessConfirmHeader = Llest per enviar
 uploadSvgAlt = Puja
 uploadSuccessTimingHeader = L'enllaç al fitxer caducarà quan es baixi una vegada o d'aquí 24 hores.
+downloadCount = { $num ->
+        [one] 1 baixada
+       *[other] { $num } baixades
+    }
+timespanHours = { $num ->
+        [one] 1 hora
+       *[other] { $num } hores
+    }
 copyUrlFormLabelWithName = Copieu l'enllaç i compartiu-lo per enviar el fitxer: { $filename }
 copyUrlFormButton = Copia al porta-retalls
 copiedUrl = Copiat!
@@ -34,6 +42,7 @@ sendAnotherFileLink = Envieu un altre fitxer
 downloadAltText = Baixa
 downloadFileName = Baixeu { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Introduïu la contrasenya
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Un amic us ha enviat un fitxer amb el Firefox Send, un servei que permet compartir fitxers mitjançant un enllaç segur, privat i xifrat que caduca automàticament per tal que les vostres dades no es conservin a Internet per sempre.
 // Text and title used on the download link/button (indicates an action).
