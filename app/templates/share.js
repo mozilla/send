@@ -12,21 +12,13 @@ function passwordComplete(state, password) {
       password: '<pre></pre>'
     })}</div>`
   ]);
-  const displayPassword = [];
-  for (let i = 0; i < password.length; i++) {
-    displayPassword[i] = '●';
-  }
-
   const passwordOriginal = document.createElement('div');
   passwordOriginal.className = 'passwordOriginal';
   passwordOriginal.innerText = password;
 
   const passwordStar = document.createElement('div');
   passwordStar.className = 'passwordStar';
-  passwordStar.innerText = displayPassword
-    .toString()
-    .split(',')
-    .join('');
+  passwordStar.innerText = password.replace(/./g, '●');
   el.lastElementChild.appendChild(passwordOriginal);
   el.lastElementChild.appendChild(passwordStar);
   return el;
