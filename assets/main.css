@@ -146,6 +146,7 @@ button {
 }
 
 pre {
+  font-family: monospace;
   font-weight: 600;
   display: inline-block;
 }
