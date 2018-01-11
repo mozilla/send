@@ -1185,4 +1185,12 @@ tbody {
     font-size: 13px;
     padding: 17px 5px 0;
   }
+
+  .popup .popuptext::after {
+    left: 125px;
+  }
+
+  #deletePopup {
+    left: 83px;
+  }
 }
