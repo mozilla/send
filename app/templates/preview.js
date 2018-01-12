@@ -21,7 +21,7 @@ module.exports = function(state, emit) {
     return notFound(state, emit);
   }
   state.fileInfo.id = state.params.id;
-  state.fileInfo.key = state.params.key;
+  state.fileInfo.secretKey = state.params.key;
   const fileInfo = state.fileInfo;
   const size = fileInfo.size
     ? state.translate('downloadFileSize', { size: bytes(fileInfo.size) })
