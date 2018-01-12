@@ -16,10 +16,9 @@ function timeLeft(milliseconds) {
 module.exports = function(file, state, emit) {
   const ttl = file.expiresAt - Date.now();
   const remainingTime = timeLeft(ttl) || state.translate('linkExpiredAlt');
-  let remainingDownloads = file.dlimit;
-  if (remainingDownloads === undefined) {
-    remainingDownloads = 1;
-  }
+  const downloadLimit = file.dlimit || 1;
+  const totalDownloads = file.dtotal || 0;
+
   const row = html`
   <tr id="${file.id}">
     <td class="overflow-col" title="${
@@ -34,7 +33,7 @@ module.exports = function(file, state, emit) {
       )}</span>
     </td>
     <td>${remainingTime}</td>
-    <td class="center-col">${remainingDownloads}</td>
+    <td class="center-col">${totalDownloads}/${downloadLimit}</td>
     <td class="center-col">
       <img onclick=${showPopup} src="${assets.get(
     'close-16.svg'

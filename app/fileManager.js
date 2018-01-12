@@ -36,20 +36,15 @@ function openLinksInNewTab(links, should = true) {
   return links;
 }
 
-function exists(id) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-        resolve(xhr.status === 200);
-      }
-    };
-    xhr.onerror = () => resolve(false);
-    xhr.ontimeout = () => resolve(false);
-    xhr.open('get', '/api/exists/' + id);
-    xhr.timeout = 2000;
-    xhr.send();
-  });
+async function getDLCounts(file) {
+  const url = `/api/metadata/${file.id}`;
+  const receiver = new FileReceiver(url, file);
+  try {
+    await receiver.getMetadata(file.nonce);
+    return receiver.file;
+  } catch (e) {
+    if (e.message === '404') return false;
+  }
 }
 
 export default function(state, emitter) {
@@ -64,9 +59,16 @@ export default function(state, emitter) {
     const files = state.storage.files;
     let rerender = false;
     for (const file of files) {
-      const ok = await exists(file.id);
-      if (!ok) {
+      const oldLimit = file.dlimit;
+      const oldTotal = file.dtotal;
+      const receivedFile = await getDLCounts(file);
+      if (!receivedFile) {
         state.storage.remove(file.id);
+        rerender = true;
+      } else if (
+        oldLimit !== receivedFile.dlimit ||
+        oldTotal !== receivedFile.dtotal
+      ) {
         rerender = true;
       }
     }
@@ -148,7 +150,6 @@ export default function(state, emitter) {
       info.name = file.name;
       info.size = size;
       info.type = type;
-      info.dlimit = file.dlimit;
       info.time = time;
       info.speed = speed;
       info.createdAt = Date.now();
@@ -221,7 +222,6 @@ export default function(state, emitter) {
       await fadeOut('download-progress');
       saveFile(f);
       state.storage.totalDownloads += 1;
-      file.dlimit = state.storage.totalDownloads;
       state.transfer = null;
       metrics.completedDownload({ size, time, speed });
       emitter.emit('pushState', '/completed');
