@@ -19,11 +19,9 @@ async function sendPassword(file, authKey, rawAuth) {
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          return resolve(xhr.response);
-        }
-        if (xhr.status === 401) {
           const nonce = xhr.getResponseHeader('WWW-Authenticate').split(' ')[1];
           file.nonce = nonce;
+          return resolve(xhr.response);
         }
         reject(new Error(xhr.status));
       }
@@ -262,7 +260,7 @@ export default class FileSender extends Nanobus {
     return this.uploadFile(encrypted, metadata, new Uint8Array(rawAuth));
   }
 
-  static async setPassword(password, file) {
+  static async setPassword(existingPassword, password, file) {
     const encoder = new TextEncoder();
     const secretKey = await window.crypto.subtle.importKey(
       'raw',
@@ -293,6 +291,28 @@ export default class FileSender extends Nanobus {
       false,
       ['deriveKey']
     );
+    const oldPwdkey = await window.crypto.subtle.importKey(
+      'raw',
+      encoder.encode(existingPassword),
+      { name: 'PBKDF2' },
+      false,
+      ['deriveKey']
+    );
+    const oldAuthKey = await window.crypto.subtle.deriveKey(
+      {
+        name: 'PBKDF2',
+        salt: encoder.encode(file.url),
+        iterations: 100,
+        hash: 'SHA-256'
+      },
+      oldPwdkey,
+      {
+        name: 'HMAC',
+        hash: 'SHA-256'
+      },
+      true,
+      ['sign']
+    );
     const newAuthKey = await window.crypto.subtle.deriveKey(
       {
         name: 'PBKDF2',
@@ -309,11 +329,12 @@ export default class FileSender extends Nanobus {
       ['sign']
     );
     const rawAuth = await window.crypto.subtle.exportKey('raw', newAuthKey);
+    const aKey = existingPassword ? oldAuthKey : authKey;
     try {
-      await sendPassword(file, authKey, rawAuth);
+      await sendPassword(file, aKey, rawAuth);
     } catch (e) {
       if (e.message === '401' && file.nonce !== e.nonce) {
-        await sendPassword(file, authKey, rawAuth);
+        await sendPassword(file, aKey, rawAuth);
       } else {
         throw e;
       }

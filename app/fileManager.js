@@ -173,9 +173,9 @@ export default function(state, emitter) {
     }
   });
 
-  emitter.on('password', async ({ password, file }) => {
+  emitter.on('password', async ({ existingPassword, password, file }) => {
     try {
-      await FileSender.setPassword(password, file);
+      await FileSender.setPassword(existingPassword, password, file);
       metrics.addedPassword({ size: file.size });
       file.password = password;
       state.storage.writeFiles();
