@@ -146,6 +146,7 @@ button {
 }
 
 pre {
+  font-family: monospace;
   font-weight: 600;
   display: inline-block;
 }
@@ -420,6 +421,8 @@ tbody {
   border-radius: 0 0 5px;
   border-right: 1px solid #d7d7db;
   border-bottom: 1px solid #d7d7db;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
 }
 
 .popup .show {
@@ -640,6 +643,11 @@ tbody {
   color: #313131;
 }
 
+#deletePopup {
+  position: relative;
+  bottom: 50px;
+}
+
 #delete-file:hover {
   background: #efeff1;
 }
@@ -668,6 +676,18 @@ tbody {
   align-self: left;
   max-width: 100%;
   overflow-wrap: break-word;
+}
+
+.passwordOriginal {
+  display: none;
+}
+
+.selectPassword :hover .passwordOriginal {
+  display: block;
+}
+
+.selectPassword :hover .passwordStar {
+  display: none;
 }
 
 .setPassword {
@@ -729,7 +749,7 @@ tbody {
   cursor: pointer;
   border: 0;
   box-shadow: 0 5px 3px rgb(234, 234, 234);
-  font-family: 'Fira Sans';
+  font-family: 'Fira Sans', 'segoe ui', sans-serif;
   font-weight: 500;
   color: #fff;
   font-size: 26px;
@@ -746,7 +766,7 @@ tbody {
 }
 
 .unsupported-button-text > span {
-  font-family: 'Fira Sans';
+  font-family: 'Fira Sans', 'segoe ui', sans-serif;
   font-weight: 300;
   font-size: 18px;
   letter-spacing: -0.69px;
@@ -943,8 +963,12 @@ tbody {
   visibility: collapse;
 }
 
+#addPasswordWrapper:hover label::before {
+  border: 1px solid #0297f8;
+}
+
 #addPasswordWrapper label {
-  line-height: 20px;
+  line-height: 23px;
   cursor: pointer;
   color: #737373;
 }
@@ -1160,5 +1184,13 @@ tbody {
   td {
     font-size: 13px;
     padding: 17px 5px 0;
+  }
+
+  .popup .popuptext::after {
+    left: 125px;
+  }
+
+  #deletePopup {
+    left: 83px;
   }
 }

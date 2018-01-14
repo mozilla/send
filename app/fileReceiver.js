@@ -6,7 +6,7 @@ export default class FileReceiver extends Nanobus {
     super('FileReceiver');
     this.secretKeyPromise = window.crypto.subtle.importKey(
       'raw',
-      b64ToArray(file.key),
+      b64ToArray(file.secretKey),
       'HKDF',
       false,
       ['deriveKey']
@@ -122,6 +122,9 @@ export default class FileReceiver extends Nanobus {
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 404) {
+            return reject(new Error(xhr.status));
+          }
           const nonce = xhr.getResponseHeader('WWW-Authenticate').split(' ')[1];
           this.file.nonce = nonce;
           if (xhr.status === 200) {
@@ -172,6 +175,8 @@ export default class FileReceiver extends Nanobus {
       this.file.iv = meta.iv;
       this.file.size = data.size;
       this.file.ttl = data.ttl;
+      this.file.dlimit = data.dlimit;
+      this.file.dtotal = data.dtotal;
       this.state = 'ready';
     } catch (e) {
       this.state = 'invalid';

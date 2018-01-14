@@ -25,6 +25,11 @@ uploadingFileNotification = Ειδοποίηση όταν ολοκληρωθεί
 uploadSuccessConfirmHeader = Έτοιμο για αποστολή
 uploadSvgAlt = Μεταφόρτωση
 uploadSuccessTimingHeader = Ο σύνδεσμος του αρχείου σας θα λήξει έπειτα από 1 λήψη ή 24 ώρες.
+expireInfo = Ο σύνδεσμος για το αρχείο σας θα λήξει μετά από { $downloadCount } ή { $timespan }.
+downloadCount = { $num ->
+        [one] 1 λήψη
+       *[other] { $num } λήψεις
+    }
 timespanHours = { $num ->
         [one] 1 ώρα
        *[other] { $num } ώρες
@@ -93,3 +98,4 @@ addPasswordButton = Προσθήκη κωδικού πρόσβασης
 passwordTryAgain = Λάθος κωδικός πρόσβασης. Δοκιμάστε ξανά.
 // This label is followed by the password needed to download a file
 passwordResult = Κωδικός πρόσβασης: { $password }
+reportIPInfringement = Αναφορά παραβίασης IP

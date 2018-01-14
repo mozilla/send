@@ -31,6 +31,11 @@ downloadCount = { $num ->
         [few] { $num } preuzimanja
        *[other] { $num } preuzimanja
     }
+timespanHours = { $num ->
+        [one] 1 sat
+        [few] { $num } sata
+       *[other] { $num } sati
+    }
 copyUrlFormLabelWithName = Iskopirajte i podijelite vezu da biste poslali datoteku: { $filename }
 copyUrlFormButton = Kopiraj u međuspremnik
 copiedUrl = Kopirano!

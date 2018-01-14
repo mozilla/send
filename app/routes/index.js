@@ -7,10 +7,14 @@ const fxPromo = require('../templates/fxPromo');
 
 const app = choo();
 
+function showBanner(state) {
+  return state.promo && !state.route.startsWith('/unsupported/');
+}
+
 function body(template) {
   return function(state, emit) {
     const b = html`<body>
-      ${state.promo ? fxPromo(state, emit) : ''}
+      ${showBanner(state) ? fxPromo(state, emit) : ''}
       ${header(state)}
       <div class="all">
         <noscript>

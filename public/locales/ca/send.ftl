@@ -25,6 +25,15 @@ uploadingFileNotification = Notifica'm quan s'acabi de pujar.
 uploadSuccessConfirmHeader = Llest per enviar
 uploadSvgAlt = Puja
 uploadSuccessTimingHeader = L'enllaç al fitxer caducarà quan es baixi una vegada o d'aquí 24 hores.
+expireInfo = L'enllaç al fitxer caducarà en fer { $downloadCount } o d'aquí { $timespan }.
+downloadCount = { $num ->
+        [one] 1 baixada
+       *[other] { $num } baixades
+    }
+timespanHours = { $num ->
+        [one] 1 hora
+       *[other] { $num } hores
+    }
 copyUrlFormLabelWithName = Copieu l'enllaç i compartiu-lo per enviar el fitxer: { $filename }
 copyUrlFormButton = Copia al porta-retalls
 copiedUrl = Copiat!
@@ -34,6 +43,10 @@ sendAnotherFileLink = Envieu un altre fitxer
 downloadAltText = Baixa
 downloadFileName = Baixeu { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Introduïu la contrasenya
+unlockInputPlaceholder = Contrasenya
+unlockButtonLabel = Desbloca
+downloadFileTitle = Baixa el fitxer xifrat
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Un amic us ha enviat un fitxer amb el Firefox Send, un servei que permet compartir fitxers mitjançant un enllaç segur, privat i xifrat que caduca automàticament per tal que les vostres dades no es conservin a Internet per sempre.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +93,9 @@ footerLinkAbout = Quant al Test Pilot
 footerLinkPrivacy = Privadesa
 footerLinkTerms = Condicions d'ús
 footerLinkCookies = Galetes
+requirePasswordCheckbox = Sol·licita una contrasenya per baixar aquest fitxer
+addPasswordButton = Afegeix una contrasenya
+passwordTryAgain = La contrasenya és incorrecta. Torneu-ho a provar.
+// This label is followed by the password needed to download a file
+passwordResult = Contrasenya: { $password }
+reportIPInfringement = Denuncieu una infracció de propietat intel·lectual
