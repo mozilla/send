@@ -1,6 +1,7 @@
 /* global EXPIRE_SECONDS */
 import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
+
 import { copyToClipboard, delay, fadeOut, percent } from './utils';
 import * as metrics from './metrics';
 
@@ -52,12 +53,25 @@ function exists(id) {
   });
 }
 
+function getDLCounts(file) {
+  return new Promise((resolve, reject) => {
+    const url = `/api/metadata/${file.id}`;
+    const receiver = new FileReceiver(url, file);
+    resolve(receiver.getMetadata(file.nonce));
+    file.dlimit = receiver.file.dlimit;
+  });
+}
+
 export default function(state, emitter) {
   let lastRender = 0;
   let updateTitle = false;
 
   function render() {
     emitter.emit('render');
+  }
+
+  function updateDloads() {
+    emitter.emit('updateDloads');
   }
 
   async function checkFiles() {
@@ -68,6 +82,8 @@ export default function(state, emitter) {
       if (!ok) {
         state.storage.remove(file.id);
         rerender = true;
+      } else {
+        await getDLCounts(file);
       }
     }
     if (rerender) {
@@ -96,6 +112,8 @@ export default function(state, emitter) {
   emitter.on('render', () => {
     lastRender = Date.now();
   });
+
+  // emitter.on('updateDloads', getDLCounts(file));
 
   emitter.on('changeLimit', async ({ file, value }) => {
     await FileSender.changeLimit(file.id, file.ownerToken, value);
@@ -148,6 +166,7 @@ export default function(state, emitter) {
       info.name = file.name;
       info.size = size;
       info.type = type;
+      info.dtotal = file.dtotal;
       info.dlimit = file.dlimit;
       info.time = time;
       info.speed = speed;
@@ -207,8 +226,8 @@ export default function(state, emitter) {
   });
 
   emitter.on('download', async file => {
-    state.transfer.on('progress', render);
-    state.transfer.on('decrypting', render);
+    state.transfer.on('progress', render, updateDloads);
+    state.transfer.on('decrypting', render, updateDloads);
     const links = openLinksInNewTab();
     const size = file.size;
     try {
@@ -221,10 +240,9 @@ export default function(state, emitter) {
       await fadeOut('download-progress');
       saveFile(f);
       state.storage.totalDownloads += 1;
-      file.dlimit = state.storage.totalDownloads;
       state.transfer = null;
       metrics.completedDownload({ size, time, speed });
-      emitter.emit('pushState', '/completed');
+      emitter.emit('pushState', '/completed', 'updateDloads');
     } catch (err) {
       console.error(err);
       // TODO cancelled download
@@ -253,6 +271,7 @@ export default function(state, emitter) {
       Date.now() - lastRender > 30000
     ) {
       render();
+      updateDloads();
     }
   }, 60000);
 }
