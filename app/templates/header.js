@@ -12,6 +12,31 @@ const assets = require('../../common/assets');
 */
 const version = require('../../package.json').version || 'VERSION';
 
+function browserName() {
+  try {
+    if (/firefox/i.test(navigator.userAgent)) {
+      return 'firefox';
+    }
+    if (/edge/i.test(navigator.userAgent)) {
+      return 'edge';
+    }
+    if (/trident/i.test(navigator.userAgent)) {
+      return 'ie';
+    }
+    if (/chrome/i.test(navigator.userAgent)) {
+      return 'chrome';
+    }
+    if (/safari/i.test(navigator.userAgent)) {
+      return 'safari';
+    }
+    return 'other';
+  } catch (e) {
+    return 'unknown';
+  }
+}
+
+const browser = browserName();
+
 module.exports = function(state) {
   return html`<header class="header">
   <div class="send-logo">
@@ -25,7 +50,7 @@ module.exports = function(state) {
       <div>${state.translate('siteSubtitle')}</div>
     </div>
   </div>
-  <a href="https://qsurvey.mozilla.com/s3/txp-firefox-send?ver=${version}"
+  <a href="https://qsurvey.mozilla.com/s3/txp-firefox-send?ver=${version}&browser=${browser}"
     rel="noreferrer noopener"
     class="feedback"
     target="_blank">${state.translate('siteFeedback')}</a>
