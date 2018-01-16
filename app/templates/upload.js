@@ -6,24 +6,26 @@ module.exports = function(state, emit) {
   const transfer = state.transfer;
 
   const div = html`
-  <div id="upload-progress" class="fadeIn">
-    <div class="title" id="upload-filename">${state.translate(
-      'uploadingPageProgress',
-      {
-        filename: transfer.file.name,
-        size: bytes(transfer.file.size)
-      }
-    )}</div>
-    <div class="description"></div>
-    ${progress(transfer.progressRatio)}
-    <div class="upload">
-      <div class="progress-text">${state.translate(
-        transfer.msg,
-        transfer.sizes
+  <div id="download">
+    <div id="upload-progress" class="fadeIn">
+      <div class="title" id="upload-filename">${state.translate(
+        'uploadingPageProgress',
+        {
+          filename: transfer.file.name,
+          size: bytes(transfer.file.size)
+        }
       )}</div>
-      <button id="cancel-upload" title="${state.translate(
-        'uploadingPageCancel'
-      )}" onclick=${cancel}>${state.translate('uploadingPageCancel')}</button>
+      <div class="description"></div>
+      ${progress(transfer.progressRatio)}
+      <div class="upload">
+        <div class="progress-text">${state.translate(
+          transfer.msg,
+          transfer.sizes
+        )}</div>
+        <button id="cancel-upload" title="${state.translate(
+          'uploadingPageCancel'
+        )}" onclick=${cancel}>${state.translate('uploadingPageCancel')}</button>
+      </div>
     </div>
   </div>
   `;
