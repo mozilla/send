@@ -85,6 +85,7 @@ export default function(state, emitter) {
         dlimit: file.dlimit,
         dtotal: file.dtotal
       };
+      fileIdArray.push(file.id);
       dlimitArray.push(fileDetails);
       return false;
     } else {
