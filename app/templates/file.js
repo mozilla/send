@@ -16,14 +16,9 @@ function timeLeft(milliseconds) {
 module.exports = function(file, state, emit) {
   const ttl = file.expiresAt - Date.now();
   const remainingTime = timeLeft(ttl) || state.translate('linkExpiredAlt');
-  let downloadLimit = file.dlimit;
-  let totalDownloads = file.dtotal;
-  if (downloadLimit === undefined) {
-    downloadLimit = 1;
-  }
-  if (totalDownloads === undefined) {
-    totalDownloads = 0;
-  }
+  const downloadLimit = file.dlimit || 1;
+  const totalDownloads = file.dtotal || 0;
+
   const row = html`
   <tr id="${file.id}">
     <td class="overflow-col" title="${
