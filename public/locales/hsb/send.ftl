@@ -99,6 +99,7 @@ footerLinkTerms = Wuměnjenja
 footerLinkCookies = Placki
 requirePasswordCheckbox = Žadajće sej hesło za sćehnjenje tuteje dataje
 addPasswordButton = Hesło přidać
+changePasswordButton = Změnić
 passwordTryAgain = Wopačne hesło. Prošu spytajće hišće raz.
 // This label is followed by the password needed to download a file
 passwordResult = Hesło: { $password }
