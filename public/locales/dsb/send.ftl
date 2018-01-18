@@ -99,6 +99,7 @@ footerLinkTerms = Wuměnjenja
 footerLinkCookies = Cookieje
 requirePasswordCheckbox = Gronidło za ześěgnjenje toś teje dataje pominaś
 addPasswordButton = Gronidło pśidaś
+changePasswordButton = Změniś
 passwordTryAgain = Wopacne gronidło. Wopytajśo hyšći raz.
 // This label is followed by the password needed to download a file
 passwordResult = Gronidło: { $password }
