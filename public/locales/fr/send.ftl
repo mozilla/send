@@ -95,6 +95,7 @@ footerLinkTerms = Conditions d’utilisation
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Exiger un mot de passe pour télécharger ce fichier
 addPasswordButton = Ajouter un mot de passe
+changePasswordButton = Changer
 passwordTryAgain = Mot de passe incorrect. Veuillez réessayer.
 // This label is followed by the password needed to download a file
 passwordResult = Mot de passe : { $password }
