@@ -95,6 +95,7 @@ footerLinkTerms = Taq ojqanem
 footerLinkCookies = Taq kaxlanwey
 requirePasswordCheckbox = Tik'utüx jun ewan tzij richin niqasäx re yakb'äl re'
 addPasswordButton = Titz'aqatisäx Ewan Tzij
+changePasswordButton = Tijalwachïx
 passwordTryAgain = Itzel ri ewan tzij. Tatojtob'ej chik.
 // This label is followed by the password needed to download a file
 passwordResult = Ewan tzij: { $password }
