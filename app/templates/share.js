@@ -10,8 +10,25 @@ function passwordComplete(state, password) {
   const el = html([
     `<div class="selectPassword">${state.translate('passwordResult', {
       password: '<pre></pre>'
-    })}</div>`
+    })}
+    <button id="resetButton">${state.translate('changePasswordButton')}</button>
+    <form id='reset-form' class="setPassword hidden" data-no-csrf>
+      <input id="unlock-reset-input"
+        class="unlock-input input-no-btn"
+        maxlength="64"
+        autocomplete="off"
+        placeholder="${state.translate('unlockInputPlaceholder')}">
+      <input type="submit"
+        id="unlock-reset-btn"
+        class="btn btn-hidden"
+        value="Reset Password"/>
+    </form>
+    </div>`
   ]);
+
+  el.querySelector('#resetButton').onclick = toggleResetInput;
+  el.querySelector('#unlock-reset-input').oninput = inputChanged;
+
   const passwordOriginal = document.createElement('div');
   passwordOriginal.className = 'passwordOriginal';
   passwordOriginal.innerText = password;
@@ -19,9 +36,33 @@ function passwordComplete(state, password) {
   const passwordStar = document.createElement('div');
   passwordStar.className = 'passwordStar';
   passwordStar.innerText = password.replace(/./g, '●');
-  el.lastElementChild.appendChild(passwordOriginal);
-  el.lastElementChild.appendChild(passwordStar);
+
+  el.firstElementChild.appendChild(passwordOriginal);
+  el.firstElementChild.appendChild(passwordStar);
+
   return el;
+}
+
+function inputChanged() {
+  const resetInput = document.getElementById('unlock-reset-input');
+  const resetBtn = document.getElementById('unlock-reset-btn');
+  if (resetInput.value.length > 0) {
+    resetBtn.classList.remove('btn-hidden');
+    resetInput.classList.remove('input-no-btn');
+  } else {
+    resetBtn.classList.add('btn-hidden');
+    resetInput.classList.add('input-no-btn');
+  }
+}
+
+function toggleResetInput(event) {
+  const form = event.target.parentElement.querySelector('form');
+  if (form.style.visibility === 'hidden' || form.style.visibility === '') {
+    form.style.visibility = 'visible';
+  } else {
+    form.style.visibility = 'hidden';
+  }
+  inputChanged();
 }
 
 function expireInfo(file, translate, emit) {
@@ -98,6 +139,21 @@ module.exports = function(state, emit) {
     </div>
   </div>
   `;
+
+  if (div.querySelector('#reset-form'))
+    div.querySelector('#reset-form').onsubmit = resetPassword;
+
+  function resetPassword(event) {
+    event.preventDefault();
+    const existingPassword = document.querySelector('.passwordOriginal')
+      .innerText;
+    const password = document.querySelector('#unlock-reset-input').value;
+    if (password.length > 0) {
+      document.getElementById('copy').classList.remove('wait-password');
+      document.getElementById('copy-btn').disabled = false;
+      emit('password', { existingPassword, password, file });
+    }
+  }
 
   function showPopup() {
     const popupText = document.querySelector('.popuptext');

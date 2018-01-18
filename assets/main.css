@@ -648,6 +648,25 @@ tbody {
   background: #efeff1;
 }
 
+#resetButton {
+  width: 80px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  border-radius: 5px;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-left: 15px;
+  margin-bottom: 12px;
+  line-height: 24px;
+  cursor: pointer;
+  color: #313131;
+}
+
+#resetButton:hover {
+  background: #efeff1;
+}
+
 .send-new {
   font-size: 15px;
   margin: auto;
@@ -857,7 +876,8 @@ tbody {
   padding-right: 10px;
 }
 
-#unlock-btn {
+#unlock-btn,
+#unlock-reset-btn {
   flex: 0 1 165px;
   background: #0297f8;
   border-radius: 0 6px 6px 0;
@@ -874,7 +894,8 @@ tbody {
   white-space: nowrap;
 }
 
-#unlock-btn:hover {
+#unlock-btn:hover,
+#unlock-reset-btn:hover {
   background-color: #0287e8;
 }
 
@@ -1163,7 +1184,8 @@ tbody {
   }
 
   #copy-btn,
-  #unlock-btn {
+  #unlock-btn,
+  #unlock-reset-btn {
     border-radius: 0 0 6px 6px;
     flex: 0 1 65px;
   }

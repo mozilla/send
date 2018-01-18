@@ -52,11 +52,12 @@ module.exports = function(state, emit) {
 
   function setPassword(event) {
     event.preventDefault();
+    const existingPassword = null;
     const password = document.getElementById('unlock-input').value;
     if (password.length > 0) {
       document.getElementById('copy').classList.remove('wait-password');
       document.getElementById('copy-btn').disabled = false;
-      emit('password', { password, file });
+      emit('password', { existingPassword, password, file });
     }
   }
 
