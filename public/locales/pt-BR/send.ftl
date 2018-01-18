@@ -95,6 +95,7 @@ footerLinkTerms = Termos
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Para baixar esse arquivo é necessário uma senha
 addPasswordButton = Adicionar senha
+changePasswordButton = Alterar
 passwordTryAgain = Senha incorreta. Tente novamente.
 // This label is followed by the password needed to download a file
 passwordResult = Senha: { $password }
