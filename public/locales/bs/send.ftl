@@ -97,6 +97,7 @@ footerLinkTerms = Uslovi
 footerLinkCookies = Kolačići
 requirePasswordCheckbox = Zahtjevaj lozinku za preuzimanje ove datoteke
 addPasswordButton = Dodaj lozinku
+changePasswordButton = Promijeni
 passwordTryAgain = Netačna lozinka. Pokušajte ponovo.
 // This label is followed by the password needed to download a file
 passwordResult = Lozinka: { $password }
