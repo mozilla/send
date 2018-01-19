@@ -97,6 +97,7 @@ footerLinkTerms = Podmienky používania
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Pri preberaní súboru vyžadovať heslo
 addPasswordButton = Pridať heslo
+changePasswordButton = Zmeniť
 passwordTryAgain = Nesprávne heslo. Skúste to znova.
 // This label is followed by the password needed to download a file
 passwordResult = Heslo: { $password }
