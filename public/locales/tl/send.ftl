@@ -94,6 +94,7 @@ footerLinkTerms = Mga term
 footerLinkCookies = Mga cookie
 requirePasswordCheckbox = Mangailangan ng isang password upang i-download ang file na ito
 addPasswordButton = Magdagdag ng password
+changePasswordButton = Palitan
 passwordTryAgain = Maling password. Subukan muli.
 // This label is followed by the password needed to download a file
 passwordResult = Password: { $password }
