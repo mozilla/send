@@ -95,6 +95,7 @@ footerLinkTerms = Vilkår
 footerLinkCookies = Infokapsler
 requirePasswordCheckbox = Krever et passord for å laste ned denne filen
 addPasswordButton = Legg til passord
+changePasswordButton = Endre
 passwordTryAgain = Feil passord. Prøv igjen.
 // This label is followed by the password needed to download a file
 passwordResult = Passord: { $password }
