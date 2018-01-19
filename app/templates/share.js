@@ -21,7 +21,7 @@ function passwordComplete(state, password) {
       <input type="submit"
         id="unlock-reset-btn"
         class="btn btn-hidden"
-        value="Reset Password"/>
+        value="${state.translate('changePasswordButton')}"/>
     </form>
     </div>`
   ]);

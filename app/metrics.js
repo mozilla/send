@@ -20,7 +20,7 @@ let experiment = null;
 export default function initialize(state, emitter) {
   appState = state;
   emitter.on('DOMContentLoaded', () => {
-    // addExitHandlers();
+    addExitHandlers();
     experiment = storage.enrolled[0];
     sendEvent(category(), 'visit', {
       cm5: storage.totalUploads,
@@ -29,9 +29,8 @@ export default function initialize(state, emitter) {
     });
     //TODO restart handlers... somewhere
   });
-  emitter.on('exit', evt => {
-    exitEvent(evt);
-  });
+  emitter.on('exit', exitEvent);
+  emitter.on('experiment', experimentEvent);
 }
 
 function category() {
@@ -257,6 +256,10 @@ function exitEvent(target) {
   return sendEvent(category(), 'exited', {
     cd3: urlToMetric(target.currentTarget.href)
   });
+}
+
+function experimentEvent(params) {
+  return sendEvent(category(), 'experiment', params);
 }
 
 // eslint-disable-next-line no-unused-vars

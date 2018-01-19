@@ -1,22 +1,9 @@
 const html = require('choo/html');
 const assets = require('../../common/assets');
 
-// function replaceLinks(str, urls) {
-//   let i = -1;
-//   const s = str.replace(/<a>([^<]+)<\/a>/g, (m, v) => {
-//     i++;
-//     return `<a class="link" href="${urls[i]}">${v}</a>`;
-//   });
-//   return [`<span>${s}</span>`];
-// }
-
 module.exports = function(state, emit) {
-  // function close() {
-  //   document.querySelector('.banner').remove();
-  // }
-
-  function clicked(evt) {
-    emit('exit', evt);
+  function clicked() {
+    emit('experiment', { cd3: 'promo' });
   }
 
   const classes = state.promo === 'blue' ? 'banner banner-blue' : 'banner';
@@ -37,10 +24,3 @@ module.exports = function(state, emit) {
       </div>
     </div>`;
 };
-
-/*
-<img
-  src="${assets.get('close-16.svg')}"
-  class="icon-delete"
-  onclick=${close}>
-*/
