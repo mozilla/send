@@ -54,12 +54,15 @@ function exists(id) {
 }
 */
 
-function getDLCounts(file) {
-  return new Promise((resolve, reject) => {
-    const url = `/api/metadata/${file.id}`;
-    const receiver = new FileReceiver(url, file);
-    resolve(receiver.getMetadata(file.nonce));
-  });
+async function getDLCounts(file) {
+  const url = `/api/metadata/${file.id}`;
+  const receiver = new FileReceiver(url, file);
+  try {
+    await receiver.getMetadata(file.nonce);
+    return receiver.file;
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 export default function(state, emitter) {
@@ -69,6 +72,7 @@ export default function(state, emitter) {
   function render() {
     emitter.emit('render');
   }
+
   /*
 
   function updateDloads() {
@@ -76,7 +80,7 @@ export default function(state, emitter) {
   }
 */
 
-  const dlimitArray = [];
+  /*const dlimitArray = [];
   const fileIdArray = [];
   function ifRerender(file) {
     if (fileIdArray.indexOf(file.id) === -1) {
@@ -85,6 +89,7 @@ export default function(state, emitter) {
         dlimit: file.dlimit,
         dtotal: file.dtotal
       };
+      fileIdArray.push(file.id);
       dlimitArray.push(fileDetails);
       return false;
     } else {
@@ -103,23 +108,24 @@ export default function(state, emitter) {
         }
       }
     }
-  }
+  }*/
 
   async function checkFiles() {
     const files = state.storage.files;
+
     let rerender = false;
 
     for (const file of files) {
-      const receivedFile = await getDLCounts(file).then(function(data) {
-        return data;
-      });
-      console.log(receivedFile);
-      if (receivedFile.dlimit === receivedFile.dtotal) {
+      const receivedFile = await getDLCounts(file);
+      if (receivedFile.dlimit < receivedFile.dtotal + 1) {
         state.storage.remove(file.id);
         rerender = true;
       }
 
-      if (ifRerender(file)) {
+      if (
+        file.dlimit !== receivedFile.dlimit ||
+        file.dtotal !== receivedFile.dtotal
+      ) {
         rerender = true;
       }
     }
