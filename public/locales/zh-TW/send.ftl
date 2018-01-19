@@ -93,6 +93,7 @@ footerLinkTerms = 使用條款
 footerLinkCookies = Cookie
 requirePasswordCheckbox = 需要密碼才能下載此檔案
 addPasswordButton = 新增密碼
+changePasswordButton = 變更
 passwordTryAgain = 密碼不正確，請再試一次。
 // This label is followed by the password needed to download a file
 passwordResult = 密碼: { $password }
