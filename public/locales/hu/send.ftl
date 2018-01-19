@@ -95,6 +95,7 @@ footerLinkTerms = Feltételek
 footerLinkCookies = Sütik
 requirePasswordCheckbox = Jelszó megkövetelése a fájl letöltéséhez
 addPasswordButton = Jelszó hozzáadása
+changePasswordButton = Módosítás
 passwordTryAgain = Helytelen jelszó. Próbálja meg újra.
 // This label is followed by the password needed to download a file
 passwordResult = Jelszó: { $password }
