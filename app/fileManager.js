@@ -61,8 +61,7 @@ async function getDLCounts(file) {
     await receiver.getMetadata(file.nonce);
     return receiver.file;
   } catch (e) {
-    console.log(e);
-    return null;
+    if (e.message === '404') return false;
   }
 }
 
@@ -118,7 +117,7 @@ export default function(state, emitter) {
 
     for (const file of files) {
       const receivedFile = await getDLCounts(file);
-      if (receivedFile) {
+      if (!receivedFile) {
         state.storage.remove(file.id);
         rerender = true;
       }
