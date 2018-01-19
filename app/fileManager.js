@@ -62,6 +62,7 @@ async function getDLCounts(file) {
     return receiver.file;
   } catch (e) {
     console.log(e);
+    return null;
   }
 }
 
@@ -117,7 +118,7 @@ export default function(state, emitter) {
 
     for (const file of files) {
       const receivedFile = await getDLCounts(file);
-      if (receivedFile.dlimit < receivedFile.dtotal + 1) {
+      if (receivedFile) {
         state.storage.remove(file.id);
         rerender = true;
       }
