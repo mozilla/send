@@ -93,6 +93,7 @@ footerLinkTerms = 利用規約
 footerLinkCookies = Cookie
 requirePasswordCheckbox = このファイルをダウンロードするにはパスワードが必要です
 addPasswordButton = パスワードを追加
+changePasswordButton = 変更
 passwordTryAgain = パスワードが正しくありません。再度入力してください。
 // This label is followed by the password needed to download a file
 passwordResult = パスワード: { $password }
