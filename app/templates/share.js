@@ -106,7 +106,18 @@ module.exports = function(state, emit) {
   `;
 
   function passwordComplete(password) {
-    const el = html`<div class="selectPassword">
+    const passwordSpan = html([
+      `<span>${state.translate('passwordResult', {
+        password:
+          '<pre class="passwordOriginal"></pre><pre class="passwordMask"></pre>'
+      })}</span>`
+    ]);
+    const og = passwordSpan.querySelector('.passwordOriginal');
+    const masked = passwordSpan.querySelector('.passwordMask');
+    og.textContent = password;
+    masked.textContent = password.replace(/./g, '●');
+    return html`<div class="selectPassword">
+      ${passwordSpan}
       <button
         id="resetButton"
         onclick=${toggleResetInput}
@@ -129,20 +140,6 @@ module.exports = function(state, emit) {
           value="${state.translate('changePasswordButton')}"/>
       </form>
       </div>`;
-
-    const passwordSpan = html([
-      `<span>${state.translate('passwordResult', {
-        password:
-          '<pre class="passwordOriginal"></pre><pre class="passwordStar"></pre>'
-      })}</span>`
-    ]);
-    passwordSpan.querySelector('.passwordOriginal').textContent = password;
-    passwordSpan.querySelector('.passwordStar').textContent = password.replace(
-      /./g,
-      '●'
-    );
-    el.insertBefore(passwordSpan, el.firstElementChild);
-    return el;
   }
 
   function resetPassword(event) {
