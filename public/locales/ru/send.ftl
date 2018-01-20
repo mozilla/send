@@ -97,6 +97,7 @@ footerLinkTerms = Условия
 footerLinkCookies = Куки
 requirePasswordCheckbox = Требовать пароль для загрузки этого файла
 addPasswordButton = Добавить пароль
+changePasswordButton = Изменить
 passwordTryAgain = Неверный пароль. Попробуйте снова.
 // This label is followed by the password needed to download a file
 passwordResult = Пароль: { $password }
