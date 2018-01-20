@@ -3,9 +3,9 @@ title = Firefox Send
 siteSubtitle = Web 实验
 siteFeedback = 反馈
 uploadPageHeader = 私密、安全的文件分享服务
-uploadPageExplainer = 通过一个安全、私密且受加密的链接发送文件，链接到期后文件将从网上彻底抹去。
+uploadPageExplainer = 通过安全、私密且受加密的链接发送文件，链接到期后文件将从网上彻底抹除。
 uploadPageLearnMore = 详细了解
-uploadPageDropMessage = 拖放您的文件到此处以开始上传
+uploadPageDropMessage = 把文件拖到到此处开始上传
 uploadPageSizeMessage = 为保证运行稳定，建议文件大小不超过 1GB
 uploadPageBrowseButton = 选择一个您电脑上的文件
     .title = 选择一个您电脑上的文件
@@ -46,7 +46,7 @@ downloadAltText
 downloadFileName = 下载 { $filename }
 downloadFileSize = ({ $size })
 // Firefox Send is a brand name and should not be localized.
-downloadMessage = 您的朋友使用 Firefox Send 向您发送一个文件。该服务允许用户以安全、私密、受加密的链接分享一个文件，链接到期后文件将从网上彻底抹去。
+downloadMessage = 您的朋友使用 Firefox Send 向您发送一个文件。该服务允许用户以安全、私密、受加密的链接分享一个文件，链接到期后文件将从网上彻底抹除。
 // Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = 下载
     .title = 下载

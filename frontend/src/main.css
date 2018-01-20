@@ -1,6 +1,6 @@
 /***     index.html     ***/
 html {
-  background: url('resources/send_bg.svg');
+  background: url('../../public/resources/send_bg.svg');
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'segoe ui',
     'helvetica neue', helvetica, ubuntu, roboto, noto, arial, sans-serif;
   font-weight: 200;
@@ -89,7 +89,7 @@ body {
 
 .feedback {
   background-color: #0297f8;
-  background-image: url('resources/feedback.svg');
+  background-image: url('../../public/resources/feedback.svg');
   background-position: 2px 4px;
   background-repeat: no-repeat;
   background-size: 18px;

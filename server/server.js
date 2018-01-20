@@ -9,7 +9,7 @@ const storage = require('./storage.js');
 const Raven = require('raven');
 const crypto = require('crypto');
 const fs = require('fs');
-const version = require('../public/version.json');
+const version = require('../dist/public/version.json');
 
 if (conf.sentry_dsn) {
   Raven.config(conf.sentry_dsn).install();
@@ -19,7 +19,7 @@ const mozlog = require('./log.js');
 
 const log = mozlog('send.server');
 
-const STATIC_PATH = path.join(__dirname, '../public');
+const STATIC_PATH = path.join(__dirname, '../dist/public');
 
 const app = express();
 
@@ -38,27 +38,28 @@ function prodLangs() {
 
 const availableLanguages = conf.l10n_dev ? allLangs() : prodLangs();
 
-if (conf.env === 'development') {
-  const webpack = require('webpack');
-  const webpackDevMiddleware = require('webpack-dev-middleware');
-  const config = require('../webpack.config.js');
-  config.devtool = 'inline-source-map';
-  const compiler = webpack(config);
-  app.use(
-    webpackDevMiddleware(compiler, {
-      publicPath: config.output.publicPath
-    })
-  );
-}
+// dev middleware is broken at the moment because of how webpack builds the
+// handlebars templates. Leaving the commented code here as a mark of shame.
 
+// if (conf.env === 'development') {
+//   const webpack = require('webpack');
+//   const webpackDevMiddleware = require('webpack-dev-middleware');
+//   const config = require('../webpack.config.js');
+//   config.devtool = 'inline-source-map';
+//   const compiler = webpack(config);
+//   const wdm = webpackDevMiddleware(compiler, {
+//     publicPath: config.output.publicPath
+//   });
+//   app.use(wdm);
+// }
+app.set('views', 'dist/views/');
 app.engine(
   'handlebars',
   exphbs({
     defaultLayout: 'main',
-    partialsDir: 'views/partials/',
+    layoutsDir: 'dist/views/layouts',
     helpers: {
       availableLanguages,
-      l10nDev: conf.l10n_dev,
       baseUrl: conf.base_url,
       title: 'Firefox Send',
       description:
@@ -103,6 +104,14 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+app.use(
+  '/resources',
+  express.static(path.join(STATIC_PATH, 'resources'), {
+    setHeaders: function(res) {
+      res.set('Cache-Control', 'public, max-age=31536000, immutable');
+    }
+  })
+);
 app.use(express.static(STATIC_PATH));
 
 app.get('/', (req, res) => {
@@ -185,7 +194,7 @@ app.get('/assets/download/:id', async (req, res) => {
     const contentLength = await storage.length(id);
     res.writeHead(200, {
       'Content-Disposition': `attachment; filename=${meta.filename}`,
-      'Content-Type': meta.mimeType,
+      'Content-Type': 'application/octet-stream',
       'Content-Length': contentLength,
       'X-File-Metadata': JSON.stringify(meta)
     });

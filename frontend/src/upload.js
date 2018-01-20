@@ -13,6 +13,7 @@ import Storage from './storage';
 import * as metrics from './metrics';
 import * as progress from './progress';
 import * as fileList from './fileList';
+import checkImg from '../../public/resources/check-16.svg';
 
 const storage = new Storage();
 
@@ -34,13 +35,13 @@ async function upload(event) {
 
   let file = '';
   if (clickOrDrop === 'drop') {
-    if (!event.originalEvent.dataTransfer.files[0]) {
+    if (!event.dataTransfer.files[0]) {
       uploadWindow.classList.remove('ondrag');
       return;
     }
     if (
-      event.originalEvent.dataTransfer.files.length > 1 ||
-      event.originalEvent.dataTransfer.files[0].size === 0
+      event.dataTransfer.files.length > 1 ||
+      event.dataTransfer.files[0].size === 0
     ) {
       uploadWindow.classList.remove('ondrag');
       document.l10n.formatValue('uploadPageMultipleFilesAlert').then(str => {
@@ -48,7 +49,7 @@ async function upload(event) {
       });
       return;
     }
-    file = event.originalEvent.dataTransfer.files[0];
+    file = event.dataTransfer.files[0];
   } else {
     file = event.target.files[0];
   }
@@ -116,6 +117,13 @@ async function upload(event) {
         const expiration = EXPIRE_SECONDS * 1000;
 
         link.setAttribute('value', `${info.url}#${info.secretKey}`);
+
+        const copyText = document.getElementById('copy-text');
+        copyText.setAttribute(
+          'data-l10n-args',
+          JSON.stringify({ filename: file.name })
+        );
+        copyText.setAttribute('data-l10n-id', 'copyUrlFormLabelWithName');
 
         metrics.completedUpload({
           size: file.size,
@@ -219,8 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
           //disable button for 3s
           copyBtn.disabled = true;
           link.disabled = true;
-          copyBtn.innerHtml =
-            '<img src="/resources/check-16.svg" class="icon-check"></img>';
+          copyBtn.innerHTML = `<img src="${checkImg}" class="icon-check"></img>`;
           setTimeout(() => {
             copyBtn.disabled = !allowedCopy();
             copyBtn.setAttribute('data-l10n-id', 'copyUrlFormButton');

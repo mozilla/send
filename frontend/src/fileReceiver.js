@@ -38,14 +38,13 @@ export default class FileReceiver extends EventEmitter {
         }
 
         const blob = new Blob([this.response]);
-        const type = xhr.getResponseHeader('Content-Type');
         const meta = JSON.parse(xhr.getResponseHeader('X-File-Metadata'));
         const fileReader = new FileReader();
         fileReader.onload = function() {
           resolve({
             data: this.result,
             name: meta.filename,
-            type,
+            type: meta.mimeType,
             iv: meta.id
           });
         };

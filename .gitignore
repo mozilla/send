@@ -1,11 +1,6 @@
 .DS_Store
+dist
 node_modules
-public/upload.js
-public/download.js
-public/version.json
-public/l20n.min.js
-public/polyfill.min.js
 static/*
 !static/info.txt
 test/frontend/bundle.js
-public/main.css

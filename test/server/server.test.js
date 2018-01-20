@@ -163,7 +163,7 @@ describe('Server integration tests', function() {
         res.header['content-disposition'],
         'attachment; filename=test_upload.txt'
       );
-      assert.equal(res.header['content-type'], 'text/plain');
+      assert.equal(res.header['content-type'], 'application/octet-stream');
     });
   });
 

@@ -3,6 +3,8 @@ import Storage from './storage';
 import * as metrics from './metrics';
 import { allowedCopy, copyToClipboard, ONE_DAY_IN_MS } from './utils';
 import bel from 'bel';
+import copyImg from '../../public/resources/copy-16.svg';
+import closeImg from '../../public/resources/close-16.svg';
 
 const HOUR = 1000 * 60 * 60;
 const storage = new Storage();
@@ -58,13 +60,13 @@ function addFile(file) {
     <td>${file.name}</td>
     <td>
       <span class="icon-docs" data-l10n-id="copyUrlHover"></span>
-      <img onclick=${copyClick} src="/resources/copy-16.svg" class="icon-copy" data-l10n-id="copyUrlHover">
+      <img onclick=${copyClick} src="${copyImg}" class="icon-copy" data-l10n-id="copyUrlHover">
       <span data-l10n-id="copiedUrl" class="text-copied" hidden="true"></span>
     </td>
     <td>${timeLeft(countdown)}</td>
     <td>
       <span class="icon-cancel-1" data-l10n-id="deleteButtonHover" title="Delete"></span>
-      <img onclick=${showPopup} src="/resources/close-16.svg" class="icon-delete" data-l10n-id="deleteButtonHover" title="Delete">
+      <img onclick=${showPopup} src="${closeImg}" class="icon-delete" data-l10n-id="deleteButtonHover" title="Delete">
       <div class="popup">
         <div class="popuptext" onclick=${stopProp} onblur=${cancel} tabindex="-1">
           <div class="popup-message" data-l10n-id="deletePopupText"></div>
