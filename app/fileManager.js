@@ -116,15 +116,15 @@ export default function(state, emitter) {
     let rerender = false;
 
     for (const file of files) {
+      const oldLimit = file.dlimit;
+      const oldTotal = file.dtotal;
       const receivedFile = await getDLCounts(file);
       if (!receivedFile) {
         state.storage.remove(file.id);
         rerender = true;
-      }
-
-      if (
-        file.dlimit !== receivedFile.dlimit ||
-        file.dtotal !== receivedFile.dtotal
+      } else if (
+        oldLimit !== receivedFile.dlimit ||
+        oldTotal !== receivedFile.dtotal
       ) {
         rerender = true;
       }
