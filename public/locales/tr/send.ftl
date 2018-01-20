@@ -91,6 +91,7 @@ footerLinkTerms = Şartlar
 footerLinkCookies = Çerezler
 requirePasswordCheckbox = Bu dosyayı indirmek için parola iste
 addPasswordButton = Parola ekle
+changePasswordButton = Değiştir
 passwordTryAgain = Yanlış parola. Yeniden deneyin.
 // This label is followed by the password needed to download a file
 passwordResult = Parola: { $password }
