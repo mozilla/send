@@ -12,7 +12,7 @@ module.exports = function(state, emit) {
     <form class="setPassword hidden" onsubmit=${setPassword} data-no-csrf>
       <input id="unlock-input"
         class="unlock-input input-no-btn"
-        maxlength="64"
+        maxlength="32"
         autocomplete="off"
         placeholder="${state.translate('unlockInputPlaceholder')}"
         type="password"

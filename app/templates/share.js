@@ -6,43 +6,6 @@ const uploadPassword = require('./uploadPassword');
 const selectbox = require('./selectbox');
 const { allowedCopy, delay, fadeOut } = require('../utils');
 
-function passwordComplete(state, password) {
-  const el = html([
-    `<div class="selectPassword">${state.translate('passwordResult', {
-      password: '<pre></pre>'
-    })}
-    <button id="resetButton">${state.translate('changePasswordButton')}</button>
-    <form id='reset-form' class="setPassword hidden" data-no-csrf>
-      <input id="unlock-reset-input"
-        class="unlock-input input-no-btn"
-        maxlength="64"
-        autocomplete="off"
-        placeholder="${state.translate('unlockInputPlaceholder')}">
-      <input type="submit"
-        id="unlock-reset-btn"
-        class="btn btn-hidden"
-        value="${state.translate('changePasswordButton')}"/>
-    </form>
-    </div>`
-  ]);
-
-  el.querySelector('#resetButton').onclick = toggleResetInput;
-  el.querySelector('#unlock-reset-input').oninput = inputChanged;
-
-  const passwordOriginal = document.createElement('div');
-  passwordOriginal.className = 'passwordOriginal';
-  passwordOriginal.innerText = password;
-
-  const passwordStar = document.createElement('div');
-  passwordStar.className = 'passwordStar';
-  passwordStar.innerText = password.replace(/./g, '●');
-
-  el.firstElementChild.appendChild(passwordOriginal);
-  el.firstElementChild.appendChild(passwordStar);
-
-  return el;
-}
-
 function inputChanged() {
   const resetInput = document.getElementById('unlock-reset-input');
   const resetBtn = document.getElementById('unlock-reset-btn');
@@ -57,8 +20,10 @@ function inputChanged() {
 
 function toggleResetInput(event) {
   const form = event.target.parentElement.querySelector('form');
+  const input = document.getElementById('unlock-reset-input');
   if (form.style.visibility === 'hidden' || form.style.visibility === '') {
     form.style.visibility = 'visible';
+    input.focus();
   } else {
     form.style.visibility = 'hidden';
   }
@@ -93,7 +58,7 @@ module.exports = function(state, emit) {
   file.password = file.password || '';
 
   const passwordSection = file.password
-    ? passwordComplete(state, file.password)
+    ? passwordComplete(file.password)
     : uploadPassword(state, emit);
   const div = html`
   <div id="share-link" class="fadeIn">
@@ -140,13 +105,49 @@ module.exports = function(state, emit) {
   </div>
   `;
 
-  if (div.querySelector('#reset-form'))
-    div.querySelector('#reset-form').onsubmit = resetPassword;
+  function passwordComplete(password) {
+    const el = html`<div class="selectPassword">
+      <button
+        id="resetButton"
+        onclick=${toggleResetInput}
+        >${state.translate('changePasswordButton')}</button>
+      <form
+        id='reset-form'
+        class="setPassword hidden"
+        onsubmit=${resetPassword}
+        data-no-csrf>
+        <input id="unlock-reset-input"
+          class="unlock-input input-no-btn"
+          maxlength="32"
+          autocomplete="off"
+          type="password"
+          oninput=${inputChanged}
+          placeholder="${state.translate('unlockInputPlaceholder')}">
+        <input type="submit"
+          id="unlock-reset-btn"
+          class="btn btn-hidden"
+          value="${state.translate('changePasswordButton')}"/>
+      </form>
+      </div>`;
+
+    const passwordSpan = html([
+      `<span>${state.translate('passwordResult', {
+        password:
+          '<pre class="passwordOriginal"></pre><pre class="passwordStar"></pre>'
+      })}</span>`
+    ]);
+    passwordSpan.querySelector('.passwordOriginal').textContent = password;
+    passwordSpan.querySelector('.passwordStar').textContent = password.replace(
+      /./g,
+      '●'
+    );
+    el.insertBefore(passwordSpan, el.firstElementChild);
+    return el;
+  }
 
   function resetPassword(event) {
     event.preventDefault();
-    const existingPassword = document.querySelector('.passwordOriginal')
-      .innerText;
+    const existingPassword = file.password;
     const password = document.querySelector('#unlock-reset-input').value;
     if (password.length > 0) {
       document.getElementById('copy').classList.remove('wait-password');

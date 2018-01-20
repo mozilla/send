@@ -147,6 +147,7 @@ button {
 
 pre {
   font-family: monospace;
+  font-size: 18px;
   font-weight: 600;
   display: inline-block;
 }
@@ -698,7 +699,7 @@ tbody {
 }
 
 .selectPassword :hover .passwordOriginal {
-  display: block;
+  display: inline;
 }
 
 .selectPassword :hover .passwordStar {
