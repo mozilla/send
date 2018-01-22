@@ -12,9 +12,11 @@ module.exports = function(state, emit) {
           <th id="copy-file-list" class="center-col">${state.translate(
             'copyFileList'
           )}</th>
-          <th id="expiry-time-file-list" >${state.translate('timeLeft')}</th>
+          <th id="expiry-time-file-list" >${state.translate(
+            'timeFileList'
+          )}</th>
           <th id="expiry-downloads-file-list" >${state.translate(
-            'downloads'
+            'downloadFileList'
           )}</th>
           <th id="delete-file-list" class="center-col">${state.translate(
             'deleteFileList'

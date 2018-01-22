@@ -73,43 +73,6 @@ export default function(state, emitter) {
     emitter.emit('render');
   }
 
-  /*
-
-  function updateDloads() {
-    emitter.emit('updateDloads');
-  }
-*/
-
-  /*const dlimitArray = [];
-  const fileIdArray = [];
-  function ifRerender(file) {
-    if (fileIdArray.indexOf(file.id) === -1) {
-      const fileDetails = {
-        fileId: file.id,
-        dlimit: file.dlimit,
-        dtotal: file.dtotal
-      };
-      fileIdArray.push(file.id);
-      dlimitArray.push(fileDetails);
-      return false;
-    } else {
-      for (const fileDetail of dlimitArray) {
-        if (file.id === fileDetail.fileId) {
-          if (
-            file.dlimit !== fileDetail.dlimit ||
-            file.dtotal !== fileDetail.dtotal
-          ) {
-            fileDetail.dtotal = file.dtotal;
-            fileDetail.dlimit = file.dlimit;
-            return true;
-          } else {
-            return false;
-          }
-        }
-      }
-    }
-  }*/
-
   async function checkFiles() {
     const files = state.storage.files;
 
