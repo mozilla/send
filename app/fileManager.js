@@ -1,7 +1,6 @@
 /* global EXPIRE_SECONDS */
 import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
-
 import { copyToClipboard, delay, fadeOut, percent } from './utils';
 import * as metrics from './metrics';
 
@@ -36,23 +35,6 @@ function openLinksInNewTab(links, should = true) {
   }
   return links;
 }
-/*
-function exists(id) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-        resolve(xhr.status === 200);
-      }
-    };
-    xhr.onerror = () => resolve(false);
-    xhr.ontimeout = () => resolve(false);
-    xhr.open('get', '/api/exists/' + id);
-    xhr.timeout = 2000;
-    xhr.send();
-  });
-}
-*/
 
 async function getDLCounts(file) {
   const url = `/api/metadata/${file.id}`;
@@ -75,9 +57,7 @@ export default function(state, emitter) {
 
   async function checkFiles() {
     const files = state.storage.files;
-
     let rerender = false;
-
     for (const file of files) {
       const oldLimit = file.dlimit;
       const oldTotal = file.dtotal;
@@ -92,7 +72,6 @@ export default function(state, emitter) {
         rerender = true;
       }
     }
-
     if (rerender) {
       render();
     }
@@ -119,8 +98,6 @@ export default function(state, emitter) {
   emitter.on('render', () => {
     lastRender = Date.now();
   });
-
-  // emitter.on('updateDloads', checkFiles);
 
   emitter.on('changeLimit', async ({ file, value }) => {
     await FileSender.changeLimit(file.id, file.ownerToken, value);

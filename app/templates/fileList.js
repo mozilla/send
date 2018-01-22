@@ -16,7 +16,7 @@ module.exports = function(state, emit) {
             'timeFileList'
           )}</th>
           <th id="expiry-downloads-file-list" >${state.translate(
-            'downloadFileList'
+            'downloadsFileList'
           )}</th>
           <th id="delete-file-list" class="center-col">${state.translate(
             'deleteFileList'
