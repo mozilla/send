@@ -38,6 +38,8 @@ deleteFileButton = Apagar ficheiro
 sendAnotherFileLink = Enviar outro ficheiro
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Transferir
+downloadsFileList = Transferências
+timeFileList = Tempo
 downloadFileName = Transferir { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Digitar palavra-passe
