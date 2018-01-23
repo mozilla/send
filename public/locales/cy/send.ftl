@@ -45,6 +45,8 @@ deleteFileButton = Dileu ffeil
 sendAnotherFileLink = Anfon ffeil arall
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Llwytho i lawr
+downloadsFileList = Llwythi
+timeFileList = Amser
 downloadFileName = Llwytho i lawr { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Rhowch Gyfrinair
