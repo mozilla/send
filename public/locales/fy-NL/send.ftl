@@ -41,6 +41,8 @@ deleteFileButton = Bestân fuortsmite
 sendAnotherFileLink = Noch in bestân ferstjoere
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Downloade
+downloadsFileList = Downloads
+timeFileList = Tiid
 downloadFileName = { $filename } downloade
 downloadFileSize = ({ $size })
 unlockInputLabel = Wachtwurd ynfiere
