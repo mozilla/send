@@ -39,6 +39,8 @@ deleteFileButton = ფაილის წაშლა
 sendAnotherFileLink = სხვა ფაილის გაგზავნა
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = ჩამოტვირთვა
+downloadsFileList = ჩამოტვირთვები
+timeFileList = დრო
 downloadFileName = { $filename } ჩამოტვირთვა
 downloadFileSize = ({ $size })
 unlockInputLabel = შეიყვანეთ პაროლი
