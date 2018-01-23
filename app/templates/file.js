@@ -15,7 +15,9 @@ function timeLeft(milliseconds) {
 
 module.exports = function(file, state, emit) {
   const ttl = file.expiresAt - Date.now();
-  const remaining = timeLeft(ttl) || state.translate('linkExpiredAlt');
+  const remainingTime = timeLeft(ttl) || state.translate('linkExpiredAlt');
+  const downloadLimit = file.dlimit || 1;
+  const totalDownloads = file.dtotal || 0;
   const row = html`
   <tr id="${file.id}">
     <td class="overflow-col" title="${
@@ -29,7 +31,8 @@ module.exports = function(file, state, emit) {
         'copiedUrl'
       )}</span>
     </td>
-    <td>${remaining}</td>
+    <td>${remainingTime}</td>
+    <td class="center-col">${totalDownloads}/${downloadLimit}</td>
     <td class="center-col">
       <img onclick=${showPopup} src="${assets.get(
     'close-16.svg'
