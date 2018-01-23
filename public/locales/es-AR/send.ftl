@@ -42,6 +42,7 @@ sendAnotherFileLink = Enviar otro archivo
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Descargar
 downloadsFileList = Descargas
+timeFileList = Tiempo 
 downloadFileName = Descargar { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Ingresar contraseña
