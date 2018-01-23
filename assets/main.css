@@ -342,8 +342,12 @@ tbody {
   width: 25%;
 }
 
-#expiry-file-list {
+#expiry-time-file-list {
   width: 21%;
+}
+
+#expiry-downloads-file-list {
+  width: 8%;
 }
 
 #delete-file-list {

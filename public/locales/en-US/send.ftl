@@ -41,6 +41,8 @@ deleteFileButton = Delete file
 sendAnotherFileLink = Send another file
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Download
+downloadsFileList = Downloads
+timeFileList = Time
 downloadFileName = Download { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Enter Password

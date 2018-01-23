@@ -36,22 +36,16 @@ function openLinksInNewTab(links, should = true) {
   return links;
 }
 
-function exists(id) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-        resolve(xhr.status === 200);
-      }
-    };
-    xhr.onerror = () => resolve(false);
-    xhr.ontimeout = () => resolve(false);
-    xhr.open('get', '/api/exists/' + id);
-    xhr.timeout = 2000;
-    xhr.send();
-  });
+async function getDLCounts(file) {
+  const url = `/api/metadata/${file.id}`;
+  const receiver = new FileReceiver(url, file);
+  try {
+    await receiver.getMetadata(file.nonce);
+    return receiver.file;
+  } catch (e) {
+    if (e.message === '404') return false;
+  }
 }
-
 export default function(state, emitter) {
   let lastRender = 0;
   let updateTitle = false;
@@ -64,9 +58,16 @@ export default function(state, emitter) {
     const files = state.storage.files;
     let rerender = false;
     for (const file of files) {
-      const ok = await exists(file.id);
-      if (!ok) {
+      const oldLimit = file.dlimit;
+      const oldTotal = file.dtotal;
+      const receivedFile = await getDLCounts(file);
+      if (!receivedFile) {
         state.storage.remove(file.id);
+        rerender = true;
+      } else if (
+        oldLimit !== receivedFile.dlimit ||
+        oldTotal !== receivedFile.dtotal
+      ) {
         rerender = true;
       }
     }
