@@ -41,6 +41,12 @@ deleteFileButton = Tiyuj yakb'äl
 sendAnotherFileLink = Titaq jun chik yakb'äl
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Tiqasäx
+downloadsFileList = Taq qasanïk
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Q'ijul
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Tiqasäx { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Titz'ib'äx Ewan Tzij
