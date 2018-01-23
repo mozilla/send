@@ -39,6 +39,8 @@ deleteFileButton = Buang Fail
 sendAnotherFileLink = Hantar fail lain
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Muat turun
+downloadsFileList = Muat turun
+timeFileList = Masa
 downloadFileName = Muat turun { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Masukkan Kata Laluan
