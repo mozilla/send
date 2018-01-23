@@ -42,7 +42,11 @@ sendAnotherFileLink = Send another file
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Download
 downloadsFileList = Downloads
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = Time
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Download { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Enter Password
