@@ -45,6 +45,8 @@ deleteFileButton = Dataju zhašeć
 sendAnotherFileLink = Druhu dataju pósłać
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Sćahnyć
+downloadsFileList = Sćehnjenja
+timeFileList = Čas
 downloadFileName = { $filename } sćahnyć
 downloadFileSize = ({ $size })
 unlockInputLabel = Hesło zapodać
