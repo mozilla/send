@@ -39,6 +39,8 @@ deleteFileButton = 刪除檔案
 sendAnotherFileLink = 傳送另一個檔案
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = 下載
+downloadsFileList = 下載
+timeFileList = 時間
 downloadFileName = 下載 { $filename }
 downloadFileSize = （{ $size }）
 unlockInputLabel = 輸入密碼
