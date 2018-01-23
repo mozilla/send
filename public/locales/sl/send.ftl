@@ -45,6 +45,8 @@ deleteFileButton = Izbriši datoteko
 sendAnotherFileLink = Pošlji drugo datoteko
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Prenesi
+downloadsFileList = Prenosi
+timeFileList = Čas
 downloadFileName = Prenesi { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Vnesite geslo
