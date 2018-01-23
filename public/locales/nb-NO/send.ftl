@@ -41,6 +41,8 @@ deleteFileButton = Slett fil
 sendAnotherFileLink = Send en annen fil
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Last ned
+downloadsFileList = Nedlastinger
+timeFileList = Tid
 downloadFileName = Last ned { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Skriv inn passord
