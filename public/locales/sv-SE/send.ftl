@@ -41,6 +41,8 @@ deleteFileButton = Ta bort fil
 sendAnotherFileLink = Skicka en annan fil
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Ladda ner
+downloadsFileList = Nedladdningar
+timeFileList = Tid
 downloadFileName = Ladda ner { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Ange lösenord
