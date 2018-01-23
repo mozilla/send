@@ -41,6 +41,8 @@ deleteFileButton = Fájl törlése
 sendAnotherFileLink = Még egy fájl küldése
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Letöltés
+downloadsFileList = Letöltések
+timeFileList = Idő
 downloadFileName = { $filename } letöltése
 downloadFileSize = ({ $size })
 unlockInputLabel = Adja meg a jelszót
