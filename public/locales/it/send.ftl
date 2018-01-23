@@ -41,6 +41,8 @@ deleteFileButton = Elimina file
 sendAnotherFileLink = Invia un altro file
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Scarica
+downloadsFileList = Download
+timeFileList = Scadenza
 downloadFileName = Scarica { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Inserire la password
