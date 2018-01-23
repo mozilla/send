@@ -43,6 +43,8 @@ deleteFileButton = Smazat soubor
 sendAnotherFileLink = Poslat další soubor
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Stáhnout
+downloadsFileList = Stažení
+timeFileList = Zbývá
 downloadFileName = Stáhnout { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Zadejte heslo
@@ -97,6 +99,7 @@ footerLinkTerms = Podmínky
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Vyžadovat heslo pro stažení tohoto souboru
 addPasswordButton = Přidat heslo
+changePasswordButton = Změnit
 passwordTryAgain = Špatné heslo. Zkuste to znovu.
 // This label is followed by the password needed to download a file
 passwordResult = Heslo: { $password }
