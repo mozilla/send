@@ -43,6 +43,8 @@ deleteFileButton = Odstrániť súbor
 sendAnotherFileLink = Odoslať ďalší súbor
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Prevziať
+downloadsFileList = Prevzatí
+timeFileList = Zostáva
 downloadFileName = Prevziať { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Zadajte heslo
