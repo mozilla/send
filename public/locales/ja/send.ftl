@@ -39,6 +39,8 @@ deleteFileButton = ファイルを削除
 sendAnotherFileLink = 他のファイルを送信
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = ダウンロード
+downloadsFileList = ダウンロード
+timeFileList = 時間
 downloadFileName = { $filename } をダウンロード
 downloadFileSize = ({ $size })
 unlockInputLabel = パスワードを入力
