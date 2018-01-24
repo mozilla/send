@@ -43,6 +43,12 @@ deleteFileButton = Удалить файл
 sendAnotherFileLink = Отправить другой файл
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Загрузить
+downloadsFileList = Загрузки
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Время
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Загрузить { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Введите пароль
