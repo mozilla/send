@@ -39,6 +39,12 @@ deleteFileButton = حذف پرونده
 sendAnotherFileLink = ارسال پرونده دیگر
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = دریافت
+downloadsFileList = دریافت‌ها
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = زمان
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = بارگیری { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = گذرواژه را وارد کنید
@@ -93,6 +99,7 @@ footerLinkTerms = شرایط
 footerLinkCookies = کوکی‌ها
 requirePasswordCheckbox = دریافت این پرونده نیاز به گذرواژه دارد
 addPasswordButton = افزودن گذرواژه
+changePasswordButton = تغییر
 passwordTryAgain = کلمه عبور اشتباه است. مجدد تلاش کنید.
 // This label is followed by the password needed to download a file
 passwordResult = گذرواژه: { $password }
