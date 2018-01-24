@@ -41,6 +41,12 @@ deleteFileButton = Slett fil
 sendAnotherFileLink = Send ei anna fil
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Last ned
+downloadsFileList = Nedlastingar
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Tid
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Last ned { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Skriv inn passord
