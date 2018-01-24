@@ -43,6 +43,12 @@ deleteFileButton = Обриши датотеку
 sendAnotherFileLink = Пошаљи другу датотеку
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Преузми
+downloadsFileList = Преузимања
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Време
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Преузимање датотеке { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Унесите лозинку
