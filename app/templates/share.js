@@ -2,33 +2,10 @@
 const html = require('choo/html');
 const assets = require('../../common/assets');
 const notFound = require('./notFound');
-const uploadPassword = require('./uploadPassword');
+const uploadPasswordSet = require('./uploadPasswordSet');
+const uploadPasswordUnset = require('./uploadPasswordUnset');
 const selectbox = require('./selectbox');
 const { allowedCopy, delay, fadeOut } = require('../utils');
-
-function inputChanged() {
-  const resetInput = document.getElementById('unlock-reset-input');
-  const resetBtn = document.getElementById('unlock-reset-btn');
-  if (resetInput.value.length > 0) {
-    resetBtn.classList.remove('btn-hidden');
-    resetInput.classList.remove('input-no-btn');
-  } else {
-    resetBtn.classList.add('btn-hidden');
-    resetInput.classList.add('input-no-btn');
-  }
-}
-
-function toggleResetInput(event) {
-  const form = event.target.parentElement.querySelector('form');
-  const input = document.getElementById('unlock-reset-input');
-  if (form.style.visibility === 'hidden' || form.style.visibility === '') {
-    form.style.visibility = 'visible';
-    input.focus();
-  } else {
-    form.style.visibility = 'hidden';
-  }
-  inputChanged();
-}
 
 function expireInfo(file, translate, emit) {
   const hours = Math.floor(EXPIRE_SECONDS / 60 / 60);
@@ -55,19 +32,16 @@ module.exports = function(state, emit) {
     return notFound(state, emit);
   }
 
-  file.password = file.password || '';
-
-  const passwordSection = file.password
-    ? passwordComplete(file.password)
-    : uploadPassword(state, emit);
+  const passwordSection = file.hasPassword()
+    ? uploadPasswordSet(state, emit)
+    : uploadPasswordUnset(state, emit);
   const div = html`
   <div id="share-link" class="fadeIn">
     <div class="title">${expireInfo(file, state.translate, emit)}</div>
     <div id="share-window">
       <div id="copy-text">
-        ${state.translate('copyUrlFormLabelWithName', {
-          filename: file.name
-        })}</div>
+        ${state.translate('copyUrlFormLabelWithName', { filename: file.name })}
+      </div>
       <div id="copy">
         <input id="link" type="url" value="${file.url}" readonly="true"/>
         <button id="copy-btn"
@@ -86,13 +60,11 @@ module.exports = function(state, emit) {
            <div class="popup-message">${state.translate('deletePopupText')}
            </div>
            <div class="popup-action">
-             <span class="popup-no" onclick=${cancel}>${state.translate(
-    'deletePopupCancel'
-  )}
+             <span class="popup-no" onclick=${cancel}>
+              ${state.translate('deletePopupCancel')}
              </span>
-             <span class="popup-yes" onclick=${deleteFile}>${state.translate(
-    'deletePopupYes'
-  )}
+             <span class="popup-yes" onclick=${deleteFile}>
+              ${state.translate('deletePopupYes')}
              </span>
            </div>
          </div>
@@ -104,54 +76,6 @@ module.exports = function(state, emit) {
     </div>
   </div>
   `;
-
-  function passwordComplete(password) {
-    const passwordSpan = html([
-      `<span>${state.translate('passwordResult', {
-        password:
-          '<pre class="passwordOriginal"></pre><pre class="passwordMask"></pre>'
-      })}</span>`
-    ]);
-    const og = passwordSpan.querySelector('.passwordOriginal');
-    const masked = passwordSpan.querySelector('.passwordMask');
-    og.textContent = password;
-    masked.textContent = password.replace(/./g, '●');
-    return html`<div class="selectPassword">
-      ${passwordSpan}
-      <button
-        id="resetButton"
-        onclick=${toggleResetInput}
-        >${state.translate('changePasswordButton')}</button>
-      <form
-        id='reset-form'
-        class="setPassword hidden"
-        onsubmit=${resetPassword}
-        data-no-csrf>
-        <input id="unlock-reset-input"
-          class="unlock-input input-no-btn"
-          maxlength="32"
-          autocomplete="off"
-          type="password"
-          oninput=${inputChanged}
-          placeholder="${state.translate('unlockInputPlaceholder')}">
-        <input type="submit"
-          id="unlock-reset-btn"
-          class="btn btn-hidden"
-          value="${state.translate('changePasswordButton')}"/>
-      </form>
-      </div>`;
-  }
-
-  function resetPassword(event) {
-    event.preventDefault();
-    const existingPassword = file.password;
-    const password = document.querySelector('#unlock-reset-input').value;
-    if (password.length > 0) {
-      document.getElementById('copy').classList.remove('wait-password');
-      document.getElementById('copy-btn').disabled = false;
-      emit('password', { existingPassword, password, file });
-    }
-  }
 
   function showPopup() {
     const popupText = document.querySelector('.popuptext');

@@ -5,8 +5,9 @@ module.exports = function(state, emit) {
   const label =
     fileInfo.password === null
       ? html`
-          <label class="red"
-            for="unlock-input">${state.translate('passwordTryAgain')}</label>`
+          <label class="red" for="unlock-input">
+            ${state.translate('passwordTryAgain')}
+          </label>`
       : html`
           <label for="unlock-input">
             ${state.translate('unlockInputLabel')}
@@ -48,7 +49,7 @@ module.exports = function(state, emit) {
       document.getElementById('unlock-btn').disabled = true;
       state.fileInfo.url = window.location.href;
       state.fileInfo.password = password;
-      emit('preview');
+      emit('getMetadata');
     }
   }
 

@@ -15,21 +15,6 @@ function b64ToArray(str) {
   return b64.toByteArray(str);
 }
 
-function notify(str) {
-  return str;
-  /* TODO: enable once we have an opt-in ui element
-  if (!('Notification' in window)) {
-    return;
-  } else if (Notification.permission === 'granted') {
-    new Notification(str);
-  } else if (Notification.permission !== 'denied') {
-    Notification.requestPermission(function(permission) {
-      if (permission === 'granted') new Notification(str);
-    });
-  }
-  */
-}
-
 function loadShim(polyfill) {
   return new Promise((resolve, reject) => {
     const shim = document.createElement('script');
@@ -148,7 +133,37 @@ function fadeOut(id) {
   return delay(300);
 }
 
-const ONE_DAY_IN_MS = 86400000;
+function saveFile(file) {
+  const dataView = new DataView(file.plaintext);
+  const blob = new Blob([dataView], { type: file.type });
+  const downloadUrl = URL.createObjectURL(blob);
+
+  if (window.navigator.msSaveBlob) {
+    return window.navigator.msSaveBlob(blob, file.name);
+  }
+  const a = document.createElement('a');
+  a.href = downloadUrl;
+  a.download = file.name;
+  document.body.appendChild(a);
+  a.click();
+  URL.revokeObjectURL(downloadUrl);
+}
+
+function openLinksInNewTab(links, should = true) {
+  links = links || Array.from(document.querySelectorAll('a:not([target])'));
+  if (should) {
+    links.forEach(l => {
+      l.setAttribute('target', '_blank');
+      l.setAttribute('rel', 'noopener noreferrer');
+    });
+  } else {
+    links.forEach(l => {
+      l.removeAttribute('target');
+      l.removeAttribute('rel');
+    });
+  }
+  return links;
+}
 
 module.exports = {
   fadeOut,
@@ -159,8 +174,8 @@ module.exports = {
   copyToClipboard,
   arrayToB64,
   b64ToArray,
-  notify,
   canHasSend,
   isFile,
-  ONE_DAY_IN_MS
+  saveFile,
+  openLinksInNewTab
 };

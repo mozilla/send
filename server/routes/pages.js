@@ -35,7 +35,7 @@ module.exports = {
           routes.toString(
             `/download/${req.params.id}`,
             Object.assign(state(req), {
-              fileInfo: { nonce, pwd: +pwd }
+              fileInfo: { nonce, requiresPassword: +pwd }
             })
           )
         )

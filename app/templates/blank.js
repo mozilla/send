@@ -1,6 +1,6 @@
 const html = require('choo/html');
 
 module.exports = function() {
-  const div = html`<div id="page-one"></div>`;
+  const div = html`<div></div>`;
   return div;
 };

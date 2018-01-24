@@ -116,9 +116,7 @@ describe('Server integration tests', function() {
       .expect(404);
   });
 
-  it('Successfully deletes if the id is valid and the delete token matches', function(
-    done
-  ) {
+  it('Successfully deletes if the id is valid and the delete token matches', function(done) {
     request(server)
       .post('/delete/' + fileId)
       .send({ delete_token: uuid })
