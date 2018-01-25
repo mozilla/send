@@ -37,6 +37,12 @@ deleteFileButton = Dosyayı sil
 sendAnotherFileLink = Başka bir dosya daha gönder
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = İndir
+downloadsFileList = İndirme
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Süre
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = { $filename } dosyasını indir
 downloadFileSize = ({ $size })
 unlockInputLabel = Parolayı yazın
