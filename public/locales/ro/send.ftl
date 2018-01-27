@@ -39,6 +39,12 @@ deleteFileButton = Șterge fișierul
 sendAnotherFileLink = Trimite un alt fișier
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Descarcă
+downloadsFileList = Descărcări
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Timp
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Descarcă { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Introdu parola
@@ -93,6 +99,7 @@ footerLinkTerms = Termeni
 footerLinkCookies = Cookie-uri
 requirePasswordCheckbox = Este necesară o parolă pentru a descărca acest fișier
 addPasswordButton = Adaugă parolă
+changePasswordButton = Modifică
 passwordTryAgain = Parola este incorectă. Încearcă din nou.
 // This label is followed by the password needed to download a file
 passwordResult = Parola: { $password }
