@@ -2,7 +2,7 @@
 title = Firefox Send
 siteSubtitle = un experimento web
 siteFeedback = Reaction
-uploadPageHeader = Compartimento de file private e cryptate
+uploadPageHeader = Compartimento de files private e cryptate
 uploadPageExplainer = Invia files per un ligamine secur, private e cryptate que automaticamente expira pro assecurar que tu datos non resta in linea per sempre.
 uploadPageLearnMore = Saper plus
 uploadPageDropMessage = Depone ci tu file pro comenciar a lo cargar
@@ -42,7 +42,11 @@ sendAnotherFileLink = Inviar un altere file
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Discargar
 downloadsFileList = Discargamentos
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = Tempore
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Discargar { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Insere le contrasigno
