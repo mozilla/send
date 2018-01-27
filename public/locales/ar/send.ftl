@@ -56,6 +56,12 @@ sendAnotherFileLink = أرسل ملفّا آخر
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText
     .alt = نزّل
+downloadsFileList = التنزيلات
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = الوقت
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = نزّل { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = أدخل كلمة السر
@@ -114,6 +120,7 @@ footerLinkTerms = الشروط
 footerLinkCookies = الكعكات
 requirePasswordCheckbox = اطلب كلمة سر لتنزيل هذا الملف
 addPasswordButton = أضِف كلمة سر
+changePasswordButton = غيّر
 passwordTryAgain = كلمة السر خاطئة. أعِد المحاولة.
 // This label is followed by the password needed to download a file
 passwordResult = كلمة السر: { $password }
