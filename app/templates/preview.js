@@ -38,6 +38,10 @@ module.exports = function(state, emit) {
       </button>
     </div>
   </div>`;
+  if (!state.transfer) {
+    const ele = action.querySelector('#download-btn');
+    ele.parentNode.removeChild(ele);
+  }
   if (fileInfo.pwd && !fileInfo.password) {
     action = downloadPassword(state, emit);
   } else if (!state.transfer) {
