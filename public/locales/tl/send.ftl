@@ -40,6 +40,12 @@ deleteFileButton = Burahin ang file
 sendAnotherFileLink = Magpadala ng isang file
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = I-download
+downloadsFileList = Mga Pag-download
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Oras
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = I-download { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Ilagay ang Password
