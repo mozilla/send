@@ -40,7 +40,11 @@ sendAnotherFileLink = Hantar fail lain
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Muat turun
 downloadsFileList = Muat turun
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = Masa
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Muat turun { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Masukkan Kata Laluan
@@ -100,3 +104,10 @@ passwordTryAgain = Kata laluan tidak betul. Cuba lagi.
 // This label is followed by the password needed to download a file
 passwordResult = Kata laluan: { $password }
 reportIPInfringement = Lapor Pencerobohan IP
+javascriptRequired = Firefox Send perlukan JavaScript
+whyJavascript = Kenapa Firefox Send perlukan JavaScript?
+enableJavascript = Sila dayakan JavaScript dan cuba lagi.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
