@@ -40,7 +40,11 @@ sendAnotherFileLink = 他のファイルを送信
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = ダウンロード
 downloadsFileList = ダウンロード
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = 時間
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = { $filename } をダウンロード
 downloadFileSize = ({ $size })
 unlockInputLabel = パスワードを入力
@@ -100,3 +104,10 @@ passwordTryAgain = パスワードが正しくありません。再度入力し�
 // This label is followed by the password needed to download a file
 passwordResult = パスワード: { $password }
 reportIPInfringement = 知的財産侵害報告
+javascriptRequired = Firefox Send を使うには JavaScript が必要です
+whyJavascript = Firefox Send が JavaScript を必要とする理由
+enableJavascript = JavaScript を有効にして再度試してください。
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } 時間 { $minutes } 分
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } 分
