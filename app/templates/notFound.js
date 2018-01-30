@@ -9,12 +9,12 @@ module.exports = function(state) {
       <div class="share-window">
         <img src="${assets.get('illustration_expired.svg')}" id="expired-img">
       </div>
-      <div class="expired-description">${state.translate(
-        'uploadPageExplainer'
-      )}</div>
-      <a class="send-new" href="/" data-state="notfound">${state.translate(
-        'sendYourFilesLink'
-      )}</a>
+      <div class="expired-description">
+        ${state.translate('uploadPageExplainer')}
+      </div>
+      <a class="send-new" href="/" data-state="notfound">
+        ${state.translate('sendYourFilesLink')}
+      </a>
     </div>
   </div>`;
   return div;

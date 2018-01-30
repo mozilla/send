@@ -41,9 +41,10 @@ module.exports = function(state) {
   return html`<header class="header">
   <div class="send-logo">
     <a href="/">
-      <img src="${assets.get(
-        'send_logo.svg'
-      )}" alt="Send"/><h1 class="site-title">Send</h1>
+      <img
+        src="${assets.get('send_logo.svg')}"
+        alt="Send"/>
+      <h1 class="site-title">Send</h1>
     </a>
     <div class="site-subtitle">
       <a href="https://testpilot.firefox.com">Firefox Test Pilot</a>

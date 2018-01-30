@@ -15,30 +15,34 @@ if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
 }
 
 app.use((state, emitter) => {
-  // init state
   state.transfer = null;
   state.fileInfo = null;
   state.translate = locale.getTranslator();
   state.storage = storage;
   state.raven = Raven;
-  emitter.on('DOMContentLoaded', async () => {
-    let reason = null;
+  window.appState = state;
+  emitter.on('DOMContentLoaded', async function checkSupport() {
+    let unsupportedReason = null;
     if (
+      // Firefox < 50
       /firefox/i.test(navigator.userAgent) &&
-      parseInt(navigator.userAgent.match(/firefox\/*([^\n\r]*)\./i)[1], 10) <=
-        49
+      parseInt(navigator.userAgent.match(/firefox\/*([^\n\r]*)\./i)[1], 10) < 50
     ) {
-      reason = 'outdated';
+      unsupportedReason = 'outdated';
     }
     if (/edge\/\d+/i.test(navigator.userAgent)) {
-      reason = 'edge';
+      unsupportedReason = 'edge';
     }
     const ok = await canHasSend(assets.get('cryptofill.js'));
     if (!ok) {
-      reason = /firefox/i.test(navigator.userAgent) ? 'outdated' : 'gcm';
+      unsupportedReason = /firefox/i.test(navigator.userAgent)
+        ? 'outdated'
+        : 'gcm';
     }
-    if (reason) {
-      setTimeout(() => emitter.emit('replaceState', `/unsupported/${reason}`));
+    if (unsupportedReason) {
+      setTimeout(() =>
+        emitter.emit('replaceState', `/unsupported/${unsupportedReason}`)
+      );
     }
   });
 });

@@ -106,3 +106,10 @@ passwordTryAgain = Incorrect password. Try again.
 // This label is followed by the password needed to download a file
 passwordResult = Password: { $password }
 reportIPInfringement = Report IP Infringement
+javascriptRequired = Firefox Send requires JavaScript
+whyJavascript = Why does Firefox Send require JavaScript?
+enableJavascript = Please enable JavaScript and try again.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m

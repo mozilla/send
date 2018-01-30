@@ -15,9 +15,9 @@ const conf = convict({
     env: 'REDIS_HOST'
   },
   listen_address: {
-  format: 'ipaddress',
-  default: '0.0.0.0',
-  env: 'IP_ADDRESS'
+    format: 'ipaddress',
+    default: '0.0.0.0',
+    env: 'IP_ADDRESS'
   },
   listen_port: {
     format: 'port',

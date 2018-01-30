@@ -7,26 +7,33 @@ const fxPromo = require('../templates/fxPromo');
 
 const app = choo();
 
-function showBanner(state) {
-  return state.promo && !state.route.startsWith('/unsupported/');
+function banner(state, emit) {
+  if (state.promo && !state.route.startsWith('/unsupported/')) {
+    return fxPromo(state, emit);
+  }
 }
 
 function body(template) {
   return function(state, emit) {
     const b = html`<body>
-      ${showBanner(state) ? fxPromo(state, emit) : ''}
+      ${banner(state, emit)}
       ${header(state)}
       <div class="all">
         <noscript>
-          <h2>Firefox Send requires JavaScript</h2>
-          <p><a href="https://github.com/mozilla/send/blob/master/docs/faq.md#why-does-firefox-send-require-javascript">Why does Firefox Send require JavaScript?</a></p>
-          <p>Please enable JavaScript and try again.</p>
+          <h2>${state.translate('javascriptRequired')}</h2>
+          <p>
+            <a href="https://github.com/mozilla/send/blob/master/docs/faq.md#why-does-firefox-send-require-javascript">
+            ${state.translate('whyJavascript')}
+            </a>
+          </p>
+          <p>${state.translate('enableJavascript')}</p>
         </noscript>
         ${template(state, emit)}
       </div>
       ${footer(state)}
     </body>`;
     if (state.layout) {
+      // server side only
       return state.layout(state, b);
     }
     return b;
