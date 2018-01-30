@@ -107,3 +107,7 @@ reportIPInfringement = 举报知识产权侵权
 javascriptRequired = Firefox Send 需要 JavaScript
 whyJavascript = 为什么 Firefox Send 需要 JavaScript？
 enableJavascript = 请启用 JavaScript 并重试。
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }时 { $minutes }分
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }分
