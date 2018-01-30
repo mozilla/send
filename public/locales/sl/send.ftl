@@ -46,7 +46,11 @@ sendAnotherFileLink = Pošlji drugo datoteko
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Prenesi
 downloadsFileList = Prenosi
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = Čas
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Prenesi { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Vnesite geslo
@@ -106,3 +110,5 @@ passwordTryAgain = Napačno geslo. Poskusite znova.
 // This label is followed by the password needed to download a file
 passwordResult = Geslo: { $password }
 reportIPInfringement = Prijavite kršitev naslova IP
+javascriptRequired = Firefox Send zahteva JavaScript
+whyJavascript = Zakaj Firefox Send zahteva JavaScript?
