@@ -106,3 +106,10 @@ passwordTryAgain = Itzel ri ewan tzij. Tatojtob'ej chik.
 // This label is followed by the password needed to download a file
 passwordResult = Ewan tzij: { $password }
 reportIPInfringement = Tiya' rutzijol ri Ritzelanik Ajna'oj Ichinil
+javascriptRequired = K'atzinel JavaScript chi re ri Firefox Send
+whyJavascript = 
+enableJavascript = Titz'ij JavaScript richin nitojtob'ëx chik.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }r { $minutes }ch
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }ch
