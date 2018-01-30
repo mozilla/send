@@ -40,7 +40,11 @@ sendAnotherFileLink = 发送其他文件
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = 下载
 downloadsFileList = 下载次数
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = 时间
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = 下载 { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = 请输入密码
@@ -100,3 +104,6 @@ passwordTryAgain = 密码不正确。请重试。
 // This label is followed by the password needed to download a file
 passwordResult = 密码：{ $password }
 reportIPInfringement = 举报知识产权侵权
+javascriptRequired = Firefox Send 需要 JavaScript
+whyJavascript = 为什么 Firefox Send 需要 JavaScript？
+enableJavascript = 请启用 JavaScript 并重试。
