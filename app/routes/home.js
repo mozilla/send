@@ -1,5 +1,5 @@
-const welcome = require('../templates/welcome');
-const upload = require('../templates/upload');
+const welcome = require('../pages/welcome');
+const upload = require('../pages/upload');
 
 module.exports = function(state, emit) {
   if (state.transfer) {

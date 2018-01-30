@@ -2,9 +2,9 @@
 const html = require('choo/html');
 const assets = require('../../common/assets');
 const notFound = require('./notFound');
-const uploadPasswordSet = require('./uploadPasswordSet');
-const uploadPasswordUnset = require('./uploadPasswordUnset');
-const selectbox = require('./selectbox');
+const uploadPasswordSet = require('../templates/uploadPasswordSet');
+const uploadPasswordUnset = require('../templates/uploadPasswordUnset');
+const selectbox = require('../templates/selectbox');
 const { allowedCopy, delay, fadeOut } = require('../utils');
 
 function expireInfo(file, translate, emit) {
@@ -16,7 +16,7 @@ function expireInfo(file, translate, emit) {
     })}</div>`
   ]);
   const select = el.querySelector('select');
-  const options = [1, 2, 3, 4, 5, 20];
+  const options = [1, 2, 3, 4, 5, 20].filter(i => i > (file.dtotal || 0));
   const t = num => translate('downloadCount', { num });
   const changed = value => emit('changeLimit', { file, value });
   select.parentNode.replaceChild(
@@ -32,7 +32,7 @@ module.exports = function(state, emit) {
     return notFound(state, emit);
   }
 
-  const passwordSection = file.hasPassword()
+  const passwordSection = file.hasPassword
     ? uploadPasswordSet(state, emit)
     : uploadPasswordUnset(state, emit);
   const div = html`

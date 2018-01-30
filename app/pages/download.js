@@ -1,5 +1,5 @@
 const html = require('choo/html');
-const progress = require('./progress');
+const progress = require('../templates/progress');
 const { bytes } = require('../utils');
 
 module.exports = function(state, emit) {

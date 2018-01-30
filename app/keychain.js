@@ -83,10 +83,10 @@ export default class Keychain extends Nanobus {
   }
 
   set nonce(n) {
-    if (n !== this.nonce) {
-      this.emit('nonceChanged', n);
+    if (n && n !== this._nonce) {
+      this._nonce = n;
+      this.emit('nonceChanged');
     }
-    this._nonce = n;
   }
 
   setIV(ivB64) {

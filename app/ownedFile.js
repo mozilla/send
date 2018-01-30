@@ -1,6 +1,6 @@
 import Keychain from './keychain';
 import { arrayToB64 } from './utils';
-import { del, metadata, setParams, setPassword } from './api';
+import { del, fileInfo, setParams, setPassword } from './api';
 
 export default class OwnedFile {
   constructor(obj, storage) {
@@ -18,17 +18,14 @@ export default class OwnedFile {
     this.dtotal = obj.dtotal || 0;
     this.keychain = new Keychain(obj.secretKey, obj.nonce);
     this.keychain.on('nonceChanged', () => storage.writeFile(this));
-    if (obj.authKeyB64) {
-      this.authKeyB64 = obj.authKeyB64;
-      this.keychain.setAuthKey(obj.authKeyB64);
-    }
+    this._hasPassword = !!obj.hasPassword;
   }
 
   async setPassword(password) {
     this.password = password;
+    this._hasPassword = true;
     this.keychain.setPassword(password, this.url);
     const result = await setPassword(this.id, this.ownerToken, this.keychain);
-    this.authKeyB64 = await this.keychain.authKeyB64();
     return result;
   }
 
@@ -44,14 +41,15 @@ export default class OwnedFile {
     return Promise.resolve(true);
   }
 
-  hasPassword() {
-    return !!this.authKeyB64;
+  get hasPassword() {
+    return !!this._hasPassword;
   }
 
   async updateDownloadCount() {
     try {
-      const result = await metadata(this.id, this.keychain);
+      const result = await fileInfo(this.id, this.ownerToken);
       this.dtotal = result.dtotal;
+      this.dlimit = result.dlimit;
     } catch (e) {
       if (e.message === '404') {
         this.dtotal = this.dlimit;
@@ -75,7 +73,7 @@ export default class OwnedFile {
       ownerToken: this.ownerToken,
       dlimit: this.dlimit,
       dtotal: this.dtotal,
-      authKeyB64: this.authKeyB64
+      hasPassword: this.hasPassword
     };
   }
 }
