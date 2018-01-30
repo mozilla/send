@@ -46,7 +46,11 @@ sendAnotherFileLink = Drugu dataju pósłaś
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Ześěgnuś
 downloadsFileList = Ześěgnjenja
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = Cas
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = { $filename } ześěgnuś
 downloadFileSize = ({ $size })
 unlockInputLabel = Gronidło zapódaś
@@ -106,3 +110,10 @@ passwordTryAgain = Wopacne gronidło. Wopytajśo hyšći raz.
 // This label is followed by the password needed to download a file
 passwordResult = Gronidło: { $password }
 reportIPInfringement = Pśekśiwjenje IP k wěsći daś
+javascriptRequired = Firefox Send JavaScript trjeba
+whyJavascript = Cogodla Firefox Send JavaScript trjeba?
+enableJavascript = Pšosym zmóžniśo JavaScript a wopytajśo hyšći raz.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } góź. { $minutes } min.
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } min.
