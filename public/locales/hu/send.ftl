@@ -42,7 +42,11 @@ sendAnotherFileLink = Még egy fájl küldése
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Letöltés
 downloadsFileList = Letöltések
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = Idő
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = { $filename } letöltése
 downloadFileSize = ({ $size })
 unlockInputLabel = Adja meg a jelszót
@@ -102,3 +106,10 @@ passwordTryAgain = Helytelen jelszó. Próbálja meg újra.
 // This label is followed by the password needed to download a file
 passwordResult = Jelszó: { $password }
 reportIPInfringement = Szellemi tulajdon megsértésének bejelentése
+javascriptRequired = A Firefox Sendhez JavaScript szükséges
+whyJavascript = Miért van szükség JavaScriptre a Firefox Sendhez?
+enableJavascript = Kérjük engedélyezze a JavaScriptet, majd próbálkozzon újra.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }ó { $minutes }p
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }p
