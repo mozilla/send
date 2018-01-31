@@ -107,7 +107,9 @@ passwordTryAgain = Felaktigt lösenord. Försök igen.
 passwordResult = Lösenord: { $password }
 reportIPInfringement = Rapportera IP-överträdelse
 javascriptRequired = Firefox Send kräver JavaScript
+whyJavascript = Varför kräver Firefox Send JavaScript?
+enableJavascript = Aktivera JavaScript och försök igen.
 // A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
-expiresHoursMinutes = { $hours }h{ $minutes }m
+expiresHoursMinutes = { $hours }t { $minutes }m
 // A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
