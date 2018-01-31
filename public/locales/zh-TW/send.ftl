@@ -40,7 +40,11 @@ sendAnotherFileLink = 傳送另一個檔案
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = 下載
 downloadsFileList = 下載次數
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = 剩餘時間
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = 下載 { $filename }
 downloadFileSize = （{ $size }）
 unlockInputLabel = 輸入密碼
@@ -100,3 +104,10 @@ passwordTryAgain = 密碼不正確，請再試一次。
 // This label is followed by the password needed to download a file
 passwordResult = 密碼: { $password }
 reportIPInfringement = 回報智慧財產權濫用情況
+javascriptRequired = Firefox Send 需要開啟 JavaScript 功能
+whyJavascript = 為什麼 Firefox Send 需要 JavaScript 才能使用？
+enableJavascript = 請開啟 JavaScript 功能後再試一次。
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } 時 { $minutes } 分
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } 分鐘
