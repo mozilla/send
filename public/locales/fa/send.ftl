@@ -104,3 +104,10 @@ passwordTryAgain = کلمه عبور اشتباه است. مجدد تلاش کن
 // This label is followed by the password needed to download a file
 passwordResult = گذرواژه: { $password }
 reportIPInfringement = گزارش تخلف IP
+javascriptRequired = Firefox Send نیازمند جاوااسکریپت است
+whyJavascript = چراFirefox Send جاوااسکریپت لازم دارد؟
+enableJavascript = لطفا جاوااسکریپت را فعال کنید و مجددا تلاش کنید.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }ساعت { $minutes }دقیقه
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } دقیقه
