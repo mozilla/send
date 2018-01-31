@@ -53,6 +53,15 @@ export async function setParams(id, owner_token, params) {
   return response.ok;
 }
 
+export async function fileInfo(id, owner_token) {
+  const response = await fetch(`/api/info/${id}`, post({ owner_token }));
+  if (response.ok) {
+    const obj = await response.json();
+    return obj;
+  }
+  throw new Error(response.status);
+}
+
 export async function metadata(id, keychain) {
   const result = await fetchWithAuthAndRetry(
     `/api/metadata/${id}`,
@@ -63,8 +72,6 @@ export async function metadata(id, keychain) {
     const data = await result.response.json();
     const meta = await keychain.decryptMetadata(b64ToArray(data.metadata));
     return {
-      dtotal: data.dtotal,
-      dlimit: data.dlimit,
       size: data.size,
       ttl: data.ttl,
       iv: meta.iv,

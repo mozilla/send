@@ -1,6 +1,6 @@
-const preview = require('../templates/preview');
-const download = require('../templates/download');
-const notFound = require('../templates/notFound');
+const preview = require('../pages/preview');
+const download = require('../pages/download');
+const notFound = require('../pages/notFound');
 const downloadPassword = require('../templates/downloadPassword');
 const downloadButton = require('../templates/downloadButton');
 

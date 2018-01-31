@@ -29,8 +29,7 @@ module.exports = async function(req, res) {
     const ttl = await storage.ttl(id);
     res.send({
       metadata: meta.metadata,
-      dtotal: +meta.dl,
-      dlimit: +meta.dlimit,
+      finalDownload: +meta.dl + 1 === +meta.dlimit,
       size,
       ttl
     });

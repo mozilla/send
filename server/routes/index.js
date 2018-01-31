@@ -95,6 +95,7 @@ module.exports = function(app) {
   app.post('/api/delete/:id', require('./delete'));
   app.post('/api/password/:id', require('./password'));
   app.post('/api/params/:id', require('./params'));
+  app.post('/api/info/:id', require('./info'));
 
   app.get('/__version__', function(req, res) {
     res.sendFile(require.resolve('../../dist/version.json'));

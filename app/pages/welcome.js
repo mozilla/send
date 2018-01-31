@@ -1,7 +1,7 @@
 /* global MAXFILESIZE */
 const html = require('choo/html');
 const assets = require('../../common/assets');
-const fileList = require('./fileList');
+const fileList = require('../templates/fileList');
 const { bytes, fadeOut } = require('../utils');
 
 module.exports = function(state, emit) {
