@@ -41,6 +41,12 @@ deleteFileButton = Faylı sil
 sendAnotherFileLink = Başqa fayl göndər
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Endir
+downloadsFileList = Endirmələr
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Vaxt
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = { $filename } faylını endir
 downloadFileSize = ({ $size })
 unlockInputLabel = Parol daxil edin
@@ -95,7 +101,15 @@ footerLinkTerms = Şərtlər
 footerLinkCookies = Çərəzlər
 requirePasswordCheckbox = Bu faylı endirmək üçün parol tələb et
 addPasswordButton = Parol əlavə et
+changePasswordButton = Dəyişdir
 passwordTryAgain = Səhv parol. Təkrar yoxlayın.
 // This label is followed by the password needed to download a file
 passwordResult = Parol: { $password }
 reportIPInfringement = Əqli-mülkiyyət pozuntusu bildir
+javascriptRequired = Firefox Send üçün JavaScript lazımdır
+whyJavascript = Firefox Send niyə JavaScript tələb edir?
+enableJavascript = Lütfən JavaScript-i aktiv edib təkrar yoxlayın.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } saat { $minutes } dəq
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } dəq
