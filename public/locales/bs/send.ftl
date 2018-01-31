@@ -108,3 +108,10 @@ passwordTryAgain = Netačna lozinka. Pokušajte ponovo.
 // This label is followed by the password needed to download a file
 passwordResult = Lozinka: { $password }
 reportIPInfringement = Prijavite IP prekršaj
+javascriptRequired = Firefox Send zahtjeva JavaScript
+whyJavascript = Zašto Firefox Send zahtjeva JavaScript?
+enableJavascript = Molimo omogućite JavaScript i pokušajte ponovo.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
