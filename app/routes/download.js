@@ -43,7 +43,7 @@ module.exports = function(state, emit) {
     }
   }
 
-  let pageAction = ''; //default state: we don't have file metadata
+  let pageAction = null; //default state: we don't have file metadata
   if (state.transfer) {
     const s = state.transfer.state;
     if (s === 'downloading' || s === 'complete') {

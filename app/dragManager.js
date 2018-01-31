@@ -6,7 +6,7 @@ export default function(state, emitter) {
       }
     });
     document.body.addEventListener('drop', event => {
-      if (state.route === '/' && !state.transfer) {
+      if (state.route === '/' && !state.uploading) {
         event.preventDefault();
         document.querySelector('.upload-window').classList.remove('ondrag');
         const target = event.dataTransfer;

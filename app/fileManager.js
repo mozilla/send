@@ -92,6 +92,7 @@ export default function(state, emitter) {
     sender.on('progress', updateProgress);
     sender.on('encrypting', render);
     state.transfer = sender;
+    state.uploading = true;
     render();
 
     const links = openLinksInNewTab();
@@ -108,12 +109,10 @@ export default function(state, emitter) {
       await delay(1000);
       await fadeOut('upload-progress');
       openLinksInNewTab(links, false);
-      state.transfer = null;
-
       emitter.emit('pushState', `/share/${ownedFile.id}`);
     } catch (err) {
       console.error(err);
-      state.transfer = null;
+
       if (err.message === '0') {
         //cancelled. do nothing
         metrics.cancelledUpload({ size, type });
@@ -122,6 +121,9 @@ export default function(state, emitter) {
       state.raven.captureException(err);
       metrics.stoppedUpload({ size, type, err });
       emitter.emit('pushState', '/error');
+    } finally {
+      state.uploading = false;
+      state.transfer = null;
     }
   });
 
@@ -170,7 +172,6 @@ export default function(state, emitter) {
       await fadeOut('download-progress');
       saveFile(f);
       state.storage.totalDownloads += 1;
-      state.transfer = null;
       metrics.completedDownload({ size, time, speed });
       emitter.emit('pushState', '/completed');
     } catch (err) {
