@@ -4,6 +4,12 @@ const CopyPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const IS_DEV = process.env.NODE_ENV === 'development';
 
+const regularJSOptions = {
+  babelrc: false,
+  presets: [['env', { modules: false }], 'stage-2'],
+  plugins: ['yo-yoify']
+};
+
 module.exports = {
   entry: {
     vendor: ['babel-polyfill', 'fluent'],
@@ -32,6 +38,16 @@ module.exports = {
             ]
           },
           {
+            include: require.resolve('./app/templates/header'),
+            use: [
+              {
+                loader: 'babel-loader',
+                options: regularJSOptions
+              },
+              './build/version_loader'
+            ]
+          },
+          {
             include: [path.dirname(require.resolve('fluent'))],
             use: [
               {
@@ -51,13 +67,11 @@ module.exports = {
             include: [
               path.resolve(__dirname, 'app'),
               path.resolve(__dirname, 'common'),
-              path.resolve(__dirname, 'node_modules/testpilot-ga/src')
+              path.resolve(__dirname, 'node_modules/testpilot-ga/src'),
+              path.resolve(__dirname, 'node_modules/fluent-intl-polyfill'),
+              path.resolve(__dirname, 'node_modules/intl-pluralrules')
             ],
-            options: {
-              babelrc: false,
-              presets: [['env', { modules: false }], 'stage-2'],
-              plugins: ['yo-yoify']
-            }
+            options: regularJSOptions
           },
           {
             include: [path.resolve(__dirname, 'node_modules')],

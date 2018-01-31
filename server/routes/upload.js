@@ -12,9 +12,12 @@ module.exports = function(req, res) {
   if (!metadata || !auth) {
     return res.sendStatus(400);
   }
-
+  const owner = crypto.randomBytes(10).toString('hex');
   const meta = {
-    delete: crypto.randomBytes(10).toString('hex'),
+    dlimit: 1,
+    dl: 0,
+    owner,
+    delete: owner, // delete is deprecated
     metadata,
     pwd: 0,
     auth: auth.split(' ')[1],
@@ -30,7 +33,7 @@ module.exports = function(req, res) {
       res.set('WWW-Authenticate', `send-v1 ${meta.nonce}`);
       res.json({
         url,
-        delete: meta.delete,
+        owner: meta.owner,
         id: newId
       });
     } catch (e) {

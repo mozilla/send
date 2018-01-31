@@ -25,6 +25,15 @@ uploadingFileNotification = Lɣu-yid ticki yemmed usali.
 uploadSuccessConfirmHeader = Ihegga i walluy
 uploadSvgAlt = Sali
 uploadSuccessTimingHeader = Aseɣwen ar ufaylu-ik ad yemmet ticki yuder-d neɣ deffir n 24 n yisragen.
+expireInfo = Aseɣwen icudden ar ufaylu-inek ad yemmet send { $downloadCount } naɣ { $timespan }.
+downloadCount = { $num ->
+        [one] 1 usider
+       *[other] { $num } isidar
+    }
+timespanHours = { $num ->
+        [one] 1 usrag
+       *[other] { $num } isragen
+    }
 copyUrlFormLabelWithName = Nɣel sakin Bḍu aseɣwen akken ad tazneḍ afaylu-ik: { $filename }
 copyUrlFormButton = Sers ɣef afus
 copiedUrl = Yenɣel!
@@ -87,3 +96,6 @@ footerLinkCookies = Inagan n tuqqna
 requirePasswordCheckbox = YEsra awal uffir akken ad isider afaylu-agi
 addPasswordButton = rnu awal uffir
 passwordTryAgain = Yir awal uffir. Ɛreḍ tikelt nniḍen.
+// This label is followed by the password needed to download a file
+passwordResult = Awal uffir: { $password }
+reportIPInfringement = Neqqes akukel n IP

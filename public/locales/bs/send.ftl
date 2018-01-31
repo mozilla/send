@@ -25,6 +25,17 @@ uploadingFileNotification = Obavijesti me kada otpremanje bude gotovo.
 uploadSuccessConfirmHeader = Spremno za slanje
 uploadSvgAlt = Otpremi
 uploadSuccessTimingHeader = Veza prema vašoj datoteci će isteći nakon prvog preuzimanja ili za 24 sata.
+expireInfo = Link za vašu datoteku će isteći nakon { $downloadCount } ili { $timespan }.
+downloadCount = { $num ->
+        [one] 1 preuzimanja
+        [few] { $num } preuzimanja
+       *[other] { $num } preuzimanja
+    }
+timespanHours = { $num ->
+        [one] 1 sat
+        [few] { $num } sata
+       *[other] { $num } sati
+    }
 copyUrlFormLabelWithName = Iskopirajte i podijelite vezu da biste poslali datoteku: { $filename }
 copyUrlFormButton = Kopiraj u međuspremnik
 copiedUrl = Kopirano!
@@ -32,6 +43,12 @@ deleteFileButton = Izbriši datoteku
 sendAnotherFileLink = Pošalji drugu datoteku
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Preuzmi
+downloadsFileList = Preuzimanja
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Vrijeme
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Preuzmi { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Unesite lozinku
@@ -86,6 +103,15 @@ footerLinkTerms = Uslovi
 footerLinkCookies = Kolačići
 requirePasswordCheckbox = Zahtjevaj lozinku za preuzimanje ove datoteke
 addPasswordButton = Dodaj lozinku
+changePasswordButton = Promijeni
 passwordTryAgain = Netačna lozinka. Pokušajte ponovo.
 // This label is followed by the password needed to download a file
 passwordResult = Lozinka: { $password }
+reportIPInfringement = Prijavite IP prekršaj
+javascriptRequired = Firefox Send zahtjeva JavaScript
+whyJavascript = Zašto Firefox Send zahtjeva JavaScript?
+enableJavascript = Molimo omogućite JavaScript i pokušajte ponovo.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m

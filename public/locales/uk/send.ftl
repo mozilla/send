@@ -25,6 +25,17 @@ uploadingFileNotification = Сповістити мене, коли вивант
 uploadSuccessConfirmHeader = Готовий до надсилання
 uploadSvgAlt = Вивантажити
 uploadSuccessTimingHeader = Час дії цього посилання закінчиться після 1 завантаження, або через 24 години.
+expireInfo = Посилання на ваш файл стане недійсним після { $downloadCount } файла, або через { $timespan }.
+downloadCount = { $num ->
+        [one] 1 завантаження
+        [few] { $num } завантаження
+       *[other] { $num } завантажень
+    }
+timespanHours = { $num ->
+        [one] 1 година
+        [few] { $num } години
+       *[other] { $num } годин
+    }
 copyUrlFormLabelWithName = Скопіювати і поділитися посиланням на ваш файл: { $filename }
 copyUrlFormButton = Копіювати у буфер обміну
 copiedUrl = Скопійовано!
@@ -34,6 +45,10 @@ sendAnotherFileLink = Надіслати інший файл
 downloadAltText = Завантаживи
 downloadFileName = Завантажити { $filename }
 downloadFileSize = ({ $size })
+unlockInputLabel = Введіть пароль
+unlockInputPlaceholder = Пароль
+unlockButtonLabel = Розблокувати
+downloadFileTitle = Завантажити зашифрований файл
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Ваш друг надіслав файл за допомогою Firefox Send, який дозволяє ділитися файлами, використовуючи безпечні, приватні та зашифровані посилання, термін дії яких автоматично закінчується, щоб ваші файли не лишилися в Інтернеті назавжди.
 // Text and title used on the download link/button (indicates an action).
@@ -80,3 +95,9 @@ footerLinkAbout = Про Test Pilot
 footerLinkPrivacy = Приватність
 footerLinkTerms = Умови
 footerLinkCookies = Куки
+requirePasswordCheckbox = Вимагати пароль для завантаження цього файлу
+addPasswordButton = Додати пароль
+passwordTryAgain = Невірний пароль. Спробуйте знову.
+// This label is followed by the password needed to download a file
+passwordResult = Пароль: { $password }
+reportIPInfringement = Повідомити про порушення прав на інтелектуальну власність

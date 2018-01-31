@@ -25,6 +25,13 @@ uploadingFileNotification = Maklumkan saya apabila muat naik selesai.
 uploadSuccessConfirmHeader = Sedia untuk Hantar
 uploadSvgAlt = Muat naik
 uploadSuccessTimingHeader = Pautan ke fail anda akan luput selepas 1 muat turun atau dalam 24 jam.
+expireInfo = Pautan ke fail anda akan luput selepas { $downloadCount } atau { $timespan }.
+downloadCount = { $num ->
+       *[other] { $num } muat turun
+    }
+timespanHours = { $num ->
+       *[other] { $num } jam
+    }
 copyUrlFormLabelWithName = Salin dan kongsi pautan untuk menghantar fail anda: { $filename }
 copyUrlFormButton = Salin ke Klipbod
 copiedUrl = Disalin!
@@ -32,6 +39,12 @@ deleteFileButton = Buang Fail
 sendAnotherFileLink = Hantar fail lain
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Muat turun
+downloadsFileList = Muat turun
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Masa
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Muat turun { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Masukkan Kata Laluan
@@ -86,6 +99,15 @@ footerLinkTerms = Terma
 footerLinkCookies = Kuki
 requirePasswordCheckbox = Perlu kata laluan untuk memuat turun fail ini
 addPasswordButton = Tambah Kata laluan
+changePasswordButton = Tukar
 passwordTryAgain = Kata laluan tidak betul. Cuba lagi.
 // This label is followed by the password needed to download a file
 passwordResult = Kata laluan: { $password }
+reportIPInfringement = Lapor Pencerobohan IP
+javascriptRequired = Firefox Send perlukan JavaScript
+whyJavascript = Kenapa Firefox Send perlukan JavaScript?
+enableJavascript = Sila dayakan JavaScript dan cuba lagi.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m

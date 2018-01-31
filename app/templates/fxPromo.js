@@ -1,26 +1,22 @@
 const html = require('choo/html');
 const assets = require('../../common/assets');
 
-// function replaceLinks(str, urls) {
-//   let i = -1;
-//   const s = str.replace(/<a>([^<]+)<\/a>/g, (m, v) => {
-//     i++;
-//     return `<a class="link" href="${urls[i]}">${v}</a>`;
-//   });
-//   return [`<span>${s}</span>`];
-// }
-
 module.exports = function(state, emit) {
-  // function close() {
-  //   document.querySelector('.banner').remove();
-  // }
-
-  function clicked(evt) {
-    emit('exit', evt);
+  function clicked() {
+    emit('experiment', { cd3: 'promo' });
+  }
+  let classes = 'banner';
+  switch (state.promo) {
+    case 'blue':
+      classes = 'banner banner-blue';
+      break;
+    case 'pink':
+      classes = 'banner banner-pink';
+      break;
   }
 
   return html`
-    <div class="banner">
+    <div class="${classes}">
       <div>
         <img
         src="${assets.get('firefox_logo-only.svg')}"
@@ -35,10 +31,3 @@ module.exports = function(state, emit) {
       </div>
     </div>`;
 };
-
-/*
-<img
-  src="${assets.get('close-16.svg')}"
-  class="icon-delete"
-  onclick=${close}>
-*/

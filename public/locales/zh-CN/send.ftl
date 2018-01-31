@@ -25,6 +25,13 @@ uploadingFileNotification = 上传完成后通知我。
 uploadSuccessConfirmHeader = 准备好发送
 uploadSvgAlt = 上传
 uploadSuccessTimingHeader = 您的文件的链接将在首次下载或 24 小时后过期。
+expireInfo = 指向该文件的链接将在 { $downloadCount } 或 { $timespan } 后过期。
+downloadCount = { $num ->
+       *[other] { $num } 次下载
+    }
+timespanHours = { $num ->
+       *[other] { $num } 小时
+    }
 copyUrlFormLabelWithName = 复制并分享链接以发送您的文件：{ $filename }
 copyUrlFormButton = 复制到剪贴板
 copiedUrl = 已复制！
@@ -32,6 +39,12 @@ deleteFileButton = 删除文件
 sendAnotherFileLink = 发送其他文件
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = 下载
+downloadsFileList = 下载次数
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = 时间
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = 下载 { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = 请输入密码
@@ -86,6 +99,15 @@ footerLinkTerms = 条款
 footerLinkCookies = Cookie
 requirePasswordCheckbox = 持有密码才能下载此文件
 addPasswordButton = 添加密码
+changePasswordButton = 更改
 passwordTryAgain = 密码不正确。请重试。
 // This label is followed by the password needed to download a file
 passwordResult = 密码：{ $password }
+reportIPInfringement = 举报知识产权侵权
+javascriptRequired = Firefox Send 需要 JavaScript
+whyJavascript = 为什么 Firefox Send 需要 JavaScript？
+enableJavascript = 请启用 JavaScript 并重试。
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }时 { $minutes }分
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }分

@@ -19,6 +19,11 @@ const conf = convict({
     default: false,
     env: 'REDIS_EVENT_EXPIRE'
   },
+  listen_address: {
+    format: 'ipaddress',
+    default: '0.0.0.0',
+    env: 'IP_ADDRESS'
+  },
   listen_port: {
     format: 'port',
     default: 1443,

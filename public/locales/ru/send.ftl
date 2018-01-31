@@ -25,6 +25,17 @@ uploadingFileNotification = Оповестить меня, когда загру
 uploadSuccessConfirmHeader = Готов к отправке
 uploadSvgAlt = Загрузить
 uploadSuccessTimingHeader = Ссылка на ваш файл станет недоступна после 1 загрузки файла или через 24 часа.
+expireInfo = Ссылка на ваш файл станет недоступна после { $downloadCount } файла или через { $timespan }.
+downloadCount = { $num ->
+        [one] { $number } загрузки
+        [few] { $number } загрузок
+       *[other] { $number } загрузок
+    }
+timespanHours = { $num ->
+        [one] { $number } час
+        [few] { $number } часа
+       *[other] { $number } часов
+    }
 copyUrlFormLabelWithName = Скопировать и поделиться ссылкой на отправку вашего файла: { $filename }
 copyUrlFormButton = Скопировать в буфер обмена
 copiedUrl = Скопировано!
@@ -32,6 +43,12 @@ deleteFileButton = Удалить файл
 sendAnotherFileLink = Отправить другой файл
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Загрузить
+downloadsFileList = Загрузки
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Время
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Загрузить { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Введите пароль
@@ -86,6 +103,8 @@ footerLinkTerms = Условия
 footerLinkCookies = Куки
 requirePasswordCheckbox = Требовать пароль для загрузки этого файла
 addPasswordButton = Добавить пароль
+changePasswordButton = Изменить
 passwordTryAgain = Неверный пароль. Попробуйте снова.
 // This label is followed by the password needed to download a file
 passwordResult = Пароль: { $password }
+reportIPInfringement = Сообщить о нарушении прав на интеллектуальную собственность

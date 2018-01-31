@@ -25,6 +25,15 @@ uploadingFileNotification = Notify me when the upload is complete.
 uploadSuccessConfirmHeader = Ready to Send
 uploadSvgAlt = Upload
 uploadSuccessTimingHeader = The link to your file will expire after 1 download or in 24 hours.
+expireInfo = The link to your file will expire after { $downloadCount } or { $timespan }.
+downloadCount = { $num ->
+        [one] 1 download
+       *[other] { $num } downloads
+    }
+timespanHours = { $num ->
+        [one] 1 hour
+       *[other] { $num } hours
+    }
 copyUrlFormLabelWithName = Copy and share the link to send your file: { $filename }
 copyUrlFormButton = Copy to clipboard
 copiedUrl = Copied!
@@ -32,6 +41,12 @@ deleteFileButton = Delete file
 sendAnotherFileLink = Send another file
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Download
+downloadsFileList = Downloads
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Time
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Download { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Enter Password
@@ -86,6 +101,15 @@ footerLinkTerms = Terms
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Require a password to download this file
 addPasswordButton = Add password
+changePasswordButton = Change
 passwordTryAgain = Incorrect password. Try again.
 // This label is followed by the password needed to download a file
 passwordResult = Password: { $password }
+reportIPInfringement = Report IP Infringement
+javascriptRequired = Firefox Send requires JavaScript
+whyJavascript = Why does Firefox Send require JavaScript?
+enableJavascript = Please enable JavaScript and try again.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m

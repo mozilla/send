@@ -54,7 +54,11 @@ module.exports = function(app) {
           ],
           imgSrc: ["'self'", 'https://www.google-analytics.com'],
           scriptSrc: ["'self'"],
-          styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
+          styleSrc: [
+            "'self'",
+            "'unsafe-inline'",
+            'https://code.cdn.mozilla.net'
+          ],
           fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
           formAction: ["'none'"],
           frameAncestors: ["'none'"],
@@ -90,6 +94,8 @@ module.exports = function(app) {
   app.post('/api/upload', require('./upload'));
   app.post('/api/delete/:id', require('./delete'));
   app.post('/api/password/:id', require('./password'));
+  app.post('/api/params/:id', require('./params'));
+  app.post('/api/info/:id', require('./info'));
 
   app.get('/__version__', function(req, res) {
     res.sendFile(require.resolve('../../dist/version.json'));

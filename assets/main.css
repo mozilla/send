@@ -146,6 +146,8 @@ button {
 }
 
 pre {
+  font-family: monospace;
+  font-size: 18px;
   font-weight: 600;
   display: inline-block;
 }
@@ -226,7 +228,6 @@ a {
 
 .upload-window.ondrag {
   border: 5px dashed rgba(0, 148, 251, 0.5);
-  margin: 0 auto;
   height: 251px;
   transform: scale(1.04);
   border-radius: 4.2px;
@@ -235,6 +236,10 @@ a {
   align-items: center;
   flex-direction: column;
   text-align: center;
+}
+
+.upload-window.ondrag * {
+  pointer-events: none;
 }
 
 .link {
@@ -337,8 +342,12 @@ tbody {
   width: 25%;
 }
 
-#expiry-file-list {
+#expiry-time-file-list {
   width: 21%;
+}
+
+#expiry-downloads-file-list {
+  width: 8%;
 }
 
 #delete-file-list {
@@ -413,6 +422,8 @@ tbody {
   border-radius: 0 0 5px;
   border-right: 1px solid #d7d7db;
   border-bottom: 1px solid #d7d7db;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
 }
 
 .popup .show {
@@ -601,6 +612,7 @@ tbody {
   color: white;
   cursor: pointer;
   font-size: 15px;
+  padding-bottom: 4px;
   padding-left: 10px;
   padding-right: 10px;
   white-space: nowrap;
@@ -632,7 +644,31 @@ tbody {
   color: #313131;
 }
 
+#deletePopup {
+  position: relative;
+  bottom: 50px;
+}
+
 #delete-file:hover {
+  background: #efeff1;
+}
+
+#resetButton {
+  width: 80px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  border-radius: 5px;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-left: 15px;
+  margin-bottom: 12px;
+  line-height: 24px;
+  cursor: pointer;
+  color: #313131;
+}
+
+#resetButton:hover {
   background: #efeff1;
 }
 
@@ -660,6 +696,18 @@ tbody {
   align-self: left;
   max-width: 100%;
   overflow-wrap: break-word;
+}
+
+.passwordOriginal {
+  display: none;
+}
+
+.selectPassword :hover .passwordOriginal {
+  display: inline;
+}
+
+.selectPassword :hover .passwordMask {
+  display: none;
 }
 
 .setPassword {
@@ -721,7 +769,7 @@ tbody {
   cursor: pointer;
   border: 0;
   box-shadow: 0 5px 3px rgb(234, 234, 234);
-  font-family: 'Fira Sans';
+  font-family: 'Fira Sans', 'segoe ui', sans-serif;
   font-weight: 500;
   color: #fff;
   font-size: 26px;
@@ -738,7 +786,7 @@ tbody {
 }
 
 .unsupported-button-text > span {
-  font-family: 'Fira Sans';
+  font-family: 'Fira Sans', 'segoe ui', sans-serif;
   font-weight: 300;
   font-size: 18px;
   letter-spacing: -0.69px;
@@ -833,20 +881,26 @@ tbody {
   padding-right: 10px;
 }
 
-#unlock-btn {
+#unlock-btn,
+#unlock-reset-btn {
   flex: 0 1 165px;
   background: #0297f8;
   border-radius: 0 6px 6px 0;
   border: 1px solid #0297f8;
   color: white;
   cursor: pointer;
+
+  /* Force flat button look */
+  -webkit-appearance: none;
   font-size: 15px;
+  padding-bottom: 3px;
   padding-left: 10px;
   padding-right: 10px;
   white-space: nowrap;
 }
 
-#unlock-btn:hover {
+#unlock-btn:hover,
+#unlock-reset-btn:hover {
   background-color: #0287e8;
 }
 
@@ -931,15 +985,18 @@ tbody {
   visibility: collapse;
 }
 
+#addPasswordWrapper:hover label::before {
+  border: 1px solid #0297f8;
+}
+
 #addPasswordWrapper label {
-  line-height: 20px;
+  line-height: 23px;
   cursor: pointer;
-  position: relative;
-  opacity: 0.6;
+  color: #737373;
 }
 
 #addPassword:checked + label {
-  opacity: 1;
+  color: #000;
 }
 
 #addPasswordWrapper label::before {
@@ -979,6 +1036,77 @@ tbody {
 
 .banner > div > span {
   margin-left: 10px;
+}
+
+.banner-blue {
+  background: linear-gradient(-180deg, #45a1ff 0%, #00feff 94%);
+  color: #fff;
+}
+
+.banner-blue a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.banner-blue a:hover {
+  color: #eee;
+  font-weight: bold;
+}
+
+.banner-pink {
+  background: linear-gradient(-180deg, #ff9400 0%, #ff1ad9 94%);
+  color: #fff;
+}
+
+.banner-pink a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.banner-pink a:hover {
+  color: #eee;
+  font-weight: bold;
+}
+
+.selectbox {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.selectSelected {
+  cursor: pointer;
+}
+
+.selectOptions {
+  display: none;
+}
+
+.selectOptions.active {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 40px 0;
+  background-color: white;
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  border-radius: 4px;
+  box-shadow: 1px 2px 4px rgba(12, 12, 13, 0.3);
+}
+
+.selectOption {
+  color: #737373;
+  font-size: 12pt;
+  list-style: none;
+  user-select: none;
+  white-space: nowrap;
+  padding: 0 60px;
+  border-bottom: 1px solid rgba(12, 12, 13, 0.3);
+}
+
+.selectOption:hover {
+  background-color: #f4f4f4;
 }
 
 @media (max-device-width: 992px), (max-width: 992px) {
@@ -1076,7 +1204,8 @@ tbody {
   }
 
   #copy-btn,
-  #unlock-btn {
+  #unlock-btn,
+  #unlock-reset-btn {
     border-radius: 0 0 6px 6px;
     flex: 0 1 65px;
   }
@@ -1093,5 +1222,13 @@ tbody {
   td {
     font-size: 13px;
     padding: 17px 5px 0;
+  }
+
+  .popup .popuptext::after {
+    left: 125px;
+  }
+
+  #deletePopup {
+    left: 83px;
   }
 }

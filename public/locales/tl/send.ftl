@@ -25,6 +25,14 @@ uploadingFileNotification = Abisuhan ako kapag nakumpleto na ang pag-upload.
 uploadSuccessConfirmHeader = Handa nang Ipadala
 uploadSvgAlt = I-upload
 uploadSuccessTimingHeader = Mag-e-expire ang link sa iyong file pagkatapos ng 1 pag-download o sa loob ng 24 na oras.
+expireInfo = Mag-e-expire ang link sa iyong file pagkatapos ng { $downloadCount } o { $timespan }.
+downloadCount = { $num ->
+        [one] 1 pag-download
+       *[other] { $num } na mga pag-download
+    }
+timespanHours = { $num ->
+       *[one] 1 oras
+    }
 copyUrlFormLabelWithName = Kopyahin at ibahagi ang link upang ipadala ang iyong file: { $filename }
 copyUrlFormButton = Kopyahin sa clipboard
 copiedUrl = Naikopya!
@@ -32,6 +40,12 @@ deleteFileButton = Burahin ang file
 sendAnotherFileLink = Magpadala ng isang file
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = I-download
+downloadsFileList = Mga Pag-download
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Oras
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = I-download { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Ilagay ang Password
@@ -67,7 +81,7 @@ downloadFirefoxButtonSub = Libreng Download
 uploadedFile = File
 copyFileList = Kopyahin ang URL
 // expiryFileList is used as a column header
-expiryFileList = Magtatapos Sa 
+expiryFileList = Magtatapos Sa
 deleteFileList = I-delete
 nevermindButton = Hindi bale
 legalHeader = Mga Tuntunin at Pagkapribado
@@ -86,6 +100,15 @@ footerLinkTerms = Mga term
 footerLinkCookies = Mga cookie
 requirePasswordCheckbox = Mangailangan ng isang password upang i-download ang file na ito
 addPasswordButton = Magdagdag ng password
+changePasswordButton = Palitan
 passwordTryAgain = Maling password. Subukan muli.
 // This label is followed by the password needed to download a file
 passwordResult = Password: { $password }
+reportIPInfringement = Report IP Infringement
+javascriptRequired = Nangangailangan ang JavaScript sa JavaScript
+whyJavascript = Bakit ang JavaScript ay nangangailangan ng JavaScript?
+enableJavascript = Mangyaring paganahin ang JavaScript at subukan muli.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m

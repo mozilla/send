@@ -25,6 +25,15 @@ uploadingFileNotification = Notificarme cuando la subida se complete.
 uploadSuccessConfirmHeader = Listo para enviar
 uploadSvgAlt = Subir
 uploadSuccessTimingHeader = El enlace al archivo expirará después de 1 descarga o en 24 horas.
+expireInfo = El enlace a tu archivo expirará después de { $downloadCount } o { $timespan }.
+downloadCount = { $num ->
+        [one] 1 descarga
+       *[other] { $num } descargas
+    }
+timespanHours = { $num ->
+        [one] 1 hora
+       *[other] { $num } horas
+    }
 copyUrlFormLabelWithName = Copiá y compartí el enlace para enviar tu archivo: { $filename }
 copyUrlFormButton = Copiar al portapapeles
 copiedUrl = ¡Copiado!
@@ -32,6 +41,12 @@ deleteFileButton = Borrar archivo
 sendAnotherFileLink = Enviar otro archivo
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Descargar
+downloadsFileList = Descargas
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Tiempo 
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Descargar { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Ingresar contraseña
@@ -86,6 +101,15 @@ footerLinkTerms = Términos
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Requerir contraseña para descargar este archivo
 addPasswordButton = Agregar contraseña
+changePasswordButton = Cambiar
 passwordTryAgain = Contraseña incorrecta. Intentá nuevamente.
 // This label is followed by the password needed to download a file
 passwordResult = Contraseña: { $password }
+reportIPInfringement = Informar violación de propiedad intelectual
+javascriptRequired = Firefox Send requiere JavaScript
+whyJavascript = ¿Por qué Firefox Send requiere Java Script?
+enableJavascript = Por favor habilite JavaScript y pruebe de nuevo.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = h { $hours } m { $minutes }
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = m { $minutes }

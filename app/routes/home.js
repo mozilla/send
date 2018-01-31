@@ -1,9 +1,8 @@
-const welcome = require('../templates/welcome');
-const upload = require('../templates/upload');
+const welcome = require('../pages/welcome');
+const upload = require('../pages/upload');
 
 module.exports = function(state, emit) {
-  if (state.transfer && state.transfer.iv) {
-    //TODO relying on 'iv' is gross
+  if (state.transfer) {
     return upload(state, emit);
   }
   return welcome(state, emit);

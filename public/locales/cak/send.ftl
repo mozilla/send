@@ -25,6 +25,15 @@ uploadingFileNotification = Tiya' pe rutzijol chwe toq xtitz'aqät rujotob'axik.
 uploadSuccessConfirmHeader = Ütz chik richin Nitaq
 uploadSvgAlt = Tijotob'äx
 uploadSuccessTimingHeader = Ri ruximonel yakb'äl xtik'is ruq'ijul toq xtiqasäx jumul o pa 24 ramaj.
+expireInfo = Ri ruximöy ayakb'al xtik'is ruq'ijul chi rij ri { $downloadCount } o { $timespan }.
+downloadCount = { $num ->
+        [one] 1 qasanïk
+       *[other] { $num } taq qasanïk
+    }
+timespanHours = { $num ->
+        [one] 1 ramaj
+       *[other] { $num } taq ramaj
+    }
 copyUrlFormLabelWithName = Tiwachib'ëx  chuqa' tikomonïx ri ximonel richin nitaq ri ayakb'äl: { $filename }
 copyUrlFormButton = Tiwachib'ëx pa molwuj
 copiedUrl = ¡Xwachib'ëx!
@@ -32,6 +41,12 @@ deleteFileButton = Tiyuj yakb'äl
 sendAnotherFileLink = Titaq jun chik yakb'äl
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Tiqasäx
+downloadsFileList = Taq qasanïk
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Q'ijul
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Tiqasäx { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Titz'ib'äx Ewan Tzij
@@ -86,6 +101,15 @@ footerLinkTerms = Taq ojqanem
 footerLinkCookies = Taq kaxlanwey
 requirePasswordCheckbox = Tik'utüx jun ewan tzij richin niqasäx re yakb'äl re'
 addPasswordButton = Titz'aqatisäx Ewan Tzij
+changePasswordButton = Tijalwachïx
 passwordTryAgain = Itzel ri ewan tzij. Tatojtob'ej chik.
 // This label is followed by the password needed to download a file
 passwordResult = Ewan tzij: { $password }
+reportIPInfringement = Tiya' rutzijol ri Ritzelanik Ajna'oj Ichinil
+javascriptRequired = K'atzinel JavaScript chi re ri Firefox Send
+whyJavascript = 
+enableJavascript = Titz'ij JavaScript richin nitojtob'ëx chik.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }r { $minutes }ch
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }ch

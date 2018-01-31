@@ -25,6 +25,13 @@ uploadingFileNotification = შეტყობინება, ატვირ�
 uploadSuccessConfirmHeader = მზადაა გასაგზავნად
 uploadSvgAlt = ატვირთვა
 uploadSuccessTimingHeader = ფაილს ვადა გაუვა 1 ჩამოტვირთვის, ან 24 საათის მერე.
+expireInfo = ფაილის ბმულს, ვადა გაუვა { $downloadCount }, ან { $timespan } მერე.
+downloadCount = { $num ->
+       *[other] { $num } ჩამოტვირთვა
+    }
+timespanHours = { $num ->
+       *[other] { $num } საათი
+    }
 copyUrlFormLabelWithName = დააკოპირეთ და გააზიარეთ ბმული, ფაილის გასაგზავნად: { $filename }
 copyUrlFormButton = დაკოპირება
 copiedUrl = დაკოპირდა!
@@ -32,7 +39,9 @@ deleteFileButton = ფაილის წაშლა
 sendAnotherFileLink = სხვა ფაილის გაგზავნა
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = ჩამოტვირთვა
-downloadFileName = { $filename } ჩამოტვირთვა 
+downloadsFileList = ჩამოტვირთვები
+timeFileList = დრო
+downloadFileName = { $filename } ჩამოტვირთვა
 downloadFileSize = ({ $size })
 unlockInputLabel = შეიყვანეთ პაროლი
 unlockInputPlaceholder = პაროლი
@@ -86,6 +95,8 @@ footerLinkTerms = პირობები
 footerLinkCookies = ფუნთუშები
 requirePasswordCheckbox = პაროლის მოთხოვნა, ფაილის ჩამოტვირთვისას
 addPasswordButton = პაროლის დამატება
+changePasswordButton = შეცვლა
 passwordTryAgain = პაროლი არასწორია. სცადეთ ხელახლა.
 // This label is followed by the password needed to download a file
 passwordResult = პაროლი: { $password }
+reportIPInfringement = მოხსენება დარღვევაზე

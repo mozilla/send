@@ -1,4 +1,5 @@
 import { isFile } from './utils';
+import OwnedFile from './ownedFile';
 
 class Mem {
   constructor() {
@@ -42,7 +43,7 @@ class Storage {
       const k = this.engine.key(i);
       if (isFile(k)) {
         try {
-          const f = JSON.parse(this.engine.getItem(k));
+          const f = new OwnedFile(JSON.parse(this.engine.getItem(k)));
           if (!f.id) {
             f.id = f.fileId;
           }
@@ -108,11 +109,15 @@ class Storage {
 
   addFile(file) {
     this._files.push(file);
+    this.writeFile(file);
+  }
+
+  writeFile(file) {
     this.engine.setItem(file.id, JSON.stringify(file));
   }
 
   writeFiles() {
-    this._files.forEach(f => this.engine.setItem(f.id, JSON.stringify(f)));
+    this._files.forEach(f => this.writeFile(f));
   }
 }
 

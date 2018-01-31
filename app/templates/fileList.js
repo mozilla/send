@@ -9,13 +9,18 @@ module.exports = function(state, emit) {
       <thead>
         <tr>
           <th id="uploaded-file">${state.translate('uploadedFile')}</th>
-          <th id="copy-file-list" class="center-col">${state.translate(
-            'copyFileList'
-          )}</th>
-          <th id="expiry-file-list">${state.translate('expiryFileList')}</th>
-          <th id="delete-file-list" class="center-col">${state.translate(
-            'deleteFileList'
-          )}</th>
+          <th id="copy-file-list" class="center-col">
+            ${state.translate('copyFileList')}
+          </th>
+          <th id="expiry-time-file-list" >
+            ${state.translate('timeFileList')}
+          </th>
+          <th id="expiry-downloads-file-list" >
+            ${state.translate('downloadsFileList')}
+          </th>
+          <th id="delete-file-list" class="center-col">
+            ${state.translate('deleteFileList')}
+          </th>
         </tr>
       </thead>
       <tbody>

@@ -20,7 +20,7 @@ let experiment = null;
 export default function initialize(state, emitter) {
   appState = state;
   emitter.on('DOMContentLoaded', () => {
-    // addExitHandlers();
+    addExitHandlers();
     experiment = storage.enrolled[0];
     sendEvent(category(), 'visit', {
       cm5: storage.totalUploads,
@@ -29,9 +29,8 @@ export default function initialize(state, emitter) {
     });
     //TODO restart handlers... somewhere
   });
-  emitter.on('exit', evt => {
-    exitEvent(evt);
-  });
+  emitter.on('exit', exitEvent);
+  emitter.on('experiment', experimentEvent);
 }
 
 function category() {
@@ -205,6 +204,16 @@ function stoppedUpload(params) {
   });
 }
 
+function changedDownloadLimit(params) {
+  return sendEvent('sender', 'download-limit-changed', {
+    cm1: params.size,
+    cm5: storage.totalUploads,
+    cm6: storage.files.length,
+    cm7: storage.totalDownloads,
+    cm8: params.dlimit
+  });
+}
+
 function completedDownload(params) {
   return sendEvent('recipient', 'download-stopped', {
     cm1: params.size,
@@ -249,6 +258,10 @@ function exitEvent(target) {
   });
 }
 
+function experimentEvent(params) {
+  return sendEvent(category(), 'experiment', params);
+}
+
 // eslint-disable-next-line no-unused-vars
 function addExitHandlers() {
   const links = Array.from(document.querySelectorAll('a'));
@@ -272,6 +285,7 @@ export {
   cancelledUpload,
   stoppedUpload,
   completedUpload,
+  changedDownloadLimit,
   deletedUpload,
   startedDownload,
   cancelledDownload,

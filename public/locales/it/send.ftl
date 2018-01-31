@@ -25,6 +25,15 @@ uploadingFileNotification = Invia una notifica quando il caricamento è completa
 uploadSuccessConfirmHeader = Pronto per l’invio
 uploadSvgAlt = Carica
 uploadSuccessTimingHeader = Il link al file scadrà dopo 1 download o in 24 ore.
+expireInfo = Il link a questo file scadrà dopo { $downloadCount } o { $timespan }.
+downloadCount = { $num ->
+        [one] 1 download
+       *[other] { $num } download
+    }
+timespanHours = { $num ->
+        [one] 1 ora
+       *[other] { $num } ore
+    }
 copyUrlFormLabelWithName = Copia e condividi il link per inviare il tuo file: { $filename }
 copyUrlFormButton = Copia negli appunti
 copiedUrl = Copiato
@@ -32,6 +41,8 @@ deleteFileButton = Elimina file
 sendAnotherFileLink = Invia un altro file
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Scarica
+downloadsFileList = Download
+timeFileList = Scadenza
 downloadFileName = Scarica { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Inserire la password
@@ -86,6 +97,8 @@ footerLinkTerms = Condizioni di utilizzo
 footerLinkCookies = Cookie
 requirePasswordCheckbox = Richiedi una password per poter scaricare questo file
 addPasswordButton = Aggiungi password
+changePasswordButton = Modifica
 passwordTryAgain = Password errata, riprovare.
 // This label is followed by the password needed to download a file
 passwordResult = Password: { $password }
+reportIPInfringement = Segnala violazione della proprietà intellettuale

@@ -25,6 +25,15 @@ uploadingFileNotification = Varsle meg når opplastingen er ferdig.
 uploadSuccessConfirmHeader = Klar til å sende
 uploadSvgAlt = Last opp
 uploadSuccessTimingHeader = Lenken til filen din utløper etter 1 nedlasting eller om 24 timer.
+expireInfo = Lenken til filen din vil gå ut etter { $downloadCount } eller { $timespan }.
+downloadCount = { $num ->
+        [one] 1 nedlasting
+       *[other] { $num } nedlastinger
+    }
+timespanHours = { $num ->
+        [one] 1 time
+       *[other] { $num } timer
+    }
 copyUrlFormLabelWithName = Kopier og del linken for å sende filen: { $filename }
 copyUrlFormButton = Kopier til utklippstavle
 copiedUrl = Kopiert!
@@ -32,6 +41,12 @@ deleteFileButton = Slett fil
 sendAnotherFileLink = Send en annen fil
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Last ned
+downloadsFileList = Nedlastinger
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Tid
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Last ned { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Skriv inn passord
@@ -86,6 +101,15 @@ footerLinkTerms = Vilkår
 footerLinkCookies = Infokapsler
 requirePasswordCheckbox = Krever et passord for å laste ned denne filen
 addPasswordButton = Legg til passord
+changePasswordButton = Endre
 passwordTryAgain = Feil passord. Prøv igjen.
 // This label is followed by the password needed to download a file
 passwordResult = Passord: { $password }
+reportIPInfringement = Rapporter brudd på åndsverk
+javascriptRequired = Firefox Send krever JavaScript.
+whyJavascript = Hvorfor krever Firefox Send JavaScript?
+enableJavascript = Slå på JavaScript og prøv igjen.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }t { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m

@@ -25,6 +25,15 @@ uploadingFileNotification = Varsle meg når opplastinga er ferdig.
 uploadSuccessConfirmHeader = Klår til å senda
 uploadSvgAlt = Last opp
 uploadSuccessTimingHeader = Lenka til fila di går ut etter 1 nedlasting eller om 24 timar.
+expireInfo = Lenka til fila di vil gå ut etter { $downloadCount } eller { $timespan }.
+downloadCount = { $num ->
+        [one] 1 nedlasting
+       *[other] { $num } nedlastingar
+    }
+timespanHours = { $num ->
+        [one] 1 time
+       *[other] { $num } timar
+    }
 copyUrlFormLabelWithName = Kopier og del lenka for å sende fila: { $filename }
 copyUrlFormButton = Kopier til utklippstavla
 copiedUrl = Kopiert!
@@ -32,6 +41,12 @@ deleteFileButton = Slett fil
 sendAnotherFileLink = Send ei anna fil
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Last ned
+downloadsFileList = Nedlastingar
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Tid
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Last ned { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Skriv inn passord
@@ -86,6 +101,8 @@ footerLinkTerms = Vilkår
 footerLinkCookies = Infokapslar
 requirePasswordCheckbox = Krev eit passord for å laste ned denne fila
 addPasswordButton = Legg til passord
+changePasswordButton = Endre
 passwordTryAgain = Feil passord. Prøv på nytt.
 // This label is followed by the password needed to download a file
 passwordResult = Passord: { $password }
+reportIPInfringement = Rapporter brot på åndsverk

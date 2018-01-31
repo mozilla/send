@@ -5,18 +5,22 @@ module.exports = function(state, emit) {
   const div = html`
   <div class="selectPassword">
     <div id="addPasswordWrapper">
-      <input id="addPassword" type="checkbox" autocomplete="off" onchange=${
-        togglePasswordInput
-      }/>
+      <input
+        id="addPassword"
+        type="checkbox"
+        autocomplete="off"
+        onchange=${togglePasswordInput}/>
       <label for="addPassword">
-        ${state.translate('requirePasswordCheckbox')}</label>
+        ${state.translate('requirePasswordCheckbox')}
+      </label>
     </div>
     <form class="setPassword hidden" onsubmit=${setPassword} data-no-csrf>
       <input id="unlock-input"
         class="unlock-input input-no-btn"
-        maxlength="64"
+        maxlength="32"
         autocomplete="off"
         placeholder="${state.translate('unlockInputPlaceholder')}"
+        type="password"
         oninput=${inputChanged}/>
       <input type="submit"
         id="unlock-btn"

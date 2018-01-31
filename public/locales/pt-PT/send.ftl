@@ -24,31 +24,43 @@ uploadingPageLargeFileMessage = Este ficheiro é grande e pode demorar um pouco 
 uploadingFileNotification = Notificar-me quando o carregamento estiver completo.
 uploadSuccessConfirmHeader = Pronto para enviar
 uploadSvgAlt = Carregar
-uploadSuccessTimingHeader = A ligação para o seu ficheiro irá expirar depois de 1 descarga ou em 24 horas.
+uploadSuccessTimingHeader = A ligação para o seu ficheiro irá expirar depois de 1 transferência ou em 24 horas.
+expireInfo = A ligação para o seu ficheiro irá expirar depois de { $downloadCount } or { $timespan }.
+downloadCount = { $num ->
+        [one] 1 transferência
+       *[other] { $num } transferências
+    }
+timespanHours = 1 hora
 copyUrlFormLabelWithName = Copie e partilhe a ligação para enviar o seu ficheiro: { $filename }
 copyUrlFormButton = Copiar para a área de transferência
 copiedUrl = Copiado!
 deleteFileButton = Apagar ficheiro
 sendAnotherFileLink = Enviar outro ficheiro
 // Alternative text used on the download link/button (indicates an action).
-downloadAltText = Descarregar
-downloadFileName = Descarregar { $filename }
+downloadAltText = Transferir
+downloadsFileList = Transferências
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Tempo
+// Used as header in a column indicating the number of times a file has been
+// downloaded
+downloadFileName = Transferir { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Digitar palavra-passe
 unlockInputPlaceholder = Palavra-passe
 unlockButtonLabel = Desbloquear
-downloadFileTitle = Descarregar ficheiro encriptado
+downloadFileTitle = Transferir ficheiro encriptado
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiro com uma ligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
 // Text and title used on the download link/button (indicates an action).
-downloadButtonLabel = Descarregar
-downloadNotification = A sua descarga foi completada.
-downloadFinish = Descarga completada
+downloadButtonLabel = Transferir
+downloadNotification = A sua transferência foi concluída.
+downloadFinish = Transferência concluída
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
 // Firefox Send is a brand name and should not be localized.
-sendYourFilesLink = Tentar o Firefox Send
-downloadingPageProgress = A descarregar { $filename } ({ $size })
+sendYourFilesLink = Experimentar o Firefox Send
+downloadingPageProgress = A transferir { $filename } ({ $size })
 downloadingPageMessage = Por favor deixe este separador aberto enquanto obtemos o seu ficheiro e o desencriptamos.
 errorAltText = Erro ao carregar
 errorPageHeader = Algo correu mal.
@@ -63,7 +75,7 @@ notSupportedDetail = Infelizmente este navegador não suporta a tecnologia web q
 notSupportedLink = Porque é que o meu navegador não é suportado?
 notSupportedOutdatedDetail = Infelizmente esta versão do Firefox não suporta a tecnologia web que faz o Firefox Send funcionar. Precisa de atualizar o seu navegador.
 updateFirefox = Atualizar o Firefox
-downloadFirefoxButtonSub = Descarga gratuita
+downloadFirefoxButtonSub = Transferência gratuita
 uploadedFile = Ficheiro
 copyFileList = Copiar URL
 // expiryFileList is used as a column header
@@ -72,7 +84,7 @@ deleteFileList = Apagar
 nevermindButton = Esquecer
 legalHeader = Termos e privacidade
 legalNoticeTestPilot = O Firefox Send é atualmente uma experiência do Test Pilot, e sujeita aos <a>Termos de serviço</a> e <a>Aviso de privacidade</a> do Test Pilot. Pode saber mais acerca desta experiência e a sua recolha de dados <a>aqui</a>.
-legalNoticeMozilla = A utilização do website do Firefox Send está também sujeita ao <a>Aviso de privacidade dos websites</a> e <a>Termos de serviço dos websites</a> da Mozilla.
+legalNoticeMozilla = A utilização do website do Firefox Send está também sujeita ao <a>Aviso de privacidade dos websites</a> e <a>Termos de utilização dos websites</a> da Mozilla.
 deletePopupText = Apagar este ficheiro?
 deletePopupYes = Sim
 deletePopupCancel = Cancelar
@@ -84,8 +96,17 @@ footerLinkAbout = Acerca do Test Pilot
 footerLinkPrivacy = Privacidade
 footerLinkTerms = Termos
 footerLinkCookies = Cookies
-requirePasswordCheckbox = Requerer uma palavra-passe para descarregar este ficheiro
+requirePasswordCheckbox = Requerer uma palavra-passe para transferir este ficheiro
 addPasswordButton = Adicionar palavra-passe
+changePasswordButton = Alterar
 passwordTryAgain = Palavra-passe incorreta. Tente novamente.
 // This label is followed by the password needed to download a file
 passwordResult = Palavra-passe: { $password }
+reportIPInfringement = Reportar violação de PI
+javascriptRequired = O Firefox Send requer JavaScript
+whyJavascript = Porque é que o Firefox Send requer JavaScript?
+enableJavascript = Por favor ative o JavaScript e tente novamente.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m

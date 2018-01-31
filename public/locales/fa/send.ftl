@@ -25,6 +25,13 @@ uploadingFileNotification = هر وقت بارگذاری تمام شد به من
 uploadSuccessConfirmHeader = آماده برای ارسال
 uploadSvgAlt = بارگذاری
 uploadSuccessTimingHeader = پیوند به پرونده شما بعد از ۱ بار دانلود یا ۲۴ ساعت حذف خواهد شد.
+expireInfo = این پیوند به فایل شما پس از { $downloadCount } یا { $timespan } منقضی خواهد شد.
+downloadCount = { $num ->
+       *[other] ۱ بارگذاری
+    }
+timespanHours = { $num ->
+       *[other] ۱ ساعت
+    }
 copyUrlFormLabelWithName = برای ارسال پرونده پیوند آن را رونوشت و به اشتراک بگذارید: { $filename }
 copyUrlFormButton = رونوشت به کلیپ‌بورد
 copiedUrl = رونوشت شد!
@@ -32,6 +39,12 @@ deleteFileButton = حذف پرونده
 sendAnotherFileLink = ارسال پرونده دیگر
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = دریافت
+downloadsFileList = دریافت‌ها
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = زمان
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = بارگیری { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = گذرواژه را وارد کنید
@@ -86,4 +99,15 @@ footerLinkTerms = شرایط
 footerLinkCookies = کوکی‌ها
 requirePasswordCheckbox = دریافت این پرونده نیاز به گذرواژه دارد
 addPasswordButton = افزودن گذرواژه
+changePasswordButton = تغییر
 passwordTryAgain = کلمه عبور اشتباه است. مجدد تلاش کنید.
+// This label is followed by the password needed to download a file
+passwordResult = گذرواژه: { $password }
+reportIPInfringement = گزارش تخلف IP
+javascriptRequired = Firefox Send نیازمند جاوااسکریپت است
+whyJavascript = چراFirefox Send جاوااسکریپت لازم دارد؟
+enableJavascript = لطفا جاوااسکریپت را فعال کنید و مجددا تلاش کنید.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }ساعت { $minutes }دقیقه
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } دقیقه

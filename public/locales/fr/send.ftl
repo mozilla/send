@@ -25,6 +25,15 @@ uploadingFileNotification = M’envoyer une notification lorsque l’envoi est t
 uploadSuccessConfirmHeader = Paré à l’envoi
 uploadSvgAlt = Envoyer
 uploadSuccessTimingHeader = Le lien vers votre fichier expirera après le premier téléchargement ou au bout de 24 heures.
+expireInfo = Le lien vers votre fichier expirera après { $downloadCount } ou { $timespan }.
+downloadCount = { $num ->
+        [one] 1 téléchargement
+       *[other] { $num } téléchargements
+    }
+timespanHours = { $num ->
+        [one] 1 heure
+       *[other] { $num } heures
+    }
 copyUrlFormLabelWithName = Copiez et partagez le lien pour envoyer votre fichier : { $filename }
 copyUrlFormButton = Copier dans le presse-papiers
 copiedUrl = Lien copié !
@@ -32,9 +41,15 @@ deleteFileButton = Supprimer le fichier
 sendAnotherFileLink = Envoyer un autre fichier
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Télécharger
+downloadsFileList = Téléchargements
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Heure
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Télécharger { $filename }
 downloadFileSize = ({ $size })
-unlockInputLabel = Saisissez un mot de passe
+unlockInputLabel = Saisissez le mot de passe
 unlockInputPlaceholder = Mot de passe
 unlockButtonLabel = Déverrouiller
 downloadFileTitle = Télécharger le fichier chiffré
@@ -86,6 +101,15 @@ footerLinkTerms = Conditions d’utilisation
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Exiger un mot de passe pour télécharger ce fichier
 addPasswordButton = Ajouter un mot de passe
+changePasswordButton = Changer
 passwordTryAgain = Mot de passe incorrect. Veuillez réessayer.
 // This label is followed by the password needed to download a file
 passwordResult = Mot de passe : { $password }
+reportIPInfringement = Signaler une violation de la p.i.
+javascriptRequired = Firefox Send nécessite JavaScript
+whyJavascript = Pourquoi Firefox Send nécessite-t-il JavaScript ?
+enableJavascript = Veuillez activer JavaScript puis réessayer.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } h { $minutes } min
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } min

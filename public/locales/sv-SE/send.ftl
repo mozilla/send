@@ -25,6 +25,15 @@ uploadingFileNotification = Meddela mig när uppladdningen är klar.
 uploadSuccessConfirmHeader = Klar för att skicka
 uploadSvgAlt = Ladda upp
 uploadSuccessTimingHeader = Länken till din fil upphör att gälla efter 1 nedladdning eller om 24 timmar.
+expireInfo = Länken till din fil upphör att gälla efter { $downloadCount } eller { $timespan }.
+downloadCount = { $num ->
+        [one] 1 nedladdning
+       *[other] { $num } nedladdningar
+    }
+timespanHours = { $num ->
+        [one] 1 timme
+       *[other] { $num } timmar
+    }
 copyUrlFormLabelWithName = Kopiera och dela länken för att skicka din fil: { $filename }
 copyUrlFormButton = Kopiera till urklipp
 copiedUrl = Kopierad!
@@ -32,6 +41,12 @@ deleteFileButton = Ta bort fil
 sendAnotherFileLink = Skicka en annan fil
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Ladda ner
+downloadsFileList = Nedladdningar
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Tid
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Ladda ner { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Ange lösenord
@@ -86,6 +101,15 @@ footerLinkTerms = Villkor
 footerLinkCookies = Kakor
 requirePasswordCheckbox = Kräver ett lösenord för att ladda ner den här filen
 addPasswordButton = Lägg till lösenord
+changePasswordButton = Ändra
 passwordTryAgain = Felaktigt lösenord. Försök igen.
 // This label is followed by the password needed to download a file
 passwordResult = Lösenord: { $password }
+reportIPInfringement = Rapportera IP-överträdelse
+javascriptRequired = Firefox Send kräver JavaScript
+whyJavascript = Varför kräver Firefox Send JavaScript?
+enableJavascript = Aktivera JavaScript och försök igen.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }t { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m

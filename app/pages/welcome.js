@@ -1,8 +1,8 @@
+/* global MAXFILESIZE */
 const html = require('choo/html');
 const assets = require('../../common/assets');
-const fileList = require('./fileList');
-const fxPromo = require('./fxPromo');
-const { fadeOut } = require('../utils');
+const fileList = require('../templates/fileList');
+const { bytes, fadeOut } = require('../utils');
 
 module.exports = function(state, emit) {
   const div = html`
@@ -10,14 +10,18 @@ module.exports = function(state, emit) {
     <div class="title">${state.translate('uploadPageHeader')}</div>
     <div class="description">
       <div>${state.translate('uploadPageExplainer')}</div>
-      <a href="https://testpilot.firefox.com/experiments/send"
-        class="link">${state.translate('uploadPageLearnMore')}</a>
+      <a
+        href="https://testpilot.firefox.com/experiments/send"
+        class="link">
+        ${state.translate('uploadPageLearnMore')}
+      </a>
     </div>
     <div class="upload-window"
       ondragover=${dragover}
       ondragleave=${dragleave}>
       <div id="upload-img">
-        <img src="${assets.get('upload.svg')}"
+        <img
+          src="${assets.get('upload.svg')}"
           title="${state.translate('uploadSvgAlt')}"/>
       </div>
       <div id="upload-text">${state.translate('uploadPageDropMessage')}</div>
@@ -34,9 +38,9 @@ module.exports = function(state, emit) {
         id="browse"
         class="btn browse"
         title="${state.translate('uploadPageBrowseButton1')}">
-        ${state.translate('uploadPageBrowseButton1')}</label>
+        ${state.translate('uploadPageBrowseButton1')}
+      </label>
     </div>
-    ${state.promo === 'body' ? fxPromo(state, emit) : ''}
     ${fileList(state, emit)}
   </div>
   `;
@@ -66,6 +70,11 @@ module.exports = function(state, emit) {
     if (file.size === 0) {
       return;
     }
+    if (file.size > MAXFILESIZE) {
+      window.alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
+      return;
+    }
+
     await fadeOut('page-one');
     emit('upload', { file, type: 'click' });
   }

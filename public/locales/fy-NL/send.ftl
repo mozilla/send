@@ -25,6 +25,15 @@ uploadingFileNotification = Jou in melding as de oplaad foltôge is.
 uploadSuccessConfirmHeader = Ree om te ferstjoeren
 uploadSvgAlt = Oplaad
 uploadSuccessTimingHeader = De keppeling nei jo bestân sil nei 1 download ferrinne of nei 24 oeren.
+expireInfo = De keppeling nei jo bestân sil nei { $downloadCount } of { $timespan } ferrinne.
+downloadCount = { $num ->
+        [one] 1 download
+       *[other] { $num } downloads
+    }
+timespanHours = { $num ->
+        [one] 1 oer
+       *[other] { $num } oeren
+    }
 copyUrlFormLabelWithName = Kopiearje en diel de keppeling om jo bestân te ferstjoeren: { $filename }
 copyUrlFormButton = Nei klamboerd kopiearje
 copiedUrl = Kopiearre!
@@ -32,6 +41,12 @@ deleteFileButton = Bestân fuortsmite
 sendAnotherFileLink = Noch in bestân ferstjoere
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Downloade
+downloadsFileList = Downloads
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Tiid
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = { $filename } downloade
 downloadFileSize = ({ $size })
 unlockInputLabel = Wachtwurd ynfiere
@@ -86,6 +101,15 @@ footerLinkTerms = Betingsten
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Om dit bestân te downloaden is in wachtwurd fereaske
 addPasswordButton = Wachtwurd tafoegje
+changePasswordButton = Wizigje
 passwordTryAgain = Net krekt wachtwurd. Probearje it opnij.
 // This label is followed by the password needed to download a file
 passwordResult = Wachtwurd: { $password }
+reportIPInfringement = IP-ynbrek melde
+javascriptRequired = Firefox Send fereasket JavaScript.
+whyJavascript = Werom hat Firefox Send JavaScript nedich?
+enableJavascript = Skeakelje JavaScript yn en probearje nochris.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }o { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
