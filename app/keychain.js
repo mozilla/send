@@ -1,12 +1,10 @@
-import Nanobus from 'nanobus';
 import { arrayToB64, b64ToArray } from './utils';
 
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
-export default class Keychain extends Nanobus {
+export default class Keychain {
   constructor(secretKeyB64, nonce, ivB64) {
-    super('Keychain');
     this._nonce = nonce || 'yRCdyQ1EMSA3mo4rqSkuNQ==';
     if (ivB64) {
       this.iv = b64ToArray(ivB64);
@@ -85,7 +83,6 @@ export default class Keychain extends Nanobus {
   set nonce(n) {
     if (n && n !== this._nonce) {
       this._nonce = n;
-      this.emit('nonceChanged');
     }
   }
 

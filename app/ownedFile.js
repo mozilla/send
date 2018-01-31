@@ -3,7 +3,7 @@ import { arrayToB64 } from './utils';
 import { del, fileInfo, setParams, setPassword } from './api';
 
 export default class OwnedFile {
-  constructor(obj, storage) {
+  constructor(obj) {
     this.id = obj.id;
     this.url = obj.url;
     this.name = obj.name;
@@ -16,8 +16,7 @@ export default class OwnedFile {
     this.ownerToken = obj.ownerToken;
     this.dlimit = obj.dlimit || 1;
     this.dtotal = obj.dtotal || 0;
-    this.keychain = new Keychain(obj.secretKey, obj.nonce);
-    this.keychain.on('nonceChanged', () => storage.writeFile(this));
+    this.keychain = new Keychain(obj.secretKey);
     this._hasPassword = !!obj.hasPassword;
   }
 
@@ -69,7 +68,6 @@ export default class OwnedFile {
       createdAt: this.createdAt,
       expiresAt: this.expiresAt,
       secretKey: arrayToB64(this.keychain.rawSecret),
-      nonce: this.keychain.nonce,
       ownerToken: this.ownerToken,
       dlimit: this.dlimit,
       dtotal: this.dtotal,

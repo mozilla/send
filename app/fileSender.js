@@ -49,7 +49,7 @@ export default class FileSender extends Nanobus {
     });
   }
 
-  async upload(storage) {
+  async upload() {
     const start = Date.now();
     const plaintext = await this.readFile();
     if (this.cancelled) {
@@ -81,23 +81,20 @@ export default class FileSender extends Nanobus {
       this.uploadRequest = null;
       this.progress = [1, 1];
       const secretKey = arrayToB64(this.keychain.rawSecret);
-      const ownedFile = new OwnedFile(
-        {
-          id: result.id,
-          url: `${result.url}#${secretKey}`,
-          name: this.file.name,
-          size: this.file.size,
-          type: this.file.type, //TODO 'click' ?
-          time: time,
-          speed: this.file.size / (time / 1000),
-          createdAt: Date.now(),
-          expiresAt: Date.now() + EXPIRE_SECONDS * 1000,
-          secretKey: secretKey,
-          nonce: this.keychain.nonce,
-          ownerToken: result.ownerToken
-        },
-        storage
-      );
+      const ownedFile = new OwnedFile({
+        id: result.id,
+        url: `${result.url}#${secretKey}`,
+        name: this.file.name,
+        size: this.file.size,
+        type: this.file.type, //TODO 'click' ?
+        time: time,
+        speed: this.file.size / (time / 1000),
+        createdAt: Date.now(),
+        expiresAt: Date.now() + EXPIRE_SECONDS * 1000,
+        secretKey: secretKey,
+        nonce: this.keychain.nonce,
+        ownerToken: result.ownerToken
+      });
       return ownedFile;
     } catch (e) {
       this.msg = 'errorPageHeader';

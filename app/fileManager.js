@@ -98,7 +98,7 @@ export default function(state, emitter) {
     await delay(200);
     try {
       metrics.startedUpload({ size, type });
-      const ownedFile = await sender.upload(state.storage);
+      const ownedFile = await sender.upload();
       state.storage.totalUploads += 1;
       metrics.completedUpload(ownedFile);
 

@@ -43,7 +43,7 @@ class Storage {
       const k = this.engine.key(i);
       if (isFile(k)) {
         try {
-          const f = new OwnedFile(JSON.parse(this.engine.getItem(k)), this);
+          const f = new OwnedFile(JSON.parse(this.engine.getItem(k)));
           if (!f.id) {
             f.id = f.fileId;
           }
