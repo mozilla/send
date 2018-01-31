@@ -5,8 +5,15 @@ module.exports = function(state, emit) {
   function clicked() {
     emit('experiment', { cd3: 'promo' });
   }
-
-  const classes = state.promo === 'blue' ? 'banner banner-blue' : 'banner';
+  let classes = 'banner';
+  switch (state.promo) {
+    case 'blue':
+      classes = 'banner banner-blue';
+      break;
+    case 'pink':
+      classes = 'banner banner-pink';
+      break;
+  }
 
   return html`
     <div class="${classes}">
