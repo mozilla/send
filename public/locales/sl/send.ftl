@@ -112,3 +112,8 @@ passwordResult = Geslo: { $password }
 reportIPInfringement = Prijavite kršitev naslova IP
 javascriptRequired = Firefox Send zahteva JavaScript
 whyJavascript = Zakaj Firefox Send zahteva JavaScript?
+enableJavascript = Omogočite JavaScript in poskusite znova.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
