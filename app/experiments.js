@@ -1,10 +1,19 @@
 import hash from 'string-hash';
 
 const experiments = {
-  XnN0idVWSxO6A0kiNkxzGw: {
-    id: 'XnN0idVWSxO6A0kiNkxzGw',
+  S9wqVl2SQ4ab2yZtqDI3Dw: {
+    id: 'S9wqVl2SQ4ab2yZtqDI3Dw',
     run: function(variant, state, emitter) {
-      state.promo = variant === 1 ? 'blue' : 'grey';
+      switch (variant) {
+        case 1:
+          state.promo = 'blue';
+          break;
+        case 2:
+          state.promo = 'pink';
+          break;
+        default:
+          state.promo = 'grey';
+      }
       emitter.emit('render');
     },
     eligible: function() {
@@ -14,7 +23,11 @@ const experiments = {
       );
     },
     variant: function(state) {
-      return this.luckyNumber(state) > 0.5 ? 1 : 0;
+      const n = this.luckyNumber(state);
+      if (n < 0.33) {
+        return 0;
+      }
+      return n < 0.66 ? 1 : 2;
     },
     luckyNumber: function(state) {
       return luckyNumber(

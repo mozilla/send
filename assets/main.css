@@ -1039,7 +1039,7 @@ tbody {
 }
 
 .banner-blue {
-  background-color: #0098f7;
+  background: linear-gradient(-180deg, #45a1ff 0%, #00feff 94%);
   color: #fff;
 }
 
@@ -1049,6 +1049,21 @@ tbody {
 }
 
 .banner-blue a:hover {
+  color: #eee;
+  font-weight: bold;
+}
+
+.banner-pink {
+  background: linear-gradient(-180deg, #ff9400 0%, #ff1ad9 94%);
+  color: #fff;
+}
+
+.banner-pink a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.banner-pink a:hover {
   color: #eee;
   font-weight: bold;
 }
