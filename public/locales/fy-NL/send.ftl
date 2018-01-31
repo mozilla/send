@@ -42,7 +42,11 @@ sendAnotherFileLink = Noch in bestân ferstjoere
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Downloade
 downloadsFileList = Downloads
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = Tiid
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = { $filename } downloade
 downloadFileSize = ({ $size })
 unlockInputLabel = Wachtwurd ynfiere
@@ -102,3 +106,10 @@ passwordTryAgain = Net krekt wachtwurd. Probearje it opnij.
 // This label is followed by the password needed to download a file
 passwordResult = Wachtwurd: { $password }
 reportIPInfringement = IP-ynbrek melde
+javascriptRequired = Firefox Send fereasket JavaScript.
+whyJavascript = Werom hat Firefox Send JavaScript nedich?
+enableJavascript = Skeakelje JavaScript yn en probearje nochris.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }o { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
