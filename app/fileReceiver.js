@@ -64,6 +64,7 @@ export default class FileReceiver extends Nanobus {
       const ciphertext = await download.result;
       this.fileDownload = null;
       this.msg = 'decryptingFile';
+      this.state = 'decrypting';
       this.emit('decrypting');
       const plaintext = await this.keychain.decryptFile(ciphertext);
       if (this.cancelled) {

@@ -46,7 +46,7 @@ module.exports = function(state, emit) {
   let pageAction = null; //default state: we don't have file metadata
   if (state.transfer) {
     const s = state.transfer.state;
-    if (s === 'downloading' || s === 'complete') {
+    if (['downloading', 'decrypting', 'complete'].indexOf(s) > -1) {
       // Downloading is in progress
       return download(state, emit);
     }

@@ -53,7 +53,7 @@ export default function(state, emitter) {
     checkFiles();
   });
 
-  // emitter.on('navigate', checkFiles);
+  emitter.on('navigate', checkFiles);
 
   emitter.on('render', () => {
     lastRender = Date.now();
