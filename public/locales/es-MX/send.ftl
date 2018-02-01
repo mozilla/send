@@ -41,7 +41,11 @@ sendAnotherFileLink = Enviar otro archivo
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Descargar
 downloadsFileList = Descargas
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = Hora
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Descargar ($filename)
 downloadFileSize = ({ $size })
 unlockInputLabel = Ingresar contraseña
@@ -101,3 +105,10 @@ passwordTryAgain = Contraseña incorrecta. Intenta de nuevo.
 // This label is followed by the password needed to download a file
 passwordResult = Contraseña: { $password }
 reportIPInfringement = Denunciar una infracción de PI
+javascriptRequired = Firefox Send requiere JavaScript
+whyJavascript = ¿Por qué Firefox Send requiere JavaScript?
+enableJavascript = Por favor, habilita JavaScript e intenta de nuevo.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
