@@ -22,7 +22,8 @@ module.exports = function(state, emit) {
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"
           oninput=${inputChanged}
-          type="password"/>
+          type="password"
+          autofocus />
         <input type="submit"
           id="unlock-btn"
           class="btn btn-hidden"
