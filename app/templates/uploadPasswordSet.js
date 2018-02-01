@@ -63,6 +63,7 @@ module.exports = function(state, emit) {
       document.getElementById('copy-btn').disabled = false;
       emit('password', { password, file });
     }
+    return false;
   }
 
   function toggleResetInput(event) {

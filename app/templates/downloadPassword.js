@@ -52,6 +52,7 @@ module.exports = function(state, emit) {
       state.fileInfo.password = password;
       emit('getMetadata');
     }
+    return false;
   }
 
   return div;
