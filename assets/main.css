@@ -1198,7 +1198,8 @@ tbody {
   }
 
   #link,
-  #unlock-input {
+  #unlock-input,
+  #unlock-reset-input {
     font-size: 22px;
     padding: 15px 10px;
     border-radius: 6px 6px 0 0;
