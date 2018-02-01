@@ -9,24 +9,24 @@ module.exports = function(state, pageAction) {
     ? state.translate('downloadFileSize', { size: bytes(fileInfo.size) })
     : '';
 
-  const name = fileInfo.name
+  const title = fileInfo.name
     ? state.translate('downloadFileName', { filename: fileInfo.name })
-    : '';
-  const title = html`
-    <span id="dl-file"
-      data-nonce="${fileInfo.nonce}"
-      data-requires-password="${fileInfo.requiresPassword}">${name}</span>`;
+    : state.translate('downloadFileTitle');
 
+  const info = html`
+    <div id="dl-file"
+      data-nonce="${fileInfo.nonce}"
+      data-requires-password="${fileInfo.requiresPassword}"></div>`;
   if (!pageAction) {
-    return title;
+    return info;
   }
   const div = html`
   <div id="page-one">
     <div id="download">
       <div id="download-page-one">
         <div class="title">
-          ${title}
-        <span id="dl-filesize">${' ' + size}</span>
+          <span>${title}</span>
+          <span id="dl-filesize">${' ' + size}</span>
         </div>
         <div class="description">${state.translate('downloadMessage')}</div>
         <img
@@ -37,6 +37,7 @@ module.exports = function(state, pageAction) {
       </div>
       <a class="send-new" href="/">${state.translate('sendYourFilesLink')}</a>
     </div>
+    ${info}
   </div>
   `;
   return div;
