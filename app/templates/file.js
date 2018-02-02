@@ -39,7 +39,7 @@ module.exports = function(file, state, emit) {
         ${state.translate('copiedUrl')}
       </span>
     </td>
-    <td>${remainingTime}</td>
+    <td class="overflow-col">${remainingTime}</td>
     <td class="center-col">${totalDownloads} / ${downloadLimit}</td>
     <td class="center-col">
       <img
