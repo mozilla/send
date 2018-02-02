@@ -100,6 +100,7 @@ export default function(state, emitter) {
     try {
       metrics.startedUpload({ size, type });
       const ownedFile = await sender.upload();
+      ownedFile.type = type;
       state.storage.totalUploads += 1;
       metrics.completedUpload(ownedFile);
 

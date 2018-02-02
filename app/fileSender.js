@@ -86,7 +86,6 @@ export default class FileSender extends Nanobus {
         url: `${result.url}#${secretKey}`,
         name: this.file.name,
         size: this.file.size,
-        type: this.file.type, //TODO 'click' ?
         time: time,
         speed: this.file.size / (time / 1000),
         createdAt: Date.now(),
