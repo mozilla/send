@@ -21,8 +21,8 @@ module.exports = async function(req, res) {
     }
     const ttl = await storage.ttl(id);
     return res.send({
-      dlimit: meta.dlimit,
-      dtotal: meta.dl,
+      dlimit: +meta.dlimit,
+      dtotal: +meta.dl,
       ttl
     });
   } catch (e) {
