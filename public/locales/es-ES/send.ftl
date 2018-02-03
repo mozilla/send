@@ -106,3 +106,4 @@ passwordTryAgain = Contraseña incorrecta. Inténtelo de nuevo.
 // This label is followed by the password needed to download a file
 passwordResult = Contraseña: { $password }
 reportIPInfringement = Denunciar vulneración de propiedad intelectual
+javascriptRequired = Firefox Send requiere JavaScript
