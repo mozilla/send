@@ -102,3 +102,10 @@ passwordTryAgain = Yanlış parola. Yeniden deneyin.
 // This label is followed by the password needed to download a file
 passwordResult = Parola: { $password }
 reportIPInfringement = Telif hakkı ihlali bildir
+javascriptRequired = Firefox Send için JavaScript gerekir
+whyJavascript = Firefox Send neden JavaScript kullanıyor?
+enableJavascript = Lütfen JavaScript'i etkinleştirip yeniden deneyin.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } sa { $minutes } dk
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } dk
