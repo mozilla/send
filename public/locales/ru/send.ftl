@@ -108,3 +108,10 @@ passwordTryAgain = Неверный пароль. Попробуйте снов�
 // This label is followed by the password needed to download a file
 passwordResult = Пароль: { $password }
 reportIPInfringement = Сообщить о нарушении прав на интеллектуальную собственность
+javascriptRequired = Для Firefox Send необходим JavaScript
+whyJavascript = Почему Firefox Send требуется JavaScript?
+enableJavascript = Пожалуйста, включите JavaScript и попробуйте снова.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } ч. { $minutes } мин.
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } мин.
