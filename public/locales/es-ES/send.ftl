@@ -107,3 +107,9 @@ passwordTryAgain = Contraseña incorrecta. Inténtelo de nuevo.
 passwordResult = Contraseña: { $password }
 reportIPInfringement = Denunciar vulneración de propiedad intelectual
 javascriptRequired = Firefox Send requiere JavaScript
+whyJavascript = ¿Por qué Firefox Send requiere JavaScript?
+enableJavascript = Por favor, activa JavaScript y vuelve a intentarlo.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
