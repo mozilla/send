@@ -42,7 +42,11 @@ sendAnotherFileLink = Invia un altro file
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Scarica
 downloadsFileList = Download
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = Scadenza
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Scarica { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Inserire la password
@@ -102,3 +106,7 @@ passwordTryAgain = Password errata, riprovare.
 // This label is followed by the password needed to download a file
 passwordResult = Password: { $password }
 reportIPInfringement = Segnala violazione della proprietà intellettuale
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
