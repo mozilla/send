@@ -58,7 +58,7 @@ downloadFileTitle = Загрузить зашифрованный файл
 // Firefox Send is a brand name and should not be localized.
 downloadMessage = Ваш друг отправил вам файл с помощью Firefox Send, сервиса, который позволяет вам делиться файлами, используя безопасные, приватные и зашифрованные ссылки, по истечении срока действия которых ваши файлы не остаются в сети навсегда.
 // Text and title used on the download link/button (indicates an action).
-downloadButtonLabel = Скачать
+downloadButtonLabel = Загрузить
 downloadNotification = Ваша загрузка завершена.
 downloadFinish = Загрузка завершена
 // This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
