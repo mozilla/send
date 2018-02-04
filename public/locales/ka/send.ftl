@@ -40,7 +40,11 @@ sendAnotherFileLink = სხვა ფაილის გაგზავნა
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = ჩამოტვირთვა
 downloadsFileList = ჩამოტვირთვები
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = დრო
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = { $filename } ჩამოტვირთვა
 downloadFileSize = ({ $size })
 unlockInputLabel = შეიყვანეთ პაროლი
@@ -100,3 +104,10 @@ passwordTryAgain = პაროლი არასწორია. სცად�
 // This label is followed by the password needed to download a file
 passwordResult = პაროლი: { $password }
 reportIPInfringement = მოხსენება დარღვევაზე
+javascriptRequired = Firefox Send საჭიროებს JavaScript-ს
+whyJavascript = რატომ საჭიროებს Firefox Send JavaScript-ს?
+enableJavascript = გთხოვთ ჩართოთ JavaScript და სცადოთ ხელახლა.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }სთ { $minutes }წთ
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }წთ
