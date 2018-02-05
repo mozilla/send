@@ -5,8 +5,10 @@ const fileList = require('../templates/fileList');
 const { bytes, fadeOut } = require('../utils');
 
 module.exports = function(state, emit) {
+  // the page flickers if both the server and browser set 'fadeIn'
+  const fade = state.layout ? '' : 'fadeIn';
   const div = html`
-  <div id="page-one" class="fadeIn">
+  <div id="page-one" class="${fade}">
     <div class="title">${state.translate('uploadPageHeader')}</div>
     <div class="description">
       <div>${state.translate('uploadPageExplainer')}</div>
