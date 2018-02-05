@@ -44,7 +44,11 @@ sendAnotherFileLink = Poslat další soubor
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Stáhnout
 downloadsFileList = Stažení
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = Zbývá
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Stáhnout { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Zadejte heslo
@@ -104,3 +108,10 @@ passwordTryAgain = Špatné heslo. Zkuste to znovu.
 // This label is followed by the password needed to download a file
 passwordResult = Heslo: { $password }
 reportIPInfringement = Nahlásit porušení autorských práv
+javascriptRequired = Firefox Send vyžaduje povolený JavaScript
+whyJavascript = Proč Firefox Send vyžaduje povolený JavaScript?
+enableJavascript = Povolte JavaScript a zkuste to znovu.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
