@@ -125,3 +125,8 @@ passwordTryAgain = كلمة السر خاطئة. أعِد المحاولة.
 // This label is followed by the password needed to download a file
 passwordResult = كلمة السر: { $password }
 reportIPInfringement = أبلغ عن انتهاك للملكية الفكرية
+javascriptRequired = يتطلب فَيَرفُكس سِنْد جافاسكربت
+whyJavascript = لماذا يتطلب فَيَرفُكس سِنْد جافاسكربت؟
+enableJavascript = رجاء فعّل جافاسكربت ثم أعد المحاولة.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }س { $minutes }د
