@@ -46,7 +46,11 @@ sendAnotherFileLink = Anfon ffeil arall
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Llwytho i lawr
 downloadsFileList = Llwythi
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
 timeFileList = Amser
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Llwytho i lawr { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Rhowch Gyfrinair
@@ -106,3 +110,10 @@ passwordTryAgain = Cyfrinair anghywir. Ceisiwch eto.
 // This label is followed by the password needed to download a file
 passwordResult = Cyfrinair: { $password }
 reportIPInfringement = Adrodd ar Gamddefnydd o'r IP
+javascriptRequired = Mae Firefox Send angen JavaScript
+whyJavascript = Pam fod Firefox Send angen JavaScript?
+enableJavascript = Galluogwch JavaScript a cheisio eto.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }a { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
