@@ -11,11 +11,7 @@ export default class FileReceiver extends Nanobus {
       this.keychain.setPassword(fileInfo.password, fileInfo.url);
     }
     this.fileInfo = fileInfo;
-    this.fileDownload = null;
-    this.msg = 'fileSizeProgress';
-    this.state = 'initialized';
-    this.progress = [0, 1];
-    this.cancelled = false;
+    this.reset();
   }
 
   get progressRatio() {
@@ -34,6 +30,14 @@ export default class FileReceiver extends Nanobus {
     if (this.fileDownload) {
       this.fileDownload.cancel();
     }
+  }
+
+  reset() {
+    this.fileDownload = null;
+    this.msg = 'fileSizeProgress';
+    this.state = 'initialized';
+    this.progress = [0, 1];
+    this.cancelled = false;
   }
 
   async getMetadata() {

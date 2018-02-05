@@ -173,6 +173,7 @@ export default function(state, emitter) {
       await fadeOut('download-progress');
       saveFile(f);
       state.storage.totalDownloads += 1;
+      state.transfer.reset();
       metrics.completedDownload({ size, time, speed });
       emitter.emit('pushState', '/completed');
     } catch (err) {
@@ -181,6 +182,7 @@ export default function(state, emitter) {
         return render();
       }
       console.error(err);
+      state.transfer = null;
       const location = err.message === 'notfound' ? '/404' : '/error';
       if (location === '/error') {
         state.raven.captureException(err);
@@ -188,7 +190,6 @@ export default function(state, emitter) {
       }
       emitter.emit('pushState', location);
     } finally {
-      state.transfer = null;
       openLinksInNewTab(links, false);
     }
   });
