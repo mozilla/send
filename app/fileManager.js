@@ -179,6 +179,7 @@ export default function(state, emitter) {
     } catch (err) {
       if (err.message === '0') {
         // download cancelled
+        state.transfer.reset();
         return render();
       }
       console.error(err);
