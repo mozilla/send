@@ -2,10 +2,6 @@ const routes = require('../../app/routes');
 const storage = require('../storage');
 const state = require('../state');
 
-function validateID(route_id) {
-  return route_id.match(/^[0-9a-fA-F]{10}$/) !== null;
-}
-
 function stripEvents(str) {
   // For CSP we need to remove all the event handler placeholders.
   // It's ok, app.js will add them when it attaches to the DOM.
@@ -23,9 +19,6 @@ module.exports = {
 
   download: async function(req, res, next) {
     const id = req.params.id;
-    if (!validateID(id)) {
-      return next();
-    }
 
     try {
       const { nonce, pwd } = await storage.metadata(id);

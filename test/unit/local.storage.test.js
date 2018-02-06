@@ -32,6 +32,7 @@ logStub.error = sinon.stub();
 
 const storage = proxyquire('../../server/storage', {
   redis: redisStub,
+  'redis-mock': redisStub,
   fs: fsStub,
   './log': function() {
     return logStub;

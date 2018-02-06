@@ -3,15 +3,8 @@ const mozlog = require('../log');
 const log = mozlog('send.download');
 const crypto = require('crypto');
 
-function validateID(route_id) {
-  return route_id.match(/^[0-9a-fA-F]{10}$/) !== null;
-}
-
 module.exports = async function(req, res) {
   const id = req.params.id;
-  if (!validateID(id)) {
-    return res.sendStatus(404);
-  }
 
   try {
     const auth = req.header('Authorization').split(' ')[1];

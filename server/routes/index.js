@@ -5,6 +5,7 @@ const languages = require('../languages');
 const storage = require('../storage');
 const config = require('../config');
 const pages = require('./pages');
+const validation = require('../validation');
 const { negotiateLanguages } = require('fluent-langneg');
 const IS_DEV = config.env === 'development';
 const acceptLanguages = /(([a-zA-Z]+(-[a-zA-Z0-9]+){0,2})|\*)(;q=[0-1](\.[0-9]+)?)?/g;
@@ -81,6 +82,7 @@ module.exports = function(app) {
     next();
   });
   app.use(bodyParser.json());
+  app.use(validation.middleware);
   app.get('/', pages.index);
   app.get('/legal', pages.legal);
   app.get('/jsconfig.js', require('./jsconfig'));

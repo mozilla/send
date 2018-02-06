@@ -45,6 +45,7 @@ const awsStub = {
 
 const storage = proxyquire('../../server/storage', {
   redis: redisStub,
+  'redis-mock': redisStub,
   fs: fsStub,
   './log': function() {
     return logStub;
@@ -100,7 +101,7 @@ describe('Testing Get using aws', function() {
 
 describe('Testing Set using aws', function() {
   beforeEach(function() {
-    expire.reset();
+    expire.resetHistory();
   });
 
   after(function() {
