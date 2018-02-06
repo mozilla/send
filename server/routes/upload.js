@@ -14,12 +14,8 @@ module.exports = function(req, res) {
   }
   const owner = crypto.randomBytes(10).toString('hex');
   const meta = {
-    dlimit: 1,
-    dl: 0,
     owner,
-    delete: owner, // delete is deprecated
     metadata,
-    pwd: 0,
     auth: auth.split(' ')[1],
     nonce: crypto.randomBytes(16).toString('base64')
   };
@@ -47,7 +43,7 @@ module.exports = function(req, res) {
 
   req.on('close', async err => {
     try {
-      await storage.forceDelete(newId);
+      await storage.del(newId);
     } catch (e) {
       log.info('DeleteError:', newId);
     }
