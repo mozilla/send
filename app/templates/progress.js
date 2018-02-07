@@ -1,4 +1,5 @@
 const html = require('choo/html');
+const percent = require('../utils').percent;
 
 const radius = 73;
 const oRadius = radius + 10;
@@ -7,7 +8,7 @@ const circumference = 2 * Math.PI * radius;
 
 module.exports = function(progressRatio) {
   const dashOffset = (1 - progressRatio) * circumference;
-  const percent = Math.floor(progressRatio * 100);
+  const percentComplete = percent(progressRatio);
   const div = html`
   <div class="progress-bar">
     <svg
@@ -31,8 +32,7 @@ module.exports = function(progressRatio) {
         stroke-dasharray="${circumference}"
         stroke-dashoffset="${dashOffset}"/>
       <text class="percentage" text-anchor="middle" x="50%" y="98">
-        <tspan class="percent-number">${percent}</tspan>
-        <tspan class="percent-sign">%</tspan>
+        <tspan class="percent-number">${percentComplete}</tspan>
       </text>
     </svg>
   </div>
