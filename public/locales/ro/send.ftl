@@ -17,7 +17,6 @@ verifyingFile = Se verifică...
 encryptingFile = Se criptează…
 decryptingFile = Se decriptează…
 notifyUploadDone = Încărcarea s-a finalizat.
-uploadingPageMessage = 
 uploadingPageCancel = Anulează încărcarea
 uploadCancelNotification = Încărcarea a fost anulată.
 uploadingPageLargeFileMessage = Stai calm! Acest fișier este mare. S-ar putea să dureze un timp încărcarea.
@@ -26,7 +25,6 @@ uploadSuccessConfirmHeader = Pregătit pentru trimitere
 uploadSvgAlt = Încarcă
 uploadSuccessTimingHeader = Linkul către fișierul tău va expira după 1 descărcare sau în 24 de ore.
 expireInfo = Linkul la fișier va expira după { $downloadCount } sau { $timespan }.
-downloadCount = 
 timespanHours = { $num ->
         [one] 1 oră
         [few] ore
