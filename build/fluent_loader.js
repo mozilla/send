@@ -38,14 +38,14 @@ module.exports = \`
 if (typeof window === 'undefined') {
   var fluent = require('fluent');
 }
-var ctx = new fluent.MessageContext('${locale}', {useIsolating: false});
-ctx._messages = new Map(${toJSON(merged)});
+var fluentContext = new fluent.MessageContext('${locale}', {useIsolating: false});
+fluentContext._messages = new Map(${toJSON(merged)});
 function translate(id, data) {
-  var msg = ctx.getMessage(id);
+  var msg = fluentContext.getMessage(id);
   if (typeof(msg) !== 'string' && !msg.val && msg.attrs) {
     msg = msg.attrs.title || msg.attrs.alt
   }
-  return ctx.format(msg, data);
+  return fluentContext.format(msg, data);
 }
 if (typeof window === 'undefined') {
   module.exports = translate;
