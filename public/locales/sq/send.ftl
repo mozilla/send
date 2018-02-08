@@ -41,6 +41,12 @@ deleteFileButton = Fshije kartelën
 sendAnotherFileLink = Dërgoni një kartelë tjetër
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Shkarkoje
+downloadsFileList = Shkarkime
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Kohë
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Shkarkoje { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Jepni Fjalëkalimin
@@ -95,7 +101,15 @@ footerLinkTerms = Kushte
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Kërko doemos një fjalëkalim për shkarkim të kësaj kartele
 addPasswordButton = Shtoni fjalëkalim
+changePasswordButton = Ndryshoje
 passwordTryAgain = Fjalëkalim i pasaktë. Riprovoni.
 // This label is followed by the password needed to download a file
 passwordResult = Fjalëkalim: { $password }
 reportIPInfringement = Raportoni Cenim IP-je
+javascriptRequired = Firefox Send lyp JavaScript
+whyJavascript = Ç’i duhet Firefox Send-it JavaScript-i?
+enableJavascript = Ju lutemi, aktivizoni JavaScript-in dhe riprovoni.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
