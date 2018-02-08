@@ -1,4 +1,5 @@
 const html = require('choo/html');
+const number = require('../utils').number;
 
 module.exports = function(selected, options, translate, changed) {
   const id = `select-${Math.random()}`;
@@ -47,7 +48,9 @@ module.exports = function(selected, options, translate, changed) {
       <ul id="${id}" class="selectOptions">
         ${options.map(
           i =>
-            html`<li class="selectOption" onclick=${choose} data-value="${i}">${i}</li>`
+            html`<li class="selectOption" onclick=${choose} data-value="${i}">${number(
+              i
+            )}</li>`
         )}
       </ul>
     </div>`;

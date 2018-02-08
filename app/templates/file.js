@@ -1,5 +1,6 @@
 const html = require('choo/html');
 const assets = require('../../common/assets');
+const number = require('../utils').number;
 
 function timeLeft(milliseconds, state) {
   const minutes = Math.floor(milliseconds / 1000 / 60);
@@ -40,7 +41,9 @@ module.exports = function(file, state, emit) {
       </span>
     </td>
     <td class="overflow-col">${remainingTime}</td>
-    <td class="center-col">${totalDownloads} / ${downloadLimit}</td>
+    <td class="center-col">${number(totalDownloads)} / ${number(
+    downloadLimit
+  )}</td>
     <td class="center-col">
       <img
         onclick=${showPopup}

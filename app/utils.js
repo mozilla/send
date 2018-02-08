@@ -117,6 +117,14 @@ function percent(ratio) {
   return `${Math.floor(ratio * 100)}%`;
 }
 
+function number(n) {
+  if (LOCALIZE_NUMBERS) {
+    const locale = document.querySelector('html').lang;
+    return n.toLocaleString(locale);
+  }
+  return n.toString();
+}
+
 function allowedCopy() {
   const support = !!document.queryCommandSupported;
   return support ? document.queryCommandSupported('copy') : false;
@@ -171,6 +179,7 @@ module.exports = {
   allowedCopy,
   bytes,
   percent,
+  number,
   copyToClipboard,
   arrayToB64,
   b64ToArray,
