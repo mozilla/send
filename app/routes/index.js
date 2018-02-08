@@ -1,3 +1,14 @@
+try {
+  // It's kind of silly that this needs to be here...
+  // 'nanotiming' reads this *on initialization* so
+  // the only way to make sure it's disabled from the
+  // first page load is to set it before we even
+  // require('choo')
+  localStorage.setItem('DISABLE_NANOTIMING', true);
+} catch (e) {
+  // localStorage is disabled. nanotiming will also be
+}
+
 const choo = require('choo');
 const html = require('choo/html');
 const download = require('./download');
