@@ -4,13 +4,6 @@ machine:
   services:
     - docker
     - redis
-  environment:
-    PATH: "/home/ubuntu/send/firefox:$PATH"
-
-dependencies:
-  pre:
-    - npm i -g get-firefox geckodriver nsp
-    - get-firefox --platform linux --extract --target /home/ubuntu/send
 
 deployment:
   latest:
@@ -31,5 +24,5 @@ test:
   override:
     - npm run build
     - npm run lint
-    - npm test
+    - npm run test:ci
     - nsp check
