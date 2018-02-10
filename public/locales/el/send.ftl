@@ -41,6 +41,12 @@ deleteFileButton = Διαγραφή αρχείου
 sendAnotherFileLink = Αποστολή άλλου αρχείου
 // Alternative text used on the download link/button (indicates an action).
 downloadAltText = Λήψη
+downloadsFileList = Λήψεις
+// Used as header in a column indicating the amount of time left before a
+// download link expires (e.g. "10h 5m")
+timeFileList = Ώρα
+// Used as header in a column indicating the number of times a file has been
+// downloaded
 downloadFileName = Λήψη του { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Εισαγωγή κωδικού πρόσβασης
@@ -95,7 +101,15 @@ footerLinkTerms = Όροι
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Απαίτηση κωδικού πρόσβασης για λήψη του αρχείου
 addPasswordButton = Προσθήκη κωδικού πρόσβασης
+changePasswordButton = Αλλαγή
 passwordTryAgain = Λάθος κωδικός πρόσβασης. Δοκιμάστε ξανά.
 // This label is followed by the password needed to download a file
 passwordResult = Κωδικός πρόσβασης: { $password }
 reportIPInfringement = Αναφορά παραβίασης IP
+javascriptRequired = Το Firefox Send απαιτεί JavaScript
+whyJavascript = Γιατί το Firefox Send απαιτεί JavaScript;
+enableJavascript = Παρακαλώ ενεργοποιήστε το JavaScript και δοκιμάστε ξανά.
+// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }ώ { $minutes }λ
+// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }λ
