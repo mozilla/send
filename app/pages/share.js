@@ -1,5 +1,6 @@
 /* global EXPIRE_SECONDS */
 const html = require('choo/html');
+const raw = require('choo/html/raw');
 const assets = require('../../common/assets');
 const notFound = require('./notFound');
 const uploadPasswordSet = require('../templates/uploadPasswordSet');
@@ -9,12 +10,12 @@ const { allowedCopy, delay, fadeOut } = require('../utils');
 
 function expireInfo(file, translate, emit) {
   const hours = Math.floor(EXPIRE_SECONDS / 60 / 60);
-  const el = html([
-    `<div>${translate('expireInfo', {
+  const el = html`<div>${raw(
+    translate('expireInfo', {
       downloadCount: '<select></select>',
       timespan: translate('timespanHours', { num: hours })
-    })}</div>`
-  ]);
+    })
+  )}</div>`;
   const select = el.querySelector('select');
   const options = [1, 2, 3, 4, 5, 20].filter(i => i > (file.dtotal || 0));
   const t = num => translate('downloadCount', { num });

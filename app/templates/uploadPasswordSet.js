@@ -1,4 +1,5 @@
 const html = require('choo/html');
+const raw = require('choo/html/raw');
 
 module.exports = function(state, emit) {
   const file = state.storage.getFileById(state.params.id);
@@ -30,12 +31,12 @@ module.exports = function(state, emit) {
 
   function passwordSpan(password) {
     password = password || '●●●●●';
-    const span = html([
-      `<span>${state.translate('passwordResult', {
+    const span = html`<span>${raw(
+      state.translate('passwordResult', {
         password:
           '<pre class="passwordOriginal"></pre><pre class="passwordMask"></pre>'
-      })}</span>`
-    ]);
+      })
+    )}</span>`;
     const og = span.querySelector('.passwordOriginal');
     const masked = span.querySelector('.passwordMask');
     og.textContent = password;
