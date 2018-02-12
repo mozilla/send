@@ -22,14 +22,17 @@ module.exports = function(state, emit) {
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"
           oninput=${inputChanged}
-          type="password"
-          autofocus />
+          type="password" />
         <input type="submit"
           id="unlock-btn"
           class="btn btn-hidden"
           value="${state.translate('unlockButtonLabel')}"/>
       </form>
     </div>`;
+
+  if (!(div instanceof String)) {
+    setTimeout(() => document.querySelector('#unlock-input').focus());
+  }
 
   function inputChanged() {
     const input = document.getElementById('unlock-input');
