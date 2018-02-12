@@ -89,6 +89,7 @@ legalHeader = Terminos & confidentialitate
 legalNoticeTestPilot = Firefox Send es actualmente un  Experimento pilota, e subjecte a <a>Terminos de servicio</a> e <a>Notitia de confidentialitate</a> de Experimento pilota. Tu pote saper plus re iste experimento e su recolta de datos <a>hic</a>.
 legalNoticeMozilla = Le uso del sito web de Firefox Send es anque subjecte a <a>Notitia de confidentialitate de sito web</a> e <a>Terminos de servicio sito web</a>.
 deletePopupText = Deler iste file?
+deletePopupYes = Si
 deletePopupCancel = Cancellar
 deleteButtonHover = Deler
 copyUrlHover = Copiar le URL
