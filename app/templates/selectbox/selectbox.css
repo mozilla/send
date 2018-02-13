@@ -1,0 +1,36 @@
+.selectbox {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.selectbox__options {
+  display: none;
+}
+
+.selectbox__options--active {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 40px 0;
+  background-color: white;
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  border-radius: 4px;
+  box-shadow: 1px 2px 4px rgba(12, 12, 13, 0.3);
+}
+
+.selectbox__option {
+  color: var(--lightTextColor);
+  font-size: 12pt;
+  list-style: none;
+  user-select: none;
+  white-space: nowrap;
+  padding: 0 60px;
+  border-bottom: 1px solid rgba(12, 12, 13, 0.3);
+}
+
+.selectbox__option:hover {
+  background-color: #f4f4f4;
+}

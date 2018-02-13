@@ -1,0 +1,122 @@
+.popup {
+  visibility: hidden;
+  min-width: 204px;
+  min-height: 105px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #d7d7db;
+  padding: 15px 24px;
+  box-sizing: content-box;
+  text-align: center;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  left: -40px;
+  transition: opacity 0.5s;
+  opacity: 0;
+  outline: 0;
+  box-shadow: 3px 3px 7px rgba(136, 136, 136, 0.3);
+}
+
+.popup::after {
+  content: '';
+  position: absolute;
+  bottom: -11px;
+  left: 20px;
+  background-color: #fff;
+  display: block;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  border-radius: 0 0 5px;
+  border-right: 1px solid #d7d7db;
+  border-bottom: 1px solid #d7d7db;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
+}
+
+.popup__wrapper {
+  position: absolute;
+  display: inline-block;
+}
+
+.popup__message {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px #ebebeb solid;
+  color: var(--textColor);
+  font-size: 15px;
+  font-weight: normal;
+  padding-bottom: 15px;
+  white-space: nowrap;
+  width: calc(100% + 48px);
+  margin-left: -24px;
+}
+
+.popup__action {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popup__no {
+  color: #4a4a4a;
+  background-color: #fbfbfb;
+  border: 1px #c1c1c1 solid;
+  border-radius: 5px;
+  padding: 5px 25px;
+  font-weight: normal;
+  min-width: 94px;
+  box-sizing: border-box;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.popup__no:hover {
+  background-color: #efeff1;
+}
+
+.popup__yes {
+  color: #fff;
+  background-color: var(--primaryControlBGColor);
+  border-radius: 5px;
+  padding: 5px 25px;
+  font-weight: normal;
+  cursor: pointer;
+  min-width: 94px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+.popup__yes:hover {
+  background-color: var(--primaryControlHoverColor);
+}
+
+.popup--show {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-device-width: 992px), (max-width: 992px) {
+  .popup {
+    left: auto;
+    right: -40px;
+  }
+
+  .popup::after {
+    left: auto;
+    right: 36px;
+  }
+}
+
+@media (max-device-width: 520px), (max-width: 520px) {
+  .popup::after {
+    left: 125px;
+  }
+}

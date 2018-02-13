@@ -134,10 +134,10 @@ function delay(delay = 100) {
   return new Promise(resolve => setTimeout(resolve, delay));
 }
 
-function fadeOut(id) {
-  const classes = document.getElementById(id).classList;
-  classes.remove('fadeIn');
-  classes.add('fadeOut');
+function fadeOut(selector) {
+  const classes = document.querySelector(selector).classList;
+  classes.remove('effect--fadeIn');
+  classes.add('effect--fadeOut');
   return delay(300);
 }
 

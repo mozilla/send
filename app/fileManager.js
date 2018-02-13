@@ -108,7 +108,7 @@ export default function(state, emitter) {
 
       document.getElementById('cancel-upload').hidden = 'hidden';
       await delay(1000);
-      await fadeOut('upload-progress');
+      await fadeOut('.page');
       openLinksInNewTab(links, false);
       emitter.emit('pushState', `/share/${ownedFile.id}`);
     } catch (err) {
@@ -170,7 +170,7 @@ export default function(state, emitter) {
       const time = Date.now() - start;
       const speed = size / (time / 1000);
       await delay(1000);
-      await fadeOut('download-progress');
+      await fadeOut('.page');
       saveFile(f);
       state.storage.totalDownloads += 1;
       state.transfer.reset();

@@ -1,0 +1,257 @@
+:root {
+  --pageBGColor: #fff;
+  --primaryControlBGColor: #0297f8;
+  --primaryControlFGColor: #fff;
+  --primaryControlHoverColor: #0287e8;
+  --inputTextColor: #737373;
+  --errorColor: #d70022;
+  --linkColor: #0094fb;
+  --textColor: #0c0c0d;
+  --lightTextColor: #737373;
+  --successControlBGColor: #05a700;
+  --successControlFGColor: #fff;
+}
+
+html {
+  background: url('../assets/send_bg.svg');
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'segoe ui',
+    'helvetica neue', helvetica, ubuntu, roboto, noto, arial, sans-serif;
+  font-weight: 200;
+  background-size: 110%;
+  background-repeat: no-repeat;
+  background-position: center top;
+  height: 100%;
+  margin: auto;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'segoe ui',
+    'helvetica neue', helvetica, ubuntu, roboto, noto, arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+pre,
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+  margin: 0;
+}
+
+pre {
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+}
+
+.all {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 96%;
+}
+
+.btn {
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  background: var(--primaryControlBGColor);
+  border: 1px solid var(--primaryControlBGColor);
+  border-radius: 5px;
+}
+
+.btn--cancel {
+  color: var(--errorColor);
+  background: var(--pageBGColor);
+  font-size: 15px;
+  border: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.btn--cancel:disabled {
+  text-decoration: none;
+  cursor: auto;
+}
+
+.input {
+  border: 1px solid var(--primaryControlBGColor);
+  border-radius: 6px 0 0 6px;
+  font-size: 20px;
+  color: var(--inputTextColor);
+  font-family: 'SF Pro Text', sans-serif;
+  letter-spacing: 0;
+  line-height: 23px;
+  font-weight: 300;
+  height: 46px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.input--noBtn {
+  border-radius: 6px;
+}
+
+.inputBtn {
+  background: var(--primaryControlBGColor);
+  border-radius: 0 6px 6px 0;
+  border: 1px solid var(--primaryControlBGColor);
+  color: white;
+  cursor: pointer;
+
+  /* Force flat button look */
+  appearance: none;
+  font-size: 15px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+.inputBtn:disabled {
+  cursor: auto;
+}
+
+.inputBtn:hover {
+  background-color: var(--primaryControlHoverColor);
+}
+
+.inputBtn--hidden {
+  display: none;
+}
+
+.cursor--pointer {
+  cursor: pointer;
+}
+
+.link {
+  color: var(--linkColor);
+  text-decoration: none;
+}
+
+.link:focus,
+.link:active,
+.link:hover {
+  color: var(--primaryControlHoverColor);
+}
+
+.link--action {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.page {
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.progressSection {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 15px;
+}
+
+.progressSection__text {
+  color: rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.4px;
+  margin-top: 24px;
+  margin-bottom: 74px;
+}
+
+.effect--fadeOut {
+  opacity: 0;
+  animation: fadeout 200ms linear;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.effect--fadeIn {
+  opacity: 1;
+  animation: fadein 200ms linear;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.title {
+  font-size: 33px;
+  line-height: 40px;
+  margin: 20px auto;
+  text-align: center;
+  max-width: 520px;
+  font-family: 'SF Pro Text', sans-serif;
+  word-wrap: break-word;
+}
+
+.description {
+  font-size: 15px;
+  line-height: 23px;
+  max-width: 630px;
+  text-align: center;
+  margin: 0 auto 60px;
+  color: var(--textColor);
+  width: 92%;
+}
+
+@media (max-device-width: 768px), (max-width: 768px) {
+  .description {
+    margin: 0 auto 25px;
+  }
+}
+
+@media (max-device-width: 520px), (max-width: 520px) {
+  .input {
+    font-size: 22px;
+    padding: 10px 10px;
+    border-radius: 6px 6px 0 0;
+  }
+
+  .inputBtn {
+    border-radius: 0 0 6px 6px;
+    flex: 0 1 65px;
+  }
+
+  .input--noBtn {
+    border-radius: 6px;
+  }
+}

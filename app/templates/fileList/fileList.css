@@ -1,0 +1,52 @@
+.fileList {
+  margin: 45.3px auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+}
+
+.fileList__header {
+  font-size: 16px;
+  color: #858585;
+  font-weight: lighter;
+  text-align: left;
+  background: rgba(0, 148, 251, 0.05);
+  height: 40px;
+  border-top: 1px solid rgba(0, 148, 251, 0.1);
+  padding: 0 19px;
+  white-space: nowrap;
+}
+
+.fileList__body {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.fileList__nameCol {
+  width: 35%;
+}
+
+.fileList__copyCol {
+  text-align: center;
+  width: 25%;
+}
+
+.fileList__expireCol {
+  width: 25%;
+}
+
+.fileList__dlCol {
+  width: 8%;
+}
+
+.fileList__delCol {
+  text-align: center;
+  width: 7%;
+}
+
+@media (max-device-width: 520px), (max-width: 520px) {
+  .fileList__header {
+    font-size: 14px;
+    padding: 0 5px;
+  }
+}

@@ -1,14 +1,12 @@
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const mqpacker = require('css-mqpacker');
-
-const config = require('./server/config');
-
 const options = {
-  plugins: [autoprefixer, mqpacker, cssnano]
+  plugins: {
+    'postcss-import': {},
+    'postcss-cssnext': {},
+    'css-mqpacker': {}
+  }
 };
 
-if (config.env === 'development') {
+if (process.env.NODE_ENV === 'development') {
   options.map = { inline: true };
 }
 

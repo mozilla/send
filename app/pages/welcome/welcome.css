@@ -1,0 +1,71 @@
+.uploadArea {
+  border: 3px dashed rgba(0, 148, 251, 0.5);
+  margin: 0 auto 10px;
+  height: 255px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  transition: transform 150ms;
+  padding: 15px;
+}
+
+.uploadArea__msg {
+  font-size: 22px;
+  color: var(--lightTextColor);
+  margin: 20px 0 10px;
+  font-family: 'SF Pro Text', sans-serif;
+}
+
+.uploadArea__sizeMsg {
+  font-style: italic;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--lightTextColor);
+  margin-bottom: 22px;
+}
+
+.uploadArea--dragging {
+  border: 5px dashed rgba(0, 148, 251, 0.5);
+  height: 251px;
+  transform: scale(1.04);
+  border-radius: 4.2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.uploadArea--dragging * {
+  pointer-events: none;
+}
+
+.btn--file {
+  font-size: 20px;
+  min-width: 240px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.btn--file:hover {
+  background-color: var(--primaryControlHoverColor);
+}
+
+.inputFile {
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.btn--file .inputFile--focused {
+  background-color: var(--primaryControlHoverColor);
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}

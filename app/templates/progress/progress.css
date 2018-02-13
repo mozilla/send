@@ -1,0 +1,27 @@
+.progress {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 3px;
+  position: relative;
+  text-align: center;
+}
+
+.progress__bg {
+  stroke: #eee;
+  stroke-width: 0.75em;
+}
+
+.progress__bar {
+  stroke: #3b9dff;
+  stroke-width: 0.75em;
+  transition: stroke-dashoffset 300ms linear;
+}
+
+.progress__percent {
+  font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+  font-size: 43.2px;
+  letter-spacing: -0.78px;
+  line-height: 58px;
+  user-select: none;
+}
