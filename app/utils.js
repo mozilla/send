@@ -142,19 +142,29 @@ function fadeOut(id) {
 }
 
 function saveFile(file) {
+  const reader = new FileReader();
   const dataView = new DataView(file.plaintext);
   const blob = new Blob([dataView], { type: file.type });
-  const downloadUrl = URL.createObjectURL(blob);
 
   if (window.navigator.msSaveBlob) {
     return window.navigator.msSaveBlob(blob, file.name);
   }
-  const a = document.createElement('a');
-  a.href = downloadUrl;
-  a.download = file.name;
-  document.body.appendChild(a);
-  a.click();
-  URL.revokeObjectURL(downloadUrl);
+  reader.addEventListener('loadend', function() {
+    if (reader.result) {
+      const a = document.createElement('a');
+      a.href = reader.result;
+      a.download = file.name;
+      document.body.appendChild(a);
+      a.click();
+      return;
+    }
+    if (reader.error) {
+      console.error(reader.error);
+      window.location.href = '/error';
+      //TODO
+    }
+  });
+  reader.readAsDataURL(blob);
 }
 
 function openLinksInNewTab(links, should = true) {
