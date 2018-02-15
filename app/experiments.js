@@ -18,7 +18,7 @@ const experiments = {
     },
     eligible: function() {
       return (
-        !/firefox/i.test(navigator.userAgent) &&
+        !/firefox|fxios/i.test(navigator.userAgent) &&
         document.querySelector('html').lang === 'en-US'
       );
     },
