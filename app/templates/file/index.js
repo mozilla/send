@@ -3,30 +3,13 @@ const assets = require('../../../common/assets');
 const number = require('../../utils').number;
 const deletePopup = require('../popup');
 
-function timeLeft(milliseconds, state) {
-  const minutes = Math.floor(milliseconds / 1000 / 60);
-  const hours = Math.floor(minutes / 60);
-  if (hours >= 1) {
-    return state.translate('expiresHoursMinutes', {
-      hours,
-      minutes: minutes % 60
-    });
-  } else if (hours === 0) {
-    if (minutes === 0) {
-      return state.translate('expiresMinutes', { minutes: '< 1' });
-    }
-    return state.translate('expiresMinutes', { minutes });
-  }
-  return null;
-}
-
 module.exports = function(file, state, emit) {
   const ttl = file.expiresAt - Date.now();
   const remainingTime =
     timeLeft(ttl, state) || state.translate('linkExpiredAlt');
   const downloadLimit = file.dlimit || 1;
   const totalDownloads = file.dtotal || 0;
-  const row = html`
+  return html`
   <tr id="${file.id}">
     <td class="fileData fileData--overflow" title="${file.name}">
       <a class="link" href="/share/${file.id}">${file.name}</a>
@@ -84,6 +67,21 @@ module.exports = function(file, state, emit) {
     emit('delete', { file, location: 'upload-list' });
     emit('render');
   }
-
-  return row;
 };
+
+function timeLeft(milliseconds, state) {
+  const minutes = Math.floor(milliseconds / 1000 / 60);
+  const hours = Math.floor(minutes / 60);
+  if (hours >= 1) {
+    return state.translate('expiresHoursMinutes', {
+      hours,
+      minutes: minutes % 60
+    });
+  } else if (hours === 0) {
+    if (minutes === 0) {
+      return state.translate('expiresMinutes', { minutes: '< 1' });
+    }
+    return state.translate('expiresMinutes', { minutes });
+  }
+  return null;
+}

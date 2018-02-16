@@ -34,20 +34,12 @@ body {
   position: relative;
 }
 
-pre,
 input,
 select,
 textarea,
 button {
   font-family: inherit;
   margin: 0;
-}
-
-pre {
-  font-family: monospace;
-  font-size: 18px;
-  font-weight: 600;
-  display: inline-block;
 }
 
 a {
@@ -69,7 +61,7 @@ a {
 .btn {
   font-size: 15px;
   font-weight: 500;
-  color: white;
+  color: var(--primaryControlFGColor);
   cursor: pointer;
   text-align: center;
   background: var(--primaryControlBGColor);
@@ -113,7 +105,7 @@ a {
   background: var(--primaryControlBGColor);
   border-radius: 0 6px 6px 0;
   border: 1px solid var(--primaryControlBGColor);
-  color: white;
+  color: var(--primaryControlFGColor);
   cursor: pointer;
 
   /* Force flat button look */
@@ -177,7 +169,7 @@ a {
 }
 
 .progressSection__text {
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--lightTextColor);
   letter-spacing: -0.4px;
   margin-top: 24px;
   margin-bottom: 74px;

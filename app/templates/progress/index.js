@@ -9,7 +9,7 @@ const circumference = 2 * Math.PI * radius;
 module.exports = function(progressRatio) {
   const dashOffset = (1 - progressRatio) * circumference;
   const percentComplete = percent(progressRatio);
-  const div = html`
+  return html`
   <div class="progress">
     <svg
       width="${oDiameter}"
@@ -37,5 +37,4 @@ module.exports = function(progressRatio) {
     </svg>
   </div>
   `;
-  return div;
 };

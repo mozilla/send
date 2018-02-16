@@ -2,7 +2,7 @@ const html = require('choo/html');
 const assets = require('../../../common/assets');
 
 module.exports = function(state) {
-  const div = html`
+  return html`
     <div class="notFoundPage">
       <div class="title">${state.translate('expiredPageHeader')}</div>
       <div class="notFoundPage__img">
@@ -15,5 +15,4 @@ module.exports = function(state) {
         ${state.translate('sendYourFilesLink')}
       </a>
     </div>`;
-  return div;
 };

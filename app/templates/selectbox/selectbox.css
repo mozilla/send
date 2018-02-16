@@ -15,7 +15,7 @@
   left: 0;
   padding: 0;
   margin: 40px 0;
-  background-color: white;
+  background-color: var(--pageBGColor);
   border: 1px solid rgba(12, 12, 13, 0.3);
   border-radius: 4px;
   box-shadow: 1px 2px 4px rgba(12, 12, 13, 0.3);

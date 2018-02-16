@@ -130,9 +130,13 @@ export default function(state, emitter) {
 
   emitter.on('password', async ({ password, file }) => {
     try {
+      state.settingPassword = true;
+      render();
       await file.setPassword(password);
       state.storage.writeFile(file);
       metrics.addedPassword({ size: file.size });
+      await delay(1000);
+      state.settingPassword = false;
     } catch (err) {
       console.error(err);
     }

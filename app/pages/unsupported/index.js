@@ -1,24 +1,6 @@
 const html = require('choo/html');
 const assets = require('../../../common/assets');
 
-function outdatedStrings(state) {
-  return {
-    title: state.translate('notSupportedHeader'),
-    description: state.translate('notSupportedOutdatedDetail'),
-    button: state.translate('updateFirefox'),
-    explainer: state.translate('uploadPageExplainer')
-  };
-}
-
-function unsupportedStrings(state) {
-  return {
-    title: state.translate('notSupportedHeader'),
-    description: state.translate('notSupportedDetail'),
-    button: state.translate('downloadFirefoxButtonSub'),
-    explainer: state.translate('uploadPageExplainer')
-  };
-}
-
 module.exports = function(state) {
   let strings = {};
   let why = '';
@@ -46,7 +28,7 @@ module.exports = function(state) {
         ${strings.button}
       </div>`;
   }
-  const div = html`
+  return html`
     <div class="unsupportedPage">
       <div class="title">${strings.title}</div>
       <div class="description">
@@ -64,5 +46,22 @@ module.exports = function(state) {
         ${strings.explainer}
       </div>
     </div>`;
-  return div;
 };
+
+function outdatedStrings(state) {
+  return {
+    title: state.translate('notSupportedHeader'),
+    description: state.translate('notSupportedOutdatedDetail'),
+    button: state.translate('updateFirefox'),
+    explainer: state.translate('uploadPageExplainer')
+  };
+}
+
+function unsupportedStrings(state) {
+  return {
+    title: state.translate('notSupportedHeader'),
+    description: state.translate('notSupportedDetail'),
+    button: state.translate('downloadFirefoxButtonSub'),
+    explainer: state.translate('uploadPageExplainer')
+  };
+}

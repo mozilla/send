@@ -1,7 +1,7 @@
 .fileData {
   font-size: 15px;
   vertical-align: top;
-  color: #4a4a4a;
+  color: var(--lightTextColor);
   padding: 17px 19px 0;
   line-height: 23px;
   position: relative;

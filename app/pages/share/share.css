@@ -40,7 +40,6 @@
   line-height: 23px;
   font-weight: 300;
   padding-left: 10px;
-  padding-right: 10px;
 }
 
 .copySection__url:disabled {
@@ -51,6 +50,10 @@
 .inputBtn--copy {
   flex: 0 1 165px;
   padding-bottom: 4px;
+}
+
+.input--copied {
+  border-color: var(--successControlBGColor);
 }
 
 .inputBtn--copied,

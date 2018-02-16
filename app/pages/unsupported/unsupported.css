@@ -9,7 +9,7 @@
   font-size: 13px;
   line-height: 23px;
   text-align: center;
-  color: #7d7d7d;
+  color: var(--lightTextColor);
   margin: 0 auto 23px;
 }
 
@@ -23,7 +23,7 @@
   box-shadow: 0 5px 3px rgb(234, 234, 234);
   font-family: 'Fira Sans', 'segoe ui', sans-serif;
   font-weight: 500;
-  color: #fff;
+  color: var(--primaryControlFGColor);
   font-size: 26px;
   display: flex;
   justify-content: center;

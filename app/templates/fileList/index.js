@@ -2,9 +2,8 @@ const html = require('choo/html');
 const file = require('../file');
 
 module.exports = function(state, emit) {
-  let table = '';
   if (state.storage.files.length) {
-    table = html`
+    return html`
     <table class="fileList">
       <thead>
         <tr>
@@ -31,5 +30,4 @@ module.exports = function(state, emit) {
     </table>
     `;
   }
-  return table;
 };

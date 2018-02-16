@@ -20,7 +20,7 @@ module.exports = function(state, pageAction) {
   if (!pageAction) {
     return info;
   }
-  const div = html`
+  return html`
     <div class="page">
       <div class="title">
         <span>${title}</span>
@@ -38,5 +38,4 @@ module.exports = function(state, pageAction) {
       ${info}
     </div>
   `;
-  return div;
 };

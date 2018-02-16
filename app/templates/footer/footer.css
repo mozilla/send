@@ -20,7 +20,7 @@
 }
 
 .legalSection__link {
-  color: #858585;
+  color: var(--lightTextColor);
   opacity: 0.9;
   white-space: nowrap;
   margin-right: 2vw;
@@ -31,7 +31,7 @@
 }
 
 .legalSection__link:visited {
-  color: #858585;
+  color: var(--lightTextColor);
 }
 
 .legalSection__mozLogo {

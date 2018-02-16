@@ -1,17 +1,8 @@
 const html = require('choo/html');
 const raw = require('choo/html/raw');
 
-function replaceLinks(str, urls) {
-  let i = -1;
-  const s = str.replace(/<a>([^<]+)<\/a>/g, (m, v) => {
-    i++;
-    return `<a href="${urls[i]}">${v}</a>`;
-  });
-  return `<div class="description">${s}</div>`;
-}
-
 module.exports = function(state) {
-  const div = html`
+  return html`
     <div id="legal">
       <div class="title">${state.translate('legalHeader')}</div>
         ${raw(
@@ -29,5 +20,13 @@ module.exports = function(state) {
         )}
     </div>
   `;
-  return div;
 };
+
+function replaceLinks(str, urls) {
+  let i = 0;
+  const s = str.replace(
+    /<a>([^<]+)<\/a>/g,
+    (m, v) => `<a href="${urls[i++]}">${v}</a>`
+  );
+  return `<div class="description">${s}</div>`;
+}

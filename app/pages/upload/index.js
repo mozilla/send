@@ -5,7 +5,7 @@ const { bytes } = require('../../utils');
 module.exports = function(state, emit) {
   const transfer = state.transfer;
 
-  const div = html`
+  return html`
   <div class="page effect--fadeIn">
     <div class="title">
       ${state.translate('uploadingPageProgress', {
@@ -36,5 +36,4 @@ module.exports = function(state, emit) {
     btn.textContent = state.translate('uploadCancelNotification');
     emit('cancel');
   }
-  return div;
 };

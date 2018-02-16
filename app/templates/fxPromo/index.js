@@ -2,9 +2,6 @@ const html = require('choo/html');
 const assets = require('../../../common/assets');
 
 module.exports = function(state, emit) {
-  function clicked() {
-    emit('experiment', { cd3: 'promo' });
-  }
   let classes = 'fxPromo';
   switch (state.promo) {
     case 'blue':
@@ -30,4 +27,8 @@ module.exports = function(state, emit) {
           >Download Firefox now ≫</a></span>
       </div>
     </div>`;
+
+  function clicked() {
+    emit('experiment', { cd3: 'promo' });
+  }
 };

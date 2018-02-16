@@ -2,8 +2,8 @@
   visibility: hidden;
   min-width: 204px;
   min-height: 105px;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--pageBGColor);
+  color: var(--textColor);
   border: 1px solid #d7d7db;
   padding: 15px 24px;
   box-sizing: content-box;
@@ -82,7 +82,7 @@
 }
 
 .popup__yes {
-  color: #fff;
+  color: var(--primaryControlFGColor);
   background-color: var(--primaryControlBGColor);
   border-radius: 5px;
   padding: 5px 25px;

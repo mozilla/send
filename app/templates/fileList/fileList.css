@@ -7,7 +7,7 @@
 
 .fileList__header {
   font-size: 16px;
-  color: #858585;
+  color: var(--lightTextColor);
   font-weight: lighter;
   text-align: left;
   background: rgba(0, 148, 251, 0.05);

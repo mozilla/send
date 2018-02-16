@@ -13,7 +13,7 @@ module.exports = function(state, emit) {
     ${state.translate('deletePopupCancel')}
   </button>`;
 
-  const div = html`
+  return html`
     <div class="page effect--fadeIn">
       <div class="title">
         ${state.translate('downloadingPageProgress', {
@@ -39,5 +39,4 @@ module.exports = function(state, emit) {
     btn.remove();
     emit('cancel');
   }
-  return div;
 };

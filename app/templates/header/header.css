@@ -59,7 +59,7 @@
   border-radius: 3px;
   border: 1px solid var(--primaryControlBGColor);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  color: #fff;
+  color: var(--primaryControlFGColor);
   cursor: pointer;
   display: block;
   float: right;
@@ -85,7 +85,7 @@
 }
 
 .feedback:active {
-  background-color: #0277d8;
+  background-color: var(--primaryControlHoverColor);
 }
 
 @media (max-device-width: 520px), (max-width: 520px) {

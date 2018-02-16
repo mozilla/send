@@ -7,7 +7,7 @@ const { bytes, fadeOut } = require('../../utils');
 module.exports = function(state, emit) {
   // the page flickers if both the server and browser set 'effect--fadeIn'
   const fade = state.layout ? '' : 'effect--fadeIn';
-  const div = html`
+  return html`
   <div id="page-one" class="${fade}">
     <div class="title">${state.translate('uploadPageHeader')}</div>
     <div class="description">
@@ -82,5 +82,4 @@ module.exports = function(state, emit) {
     await fadeOut('#page-one');
     emit('upload', { file, type: 'click' });
   }
-  return div;
 };

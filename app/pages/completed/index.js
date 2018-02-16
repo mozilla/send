@@ -3,7 +3,7 @@ const progress = require('../../templates/progress');
 const { fadeOut } = require('../../utils');
 
 module.exports = function(state, emit) {
-  const div = html`
+  return html`
     <div class="page effect--fadeIn">
       <div class="title">
         ${state.translate('downloadFinish')}
@@ -23,6 +23,4 @@ module.exports = function(state, emit) {
     await fadeOut('.page');
     emit('pushState', '/');
   }
-
-  return div;
 };
