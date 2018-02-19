@@ -55,12 +55,10 @@
 
 .inputFile {
   opacity: 0;
-  overflow: hidden;
   position: absolute;
-  z-index: -1;
 }
 
-.btn--file .inputFile--focused {
+.inputFile--focused + .btn--file {
   background-color: var(--primaryControlHoverColor);
   outline: 1px dotted #000;
   outline: -webkit-focus-ring-color auto 5px;
