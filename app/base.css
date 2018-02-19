@@ -84,6 +84,7 @@ a {
 }
 
 .input {
+  flex: 2 0 auto;
   border: 1px solid var(--primaryControlBGColor);
   border-radius: 6px 0 0 6px;
   font-size: 20px;
@@ -102,6 +103,7 @@ a {
 }
 
 .inputBtn {
+  flex: auto;
   background: var(--primaryControlBGColor);
   border-radius: 0 6px 6px 0;
   border: 1px solid var(--primaryControlBGColor);

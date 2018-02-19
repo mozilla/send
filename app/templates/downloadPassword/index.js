@@ -17,7 +17,7 @@ module.exports = function(state, emit) {
       ${label}
       <form class="passwordForm" onsubmit=${checkPassword} data-no-csrf>
         <input id="password-input"
-          class="input input--password input--noBtn"
+          class="input input--noBtn"
           maxlength="64"
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"
@@ -25,7 +25,7 @@ module.exports = function(state, emit) {
           type="password" />
         <input type="submit"
           id="password-btn"
-          class="inputBtn inputBtn--password inputBtn--hidden"
+          class="inputBtn inputBtn--hidden"
           value="${state.translate('unlockButtonLabel')}"/>
       </form>
     </div>`;
