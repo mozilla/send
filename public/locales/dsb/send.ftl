@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = webeksperiment
 siteFeedback = Komentar
@@ -43,29 +43,29 @@ copyUrlFormButton = Do mjazywótkłada kopěrowaś
 copiedUrl = Kopěrowany!
 deleteFileButton = Dataju wulašowaś
 sendAnotherFileLink = Drugu dataju pósłaś
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Ześěgnuś
 downloadsFileList = Ześěgnjenja
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Cas
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = { $filename } ześěgnuś
 downloadFileSize = ({ $size })
 unlockInputLabel = Gronidło zapódaś
 unlockInputPlaceholder = Gronidło
 unlockButtonLabel = Wótwóriś
 downloadFileTitle = Skoděrowanu dataju ześěgnuś
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Waš pśijaśel wam dataju z Firefox Send sćelo, słužba, kótaraž wam zmóžnja, dataje pśez wěsty, priwatny a skoděrowany wótkaz źěliś, kótaryž awtomatiski spadnjo, až njeby waše daty na pśecej online wóstawali.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Ześěgnuś
 downloadNotification = Wašo ześěgnjenje jo dokóńcone.
 downloadFinish = Ześěgnjenje dokóńcone
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } z { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Firefox Send wopytaś
 downloadingPageProgress = { $filename } ({ $size }) se ześěgujo
 downloadingPageMessage = Pšosym wóstajśo toś ten rejtark wócynjony, mjaztym až wašu dataju ześěgujomy a dešifrěrujomy.
@@ -77,7 +77,7 @@ fileTooBig = Toś ta dataja jo pśewjelika za nagraśe. Měła mjeńša ako { $s
 linkExpiredAlt = Wótkaz spadnjony
 expiredPageHeader = Toś ten wótkaz jo spadnjony abo njejo nigda eksistěrował!
 notSupportedHeader = Waš wobglědowak se njepódpěra.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Bóžko toś ten wobglědowak webtechnologiju njepódpěra, na kótarejž Firefox Send bazěrujo. Musyśo drugi wobglědowak wužywaś. My Firefox dopórucujomy!
 notSupportedLink = Cogodla se mój wobglědowak njepódpěra?
 notSupportedOutdatedDetail = Bóžko toś ta wersija Firefox webtechnologiju njepódpěra, na kótarejž Firefox Send bazěrujo. Musyśo swój wobglědowak aktualizěrowaś.
@@ -85,7 +85,7 @@ updateFirefox = Firefox aktualizěrowaś
 downloadFirefoxButtonSub = Dermotne ześěgnjenje
 uploadedFile = Dataja
 copyFileList = URL kopěrowaś
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Spadnjo za
 deleteFileList = Wulašowaś
 nevermindButton = Wšojadno
@@ -98,7 +98,7 @@ deletePopupCancel = Pśetergnuś
 deleteButtonHover = Wulašowaś
 copyUrlHover = URL kopěrowaś
 footerLinkLegal = Pšawniske
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Wó Test Pilot
 footerLinkPrivacy = Priwatnosć
 footerLinkTerms = Wuměnjenja
@@ -107,13 +107,15 @@ requirePasswordCheckbox = Gronidło za ześěgnjenje toś teje dataje pominaś
 addPasswordButton = Gronidło pśidaś
 changePasswordButton = Změniś
 passwordTryAgain = Wopacne gronidło. Wopytajśo hyšći raz.
-// This label is followed by the password needed to download a file
+# This label is followed by the password needed to download a file
 passwordResult = Gronidło: { $password }
 reportIPInfringement = Pśekśiwjenje IP k wěsći daś
 javascriptRequired = Firefox Send JavaScript trjeba
 whyJavascript = Cogodla Firefox Send JavaScript trjeba?
 enableJavascript = Pšosym zmóžniśo JavaScript a wopytajśo hyšći raz.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours } góź. { $minutes } min.
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes } min.
+# A short status message shown when a password is successfully set
+passwordIsSet = Gronidło jo se nastajiło
