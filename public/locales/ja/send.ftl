@@ -112,4 +112,4 @@ expiresHoursMinutes = { $hours } 時間 { $minutes } 分
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes } 分
 # A short status message shown when a password is successfully set
-passwordIsSet = パスワード設定完了
+passwordIsSet = パスワードを設定しました
