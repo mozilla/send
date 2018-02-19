@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const IS_DEV = process.env.NODE_ENV === 'development';
 
 const regularJSOptions = {
@@ -13,7 +14,8 @@ const regularJSOptions = {
 module.exports = {
   entry: {
     vendor: ['babel-polyfill', 'fluent'],
-    app: ['./app/main.js']
+    app: ['./app/main.js'],
+    style: ['./app/main.css']
   },
   output: {
     filename: '[name].[chunkhash:8].js',
@@ -88,17 +90,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[hash:8].[ext]'
-            }
-          },
-          'extract-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          'postcss-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: { modules: false, importLoaders: 1 }
+            },
+            'postcss-loader'
+          ]
+        })
       },
       {
         test: require.resolve('./package.json'),
@@ -153,6 +153,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'runtime'
     }),
+    new ExtractTextPlugin('style.[chunkhash:8].css'),
     new ManifestPlugin()
   ],
   devServer: {

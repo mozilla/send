@@ -1,0 +1,26 @@
+.fileData {
+  font-size: 15px;
+  vertical-align: top;
+  color: var(--lightTextColor);
+  padding: 17px 19px 0;
+  line-height: 23px;
+  position: relative;
+}
+
+.fileData--overflow {
+  text-overflow: ellipsis;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.fileData--center {
+  text-align: center;
+}
+
+@media (max-device-width: 520px), (max-width: 520px) {
+  .fileData {
+    font-size: 13px;
+    padding: 17px 5px 0;
+  }
+}

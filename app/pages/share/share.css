@@ -1,0 +1,112 @@
+.sharePage {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 640px;
+}
+
+.sharePage__copyText {
+  align-self: flex-start;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  color: var(--textColor);
+  max-width: 614px;
+  word-wrap: break-word;
+}
+
+.sharePage__deletePopup {
+  position: relative;
+  align-self: center;
+  bottom: 50px;
+}
+
+.copySection {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.copySection__url {
+  flex: 1;
+  height: 56px;
+  border: 1px solid var(--primaryControlBGColor);
+  border-radius: 6px 0 0 6px;
+  font-size: 20px;
+  color: var(--inputTextColor);
+  font-family: 'SF Pro Text', sans-serif;
+  letter-spacing: 0;
+  line-height: 23px;
+  font-weight: 300;
+  padding-left: 10px;
+}
+
+.copySection__url:disabled {
+  border: 1px solid var(--successControlBGColor);
+  background: var(--successControlFGColor);
+}
+
+.inputBtn--copy {
+  flex: 0 1 165px;
+  padding-bottom: 4px;
+}
+
+.input--copied {
+  border-color: var(--successControlBGColor);
+}
+
+.inputBtn--copied,
+.inputBtn--copied:hover {
+  background: var(--successControlBGColor);
+  border: 1px solid var(--successControlBGColor);
+  color: var(--successControlFGColor);
+}
+
+.btn--delete {
+  align-self: center;
+  width: 176px;
+  height: 44px;
+  background: #fff;
+  border-color: rgba(12, 12, 13, 0.3);
+  margin-top: 50px;
+  margin-bottom: 12px;
+  color: #313131;
+}
+
+.btn--delete:hover {
+  background: #efeff1;
+}
+
+@media (max-device-width: 768px), (max-width: 768px) {
+  .copySection {
+    width: 100%;
+  }
+
+  .copySection__url {
+    font-size: 18px;
+  }
+}
+
+@media (max-device-width: 520px), (max-width: 520px) {
+  .copySection {
+    width: 100%;
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .copySection__url {
+    font-size: 22px;
+    padding: 15px 10px;
+    border-radius: 6px 6px 0 0;
+  }
+
+  .sharePage__copyText {
+    text-align: center;
+  }
+
+  .inputBtn--copy {
+    border-radius: 0 0 6px 6px;
+    flex: 0 1 65px;
+  }
+}

@@ -1,0 +1,93 @@
+.footer {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-size: 13px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 50px 31px 41px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.legalSection {
+  max-width: 81vw;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.legalSection__link {
+  color: var(--lightTextColor);
+  opacity: 0.9;
+  white-space: nowrap;
+  margin-right: 2vw;
+}
+
+.legalSection__link:hover {
+  opacity: 1;
+}
+
+.legalSection__link:visited {
+  color: var(--lightTextColor);
+}
+
+.legalSection__mozLogo {
+  width: 112px;
+  height: 32px;
+  margin-bottom: -5px;
+}
+
+.socialSection {
+  display: flex;
+  justify-content: space-between;
+  width: 94px;
+}
+
+.socialSection__link {
+  opacity: 0.9;
+}
+
+.socialSection__link:hover {
+  opacity: 1;
+}
+
+.socialSection__icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: -5px;
+}
+
+@media (max-device-width: 768px), (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 630px;
+    margin: auto;
+  }
+
+  .legalSection__mozLogo {
+    margin-left: -7px;
+  }
+
+  .legalSection {
+    flex-direction: column;
+    margin: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .legalSection__link {
+    display: block;
+    padding: 10px 0;
+    align-self: flex-start;
+  }
+
+  .socialSection {
+    margin-top: 20px;
+    align-self: flex-start;
+  }
+}

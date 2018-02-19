@@ -1,0 +1,56 @@
+.fxPromo {
+  padding: 0 15px;
+  height: 48px;
+  background-color: #efeff1;
+  color: #4a4a4f;
+  font-size: 13px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.fxPromo > div {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.fxPromo > div > span {
+  margin-left: 10px;
+}
+
+.fxPromo__logo {
+  width: 24px;
+}
+
+.fxPromo--blue {
+  background: linear-gradient(-180deg, #45a1ff 0%, #00feff 94%);
+  color: #fff;
+}
+
+.fxPromo--pink {
+  background: linear-gradient(-180deg, #ff9400 0%, #ff1ad9 94%);
+  color: #fff;
+}
+
+.fxPromo--blue a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.fxPromo--pink a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.fxPromo--blue a:hover {
+  color: #eee;
+  font-weight: bold;
+}
+
+.fxPromo--pink a:hover {
+  color: #eee;
+  font-weight: bold;
+}
