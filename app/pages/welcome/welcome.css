@@ -53,10 +53,6 @@
   padding: 0 10px;
 }
 
-.btn--file:hover {
-  background-color: var(--primaryControlHoverColor);
-}
-
 .inputFile {
   opacity: 0;
   overflow: hidden;

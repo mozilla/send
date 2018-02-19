@@ -69,6 +69,10 @@ a {
   border-radius: 5px;
 }
 
+.btn:hover {
+  background-color: var(--primaryControlHoverColor);
+}
+
 .btn--cancel {
   color: var(--errorColor);
   background: var(--pageBGColor);
@@ -81,6 +85,10 @@ a {
 .btn--cancel:disabled {
   text-decoration: none;
   cursor: auto;
+}
+
+.btn--cancel:hover {
+  background-color: var(--pageBGColor);
 }
 
 .input {

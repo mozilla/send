@@ -11,7 +11,9 @@ export default function(state, emitter) {
     document.body.addEventListener('drop', event => {
       if (state.route === '/' && !state.uploading) {
         event.preventDefault();
-        document.querySelector('.upload-window').classList.remove('ondrag');
+        document
+          .querySelector('.uploadArea')
+          .classList.remove('uploadArea--dragging');
         const target = event.dataTransfer;
         if (target.files.length === 0) {
           return;
