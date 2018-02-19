@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = ajk'amaya'l solna'onem
 siteFeedback = Rutzijol
@@ -39,29 +39,29 @@ copyUrlFormButton = Tiwachib'ëx pa molwuj
 copiedUrl = ¡Xwachib'ëx!
 deleteFileButton = Tiyuj yakb'äl
 sendAnotherFileLink = Titaq jun chik yakb'äl
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Tiqasäx
 downloadsFileList = Taq qasanïk
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Q'ijul
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Tiqasäx { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Titz'ib'äx Ewan Tzij
 unlockInputPlaceholder = Ewan tzij
 unlockButtonLabel = Titzij chik
 downloadFileTitle = Tiqasäx Yakb'äl Ewan Rusik'ixik
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Jun awachib'il xutäq jun yakb'äl chawe rik'in ri Firefox Send, jun samaj ri nuya' q'ij chawe ye'akomonij taq yakb'äl rik'in jun jikïl, ichinan chuqa' ewan rusik'ixik ximonel, ri nik'is ruq'ijul pa ruyonil richin chi ri taq awachinaq man junelïk ta e okel pa k'amab'ey.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Tiqasäx
 downloadNotification = Xtz'aqät ri aqasanik.
 downloadFinish = Xtz'aqät qasanïk
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } richin { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Titojtob'ëx Firefox Send
 downloadingPageProgress = Tajin niqasäx { $filename } ({ $size })
 downloadingPageMessage = Tijaq kan re ruwi' re' richin niqaqasaj ri yakb'äl chuqa' richin niqetamaj rusik'ixik. 
@@ -73,7 +73,7 @@ fileTooBig = Yalan nïm re yakb'äl re' richin nijotob'äx. K'o ta chi man nik'o
 linkExpiredAlt = Xk'is ruq'ijul ri ximonel
 expiredPageHeader = ¡Xk'is ruq'ijul re ximonel re' o rik'in jub'a' majub'ey xk'oje'!
 notSupportedHeader = Man koch'el ta ri awokik'amaya'l.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = K'ayew ruma re okik'amaya'l re' man nuköch' ta ajk'amaya'l na'ob'äl nik'atzin chi re ri Firefox Send. K'o chi natojtob'ej jun chik okik'amaya'l. ¡Niqachilab'ej chawe ri Firefox!
 notSupportedLink = ¿Achike ruma man nikoch' taq ri wokik'amaya'l?
 notSupportedOutdatedDetail = K'ayew ruma re ruwäch Firefox re' man nuköch' ta ri ajk'amaya'l na'ob'äl nrajo' ri Firefox Send. Rajowaxik nak'ëx ri awokik'amaya'l.
@@ -81,7 +81,7 @@ updateFirefox = Tik'ex ri Firefox
 downloadFirefoxButtonSub = Sipan Ruqasaxik
 uploadedFile = Yakb'äl
 copyFileList = Tiwachib'ëx URL
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Nik'is Ruq'ijul Pa
 deleteFileList = Tiyuj
 nevermindButton = Junam nub'än
@@ -94,7 +94,7 @@ deletePopupCancel = Tiq'at
 deleteButtonHover = Tiyuj
 copyUrlHover = Tiwachib'ëx URL
 footerLinkLegal = Taqanel tzijol
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Chi rij Test Pilot
 footerLinkPrivacy = Ichinanem
 footerLinkTerms = Taq ojqanem
@@ -103,13 +103,15 @@ requirePasswordCheckbox = Tik'utüx jun ewan tzij richin niqasäx re yakb'äl re
 addPasswordButton = Titz'aqatisäx Ewan Tzij
 changePasswordButton = Tijalwachïx
 passwordTryAgain = Itzel ri ewan tzij. Tatojtob'ej chik.
-// This label is followed by the password needed to download a file
+# This label is followed by the password needed to download a file
 passwordResult = Ewan tzij: { $password }
 reportIPInfringement = Tiya' rutzijol ri Ritzelanik Ajna'oj Ichinil
 javascriptRequired = K'atzinel JavaScript chi re ri Firefox Send
 whyJavascript = ¿Achike ruma toq ri Firefox Send nrajo' JavaScript?
 enableJavascript = Titz'ij JavaScript richin nitojtob'ëx chik.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }r { $minutes }ch
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }ch
+# A short status message shown when a password is successfully set
+passwordIsSet = Xjikib'äx ewan tzij
