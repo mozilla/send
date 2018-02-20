@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = 網頁實驗
 siteFeedback = 意見回饋
@@ -37,29 +37,29 @@ copyUrlFormButton = 複製到剪貼簿
 copiedUrl = 已複製！
 deleteFileButton = 刪除檔案
 sendAnotherFileLink = 傳送另一個檔案
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = 下載
 downloadsFileList = 下載次數
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = 剩餘時間
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = 下載 { $filename }
 downloadFileSize = （{ $size }）
 unlockInputLabel = 輸入密碼
 unlockInputPlaceholder = 密碼
 unlockButtonLabel = 解鎖
 downloadFileTitle = 下載加密過的檔案
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = 您的朋友正透過 Firefox Send 傳送檔案給您。這是一個可讓您透過安全、隱密、並且會將鏈結加密過，自動失效以確保檔案不會在網路上無限停留的檔案分享服務。
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = 下載
 downloadNotification = 下載完成。
 downloadFinish = 下載完成
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = （{ $partialSize }，共 { $totalSize }）
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = 試用 Firefox Send
 downloadingPageProgress = 正在下載 { $filename }（{ $size }）
 downloadingPageMessage = 請保留此分頁開啟，我們將取回這個檔案並進行解密。
@@ -71,7 +71,7 @@ fileTooBig = 檔案太大無法上傳。檔案大小限制為 { $size }。
 linkExpiredAlt = 鏈結已過期
 expiredPageHeader = 鏈結已失效，或根本不存在！
 notSupportedHeader = 不支援您的瀏覽器。
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = 很可惜，您使用的瀏覽器並不支援 Firefox Send 所需的 Web 技術。請改用其他瀏覽器，我們推薦使用 Firefox！
 notSupportedLink = 為什麼我的瀏覽器不支援？
 notSupportedOutdatedDetail = 很可惜，此版本的 Firefox 不支援 Firefox Send 所需的 Web 技術。請更新瀏覽器後再使用。
@@ -79,7 +79,7 @@ updateFirefox = 更新 Firefox
 downloadFirefoxButtonSub = 免費下載
 uploadedFile = 檔案
 copyFileList = 複製網址
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = 失效於
 deleteFileList = 刪除
 nevermindButton = 沒關係
@@ -92,7 +92,7 @@ deletePopupCancel = 不要刪除
 deleteButtonHover = 刪除
 copyUrlHover = 複製網址
 footerLinkLegal = 法律資訊
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = 關於 Test Pilot
 footerLinkPrivacy = 隱私權
 footerLinkTerms = 使用條款
@@ -101,13 +101,15 @@ requirePasswordCheckbox = 需要密碼才能下載此檔案
 addPasswordButton = 新增密碼
 changePasswordButton = 變更
 passwordTryAgain = 密碼不正確，請再試一次。
-// This label is followed by the password needed to download a file
+# This label is followed by the password needed to download a file
 passwordResult = 密碼: { $password }
 reportIPInfringement = 回報智慧財產權濫用情況
 javascriptRequired = Firefox Send 需要開啟 JavaScript 功能
 whyJavascript = 為什麼 Firefox Send 需要 JavaScript 才能使用？
 enableJavascript = 請開啟 JavaScript 功能後再試一次。
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours } 時 { $minutes } 分
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes } 分鐘
+# A short status message shown when a password is successfully set
+passwordIsSet = 已設定密碼
