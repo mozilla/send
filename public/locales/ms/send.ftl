@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = experimen web
 siteFeedback = Maklum balas
@@ -37,29 +37,29 @@ copyUrlFormButton = Salin ke Klipbod
 copiedUrl = Disalin!
 deleteFileButton = Buang Fail
 sendAnotherFileLink = Hantar fail lain
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Muat turun
 downloadsFileList = Muat turun
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Masa
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Muat turun { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Masukkan Kata Laluan
 unlockInputPlaceholder = Kata laluan
 unlockButtonLabel = Buka
 downloadFileTitle = Muat turun Fail Enkripsi
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Rakan anda menghantar satu fail kepada anda menggunakan Firefox Send, satu perkhidmatan yang membolehkan anda berkongsi fail dengan pautan yang selamat, peribadi dan dienkrip, yang secara automatik akan luput bagi memastikan fail anda tidak terus berada dalam talian selama-lamanya.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Muat turun
 downloadNotification = Muat turun anda sudah siap.
 downloadFinish = Muat turun Selesai
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } daripada { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Cuba Firefox Send
 downloadingPageProgress = Memuat turun { $filename } ({ $size })
 downloadingPageMessage = Sila biarkan tab ini terbuka semasa kami mengambil fail anda dan menghuraikannya.
@@ -71,7 +71,7 @@ fileTooBig = Fail terlalu besar untuk dimuat naik. Perlu kurang daripada { $size
 linkExpiredAlt = Pautan sudah luput
 expiredPageHeader = Pautan ini sudah luput atau pun tidak pernah wujud!
 notSupportedHeader = Pelayar anda tidak disokong.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Malangnya, pelayar ini tidak menyokong teknologi web yang melaksanakan Firefox Send. Anda perlu cuba pelayar lain. Kami syorkan Firefox!
 notSupportedLink = Kenapa pelayar saya tidak disokong?
 notSupportedOutdatedDetail = Malangnya versi Firefox ini tidak menyokong teknologi web yang menguasakan Firefox Send. Anda perlu mengemaskini pelayar anda.
@@ -79,7 +79,7 @@ updateFirefox = Kemaskini Firefox
 downloadFirefoxButtonSub = Muat turun Percuma
 uploadedFile = Fail
 copyFileList = Salin URL
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Luput Pada
 deleteFileList = Buang
 nevermindButton = Tak apalah
@@ -92,7 +92,7 @@ deletePopupCancel = Batal
 deleteButtonHover = Buang
 copyUrlHover = Salin URL
 footerLinkLegal = Perundangan
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Perihal Ujian Perintis
 footerLinkPrivacy = Privasi
 footerLinkTerms = Terma
@@ -101,13 +101,15 @@ requirePasswordCheckbox = Perlu kata laluan untuk memuat turun fail ini
 addPasswordButton = Tambah Kata laluan
 changePasswordButton = Tukar
 passwordTryAgain = Kata laluan tidak betul. Cuba lagi.
-// This label is followed by the password needed to download a file
+# This label is followed by the password needed to download a file
 passwordResult = Kata laluan: { $password }
 reportIPInfringement = Lapor Pencerobohan IP
 javascriptRequired = Firefox Send perlukan JavaScript
 whyJavascript = Kenapa Firefox Send perlukan JavaScript?
 enableJavascript = Sila dayakan JavaScript dan cuba lagi.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when a password is successfully set
+passwordIsSet = Kata laluan ditetapkan
