@@ -153,7 +153,9 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'runtime'
     }),
-    new ExtractTextPlugin('style.[chunkhash:8].css'),
+    new ExtractTextPlugin({
+      filename: 'style.[contenthash:8].css'
+    }),
     new ManifestPlugin()
   ],
   devServer: {
