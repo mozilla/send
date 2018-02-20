@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = spletni poskus
 siteFeedback = Povratne informacije
@@ -43,29 +43,29 @@ copyUrlFormButton = Kopiraj v odložišče
 copiedUrl = Kopirano!
 deleteFileButton = Izbriši datoteko
 sendAnotherFileLink = Pošlji drugo datoteko
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Prenesi
 downloadsFileList = Prenosi
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Čas
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Prenesi { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Vnesite geslo
 unlockInputPlaceholder = Geslo
 unlockButtonLabel = Odkleni
 downloadFileTitle = Prenesi šifrirano datoteko
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Prijatelj vam pošilja datoteko preko storitve Firefox Send, ki vam omogoča deljenje datotek preko varne, zasebne in šifrirane povezave, ki samodejno poteče, kar vam zagotavlja, da vaše stvari ne ostanejo na spletu za vedno.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Prenesi
 downloadNotification = Vaš prenos je končan.
 downloadFinish = Prenos končan
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } od { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Preskusite Firefox Send
 downloadingPageProgress = Prenašanje { $filename } ({ $size })
 downloadingPageMessage = Medtem ko pridobivamo vašo datoteko in jo dešifriramo, pustite ta zavihek odprt.
@@ -77,7 +77,7 @@ fileTooBig = Ta datoteka je prevelika za nalaganje. Največja možna velikost je
 linkExpiredAlt = Povezava je potekla
 expiredPageHeader = Ta povezava je potekla ali pa sploh ni obstajala!
 notSupportedHeader = Vaš brskalnik ni podprt.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Ta brskalnik na žalost ne podpira tehnologije, na kateri temelji Firefox Send. Uporabiti boste morali drug brskalnik. Priporočamo Firefox!
 notSupportedLink = Zakaj moj brskalnik ni podprt?
 notSupportedOutdatedDetail = Ta brskalnik žal ne podpira tehnologije, na kateri temelji Firefox Send. Svoj brskalnik boste morali posodobiti.
@@ -85,7 +85,7 @@ updateFirefox = Posodobi Firefox
 downloadFirefoxButtonSub = Brezplačen prenos
 uploadedFile = Datoteka
 copyFileList = Kopiraj spletni naslov
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Poteče
 deleteFileList = Izbriši
 nevermindButton = Pozabi
@@ -98,7 +98,7 @@ deletePopupCancel = Prekliči
 deleteButtonHover = Izbriši
 copyUrlHover = Kopiraj spletni naslov
 footerLinkLegal = Pravno obvestilo
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = O programu Test Pilot
 footerLinkPrivacy = Zasebnost
 footerLinkTerms = Pogoji
@@ -107,13 +107,15 @@ requirePasswordCheckbox = Zahtevaj geslo za prenos te datoteke
 addPasswordButton = Dodaj geslo
 changePasswordButton = Spremeni
 passwordTryAgain = Napačno geslo. Poskusite znova.
-// This label is followed by the password needed to download a file
+# This label is followed by the password needed to download a file
 passwordResult = Geslo: { $password }
 reportIPInfringement = Prijavite kršitev naslova IP
 javascriptRequired = Firefox Send zahteva JavaScript
 whyJavascript = Zakaj Firefox Send zahteva JavaScript?
 enableJavascript = Omogočite JavaScript in poskusite znova.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when a password is successfully set
+passwordIsSet = Geslo je nastavljeno
