@@ -2,22 +2,25 @@ const html = require('choo/html');
 
 module.exports = function(state, emit) {
   const fileInfo = state.fileInfo;
-  const label =
-    fileInfo.password === null
-      ? html`
-          <label class="red" for="password-input">
+  const invalid = fileInfo.password === null;
+  const label = invalid
+    ? html`
+          <label class="error" for="password-input">
             ${state.translate('passwordTryAgain')}
           </label>`
-      : html`
+    : html`
           <label for="password-input">
             ${state.translate('unlockInputLabel')}
           </label>`;
+  const inputClass = invalid
+    ? 'input input--noBtn input--error'
+    : 'input input--noBtn';
   const div = html`
     <div class="passwordSection">
       ${label}
       <form class="passwordForm" onsubmit=${checkPassword} data-no-csrf>
         <input id="password-input"
-          class="input input--noBtn"
+          class="${inputClass}"
           maxlength="64"
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"
@@ -37,6 +40,7 @@ module.exports = function(state, emit) {
   function inputChanged() {
     const input = document.getElementById('password-input');
     const btn = document.getElementById('password-btn');
+    input.classList.remove('input--error');
     if (input.value.length > 0) {
       btn.classList.remove('inputBtn--hidden');
       input.classList.remove('input--noBtn');
