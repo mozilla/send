@@ -1,15 +1,20 @@
 const html = require('choo/html');
 
 module.exports = function(file, state, emit) {
-  const setting = state.settingPassword;
-  const formClass = file.hasPassword
+  const loading = state.settingPassword;
+  const pwd = file.hasPassword;
+  const formClass = pwd
     ? 'passwordInput'
     : 'passwordInput passwordInput--hidden';
-  const inputClass = setting ? 'input' : 'input input--noBtn';
-  const btnClass = setting
-    ? 'inputBtn inputBtn--loading'
-    : 'inputBtn inputBtn--hidden';
-  const action = file.hasPassword
+  const inputClass = loading || pwd ? 'input' : 'input input--noBtn';
+  let btnClass = 'inputBtn inputBtn--hidden';
+  if (loading) {
+    btnClass = 'inputBtn inputBtn--loading';
+  } else if (pwd) {
+    btnClass = 'inputBtn';
+  }
+
+  const action = pwd
     ? state.translate('changePasswordButton')
     : state.translate('addPasswordButton');
   return html`
@@ -19,26 +24,26 @@ module.exports = function(file, state, emit) {
       onsubmit=${setPassword}
       data-no-csrf>
       <input id="password-input"
-        ${setting ? 'disabled' : ''}
+        ${loading ? 'disabled' : ''}
         class="${inputClass}"
         maxlength="32"
         autocomplete="off"
         type="password"
         oninput=${inputChanged}
         placeholder="${
-          file.hasPassword
+          pwd
             ? passwordPlaceholder(file.password)
             : state.translate('unlockInputPlaceholder')
         }">
       <input type="submit"
         id="password-btn"
-        ${setting ? 'disabled' : ''}
+        ${loading ? 'disabled' : ''}
         class="${btnClass}"
-        value="${setting ? '' : action}">
+        value="${loading ? '' : action}">
     </form>
     <div class="passwordInput__msg">${message(
-      setting,
-      file.hasPassword,
+      loading,
+      pwd,
       state.translate('passwordIsSet')
     )}</div>
   </div>
@@ -74,8 +79,8 @@ function passwordPlaceholder(password) {
   return password ? password.replace(/./g, '●') : '●●●●●●●●●●●●';
 }
 
-function message(setting, pwd, deflt) {
-  if (setting || !pwd) {
+function message(loading, pwd, deflt) {
+  if (loading || !pwd) {
     return '';
   }
   return deflt;
