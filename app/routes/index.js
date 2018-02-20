@@ -29,18 +29,20 @@ function body(template) {
     const b = html`<body>
       ${banner(state, emit)}
       ${header(state)}
-      <div class="all">
+      <main class="main">
         <noscript>
-          <h2>${state.translate('javascriptRequired')}</h2>
-          <p>
-            <a href="https://github.com/mozilla/send/blob/master/docs/faq.md#why-does-firefox-send-require-javascript">
-            ${state.translate('whyJavascript')}
-            </a>
-          </p>
-          <p>${state.translate('enableJavascript')}</p>
+          <div class="noscript">
+            <h2>${state.translate('javascriptRequired')}</h2>
+            <p>
+              <a class="link" href="https://github.com/mozilla/send/blob/master/docs/faq.md#why-does-firefox-send-require-javascript">
+              ${state.translate('whyJavascript')}
+              </a>
+            </p>
+            <p>${state.translate('enableJavascript')}</p>
+          </div>
         </noscript>
         ${template(state, emit)}
-      </div>
+      </main>
       ${footer(state)}
     </body>`;
     if (state.layout) {

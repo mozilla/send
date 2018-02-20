@@ -2,7 +2,7 @@ const html = require('choo/html');
 const assets = require('../../../common/assets');
 
 module.exports = function(state) {
-  return html`<div class="footer">
+  return html`<footer class="footer">
     <div class="legalSection">
       <a
         href="https://www.mozilla.org"
@@ -60,5 +60,5 @@ module.exports = function(state) {
           alt="twitter"/>
       </a>
     </div>
-  </div>`;
+  </footer>`;
 };
