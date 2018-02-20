@@ -1,4 +1,7 @@
-const { MessageContext } = require('fluent');
+// TODO: when node supports 'for await' we can remove babel-polyfill
+// and use 'fluent' instead of 'fluent/compat' (also below near line 42)
+require('babel-polyfill');
+const { MessageContext } = require('fluent/compat');
 const fs = require('fs');
 
 function toJSON(map) {
@@ -36,7 +39,8 @@ module.exports = function(source) {
   return `
 module.exports = \`
 if (typeof window === 'undefined') {
-  var fluent = require('fluent');
+  require('babel-polyfill');
+  var fluent = require('fluent/compat');
 }
 var fluentContext = new fluent.MessageContext('${locale}', {useIsolating: false});
 fluentContext._messages = new Map(${toJSON(merged)});

@@ -59,7 +59,7 @@ module.exports = {
               {
                 loader: 'babel-loader',
                 options: {
-                  presets: [['env', { modules: false }]]
+                  presets: [['env', { modules: false }], 'stage-3']
                 }
               }
             ]
