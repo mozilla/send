@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = فَيَرفُكس سِنْد
 siteSubtitle = تجربة وِبّيّة
 siteFeedback = الانطباعات
@@ -25,7 +25,7 @@ uploadCancelNotification = أُلغي الرفع.
 uploadingPageLargeFileMessage = هذا الملف كبير الحجم وسيأخذ رفعه وقتا. انتظر رجاءً.
 uploadingFileNotification = أعلِمني عندما يكتمل الرفع.
 uploadSuccessConfirmHeader = جاهز للإرسال
-uploadSvgAlt
+uploadSvgAlt =
     .alt = ارفع
 uploadSuccessTimingHeader = ستنتهي صلاحية الرابط الذي يشير إلى الملف في حال: نُزِّل لأول مرة، أو مرّ ٢٤ ساعة على رفعه.
 expireInfo = ستنتهي صلاحية رابط الملف بعد { $downloadCount } أو { $timespan }.
@@ -53,35 +53,35 @@ deleteFileButton = احذف الملف
     .title = احذف الملف
 sendAnotherFileLink = أرسل ملفّا آخر
     .title = أرسل ملفّا آخر
-// Alternative text used on the download link/button (indicates an action).
-downloadAltText
+# Alternative text used on the download link/button (indicates an action).
+downloadAltText =
     .alt = نزّل
 downloadsFileList = التنزيلات
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = الوقت
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = نزّل { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = أدخل كلمة السر
 unlockInputPlaceholder = كلمة السر
 unlockButtonLabel = افتح القفل
 downloadFileTitle = نزِّل الملف المعمّى
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = يُرسل إليك صديقك ملفا عبر «فَيَرفُكس سِنْد»، وهي خدمة تتيح لك مشاركة الملفات عبر رابط آمن وخاص ومعمّى، حيث تنتهي صلاحياتها تلقائيا لتضمن عدم بقاء ما ترسله إلى الأبد.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = نزّل
     .title = نزّل
 downloadNotification = لقد اكتمل التنزيل.
 downloadFinish = اكتمل التنزيل
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } من أصل { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = جرِّب «فَيَرفُكس سِنْد»
 downloadingPageProgress = ينزّل { $filename } ({ $size })
 downloadingPageMessage = رجاء أبقِ هذا اللسان مفتوحا حتى نجلب الملف ونفك تعميته.
-errorAltText
+errorAltText =
     .alt = خطأ أثناء الرفع
 errorPageHeader = حدث خطب ما.
 errorPageMessage = حدث خطب ما أثناء رفع الملف.
@@ -90,7 +90,7 @@ fileTooBig = حجم الملف كبير للغاية لرفعه. يجب أن ي�
 linkExpiredAlt = انتهت صلاحية الرابط
 expiredPageHeader = انتهت صلاحية هذا الرابط أو لم يكن موجودا في المقام الأول!
 notSupportedHeader = متصفحك غير مدعوم.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = للأسف فإن متصفحك لا يدعم تقنية الوِب التي يعتمد عليها «فَيَرفُكس سِنْد». عليك تجربة متصفح آخر، ونحن ننصحك بِفَيَرفُكس!
 notSupportedLink = لماذا متصفحي غير مدعوم؟
 notSupportedOutdatedDetail = للأسف فإن إصدارة فَيَرفُكس هذه لا تدعم تقنية الوِب التي يعتمد عليها «فَيَرفُكس سِنْد». عليك تحديث متصفحك.
@@ -98,7 +98,7 @@ updateFirefox = حدّث فَيَرفُكس
 downloadFirefoxButtonSub = تنزيل مجاني
 uploadedFile = ملف
 copyFileList = انسخ الرابط
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = ينتهي في
 deleteFileList = احذف
 nevermindButton = لا بأس
@@ -108,12 +108,12 @@ legalNoticeMozilla = يخضع استخدام موقع «فَيَرفُكس سِ�
 deletePopupText = أأحذف هذا الملف؟
 deletePopupYes = نعم
 deletePopupCancel = ألغِ
-deleteButtonHover
+deleteButtonHover =
     .title = احذف
-copyUrlHover
+copyUrlHover =
     .title = انسخ الرابط
 footerLinkLegal = القانونية
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = حول الاختبار التجريبي
 footerLinkPrivacy = الخصوصية
 footerLinkTerms = الشروط
@@ -122,13 +122,15 @@ requirePasswordCheckbox = اطلب كلمة سر لتنزيل هذا الملف
 addPasswordButton = أضِف كلمة سر
 changePasswordButton = غيّر
 passwordTryAgain = كلمة السر خاطئة. أعِد المحاولة.
-// This label is followed by the password needed to download a file
+# This label is followed by the password needed to download a file
 passwordResult = كلمة السر: { $password }
 reportIPInfringement = أبلغ عن انتهاك للملكية الفكرية
 javascriptRequired = يتطلب فَيَرفُكس سِنْد جافاسكربت
 whyJavascript = لماذا يتطلب فَيَرفُكس سِنْد جافاسكربت؟
 enableJavascript = رجاء فعّل جافاسكربت ثم أعد المحاولة.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }س { $minutes }د
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }د
+# A short status message shown when a password is successfully set
+passwordIsSet = ضُبطت كلمة السر
