@@ -1,4 +1,5 @@
 const html = require('choo/html');
+const MAX_LENGTH = 32;
 
 module.exports = function(file, state, emit) {
   const loading = state.settingPassword;
@@ -26,7 +27,7 @@ module.exports = function(file, state, emit) {
       <input id="password-input"
         ${loading ? 'disabled' : ''}
         class="${inputClass}"
-        maxlength="32"
+        maxlength="${MAX_LENGTH}"
         autocomplete="off"
         type="password"
         oninput=${inputChanged}
@@ -42,22 +43,29 @@ module.exports = function(file, state, emit) {
         class="${btnClass}"
         value="${loading ? '' : action}">
     </form>
-    <div class="passwordInput__msg">${message(
-      loading,
-      pwd,
-      state.translate('passwordIsSet')
-    )}</div>
-  </div>
-  `;
+    <label
+      class="passwordInput__msg"
+      for="password-input">${message(
+        loading,
+        pwd,
+        state.translate('passwordIsSet')
+      )}</label>
+  </div>`;
 
   function inputChanged() {
-    const pwdmsg = document.querySelector('.passwordInput__msg');
-    if (pwdmsg) {
-      pwdmsg.textContent = '';
-    }
     const resetInput = document.getElementById('password-input');
     const resetBtn = document.getElementById('password-btn');
-    if (resetInput.value.length > 0) {
+    const pwdmsg = document.querySelector('.passwordInput__msg');
+    const length = resetInput.value.length;
+
+    if (length === MAX_LENGTH) {
+      pwdmsg.textContent = state.translate('maxPasswordLength', {
+        length: MAX_LENGTH
+      });
+    } else {
+      pwdmsg.textContent = '';
+    }
+    if (length > 0) {
       resetBtn.classList.remove('inputBtn--hidden');
       resetInput.classList.remove('input--noBtn');
     } else {
