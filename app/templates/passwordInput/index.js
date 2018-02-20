@@ -5,7 +5,7 @@ module.exports = function(file, state, emit) {
   const formClass = file.hasPassword
     ? 'passwordInput'
     : 'passwordInput passwordInput--hidden';
-  const inputClass = setting ? 'input input--copied' : 'input input--noBtn';
+  const inputClass = setting ? 'input' : 'input input--noBtn';
   const btnClass = setting
     ? 'inputBtn inputBtn--loading'
     : 'inputBtn inputBtn--hidden';
