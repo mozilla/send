@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = webeksperiment
 siteFeedback = Kommentaar
@@ -39,29 +39,29 @@ copyUrlFormButton = Nei klamboerd kopiearje
 copiedUrl = Kopiearre!
 deleteFileButton = Bestân fuortsmite
 sendAnotherFileLink = Noch in bestân ferstjoere
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Downloade
 downloadsFileList = Downloads
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Tiid
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = { $filename } downloade
 downloadFileSize = ({ $size })
 unlockInputLabel = Wachtwurd ynfiere
 unlockInputPlaceholder = Wachtwurd
 unlockButtonLabel = Deblokkearje
 downloadFileTitle = Fersifere bestân downloade
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Jo freon stjoert jo in best^n mei Firefox Send, in tsjinst dy't jo yn steat stelt bestannen te dielen mei in feilige, privee en fersifere keppeling dy't automatysk ferrint om wis te wêzen dat jo guod net foar altyd online bliuwt.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Downloade
 downloadNotification = Jo download is foltôge.
 downloadFinish = Download foltôge
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } fan { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Firefox Send probearje
 downloadingPageProgress = { $filename } ({ $size }) wurdt download
 downloadingPageMessage = Lit dit ljepblêd iepen wylst wy jo bestân krije en ûntsiferje.
@@ -73,7 +73,7 @@ fileTooBig = It bestân is te grut om op te laden. It moat lytser wêze as { $si
 linkExpiredAlt = Keppeling ferrûn
 expiredPageHeader = Dizze keppeling is ferrûn of hat nea bestien!
 notSupportedHeader = Jo browser wurdt net stipe.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Spitigernôch stipet dizze browser de webtechnology dy't Firefox Send mooglik makket net. Jo moatte in oare browser probearje. Wy rekommandearje Firefox!
 notSupportedLink = Wêrom wurdt myn browser net stipe?
 notSupportedOutdatedDetail = Spitigernôch stipet dizze ferzje fan Firefox de webtechnology dy't Firefox Send mooflik makket net. Jo moatte jo browser fernije.
@@ -81,7 +81,7 @@ updateFirefox = Firefox fernije
 downloadFirefoxButtonSub = Fergese download
 uploadedFile = Bestân
 copyFileList = URL kopiearje
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Ferrint oer
 deleteFileList = Fuortsmite
 nevermindButton = Lit mar
@@ -94,7 +94,7 @@ deletePopupCancel = Annulearje
 deleteButtonHover = Fuortsmite
 copyUrlHover = URL kopiearje
 footerLinkLegal = Juridysk
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Oer Test Pilot
 footerLinkPrivacy = Privacy
 footerLinkTerms = Betingsten
@@ -103,13 +103,15 @@ requirePasswordCheckbox = Om dit bestân te downloaden is in wachtwurd fereaske
 addPasswordButton = Wachtwurd tafoegje
 changePasswordButton = Wizigje
 passwordTryAgain = Net krekt wachtwurd. Probearje it opnij.
-// This label is followed by the password needed to download a file
+# This label is followed by the password needed to download a file
 passwordResult = Wachtwurd: { $password }
 reportIPInfringement = IP-ynbrek melde
 javascriptRequired = Firefox Send fereasket JavaScript.
 whyJavascript = Werom hat Firefox Send JavaScript nedich?
 enableJavascript = Skeakelje JavaScript yn en probearje nochris.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }o { $minutes }m
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when a password is successfully set
+passwordIsSet = Wachtwurd ynsteld
