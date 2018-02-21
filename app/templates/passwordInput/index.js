@@ -7,11 +7,11 @@ module.exports = function(file, state, emit) {
     ? 'passwordInput'
     : 'passwordInput passwordInput--hidden';
   const inputClass = loading || pwd ? 'input' : 'input input--noBtn';
-  let btnClass = 'inputBtn inputBtn--hidden';
+  let btnClass = 'inputBtn inputBtn--password inputBtn--hidden';
   if (loading) {
-    btnClass = 'inputBtn inputBtn--loading';
+    btnClass = 'inputBtn inputBtn--password inputBtn--loading';
   } else if (pwd) {
-    btnClass = 'inputBtn';
+    btnClass = 'inputBtn inputBtn--password';
   }
 
   const action = pwd
@@ -30,6 +30,7 @@ module.exports = function(file, state, emit) {
         autocomplete="off"
         type="password"
         oninput=${inputChanged}
+        onfocus=${focused}
         placeholder="${
           pwd
             ? passwordPlaceholder(file.password)
@@ -65,11 +66,22 @@ module.exports = function(file, state, emit) {
     }
   }
 
+  function focused(event) {
+    event.preventDefault();
+    const el = document.getElementById('password-input');
+    if (el.placeholder !== state.translate('unlockInputPlaceholder')) {
+      el.placeholder = '';
+    }
+  }
+
   function setPassword(event) {
     event.preventDefault();
-    const password = document.getElementById('password-input').value;
+    const el = document.getElementById('password-input');
+    const password = el.value;
     if (password.length > 0) {
       emit('password', { password, file });
+    } else {
+      el.focus();
     }
     return false;
   }
