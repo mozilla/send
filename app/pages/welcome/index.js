@@ -21,11 +21,9 @@ module.exports = function(state, emit) {
     <div class="uploadArea"
       ondragover=${dragover}
       ondragleave=${dragleave}>
-      <div id="upload-img">
-        <img
-          src="${assets.get('upload.svg')}"
-          title="${state.translate('uploadSvgAlt')}"/>
-      </div>
+      <img
+        src="${assets.get('upload.svg')}"
+        title="${state.translate('uploadSvgAlt')}"/>
       <div class="uploadArea__msg">
         ${state.translate('uploadPageDropMessage')}
       </div>

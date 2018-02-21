@@ -116,4 +116,4 @@ passwordIsSet = Password set
 # A short status message shown when the user enters a long password
 maxPasswordLength = Maximum password length: { $length }
 # A short status message shown when there was an error setting the password
-passwordError = The password could not be set
+passwordSetError = This password could not be set

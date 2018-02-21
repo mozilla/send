@@ -4,9 +4,10 @@ const MAX_LENGTH = 32;
 module.exports = function(file, state, emit) {
   const loading = state.settingPassword;
   const pwd = file.hasPassword;
-  const formClass = pwd
-    ? 'passwordInput'
-    : 'passwordInput passwordInput--hidden';
+  const sectionClass =
+    pwd || state.passwordSetError
+      ? 'passwordInput'
+      : 'passwordInput passwordInput--hidden';
   const inputClass = loading || pwd ? 'input' : 'input input--noBtn';
   let btnClass = 'inputBtn inputBtn--password inputBtn--hidden';
   if (loading) {
@@ -14,14 +15,13 @@ module.exports = function(file, state, emit) {
   } else if (pwd) {
     btnClass = 'inputBtn inputBtn--password';
   }
-
   const action = pwd
     ? state.translate('changePasswordButton')
     : state.translate('addPasswordButton');
   return html`
-  <div>
+  <div class="${sectionClass}">
     <form
-      class="${formClass}"
+      class="passwordInput__form"
       onsubmit=${setPassword}
       data-no-csrf>
       <input id="password-input"
@@ -33,7 +33,7 @@ module.exports = function(file, state, emit) {
         oninput=${inputChanged}
         onfocus=${focused}
         placeholder="${
-          pwd
+          pwd && !state.passwordSetError
             ? passwordPlaceholder(file.password)
             : state.translate('unlockInputPlaceholder')
         }">
@@ -44,15 +44,14 @@ module.exports = function(file, state, emit) {
         value="${loading ? '' : action}">
     </form>
     <label
-      class="passwordInput__msg"
-      for="password-input">${message(
-        loading,
-        pwd,
-        state.translate('passwordIsSet')
-      )}</label>
+      class="passwordInput__msg ${
+        state.passwordSetError ? 'passwordInput__msg--error' : ''
+      }"
+      for="password-input">${message(state, pwd)}</label>
   </div>`;
 
   function inputChanged() {
+    state.passwordSetError = null;
     const resetInput = document.getElementById('password-input');
     const resetBtn = document.getElementById('password-btn');
     const pwdmsg = document.querySelector('.passwordInput__msg');
@@ -99,9 +98,12 @@ function passwordPlaceholder(password) {
   return password ? password.replace(/./g, '●') : '●●●●●●●●●●●●';
 }
 
-function message(loading, pwd, deflt) {
-  if (loading || !pwd) {
+function message(state, pwd) {
+  if (state.passwordSetError) {
+    return state.translate('passwordSetError');
+  }
+  if (state.settingPassword || !pwd) {
     return '';
   }
-  return deflt;
+  return state.translate('passwordIsSet');
 }

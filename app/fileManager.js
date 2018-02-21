@@ -136,9 +136,11 @@ export default function(state, emitter) {
       state.storage.writeFile(file);
       metrics.addedPassword({ size: file.size });
       await delay(1000);
-      state.settingPassword = false;
     } catch (err) {
       console.error(err);
+      state.passwordSetError = err;
+    } finally {
+      state.settingPassword = false;
     }
     render();
   });
