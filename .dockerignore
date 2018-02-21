@@ -7,3 +7,4 @@ docs
 public
 test
 coverage
+.nyc_output

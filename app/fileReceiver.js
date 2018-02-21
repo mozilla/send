@@ -59,7 +59,7 @@ export default class FileReceiver extends Nanobus {
     return;
   }
 
-  async download() {
+  async download(noSave = false) {
     this.state = 'downloading';
     this.emit('progress', this.progress);
     try {
@@ -78,11 +78,13 @@ export default class FileReceiver extends Nanobus {
       if (this.cancelled) {
         throw new Error(0);
       }
-      await saveFile({
-        plaintext,
-        name: decodeURIComponent(this.fileInfo.name),
-        type: this.fileInfo.type
-      });
+      if (!noSave) {
+        await saveFile({
+          plaintext,
+          name: decodeURIComponent(this.fileInfo.name),
+          type: this.fileInfo.type
+        });
+      }
       this.msg = 'downloadFinish';
       this.state = 'complete';
       return;

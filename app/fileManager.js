@@ -188,7 +188,7 @@ export default function(state, emitter) {
       }
       console.error(err);
       state.transfer = null;
-      const location = err.message === 'notfound' ? '/404' : '/error';
+      const location = err.message === '404' ? '/404' : '/error';
       if (location === '/error') {
         state.raven.captureException(err);
         metrics.stoppedDownload({ size, err });

@@ -145,9 +145,6 @@ function download(id, keychain) {
         if (authHeader) {
           keychain.nonce = parseNonce(authHeader);
         }
-        if (xhr.status === 404) {
-          return reject(new Error('notfound'));
-        }
         if (xhr.status !== 200) {
           return reject(new Error(xhr.status));
         }

@@ -16,7 +16,7 @@ export default class OwnedFile {
     this.ownerToken = obj.ownerToken;
     this.dlimit = obj.dlimit || 1;
     this.dtotal = obj.dtotal || 0;
-    this.keychain = new Keychain(obj.secretKey);
+    this.keychain = new Keychain(obj.secretKey, obj.nonce);
     this._hasPassword = !!obj.hasPassword;
   }
 
@@ -59,6 +59,7 @@ export default class OwnedFile {
       if (e.message === '404') {
         this.dtotal = this.dlimit;
       }
+      // ignore other errors
     }
   }
 
