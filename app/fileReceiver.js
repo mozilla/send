@@ -95,27 +95,39 @@ export default class FileReceiver extends Nanobus {
 
 async function saveFile(file) {
   return new Promise(function(resolve, reject) {
-    const reader = new FileReader();
     const dataView = new DataView(file.plaintext);
     const blob = new Blob([dataView], { type: file.type });
 
-    if (window.navigator.msSaveBlob) {
-      window.navigator.msSaveBlob(blob, file.name);
+    if (navigator.msSaveBlob) {
+      navigator.msSaveBlob(blob, file.name);
       return resolve();
+    } else if (/iPhone|fxios/i.test(navigator.userAgent)) {
+      // This method is much slower but createObjectURL
+      // is buggy on iOS
+      const reader = new FileReader();
+      reader.addEventListener('loadend', function() {
+        if (reader.error) {
+          return reject(reader.error);
+        }
+        if (reader.result) {
+          const a = document.createElement('a');
+          a.href = reader.result;
+          a.download = file.name;
+          document.body.appendChild(a);
+          a.click();
+        }
+        resolve();
+      });
+      reader.readAsDataURL(blob);
+    } else {
+      const downloadUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = file.name;
+      document.body.appendChild(a);
+      a.click();
+      URL.revokeObjectURL(downloadUrl);
+      setTimeout(resolve, 100);
     }
-    reader.addEventListener('loadend', function() {
-      if (reader.error) {
-        return reject(reader.error);
-      }
-      if (reader.result) {
-        const a = document.createElement('a');
-        a.href = reader.result;
-        a.download = file.name;
-        document.body.appendChild(a);
-        a.click();
-      }
-      resolve();
-    });
-    reader.readAsDataURL(blob);
   });
 }
