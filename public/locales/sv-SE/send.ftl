@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = webbexperiment
 siteFeedback = Återkoppling
@@ -39,29 +39,29 @@ copyUrlFormButton = Kopiera till urklipp
 copiedUrl = Kopierad!
 deleteFileButton = Ta bort fil
 sendAnotherFileLink = Skicka en annan fil
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Ladda ner
 downloadsFileList = Nedladdningar
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Tid
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Ladda ner { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Ange lösenord
 unlockInputPlaceholder = Lösenord
 unlockButtonLabel = Lås upp
 downloadFileTitle = Hämta krypterad fil
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Din vän skickar dig en fil med Firefox Send, en tjänst som låter dig dela filer med en säker, privat och krypterad länk som automatiskt upphör för att säkerställa att dina saker inte förblir på nätet för alltid.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Ladda ner
 downloadNotification = Din nedladdning har slutförts.
 downloadFinish = Nedladdning klar
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } av { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Testa Firefox Send
 downloadingPageProgress = Laddar ner { $filename } ({ $size })
 downloadingPageMessage = Lämna den här fliken öppen medan vi laddar ner din fil och dekrypterar den.
@@ -73,7 +73,7 @@ fileTooBig = Den filen är för stor för att ladda upp. Det ska vara mindre än
 linkExpiredAlt = Länk upphörd
 expiredPageHeader = Den här länken har upphört eller har aldrig existerat i första hand!
 notSupportedHeader = Din webbläsare stöds inte.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Tyvärr stöder inte webbläsaren den webbteknologi som används av Firefox Send. Du måste försöka med en annan webbläsare. Vi rekommenderar Firefox!
 notSupportedLink = Varför stöds inte min webbläsare?
 notSupportedOutdatedDetail = Tyvärr stödjer den här versionen av Firefox inte webbtekniken som driver Firefox Send. Du måste uppdatera din webbläsare.
@@ -81,7 +81,7 @@ updateFirefox = Uppdatera Firefox
 downloadFirefoxButtonSub = Gratis nedladdning
 uploadedFile = Fil
 copyFileList = Kopiera URL
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Upphör
 deleteFileList = Ta bort
 nevermindButton = Glöm det
@@ -94,7 +94,7 @@ deletePopupCancel = Avbryt
 deleteButtonHover = Ta bort
 copyUrlHover = Kopiera URL
 footerLinkLegal = Juridisk information
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Om Test Pilot
 footerLinkPrivacy = Sekretess
 footerLinkTerms = Villkor
@@ -103,13 +103,15 @@ requirePasswordCheckbox = Kräver ett lösenord för att ladda ner den här file
 addPasswordButton = Lägg till lösenord
 changePasswordButton = Ändra
 passwordTryAgain = Felaktigt lösenord. Försök igen.
-// This label is followed by the password needed to download a file
+# This label is followed by the password needed to download a file
 passwordResult = Lösenord: { $password }
 reportIPInfringement = Rapportera IP-överträdelse
 javascriptRequired = Firefox Send kräver JavaScript
 whyJavascript = Varför kräver Firefox Send JavaScript?
 enableJavascript = Aktivera JavaScript och försök igen.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }t { $minutes }m
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when a password is successfully set
+passwordIsSet = Lösenord satt 
