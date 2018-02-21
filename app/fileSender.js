@@ -20,6 +20,10 @@ export default class FileSender extends Nanobus {
     return this.progress[0] / this.progress[1];
   }
 
+  get progressIndefinite() {
+    return ['fileSizeProgress', 'notifyUploadDone'].indexOf(this.msg) === -1;
+  }
+
   get sizes() {
     return {
       partialSize: bytes(this.progress[0]),

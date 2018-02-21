@@ -18,6 +18,23 @@
   transition: stroke-dashoffset 300ms linear;
 }
 
+.progress__indefinite {
+  stroke: #3b9dff;
+  stroke-width: 0.75em;
+  animation: 1s linear infinite spin;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .progress__percent {
   font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
   font-size: 43.2px;

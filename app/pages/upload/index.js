@@ -14,7 +14,7 @@ module.exports = function(state, emit) {
       })}
     </div>
     <div class="description"></div>
-    ${progress(transfer.progressRatio)}
+    ${progress(transfer.progressRatio, transfer.progressIndefinite)}
     <div class="progressSection">
       <div class="progressSection__text">
         ${state.translate(transfer.msg, transfer.sizes)}
