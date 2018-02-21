@@ -5,8 +5,7 @@ import {
   delay,
   fadeOut,
   openLinksInNewTab,
-  percent,
-  saveFile
+  percent
 } from './utils';
 import * as metrics from './metrics';
 
@@ -170,12 +169,11 @@ export default function(state, emitter) {
     try {
       const start = Date.now();
       metrics.startedDownload({ size: file.size, ttl: file.ttl });
-      const f = await state.transfer.download();
+      await state.transfer.download();
       const time = Date.now() - start;
       const speed = size / (time / 1000);
       await delay(1000);
       await fadeOut('.page');
-      saveFile(f);
       state.storage.totalDownloads += 1;
       state.transfer.reset();
       metrics.completedDownload({ size, time, speed });

@@ -141,32 +141,6 @@ function fadeOut(selector) {
   return delay(300);
 }
 
-function saveFile(file) {
-  const reader = new FileReader();
-  const dataView = new DataView(file.plaintext);
-  const blob = new Blob([dataView], { type: file.type });
-
-  if (window.navigator.msSaveBlob) {
-    return window.navigator.msSaveBlob(blob, file.name);
-  }
-  reader.addEventListener('loadend', function() {
-    if (reader.result) {
-      const a = document.createElement('a');
-      a.href = reader.result;
-      a.download = file.name;
-      document.body.appendChild(a);
-      a.click();
-      return;
-    }
-    if (reader.error) {
-      console.error(reader.error);
-      window.location.href = '/error';
-      //TODO
-    }
-  });
-  reader.readAsDataURL(blob);
-}
-
 function openLinksInNewTab(links, should = true) {
   links = links || Array.from(document.querySelectorAll('a:not([target])'));
   if (should) {
@@ -195,6 +169,5 @@ module.exports = {
   b64ToArray,
   canHasSend,
   isFile,
-  saveFile,
   openLinksInNewTab
 };

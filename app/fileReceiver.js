@@ -78,16 +78,44 @@ export default class FileReceiver extends Nanobus {
       if (this.cancelled) {
         throw new Error(0);
       }
-      this.msg = 'downloadFinish';
-      this.state = 'complete';
-      return {
+      await saveFile({
         plaintext,
         name: decodeURIComponent(this.fileInfo.name),
         type: this.fileInfo.type
-      };
+      });
+      this.msg = 'downloadFinish';
+      this.state = 'complete';
+      return;
     } catch (e) {
       this.state = 'invalid';
       throw e;
     }
   }
+}
+
+async function saveFile(file) {
+  return new Promise(function(resolve, reject) {
+    const reader = new FileReader();
+    const dataView = new DataView(file.plaintext);
+    const blob = new Blob([dataView], { type: file.type });
+
+    if (window.navigator.msSaveBlob) {
+      window.navigator.msSaveBlob(blob, file.name);
+      return resolve();
+    }
+    reader.addEventListener('loadend', function() {
+      if (reader.error) {
+        return reject(reader.error);
+      }
+      if (reader.result) {
+        const a = document.createElement('a');
+        a.href = reader.result;
+        a.download = file.name;
+        document.body.appendChild(a);
+        a.click();
+      }
+      resolve();
+    });
+    reader.readAsDataURL(blob);
+  });
 }
