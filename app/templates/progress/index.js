@@ -6,9 +6,14 @@ const oRadius = radius + 10;
 const oDiameter = oRadius * 2;
 const circumference = 2 * Math.PI * radius;
 
-module.exports = function(progressRatio) {
-  const dashOffset = (1 - progressRatio) * circumference;
-  const percentComplete = percent(progressRatio);
+module.exports = function(progressRatio, indefinite = false) {
+  const p = indefinite ? 0.2 : progressRatio;
+  const dashOffset = (1 - p) * circumference;
+  const progressPercent = html`
+    <text class="progress__percent" text-anchor="middle" x="50%" y="98">
+      ${percent(progressRatio)}
+    </text>`;
+
   return html`
   <div class="progress">
     <svg
@@ -23,7 +28,7 @@ module.exports = function(progressRatio) {
         cy="${oRadius}"
         fill="transparent"/>
       <circle
-        class="progress__bar"
+        class="${indefinite ? 'progress__indefinite' : 'progress__bar'}"
         r="${radius}"
         cx="${oRadius}"
         cy="${oRadius}"
@@ -31,9 +36,7 @@ module.exports = function(progressRatio) {
         transform="rotate(-90 ${oRadius} ${oRadius})"
         stroke-dasharray="${circumference}"
         stroke-dashoffset="${dashOffset}"/>
-      <text class="progress__percent" text-anchor="middle" x="50%" y="98">
-        ${percentComplete}
-      </text>
+        ${indefinite ? '' : progressPercent}
     </svg>
   </div>
   `;

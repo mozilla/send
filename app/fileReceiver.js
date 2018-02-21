@@ -18,6 +18,10 @@ export default class FileReceiver extends Nanobus {
     return this.progress[0] / this.progress[1];
   }
 
+  get progressIndefinite() {
+    return this.state !== 'downloading';
+  }
+
   get sizes() {
     return {
       partialSize: bytes(this.progress[0]),
