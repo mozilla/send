@@ -107,8 +107,6 @@ requirePasswordCheckbox = Gronidło za ześěgnjenje toś teje dataje pominaś
 addPasswordButton = Gronidło pśidaś
 changePasswordButton = Změniś
 passwordTryAgain = Wopacne gronidło. Wopytajśo hyšći raz.
-# This label is followed by the password needed to download a file
-passwordResult = Gronidło: { $password }
 reportIPInfringement = Pśekśiwjenje IP k wěsći daś
 javascriptRequired = Firefox Send JavaScript trjeba
 whyJavascript = Cogodla Firefox Send JavaScript trjeba?
@@ -119,3 +117,7 @@ expiresHoursMinutes = { $hours } góź. { $minutes } min.
 expiresMinutes = { $minutes } min.
 # A short status message shown when a password is successfully set
 passwordIsSet = Gronidło jo se nastajiło
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maksimalna dłujkosć gronidła: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Toś to gronidło njedajo se nastajiś
