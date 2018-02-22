@@ -103,8 +103,6 @@ requirePasswordCheckbox = Exiger un mot de passe pour télécharger ce fichier
 addPasswordButton = Ajouter un mot de passe
 changePasswordButton = Changer
 passwordTryAgain = Mot de passe incorrect. Veuillez réessayer.
-# This label is followed by the password needed to download a file
-passwordResult = Mot de passe : { $password }
 reportIPInfringement = Signaler une violation de la p.i.
 javascriptRequired = Firefox Send nécessite JavaScript
 whyJavascript = Pourquoi Firefox Send nécessite-t-il JavaScript ?
@@ -115,3 +113,7 @@ expiresHoursMinutes = { $hours } h { $minutes } min
 expiresMinutes = { $minutes } min
 # A short status message shown when a password is successfully set
 passwordIsSet = Mot de passe défini
+# A short status message shown when the user enters a long password
+maxPasswordLength = Longueur maximale du mot de passe : { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Ce mot de passe n’a pas pu être défini
