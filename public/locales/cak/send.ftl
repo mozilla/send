@@ -103,8 +103,6 @@ requirePasswordCheckbox = Tik'utüx jun ewan tzij richin niqasäx re yakb'äl re
 addPasswordButton = Titz'aqatisäx Ewan Tzij
 changePasswordButton = Tijalwachïx
 passwordTryAgain = Itzel ri ewan tzij. Tatojtob'ej chik.
-# This label is followed by the password needed to download a file
-passwordResult = Ewan tzij: { $password }
 reportIPInfringement = Tiya' rutzijol ri Ritzelanik Ajna'oj Ichinil
 javascriptRequired = K'atzinel JavaScript chi re ri Firefox Send
 whyJavascript = ¿Achike ruma toq ri Firefox Send nrajo' JavaScript?
@@ -115,3 +113,7 @@ expiresHoursMinutes = { $hours }r { $minutes }ch
 expiresMinutes = { $minutes }ch
 # A short status message shown when a password is successfully set
 passwordIsSet = Xjikib'äx ewan tzij
+# A short status message shown when the user enters a long password
+maxPasswordLength = Nïm raqän ewan tzij: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Man tikirel ta ninuk' re ewan tzij re'
