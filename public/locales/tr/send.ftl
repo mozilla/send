@@ -99,8 +99,6 @@ requirePasswordCheckbox = Bu dosyayı indirmek için parola iste
 addPasswordButton = Parola ekle
 changePasswordButton = Değiştir
 passwordTryAgain = Yanlış parola. Yeniden deneyin.
-# This label is followed by the password needed to download a file
-passwordResult = Parola: { $password }
 reportIPInfringement = Telif hakkı ihlali bildir
 javascriptRequired = Firefox Send için JavaScript gerekir
 whyJavascript = Firefox Send neden JavaScript kullanıyor?
@@ -111,3 +109,7 @@ expiresHoursMinutes = { $hours } sa { $minutes } dk
 expiresMinutes = { $minutes } dk
 # A short status message shown when a password is successfully set
 passwordIsSet = Parola ayarlandı
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maksimum parola uzunluğu: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Parola ayarlanamadı
