@@ -1,10 +1,5 @@
 .progress {
-  align-items: center;
-  display: flex;
-  justify-content: center;
   margin-top: 3px;
-  position: relative;
-  text-align: center;
 }
 
 .progress__bg {
