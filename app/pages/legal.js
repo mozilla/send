@@ -3,7 +3,7 @@ const raw = require('choo/html/raw');
 
 module.exports = function(state) {
   return html`
-    <div id="legal">
+    <div>
       <div class="title">${state.translate('legalHeader')}</div>
         ${raw(
           replaceLinks(state.translate('legalNoticeTestPilot'), [
