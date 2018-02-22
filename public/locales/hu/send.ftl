@@ -103,8 +103,6 @@ requirePasswordCheckbox = Jelszó megkövetelése a fájl letöltéséhez
 addPasswordButton = Jelszó hozzáadása
 changePasswordButton = Módosítás
 passwordTryAgain = Helytelen jelszó. Próbálja meg újra.
-# This label is followed by the password needed to download a file
-passwordResult = Jelszó: { $password }
 reportIPInfringement = Szellemi tulajdon megsértésének bejelentése
 javascriptRequired = A Firefox Sendhez JavaScript szükséges
 whyJavascript = Miért van szükség JavaScriptre a Firefox Sendhez?
@@ -115,3 +113,7 @@ expiresHoursMinutes = { $hours }ó { $minutes }p
 expiresMinutes = { $minutes }p
 # A short status message shown when a password is successfully set
 passwordIsSet = Jelszó megadva
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maximális jelszóhossz: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Ez a jelszó nem állítható be
