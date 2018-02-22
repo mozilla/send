@@ -107,8 +107,6 @@ requirePasswordCheckbox = Žadajće sej hesło za sćehnjenje tuteje dataje
 addPasswordButton = Hesło přidać
 changePasswordButton = Změnić
 passwordTryAgain = Wopačne hesło. Prošu spytajće hišće raz.
-# This label is followed by the password needed to download a file
-passwordResult = Hesło: { $password }
 reportIPInfringement = Zranjenje IP zdźělić
 javascriptRequired = Firefox Send JavaScript trjeba
 whyJavascript = Čehodla Firefox Send JavaScript trjeba?
@@ -119,3 +117,7 @@ expiresHoursMinutes = { $hours } hodź. { $minutes } mjeń.
 expiresMinutes = { $minutes } mjeń.
 # A short status message shown when a password is successfully set
 passwordIsSet = Hesło je so nastajiło
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maksimalna dołhosć hesła: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Tute hesło njeda so nastajić
