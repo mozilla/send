@@ -3,8 +3,8 @@ const assets = require('../../../common/assets');
 
 module.exports = function(state) {
   return html`
-  <div class="errorPage">
+  <div class="page">
     <div class="title">${state.translate('errorPageHeader')}</div>
-    <img class="errorPage__img" src="${assets.get('illustration_error.svg')}"/>
+    <img src="${assets.get('illustration_error.svg')}"/>
   </div>`;
 };
