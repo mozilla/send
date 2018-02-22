@@ -21,11 +21,17 @@ export default class OwnedFile {
   }
 
   async setPassword(password) {
-    this.password = password;
-    this._hasPassword = true;
-    this.keychain.setPassword(password, this.url);
-    const result = await setPassword(this.id, this.ownerToken, this.keychain);
-    return result;
+    try {
+      this.password = password;
+      this._hasPassword = true;
+      this.keychain.setPassword(password, this.url);
+      const result = await setPassword(this.id, this.ownerToken, this.keychain);
+      return result;
+    } catch (e) {
+      this.password = null;
+      this._hasPassword = false;
+      throw e;
+    }
   }
 
   del() {

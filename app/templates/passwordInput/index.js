@@ -1,11 +1,13 @@
 const html = require('choo/html');
+const MAX_LENGTH = 32;
 
 module.exports = function(file, state, emit) {
   const loading = state.settingPassword;
   const pwd = file.hasPassword;
-  const formClass = pwd
-    ? 'passwordInput'
-    : 'passwordInput passwordInput--hidden';
+  const sectionClass =
+    pwd || state.passwordSetError
+      ? 'passwordInput'
+      : 'passwordInput passwordInput--hidden';
   const inputClass = loading || pwd ? 'input' : 'input input--noBtn';
   let btnClass = 'inputBtn inputBtn--password inputBtn--hidden';
   if (loading) {
@@ -13,26 +15,25 @@ module.exports = function(file, state, emit) {
   } else if (pwd) {
     btnClass = 'inputBtn inputBtn--password';
   }
-
   const action = pwd
     ? state.translate('changePasswordButton')
     : state.translate('addPasswordButton');
   return html`
-  <div>
+  <div class="${sectionClass}">
     <form
-      class="${formClass}"
+      class="passwordInput__form"
       onsubmit=${setPassword}
       data-no-csrf>
       <input id="password-input"
         ${loading ? 'disabled' : ''}
         class="${inputClass}"
-        maxlength="32"
+        maxlength="${MAX_LENGTH}"
         autocomplete="off"
         type="password"
         oninput=${inputChanged}
         onfocus=${focused}
         placeholder="${
-          pwd
+          pwd && !state.passwordSetError
             ? passwordPlaceholder(file.password)
             : state.translate('unlockInputPlaceholder')
         }">
@@ -42,22 +43,28 @@ module.exports = function(file, state, emit) {
         class="${btnClass}"
         value="${loading ? '' : action}">
     </form>
-    <div class="passwordInput__msg">${message(
-      loading,
-      pwd,
-      state.translate('passwordIsSet')
-    )}</div>
-  </div>
-  `;
+    <label
+      class="passwordInput__msg ${
+        state.passwordSetError ? 'passwordInput__msg--error' : ''
+      }"
+      for="password-input">${message(state, pwd)}</label>
+  </div>`;
 
   function inputChanged() {
-    const pwdmsg = document.querySelector('.passwordInput__msg');
-    if (pwdmsg) {
-      pwdmsg.textContent = '';
-    }
+    state.passwordSetError = null;
     const resetInput = document.getElementById('password-input');
     const resetBtn = document.getElementById('password-btn');
-    if (resetInput.value.length > 0) {
+    const pwdmsg = document.querySelector('.passwordInput__msg');
+    const length = resetInput.value.length;
+
+    if (length === MAX_LENGTH) {
+      pwdmsg.textContent = state.translate('maxPasswordLength', {
+        length: MAX_LENGTH
+      });
+    } else {
+      pwdmsg.textContent = '';
+    }
+    if (length > 0) {
       resetBtn.classList.remove('inputBtn--hidden');
       resetInput.classList.remove('input--noBtn');
     } else {
@@ -91,9 +98,12 @@ function passwordPlaceholder(password) {
   return password ? password.replace(/./g, '●') : '●●●●●●●●●●●●';
 }
 
-function message(loading, pwd, deflt) {
-  if (loading || !pwd) {
+function message(state, pwd) {
+  if (state.passwordSetError) {
+    return state.translate('passwordSetError');
+  }
+  if (state.settingPassword || !pwd) {
     return '';
   }
-  return deflt;
+  return state.translate('passwordIsSet');
 }

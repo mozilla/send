@@ -9,7 +9,7 @@ module.exports = function(state, emit) {
     <div class="checkbox">
       <input
         ${file.hasPassword ? 'disabled' : ''}
-        ${file.hasPassword ? 'checked' : ''}
+        ${file.hasPassword || state.passwordSetError ? 'checked' : ''}
         class="checkbox__input"
         id="add-password"
         type="checkbox"
@@ -26,7 +26,7 @@ module.exports = function(state, emit) {
     const unlockInput = document.getElementById('password-input');
     const boxChecked = e.target.checked;
     document
-      .querySelector('form.passwordInput')
+      .querySelector('.passwordInput')
       .classList.toggle('passwordInput--hidden', !boxChecked);
     if (boxChecked) {
       unlockInput.focus();

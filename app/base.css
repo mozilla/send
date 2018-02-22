@@ -106,6 +106,10 @@ a {
   padding-right: 10px;
 }
 
+.input--error {
+  border-color: var(--errorColor);
+}
+
 .input--noBtn {
   border-radius: 6px;
 }
@@ -213,6 +217,10 @@ a {
   100% {
     opacity: 1;
   }
+}
+
+.error {
+  color: var(--errorColor);
 }
 
 .title {
