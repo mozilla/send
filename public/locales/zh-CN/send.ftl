@@ -101,8 +101,6 @@ requirePasswordCheckbox = 持有密码才能下载此文件
 addPasswordButton = 添加密码
 changePasswordButton = 更改
 passwordTryAgain = 密码不正确。请重试。
-# This label is followed by the password needed to download a file
-passwordResult = 密码：{ $password }
 reportIPInfringement = 举报知识产权侵权
 javascriptRequired = Firefox Send 需要 JavaScript
 whyJavascript = 为什么 Firefox Send 需要 JavaScript？
@@ -113,3 +111,7 @@ expiresHoursMinutes = { $hours }时 { $minutes }分
 expiresMinutes = { $minutes }分
 # A short status message shown when a password is successfully set
 passwordIsSet = 密码已设置
+# A short status message shown when the user enters a long password
+maxPasswordLength = 最大密码长度：{ $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = 未能设置此密码
