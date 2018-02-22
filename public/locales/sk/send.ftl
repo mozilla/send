@@ -105,8 +105,6 @@ requirePasswordCheckbox = Pri preberaní súboru vyžadovať heslo
 addPasswordButton = Pridať heslo
 changePasswordButton = Zmeniť
 passwordTryAgain = Nesprávne heslo. Skúste to znova.
-# This label is followed by the password needed to download a file
-passwordResult = Heslo: { $password }
 reportIPInfringement = Nahlásiť porušenie práv duševného vlastníctva
 javascriptRequired = Firefox Send vyžaduje JavaScript
 whyJavascript = Prečo Firefox Send vyžaduje JavaScript?
@@ -117,3 +115,7 @@ expiresHoursMinutes = { $hours } hod. { $minutes } min.
 expiresMinutes = { $minutes } min.
 # A short status message shown when a password is successfully set
 passwordIsSet = Heslo bolo nastavené
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maximálna dĺžka hesla: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Heslo nešlo nastaviť
