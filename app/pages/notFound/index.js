@@ -3,11 +3,9 @@ const assets = require('../../../common/assets');
 
 module.exports = function(state) {
   return html`
-    <div class="notFoundPage">
+    <div class="page">
       <div class="title">${state.translate('expiredPageHeader')}</div>
-      <div class="notFoundPage__img">
-        <img src="${assets.get('illustration_expired.svg')}" id="expired-img">
-      </div>
+      <img src="${assets.get('illustration_expired.svg')}" id="expired-img">
       <div class="description">
         ${state.translate('uploadPageExplainer')}
       </div>
