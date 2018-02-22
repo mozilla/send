@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = arbrawf gwe
 siteFeedback = Adborth
@@ -43,29 +43,29 @@ copyUrlFormButton = Copïo i'r clipfwrdd
 copiedUrl = Wedi eu copïo!
 deleteFileButton = Dileu ffeil
 sendAnotherFileLink = Anfon ffeil arall
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Llwytho i lawr
 downloadsFileList = Llwythi
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Amser
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Llwytho i lawr { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Rhowch Gyfrinair
 unlockInputPlaceholder = Cyfrinair
 unlockButtonLabel = Datgloi
 downloadFileTitle = Llwythwch Ffeil wedi ei Hamgryptio i Lawr
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Mae ffrind i chi yn anfon ffeil atoch drwy Firefox Send, gwasanaeth sy'n caniatáu i chi rannu ffeiliau drwy ddolen ddiogel, breifat ac wedi ei amgryptio sy'n dod i ben yn awtomatig er mwyn sicrhau nad yw eich deunydd yn aros ar-lein am byth.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Llwytho i Lawr
 downloadNotification = Mae eich llwytho wedi gorffen
 downloadFinish = Llwytho wedi Gorffen
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } o { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Rhowch gynnig ar Firefox Send
 downloadingPageProgress = Llwytho i lawr { $filename } ({ $size })
 downloadingPageMessage = Gadewch y tab yma ar agor tra fyddwn yn estyn eich ffeil a'i dad-amgryptio.
@@ -77,7 +77,7 @@ fileTooBig = Mae'r ffeil yn rhy fawr i'w llwytho. Dylai fod yn llai na { $size }
 linkExpiredAlt = Mae'r ddolen wedi dod i ben
 expiredPageHeader = Mae'r ddolen wedi dod i ben neu nad yw wedi bodoli erioed!
 notSupportedHeader = Nid yw eich porwr yn cael ei gynnal.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Yn anffodus, nid yw'r porwr hwn yn cynnal y technoleg gwe sy'n cynnal Firefox Send. Bydd angen i chi ddefnyddio porwr arall. Rydym ni'n argymell Firefox!
 notSupportedLink = Pam nad yw fy mhorwr yn cael ei gynnal?
 notSupportedOutdatedDetail = Yn anffodus, nid yw'r fersiwn yma o Firefox yn cynnal y technoleg gwe sy'n gyrru Firefox Send. Bydd angen i chi ddiweddaru eich porwr.
@@ -85,7 +85,7 @@ updateFirefox = Diweddaru Firefox
 downloadFirefoxButtonSub = Llwytho i Lawr am Ddim
 uploadedFile = Ffeil
 copyFileList = Copïo URL
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Daw i ben ymhen
 deleteFileList = Dileu
 nevermindButton = Dim ots
@@ -98,7 +98,7 @@ deletePopupCancel = Diddymu
 deleteButtonHover = Dileu
 copyUrlHover = Copïo'r URL
 footerLinkLegal = Cyfreithiol
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Ynghylch Test Pilot
 footerLinkPrivacy = Preifatrwydd
 footerLinkTerms = Amodau
@@ -107,13 +107,15 @@ requirePasswordCheckbox = Gosod angen cyfrinair i lwytho'r ffeil hon i lawr
 addPasswordButton = Ychwanegu Cyfrinair
 changePasswordButton = Newid
 passwordTryAgain = Cyfrinair anghywir. Ceisiwch eto.
-// This label is followed by the password needed to download a file
+# This label is followed by the password needed to download a file
 passwordResult = Cyfrinair: { $password }
 reportIPInfringement = Adrodd ar Gamddefnydd o'r IP
 javascriptRequired = Mae Firefox Send angen JavaScript
 whyJavascript = Pam fod Firefox Send angen JavaScript?
 enableJavascript = Galluogwch JavaScript a cheisio eto.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }a { $minutes }m
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when a password is successfully set
+passwordIsSet = Wedi gosod y cyfrinair
