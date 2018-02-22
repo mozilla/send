@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = веб-эксперимент
 siteFeedback = Отзывы
@@ -41,29 +41,29 @@ copyUrlFormButton = Скопировать в буфер обмена
 copiedUrl = Скопировано!
 deleteFileButton = Удалить файл
 sendAnotherFileLink = Отправить другой файл
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Загрузить
 downloadsFileList = Загрузки
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Время
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Загрузить { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Введите пароль
 unlockInputPlaceholder = Пароль
 unlockButtonLabel = Разблокировать
 downloadFileTitle = Загрузить зашифрованный файл
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Ваш друг отправил вам файл с помощью Firefox Send, сервиса, который позволяет вам делиться файлами, используя безопасные, приватные и зашифрованные ссылки, по истечении срока действия которых ваши файлы не остаются в сети навсегда.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Загрузить
 downloadNotification = Ваша загрузка завершена.
 downloadFinish = Загрузка завершена
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } из { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Попробовать Firefox Send
 downloadingPageProgress = Загрузка { $filename } ({ $size })
 downloadingPageMessage = Пожалуйста, оставьте эту вкладку открытой, пока мы загружаем ваш файл и расшифровываем его.
@@ -75,7 +75,7 @@ fileTooBig = Этот файл слишком большой для загруз
 linkExpiredAlt = Истёк срок действия ссылки
 expiredPageHeader = Истёк срок действия ссылки или ее никогда не существовало!
 notSupportedHeader = Ваш браузер не поддерживается.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = К сожалению, этот браузер не поддерживает веб-технологию, благодаря которой работает Firefox Send. Ваш нужно попробовать использовать другой браузер. Мы рекомендуем Firefox!
 notSupportedLink = Почему мой браузер не поддерживается?
 notSupportedOutdatedDetail = К сожалению, эта версия Firefox не поддерживает веб-технологию, благодаря которой работает Firefox Send. Ваш нужно обновить свой браузер.
@@ -83,7 +83,7 @@ updateFirefox = Обновить Firefox
 downloadFirefoxButtonSub = Бесплатная загрузка
 uploadedFile = Файл
 copyFileList = Скопировать URL
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Срок действия истекает через
 deleteFileList = Удалить
 nevermindButton = Неважно
@@ -96,7 +96,7 @@ deletePopupCancel = Отмена
 deleteButtonHover = Удалить
 copyUrlHover = Скопировать URL
 footerLinkLegal = Права
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = О программе лётчика-испытателя
 footerLinkPrivacy = Приватность
 footerLinkTerms = Условия
@@ -105,13 +105,15 @@ requirePasswordCheckbox = Требовать пароль для загрузк�
 addPasswordButton = Добавить пароль
 changePasswordButton = Изменить
 passwordTryAgain = Неверный пароль. Попробуйте снова.
-// This label is followed by the password needed to download a file
+# This label is followed by the password needed to download a file
 passwordResult = Пароль: { $password }
 reportIPInfringement = Сообщить о нарушении прав на интеллектуальную собственность
 javascriptRequired = Для Firefox Send необходим JavaScript
 whyJavascript = Почему Firefox Send требуется JavaScript?
 enableJavascript = Пожалуйста, включите JavaScript и попробуйте снова.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours } ч. { $minutes } мин.
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes } мин.
+# A short status message shown when a password is successfully set
+passwordIsSet = Пароль установлен
