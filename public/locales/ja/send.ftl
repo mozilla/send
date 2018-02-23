@@ -101,8 +101,6 @@ requirePasswordCheckbox = このファイルをダウンロードするにはパ
 addPasswordButton = パスワードを追加
 changePasswordButton = 変更
 passwordTryAgain = パスワードが正しくありません。再度入力してください。
-# This label is followed by the password needed to download a file
-passwordResult = パスワード: { $password }
 reportIPInfringement = 知的財産侵害報告
 javascriptRequired = Firefox Send を使うには JavaScript が必要です
 whyJavascript = Firefox Send が JavaScript を必要とする理由
@@ -113,3 +111,7 @@ expiresHoursMinutes = { $hours } 時間 { $minutes } 分
 expiresMinutes = { $minutes } 分
 # A short status message shown when a password is successfully set
 passwordIsSet = パスワードを設定しました
+# A short status message shown when the user enters a long password
+maxPasswordLength = パスワード最長文字数: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = このパスワードは設定できませんでした
