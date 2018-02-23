@@ -101,8 +101,6 @@ requirePasswordCheckbox = პაროლის მოთხოვნა, ფა
 addPasswordButton = პაროლის დამატება
 changePasswordButton = შეცვლა
 passwordTryAgain = პაროლი არასწორია. სცადეთ ხელახლა.
-# This label is followed by the password needed to download a file
-passwordResult = პაროლი: { $password }
 reportIPInfringement = მოხსენება დარღვევაზე
 javascriptRequired = Firefox Send საჭიროებს JavaScript-ს
 whyJavascript = რატომ საჭიროებს Firefox Send JavaScript-ს?
@@ -113,3 +111,7 @@ expiresHoursMinutes = { $hours }სთ { $minutes }წთ
 expiresMinutes = { $minutes }წთ
 # A short status message shown when a password is successfully set
 passwordIsSet = პაროლი დაყენებულია
+# A short status message shown when the user enters a long password
+maxPasswordLength = პაროლის დაშვებული ზომა: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = ამ პაროლის დაყენება ვერ ხერხდება
