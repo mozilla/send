@@ -101,8 +101,6 @@ requirePasswordCheckbox = Perlu kata laluan untuk memuat turun fail ini
 addPasswordButton = Tambah Kata laluan
 changePasswordButton = Tukar
 passwordTryAgain = Kata laluan tidak betul. Cuba lagi.
-# This label is followed by the password needed to download a file
-passwordResult = Kata laluan: { $password }
 reportIPInfringement = Lapor Pencerobohan IP
 javascriptRequired = Firefox Send perlukan JavaScript
 whyJavascript = Kenapa Firefox Send perlukan JavaScript?
@@ -113,3 +111,7 @@ expiresHoursMinutes = { $hours }h { $minutes }m
 expiresMinutes = { $minutes }m
 # A short status message shown when a password is successfully set
 passwordIsSet = Kata laluan ditetapkan
+# A short status message shown when the user enters a long password
+maxPasswordLength = Panjang kata laluan maksimum: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Kata laluan ini tidak boleh ditetapkan
