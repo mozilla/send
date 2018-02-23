@@ -103,8 +103,6 @@ requirePasswordCheckbox = Een wachtwoord vereisen om dit bestand te downloaden
 addPasswordButton = Wachtwoord toevoegen
 changePasswordButton = Wijzigen
 passwordTryAgain = Onjuist wachtwoord. Probeer het opnieuw.
-# This label is followed by the password needed to download a file
-passwordResult = Wachtwoord: { $password }
 reportIPInfringement = IE-inbreuk melden
 javascriptRequired = Firefox Send vereist JavaScript
 whyJavascript = Waarom vereist Firefox Send JavaScript?
@@ -115,3 +113,7 @@ expiresHoursMinutes = { $hours }u { $minutes }m
 expiresMinutes = { $minutes }m
 # A short status message shown when a password is successfully set
 passwordIsSet = Wachtwoord ingesteld
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maximale wachtwoordlengte: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Dit wachtwoord kon niet worden ingesteld
