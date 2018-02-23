@@ -105,8 +105,6 @@ requirePasswordCheckbox = Требовать пароль для загрузк�
 addPasswordButton = Добавить пароль
 changePasswordButton = Изменить
 passwordTryAgain = Неверный пароль. Попробуйте снова.
-# This label is followed by the password needed to download a file
-passwordResult = Пароль: { $password }
 reportIPInfringement = Сообщить о нарушении прав на интеллектуальную собственность
 javascriptRequired = Для Firefox Send необходим JavaScript
 whyJavascript = Почему Firefox Send требуется JavaScript?
@@ -117,3 +115,7 @@ expiresHoursMinutes = { $hours } ч. { $minutes } мин.
 expiresMinutes = { $minutes } мин.
 # A short status message shown when a password is successfully set
 passwordIsSet = Пароль установлен
+# A short status message shown when the user enters a long password
+maxPasswordLength = Максимальная длина пароля: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Этот пароль не может быть установлен
