@@ -107,8 +107,6 @@ requirePasswordCheckbox = Gosod angen cyfrinair i lwytho'r ffeil hon i lawr
 addPasswordButton = Ychwanegu Cyfrinair
 changePasswordButton = Newid
 passwordTryAgain = Cyfrinair anghywir. Ceisiwch eto.
-# This label is followed by the password needed to download a file
-passwordResult = Cyfrinair: { $password }
 reportIPInfringement = Adrodd ar Gamddefnydd o'r IP
 javascriptRequired = Mae Firefox Send angen JavaScript
 whyJavascript = Pam fod Firefox Send angen JavaScript?
@@ -119,3 +117,7 @@ expiresHoursMinutes = { $hours }a { $minutes }m
 expiresMinutes = { $minutes }m
 # A short status message shown when a password is successfully set
 passwordIsSet = Wedi gosod y cyfrinair
+# A short status message shown when the user enters a long password
+maxPasswordLength = Hyd mwyaf cyfrinair: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Nid oedd modd gosod y cyfrinair hwn
