@@ -101,8 +101,6 @@ requirePasswordCheckbox = 需要密碼才能下載此檔案
 addPasswordButton = 新增密碼
 changePasswordButton = 變更
 passwordTryAgain = 密碼不正確，請再試一次。
-# This label is followed by the password needed to download a file
-passwordResult = 密碼: { $password }
 reportIPInfringement = 回報智慧財產權濫用情況
 javascriptRequired = Firefox Send 需要開啟 JavaScript 功能
 whyJavascript = 為什麼 Firefox Send 需要 JavaScript 才能使用？
@@ -113,3 +111,7 @@ expiresHoursMinutes = { $hours } 時 { $minutes } 分
 expiresMinutes = { $minutes } 分鐘
 # A short status message shown when a password is successfully set
 passwordIsSet = 已設定密碼
+# A short status message shown when the user enters a long password
+maxPasswordLength = 最大密碼長度: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = 無法設定此密碼
