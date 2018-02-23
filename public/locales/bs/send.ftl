@@ -105,8 +105,6 @@ requirePasswordCheckbox = Zahtjevaj lozinku za preuzimanje ove datoteke
 addPasswordButton = Dodaj lozinku
 changePasswordButton = Promijeni
 passwordTryAgain = Netačna lozinka. Pokušajte ponovo.
-# This label is followed by the password needed to download a file
-passwordResult = Lozinka: { $password }
 reportIPInfringement = Prijavite IP prekršaj
 javascriptRequired = Firefox Send zahtjeva JavaScript
 whyJavascript = Zašto Firefox Send zahtjeva JavaScript?
@@ -117,3 +115,7 @@ expiresHoursMinutes = { $hours }h { $minutes }m
 expiresMinutes = { $minutes }m
 # A short status message shown when a password is successfully set
 passwordIsSet = Lozinka postavljena
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maksimalna veličina lozinke: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Ova lozinka se ne može postaviti
