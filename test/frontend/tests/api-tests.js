@@ -16,11 +16,28 @@ describe('API', function() {
       const encrypted = await keychain.encryptFile(plaintext);
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
-      const up = api.uploadFile(encrypted, meta, verifierB64, keychain);
+      const p = function() {};
+      const up = api.uploadFile(encrypted, meta, verifierB64, keychain, p);
       const result = await up.result;
       assert.ok(result.url);
       assert.ok(result.id);
       assert.ok(result.ownerToken);
+    });
+
+    it('can be cancelled', async function() {
+      const keychain = new Keychain();
+      const encrypted = await keychain.encryptFile(plaintext);
+      const meta = await keychain.encryptMetadata(metadata);
+      const verifierB64 = await keychain.authKeyB64();
+      const p = function() {};
+      const up = api.uploadFile(encrypted, meta, verifierB64, keychain, p);
+      up.cancel();
+      try {
+        await up.result;
+        assert.fail('not cancelled');
+      } catch (e) {
+        assert.equal(e.message, '0');
+      }
     });
   });
 });

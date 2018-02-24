@@ -149,8 +149,6 @@ export default function(state, emitter) {
     const receiver = new FileReceiver(file);
     try {
       await receiver.getMetadata();
-      receiver.on('progress', updateProgress);
-      receiver.on('decrypting', render);
       state.transfer = receiver;
     } catch (e) {
       if (e.message === '401') {
@@ -164,14 +162,16 @@ export default function(state, emitter) {
   });
 
   emitter.on('download', async file => {
-    state.transfer.on('progress', render);
+    state.transfer.on('progress', updateProgress);
     state.transfer.on('decrypting', render);
     const links = openLinksInNewTab();
     const size = file.size;
     try {
       const start = Date.now();
       metrics.startedDownload({ size: file.size, ttl: file.ttl });
-      await state.transfer.download();
+      const dl = state.transfer.download();
+      render();
+      await dl;
       const time = Date.now() - start;
       const speed = size / (time / 1000);
       await delay(1000);

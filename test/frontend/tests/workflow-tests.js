@@ -87,6 +87,53 @@ describe('Upload / Download flow', function() {
     assert.equal(fr.fileInfo.name, blob.name);
   });
 
+  it('can cancel the upload', async function() {
+    const fs = new FileSender(blob);
+    const up = fs.upload();
+    fs.cancel(); // before encrypting
+    try {
+      await up;
+      assert.fail('not cancelled');
+    } catch (e) {
+      assert.equal(e.message, '0');
+    }
+    fs.reset();
+    fs.once('encrypting', () => fs.cancel());
+    try {
+      await fs.upload();
+      assert.fail('not cancelled');
+    } catch (e) {
+      assert.equal(e.message, '0');
+    }
+    fs.reset();
+    fs.once('progress', () => fs.cancel());
+    try {
+      await fs.upload();
+      assert.fail('not cancelled');
+    } catch (e) {
+      assert.equal(e.message, '0');
+    }
+  });
+
+  it('can cancel the download', async function() {
+    const fs = new FileSender(blob);
+    const file = await fs.upload();
+    const fr = new FileReceiver({
+      secretKey: file.toJSON().secretKey,
+      id: file.id,
+      nonce: file.keychain.nonce,
+      requiresPassword: false
+    });
+    await fr.getMetadata();
+    fr.once('progress', () => fr.cancel());
+    try {
+      await fr.download(noSave);
+      assert.fail('not cancelled');
+    } catch (e) {
+      assert.equal(e.message, '0');
+    }
+  });
+
   it('can allow multiple downloads', async function() {
     const fs = new FileSender(blob);
     const file = await fs.upload();
