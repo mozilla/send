@@ -113,3 +113,7 @@ expiresHoursMinutes = { $hours }Isragen { $minutes }Tisdatin
 expiresMinutes = { $minutes }Tisdatin
 # A short status message shown when a password is successfully set
 passwordIsSet = Awal uffir ittwasbaded
+# A short status message shown when the user enters a long password
+maxPasswordLength = Tuγzi tafellayt n wawal uffir: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Awal-agi uffir ur izmir ara ad ittwabaded
