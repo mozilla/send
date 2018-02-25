@@ -10,6 +10,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "prepush": "npm test",
+    "check": "nsp check",
     "clean": "rimraf dist",
     "build": "npm run clean && webpack -p",
     "lint": "npm-run-all lint:*",

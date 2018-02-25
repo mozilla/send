@@ -1,28 +1,97 @@
-machine:
-  node:
-    version: 8
-  services:
-    - docker
-    - redis
-
-deployment:
-  latest:
-    branch: master
-    commands:
-    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-    - docker build -t mozilla/send:latest .
-    - docker push mozilla/send:latest
-  tags:
-    tag: /.*/
-    owner: mozilla
-    commands:
-    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-    - docker build -t mozilla/send:$CIRCLE_TAG .
-    - docker push mozilla/send:$CIRCLE_TAG
-
-test:
-  override:
-    - npm run build
-    - npm run lint
-    - npm test
-    - nsp check
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: send-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: send-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./*
+  test:
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: send-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: send-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run: npm run check
+      - run: npm run lint
+      - run: npm test
+  deploy_dev:
+    machine: true
+    steps:
+      - attach_workspace:
+          at: .
+      - run: docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t mozilla/send:latest .
+      - run: docker push mozilla/send:latest
+  deploy_stage:
+    machine: true
+    steps:
+      - attach_workspace:
+          at: .
+      - run: docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t mozilla/send:$CIRCLE_TAG .
+      - run: docker push mozilla/send:$CIRCLE_TAG
+workflows:
+  version: 2
+  test_pr:
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore: master
+  build_and_deploy_dev:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+            tags:
+              ignore: /^v.*/
+      - deploy_latest:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+            tags:
+              ignore: /^v.*/
+  build_and_deploy_stage:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /^v.*/
+      - test:
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /^v.*/
+      - deploy_stage:
+          requires:
+            - build
+            - test
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /^v.*/
