@@ -103,8 +103,6 @@ requirePasswordCheckbox = YEsra awal uffir akken ad isider afaylu-agi
 addPasswordButton = rnu awal uffir
 changePasswordButton = Snifel
 passwordTryAgain = Yir awal uffir. Ɛreḍ tikelt nniḍen.
-# This label is followed by the password needed to download a file
-passwordResult = Awal uffir: { $password }
 reportIPInfringement = Neqqes akukel n IP
 javascriptRequired = Firefox Send yesra JavaScript
 whyJavascript = Ayɣer firefox Send yesra JavaScript?
@@ -113,3 +111,5 @@ enableJavascript = Ma ulac aɣilif rmed JavaScript sakin ɛreḍ tikkelt nniḍe
 expiresHoursMinutes = { $hours }Isragen { $minutes }Tisdatin
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }Tisdatin
+# A short status message shown when a password is successfully set
+passwordIsSet = Awal uffir ittwasbaded
