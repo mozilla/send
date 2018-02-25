@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = webový experiment
 siteFeedback = Zpětná vazba
@@ -41,29 +41,29 @@ copyUrlFormButton = Zkopírovat do schránky
 copiedUrl = Zkopírováno!
 deleteFileButton = Smazat soubor
 sendAnotherFileLink = Poslat další soubor
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Stáhnout
 downloadsFileList = Stažení
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Zbývá
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Stáhnout { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Zadejte heslo
 unlockInputPlaceholder = Heslo
 unlockButtonLabel = Odemknout
 downloadFileTitle = Stáhnout šifrovaný soubor
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Někdo vám posílá soubor pomocí služby Firefox Send, které umožňuje bezpečné, soukromé a šifrované sdílení souborů, které jsou pak automaticky smazány, aby nezůstaly na internetu navěky.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Stáhnout
 downloadNotification = Stahování bylo dokončeno.
 downloadFinish = Stahování dokončeno
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } z { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Vyzkoušejte Firefox Send
 downloadingPageProgress = Stahování { $filename } ({ $size })
 downloadingPageMessage = Ponechte prosím tento panel otevřený, dokud nepřipravíme váš soubor a nedešifrujeme ho.
@@ -75,7 +75,7 @@ fileTooBig = Tento soubor je příliš veliký. Velikost nahrávaných souborů 
 linkExpiredAlt = Platnost odkazu vypršela
 expiredPageHeader = Platnost tohoto odkazu buď vypršela, nebo vůbec nikdy neexistoval.
 notSupportedHeader = Váš prohlížeč není podporován.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Bohužel tento prohlížeč nepodporuje technologii, kterou Firefox Send používá. Zkuste prosím jiný prohlížeč, doporučujeme Firefox!
 notSupportedLink = Proč není můj prohlížeč podporovaný?
 notSupportedOutdatedDetail = Tato verze Firefoxu bohužel nepodporuje webovou technologii, která pohání Firefox Send. Musíte aktualizovat svůj prohlížeč.
@@ -83,7 +83,7 @@ updateFirefox = Aktualizovat Firefox
 downloadFirefoxButtonSub = Stáhnout zdarma
 uploadedFile = Soubor
 copyFileList = Kopírovat URL
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Platnost vyprší za
 deleteFileList = Smazat
 nevermindButton = Nevadí
@@ -96,7 +96,7 @@ deletePopupCancel = Zrušit
 deleteButtonHover = Smazat
 copyUrlHover = Kopírovat URL
 footerLinkLegal = Právní informace
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = O programu Test Pilot
 footerLinkPrivacy = Soukromí
 footerLinkTerms = Podmínky
@@ -105,13 +105,17 @@ requirePasswordCheckbox = Vyžadovat heslo pro stažení tohoto souboru
 addPasswordButton = Přidat heslo
 changePasswordButton = Změnit
 passwordTryAgain = Špatné heslo. Zkuste to znovu.
-// This label is followed by the password needed to download a file
-passwordResult = Heslo: { $password }
 reportIPInfringement = Nahlásit porušení autorských práv
 javascriptRequired = Firefox Send vyžaduje povolený JavaScript
 whyJavascript = Proč Firefox Send vyžaduje povolený JavaScript?
 enableJavascript = Povolte JavaScript a zkuste to znovu.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when a password is successfully set
+passwordIsSet = Heslo nastaveno
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maximální délka hesla: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Toto heslo nemohlo být nastaveno
