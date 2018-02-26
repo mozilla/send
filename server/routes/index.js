@@ -36,11 +36,7 @@ module.exports = function(app) {
           ],
           imgSrc: ["'self'", 'https://www.google-analytics.com'],
           scriptSrc: ["'self'"],
-          styleSrc: [
-            "'self'",
-            "'unsafe-inline'",
-            'https://code.cdn.mozilla.net'
-          ],
+          styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
           fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
           formAction: ["'none'"],
           frameAncestors: ["'none'"],
