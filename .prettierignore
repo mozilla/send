@@ -1,2 +1,3 @@
 dist
 assets/*.js
+coverage

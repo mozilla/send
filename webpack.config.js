@@ -11,12 +11,19 @@ const regularJSOptions = {
   plugins: ['yo-yoify']
 };
 
+const entry = {
+  vendor: ['babel-polyfill', 'fluent'],
+  app: ['./app/main.js'],
+  style: ['./app/main.css']
+};
+
+if (IS_DEV) {
+  entry.tests = ['./test/frontend/index.js'];
+  regularJSOptions.plugins.push('istanbul');
+}
+
 module.exports = {
-  entry: {
-    vendor: ['babel-polyfill', 'fluent'],
-    app: ['./app/main.js'],
-    style: ['./app/main.css']
-  },
+  entry,
   output: {
     filename: '[name].[chunkhash:8].js',
     path: path.resolve(__dirname, 'dist'),
@@ -125,6 +132,10 @@ module.exports = {
           'extract-loader',
           './build/fluent_loader'
         ]
+      },
+      {
+        test: require.resolve('./test/frontend/index.js'),
+        use: ['babel-loader', 'val-loader']
       },
       {
         test: require.resolve('./build/generate_asset_map.js'),

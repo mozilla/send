@@ -91,10 +91,15 @@ export async function setPassword(id, owner_token, keychain) {
   return response.ok;
 }
 
-export function uploadFile(encrypted, metadata, verifierB64, keychain) {
+export function uploadFile(
+  encrypted,
+  metadata,
+  verifierB64,
+  keychain,
+  onprogress
+) {
   const xhr = new XMLHttpRequest();
   const upload = {
-    onprogress: function() {},
     cancel: function() {
       xhr.abort();
     },
@@ -122,7 +127,7 @@ export function uploadFile(encrypted, metadata, verifierB64, keychain) {
   fd.append('data', blob);
   xhr.upload.addEventListener('progress', function(event) {
     if (event.lengthComputable) {
-      upload.onprogress([event.loaded, event.total]);
+      onprogress([event.loaded, event.total]);
     }
   });
   xhr.open('post', '/api/upload', true);
@@ -132,82 +137,63 @@ export function uploadFile(encrypted, metadata, verifierB64, keychain) {
   return upload;
 }
 
-function download(id, keychain) {
+function download(id, keychain, onprogress, canceller) {
   const xhr = new XMLHttpRequest();
-  const download = {
-    onprogress: function() {},
-    cancel: function() {
-      xhr.abort();
-    },
-    result: new Promise(async function(resolve, reject) {
-      xhr.addEventListener('loadend', function() {
-        const authHeader = xhr.getResponseHeader('WWW-Authenticate');
-        if (authHeader) {
-          keychain.nonce = parseNonce(authHeader);
-        }
-        if (xhr.status === 404) {
-          return reject(new Error('notfound'));
-        }
-        if (xhr.status !== 200) {
-          return reject(new Error(xhr.status));
-        }
-
-        const blob = new Blob([xhr.response]);
-        const fileReader = new FileReader();
-        fileReader.readAsArrayBuffer(blob);
-        fileReader.onload = function() {
-          resolve(this.result);
-        };
-      });
-      xhr.addEventListener('progress', function(event) {
-        if (event.lengthComputable && event.target.status === 200) {
-          download.onprogress([event.loaded, event.total]);
-        }
-      });
-      const auth = await keychain.authHeader();
-      xhr.open('get', `/api/download/${id}`);
-      xhr.setRequestHeader('Authorization', auth);
-      xhr.responseType = 'blob';
-      xhr.send();
-    })
+  canceller.oncancel = function() {
+    xhr.abort();
   };
+  return new Promise(async function(resolve, reject) {
+    xhr.addEventListener('loadend', function() {
+      canceller.oncancel = function() {};
+      const authHeader = xhr.getResponseHeader('WWW-Authenticate');
+      if (authHeader) {
+        keychain.nonce = parseNonce(authHeader);
+      }
+      if (xhr.status !== 200) {
+        return reject(new Error(xhr.status));
+      }
 
-  return download;
+      const blob = new Blob([xhr.response]);
+      const fileReader = new FileReader();
+      fileReader.readAsArrayBuffer(blob);
+      fileReader.onload = function() {
+        resolve(this.result);
+      };
+    });
+    xhr.addEventListener('progress', function(event) {
+      if (event.lengthComputable && event.target.status === 200) {
+        onprogress([event.loaded, event.total]);
+      }
+    });
+    const auth = await keychain.authHeader();
+    xhr.open('get', `/api/download/${id}`);
+    xhr.setRequestHeader('Authorization', auth);
+    xhr.responseType = 'blob';
+    xhr.send();
+  });
 }
 
-async function tryDownload(id, keychain, onprogress, tries = 1) {
-  const dl = download(id, keychain);
-  dl.onprogress = onprogress;
+async function tryDownload(id, keychain, onprogress, canceller, tries = 1) {
   try {
-    const result = await dl.result;
+    const result = await download(id, keychain, onprogress, canceller);
     return result;
   } catch (e) {
     if (e.message === '401' && --tries > 0) {
-      return tryDownload(id, keychain, onprogress, tries);
+      return tryDownload(id, keychain, onprogress, canceller, tries);
     }
     throw e;
   }
 }
 
-export function downloadFile(id, keychain) {
-  let cancelled = false;
-  function updateProgress(p) {
-    if (cancelled) {
-      // This is a bit of a hack
-      // We piggyback off of the progress event as a chance to cancel.
-      // Otherwise wiring the xhr abort up while allowing retries
-      // gets pretty nasty.
-      // 'this' here is the object returned by download(id, keychain)
-      return this.cancel();
-    }
-    dl.onprogress(p);
-  }
-  const dl = {
-    onprogress: function() {},
-    cancel: function() {
-      cancelled = true;
-    },
-    result: tryDownload(id, keychain, updateProgress, 2)
+export function downloadFile(id, keychain, onprogress) {
+  const canceller = {
+    oncancel: function() {} // download() sets this
   };
-  return dl;
+  function cancel() {
+    canceller.oncancel();
+  }
+  return {
+    cancel,
+    result: tryDownload(id, keychain, onprogress, canceller, 2)
+  };
 }

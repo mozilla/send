@@ -9,11 +9,8 @@ export default class FileSender extends Nanobus {
   constructor(file) {
     super('FileSender');
     this.file = file;
-    this.uploadRequest = null;
-    this.msg = 'importingFile';
-    this.progress = [0, 1];
-    this.cancelled = false;
     this.keychain = new Keychain();
+    this.reset();
   }
 
   get progressRatio() {
@@ -29,6 +26,13 @@ export default class FileSender extends Nanobus {
       partialSize: bytes(this.progress[0]),
       totalSize: bytes(this.progress[1])
     };
+  }
+
+  reset() {
+    this.uploadRequest = null;
+    this.msg = 'importingFile';
+    this.progress = [0, 1];
+    this.cancelled = false;
   }
 
   cancel() {
@@ -71,13 +75,13 @@ export default class FileSender extends Nanobus {
       encrypted,
       metadata,
       authKeyB64,
-      this.keychain
+      this.keychain,
+      p => {
+        this.progress = p;
+        this.emit('progress', p);
+      }
     );
     this.msg = 'fileSizeProgress';
-    this.uploadRequest.onprogress = p => {
-      this.progress = p;
-      this.emit('progress', p);
-    };
     try {
       const result = await this.uploadRequest.result;
       const time = Date.now() - start;

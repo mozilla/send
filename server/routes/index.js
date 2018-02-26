@@ -1,6 +1,6 @@
+const express = require('express');
 const busboy = require('connect-busboy');
 const helmet = require('helmet');
-const bodyParser = require('body-parser');
 const storage = require('../storage');
 const config = require('../config');
 const auth = require('../middleware/auth');
@@ -55,7 +55,7 @@ module.exports = function(app) {
     res.set('Cache-Control', 'no-cache');
     next();
   });
-  app.use(bodyParser.json());
+  app.use(express.json());
   app.get('/', language, pages.index);
   app.get('/legal', language, pages.legal);
   app.get('/jsconfig.js', require('./jsconfig'));

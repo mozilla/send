@@ -30,64 +30,55 @@ export default class FileReceiver extends Nanobus {
   }
 
   cancel() {
-    this.cancelled = true;
-    if (this.fileDownload) {
-      this.fileDownload.cancel();
+    if (this.downloadRequest) {
+      this.downloadRequest.cancel();
     }
   }
 
   reset() {
-    this.fileDownload = null;
     this.msg = 'fileSizeProgress';
     this.state = 'initialized';
     this.progress = [0, 1];
-    this.cancelled = false;
   }
 
   async getMetadata() {
     const meta = await metadata(this.fileInfo.id, this.keychain);
-    if (meta) {
-      this.keychain.setIV(meta.iv);
-      this.fileInfo.name = meta.name;
-      this.fileInfo.type = meta.type;
-      this.fileInfo.iv = meta.iv;
-      this.fileInfo.size = meta.size;
-      this.state = 'ready';
-      return;
-    }
-    this.state = 'invalid';
-    return;
+    this.keychain.setIV(meta.iv);
+    this.fileInfo.name = meta.name;
+    this.fileInfo.type = meta.type;
+    this.fileInfo.iv = meta.iv;
+    this.fileInfo.size = meta.size;
+    this.state = 'ready';
   }
 
-  async download() {
+  async download(noSave = false) {
     this.state = 'downloading';
-    this.emit('progress', this.progress);
-    try {
-      const download = await downloadFile(this.fileInfo.id, this.keychain);
-      download.onprogress = p => {
+    this.downloadRequest = await downloadFile(
+      this.fileInfo.id,
+      this.keychain,
+      p => {
         this.progress = p;
-        this.emit('progress', p);
-      };
-      this.fileDownload = download;
-      const ciphertext = await download.result;
-      this.fileDownload = null;
+        this.emit('progress');
+      }
+    );
+    try {
+      const ciphertext = await this.downloadRequest.result;
+      this.downloadRequest = null;
       this.msg = 'decryptingFile';
       this.state = 'decrypting';
       this.emit('decrypting');
       const plaintext = await this.keychain.decryptFile(ciphertext);
-      if (this.cancelled) {
-        throw new Error(0);
+      if (!noSave) {
+        await saveFile({
+          plaintext,
+          name: decodeURIComponent(this.fileInfo.name),
+          type: this.fileInfo.type
+        });
       }
-      await saveFile({
-        plaintext,
-        name: decodeURIComponent(this.fileInfo.name),
-        type: this.fileInfo.type
-      });
       this.msg = 'downloadFinish';
       this.state = 'complete';
-      return;
     } catch (e) {
-      this.state = 'invalid';
+      this.downloadRequest = null;
       throw e;
     }
   }
