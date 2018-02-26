@@ -76,10 +76,14 @@ workflows:
     jobs:
       - build:
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /^v.*/
       - test:
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /^v.*/
       - deploy_stage:
@@ -87,5 +91,7 @@ workflows:
             - build
             - test
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /^v.*/
