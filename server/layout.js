@@ -60,7 +60,7 @@ module.exports = function(state, body = '') {
       'favicon-144.png'
     )}">
 
-    <!— Windows 8.1 + IE11 and above —>
+    <!-- Windows 8.1 + IE11 and above -->
     <meta name="msapplication-config" content="/browserconfig.xml"/>
 
 

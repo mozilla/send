@@ -1,4 +1,5 @@
 const html = require('choo/html');
+const raw = require('choo/html/raw');
 const assets = require('../../../common/assets');
 /*
   The current weback config uses package.json to generate
@@ -14,6 +15,7 @@ const version = require('../../../package.json').version || 'VERSION';
 const browser = browserName();
 
 module.exports = function(state) {
+  const feedbackUrl = `https://qsurvey.mozilla.com/s3/txp-firefox-send?ver=${version}&browser=${browser}`;
   return html`<header class="header">
   <div class="logo">
     <a class="logo__link" href="/">
@@ -27,7 +29,7 @@ module.exports = function(state) {
       <div>${state.translate('siteSubtitle')}</div>
     </div>
   </div>
-  <a href="https://qsurvey.mozilla.com/s3/txp-firefox-send?ver=${version}&browser=${browser}"
+  <a href="${raw(feedbackUrl)}"
     rel="noreferrer noopener"
     class="feedback"
     target="_blank">${state.translate('siteFeedback')}</a>
