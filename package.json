@@ -102,6 +102,8 @@
     "stylelint": "^9.1.1",
     "stylelint-config-standard": "^18.1.0",
     "stylelint-no-unsupported-browser-features": "^2.0.0",
+    "svgo": "^1.0.5",
+    "svgo-loader": "^2.1.0",
     "testpilot-ga": "^0.3.0",
     "val-loader": "^1.1.0",
     "webpack": "^3.11.0",

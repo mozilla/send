@@ -89,11 +89,28 @@ module.exports = {
         ]
       },
       {
-        test: /\.(svg|png|jpg)$/,
+        test: /\.(png|jpg)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[hash:8].[ext]'
         }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash:8].[ext]'
+            }
+          },
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [{ convertStyleToAttrs: true }, { removeTitle: true }]
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
