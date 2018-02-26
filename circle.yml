@@ -32,6 +32,8 @@ jobs:
       - run: npm run check
       - run: npm run lint
       - run: npm test
+      - store_artifacts:
+          path: coverage
   deploy_dev:
     machine: true
     steps:
