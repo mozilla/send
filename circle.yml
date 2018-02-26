@@ -37,7 +37,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker build -t mozilla/send:latest .
       - run: docker push mozilla/send:latest
   deploy_stage:
@@ -45,7 +45,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker build -t mozilla/send:$CIRCLE_TAG .
       - run: docker push mozilla/send:$CIRCLE_TAG
 workflows:
@@ -64,7 +64,7 @@ workflows:
               only: master
             tags:
               ignore: /^v.*/
-      - deploy_latest:
+      - deploy_dev:
           requires:
             - build
           filters:
@@ -76,14 +76,10 @@ workflows:
     jobs:
       - build:
           filters:
-            branches:
-              only: master
             tags:
               only: /^v.*/
       - test:
           filters:
-            branches:
-              only: master
             tags:
               only: /^v.*/
       - deploy_stage:
@@ -91,7 +87,5 @@ workflows:
             - build
             - test
           filters:
-            branches:
-              only: master
             tags:
               only: /^v.*/
