@@ -1,5 +1,4 @@
 const html = require('choo/html');
-const raw = require('choo/html/raw');
 const assets = require('../../../common/assets');
 /*
   The current weback config uses package.json to generate
@@ -29,7 +28,7 @@ module.exports = function(state) {
       <div>${state.translate('siteSubtitle')}</div>
     </div>
   </div>
-  <a href="${raw(feedbackUrl)}"
+  <a href="${feedbackUrl}"
     rel="noreferrer noopener"
     class="feedback"
     target="_blank">${state.translate('siteFeedback')}</a>
