@@ -18,7 +18,7 @@ export default function(state, emitter) {
   }
 
   async function checkFiles() {
-    const files = state.storage.files;
+    const files = state.storage.files.slice();
     let rerender = false;
     for (const file of files) {
       const oldLimit = file.dlimit;
