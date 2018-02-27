@@ -107,7 +107,11 @@ module.exports = {
           {
             loader: 'svgo-loader',
             options: {
-              plugins: [{ convertStyleToAttrs: true }, { removeTitle: true }]
+              plugins: [
+                { removeViewBox: false },
+                { convertStyleToAttrs: true },
+                { removeTitle: true }
+              ]
             }
           }
         ]
