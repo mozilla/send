@@ -28,7 +28,16 @@ module.exports = function(progressRatio, indefinite = false) {
         cy="${oRadius}"
         fill="transparent"/>
       <circle
-        class="${indefinite ? 'progress__indefinite' : 'progress__bar'}"
+        class="progress__indefinite ${indefinite ? '' : 'progress--invisible'}"
+        r="${radius}"
+        cx="${oRadius}"
+        cy="${oRadius}"
+        fill="transparent"
+        transform="rotate(-90 ${oRadius} ${oRadius})"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${dashOffset}"/>
+      <circle
+        class="progress__bar ${indefinite ? 'progress--invisible' : ''}"
         r="${radius}"
         cx="${oRadius}"
         cy="${oRadius}"
