@@ -37,3 +37,7 @@
   line-height: 58px;
   user-select: none;
 }
+
+.progress--invisible {
+  display: none;
+}
