@@ -192,6 +192,7 @@ module.exports = {
   ],
   devServer: {
     compress: true,
+    host: '0.0.0.0',
     before: IS_DEV ? require('./server/dev') : undefined
   }
 };

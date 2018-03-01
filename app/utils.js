@@ -25,7 +25,7 @@ function loadShim(polyfill) {
   });
 }
 
-async function canHasSend(polyfill) {
+async function canHasSend() {
   try {
     const key = await window.crypto.subtle.generateKey(
       {
@@ -35,7 +35,6 @@ async function canHasSend(polyfill) {
       true,
       ['encrypt', 'decrypt']
     );
-
     await window.crypto.subtle.encrypt(
       {
         name: 'AES-GCM',
@@ -45,9 +44,23 @@ async function canHasSend(polyfill) {
       key,
       new ArrayBuffer(8)
     );
+    await window.crypto.subtle.importKey(
+      'raw',
+      window.crypto.getRandomValues(new Uint8Array(16)),
+      'PBKDF2',
+      false,
+      ['deriveKey']
+    );
+    await window.crypto.subtle.importKey(
+      'raw',
+      window.crypto.getRandomValues(new Uint8Array(16)),
+      'HKDF',
+      false,
+      ['deriveKey']
+    );
     return true;
   } catch (err) {
-    return loadShim(polyfill);
+    return false;
   }
 }
 
@@ -167,6 +180,7 @@ module.exports = {
   copyToClipboard,
   arrayToB64,
   b64ToArray,
+  loadShim,
   canHasSend,
   isFile,
   openLinksInNewTab

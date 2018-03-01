@@ -29,6 +29,7 @@ module.exports = function(app) {
           })
           </script>
           <script src="/jsconfig.js"></script>
+          <script src="${assets.get('cryptofill.js')}"></script>
           <script src="${assets.get('runtime.js')}"></script>
           <script src="${assets.get('vendor.js')}"></script>
           <script src="${assets.get('tests.js')}"></script>

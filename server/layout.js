@@ -69,6 +69,7 @@ module.exports = function(state, body = '') {
     <script defer src="${assets.get('runtime.js')}"></script>
     <script defer src="${assets.get('vendor.js')}"></script>
     <script defer src="${locales.get(state.locale)}"></script>
+    <script defer src="${assets.get('cryptofill.js')}"></script>
     <script defer src="${assets.get('app.js')}"></script>
   </head>
   ${body}
