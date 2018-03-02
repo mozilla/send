@@ -14,6 +14,6 @@ module.exports = function() {
   return {
     code,
     dependencies: files.map(f => require.resolve('../assets/' + f)),
-    cacheable: false
+    cacheable: true
   };
 };
