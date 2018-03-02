@@ -42,20 +42,22 @@ if (typeof window === 'undefined') {
   require('babel-polyfill');
   var fluent = require('fluent/compat');
 }
-var fluentContext = new fluent.MessageContext('${locale}', {useIsolating: false});
-fluentContext._messages = new Map(${toJSON(merged)});
-function translate(id, data) {
-  var msg = fluentContext.getMessage(id);
-  if (typeof(msg) !== 'string' && !msg.val && msg.attrs) {
-    msg = msg.attrs.title || msg.attrs.alt
+(function () {
+  var ctx = new fluent.MessageContext('${locale}', {useIsolating: false});
+  ctx._messages = new Map(${toJSON(merged)});
+  function translate(id, data) {
+    var msg = ctx.getMessage(id);
+    if (typeof(msg) !== 'string' && !msg.val && msg.attrs) {
+      msg = msg.attrs.title || msg.attrs.alt
+    }
+    return ctx.format(msg, data);
   }
-  return fluentContext.format(msg, data);
-}
-if (typeof window === 'undefined') {
-  module.exports = translate;
-}
-else {
-  window.translate = translate;
-}
+  if (typeof window === 'undefined') {
+    module.exports = translate;
+  }
+  else {
+    window.translate = translate;
+  }
+})();
 \``;
 };
