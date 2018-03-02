@@ -123,6 +123,7 @@ a {
   cursor: pointer;
 
   /* Force flat button look */
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
   appearance: none;
   font-size: 15px;
   padding-bottom: 3px;

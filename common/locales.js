@@ -4,7 +4,7 @@ const isServer = typeof gen === 'function';
 const prefix = isServer ? '/' : '';
 let manifest = {};
 try {
-  //eslint-disable-next-line node/no-missing-require
+  // eslint-disable-next-line node/no-missing-require
   manifest = require('../dist/manifest.json');
 } catch (e) {
   // use middleware
@@ -17,6 +17,7 @@ function getLocale(name) {
 }
 
 function serverTranslator(name) {
+  // eslint-disable-next-line security/detect-non-literal-require
   return require(`../dist/${locales[`public/locales/${name}/send.ftl`]}`);
 }
 

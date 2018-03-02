@@ -73,7 +73,8 @@ module.exports = function(state, emit) {
       return;
     }
     if (file.size > MAXFILESIZE) {
-      window.alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
+      // eslint-disable-next-line no-alert
+      alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
       return;
     }
 

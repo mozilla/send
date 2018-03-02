@@ -111,6 +111,7 @@ export default function(state, emitter) {
       openLinksInNewTab(links, false);
       emitter.emit('pushState', `/share/${ownedFile.id}`);
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err);
 
       if (err.message === '0') {
@@ -136,6 +137,7 @@ export default function(state, emitter) {
       metrics.addedPassword({ size: file.size });
       await delay(1000);
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err);
       state.passwordSetError = err;
     } finally {
@@ -186,6 +188,7 @@ export default function(state, emitter) {
         state.transfer.reset();
         return render();
       }
+      // eslint-disable-next-line no-console
       console.error(err);
       state.transfer = null;
       const location = err.message === '404' ? '/404' : '/error';

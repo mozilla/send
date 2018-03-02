@@ -19,6 +19,7 @@ export default function(state, emitter) {
           return;
         }
         if (target.files.length > 1) {
+          // eslint-disable-next-line no-alert
           return alert(state.translate('uploadPageMultipleFilesAlert'));
         }
         const file = target.files[0];
@@ -26,9 +27,8 @@ export default function(state, emitter) {
           return;
         }
         if (file.size > MAXFILESIZE) {
-          window.alert(
-            state.translate('fileTooBig', { size: bytes(MAXFILESIZE) })
-          );
+          // eslint-disable-next-line no-alert
+          alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
           return;
         }
         emitter.emit('upload', { file, type: 'drop' });
