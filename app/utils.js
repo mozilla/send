@@ -9,10 +9,9 @@ function arrayToB64(array) {
 }
 
 function b64ToArray(str) {
-  str = (str + '==='.slice((str.length + 3) % 4))
-    .replace(/-/g, '+')
-    .replace(/_/g, '/');
-  return b64.toByteArray(str);
+  return b64.toByteArray(
+    str + '==='.slice((str.length + 3) % 4)
+  );
 }
 
 function loadShim(polyfill) {
