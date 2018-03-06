@@ -104,8 +104,10 @@ export default function(state, emitter) {
       metrics.completedUpload(ownedFile);
 
       state.storage.addFile(ownedFile);
-
-      document.getElementById('cancel-upload').hidden = 'hidden';
+      const cancelBtn = document.getElementById('cancel-upload');
+      if (cancelBtn) {
+        cancelBtn.hidden = 'hidden';
+      }
       await delay(1000);
       await fadeOut('.page');
       openLinksInNewTab(links, false);

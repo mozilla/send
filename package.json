@@ -26,11 +26,10 @@
     "contributors": "git shortlog -s | awk -F\\t '{print $2}' > CONTRIBUTORS",
     "release": "npm-run-all contributors changelog",
     "test": "npm-run-all test:*",
-    "test:backend": "nyc mocha --reporter=min test/unit",
+    "test:backend": "nyc mocha --reporter=min test/backend",
     "test:frontend": "cross-env NODE_ENV=development node test/frontend/runner.js && nyc report --reporter=html",
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
-    "prod": "node server/prod.js",
-    "cover": "nyc --reporter=html mocha test/unit"
+    "start": "npm run clean && cross-env NODE_ENV=development webpack-dev-server",
+    "prod": "node server/prod.js"
   },
   "lint-staged": {
     "*.js": [
