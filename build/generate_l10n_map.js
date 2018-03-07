@@ -1,3 +1,14 @@
+/*
+  This code is included by both the server and frontend via
+  common/locales.js
+
+  When included from the server the export will be the function.
+
+  When included from the frontend (via webpack) the export will
+  be an object mapping ftl files to js files. Example:
+  "public/locales/en-US/send.ftl":"public/locales/en-US/send.6b4f8354.js"
+*/
+
 const fs = require('fs');
 const path = require('path');
 

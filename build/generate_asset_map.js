@@ -1,3 +1,14 @@
+/*
+  This code is included by both the server and frontend via
+  common/assets.js
+
+  When included from the server the export will be the function.
+
+  When included from the frontend (via webpack) the export will
+  be an object mapping file names to hashed file names. Example:
+  "send_logo.svg": "send_logo.5fcfdf0e.svg"
+*/
+
 const fs = require('fs');
 const path = require('path');
 

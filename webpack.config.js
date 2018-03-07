@@ -8,10 +8,13 @@ const IS_DEV = process.env.NODE_ENV === 'development';
 const regularJSOptions = {
   babelrc: false,
   presets: [['env', { modules: false }], 'stage-2'],
+  // yo-yoify converts html template strings to direct dom api calls
   plugins: ['yo-yoify']
 };
 
 const entry = {
+  // babel-polyfill and fluent are directly included in vendor
+  // because they are not explicitly referenced by app
   vendor: ['babel-polyfill', 'fluent'],
   app: ['./app/main.js'],
   style: ['./app/main.css']
@@ -19,6 +22,7 @@ const entry = {
 
 if (IS_DEV) {
   entry.tests = ['./test/frontend/index.js'];
+  // istanbul instruments the source for code coverage
   regularJSOptions.plugins.push('istanbul');
 }
 
@@ -47,6 +51,7 @@ module.exports = {
             ]
           },
           {
+            // inlines version from package.json into header/index.js
             include: require.resolve('./app/templates/header'),
             use: [
               {
@@ -57,6 +62,8 @@ module.exports = {
             ]
           },
           {
+            // fluent gets exposed as a global so that each language script
+            // can load independently and share it.
             include: [path.dirname(require.resolve('fluent'))],
             use: [
               {
@@ -76,6 +83,8 @@ module.exports = {
             include: [
               path.resolve(__dirname, 'app'),
               path.resolve(__dirname, 'common'),
+              // some dependencies need to get re-babeled because we
+              // have different targets than their default configs
               path.resolve(__dirname, 'node_modules/testpilot-ga/src'),
               path.resolve(__dirname, 'node_modules/fluent-intl-polyfill'),
               path.resolve(__dirname, 'node_modules/intl-pluralrules')
@@ -83,6 +92,7 @@ module.exports = {
             options: regularJSOptions
           },
           {
+            // Strip asserts from our deps, mainly choojs family
             include: [path.resolve(__dirname, 'node_modules')],
             loader: 'webpack-unassert-loader'
           }
@@ -108,15 +118,16 @@ module.exports = {
             loader: 'svgo-loader',
             options: {
               plugins: [
-                { removeViewBox: false },
-                { convertStyleToAttrs: true },
-                { removeTitle: true }
+                { removeViewBox: false }, // true causes stretched images
+                { convertStyleToAttrs: true }, // for CSP, no unsafe-eval
+                { removeTitle: true } // for smallness
               ]
             }
           }
         ]
       },
       {
+        // creates style.css with all styles
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           use: [
@@ -129,6 +140,7 @@ module.exports = {
         })
       },
       {
+        // creates version.json for /__version__ from package.json
         test: require.resolve('./package.json'),
         use: [
           {
@@ -142,6 +154,7 @@ module.exports = {
         ]
       },
       {
+        // creates a js script for each ftl
         test: /\.ftl$/,
         use: [
           {
@@ -155,14 +168,17 @@ module.exports = {
         ]
       },
       {
+        // creates test.js for /test
         test: require.resolve('./test/frontend/index.js'),
         use: ['babel-loader', 'val-loader']
       },
       {
+        // loads all assets from assets/ for use by common/assets.js
         test: require.resolve('./build/generate_asset_map.js'),
         use: ['babel-loader', 'val-loader']
       },
       {
+        // loads all the ftl from public/locales for use by common/locales.js
         test: require.resolve('./build/generate_l10n_map.js'),
         use: ['babel-loader', 'val-loader']
       }
@@ -175,8 +191,8 @@ module.exports = {
         from: '*.*'
       }
     ]),
-    new webpack.IgnorePlugin(/dist/),
-    new webpack.IgnorePlugin(/require-from-string/),
+    new webpack.IgnorePlugin(/dist/), // used in common/*.js
+    new webpack.IgnorePlugin(/require-from-string/), // used in common/locales.js
     new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -188,7 +204,7 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'style.[contenthash:8].css'
     }),
-    new ManifestPlugin()
+    new ManifestPlugin() // used by server side to resolve hashed assets
   ],
   devServer: {
     compress: true,
