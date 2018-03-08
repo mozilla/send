@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = veebieksperiment
 siteFeedback = Tagasiside
@@ -39,29 +39,29 @@ copyUrlFormButton = Kopeeri vahemällu
 copiedUrl = Kopeeritud!
 deleteFileButton = Kustuta fail
 sendAnotherFileLink = Saada järgmine fail
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Laadi alla
 downloadsFileList = Allalaadimised
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Aega jäänud
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Laadi fail { $filename } alla
 downloadFileSize = ({ $size })
 unlockInputLabel = Sisesta parool
 unlockInputPlaceholder = Parool
 unlockButtonLabel = Ava
 downloadFileTitle = Krüptitud faili allalaadimine
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Sulle on saadetud fail Firefox Sendiga - teenusega, mis lubab faile ohutult, privaatselt ja krüpteeritult jagada. Failid kustutatakse automaatselt, et need ei jääks internetti igaveseks.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Laadi alla
 downloadNotification = Allalaadimine on lõpetatud.
 downloadFinish = Allalaadimine lõpetati
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize }/{ $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Proovi Firefox Sendi
 downloadingPageProgress = Faili { $filename } ({ $size }) allalaadimine
 downloadingPageMessage = Palun jäta see kaart lahti, kuni fail on alla laaditud ja dekrüptitud.
@@ -73,7 +73,7 @@ fileTooBig = Fail on üleslaadimiseks liiga suur. See peaks olema väiksem kui {
 linkExpiredAlt = Link on aegunud
 expiredPageHeader = See link on aegunud või seda pole kunagi olnudki!
 notSupportedHeader = Sinu brauser pole toetatud.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Kahjuks ei toeta see brauser veebitehnoloogiaid, mis teevad Firefox Sendi toimimise võimalikuks. Sa pead proovima teise brauseriga. Me soovitame Firefoxi!
 notSupportedLink = Miks mu brauser toetatud pole?
 notSupportedOutdatedDetail = Kahjuks ei toeta see Firefoxi versioon veebitehnoloogiaid, mis teevad Firefox Sendi toimimise võimalikuks. Sa pead oma brauserit uuendama.
@@ -81,7 +81,7 @@ updateFirefox = Uuenda Firefox
 downloadFirefoxButtonSub = Laadi alla tasuta
 uploadedFile = Fail
 copyFileList = Kopeeri URL
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Aegub
 deleteFileList = Kustuta
 nevermindButton = Ära pane tähele
@@ -94,7 +94,7 @@ deletePopupCancel = Loobu
 deleteButtonHover = Kustuta
 copyUrlHover = Kopeeri URL
 footerLinkLegal = Õiguslik teave
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Test Pilotist
 footerLinkPrivacy = Privaatsusest
 footerLinkTerms = Teenusetingimused
@@ -103,13 +103,17 @@ requirePasswordCheckbox = Selle faili allalaadimiseks nõutakse parooli
 addPasswordButton = Lisa parool
 changePasswordButton = Muuda
 passwordTryAgain = Vale parool. Palun proovi uuesti.
-// This label is followed by the password needed to download a file
-passwordResult = Parool: { $password }
 reportIPInfringement = Intellektuaalomandi keelatud kasutamise raporteerimine
 javascriptRequired = Firefox Send'i kasutamiseks tuleb JavaScript lubada
 whyJavascript = Miks Firefox Send JavaScripti vajab?
 enableJavascript = Palun luba JavaScript ja proovi uuesti.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }t { $minutes }m
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when a password is successfully set
+passwordIsSet = Parool on muudetud
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maksimaalne parooli pikkus: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Parooli muutmine ebaõnnestus
