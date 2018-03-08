@@ -103,8 +103,6 @@ requirePasswordCheckbox = Krever et passord for å laste ned denne filen
 addPasswordButton = Legg til passord
 changePasswordButton = Endre
 passwordTryAgain = Feil passord. Prøv igjen.
-# This label is followed by the password needed to download a file
-passwordResult = Passord: { $password }
 reportIPInfringement = Rapporter brudd på åndsverk
 javascriptRequired = Firefox Send krever JavaScript.
 whyJavascript = Hvorfor krever Firefox Send JavaScript?
@@ -115,3 +113,7 @@ expiresHoursMinutes = { $hours }t { $minutes }m
 expiresMinutes = { $minutes }m
 # A short status message shown when a password is successfully set
 passwordIsSet = Passord satt
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maksimum passordlengde: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Dette passordet kunne ikke settes
