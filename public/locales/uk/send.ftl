@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = веб-експеримент
 siteFeedback = Відгуки
@@ -41,23 +41,29 @@ copyUrlFormButton = Копіювати у буфер обміну
 copiedUrl = Скопійовано!
 deleteFileButton = Видалити файл
 sendAnotherFileLink = Надіслати інший файл
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Завантаживи
+downloadsFileList = Завантажень
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
+timeFileList = Дійсний
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Завантажити { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Введіть пароль
 unlockInputPlaceholder = Пароль
 unlockButtonLabel = Розблокувати
 downloadFileTitle = Завантажити зашифрований файл
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Ваш друг надіслав файл за допомогою Firefox Send, який дозволяє ділитися файлами, використовуючи безпечні, приватні та зашифровані посилання, термін дії яких автоматично закінчується, щоб ваші файли не лишилися в Інтернеті назавжди.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Завантажити
 downloadNotification = Ваше завантаження готово.
 downloadFinish = Завантаження готово
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } з { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Спробуйте Firefox Send
 downloadingPageProgress = Завантаження { $filename } ({ $size })
 downloadingPageMessage = Будь ласка, залиште цю вкладку відкритою, поки ми завантажуємо ваш файл і розшифровуємо його.
@@ -69,7 +75,7 @@ fileTooBig = Цей файл завеликий для вивантаження.
 linkExpiredAlt = Час дії посилання минув
 expiredPageHeader = Посилання не існує, або час його дії минув!
 notSupportedHeader = Ваш браузер не підтримується.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = На жаль, цей браузер не підтримує веб-технологію, завдяки якій працює Firefox Send. Вам треба скористатися іншим браузером. Ми рекомендуємо Firefox!
 notSupportedLink = Чому мій браузер не підтримується?
 notSupportedOutdatedDetail = На жаль, ця версія Firefox не підтримує веб-технологію, завдяки якій працює Firefox Send. Вам потрібно оновити свій браузер.
@@ -77,7 +83,7 @@ updateFirefox = Оновити Firefox
 downloadFirefoxButtonSub = Безкоштовне завантаження
 uploadedFile = Файл
 copyFileList = Копіювати URL
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Термін дії закінчується
 deleteFileList = Видалити
 nevermindButton = Не важливо
@@ -90,14 +96,26 @@ deletePopupCancel = Скасувати
 deleteButtonHover = Видалити
 copyUrlHover = Копіювати URL
 footerLinkLegal = Права
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Про Test Pilot
 footerLinkPrivacy = Приватність
 footerLinkTerms = Умови
 footerLinkCookies = Куки
 requirePasswordCheckbox = Вимагати пароль для завантаження цього файлу
 addPasswordButton = Додати пароль
+changePasswordButton = Змінити
 passwordTryAgain = Невірний пароль. Спробуйте знову.
-// This label is followed by the password needed to download a file
-passwordResult = Пароль: { $password }
 reportIPInfringement = Повідомити про порушення прав на інтелектуальну власність
+javascriptRequired = Firefox Send потребує JavaScript
+whyJavascript = Чому для Firefox Send потрібен JavaScript?
+enableJavascript = Будь ласка, увімкніть JavaScript та спробуйте знову.
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } год. { $minutes } хв.
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } хв.
+# A short status message shown when a password is successfully set
+passwordIsSet = Пароль встановлено
+# A short status message shown when the user enters a long password
+maxPasswordLength = Найбільша довжина паролю: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Неможливо встановити цей пароль
