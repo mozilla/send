@@ -107,8 +107,6 @@ requirePasswordCheckbox = Zahtevaj geslo za prenos te datoteke
 addPasswordButton = Dodaj geslo
 changePasswordButton = Spremeni
 passwordTryAgain = Napačno geslo. Poskusite znova.
-# This label is followed by the password needed to download a file
-passwordResult = Geslo: { $password }
 reportIPInfringement = Prijavite kršitev naslova IP
 javascriptRequired = Firefox Send zahteva JavaScript
 whyJavascript = Zakaj Firefox Send zahteva JavaScript?
@@ -119,3 +117,7 @@ expiresHoursMinutes = { $hours }h { $minutes }m
 expiresMinutes = { $minutes }m
 # A short status message shown when a password is successfully set
 passwordIsSet = Geslo je nastavljeno
+# A short status message shown when the user enters a long password
+maxPasswordLength = Največja dolžina gesla: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Gesla ni mogoče nastaviti
