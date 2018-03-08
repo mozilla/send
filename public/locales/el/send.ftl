@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = πείραμα διαδικτύου
 siteFeedback = Σχόλια
@@ -39,29 +39,29 @@ copyUrlFormButton = Αντιγραφή στο πρόχειρο
 copiedUrl = Αντιγράφτηκε!
 deleteFileButton = Διαγραφή αρχείου
 sendAnotherFileLink = Αποστολή άλλου αρχείου
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Λήψη
 downloadsFileList = Λήψεις
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Ώρα
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Λήψη του { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Εισαγωγή κωδικού πρόσβασης
 unlockInputPlaceholder = Κωδικός πρόσβασης
 unlockButtonLabel = Ξεκλείδωμα
 downloadFileTitle = Λήψη κρυπτογραφημένου αρχείου
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Ο/Η φίλος/-η σας, σάς στέλνει ένα αρχείο με τη βοήθεια του Firefox Send, μιας υπηρεσίας που επιτρέπει τον διαμοιρασμό αρχείων μέσω ενός ασφαλούς, ιδιωτικού και κρυπτογραφημένου συνδέσμου που λήγει αυτόματα, ώστε να είστε σίγουροι ότι τα αρχεία σας δεν θα παραμείνουν στο διαδίκτυο για πάντα.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Λήψη
 downloadNotification = Η λήψη σας ολοκληρώθηκε.
 downloadFinish = Η λήψη ολοκληρώθηκε
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } από { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Δοκιμάστε το Firefox Send
 downloadingPageProgress = Γίνεται λήψη του { $filename } ({ $size })
 downloadingPageMessage = Παρακαλώ αφήστε ανοικτή αυτή την καρτέλα όσο λαμβάνουμε και αποκρυπτογραφούμε το αρχείο σας.
@@ -73,7 +73,7 @@ fileTooBig = Αυτό το αρχείο είναι πολύ μεγάλο για 
 linkExpiredAlt = Ο σύνδεσμος έληξε
 expiredPageHeader = Αυτός ο σύνδεσμος έχει λήξει ή δεν υπήρξε ποτέ!
 notSupportedHeader = Το πρόγραμμα περιήγησής σας δεν υποστηρίζεται.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Δυστυχώς, αυτό το πρόγραμμα περιήγησης δεν υποστηρίζει την τεχνολογία ιστού στην οποία βασίζεται το Firefox Send. Θα πρέπει να δοκιμάσετε ένα άλλο πρόγραμμα περιήγησης. Προτείνουμε το Firefox!
 notSupportedLink = Γιατί δεν υποστηρίζεται το πρόγραμμα περιήγησής μου;
 notSupportedOutdatedDetail = Δυστυχώς, αυτή η έκδοση του Firefox δεν υποστηρίζει την τεχνολογία ιστού στην οποία βασίζεται το Firefox Send. Πρέπει να ενημερώσετε το πρόγραμμα περιήγησής σας.
@@ -81,7 +81,7 @@ updateFirefox = Ενημέρωση Firefox
 downloadFirefoxButtonSub = Δωρεάν λήψη
 uploadedFile = Αρχείο
 copyFileList = Αντιγραφή URL
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Λήγει σε
 deleteFileList = Διαγραφή
 nevermindButton = Μην ανησυχείτε
@@ -94,7 +94,7 @@ deletePopupCancel = Ακύρωση
 deleteButtonHover = Διαγραφή
 copyUrlHover = Αντιγραφή URL
 footerLinkLegal = Νομικά
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Σχετικά με το Test Pilot
 footerLinkPrivacy = Απόρρητο
 footerLinkTerms = Όροι
@@ -103,13 +103,17 @@ requirePasswordCheckbox = Απαίτηση κωδικού πρόσβασης γ�
 addPasswordButton = Προσθήκη κωδικού πρόσβασης
 changePasswordButton = Αλλαγή
 passwordTryAgain = Λάθος κωδικός πρόσβασης. Δοκιμάστε ξανά.
-// This label is followed by the password needed to download a file
-passwordResult = Κωδικός πρόσβασης: { $password }
 reportIPInfringement = Αναφορά παραβίασης IP
 javascriptRequired = Το Firefox Send απαιτεί JavaScript
 whyJavascript = Γιατί το Firefox Send απαιτεί JavaScript;
 enableJavascript = Παρακαλώ ενεργοποιήστε το JavaScript και δοκιμάστε ξανά.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }ώ { $minutes }λ
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }λ
+# A short status message shown when a password is successfully set
+passwordIsSet = Επιτυχής ορισμός κωδικού
+# A short status message shown when the user enters a long password
+maxPasswordLength = Μέγιστο μήκος κωδικού: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Δεν ήταν δυνατός ο ορισμός αυτού του κωδικού
