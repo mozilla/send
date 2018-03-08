@@ -1,6 +1,14 @@
 ## Change Log
 
-### upcoming (2018/02/27 01:52 +00:00)
+### upcoming (2018/03/08 19:27 +00:00)
+- [#782](https://github.com/mozilla/send/pull/782) updated docs (@dannycoates)
+- [#781](https://github.com/mozilla/send/pull/781) Don't translate URL-safe chars, b64 is doing it for us (@timvisee)
+- [#779](https://github.com/mozilla/send/pull/779) implemented crypto polyfills for ms edge (@dannycoates)
+
+### v2.4.1 (2018/02/28 17:05 +00:00)
+- [#777](https://github.com/mozilla/send/pull/777) use a separate circle in the progress svg for indefinite progress (@dannycoates)
+
+### v2.4.0 (2018/02/27 01:55 +00:00)
 - [#769](https://github.com/mozilla/send/pull/769) removed unsafe-inline styles via svgo-loader (@dannycoates)
 - [#767](https://github.com/mozilla/send/pull/767) added coverage artifact to circleci (@dannycoates)
 - [#766](https://github.com/mozilla/send/pull/766) Some frontend unit tests [WIP] (@dannycoates)
