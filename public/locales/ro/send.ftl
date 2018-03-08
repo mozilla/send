@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = un experiment web
 siteFeedback = Feedback
@@ -25,6 +25,11 @@ uploadSuccessConfirmHeader = Pregătit pentru trimitere
 uploadSvgAlt = Încarcă
 uploadSuccessTimingHeader = Linkul către fișierul tău va expira după 1 descărcare sau în 24 de ore.
 expireInfo = Linkul la fișier va expira după { $downloadCount } sau { $timespan }.
+downloadCount = { $num ->
+        [one] 1 descărcare
+        [few] { $num } descărcări
+       *[other] { $num } de descărcări
+    }
 timespanHours = { $num ->
         [one] 1 oră
         [few] ore
@@ -35,29 +40,29 @@ copyUrlFormButton = Copiază în clipboard
 copiedUrl = Copiat!
 deleteFileButton = Șterge fișierul
 sendAnotherFileLink = Trimite un alt fișier
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Descarcă
 downloadsFileList = Descărcări
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Timp
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Descarcă { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Introdu parola
 unlockInputPlaceholder = Parolă
 unlockButtonLabel = Deblochează
 downloadFileTitle = Descarcă fișierul criptat
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Un prieten îți trimite un fișier prin Firefox Send, un serviciu care îți permite să împărtășești un fișier printr-un link sigur, privat și criptat care expiră automat pentru a păstra informațiile tale online doar temporar.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descarcă
 downloadNotification = Descărcarea s-a încheiat.
 downloadFinish = Descărcare încheiată
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } din { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Încearcă Firefox Send
 downloadingPageProgress = Se descarcă { $filename } ({ $size })
 downloadingPageMessage = Te rugăm să păstrezi această file deschisă în timp ce preluăm fișierul și îl decriptăm.
@@ -69,7 +74,7 @@ fileTooBig = Acest fișier este prea mare. Trebuie să fie sub { $size }.
 linkExpiredAlt = Link expirat
 expiredPageHeader = Acest link a expirat sau nu a existat de la bun început!
 notSupportedHeader = Browserul tău nu este suportat.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Din păcate acest browser nu suportă tehnologii web precum Firefox Send. Trebuie să încerci alt browser. Îți recomandăm Firefox!
 notSupportedLink = De ce browserul meu nu este suportat?
 notSupportedOutdatedDetail = Din păcate această versiune de Firefox nu suportă tehnologiile web din spatele Firefox Sent. Îți recomandăm să actualizezi browserul.
@@ -77,7 +82,7 @@ updateFirefox = Actualizează Firefox
 downloadFirefoxButtonSub = Descărcare gratuită
 uploadedFile = Fișier
 copyFileList = Copiază URL-ul
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Expiră în
 deleteFileList = Șterge
 nevermindButton = Uită
@@ -90,7 +95,7 @@ deletePopupCancel = Renunță
 deleteButtonHover = Șterge
 copyUrlHover = Copiază URL-ul
 footerLinkLegal = Mențiuni legale
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Despre Test Pilot
 footerLinkPrivacy = Confidențialitate
 footerLinkTerms = Termeni
@@ -99,6 +104,4 @@ requirePasswordCheckbox = Este necesară o parolă pentru a descărca acest fiș
 addPasswordButton = Adaugă parolă
 changePasswordButton = Modifică
 passwordTryAgain = Parola este incorectă. Încearcă din nou.
-// This label is followed by the password needed to download a file
-passwordResult = Parola: { $password }
 reportIPInfringement = Raportează încălcarea proprietății intelectuale
