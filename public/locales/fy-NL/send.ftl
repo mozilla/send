@@ -103,8 +103,6 @@ requirePasswordCheckbox = Om dit bestân te downloaden is in wachtwurd fereaske
 addPasswordButton = Wachtwurd tafoegje
 changePasswordButton = Wizigje
 passwordTryAgain = Net krekt wachtwurd. Probearje it opnij.
-# This label is followed by the password needed to download a file
-passwordResult = Wachtwurd: { $password }
 reportIPInfringement = IP-ynbrek melde
 javascriptRequired = Firefox Send fereasket JavaScript.
 whyJavascript = Werom hat Firefox Send JavaScript nedich?
@@ -115,3 +113,7 @@ expiresHoursMinutes = { $hours }o { $minutes }m
 expiresMinutes = { $minutes }m
 # A short status message shown when a password is successfully set
 passwordIsSet = Wachtwurd ynsteld
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maksimale wachtwurdlingte: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Dit wachtwurd koe net ynsteld wurde
