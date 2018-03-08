@@ -102,8 +102,6 @@ requirePasswordCheckbox = Mangailangan ng isang password upang i-download ang fi
 addPasswordButton = Magdagdag ng password
 changePasswordButton = Palitan
 passwordTryAgain = Maling password. Subukan muli.
-# This label is followed by the password needed to download a file
-passwordResult = Password: { $password }
 reportIPInfringement = Report IP Infringement
 javascriptRequired = Nangangailangan ang JavaScript sa JavaScript
 whyJavascript = Bakit ang JavaScript ay nangangailangan ng JavaScript?
@@ -114,3 +112,7 @@ expiresHoursMinutes = { $hours }h { $minutes }m
 expiresMinutes = { $minutes }m
 # A short status message shown when a password is successfully set
 passwordIsSet = I-set ang password
+# A short status message shown when the user enters a long password
+maxPasswordLength = Pinakamataas na haba ng password: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Hindi maitakda ang password na ito
