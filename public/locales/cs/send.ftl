@@ -32,9 +32,9 @@ downloadCount = { $num ->
        *[other] { $num } staženích
     }
 timespanHours = { $num ->
-        [one] hodina
-        [few] hodiny
-       *[other] hodin
+        [one] jedné hodině
+        [few] { $num } hodinách
+       *[other] { $num } hodinách
     }
 copyUrlFormLabelWithName = Zkopírujte a sdílejte odkaz na váš soubor: { $filename }
 copyUrlFormButton = Zkopírovat do schránky
@@ -110,9 +110,9 @@ javascriptRequired = Firefox Send vyžaduje povolený JavaScript
 whyJavascript = Proč Firefox Send vyžaduje povolený JavaScript?
 enableJavascript = Povolte JavaScript a zkuste to znovu.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
-expiresHoursMinutes = { $hours }h { $minutes }m
+expiresHoursMinutes = { $hours } h { $minutes } m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
-expiresMinutes = { $minutes }m
+expiresMinutes = { $minutes } m
 # A short status message shown when a password is successfully set
 passwordIsSet = Heslo nastaveno
 # A short status message shown when the user enters a long password
