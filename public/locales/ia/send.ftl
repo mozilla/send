@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = un experimento web
 siteFeedback = Reaction
@@ -39,29 +39,29 @@ copyUrlFormButton = Copiar al area de transferentia
 copiedUrl = Copiate!
 deleteFileButton = Deler le file
 sendAnotherFileLink = Inviar un altere file
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Discargar
 downloadsFileList = Discargamentos
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = Tempore
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Discargar { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Insere le contrasigno
 unlockInputPlaceholder = Contrasigno
 unlockButtonLabel = Disblocar
 downloadFileTitle = Discargar le file cryptate
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = Tu amico te invia un file per Firefox Send, un servicio que te permitte de compartir files per un ligamine secur, private e cryptate, que expira automaticamente pro te assecurar que tu datos non resta online per sempre.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Discargar
 downloadNotification = Tu discargamento es completate.
 downloadFinish = Discargamento completate
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Proba Firefox Send
 downloadingPageProgress = Discargamento de { $filename } ({ $size })
 downloadingPageMessage = Per favor lassa iste scheda aperte durante que nos prende tu file e lo decifra.
@@ -73,7 +73,7 @@ fileTooBig = Iste file es troppo grande pro lo cargar. Illo debe ser inferior a 
 linkExpiredAlt = Ligamine expirate
 expiredPageHeader = Iste ligamine expirava o illo non existeva  jammais!
 notSupportedHeader = Tu navigator non es supportate
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Infelicemente iste navigator non supporta le nove technologias web que move Firefox Send. Tu besonia de probar un altere navigator. Nos recommenda Firefox!
 notSupportedLink = Perque iste navigator non es supportate?
 notSupportedOutdatedDetail = Infelicemente iste version de Firefox non supporta le nove technologias web que move Firefox Send. Tu besonia de actualisar tu navigator.
@@ -81,7 +81,7 @@ updateFirefox = Actualisar Firefox
 downloadFirefoxButtonSub = Discargamento gratuite
 uploadedFile = File
 copyFileList = Copiar le URL
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Expira in
 deleteFileList = Deler
 nevermindButton = No, gratias
@@ -94,7 +94,7 @@ deletePopupCancel = Cancellar
 deleteButtonHover = Deler
 copyUrlHover = Copiar le URL
 footerLinkLegal = Legal
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Re Test Pilot
 footerLinkPrivacy = Confidentialitate
 footerLinkTerms = Terminos
@@ -103,13 +103,17 @@ requirePasswordCheckbox = Requirer un contrasigno pro discargar iste file
 addPasswordButton = Adder contrasigno
 changePasswordButton = Cambiar
 passwordTryAgain = Contrasigno incorrecte. Retenta.
-// This label is followed by the password needed to download a file
-passwordResult = Contrasigno: { $password }
 reportIPInfringement = Reportar un violation de proprietate intellectual
 javascriptRequired = Firefox Send require JavaScript
 whyJavascript = Proque Firefox Send require JavaScript?
 enableJavascript = Por favor activa JavaScript e tenta novemente.
-// A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
-// A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when a password is successfully set
+passwordIsSet = Configuration del contrasigno
+# A short status message shown when the user enters a long password
+maxPasswordLength = Maxime longor del contrasigno: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Iste contrasigno non pote ser definite
