@@ -1,6 +1,9 @@
 ## Change Log
 
-### upcoming (2018/03/08 19:27 +00:00)
+### upcoming (2018/03/12 19:25 +00:00)
+- [#789](https://github.com/mozilla/send/pull/789) Fixed #775 : Made text not-selectable (@RCMainak)
+
+### v2.5.0 (2018/03/08 19:31 +00:00)
 - [#782](https://github.com/mozilla/send/pull/782) updated docs (@dannycoates)
 - [#781](https://github.com/mozilla/send/pull/781) Don't translate URL-safe chars, b64 is doing it for us (@timvisee)
 - [#779](https://github.com/mozilla/send/pull/779) implemented crypto polyfills for ms edge (@dannycoates)
