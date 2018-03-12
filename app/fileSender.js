@@ -78,10 +78,11 @@ export default class FileSender extends Nanobus {
       this.keychain,
       p => {
         this.progress = p;
-        this.emit('progress', p);
+        this.emit('progress');
       }
     );
     this.msg = 'fileSizeProgress';
+    this.emit('progress'); // HACK to kick MS Edge
     try {
       const result = await this.uploadRequest.result;
       const time = Date.now() - start;

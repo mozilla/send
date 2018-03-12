@@ -7,6 +7,10 @@ const oDiameter = oRadius * 2;
 const circumference = 2 * Math.PI * radius;
 
 module.exports = function(progressRatio, indefinite = false) {
+  // HACK - never indefinite for MS Edge
+  if (/edge/i.test(navigator.userAgent)) {
+    indefinite = false;
+  }
   const p = indefinite ? 0.2 : progressRatio;
   const dashOffset = (1 - p) * circumference;
   const progressPercent = html`
