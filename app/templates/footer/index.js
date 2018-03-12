@@ -2,7 +2,7 @@ const html = require('choo/html');
 const assets = require('../../../common/assets');
 
 module.exports = function(state) {
-  return html`<footer class="footer">
+  const footer = html`<footer class="footer">
     <div class="legalSection">
       <a
         href="https://www.mozilla.org"
@@ -61,4 +61,11 @@ module.exports = function(state) {
       </a>
     </div>
   </footer>`;
+  // HACK
+  // We only want to render this once because we
+  // toggle the targets of the links with utils/openLinksInNewTab
+  footer.isSameNode = function(target) {
+    return target && target.nodeName && target.nodeName === 'FOOTER';
+  };
+  return footer;
 };

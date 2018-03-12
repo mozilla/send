@@ -110,21 +110,21 @@ export default function(state, emitter) {
       }
       await delay(1000);
       await fadeOut('.page');
-      openLinksInNewTab(links, false);
       emitter.emit('pushState', `/share/${ownedFile.id}`);
     } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error(err);
-
       if (err.message === '0') {
         //cancelled. do nothing
         metrics.cancelledUpload({ size, type });
-        return render();
+        render();
+      } else {
+        // eslint-disable-next-line no-console
+        console.error(err);
+        state.raven.captureException(err);
+        metrics.stoppedUpload({ size, type, err });
+        emitter.emit('pushState', '/error');
       }
-      state.raven.captureException(err);
-      metrics.stoppedUpload({ size, type, err });
-      emitter.emit('pushState', '/error');
     } finally {
+      openLinksInNewTab(links, false);
       state.uploading = false;
       state.transfer = null;
     }
@@ -188,17 +188,18 @@ export default function(state, emitter) {
       if (err.message === '0') {
         // download cancelled
         state.transfer.reset();
-        return render();
+        render();
+      } else {
+        // eslint-disable-next-line no-console
+        console.error(err);
+        state.transfer = null;
+        const location = err.message === '404' ? '/404' : '/error';
+        if (location === '/error') {
+          state.raven.captureException(err);
+          metrics.stoppedDownload({ size, err });
+        }
+        emitter.emit('pushState', location);
       }
-      // eslint-disable-next-line no-console
-      console.error(err);
-      state.transfer = null;
-      const location = err.message === '404' ? '/404' : '/error';
-      if (location === '/error') {
-        state.raven.captureException(err);
-        metrics.stoppedDownload({ size, err });
-      }
-      emitter.emit('pushState', location);
     } finally {
       openLinksInNewTab(links, false);
     }
