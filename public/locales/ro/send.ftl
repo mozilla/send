@@ -17,6 +17,7 @@ verifyingFile = Se verifică...
 encryptingFile = Se criptează…
 decryptingFile = Se decriptează…
 notifyUploadDone = Încărcarea s-a finalizat.
+uploadingPageMessage = După ce fișierul tău este încărcat vei putea seta opțiuni de expirare.
 uploadingPageCancel = Anulează încărcarea
 uploadCancelNotification = Încărcarea a fost anulată.
 uploadingPageLargeFileMessage = Stai calm! Acest fișier este mare. S-ar putea să dureze un timp încărcarea.
@@ -25,12 +26,14 @@ uploadSuccessConfirmHeader = Pregătit pentru trimitere
 uploadSvgAlt = Încarcă
 uploadSuccessTimingHeader = Linkul către fișierul tău va expira după 1 descărcare sau în 24 de ore.
 expireInfo = Linkul la fișier va expira după { $downloadCount } sau { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 descărcare
         [few] { $num } descărcări
        *[other] { $num } de descărcări
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 oră
         [few] ore
        *[other] de ore
@@ -105,3 +108,16 @@ addPasswordButton = Adaugă parolă
 changePasswordButton = Modifică
 passwordTryAgain = Parola este incorectă. Încearcă din nou.
 reportIPInfringement = Raportează încălcarea proprietății intelectuale
+javascriptRequired = Firefox Send are nevoie de JavaScript
+whyJavascript = De ce are nevoie Firefox Send de JavaScript?
+enableJavascript = Te rugăm să reactivezi JavaScript și să încerci din nou.
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } m
+# A short status message shown when a password is successfully set
+passwordIsSet = Parola a fost setată
+# A short status message shown when the user enters a long password
+maxPasswordLength = Lungime minimă a parolei: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Această parola nu a putut fi setată
