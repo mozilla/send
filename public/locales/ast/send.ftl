@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = esperimentu web
 siteFeedback = Feedback
@@ -25,28 +25,41 @@ uploadingFileNotification = Avísame cuando se complete la xuba.
 uploadSuccessConfirmHeader = Preparáu pa unviar
 uploadSvgAlt = Xubir
 uploadSuccessTimingHeader = L'enllaz del to ficheru caducará dempués d'una descarga o en 24 hores.
+downloadCount =
+    { $num ->
+        [one] 1 descarga
+       *[other] { $num } descargues
+    }
+timespanHours =
+    { $num ->
+        [one] 1 hora
+       *[other] { $num } hores
+    }
 copyUrlFormLabelWithName = Copia y comparti l'enllaz pa unviar el to ficheru: { $filename }
 copyUrlFormButton = Copiar al cartafueyu
 copiedUrl = ¡Copióse!
 deleteFileButton = Desaniciar ficheru
 sendAnotherFileLink = Unviar otru ficheru
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = Baxar
+downloadsFileList = Descargues
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = Baxar { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Introducir contraseña
 unlockInputPlaceholder = Contraseña
 unlockButtonLabel = Desbloquiar
 downloadFileTitle = Baxar ficheru cifráu
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 downloadMessage = El to collaciu unvióte un ficheru usando Firefox Send, un serviciu que te permite compartir ficheros con un enllaz seguru, priváu y cifráu que caduca automáticamente p'asegurar que les to coses nun queden siempres na rede.
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Baxar
 downloadNotification = Completóse la to descarga.
 downloadFinish = Descarga completada
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Prueba Firefox Send
 downloadingPageProgress = Baxando { $filename } ({ $size })
 downloadingPageMessage = Dexa esta llingüeta abierta entrín vamos en cata del to ficheru y lu desciframos, por favor.
@@ -58,7 +71,7 @@ fileTooBig = Esti ficheru ye mui grande como pa xubilu. Debería tener menos de 
 linkExpiredAlt = Enllaz caducáu
 expiredPageHeader = ¡Esti enllaz caducó o enxamás nun esistó!
 notSupportedHeader = El to restolador nun ta sofitáu.
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Desafortunadamente esti restolador nun sofita la teunoloxía web qu'usa Firefox Send. Precisarás d'usar otru restolador. ¡Aconseyámoste Firefox!
 notSupportedLink = ¿Por qué'l mio restolador nun ta sofitáu?
 notSupportedOutdatedDetail = Desafortunadamente esta versión de Firefox nun sofita la teunoloxía web qu'usa Firefox Send. Precisarás d'anovar Firefox.
@@ -66,7 +79,7 @@ updateFirefox = Anovar Firefox
 downloadFirefoxButtonSub = Descarga de baldre
 uploadedFile = Ficheru
 copyFileList = Copiar URL
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = Caduca en
 deleteFileList = Desaniciar
 nevermindButton = Nun m'importa
@@ -79,13 +92,14 @@ deletePopupCancel = Encaboxar
 deleteButtonHover = Desaniciar
 copyUrlHover = Copiar URL
 footerLinkLegal = Llegal
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Tocante a Test Pilot
 footerLinkPrivacy = Privacidá
 footerLinkTerms = Términos
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Riquir una contraseña pa baxar esti ficheru
 addPasswordButton = Amestar contraseña
+changePasswordButton = Camudar
 passwordTryAgain = Contraseña incorreuta. Volvi tentalo.
-// This label is followed by the password needed to download a file
-passwordResult = Contraseña: { $password }
+# A short status message shown when there was an error setting the password
+passwordSetError = Nun pudo afitase esta contraseña
