@@ -26,10 +26,12 @@ uploadSuccessConfirmHeader = Listo para enviar
 uploadSvgAlt = Subir
 uploadSuccessTimingHeader = El enlace a tu archivo expirará después de una descarga o en 24 horas.
 expireInfo = El enlace a tu archivo expirará después de { $downloadCount } o { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
        *[one] 1 descarga
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 hora
        *[other] { $num } horas
     }
@@ -102,8 +104,6 @@ requirePasswordCheckbox = Se necesita una contraseña para descargar este archiv
 addPasswordButton = Agregar contraseña
 changePasswordButton = Cambiar
 passwordTryAgain = Contraseña incorrecta. Intenta de nuevo.
-# This label is followed by the password needed to download a file
-passwordResult = Contraseña: { $password }
 reportIPInfringement = Denunciar una infracción de PI
 javascriptRequired = Firefox Send requiere JavaScript
 whyJavascript = ¿Por qué Firefox Send requiere JavaScript?
@@ -114,3 +114,7 @@ expiresHoursMinutes = { $hours }h { $minutes }m
 expiresMinutes = { $minutes }m
 # A short status message shown when a password is successfully set
 passwordIsSet = Contraseña establecida
+# A short status message shown when the user enters a long password
+maxPasswordLength = Longitud máxima de la contraseña: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = No se ha podido establecer la contraseña
