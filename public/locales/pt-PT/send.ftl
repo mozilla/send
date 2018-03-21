@@ -8,7 +8,7 @@ uploadPageLearnMore = Saber mais
 uploadPageDropMessage = Largue o seu ficheiro aqui para começar a carregar
 uploadPageSizeMessage = Para uma operação mais confiável, é melhor manter o seu ficheiro abaixo de 1GB
 uploadPageBrowseButton = Selecionar um ficheiro no seu computador
-uploadPageBrowseButton1 = Selecione um ficheiro a enviar
+uploadPageBrowseButton1 = Selecionar um ficheiro a carregar
 uploadPageMultipleFilesAlert = Carregar múltiplos ficheiros ou uma pasta não é atualmente suportado.
 uploadPageBrowseButtonTitle = Carregar ficheiro
 uploadingPageProgress = A carregar { $filename } ({ $size })
@@ -26,7 +26,8 @@ uploadSuccessConfirmHeader = Pronto para enviar
 uploadSvgAlt = Carregar
 uploadSuccessTimingHeader = A ligação para o seu ficheiro irá expirar depois de 1 transferência ou em 24 horas.
 expireInfo = A ligação para o seu ficheiro irá expirar depois de { $downloadCount } or { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 transferência
        *[other] { $num } transferências
     }
