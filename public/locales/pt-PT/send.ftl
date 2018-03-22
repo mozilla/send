@@ -38,30 +38,30 @@ copiedUrl = Copiado!
 deleteFileButton = Apagar ficheiro
 sendAnotherFileLink = Enviar outro ficheiro
 # Alternative text used on the download link/button (indicates an action).
-downloadAltText = Transferir
+downloadAltText = Descarregar
 downloadsFileList = Transferências
 # Used as header in a column indicating the amount of time left before a
 # download link expires (e.g. "10h 5m")
 timeFileList = Tempo
 # Used as header in a column indicating the number of times a file has been
 # downloaded
-downloadFileName = Transferir { $filename }
+downloadFileName = Descarregar { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = Digitar palavra-passe
 unlockInputPlaceholder = Palavra-passe
 unlockButtonLabel = Desbloquear
-downloadFileTitle = Transferir ficheiro encriptado
+downloadFileTitle = Descarregar ficheiro encriptado
 # Firefox Send is a brand name and should not be localized.
 downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiro com uma ligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
 # Text and title used on the download link/button (indicates an action).
-downloadButtonLabel = Transferir
+downloadButtonLabel = Descarregar
 downloadNotification = A sua transferência foi concluída.
 downloadFinish = Transferência concluída
 # This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
 # Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Experimentar o Firefox Send
-downloadingPageProgress = A transferir { $filename } ({ $size })
+downloadingPageProgress = A descarregar { $filename } ({ $size })
 downloadingPageMessage = Por favor deixe este separador aberto enquanto obtemos o seu ficheiro e o desencriptamos.
 errorAltText = Erro ao carregar
 errorPageHeader = Algo correu mal.
@@ -97,7 +97,7 @@ footerLinkAbout = Acerca do Test Pilot
 footerLinkPrivacy = Privacidade
 footerLinkTerms = Termos
 footerLinkCookies = Cookies
-requirePasswordCheckbox = Requerer uma palavra-passe para transferir este ficheiro
+requirePasswordCheckbox = Requerer uma palavra-passe para descarregar este ficheiro
 addPasswordButton = Adicionar palavra-passe
 changePasswordButton = Alterar
 passwordTryAgain = Palavra-passe incorreta. Tente novamente.
