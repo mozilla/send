@@ -24,12 +24,12 @@ uploadingPageLargeFileMessage = Este ficheiro é grande e pode demorar um pouco 
 uploadingFileNotification = Notificar-me quando o carregamento estiver completo.
 uploadSuccessConfirmHeader = Pronto para enviar
 uploadSvgAlt = Carregar
-uploadSuccessTimingHeader = A ligação para o seu ficheiro irá expirar depois de 1 transferência ou em 24 horas.
+uploadSuccessTimingHeader = A hiperligação para o seu ficheiro irá expirar depois de 1 descarga ou em 24 horas.
 expireInfo = A ligação para o seu ficheiro irá expirar depois de { $downloadCount } or { $timespan }.
 downloadCount =
     { $num ->
-        [one] 1 transferência
-       *[other] { $num } transferências
+        [one] 1 descarga
+       *[other] { $number } descargas
     }
 timespanHours = 1 hora
 copyUrlFormLabelWithName = Copie e partilhe a ligação para enviar o seu ficheiro: { $filename }
@@ -39,7 +39,7 @@ deleteFileButton = Apagar ficheiro
 sendAnotherFileLink = Enviar outro ficheiro
 # Alternative text used on the download link/button (indicates an action).
 downloadAltText = Descarregar
-downloadsFileList = Transferências
+downloadsFileList = Descargas
 # Used as header in a column indicating the amount of time left before a
 # download link expires (e.g. "10h 5m")
 timeFileList = Tempo
@@ -55,8 +55,8 @@ downloadFileTitle = Descarregar ficheiro encriptado
 downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiro com uma ligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
 # Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descarregar
-downloadNotification = A sua transferência foi concluída.
-downloadFinish = Transferência concluída
+downloadNotification = A sua descarga foi concluída.
+downloadFinish = Descarga concluída
 # This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
 # Firefox Send is a brand name and should not be localized.
@@ -76,7 +76,7 @@ notSupportedDetail = Infelizmente este navegador não suporta a tecnologia web q
 notSupportedLink = Porque é que o meu navegador não é suportado?
 notSupportedOutdatedDetail = Infelizmente esta versão do Firefox não suporta a tecnologia web que faz o Firefox Send funcionar. Precisa de atualizar o seu navegador.
 updateFirefox = Atualizar o Firefox
-downloadFirefoxButtonSub = Transferência gratuita
+downloadFirefoxButtonSub = Descarga gratuita
 uploadedFile = Ficheiro
 copyFileList = Copiar URL
 # expiryFileList is used as a column header
