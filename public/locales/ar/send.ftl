@@ -29,7 +29,8 @@ uploadSvgAlt =
     .alt = ارفع
 uploadSuccessTimingHeader = ستنتهي صلاحية الرابط الذي يشير إلى الملف في حال: نُزِّل لأول مرة، أو مرّ ٢٤ ساعة على رفعه.
 expireInfo = ستنتهي صلاحية رابط الملف بعد { $downloadCount } أو { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [zero] لا تنزيلات
         [one] تنزيل واحد
         [two] تنزيلين
@@ -37,7 +38,8 @@ downloadCount = { $num ->
         [many] { $num } تنزيلًا
        *[other] { $num } تنزيل
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [zero] أقل من ساعة
         [one] ساعة
         [two] ساعتين
@@ -122,8 +124,6 @@ requirePasswordCheckbox = اطلب كلمة سر لتنزيل هذا الملف
 addPasswordButton = أضِف كلمة سر
 changePasswordButton = غيّر
 passwordTryAgain = كلمة السر خاطئة. أعِد المحاولة.
-# This label is followed by the password needed to download a file
-passwordResult = كلمة السر: { $password }
 reportIPInfringement = أبلغ عن انتهاك للملكية الفكرية
 javascriptRequired = يتطلب فَيَرفُكس سِنْد جافاسكربت
 whyJavascript = لماذا يتطلب فَيَرفُكس سِنْد جافاسكربت؟
@@ -134,3 +134,7 @@ expiresHoursMinutes = { $hours }س { $minutes }د
 expiresMinutes = { $minutes }د
 # A short status message shown when a password is successfully set
 passwordIsSet = ضُبطت كلمة السر
+# A short status message shown when the user enters a long password
+maxPasswordLength = أقصر طول لكلمة السر: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = يجب ألا تُضبط كلمة السر هذه
