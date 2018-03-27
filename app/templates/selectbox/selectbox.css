@@ -1,36 +1,27 @@
-.selectbox {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-}
-
-.selectbox__options {
-  display: none;
-}
-
-.selectbox__options--active {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0;
-  margin: 40px 0;
+.select {
   background-color: var(--pageBGColor);
-  border: 1px solid rgba(12, 12, 13, 0.3);
-  border-radius: 4px;
-  box-shadow: 1px 2px 4px rgba(12, 12, 13, 0.3);
+  overflow: hidden;
 }
 
-.selectbox__option {
-  color: var(--lightTextColor);
-  font-size: 12pt;
-  list-style: none;
-  user-select: none;
-  white-space: nowrap;
-  padding: 0 60px;
-  border-bottom: 1px solid rgba(12, 12, 13, 0.3);
+select {
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0;
+  background: #fff;
+  background-image: none;
+  font-size: 1em;
+  margin: 0;
+  color: #0094fb;
+  cursor: pointer;
+  border-color: none;
 }
 
-.selectbox__option:hover {
-  background-color: #f4f4f4;
+select:active {
+  background-color: var(--pageBGColor);
+  border: 0;
+}
+
+#arrow {
+  position: relative;
 }
