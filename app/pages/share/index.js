@@ -16,7 +16,7 @@ module.exports = function(state, emit) {
 
   return html`
   <div id="shareWrapper" class="effect--fadeIn">
-    <div class="title">${expireInfo(file, state.translate, emit)}</div>
+    ${expireInfo(file, state.translate, emit)}
     <div class="sharePage">
       <div class="sharePage__copyText">
         ${state.translate('copyUrlFormLabelWithName', { filename: file.name })}
@@ -97,7 +97,7 @@ module.exports = function(state, emit) {
 
 function expireInfo(file, translate, emit) {
   const hours = Math.floor(EXPIRE_SECONDS / 60 / 60);
-  const el = html`<div>${raw(
+  const el = html`<div class="title">${raw(
     translate('expireInfo', {
       downloadCount: '<select></select>',
       timespan: translate('timespanHours', { num: hours })
@@ -107,9 +107,6 @@ function expireInfo(file, translate, emit) {
   const options = [1, 2, 3, 4, 5, 20].filter(i => i > (file.dtotal || 0));
   const t = num => translate('downloadCount', { num });
   const changed = value => emit('changeLimit', { file, value });
-  select.parentNode.replaceChild(
-    selectbox(file.dlimit || 1, options, t, changed),
-    select
-  );
+  el.replaceChild(selectbox(file.dlimit || 1, options, t, changed), select);
   return el;
 }

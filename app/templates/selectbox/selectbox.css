@@ -1,6 +1,25 @@
 .select {
   background-color: var(--pageBGColor);
   overflow: hidden;
+  padding: 4px 2px 1px 2px;
+  border: 1px dotted #0094fb88;
+  border-radius: 4px;
+  display: inline;
+  position: relative;
+}
+
+.select::after {
+  color: #0094fb;
+  content: '\25BC';
+  position: absolute;
+  right: 0;
+  padding: 0 10px;
+  pointer-events: none;
+  font-size: 20px;
+}
+
+option {
+  padding: 0;
 }
 
 select {
@@ -11,10 +30,11 @@ select {
   background: #fff;
   background-image: none;
   font-size: 1em;
+  font-weight: 200;
   margin: 0;
   color: #0094fb;
   cursor: pointer;
-  border-color: none;
+  padding-right: 40px;
 }
 
 select:active {

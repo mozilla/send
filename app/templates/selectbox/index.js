@@ -5,7 +5,7 @@ module.exports = function(selected, options, translate, changed) {
   let x = selected;
 
   return html`
-  <span class="select">
+  <div class="select">
     <select id="${id}" onchange=${choose}>
       ${options.map(
         i =>
@@ -14,11 +14,7 @@ module.exports = function(selected, options, translate, changed) {
           }>${translate(i)}</option>`
       )}
     </select>
-    
-    <svg id="arrow" width="32" height="32">
-      <polygon points="8 18 17 28 26 18" fill="#0094fb"/>
-    </svg>
-  </span>`;
+  </div>`;
 
   function choose(event) {
     const target = event.target;
