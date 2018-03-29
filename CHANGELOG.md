@@ -1,6 +1,6 @@
 ## Change Log
 
-### upcoming (2018/03/12 19:25 +00:00)
+### v2.5.1 (2018/03/12 19:26 +00:00)
 - [#789](https://github.com/mozilla/send/pull/789) Fixed #775 : Made text not-selectable (@RCMainak)
 
 ### v2.5.0 (2018/03/08 19:31 +00:00)
