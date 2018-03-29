@@ -9,9 +9,7 @@ function arrayToB64(array) {
 }
 
 function b64ToArray(str) {
-  return b64.toByteArray(
-    str + '==='.slice((str.length + 3) % 4)
-  );
+  return b64.toByteArray(str + '==='.slice((str.length + 3) % 4));
 }
 
 function loadShim(polyfill) {
@@ -59,6 +57,7 @@ async function canHasSend() {
     );
     return true;
   } catch (err) {
+    console.error(err);
     return false;
   }
 }
