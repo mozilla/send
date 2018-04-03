@@ -3,11 +3,11 @@ title = Firefox Send
 siteSubtitle = un experiment web
 siteFeedback = Feedback
 uploadPageHeader = Partajare de fișiere privată și criptată
-uploadPageExplainer = Trimite fișiere printr-un link sigur, privat și criptat care expiră automat pentru ca informațiile să rămână în siguranță.
+uploadPageExplainer = Trimite fișiere printr-un link sigur, privat și criptat care expiră automat pentru a te asigura că lucrurile tale nu rămân online pentru totdeauna.
 uploadPageLearnMore = Află mai multe
-uploadPageDropMessage = Aruncă fișierul aici pentru a începe încărcarea.
+uploadPageDropMessage = Trage fișierul aici pentru a începe încărcarea
 uploadPageSizeMessage = Pentru a lucra mai ușor, recomandăm să păstrezi fișierul sub 1GB
-uploadPageBrowseButton = Alege un fișier din calculator.
+uploadPageBrowseButton = Selectează un fișier din calculator
 uploadPageBrowseButton1 = Selectează un fișier pentru încărcare
 uploadPageMultipleFilesAlert = Încărcarea mai multor fișiere deodată sau a dosarelor nu este suportată.
 uploadPageBrowseButtonTitle = Încarcă fișier
@@ -24,8 +24,8 @@ uploadingPageLargeFileMessage = Stai calm! Acest fișier este mare. S-ar putea s
 uploadingFileNotification = Notifică-mă când încărcarea este încheiată.
 uploadSuccessConfirmHeader = Pregătit pentru trimitere
 uploadSvgAlt = Încarcă
-uploadSuccessTimingHeader = Linkul către fișierul tău va expira după 1 descărcare sau în 24 de ore.
-expireInfo = Linkul la fișier va expira după { $downloadCount } sau { $timespan }.
+uploadSuccessTimingHeader = Linkul către fișier va expira după 1 descărcare sau în 24 de ore.
+expireInfo = Linkul către fișier va expira după { $downloadCount } sau { $timespan }.
 downloadCount =
     { $num ->
         [one] 1 descărcare
@@ -58,7 +58,7 @@ unlockInputPlaceholder = Parolă
 unlockButtonLabel = Deblochează
 downloadFileTitle = Descarcă fișierul criptat
 # Firefox Send is a brand name and should not be localized.
-downloadMessage = Un prieten îți trimite un fișier prin Firefox Send, un serviciu care îți permite să împărtășești un fișier printr-un link sigur, privat și criptat care expiră automat pentru a păstra informațiile tale online doar temporar.
+downloadMessage = Un prieten îți trimite un fișier prin Firefox Send, un serviciu care îți permite să împărtășești un fișier printr-un link sigur, privat și criptat care expiră automat pentru a te asigura că lucrurile tale nu rămân online pentru totdeauna.
 # Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Descarcă
 downloadNotification = Descărcarea s-a încheiat.
@@ -73,14 +73,14 @@ errorAltText = Eroare la încărcare
 errorPageHeader = Ceva a mers prost!
 errorPageMessage = A apărut o eroare la încărcarea fișierului.
 errorPageLink = Trimite un alt fișier
-fileTooBig = Acest fișier este prea mare. Trebuie să fie sub { $size }.
+fileTooBig = Acest fișier este prea mare. Ar trebuie să fie sub { $size }.
 linkExpiredAlt = Link expirat
 expiredPageHeader = Acest link a expirat sau nu a existat de la bun început!
 notSupportedHeader = Browserul tău nu este suportat.
 # Firefox Send is a brand name and should not be localized.
 notSupportedDetail = Din păcate acest browser nu suportă tehnologii web precum Firefox Send. Trebuie să încerci alt browser. Îți recomandăm Firefox!
 notSupportedLink = De ce browserul meu nu este suportat?
-notSupportedOutdatedDetail = Din păcate această versiune de Firefox nu suportă tehnologiile web din spatele Firefox Sent. Îți recomandăm să actualizezi browserul.
+notSupportedOutdatedDetail = Din păcate această versiune de Firefox nu suportă tehnologiile web din spatele Firefox Sent. Va trebui să actualizezi browserul.
 updateFirefox = Actualizează Firefox
 downloadFirefoxButtonSub = Descărcare gratuită
 uploadedFile = Fișier
@@ -90,7 +90,7 @@ expiryFileList = Expiră în
 deleteFileList = Șterge
 nevermindButton = Uită
 legalHeader = Termeni de utilizare și politica de confidențialitate
-legalNoticeTestPilot = Firefox Send este momentan un experiment Test Pilot și supus <a>Termenilor de utilizare</a> Test Pilot și a <a>Politicii de confidențialitate</a>. Poți afla mai multe despre acest experiment <a>aici</a>.
+legalNoticeTestPilot = Firefox Send este în prezent un experiment Test Pilot și supus <a>Termenilor de utilizare</a> Test Pilot și a <a>Politicii de confidențialitate</a>. Poți afla mai multe despre acest experiment și colectarea sa de date <a>aici</a>.
 legalNoticeMozilla = Folosirea site-ului Firefox Send mai este supusă <a>Politicii de confidențialitate pentru site-uri web</a> și a <a>Termenilor de folosire a site-urilor web</a>.
 deletePopupText = Ștergi aceast fișier?
 deletePopupYes = Da
@@ -120,4 +120,4 @@ passwordIsSet = Parola a fost setată
 # A short status message shown when the user enters a long password
 maxPasswordLength = Lungime minimă a parolei: { $length }
 # A short status message shown when there was an error setting the password
-passwordSetError = Această parola nu a putut fi setată
+passwordSetError = Această parolă nu a putut fi setată
