@@ -26,11 +26,13 @@ uploadSuccessConfirmHeader = Llest per enviar
 uploadSvgAlt = Puja
 uploadSuccessTimingHeader = L'enllaç al fitxer caducarà quan es baixi una vegada o d'aquí 24 hores.
 expireInfo = L'enllaç al fitxer caducarà en fer { $downloadCount } o d'aquí { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 baixada
        *[other] { $num } baixades
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 hora
        *[other] { $num } hores
     }
@@ -103,8 +105,6 @@ requirePasswordCheckbox = Sol·licita una contrasenya per baixar aquest fitxer
 addPasswordButton = Afegeix una contrasenya
 changePasswordButton = Canvia
 passwordTryAgain = La contrasenya és incorrecta. Torneu-ho a provar.
-# This label is followed by the password needed to download a file
-passwordResult = Contrasenya: { $password }
 reportIPInfringement = Denuncieu una infracció de propietat intel·lectual
 javascriptRequired = El Firefox Send necessita JavaScript
 whyJavascript = Per què el Firefox Send necessita JavaScript?
@@ -115,3 +115,7 @@ expiresHoursMinutes = { $hours } h { $minutes } min
 expiresMinutes = { $minutes } min
 # A short status message shown when a password is successfully set
 passwordIsSet = S'ha definit la contrasenya
+# A short status message shown when the user enters a long password
+maxPasswordLength = Longitud màxima de la contrasenya: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = No s'ha pogut definir la contrasenya
