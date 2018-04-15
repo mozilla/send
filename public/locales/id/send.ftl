@@ -102,7 +102,11 @@ addPasswordButton = Tambahkan Sandi
 changePasswordButton = Ubah
 passwordTryAgain = Sandi salah. Silakan coba lagi.
 reportIPInfringement = Laporkan Pelanggaran IP
+javascriptRequired = Firefox Send membutuhkan JavaScript.
+whyJavascript = Mengapa Firefox Send membutuhkan JavaScript?
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }j { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when the user enters a long password
+maxPasswordLength = Panjang sandi maksimal: { $length }
