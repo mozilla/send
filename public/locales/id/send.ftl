@@ -43,6 +43,9 @@ sendAnotherFileLink = Kirim berkas lain
 # Alternative text used on the download link/button (indicates an action).
 downloadAltText = Unduh
 downloadsFileList = Unduhan
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
+timeFileList = Waktu
 # Used as header in a column indicating the number of times a file has been
 # downloaded
 downloadFileName = Unduh { $filename }
@@ -104,6 +107,7 @@ passwordTryAgain = Sandi salah. Silakan coba lagi.
 reportIPInfringement = Laporkan Pelanggaran IP
 javascriptRequired = Firefox Send membutuhkan JavaScript.
 whyJavascript = Mengapa Firefox Send membutuhkan JavaScript?
+enableJavascript = Silakan aktifkan JavaScript dan coba lagi.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }j { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
