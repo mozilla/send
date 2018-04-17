@@ -2,3 +2,4 @@ dist
 assets
 firefox
 coverage
+test/ui
