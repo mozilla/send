@@ -26,15 +26,17 @@ uploadSuccessConfirmHeader = Готов к отправке
 uploadSvgAlt = Загрузить
 uploadSuccessTimingHeader = Ссылка на ваш файл станет недоступна после 1 загрузки файла или через 24 часа.
 expireInfo = Ссылка на ваш файл станет недоступна после { $downloadCount } файла или через { $timespan }.
-downloadCount = { $num ->
-        [one] { $number } загрузки
-        [few] { $number } загрузок
-       *[other] { $number } загрузок
+downloadCount =
+    { $num ->
+        [one] { $num } загрузка
+        [few] { $num } загрузки
+       *[other] { $num } загрузок
     }
-timespanHours = { $num ->
-        [one] { $number } час
-        [few] { $number } часа
-       *[other] { $number } часов
+timespanHours =
+    { $num ->
+        [one] { $num } час
+        [few] { $num } часа
+       *[other] { $num } часов
     }
 copyUrlFormLabelWithName = Скопировать и поделиться ссылкой на отправку вашего файла: { $filename }
 copyUrlFormButton = Скопировать в буфер обмена
