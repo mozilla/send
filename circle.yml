@@ -19,7 +19,8 @@ jobs:
             - ./*
   test:
     docker:
-      - image: circleci/node:8-browsers
+      - image: circleci/node:8
+      - image: selenium/standalone-firefox:latest
     steps:
       - checkout
       - restore_cache:
@@ -31,7 +32,7 @@ jobs:
             - node_modules
       - run: npm run check
       - run: npm run lint
-      - run: npm test
+      - run: npm run test-circle
       - store_artifacts:
           path: coverage
   deploy_dev:
