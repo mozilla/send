@@ -4,6 +4,7 @@ from pages.desktop.base import Base
 
 
 class Share(Base):
+    """SHare page object model."""
 
     _share_page_locator = (By.CLASS_NAME, 'sharePage')
     _share_url_locator = (By.ID, 'fileUrl')

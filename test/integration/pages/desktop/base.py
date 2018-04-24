@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 
 
 class Base(Page):
+    """Base object model."""
 
     _url = '{base_url}'
     _send_logo_locator = (By.CLASS_NAME, 'logo')

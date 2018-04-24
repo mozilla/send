@@ -4,6 +4,7 @@ from pages.desktop.base import Base
 
 
 class Download(Base):
+    """Download page object model."""
 
     _download_button_locator = (By.CLASS_NAME, 'btn--download')
 

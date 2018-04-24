@@ -4,6 +4,7 @@ from pages.desktop.base import Base
 
 
 class Progress(Base):
+    """Progress page object model."""
 
     _cancel_button = (By.ID, 'cancel-upload')
     _progress_icon_locator = (By.CLASS_NAME, 'progress__bar')

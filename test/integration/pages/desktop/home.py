@@ -4,7 +4,7 @@ from pages.desktop.base import Base
 
 
 class Home(Base):
-    """Addons Home page"""
+    """Firefox Send Home page object model."""
 
     _upload_area_locator = (By.ID, 'file-upload')
     _upload_button_locator = (By.CLASS_NAME, 'btn--file')
