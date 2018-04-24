@@ -1,5 +1,6 @@
 node_modules
 .git
+.tox
 .DS_Store
 firefox
 assets
