@@ -10,3 +10,16 @@ services:
       - REDIS_HOST=redis
   redis:
     image: redis:alpine
+    ports:
+      - "6379:6379"
+  selenium-firefox:
+    image: b4handjr/selenium-firefox
+    volumes:
+      - .:/send
+    working_dir: /send
+    expose:
+      - "4444"
+    ports:
+      - "5900"
+      - "4444:4444"
+    shm_size: 2g

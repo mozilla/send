@@ -31,9 +31,49 @@ jobs:
             - node_modules
       - run: npm run check
       - run: npm run lint
-      - run: npm test
+      - run: npm run test
       - store_artifacts:
           path: coverage
+  integration_tests:
+    working_directory: ~/send
+    machine: true
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - uitest-cache-{{ checksum "test/integration/Pipfile" }}
+            - uitest-cache-{{ checksum "test/integration/pipenv.txt" }}
+      - run:
+          name: Install Docker Compose
+          command: |
+            set -x
+            pip install docker-compose>=1.18
+            docker-compose --version
+      - run:
+          name: Install Tox
+          command: |
+            set -x
+            pip install tox
+      - run:
+          name: Start docker container
+          command: docker-compose up -d
+      - run:
+          name: Run User Integration Tests
+          command: |
+            npm run start:integration-docker
+            npm run test-integration-docker
+          environment:
+            MOZ_HEADLESS: 1
+      - store_artifacts:
+          path: send-test.html
+      - save_cache:
+          key: uitest-cache-{{ checksum "test/integration/Pipfile" }}
+          paths:
+            - test/integration/.tox
+      - save_cache:
+          key: uitest-cache-{{ checksum "test/integration/pipenv.txt" }}
+          paths:
+            - test/integration/.tox
   deploy_dev:
     machine: true
     steps:
@@ -58,6 +98,7 @@ workflows:
           filters:
             branches:
               ignore: master
+      - integration_tests
   build_and_deploy_dev:
     jobs:
       - build:
