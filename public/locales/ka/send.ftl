@@ -26,6 +26,11 @@ uploadSuccessConfirmHeader = მზადაა გასაგზავნა�
 uploadSvgAlt = ატვირთვა
 uploadSuccessTimingHeader = ფაილს ვადა გაუვა 1 ჩამოტვირთვის, ან 24 საათის მერე.
 expireInfo = ფაილის ბმულს, ვადა გაუვა { $downloadCount }, ან { $timespan } მერე.
+downloadCount =
+    { $num ->
+        [one] 1 ჩამოტვირთვა
+       *[other] { $num } ჩამოტვირთვა
+    }
 copyUrlFormLabelWithName = დააკოპირეთ და გააზიარეთ ბმული, ფაილის გასაგზავნად: { $filename }
 copyUrlFormButton = დაკოპირება
 copiedUrl = დაკოპირდა!
