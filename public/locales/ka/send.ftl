@@ -31,6 +31,11 @@ downloadCount =
         [one] 1 ჩამოტვირთვა
        *[other] { $num } ჩამოტვირთვა
     }
+timespanHours =
+    { $num ->
+        [one] 1 საათი
+       *[other] { $num } საათი
+    }
 copyUrlFormLabelWithName = დააკოპირეთ და გააზიარეთ ბმული, ფაილის გასაგზავნად: { $filename }
 copyUrlFormButton = დაკოპირება
 copiedUrl = დაკოპირდა!
