@@ -27,9 +27,6 @@ uploadSvgAlt = Yükle
 uploadSuccessTimingHeader = Dosyanız 1 kez indirildikten veya 24 saat geçtikten sonra linkiniz geçersiz olacaktır.
 expireInfo = Dosyanızın bağlantısı { $downloadCount } sonra veya { $timespan } zaman aşımına uğrayacaktır.
 downloadCount = { $num } indirme
-timespanHours = { $num ->
-       *[one] { $num } saat
-    }
 copyUrlFormLabelWithName = { $filename } dosyanızı başkasına göndermek için aşağıdaki linki kopyalayın.
 copyUrlFormButton = Panoya kopyala
 copiedUrl = Kopyalandı!
