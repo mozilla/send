@@ -26,6 +26,24 @@ uploadSuccessConfirmHeader = Yn Barod i Anfon
 uploadSvgAlt = Llwytho i Fyny
 uploadSuccessTimingHeader = Bydd y ddolen i'ch ffeil y dod i ben ar ôl 1 llwytho neu o fewn 24 awr.
 expireInfo = Bydd y ddolen i'ch ffeil yn dod i ben ym mhen { $downloadCount } neu { $timespan }.
+downloadCount =
+    { $num ->
+        [zero] Llwythi i lawr
+        [one] Llwyth i lawr
+        [two] Lwyth i lawr
+        [few] Llwyth i lawr
+        [many] Llwyth i lawr
+       *[other] Llwyth i lawr
+    }
+timespanHours =
+    { $num ->
+        [zero] awr
+        [one] awr
+        [two] awr
+        [few] awr
+        [many] awr
+       *[other] awr
+    }
 copyUrlFormLabelWithName = Copïo a rhannu'r ddolen i anfon eich ffeil: { $filename }
 copyUrlFormButton = Copïo i'r clipfwrdd
 copiedUrl = Wedi eu copïo!
