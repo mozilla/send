@@ -35,10 +35,10 @@ downloadCount =
 timespanHours =
     { $num ->
         [one] 1 oră
-        [few] ore
-       *[other] de ore
+        [few] { $num } ore
+       *[other] { $num } de ore
     }
-copyUrlFormLabelWithName = Copiază și împărtășește linkul de la fișierul de trimis: { $filename }
+copyUrlFormLabelWithName = Copiază și împărtășește linkul pentru a trimite fișierul: { $filename }
 copyUrlFormButton = Copiază în clipboard
 copiedUrl = Copiat!
 deleteFileButton = Șterge fișierul
@@ -90,8 +90,8 @@ expiryFileList = Expiră în
 deleteFileList = Șterge
 nevermindButton = Uită
 legalHeader = Termeni de utilizare și politica de confidențialitate
-legalNoticeTestPilot = Firefox Send este în prezent un experiment Test Pilot și supus <a>Termenilor de utilizare</a> Test Pilot și a <a>Politicii de confidențialitate</a>. Poți afla mai multe despre acest experiment și colectarea sa de date <a>aici</a>.
-legalNoticeMozilla = Folosirea site-ului Firefox Send mai este supusă <a>Politicii de confidențialitate pentru site-uri web</a> și a <a>Termenilor de folosire a site-urilor web</a>.
+legalNoticeTestPilot = Firefox Send este în prezent un experiment Test Pilot și supus <a>Termenilor de utilizare a serviciului</a> și a <a>Politicii de confidențialitate</a> Test Pilot. Poți afla mai multe despre acest experiment și colectarea sa de date <a>aici</a>.
+legalNoticeMozilla = Folosirea site-ului Firefox Send mai este supusă <a>Politicii de confidențialitate pentru site-uri web</a> și a <a>Termenilor de utilizare a site-urilor web</a>.
 deletePopupText = Ștergi aceast fișier?
 deletePopupYes = Da
 deletePopupCancel = Renunță
