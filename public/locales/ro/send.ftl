@@ -78,7 +78,7 @@ linkExpiredAlt = Link expirat
 expiredPageHeader = Acest link a expirat sau nu a existat de la bun început!
 notSupportedHeader = Browserul tău nu este suportat.
 # Firefox Send is a brand name and should not be localized.
-notSupportedDetail = Din păcate acest browser nu suportă tehnologii web precum Firefox Send. Trebuie să încerci alt browser. Îți recomandăm Firefox!
+notSupportedDetail = Din păcate, acest browser nu suportă tehnologiile web folosite de Firefox Send. Va trebui să încerci un alt browser. Îți recomandăm Firefox!
 notSupportedLink = De ce browserul meu nu este suportat?
 notSupportedOutdatedDetail = Din păcate această versiune de Firefox nu suportă tehnologiile web din spatele Firefox Sent. Va trebui să actualizezi browserul.
 updateFirefox = Actualizează Firefox
