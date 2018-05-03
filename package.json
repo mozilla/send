@@ -28,9 +28,7 @@
     "test": "npm-run-all test:*",
     "test:backend": "nyc mocha --reporter=min test/backend",
     "test:frontend": "cross-env NODE_ENV=development node test/frontend/runner.js && nyc report --reporter=html",
-    "test-integration-local": "tox -c test/integration/tox.ini",
-    "test-integration-docker": "docker-compose exec -T --user root selenium-firefox tox -c test/integration/tox.ini",
-    "start:integration-docker": "docker-compose exec -T --user root selenium-firefox ./test/integration/scripts/start-docker.sh &",
+    "test-integration": "docker-compose up --abort-on-container-exit --exit-code-from integration-tests --build --remove-orphans --quiet-pull && docker-compose down --rmi local",
     "start": "npm run clean && cross-env NODE_ENV=development webpack-dev-server",
     "prod": "node server/prod.js"
   },
