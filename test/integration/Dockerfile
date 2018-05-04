@@ -5,5 +5,6 @@ RUN apt-get update && \
   pip install tox
 COPY . /integration
 WORKDIR /integration
+RUN tox --notest
 
 CMD ["tox", "-e", "integration-tests"]

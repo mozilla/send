@@ -28,7 +28,8 @@
     "test": "npm-run-all test:*",
     "test:backend": "nyc mocha --reporter=min test/backend",
     "test:frontend": "cross-env NODE_ENV=development node test/frontend/runner.js && nyc report --reporter=html",
-    "test-integration": "docker-compose up --abort-on-container-exit --exit-code-from integration-tests --build --remove-orphans --quiet-pull && docker-compose down --rmi local",
+    "test-integration": "docker-compose up --abort-on-container-exit --exit-code-from integration-tests --build --remove-orphans --quiet-pull && docker-compose down",
+    "test-integration-stage": "cross-env BASE_URL=https://send.stage.mozaws.net npm run test-integration",
     "start": "npm run clean && cross-env NODE_ENV=development webpack-dev-server",
     "prod": "node server/prod.js"
   },

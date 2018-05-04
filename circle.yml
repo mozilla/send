@@ -48,6 +48,8 @@ jobs:
             docker-compose --version
       - run:
           command: npm run test-integration
+      - store_artifacts:
+          path: coverage/send-test.html
   deploy_dev:
     machine: true
     steps:
@@ -114,10 +116,19 @@ workflows:
               ignore: /.*/
             tags:
               only: /^v.*/
+      - integration_tests:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
       - deploy_stage:
           requires:
             - build
             - test
+            - integration_tests
           filters:
             branches:
               ignore: /.*/
