@@ -10,16 +10,17 @@ services:
       - REDIS_HOST=redis
   redis:
     image: redis:alpine
-    ports:
-      - "6379:6379"
-  selenium-firefox:
+  selenium:
     image: b4handjr/selenium-firefox
-    volumes:
-      - .:/send
-    working_dir: /send
-    expose:
-      - "4444"
     ports:
-      - "5900"
-      - "4444:4444"
+      - "${VNC_PORT:-5900}:5900"
     shm_size: 2g
+  integration-tests:
+    build: ./test/integration
+    environment:
+      - BASE_URL=${BASE_URL:-http://web:1443}
+    links:
+      - web
+      - selenium
+    volumes:
+      - "./coverage:/coverage"
