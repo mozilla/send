@@ -1,7 +1,7 @@
 .select {
   background-color: var(--pageBGColor);
   overflow: hidden;
-  padding: 4px 2px 1px 2px;
+  padding: 4px 2px 4px 2px;
   border: 1px dotted #0094fb88;
   border-radius: 4px;
   display: inline;
