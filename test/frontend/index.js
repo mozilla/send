@@ -6,7 +6,9 @@ function kv(f) {
 }
 
 module.exports = function() {
-  const files = fs.readdirSync(path.join(__dirname, 'tests'));
+  const files = fs
+    .readdirSync(path.join(__dirname, 'tests'))
+    .filter(p => /\.js$/.test(p));
   const code = "require('fast-text-encoding');\n" + files.map(kv).join(';\n');
   return {
     code,
