@@ -10,12 +10,12 @@
 
 .select::after {
   color: #0094fb;
-  content: '\25BC';
-  position: absolute;
+  content: "\25BC";
+  position: relative;
   right: 0;
-  padding: 0 10px;
   pointer-events: none;
   font-size: 20px;
+  margin-left: -20px;
 }
 
 option {
