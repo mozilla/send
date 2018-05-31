@@ -121,10 +121,7 @@ export function uploadFile(
       });
     })
   };
-  const dataView = new DataView(encrypted);
-  const blob = new Blob([dataView], { type: 'application/octet-stream' });
-  const fd = new FormData();
-  fd.append('data', blob);
+  const blob = new Blob([encrypted], { type: 'application/octet-stream' });
   xhr.upload.addEventListener('progress', function(event) {
     if (event.lengthComputable) {
       onprogress([event.loaded, event.total]);
@@ -133,7 +130,7 @@ export function uploadFile(
   xhr.open('post', '/api/upload', true);
   xhr.setRequestHeader('X-File-Metadata', arrayToB64(new Uint8Array(metadata)));
   xhr.setRequestHeader('Authorization', `send-v1 ${verifierB64}`);
-  xhr.send(fd);
+  xhr.send(blob);
   return upload;
 }
 

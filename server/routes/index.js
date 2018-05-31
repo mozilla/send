@@ -1,5 +1,4 @@
 const express = require('express');
-const busboy = require('connect-busboy');
 const helmet = require('helmet');
 const storage = require('../storage');
 const config = require('../config');
@@ -10,11 +9,6 @@ const pages = require('./pages');
 
 const IS_DEV = config.env === 'development';
 const ID_REGEX = '([0-9a-fA-F]{10})';
-const uploader = busboy({
-  limits: {
-    fileSize: config.max_file_size
-  }
-});
 
 module.exports = function(app) {
   app.use(helmet());
@@ -62,7 +56,7 @@ module.exports = function(app) {
   app.get(`/api/download/:id${ID_REGEX}`, auth, require('./download'));
   app.get(`/api/exists/:id${ID_REGEX}`, require('./exists'));
   app.get(`/api/metadata/:id${ID_REGEX}`, auth, require('./metadata'));
-  app.post('/api/upload', uploader, require('./upload'));
+  app.post('/api/upload', require('./upload'));
   app.post(`/api/delete/:id${ID_REGEX}`, owner, require('./delete'));
   app.post(`/api/password/:id${ID_REGEX}`, owner, require('./password'));
   app.post(`/api/params/:id${ID_REGEX}`, owner, require('./params'));

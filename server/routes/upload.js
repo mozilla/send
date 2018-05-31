@@ -2,10 +2,11 @@ const crypto = require('crypto');
 const storage = require('../storage');
 const config = require('../config');
 const mozlog = require('../log');
+const Limiter = require('../limiter');
 
 const log = mozlog('send.upload');
 
-module.exports = function(req, res) {
+module.exports = async function(req, res) {
   const newId = crypto.randomBytes(5).toString('hex');
   const metadata = req.header('X-File-Metadata');
   const auth = req.header('Authorization');
@@ -19,33 +20,24 @@ module.exports = function(req, res) {
     auth: auth.split(' ')[1],
     nonce: crypto.randomBytes(16).toString('base64')
   };
-  req.pipe(req.busboy);
 
-  req.busboy.on('file', async (fieldname, file) => {
-    try {
-      await storage.set(newId, file, meta);
-      const protocol = config.env === 'production' ? 'https' : req.protocol;
-      const url = `${protocol}://${req.get('host')}/download/${newId}/`;
-      res.set('WWW-Authenticate', `send-v1 ${meta.nonce}`);
-      res.json({
-        url,
-        owner: meta.owner,
-        id: newId
-      });
-    } catch (e) {
-      log.error('upload', e);
-      if (e.message === 'limit') {
-        return res.sendStatus(413);
-      }
-      res.sendStatus(500);
+  try {
+    const limiter = new Limiter(config.max_file_size);
+    const fileStream = req.pipe(limiter);
+    await storage.set(newId, fileStream, meta);
+    const protocol = config.env === 'production' ? 'https' : req.protocol;
+    const url = `${protocol}://${req.get('host')}/download/${newId}/`;
+    res.set('WWW-Authenticate', `send-v1 ${meta.nonce}`);
+    res.json({
+      url,
+      owner: meta.owner,
+      id: newId
+    });
+  } catch (e) {
+    if (e.message === 'limit') {
+      return res.sendStatus(413);
     }
-  });
-
-  req.on('close', async err => {
-    try {
-      await storage.del(newId);
-    } catch (e) {
-      log.info('DeleteError:', newId);
-    }
-  });
+    log.error('upload', e);
+    res.sendStatus(500);
+  }
 };
