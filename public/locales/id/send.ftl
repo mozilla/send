@@ -112,5 +112,9 @@ enableJavascript = Silakan aktifkan JavaScript dan coba lagi.
 expiresHoursMinutes = { $hours }j { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when a password is successfully set
+passwordIsSet = Sandi diatur
 # A short status message shown when the user enters a long password
 maxPasswordLength = Panjang sandi maksimal: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Tidak bisa menyetel sandi ini
