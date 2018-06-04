@@ -18,25 +18,14 @@ class S3Storage {
     return s3.getObject({ Bucket: this.bucket, Key: id }).createReadStream();
   }
 
-  async set(id, file) {
-    let hitLimit = false;
+  set(id, file) {
     const upload = s3.upload({
       Bucket: this.bucket,
       Key: id,
       Body: file
     });
-    file.on('limit', () => {
-      hitLimit = true;
-      upload.abort();
-    });
-    try {
-      await upload.promise();
-    } catch (e) {
-      if (hitLimit) {
-        throw new Error('limit');
-      }
-      throw e;
-    }
+    file.on('error', () => upload.abort());
+    return upload.promise();
   }
 
   del(id) {

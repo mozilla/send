@@ -98,7 +98,7 @@ describe('S3Storage', function() {
         on: (ev, fn) => fn()
       };
       const abort = sinon.stub();
-      const err = new Error();
+      const err = new Error('limit');
       s3Stub.upload = sinon.stub().returns({
         promise: () => Promise.reject(err),
         abort
