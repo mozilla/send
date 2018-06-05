@@ -14,8 +14,12 @@ module.exports = async function(req, res) {
       'WWW-Authenticate': `send-v1 ${req.nonce}`
     });
     const file_stream = storage.get(id);
-
+    let sentBytes = 0;
+    file_stream.on('data', c => (sentBytes += c.length));
     file_stream.on('end', async () => {
+      if (sentBytes < contentLength) {
+        return;
+      }
       const dl = meta.dl + 1;
       const dlimit = meta.dlimit;
       try {
