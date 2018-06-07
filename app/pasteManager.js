@@ -19,6 +19,7 @@ export default function(state, emitter) {
       }
 
       emitter.emit('upload', { file, type: 'paste' });
+      return; // return here since only one file is allowed to be uploaded at a time
     }
   });
 }
