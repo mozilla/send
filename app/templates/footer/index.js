@@ -6,8 +6,7 @@ module.exports = function(state) {
     <div class="legalSection">
       <a
         href="https://www.mozilla.org"
-        class="legalSection__link"
-        role="presentation">
+        class="legalSection__link">
         <img
           class="legalSection__mozLogo"
           src="${assets.get('mozilla-logo.svg')}"
@@ -43,8 +42,7 @@ module.exports = function(state) {
     <div class="socialSection">
       <a
         href="https://github.com/mozilla/send"
-        class="socialSection__link"
-        role="presentation">
+        class="socialSection__link">
         <img
           class="socialSection__icon"
           src="${assets.get('github-icon.svg')}"
@@ -52,8 +50,7 @@ module.exports = function(state) {
       </a>
       <a
         href="https://twitter.com/FxTestPilot"
-        class="socialSection__link"
-        role="presentation">
+        class="socialSection__link">
         <img
           class="socialSection__icon"
           src="${assets.get('twitter-icon.svg')}"
