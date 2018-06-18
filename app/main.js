@@ -4,6 +4,7 @@ import app from './routes';
 import locale from '../common/locales';
 import fileManager from './fileManager';
 import dragManager from './dragManager';
+import pasteManager from './pasteManager';
 import { canHasSend } from './utils';
 import storage from './storage';
 import metrics from './metrics';
@@ -48,5 +49,6 @@ app.use(metrics);
 app.use(fileManager);
 app.use(dragManager);
 app.use(experiments);
+app.use(pasteManager);
 
 app.mount('body');
