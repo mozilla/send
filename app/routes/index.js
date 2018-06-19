@@ -5,6 +5,7 @@ const download = require('./download');
 const header = require('../templates/header');
 const footer = require('../templates/footer');
 const fxPromo = require('../templates/fxPromo');
+const activeBackground = require('../templates/activeBackground');
 
 nanotiming.disabled = true;
 const app = choo();
@@ -18,6 +19,7 @@ function banner(state, emit) {
 function body(template) {
   return function(state, emit) {
     const b = html`<body>
+      ${activeBackground(state, emit)}
       ${banner(state, emit)}
       ${header(state)}
       <main class="main">
