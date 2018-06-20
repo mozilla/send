@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = ניסוי אינטרנט
 siteFeedback = משוב
@@ -21,7 +21,7 @@ uploadCancelNotification = ההעלאה שלך בוטלה.
 uploadingPageLargeFileMessage = קובץ זה גדול ועלול לקחת זמן להעלות אותו. סבלנות!
 uploadingFileNotification = נא להודיע לי כשתסתיים ההעלאה.
 uploadSuccessConfirmHeader = מוכן לשליחה
-uploadSvgAlt
+uploadSvgAlt =
     .alt = להעלות
 uploadSuccessTimingHeader = הקישור לקובץ שלך יפוג אחרי הורדה אחת או בעוד 24 שעות.
 copyUrlFormLabelWithName = ניתן להעתיק ולשתף את הקישור כדי לשלוח את הקובץ שלך: { $filename }
@@ -30,32 +30,34 @@ deleteFileButton = מחיקת קובץ
     .title = מחיקת קובץ
 sendAnotherFileLink = שליחת קובץ נוסף
     .title = שליחת קובץ נוסף
-// Alternative text used on the download link/button (indicates an action).
-downloadAltText
+# Alternative text used on the download link/button (indicates an action).
+downloadAltText =
     .alt = הורדה
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = ההורדה נכשלה
 downloadFileSize = ({ $size })
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = הורדה
     .title = הורדה
 downloadNotification = ההורדה הושלמה.
 downloadFinish = ההורדה הושלמה
-// This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
+# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } מתוך { $totalSize })
 downloadingPageProgress = בהורדה: { $filename } ({ $size })
-errorAltText
+errorAltText =
     .alt = תקלה בהעלאה
 errorPageHeader = משהו השתבש!
 errorPageLink = שליחת קובץ נוסף
 fileTooBig = הקובץ הזה גדול מידי להעלאה. עליו להיות קטן מ־{ $size }.
-linkExpiredAlt
+linkExpiredAlt =
     .alt = קישור פג
 notSupportedHeader = הדפדפן שלך לא נתמך.
 notSupportedLink = למה אין תמיכה בדפדפן שלי?
 downloadFirefoxButtonSub = הורדה בחינם
 uploadedFile = קובץ
 copyFileList = העתקת כתובת
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = יפוג בעוד
 deleteFileList = מחיקה
 nevermindButton = לא משנה
@@ -63,9 +65,9 @@ legalHeader = תנאי שירות ופרטיות
 deletePopupText = למחוק דף זה?
 deletePopupYes = כן
 deletePopupCancel = ביטול
-deleteButtonHover
+deleteButtonHover =
     .title = מחיקה
-copyUrlHover
+copyUrlHover =
     .title = העתקת קישור
 footerLinkLegal = מידע משפטי
 footerLinkPrivacy = פרטיות
