@@ -26,11 +26,13 @@ uploadSuccessConfirmHeader = Gati për Dërgim
 uploadSvgAlt = Ngarkoje
 uploadSuccessTimingHeader = Lidhja për te kartela juaj do të skadojë pas 1 shkarkimi ose pas 24 orësh.
 expireInfo = Lidhja për te kartela juaj do të skadojë pas { $downloadCount } ose { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 shkarkimi
        *[other] { $num } shkarkimesh
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 ore
        *[other] { $num } orësh
     }
