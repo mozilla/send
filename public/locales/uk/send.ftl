@@ -26,12 +26,14 @@ uploadSuccessConfirmHeader = Готовий до надсилання
 uploadSvgAlt = Вивантажити
 uploadSuccessTimingHeader = Час дії цього посилання закінчиться після 1 завантаження, або через 24 години.
 expireInfo = Посилання на ваш файл стане недійсним після { $downloadCount } файла, або через { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 завантаження
         [few] { $num } завантаження
        *[other] { $num } завантажень
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 година
         [few] { $num } години
        *[other] { $num } годин
