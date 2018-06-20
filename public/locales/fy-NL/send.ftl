@@ -26,11 +26,13 @@ uploadSuccessConfirmHeader = Ree om te ferstjoeren
 uploadSvgAlt = Oplaad
 uploadSuccessTimingHeader = De keppeling nei jo bestân sil nei 1 download ferrinne of nei 24 oeren.
 expireInfo = De keppeling nei jo bestân sil nei { $downloadCount } of { $timespan } ferrinne.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 download
        *[other] { $num } downloads
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 oer
        *[other] { $num } oeren
     }
