@@ -40,12 +40,44 @@ a {
 }
 
 .main {
+  display: flex;
+  flex-direction: row;
   flex: auto;
-  max-width: 650px;
-  margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
-  width: 96%;
+}
+
+.stripedBox {
+  width: 480px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 0 0 3px rgba(155, 155, 155, 0.4);
+  background-image: repeating-linear-gradient(
+    45deg,
+    white,
+    white 5px,
+    #ea000e 5px,
+    #ea000e 25px,
+    white 25px,
+    white 30px,
+    #0083ff 30px,
+    #0083ff 50px
+  );
+}
+
+.mainContent {
+  height: 100%;
+  background-color: white;
+  margin: 0 10px;
+  padding: 1px 10px 0 10px; /* top wtf? */
+}
+
+.spacer {
+  flex: auto;
+}
+
+.uploads {
+  flex: auto;
 }
 
 .noscript {

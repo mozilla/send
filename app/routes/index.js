@@ -34,7 +34,13 @@ function body(template) {
             <p>${state.translate('enableJavascript')}</p>
           </div>
         </noscript>
-        ${template(state, emit)}
+        <div class="stripedBox">
+          <div class="mainContent">
+            ${template(state, emit)}
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="uploads"></div>
       </main>
       ${footer(state)}
     </body>`;
