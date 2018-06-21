@@ -62,10 +62,6 @@ module.exports = function(app) {
   app.post(`/api/params/:id${ID_REGEX}`, owner, require('./params'));
   app.post(`/api/info/:id${ID_REGEX}`, owner, require('./info'));
 
-  if (!IS_DEV) {
-    app.ws('/api/ws', require('./ws'));
-  }
-
   app.get('/__version__', function(req, res) {
     res.sendFile(require.resolve('../../dist/version.json'));
   });

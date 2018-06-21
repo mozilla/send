@@ -141,11 +141,11 @@ async function upload(
   let size = 0;
   while (!state.done) {
     const buf = state.value;
-    ws.send(buf);
-
     if (canceller.cancelled) {
+      ws.close(4000, 'upload cancelled');
       throw new Error(0);
     }
+    ws.send(buf);
 
     onprogress([Math.min(streamInfo.fileSize, size), streamInfo.fileSize]);
     size += streamInfo.recordSize;
@@ -174,7 +174,6 @@ export async function uploadWs(
 
   return {
     cancel: function() {
-      ws.close(4000, 'upload cancelled');
       canceller.cancelled = true;
     },
     result: upload(
