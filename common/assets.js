@@ -15,15 +15,33 @@ function getAsset(name) {
   return prefix + assets[name];
 }
 
+function getMatches(match) {
+  return Object.keys(assets)
+    .filter(k => match.test(k))
+    .map(getAsset);
+}
+
 const instance = {
   get: getAsset,
+  match: getMatches,
   setMiddleware: function(middleware) {
+    function getManifest() {
+      return JSON.parse(
+        middleware.fileSystem.readFileSync(
+          middleware.getFilenameFromUrl('/manifest.json')
+        )
+      );
+    }
     if (middleware) {
       instance.get = function getAssetWithMiddleware(name) {
-        const f = middleware.fileSystem.readFileSync(
-          middleware.getFilenameFromUrl('/manifest.json')
-        );
-        return prefix + JSON.parse(f)[name];
+        const m = getManifest();
+        return prefix + m[name];
+      };
+      instance.match = function matchAssetWithMiddleware(match) {
+        const m = getManifest();
+        return Object.keys(m)
+          .filter(k => match.test(k))
+          .map(k => prefix + m[k]);
       };
     }
   }

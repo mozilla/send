@@ -1,4 +1,5 @@
 @import './base.css';
+@import './templates/activeBackground/activeBackground.css';
 @import './templates/header/header.css';
 @import './templates/downloadButton/downloadButton.css';
 @import './templates/progress/progress.css';
