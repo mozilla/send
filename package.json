@@ -124,13 +124,16 @@
     "cldr-core": "^32.0.0",
     "convict": "^4.0.1",
     "express": "^4.16.2",
+    "express-ws": "^4.0.0",
     "fluent": "^0.6.3",
     "fluent-langneg": "^0.1.0",
     "helmet": "^3.12.0",
     "mkdirp": "^0.5.1",
     "mozlog": "^2.2.0",
     "raven": "^2.4.2",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "websocket-stream": "^5.1.2",
+    "ws": "^5.2.0"
   },
   "availableLanguages": [
     "en-US",

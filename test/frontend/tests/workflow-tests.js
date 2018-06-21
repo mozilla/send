@@ -93,7 +93,7 @@ describe('Upload / Download flow', function() {
     fs.cancel(); // before encrypting
     try {
       await up;
-      assert.fail('not cancelled');
+      assert.fail('not cancelled 1');
     } catch (e) {
       assert.equal(e.message, '0');
     }
@@ -101,7 +101,7 @@ describe('Upload / Download flow', function() {
     fs.once('encrypting', () => fs.cancel());
     try {
       await fs.upload();
-      assert.fail('not cancelled');
+      assert.fail('not cancelled 2');
     } catch (e) {
       assert.equal(e.message, '0');
     }
@@ -109,7 +109,7 @@ describe('Upload / Download flow', function() {
     fs.once('progress', () => fs.cancel());
     try {
       await fs.upload();
-      assert.fail('not cancelled');
+      assert.fail('not cancelled 3');
     } catch (e) {
       assert.equal(e.message, '0');
     }

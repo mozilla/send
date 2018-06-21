@@ -91,47 +91,98 @@ export async function setPassword(id, owner_token, keychain) {
   return response.ok;
 }
 
-export function uploadFile(
-  encrypted,
+function asyncInitWebSocket(server) {
+  return new Promise(resolve => {
+    const ws = new WebSocket(server);
+    ws.onopen = () => {
+      resolve(ws);
+    };
+  });
+}
+
+async function upload(
+  ws,
+  stream,
+  streamInfo,
   metadata,
   verifierB64,
   keychain,
   onprogress
 ) {
-  const xhr = new XMLHttpRequest();
-  const upload = {
-    cancel: function() {
-      xhr.abort();
-    },
-    result: new Promise(function(resolve, reject) {
-      xhr.addEventListener('loadend', function() {
-        const authHeader = xhr.getResponseHeader('WWW-Authenticate');
-        if (authHeader) {
-          keychain.nonce = parseNonce(authHeader);
-        }
-        if (xhr.status === 200) {
-          const responseObj = JSON.parse(xhr.responseText);
-          return resolve({
-            url: responseObj.url,
-            id: responseObj.id,
-            ownerToken: responseObj.owner
-          });
-        }
-        reject(new Error(xhr.status));
-      });
-    })
+  const metadataHeader = arrayToB64(new Uint8Array(metadata));
+  const fileMeta = {
+    fileMetadata: metadataHeader,
+    authorization: `send-v1 ${verifierB64}`
   };
-  const blob = new Blob([encrypted], { type: 'application/octet-stream' });
-  xhr.upload.addEventListener('progress', function(event) {
-    if (event.lengthComputable) {
-      onprogress([event.loaded, event.total]);
+
+  //send file header
+  ws.send(JSON.stringify(fileMeta));
+
+  function listenForRes() {
+    return new Promise((resolve, reject) => {
+      ws.addEventListener('message', function(msg) {
+        const response = JSON.parse(msg.data);
+        resolve({
+          url: response.url,
+          id: response.id,
+          ownerToken: response.owner
+        });
+      });
+    });
+  }
+
+  const resPromise = listenForRes();
+
+  const reader = stream.getReader();
+  let state = await reader.read();
+  let size = 0;
+  while (!state.done) {
+    const buf = state.value;
+    ws.send(buf);
+    if (ws.readyState !== 1) {
+      throw new Error(0); //should this be here
     }
-  });
-  xhr.open('post', '/api/upload', true);
-  xhr.setRequestHeader('X-File-Metadata', arrayToB64(new Uint8Array(metadata)));
-  xhr.setRequestHeader('Authorization', `send-v1 ${verifierB64}`);
-  xhr.send(blob);
-  return upload;
+
+    onprogress([Math.min(streamInfo.fileSize, size), streamInfo.fileSize]);
+    size += streamInfo.recordSize;
+    state = await reader.read();
+  }
+
+  const res = await resPromise;
+
+  ws.close();
+  return res;
+}
+
+export async function uploadWs(
+  encrypted,
+  info,
+  metadata,
+  verifierB64,
+  keychain,
+  onprogress
+) {
+  const host = window.location.hostname;
+  const port = window.location.port;
+  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  const ws = await asyncInitWebSocket(`${protocol}//${host}:${port}/api/ws`);
+
+  //console.log(`made connection to websocket: ws://${host}:${port}/api/ws`)
+
+  return {
+    cancel: function() {
+      ws.close(4000, 'upload cancelled');
+    },
+    result: upload(
+      ws,
+      encrypted,
+      info,
+      metadata,
+      verifierB64,
+      keychain,
+      onprogress
+    )
+  };
 }
 
 function download(id, keychain, onprogress, canceller) {
@@ -151,11 +202,7 @@ function download(id, keychain, onprogress, canceller) {
       }
 
       const blob = new Blob([xhr.response]);
-      const fileReader = new FileReader();
-      fileReader.readAsArrayBuffer(blob);
-      fileReader.onload = function() {
-        resolve(this.result);
-      };
+      resolve(blob);
     });
     xhr.addEventListener('progress', function(event) {
       if (event.lengthComputable && event.target.status === 200) {

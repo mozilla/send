@@ -3,6 +3,14 @@ const locales = require('../common/locales');
 const routes = require('./routes');
 const pages = require('./routes/pages');
 const tests = require('../test/frontend/routes');
+const express = require('express');
+const expressWs = require('express-ws');
+const config = require('./config');
+
+const wsapp = express();
+expressWs(wsapp, null, { perMessageDeflate: false });
+wsapp.ws('/api/ws', require('./routes/ws'));
+wsapp.listen(8081, config.listen_address);
 
 module.exports = function(app, devServer) {
   assets.setMiddleware(devServer.middleware);

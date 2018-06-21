@@ -209,6 +209,13 @@ module.exports = {
   devServer: {
     compress: true,
     host: '0.0.0.0',
-    before: IS_DEV ? require('./server/dev') : undefined
+    before: IS_DEV ? require('./server/dev') : undefined,
+    proxy: {
+      '/api/ws': {
+        target: 'ws://localhost:8081',
+        ws: true,
+        secure: false
+      }
+    }
   }
 };
