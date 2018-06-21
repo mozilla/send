@@ -1,14 +1,12 @@
-const html = require('choo/html');
 const assets = require('../../../common/assets');
 
 module.exports = function(state) {
-  if (!state.backgroundUrl) {
-    const backgrounds = assets.match(/background/);
-    state.backgroundUrl =
-      backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  if (!state.backgroundClass) {
+    const backgrounds = assets.match(/background_/);
+    state.backgroundClass = `background_${Math.floor(
+      Math.random() * backgrounds.length
+    ) + 1}`;
   }
 
-  return html`<div class="background">
-    <img src="${state.backgroundUrl}">
-  </div>`;
+  return state.backgroundClass;
 };

@@ -1,11 +1,14 @@
 .background {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  z-index: -1;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-.background > img {
-  height: 100%;
+.background_1 {
+  background-image: url('../assets/background_1.jpg');
+}
+
+.background_2 {
+  background-image: url('../assets/background_2.jpg');
 }

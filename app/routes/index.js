@@ -18,8 +18,7 @@ function banner(state, emit) {
 
 function body(template) {
   return function(state, emit) {
-    const b = html`<body>
-      ${activeBackground(state, emit)}
+    const b = html`<body class="background ${activeBackground(state)}">
       ${banner(state, emit)}
       ${header(state)}
       <main class="main">
