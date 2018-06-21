@@ -12,7 +12,7 @@ if (config.sentry_dsn) {
 
 const app = express();
 expressWs(app, null, { perMessageDeflate: false });
-app.ws('/api/ws', require('./routes/ws')); //want to move this into routes/index.js but it's not working...
+app.ws('/api/ws', require('./routes/ws'));
 routes(app);
 
 app.use(

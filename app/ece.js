@@ -6,7 +6,7 @@ const TAG_LENGTH = 16;
 const KEY_LENGTH = 16;
 const MODE_ENCRYPT = 'encrypt';
 const MODE_DECRYPT = 'decrypt';
-const RS = 1024 * 1024;
+const RS = 1048576;
 
 const encoder = new TextEncoder();
 
@@ -16,7 +16,7 @@ function generateSalt(len) {
   return randSalt.buffer;
 }
 
-export class ECETransformer {
+class ECETransformer {
   constructor(mode, ikm, rs, salt) {
     this.mode = mode;
     this.prevChunk;
@@ -139,7 +139,6 @@ export class ECETransformer {
     return Buffer.concat([Buffer.from(this.salt), nums]);
   }
 
-  //salt is arraybuffer, rs is int, length is int
   readHeader(buffer) {
     if (buffer.length < 21) {
       throw new Error('chunk too small for reading header');
@@ -259,7 +258,7 @@ class BlobSlicer {
   }
 }
 
-export class BlobSliceStream extends ReadableStream {
+class BlobSliceStream extends ReadableStream {
   constructor(blob, size, mode) {
     super(new BlobSlicer(blob, size, mode));
   }
@@ -272,7 +271,6 @@ mode: string, either 'encrypt' or 'decrypt'
 rs:   int containing record size, optional
 salt: ArrayBuffer containing salt of KEY_LENGTH length, optional
 */
-
 export default class ECE {
   constructor(input, key, mode, rs, salt) {
     if (rs === undefined) {

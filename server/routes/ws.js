@@ -10,17 +10,17 @@ const log = mozlog('send.upload');
 module.exports = async function(ws, req) {
   let fileStream;
 
-  try {
-    ws.on('close', e => {
-      if (e !== 1000) {
-        if (fileStream !== undefined) {
-          fileStream.destroy();
-        }
+  ws.on('close', e => {
+    if (e !== 1000) {
+      if (fileStream !== undefined) {
+        fileStream.destroy();
       }
-    });
+    }
+  });
 
-    let first = true;
-    ws.on('message', function(message) {
+  let first = true;
+  ws.on('message', function(message) {
+    try {
       if (first) {
         const newId = crypto.randomBytes(5).toString('hex');
         const owner = crypto.randomBytes(10).toString('hex');
@@ -29,11 +29,13 @@ module.exports = async function(ws, req) {
         const metadata = fileInfo.fileMetadata;
         const auth = fileInfo.authorization;
 
-        /*
         if (!metadata || !auth) {
-          return res.sendStatus(400);
+          ws.send(
+            JSON.stringify({
+              error: 400
+            })
+          );
         }
-        */
 
         const meta = {
           owner,
@@ -60,9 +62,13 @@ module.exports = async function(ws, req) {
 
         first = false;
       }
-    });
-  } catch (e) {
-    log.error('upload', e);
-    //res.sendStatus(500);
-  }
+    } catch (e) {
+      log.error('upload', e);
+      ws.send(
+        JSON.stringify({
+          error: 500
+        })
+      );
+    }
+  });
 };

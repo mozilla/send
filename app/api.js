@@ -107,7 +107,8 @@ async function upload(
   metadata,
   verifierB64,
   keychain,
-  onprogress
+  onprogress,
+  canceller
 ) {
   const metadataHeader = arrayToB64(new Uint8Array(metadata));
   const fileMeta = {
@@ -115,23 +116,25 @@ async function upload(
     authorization: `send-v1 ${verifierB64}`
   };
 
-  //send file header
-  ws.send(JSON.stringify(fileMeta));
-
-  function listenForRes() {
+  function listenForResponse() {
     return new Promise((resolve, reject) => {
       ws.addEventListener('message', function(msg) {
         const response = JSON.parse(msg.data);
-        resolve({
-          url: response.url,
-          id: response.id,
-          ownerToken: response.owner
-        });
+        if (response.error) {
+          reject(response.error);
+        } else {
+          resolve({
+            url: response.url,
+            id: response.id,
+            ownerToken: response.owner
+          });
+        }
       });
     });
   }
 
-  const resPromise = listenForRes();
+  const resPromise = listenForResponse();
+  ws.send(JSON.stringify(fileMeta));
 
   const reader = stream.getReader();
   let state = await reader.read();
@@ -139,8 +142,9 @@ async function upload(
   while (!state.done) {
     const buf = state.value;
     ws.send(buf);
-    if (ws.readyState !== 1) {
-      throw new Error(0); //should this be here
+
+    if (canceller.cancelled) {
+      throw new Error(0);
     }
 
     onprogress([Math.min(streamInfo.fileSize, size), streamInfo.fileSize]);
@@ -148,10 +152,10 @@ async function upload(
     state = await reader.read();
   }
 
-  const res = await resPromise;
+  const response = await resPromise;
 
   ws.close();
-  return res;
+  return response;
 }
 
 export async function uploadWs(
@@ -166,12 +170,12 @@ export async function uploadWs(
   const port = window.location.port;
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
   const ws = await asyncInitWebSocket(`${protocol}//${host}:${port}/api/ws`);
-
-  //console.log(`made connection to websocket: ws://${host}:${port}/api/ws`)
+  const canceller = { cancelled: false };
 
   return {
     cancel: function() {
       ws.close(4000, 'upload cancelled');
+      canceller.cancelled = true;
     },
     result: upload(
       ws,
@@ -180,7 +184,8 @@ export async function uploadWs(
       metadata,
       verifierB64,
       keychain,
-      onprogress
+      onprogress,
+      canceller
     )
   };
 }
