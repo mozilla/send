@@ -179,12 +179,12 @@ export default class Keychain {
     return ciphertext;
   }
 
-  async encryptStream(plaintext) {
+  encryptStream(plaintext) {
     const enc = new ECE(plaintext, this.rawSecret, 'encrypt');
     return enc;
   }
 
-  async decryptStream(encstream) {
+  decryptStream(encstream) {
     const dec = new ECE(encstream, this.rawSecret, 'decrypt');
     return dec;
   }

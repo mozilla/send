@@ -51,23 +51,16 @@ export default class FileReceiver extends Nanobus {
     this.state = 'ready';
   }
 
-  async streamToArrayBuffer(stream) {
+  async streamToArrayBuffer(stream, streamSize) {
     const reader = stream.getReader();
-    const chunks = [];
-    let length = 0;
+    const result = new Int8Array(streamSize);
+    let offset = 0;
 
     let state = await reader.read();
     while (!state.done) {
-      chunks.push(state.value);
-      length += state.value.length;
+      result.set(state.value, offset);
+      offset += state.value.length;
       state = await reader.read();
-    }
-
-    const result = new Int8Array(length);
-    let offset = 0;
-    for (let i = 0; i < chunks.length; i++) {
-      result.set(chunks[i], offset);
-      offset += chunks[i].length;
     }
 
     return result.buffer;
@@ -93,8 +86,10 @@ export default class FileReceiver extends Nanobus {
 
       const dec = await this.keychain.decryptStream(ciphertext);
       const plainstream = dec.stream;
-
-      const plaintext = await this.streamToArrayBuffer(plainstream);
+      const plaintext = await this.streamToArrayBuffer(
+        plainstream,
+        dec.streamInfo.fileSize
+      );
 
       if (!noSave) {
         await saveFile({

@@ -11,15 +11,13 @@ module.exports = async function(ws, req) {
   let fileStream;
 
   ws.on('close', e => {
-    if (e !== 1000) {
-      if (fileStream !== undefined) {
-        fileStream.destroy();
-      }
+    if (e !== 1000 && fileStream !== undefined) {
+      fileStream.destroy();
     }
   });
 
   let first = true;
-  ws.on('message', function(message) {
+  ws.on('message', async function(message) {
     try {
       if (first) {
         const newId = crypto.randomBytes(5).toString('hex');
@@ -35,6 +33,7 @@ module.exports = async function(ws, req) {
               error: 400
             })
           );
+          ws.close();
         }
 
         const meta = {
@@ -69,6 +68,7 @@ module.exports = async function(ws, req) {
           error: 500
         })
       );
+      ws.close();
     }
   });
 };

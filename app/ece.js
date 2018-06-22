@@ -282,11 +282,11 @@ export default class ECE {
 
     this.streamInfo = {
       recordSize: rs,
-      fileSize: input.size + 16 * Math.floor(input.size / (rs - 17))
+      fileSize: 21 + input.size + 16 * Math.floor(input.size / (rs - 17))
     };
-    input = new BlobSliceStream(input, rs, mode);
+    const inputStream = new BlobSliceStream(input, rs, mode);
 
     const ts = new TransformStream(new ECETransformer(mode, key, rs, salt));
-    this.stream = input.pipeThrough(ts);
+    this.stream = inputStream.pipeThrough(ts);
   }
 }

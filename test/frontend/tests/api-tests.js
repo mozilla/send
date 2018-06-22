@@ -13,11 +13,11 @@ describe('API', function() {
   describe('websocket upload', function() {
     it('returns file info on success', async function() {
       const keychain = new Keychain();
-      const enc = await keychain.encryptStream(plaintext);
+      const enc = keychain.encryptStream(plaintext);
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};
-      const up = await api.uploadWs(
+      const up = api.uploadWs(
         enc.stream,
         enc.streamInfo,
         meta,
@@ -34,11 +34,11 @@ describe('API', function() {
 
     it('can be cancelled', async function() {
       const keychain = new Keychain();
-      const enc = await keychain.encryptStream(plaintext);
+      const enc = keychain.encryptStream(plaintext);
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};
-      const up = await api.uploadWs(
+      const up = api.uploadWs(
         enc.stream,
         enc.streamInfo,
         meta,

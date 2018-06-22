@@ -65,11 +65,11 @@ export default class FileSender extends Nanobus {
     this.msg = 'encryptingFile';
     this.emit('encrypting');
 
-    const enc = await this.keychain.encryptStream(this.file);
+    const enc = this.keychain.encryptStream(this.file);
     const metadata = await this.keychain.encryptMetadata(this.file);
     const authKeyB64 = await this.keychain.authKeyB64();
 
-    this.uploadRequest = await uploadWs(
+    this.uploadRequest = uploadWs(
       enc.stream,
       enc.streamInfo,
       metadata,

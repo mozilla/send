@@ -100,8 +100,30 @@ function asyncInitWebSocket(server) {
   });
 }
 
+function listenForResponse(ws, canceller) {
+  return new Promise((resolve, reject) => {
+    ws.addEventListener('message', function(msg) {
+      try {
+        const response = JSON.parse(msg.data);
+        if (response.error) {
+          throw new Error(response.error);
+        } else {
+          resolve({
+            url: response.url,
+            id: response.id,
+            ownerToken: response.owner
+          });
+        }
+      } catch (e) {
+        canceller.cancelled = true;
+        canceller.error = e;
+        reject(e);
+      }
+    });
+  });
+}
+
 async function upload(
-  ws,
   stream,
   streamInfo,
   metadata,
@@ -110,55 +132,51 @@ async function upload(
   onprogress,
   canceller
 ) {
-  const metadataHeader = arrayToB64(new Uint8Array(metadata));
-  const fileMeta = {
-    fileMetadata: metadataHeader,
-    authorization: `send-v1 ${verifierB64}`
-  };
+  const host = window.location.hostname;
+  const port = window.location.port;
+  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  const error = { cancelled: false };
+  const ws = await asyncInitWebSocket(`${protocol}//${host}:${port}/api/ws`);
 
-  function listenForResponse() {
-    return new Promise((resolve, reject) => {
-      ws.addEventListener('message', function(msg) {
-        const response = JSON.parse(msg.data);
-        if (response.error) {
-          reject(response.error);
-        } else {
-          resolve({
-            url: response.url,
-            id: response.id,
-            ownerToken: response.owner
-          });
-        }
-      });
-    });
-  }
+  try {
+    const metadataHeader = arrayToB64(new Uint8Array(metadata));
+    const fileMeta = {
+      fileMetadata: metadataHeader,
+      authorization: `send-v1 ${verifierB64}`
+    };
 
-  const resPromise = listenForResponse();
-  ws.send(JSON.stringify(fileMeta));
+    const responsePromise = listenForResponse(ws, error);
 
-  const reader = stream.getReader();
-  let state = await reader.read();
-  let size = 0;
-  while (!state.done) {
-    const buf = state.value;
-    if (canceller.cancelled) {
-      ws.close(4000, 'upload cancelled');
-      throw new Error(0);
+    ws.send(JSON.stringify(fileMeta));
+
+    const reader = stream.getReader();
+    let state = await reader.read();
+    let size = 0;
+    while (!state.done) {
+      const buf = state.value;
+      if (canceller.cancelled) {
+        throw new Error(0);
+      }
+      if (error.cancelled) {
+        throw new Error(error.error);
+      }
+      ws.send(buf);
+
+      onprogress([Math.min(streamInfo.fileSize, size), streamInfo.fileSize]);
+      size += streamInfo.recordSize;
+      state = await reader.read();
     }
-    ws.send(buf);
 
-    onprogress([Math.min(streamInfo.fileSize, size), streamInfo.fileSize]);
-    size += streamInfo.recordSize;
-    state = await reader.read();
+    const response = await responsePromise; //promise only fufills if response is good
+    ws.close();
+    return response;
+  } catch (e) {
+    ws.close(4000);
+    throw e;
   }
-
-  const response = await resPromise;
-
-  ws.close();
-  return response;
 }
 
-export async function uploadWs(
+export function uploadWs(
   encrypted,
   info,
   metadata,
@@ -166,10 +184,6 @@ export async function uploadWs(
   keychain,
   onprogress
 ) {
-  const host = window.location.hostname;
-  const port = window.location.port;
-  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-  const ws = await asyncInitWebSocket(`${protocol}//${host}:${port}/api/ws`);
   const canceller = { cancelled: false };
 
   return {
@@ -177,7 +191,6 @@ export async function uploadWs(
       canceller.cancelled = true;
     },
     result: upload(
-      ws,
       encrypted,
       info,
       metadata,

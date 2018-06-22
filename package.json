@@ -132,8 +132,7 @@
     "mozlog": "^2.2.0",
     "raven": "^2.4.2",
     "redis": "^2.8.0",
-    "websocket-stream": "^5.1.2",
-    "ws": "^5.2.0"
+    "websocket-stream": "^5.1.2"
   },
   "availableLanguages": [
     "en-US",
