@@ -7,7 +7,7 @@ const webpack = require('webpack');
 const config = require('../../webpack.config');
 const middleware = require('webpack-dev-middleware');
 const express = require('express');
-const devRoutes = require('../../server/dev');
+const devRoutes = require('../../server/bin/test');
 const app = express();
 
 const wpm = middleware(webpack(config), { logLevel: 'silent' });
