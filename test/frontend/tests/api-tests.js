@@ -17,14 +17,7 @@ describe('API', function() {
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};
-      const up = api.uploadWs(
-        enc.stream,
-        enc.streamInfo,
-        meta,
-        verifierB64,
-        keychain,
-        p
-      );
+      const up = api.uploadWs(enc.stream, enc.streamInfo, meta, verifierB64, p);
 
       const result = await up.result;
       assert.ok(result.url);
@@ -38,14 +31,7 @@ describe('API', function() {
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};
-      const up = api.uploadWs(
-        enc.stream,
-        enc.streamInfo,
-        meta,
-        verifierB64,
-        keychain,
-        p
-      );
+      const up = api.uploadWs(enc.stream, enc.streamInfo, meta, verifierB64, p);
       up.cancel();
       try {
         await up.result;

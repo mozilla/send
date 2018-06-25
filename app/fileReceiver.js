@@ -53,7 +53,7 @@ export default class FileReceiver extends Nanobus {
 
   async streamToArrayBuffer(stream, streamSize) {
     const reader = stream.getReader();
-    const result = new Int8Array(streamSize);
+    const result = new Uint8Array(streamSize);
     let offset = 0;
 
     let state = await reader.read();

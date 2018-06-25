@@ -128,7 +128,6 @@ async function upload(
   streamInfo,
   metadata,
   verifierB64,
-  keychain,
   onprogress,
   canceller
 ) {
@@ -176,14 +175,7 @@ async function upload(
   }
 }
 
-export function uploadWs(
-  encrypted,
-  info,
-  metadata,
-  verifierB64,
-  keychain,
-  onprogress
-) {
+export function uploadWs(encrypted, info, metadata, verifierB64, onprogress) {
   const canceller = { cancelled: false };
 
   return {
@@ -195,7 +187,6 @@ export function uploadWs(
       info,
       metadata,
       verifierB64,
-      keychain,
       onprogress,
       canceller
     )

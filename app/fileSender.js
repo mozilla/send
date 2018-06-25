@@ -74,7 +74,6 @@ export default class FileSender extends Nanobus {
       enc.streamInfo,
       metadata,
       authKeyB64,
-      this.keychain,
       p => {
         this.progress = p;
         this.emit('progress');
