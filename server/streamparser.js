@@ -1,23 +1,15 @@
-const { Transform } = require('stream');
+const { Duplex } = require('stream');
 
-class StreamParser extends Transform {
-  constructor() {
-    super();
-    let res;
-    this.promise = new Promise(resolve => {
-      res = resolve;
-    });
-    this.res = res;
-  }
-
-  _transform(chunk, encoding, callback) {
+class StreamParser extends Duplex {
+  _write(chunk, encoding, callback) {
     if (chunk.byteLength === 1 && chunk[0] === 0) {
-      this.res();
+      this.push(null);
     } else {
       this.push(chunk);
     }
     callback();
   }
+  _read() {}
 }
 
 module.exports = StreamParser;

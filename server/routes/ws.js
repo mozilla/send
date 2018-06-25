@@ -50,26 +50,35 @@ module.exports = async function(ws, req) {
       fileStream = wsStream(ws, { binary: true })
         .pipe(limiter)
         .pipe(parser);
-      storage.set(newId, fileStream, meta);
+      await storage.set(newId, fileStream, meta);
 
-      await parser.promise;
+      if (ws.readyState === 1) {
+        // if the socket is closed by a cancelled upload the stream
+        // ends without an error so we need to check the state
+        // before sending a reply.
 
-      ws.send(
-        JSON.stringify({
-          url,
-          owner: meta.owner,
-          id: newId,
-          authentication: `send-v1 ${meta.nonce}`
-        })
-      );
+        // TODO: we should handle cancelled uploads differently
+        // in order to avoid having to check socket state and clean
+        // up storage, possibly with an exception that we can catch.
+        ws.send(
+          JSON.stringify({
+            url,
+            owner: meta.owner,
+            id: newId,
+            authentication: `send-v1 ${meta.nonce}`
+          })
+        );
+      }
     } catch (e) {
       log.error('upload', e);
-      ws.send(
-        JSON.stringify({
-          error: e === 'limit' ? 413 : 500
-        })
-      );
-      ws.close();
+      if (ws.readyState === 1) {
+        ws.send(
+          JSON.stringify({
+            error: e === 'limit' ? 413 : 500
+          })
+        );
+        ws.close();
+      }
     }
   });
 };
