@@ -52,6 +52,8 @@ module.exports = async function(ws, req) {
         .pipe(parser);
       storage.set(newId, fileStream, meta);
 
+      await parser.promise;
+
       ws.send(
         JSON.stringify({
           url,
