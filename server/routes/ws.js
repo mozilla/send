@@ -3,6 +3,7 @@ const storage = require('../storage');
 const config = require('../config');
 const mozlog = require('../log');
 const Limiter = require('../limiter');
+const Parser = require('../streamparser');
 const wsStream = require('websocket-stream/stream');
 
 const log = mozlog('send.upload');
@@ -45,7 +46,10 @@ module.exports = async function(ws, req) {
       const url = `${protocol}://${req.get('host')}/download/${newId}/`;
 
       const limiter = new Limiter(config.max_file_size);
-      fileStream = wsStream(ws, { binary: true }).pipe(limiter);
+      const parser = new Parser();
+      fileStream = wsStream(ws, { binary: true })
+        .pipe(limiter)
+        .pipe(parser);
       storage.set(newId, fileStream, meta);
 
       ws.send(
@@ -60,7 +64,7 @@ module.exports = async function(ws, req) {
       log.error('upload', e);
       ws.send(
         JSON.stringify({
-          error: 500
+          error: e === 'limit' ? 413 : 500
         })
       );
       ws.close();

@@ -115,6 +115,7 @@ function listenForResponse(ws, canceller) {
           });
         }
       } catch (e) {
+        ws.close();
         canceller.cancelled = true;
         canceller.error = e;
         reject(e);
@@ -134,7 +135,6 @@ async function upload(
   const host = window.location.hostname;
   const port = window.location.port;
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-  const error = { cancelled: false };
   const ws = await asyncInitWebSocket(`${protocol}//${host}:${port}/api/ws`);
 
   try {
@@ -144,7 +144,7 @@ async function upload(
       authorization: `send-v1 ${verifierB64}`
     };
 
-    const responsePromise = listenForResponse(ws, error);
+    const responsePromise = listenForResponse(ws, canceller);
 
     ws.send(JSON.stringify(fileMeta));
 
@@ -154,17 +154,17 @@ async function upload(
     while (!state.done) {
       const buf = state.value;
       if (canceller.cancelled) {
-        throw new Error(0);
+        throw canceller.error;
       }
-      if (error.cancelled) {
-        throw new Error(error.error);
-      }
+
       ws.send(buf);
 
       onprogress([Math.min(streamInfo.fileSize, size), streamInfo.fileSize]);
       size += streamInfo.recordSize;
       state = await reader.read();
     }
+    const footer = new Uint8Array([0]);
+    ws.send(footer);
 
     const response = await responsePromise; //promise only fufills if response is good
     ws.close();
@@ -180,6 +180,7 @@ export function uploadWs(encrypted, info, metadata, verifierB64, onprogress) {
 
   return {
     cancel: function() {
+      canceller.error = new Error(0);
       canceller.cancelled = true;
     },
     result: upload(
