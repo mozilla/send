@@ -3,7 +3,7 @@ import Nanobus from 'nanobus';
 import OwnedFile from './ownedFile';
 import Keychain from './keychain';
 import { arrayToB64, bytes } from './utils';
-import { uploadFile } from './api';
+import { uploadWs } from './api';
 
 export default class FileSender extends Nanobus {
   constructor(file) {
@@ -59,28 +59,31 @@ export default class FileSender extends Nanobus {
 
   async upload() {
     const start = Date.now();
-    const plaintext = await this.readFile();
     if (this.cancelled) {
       throw new Error(0);
     }
     this.msg = 'encryptingFile';
     this.emit('encrypting');
-    const encrypted = await this.keychain.encryptFile(plaintext);
+
+    const enc = this.keychain.encryptStream(this.file);
     const metadata = await this.keychain.encryptMetadata(this.file);
     const authKeyB64 = await this.keychain.authKeyB64();
-    if (this.cancelled) {
-      throw new Error(0);
-    }
-    this.uploadRequest = uploadFile(
-      encrypted,
+
+    this.uploadRequest = uploadWs(
+      enc.stream,
+      enc.streamInfo,
       metadata,
       authKeyB64,
-      this.keychain,
       p => {
         this.progress = p;
         this.emit('progress');
       }
     );
+
+    if (this.cancelled) {
+      throw new Error(0);
+    }
+
     this.msg = 'fileSizeProgress';
     this.emit('progress'); // HACK to kick MS Edge
     try {

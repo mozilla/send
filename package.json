@@ -31,7 +31,7 @@
     "test-integration": "docker-compose up --abort-on-container-exit --exit-code-from integration-tests --build --remove-orphans --quiet-pull && docker-compose down",
     "test-integration-stage": "cross-env BASE_URL=https://send.stage.mozaws.net npm run test-integration",
     "start": "npm run clean && cross-env NODE_ENV=development webpack-dev-server",
-    "prod": "node server/prod.js"
+    "prod": "node server/bin/prod.js"
   },
   "lint-staged": {
     "*.js": [
@@ -82,6 +82,7 @@
     "git-rev-sync": "^1.10.0",
     "github-changes": "^1.1.2",
     "html-loader": "^0.5.5",
+    "http_ece": "^1.0.5",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
     "mocha": "^5.0.4",
@@ -109,6 +110,7 @@
     "svgo-loader": "^2.1.0",
     "testpilot-ga": "^0.3.0",
     "val-loader": "^1.1.0",
+    "web-streams-polyfill": "^1.3.2",
     "webpack": "^3.11.0",
     "webpack-dev-middleware": "^2.0.6",
     "webpack-dev-server": "2.9.1",
@@ -122,13 +124,15 @@
     "cldr-core": "^32.0.0",
     "convict": "^4.0.1",
     "express": "^4.16.2",
+    "express-ws": "^4.0.0",
     "fluent": "^0.6.3",
     "fluent-langneg": "^0.1.0",
     "helmet": "^3.12.0",
     "mkdirp": "^0.5.1",
     "mozlog": "^2.2.0",
     "raven": "^2.4.2",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "websocket-stream": "^5.1.2"
   },
   "availableLanguages": [
     "en-US",
