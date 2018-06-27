@@ -1,4 +1,4 @@
-import { arrayToB64, b64ToArray } from './utils';
+import { arrayToB64, b64ToArray, delay } from './utils';
 
 function post(obj) {
   return {
@@ -162,6 +162,9 @@ async function upload(
       onprogress([Math.min(streamInfo.fileSize, size), streamInfo.fileSize]);
       size += streamInfo.recordSize;
       state = await reader.read();
+      while (ws.bufferedAmount > streamInfo.recordSize * 2) {
+        await delay();
+      }
     }
     const footer = new Uint8Array([0]);
     ws.send(footer);
