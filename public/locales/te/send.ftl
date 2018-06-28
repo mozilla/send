@@ -65,6 +65,7 @@ errorAltText = ఎగుమతిలో లోపం
 errorPageHeader = ఏదో తప్పిదం జరిగింది!
 errorPageMessage = ఫైల్ను ఎగుమతి చేయడంలో లోపం ఉంది.
 errorPageLink = మరో ఫైలును పంపండి
+fileTooBig = ఆ ఫైలు ఎక్కించడానికి చాలా పెద్దగా ఉంది. ఫైళ్ళు { $size } కంటే తక్కువ పరిమాణంలో ఉండాలి.
 linkExpiredAlt = లంకె గడువు ముగిసింది
 expiredPageHeader = ఈ లంకె గడువు ముగిసింది లేదా ముందు ఎప్పుడూ ఉనికిలో లేదు!
 notSupportedHeader = మీ విహారిణికి మద్దతు లేదు.
