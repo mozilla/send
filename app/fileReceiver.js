@@ -63,7 +63,7 @@ export default class FileReceiver extends Nanobus {
       state = await reader.read();
     }
 
-    return result.buffer;
+    return result.slice(0, offset).buffer;
   }
 
   async download(noSave = false) {
@@ -85,10 +85,9 @@ export default class FileReceiver extends Nanobus {
       this.emit('decrypting');
 
       const dec = await this.keychain.decryptStream(ciphertext);
-      const plainstream = dec.stream;
       const plaintext = await this.streamToArrayBuffer(
-        plainstream,
-        dec.streamInfo.fileSize
+        dec.stream,
+        this.fileInfo.size
       );
 
       if (!noSave) {
