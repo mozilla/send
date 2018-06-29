@@ -1,5 +1,5 @@
 require('buffer');
-import { ReadableStream, TransformStream } from 'web-streams-polyfill';
+import { TransformStream } from 'web-streams-polyfill';
 
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
@@ -258,14 +258,67 @@ class BlobSlicer {
   }
 }
 
-class BlobSliceStream extends ReadableStream {
-  constructor(blob, size, mode) {
-    super(new BlobSlicer(blob, size, mode));
+class StreamSlicer {
+  constructor(rs, mode) {
+    this.mode = mode;
+    this.rs = rs;
+    this.chunkSize = mode === MODE_ENCRYPT ? rs - 17 : 21;
+    this.partialChunk = new Uint8Array(this.chunkSize); //where partial chunks are saved
+    this.offset = 0; 
+  }
+
+  send(buf, controller) {
+    //console.log("sent a record")
+    controller.enqueue(buf);
+    if (this.chunkSize === 21) {
+      this.chunkSize = this.rs;
+      this.partialChunk = new Uint8Array(this.chunkSize);
+    }
+  }
+
+  //reslice input uint8arrays into record sized chunks
+  transform(chunk, controller) {
+    //console.log('Received chunk') // with %d bytes.', chunk.byteLength)
+    let i = 0;
+
+    if (this.offset > 0) { //send off the partial chunk
+      const len = Math.min(chunk.byteLength, (this.chunkSize - this.offset));
+      this.partialChunk.set((chunk.slice(0, len)), this.offset);
+      this.offset += len;
+      i += len;
+
+      if (this.offset === this.chunkSize) {
+        this.send(this.partialChunk, controller);
+        this.offset = 0;
+      }
+    }
+
+    while (i < chunk.byteLength) { //send off whole records and stick last bit in partialChunk
+      if ((chunk.byteLength - i) > this.chunkSize) {
+        const record = chunk.slice(i, i + this.chunkSize);
+        i += this.chunkSize;
+        this.send(record, controller);
+      } else {
+        const end = chunk.slice(i, end);
+        this.partialChunk.set(end);
+        this.offset = end.length;
+        i += end.length;
+      }
+    }
+  }
+
+  flush(controller) {
+    if (this.offset > 0) {
+      console.log("sent a partial record")
+      controller.enqueue(this.partialChunk.slice(0, this.offset));
+    }
   }
 }
 
+
+
 /*
-input: a blob containing data to be transformed
+input: a blob or a readable stream containing data to be transformed
 key:  Uint8Array containing key of size KEY_LENGTH 
 mode: string, either 'encrypt' or 'decrypt'
 rs:   int containing record size, optional
@@ -280,11 +333,17 @@ export default class ECE {
       salt = generateSalt(KEY_LENGTH);
     }
 
-    this.streamInfo = {
-      recordSize: rs,
-      fileSize: 21 + input.size + 16 * Math.floor(input.size / (rs - 17))
-    };
-    const inputStream = new BlobSliceStream(input, rs, mode);
+    let inputStream;
+    if (input instanceof Blob) {
+      this.streamInfo = {
+        recordSize: rs,
+        fileSize: 21 + input.size + 16 * Math.floor(input.size / (rs - 17))
+      };
+      inputStream = new ReadableStream(new BlobSlicer(input, rs, mode));
+    } else {
+      const sliceStream = new TransformStream(new StreamSlicer(rs, mode));
+      inputStream = input.pipeThrough(sliceStream);
+    }
 
     const ts = new TransformStream(new ECETransformer(mode, key, rs, salt));
     this.stream = inputStream.pipeThrough(ts);
