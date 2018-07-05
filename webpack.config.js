@@ -40,7 +40,7 @@ module.exports = {
         test: /\.js$/,
         oneOf: [
           {
-            include: require.resolve('./assets/cryptofill'),
+            include: [require.resolve('./assets/cryptofill')],
             use: [
               {
                 loader: 'file-loader',

@@ -1,7 +1,7 @@
 import Nanobus from 'nanobus';
 import Keychain from './keychain';
 import { bytes } from './utils';
-import { metadata, downloadFile, downloadStream} from './api';
+import { metadata, downloadFile, downloadStream } from './api';
 
 export default class FileReceiver extends Nanobus {
   constructor(fileInfo) {
@@ -51,88 +51,55 @@ export default class FileReceiver extends Nanobus {
     this.state = 'ready';
   }
 
-  /*
-    async streamToArrayBuffer(stream, streamSize) {
-    try {
-      var finish;
-      const promise = new Promise((resolve) => {
-        finish = resolve;
-      });
-      const result = new Uint8Array(streamSize);
-      let offset = 0;
-
-
-      const writer = new WritableStream(
-        {
-          write(chunk) {
-            result.set(state.value, offset);
-            offset += state.value.length;
-          },
-          close() {
-            //resolve a promise or something
-            finish.resolve();
-          }
-        }
-      );
-
-      stream.pipeTo(writer);
-
-      await promise;
-      return result.slice(0, offset).buffer;
-
-    } catch (e) {
-      console.log(e)
-    }
-  }
-  */
-
-  async streamToArrayBuffer(stream, streamSize) {
+  async streamToArrayBuffer(stream, streamSize, onprogress) {
     try {
       const result = new Uint8Array(streamSize);
       let offset = 0;
-      console.log("reading...")
       const reader = stream.getReader();
       let state = await reader.read();
-      console.log("read done")
       while (!state.done) {
         result.set(state.value, offset);
         offset += state.value.length;
         state = await reader.read();
+        onprogress([offset, streamSize]);
       }
 
+      onprogress([streamSize, streamSize]);
       return result.slice(0, offset).buffer;
     } catch (e) {
-      console.log(e)
+      console.log(e);
+      throw (e);
     }
   }
 
   async download(noSave = false) {
-    this.state = 'downloading';
-    this.downloadRequest = await downloadStream(
-      this.fileInfo.id,
-      this.keychain,
-      p => {
-        this.progress = p;
-        this.emit('progress');
-      }
-    );
+    const onprogress = p => {
+      this.progress = p;
+      this.emit('progress');
+    }
 
     try {
+      this.state = 'downloading';
+      this.downloadRequest = downloadStream(
+        this.fileInfo.id,
+        this.keychain
+      );
 
-      const ciphertext = await this.downloadRequest.result;
+      onprogress([0, this.fileInfo.size]);
+      const download = await this.downloadRequest.result;
+      const plainstream = this.keychain.decryptStream(download);
+
+      //temporary
+      const plaintext = await this.streamToArrayBuffer(
+        plainstream,
+        this.fileInfo.size,
+        onprogress
+      );
       this.downloadRequest = null;
+
       this.msg = 'decryptingFile';
       this.state = 'decrypting';
       this.emit('decrypting');
-
-      const dec = this.keychain.decryptStream(ciphertext);
-
-      let plaintext = await this.streamToArrayBuffer(
-        dec.stream,
-        this.fileInfo.size
-      );
-
-      if (plaintext === undefined) { plaintext = (new Uint8Array(1)).buffer; }
 
       if (!noSave) {
         await saveFile({
@@ -144,7 +111,6 @@ export default class FileReceiver extends Nanobus {
 
       this.msg = 'downloadFinish';
       this.state = 'complete';
-
     } catch (e) {
       this.downloadRequest = null;
       throw e;

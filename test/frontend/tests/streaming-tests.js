@@ -31,7 +31,8 @@ describe('Streaming', function() {
     const blob = new Blob([str], { type: 'text/plain' });
 
     it('can encrypt', async function() {
-      const encStream = new ECE(blob, key, 'encrypt', rs, salt).stream;
+      const ece = new ECE(blob, key, 'encrypt', rs, salt);
+      const encStream = await ece.transform();
       const reader = encStream.getReader();
 
       let result = Buffer.from([]);
@@ -47,7 +48,8 @@ describe('Streaming', function() {
 
     it('can decrypt', async function() {
       const encBlob = new Blob([encrypted]);
-      const decStream = await new ECE(encBlob, key, 'decrypt', rs).stream;
+      const ece = new ECE(encBlob, key, 'decrypt', rs);
+      const decStream = await ece.transform()
 
       const reader = decStream.getReader();
       let result = Buffer.from([]);

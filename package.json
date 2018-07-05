@@ -12,7 +12,7 @@
     "prepush": "npm test",
     "check": "nsp check",
     "clean": "rimraf dist",
-    "build": "npm run clean && webpack -p",
+    "build": "npm run clean && webpack -p && webpack --config webpackSw.config.js -p",
     "lint": "npm-run-all lint:*",
     "lint:css": "stylelint app/*.css app/**/*.css",
     "lint:js": "eslint .",
@@ -118,8 +118,11 @@
     "webpack-unassert-loader": "^1.2.0"
   },
   "dependencies": {
+    "@mattiasbuelens/web-streams-adapter": "0.1.0-alpha.1",
     "aws-sdk": "^2.206.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
+    "babel-runtime": "^6.26.0",
     "choo": "^6.10.0",
     "cldr-core": "^32.0.0",
     "convict": "^4.0.1",

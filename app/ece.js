@@ -1,12 +1,15 @@
 require('buffer');
-import { TransformStream } from 'web-streams-polyfill';
+import { TransformStream as PolyTS, ReadableStream as PolyRS } from 'web-streams-polyfill';
+import { createReadableStreamWrapper, createTransformStreamWrapper } from '@mattiasbuelens/web-streams-adapter';
+const toTS = createTransformStreamWrapper(PolyTS);
+const toRS = createReadableStreamWrapper(PolyRS);
 
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
 const KEY_LENGTH = 16;
 const MODE_ENCRYPT = 'encrypt';
 const MODE_DECRYPT = 'decrypt';
-const RS = 1048576;
+const RS = 1024 * 1024;
 
 const encoder = new TextEncoder();
 
@@ -218,13 +221,14 @@ class ECETransformer {
   }
 
   async flush(controller) {
+    //console.log('ece stream ends')
     if (this.prevChunk) {
       await this.transformPrevChunk(true, controller);
     }
   }
 }
 
-class BlobSlicer {
+export class BlobSlicer {
   constructor(blob, rs, mode) {
     this.blob = blob;
     this.index = 0;
@@ -262,28 +266,27 @@ class StreamSlicer {
   constructor(rs, mode) {
     this.mode = mode;
     this.rs = rs;
-    this.chunkSize = mode === MODE_ENCRYPT ? rs - 17 : 21;
+    this.chunkSize = (mode === MODE_ENCRYPT) ? (rs - 17) : 21;
     this.partialChunk = new Uint8Array(this.chunkSize); //where partial chunks are saved
-    this.offset = 0; 
+    this.offset = 0;
   }
 
   send(buf, controller) {
-    //console.log("sent a record")
     controller.enqueue(buf);
-    if (this.chunkSize === 21) {
+    if (this.chunkSize === 21 && this.mode === MODE_DECRYPT) {
       this.chunkSize = this.rs;
-      this.partialChunk = new Uint8Array(this.chunkSize);
     }
+    this.partialChunk = new Uint8Array(this.chunkSize);
   }
 
-  //reslice input uint8arrays into record sized chunks
+  //reslice input into record sized chunks
   transform(chunk, controller) {
-    //console.log('Received chunk') // with %d bytes.', chunk.byteLength)
+    //console.log('Received chunk with %d bytes.', chunk.byteLength)
     let i = 0;
 
-    if (this.offset > 0) { //send off the partial chunk
+    if (this.offset > 0) {
       const len = Math.min(chunk.byteLength, (this.chunkSize - this.offset));
-      this.partialChunk.set((chunk.slice(0, len)), this.offset);
+      this.partialChunk.set(chunk.slice(0, len), this.offset);
       this.offset += len;
       i += len;
 
@@ -293,32 +296,41 @@ class StreamSlicer {
       }
     }
 
-    while (i < chunk.byteLength) { //send off whole records and stick last bit in partialChunk
-      if ((chunk.byteLength - i) > this.chunkSize) {
+    while (i < chunk.byteLength) {
+      if ((chunk.byteLength - i) >= this.chunkSize) {
         const record = chunk.slice(i, i + this.chunkSize);
         i += this.chunkSize;
         this.send(record, controller);
       } else {
-        const end = chunk.slice(i, end);
+        const end = chunk.slice(i, this.chunkSize);
+        i += end.length;
         this.partialChunk.set(end);
         this.offset = end.length;
-        i += end.length;
       }
     }
   }
 
   flush(controller) {
+    //console.log('slice stream ends')
     if (this.offset > 0) {
-      console.log("sent a partial record")
       controller.enqueue(this.partialChunk.slice(0, this.offset));
     }
   }
 }
 
-
+async function stream2blob(stream) {
+  const chunks = [];
+  const reader = stream.getReader();
+  let state = await reader.read();
+  while (!state.done) {
+    chunks.push(state.value);
+    state = await reader.read();
+  }
+  return new Blob(chunks);
+}
 
 /*
-input: a blob or a readable stream containing data to be transformed
+input: a blob or a ReadableStream containing data to be transformed
 key:  Uint8Array containing key of size KEY_LENGTH 
 mode: string, either 'encrypt' or 'decrypt'
 rs:   int containing record size, optional
@@ -326,26 +338,37 @@ salt: ArrayBuffer containing salt of KEY_LENGTH length, optional
 */
 export default class ECE {
   constructor(input, key, mode, rs, salt) {
+    this.input = input;
+    this.key = key;
+    this.mode = mode;
+    this.rs = rs;
+    this.salt = salt;
     if (rs === undefined) {
-      rs = RS;
+      this.rs = RS;
     }
     if (salt === undefined) {
-      salt = generateSalt(KEY_LENGTH);
+      this.salt = generateSalt(KEY_LENGTH);
     }
+  }
 
+  info() {
+    return {
+      recordSize: this.rs,
+      fileSize: 21 + this.input.size + 16 * Math.floor(this.input.size / (this.rs - 17))
+    };
+  }
+
+  transform() {
     let inputStream;
-    if (input instanceof Blob) {
-      this.streamInfo = {
-        recordSize: rs,
-        fileSize: 21 + input.size + 16 * Math.floor(input.size / (rs - 17))
-      };
-      inputStream = new ReadableStream(new BlobSlicer(input, rs, mode));
+
+    if (this.input instanceof Blob) {
+      inputStream = toRS(new ReadableStream(new BlobSlicer(this.input, this.rs, this.mode)));
     } else {
-      const sliceStream = new TransformStream(new StreamSlicer(rs, mode));
-      inputStream = input.pipeThrough(sliceStream);
+      const sliceStream = toTS(new TransformStream(new StreamSlicer(this.rs, this.mode)));
+      inputStream = this.input.pipeThrough(sliceStream);
     }
 
-    const ts = new TransformStream(new ECETransformer(mode, key, rs, salt));
-    this.stream = inputStream.pipeThrough(ts);
+    const cryptoStream = toTS(new TransformStream(new ECETransformer(this.mode, this.key, this.rs, this.salt)));
+    return inputStream.pipeThrough(cryptoStream);
   }
 }

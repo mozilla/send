@@ -180,13 +180,16 @@ export default class Keychain {
   }
 
   encryptStream(plaintext) {
-    const enc = new ECE(plaintext, this.rawSecret, 'encrypt');
-    return enc;
+    const ece = new ECE(plaintext, this.rawSecret, 'encrypt');
+    return {
+      stream: ece.transform(),
+      streamInfo: ece.info()
+    };
   }
 
-  decryptStream(encstream) {
-    const dec = new ECE(encstream, this.rawSecret, 'decrypt');
-    return dec;
+  decryptStream(cryptotext) {
+    const ece = new ECE(cryptotext, this.rawSecret, 'decrypt');
+    return ece.transform();
   }
 
   async decryptFile(ciphertext) {

@@ -13,7 +13,7 @@ describe('API', function() {
   describe('websocket upload', function() {
     it('returns file info on success', async function() {
       const keychain = new Keychain();
-      const enc = keychain.encryptStream(plaintext);
+      const enc = await keychain.encryptStream(plaintext);
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};
@@ -22,12 +22,12 @@ describe('API', function() {
       const result = await up.result;
       assert.ok(result.url);
       assert.ok(result.id);
-      assert.ok(result.ownerToken);
+      assert.ok(result.ownerToken); 
     });
 
     it('can be cancelled', async function() {
       const keychain = new Keychain();
-      const enc = keychain.encryptStream(plaintext);
+      const enc = await keychain.encryptStream(plaintext);
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};

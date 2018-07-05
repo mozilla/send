@@ -1,4 +1,7 @@
 import { arrayToB64, b64ToArray, delay } from './utils';
+import { ReadableStream as PolyRS} from 'web-streams-polyfill';
+import { createReadableStreamWrapper } from '@mattiasbuelens/web-streams-adapter';
+const RS = createReadableStreamWrapper(PolyRS);
 
 function post(obj) {
   return {
@@ -201,38 +204,32 @@ export function uploadWs(encrypted, info, metadata, verifierB64, onprogress) {
 
 async function downloadS(id, keychain, onprogress, signal) {
   const auth = await keychain.authHeader();
-  try {
-    const response = await fetch(`/api/download/${id}`, {
-      signal: signal ,
-      method: 'GET',
-      headers: {'Authorization': auth}
-    });
 
-    if (response.status !== 200) { 
-      throw new Error(response.status);
-    }
+  const response = await fetch(`/api/download/${id}`, {
+    signal: signal,
+    method: 'GET',
+    headers: { Authorization: auth }
+  });
 
-    const authHeader = response.headers.get('WWW-Authenticate');
-    if (authHeader) {
-      keychain.nonce = parseNonce(authHeader);
-    }
-
-    const fileSize = response.headers.get('Content-Length');
-    onprogress([0, fileSize]);
-    
-    console.log(response.body);
-    if (response.body) {
-      return response.body;
-    }
-    return response.blob();
-
-  } catch (err) {
-    if (err.name === 'AbortError') {
-      throw new Error('0');
-    } else {
-      throw err;
-    }
+  if (response.status !== 200) {
+    throw new Error(response.status);
   }
+
+  const authHeader = response.headers.get('WWW-Authenticate');
+  if (authHeader) {
+    keychain.nonce = parseNonce(authHeader);
+  }
+
+  const fileSize = response.headers.get('Content-Length');
+
+  //right now only chrome allows obtaining a stream from fetch
+  //for other browsers we fetch as a blob and convert to polyfill stream later 
+  if (response.body) {
+    console.log("STREAM")
+    return RS(response.body);
+  }
+  return response.blob();
+
 }
 
 async function tryDownloadStream(id, keychain, onprogress, signal, tries = 1) {
@@ -242,6 +239,9 @@ async function tryDownloadStream(id, keychain, onprogress, signal, tries = 1) {
   } catch (e) {
     if (e.message === '401' && --tries > 0) {
       return tryDownloadStream(id, keychain, onprogress, signal, tries);
+    }
+    if (e.name === 'AbortError') {
+      throw new Error('0');
     }
     throw e;
   }

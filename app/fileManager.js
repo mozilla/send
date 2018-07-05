@@ -36,6 +36,12 @@ export default function(state, emitter) {
     }
   }
 
+  function register() {
+    navigator.serviceWorker.register('/serviceWorker.js')
+    .then( reg => console.log("registration successful or already installed"))
+    .catch( e => console.log(e) );
+  }
+
   function updateProgress() {
     if (updateTitle) {
       emitter.emit('DOMTitleChange', percent(state.transfer.progressRatio));
@@ -162,6 +168,13 @@ export default function(state, emitter) {
         }
       }
     }
+
+    const info = {
+      key: file.secretKey,
+      nonce: file.nonce
+    }
+    navigator.serviceWorker.controller.postMessage(info);
+
     render();
   });
 
