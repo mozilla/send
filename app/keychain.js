@@ -1,5 +1,5 @@
 import { arrayToB64, b64ToArray } from './utils';
-
+import ECE from './ece.js';
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
@@ -177,6 +177,16 @@ export default class Keychain {
       )
     );
     return ciphertext;
+  }
+
+  encryptStream(plaintext) {
+    const enc = new ECE(plaintext, this.rawSecret, 'encrypt');
+    return enc;
+  }
+
+  decryptStream(encstream) {
+    const dec = new ECE(encstream, this.rawSecret, 'decrypt');
+    return dec;
   }
 
   async decryptFile(ciphertext) {
