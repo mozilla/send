@@ -222,9 +222,6 @@ function download(id, keychain, onprogress, canceller) {
       }
     });
     const auth = await keychain.authHeader();
-    // This relative url doesn't work for android
-    // it could be `https://send.firefox.com/api/download/${id}`
-    // but then the tests don't pass
     xhr.open('get', `/api/download/${id}`);
     xhr.setRequestHeader('Authorization', auth);
     xhr.responseType = 'blob';
