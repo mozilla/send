@@ -12,7 +12,7 @@
     "prepush": "npm test",
     "check": "nsp check",
     "clean": "rimraf dist",
-    "build": "npm run clean && webpack -p",
+    "build": "npm run clean && webpack",
     "lint": "npm-run-all lint:*",
     "lint:css": "stylelint app/*.css app/**/*.css",
     "lint:js": "eslint .",

@@ -56,7 +56,7 @@ fileInput.onchange = function upload(event) {
     return;
   }
 
-  emitter.emit('upload', { file, type: 'click' });
+  emitter.emit('upload', { file: file, type: 'click' });
 };
 
 document.body.appendChild(fileInput);
@@ -66,8 +66,8 @@ window.addEventListener(
   event => {
     fetch(event.data)
       .then(res => res.blob())
-      .then(file => {
-        emitter.emit('upload', { file, type: 'share' });
+      .then(blob => {
+        emitter.emit('upload', { file: blob, type: 'share' });
       });
   },
   false
