@@ -1,31 +1,5 @@
 /* global window, document, fetch */
 
-/*
-fileManager emits:
-  render
-  DOMTitleChange
-  pushState 'path'
-
-fileManager listens:
-  DOMContentLoaded
-  navigate
-  render
-  changeLimit
-  delete
-  cancel
-  upload
-  password
-  getMetadata
-  copy
-
-fileManager on('upload', ...) emits
-    sender.on('progress', updateProgress);
-      emitter.emit('DOMTitleChange', percent(state.transfer.progressRatio));
-    sender.on('encrypting', render);
-
-    emitter.emit('pushState', `/share/${ownedFile.id}`);
-
-*/
 const MAXFILESIZE = 1024 * 1024 * 1024 * 2;
 
 const EventEmitter = require('events');
@@ -57,16 +31,6 @@ emitter.on('render', function() {
   node.textContent = 'onrender';
   document.body.appendChild(node);
 });
-
-/*
-<input id="file-upload"
-class="inputFile"
-type="file"
-name="fileUploaded"
-onfocus=${onfocus}
-onblur=${onblur}
-onchange=${upload} />
-*/
 
 const fileManager = require('../app/fileManager').default;
 try {
