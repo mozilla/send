@@ -127,7 +127,7 @@ export function uploadFile(
       onprogress([event.loaded, event.total]);
     }
   });
-  xhr.open('post', '/api/upload', true);
+  xhr.open('post', 'https://send.firefox.com/api/upload', true);
   xhr.setRequestHeader('X-File-Metadata', arrayToB64(new Uint8Array(metadata)));
   xhr.setRequestHeader('Authorization', `send-v1 ${verifierB64}`);
   xhr.send(blob);
@@ -163,7 +163,7 @@ function download(id, keychain, onprogress, canceller) {
       }
     });
     const auth = await keychain.authHeader();
-    xhr.open('get', `/api/download/${id}`);
+    xhr.open('get', `https://send.firefox.com/api/download/${id}`);
     xhr.setRequestHeader('Authorization', auth);
     xhr.responseType = 'blob';
     xhr.send();

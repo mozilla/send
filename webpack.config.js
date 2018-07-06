@@ -17,7 +17,8 @@ const entry = {
   // because they are not explicitly referenced by app
   vendor: ['babel-polyfill', 'fluent'],
   app: ['./app/main.js'],
-  style: ['./app/main.css']
+  style: ['./app/main.css'],
+  android: ['./android/android.js']
 };
 
 if (IS_DEV) {
