@@ -49,7 +49,7 @@ describe('Streaming', function() {
     it('can decrypt', async function() {
       const encBlob = new Blob([encrypted]);
       const ece = new ECE(encBlob, key, 'decrypt', rs);
-      const decStream = await ece.transform()
+      const decStream = await ece.transform();
 
       const reader = decStream.getReader();
       let result = Buffer.from([]);

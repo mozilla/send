@@ -24,7 +24,7 @@ function loadShim(polyfill) {
 
 async function canHasSend() {
   try {
-    const key = await window.crypto.subtle.generateKey(
+    const key = await crypto.subtle.generateKey(
       {
         name: 'AES-GCM',
         length: 128
@@ -32,25 +32,25 @@ async function canHasSend() {
       true,
       ['encrypt', 'decrypt']
     );
-    await window.crypto.subtle.encrypt(
+    await crypto.subtle.encrypt(
       {
         name: 'AES-GCM',
-        iv: window.crypto.getRandomValues(new Uint8Array(12)),
+        iv: crypto.getRandomValues(new Uint8Array(12)),
         tagLength: 128
       },
       key,
       new ArrayBuffer(8)
     );
-    await window.crypto.subtle.importKey(
+    await crypto.subtle.importKey(
       'raw',
-      window.crypto.getRandomValues(new Uint8Array(16)),
+      crypto.getRandomValues(new Uint8Array(16)),
       'PBKDF2',
       false,
       ['deriveKey']
     );
-    await window.crypto.subtle.importKey(
+    await crypto.subtle.importKey(
       'raw',
-      window.crypto.getRandomValues(new Uint8Array(16)),
+      crypto.getRandomValues(new Uint8Array(16)),
       'HKDF',
       false,
       ['deriveKey']
@@ -75,7 +75,7 @@ function copyToClipboard(str) {
   if (navigator.userAgent.match(/iphone|ipad|ipod/i)) {
     const range = document.createRange();
     range.selectNodeContents(aux);
-    const sel = window.getSelection();
+    const sel = getSelection();
     sel.removeAllRanges();
     sel.addRange(range);
     aux.setSelectionRange(0, str.length);

@@ -1,16 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
 
 const regularJSOptions = {
   babelrc: false,
-  presets: [['env', { modules: false  }], 'stage-2'],
-  // yo-yoify converts html template strings to direct dom api calls
-  plugins: [
-    "transform-runtime", {
-      //"polyfill": false,
-      //"regenerator": true
-    }
-  ]
+  presets: [['env'], 'stage-2'],
+  plugins: ['transform-runtime']
 };
 
 const entry = {
@@ -24,15 +17,12 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
+
   module: {
     rules: [
       {
         loader: 'babel-loader',
-        // exclude: /node_modules/,
-        include: [
-          path.resolve(__dirname, 'app'),
-          path.resolve(__dirname, 'node_modules/buffer')
-        ],
+        exclude: /node_modules/,
         options: regularJSOptions
       }
     ]

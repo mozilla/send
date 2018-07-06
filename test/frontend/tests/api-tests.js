@@ -22,7 +22,7 @@ describe('API', function() {
       const result = await up.result;
       assert.ok(result.url);
       assert.ok(result.id);
-      assert.ok(result.ownerToken); 
+      assert.ok(result.ownerToken);
     });
 
     it('can be cancelled', async function() {

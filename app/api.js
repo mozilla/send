@@ -1,5 +1,5 @@
 import { arrayToB64, b64ToArray, delay } from './utils';
-import { ReadableStream as PolyRS} from 'web-streams-polyfill';
+import { ReadableStream as PolyRS } from 'web-streams-polyfill';
 import { createReadableStreamWrapper } from '@mattiasbuelens/web-streams-adapter';
 const RS = createReadableStreamWrapper(PolyRS);
 
@@ -202,9 +202,10 @@ export function uploadWs(encrypted, info, metadata, verifierB64, onprogress) {
 
 ////////////////////////
 
-async function downloadS(id, keychain, onprogress, signal) {
+async function downloadS(id, keychain, signal) {
   const auth = await keychain.authHeader();
 
+  //this will be already funneled through serviceworker
   const response = await fetch(`/api/download/${id}`, {
     signal: signal,
     method: 'GET',
@@ -223,22 +224,20 @@ async function downloadS(id, keychain, onprogress, signal) {
   const fileSize = response.headers.get('Content-Length');
 
   //right now only chrome allows obtaining a stream from fetch
-  //for other browsers we fetch as a blob and convert to polyfill stream later 
+  //for other browsers we fetch as a blob and convert to polyfill stream later
   if (response.body) {
-    console.log("STREAM")
     return RS(response.body);
   }
   return response.blob();
-
 }
 
-async function tryDownloadStream(id, keychain, onprogress, signal, tries = 1) {
+async function tryDownloadStream(id, keychain, signal, tries = 1) {
   try {
-    const result = await downloadS(id, keychain, onprogress, signal);
+    const result = await downloadS(id, keychain, signal);
     return result;
   } catch (e) {
     if (e.message === '401' && --tries > 0) {
-      return tryDownloadStream(id, keychain, onprogress, signal, tries);
+      return tryDownloadStream(id, keychain, signal, tries);
     }
     if (e.name === 'AbortError') {
       throw new Error('0');
@@ -247,14 +246,14 @@ async function tryDownloadStream(id, keychain, onprogress, signal, tries = 1) {
   }
 }
 
-export function downloadStream(id, keychain, onprogress) {
+export function downloadStream(id, keychain) {
   const controller = new AbortController();
   function cancel() {
     controller.abort();
   }
   return {
     cancel,
-    result: tryDownloadStream(id, keychain, onprogress, controller.signal, 2)
+    result: tryDownloadStream(id, keychain, controller.signal, 2)
   };
 }
 

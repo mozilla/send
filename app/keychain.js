@@ -9,14 +9,14 @@ export default class Keychain {
     if (ivB64) {
       this.iv = b64ToArray(ivB64);
     } else {
-      this.iv = window.crypto.getRandomValues(new Uint8Array(12));
+      this.iv = crypto.getRandomValues(new Uint8Array(12));
     }
     if (secretKeyB64) {
       this.rawSecret = b64ToArray(secretKeyB64);
     } else {
-      this.rawSecret = window.crypto.getRandomValues(new Uint8Array(16));
+      this.rawSecret = crypto.getRandomValues(new Uint8Array(16));
     }
-    this.secretKeyPromise = window.crypto.subtle.importKey(
+    this.secretKeyPromise = crypto.subtle.importKey(
       'raw',
       this.rawSecret,
       'HKDF',
@@ -24,7 +24,7 @@ export default class Keychain {
       ['deriveKey']
     );
     this.encryptKeyPromise = this.secretKeyPromise.then(function(secretKey) {
-      return window.crypto.subtle.deriveKey(
+      return crypto.subtle.deriveKey(
         {
           name: 'HKDF',
           salt: new Uint8Array(),
@@ -41,7 +41,7 @@ export default class Keychain {
       );
     });
     this.metaKeyPromise = this.secretKeyPromise.then(function(secretKey) {
-      return window.crypto.subtle.deriveKey(
+      return crypto.subtle.deriveKey(
         {
           name: 'HKDF',
           salt: new Uint8Array(),
@@ -58,7 +58,7 @@ export default class Keychain {
       );
     });
     this.authKeyPromise = this.secretKeyPromise.then(function(secretKey) {
-      return window.crypto.subtle.deriveKey(
+      return crypto.subtle.deriveKey(
         {
           name: 'HKDF',
           salt: new Uint8Array(),
@@ -91,12 +91,12 @@ export default class Keychain {
   }
 
   setPassword(password, shareUrl) {
-    this.authKeyPromise = window.crypto.subtle
+    this.authKeyPromise = crypto.subtle
       .importKey('raw', encoder.encode(password), { name: 'PBKDF2' }, false, [
         'deriveKey'
       ])
       .then(passwordKey =>
-        window.crypto.subtle.deriveKey(
+        crypto.subtle.deriveKey(
           {
             name: 'PBKDF2',
             salt: encoder.encode(shareUrl),
@@ -115,7 +115,7 @@ export default class Keychain {
   }
 
   setAuthKey(authKeyB64) {
-    this.authKeyPromise = window.crypto.subtle.importKey(
+    this.authKeyPromise = crypto.subtle.importKey(
       'raw',
       b64ToArray(authKeyB64),
       {
@@ -129,13 +129,13 @@ export default class Keychain {
 
   async authKeyB64() {
     const authKey = await this.authKeyPromise;
-    const rawAuth = await window.crypto.subtle.exportKey('raw', authKey);
+    const rawAuth = await crypto.subtle.exportKey('raw', authKey);
     return arrayToB64(new Uint8Array(rawAuth));
   }
 
   async authHeader() {
     const authKey = await this.authKeyPromise;
-    const sig = await window.crypto.subtle.sign(
+    const sig = await crypto.subtle.sign(
       {
         name: 'HMAC'
       },
@@ -147,7 +147,7 @@ export default class Keychain {
 
   async encryptFile(plaintext) {
     const encryptKey = await this.encryptKeyPromise;
-    const ciphertext = await window.crypto.subtle.encrypt(
+    const ciphertext = await crypto.subtle.encrypt(
       {
         name: 'AES-GCM',
         iv: this.iv,
@@ -161,7 +161,7 @@ export default class Keychain {
 
   async encryptMetadata(metadata) {
     const metaKey = await this.metaKeyPromise;
-    const ciphertext = await window.crypto.subtle.encrypt(
+    const ciphertext = await crypto.subtle.encrypt(
       {
         name: 'AES-GCM',
         iv: new Uint8Array(12),
@@ -194,7 +194,7 @@ export default class Keychain {
 
   async decryptFile(ciphertext) {
     const encryptKey = await this.encryptKeyPromise;
-    const plaintext = await window.crypto.subtle.decrypt(
+    const plaintext = await crypto.subtle.decrypt(
       {
         name: 'AES-GCM',
         iv: this.iv,
@@ -208,7 +208,7 @@ export default class Keychain {
 
   async decryptMetadata(ciphertext) {
     const metaKey = await this.metaKeyPromise;
-    const plaintext = await window.crypto.subtle.decrypt(
+    const plaintext = await crypto.subtle.decrypt(
       {
         name: 'AES-GCM',
         iv: new Uint8Array(12),

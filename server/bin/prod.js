@@ -11,6 +11,7 @@ if (config.sentry_dsn) {
 }
 
 const app = express();
+
 expressWs(app, null, { perMessageDeflate: false });
 app.ws('/api/ws', require('../routes/ws'));
 routes(app);

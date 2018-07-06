@@ -1,38 +1,41 @@
 import Keychain from './keychain';
 
-self.addEventListener('install', (event) => {
-  console.log("install event on sw")
+self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
 async function decryptStream(request) {
-  console.log("DOWNLOAD FETCH")
-  //make actual request to server, get response back, decrypt it, send it
-  const response = await fetch(req, 
-    {
-      method: 'GET',
-      headers: { Authorization: auth }
-    }
-  );
+  const response = await fetch(request.url, {
+    method: 'GET',
+    headers: { Authorization: self.auth }
+  });
 
   if (response.status !== 200) {
-    console.log(response.status)
-    throw new Error(response.status);
+    return response;
   }
 
-  const body = response.body;
-  console.log(body);
+  const body = response.body; //stream
+  const decrypted = self.keychain.decryptStream(body);
 
-  return response;
+  const headers = {
+    headers: {
+      'Content-Disposition': 'attachment; filename=' + self.filename
+    }
+  };
+
+  const newRes = new Response(decrypted, headers);
+  return newRes;
 }
 
-self.onfetch = (event) => {
+self.onfetch = event => {
   const req = event.request.clone();
   if (req.url.includes('/api/download')) {
     event.respondWith(decryptStream(req));
   }
 };
 
-self.onmessage = (event) => {
+self.onmessage = event => {
   self.keychain = new Keychain(event.data.key, event.data.nonce);
+  self.filename = event.data.filename;
+  self.auth = event.data.auth;
 };
