@@ -5,17 +5,33 @@ self.addEventListener('install', event => {
 });
 
 async function decryptStream(request) {
+  self.controller = new AbortController();
+  console.log("SW INTERCEPTED DOWNLOAD")
+  console.log(request)
   const response = await fetch(request.url, {
     method: 'GET',
-    headers: { Authorization: self.auth }
+    headers: { Authorization: self.auth },
+    signal: controller.signal
   });
 
   if (response.status !== 200) {
+    console.log(response.status);
     return response;
   }
 
+  self.authHeader = response.headers.get('WWW-Authenticate');
+
+
   const body = response.body; //stream
-  const decrypted = self.keychain.decryptStream(body);
+
+  const progStream = new TransformStream({
+    transform: (chunk, controller) => {
+      self.progress += chunk.length;
+      controller.enqueue(chunk);
+    }
+  });
+
+  const decrypted = self.keychain.decryptStream(body.pipeThrough(progStream));
 
   const headers = {
     headers: {
@@ -35,7 +51,31 @@ self.onfetch = event => {
 };
 
 self.onmessage = event => {
-  self.keychain = new Keychain(event.data.key, event.data.nonce);
-  self.filename = event.data.filename;
-  self.auth = event.data.auth;
+  if (event.data.key) {
+    if (!self.keychain) {
+      self.keychain = new Keychain(event.data.key, event.data.nonce);
+    }
+    self.filename = event.data.filename;
+    self.auth = event.data.auth;
+    self.progress = 0;
+    self.cancelled = false;
+    event.ports[0].postMessage("file info received");
+
+  } else if (event.data === "progress") {
+    if (self.cancelled) {
+      event.ports[0].postMessage({error: "cancelled"});
+    } else {
+      event.ports[0].postMessage(self.progress);
+    }
+
+  } else if (event.data === "authHeader") {
+      event.ports[0].postMessage(self.authHeader);
+
+  } else if (event.data === "cancel") {
+    self.cancelled = true;
+    if (self.controller) {
+      self.controller.abort();
+    }
+    event.ports[0].postMessage("download cancelled");
+  }
 };

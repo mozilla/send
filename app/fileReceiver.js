@@ -1,7 +1,7 @@
 import Nanobus from 'nanobus';
 import Keychain from './keychain';
-import { bytes } from './utils';
-import { metadata } from './api';
+import { delay, bytes } from './utils';
+import { parseNonce, metadata } from './api';
 
 export default class FileReceiver extends Nanobus {
   constructor(fileInfo) {
@@ -67,11 +67,33 @@ export default class FileReceiver extends Nanobus {
     return result.slice(0, offset).buffer;
   }
 
+  sendMessageToSw(msg) {
+    return new Promise( (resolve, reject) => {
+      const channel = new MessageChannel();
+
+      channel.port1.onmessage = function(event) {
+        if(event.data.error !== undefined) {
+          reject(event.data.error);
+        } else {
+          resolve(event.data);
+        }
+      }
+     navigator.serviceWorker.controller.postMessage(msg, [channel.port2]);
+    });
+  }
+
   async download(noSave = false) {
     const onprogress = p => {
       this.progress = p;
       this.emit('progress');
     };
+
+    this.downloadRequest = {
+      cancel: () => {
+        this.sendMessageToSw('cancel');
+        //throw new Error(0);
+      }
+    }
 
     try {
       this.state = 'downloading';
@@ -83,9 +105,9 @@ export default class FileReceiver extends Nanobus {
         filename: this.fileInfo.name,
         auth: auth
       };
-      navigator.serviceWorker.controller.postMessage(info);
+      await this.sendMessageToSw(info);
 
-      onprogress([0, this.fileInfo.size]);
+      console.log("SENDING REQUEST FROM PAGE ONCE")
 
       if (!noSave) {
         const downloadUrl = `${location.protocol}//${
@@ -96,12 +118,31 @@ export default class FileReceiver extends Nanobus {
         document.body.appendChild(a);
         a.click();
         URL.revokeObjectURL(downloadUrl);
+
+        /*
+        const auth = await this.sendMessageToSw('authHeader');
+        if (auth) {
+          this.keychain.nonce = parseNonce(auth);
+        }
+        */
+
+        let prog = 0;
+        while (prog < this.fileInfo.size) {
+          prog = await this.sendMessageToSw('progress');
+          onprogress([prog, this.fileInfo.size]);
+          await delay();
+        }
       }
 
-      //this.msg = 'downloadFinish';
-      //this.state = 'complete';
+      this.downloadRequest = null;
+      this.msg = 'downloadFinish';
+      this.state = 'complete';
+
     } catch (e) {
       this.downloadRequest = null;
+      if (e === 'cancelled') {
+        throw new Error(0);
+      }
       throw e;
     }
   }

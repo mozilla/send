@@ -13,7 +13,7 @@ function post(obj) {
   };
 }
 
-function parseNonce(header) {
+export function parseNonce(header) {
   header = header || '';
   return header.split(' ')[1];
 }
@@ -162,8 +162,8 @@ async function upload(
 
       ws.send(buf);
 
-      onprogress([Math.min(streamInfo.fileSize, size), streamInfo.fileSize]);
-      size += streamInfo.recordSize;
+      onprogress([size, streamInfo.fileSize]);
+      size += buf.length;
       state = await reader.read();
       while (ws.bufferedAmount > streamInfo.recordSize * 2) {
         await delay();
@@ -205,7 +205,6 @@ export function uploadWs(encrypted, info, metadata, verifierB64, onprogress) {
 async function downloadS(id, keychain, signal) {
   const auth = await keychain.authHeader();
 
-  //this will be already funneled through serviceworker
   const response = await fetch(`/api/download/${id}`, {
     signal: signal,
     method: 'GET',
