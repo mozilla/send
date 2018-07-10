@@ -8,7 +8,6 @@ module.exports = function(state, emit) {
 
   function download(event) {
     event.preventDefault();
-    console.log("DOWNLOAD FIRE")
     emit('download', state.fileInfo);
   }
 };

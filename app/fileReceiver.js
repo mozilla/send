@@ -68,17 +68,17 @@ export default class FileReceiver extends Nanobus {
   }
 
   sendMessageToSw(msg) {
-    return new Promise( (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const channel = new MessageChannel();
 
       channel.port1.onmessage = function(event) {
-        if(event.data.error !== undefined) {
+        if (event.data.error !== undefined) {
           reject(event.data.error);
         } else {
           resolve(event.data);
         }
-      }
-     navigator.serviceWorker.controller.postMessage(msg, [channel.port2]);
+      };
+      navigator.serviceWorker.controller.postMessage(msg, [channel.port2]);
     });
   }
 
@@ -93,7 +93,7 @@ export default class FileReceiver extends Nanobus {
         this.sendMessageToSw('cancel');
         //throw new Error(0);
       }
-    }
+    };
 
     try {
       this.state = 'downloading';
@@ -107,7 +107,7 @@ export default class FileReceiver extends Nanobus {
       };
       await this.sendMessageToSw(info);
 
-      console.log("SENDING REQUEST FROM PAGE ONCE")
+      console.log('SENDING REQUEST FROM PAGE ONCE');
 
       if (!noSave) {
         const downloadUrl = `${location.protocol}//${
@@ -119,12 +119,10 @@ export default class FileReceiver extends Nanobus {
         a.click();
         URL.revokeObjectURL(downloadUrl);
 
-        /*
         const auth = await this.sendMessageToSw('authHeader');
         if (auth) {
           this.keychain.nonce = parseNonce(auth);
         }
-        */
 
         let prog = 0;
         while (prog < this.fileInfo.size) {
@@ -137,7 +135,6 @@ export default class FileReceiver extends Nanobus {
       this.downloadRequest = null;
       this.msg = 'downloadFinish';
       this.state = 'complete';
-
     } catch (e) {
       this.downloadRequest = null;
       if (e === 'cancelled') {

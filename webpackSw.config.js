@@ -1,10 +1,12 @@
 const path = require('path');
 
+/*
 const regularJSOptions = {
   babelrc: false,
   presets: [['env'], 'stage-2'],
   plugins: ['transform-runtime']
 };
+*/
 
 const entry = {
   serviceWorker: ['./app/serviceWorker.js']
@@ -18,6 +20,7 @@ module.exports = {
     publicPath: '/'
   },
 
+  /*
   module: {
     rules: [
       {
@@ -27,4 +30,5 @@ module.exports = {
       }
     ]
   }
+  */
 };
