@@ -1,5 +1,4 @@
 const config = require('../config');
-const assets = require('../../common/assets');
 
 let sentry = '';
 if (config.sentry_id) {
@@ -37,7 +36,6 @@ if (isIE && !isUnsupportedPage) {
 }
 var MAXFILESIZE = ${config.max_file_size};
 var EXPIRE_SECONDS = ${config.expire_seconds};
-var SERVICEWORKER = '${assets.get('serviceWorker.js')}';
 ${ga}
 ${sentry}
 `;

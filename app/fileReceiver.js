@@ -1,7 +1,7 @@
 import Nanobus from 'nanobus';
 import Keychain from './keychain';
 import { delay, bytes } from './utils';
-import { parseNonce, metadata } from './api';
+import { metadata } from './api';
 
 export default class FileReceiver extends Nanobus {
   constructor(fileInfo) {
@@ -72,12 +72,15 @@ export default class FileReceiver extends Nanobus {
       const channel = new MessageChannel();
 
       channel.port1.onmessage = function(event) {
-        if (event.data.error !== undefined) {
+        if (event.data === undefined) {
+          reject('bad response from serviceWorker');
+        } else if (event.data.error !== undefined) {
           reject(event.data.error);
         } else {
           resolve(event.data);
         }
       };
+
       navigator.serviceWorker.controller.postMessage(msg, [channel.port2]);
     });
   }
@@ -90,26 +93,34 @@ export default class FileReceiver extends Nanobus {
 
     this.downloadRequest = {
       cancel: () => {
-        this.sendMessageToSw('cancel');
-        //throw new Error(0);
+        this.sendMessageToSw({ request: 'cancel', id: this.fileInfo.id });
+        throw new Error(0);
       }
     };
 
     try {
       this.state = 'downloading';
 
-      const auth = await this.keychain.authHeader();
       const info = {
-        key: this.fileInfo.secretKey,
-        nonce: this.fileInfo.nonce,
+        request: 'init',
+        id: this.fileInfo.id,
         filename: this.fileInfo.name,
-        auth: auth
+        key: this.fileInfo.secretKey,
+        requiresPassword: this.fileInfo.requiresPassword,
+        password: this.fileInfo.password,
+        url: this.fileInfo.url,
+        noSave
       };
       await this.sendMessageToSw(info);
 
-      console.log('SENDING REQUEST FROM PAGE ONCE');
+      onprogress([0, this.fileInfo.size]);
 
-      if (!noSave) {
+      if (noSave) {
+        const res = await fetch(`/api/download/${this.fileInfo.id}`);
+        if (res.status !== 200) {
+          throw new Error(res.status);
+        }
+      } else {
         const downloadUrl = `${location.protocol}//${
           location.host
         }/api/download/${this.fileInfo.id}`;
@@ -119,14 +130,13 @@ export default class FileReceiver extends Nanobus {
         a.click();
         URL.revokeObjectURL(downloadUrl);
 
-        const auth = await this.sendMessageToSw('authHeader');
-        if (auth) {
-          this.keychain.nonce = parseNonce(auth);
-        }
-
         let prog = 0;
         while (prog < this.fileInfo.size) {
-          prog = await this.sendMessageToSw('progress');
+          const msg = await this.sendMessageToSw({
+            request: 'progress',
+            id: this.fileInfo.id
+          });
+          prog = msg.progress;
           onprogress([prog, this.fileInfo.size]);
           await delay();
         }
@@ -137,9 +147,6 @@ export default class FileReceiver extends Nanobus {
       this.state = 'complete';
     } catch (e) {
       this.downloadRequest = null;
-      if (e === 'cancelled') {
-        throw new Error(0);
-      }
       throw e;
     }
   }

@@ -1,44 +1,50 @@
 import Keychain from './keychain';
+import { downloadStream } from './api';
+
+let noSave = false;
+const map = new Map();
 
 self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
+self.addEventListener('activate', event => {
+  self.clients.claim();
+});
+
 async function decryptStream(request) {
-  self.controller = new AbortController();
-  //console.log('SW INTERCEPTED DOWNLOAD');
+  const id = request.url.split('/')[5];
+  try {
+    const file = map.get(id);
 
-  const response = await fetch(request.url, {
-    method: 'GET',
-    headers: { Authorization: self.auth },
-    signal: controller.signal
-  });
+    file.download = downloadStream(id, file.keychain);
 
-  if (response.status !== 200) {
-    return response;
+    const stream = await file.download.result;
+
+    // eslint-disable-next-line no-undef
+    const progStream = new TransformStream({
+      transform: (chunk, controller) => {
+        file.progress += chunk.length;
+        controller.enqueue(chunk);
+      }
+    });
+
+    const readStream = stream.pipeThrough(progStream);
+    const decrypted = file.keychain.decryptStream(readStream);
+
+    const headers = {
+      'Content-Disposition': 'attachment; filename=' + file.filename
+    };
+
+    return new Response(decrypted, { headers });
+  } catch (e) {
+    if (noSave) {
+      return new Response(null, { status: e.message });
+    }
+
+    const redirectRes = await fetch(`/download/${id}`);
+    return new Response(redirectRes.body, { status: 302 });
   }
-
-  self.authHeader = response.headers.get('WWW-Authenticate');
-
-  const body = response.body; //stream
-
-  const progStream = new TransformStream({
-    transform: (chunk, controller) => {
-      self.progress += chunk.length;
-      controller.enqueue(chunk);
-    }
-  });
-
-  const decrypted = self.keychain.decryptStream(body.pipeThrough(progStream));
-
-  const headers = {
-    headers: {
-      'Content-Disposition': 'attachment; filename=' + self.filename
-    }
-  };
-
-  const newRes = new Response(decrypted, headers);
-  return newRes;
 }
 
 self.onfetch = event => {
@@ -49,25 +55,32 @@ self.onfetch = event => {
 };
 
 self.onmessage = event => {
-  if (event.data.key) {
-    self.keychain = new Keychain(event.data.key, event.data.nonce);
-    self.filename = event.data.filename;
-    self.auth = event.data.auth;
-    self.progress = 0;
-    self.cancelled = false;
+  if (event.data.request === 'init') {
+    noSave = event.data.noSave;
+    const info = {
+      keychain: new Keychain(event.data.key),
+      filename: event.data.filename,
+      progress: 0,
+      cancelled: false
+    };
+    if (event.data.requiresPassword) {
+      info.keychain.setPassword(event.data.password, event.data.url);
+    }
+    map.set(event.data.id, info);
+
     event.ports[0].postMessage('file info received');
-  } else if (event.data === 'progress') {
-    if (self.cancelled) {
+  } else if (event.data.request === 'progress') {
+    const file = map.get(event.data.id);
+    if (file.cancelled) {
       event.ports[0].postMessage({ error: 'cancelled' });
     } else {
-      event.ports[0].postMessage(self.progress);
+      event.ports[0].postMessage({ progress: file.progress });
     }
-  } else if (event.data === 'authHeader') {
-    event.ports[0].postMessage(self.authHeader);
-  } else if (event.data === 'cancel') {
-    self.cancelled = true;
-    if (self.controller) {
-      self.controller.abort();
+  } else if (event.data.request === 'cancel') {
+    const file = map.get(event.data.id);
+    file.cancelled = true;
+    if (file.download) {
+      file.download.cancel();
     }
     event.ports[0].postMessage('download cancelled');
   }

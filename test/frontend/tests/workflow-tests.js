@@ -8,6 +8,7 @@ const noSave = !headless; // only run the saveFile code if headless
 // FileSender uses a File in real life but a Blob works for testing
 const blob = new Blob(['hello world!'], { type: 'text/plain' });
 blob.name = 'test.txt';
+navigator.serviceWorker.register('/serviceWorker.js');
 
 describe('Upload / Download flow', function() {
   it('can only download once by default', async function() {
@@ -67,7 +68,7 @@ describe('Upload / Download flow', function() {
     try {
       // We can't decrypt without IV from metadata
       // but let's try to download anyway
-      await fr.download();
+      await fr.download(noSave);
       assert.fail('downloaded file with bad password');
     } catch (e) {
       assert.equal(e.message, '401');

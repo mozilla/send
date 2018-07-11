@@ -1,7 +1,4 @@
 import { arrayToB64, b64ToArray, delay } from './utils';
-import { ReadableStream as PolyRS } from 'web-streams-polyfill';
-import { createReadableStreamWrapper } from '@mattiasbuelens/web-streams-adapter';
-const RS = createReadableStreamWrapper(PolyRS);
 
 function post(obj) {
   return {
@@ -58,10 +55,12 @@ export async function setParams(id, owner_token, params) {
 
 export async function fileInfo(id, owner_token) {
   const response = await fetch(`/api/info/${id}`, post({ owner_token }));
+
   if (response.ok) {
     const obj = await response.json();
     return obj;
   }
+
   throw new Error(response.status);
 }
 
@@ -211,23 +210,17 @@ async function downloadS(id, keychain, signal) {
     headers: { Authorization: auth }
   });
 
-  if (response.status !== 200) {
-    throw new Error(response.status);
-  }
-
   const authHeader = response.headers.get('WWW-Authenticate');
   if (authHeader) {
     keychain.nonce = parseNonce(authHeader);
   }
 
-  const fileSize = response.headers.get('Content-Length');
-
-  //right now only chrome allows obtaining a stream from fetch
-  //for other browsers we fetch as a blob and convert to polyfill stream later
-  if (response.body) {
-    return RS(response.body);
+  if (response.status !== 200) {
+    throw new Error(response.status);
   }
-  return response.blob();
+  //const fileSize = response.headers.get('Content-Length');
+
+  return response.body;
 }
 
 async function tryDownloadStream(id, keychain, signal, tries = 1) {

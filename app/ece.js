@@ -1,16 +1,4 @@
 require('buffer');
-/*
-import {
-  TransformStream as PolyTS,
-  ReadableStream as PolyRS
-} from 'web-streams-polyfill';
-import {
-  createReadableStreamWrapper,
-  createTransformStreamWrapper
-} from '@mattiasbuelens/web-streams-adapter';
-const toTS = createTransformStreamWrapper(PolyTS);
-const toRS = createReadableStreamWrapper(PolyRS);
-*/
 
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
@@ -362,17 +350,19 @@ export default class ECE {
     if (this.input instanceof Blob) {
       inputStream = new ReadableStream(
         new BlobSlicer(this.input, this.rs, this.mode)
-      ); //inputStream = toRS(new ReadableStream(new BlobSlicer(this.input, this.rs, this.mode)));
+      );
     } else {
+      // eslint-disable-next-line no-undef
       const sliceStream = new TransformStream(
         new StreamSlicer(this.rs, this.mode)
-      ); //const sliceStream = toTS(new TransformStream(new StreamSlicer(this.rs, this.mode)));
+      );
       inputStream = this.input.pipeThrough(sliceStream);
     }
 
+    // eslint-disable-next-line no-undef
     const cryptoStream = new TransformStream(
       new ECETransformer(this.mode, this.key, this.rs, this.salt)
-    ); //const cryptoStream = toTS(new TransformStream(new ECETransformer(this.mode, this.key, this.rs, this.salt)));
-    return inputStream.pipeThrough(cryptoStream); //return toRS(inputStream.pipeThrough(cryptoStream));
+    );
+    return inputStream.pipeThrough(cryptoStream);
   }
 }
