@@ -94,7 +94,6 @@ export default class FileReceiver extends Nanobus {
     this.downloadRequest = {
       cancel: () => {
         this.sendMessageToSw({ request: 'cancel', id: this.fileInfo.id });
-        throw new Error(0);
       }
     };
 
@@ -129,17 +128,17 @@ export default class FileReceiver extends Nanobus {
         document.body.appendChild(a);
         a.click();
         URL.revokeObjectURL(downloadUrl);
+      }
 
-        let prog = 0;
-        while (prog < this.fileInfo.size) {
-          const msg = await this.sendMessageToSw({
-            request: 'progress',
-            id: this.fileInfo.id
-          });
-          prog = msg.progress;
-          onprogress([prog, this.fileInfo.size]);
-          await delay();
-        }
+      let prog = 0;
+      while (prog < this.fileInfo.size) {
+        const msg = await this.sendMessageToSw({
+          request: 'progress',
+          id: this.fileInfo.id
+        });
+        prog = msg.progress;
+        onprogress([prog, this.fileInfo.size]);
+        await delay();
       }
 
       this.downloadRequest = null;
@@ -147,6 +146,9 @@ export default class FileReceiver extends Nanobus {
       this.state = 'complete';
     } catch (e) {
       this.downloadRequest = null;
+      if (e === 'cancelled') {
+        throw new Error(0);
+      }
       throw e;
     }
   }
