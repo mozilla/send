@@ -33,7 +33,8 @@ async function decryptStream(request) {
     const decrypted = file.keychain.decryptStream(readStream);
 
     const headers = {
-      'Content-Disposition': 'attachment; filename=' + file.filename
+      'Content-Disposition': 'attachment; filename=' + file.filename,
+      'Content-Length': file.size
     };
 
     return new Response(decrypted, { headers });
@@ -60,6 +61,7 @@ self.onmessage = event => {
     const info = {
       keychain: new Keychain(event.data.key),
       filename: event.data.filename,
+      size: event.data.size,
       progress: 0,
       cancelled: false
     };
