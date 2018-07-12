@@ -15,7 +15,10 @@ const state = {
       console.log('WRITEFILE', file);
     },
     addFile: function(file) {
-      console.log('ADDFILE', file);
+      console.log('ADDFILE' + JSON.stringify(file));
+      const node = document.createElement('input');
+      node.value = file.url;
+      document.body.appendChild(node);
     },
     totalUploads: 0
   },
@@ -30,6 +33,10 @@ emitter.on('render', function() {
   const node = document.createElement('div');
   node.textContent = 'onrender';
   document.body.appendChild(node);
+});
+
+emitter.on('pushState', function(path) {
+  console.log('pushState ' + path + ' ' + JSON.stringify(state));
 });
 
 const fileManager = require('../app/fileManager').default;

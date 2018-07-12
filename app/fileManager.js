@@ -1,12 +1,6 @@
 import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
-import {
-  copyToClipboard,
-  delay,
-  fadeOut,
-  openLinksInNewTab,
-  percent
-} from './utils';
+import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
 import * as metrics from './metrics';
 
 export default function(state, emitter) {
@@ -104,12 +98,12 @@ export default function(state, emitter) {
       metrics.completedUpload(ownedFile);
 
       state.storage.addFile(ownedFile);
-      const cancelBtn = document.getElementById('cancel-upload');
-      if (cancelBtn) {
-        cancelBtn.hidden = 'hidden';
-      }
-      await delay(1000);
-      await fadeOut('.page');
+      //const cancelBtn = document.getElementById('cancel-upload');
+      //if (cancelBtn) {
+      //  cancelBtn.hidden = 'hidden';
+      //}
+      //await delay(1000);
+      //await fadeOut('.page');
       emitter.emit('pushState', `/share/${ownedFile.id}`);
     } catch (err) {
       if (err.message === '0') {
@@ -118,7 +112,7 @@ export default function(state, emitter) {
         render();
       } else {
         // eslint-disable-next-line no-console
-        console.error(err);
+        console.error('err' + err);
         state.raven.captureException(err);
         metrics.stoppedUpload({ size, type, err });
         emitter.emit('pushState', '/error');
@@ -179,7 +173,7 @@ export default function(state, emitter) {
       const time = Date.now() - start;
       const speed = size / (time / 1000);
       await delay(1000);
-      await fadeOut('.page');
+      //await fadeOut('.page');
       state.storage.totalDownloads += 1;
       state.transfer.reset();
       metrics.completedDownload({ size, time, speed });
