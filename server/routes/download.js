@@ -15,9 +15,14 @@ module.exports = async function(req, res) {
     });
     const file_stream = storage.get(id);
     let sentBytes = 0;
+    let cancelled = false;
+
+    req.on('close', () => (cancelled = true));
+
     file_stream.on('data', c => (sentBytes += c.length));
+
     file_stream.on('end', async () => {
-      if (sentBytes < contentLength) {
+      if (cancelled) {
         return;
       }
       const dl = meta.dl + 1;
@@ -32,6 +37,7 @@ module.exports = async function(req, res) {
         log.info('StorageError:', id);
       }
     });
+
     file_stream.pipe(res);
   } catch (e) {
     res.sendStatus(404);
