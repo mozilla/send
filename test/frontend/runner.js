@@ -10,7 +10,7 @@ const express = require('express');
 const devRoutes = require('../../server/bin/test');
 const app = express();
 
-const wpm = middleware(webpack(config), { logLevel: 'silent' });
+const wpm = middleware(webpack(config()), { logLevel: 'silent' });
 app.use(wpm);
 devRoutes(app, { middleware: wpm });
 

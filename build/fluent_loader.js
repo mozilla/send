@@ -17,7 +17,7 @@ function merge(m1, m2) {
 }
 
 module.exports = function(source) {
-  const localeExp = this.options.locale || /([^/]+)\/[^/]+\.ftl$/;
+  const localeExp = /([^/]+)\/[^/]+\.ftl$/;
   const result = localeExp.exec(this.resourcePath);
   const locale = result && result[1];
   if (!locale) {

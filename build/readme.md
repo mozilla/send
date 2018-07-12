@@ -12,13 +12,9 @@ This loader enumerates all the files in `assets/` so that `common/assets.js` can
 
 This loader enumerates all the ftl files in `public/locales` so that the fluent loader can create it's js files.
 
-## Package.json Loader
+## Version Plugin
 
-This loader creates a `version.json` file that gets exposed by the `/__version__` route from the `package.json` file and current git commit hash.
-
-## Version Loader
-
-This loader substitutes the string "VERSION" for the version string specified in `package.json`. This is a workaround because `package.json` already uses the `package_json_loader`. See [app/templates/header/index.js](../app/templates/header/index.js) for more info.
+Creates a `version.json` file that gets exposed by the `/__version__` route from the `package.json` file and current git commit hash.
 
 # See Also
 

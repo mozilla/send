@@ -2,38 +2,29 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const IS_DEV = process.env.NODE_ENV === 'development';
+const VersionPlugin = require('./build/version_plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const regularJSOptions = {
+const webJsOptions = {
   babelrc: false,
   presets: [['env', { modules: false }], 'stage-2'],
   // yo-yoify converts html template strings to direct dom api calls
   plugins: ['yo-yoify']
 };
 
-const entry = {
-  // babel-polyfill and fluent are directly included in vendor
-  // because they are not explicitly referenced by app
-  vendor: ['babel-polyfill', 'fluent'],
-  app: ['./app/main.js'],
-  style: ['./app/main.css']
-};
-
-if (IS_DEV) {
-  entry.tests = ['./test/frontend/index.js'];
-  // istanbul instruments the source for code coverage
-  regularJSOptions.plugins.push('istanbul');
-}
-
-module.exports = {
-  entry,
+const web = {
+  target: 'web',
+  entry: {
+    // babel-polyfill and fluent are directly included in vendor
+    // because they are not explicitly referenced by app
+    vendor: ['babel-polyfill', 'fluent'],
+    app: ['./app/main.js']
+  },
   output: {
-    filename: '[name].[chunkhash:8].js',
+    filename: '[name].[hash:8].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
-  devtool: IS_DEV && 'inline-source-map',
   module: {
     rules: [
       {
@@ -48,17 +39,6 @@ module.exports = {
                   name: '[name].[hash:8].[ext]'
                 }
               }
-            ]
-          },
-          {
-            // inlines version from package.json into header/index.js
-            include: require.resolve('./app/templates/header'),
-            use: [
-              {
-                loader: 'babel-loader',
-                options: regularJSOptions
-              },
-              './build/version_loader'
             ]
           },
           {
@@ -89,7 +69,7 @@ module.exports = {
               path.resolve(__dirname, 'node_modules/fluent-intl-polyfill'),
               path.resolve(__dirname, 'node_modules/intl-pluralrules')
             ],
-            options: regularJSOptions
+            options: webJsOptions
           },
           {
             // Strip asserts from our deps, mainly choojs family
@@ -129,28 +109,15 @@ module.exports = {
       {
         // creates style.css with all styles
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: { modules: false, importLoaders: 1 }
-            },
-            'postcss-loader'
-          ]
-        })
-      },
-      {
-        // creates version.json for /__version__ from package.json
-        test: require.resolve('./package.json'),
         use: [
+          MiniCssExtractPlugin.loader,
           {
-            loader: 'file-loader',
+            loader: 'css-loader',
             options: {
-              name: 'version.json'
+              importLoaders: 1
             }
           },
-          'extract-loader',
-          './build/package_json_loader'
+          'postcss-loader'
         ]
       },
       {
@@ -164,6 +131,7 @@ module.exports = {
             }
           },
           'extract-loader',
+          'babel-loader',
           './build/fluent_loader'
         ]
       },
@@ -184,6 +152,17 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        style: {
+          name: 'style',
+          test: /\.css$/,
+          chunks: 'all'
+        }
+      }
+    }
+  },
   plugins: [
     new CopyPlugin([
       {
@@ -194,22 +173,16 @@ module.exports = {
     new webpack.IgnorePlugin(/dist/), // used in common/*.js
     new webpack.IgnorePlugin(/require-from-string/), // used in common/locales.js
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: ({ resource }) => /node_modules/.test(resource)
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash:8].css'
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'runtime'
-    }),
-    new ExtractTextPlugin({
-      filename: 'style.[contenthash:8].css'
-    }),
+    new VersionPlugin(),
     new ManifestPlugin() // used by server side to resolve hashed assets
   ],
   devServer: {
     compress: true,
+    hot: false,
     host: '0.0.0.0',
-    before: IS_DEV ? require('./server/bin/dev') : undefined,
     proxy: {
       '/api/ws': {
         target: 'ws://localhost:8081',
@@ -219,3 +192,30 @@ module.exports = {
     }
   }
 };
+
+const serviceWorker = {
+  target: 'webworker',
+  entry: {
+    serviceWorker: './app/serviceWorker.js'
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
+  }
+}
+
+module.exports = (env, argv) => {
+  // TODO: why are styles not output in 'production' mode?
+  const mode = 'development' //argv.mode || 'production';
+  console.error(`mode: ${mode}`);
+  web.mode = serviceWorker.mode = mode;
+  if (mode === 'development') {
+    web.devtool = 'inline-source-map';
+    web.devServer.before = require('./server/bin/dev');
+    web.entry.tests = ['./test/frontend/index.js'];
+    // istanbul instruments the source for code coverage
+    webJsOptions.plugins.push('istanbul');
+  }
+  return [web, serviceWorker]
+}

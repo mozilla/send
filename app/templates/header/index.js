@@ -1,15 +1,5 @@
 const html = require('choo/html');
-/*
-  The current weback config uses package.json to generate
-  version.json for /__version__ meaning `require` returns the
-  string 'version.json' in the frontend context but the json
-  on the server.
-
-  We want `version` to be constant at build time so this file
-  has a custom loader (/build/version_loader.js) just to replace
-  string with the value from package.json. 🤢
-*/
-const version = require('../../../package.json').version || 'VERSION';
+const version = require('../../../package.json').version;
 const browser = browserName();
 
 module.exports = function(state) {
