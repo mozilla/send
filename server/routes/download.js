@@ -14,14 +14,14 @@ module.exports = async function(req, res) {
       'WWW-Authenticate': `send-v1 ${req.nonce}`
     });
     const file_stream = storage.get(id);
-    let sentBytes = 0;
     let cancelled = false;
 
-    req.on('close', () => (cancelled = true));
+    req.on('close', () => {
+      cancelled = true;
+      file_stream.destroy();
+    });
 
-    file_stream.on('data', c => (sentBytes += c.length));
-
-    file_stream.on('end', async () => {
+    file_stream.on('close', async () => {
       if (cancelled) {
         return;
       }
