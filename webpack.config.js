@@ -21,7 +21,8 @@ const serviceWorker = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
-  }
+  },
+  devtool: 'source-map'
 };
 
 const web = {
@@ -181,6 +182,7 @@ const web = {
     new VersionPlugin(),
     new ManifestPlugin() // used by server side to resolve hashed assets
   ],
+  devtool: 'source-map',
   devServer: {
     before: require('./server/bin/dev'),
     compress: true,
@@ -204,8 +206,6 @@ module.exports = (env, argv) => {
     // istanbul instruments the source for code coverage
     webJsOptions.plugins.push('istanbul');
     web.entry.tests = ['./test/frontend/index.js'];
-    web.devtool = 'source-map';
-    serviceWorker.devtool = 'source-map';
   }
   return [web, serviceWorker];
 };
