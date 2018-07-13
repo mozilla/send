@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const VersionPlugin = require('./build/version_plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const webJsOptions = {
   babelrc: false,
@@ -121,16 +121,17 @@ const web = {
       {
         // creates style.css with all styles
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
-          },
-          'postcss-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            },
+            'postcss-loader'
+          ]
+        })
       },
       {
         // creates a js script for each ftl
@@ -164,17 +165,6 @@ const web = {
       }
     ]
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        style: {
-          name: 'style',
-          test: /\.css$/,
-          chunks: 'all'
-        }
-      }
-    }
-  },
   plugins: [
     new CopyPlugin([
       {
@@ -185,13 +175,14 @@ const web = {
     new webpack.IgnorePlugin(/dist/), // used in common/*.js
     new webpack.IgnorePlugin(/require-from-string/), // used in common/locales.js
     new webpack.HashedModuleIdsPlugin(),
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash:8].css'
+    new ExtractTextPlugin({
+      filename: '[name].[hash:8].css'
     }),
     new VersionPlugin(),
     new ManifestPlugin() // used by server side to resolve hashed assets
   ],
   devServer: {
+    before: require('./server/bin/dev'),
     compress: true,
     hot: false,
     host: '0.0.0.0',
@@ -205,19 +196,16 @@ const web = {
   }
 };
 
-module.exports = () => {
-  //(env, argv) => {
-  // TODO: why are styles not output in 'production' mode?
-  const mode = 'development'; //argv.mode || 'production';
+module.exports = (env, argv) => {
+  const mode = argv.mode || 'production';
   console.error(`mode: ${mode}`);
   web.mode = serviceWorker.mode = mode;
   if (mode === 'development') {
     // istanbul instruments the source for code coverage
     webJsOptions.plugins.push('istanbul');
-    web.devServer.before = require('./server/bin/dev');
     web.entry.tests = ['./test/frontend/index.js'];
-    web.devtool = 'inline-source-map';
-    serviceWorker.devtool = 'inline-source-map';
+    web.devtool = 'source-map';
+    serviceWorker.devtool = 'source-map';
   }
-  return [serviceWorker, web];
+  return [web, serviceWorker];
 };

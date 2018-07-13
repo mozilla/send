@@ -104,6 +104,7 @@ export default class FileReceiver extends Nanobus {
         request: 'init',
         id: this.fileInfo.id,
         filename: this.fileInfo.name,
+        type: this.fileInfo.type,
         key: this.fileInfo.secretKey,
         requiresPassword: this.fileInfo.requiresPassword,
         password: this.fileInfo.password,
@@ -128,7 +129,6 @@ export default class FileReceiver extends Nanobus {
         a.href = downloadUrl;
         document.body.appendChild(a);
         a.click();
-        URL.revokeObjectURL(downloadUrl);
       }
 
       let prog = 0;
@@ -139,7 +139,7 @@ export default class FileReceiver extends Nanobus {
         });
         prog = msg.progress;
         onprogress([prog, this.fileInfo.size]);
-        await delay();
+        await delay(1000);
       }
 
       this.downloadRequest = null;
