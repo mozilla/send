@@ -26,10 +26,12 @@ uploadSuccessConfirmHeader = Sedia untuk Hantar
 uploadSvgAlt = Muat naik
 uploadSuccessTimingHeader = Pautan ke fail anda akan luput selepas 1 muat turun atau dalam 24 jam.
 expireInfo = Pautan ke fail anda akan luput selepas { $downloadCount } atau { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
        *[other] { $num } muat turun
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
        *[other] { $num } jam
     }
 copyUrlFormLabelWithName = Salin dan kongsi pautan untuk menghantar fail anda: { $filename }

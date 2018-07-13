@@ -12,7 +12,7 @@ uploadPageBrowseButton1 = Seleccionar un archivo para subir
 uploadPageMultipleFilesAlert = Aún no se pueden subir varios archivos o una carpeta.
 uploadPageBrowseButtonTitle = Subir archivo
 uploadingPageProgress = Subiendo { $filename } ({ $size })
-importingFile = Imporando...
+importingFile = Importando...
 verifyingFile = Comprobando...
 encryptingFile = Encriptando...
 decryptingFile = Desencriptando...
@@ -26,11 +26,13 @@ uploadSuccessConfirmHeader = Listo para enviar
 uploadSvgAlt = Subir
 uploadSuccessTimingHeader = El enlace al archivo caducará tras descargarlo una vez o en 24 horas.
 expireInfo = El enlace al archivo expirará tras { $downloadCount } o { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 descarga
        *[other] { $num } descargas
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 hora
        *[other] { $num } horas
     }
@@ -86,7 +88,7 @@ expiryFileList = Caduca en
 deleteFileList = Eliminar
 nevermindButton = Da igual
 legalHeader = Términos y privacidad
-legalNoticeTestPilot = Firefox Send sigue siendo un experimento de Test Pilot y está sujero a las <a>Condiciones del servicio</a> y al <a>Aviso de privacidad</a> de Test Pilot.
+legalNoticeTestPilot = Firefox Send sigue siendo un experimento de Test Pilot y está sujero a las <a>Condiciones del servicio</a> y al <a>Aviso de privacidad</a> de Test Pilot. <a>Aquí</a> podrás descubrir más sobre este experimento y su recopilación de datos.
 legalNoticeMozilla = El uso de la página de Firefox Send también está sujeto al <a>Aviso de privacidad sobre sitios web</a> y a los <a>Términos de uso sobre sitios web</a>.
 deletePopupText = ¿Eliminar el archivo?
 deletePopupYes = Sí

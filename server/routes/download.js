@@ -14,8 +14,17 @@ module.exports = async function(req, res) {
       'WWW-Authenticate': `send-v1 ${req.nonce}`
     });
     const file_stream = storage.get(id);
+    let cancelled = false;
 
-    file_stream.on('end', async () => {
+    req.on('close', () => {
+      cancelled = true;
+      file_stream.destroy();
+    });
+
+    file_stream.on('close', async () => {
+      if (cancelled) {
+        return;
+      }
       const dl = meta.dl + 1;
       const dlimit = meta.dlimit;
       try {
@@ -28,6 +37,7 @@ module.exports = async function(req, res) {
         log.info('StorageError:', id);
       }
     });
+
     file_stream.pipe(res);
   } catch (e) {
     res.sendStatus(404);

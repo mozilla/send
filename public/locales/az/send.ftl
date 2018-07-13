@@ -26,11 +26,13 @@ uploadSuccessConfirmHeader = Göndərməyə hazır
 uploadSvgAlt = Yüklə
 uploadSuccessTimingHeader = Faylınızın keçidinin 1 endirmədən və ya 24 saatdan sonra vaxtı çıxacaq.
 expireInfo = Faylınız üçün keçidin vaxtı { $downloadCount } sonra və ya { $timespan } tarixində keçəcək.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 endirmə
        *[other] { $num } endirmə
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 saat
        *[other] { $num } saat
     }

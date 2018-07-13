@@ -26,11 +26,13 @@ uploadSuccessConfirmHeader = Preste a inviar
 uploadSvgAlt = Cargamento
 uploadSuccessTimingHeader = Le ligamine a tu file expirara post un discargamento o in 24 horas.
 expireInfo = Le ligamine a tu file expirara post { $downloadCount } o { $timespan }
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] discargamento
        *[other] discargamentos
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] hora
        *[other] horas
     }

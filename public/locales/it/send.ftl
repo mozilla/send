@@ -26,11 +26,13 @@ uploadSuccessConfirmHeader = Pronto per l’invio
 uploadSvgAlt = Carica
 uploadSuccessTimingHeader = Il link al file scadrà dopo 1 download o in 24 ore.
 expireInfo = Il link a questo file scadrà dopo { $downloadCount } o { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 download
        *[other] { $num } download
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 ora
        *[other] { $num } ore
     }

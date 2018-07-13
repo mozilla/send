@@ -1,4 +1,4 @@
-// Firefox Send is a brand name and should not be localized.
+# Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteSubtitle = ওয়েব গবেষণা
 siteFeedback = প্রতিক্রিয়া
@@ -15,11 +15,13 @@ uploadingPageCancel = আপলোড বাতিল করুন
 uploadCancelNotification = আপনার অাপলোড বাতিল করা হয়েছে।
 uploadSuccessConfirmHeader = পাঠানোর জন্য প্রস্তুত
 uploadSvgAlt = আপলোড
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 ডাউনলোড
        *[other] { $num } ডাউনলোডগুলো
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 ঘন্টা
        *[other] { $num } ঘন্টা
     }
@@ -27,20 +29,20 @@ copyUrlFormButton = ক্লিপবোর্ডে কপি করুন
 copiedUrl = কপি করা হয়েছে!
 deleteFileButton = ফাইল মুছুন
 sendAnotherFileLink = আরেকটি ফাইল পাঠান
-// Alternative text used on the download link/button (indicates an action).
+# Alternative text used on the download link/button (indicates an action).
 downloadAltText = ডাউনলোড
 downloadsFileList = ডাউনলোডগুলো
-// Used as header in a column indicating the amount of time left before a
-// download link expires (e.g. "10h 5m")
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
 timeFileList = সময়
-// Used as header in a column indicating the number of times a file has been
-// downloaded
+# Used as header in a column indicating the number of times a file has been
+# downloaded
 downloadFileName = ডাউনলোড { $filename }
 downloadFileSize = ({ $size })
 unlockInputLabel = পাসওয়ার্ড লিখুন
 unlockInputPlaceholder = পাসওয়ার্ড
 unlockButtonLabel = আনলক করুন
-// Text and title used on the download link/button (indicates an action).
+# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = ডাউনলোড
 downloadNotification = আপনার ডাউনলোড সম্পন্ন হয়েছে।
 downloadFinish = ডাউনলোড সম্পন্ন
@@ -53,7 +55,7 @@ updateFirefox = Firefox হালনাগাদ করুন
 downloadFirefoxButtonSub = বিনামূল্যে ডাউনলোড
 uploadedFile = ফাইল
 copyFileList = URL অনুলিপি করুন
-// expiryFileList is used as a column header
+# expiryFileList is used as a column header
 expiryFileList = মেয়াদোত্তীর্ণ তারিখ
 deleteFileList = মুছে ফেলুন
 nevermindButton = কিছু মনে করবেন না
@@ -64,7 +66,7 @@ deletePopupCancel = বাতিল
 deleteButtonHover = মুছে ফেলুন
 copyUrlHover = URL অনুলিপি করুন
 footerLinkLegal = আইনগত
-// Test Pilot is a proper name and should not be localized.
+# Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Test Pilot পরিচিতি
 footerLinkPrivacy = গোপনীয়তা
 footerLinkTerms = শর্তাবলী
