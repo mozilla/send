@@ -3,13 +3,25 @@ const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const VersionPlugin = require('./build/version_plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const webJsOptions = {
   babelrc: false,
   presets: [['env', { modules: false }], 'stage-2'],
   // yo-yoify converts html template strings to direct dom api calls
   plugins: ['yo-yoify']
+};
+
+const serviceWorker = {
+  target: 'webworker',
+  entry: {
+    serviceWorker: './app/serviceWorker.js'
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
+  }
 };
 
 const web = {
@@ -193,29 +205,19 @@ const web = {
   }
 };
 
-const serviceWorker = {
-  target: 'webworker',
-  entry: {
-    serviceWorker: './app/serviceWorker.js'
-  },
-  output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
-  }
-}
-
-module.exports = (env, argv) => {
+module.exports = () => {
+  //(env, argv) => {
   // TODO: why are styles not output in 'production' mode?
-  const mode = 'development' //argv.mode || 'production';
+  const mode = 'development'; //argv.mode || 'production';
   console.error(`mode: ${mode}`);
   web.mode = serviceWorker.mode = mode;
   if (mode === 'development') {
-    web.devtool = 'inline-source-map';
-    web.devServer.before = require('./server/bin/dev');
-    web.entry.tests = ['./test/frontend/index.js'];
     // istanbul instruments the source for code coverage
     webJsOptions.plugins.push('istanbul');
+    web.devServer.before = require('./server/bin/dev');
+    web.entry.tests = ['./test/frontend/index.js'];
+    web.devtool = 'inline-source-map';
+    serviceWorker.devtool = 'inline-source-map';
   }
-  return [web, serviceWorker]
-}
+  return [serviceWorker, web];
+};
