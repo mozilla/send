@@ -270,6 +270,7 @@ function download(id, keychain, onprogress, canceller) {
       const blob = new Blob([xhr.response]);
       resolve(blob);
     });
+
     xhr.addEventListener('progress', function(event) {
       if (event.lengthComputable && event.target.status === 200) {
         onprogress([event.loaded, event.total]);
@@ -278,8 +279,10 @@ function download(id, keychain, onprogress, canceller) {
     const auth = await keychain.authHeader();
     xhr.open('get', `/api/download/${id}`);
     xhr.setRequestHeader('Authorization', auth);
+    xhr.setRequestHeader('Connection', 'close');
     xhr.responseType = 'blob';
     xhr.send();
+    onprogress([0, 1]);
   });
 }
 

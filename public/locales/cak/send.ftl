@@ -26,11 +26,13 @@ uploadSuccessConfirmHeader = Ütz chik richin Nitaq
 uploadSvgAlt = Tijotob'äx
 uploadSuccessTimingHeader = Ri ruximonel yakb'äl xtik'is ruq'ijul toq xtiqasäx jumul o pa 24 ramaj.
 expireInfo = Ri ruximöy ayakb'al xtik'is ruq'ijul chi rij ri { $downloadCount } o { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 qasanïk
        *[other] { $num } taq qasanïk
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 ramaj
        *[other] { $num } taq ramaj
     }

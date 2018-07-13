@@ -26,11 +26,13 @@ uploadSuccessConfirmHeader = Έτοιμο για αποστολή
 uploadSvgAlt = Μεταφόρτωση
 uploadSuccessTimingHeader = Ο σύνδεσμος του αρχείου σας θα λήξει έπειτα από 1 λήψη ή 24 ώρες.
 expireInfo = Ο σύνδεσμος για το αρχείο σας θα λήξει μετά από { $downloadCount } ή { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 λήψη
        *[other] { $num } λήψεις
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 ώρα
        *[other] { $num } ώρες
     }

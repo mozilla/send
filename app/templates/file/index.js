@@ -19,7 +19,8 @@ module.exports = function(file, state, emit) {
         onclick=${copyClick}
         src="${assets.get('copy-16.svg')}"
         class="cursor--pointer"
-        title="${state.translate('copyUrlHover')}">
+        title="${state.translate('copyUrlHover')}"
+        tabindex="0">
       <span hidden="true">
         ${state.translate('copiedUrl')}
       </span>
@@ -33,7 +34,8 @@ module.exports = function(file, state, emit) {
         onclick=${showPopup}
         src="${assets.get('close-16.svg')}"
         class="cursor--pointer"
-        title="${state.translate('deleteButtonHover')}">
+        title="${state.translate('deleteButtonHover')}"
+        tabindex="0">
       ${deletePopup(
         state.translate('deletePopupText'),
         state.translate('deletePopupYes'),

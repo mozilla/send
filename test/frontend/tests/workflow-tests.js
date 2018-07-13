@@ -135,6 +135,27 @@ describe('Upload / Download flow', function() {
     }
   });
 
+  it('can cancel and not increase download count', async function() {
+    const fs = new FileSender(blob);
+    const file = await fs.upload();
+    const fr = new FileReceiver({
+      secretKey: file.toJSON().secretKey,
+      id: file.id,
+      nonce: file.keychain.nonce,
+      requiresPassword: false
+    });
+    await fr.getMetadata();
+    fr.once('progress', () => fr.cancel());
+
+    try {
+      await fr.download(noSave);
+      assert.fail('not cancelled');
+    } catch (e) {
+      await file.updateDownloadCount();
+      assert.equal(file.dtotal, 0);
+    }
+  });
+
   it('can allow multiple downloads', async function() {
     const fs = new FileSender(blob);
     const file = await fs.upload();

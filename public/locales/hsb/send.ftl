@@ -26,13 +26,15 @@ uploadSuccessConfirmHeader = Hotowy za słanje
 uploadSvgAlt = Nahrać
 uploadSuccessTimingHeader = Wotkaz k wašej dataji po 1 sćehnjenju abo 24 hodźinach spadnje.
 expireInfo = Wotkaz k wašej dataji po { $downloadCount } abo { $timespan } spadnje.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 sćehnjenje
         [two] { $num } sćehnjeni
         [few] { $num } sćehnjenja
        *[other] { $num } sćehnjenjow
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 hodźina
         [two] { $num } hodźinje
         [few] { $num } hodźiny
