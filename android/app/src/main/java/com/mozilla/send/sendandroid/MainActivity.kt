@@ -7,11 +7,23 @@ import im.delight.android.webview.AdvancedWebView
 import android.graphics.Bitmap
 import android.content.Intent
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.webkit.WebView
+import android.webkit.WebMessage
 import android.util.Log
+import android.util.Base64
+import android.provider.MediaStore
+import android.R.attr.data
+
+
+
+
+
+
 
 class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
     private var mWebView: AdvancedWebView? = null
+    private var mToShare: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +35,28 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         val webSettings = mWebView!!.getSettings()
         webSettings.setJavaScriptEnabled(true)
 
-        mWebView!!.loadUrl("https://send.firefox.com")
+        val intent = getIntent()
+        val action = intent.getAction()
+        val type = intent.getType()
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if (type.equals("text/plain")) {
+                val sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)
+                Log.w("INTENT", "text/plain " + sharedText)
+                mToShare = "data:text/plain;base64," + Base64.encodeToString(sharedText.toByteArray(), 16).trim()
+            } else if (type.startsWith("image/")) {
+                val imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM) as Uri
+                Log.w("INTENT", "image/ " + imageUri)
+                mToShare = "data:text/plain;base64," + Base64.encodeToString(imageUri.path.toByteArray(), 16).trim()
+
+                // TODO Currently this causes a Permission Denied error
+                // val stream = contentResolver.openInputStream(imageUri)
+            }
+            mWebView!!.loadUrl("file:///android_asset/intent-target.html")
+
+        } else {
+            mWebView!!.loadUrl("file:///android_asset/index.html")
+        }
+
     }
 
     @SuppressLint("NewApi")
@@ -66,6 +99,13 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
 
     override fun onPageFinished(url: String) {
         Log.w("MAIN", "onPageFinished")
+        if (mToShare != null) {
+            Log.w("INTENT", mToShare)
+
+            val webView = findViewById<WebView>(R.id.webview) as AdvancedWebView
+            webView.postWebMessage(WebMessage(mToShare), Uri.EMPTY)
+        }
+
     }
 
     override fun onPageError(errorCode: Int, description: String, failingUrl: String) {
