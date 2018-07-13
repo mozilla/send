@@ -14,10 +14,15 @@ module.exports = async function(req, res) {
       'WWW-Authenticate': `send-v1 ${req.nonce}`
     });
     const file_stream = storage.get(id);
-    let sentBytes = 0;
-    file_stream.on('data', c => (sentBytes += c.length));
-    file_stream.on('end', async () => {
-      if (sentBytes < contentLength) {
+    let cancelled = false;
+
+    req.on('close', () => {
+      cancelled = true;
+      file_stream.destroy();
+    });
+
+    file_stream.on('close', async () => {
+      if (cancelled) {
         return;
       }
       const dl = meta.dl + 1;
@@ -32,6 +37,7 @@ module.exports = async function(req, res) {
         log.info('StorageError:', id);
       }
     });
+
     file_stream.pipe(res);
   } catch (e) {
     res.sendStatus(404);
