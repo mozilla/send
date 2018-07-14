@@ -1,5 +1,6 @@
 import Keychain from './keychain';
 import { downloadStream } from './api';
+import TransformStream from './transformStream';
 
 let noSave = false;
 const map = new Map();
@@ -37,8 +38,8 @@ async function decryptStream(request) {
       'Content-Type': file.type,
       'Content-Length': file.size
     };
-
-    return new Response(decrypted, { headers });
+    const body = decrypted.local ? decrypted.nativeReadable : decrypted;
+    return new Response(body, { headers });
   } catch (e) {
     if (noSave) {
       return new Response(null, { status: e.message });

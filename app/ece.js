@@ -1,4 +1,12 @@
-require('buffer');
+import 'buffer';
+import TransformStream from './transformStream';
+import { ReadableStream as ReadableStreamPony } from 'web-streams-ponyfill';
+try {
+  new ReadableStream().pipeThrough(new TransformStream());
+} catch (e) {
+  // eslint-disable-next-line no-global-assign
+  ReadableStream = ReadableStreamPony;
+}
 
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
@@ -316,7 +324,7 @@ class StreamSlicer {
 
 /*
 input: a blob or a ReadableStream containing data to be transformed
-key:  Uint8Array containing key of size KEY_LENGTH 
+key:  Uint8Array containing key of size KEY_LENGTH
 mode: string, either 'encrypt' or 'decrypt'
 rs:   int containing record size, optional
 salt: ArrayBuffer containing salt of KEY_LENGTH length, optional
