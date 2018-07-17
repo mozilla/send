@@ -1,12 +1,8 @@
 import 'buffer';
-import TransformStream from './transformStream';
-import { ReadableStream as ReadableStreamPony } from 'web-streams-ponyfill';
-try {
-  new ReadableStream().pipeThrough(new TransformStream());
-} catch (e) {
-  // eslint-disable-next-line no-global-assign
-  ReadableStream = ReadableStreamPony;
-}
+import {
+  TStream as TransformStream,
+  RStream as ReadableStream
+} from './streams';
 
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
@@ -360,14 +356,12 @@ export default class ECE {
         new BlobSlicer(this.input, this.rs, this.mode)
       );
     } else {
-      // eslint-disable-next-line no-undef
       const sliceStream = new TransformStream(
         new StreamSlicer(this.rs, this.mode)
       );
       inputStream = this.input.pipeThrough(sliceStream);
     }
 
-    // eslint-disable-next-line no-undef
     const cryptoStream = new TransformStream(
       new ECETransformer(this.mode, this.key, this.rs, this.salt)
     );

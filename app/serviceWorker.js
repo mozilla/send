@@ -1,6 +1,6 @@
 import Keychain from './keychain';
 import { downloadStream } from './api';
-import TransformStream from './transformStream';
+import { TStream as TransformStream, wrapReadable } from './streams';
 
 let noSave = false;
 const map = new Map();
@@ -30,7 +30,7 @@ async function decryptStream(request) {
       }
     });
 
-    const readStream = stream.pipeThrough(progStream);
+    const readStream = wrapReadable(stream).pipeThrough(progStream);
     const decrypted = file.keychain.decryptStream(readStream);
 
     const headers = {
@@ -38,7 +38,7 @@ async function decryptStream(request) {
       'Content-Type': file.type,
       'Content-Length': file.size
     };
-    const body = decrypted.local ? decrypted.nativeReadable : decrypted;
+    const body = decrypted.isPony ? decrypted.toNative() : decrypted;
     return new Response(body, { headers });
   } catch (e) {
     if (noSave) {
