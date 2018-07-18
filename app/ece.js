@@ -1,15 +1,12 @@
 import 'buffer';
-import {
-  TStream as TransformStream,
-  RStream as ReadableStream
-} from './streams';
+import { transform } from './streams';
 
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
 const KEY_LENGTH = 16;
 const MODE_ENCRYPT = 'encrypt';
 const MODE_DECRYPT = 'decrypt';
-const RS = 1024 * 1024;
+const RS = 1024 * 64;
 
 const encoder = new TextEncoder();
 
@@ -277,6 +274,7 @@ class StreamSlicer {
       this.chunkSize = this.rs;
     }
     this.partialChunk = new Uint8Array(this.chunkSize);
+    this.offset = 0;
   }
 
   //reslice input into record sized chunks
@@ -292,26 +290,25 @@ class StreamSlicer {
 
       if (this.offset === this.chunkSize) {
         this.send(this.partialChunk, controller);
-        this.offset = 0;
       }
     }
 
     while (i < chunk.byteLength) {
-      if (chunk.byteLength - i >= this.chunkSize) {
+      const remainingBytes = chunk.byteLength - i;
+      if (remainingBytes >= this.chunkSize) {
         const record = chunk.slice(i, i + this.chunkSize);
         i += this.chunkSize;
         this.send(record, controller);
       } else {
-        const end = chunk.slice(i, this.chunkSize);
-        i += end.length;
+        const end = chunk.slice(i, i + remainingBytes);
+        i += end.byteLength;
         this.partialChunk.set(end);
-        this.offset = end.length;
+        this.offset = end.byteLength;
       }
     }
   }
 
   flush(controller) {
-    //console.log('slice stream ends')
     if (this.offset > 0) {
       controller.enqueue(this.partialChunk.slice(0, this.offset));
     }
@@ -356,15 +353,11 @@ export default class ECE {
         new BlobSlicer(this.input, this.rs, this.mode)
       );
     } else {
-      const sliceStream = new TransformStream(
-        new StreamSlicer(this.rs, this.mode)
-      );
-      inputStream = this.input.pipeThrough(sliceStream);
+      inputStream = transform(this.input, new StreamSlicer(this.rs, this.mode));
     }
-
-    const cryptoStream = new TransformStream(
+    return transform(
+      inputStream,
       new ECETransformer(this.mode, this.key, this.rs, this.salt)
     );
-    return inputStream.pipeThrough(cryptoStream);
   }
 }

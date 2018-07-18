@@ -57,7 +57,6 @@
   },
   "devDependencies": {
     "@dannycoates/webpack-dev-server": "^3.1.4",
-    "@mattiasbuelens/web-streams-adapter": "0.1.0-alpha.1",
     "asmcrypto.js": "^0.22.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
@@ -113,7 +112,6 @@
     "svgo-loader": "^2.1.0",
     "testpilot-ga": "^0.3.0",
     "val-loader": "^1.1.1",
-    "web-streams-ponyfill": "^1.4.2",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-middleware": "^3.1.3",

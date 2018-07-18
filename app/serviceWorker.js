@@ -1,6 +1,6 @@
 import Keychain from './keychain';
 import { downloadStream } from './api';
-import { TStream as TransformStream, wrapReadable } from './streams';
+import { transform } from './streams';
 
 let noSave = false;
 const map = new Map();
@@ -17,29 +17,26 @@ async function decryptStream(request) {
   const id = request.url.split('/')[5];
   try {
     const file = map.get(id);
+    const keychain = new Keychain(file.key);
 
-    file.download = downloadStream(id, file.keychain);
+    file.download = downloadStream(id, keychain);
 
-    const stream = await file.download.result;
+    const body = await file.download.result;
 
-    // eslint-disable-next-line no-undef
-    const progStream = new TransformStream({
+    const readStream = transform(body, {
       transform: (chunk, controller) => {
         file.progress += chunk.length;
         controller.enqueue(chunk);
       }
     });
-
-    const readStream = wrapReadable(stream).pipeThrough(progStream);
-    const decrypted = file.keychain.decryptStream(readStream);
+    const decrypted = keychain.decryptStream(readStream);
 
     const headers = {
       'Content-Disposition': 'attachment; filename=' + file.filename,
       'Content-Type': file.type,
       'Content-Length': file.size
     };
-    const body = decrypted.isPony ? decrypted.toNative() : decrypted;
-    return new Response(body, { headers });
+    return new Response(decrypted, { headers });
   } catch (e) {
     if (noSave) {
       return new Response(null, { status: e.message });
@@ -47,6 +44,9 @@ async function decryptStream(request) {
 
     const redirectRes = await fetch(`/download/${id}`);
     return new Response(redirectRes.body, { status: 302 });
+  } finally {
+    // TODO: need to clean up, but not break progress
+    // map.delete(id)
   }
 }
 
@@ -61,7 +61,7 @@ self.onmessage = event => {
   if (event.data.request === 'init') {
     noSave = event.data.noSave;
     const info = {
-      keychain: new Keychain(event.data.key),
+      key: event.data.key,
       filename: event.data.filename,
       type: event.data.type,
       size: event.data.size,
@@ -69,23 +69,28 @@ self.onmessage = event => {
       cancelled: false
     };
     if (event.data.requiresPassword) {
-      info.keychain.setPassword(event.data.password, event.data.url);
+      info.password = event.data.password;
+      info.url = event.data.url;
     }
     map.set(event.data.id, info);
 
     event.ports[0].postMessage('file info received');
   } else if (event.data.request === 'progress') {
     const file = map.get(event.data.id);
-    if (file.cancelled) {
+    if (!file) {
+      event.ports[0].postMessage({ progress: 0 });
+    } else if (file.cancelled) {
       event.ports[0].postMessage({ error: 'cancelled' });
     } else {
       event.ports[0].postMessage({ progress: file.progress });
     }
   } else if (event.data.request === 'cancel') {
     const file = map.get(event.data.id);
-    file.cancelled = true;
-    if (file.download) {
-      file.download.cancel();
+    if (file) {
+      file.cancelled = true;
+      if (file.download) {
+        file.download.cancel();
+      }
     }
     event.ports[0].postMessage('download cancelled');
   }
