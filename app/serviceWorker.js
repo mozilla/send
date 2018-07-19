@@ -1,6 +1,7 @@
 import Keychain from './keychain';
 import { downloadStream } from './api';
 import { transform } from './streams';
+import contentDisposition from 'content-disposition';
 
 let noSave = false;
 const map = new Map();
@@ -32,7 +33,7 @@ async function decryptStream(request) {
     const decrypted = keychain.decryptStream(readStream);
 
     const headers = {
-      'Content-Disposition': 'attachment; filename=' + file.filename,
+      'Content-Disposition': contentDisposition(file.filename),
       'Content-Type': file.type,
       'Content-Length': file.size
     };
