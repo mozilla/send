@@ -1,6 +1,9 @@
-/* global ReadableStream */
+/* global ReadableStream TransformStream */
 
-export function transform(readable, transformer) {
+export function transformStream(readable, transformer) {
+  if (typeof TransformStream === 'function') {
+    return readable.pipeThrough(new TransformStream(transformer));
+  }
   const reader = readable.getReader();
   const tstream = new ReadableStream({
     start(controller) {

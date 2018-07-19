@@ -1,5 +1,5 @@
 import 'buffer';
-import { transform } from './streams';
+import { transformStream } from './streams';
 
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
@@ -353,9 +353,12 @@ export default class ECE {
         new BlobSlicer(this.input, this.rs, this.mode)
       );
     } else {
-      inputStream = transform(this.input, new StreamSlicer(this.rs, this.mode));
+      inputStream = transformStream(
+        this.input,
+        new StreamSlicer(this.rs, this.mode)
+      );
     }
-    return transform(
+    return transformStream(
       inputStream,
       new ECETransformer(this.mode, this.key, this.rs, this.salt)
     );

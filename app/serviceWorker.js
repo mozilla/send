@@ -1,6 +1,6 @@
 import Keychain from './keychain';
 import { downloadStream } from './api';
-import { transform } from './streams';
+import { transformStream } from './streams';
 import contentDisposition from 'content-disposition';
 
 let noSave = false;
@@ -24,7 +24,7 @@ async function decryptStream(request) {
 
     const body = await file.download.result;
 
-    const readStream = transform(body, {
+    const readStream = transformStream(body, {
       transform: (chunk, controller) => {
         file.progress += chunk.length;
         controller.enqueue(chunk);
