@@ -134,7 +134,23 @@ describe('Upload / Download flow', function() {
     }
   });
 
-  it('can cancel and not increase download count', async function() {
+  it('can increase download count on download', async function() {
+    const fs = new FileSender(blob);
+    const file = await fs.upload();
+    const fr = new FileReceiver({
+      secretKey: file.toJSON().secretKey,
+      id: file.id,
+      nonce: file.keychain.nonce,
+      requiresPassword: false
+    });
+    await fr.getMetadata();
+
+    await fr.download(noSave);
+    await file.updateDownloadCount();
+    assert.equal(file.dtotal, 1);
+  });
+
+  it('does not increase download count when download cancelled', async function() {
     const fs = new FileSender(blob);
     const file = await fs.upload();
     const fr = new FileReceiver({
