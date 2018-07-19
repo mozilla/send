@@ -279,7 +279,6 @@ function download(id, keychain, onprogress, canceller) {
     const auth = await keychain.authHeader();
     xhr.open('get', `/api/download/${id}`);
     xhr.setRequestHeader('Authorization', auth);
-    xhr.setRequestHeader('Connection', 'close');
     xhr.responseType = 'blob';
     xhr.send();
     onprogress([0, 1]);

@@ -21,10 +21,11 @@ module.exports = async function(req, res) {
       file_stream.destroy();
     });
 
-    file_stream.on('close', async () => {
+    file_stream.on('end', async () => {
       if (cancelled) {
         return;
       }
+
       const dl = meta.dl + 1;
       const dlimit = meta.dlimit;
       try {
