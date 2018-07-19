@@ -95,8 +95,19 @@ function render() {
 }
 
 emitter.on('render', function() {
+  document.body.innerHTML = '';
   const node = document.createElement('div');
-  node.textContent = 'onrender';
+  const progress = document.createElement('span');
+  const percent =
+    (state.transfer.progress[0] / state.transfer.progress[1]) * 100;
+  progress.style.display = 'inline-block';
+  node.style.backgroundColor = 'white';
+  node.style.width = '100%';
+  progress.style.width = `${percent}%`;
+  progress.style.backgroundColor = 'blue';
+  progress.textContent = 'Transmitting';
+  //node.textContent = `onrender ${renderNum}`;
+  node.appendChild(progress);
   document.body.appendChild(node);
 });
 
