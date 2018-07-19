@@ -110,6 +110,7 @@ export default class FileReceiver extends Nanobus {
         password: this.fileInfo.password,
         url: this.fileInfo.url,
         size: this.fileInfo.size,
+        nonce: this.keychain.nonce,
         noSave
       };
       await this.sendMessageToSw(info);

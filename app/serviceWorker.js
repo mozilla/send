@@ -18,7 +18,7 @@ async function decryptStream(request) {
   const id = request.url.split('/')[5];
   try {
     const file = map.get(id);
-    const keychain = new Keychain(file.key);
+    const keychain = new Keychain(file.key, file.nonce);
 
     file.download = downloadStream(id, keychain);
 
@@ -63,6 +63,7 @@ self.onmessage = event => {
     noSave = event.data.noSave;
     const info = {
       key: event.data.key,
+      nonce: event.data.nonce,
       filename: event.data.filename,
       type: event.data.type,
       size: event.data.size,
