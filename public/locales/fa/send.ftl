@@ -107,7 +107,7 @@ changePasswordButton = تغییر
 passwordTryAgain = کلمه عبور اشتباه است. مجدد تلاش کنید.
 reportIPInfringement = گزارش تخلف IP
 javascriptRequired = Firefox Send نیازمند جاوااسکریپت است
-whyJavascript = چراFirefox Send جاوااسکریپت لازم دارد؟
+whyJavascript = چرا Firefox Send جاوااسکریپت لازم داد؟
 enableJavascript = لطفا جاوااسکریپت را فعال کنید و مجددا تلاش کنید.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }ساعت { $minutes }دقیقه
