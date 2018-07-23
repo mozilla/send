@@ -1,6 +1,6 @@
 /* global ReadableStream TransformStream */
 
-export function transformStream(readable, transformer) {
+export function transformStream(readable, transformer, oncancel) {
   if (typeof TransformStream === 'function') {
     return readable.pipeThrough(new TransformStream(transformer));
   }
@@ -30,8 +30,11 @@ export function transformStream(readable, transformer) {
         await transformer.transform(data.value, wrappedController);
       }
     },
-    cancel() {
-      readable.cancel();
+    cancel(reason) {
+      readable.cancel(reason);
+      if (oncancel) {
+        oncancel(reason);
+      }
     }
   });
 }

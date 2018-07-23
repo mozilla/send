@@ -14,8 +14,7 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-async function decryptStream(request) {
-  const id = request.url.split('/')[5];
+async function decryptStream(id) {
   try {
     const file = map.get(id);
     const keychain = new Keychain(file.key, file.nonce);
@@ -27,20 +26,29 @@ async function decryptStream(request) {
 
     const body = await file.download.result;
 
-    const readStream = transformStream(body, {
-      transform: (chunk, controller) => {
-        file.progress += chunk.length;
-        controller.enqueue(chunk);
+    const decrypted = keychain.decryptStream(body);
+    const readStream = transformStream(
+      decrypted,
+      {
+        transform(chunk, controller) {
+          file.progress += chunk.length;
+          controller.enqueue(chunk);
+        }
+      },
+      function oncancel() {
+        // NOTE: cancel doesn't currently fire on chrome
+        // https://bugs.chromium.org/p/chromium/issues/detail?id=638494
+        file.download.cancel();
+        map.delete(id);
       }
-    });
-    const decrypted = keychain.decryptStream(readStream);
+    );
 
     const headers = {
       'Content-Disposition': contentDisposition(file.filename),
       'Content-Type': file.type,
       'Content-Length': file.size
     };
-    return new Response(decrypted, { headers });
+    return new Response(readStream, { headers });
   } catch (e) {
     if (noSave) {
       return new Response(null, { status: e.message });
@@ -48,16 +56,14 @@ async function decryptStream(request) {
 
     const redirectRes = await fetch(`/download/${id}`);
     return new Response(redirectRes.body, { status: 302 });
-  } finally {
-    // TODO: need to clean up, but not break progress
-    // map.delete(id)
   }
 }
 
 self.onfetch = event => {
-  const req = event.request.clone();
+  const req = event.request;
   if (req.url.includes('/api/download')) {
-    event.respondWith(decryptStream(req));
+    const id = req.url.split('/')[5];
+    event.respondWith(decryptStream(id));
   }
 };
 
@@ -73,8 +79,7 @@ self.onmessage = event => {
       url: event.data.url,
       type: event.data.type,
       size: event.data.size,
-      progress: 0,
-      cancelled: false
+      progress: 0
     };
     map.set(event.data.id, info);
 
@@ -82,19 +87,20 @@ self.onmessage = event => {
   } else if (event.data.request === 'progress') {
     const file = map.get(event.data.id);
     if (!file) {
-      event.ports[0].postMessage({ progress: 0 });
-    } else if (file.cancelled) {
       event.ports[0].postMessage({ error: 'cancelled' });
     } else {
+      if (file.progress === file.size) {
+        map.delete(event.data.id);
+      }
       event.ports[0].postMessage({ progress: file.progress });
     }
   } else if (event.data.request === 'cancel') {
     const file = map.get(event.data.id);
     if (file) {
-      file.cancelled = true;
       if (file.download) {
         file.download.cancel();
       }
+      map.delete(event.data.id);
     }
     event.ports[0].postMessage('download cancelled');
   }

@@ -172,6 +172,7 @@ export default class Keychain {
         JSON.stringify({
           iv: arrayToB64(this.iv),
           name: metadata.name,
+          size: metadata.size,
           type: metadata.type || 'application/octet-stream'
         })
       )
