@@ -19,6 +19,9 @@ async function decryptStream(request) {
   try {
     const file = map.get(id);
     const keychain = new Keychain(file.key, file.nonce);
+    if (file.requiresPassword) {
+      keychain.setPassword(file.password, file.url);
+    }
 
     file.download = downloadStream(id, keychain);
 
@@ -65,15 +68,14 @@ self.onmessage = event => {
       key: event.data.key,
       nonce: event.data.nonce,
       filename: event.data.filename,
+      requiresPassword: event.data.requiresPassword,
+      password: event.data.password,
+      url: event.data.url,
       type: event.data.type,
       size: event.data.size,
       progress: 0,
       cancelled: false
     };
-    if (event.data.requiresPassword) {
-      info.password = event.data.password;
-      info.url = event.data.url;
-    }
     map.set(event.data.id, info);
 
     event.ports[0].postMessage('file info received');

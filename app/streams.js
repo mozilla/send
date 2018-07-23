@@ -5,7 +5,7 @@ export function transformStream(readable, transformer) {
     return readable.pipeThrough(new TransformStream(transformer));
   }
   const reader = readable.getReader();
-  const tstream = new ReadableStream({
+  return new ReadableStream({
     start(controller) {
       if (transformer.start) {
         return transformer.start(controller);
@@ -13,27 +13,25 @@ export function transformStream(readable, transformer) {
     },
     async pull(controller) {
       let enqueued = false;
-      const c = {
+      const wrappedController = {
         enqueue(d) {
           enqueued = true;
           controller.enqueue(d);
         }
       };
       while (!enqueued) {
-        const x = await reader.read();
-        if (x.done) {
+        const data = await reader.read();
+        if (data.done) {
           if (transformer.flush) {
             await transformer.flush(controller);
           }
           return controller.close();
         }
-        await transformer.transform(x.value, c);
+        await transformer.transform(data.value, wrappedController);
       }
     },
     cancel() {
       readable.cancel();
     }
   });
-
-  return tstream;
 }
