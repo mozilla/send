@@ -1,7 +1,7 @@
 const gen = require('../build/generate_l10n_map');
 
 const isServer = typeof gen === 'function';
-const prefix = isServer ? '/' : '';
+const prefix = '';
 let manifest = {};
 try {
   // eslint-disable-next-line node/no-missing-require

@@ -1,7 +1,7 @@
 import Nanobus from 'nanobus';
 import Keychain from './keychain';
-import { bytes } from './utils';
-import { metadata, downloadFile } from './api';
+import { delay, bytes } from './utils';
+import { metadata } from './api';
 
 export default class FileReceiver extends Nanobus {
   constructor(fileInfo) {
@@ -51,96 +51,107 @@ export default class FileReceiver extends Nanobus {
     this.state = 'ready';
   }
 
-  async streamToArrayBuffer(stream, streamSize) {
-    const reader = stream.getReader();
+  async streamToArrayBuffer(stream, streamSize, onprogress) {
     const result = new Uint8Array(streamSize);
     let offset = 0;
-
+    const reader = stream.getReader();
     let state = await reader.read();
     while (!state.done) {
       result.set(state.value, offset);
       offset += state.value.length;
       state = await reader.read();
+      onprogress([offset, streamSize]);
     }
 
+    onprogress([streamSize, streamSize]);
     return result.slice(0, offset).buffer;
   }
 
+  sendMessageToSw(msg) {
+    return new Promise((resolve, reject) => {
+      const channel = new MessageChannel();
+
+      channel.port1.onmessage = function(event) {
+        if (event.data === undefined) {
+          reject('bad response from serviceWorker');
+        } else if (event.data.error !== undefined) {
+          reject(event.data.error);
+        } else {
+          resolve(event.data);
+        }
+      };
+
+      navigator.serviceWorker.controller.postMessage(msg, [channel.port2]);
+    });
+  }
+
   async download(noSave = false) {
-    this.state = 'downloading';
-    this.downloadRequest = await downloadFile(
-      this.fileInfo.id,
-      this.keychain,
-      p => {
-        this.progress = p;
-        this.emit('progress');
+    const onprogress = p => {
+      this.progress = p;
+      this.emit('progress');
+    };
+
+    this.downloadRequest = {
+      cancel: () => {
+        this.sendMessageToSw({ request: 'cancel', id: this.fileInfo.id });
       }
-    );
+    };
 
     try {
-      const ciphertext = await this.downloadRequest.result;
-      this.downloadRequest = null;
-      this.msg = 'decryptingFile';
-      this.state = 'decrypting';
-      this.emit('decrypting');
+      this.state = 'downloading';
 
-      const dec = await this.keychain.decryptStream(ciphertext);
-      const plaintext = await this.streamToArrayBuffer(
-        dec.stream,
-        this.fileInfo.size
-      );
+      const info = {
+        request: 'init',
+        id: this.fileInfo.id,
+        filename: this.fileInfo.name,
+        type: this.fileInfo.type,
+        key: this.fileInfo.secretKey,
+        requiresPassword: this.fileInfo.requiresPassword,
+        password: this.fileInfo.password,
+        url: this.fileInfo.url,
+        size: this.fileInfo.size,
+        nonce: this.keychain.nonce,
+        noSave
+      };
+      await this.sendMessageToSw(info);
 
-      if (!noSave) {
-        await saveFile({
-          plaintext,
-          name: decodeURIComponent(this.fileInfo.name),
-          type: this.fileInfo.type
-        });
+      onprogress([0, this.fileInfo.size]);
+
+      if (noSave) {
+        const res = await fetch(`/api/download/${this.fileInfo.id}`);
+        if (res.status !== 200) {
+          throw new Error(res.status);
+        }
+      } else {
+        const downloadUrl = `${location.protocol}//${
+          location.host
+        }/api/download/${this.fileInfo.id}`;
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        document.body.appendChild(a);
+        a.click();
       }
+
+      let prog = 0;
+      while (prog < this.fileInfo.size) {
+        const msg = await this.sendMessageToSw({
+          request: 'progress',
+          id: this.fileInfo.id
+        });
+        prog = msg.progress;
+        onprogress([prog, this.fileInfo.size]);
+        await delay(1000);
+      }
+
+      this.downloadRequest = null;
       this.msg = 'downloadFinish';
       this.state = 'complete';
     } catch (e) {
       this.downloadRequest = null;
+      if (e === 'cancelled') {
+        throw new Error(0);
+      }
       throw e;
     }
   }
-}
-
-async function saveFile(file) {
-  return new Promise(function(resolve, reject) {
-    const dataView = new DataView(file.plaintext);
-    const blob = new Blob([dataView], { type: file.type });
-
-    if (navigator.msSaveBlob) {
-      navigator.msSaveBlob(blob, file.name);
-      return resolve();
-    } else if (/iPhone|fxios/i.test(navigator.userAgent)) {
-      // This method is much slower but createObjectURL
-      // is buggy on iOS
-      const reader = new FileReader();
-      reader.addEventListener('loadend', function() {
-        if (reader.error) {
-          return reject(reader.error);
-        }
-        if (reader.result) {
-          const a = document.createElement('a');
-          a.href = reader.result;
-          a.download = file.name;
-          document.body.appendChild(a);
-          a.click();
-        }
-        resolve();
-      });
-      reader.readAsDataURL(blob);
-    } else {
-      const downloadUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = downloadUrl;
-      a.download = file.name;
-      document.body.appendChild(a);
-      a.click();
-      URL.revokeObjectURL(downloadUrl);
-      setTimeout(resolve, 100);
-    }
-  });
 }

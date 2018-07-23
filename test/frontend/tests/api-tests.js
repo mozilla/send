@@ -13,7 +13,7 @@ describe('API', function() {
   describe('websocket upload', function() {
     it('returns file info on success', async function() {
       const keychain = new Keychain();
-      const enc = keychain.encryptStream(plaintext);
+      const enc = await keychain.encryptStream(plaintext);
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};
@@ -27,7 +27,7 @@ describe('API', function() {
 
     it('can be cancelled', async function() {
       const keychain = new Keychain();
-      const enc = keychain.encryptStream(plaintext);
+      const enc = await keychain.encryptStream(plaintext);
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};

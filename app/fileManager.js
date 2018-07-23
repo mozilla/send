@@ -150,6 +150,7 @@ export default function(state, emitter) {
 
   emitter.on('getMetadata', async () => {
     const file = state.fileInfo;
+
     const receiver = new FileReceiver(file);
     try {
       await receiver.getMetadata();
@@ -162,6 +163,7 @@ export default function(state, emitter) {
         }
       }
     }
+
     render();
   });
 

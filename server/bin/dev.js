@@ -7,12 +7,12 @@ const express = require('express');
 const expressWs = require('express-ws');
 const config = require('../config');
 
-const wsapp = express();
-expressWs(wsapp, null, { perMessageDeflate: false });
-wsapp.ws('/api/ws', require('../routes/ws'));
-wsapp.listen(8081, config.listen_address);
-
 module.exports = function(app, devServer) {
+  const wsapp = express();
+  expressWs(wsapp, null, { perMessageDeflate: false });
+  wsapp.ws('/api/ws', require('../routes/ws'));
+  wsapp.listen(8081, config.listen_address);
+
   assets.setMiddleware(devServer.middleware);
   locales.setMiddleware(devServer.middleware);
   routes(app);

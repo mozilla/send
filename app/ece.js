@@ -1,18 +1,18 @@
-require('buffer');
-import { ReadableStream, TransformStream } from 'web-streams-polyfill';
+import 'buffer';
+import { transformStream } from './streams';
 
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
 const KEY_LENGTH = 16;
 const MODE_ENCRYPT = 'encrypt';
 const MODE_DECRYPT = 'decrypt';
-const RS = 1048576;
+const RS = 1024 * 64;
 
 const encoder = new TextEncoder();
 
 function generateSalt(len) {
   const randSalt = new Uint8Array(len);
-  window.crypto.getRandomValues(randSalt);
+  crypto.getRandomValues(randSalt);
   return randSalt.buffer;
 }
 
@@ -28,7 +28,7 @@ class ECETransformer {
   }
 
   async generateKey() {
-    const inputKey = await window.crypto.subtle.importKey(
+    const inputKey = await crypto.subtle.importKey(
       'raw',
       this.ikm,
       'HKDF',
@@ -36,7 +36,7 @@ class ECETransformer {
       ['deriveKey']
     );
 
-    return window.crypto.subtle.deriveKey(
+    return crypto.subtle.deriveKey(
       {
         name: 'HKDF',
         salt: this.salt,
@@ -54,7 +54,7 @@ class ECETransformer {
   }
 
   async generateNonceBase() {
-    const inputKey = await window.crypto.subtle.importKey(
+    const inputKey = await crypto.subtle.importKey(
       'raw',
       this.ikm,
       'HKDF',
@@ -62,9 +62,9 @@ class ECETransformer {
       ['deriveKey']
     );
 
-    const base = await window.crypto.subtle.exportKey(
+    const base = await crypto.subtle.exportKey(
       'raw',
-      await window.crypto.subtle.deriveKey(
+      await crypto.subtle.deriveKey(
         {
           name: 'HKDF',
           salt: this.salt,
@@ -153,7 +153,7 @@ class ECETransformer {
 
   async encryptRecord(buffer, seq, isLast) {
     const nonce = this.generateNonce(seq);
-    const encrypted = await window.crypto.subtle.encrypt(
+    const encrypted = await crypto.subtle.encrypt(
       { name: 'AES-GCM', iv: nonce },
       this.key,
       this.pad(buffer, isLast)
@@ -163,7 +163,7 @@ class ECETransformer {
 
   async decryptRecord(buffer, seq, isLast) {
     const nonce = this.generateNonce(seq);
-    const data = await window.crypto.subtle.decrypt(
+    const data = await crypto.subtle.decrypt(
       {
         name: 'AES-GCM',
         iv: nonce,
@@ -218,13 +218,14 @@ class ECETransformer {
   }
 
   async flush(controller) {
+    //console.log('ece stream ends')
     if (this.prevChunk) {
       await this.transformPrevChunk(true, controller);
     }
   }
 }
 
-class BlobSlicer {
+export class BlobSlicer {
   constructor(blob, rs, mode) {
     this.blob = blob;
     this.index = 0;
@@ -258,35 +259,108 @@ class BlobSlicer {
   }
 }
 
-class BlobSliceStream extends ReadableStream {
-  constructor(blob, size, mode) {
-    super(new BlobSlicer(blob, size, mode));
+class StreamSlicer {
+  constructor(rs, mode) {
+    this.mode = mode;
+    this.rs = rs;
+    this.chunkSize = mode === MODE_ENCRYPT ? rs - 17 : 21;
+    this.partialChunk = new Uint8Array(this.chunkSize); //where partial chunks are saved
+    this.offset = 0;
+  }
+
+  send(buf, controller) {
+    controller.enqueue(buf);
+    if (this.chunkSize === 21 && this.mode === MODE_DECRYPT) {
+      this.chunkSize = this.rs;
+    }
+    this.partialChunk = new Uint8Array(this.chunkSize);
+    this.offset = 0;
+  }
+
+  //reslice input into record sized chunks
+  transform(chunk, controller) {
+    //console.log('Received chunk with %d bytes.', chunk.byteLength)
+    let i = 0;
+
+    if (this.offset > 0) {
+      const len = Math.min(chunk.byteLength, this.chunkSize - this.offset);
+      this.partialChunk.set(chunk.slice(0, len), this.offset);
+      this.offset += len;
+      i += len;
+
+      if (this.offset === this.chunkSize) {
+        this.send(this.partialChunk, controller);
+      }
+    }
+
+    while (i < chunk.byteLength) {
+      const remainingBytes = chunk.byteLength - i;
+      if (remainingBytes >= this.chunkSize) {
+        const record = chunk.slice(i, i + this.chunkSize);
+        i += this.chunkSize;
+        this.send(record, controller);
+      } else {
+        const end = chunk.slice(i, i + remainingBytes);
+        i += end.byteLength;
+        this.partialChunk.set(end);
+        this.offset = end.byteLength;
+      }
+    }
+  }
+
+  flush(controller) {
+    if (this.offset > 0) {
+      controller.enqueue(this.partialChunk.slice(0, this.offset));
+    }
   }
 }
 
 /*
-input: a blob containing data to be transformed
-key:  Uint8Array containing key of size KEY_LENGTH 
+input: a blob or a ReadableStream containing data to be transformed
+key:  Uint8Array containing key of size KEY_LENGTH
 mode: string, either 'encrypt' or 'decrypt'
 rs:   int containing record size, optional
 salt: ArrayBuffer containing salt of KEY_LENGTH length, optional
 */
 export default class ECE {
   constructor(input, key, mode, rs, salt) {
+    this.input = input;
+    this.key = key;
+    this.mode = mode;
+    this.rs = rs;
+    this.salt = salt;
     if (rs === undefined) {
-      rs = RS;
+      this.rs = RS;
     }
     if (salt === undefined) {
-      salt = generateSalt(KEY_LENGTH);
+      this.salt = generateSalt(KEY_LENGTH);
     }
+  }
 
-    this.streamInfo = {
-      recordSize: rs,
-      fileSize: 21 + input.size + 16 * Math.floor(input.size / (rs - 17))
+  info() {
+    return {
+      recordSize: this.rs,
+      fileSize:
+        21 + this.input.size + 16 * Math.floor(this.input.size / (this.rs - 17))
     };
-    const inputStream = new BlobSliceStream(input, rs, mode);
+  }
 
-    const ts = new TransformStream(new ECETransformer(mode, key, rs, salt));
-    this.stream = inputStream.pipeThrough(ts);
+  transform() {
+    let inputStream;
+
+    if (this.input instanceof Blob) {
+      inputStream = new ReadableStream(
+        new BlobSlicer(this.input, this.rs, this.mode)
+      );
+    } else {
+      inputStream = transformStream(
+        this.input,
+        new StreamSlicer(this.rs, this.mode)
+      );
+    }
+    return transformStream(
+      inputStream,
+      new ECETransformer(this.mode, this.key, this.rs, this.salt)
+    );
   }
 }

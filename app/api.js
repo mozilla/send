@@ -10,7 +10,7 @@ function post(obj) {
   };
 }
 
-function parseNonce(header) {
+export function parseNonce(header) {
   header = header || '';
   return header.split(' ')[1];
 }
@@ -55,10 +55,12 @@ export async function setParams(id, owner_token, params) {
 
 export async function fileInfo(id, owner_token) {
   const response = await fetch(`/api/info/${id}`, post({ owner_token }));
+
   if (response.ok) {
     const obj = await response.json();
     return obj;
   }
+
   throw new Error(response.status);
 }
 
@@ -159,8 +161,8 @@ async function upload(
 
       ws.send(buf);
 
-      onprogress([Math.min(streamInfo.fileSize, size), streamInfo.fileSize]);
-      size += streamInfo.recordSize;
+      onprogress([size, streamInfo.fileSize]);
+      size += buf.length;
       state = await reader.read();
       while (ws.bufferedAmount > streamInfo.recordSize * 2) {
         await delay();
@@ -196,6 +198,58 @@ export function uploadWs(encrypted, info, metadata, verifierB64, onprogress) {
     )
   };
 }
+
+////////////////////////
+
+async function downloadS(id, keychain, signal) {
+  const auth = await keychain.authHeader();
+
+  const response = await fetch(`/api/download/${id}`, {
+    signal: signal,
+    method: 'GET',
+    headers: { Authorization: auth }
+  });
+
+  const authHeader = response.headers.get('WWW-Authenticate');
+  if (authHeader) {
+    keychain.nonce = parseNonce(authHeader);
+  }
+
+  if (response.status !== 200) {
+    throw new Error(response.status);
+  }
+  //const fileSize = response.headers.get('Content-Length');
+
+  return response.body;
+}
+
+async function tryDownloadStream(id, keychain, signal, tries = 1) {
+  try {
+    const result = await downloadS(id, keychain, signal);
+    return result;
+  } catch (e) {
+    if (e.message === '401' && --tries > 0) {
+      return tryDownloadStream(id, keychain, signal, tries);
+    }
+    if (e.name === 'AbortError') {
+      throw new Error('0');
+    }
+    throw e;
+  }
+}
+
+export function downloadStream(id, keychain) {
+  const controller = new AbortController();
+  function cancel() {
+    controller.abort();
+  }
+  return {
+    cancel,
+    result: tryDownloadStream(id, keychain, controller.signal, 2)
+  };
+}
+
+//////////////////
 
 function download(id, keychain, onprogress, canceller) {
   const xhr = new XMLHttpRequest();

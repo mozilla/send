@@ -10,6 +10,7 @@ import storage from './storage';
 import metrics from './metrics';
 import experiments from './experiments';
 import Raven from 'raven-js';
+import './main.css';
 
 if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
   Raven.config(window.SENTRY_ID, window.RAVEN_CONFIG).install();
@@ -45,6 +46,9 @@ app.use((state, emitter) => {
   });
 });
 
+app.use(() => {
+  navigator.serviceWorker.register('/serviceWorker.js');
+});
 app.use(metrics);
 app.use(fileManager);
 app.use(dragManager);
