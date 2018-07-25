@@ -25,6 +25,9 @@ module.exports = function(app) {
           defaultSrc: ["'self'"],
           connectSrc: [
             "'self'",
+            'wss://*.dev.lcip.org',
+            'wss://*.mozaws.net',
+            'wss://send.firefox.com',
             'https://sentry.prod.mozaws.net',
             'https://www.google-analytics.com'
           ],

@@ -26,13 +26,15 @@ uploadSuccessConfirmHeader = Pripravljeno za pošiljanje
 uploadSvgAlt = Naloži
 uploadSuccessTimingHeader = Povezava do vaše datoteke bo potekla po enem prenosu ali v 24 urah.
 expireInfo = Povezava do vaše datoteke bo potekla čez { $downloadCount } ali { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 prenos
         [two] { $num } prenosa
         [few] { $num } prenosi
        *[other] { $num } prenosov
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 ura
         [two] { $num } uri
         [few] { $num } ure

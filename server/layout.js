@@ -30,7 +30,7 @@ module.exports = function(state, body = '') {
 
     <title>${state.title}</title>
 
-    <link rel="stylesheet" type="text/css" href="${assets.get('style.css')}" />
+    <link rel="stylesheet" type="text/css" href="${assets.get('app.css')}" />
 
     <!-- generic favicons -->
     <link rel="icon" href="${assets.get('favicon-32.png')}" sizes="32x32">
@@ -66,7 +66,7 @@ module.exports = function(state, body = '') {
 
     ${firaTag}
     <script defer src="/jsconfig.js"></script>
-    <script defer src="${assets.get('runtime.js')}"></script>
+    <!--<script defer src="${assets.get('runtime.js')}"></script>-->
     <script defer src="${assets.get('vendor.js')}"></script>
     <script defer src="${locales.get(state.locale)}"></script>
     <script defer src="${assets.get('cryptofill.js')}"></script>

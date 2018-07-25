@@ -26,12 +26,14 @@ uploadSuccessConfirmHeader = Připraveno k odeslání
 uploadSvgAlt = Nahrát
 uploadSuccessTimingHeader = Platnost odkazu na váš soubor vyprší po jeho prvním stažení, nebo po 24 hodinách.
 expireInfo = Platnost odkazu na váš soubor vyprší po { $downloadCount } nebo { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] jednom stažení
         [few] { $num } staženích
        *[other] { $num } staženích
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] jedné hodině
         [few] { $num } hodinách
        *[other] { $num } hodinách
@@ -88,8 +90,8 @@ expiryFileList = Platnost vyprší za
 deleteFileList = Smazat
 nevermindButton = Nevadí
 legalHeader = Podmínky a ochrana soukromí
-legalNoticeTestPilot = Firefox Send je ve fázi experimentu projektu Test Pilot a platí tak pro něj stejné <a>Podmínky používání</a> a <a>Zásady ochrany soukromí</a>. Více o tomto experimentu a sbíraných datech se dozvíte <a>zde</a>.
-legalNoticeMozilla = Používání webové služby Firefox Send se řídí <a>Zásadami ochrany soukromí</a> a <a>Podmínkami používání</a> webových stránek Mozilly.
+legalNoticeTestPilot = Firefox Send je ve fázi experimentu projektu Test Pilot a platí tak pro něj stejné <a>Podmínky používání</a> a <a>Zásady ochrany osobních údajů</a>. Více o tomto experimentu a sbíraných datech se dozvíte <a>zde</a>.
+legalNoticeMozilla = Používání webové služby Firefox Send se řídí <a>Zásadami ochrany osobních údajů</a> a <a>Podmínkami používání</a> webových stránek Mozilly.
 deletePopupText = Smazat tento soubor?
 deletePopupYes = Ano
 deletePopupCancel = Zrušit

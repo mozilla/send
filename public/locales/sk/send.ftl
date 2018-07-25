@@ -26,12 +26,14 @@ uploadSuccessConfirmHeader = Pripravené na odoslanie
 uploadSvgAlt = Nahrať
 uploadSuccessTimingHeader = Platnosť odkazu vyprší po 1 prevzatí alebo po uplynutí 24 hodín.
 expireInfo = Platnosť odkazu na váš súbor vyprší po { $downloadCount } alebo po { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 prevzatí
         [few] { $num } prevzatiach
        *[other] { $num } prevzatiach
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 hodine
         [few] { $num } hodinách
        *[other] { $num } hodinách

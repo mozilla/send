@@ -26,11 +26,13 @@ uploadSuccessConfirmHeader = Ihegga i walluy
 uploadSvgAlt = Sali
 uploadSuccessTimingHeader = Aseɣwen ar ufaylu-ik ad yemmet ticki yuder-d neɣ deffir n 24 n yisragen.
 expireInfo = Aseɣwen icudden ar ufaylu-inek ad yemmet send { $downloadCount } naɣ { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] 1 usider
        *[other] { $num } isidar
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] 1 usrag
        *[other] { $num } isragen
     }

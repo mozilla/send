@@ -2,46 +2,50 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const VersionPlugin = require('./build/version_plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const IS_DEV = process.env.NODE_ENV === 'development';
 
-const regularJSOptions = {
+const webJsOptions = {
   babelrc: false,
   presets: [['env', { modules: false }], 'stage-2'],
   // yo-yoify converts html template strings to direct dom api calls
   plugins: ['yo-yoify']
 };
 
-const entry = {
-  // babel-polyfill and fluent are directly included in vendor
-  // because they are not explicitly referenced by app
-  vendor: ['babel-polyfill', 'fluent'],
-  app: ['./app/main.js'],
-  style: ['./app/main.css'],
-  android: ['./android/android.js']
-};
-
-if (IS_DEV) {
-  entry.tests = ['./test/frontend/index.js'];
-  // istanbul instruments the source for code coverage
-  regularJSOptions.plugins.push('istanbul');
-}
-
-module.exports = {
-  entry,
+const serviceWorker = {
+  target: 'webworker',
+  entry: {
+    serviceWorker: './app/serviceWorker.js'
+  },
   output: {
-    filename: '[name].[chunkhash:8].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
-  devtool: IS_DEV && 'inline-source-map',
+  devtool: 'source-map'
+};
+
+const web = {
+  target: 'web',
+  entry: {
+    // babel-polyfill and fluent are directly included in vendor
+    // because they are not explicitly referenced by app
+    vendor: ['babel-polyfill', 'fluent'],
+    app: ['./app/main.js'],
+    android: ['./android/android.js']
+  },
+  output: {
+    filename: '[name].[hash:8].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         oneOf: [
           {
-            include: require.resolve('./assets/cryptofill'),
+            include: [require.resolve('./assets/cryptofill')],
             use: [
               {
                 loader: 'file-loader',
@@ -49,17 +53,6 @@ module.exports = {
                   name: '[name].[hash:8].[ext]'
                 }
               }
-            ]
-          },
-          {
-            // inlines version from package.json into header/index.js
-            include: require.resolve('./app/templates/header'),
-            use: [
-              {
-                loader: 'babel-loader',
-                options: regularJSOptions
-              },
-              './build/version_loader'
             ]
           },
           {
@@ -90,7 +83,7 @@ module.exports = {
               path.resolve(__dirname, 'node_modules/fluent-intl-polyfill'),
               path.resolve(__dirname, 'node_modules/intl-pluralrules')
             ],
-            options: regularJSOptions
+            options: webJsOptions
           },
           {
             // Strip asserts from our deps, mainly choojs family
@@ -134,25 +127,13 @@ module.exports = {
           use: [
             {
               loader: 'css-loader',
-              options: { modules: false, importLoaders: 1 }
+              options: {
+                importLoaders: 1
+              }
             },
             'postcss-loader'
           ]
         })
-      },
-      {
-        // creates version.json for /__version__ from package.json
-        test: require.resolve('./package.json'),
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'version.json'
-            }
-          },
-          'extract-loader',
-          './build/package_json_loader'
-        ]
       },
       {
         // creates a js script for each ftl
@@ -165,6 +146,7 @@ module.exports = {
             }
           },
           'extract-loader',
+          'babel-loader',
           './build/fluent_loader'
         ]
       },
@@ -195,22 +177,18 @@ module.exports = {
     new webpack.IgnorePlugin(/dist/), // used in common/*.js
     new webpack.IgnorePlugin(/require-from-string/), // used in common/locales.js
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: ({ resource }) => /node_modules/.test(resource)
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'runtime'
-    }),
     new ExtractTextPlugin({
-      filename: 'style.[contenthash:8].css'
+      filename: '[name].[hash:8].css'
     }),
+    new VersionPlugin(),
     new ManifestPlugin() // used by server side to resolve hashed assets
   ],
+  devtool: 'source-map',
   devServer: {
+    before: require('./server/bin/dev'),
     compress: true,
+    hot: false,
     host: '0.0.0.0',
-    before: IS_DEV ? require('./server/bin/dev') : undefined,
     proxy: {
       '/api/ws': {
         target: 'ws://localhost:8081',
@@ -219,4 +197,16 @@ module.exports = {
       }
     }
   }
+};
+
+module.exports = (env, argv) => {
+  const mode = argv.mode || 'production';
+  console.error(`mode: ${mode}`);
+  web.mode = serviceWorker.mode = mode;
+  if (mode === 'development') {
+    // istanbul instruments the source for code coverage
+    webJsOptions.plugins.push('istanbul');
+    web.entry.tests = ['./test/frontend/index.js'];
+  }
+  return [web, serviceWorker];
 };

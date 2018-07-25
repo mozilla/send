@@ -11,14 +11,17 @@ if (config.sentry_dsn) {
 }
 
 const app = express();
+
 expressWs(app, null, { perMessageDeflate: false });
 app.ws('/api/ws', require('../routes/ws'));
 routes(app);
 
 app.use(
   express.static(path.resolve(__dirname, '../../dist/'), {
-    setHeaders: function(res) {
-      res.set('Cache-Control', 'public, max-age=31536000, immutable');
+    setHeaders: function(res, path) {
+      if (!/serviceWorker\.js$/.test(path)) {
+        res.set('Cache-Control', 'public, max-age=31536000, immutable');
+      }
       res.removeHeader('Pragma');
     }
   })

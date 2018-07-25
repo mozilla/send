@@ -10,7 +10,9 @@ const express = require('express');
 const devRoutes = require('../../server/bin/test');
 const app = express();
 
-const wpm = middleware(webpack(config), { logLevel: 'silent' });
+const wpm = middleware(webpack(config(null, { mode: 'development' })), {
+  logLevel: 'silent'
+});
 app.use(wpm);
 devRoutes(app, { middleware: wpm });
 
@@ -30,7 +32,8 @@ const server = app.listen(async function() {
     page.on('pageerror', console.log.bind(console));
     await page.goto(`http://127.0.0.1:${server.address().port}/test`);
     await page.waitFor(() => typeof runner.testResults !== 'undefined', {
-      timeout: 5000
+      polling: 1000,
+      timeout: 15000
     });
     const results = await page.evaluate(() => runner.testResults);
     const coverage = await page.evaluate(() => __coverage__);

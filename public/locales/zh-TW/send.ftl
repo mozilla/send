@@ -26,10 +26,12 @@ uploadSuccessConfirmHeader = 準備好傳送
 uploadSvgAlt = 上傳
 uploadSuccessTimingHeader = 您的檔案鏈結將會在首次下載，或 24 小時後失效。
 expireInfo = 檔案鏈結將在 { $downloadCount }或 { $timespan }後失效。
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
        *[other] { $num } 次下載
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
        *[other] { $num } 小時
     }
 copyUrlFormLabelWithName = 複製並分享鏈結來傳送您的檔案: { $filename }

@@ -26,11 +26,13 @@ uploadSuccessConfirmHeader = Saatmiseks valmis
 uploadSvgAlt = Laadi üles
 uploadSuccessTimingHeader = Link failile aegub pärast 1. allalaadimist või 24 tunni möödumisel.
 expireInfo = Link failile aegub peale { $downloadCount } või { $timespan }.
-downloadCount = { $num ->
+downloadCount =
+    { $num ->
         [one] üht allalaadimist
        *[other] { $num } allalaadimist
     }
-timespanHours = { $num ->
+timespanHours =
+    { $num ->
         [one] üht tundi
        *[other] { $num } tundi
     }

@@ -1,6 +1,6 @@
 const genmap = require('../build/generate_asset_map');
 const isServer = typeof genmap === 'function';
-const prefix = isServer ? '/' : '';
+const prefix = '';
 let manifest = {};
 try {
   //eslint-disable-next-line node/no-missing-require
