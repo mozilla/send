@@ -1,6 +1,12 @@
 import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
-import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
+import {
+  copyToClipboard,
+  delay,
+  fadeOut,
+  openLinksInNewTab,
+  percent
+} from './utils';
 import * as metrics from './metrics';
 
 export default function(state, emitter) {
@@ -98,12 +104,14 @@ export default function(state, emitter) {
       metrics.completedUpload(ownedFile);
 
       state.storage.addFile(ownedFile);
-      //const cancelBtn = document.getElementById('cancel-upload');
-      //if (cancelBtn) {
-      //  cancelBtn.hidden = 'hidden';
-      //}
-      //await delay(1000);
-      //await fadeOut('.page');
+      const cancelBtn = document.getElementById('cancel-upload');
+      if (cancelBtn) {
+        cancelBtn.hidden = 'hidden';
+      }
+      if (document.querySelector('.page')) {
+        await delay(1000);
+        await fadeOut('.page');
+      }
       emitter.emit('pushState', `/share/${ownedFile.id}`);
     } catch (err) {
       if (err.message === '0') {
@@ -174,8 +182,10 @@ export default function(state, emitter) {
       await dl;
       const time = Date.now() - start;
       const speed = size / (time / 1000);
-      await delay(1000);
-      //await fadeOut('.page');
+      if (document.querySelector('.page')) {
+        await delay(1000);
+        await fadeOut('.page');
+      }
       state.storage.totalDownloads += 1;
       state.transfer.reset();
       metrics.completedDownload({ size, time, speed });
