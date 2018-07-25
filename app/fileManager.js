@@ -112,7 +112,7 @@ export default function(state, emitter) {
         render();
       } else {
         // eslint-disable-next-line no-console
-        console.error('err' + err);
+        console.error(err);
         state.raven.captureException(err);
         metrics.stoppedUpload({ size, type, err });
         emitter.emit('pushState', '/error');

@@ -54,13 +54,8 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                 // TODO Currently this causes a Permission Denied error
                 // val stream = contentResolver.openInputStream(imageUri)
             }
-//            mWebView!!.loadUrl("file:///android_asset/intent-target.html")
-
-//        } else {
-//            mWebView!!.loadUrl("file:///android_asset/index.html")
         }
-            mWebView!!.loadUrl("file:///android_asset/index.html")
-
+        mWebView!!.loadUrl("file:///android_asset/index.html")
     }
 
     @SuppressLint("NewApi")
