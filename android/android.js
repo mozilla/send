@@ -5,6 +5,67 @@ const MAXFILESIZE = 1024 * 1024 * 1024 * 2;
 const EventEmitter = require('events');
 const emitter = new EventEmitter();
 
+function dom(tagName, attributes, children = []) {
+  const node = document.createElement(tagName);
+  for (const name in attributes) {
+    if (name.indexOf('on') === 0) {
+      node[name] = attributes[name];
+    } else if (name === 'htmlFor') {
+      node.htmlFor = attributes.htmlFor;
+    } else if (name === 'className') {
+      node.className = attributes.className;
+    } else {
+      node.setAttribute(name, attributes[name]);
+    }
+  }
+  if (!(children instanceof Array)) {
+    children = [children];
+  }
+  for (let child of children) {
+    if (typeof child === 'string') {
+      child = document.createTextNode(child);
+    }
+    node.appendChild(child);
+  }
+  return node;
+}
+
+function uploadComplete(file) {
+  document.body.innerHTML = '';
+  const input = dom('input', { id: 'url', value: file.url });
+  const copy = dom(
+    'button',
+    {
+      id: 'copy-button',
+      className: 'button',
+      onclick: () => {
+        input.select();
+        document.execCommand('copy');
+        input.blur();
+        copy.textContent = 'Copied!';
+        setTimeout(function() {
+          copy.textContent = 'Copy to clipboard';
+        }, 2000);
+      }
+    },
+    'Copy to clipboard'
+  );
+  const node = dom(
+    'div',
+    { id: 'striped' },
+    dom('div', { id: 'white' }, [
+      input,
+      copy,
+      dom(
+        'button',
+        { id: 'send-another', className: 'button', onclick: render },
+        'Send another file'
+      )
+    ])
+  );
+  document.body.appendChild(node);
+}
+
 const state = {
   storage: {
     files: [],
@@ -14,42 +75,7 @@ const state = {
     writeFile: function(file) {
       console.log('WRITEFILE', file);
     },
-    addFile: function(file) {
-      console.log('ADDFILE' + JSON.stringify(file));
-      document.body.innerHTML = '';
-      const node = document.createElement('input');
-      node.id = 'url';
-      node.value = file.url;
-      const white = document.createElement('div');
-      white.id = 'white';
-      white.appendChild(node);
-      const striped = document.createElement('div');
-      striped.id = 'striped';
-      striped.appendChild(white);
-      const copy = document.createElement('button');
-      copy.id = 'copy-button';
-      copy.className = 'button';
-      copy.textContent = 'Copy to clipboard';
-      copy.onclick = function() {
-        node.select();
-        document.execCommand('copy');
-        node.blur();
-        copy.textContent = 'Copied!';
-        setTimeout(function() {
-          copy.textContent = 'Copy to clipboard';
-        }, 2000);
-      };
-      white.appendChild(copy);
-      const button = document.createElement('button');
-      button.id = 'send-another';
-      button.className = 'button';
-      button.textContent = 'Send another file';
-      button.onclick = function() {
-        render();
-      };
-      white.appendChild(button);
-      document.body.appendChild(striped);
-    },
+    addFile: uploadComplete,
     totalUploads: 0
   },
   transfer: null,
@@ -59,55 +85,50 @@ const state = {
   route: '/'
 };
 
+function upload(event) {
+  event.preventDefault();
+  const target = event.target;
+  const file = target.files[0];
+  if (file.size === 0) {
+    return;
+  }
+  if (file.size > MAXFILESIZE) {
+    console.log('file too big (no bigger than ' + MAXFILESIZE + ')');
+    return;
+  }
+
+  emitter.emit('upload', { file: file, type: 'click' });
+}
+
 function render() {
   document.body.innerHTML = '';
-  const striped = document.createElement('div');
-  striped.id = 'striped';
-  const white = document.createElement('div');
-  white.id = 'white';
-  striped.appendChild(white);
+  const striped = dom(
+    'div',
+    { id: 'striped' },
+    dom('div', { id: 'white' }, [
+      dom('label', { id: 'label', htmlFor: 'input' }, 'Choose file'),
+      dom('input', {
+        id: 'input',
+        type: 'file',
+        name: 'input',
+        onchange: upload
+      })
+    ])
+  );
   document.body.appendChild(striped);
-  const label = document.createElement('label');
-  label.id = 'label';
-  label.htmlFor = 'input';
-  label.textContent = 'Choose file';
-  white.appendChild(label);
-  const fileInput = document.createElement('input');
-  fileInput.id = 'input';
-  fileInput.type = 'file';
-  fileInput.name = 'input';
-  fileInput.onchange = function upload(event) {
-    event.preventDefault();
-    const target = event.target;
-    const file = target.files[0];
-    if (file.size === 0) {
-      return;
-    }
-    if (file.size > MAXFILESIZE) {
-      console.log('file too big (no bigger than ' + MAXFILESIZE + ')');
-      return;
-    }
-
-    emitter.emit('upload', { file: file, type: 'click' });
-  };
-
-  white.appendChild(fileInput);
 }
 
 emitter.on('render', function() {
   document.body.innerHTML = '';
-  const node = document.createElement('div');
-  const progress = document.createElement('span');
   const percent =
     (state.transfer.progress[0] / state.transfer.progress[1]) * 100;
-  progress.style.display = 'inline-block';
-  node.style.backgroundColor = 'white';
-  node.style.width = '100%';
-  progress.style.width = `${percent}%`;
-  progress.style.backgroundColor = 'blue';
-  progress.textContent = 'Transmitting';
-  //node.textContent = `onrender ${renderNum}`;
-  node.appendChild(progress);
+  const node = dom(
+    'div',
+    { style: 'background-color: white; width: 100%' },
+    dom('span', {
+      style: `display: inline-block; width: ${percent}%; background-color: blue`
+    })
+  );
   document.body.appendChild(node);
 });
 
