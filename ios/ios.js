@@ -143,16 +143,16 @@ try {
   console.error(e);
 }
 
-window.addEventListener(
-  'message',
-  event => {
-    fetch(event.data)
-      .then(res => res.blob())
-      .then(blob => {
-        emitter.emit('upload', { file: blob, type: 'share' });
-      });
-  },
-  false
-);
+function sendBase64EncodedFromSwift(encoded) {
+  fetch(encoded)
+    .then(res => res.blob())
+    .then(blob => {
+      emitter.emit('upload', { file: blob, type: 'share' });
+    });
+}
+
+window.sendBase64EncodedFromSwift = sendBase64EncodedFromSwift;
 
 render();
+
+window.webkit.messageHandlers['loaded'].postMessage('');

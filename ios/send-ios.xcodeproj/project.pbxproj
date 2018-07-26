@@ -16,7 +16,35 @@
 		E355478921092E22009D206E /* assets in Resources */ = {isa = PBXBuildFile; fileRef = E355478821092E22009D206E /* assets */; };
 		E355478C210A534F009D206E /* ios.js in Resources */ = {isa = PBXBuildFile; fileRef = E355478B210A534F009D206E /* ios.js */; };
 		E355478E210A5357009D206E /* generate-bundle.js in Resources */ = {isa = PBXBuildFile; fileRef = E355478D210A5357009D206E /* generate-bundle.js */; };
+		E397A0B2210A641C00A978D4 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E397A0B1210A641C00A978D4 /* ActionViewController.swift */; };
+		E397A0B5210A641C00A978D4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E397A0B3210A641C00A978D4 /* MainInterface.storyboard */; };
+		E397A0B9210A641C00A978D4 /* send-ios-action-extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E397A0AF210A641C00A978D4 /* send-ios-action-extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E397A0BF210A6B5500A978D4 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = E397A0BE210A6B5500A978D4 /* assets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E397A0B7210A641C00A978D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E34149BA21017A3900930775 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E397A0AE210A641C00A978D4;
+			remoteInfo = "send-ios-action-extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E397A0BD210A641C00A978D4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E397A0B9210A641C00A978D4 /* send-ios-action-extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E34149C221017A3900930775 /* send-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "send-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,10 +58,22 @@
 		E355478821092E22009D206E /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		E355478B210A534F009D206E /* ios.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ios.js; sourceTree = SOURCE_ROOT; };
 		E355478D210A5357009D206E /* generate-bundle.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "generate-bundle.js"; sourceTree = SOURCE_ROOT; };
+		E397A0AF210A641C00A978D4 /* send-ios-action-extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "send-ios-action-extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E397A0B1210A641C00A978D4 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		E397A0B4210A641C00A978D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		E397A0B6210A641C00A978D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E397A0BE210A6B5500A978D4 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = "send-ios/assets"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E34149BF21017A3900930775 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E397A0AC210A641C00A978D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				E34149C421017A3900930775 /* send-ios */,
+				E397A0B0210A641C00A978D4 /* send-ios-action-extension */,
 				E34149C321017A3900930775 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				E34149C221017A3900930775 /* send-ios.app */,
+				E397A0AF210A641C00A978D4 /* send-ios-action-extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +118,17 @@
 			path = "send-ios";
 			sourceTree = "<group>";
 		};
+		E397A0B0210A641C00A978D4 /* send-ios-action-extension */ = {
+			isa = PBXGroup;
+			children = (
+				E397A0BE210A6B5500A978D4 /* assets */,
+				E397A0B1210A641C00A978D4 /* ActionViewController.swift */,
+				E397A0B3210A641C00A978D4 /* MainInterface.storyboard */,
+				E397A0B6210A641C00A978D4 /* Info.plist */,
+			);
+			path = "send-ios-action-extension";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -87,15 +140,34 @@
 				E34149BE21017A3900930775 /* Sources */,
 				E34149BF21017A3900930775 /* Frameworks */,
 				E34149C021017A3900930775 /* Resources */,
+				E397A0BD210A641C00A978D4 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E397A0B8210A641C00A978D4 /* PBXTargetDependency */,
 			);
 			name = "send-ios";
 			productName = "send-ios";
 			productReference = E34149C221017A3900930775 /* send-ios.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E397A0AE210A641C00A978D4 /* send-ios-action-extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E397A0BC210A641C00A978D4 /* Build configuration list for PBXNativeTarget "send-ios-action-extension" */;
+			buildPhases = (
+				E397A0AB210A641C00A978D4 /* Sources */,
+				E397A0AC210A641C00A978D4 /* Frameworks */,
+				E397A0AD210A641C00A978D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "send-ios-action-extension";
+			productName = "send-ios-action-extension";
+			productReference = E397A0AF210A641C00A978D4 /* send-ios-action-extension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -108,6 +180,9 @@
 				ORGANIZATIONNAME = "Donovan Preston";
 				TargetAttributes = {
 					E34149C121017A3900930775 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					E397A0AE210A641C00A978D4 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
 				};
@@ -126,6 +201,7 @@
 			projectRoot = "";
 			targets = (
 				E34149C121017A3900930775 /* send-ios */,
+				E397A0AE210A641C00A978D4 /* send-ios-action-extension */,
 			);
 		};
 /* End PBXProject section */
@@ -142,6 +218,15 @@
 				E355478521028193009D206E /* help.html in Resources */,
 				E34149CD21017A3D00930775 /* Assets.xcassets in Resources */,
 				E34149CB21017A3A00930775 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E397A0AD210A641C00A978D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E397A0B5210A641C00A978D4 /* MainInterface.storyboard in Resources */,
+				E397A0BF210A6B5500A978D4 /* assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +258,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E397A0AB210A641C00A978D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E397A0B2210A641C00A978D4 /* ActionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E397A0B8210A641C00A978D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E397A0AE210A641C00A978D4 /* send-ios-action-extension */;
+			targetProxy = E397A0B7210A641C00A978D4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E34149C921017A3A00930775 /* Main.storyboard */ = {
@@ -190,6 +291,14 @@
 				E34149CF21017A3D00930775 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E397A0B3210A641C00A978D4 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E397A0B4210A641C00A978D4 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -312,6 +421,7 @@
 		E34149D521017A3D00930775 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "send-ios/Info.plist";
@@ -329,6 +439,7 @@
 		E34149D621017A3D00930775 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "send-ios/Info.plist";
@@ -338,6 +449,42 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mozilla.send-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E397A0BA210A641C00A978D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "send-ios-action-extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mozilla.send-ios.send-ios-action-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E397A0BB210A641C00A978D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "send-ios-action-extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mozilla.send-ios.send-ios-action-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -360,6 +507,15 @@
 			buildConfigurations = (
 				E34149D521017A3D00930775 /* Debug */,
 				E34149D621017A3D00930775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E397A0BC210A641C00A978D4 /* Build configuration list for PBXNativeTarget "send-ios-action-extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E397A0BA210A641C00A978D4 /* Debug */,
+				E397A0BB210A641C00A978D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

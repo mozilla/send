@@ -15,6 +15,7 @@ class ViewController: UIViewController, WKScriptMessageHandler {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.webView.frame = self.view.bounds
+        self.webView?.configuration.userContentController.add(self, name: "loaded")
         self.webView?.configuration.userContentController.add(self, name: "copy")
         if let url = Bundle.main.url(
             forResource: "index",
