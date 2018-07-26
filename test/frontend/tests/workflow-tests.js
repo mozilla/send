@@ -1,4 +1,5 @@
 import assert from 'assert';
+import Archive from '../../../app/archive';
 import FileSender from '../../../app/fileSender';
 import FileReceiver from '../../../app/fileReceiver';
 
@@ -11,12 +12,13 @@ const noSave = true || !headless; // only run the saveFile code if headless
 // FileSender uses a File in real life but a Blob works for testing
 const blob = new Blob([new ArrayBuffer(1024 * 128)], { type: 'text/plain' });
 blob.name = 'test.txt';
+const archive = new Archive([blob]);
 navigator.serviceWorker.register('/serviceWorker.js');
 
 describe('Upload / Download flow', function() {
   this.timeout(0);
   it('can only download once by default', async function() {
-    const fs = new FileSender(blob);
+    const fs = new FileSender(archive);
     const file = await fs.upload();
     const fr = new FileReceiver({
       secretKey: file.toJSON().secretKey,
@@ -36,7 +38,7 @@ describe('Upload / Download flow', function() {
   });
 
   it('downloads with the correct password', async function() {
-    const fs = new FileSender(blob);
+    const fs = new FileSender(archive);
     const file = await fs.upload();
     await file.setPassword('magic');
     const fr = new FileReceiver({
@@ -53,7 +55,7 @@ describe('Upload / Download flow', function() {
   });
 
   it('blocks invalid passwords from downloading', async function() {
-    const fs = new FileSender(blob);
+    const fs = new FileSender(archive);
     const file = await fs.upload();
     await file.setPassword('magic');
     const fr = new FileReceiver({
@@ -81,7 +83,7 @@ describe('Upload / Download flow', function() {
   });
 
   it('retries a bad nonce', async function() {
-    const fs = new FileSender(blob);
+    const fs = new FileSender(archive);
     const file = await fs.upload();
     const fr = new FileReceiver({
       secretKey: file.toJSON().secretKey,
@@ -90,11 +92,11 @@ describe('Upload / Download flow', function() {
       requiresPassword: false
     });
     await fr.getMetadata();
-    assert.equal(fr.fileInfo.name, blob.name);
+    assert.equal(fr.fileInfo.name, archive.name);
   });
 
   it('can cancel the upload', async function() {
-    const fs = new FileSender(blob);
+    const fs = new FileSender(archive);
     const up = fs.upload();
     fs.cancel(); // before encrypting
     try {
@@ -122,7 +124,7 @@ describe('Upload / Download flow', function() {
   });
 
   it('can cancel the download', async function() {
-    const fs = new FileSender(blob);
+    const fs = new FileSender(archive);
     const file = await fs.upload();
     const fr = new FileReceiver({
       secretKey: file.toJSON().secretKey,
@@ -142,7 +144,7 @@ describe('Upload / Download flow', function() {
 
   it('can increase download count on download', async function() {
     this.timeout(0);
-    const fs = new FileSender(blob);
+    const fs = new FileSender(archive);
     const file = await fs.upload();
     const fr = new FileReceiver({
       secretKey: file.toJSON().secretKey,
@@ -157,7 +159,7 @@ describe('Upload / Download flow', function() {
   });
 
   it('does not increase download count when download cancelled', async function() {
-    const fs = new FileSender(blob);
+    const fs = new FileSender(archive);
     const file = await fs.upload();
     const fr = new FileReceiver({
       secretKey: file.toJSON().secretKey,
@@ -178,7 +180,7 @@ describe('Upload / Download flow', function() {
   });
 
   it('can allow multiple downloads', async function() {
-    const fs = new FileSender(blob);
+    const fs = new FileSender(archive);
     const file = await fs.upload();
     const fr = new FileReceiver({
       secretKey: file.toJSON().secretKey,
@@ -204,7 +206,7 @@ describe('Upload / Download flow', function() {
   });
 
   it('can delete the file before download', async function() {
-    const fs = new FileSender(blob);
+    const fs = new FileSender(archive);
     const file = await fs.upload();
     const fr = new FileReceiver({
       secretKey: file.toJSON().secretKey,

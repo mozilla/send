@@ -1,5 +1,5 @@
 import { arrayToB64, b64ToArray } from './utils';
-import ECE from './ece.js';
+import { decryptStream, encryptStream } from './ece.js';
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
@@ -173,24 +173,20 @@ export default class Keychain {
           iv: arrayToB64(this.iv),
           name: metadata.name,
           size: metadata.size,
-          type: metadata.type || 'application/octet-stream'
+          type: metadata.type || 'application/octet-stream',
+          manifest: metadata.manifest || {}
         })
       )
     );
     return ciphertext;
   }
 
-  encryptStream(plaintext) {
-    const ece = new ECE(plaintext, this.rawSecret, 'encrypt');
-    return {
-      stream: ece.transform(),
-      streamInfo: ece.info()
-    };
+  encryptStream(plainStream) {
+    return encryptStream(plainStream, this.rawSecret);
   }
 
   decryptStream(cryptotext) {
-    const ece = new ECE(cryptotext, this.rawSecret, 'decrypt');
-    return ece.transform();
+    return decryptStream(cryptotext, this.rawSecret);
   }
 
   async decryptFile(ciphertext) {
