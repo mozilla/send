@@ -11,8 +11,9 @@ import WebKit
 import MobileCoreServices
 
 var typesToLoad = [("com.adobe.pdf", "application/pdf"), ("public.png", "image/png"),
-                   ("public.jpeg", "image/jpeg"), ("com.compuserve.gif", "image/gif"),
-                   ("com.microsoft.bmp", "image/bmp"), ("public.plain-text", "text/plain")]
+                   ("public.jpeg", "image/jpeg"), ("public.jpeg-2000", "image/jp2"),
+                   ("com.compuserve.gif", "image/gif"), ("com.microsoft.bmp", "image/bmp"),
+                   ("public.plain-text", "text/plain")]
 
 class ActionViewController: UIViewController, WKScriptMessageHandler {
 
