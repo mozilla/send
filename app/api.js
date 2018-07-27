@@ -137,7 +137,12 @@ async function upload(
   const host = window.location.hostname;
   const port = window.location.port;
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-  const ws = await asyncInitWebSocket(`${protocol}//${host}:${port}/api/ws`);
+  const endpoint =
+    window.location.protocol === 'file:'
+      ? 'wss://send2.dev.lcip.org/api/ws'
+      : `${protocol}//${host}:${port}/api/ws`;
+
+  const ws = await asyncInitWebSocket(endpoint);
 
   try {
     const metadataHeader = arrayToB64(new Uint8Array(metadata));

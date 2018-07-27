@@ -31,7 +31,8 @@ const web = {
     // babel-polyfill and fluent are directly included in vendor
     // because they are not explicitly referenced by app
     vendor: ['babel-polyfill', 'fluent'],
-    app: ['./app/main.js']
+    app: ['./app/main.js'],
+    android: ['./android/android.js']
   },
   output: {
     filename: '[name].[hash:8].js',

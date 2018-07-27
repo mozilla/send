@@ -108,8 +108,10 @@ export default function(state, emitter) {
       if (cancelBtn) {
         cancelBtn.hidden = 'hidden';
       }
-      await delay(1000);
-      await fadeOut('.page');
+      if (document.querySelector('.page')) {
+        await delay(1000);
+        await fadeOut('.page');
+      }
       emitter.emit('pushState', `/share/${ownedFile.id}`);
     } catch (err) {
       if (err.message === '0') {
@@ -180,8 +182,10 @@ export default function(state, emitter) {
       await dl;
       const time = Date.now() - start;
       const speed = size / (time / 1000);
-      await delay(1000);
-      await fadeOut('.page');
+      if (document.querySelector('.page')) {
+        await delay(1000);
+        await fadeOut('.page');
+      }
       state.storage.totalDownloads += 1;
       state.transfer.reset();
       metrics.completedDownload({ size, time, speed });

@@ -15,10 +15,10 @@ class VersionPlugin {
           return version;
         },
         size() {
-          return version.length
+          return version.length;
         }
-      }
-    })
+      };
+    });
   }
 }
 

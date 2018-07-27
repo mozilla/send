@@ -12,14 +12,16 @@ import android.webkit.WebView
 import android.webkit.WebMessage
 import android.util.Log
 import android.util.Base64
-import android.provider.MediaStore
-import android.R.attr.data
+import android.webkit.ConsoleMessage
+import android.webkit.WebChromeClient
 
-
-
-
-
-
+internal class LoggingWebChromeClient : WebChromeClient() {
+    override fun onConsoleMessage(cm: ConsoleMessage): Boolean {
+        Log.w("CONTENT", String.format("%s @ %d: %s",
+                cm.message(), cm.lineNumber(), cm.sourceId()))
+        return true
+    }
+}
 
 class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
     private var mWebView: AdvancedWebView? = null
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
 
         mWebView = findViewById<WebView>(R.id.webview) as AdvancedWebView
         mWebView!!.setListener(this, this)
+        mWebView!!.setWebChromeClient(LoggingWebChromeClient())
 
         val webSettings = mWebView!!.getSettings()
         webSettings.setJavaScriptEnabled(true)
@@ -51,12 +54,8 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                 // TODO Currently this causes a Permission Denied error
                 // val stream = contentResolver.openInputStream(imageUri)
             }
-            mWebView!!.loadUrl("file:///android_asset/intent-target.html")
-
-        } else {
-            mWebView!!.loadUrl("file:///android_asset/index.html")
         }
-
+        mWebView!!.loadUrl("file:///android_asset/index.html")
     }
 
     @SuppressLint("NewApi")

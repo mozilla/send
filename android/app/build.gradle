@@ -32,3 +32,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.github.delight-im:Android-AdvancedWebView:v3.0.0'
 }
+
+task generateAndLinkBundle(type: Exec, description: 'Generate the android.js bundle and link it into the assets directory') {
+    commandLine 'node'
+    args '../generateAndLinkBundle.js'
+}
+
+tasks.withType(JavaCompile) {
+    compileTask -> compileTask.dependsOn generateAndLinkBundle
+}

@@ -6,3 +6,6 @@ dist
 .nyc_output
 .tox
 .pytest_cache
+android/app/src/main/assets/vendor.js
+android/app/src/main/assets/android.js
+
