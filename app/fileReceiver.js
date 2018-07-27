@@ -148,7 +148,7 @@ export default class FileReceiver extends Nanobus {
       this.state = 'complete';
     } catch (e) {
       this.downloadRequest = null;
-      if (e === 'cancelled') {
+      if (e === 'cancelled' || e.message === '400') {
         throw new Error(0);
       }
       throw e;

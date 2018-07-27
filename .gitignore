@@ -7,7 +7,6 @@ dist
 .tox
 .pytest_cache
 android/app/src/main/assets/vendor.js
-android/app/src/main/assets/runtime.js
 android/app/src/main/assets/android.js
 ios/send-ios/assets/ios.js
 ios/send-ios/assets/vendor.js

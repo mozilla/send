@@ -3,7 +3,10 @@ import FileSender from '../../../app/fileSender';
 import FileReceiver from '../../../app/fileReceiver';
 
 const headless = /Headless/.test(navigator.userAgent);
-const noSave = !headless; // only run the saveFile code if headless
+// TODO: save on headless doesn't work as it used to since it now
+// follows a link instead of fetch. Maybe there's a way to make it
+// work? For now always set noSave.
+const noSave = true || !headless; // only run the saveFile code if headless
 
 // FileSender uses a File in real life but a Blob works for testing
 const blob = new Blob([new ArrayBuffer(1024 * 128)], { type: 'text/plain' });
@@ -153,26 +156,26 @@ describe('Upload / Download flow', function() {
     assert.equal(file.dtotal, 1);
   });
 
-  // it('does not increase download count when download cancelled', async function() {
-  //   const fs = new FileSender(blob);
-  //   const file = await fs.upload();
-  //   const fr = new FileReceiver({
-  //     secretKey: file.toJSON().secretKey,
-  //     id: file.id,
-  //     nonce: file.keychain.nonce,
-  //     requiresPassword: false
-  //   });
-  //   await fr.getMetadata();
-  //   fr.once('progress', () => fr.cancel());
+  it('does not increase download count when download cancelled', async function() {
+    const fs = new FileSender(blob);
+    const file = await fs.upload();
+    const fr = new FileReceiver({
+      secretKey: file.toJSON().secretKey,
+      id: file.id,
+      nonce: file.keychain.nonce,
+      requiresPassword: false
+    });
+    await fr.getMetadata();
+    fr.once('progress', () => fr.cancel());
 
-  //   try {
-  //     await fr.download(noSave);
-  //     assert.fail('not cancelled');
-  //   } catch (e) {
-  //     await file.updateDownloadCount();
-  //     assert.equal(file.dtotal, 0);
-  //   }
-  // });
+    try {
+      await fr.download(noSave);
+      assert.fail('not cancelled');
+    } catch (e) {
+      await file.updateDownloadCount();
+      assert.equal(file.dtotal, 0);
+    }
+  });
 
   it('can allow multiple downloads', async function() {
     const fs = new FileSender(blob);

@@ -15,8 +15,11 @@ self.addEventListener('activate', event => {
 });
 
 async function decryptStream(id) {
+  const file = map.get(id);
+  if (!file) {
+    return new Response(null, { status: 400 });
+  }
   try {
-    const file = map.get(id);
     const keychain = new Keychain(file.key, file.nonce);
     if (file.requiresPassword) {
       keychain.setPassword(file.password, file.url);
