@@ -10,9 +10,16 @@ import UIKit
 import WebKit
 import MobileCoreServices
 
+var typesToLoad = [("com.adobe.pdf", "application/pdf"), ("public.png", "image/png"),
+                   ("public.jpeg", "image/jpeg"), ("com.compuserve.gif", "image/gif"),
+                   ("com.microsoft.bmp", "image/bmp"), ("public.plain-text", "text/plain")]
+
 class ActionViewController: UIViewController, WKScriptMessageHandler {
 
     @IBOutlet var webView: WKWebView!
+    var typeToSend: String?
+    var dataToSend: Data?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.webView.frame = self.view.bounds
@@ -27,39 +34,19 @@ class ActionViewController: UIViewController, WKScriptMessageHandler {
         }
         // Get the item[s] we're handling from the extension context.
         
-        // For example, look for an image and place it into an image view.
-        // Replace this with something appropriate for the type[s] your extension supports.
-        var imageFound = false
         for item in self.extensionContext!.inputItems as! [NSExtensionItem] {
             for provider in item.attachments! as! [NSItemProvider] {
-                if provider.hasItemConformingToTypeIdentifier(kUTTypeImage as String) {
-                    // This is an image. We'll load it, then place it in our image view.
-                    weak var weakWebView = self.webView
-                    provider.loadItem(forTypeIdentifier: kUTTypeImage as String, options: nil, completionHandler: { (imageURL, error) in
-                        OperationQueue.main.addOperation {
-                            if let strongWebView = weakWebView {
-                                if let url = Bundle.main.url(
-                                    forResource: "index",
-                                    withExtension: "html",
-                                    subdirectory: "assets") {
-                                    strongWebView.loadFileURL(url, allowingReadAccessTo: url.deletingLastPathComponent())
-                                }
-
-//                                if let imageURL = imageURL as? URL {
-//                                    strongImageView.image = UIImage(data: try! Data(contentsOf: imageURL))
-//                                }
+                for (type, mimeType) in typesToLoad {
+                    if provider.hasItemConformingToTypeIdentifier(type) {
+                        provider.loadDataRepresentation(forTypeIdentifier: type, completionHandler: { (data, error) in
+                            OperationQueue.main.addOperation {
+                                self.typeToSend = mimeType
+                                self.dataToSend = data
                             }
-                        }
-                    })
-                    
-                    imageFound = true
-                    break
+                        })
+                        return
+                    }
                 }
-            }
-            
-            if (imageFound) {
-                // We only handle one image, so stop looking for more.
-                break
             }
         }
     }
@@ -67,15 +54,11 @@ class ActionViewController: UIViewController, WKScriptMessageHandler {
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         print("Message received: \(message.name) with body: \(message.body)")
         if (message.name == "loaded") {
-            print("LOADED")
-            let stringToSend = "window.sendBase64EncodedFromSwift('data:,Hello%2C%20World!')";
-            //let stringToSend = "Object.getOwnPropertyNames(window)";
-            print("eval js \(stringToSend)")
-            self.webView.evaluateJavaScript(stringToSend) { (object: Any?, error: Error?) -> Void in
-                print("completed \(object) \(error)")
-            }
+                let stringToSend = "window.sendBase64EncodedFromSwift('data:\(self.typeToSend ?? "application/octet-stream");base64,\(self.dataToSend?.base64EncodedString() ?? "")')";
+                self.webView.evaluateJavaScript(stringToSend) { (object: Any?, error: Error?) -> Void in
+                    print("completed")
+                }
         } else if (message.name == "copy") {
-            print("COPY")
             UIPasteboard.general.string = "\(message.body)"
         }
     }
