@@ -52,7 +52,7 @@ const conf = convict({
   },
   max_file_size: {
     format: Number,
-    default: 1024 * 1024 * 1024 * 2,
+    default: 1024 * 1024 * 1024 * 3,
     env: 'MAX_FILE_SIZE'
   },
   expire_seconds: {
