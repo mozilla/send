@@ -32,7 +32,8 @@ const web = {
     // because they are not explicitly referenced by app
     vendor: ['babel-polyfill', 'fluent'],
     app: ['./app/main.js'],
-    android: ['./android/android.js']
+    android: ['./android/android.js'],
+    ios: ['./ios/ios.js']
   },
   output: {
     filename: '[name].[hash:8].js',
