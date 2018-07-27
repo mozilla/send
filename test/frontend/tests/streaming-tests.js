@@ -2,9 +2,10 @@ const ece = require('http_ece');
 require('buffer');
 
 import assert from 'assert';
+import Archive from '../../../app/archive';
 import { b64ToArray } from '../../../app/utils';
-import BlobSlicer from '../../../app/blobSlicer';
-import ECE from '../../../app/ece.js';
+import { blobStream, concatStream } from '../../../app/streams';
+import { decryptStream, encryptStream } from '../../../app/ece.js';
 
 const rs = 36;
 
@@ -25,15 +26,52 @@ const encrypted = ece.encrypt(buffer, params);
 const decrypted = ece.decrypt(encrypted, params);
 
 describe('Streaming', function() {
+  describe('blobStream', function() {
+    it('reads the entire blob', async function() {
+      const len = 12345;
+      const chunkSize = 1024;
+      const blob = new Blob([new Uint8Array(len)]);
+      const stream = blobStream(blob, chunkSize);
+      const reader = stream.getReader();
+      let bytes = 0;
+      let data = await reader.read();
+      while (!data.done) {
+        bytes += data.value.byteLength;
+        assert.ok(data.value.byteLength <= chunkSize, 'chunk too big');
+        data = await reader.read();
+      }
+      assert.equal(bytes, len);
+    });
+  });
+
+  describe('concatStream', function() {
+    it('reads all the streams', async function() {
+      const count = 5;
+      const len = 12345;
+      const streams = Array.from({ length: count }, () =>
+        blobStream(new Blob([new Uint8Array(len)]))
+      );
+      const concat = concatStream(streams);
+      const reader = concat.getReader();
+      let bytes = 0;
+      let data = await reader.read();
+      while (!data.done) {
+        bytes += data.value.byteLength;
+        data = await reader.read();
+      }
+      assert.equal(bytes, len * count);
+    });
+  });
+
   //testing against http_ece's implementation
   describe('ECE', function() {
     const key = b64ToArray(keystr);
     const salt = b64ToArray(testSalt).buffer;
-    const blob = new Blob([str], { type: 'text/plain' });
 
     it('can encrypt', async function() {
-      const ece = new ECE(blob, key, 'encrypt', rs, salt);
-      const encStream = await ece.transform();
+      const stream = new Archive([new Blob([str], { type: 'text/plain' })])
+        .stream;
+      const encStream = encryptStream(stream, key, rs, salt);
       const reader = encStream.getReader();
 
       let result = Buffer.from([]);
@@ -48,11 +86,8 @@ describe('Streaming', function() {
     });
 
     it('can decrypt', async function() {
-      const blobStream = new ReadableStream(
-        new BlobSlicer(new Blob([encrypted]), rs)
-      );
-      const ece = new ECE(blobStream, key, 'decrypt', rs);
-      const decStream = await ece.transform();
+      const stream = new Archive([new Blob([encrypted])]).stream;
+      const decStream = decryptStream(stream, key, rs);
 
       const reader = decStream.getReader();
       let result = Buffer.from([]);

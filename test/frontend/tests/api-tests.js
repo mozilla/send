@@ -1,9 +1,10 @@
 import assert from 'assert';
+import Archive from '../../../app/archive';
 import * as api from '../../../app/api';
 import Keychain from '../../../app/keychain';
 
 const encoder = new TextEncoder();
-const plaintext = new Blob([encoder.encode('hello world!')]);
+const plaintext = new Archive([new Blob([encoder.encode('hello world!')])]);
 const metadata = {
   name: 'test.txt',
   type: 'text/plain'
@@ -13,11 +14,11 @@ describe('API', function() {
   describe('websocket upload', function() {
     it('returns file info on success', async function() {
       const keychain = new Keychain();
-      const enc = await keychain.encryptStream(plaintext);
+      const enc = await keychain.encryptStream(plaintext.stream);
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};
-      const up = api.uploadWs(enc.stream, enc.streamInfo, meta, verifierB64, p);
+      const up = api.uploadWs(enc, meta, verifierB64, p);
 
       const result = await up.result;
       assert.ok(result.url);
@@ -27,11 +28,11 @@ describe('API', function() {
 
     it('can be cancelled', async function() {
       const keychain = new Keychain();
-      const enc = await keychain.encryptStream(plaintext);
+      const enc = await keychain.encryptStream(plaintext.stream);
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};
-      const up = api.uploadWs(enc.stream, enc.streamInfo, meta, verifierB64, p);
+      const up = api.uploadWs(enc, meta, verifierB64, p);
       up.cancel();
       try {
         await up.result;
