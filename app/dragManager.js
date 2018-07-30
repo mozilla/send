@@ -1,5 +1,6 @@
 /* global MAXFILESIZE */
-const { bytes } = require('./utils');
+import Archive from './archive';
+import { bytes } from './utils';
 
 export default function(state, emitter) {
   emitter.on('DOMContentLoaded', () => {
@@ -18,11 +19,8 @@ export default function(state, emitter) {
         if (target.files.length === 0) {
           return;
         }
-        if (target.files.length > 1) {
-          // eslint-disable-next-line no-alert
-          return alert(state.translate('uploadPageMultipleFilesAlert'));
-        }
-        const file = target.files[0];
+        const file = new Archive(target.files);
+
         if (file.size === 0) {
           return;
         }

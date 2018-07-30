@@ -1,5 +1,4 @@
 import 'buffer';
-import BlobSlicer from './blobSlicer';
 import { transformStream } from './streams';
 
 const NONCE_LENGTH = 12;
@@ -7,7 +6,7 @@ const TAG_LENGTH = 16;
 const KEY_LENGTH = 16;
 const MODE_ENCRYPT = 'encrypt';
 const MODE_DECRYPT = 'decrypt';
-const RS = 1024 * 64;
+export const ECE_RECORD_SIZE = 1024 * 64;
 
 const encoder = new TextEncoder();
 
@@ -282,52 +281,34 @@ class StreamSlicer {
   }
 }
 
+export function encryptedSize(size, rs = ECE_RECORD_SIZE) {
+  return 21 + size + 16 * Math.floor(size / (rs - 17));
+}
+
 /*
-input: a blob or a ReadableStream containing data to be transformed
+input: a ReadableStream containing data to be transformed
 key:  Uint8Array containing key of size KEY_LENGTH
-mode: string, either 'encrypt' or 'decrypt'
 rs:   int containing record size, optional
 salt: ArrayBuffer containing salt of KEY_LENGTH length, optional
 */
-export default class ECE {
-  constructor(input, key, mode, rs, salt) {
-    this.input = input;
-    this.key = key;
-    this.mode = mode;
-    this.rs = rs;
-    this.salt = salt;
-    if (rs === undefined) {
-      this.rs = RS;
-    }
-    if (salt === undefined) {
-      this.salt = generateSalt(KEY_LENGTH);
-    }
-  }
+export function encryptStream(
+  input,
+  key,
+  rs = ECE_RECORD_SIZE,
+  salt = generateSalt(KEY_LENGTH)
+) {
+  const mode = 'encrypt';
+  const inputStream = transformStream(input, new StreamSlicer(rs, mode));
+  return transformStream(inputStream, new ECETransformer(mode, key, rs, salt));
+}
 
-  info() {
-    return {
-      recordSize: this.rs,
-      fileSize:
-        21 + this.input.size + 16 * Math.floor(this.input.size / (this.rs - 17))
-    };
-  }
-
-  transform() {
-    let inputStream;
-
-    if (this.input instanceof Blob) {
-      inputStream = new ReadableStream(
-        new BlobSlicer(this.input, this.rs - 17)
-      );
-    } else {
-      inputStream = transformStream(
-        this.input,
-        new StreamSlicer(this.rs, this.mode)
-      );
-    }
-    return transformStream(
-      inputStream,
-      new ECETransformer(this.mode, this.key, this.rs, this.salt)
-    );
-  }
+/*
+input: a ReadableStream containing data to be transformed
+key:  Uint8Array containing key of size KEY_LENGTH
+rs:   int containing record size, optional
+*/
+export function decryptStream(input, key, rs = ECE_RECORD_SIZE) {
+  const mode = 'decrypt';
+  const inputStream = transformStream(input, new StreamSlicer(rs, mode));
+  return transformStream(inputStream, new ECETransformer(mode, key, rs));
 }

@@ -1,6 +1,7 @@
 import Keychain from './keychain';
 import { downloadStream } from './api';
 import { transformStream } from './streams';
+import Zip from './zip';
 import contentDisposition from 'content-disposition';
 
 let noSave = false;
@@ -20,6 +21,8 @@ async function decryptStream(id) {
     return new Response(null, { status: 400 });
   }
   try {
+    let size = file.size;
+    let type = file.type;
     const keychain = new Keychain(file.key, file.nonce);
     if (file.requiresPassword) {
       keychain.setPassword(file.password, file.url);
@@ -30,8 +33,16 @@ async function decryptStream(id) {
     const body = await file.download.result;
 
     const decrypted = keychain.decryptStream(body);
+
+    let zipStream = null;
+    if (file.type === 'send-archive') {
+      const zip = new Zip(file.manifest, decrypted);
+      zipStream = zip.stream;
+      type = 'application/zip';
+      size = zip.size;
+    }
     const readStream = transformStream(
-      decrypted,
+      zipStream || decrypted,
       {
         transform(chunk, controller) {
           file.progress += chunk.length;
@@ -48,8 +59,8 @@ async function decryptStream(id) {
 
     const headers = {
       'Content-Disposition': contentDisposition(file.filename),
-      'Content-Type': file.type,
-      'Content-Length': file.size
+      'Content-Type': type,
+      'Content-Length': size
     };
     return new Response(readStream, { headers });
   } catch (e) {
@@ -81,6 +92,7 @@ self.onmessage = event => {
       password: event.data.password,
       url: event.data.url,
       type: event.data.type,
+      manifest: event.data.manifest,
       size: event.data.size,
       progress: 0
     };

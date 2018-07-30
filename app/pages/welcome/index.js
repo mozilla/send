@@ -33,6 +33,7 @@ module.exports = function(state, emit) {
       <input id="file-upload"
         class="inputFile"
         type="file"
+        multiple
         name="fileUploaded"
         onfocus=${onfocus}
         onblur=${onblur}
@@ -67,8 +68,10 @@ module.exports = function(state, emit) {
 
   async function upload(event) {
     event.preventDefault();
+    const Archive = require('../../archive').default;
     const target = event.target;
-    const file = target.files[0];
+    const file = new Archive(target.files);
+
     if (file.size === 0) {
       return;
     }

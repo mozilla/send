@@ -1,4 +1,5 @@
 import { arrayToB64, b64ToArray, delay } from './utils';
+import { ECE_RECORD_SIZE } from './ece';
 
 function post(obj) {
   return {
@@ -78,7 +79,8 @@ export async function metadata(id, keychain) {
       ttl: data.ttl,
       iv: meta.iv,
       name: meta.name,
-      type: meta.type
+      type: meta.type,
+      manifest: meta.manifest
     };
   }
   throw new Error(result.response.status);
@@ -126,14 +128,7 @@ function listenForResponse(ws, canceller) {
   });
 }
 
-async function upload(
-  stream,
-  streamInfo,
-  metadata,
-  verifierB64,
-  onprogress,
-  canceller
-) {
+async function upload(stream, metadata, verifierB64, onprogress, canceller) {
   const host = window.location.hostname;
   const port = window.location.port;
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -166,10 +161,10 @@ async function upload(
 
       ws.send(buf);
 
-      onprogress([size, streamInfo.fileSize]);
+      onprogress(size);
       size += buf.length;
       state = await reader.read();
-      while (ws.bufferedAmount > streamInfo.recordSize * 2) {
+      while (ws.bufferedAmount > ECE_RECORD_SIZE * 2) {
         await delay();
       }
     }
@@ -185,7 +180,7 @@ async function upload(
   }
 }
 
-export function uploadWs(encrypted, info, metadata, verifierB64, onprogress) {
+export function uploadWs(encrypted, metadata, verifierB64, onprogress) {
   const canceller = { cancelled: false };
 
   return {
@@ -193,14 +188,7 @@ export function uploadWs(encrypted, info, metadata, verifierB64, onprogress) {
       canceller.error = new Error(0);
       canceller.cancelled = true;
     },
-    result: upload(
-      encrypted,
-      info,
-      metadata,
-      verifierB64,
-      onprogress,
-      canceller
-    )
+    result: upload(encrypted, metadata, verifierB64, onprogress, canceller)
   };
 }
 

@@ -48,6 +48,7 @@ export default class FileReceiver extends Nanobus {
     this.fileInfo.type = meta.type;
     this.fileInfo.iv = meta.iv;
     this.fileInfo.size = meta.size;
+    this.fileInfo.manifest = meta.manifest;
     this.state = 'ready';
   }
 
@@ -105,6 +106,7 @@ export default class FileReceiver extends Nanobus {
         id: this.fileInfo.id,
         filename: this.fileInfo.name,
         type: this.fileInfo.type,
+        manifest: this.fileInfo.manifest,
         key: this.fileInfo.secretKey,
         requiresPassword: this.fileInfo.requiresPassword,
         password: this.fileInfo.password,
