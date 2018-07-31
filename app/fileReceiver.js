@@ -1,7 +1,9 @@
 import Nanobus from 'nanobus';
 import Keychain from './keychain';
 import { delay, bytes } from './utils';
-import { metadata } from './api';
+import { downloadFile, metadata } from './api';
+import { blobStream } from './streams';
+import Zip from './zip';
 
 export default class FileReceiver extends Nanobus {
   constructor(fileInfo) {
@@ -52,22 +54,6 @@ export default class FileReceiver extends Nanobus {
     this.state = 'ready';
   }
 
-  async streamToArrayBuffer(stream, streamSize, onprogress) {
-    const result = new Uint8Array(streamSize);
-    let offset = 0;
-    const reader = stream.getReader();
-    let state = await reader.read();
-    while (!state.done) {
-      result.set(state.value, offset);
-      offset += state.value.length;
-      state = await reader.read();
-      onprogress([offset, streamSize]);
-    }
-
-    onprogress([streamSize, streamSize]);
-    return result.slice(0, offset).buffer;
-  }
-
   sendMessageToSw(msg) {
     return new Promise((resolve, reject) => {
       const channel = new MessageChannel();
@@ -86,7 +72,46 @@ export default class FileReceiver extends Nanobus {
     });
   }
 
-  async download(noSave = false) {
+  async downloadBlob(noSave = false) {
+    this.state = 'downloading';
+    this.downloadRequest = await downloadFile(
+      this.fileInfo.id,
+      this.keychain,
+      p => {
+        this.progress = p;
+        this.emit('progress');
+      }
+    );
+    try {
+      const ciphertext = await this.downloadRequest.result;
+      this.downloadRequest = null;
+      this.msg = 'decryptingFile';
+      this.state = 'decrypting';
+      this.emit('decrypting');
+      let size = this.fileInfo.size;
+      let plainStream = this.keychain.decryptStream(blobStream(ciphertext));
+      if (this.fileInfo.type === 'send-archive') {
+        const zip = new Zip(this.fileInfo.manifest, plainStream);
+        plainStream = zip.stream;
+        size = zip.size;
+      }
+      const plaintext = await streamToArrayBuffer(plainStream, size);
+      if (!noSave) {
+        await saveFile({
+          plaintext,
+          name: decodeURIComponent(this.fileInfo.name),
+          type: this.fileInfo.type
+        });
+      }
+      this.msg = 'downloadFinish';
+      this.state = 'complete';
+    } catch (e) {
+      this.downloadRequest = null;
+      throw e;
+    }
+  }
+
+  async downloadStream(noSave = false) {
     const onprogress = p => {
       this.progress = p;
       this.emit('progress');
@@ -156,4 +181,64 @@ export default class FileReceiver extends Nanobus {
       throw e;
     }
   }
+
+  download(options) {
+    if (options.stream) {
+      return this.downloadStream(options.noSave);
+    }
+    return this.downloadBlob(options.noSave);
+  }
+}
+
+async function streamToArrayBuffer(stream, size) {
+  const result = new Uint8Array(size);
+  let offset = 0;
+  const reader = stream.getReader();
+  let state = await reader.read();
+  while (!state.done) {
+    result.set(state.value, offset);
+    offset += state.value.length;
+    state = await reader.read();
+  }
+
+  return result.buffer;
+}
+
+async function saveFile(file) {
+  return new Promise(function(resolve, reject) {
+    const dataView = new DataView(file.plaintext);
+    const blob = new Blob([dataView], { type: file.type });
+
+    if (navigator.msSaveBlob) {
+      navigator.msSaveBlob(blob, file.name);
+      return resolve();
+    } else if (/iPhone|fxios/i.test(navigator.userAgent)) {
+      // This method is much slower but createObjectURL
+      // is buggy on iOS
+      const reader = new FileReader();
+      reader.addEventListener('loadend', function() {
+        if (reader.error) {
+          return reject(reader.error);
+        }
+        if (reader.result) {
+          const a = document.createElement('a');
+          a.href = reader.result;
+          a.download = file.name;
+          document.body.appendChild(a);
+          a.click();
+        }
+        resolve();
+      });
+      reader.readAsDataURL(blob);
+    } else {
+      const downloadUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = file.name;
+      document.body.appendChild(a);
+      a.click();
+      URL.revokeObjectURL(downloadUrl);
+      setTimeout(resolve, 100);
+    }
+  });
 }

@@ -22,46 +22,6 @@ function loadShim(polyfill) {
   });
 }
 
-async function canHasSend() {
-  try {
-    const key = await crypto.subtle.generateKey(
-      {
-        name: 'AES-GCM',
-        length: 128
-      },
-      true,
-      ['encrypt', 'decrypt']
-    );
-    await crypto.subtle.encrypt(
-      {
-        name: 'AES-GCM',
-        iv: crypto.getRandomValues(new Uint8Array(12)),
-        tagLength: 128
-      },
-      key,
-      new ArrayBuffer(8)
-    );
-    await crypto.subtle.importKey(
-      'raw',
-      crypto.getRandomValues(new Uint8Array(16)),
-      'PBKDF2',
-      false,
-      ['deriveKey']
-    );
-    await crypto.subtle.importKey(
-      'raw',
-      crypto.getRandomValues(new Uint8Array(16)),
-      'HKDF',
-      false,
-      ['deriveKey']
-    );
-    return true;
-  } catch (err) {
-    console.error(err);
-    return false;
-  }
-}
-
 function isFile(id) {
   return /^[0-9a-fA-F]{10}$/.test(id);
 }
@@ -179,7 +139,6 @@ module.exports = {
   arrayToB64,
   b64ToArray,
   loadShim,
-  canHasSend,
   isFile,
   openLinksInNewTab
 };

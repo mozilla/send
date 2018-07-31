@@ -270,7 +270,7 @@ function download(id, keychain, onprogress, canceller) {
       }
     });
     const auth = await keychain.authHeader();
-    xhr.open('get', `/api/download/${id}`);
+    xhr.open('get', `/api/download/blob/${id}`);
     xhr.setRequestHeader('Authorization', auth);
     xhr.responseType = 'blob';
     xhr.send();

@@ -7,7 +7,7 @@ const headless = /Headless/.test(navigator.userAgent);
 // TODO: save on headless doesn't work as it used to since it now
 // follows a link instead of fetch. Maybe there's a way to make it
 // work? For now always set noSave.
-const noSave = true || !headless; // only run the saveFile code if headless
+const options = { noSave: true || !headless, stream: true }; // only run the saveFile code if headless
 
 // FileSender uses a File in real life but a Blob works for testing
 const blob = new Blob([new ArrayBuffer(1024 * 128)], { type: 'text/plain' });
@@ -27,10 +27,10 @@ describe('Upload / Download flow', function() {
       requiresPassword: false
     });
     await fr.getMetadata();
-    await fr.download(noSave);
+    await fr.download(options);
 
     try {
-      await fr.download(noSave);
+      await fr.download(options);
       assert.fail('downloaded again');
     } catch (e) {
       assert.equal(e.message, '404');
@@ -50,7 +50,7 @@ describe('Upload / Download flow', function() {
       password: 'magic'
     });
     await fr.getMetadata();
-    await fr.download(noSave);
+    await fr.download(options);
     assert.equal(fr.state, 'complete');
   });
 
@@ -75,7 +75,7 @@ describe('Upload / Download flow', function() {
     try {
       // We can't decrypt without IV from metadata
       // but let's try to download anyway
-      await fr.download(noSave);
+      await fr.download(options);
       assert.fail('downloaded file with bad password');
     } catch (e) {
       assert.equal(e.message, '401');
@@ -135,7 +135,7 @@ describe('Upload / Download flow', function() {
     await fr.getMetadata();
     fr.once('progress', () => fr.cancel());
     try {
-      await fr.download(noSave);
+      await fr.download(options);
       assert.fail('not cancelled');
     } catch (e) {
       assert.equal(e.message, '0');
@@ -153,7 +153,7 @@ describe('Upload / Download flow', function() {
       requiresPassword: false
     });
     await fr.getMetadata();
-    await fr.download(noSave);
+    await fr.download(options);
     await file.updateDownloadCount();
     assert.equal(file.dtotal, 1);
   });
@@ -171,7 +171,7 @@ describe('Upload / Download flow', function() {
     fr.once('progress', () => fr.cancel());
 
     try {
-      await fr.download(noSave);
+      await fr.download(options);
       assert.fail('not cancelled');
     } catch (e) {
       await file.updateDownloadCount();
@@ -190,15 +190,15 @@ describe('Upload / Download flow', function() {
     });
     await file.changeLimit(2);
     await fr.getMetadata();
-    await fr.download(noSave);
+    await fr.download(options);
     await file.updateDownloadCount();
     assert.equal(file.dtotal, 1);
 
-    await fr.download(noSave);
+    await fr.download(options);
     await file.updateDownloadCount();
     assert.equal(file.dtotal, 2);
     try {
-      await fr.download(noSave);
+      await fr.download(options);
       assert.fail('downloaded too many times');
     } catch (e) {
       assert.equal(e.message, '404');
