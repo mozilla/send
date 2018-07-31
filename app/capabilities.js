@@ -8,6 +8,7 @@ async function checkCrypto() {
       true,
       ['encrypt', 'decrypt']
     );
+    await crypto.subtle.exportKey('raw', key);
     await crypto.subtle.encrypt(
       {
         name: 'AES-GCM',
