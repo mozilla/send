@@ -13,6 +13,7 @@ module.exports = function(state, emit) {
 
   const optionClass = state.uploading ? 'uploadOptions--faded' : '';
   const btnUploading = state.uploading ? 'btn--stripes' : '';
+  const cancelVisible = state.uploading ? '' : 'noDisplay';
   const faded = files.length > 0 ? 'uploadArea--faded' : '';
   const selectFileClass = files.length > 0 ? 'btn--hidden' : '';
   const sendFileClass = files.length > 0 ? '' : 'btn--hidden';
@@ -81,6 +82,11 @@ module.exports = function(state, emit) {
       ${btnText}
     </button>
 
+    <button class="btn--cancel uploadCancel ${cancelVisible}"
+      onclick=${cancel}>
+      ${state.translate('uploadingPageCancel')}
+    </button>
+
   </div>
   `;
 
@@ -100,6 +106,14 @@ module.exports = function(state, emit) {
 
   function onblur(event) {
     event.target.classList.remove('inputFile--focused');
+  }
+
+  function cancel(event) {
+    if (state.uploading) {
+      emit('cancel');
+      const cancelBtn = document.querySelector('.uploadCancel');
+      cancelBtn.innerHTML = state.translate('uploadCancelNotification');
+    }
   }
 
   async function addFiles(event) {

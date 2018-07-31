@@ -87,3 +87,7 @@
   opacity: 0.5;
   pointer-events: none;
 }
+
+.uploadCancel {
+  margin: 6px 0 0;
+}

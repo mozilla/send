@@ -57,11 +57,11 @@ module.exports = function(state, emit) {
         )}
       </div>
 
-      <a
-        class="error btn--delete"
+      <button
+        class="btn--cancel btn--delete"
         title="${state.translate('deleteFileButton')}"
         onclick=${showPopup}>${state.translate('deleteFileButton')}
-      </a>
+      </button>
 
     </div>
 

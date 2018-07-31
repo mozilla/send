@@ -139,6 +139,18 @@ a {
   }
 }
 
+.btn--cancel {
+  font-size: 13px;
+  font-weight: 700;
+  background: none;
+  color: var(--errorColor);
+  border: none;
+}
+
+.uploadCancel:hover {
+  text-decoration: underline;
+}
+
 .input {
   border: 1px solid var(--lightBorderColor);
   font-size: 20px;

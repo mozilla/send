@@ -58,15 +58,10 @@
   border-color: var(--successControlBGColor);
 }
 
-.copyBtn {
-  transition: background 0.5s;
-}
-
 .copyBtn--copied,
 .copyBtn--copied:hover {
   background: var(--successControlBGColor);
   color: var(--successControlFGColor);
-  transition: background 0s;
 }
 
 .btn--delete {

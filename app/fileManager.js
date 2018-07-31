@@ -228,7 +228,6 @@ export default function(state, emitter) {
       state.storage.totalDownloads += 1;
       state.transfer.reset();
       metrics.completedDownload({ size, time, speed });
-      //emitter.emit('pushState', '/completed');
     } catch (err) {
       if (err.message === '0') {
         // download cancelled

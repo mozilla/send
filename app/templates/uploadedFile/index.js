@@ -6,23 +6,20 @@ const fileIcon = require('../fileIcon');
 module.exports = function(file, state, emit) {
   const transfer = state.transfer;
   const transferState = transfer ? transfer.state : null;
-  const transferring = state.uploading || state.downloading;
   const share = state.route.includes('share/');
   const complete = share ? 'uploadedFile--completed' : '';
 
   const cancelVisible =
-    transferring || state.route === '/' ? 'uploadedFile__cancel--visible' : '';
+    state.route === '/' && !state.uploading
+      ? 'uploadedFile__cancel--visible'
+      : '';
 
   const stampClass =
     share || transferState === 'complete' ? 'uploadedFile__stamp--visible' : '';
 
   function cancel(event) {
     event.preventDefault();
-    const btn = document.querySelector('.uploadedFile__cancel');
-    btn.disabled = true;
-    if (transferring) {
-      emit('cancel');
-    } else if (state.route === '/') {
+    if (state.route === '/') {
       emit('removeUpload', { file });
     }
   }

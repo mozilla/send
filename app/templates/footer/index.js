@@ -5,14 +5,6 @@ module.exports = function(state) {
   const footer = html`<footer class="footer">
     <div class="legalSection">
       <a
-        href="https://www.mozilla.org"
-        class="legalSection__link">
-        <img
-          class="legalSection__mozLogo"
-          src="${assets.get('mozilla-logo.svg')}"
-          alt="mozilla"/>
-      </a>
-      <a
         href="https://www.mozilla.org/about/legal"
         class="legalSection__link">
         ${state.translate('footerLinkLegal')}
@@ -38,6 +30,16 @@ module.exports = function(state) {
         class="legalSection__link">
         ${state.translate('reportIPInfringement')}
       </a>
+
+      <a
+        href="https://www.mozilla.org"
+        class="legalSection__link">
+        <img
+          class="legalSection__mozLogo"
+          src="${assets.get('mozilla-logo.svg')}"
+          alt="mozilla"/>
+      </a>
+
       <a
         href="https://github.com/mozilla/send"
         class="socialSection__link">
@@ -50,9 +52,9 @@ module.exports = function(state) {
         href="https://twitter.com/FxTestPilot"
         class="socialSection__link">
         <img
-          class="legalSection__mozLogo"
-          src="${assets.get('mozilla-logo.svg')}"
-          alt="mozilla"/>
+          class="socialSection__icon"
+          src="${assets.get('twitter-icon.svg')}"
+          alt="twitter"/>
       </a>
     </div>
   </footer>`;
