@@ -1,14 +1,16 @@
 :root {
   --pageBGColor: #fff;
-  --primaryControlBGColor: #0297f8;
+  --lightControlBGColor: #e6e6e6;
+  --primaryControlBGColor: #0a84ff;
   --primaryControlFGColor: #fff;
-  --primaryControlHoverColor: #0287e8;
+  --primaryControlHoverColor: #0473e2;
   --inputTextColor: #737373;
   --errorColor: #d70022;
   --linkColor: #0094fb;
   --textColor: #0c0c0d;
+  --lightBorderColor: rgba(12, 12, 12, 0.2);
   --lightTextColor: #737373;
-  --successControlBGColor: #05a700;
+  --successControlBGColor: #12bc00;
   --successControlFGColor: #fff;
 }
 
@@ -41,17 +43,21 @@ a {
 
 .main {
   display: flex;
-  flex-direction: row;
   flex: auto;
-  padding: 0 20px;
+  padding: 0 25px;
   box-sizing: border-box;
+  min-height: 500px;
+  max-height: 630px;
+  height: 100px;
 }
 
 .stripedBox {
-  width: 480px;
+  flex: none;
+  position: relative;
+  width: 400px;
   background-color: white;
   border-radius: 6px;
-  box-shadow: 0 0 0 3px rgba(155, 155, 155, 0.4);
+  box-shadow: 0 0 0 3px rgba(12, 12, 13, 0.2);
   background-image: repeating-linear-gradient(
     45deg,
     white,
@@ -68,8 +74,11 @@ a {
 .mainContent {
   height: 100%;
   background-color: white;
+  box-sizing: border-box;
   margin: 0 10px;
-  padding: 1px 10px 0 10px; /* top wtf? */
+  padding: 10px 10px 28px;
+  display: flex;
+  flex-direction: column;
 }
 
 .spacer {
@@ -77,7 +86,8 @@ a {
 }
 
 .uploads {
-  flex: auto;
+  flex: 0 0 262px;
+  position: relative;
 }
 
 .noscript {
@@ -87,13 +97,19 @@ a {
 }
 
 .btn {
-  font-size: 15px;
+  display: block;
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  font-size: 21px;
   font-weight: 500;
-  color: var(--primaryControlFGColor);
-  cursor: pointer;
+  text-transform: uppercase;
   text-align: center;
+  letter-spacing: 0.56px;
+  color: var(--primaryControlFGColor);
   background: var(--primaryControlBGColor);
-  border: 1px solid var(--primaryControlBGColor);
+  cursor: pointer;
+  border: 0;
   border-radius: 5px;
 }
 
@@ -101,75 +117,52 @@ a {
   background-color: var(--primaryControlHoverColor);
 }
 
-.btn--cancel {
-  color: var(--errorColor);
-  background: var(--pageBGColor);
-  font-size: 15px;
-  border: 0;
-  cursor: pointer;
-  text-decoration: underline;
+.btn--stripes {
+  background: repeating-linear-gradient(
+    -65deg,
+    #7c7c7c 0,
+    #7c7c7c 17px,
+    #737373 17px,
+    #737373 30px
+  );
+  background-size: 300% 300%;
+  animation: barberpole 12s linear infinite;
 }
 
-.btn--cancel:disabled {
-  text-decoration: none;
-  cursor: auto;
-}
+@keyframes barberpole {
+  0% {
+    background-position: 100% 0%;
+  }
 
-.btn--cancel:hover {
-  background-color: var(--pageBGColor);
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 .input {
-  flex: 2 0 auto;
-  border: 1px solid var(--primaryControlBGColor);
-  border-radius: 6px 0 0 6px;
+  border: 1px solid var(--lightBorderColor);
   font-size: 20px;
   color: var(--inputTextColor);
   font-family: 'SF Pro Text', sans-serif;
-  letter-spacing: 0;
-  line-height: 23px;
   font-weight: 300;
-  height: 46px;
   padding-left: 10px;
   padding-right: 10px;
-}
-
-.input--error {
-  border-color: var(--errorColor);
 }
 
 .input--noBtn {
   border-radius: 6px;
 }
 
-.inputBtn {
-  flex: auto;
-  background: var(--primaryControlBGColor);
-  border-radius: 0 6px 6px 0;
-  border: 1px solid var(--primaryControlBGColor);
-  color: var(--primaryControlFGColor);
-  cursor: pointer;
-
-  /* Force flat button look */
-  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-  appearance: none;
-  font-size: 15px;
-  padding-bottom: 3px;
-  padding-left: 10px;
-  padding-right: 10px;
-  white-space: nowrap;
+.input--error {
+  border-color: var(--errorColor);
 }
 
-.inputBtn:disabled {
-  cursor: auto;
+.inputBtn.inputError {
+  background-color: var(--errorColor);
 }
 
-.inputBtn:hover {
-  background-color: var(--primaryControlHoverColor);
-}
-
-.inputBtn--hidden {
-  display: none;
+.inputBtn.inputError:hover {
+  background-color: var(--errorColor);
 }
 
 .cursor--pointer {
@@ -188,15 +181,15 @@ a {
 }
 
 .link--action {
-  text-decoration: underline;
+  font-weight: 500;
+  font-size: 14px;
   text-align: center;
 }
 
 .page {
-  margin: 0 auto 30px;
+  height: 100%;
+  margin: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   text-align: center;
 }
@@ -221,6 +214,13 @@ a {
 .effect--fadeOut {
   opacity: 0;
   animation: fadeout 200ms linear;
+}
+
+.goBackButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 18px;
 }
 
 @keyframes fadeout {
@@ -250,6 +250,7 @@ a {
 
 .error {
   color: var(--errorColor);
+  font-weight: 600;
 }
 
 .title {
@@ -264,34 +265,50 @@ a {
 }
 
 .description {
-  font-size: 15px;
-  line-height: 23px;
-  max-width: 630px;
-  text-align: center;
-  margin: 0 auto 60px;
-  color: var(--textColor);
-  width: 92%;
+  font-size: 13px;
+  text-align: left;
+  margin: 14px auto;
+  color: var(--lightTextColor);
+  width: 95%;
 }
 
-@media (max-device-width: 768px), (max-width: 768px) {
+.visible {
+  visibility: visible !important;
+}
+
+.noDisplay {
+  display: none;
+}
+
+.flexible {
+  flex: 1;
+}
+
+@media (max-device-width: 750px), (max-width: 750px) {
   .description {
     margin: 0 auto 25px;
   }
-}
 
-@media (max-device-width: 520px), (max-width: 520px) {
-  .input {
-    font-size: 22px;
-    padding: 10px 10px;
-    border-radius: 6px 6px 0 0;
+  .main {
+    flex-direction: column;
+    min-height: 700px;
   }
 
-  .inputBtn {
-    border-radius: 0 0 6px 6px;
-    flex: 0 1 65px;
+  .spacer {
+    flex: none;
+    height: 0;
   }
 
-  .input--noBtn {
-    border-radius: 6px;
+  .stripedBox {
+    max-height: 550px;
+    flex: 1;
+  }
+
+  .uploads {
+    flex: none;
+  }
+
+  .footer {
+    margin: 15px;
   }
 }

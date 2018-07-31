@@ -65,6 +65,14 @@ export async function fileInfo(id, owner_token) {
   throw new Error(response.status);
 }
 
+export async function hasPassword(id) {
+  const response = await fetch(`/api/exists/${id}`);
+  if (response.ok) {
+    return response.json();
+  }
+  throw new Error(response.status);
+}
+
 export async function metadata(id, keychain) {
   const result = await fetchWithAuthAndRetry(
     `/api/metadata/${id}`,

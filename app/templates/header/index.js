@@ -6,8 +6,6 @@ module.exports = function(state) {
   const feedbackUrl = `https://qsurvey.mozilla.com/s3/txp-firefox-send?ver=${version}&browser=${browser}`;
   const header = html`
   <header class="header">
-    <div class="logo">
-    </div>
     <a href="${feedbackUrl}"
       rel="noreferrer noopener"
       class="feedback"

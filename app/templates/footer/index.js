@@ -38,8 +38,6 @@ module.exports = function(state) {
         class="legalSection__link">
         ${state.translate('reportIPInfringement')}
       </a>
-    </div>
-    <div class="socialSection">
       <a
         href="https://github.com/mozilla/send"
         class="socialSection__link">
@@ -52,9 +50,9 @@ module.exports = function(state) {
         href="https://twitter.com/FxTestPilot"
         class="socialSection__link">
         <img
-          class="socialSection__icon"
-          src="${assets.get('twitter-icon.svg')}"
-          alt="twitter"/>
+          class="legalSection__mozLogo"
+          src="${assets.get('mozilla-logo.svg')}"
+          alt="mozilla"/>
       </a>
     </div>
   </footer>`;

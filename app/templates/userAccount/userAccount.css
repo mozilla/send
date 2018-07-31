@@ -1,0 +1,33 @@
+.account {
+  position: absolute;
+  right: 0;
+  margin: 0 21px;
+  padding: 0;
+}
+
+.account_dropdown {
+  z-index: 1;
+  position: absolute;
+  top: 25px;
+  left: -10px;
+  width: 150px;
+  list-style-type: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: var(--pageBGColor);
+  box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.2);
+  padding: 11px 0;
+  visibility: hidden;
+}
+
+.account_dropdown__item {
+  padding: 0 14px;
+  color: var(--lightTextColor);
+  font-size: 13px;
+  line-height: 24px;
+}
+
+.account_dropdown__item:hover {
+  background-color: var(--primaryControlBGColor);
+  color: var(--primaryControlFGColor);
+}

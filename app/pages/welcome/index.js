@@ -1,50 +1,86 @@
-/* global MAXFILESIZE */
 const html = require('choo/html');
 const assets = require('../../../common/assets');
-const fileList = require('../../templates/fileList');
-const { bytes, fadeOut } = require('../../utils');
+const { checkSize } = require('../../utils');
+const title = require('../../templates/title');
+const setPasswordSection = require('../../templates/setPasswordSection');
+const uploadBox = require('../../templates/uploadedFileList');
+const expireInfo = require('../../templates/expireInfo');
 
 module.exports = function(state, emit) {
   // the page flickers if both the server and browser set 'effect--fadeIn'
   const fade = state.layout ? '' : 'effect--fadeIn';
+  const files = state.files ? state.files : [];
+
+  const optionClass = state.uploading ? 'uploadOptions--faded' : '';
+  const btnUploading = state.uploading ? 'btn--stripes' : '';
+  const faded = files.length > 0 ? 'uploadArea--faded' : '';
+  const selectFileClass = files.length > 0 ? 'btn--hidden' : '';
+  const sendFileClass = files.length > 0 ? '' : 'btn--hidden';
+
+  let btnText = '';
+
+  if (state.encrypting) {
+    btnText = state.translate('encryptingFile');
+  } else if (state.uploading) {
+    btnText = `sending...  ${Math.floor(state.transfer.progressRatio * 100)}%`;
+  } else {
+    //default pre-upload text
+    btnText = state.translate('uploadSuccessConfirmHeader');
+  }
+
   return html`
-  <div id="page-one" class="${fade}">
-    <div class="title">${state.translate('uploadPageHeader')}</div>
-    <div class="description">
-      <div>${state.translate('uploadPageExplainer')}</div>
-      <a
-        href="https://testpilot.firefox.com/experiments/send"
-        class="link">
-        ${state.translate('uploadPageLearnMore')}
-      </a>
-    </div>
-    <div class="uploadArea"
+  <div id="page-one" class="page ${fade}">
+    ${title(state)}
+
+    <label class="uploadArea"
       ondragover=${dragover}
       ondragleave=${dragleave}>
-      <img
-        src="${assets.get('upload.svg')}"
-        title="${state.translate('uploadSvgAlt')}"/>
-      <div class="uploadArea__msg">
-        ${state.translate('uploadPageDropMessage')}
+
+      ${uploadBox(files, state, emit)}
+
+      <div class="uploadedFilesWrapper ${faded}">
+        <img
+          class="uploadArea__icon"
+          src="${assets.get('addfile.svg')}"
+          title="${state.translate('uploadSvgAlt')}"/>
+        <div class="uploadArea__msg">
+          ${state.translate('uploadDropDragMessage')}
+        </div>
+
+        <span class="uploadArea__clickMsg">
+          ${state.translate('uploadDropClickMessage')}
+        </span>
       </div>
-      <span class="uploadArea__sizeMsg">
-        ${state.translate('uploadPageSizeMessage')}
-      </span>
+
       <input id="file-upload"
-        class="inputFile"
+        class="inputFile fileBox"
         type="file"
         multiple
         name="fileUploaded"
         onfocus=${onfocus}
         onblur=${onblur}
-        onchange=${upload} />
-      <label for="file-upload"
-        class="btn btn--file"
-        title="${state.translate('uploadPageBrowseButton1')}">
-        ${state.translate('uploadPageBrowseButton1')}
-      </label>
+        onchange=${addFiles} />
+        
+    </label>
+
+    <div class="uploadOptions ${optionClass}">
+    ${expireInfo(state)}
+    ${setPasswordSection(state)}
     </div>
-    ${fileList(state, emit)}
+
+    <label for="file-upload"
+      class="btn btn--file ${selectFileClass}"
+      title="${state.translate('uploadPageBrowseButton1')}">
+      ${state.translate('uploadPageBrowseButton1')}
+    </label>
+
+    <button
+      class="btn ${btnUploading} ${sendFileClass}"
+      onclick=${upload}
+      title="${btnText}">
+      ${btnText}
+    </button>
+
   </div>
   `;
 
@@ -66,22 +102,23 @@ module.exports = function(state, emit) {
     event.target.classList.remove('inputFile--focused');
   }
 
+  async function addFiles(event) {
+    event.preventDefault();
+    const target = event.target;
+    checkSize(target.files, state.files);
+    emit('addFiles', { files: target.files });
+  }
+
   async function upload(event) {
     event.preventDefault();
-    const Archive = require('../../archive').default;
-    const target = event.target;
-    const file = new Archive(target.files);
 
-    if (file.size === 0) {
-      return;
+    if (files.length > 0) {
+      emit('upload', {
+        files,
+        type: 'click',
+        dlCount: state.downloadCount,
+        password: state.password
+      });
     }
-    if (file.size > MAXFILESIZE) {
-      // eslint-disable-next-line no-alert
-      alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
-      return;
-    }
-
-    await fadeOut('#page-one');
-    emit('upload', { file, type: 'click' });
   }
 };

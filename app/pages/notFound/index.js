@@ -1,11 +1,17 @@
 const html = require('choo/html');
 const assets = require('../../../common/assets');
+const title = require('../../templates/title');
 
 module.exports = function(state) {
   return html`
     <div class="page">
-      <div class="title">${state.translate('expiredPageHeader')}</div>
-      <img src="${assets.get('illustration_expired.svg')}" id="expired-img">
+      
+      ${title(state)}
+
+      <div class="error">${state.translate('expiredPageHeader')}</div>
+      <img src="${assets.get(
+        'illustration_expired.svg'
+      )}" class="flexible" id="expired-img">
       <div class="description">
         ${state.translate('uploadPageExplainer')}
       </div>

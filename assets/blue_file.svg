@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="32px" viewBox="0 0 22 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.5">
+        <g id="Group-8" fill="#0A84FF">
+            <path d="M2,0 L11.9428571,0 L21.665206,8.66172902 C21.8781869,8.85147558 22,9.12314407 22,9.40838886 L22,30 C22,31.1045695 21.1045695,32 20,32 L2,32 C0.8954305,32 1.3527075e-16,31.1045695 0,30 L0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 Z" id="Rectangle-14"></path>
+            <path d="M12,0 L22,9 L15,9 C13.3431458,9 12,7.65685425 12,6 L12,0 Z" id="Triangle"></path>
+        </g>
+    </g>
+</svg>

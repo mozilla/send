@@ -1,0 +1,33 @@
+.signInPage {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--lightTextColor);
+}
+
+.signIn__info {
+  width: 308px;
+  margin: 16px auto 0;
+  text-align: left;
+}
+
+.signIn__firefoxLogo {
+  display: block;
+  margin: 0 auto;
+}
+
+.signIn__emailLabel {
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+.signIn__emailInput {
+  box-sizing: border-box;
+  width: 310px;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin: 0;
+  padding: 0 8px;
+  font-size: 18px;
+  color: var(--lightTextColor);
+}

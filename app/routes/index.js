@@ -5,7 +5,10 @@ const download = require('./download');
 const header = require('../templates/header');
 const footer = require('../templates/footer');
 const fxPromo = require('../templates/fxPromo');
+const signupPromo = require('../templates/signupPromo');
 const activeBackground = require('../templates/activeBackground');
+const fileList = require('../templates/fileList');
+const profile = require('../templates/userAccount');
 
 nanotiming.disabled = true;
 const app = choo();
@@ -20,6 +23,7 @@ function body(template) {
   return function(state, emit) {
     const b = html`<body class="background ${activeBackground(state)}">
       ${banner(state, emit)}
+      ${signupPromo(state)}
       ${header(state)}
       <main class="main">
         <noscript>
@@ -35,11 +39,17 @@ function body(template) {
         </noscript>
         <div class="stripedBox">
           <div class="mainContent">
+
+            ${profile(state)}
+
             ${template(state, emit)}
           </div>
         </div>
+
         <div class="spacer"></div>
-        <div class="uploads"></div>
+        <div class="uploads">
+          ${fileList(state)}
+        </div>
       </main>
       ${footer(state)}
     </body>`;
@@ -55,11 +65,11 @@ app.route('/', body(require('./home')));
 app.route('/share/:id', body(require('../pages/share')));
 app.route('/download/:id', body(download));
 app.route('/download/:id/:key', body(download));
-app.route('/completed', body(require('../pages/completed')));
 app.route('/unsupported/:reason', body(require('../pages/unsupported')));
 app.route('/legal', body(require('../pages/legal')));
 app.route('/error', body(require('../pages/error')));
 app.route('/blank', body(require('../pages/blank')));
 app.route('*', body(require('../pages/notFound')));
+app.route('/signin', body(require('../pages/signin')));
 
 module.exports = app;

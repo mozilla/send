@@ -49,7 +49,7 @@ module.exports = function(app) {
     next();
   });
   app.use(express.json());
-  app.get('/', language, pages.index);
+  app.get('/', language, pages.blank);
   app.get('/legal', language, pages.legal);
   app.get('/jsconfig.js', require('./jsconfig'));
   app.get(`/share/:id${ID_REGEX}`, language, pages.blank);

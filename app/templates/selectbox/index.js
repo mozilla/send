@@ -5,16 +5,14 @@ module.exports = function(selected, options, translate, changed) {
   let x = selected;
 
   return html`
-  <div class="select">
-    <select id="${id}" onchange=${choose}>
+    <select class="selectBox" id="${id}" onchange=${choose}>
       ${options.map(
         i =>
           html`<option value="${i}" ${
             i === selected ? 'selected' : ''
           }>${translate(i)}</option>`
       )}
-    </select>
-  </div>`;
+    </select>`;
 
   function choose(event) {
     const target = event.target;

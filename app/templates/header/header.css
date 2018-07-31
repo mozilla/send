@@ -3,7 +3,7 @@
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  padding: 31px;
+  padding: 20px;
   width: 100%;
 }
 
@@ -62,7 +62,7 @@
   color: var(--primaryControlFGColor);
   cursor: pointer;
   display: block;
-  float: right;
+  float: left;
   font-size: 12px;
   line-height: 12px;
   opacity: 0.9;
@@ -88,17 +88,10 @@
   background-color: var(--primaryControlHoverColor);
 }
 
-@media (max-device-width: 520px), (max-width: 520px) {
+@media (max-device-width: 750px), (max-width: 750px) {
   .header {
+    padding-top: 60px;
     flex-direction: column;
     justify-content: flex-start;
-  }
-
-  .feedback {
-    margin-top: 10px;
-    min-width: 30px;
-    max-width: 300px;
-    text-indent: 2px;
-    padding: 5px 5px 5px 20px;
   }
 }

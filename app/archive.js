@@ -17,6 +17,10 @@ export default class Archive {
     return this.files.reduce((total, file) => total + file.size, 0);
   }
 
+  get numFiles() {
+    return this.files.length;
+  }
+
   get manifest() {
     return {
       files: this.files.map(file => ({

@@ -1,3 +1,4 @@
+/* global MAXFILESIZE */
 const b64 = require('base64-js');
 
 function arrayToB64(array) {
@@ -128,6 +129,27 @@ function openLinksInNewTab(links, should = true) {
   return links;
 }
 
+function checkSize(files, oldfiles, translate) {
+  function size(arr) {
+    let total = 0;
+    for (let i = 0; i < arr.length; i++) {
+      total += arr[i].size;
+    }
+    return total;
+  }
+
+  const addSize = size(files);
+  if (addSize === 0) {
+    return;
+  }
+  const totalSize = addSize + size(oldfiles);
+  if (totalSize > MAXFILESIZE) {
+    // eslint-disable-next-line no-alert
+    alert(translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
+    return;
+  }
+}
+
 module.exports = {
   fadeOut,
   delay,
@@ -140,5 +162,6 @@ module.exports = {
   b64ToArray,
   loadShim,
   isFile,
-  openLinksInNewTab
+  openLinksInNewTab,
+  checkSize
 };

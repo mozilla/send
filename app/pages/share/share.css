@@ -1,112 +1,86 @@
-.sharePage {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  max-width: 640px;
+.sharePage__copyText {
+  margin: 8px 0 8px;
+  word-wrap: break-word;
+  font-size: 15px;
+  color: var(--lightTextColor);
+  text-align: center;
 }
 
-.sharePage__copyText {
-  align-self: flex-start;
-  margin-top: 60px;
-  margin-bottom: 10px;
-  color: var(--textColor);
-  max-width: 614px;
-  word-wrap: break-word;
+.sharePage__passwordReminder {
+  font-size: 11px;
+  font-style: italic;
+}
+
+.passwordReminder--hidden {
+  display: none;
 }
 
 .sharePage__deletePopup {
   position: relative;
-  align-self: center;
-  bottom: 50px;
+  margin-top: -70px;
+  pointer-events: none;
+}
+
+.shareTitle {
+  color: var(--textColor);
+  margin: 8px auto 15px;
+  text-align: center;
+  font-family: 'SF Pro Text', sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  width: 280px;
 }
 
 .copySection {
-  display: flex;
-  flex-wrap: nowrap;
   width: 100%;
 }
 
 .copySection__url {
-  flex: 1;
-  height: 56px;
-  border: 1px solid var(--primaryControlBGColor);
-  border-radius: 6px 0 0 6px;
-  font-size: 20px;
-  color: var(--inputTextColor);
+  box-sizing: border-box;
+  height: 30px;
+  border: 1px solid var(--lightBorderColor);
+  border-radius: 4px;
+  font-size: 15px;
+  color: var(--primaryControlBGColor);
+  margin: 0 0 6px;
+  padding: 6px;
   font-family: 'SF Pro Text', sans-serif;
   letter-spacing: 0;
-  line-height: 23px;
-  font-weight: 300;
-  padding-left: 10px;
+  line-height: 18px;
+  font-weight: 500;
 }
 
 .copySection__url:disabled {
-  border: 1px solid var(--successControlBGColor);
   background: var(--successControlFGColor);
-}
-
-.inputBtn--copy {
-  flex: 0 1 165px;
-  padding-bottom: 4px;
 }
 
 .input--copied {
   border-color: var(--successControlBGColor);
 }
 
-.inputBtn--copied,
-.inputBtn--copied:hover {
+.copyBtn {
+  transition: background 0.5s;
+}
+
+.copyBtn--copied,
+.copyBtn--copied:hover {
   background: var(--successControlBGColor);
-  border: 1px solid var(--successControlBGColor);
   color: var(--successControlFGColor);
+  transition: background 0s;
 }
 
 .btn--delete {
+  border: none;
   align-self: center;
   width: 176px;
-  height: 44px;
   background: #fff;
-  border-color: rgba(12, 12, 13, 0.3);
-  margin-top: 50px;
-  margin-bottom: 12px;
-  color: #313131;
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--errorColor);
+  cursor: pointer;
 }
 
 .btn--delete:hover {
-  background: #efeff1;
-}
-
-@media (max-device-width: 768px), (max-width: 768px) {
-  .copySection {
-    width: 100%;
-  }
-
-  .copySection__url {
-    font-size: 18px;
-  }
-}
-
-@media (max-device-width: 520px), (max-width: 520px) {
-  .copySection {
-    width: 100%;
-    flex-direction: column;
-    padding-left: 0;
-  }
-
-  .copySection__url {
-    font-size: 22px;
-    padding: 15px 10px;
-    border-radius: 6px 6px 0 0;
-  }
-
-  .sharePage__copyText {
-    text-align: center;
-  }
-
-  .inputBtn--copy {
-    border-radius: 0 0 6px 6px;
-    flex: 0 1 65px;
-  }
+  text-decoration: underline;
 }

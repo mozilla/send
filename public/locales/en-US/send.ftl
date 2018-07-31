@@ -26,6 +26,7 @@ uploadSuccessConfirmHeader = Ready to Send
 uploadSvgAlt = Upload
 uploadSuccessTimingHeader = The link to your file will expire after 1 download or in 24 hours.
 expireInfo = The link to your file will expire after { $downloadCount } or { $timespan }.
+frontPageExpireInfo = Expires after { $downloadCount } or { $timespan }
 downloadCount = { $num ->
         [one] 1 download
        *[other] { $num } downloads
@@ -33,6 +34,14 @@ downloadCount = { $num ->
 timespanHours = { $num ->
         [one] 1 hour
        *[other] { $num } hours
+    }
+timespanMinutes = { $num ->
+        [one] 1 minute
+       *[other] { $num } minutes
+    }
+timespanWeeks = { $num ->
+        [one] 1 week
+       *[other] { $num } weeks
     }
 copyUrlFormLabelWithName = Copy and share the link to send your file: { $filename }
 copyUrlFormButton = Copy to clipboard
@@ -117,3 +126,30 @@ passwordIsSet = Password set
 maxPasswordLength = Maximum password length: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = This password could not be set
+pageHeaderCredits = from the makers of Firefox
+addFilesButton = Add file(s)
+uploadFilesButton = Send
+uploadFileProgress = Sending
+uploadDropDragMessage = Drop files here
+uploadDropClickMessage = or click to select a file
+addPasswordMessage = Protect with password
+addPasswordLabel = Password:
+copyUrlLabel = Copy and share this link:
+passwordReminder = don't forget the password too
+signInPromoText = Sign In/Up!
+signInExplanation = It's free and gives you many more Send options
+signInLearnMore = Learn more!
+downloadProgressButton = Downloading... { $progress }
+downloadMessage2 = Firefox Send lets you share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
+signInEmailEnter = Enter your Email
+emailEntryPlaceholder = Email
+signInContinueMessage = to continue to Firefox Send
+signInContinueButton = Continue
+accountBenefitTitle = With a free Firefox Account with Send you can:
+accountBenefitMultiFile = Send multiple files at once
+accountBenefitLargeFiles = Upload larger files (up to { $size } GB)
+accountBenefitExpiry = Have more expiry options
+accountBenefitSync = Manage your uploads across devices
+accountBenefitNotify = Be notified when your files are downloaded
+accountBenefitMore = Do a lot more!
+

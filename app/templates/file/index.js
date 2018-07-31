@@ -1,73 +1,50 @@
 const html = require('choo/html');
-const assets = require('../../../common/assets');
 const number = require('../../utils').number;
-const deletePopup = require('../popup');
+const bytes = require('../../utils').bytes;
+const fileIcon = require('../fileIcon');
 
-module.exports = function(file, state, emit) {
+module.exports = function(file, state) {
   const ttl = file.expiresAt - Date.now();
   const remainingTime =
     timeLeft(ttl, state) || state.translate('linkExpiredAlt');
   const downloadLimit = file.dlimit || 1;
   const totalDownloads = file.dtotal || 0;
+
+  const multiFiles = file.manifest.files;
+  const fileName =
+    multiFiles.length > 1
+      ? `${multiFiles[0].name} + ${state.translate('fileCount', {
+          num: multiFiles.length - 1
+        })}`
+      : file.name;
+
+  const activeClass = isOnSharePage() ? 'fileToast--active' : '';
   return html`
-  <tr id="${file.id}">
-    <td class="fileData fileData--overflow" title="${file.name}">
-      <a class="link" href="/share/${file.id}">${file.name}</a>
-    </td>
-    <td class="fileData fileData--center">
-      <img
-        onclick=${copyClick}
-        src="${assets.get('copy-16.svg')}"
-        class="cursor--pointer"
-        title="${state.translate('copyUrlHover')}"
-        tabindex="0">
-      <span hidden="true">
-        ${state.translate('copiedUrl')}
-      </span>
-    </td>
-    <td class="fileData fileData--overflow">${remainingTime}</td>
-    <td class="fileData fileData--center">${number(totalDownloads)} / ${number(
-    downloadLimit
-  )}</td>
-    <td class="fileData fileData--center">
-      <img
-        onclick=${showPopup}
-        src="${assets.get('close-16.svg')}"
-        class="cursor--pointer"
-        title="${state.translate('deleteButtonHover')}"
-        tabindex="0">
-      ${deletePopup(
-        state.translate('deletePopupText'),
-        state.translate('deletePopupYes'),
-        state.translate('deletePopupCancel'),
-        deleteFile
-      )}
-    </td>
-  </tr>
+  <a href=${toastClick()}>
+    <li class="fileToast ${activeClass}" id="${file.id}">
+      <div class="fileToast__content">
+        ${fileIcon(file.name, file._hasPassword)}
+        <div class="fileData">
+          <p class="fileName">${fileName}</p>
+          <p class="fileInfo">
+            <span>${bytes(file.size)}</span> · 
+            <span>${state.translate('downloadCount', {
+              num: `${number(totalDownloads)} / ${number(downloadLimit)}`
+            })}</span>
+            <span>${remainingTime}</span>
+          </p>
+        </div>
+      </div>
+    </li>
+  </a>
   `;
 
-  function copyClick(e) {
-    emit('copy', { url: file.url, location: 'upload-list' });
-    const icon = e.target;
-    const text = e.target.nextSibling;
-    icon.hidden = true;
-    text.hidden = false;
-    setTimeout(() => {
-      icon.hidden = false;
-      text.hidden = true;
-    }, 500);
+  function toastClick() {
+    return isOnSharePage() ? '/' : `/share/${file.id}`;
   }
 
-  function showPopup() {
-    const tr = document.getElementById(file.id);
-    const popup = tr.querySelector('.popup');
-    popup.classList.add('popup--show');
-    popup.focus();
-  }
-
-  function deleteFile() {
-    emit('delete', { file, location: 'upload-list' });
-    emit('render');
+  function isOnSharePage() {
+    return state.href.includes('/share/') && state.params.id === file.id;
   }
 };
 
