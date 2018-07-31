@@ -177,7 +177,9 @@ export default function(state, emitter) {
     try {
       const start = Date.now();
       metrics.startedDownload({ size: file.size, ttl: file.ttl });
-      const dl = state.transfer.download();
+      const dl = state.transfer.download({
+        stream: state.capabilities.streamDownload
+      });
       render();
       await dl;
       const time = Date.now() - start;

@@ -75,7 +75,7 @@ async function decryptStream(id) {
 
 self.onfetch = event => {
   const req = event.request;
-  if (req.url.includes('/api/download')) {
+  if (/\/api\/download\/[A-Fa-f0-9]{4,}/.test(req.url)) {
     const id = req.url.split('/')[5];
     event.respondWith(decryptStream(id));
   }

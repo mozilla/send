@@ -57,6 +57,7 @@ module.exports = function(app) {
   app.get('/completed', language, pages.blank);
   app.get('/unsupported/:reason', language, pages.unsupported);
   app.get(`/api/download/:id${ID_REGEX}`, auth, require('./download'));
+  app.get(`/api/download/blob/:id${ID_REGEX}`, auth, require('./download'));
   app.get(`/api/exists/:id${ID_REGEX}`, require('./exists'));
   app.get(`/api/metadata/:id${ID_REGEX}`, auth, require('./metadata'));
   app.post('/api/upload', require('./upload'));
