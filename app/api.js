@@ -135,7 +135,7 @@ async function upload(stream, metadata, verifierB64, onprogress, canceller) {
   const endpoint =
     window.location.protocol === 'file:'
       ? 'wss://send2.dev.lcip.org/api/ws'
-      : `${protocol}//${host}:${port}/api/ws`;
+      : `${protocol}//${host}${port ? ':' : ''}${port}/api/ws`;
 
   const ws = await asyncInitWebSocket(endpoint);
 
@@ -270,7 +270,7 @@ function download(id, keychain, onprogress, canceller) {
       }
     });
     const auth = await keychain.authHeader();
-    xhr.open('get', `/api/download/${id}`);
+    xhr.open('get', `/api/download/blob/${id}`);
     xhr.setRequestHeader('Authorization', auth);
     xhr.responseType = 'blob';
     xhr.send();

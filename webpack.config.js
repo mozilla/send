@@ -89,6 +89,7 @@ const web = {
           {
             // Strip asserts from our deps, mainly choojs family
             include: [path.resolve(__dirname, 'node_modules')],
+            exclude: [path.resolve(__dirname, 'node_modules/crc')],
             loader: 'webpack-unassert-loader'
           }
         ]
