@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:10-alpine
 
 RUN apk add --no-cache git
 RUN addgroup -S -g 10001 app && adduser -S -D -G app -u 10001 app

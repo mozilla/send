@@ -14,6 +14,8 @@ plugins:
 root: true
 
 rules:
+  node/no-deprecated-api: off
+  node/no-unsupported-features/es-syntax: off
   node/no-unpublished-require: off
 
   security/detect-non-literal-fs-filename: off

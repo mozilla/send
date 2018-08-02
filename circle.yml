@@ -2,7 +2,7 @@ version: 2.0
 jobs:
   build:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:10
     steps:
       - checkout
       - restore_cache:
@@ -19,7 +19,7 @@ jobs:
             - ./dist
   test:
     docker:
-      - image: circleci/node:8-browsers
+      - image: circleci/node:10-browsers
     steps:
       - checkout
       - restore_cache:
@@ -29,7 +29,6 @@ jobs:
           key: send-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
-      - run: npm run check
       - run: npm run lint
       - run: npm run test
       - store_artifacts:
