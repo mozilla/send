@@ -3,7 +3,6 @@
 //  send-ios
 //
 //  Created by Donovan Preston on 7/19/18.
-//  Copyright © 2018 Donovan Preston. All rights reserved.
 //
 
 import UIKit
