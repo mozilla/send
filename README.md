@@ -30,7 +30,7 @@ A file sharing experiment which allows you to send encrypted files to other user
 
 ## Requirements
 
-- [Node.js 8.2+](https://nodejs.org/)
+- [Node.js 10.0+](https://nodejs.org/)
 - [Redis server](https://redis.io/) (optional for development)
 - [AWS S3](https://aws.amazon.com/s3/) or compatible service. (optional)
 
