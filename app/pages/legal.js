@@ -1,9 +1,15 @@
 const html = require('choo/html');
 const raw = require('choo/html/raw');
+const assets = require('../../common/assets');
+const title = require('../templates/title');
 
 module.exports = function(state) {
   return html`
     <div>
+      <a href="/" class="goBackButton"> 
+        <img src="${assets.get('back-arrow.svg')}"/> 
+      </a>
+      ${title(state)}
       <div class="title">${state.translate('legalHeader')}</div>
         ${raw(
           replaceLinks(state.translate('legalNoticeTestPilot'), [

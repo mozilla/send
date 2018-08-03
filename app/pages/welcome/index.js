@@ -1,6 +1,5 @@
 const html = require('choo/html');
 const assets = require('../../../common/assets');
-const { checkSize } = require('../../utils');
 const title = require('../../templates/title');
 const setPasswordSection = require('../../templates/setPasswordSection');
 const uploadBox = require('../../templates/uploadedFileList');
@@ -9,14 +8,15 @@ const expireInfo = require('../../templates/expireInfo');
 module.exports = function(state, emit) {
   // the page flickers if both the server and browser set 'effect--fadeIn'
   const fade = state.layout ? '' : 'effect--fadeIn';
-  const files = state.files ? state.files : [];
+
+  const hasAnUpload = state.archive && state.archive.numFiles > 0;
 
   const optionClass = state.uploading ? 'uploadOptions--faded' : '';
   const btnUploading = state.uploading ? 'btn--stripes' : '';
   const cancelVisible = state.uploading ? '' : 'noDisplay';
-  const faded = files.length > 0 ? 'uploadArea--faded' : '';
-  const selectFileClass = files.length > 0 ? 'btn--hidden' : '';
-  const sendFileClass = files.length > 0 ? '' : 'btn--hidden';
+  const faded = hasAnUpload ? 'uploadArea--faded' : '';
+  const selectFileClass = hasAnUpload > 0 ? 'btn--hidden' : '';
+  const sendFileClass = hasAnUpload > 0 ? '' : 'btn--hidden';
 
   let btnText = '';
 
@@ -37,7 +37,7 @@ module.exports = function(state, emit) {
       ondragover=${dragover}
       ondragleave=${dragleave}>
 
-      ${uploadBox(files, state, emit)}
+      ${uploadBox(state.archive, state, emit)}
 
       <div class="uploadedFilesWrapper ${faded}">
         <img
@@ -118,21 +118,18 @@ module.exports = function(state, emit) {
 
   async function addFiles(event) {
     event.preventDefault();
-    const target = event.target;
-    checkSize(target.files, state.files);
-    emit('addFiles', { files: target.files });
+    const newFiles = Array.from(event.target.files);
+
+    emit('addFiles', { files: newFiles });
   }
 
   async function upload(event) {
     event.preventDefault();
 
-    if (files.length > 0) {
-      emit('upload', {
-        files,
-        type: 'click',
-        dlCount: state.downloadCount,
-        password: state.password
-      });
-    }
+    emit('upload', {
+      type: 'click',
+      dlCount: state.downloadCount,
+      password: state.password
+    });
   }
 };

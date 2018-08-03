@@ -37,6 +37,7 @@ module.exports = function(state, emit) {
           ${state.translate('signInContinueMessage')}
 
           <form
+            onsubmit=${submitEmail}
             data-no-csrf>
             <input
               type="text"
@@ -57,4 +58,9 @@ module.exports = function(state, emit) {
 
     </div>
   `;
+
+  function submitEmail(event) {
+    event.preventDefault();
+    //TODO: hook up fxA onboarding
+  }
 };

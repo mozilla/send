@@ -1,12 +1,15 @@
 const html = require('choo/html');
 const file = require('../uploadedFile');
 
-module.exports = function(files, state, emit) {
-  //const progressRatio = state.transfer ? state.transfer.progressRatio : 0;
+module.exports = function(archive, state, emit) {
+  let files = [];
+  if (archive) {
+    files = Array.from(archive.manifest.files);
+  }
 
   return html`
 	<ul class="uploadedFiles">
-    ${files.map(f => file(f, state, emit))}
+    ${files.map((f, i) => file(f, i, state, emit, archive._hasPassword))}
   </ul>
 	`;
 };

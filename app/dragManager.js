@@ -1,5 +1,3 @@
-import { checkSize } from './utils';
-
 export default function(state, emitter) {
   emitter.on('DOMContentLoaded', () => {
     document.body.addEventListener('dragover', event => {
@@ -16,11 +14,9 @@ export default function(state, emitter) {
           .querySelector('.uploadArea')
           .classList.remove('uploadArea--dragging');
 
-        const target = event.dataTransfer;
+        const files = Array.from(event.dataTransfer.files);
 
-        checkSize(target.files, state.files);
-
-        emitter.emit('addFiles', { files: target.files });
+        emitter.emit('addFiles', { files });
       }
     });
   });

@@ -20,6 +20,7 @@ notifyUploadDone = Your upload has finished.
 uploadingPageMessage = Once your file uploads you will be able to set expiry options.
 uploadingPageCancel = Cancel upload
 uploadCancelNotification = Your upload was cancelled.
+downloadCancel = Cancel download
 uploadingPageLargeFileMessage = This file is large and may take a while to upload. Sit tight!
 uploadingFileNotification = Notify me when the upload is complete.
 uploadSuccessConfirmHeader = Ready to Send
@@ -43,6 +44,10 @@ timespanWeeks = { $num ->
         [one] 1 week
        *[other] { $num } weeks
     }
+fileCount = { $num ->
+    [one] 1 file
+   *[other] { $num } files
+}
 copyUrlFormLabelWithName = Copy and share the link to send your file: { $filename }
 copyUrlFormButton = Copy to clipboard
 copiedUrl = Copied!
@@ -107,6 +112,7 @@ footerLinkLegal = Legal
 footerLinkAbout = About Test Pilot
 footerLinkPrivacy = Privacy
 footerLinkTerms = Terms
+footerLinkPrivacyAndTerms = Privacy & Terms
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Require a password to download this file
 addPasswordButton = Add password
@@ -145,6 +151,8 @@ signInEmailEnter = Enter your Email
 emailEntryPlaceholder = Email
 signInContinueMessage = to continue to Firefox Send
 signInContinueButton = Continue
+signInMenuOption = Sign in/up
+accountMenuOption = Firefox Account
 accountBenefitTitle = With a free Firefox Account with Send you can:
 accountBenefitMultiFile = Send multiple files at once
 accountBenefitLargeFiles = Upload larger files (up to { $size } GB)

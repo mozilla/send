@@ -3,7 +3,7 @@ const assets = require('../../../common/assets');
 const bytes = require('../../utils').bytes;
 const fileIcon = require('../fileIcon');
 
-module.exports = function(file, state, emit) {
+module.exports = function(file, index, state, emit, hasPassword) {
   const transfer = state.transfer;
   const transferState = transfer ? transfer.state : null;
   const share = state.route.includes('share/');
@@ -20,25 +20,15 @@ module.exports = function(file, state, emit) {
   function cancel(event) {
     event.preventDefault();
     if (state.route === '/') {
-      emit('removeUpload', { file });
+      emit('removeUpload', { index });
     }
   }
-
-  //const percent = share ? 100 : Math.floor(progressRatio * 100);
-  /*
-    style="
-    background: linear-gradient(to right, 
-    #e8f2fe 0%, 
-    #e8f2fe ${percent}%,
-    #fff ${percent}%,
-    #fff 100%);"
-  */
 
   return html`
     <li class="uploadedFile ${complete}" id="${file.id}" 
     >
 
-      ${fileIcon(file.name, file._hasPassword)}
+      ${fileIcon(file.name, hasPassword)}
 
       <div class="uploadedFile__cancel ${cancelVisible}"
       onclick=${cancel}>

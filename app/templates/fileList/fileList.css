@@ -15,7 +15,7 @@
   .fileList {
     position: static;
     width: 400px;
-    max-height: 200px;
+    max-height: 160px;
     margin: 6px 0 0 -3px;
   }
 }

@@ -1,4 +1,3 @@
-/* global MAXFILESIZE */
 const b64 = require('base64-js');
 
 function arrayToB64(array) {
@@ -129,24 +128,26 @@ function openLinksInNewTab(links, should = true) {
   return links;
 }
 
-function checkSize(files, oldfiles, translate) {
-  function size(arr) {
-    let total = 0;
-    for (let i = 0; i < arr.length; i++) {
-      total += arr[i].size;
+function browserName() {
+  try {
+    if (/firefox/i.test(navigator.userAgent)) {
+      return 'firefox';
     }
-    return total;
-  }
-
-  const addSize = size(files);
-  if (addSize === 0) {
-    return;
-  }
-  const totalSize = addSize + size(oldfiles);
-  if (totalSize > MAXFILESIZE) {
-    // eslint-disable-next-line no-alert
-    alert(translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
-    return;
+    if (/edge/i.test(navigator.userAgent)) {
+      return 'edge';
+    }
+    if (/trident/i.test(navigator.userAgent)) {
+      return 'ie';
+    }
+    if (/chrome/i.test(navigator.userAgent)) {
+      return 'chrome';
+    }
+    if (/safari/i.test(navigator.userAgent)) {
+      return 'safari';
+    }
+    return 'other';
+  } catch (e) {
+    return 'unknown';
   }
 }
 
@@ -163,5 +164,5 @@ module.exports = {
   loadShim,
   isFile,
   openLinksInNewTab,
-  checkSize
+  browserName
 };

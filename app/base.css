@@ -47,7 +47,7 @@ a {
   padding: 0 25px;
   box-sizing: border-box;
   min-height: 500px;
-  max-height: 630px;
+  max-height: 800px;
   height: 100px;
 }
 
@@ -55,6 +55,7 @@ a {
   flex: none;
   position: relative;
   width: 400px;
+  margin-top: 32px;
   background-color: white;
   border-radius: 6px;
   box-shadow: 0 0 0 3px rgba(12, 12, 13, 0.2);
@@ -147,10 +148,6 @@ a {
   border: none;
 }
 
-.uploadCancel:hover {
-  text-decoration: underline;
-}
-
 .input {
   border: 1px solid var(--lightBorderColor);
   font-size: 20px;
@@ -161,24 +158,8 @@ a {
   padding-right: 10px;
 }
 
-.input--noBtn {
-  border-radius: 6px;
-}
-
 .input--error {
   border-color: var(--errorColor);
-}
-
-.inputBtn.inputError {
-  background-color: var(--errorColor);
-}
-
-.inputBtn.inputError:hover {
-  background-color: var(--errorColor);
-}
-
-.cursor--pointer {
-  cursor: pointer;
 }
 
 .link {
@@ -206,33 +187,9 @@ a {
   text-align: center;
 }
 
-.progressSection {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  font-size: 15px;
-}
-
-.progressSection__text {
-  color: var(--lightTextColor);
-  letter-spacing: -0.4px;
-  margin-top: 24px;
-  margin-bottom: 74px;
-}
-
 .effect--fadeOut {
   opacity: 0;
   animation: fadeout 200ms linear;
-}
-
-.goBackButton {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 18px;
 }
 
 @keyframes fadeout {
@@ -260,19 +217,26 @@ a {
   }
 }
 
+.goBackButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 18px;
+}
+
 .error {
   color: var(--errorColor);
   font-weight: 600;
 }
 
 .title {
-  color: var(--textColor);
-  font-size: 33px;
+  color: var(--lightTextColor);
+  font-size: 18px;
   line-height: 40px;
   margin: 20px auto;
-  text-align: center;
   max-width: 520px;
   font-family: 'SF Pro Text', sans-serif;
+  font-weight: 700;
   word-wrap: break-word;
 }
 
@@ -289,7 +253,7 @@ a {
 }
 
 .noDisplay {
-  display: none;
+  display: none !important;
 }
 
 .flexible {
@@ -303,7 +267,7 @@ a {
 
   .main {
     flex-direction: column;
-    min-height: 700px;
+    height: 100%;
   }
 
   .spacer {
@@ -312,7 +276,8 @@ a {
   }
 
   .stripedBox {
-    max-height: 550px;
+    margin-top: 72;
+    min-height: 400px;
     flex: 1;
   }
 

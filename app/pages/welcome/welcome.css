@@ -91,3 +91,7 @@
 .uploadCancel {
   margin: 6px 0 0;
 }
+
+.uploadCancel:hover {
+  text-decoration: underline;
+}

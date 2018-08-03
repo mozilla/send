@@ -1,14 +1,15 @@
+/* global MAXFILESIZE */
 import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
 import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
 import * as metrics from './metrics';
 import { hasPassword } from './api';
 import Archive from './archive';
+import { bytes } from './utils';
 
 export default function(state, emitter) {
   let lastRender = 0;
   let updateTitle = false;
-  state.files = [];
 
   function render() {
     emitter.emit('render');
@@ -61,14 +62,9 @@ export default function(state, emitter) {
     metrics.changedDownloadLimit(file);
   });
 
-  emitter.on('removeUpload', async ({ file }) => {
-    for (let i = 0; i < state.files.length; i++) {
-      if (state.files[i] === file) {
-        state.files.splice(i, 1);
-        render();
-        return;
-      }
-    }
+  emitter.on('removeUpload', async ({ index }) => {
+    state.archive.remove(index);
+    render();
   });
 
   emitter.on('delete', async ({ file, location }) => {
@@ -93,18 +89,28 @@ export default function(state, emitter) {
   });
 
   emitter.on('addFiles', async ({ files }) => {
-    for (let i = 0; i < files.length; i++) {
-      state.files.push(files[i]);
+    if (state.archive) {
+      if (!state.archive.addFiles(files)) {
+        // eslint-disable-next-line no-alert
+        alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
+        return;
+      }
+    } else {
+      const archive = new Archive(files);
+      if (!archive.checkSize()) {
+        // eslint-disable-next-line no-alert
+        alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
+        return;
+      }
+      state.archive = archive;
     }
     render();
   });
 
-  //TODO: hook up to multi-file upload functionality
-  emitter.on('upload', async ({ files, type, dlCount, password }) => {
-    const file = new Archive(files);
-
-    const size = file.size;
-    const sender = new FileSender(file);
+  emitter.on('upload', async ({ type, dlCount, password }) => {
+    if (!state.archive) return;
+    const size = state.archive.size;
+    const sender = new FileSender(state.archive);
     sender.on('progress', updateProgress);
     sender.on('encrypting', render);
     sender.on('complete', render);

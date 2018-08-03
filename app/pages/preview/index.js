@@ -4,8 +4,7 @@ const downloadButton = require('../../templates/downloadButton');
 const downloadedFiles = require('../../templates/uploadedFileList');
 
 module.exports = function(state, emit) {
-  const storageFile = state.storage.getFileById(state.params.id);
-  const multifiles = Array.from(storageFile.manifest.files);
+  const ownedFile = state.storage.getFileById(state.params.id);
 
   const trySendLink = html`
     <a class="link link--action" href="/">
@@ -26,7 +25,7 @@ module.exports = function(state, emit) {
     <div class="page">
       ${titleSection(state)}
 
-      ${downloadedFiles(multifiles, state, emit)}
+      ${downloadedFiles(ownedFile, state, emit)}
       <div class="description">${state.translate('downloadMessage2')}</div>
       ${downloadButton(state, emit)}
 

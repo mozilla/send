@@ -2,7 +2,6 @@ const choo = require('choo');
 const html = require('choo/html');
 const nanotiming = require('nanotiming');
 const download = require('./download');
-const header = require('../templates/header');
 const footer = require('../templates/footer');
 const fxPromo = require('../templates/fxPromo');
 const signupPromo = require('../templates/signupPromo');
@@ -24,7 +23,6 @@ function body(template) {
     const b = html`<body class="background ${activeBackground(state)}">
       ${banner(state, emit)}
       ${signupPromo(state)}
-      ${header(state)}
       <main class="main">
         <noscript>
           <div class="noscript">
@@ -61,7 +59,7 @@ function body(template) {
   };
 }
 
-app.route('/', body(require('./home')));
+app.route('/', body(require('../pages/welcome')));
 app.route('/share/:id', body(require('../pages/share')));
 app.route('/download/:id', body(download));
 app.route('/download/:id/:key', body(download));

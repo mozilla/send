@@ -4,7 +4,7 @@ const raw = require('choo/html/raw');
 const assets = require('../../../common/assets');
 const notFound = require('../notFound');
 const deletePopup = require('../../templates/popup');
-const uploadedFiles = require('../../templates/uploadedFileList');
+const uploadedFileList = require('../../templates/uploadedFileList');
 const { allowedCopy, delay, fadeOut } = require('../../utils');
 
 module.exports = function(state, emit) {
@@ -17,8 +17,6 @@ module.exports = function(state, emit) {
     ? ''
     : 'passwordReminder--hidden';
 
-  const multifiles = Array.from(file.manifest.files);
-
   return html`
 
     <div class="page effect--fadeIn" id="shareWrapper">
@@ -27,11 +25,10 @@ module.exports = function(state, emit) {
       </a>
       ${expireInfo(file, state.translate)}
 
-      ${uploadedFiles(multifiles, state, emit)}
-
+      ${uploadedFileList(file, state, emit)}
 
       <div class="sharePage__copyText">
-        ${state.translate('copyUrlFormLabelWithName', { filename: '' })}
+        ${state.translate('copyUrlLabel')}
         <div class="sharePage__passwordReminder ${passwordReminderClass}">(don't forget the password too)</div>
       </div>
 
@@ -60,14 +57,14 @@ module.exports = function(state, emit) {
       <button
         class="btn--cancel btn--delete"
         title="${state.translate('deleteFileButton')}"
-        onclick=${showPopup}>${state.translate('deleteFileButton')}
+        onclick=${showDeletePopup}>${state.translate('deleteFileButton')}
       </button>
 
     </div>
 
   `;
 
-  function showPopup() {
+  function showDeletePopup() {
     const popup = document.querySelector('.popup');
     popup.classList.add('popup--show');
     popup.focus();

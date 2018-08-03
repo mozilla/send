@@ -6,7 +6,7 @@
 
 .signIn__info {
   width: 308px;
-  margin: 16px auto 0;
+  margin: 12px auto 0;
   text-align: left;
 }
 
@@ -26,7 +26,7 @@
   height: 40px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  margin: 0;
+  margin: 8px 0;
   padding: 0 8px;
   font-size: 18px;
   color: var(--lightTextColor);
