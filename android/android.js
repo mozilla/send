@@ -50,19 +50,15 @@ function uploadComplete(file) {
     },
     'Copy to clipboard'
   );
-  const node = dom(
-    'div',
-    { id: 'striped' },
-    dom('div', { id: 'white' }, [
-      input,
-      copy,
-      dom(
-        'button',
-        { id: 'send-another', className: 'button', onclick: render },
-        'Send another file'
-      )
-    ])
-  );
+  const node = dom('div', { id: 'white' }, [
+    input,
+    copy,
+    dom(
+      'button',
+      { id: 'send-another', className: 'button', onclick: render },
+      'Send another file'
+    )
+  ]);
   document.body.appendChild(node);
 }
 
@@ -102,20 +98,28 @@ function upload(event) {
 
 function render() {
   document.body.innerHTML = '';
-  const striped = dom(
-    'div',
-    { id: 'striped' },
-    dom('div', { id: 'white' }, [
-      dom('label', { id: 'label', htmlFor: 'input' }, 'Choose file'),
-      dom('input', {
-        id: 'input',
-        type: 'file',
-        name: 'input',
-        onchange: upload
-      })
-    ])
-  );
-  document.body.appendChild(striped);
+  const node = dom('div', { id: 'white' }, [
+    dom('img', { src: 'encrypted-envelope.png' }),
+    dom('h4', {}, 'Private, Encrypted File Sharing'),
+    dom(
+      'div',
+      {},
+      'Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.'
+    ),
+    dom('div', { className: 'spacer' }, ' '),
+    dom(
+      'label',
+      { id: 'label', htmlFor: 'input' },
+      dom('img', { src: 'cloud-upload.png' }, [])
+    ),
+    dom('input', {
+      id: 'input',
+      type: 'file',
+      name: 'input',
+      onchange: upload
+    })
+  ]);
+  document.body.appendChild(node);
 }
 
 emitter.on('render', function() {
@@ -124,7 +128,7 @@ emitter.on('render', function() {
     (state.transfer.progress[0] / state.transfer.progress[1]) * 100;
   const node = dom(
     'div',
-    { style: 'background-color: white; width: 100%' },
+    { id: 'white', style: 'width: 90%' },
     dom('span', {
       style: `display: inline-block; width: ${percent}%; background-color: blue`
     })

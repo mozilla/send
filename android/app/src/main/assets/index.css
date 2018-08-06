@@ -1,20 +1,11 @@
-body {
-  background: url('background_1.jpg');
-  display: flex;
-  flex-direction: row;
-  flex: auto;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+html {
+  height: 100vh;
 }
 
-#striped {
+body {
+  box-sizing: border-box;
+  margin: 0;
+  min-height: 100vh;
   background-image: repeating-linear-gradient(
     45deg,
     white,
@@ -26,8 +17,6 @@ body {
     #0083ff 30px,
     #0083ff 50px
   );
-  height: 350px;
-  width: 480px;
 }
 
 #white {
@@ -35,23 +24,30 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100%;
+  min-height: 100vh;
   background-color: white;
   margin: 0 10px;
   padding: 1px 10px 0 10px;
+  text-align: center;
 }
 
 #label {
-  background: #0297f8;
-  border: 1px solid #0297f8;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
   color: white;
   font-size: 24px;
   font-weight: 500;
   height: 60px;
-  width: 200px;
+  width: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#label img {
+  height: 60px;
+  width: 60px;
 }
 
 #input {
@@ -81,4 +77,8 @@ body {
 
 #send-another {
   margin-bottom: 1em;
+}
+
+.spacer {
+  height: 6em;
 }
