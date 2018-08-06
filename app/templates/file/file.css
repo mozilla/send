@@ -1,26 +1,94 @@
-.fileData {
-  font-size: 15px;
-  vertical-align: top;
-  color: var(--lightTextColor);
-  padding: 17px 19px 0;
-  line-height: 23px;
-  position: relative;
-}
-
-.fileData--overflow {
-  text-overflow: ellipsis;
-  max-width: 0;
+.fileToast {
+  margin: 13px 0 0;
   overflow: hidden;
+  font-size: 11px;
+  line-height: 18px;
+  color: var(--lightTextColor);
+  background-color: var(--pageBGColor);
+  position: relative;
+  box-shadow: 0 0 0 3px rgba(12, 12, 12, 0.2);
+  box-sizing: border-box;
+  height: 53px;
+  border-radius: 4px;
+}
+
+.fileToast__content {
+  position: relative;
+  z-index: 2;
+}
+
+.fileToast::after {
+  position: absolute;
+  z-index: 1;
+  content: '';
+  transition: all 0.25s;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 100%;
+  background-color: var(--primaryControlBGColor);
+}
+
+.fileToast:hover {
+  background-color: #eee;
+}
+
+.fileToast--active {
+  color: var(--primaryControlFGColor);
+}
+
+.fileToast--active::after {
+  left: 0%;
+  width: 100%;
+}
+
+.fileData {
+  margin: 8px 16px 8px 44px;
+  overflow: hidden;
+}
+
+.fileName {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
   white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
-.fileData--center {
-  text-align: center;
+.fileInfo {
+  margin: 0;
 }
 
-@media (max-device-width: 520px), (max-width: 520px) {
+.fileToast .fileIcon {
+  margin: 2px 8px;
+}
+
+@media (max-device-width: 750px), (max-width: 750px) {
+  .fileToast {
+    height: 32px;
+    width: 400px;
+  }
+
+  .fileToast__content {
+    display: flex;
+  }
+
   .fileData {
-    font-size: 13px;
-    padding: 17px 5px 0;
+    flex: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 8px;
+  }
+
+  .fileInfo {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .fileToast .fileIcon {
+    margin: 0;
+    transform: scale(0.5);
+    color: transparent;
   }
 }

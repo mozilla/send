@@ -2,7 +2,6 @@
 @import './templates/activeBackground/activeBackground.css';
 @import './templates/header/header.css';
 @import './templates/downloadButton/downloadButton.css';
-@import './templates/progress/progress.css';
 @import './templates/passwordInput/passwordInput.css';
 @import './templates/downloadPassword/downloadPassword.css';
 @import './templates/setPasswordSection/setPasswordSection.css';
@@ -11,7 +10,14 @@
 @import './templates/selectbox/selectbox.css';
 @import './templates/fileList/fileList.css';
 @import './templates/file/file.css';
+@import './templates/uploadedFile/uploadedFile.css';
+@import './templates/uploadedFileList/uploadedFileList.css';
 @import './templates/popup/popup.css';
+@import './templates/title/title.css';
+@import './templates/fileIcon/fileIcon.css';
+@import './templates/signupPromo/signupPromo.css';
+@import './templates/userAccount/userAccount.css';
 @import './pages/welcome/welcome.css';
 @import './pages/share/share.css';
+@import './pages/signin/signin.css';
 @import './pages/unsupported/unsupported.css';

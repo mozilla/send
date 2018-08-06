@@ -1,13 +1,11 @@
+/* global MAXFILESIZE */
 import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
-import {
-  copyToClipboard,
-  delay,
-  fadeOut,
-  openLinksInNewTab,
-  percent
-} from './utils';
+import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
 import * as metrics from './metrics';
+import { hasPassword } from './api';
+import Archive from './archive';
+import { bytes } from './utils';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -64,6 +62,11 @@ export default function(state, emitter) {
     metrics.changedDownloadLimit(file);
   });
 
+  emitter.on('removeUpload', async ({ index }) => {
+    state.archive.remove(index);
+    render();
+  });
+
   emitter.on('delete', async ({ file, location }) => {
     try {
       metrics.deletedUpload({
@@ -85,11 +88,32 @@ export default function(state, emitter) {
     state.transfer.cancel();
   });
 
-  emitter.on('upload', async ({ file, type }) => {
-    const size = file.size;
-    const sender = new FileSender(file);
+  emitter.on('addFiles', async ({ files }) => {
+    if (state.archive) {
+      if (!state.archive.addFiles(files)) {
+        // eslint-disable-next-line no-alert
+        alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
+        return;
+      }
+    } else {
+      const archive = new Archive(files);
+      if (!archive.checkSize()) {
+        // eslint-disable-next-line no-alert
+        alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
+        return;
+      }
+      state.archive = archive;
+    }
+    render();
+  });
+
+  emitter.on('upload', async ({ type, dlCount, password }) => {
+    if (!state.archive) return;
+    const size = state.archive.size;
+    const sender = new FileSender(state.archive);
     sender.on('progress', updateProgress);
     sender.on('encrypting', render);
+    sender.on('complete', render);
     state.transfer = sender;
     state.uploading = true;
     render();
@@ -98,19 +122,25 @@ export default function(state, emitter) {
     await delay(200);
     try {
       metrics.startedUpload({ size, type });
+
       const ownedFile = await sender.upload();
       ownedFile.type = type;
       state.storage.totalUploads += 1;
       metrics.completedUpload(ownedFile);
 
       state.storage.addFile(ownedFile);
+
+      if (password) {
+        emitter.emit('password', { password, file: ownedFile });
+      }
+      emitter.emit('changeLimit', { file: ownedFile, value: dlCount });
+
       const cancelBtn = document.getElementById('cancel-upload');
       if (cancelBtn) {
         cancelBtn.hidden = 'hidden';
       }
       if (document.querySelector('.page')) {
         await delay(1000);
-        await fadeOut('.page');
       }
       emitter.emit('pushState', `/share/${ownedFile.id}`);
     } catch (err) {
@@ -127,6 +157,8 @@ export default function(state, emitter) {
       }
     } finally {
       openLinksInNewTab(links, false);
+      state.files = [];
+      state.password = '';
       state.uploading = false;
       state.transfer = null;
     }
@@ -148,6 +180,17 @@ export default function(state, emitter) {
       state.settingPassword = false;
     }
     render();
+  });
+
+  emitter.on('getPasswordExist', async ({ id }) => {
+    try {
+      state.fileInfo = await hasPassword(id);
+      render();
+    } catch (e) {
+      if (e.message === '404') {
+        return emitter.emit('pushState', '/404');
+      }
+    }
   });
 
   emitter.on('getMetadata', async () => {
@@ -172,6 +215,7 @@ export default function(state, emitter) {
   emitter.on('download', async file => {
     state.transfer.on('progress', updateProgress);
     state.transfer.on('decrypting', render);
+    state.transfer.on('complete', render);
     const links = openLinksInNewTab();
     const size = file.size;
     try {
@@ -186,12 +230,10 @@ export default function(state, emitter) {
       const speed = size / (time / 1000);
       if (document.querySelector('.page')) {
         await delay(1000);
-        await fadeOut('.page');
       }
       state.storage.totalDownloads += 1;
       state.transfer.reset();
       metrics.completedDownload({ size, time, speed });
-      emitter.emit('pushState', '/completed');
     } catch (err) {
       if (err.message === '0') {
         // download cancelled

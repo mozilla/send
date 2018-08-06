@@ -2,19 +2,17 @@ const html = require('choo/html');
 
 module.exports = function(msg, confirmText, cancelText, confirmCallback) {
   return html`
-  <div class="popup__wrapper">
     <div class="popup" onblur=${hide} tabindex="-1">
       <div class="popup__message">${msg}</div>
       <div class="popup__action">
-        <span class="popup__no" onclick=${hide}>
-          ${cancelText}
-        </span>
-        <span class="popup__yes" onclick=${confirmCallback}>
-          ${confirmText}
-        </span>
+        <div>
+          <span class="popup__no" onclick=${hide}>${cancelText}</span>
+        </div>
+        <div>
+          <span class="popup__yes" onclick=${confirmCallback}>${confirmText}</span>
+        </div>
       </div>
-    </div>
-  </div>`;
+    </div>`;
 
   function hide(e) {
     e.stopPropagation();

@@ -1,0 +1,13 @@
+.boxTitle {
+  font-size: 15px;
+  text-align: center;
+  font-weight: 500;
+  margin: 9px 0 19px 0;
+  color: var(--lightTextColor);
+}
+
+.boxSubtitle {
+  font-size: 12px;
+  font-weight: 300;
+  font-style: italic;
+}

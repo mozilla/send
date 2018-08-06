@@ -9,6 +9,7 @@ export default class OwnedFile {
     this.name = obj.name;
     this.size = obj.size;
     this.type = obj.type;
+    this.manifest = obj.manifest;
     this.time = obj.time;
     this.speed = obj.speed;
     this.createdAt = obj.createdAt;
@@ -70,6 +71,7 @@ export default class OwnedFile {
       name: this.name,
       size: this.size,
       type: this.type,
+      manifest: this.manifest,
       time: this.time,
       speed: this.speed,
       createdAt: this.createdAt,

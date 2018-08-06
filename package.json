@@ -57,7 +57,7 @@
     "@mattiasbuelens/web-streams-polyfill": "0.1.0-alpha.5",
     "asmcrypto.js": "^2.3.2",
     "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
+    "babel-loader": "^7.1.5",
     "babel-plugin-istanbul": "^4.1.6",
     "babel-plugin-yo-yoify": "^2.0.0",
     "babel-preset-env": "^1.7.0",

@@ -3,33 +3,33 @@ const html = require('choo/html');
 module.exports = function(state, emit) {
   const fileInfo = state.fileInfo;
   const invalid = fileInfo.password === null;
-  const label = invalid
-    ? html`
-          <label class="error" for="password-input">
-            ${state.translate('passwordTryAgain')}
-          </label>`
-    : html`
-          <label for="password-input">
-            ${state.translate('unlockInputLabel')}
-          </label>`;
-  const inputClass = invalid
-    ? 'input input--noBtn input--error'
-    : 'input input--noBtn';
+
+  const visible = invalid ? 'visible' : '';
+  const invalidBtn = invalid ? 'unlockBtn--error' : '';
+
   const div = html`
     <div class="passwordSection">
-      ${label}
+      
+      <label 
+        class="error passwordForm__error ${visible}" 
+        for="password-input">
+        ${state.translate('passwordTryAgain')}
+      </label>
+
       <form class="passwordForm" onsubmit=${checkPassword} data-no-csrf>
         <input id="password-input"
-          class="${inputClass}"
+          class="input passwordForm__input"
           maxlength="64"
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"
           oninput=${inputChanged}
           type="password" />
+
         <input type="submit"
           id="password-btn"
-          class="inputBtn inputBtn--hidden"
-          value="${state.translate('unlockButtonLabel')}"/>
+          class="btn unlockBtn ${invalidBtn}"
+          value="${state.translate('unlockInputLabel')}"/>
+
       </form>
     </div>`;
 
@@ -38,16 +38,10 @@ module.exports = function(state, emit) {
   }
 
   function inputChanged() {
-    const input = document.getElementById('password-input');
+    const input = document.querySelector('.passwordForm__error');
+    input.classList.remove('visible');
     const btn = document.getElementById('password-btn');
-    input.classList.remove('input--error');
-    if (input.value.length > 0) {
-      btn.classList.remove('inputBtn--hidden');
-      input.classList.remove('input--noBtn');
-    } else {
-      btn.classList.add('inputBtn--hidden');
-      input.classList.add('input--noBtn');
-    }
+    btn.classList.remove('unlockBtn--error');
   }
 
   function checkPassword(event) {
