@@ -1,0 +1,64 @@
+.account {
+  position: absolute;
+  right: 0;
+  margin: 0 21px;
+  padding: 0;
+}
+
+.account_dropdown {
+  z-index: 2;
+  position: absolute;
+  top: 30px;
+  left: -15px;
+  width: 150px;
+  list-style-type: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: var(--pageBGColor);
+  box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.2);
+  padding: 11px 0;
+  visibility: hidden;
+  outline: 0;
+}
+
+.account_dropdown::after,
+.account_dropdown::before {
+  position: absolute;
+  bottom: 100%;
+  left: 18px;
+  height: 0;
+  width: 0;
+  border: 1px solid transparent;
+  content: '';
+  pointer-events: none;
+}
+
+.account_dropdown::after {
+  border-bottom-color: var(--pageBGColor);
+  border-width: 12px;
+}
+
+.account_dropdown::before {
+  border-bottom-color: #ccc;
+  border-width: 13px;
+  margin-left: -1px;
+}
+
+.account_dropdown__link {
+  display: block;
+  padding: 0 14px;
+  font-size: 13px;
+  line-height: 24px;
+  color: var(--lightTextColor);
+  position: relative;
+  z-index: 999;
+}
+
+.account_dropdown__link:visited {
+  color: var(--lightTextColor);
+}
+
+.account_dropdown__link:hover {
+  background-color: var(--primaryControlBGColor);
+  color: var(--primaryControlFGColor);
+}

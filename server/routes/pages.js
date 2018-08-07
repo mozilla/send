@@ -19,16 +19,15 @@ module.exports = {
 
   download: async function(req, res, next) {
     const id = req.params.id;
-
     try {
       const { nonce, pwd } = await storage.metadata(id);
       res.set('WWW-Authenticate', `send-v1 ${nonce}`);
       res.send(
         stripEvents(
           routes.toString(
-            `/download/${req.params.id}`,
+            `/download/${id}`,
             Object.assign(state(req), {
-              fileInfo: { nonce, requiresPassword: +pwd }
+              fileInfo: { nonce, requiresPassword: pwd }
             })
           )
         )

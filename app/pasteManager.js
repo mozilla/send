@@ -1,6 +1,3 @@
-/* global MAXFILESIZE */
-import { bytes } from './utils';
-
 export default function(state, emitter) {
   window.addEventListener('paste', event => {
     if (state.route !== '/' || state.uploading) return;
@@ -12,14 +9,7 @@ export default function(state, emitter) {
 
       if (!file) continue; // Sometimes null
 
-      if (file.size > MAXFILESIZE) {
-        // eslint-disable-next-line no-alert
-        alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
-        continue;
-      }
-
-      emitter.emit('upload', { file, type: 'paste' });
-      return; // return here since only one file is allowed to be uploaded at a time
+      emitter.emit('addFiles', { files: [file] });
     }
   });
 }

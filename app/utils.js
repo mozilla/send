@@ -128,6 +128,29 @@ function openLinksInNewTab(links, should = true) {
   return links;
 }
 
+function browserName() {
+  try {
+    if (/firefox/i.test(navigator.userAgent)) {
+      return 'firefox';
+    }
+    if (/edge/i.test(navigator.userAgent)) {
+      return 'edge';
+    }
+    if (/trident/i.test(navigator.userAgent)) {
+      return 'ie';
+    }
+    if (/chrome/i.test(navigator.userAgent)) {
+      return 'chrome';
+    }
+    if (/safari/i.test(navigator.userAgent)) {
+      return 'safari';
+    }
+    return 'other';
+  } catch (e) {
+    return 'unknown';
+  }
+}
+
 module.exports = {
   fadeOut,
   delay,
@@ -140,5 +163,6 @@ module.exports = {
   b64ToArray,
   loadShim,
   isFile,
-  openLinksInNewTab
+  openLinksInNewTab,
+  browserName
 };

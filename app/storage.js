@@ -47,6 +47,7 @@ class Storage {
           if (!f.id) {
             f.id = f.fileId;
           }
+
           fs.push(f);
         } catch (err) {
           // obviously you're not a golfer

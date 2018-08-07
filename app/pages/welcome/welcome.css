@@ -1,65 +1,97 @@
 .uploadArea {
-  border: 3px dashed rgba(0, 148, 251, 0.5);
-  margin: 0 auto 10px;
-  height: 255px;
-  border-radius: 4px;
+  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
   text-align: center;
+  border: 1px dashed rgba(12, 12, 13, 0.2);
+  margin: 0 0 10px;
+  height: 400px;
+  border-radius: 4px;
+  overflow: scroll;
   transition: transform 150ms;
-  padding: 15px;
+  flex: 1;
 }
 
 .uploadArea__msg {
-  font-size: 22px;
+  font-size: 15px;
   color: var(--lightTextColor);
-  margin: 20px 0 10px;
+  margin: 12px 0 0;
   font-family: 'SF Pro Text', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
-.uploadArea__sizeMsg {
+.uploadArea__clickMsg {
   font-style: italic;
   font-size: 12px;
-  line-height: 16px;
+  line-height: 12px;
   color: var(--lightTextColor);
-  margin-bottom: 22px;
+  margin: 5px;
 }
 
 .uploadArea--dragging {
-  border: 5px dashed rgba(0, 148, 251, 0.5);
-  height: 251px;
+  border: 1px dashed rgba(12, 12, 13, 0.4);
   transform: scale(1.04);
-  border-radius: 4.2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
 }
 
-.uploadArea--dragging * {
+.uploadArea--faded * {
+  opacity: 0.5;
+}
+
+.uploadArea--noEvents,
+.uploadArea--noEvents * {
   pointer-events: none;
 }
 
 .btn--file {
-  font-size: 20px;
-  min-width: 240px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 10px;
+  display: inline-block;
+  background-color: #737373;
+}
+
+.btn--file:hover {
+  background-color: #636363;
+}
+
+.btn--hidden {
+  display: none;
 }
 
 .inputFile {
-  opacity: 0;
-  position: absolute;
+  display: none;
 }
 
 .inputFile--focused + .btn--file {
   background-color: var(--primaryControlHoverColor);
   outline: 1px dotted #000;
   outline: -webkit-focus-ring-color auto 5px;
+}
+
+.uploadArea > .uploadedFiles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex: none;
+  width: 100%;
+  border: none;
+  z-index: 1;
+}
+
+.uploadOptions {
+  text-align: left;
+  font-size: 13px;
+  color: var(--lightTextColor);
+}
+
+.uploadOptions--faded {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.uploadCancel {
+  margin: 6px 0 0;
+}
+
+.uploadCancel:hover {
+  text-decoration: underline;
 }

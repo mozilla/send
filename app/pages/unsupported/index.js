@@ -1,11 +1,13 @@
 const html = require('choo/html');
 const assets = require('../../../common/assets');
+const title = require('../../templates/title');
 
 module.exports = function(state) {
   let strings = {};
   let why = '';
   let url = '';
   let buttonAction = '';
+
   if (state.params.reason !== 'outdated') {
     strings = unsupportedStrings(state);
     why = html`
@@ -28,20 +30,26 @@ module.exports = function(state) {
         ${strings.button}
       </div>`;
   }
+
   return html`
-    <div class="unsupportedPage">
-      <div class="title">${strings.title}</div>
-      <div class="description">
+    <div class="page unsupportedPage">
+      ${title(state)}
+      <div class="error unsupportedPage__error">${strings.header}</div>
+      <div class="description flexible">
         ${strings.description}
+        ${why}
       </div>
-      ${why}
-      <a href="${url}" class="firefoxDownload">
-        <img
-          src="${assets.get('firefox_logo-only.svg')}"
-          class="firefoxDownload__logo"
-          alt="Firefox"/>
-        ${buttonAction}
-      </a>
+
+      <div class="flexible firefoxDownload">
+        <a href="${url}" class="firefoxDownload__button">
+          <img
+            src="${assets.get('firefox_logo-only.svg')}"
+            class="firefoxDownload__logo"
+            alt="Firefox"/>
+          ${buttonAction}
+        </a>
+      </div>
+
       <div class="unsupportedPage__info">
         ${strings.explainer}
       </div>
@@ -50,7 +58,7 @@ module.exports = function(state) {
 
 function outdatedStrings(state) {
   return {
-    title: state.translate('notSupportedHeader'),
+    header: state.translate('notSupportedHeader'),
     description: state.translate('notSupportedOutdatedDetail'),
     button: state.translate('updateFirefox'),
     explainer: state.translate('uploadPageExplainer')
@@ -59,7 +67,7 @@ function outdatedStrings(state) {
 
 function unsupportedStrings(state) {
   return {
-    title: state.translate('notSupportedHeader'),
+    header: state.translate('notSupportedHeader'),
     description: state.translate('notSupportedDetail'),
     button: state.translate('downloadFirefoxButtonSub'),
     explainer: state.translate('uploadPageExplainer')

@@ -93,6 +93,7 @@ export default class FileSender extends Nanobus {
         url: `${result.url}#${secretKey}`,
         name: this.file.name,
         size: this.file.size,
+        manifest: this.file.manifest,
         time: time,
         speed: this.file.size / (time / 1000),
         createdAt: Date.now(),
@@ -101,6 +102,7 @@ export default class FileSender extends Nanobus {
         nonce: this.keychain.nonce,
         ownerToken: result.ownerToken
       });
+
       return ownedFile;
     } catch (e) {
       this.msg = 'errorPageHeader';

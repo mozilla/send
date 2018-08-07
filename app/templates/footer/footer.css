@@ -1,93 +1,148 @@
 .footer {
-  right: 0;
   bottom: 0;
   left: 0;
   font-size: 13px;
+  font-weight: 600;
   display: flex;
-  align-items: flex-end;
   flex-direction: row;
-  justify-content: space-between;
   padding: 50px 31px 41px;
   width: 100%;
   box-sizing: border-box;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .legalSection {
-  max-width: 81vw;
   display: flex;
   align-items: center;
   flex-direction: row;
 }
 
 .legalSection__link {
-  color: var(--lightTextColor);
-  opacity: 0.9;
+  color: #fff;
+  text-shadow: 0 0 3px #000;
   white-space: nowrap;
   margin-right: 2vw;
 }
 
-.legalSection__link:hover {
-  opacity: 1;
-}
-
 .legalSection__link:visited {
-  color: var(--lightTextColor);
+  color: #ededf0;
 }
 
-.legalSection__mozLogo {
+.legalSection__link:hover {
+  color: #d7d7db;
+}
+
+.footer__mozLogo {
   width: 112px;
   height: 32px;
   margin-bottom: -5px;
 }
 
-.socialSection {
-  display: flex;
-  justify-content: space-between;
-  width: 94px;
-}
-
-.socialSection__link {
-  opacity: 0.9;
-}
-
-.socialSection__link:hover {
-  opacity: 1;
-}
-
 .socialSection__icon {
   width: 32px;
   height: 32px;
-  margin-bottom: -5px;
+  margin: 0 0 -5px 4px;
 }
 
-@media (max-device-width: 768px), (max-width: 768px) {
+.feedback {
+  background-color: var(--primaryControlBGColor);
+  background-image: url('../assets/feedback.svg');
+  background-position: 2px 4px;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  border-radius: 3px;
+  border: 1px solid var(--primaryControlBGColor);
+  color: var(--primaryControlFGColor);
+  cursor: pointer;
+  display: block;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 5px;
+  overflow: hidden;
+  min-width: 12px;
+  max-width: 12px;
+  text-indent: 17px;
+  transition: all 250ms ease-in-out;
+  white-space: nowrap;
+}
+
+.feedback:hover,
+.feedback:focus {
+  min-width: 30px;
+  max-width: 300px;
+  text-indent: 2px;
+  padding: 5px 5px 5px 20px;
+  background-color: var(--primaryControlHoverColor);
+}
+
+.feedback:active {
+  background-color: var(--primaryControlHoverColor);
+}
+
+.dropDownArrow {
+  display: none;
+}
+
+.dropdown__only {
+  display: none;
+}
+
+@media (max-device-width: 750px), (max-width: 750px) {
   .footer {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    max-width: 630px;
-    margin: auto;
+    align-items: flex-end;
+    padding: 20px 25px;
+    margin: 0;
+    min-width: 455px;
   }
 
-  .legalSection__mozLogo {
-    margin-left: -7px;
+  .footer_hiddenIcon {
+    display: none;
+  }
+
+  .dropdown__only {
+    display: block;
+  }
+
+  .dropDownArrow {
+    display: initial;
+    float: right;
   }
 
   .legalSection {
-    flex-direction: column;
-    margin: auto;
-    width: 100%;
-    max-width: 100%;
+    flex: 0;
+    background-color: #fff;
+    display: block;
+    border-radius: 4px;
+    border: 1px solid rgba(12, 12, 13, 0.1);
+    box-sizing: border-box;
+    text-align: left;
+    margin-right: auto;
   }
 
   .legalSection__link {
+    flex: none;
     display: block;
-    padding: 10px 0;
-    align-self: flex-start;
+    box-sizing: border-box;
+    height: 24px;
+    width: 176px;
+    margin: 0;
+    padding: 4px 20px 0 8px;
+    text-shadow: none;
+    font-weight: 400;
+    color: var(--lightTextColor);
   }
 
-  .socialSection {
-    margin-top: 20px;
-    align-self: flex-start;
+  .legalSection__link:visited {
+    color: var(--lightTextColor);
+  }
+
+  .legalSection__link:hover {
+    color: var(--primaryControlFGColor);
+    background-color: var(--primaryControlBGColor);
+  }
+
+  .footer__noDisplay {
+    display: none;
   }
 }

@@ -1,46 +1,22 @@
-.select {
-  background-color: var(--pageBGColor);
-  overflow: hidden;
-  padding: 4px 2px 4px 2px;
-  border: 1px dotted #0094fb88;
-  border-radius: 4px;
-  display: inline;
-  position: relative;
-}
-
-.select::after {
-  color: #0094fb;
-  content: '\25BC';
-  pointer-events: none;
-  font-size: 20px;
-  margin-left: -30px;
-  padding-right: 10px;
-}
-
 option {
   padding: 0;
 }
 
-select {
+.selectBox {
   appearance: none;
   outline: 0;
   box-shadow: none;
-  border: 0;
-  background: #fff;
-  background-image: none;
+  border: none;
+  border-radius: 0;
+  background-color: #e6e6e6;
   font-size: 1em;
   font-weight: 200;
   margin: 0;
-  color: #0094fb;
+  padding: 4px 2px 4px 2px;
   cursor: pointer;
-  padding-right: 40px;
 }
 
 select:active {
   background-color: var(--pageBGColor);
   border: 0;
-}
-
-#arrow {
-  position: relative;
 }
