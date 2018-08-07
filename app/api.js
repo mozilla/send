@@ -65,14 +65,6 @@ export async function fileInfo(id, owner_token) {
   throw new Error(response.status);
 }
 
-export async function hasPassword(id) {
-  const response = await fetch(`/api/exists/${id}`);
-  if (response.ok) {
-    return response.json();
-  }
-  throw new Error(response.status);
-}
-
 export async function metadata(id, keychain) {
   const result = await fetchWithAuthAndRetry(
     `/api/metadata/${id}`,
@@ -141,6 +133,7 @@ async function upload(
   metadata,
   verifierB64,
   timeLimit,
+  bearerToken,
   onprogress,
   canceller
 ) {
@@ -159,6 +152,7 @@ async function upload(
     const fileMeta = {
       fileMetadata: metadataHeader,
       authorization: `send-v1 ${verifierB64}`,
+      bearer: bearerToken,
       timeLimit
     };
 
@@ -200,8 +194,9 @@ export function uploadWs(
   encrypted,
   metadata,
   verifierB64,
-  onprogress,
-  timeLimit
+  timeLimit,
+  bearerToken,
+  onprogress
 ) {
   const canceller = { cancelled: false };
 
@@ -216,6 +211,7 @@ export function uploadWs(
       metadata,
       verifierB64,
       timeLimit,
+      bearerToken,
       onprogress,
       canceller
     )
@@ -331,4 +327,20 @@ export function downloadFile(id, keychain, onprogress) {
     cancel,
     result: tryDownload(id, keychain, onprogress, canceller, 2)
   };
+}
+
+export async function getFileList(bearerToken) {
+  const headers = new Headers({ Authorization: `Bearer ${bearerToken}` });
+  const response = await fetch('/api/filelist', { headers });
+  return response.body; // stream
+}
+
+export async function setFileList(bearerToken, data) {
+  const headers = new Headers({ Authorization: `Bearer ${bearerToken}` });
+  const response = await fetch('/api/filelist', {
+    headers,
+    method: 'POST',
+    body: data
+  });
+  return response.status === 200;
 }

@@ -62,11 +62,11 @@ module.exports = function(state, emit) {
         onfocus=${onfocus}
         onblur=${onblur}
         onchange=${addFiles} />
-        
+
     </label>
 
     <div class="uploadOptions ${optionClass}">
-    ${expireInfo(state)}
+    ${expireInfo(state, emit)}
     ${setPasswordSection(state)}
     </div>
 

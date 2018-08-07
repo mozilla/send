@@ -84,6 +84,8 @@ errorPageHeader = Something went wrong!
 errorPageMessage = There has been an error uploading the file.
 errorPageLink = Send another file
 fileTooBig = That file is too big to upload. It should be less than { $size }.
+tooManyFiles = Only { $count } files can be uploaded at a time.
+tooManyArchives = Only { $count } archives are allowed.
 linkExpiredAlt = Link expired
 expiredPageHeader = This link has expired or never existed in the first place!
 notSupportedHeader = Your browser is not supported.
@@ -162,4 +164,5 @@ accountBenefitExpiry = Have more expiry options
 accountBenefitSync = Manage your uploads across devices
 accountBenefitNotify = Be notified when your files are downloaded
 accountBenefitMore = Do a lot more!
-
+manageAccount = Manage Account
+logOut = Sign Out

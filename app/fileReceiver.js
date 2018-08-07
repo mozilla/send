@@ -1,6 +1,6 @@
 import Nanobus from 'nanobus';
 import Keychain from './keychain';
-import { delay, bytes } from './utils';
+import { delay, bytes, streamToArrayBuffer } from './utils';
 import { downloadFile, metadata } from './api';
 import { blobStream } from './streams';
 import Zip from './zip';
@@ -189,20 +189,6 @@ export default class FileReceiver extends Nanobus {
     }
     return this.downloadBlob(options.noSave);
   }
-}
-
-async function streamToArrayBuffer(stream, size) {
-  const result = new Uint8Array(size);
-  let offset = 0;
-  const reader = stream.getReader();
-  let state = await reader.read();
-  while (!state.done) {
-    result.set(state.value, offset);
-    offset += state.value.length;
-    state = await reader.read();
-  }
-
-  return result.buffer;
 }
 
 async function saveFile(file) {

@@ -1,6 +1,7 @@
 const html = require('choo/html');
 const assets = require('../common/assets');
 const locales = require('../common/locales');
+const initScript = require('./initScript');
 
 module.exports = function(state, body = '') {
   const firaTag = state.fira
@@ -73,6 +74,7 @@ module.exports = function(state, body = '') {
     <script defer src="${assets.get('app.js')}"></script>
   </head>
   ${body}
+  ${initScript(state)}
   </html>
   `;
 };

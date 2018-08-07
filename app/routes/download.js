@@ -1,14 +1,20 @@
+/* global downloadMetadata */
 const preview = require('../pages/preview');
 const password = require('../pages/password');
 
+function createFileInfo(state) {
+  return {
+    id: state.params.id,
+    secretKey: state.params.key,
+    nonce: downloadMetadata.nonce,
+    requiresPassword: downloadMetadata.pwd
+  };
+}
+
 module.exports = function(state, emit) {
   if (!state.fileInfo) {
-    emit('getPasswordExist', { id: state.params.id });
-    return;
+    state.fileInfo = createFileInfo(state);
   }
-
-  state.fileInfo.id = state.params.id;
-  state.fileInfo.secretKey = state.params.key;
 
   if (!state.transfer && !state.fileInfo.requiresPassword) {
     emit('getMetadata');

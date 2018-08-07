@@ -38,7 +38,7 @@ class Storage {
   }
 
   loadFiles() {
-    const fs = [];
+    const fs = new Map();
     for (let i = 0; i < this.engine.length; i++) {
       const k = this.engine.key(i);
       if (isFile(k)) {
@@ -48,14 +48,14 @@ class Storage {
             f.id = f.fileId;
           }
 
-          fs.push(f);
+          fs.set(f.id, f);
         } catch (err) {
           // obviously you're not a golfer
           this.engine.removeItem(k);
         }
       }
     }
-    return fs.sort((a, b) => a.createdAt - b.createdAt);
+    return fs;
   }
 
   get totalDownloads() {
@@ -90,26 +90,44 @@ class Storage {
   }
 
   get files() {
-    return this._files;
+    return Array.from(this._files.values()).sort(
+      (a, b) => a.createdAt - b.createdAt
+    );
+  }
+
+  get user() {
+    try {
+      return JSON.parse(this.engine.getItem('user'));
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set user(info) {
+    return this.engine.setItem('user', JSON.stringify(info));
   }
 
   getFileById(id) {
-    return this._files.find(f => f.id === id);
+    return this._files.get(id);
   }
 
   get(id) {
     return this.engine.getItem(id);
   }
 
+  set(id, value) {
+    return this.engine.setItem(id, value);
+  }
+
   remove(property) {
     if (isFile(property)) {
-      this._files.splice(this._files.findIndex(f => f.id === property), 1);
+      this._files.delete(property);
     }
     this.engine.removeItem(property);
   }
 
   addFile(file) {
-    this._files.push(file);
+    this._files.set(file.id, file);
     this.writeFile(file);
   }
 
@@ -119,6 +137,39 @@ class Storage {
 
   writeFiles() {
     this._files.forEach(f => this.writeFile(f));
+  }
+
+  clearLocalFiles() {
+    this._files.forEach(f => this.engine.removeItem(f.id));
+    this._files = new Map();
+  }
+
+  async merge(files = []) {
+    let incoming = false;
+    let outgoing = false;
+    let downloadCount = false;
+    for (const f of files) {
+      if (!this.getFileById(f.id)) {
+        this.addFile(new OwnedFile(f));
+        incoming = true;
+      }
+    }
+    const workingFiles = this.files.slice();
+    for (const f of workingFiles) {
+      const cc = await f.updateDownloadCount();
+      downloadCount = downloadCount || cc;
+      outgoing = outgoing || f.expired;
+      if (f.expired) {
+        this.remove(f.id);
+      } else if (!files.find(x => x.id === f.id)) {
+        outgoing = true;
+      }
+    }
+    return {
+      incoming,
+      outgoing,
+      downloadCount
+    };
   }
 }
 

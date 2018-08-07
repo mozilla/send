@@ -5,10 +5,11 @@ const mozlog = require('../log');
 const Limiter = require('../limiter');
 const Parser = require('../streamparser');
 const wsStream = require('websocket-stream/stream');
+// const fxa = require('./fxa');
 
 const log = mozlog('send.upload');
 
-module.exports = async function(ws, req) {
+module.exports = function(ws, req) {
   let fileStream;
 
   ws.on('close', e => {
@@ -26,12 +27,19 @@ module.exports = async function(ws, req) {
       const timeLimit = fileInfo.timeLimit;
       const metadata = fileInfo.fileMetadata;
       const auth = fileInfo.authorization;
+      const user = '1'; //await fxa.verify(fileInfo.bearer); // TODO
+      const maxFileSize = user
+        ? config.max_file_size
+        : config.anon_max_file_size;
+      const maxExpireSeconds = user
+        ? config.max_expire_seconds
+        : config.anon_max_expire_seconds;
 
       if (
         !metadata ||
         !auth ||
         timeLimit <= 0 ||
-        timeLimit > config.max_expire_seconds
+        timeLimit > maxExpireSeconds
       ) {
         ws.send(
           JSON.stringify({
@@ -51,7 +59,7 @@ module.exports = async function(ws, req) {
       const protocol = config.env === 'production' ? 'https' : req.protocol;
       const url = `${protocol}://${req.get('host')}/download/${newId}/`;
 
-      const limiter = new Limiter(config.max_file_size);
+      const limiter = new Limiter(maxFileSize);
       const parser = new Parser();
       fileStream = wsStream(ws, { binary: true })
         .pipe(limiter)

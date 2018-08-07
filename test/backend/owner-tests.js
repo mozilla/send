@@ -19,9 +19,9 @@ function response() {
   };
 }
 
-const ownerMiddleware = proxyquire('../../server/middleware/owner', {
+const ownerMiddleware = proxyquire('../../server/middleware/auth', {
   '../storage': storage
-});
+}).owner;
 
 describe('Owner Middleware', function() {
   afterEach(function() {

@@ -1,8 +1,10 @@
+const config = require('../config');
 const storage = require('../storage');
 
 module.exports = function(req, res) {
   const dlimit = req.body.dlimit;
-  if (!dlimit || dlimit > 20) {
+  // TODO: fxa auth
+  if (!dlimit || dlimit > config.max_downloads) {
     return res.sendStatus(400);
   }
 

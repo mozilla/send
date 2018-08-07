@@ -38,7 +38,7 @@ function body(template) {
         <div class="stripedBox">
           <div class="mainContent">
 
-            ${profile(state)}
+            ${profile(state, emit)}
 
             ${template(state, emit)}
           </div>
@@ -67,7 +67,11 @@ app.route('/unsupported/:reason', body(require('../pages/unsupported')));
 app.route('/legal', body(require('../pages/legal')));
 app.route('/error', body(require('../pages/error')));
 app.route('/blank', body(require('../pages/blank')));
-app.route('*', body(require('../pages/notFound')));
 app.route('/signin', body(require('../pages/signin')));
+app.route('/api/fxa/oauth', function(state, emit) {
+  emit('replaceState', '/');
+  setTimeout(() => emit('render'));
+});
+app.route('*', body(require('../pages/notFound')));
 
 module.exports = app;
