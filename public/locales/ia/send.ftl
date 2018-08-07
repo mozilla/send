@@ -59,7 +59,7 @@ downloadFileTitle = Discargar le file cryptate
 downloadMessage = Tu amico te invia un file per Firefox Send, un servicio que te permitte de compartir files per un ligamine secur, private e cryptate, que expira automaticamente pro te assecurar que tu datos non resta online per sempre.
 # Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Discargar
-downloadNotification = Tu discargamento es completate.
+downloadNotification = Discargamento completate.
 downloadFinish = Discargamento completate
 # This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
