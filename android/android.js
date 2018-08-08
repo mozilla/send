@@ -1,6 +1,6 @@
 /* global window, document, fetch */
 
-const MAXFILESIZE = 1024 * 1024 * 1024 * 2;
+window.MAXFILESIZE = 1024 * 1024 * 1024 * 2;
 
 const EventEmitter = require('events');
 const emitter = new EventEmitter();
@@ -63,6 +63,14 @@ function uploadComplete(file) {
 }
 
 const state = {
+  translate: (...toTranslate) => {
+    return toTranslate.map(o => JSON.stringify(o)).toString();
+  },
+  raven: {
+    captureException: e => {
+      console.error('ERROR ' + e + ' ' + e.stack);
+    }
+  },
   storage: {
     files: [],
     remove: function(fileId) {
@@ -88,12 +96,9 @@ function upload(event) {
   if (file.size === 0) {
     return;
   }
-  if (file.size > MAXFILESIZE) {
-    console.log('file too big (no bigger than ' + MAXFILESIZE + ')');
-    return;
-  }
 
-  emitter.emit('upload', { file: file, type: 'click' });
+  emitter.emit('addFiles', { files: [file] });
+  emitter.emit('upload', {});
 }
 
 function render() {
@@ -154,8 +159,10 @@ window.addEventListener(
     fetch(event.data)
       .then(res => res.blob())
       .then(blob => {
-        emitter.emit('upload', { file: blob, type: 'share' });
-      });
+        emitter.emit('addFiles', { files: [blob] });
+        emitter.emit('upload', {});
+      })
+      .catch(e => console.error('ERROR ' + e + ' ' + e.stack));
   },
   false
 );
