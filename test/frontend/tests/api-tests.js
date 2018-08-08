@@ -1,3 +1,4 @@
+/* global DEFAULT_EXPIRE_SECONDS */
 import assert from 'assert';
 import Archive from '../../../app/archive';
 import * as api from '../../../app/api';
@@ -18,7 +19,13 @@ describe('API', function() {
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};
-      const up = api.uploadWs(enc, meta, verifierB64, p);
+      const up = api.uploadWs(
+        enc,
+        meta,
+        verifierB64,
+        p,
+        DEFAULT_EXPIRE_SECONDS
+      );
 
       const result = await up.result;
       assert.ok(result.url);
@@ -32,7 +39,14 @@ describe('API', function() {
       const meta = await keychain.encryptMetadata(metadata);
       const verifierB64 = await keychain.authKeyB64();
       const p = function() {};
-      const up = api.uploadWs(enc, meta, verifierB64, p);
+      const up = api.uploadWs(
+        enc,
+        meta,
+        verifierB64,
+        p,
+        DEFAULT_EXPIRE_SECONDS
+      );
+
       up.cancel();
       try {
         await up.result;

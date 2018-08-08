@@ -19,6 +19,7 @@ export default class OwnedFile {
     this.dtotal = obj.dtotal || 0;
     this.keychain = new Keychain(obj.secretKey, obj.nonce);
     this._hasPassword = !!obj.hasPassword;
+    this.timeLimit = obj.timeLimit;
   }
 
   async setPassword(password) {
@@ -80,7 +81,8 @@ export default class OwnedFile {
       ownerToken: this.ownerToken,
       dlimit: this.dlimit,
       dtotal: this.dtotal,
-      hasPassword: this.hasPassword
+      hasPassword: this.hasPassword,
+      timeLimit: this.timeLimit
     };
   }
 }

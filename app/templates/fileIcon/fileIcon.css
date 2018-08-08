@@ -8,6 +8,7 @@
   width: 22px;
   height: 32px;
   overflow: hidden;
+  user-select: none;
 }
 
 .fileIcon__lock {

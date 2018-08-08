@@ -2,8 +2,8 @@ const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
 class S3Storage {
-  constructor(config, log) {
-    this.bucket = config.s3_bucket;
+  constructor(config, index, log) {
+    this.bucket = config.s3_buckets[index];
     this.log = log;
   }
 

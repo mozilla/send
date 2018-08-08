@@ -122,6 +122,8 @@ reportIPInfringement = Report IP Infringement
 javascriptRequired = Firefox Send requires JavaScript
 whyJavascript = Why does Firefox Send require JavaScript?
 enableJavascript = Please enable JavaScript and try again.
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"

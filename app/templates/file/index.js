@@ -51,6 +51,14 @@ module.exports = function(file, state) {
 function timeLeft(milliseconds, state) {
   const minutes = Math.floor(milliseconds / 1000 / 60);
   const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  if (days >= 1) {
+    return state.translate('expiresDaysHoursMinutes', {
+      days,
+      hours: hours % 24,
+      minutes: minutes % 60
+    });
+  }
   if (hours >= 1) {
     return state.translate('expiresHoursMinutes', {
       hours,

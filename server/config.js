@@ -4,10 +4,30 @@ const path = require('path');
 const { randomBytes } = require('crypto');
 
 const conf = convict({
-  s3_bucket: {
-    format: String,
-    default: '',
-    env: 'S3_BUCKET'
+  s3_buckets: {
+    format: Array,
+    default: [],
+    env: 'S3_BUCKETS'
+  },
+  num_of_buckets: {
+    format: Number,
+    default: 3,
+    env: 'NUM_OF_BUCKETS'
+  },
+  expire_times_seconds: {
+    format: Array,
+    default: [86400, 604800, 1209600],
+    env: 'EXPIRE_TIMES_SECONDS'
+  },
+  default_expire_seconds: {
+    format: Number,
+    default: 86400,
+    env: 'DEFAULT_EXPIRE_SECONDS'
+  },
+  max_expire_seconds: {
+    format: Number,
+    default: 1209600,
+    env: 'MAX_EXPIRE_SECONDS'
   },
   redis_host: {
     format: String,
@@ -54,11 +74,6 @@ const conf = convict({
     format: Number,
     default: 1024 * 1024 * 1024 * 3,
     env: 'MAX_FILE_SIZE'
-  },
-  expire_seconds: {
-    format: Number,
-    default: 86400,
-    env: 'EXPIRE_SECONDS'
   },
   l10n_dev: {
     format: Boolean,
