@@ -30,7 +30,7 @@ module.exports = function(file, state) {
             <span>${bytes(file.size)}</span> · 
             <span>${state.translate('downloadCount', {
               num: `${number(totalDownloads)} / ${number(downloadLimit)}`
-            })}</span>
+            })}</span> · 
             <span>${remainingTime}</span>
           </p>
         </div>

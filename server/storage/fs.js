@@ -6,7 +6,7 @@ const mkdirp = require('mkdirp');
 const stat = promisify(fs.stat);
 
 class FSStorage {
-  constructor(config, index, log) {
+  constructor(config, log) {
     this.log = log;
     this.dir = config.file_dir;
     mkdirp.sync(this.dir);

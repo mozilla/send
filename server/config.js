@@ -4,19 +4,24 @@ const path = require('path');
 const { randomBytes } = require('crypto');
 
 const conf = convict({
-  s3_buckets: {
-    format: Array,
-    default: [],
-    env: 'S3_BUCKETS'
+  s3_bucket: {
+    format: String,
+    default: '',
+    env: 'S3_BUCKET'
   },
-  num_of_buckets: {
+  num_of_prefixes: {
     format: Number,
-    default: 3,
-    env: 'NUM_OF_BUCKETS'
+    default: 5,
+    env: 'NUM_OF_PREFIXES'
+  },
+  expire_prefixes: {
+    format: Array,
+    default: ['5minutes', '1hour', '1day', '1week', '2weeks'],
+    env: 'EXPIRE_PREFIXES'
   },
   expire_times_seconds: {
     format: Array,
-    default: [86400, 604800, 1209600],
+    default: [300, 3600, 86400, 604800, 1209600],
     env: 'EXPIRE_TIMES_SECONDS'
   },
   default_expire_seconds: {

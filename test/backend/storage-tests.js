@@ -21,10 +21,11 @@ class MockStorage {
 }
 
 const config = {
-  default_expire_seconds: 10,
-  num_of_buckets: 3,
-  expire_times_seconds: [86400, 604800, 1209600],
-  s3_buckets: ['foo', 'bar', 'baz'],
+  s3_bucket: 'foo',
+  default_expire_seconds: 20,
+  num_of_prefixes: 3,
+  expire_prefixes: ['ten', 'twenty', 'thirty'],
+  expire_times_seconds: [10, 20, 30],
   env: 'development',
   redis_host: 'localhost'
 };
@@ -48,7 +49,6 @@ describe('Storage', function() {
 
   describe('length', function() {
     it('returns the file size', async function() {
-      await storage.set('x', null);
       const len = await storage.length('x');
       assert.equal(len, 12);
     });
@@ -56,7 +56,6 @@ describe('Storage', function() {
 
   describe('get', function() {
     it('returns a stream', async function() {
-      await storage.set('x', null);
       const s = await storage.get('x');
       assert.equal(s, stream);
     });
@@ -71,30 +70,31 @@ describe('Storage', function() {
       assert.equal(Math.ceil(s), seconds);
     });
 
-    it('puts into right bucket based on expire time', async function() {
-      for (let i = 0; i < config.num_of_buckets; i++) {
-        await storage.set(
-          'x',
-          null,
-          { foo: 'bar' },
-          config.expire_times_seconds[i]
-        );
-        const bucket = await storage.getBucket('x');
-        assert.equal(bucket, i);
-        await storage.del('x');
-      }
+    it('adds right prefix based on expire time', async function() {
+      await storage.set('x', null, { foo: 'bar' }, 10);
+      const path_x = await storage.getPrefixedId('x');
+      assert.equal(path_x, 'ten-x');
+      await storage.del('x');
+
+      await storage.set('y', null, { foo: 'bar' }, 11);
+      const path_y = await storage.getPrefixedId('y');
+      assert.equal(path_y, 'twenty-y');
+      await storage.del('y');
+
+      await storage.set('z', null, { foo: 'bar' }, 33);
+      const path_z = await storage.getPrefixedId('z');
+      assert.equal(path_z, 'thirty-z');
+      await storage.del('z');
     });
 
     it('sets metadata', async function() {
       const m = { foo: 'bar' };
       await storage.set('x', null, m);
       const meta = await storage.redis.hgetallAsync('x');
-      delete meta.bucket;
+      delete meta.prefix;
       await storage.del('x');
       assert.deepEqual(meta, m);
     });
-
-    //it('throws when storage fails');
   });
 
   describe('setField', function() {

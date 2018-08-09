@@ -32,8 +32,8 @@ const S3Storage = proxyquire('../../server/storage/s3', {
 });
 
 describe('S3Storage', function() {
-  it('uses config.s3_buckets', function() {
-    const s = new S3Storage({ s3_buckets: ['foo', 'bar', 'baz'] }, 0);
+  it('uses config.s3_bucket', function() {
+    const s = new S3Storage({ s3_bucket: 'foo' });
     assert.equal(s.bucket, 'foo');
   });
 
@@ -42,7 +42,7 @@ describe('S3Storage', function() {
       s3Stub.headObject = sinon
         .stub()
         .returns(resolvedPromise({ ContentLength: 123 }));
-      const s = new S3Storage({ s3_buckets: ['foo', 'bar', 'baz'] }, 0);
+      const s = new S3Storage({ s3_bucket: 'foo' });
       const len = await s.length('x');
       assert.equal(len, 123);
       sinon.assert.calledWithMatch(s3Stub.headObject, {
@@ -54,7 +54,7 @@ describe('S3Storage', function() {
     it('throws when id not found', async function() {
       const err = new Error();
       s3Stub.headObject = sinon.stub().returns(rejectedPromise(err));
-      const s = new S3Storage({ s3_buckets: ['foo', 'bar', 'baz'] }, 0);
+      const s = new S3Storage({ s3_bucket: 'foo' });
       try {
         await s.length('x');
         assert.fail();
@@ -70,7 +70,7 @@ describe('S3Storage', function() {
       s3Stub.getObject = sinon
         .stub()
         .returns({ createReadStream: () => stream });
-      const s = new S3Storage({ s3_buckets: ['foo', 'bar', 'baz'] }, 0);
+      const s = new S3Storage({ s3_bucket: 'foo' });
       const result = s.getStream('x');
       assert.equal(result, stream);
       sinon.assert.calledWithMatch(s3Stub.getObject, {
@@ -84,7 +84,7 @@ describe('S3Storage', function() {
     it('calls s3.upload', async function() {
       const file = { on: sinon.stub() };
       s3Stub.upload = sinon.stub().returns(resolvedPromise());
-      const s = new S3Storage({ s3_buckets: ['foo', 'bar', 'baz'] }, 0);
+      const s = new S3Storage({ s3_bucket: 'foo' });
       await s.set('x', file);
       sinon.assert.calledWithMatch(s3Stub.upload, {
         Bucket: 'foo',
@@ -103,7 +103,7 @@ describe('S3Storage', function() {
         promise: () => Promise.reject(err),
         abort
       });
-      const s = new S3Storage({ s3_buckets: ['foo', 'bar', 'baz'] }, 0);
+      const s = new S3Storage({ s3_bucket: 'foo' });
       try {
         await s.set('x', file);
         assert.fail();
@@ -119,7 +119,7 @@ describe('S3Storage', function() {
       };
       const err = new Error();
       s3Stub.upload = sinon.stub().returns(rejectedPromise(err));
-      const s = new S3Storage({ s3_buckets: ['foo', 'bar', 'baz'] }, 0);
+      const s = new S3Storage({ s3_bucket: 'foo' });
       try {
         await s.set('x', file);
         assert.fail();
@@ -132,7 +132,7 @@ describe('S3Storage', function() {
   describe('del', function() {
     it('calls s3.deleteObject', async function() {
       s3Stub.deleteObject = sinon.stub().returns(resolvedPromise(true));
-      const s = new S3Storage({ s3_buckets: ['foo', 'bar', 'baz'] }, 0);
+      const s = new S3Storage({ s3_bucket: 'foo' });
       const result = await s.del('x');
       assert.equal(result, true);
       sinon.assert.calledWithMatch(s3Stub.deleteObject, {
@@ -145,7 +145,7 @@ describe('S3Storage', function() {
   describe('ping', function() {
     it('calls s3.headBucket', async function() {
       s3Stub.headBucket = sinon.stub().returns(resolvedPromise(true));
-      const s = new S3Storage({ s3_buckets: ['foo', 'bar', 'baz'] }, 0);
+      const s = new S3Storage({ s3_bucket: 'foo' });
       const result = await s.ping();
       assert.equal(result, true);
       sinon.assert.calledWithMatch(s3Stub.headBucket, { Bucket: 'foo' });
