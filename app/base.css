@@ -293,3 +293,9 @@ a {
     margin: 15px;
   }
 }
+
+@media (max-device-width: 700px), (max-width: 700px) {
+  .stripedBox {
+    margin-top: 72px;
+  }
+}

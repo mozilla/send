@@ -34,6 +34,7 @@ module.exports = function(state, emit) {
     ${title(state)}
 
     <label class="uploadArea"
+
       ondragover=${dragover}
       ondragleave=${dragleave}>
 

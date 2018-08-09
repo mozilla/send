@@ -20,14 +20,18 @@ class MockStorage {
   }
 }
 
-const expire_seconds = 10;
+const config = {
+  s3_bucket: 'foo',
+  default_expire_seconds: 20,
+  num_of_prefixes: 3,
+  expire_prefixes: ['ten', 'twenty', 'thirty'],
+  expire_times_seconds: [10, 20, 30],
+  env: 'development',
+  redis_host: 'localhost'
+};
+
 const storage = proxyquire('../../server/storage', {
-  '../config': {
-    expire_seconds,
-    s3_bucket: 'foo',
-    env: 'development',
-    redis_host: 'localhost'
-  },
+  '../config': config,
   '../log': () => {},
   './s3': MockStorage
 });
@@ -35,10 +39,11 @@ const storage = proxyquire('../../server/storage', {
 describe('Storage', function() {
   describe('ttl', function() {
     it('returns milliseconds remaining', async function() {
-      await storage.set('x', null, { foo: 'bar' });
+      const time = 40;
+      await storage.set('x', null, { foo: 'bar' }, time);
       const ms = await storage.ttl('x');
       await storage.del('x');
-      assert.equal(ms, expire_seconds * 1000);
+      assert.equal(ms, time * 1000);
     });
   });
 
@@ -50,33 +55,51 @@ describe('Storage', function() {
   });
 
   describe('get', function() {
-    it('returns a stream', function() {
-      const s = storage.get('x');
+    it('returns a stream', async function() {
+      const s = await storage.get('x');
       assert.equal(s, stream);
     });
   });
 
   describe('set', function() {
-    it('sets expiration to config.expire_seconds', async function() {
-      await storage.set('x', null, { foo: 'bar' });
+    it('sets expiration to expire time', async function() {
+      const seconds = 100;
+      await storage.set('x', null, { foo: 'bar' }, seconds);
       const s = await storage.redis.ttlAsync('x');
       await storage.del('x');
-      assert.equal(Math.ceil(s), expire_seconds);
+      assert.equal(Math.ceil(s), seconds);
+    });
+
+    it('adds right prefix based on expire time', async function() {
+      await storage.set('x', null, { foo: 'bar' }, 10);
+      const path_x = await storage.getPrefixedId('x');
+      assert.equal(path_x, 'ten-x');
+      await storage.del('x');
+
+      await storage.set('y', null, { foo: 'bar' }, 11);
+      const path_y = await storage.getPrefixedId('y');
+      assert.equal(path_y, 'twenty-y');
+      await storage.del('y');
+
+      await storage.set('z', null, { foo: 'bar' }, 33);
+      const path_z = await storage.getPrefixedId('z');
+      assert.equal(path_z, 'thirty-z');
+      await storage.del('z');
     });
 
     it('sets metadata', async function() {
       const m = { foo: 'bar' };
       await storage.set('x', null, m);
       const meta = await storage.redis.hgetallAsync('x');
+      delete meta.prefix;
       await storage.del('x');
       assert.deepEqual(meta, m);
     });
-
-    //it('throws when storage fails');
   });
 
   describe('setField', function() {
     it('works', async function() {
+      await storage.set('x', null);
       storage.setField('x', 'y', 'z');
       const z = await storage.redis.hgetAsync('x', 'y');
       assert.equal(z, 'z');

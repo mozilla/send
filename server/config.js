@@ -9,6 +9,31 @@ const conf = convict({
     default: '',
     env: 'S3_BUCKET'
   },
+  num_of_prefixes: {
+    format: Number,
+    default: 5,
+    env: 'NUM_OF_PREFIXES'
+  },
+  expire_prefixes: {
+    format: Array,
+    default: ['5minutes', '1hour', '1day', '1week', '2weeks'],
+    env: 'EXPIRE_PREFIXES'
+  },
+  expire_times_seconds: {
+    format: Array,
+    default: [300, 3600, 86400, 604800, 1209600],
+    env: 'EXPIRE_TIMES_SECONDS'
+  },
+  default_expire_seconds: {
+    format: Number,
+    default: 86400,
+    env: 'DEFAULT_EXPIRE_SECONDS'
+  },
+  max_expire_seconds: {
+    format: Number,
+    default: 1209600,
+    env: 'MAX_EXPIRE_SECONDS'
+  },
   redis_host: {
     format: String,
     default: 'localhost',
@@ -54,11 +79,6 @@ const conf = convict({
     format: Number,
     default: 1024 * 1024 * 1024 * 3,
     env: 'MAX_FILE_SIZE'
-  },
-  expire_seconds: {
-    format: Number,
-    default: 86400,
-    env: 'EXPIRE_SECONDS'
   },
   l10n_dev: {
     format: Boolean,

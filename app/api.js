@@ -136,7 +136,14 @@ function listenForResponse(ws, canceller) {
   });
 }
 
-async function upload(stream, metadata, verifierB64, onprogress, canceller) {
+async function upload(
+  stream,
+  metadata,
+  verifierB64,
+  timeLimit,
+  onprogress,
+  canceller
+) {
   const host = window.location.hostname;
   const port = window.location.port;
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -151,7 +158,8 @@ async function upload(stream, metadata, verifierB64, onprogress, canceller) {
     const metadataHeader = arrayToB64(new Uint8Array(metadata));
     const fileMeta = {
       fileMetadata: metadataHeader,
-      authorization: `send-v1 ${verifierB64}`
+      authorization: `send-v1 ${verifierB64}`,
+      timeLimit
     };
 
     const responsePromise = listenForResponse(ws, canceller);
@@ -188,7 +196,13 @@ async function upload(stream, metadata, verifierB64, onprogress, canceller) {
   }
 }
 
-export function uploadWs(encrypted, metadata, verifierB64, onprogress) {
+export function uploadWs(
+  encrypted,
+  metadata,
+  verifierB64,
+  onprogress,
+  timeLimit
+) {
   const canceller = { cancelled: false };
 
   return {
@@ -196,7 +210,15 @@ export function uploadWs(encrypted, metadata, verifierB64, onprogress) {
       canceller.error = new Error(0);
       canceller.cancelled = true;
     },
-    result: upload(encrypted, metadata, verifierB64, onprogress, canceller)
+
+    result: upload(
+      encrypted,
+      metadata,
+      verifierB64,
+      timeLimit,
+      onprogress,
+      canceller
+    )
   };
 }
 

@@ -23,10 +23,16 @@ module.exports = async function(ws, req) {
       const owner = crypto.randomBytes(10).toString('hex');
 
       const fileInfo = JSON.parse(message);
+      const timeLimit = fileInfo.timeLimit;
       const metadata = fileInfo.fileMetadata;
       const auth = fileInfo.authorization;
 
-      if (!metadata || !auth) {
+      if (
+        !metadata ||
+        !auth ||
+        timeLimit <= 0 ||
+        timeLimit > config.max_expire_seconds
+      ) {
         ws.send(
           JSON.stringify({
             error: 400
@@ -50,7 +56,7 @@ module.exports = async function(ws, req) {
       fileStream = wsStream(ws, { binary: true })
         .pipe(limiter)
         .pipe(parser);
-      await storage.set(newId, fileStream, meta);
+      await storage.set(newId, fileStream, meta, timeLimit);
 
       if (ws.readyState === 1) {
         // if the socket is closed by a cancelled upload the stream

@@ -1,4 +1,5 @@
 /* global MAXFILESIZE */
+/* global DEFAULT_EXPIRE_SECONDS */
 import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
 import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
@@ -110,7 +111,9 @@ export default function(state, emitter) {
   emitter.on('upload', async ({ type, dlCount, password }) => {
     if (!state.archive) return;
     const size = state.archive.size;
-    const sender = new FileSender(state.archive);
+    if (!state.timeLimit) state.timeLimit = DEFAULT_EXPIRE_SECONDS;
+    const sender = new FileSender(state.archive, state.timeLimit);
+
     sender.on('progress', updateProgress);
     sender.on('encrypting', render);
     sender.on('complete', render);
@@ -157,7 +160,7 @@ export default function(state, emitter) {
       }
     } finally {
       openLinksInNewTab(links, false);
-      state.files = [];
+      state.archive = null;
       state.password = '';
       state.uploading = false;
       state.transfer = null;

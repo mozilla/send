@@ -1,10 +1,10 @@
-/* global EXPIRE_SECONDS */
 const html = require('choo/html');
 const raw = require('choo/html/raw');
 const assets = require('../../../common/assets');
 const notFound = require('../notFound');
 const deletePopup = require('../../templates/popup');
 const uploadedFileList = require('../../templates/uploadedFileList');
+const timeLimitText = require('../../templates/timeLimitText');
 const { allowedCopy, delay, fadeOut } = require('../../utils');
 
 module.exports = function(state, emit) {
@@ -18,7 +18,6 @@ module.exports = function(state, emit) {
     : 'passwordReminder--hidden';
 
   return html`
-
     <div class="page effect--fadeIn" id="shareWrapper">
       <a href="/" class="goBackButton"> 
         <img src="${assets.get('back-arrow.svg')}"/> 
@@ -98,13 +97,14 @@ module.exports = function(state, emit) {
 };
 
 function expireInfo(file, translate) {
-  const hours = Math.floor(EXPIRE_SECONDS / 60 / 60);
-  const el = html`<div class="shareTitle">${raw(
-    translate('expireInfo', {
-      downloadCount: translate('downloadCount', { num: file.dlimit }),
-      timespan: translate('timespanHours', { num: hours })
-    })
-  )}</div>`;
+  const el = html`<div class="shareTitle">
+    ${raw(
+      translate('expireInfo', {
+        downloadCount: translate('downloadCount', { num: file.dlimit }),
+        timespan: timeLimitText(translate, file.timeLimit)
+      })
+    )}
+  </div>`;
 
   return el;
 }

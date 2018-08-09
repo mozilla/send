@@ -117,7 +117,7 @@
     "webpack-unassert-loader": "^1.2.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.285.1",
+    "aws-sdk": "^2.288.0",
     "babel-polyfill": "^6.26.0",
     "choo": "^6.12.1",
     "cldr-core": "^33.0.0",
