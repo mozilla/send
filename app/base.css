@@ -26,7 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 input,
@@ -48,7 +48,7 @@ a {
   box-sizing: border-box;
   min-height: 500px;
   max-height: 800px;
-  height: 100px;
+  height: 100%;
 }
 
 .stripedBox {
@@ -58,7 +58,8 @@ a {
   margin-top: 32px;
   background-color: white;
   border-radius: 6px;
-  box-shadow: 0 0 0 3px rgba(12, 12, 13, 0.2);
+  border: 3px solid rgba(12, 12, 12, 0.2);
+  background-clip: padding-box;
   background-image: repeating-linear-gradient(
     45deg,
     white,
@@ -88,7 +89,9 @@ a {
 
 .uploads {
   flex: 0 0 262px;
-  position: relative;
+  box-sizing: border-box;
+  padding-top: 180px;
+  display: flex;
 }
 
 .noscript {
@@ -276,13 +279,14 @@ a {
   }
 
   .stripedBox {
-    margin-top: 72;
+    margin-top: 72px;
     min-height: 400px;
     flex: 1;
   }
 
   .uploads {
     flex: none;
+    padding-top: 6px;
   }
 
   .footer {

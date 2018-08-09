@@ -1,4 +1,5 @@
 .fxPromo {
+  flex: none;
   padding: 0 15px;
   height: 48px;
   background-color: #efeff1;

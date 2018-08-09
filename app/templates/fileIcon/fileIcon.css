@@ -25,4 +25,5 @@
   font-size: 7px;
   font-weight: 600;
   text-transform: uppercase;
+  user-select: none;
 }
