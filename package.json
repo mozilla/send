@@ -129,6 +129,7 @@
     "helmet": "^3.13.0",
     "mkdirp": "^0.5.1",
     "mozlog": "^2.2.0",
+    "package-lock": "^1.0.0",
     "raven": "^2.6.3",
     "redis": "^2.8.0",
     "websocket-stream": "^5.1.2"

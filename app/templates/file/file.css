@@ -1,18 +1,22 @@
 .fileToast {
-  margin: 13px 0 0;
+  flex: none;
+  display: block;
+  margin: 6px 0 0;
   overflow: hidden;
   font-size: 11px;
   line-height: 18px;
   color: var(--lightTextColor);
   background-color: var(--pageBGColor);
   position: relative;
-  box-shadow: 0 0 0 3px rgba(12, 12, 12, 0.2);
+  border: 3px solid rgba(12, 12, 12, 0.2);
+  background-clip: padding-box;
   box-sizing: border-box;
   height: 53px;
   border-radius: 4px;
 }
 
 .fileToast__content {
+  height: 100%;
   position: relative;
   z-index: 2;
 }
@@ -61,33 +65,35 @@
 }
 
 .fileToast .fileIcon {
-  margin: 2px 8px;
+  margin: 0 8px;
 }
 
 @media (max-device-width: 750px), (max-width: 750px) {
   .fileToast {
     height: 32px;
-    width: 400px;
   }
 
   .fileToast__content {
     display: flex;
+    line-height: 13px;
+    margin: 0;
+    align-items: center;
   }
 
   .fileData {
     flex: auto;
     display: flex;
     flex-wrap: nowrap;
-    margin-left: 8px;
+    margin: 0 6px 0 0;
   }
 
   .fileInfo {
-    flex-shrink: 0;
+    flex: none;
     margin-left: auto;
   }
 
   .fileToast .fileIcon {
-    margin: 0;
+    flex: none;
     transform: scale(0.5);
     color: transparent;
   }

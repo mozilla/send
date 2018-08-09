@@ -22,7 +22,6 @@ function body(template) {
   return function(state, emit) {
     const b = html`<body class="background ${activeBackground(state)}">
       ${banner(state, emit)}
-      ${signupPromo(state)}
       <main class="main">
         <noscript>
           <div class="noscript">
@@ -35,6 +34,7 @@ function body(template) {
             <p>${state.translate('enableJavascript')}</p>
           </div>
         </noscript>
+        ${signupPromo(state)}
         <div class="stripedBox">
           <div class="mainContent">
 

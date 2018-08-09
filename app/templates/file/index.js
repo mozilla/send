@@ -20,23 +20,23 @@ module.exports = function(file, state) {
 
   const activeClass = isOnSharePage() ? 'fileToast--active' : '';
   return html`
-  <a href=${toastClick()}>
-    <li class="fileToast ${activeClass}" id="${file.id}">
-      <div class="fileToast__content">
-        ${fileIcon(file.name, file._hasPassword)}
-        <div class="fileData">
-          <p class="fileName">${fileName}</p>
-          <p class="fileInfo">
-            <span>${bytes(file.size)}</span> · 
-            <span>${state.translate('downloadCount', {
-              num: `${number(totalDownloads)} / ${number(downloadLimit)}`
-            })}</span> · 
-            <span>${remainingTime}</span>
-          </p>
+    <li id="${file.id}">
+      <a class="fileToast ${activeClass}" href=${toastClick()}>
+        <div class="fileToast__content">
+          ${fileIcon(file.name, file._hasPassword)}
+          <div class="fileData">
+            <p class="fileName">${fileName}</p>
+            <p class="fileInfo">
+              <span>${bytes(file.size)}</span> · 
+              <span>${state.translate('downloadCount', {
+                num: `${number(totalDownloads)} / ${number(downloadLimit)}`
+              })}</span>
+              <span>${remainingTime}</span>
+            </p>
+          </div>
         </div>
-      </div>
+      </a>
     </li>
-  </a>
   `;
 
   function toastClick() {
