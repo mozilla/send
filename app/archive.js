@@ -1,6 +1,19 @@
 /* global MAXFILESIZE */
 import { blobStream, concatStream } from './streams';
 
+function isDupe(newFile, array) {
+  for (const file of array) {
+    if (
+      newFile.name === file.name &&
+      newFile.size === file.size &&
+      newFile.lastModified === file.lastModified
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export default class Archive {
   constructor(files) {
     this.files = Array.from(files);
@@ -37,11 +50,12 @@ export default class Archive {
   }
 
   addFiles(files) {
-    const newSize = files.reduce((total, file) => total + file.size, 0);
+    const newFiles = files.filter(file => !isDupe(file, this.files));
+    const newSize = newFiles.reduce((total, file) => total + file.size, 0);
     if (this.size + newSize > MAXFILESIZE) {
       return false;
     }
-    this.files = this.files.concat(files);
+    this.files = this.files.concat(newFiles);
     return true;
   }
 
