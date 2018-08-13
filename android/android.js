@@ -32,33 +32,46 @@ function dom(tagName, attributes, children = []) {
 
 function uploadComplete(file) {
   document.body.innerHTML = '';
-  const input = dom('input', { id: 'url', value: file.url });
-  const copy = dom(
-    'button',
-    {
-      id: 'copy-button',
-      className: 'button',
-      onclick: () => {
-        input.select();
-        document.execCommand('copy');
-        input.blur();
-        copy.textContent = 'Copied!';
-        setTimeout(function() {
-          copy.textContent = 'Copy to clipboard';
-        }, 2000);
-      }
-    },
-    'Copy to clipboard'
+  const input = dom('input', { id: 'url', value: file.url, readonly: 'true' });
+  const copyText = dom('span', {}, 'Copy link');
+  const copyImage = dom('img', { id: 'copy-image', src: 'copy-link.png' });
+  const node = dom(
+    'div',
+    { id: 'white' },
+    dom('div', { className: 'card' }, [
+      dom('div', {}, 'The card contents will be here.'),
+      dom('div', {}, [
+        'Expires after: ',
+        dom('span', { className: 'expiresAfter' }, 'exp')
+      ]),
+      input,
+      dom(
+        'div',
+        {
+          id: 'copy-link',
+          onclick: e => {
+            e.preventDefault();
+            input.select();
+            document.execCommand('copy');
+            input.selectionEnd = input.selectionStart;
+            copyText.textContent = 'Copied!';
+            setTimeout(function() {
+              copyText.textContent = 'Copy link';
+            }, 2000);
+          }
+        },
+        [copyImage, copyText]
+      ),
+      dom('img', {
+        id: 'send-another',
+        src: 'cloud-upload.png',
+        onclick: () => {
+          render();
+          document.getElementById('label').click();
+        }
+      })
+    ])
   );
-  const node = dom('div', { id: 'white' }, [
-    input,
-    copy,
-    dom(
-      'button',
-      { id: 'send-another', className: 'button', onclick: render },
-      'Send another file'
-    )
-  ]);
   document.body.appendChild(node);
 }
 
@@ -103,34 +116,39 @@ function upload(event) {
 
 function render() {
   document.body.innerHTML = '';
-  const node = dom('div', { id: 'white' }, [
-    dom('img', { src: 'encrypted-envelope.png' }),
-    dom('h4', {}, 'Private, Encrypted File Sharing'),
-    dom(
-      'div',
-      {},
-      'Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.'
-    ),
-    dom('div', { className: 'spacer' }, ' '),
-    dom(
-      'label',
-      { id: 'label', htmlFor: 'input' },
-      dom('img', { src: 'cloud-upload.png' }, [])
-    ),
-    dom('input', {
-      id: 'input',
-      type: 'file',
-      name: 'input',
-      onchange: upload
-    })
-  ]);
+  const node = dom(
+    'div',
+    { id: 'white' },
+    dom('div', { id: 'centering' }, [
+      dom('img', { src: 'encrypted-envelope.png' }),
+      dom('h4', {}, 'Private, Encrypted File Sharing'),
+      dom(
+        'div',
+        {},
+        'Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.'
+      ),
+      dom('div', { id: 'spacer' }),
+      dom(
+        'label',
+        { id: 'label', htmlFor: 'input' },
+        dom('img', { src: 'cloud-upload.png' }, [])
+      ),
+      dom('input', {
+        id: 'input',
+        type: 'file',
+        name: 'input',
+        onchange: upload
+      })
+    ])
+  );
   document.body.appendChild(node);
 }
 
 emitter.on('render', function() {
   document.body.innerHTML = '';
-  const percent =
-    (state.transfer.progress[0] / state.transfer.progress[1]) * 100;
+  const percent = 100;
+  //const percent =
+  //  (state.transfer.progress[0] / state.transfer.progress[1]) * 100;
   const node = dom(
     'div',
     { id: 'white', style: 'width: 90%' },

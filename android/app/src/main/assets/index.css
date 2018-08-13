@@ -21,28 +21,28 @@ body {
 
 #white {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   min-height: 100vh;
   background-color: white;
   margin: 0 10px;
-  padding: 1px 10px 0 10px;
+  padding: 10px;
   text-align: center;
+}
+
+#centering {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 #label {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  color: white;
-  font-size: 24px;
-  font-weight: 500;
-  height: 60px;
-  width: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  right: 2em;
+  bottom: 1em;
 }
 
 #label img {
@@ -55,30 +55,38 @@ body {
 }
 
 #url {
-  flex: 1;
-  width: 100%;
-  height: 32px;
-  font-size: 24px;
-  margin-top: 1em;
+  display: none;
 }
 
-.button {
-  flex: 1;
-  display: block;
-  background: #0297f8;
-  border: 1px solid #0297f8;
-  color: white;
-  font-size: 24px;
-  font-weight: 500;
-  width: 95%;
-  height: 32px;
-  margin-top: 1em;
+#copy-link {
+  text-align: right;
+}
+
+#copy-image {
+  position: relative;
+  top: 6px;
+  height: 30px;
+  width: 30px;
+}
+
+.spacer {
+  height: 12em;
 }
 
 #send-another {
   margin-bottom: 1em;
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  right: 2em;
+  bottom: 1em;
 }
 
-.spacer {
-  height: 6em;
+.card {
+  margin: 6px;
+  padding: 6px;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 5px #d5d5d5;
+  text-align: left;
 }
