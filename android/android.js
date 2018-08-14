@@ -145,16 +145,38 @@ function render() {
 }
 
 emitter.on('render', function() {
+  if (!state.transfer || !state.transfer.progress) {
+    return;
+  }
   document.body.innerHTML = '';
-  const percent = 100;
-  //const percent =
-  //  (state.transfer.progress[0] / state.transfer.progress[1]) * 100;
+  const percent = Math.floor(state.transfer.progressRatio * 100);
   const node = dom(
     'div',
     { id: 'white', style: 'width: 90%' },
-    dom('span', {
-      style: `display: inline-block; width: ${percent}%; background-color: blue`
-    })
+    dom('div', { className: 'card' }, [
+      dom('div', {}, `${percent}%`),
+      dom(
+        'span',
+        {
+          style: `display: inline-block; height: 4px; border-radius: 2px; width: ${percent}%; background-color: #1b96ef; color: white`
+        },
+        '.'
+      ),
+      dom(
+        'div',
+        {
+          style: 'text-align: right',
+          onclick: e => {
+            e.preventDefault();
+            if (state.uploading) {
+              emitter.emit('cancel');
+              render();
+            }
+          }
+        },
+        'CANCEL'
+      )
+    ])
   );
   document.body.appendChild(node);
 });
