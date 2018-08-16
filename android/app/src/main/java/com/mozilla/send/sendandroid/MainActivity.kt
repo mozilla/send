@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         mWebView!!.setWebChromeClient(LoggingWebChromeClient())
 
         val webSettings = mWebView!!.getSettings()
+        webSettings.setAllowUniversalAccessFromFileURLs(true)
         webSettings.setJavaScriptEnabled(true)
 
         val intent = getIntent()

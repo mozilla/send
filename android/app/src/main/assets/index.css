@@ -90,3 +90,15 @@ body {
   box-shadow: 5px 5px 5px 5px #d5d5d5;
   text-align: left;
 }
+
+.progress {
+  display: inline-block;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #1b96ef;
+  color: white;
+}
+
+.cancel {
+  text-align: right;
+}
