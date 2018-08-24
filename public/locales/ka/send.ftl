@@ -82,7 +82,7 @@ notSupportedOutdatedDetail = სამწუხაროდ, Firefox-ის ა�
 updateFirefox = Firefox-ის განახლება
 downloadFirefoxButtonSub = უფასო ჩამოტვირთვა
 uploadedFile = ფაილი
-copyFileList = URL ბმულის დაკოპირება
+copyFileList = URL-ბმულის დაკოპირება
 # expiryFileList is used as a column header
 expiryFileList = ვადის გასვლის დრო
 deleteFileList = წაშლა
