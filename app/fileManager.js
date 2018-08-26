@@ -11,7 +11,6 @@ import * as metrics from './metrics';
 
 export default function(state, emitter) {
   let lastRender = 0;
-  let updateTitle = false;
 
   function render() {
     emitter.emit('render');
@@ -37,16 +36,12 @@ export default function(state, emitter) {
   }
 
   function updateProgress() {
-    if (updateTitle) {
-      emitter.emit('DOMTitleChange', percent(state.transfer.progressRatio));
-    }
+    emitter.emit('DOMTitleChange', percent(state.transfer.progressRatio));
     render();
   }
 
   emitter.on('DOMContentLoaded', () => {
-    document.addEventListener('blur', () => (updateTitle = true));
-    document.addEventListener('focus', () => {
-      updateTitle = false;
+    emitter.on('upload-completed', () => {
       emitter.emit('DOMTitleChange', 'Firefox Send');
     });
     checkFiles();
@@ -102,6 +97,7 @@ export default function(state, emitter) {
       ownedFile.type = type;
       state.storage.totalUploads += 1;
       metrics.completedUpload(ownedFile);
+      emitter.emit('upload-completed');
 
       state.storage.addFile(ownedFile);
       const cancelBtn = document.getElementById('cancel-upload');
