@@ -1,7 +1,4 @@
-// TODO: when node supports 'for await' we can remove babel-polyfill
-// and use 'fluent' instead of 'fluent/compat' (also below near line 42)
-require('babel-polyfill');
-const { MessageContext } = require('fluent/compat');
+const { FluentBundle } = require('fluent');
 const fs = require('fs');
 
 function toJSON(map) {
@@ -29,28 +26,27 @@ module.exports = function(source) {
     require.resolve('../public/locales/en-US/send.ftl'),
     'utf8'
   );
-  const en = new MessageContext('en-US');
+  const en = new FluentBundle('en-US');
   en.addMessages(en_ftl);
   // pre-parse the ftl
-  const context = new MessageContext(locale);
+  const context = new FluentBundle(locale);
   context.addMessages(source);
 
   const merged = merge(en._messages, context._messages);
   return `
 module.exports = \`
 if (typeof window === 'undefined') {
-  require('babel-polyfill');
-  var fluent = require('fluent/compat');
+  var fluent = require('fluent');
 }
 (function () {
-  var ctx = new fluent.MessageContext('${locale}', {useIsolating: false});
-  ctx._messages = new Map(${toJSON(merged)});
+  var bundle = new fluent.FluentBundle('${locale}', {useIsolating: false});
+  bundle._messages = new Map(${toJSON(merged)});
   function translate(id, data) {
-    var msg = ctx.getMessage(id);
+    var msg = bundle.getMessage(id);
     if (typeof(msg) !== 'string' && !msg.val && msg.attrs) {
       msg = msg.attrs.title || msg.attrs.alt
     }
-    return ctx.format(msg, data);
+    return bundle.format(msg, data);
   }
   if (typeof window === 'undefined') {
     module.exports = translate;
