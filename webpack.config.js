@@ -13,9 +13,9 @@ const regularJSOptions = {
 };
 
 const entry = {
-  // babel-polyfill and fluent are directly included in vendor
-  // because they are not explicitly referenced by app
-  vendor: ['babel-polyfill', 'fluent'],
+  // fluent is directly included in vendor because it is not explicitly
+  // referenced by app
+  vendor: ['fluent'],
   app: ['./app/main.js'],
   style: ['./app/main.css']
 };
