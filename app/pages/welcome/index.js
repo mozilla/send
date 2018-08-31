@@ -129,7 +129,7 @@ module.exports = function(state, emit) {
 
     emit('upload', {
       type: 'click',
-      dlCount: state.downloadCount || 1,
+      dlimit: state.downloadCount || 1,
       password: state.password
     });
   }

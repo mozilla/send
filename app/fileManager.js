@@ -52,7 +52,7 @@ export default function(state, emitter) {
 
   emitter.on('logout', () => {
     state.user.logout();
-    render();
+    emitter.emit('pushState', '/');
   });
 
   emitter.on('changeLimit', async ({ file, value }) => {
@@ -107,7 +107,7 @@ export default function(state, emitter) {
     render();
   });
 
-  emitter.on('upload', async ({ type, dlCount, password }) => {
+  emitter.on('upload', async ({ type, dlimit, password }) => {
     if (!state.archive) return;
     if (state.storage.files.length >= LIMITS.MAX_ARCHIVES_PER_USER) {
       return alert(
@@ -118,11 +118,7 @@ export default function(state, emitter) {
     }
     const size = state.archive.size;
     if (!state.timeLimit) state.timeLimit = DEFAULTS.EXPIRE_SECONDS;
-    const sender = new FileSender(
-      state.archive,
-      state.timeLimit,
-      state.user.bearerToken
-    );
+    const sender = new FileSender();
 
     sender.on('progress', updateProgress);
     sender.on('encrypting', render);
@@ -136,17 +132,21 @@ export default function(state, emitter) {
     try {
       metrics.startedUpload({ size, type });
 
-      const ownedFile = await sender.upload();
+      const ownedFile = await sender.upload(
+        state.archive,
+        state.timeLimit,
+        dlimit,
+        state.user.bearerToken
+      );
       ownedFile.type = type;
       state.storage.totalUploads += 1;
       metrics.completedUpload(ownedFile);
 
       state.storage.addFile(ownedFile);
-      // TODO integrate password and limit into /upload request
+      // TODO integrate password into /upload request
       if (password) {
         emitter.emit('password', { password, file: ownedFile });
       }
-      emitter.emit('changeLimit', { file: ownedFile, value: dlCount });
 
       const cancelBtn = document.getElementById('cancel-upload');
       if (cancelBtn) {

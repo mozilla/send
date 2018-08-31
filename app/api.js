@@ -113,17 +113,13 @@ function asyncInitWebSocket(server) {
 
 function listenForResponse(ws, canceller) {
   return new Promise((resolve, reject) => {
-    ws.addEventListener('message', function(msg) {
+    function handleMessage(msg) {
       try {
         const response = JSON.parse(msg.data);
         if (response.error) {
           throw new Error(response.error);
         } else {
-          resolve({
-            url: response.url,
-            id: response.id,
-            ownerToken: response.owner
-          });
+          resolve(response);
         }
       } catch (e) {
         ws.close();
@@ -131,7 +127,8 @@ function listenForResponse(ws, canceller) {
         canceller.error = e;
         reject(e);
       }
-    });
+    }
+    ws.addEventListener('message', handleMessage, { once: true });
   });
 }
 
@@ -140,6 +137,7 @@ async function upload(
   metadata,
   verifierB64,
   timeLimit,
+  dlimit,
   bearerToken,
   onprogress,
   canceller
@@ -160,12 +158,14 @@ async function upload(
       fileMetadata: metadataHeader,
       authorization: `send-v1 ${verifierB64}`,
       bearer: bearerToken,
-      timeLimit
+      timeLimit,
+      dlimit
     };
-
-    const responsePromise = listenForResponse(ws, canceller);
-
+    const uploadInfoResponse = listenForResponse(ws, canceller);
     ws.send(JSON.stringify(fileMeta));
+    const uploadInfo = await uploadInfoResponse;
+
+    const completedResponse = listenForResponse(ws, canceller);
 
     const reader = stream.getReader();
     let state = await reader.read();
@@ -188,9 +188,9 @@ async function upload(
     const footer = new Uint8Array([0]);
     ws.send(footer);
 
-    const response = await responsePromise; //promise only fufills if response is good
+    await completedResponse;
     ws.close();
-    return response;
+    return uploadInfo;
   } catch (e) {
     ws.close(4000);
     throw e;
@@ -202,6 +202,7 @@ export function uploadWs(
   metadata,
   verifierB64,
   timeLimit,
+  dlimit,
   bearerToken,
   onprogress
 ) {
@@ -218,6 +219,7 @@ export function uploadWs(
       metadata,
       verifierB64,
       timeLimit,
+      dlimit,
       bearerToken,
       onprogress,
       canceller
@@ -244,7 +246,6 @@ async function downloadS(id, keychain, signal) {
   if (response.status !== 200) {
     throw new Error(response.status);
   }
-  //const fileSize = response.headers.get('Content-Length');
 
   return response.body;
 }
