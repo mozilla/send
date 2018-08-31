@@ -1,6 +1,9 @@
 const html = require('choo/html');
 
 module.exports = function(state) {
+  if (state.user.loggedIn) {
+    return null;
+  }
   return html`
   <div class="signupPromo">
     <div class="signupPromo__title">${state.translate('signInPromoText')}</div>
