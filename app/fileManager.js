@@ -56,7 +56,11 @@ export default function(state, emitter) {
   });
 
   emitter.on('changeLimit', async ({ file, value }) => {
-    await file.changeLimit(value);
+    const ok = await file.changeLimit(value, state.user);
+    if (!ok) {
+      // TODO
+      return;
+    }
     state.storage.writeFile(file);
     metrics.changedDownloadLimit(file);
   });
@@ -138,6 +142,7 @@ export default function(state, emitter) {
       metrics.completedUpload(ownedFile);
 
       state.storage.addFile(ownedFile);
+      // TODO integrate password and limit into /upload request
       if (password) {
         emitter.emit('password', { password, file: ownedFile });
       }

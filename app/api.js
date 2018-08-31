@@ -1,12 +1,16 @@
 import { arrayToB64, b64ToArray, delay } from './utils';
 import { ECE_RECORD_SIZE } from './ece';
 
-function post(obj) {
+function post(obj, bearerToken) {
+  const h = {
+    'Content-Type': 'application/json'
+  };
+  if (bearerToken) {
+    h['Authentication'] = `Bearer ${bearerToken}`;
+  }
   return {
     method: 'POST',
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    }),
+    headers: new Headers(h),
     body: JSON.stringify(obj)
   };
 }
@@ -43,13 +47,16 @@ export async function del(id, owner_token) {
   return response.ok;
 }
 
-export async function setParams(id, owner_token, params) {
+export async function setParams(id, owner_token, bearerToken, params) {
   const response = await fetch(
     `/api/params/${id}`,
-    post({
-      owner_token,
-      dlimit: params.dlimit
-    })
+    post(
+      {
+        owner_token,
+        dlimit: params.dlimit
+      },
+      bearerToken
+    )
   );
   return response.ok;
 }

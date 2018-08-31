@@ -2,9 +2,9 @@ const config = require('../config');
 const storage = require('../storage');
 
 module.exports = function(req, res) {
+  const max = req.user ? config.max_downloads : config.anon_max_downloads;
   const dlimit = req.body.dlimit;
-  // TODO: fxa auth
-  if (!dlimit || dlimit > config.max_downloads) {
+  if (!dlimit || dlimit > max) {
     return res.sendStatus(400);
   }
 

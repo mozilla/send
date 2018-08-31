@@ -87,7 +87,12 @@ module.exports = function(app) {
   app.post('/api/upload', auth.fxa, require('./upload'));
   app.post(`/api/delete/:id${ID_REGEX}`, auth.owner, require('./delete'));
   app.post(`/api/password/:id${ID_REGEX}`, auth.owner, require('./password'));
-  app.post(`/api/params/:id${ID_REGEX}`, auth.owner, require('./params'));
+  app.post(
+    `/api/params/:id${ID_REGEX}`,
+    auth.owner,
+    auth.fxa,
+    require('./params')
+  );
   app.post(`/api/info/:id${ID_REGEX}`, auth.owner, require('./info'));
 
   app.get('/__version__', function(req, res) {

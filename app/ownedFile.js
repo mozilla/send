@@ -48,10 +48,10 @@ export default class OwnedFile {
     return del(this.id, this.ownerToken);
   }
 
-  changeLimit(dlimit) {
+  changeLimit(dlimit, user = {}) {
     if (this.dlimit !== dlimit) {
       this.dlimit = dlimit;
-      return setParams(this.id, this.ownerToken, { dlimit });
+      return setParams(this.id, this.ownerToken, user.bearerToken, { dlimit });
     }
     return Promise.resolve(true);
   }
