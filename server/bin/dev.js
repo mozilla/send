@@ -5,6 +5,7 @@ const pages = require('../routes/pages');
 const tests = require('../../test/frontend/routes');
 const express = require('express');
 const expressWs = require('express-ws');
+const morgan = require('morgan');
 const config = require('../config');
 
 module.exports = function(app, devServer) {
@@ -15,6 +16,7 @@ module.exports = function(app, devServer) {
 
   assets.setMiddleware(devServer.middleware);
   locales.setMiddleware(devServer.middleware);
+  app.use(morgan('dev', { stream: process.stderr }));
   routes(app);
   tests(app);
   // webpack-dev-server routes haven't been added yet

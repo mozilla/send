@@ -87,6 +87,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
     "mocha": "^5.2.0",
+    "morgan": "^1.9.0",
     "nanobus": "^4.3.2",
     "nanotiming": "^7.3.1",
     "node-jose": "^1.0.0",
