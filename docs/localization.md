@@ -14,7 +14,7 @@ The development environment includes all locales in `public/locales` via the `L1
 
 ## Code
 
-In `app/` we use the `state.translate()` function to translate strings to the best matching language base on the user's `Accept-Language` header. It's a wrapper around fluent's [MessageContext.format](http://projectfluent.org/fluent.js/fluent/MessageContext.html). It works the same for both server and client side rendering.
+In `app/` we use the `state.translate()` function to translate strings to the best matching language base on the user's `Accept-Language` header. It's a wrapper around fluent's [FluentBundle.format](http://projectfluent.org/fluent.js/fluent/FluentBundle.html). It works the same for both server and client side rendering.
 
 ### Examples
 
