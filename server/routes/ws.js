@@ -5,10 +5,11 @@ const mozlog = require('../log');
 const Limiter = require('../limiter');
 const Parser = require('../streamparser');
 const wsStream = require('websocket-stream/stream');
+const fxa = require('./fxa');
 
 const log = mozlog('send.upload');
 
-module.exports = async function(ws, req) {
+module.exports = function(ws, req) {
   let fileStream;
 
   ws.on('close', e => {
@@ -23,15 +24,27 @@ module.exports = async function(ws, req) {
       const owner = crypto.randomBytes(10).toString('hex');
 
       const fileInfo = JSON.parse(message);
-      const timeLimit = fileInfo.timeLimit;
+      const timeLimit = fileInfo.timeLimit || config.default_expire_seconds;
+      const dlimit = fileInfo.dlimit || 1;
       const metadata = fileInfo.fileMetadata;
       const auth = fileInfo.authorization;
+      const user = await fxa.verify(fileInfo.bearer);
+      const maxFileSize = user
+        ? config.max_file_size
+        : config.anon_max_file_size;
+      const maxExpireSeconds = user
+        ? config.max_expire_seconds
+        : config.anon_max_expire_seconds;
+      const maxDownloads = user
+        ? config.max_downloads
+        : config.anon_max_downloads;
 
       if (
         !metadata ||
         !auth ||
         timeLimit <= 0 ||
-        timeLimit > config.max_expire_seconds
+        timeLimit > maxExpireSeconds ||
+        dlimit > maxDownloads
       ) {
         ws.send(
           JSON.stringify({
@@ -44,6 +57,7 @@ module.exports = async function(ws, req) {
       const meta = {
         owner,
         metadata,
+        dlimit,
         auth: auth.split(' ')[1],
         nonce: crypto.randomBytes(16).toString('base64')
       };
@@ -51,7 +65,15 @@ module.exports = async function(ws, req) {
       const protocol = config.env === 'production' ? 'https' : req.protocol;
       const url = `${protocol}://${req.get('host')}/download/${newId}/`;
 
-      const limiter = new Limiter(config.max_file_size);
+      ws.send(
+        JSON.stringify({
+          url,
+          ownerToken: meta.owner,
+          id: newId
+        })
+      );
+
+      const limiter = new Limiter(maxFileSize);
       const parser = new Parser();
       fileStream = wsStream(ws, { binary: true })
         .pipe(limiter)
@@ -66,14 +88,7 @@ module.exports = async function(ws, req) {
         // TODO: we should handle cancelled uploads differently
         // in order to avoid having to check socket state and clean
         // up storage, possibly with an exception that we can catch.
-        ws.send(
-          JSON.stringify({
-            url,
-            owner: meta.owner,
-            id: newId,
-            authentication: `send-v1 ${meta.nonce}`
-          })
-        );
+        ws.send(JSON.stringify({ ok: true }));
       }
     } catch (e) {
       log.error('upload', e);

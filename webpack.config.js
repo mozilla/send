@@ -176,7 +176,7 @@ const web = {
         from: '*.*'
       }
     ]),
-    new webpack.IgnorePlugin(/dist/), // used in common/*.js
+    new webpack.IgnorePlugin(/\.\.\/dist/), // used in common/*.js
     new webpack.IgnorePlugin(/require-from-string/), // used in common/locales.js
     new webpack.HashedModuleIdsPlugin(),
     new ExtractTextPlugin({

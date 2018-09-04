@@ -21,7 +21,7 @@ const conf = convict({
   },
   expire_times_seconds: {
     format: Array,
-    default: [300, 3600, 86400, 604800, 1209600],
+    default: [300, 3600, 86400, 604800],
     env: 'EXPIRE_TIMES_SECONDS'
   },
   default_expire_seconds: {
@@ -31,8 +31,33 @@ const conf = convict({
   },
   max_expire_seconds: {
     format: Number,
-    default: 1209600,
+    default: 86400 * 7,
     env: 'MAX_EXPIRE_SECONDS'
+  },
+  anon_max_expire_seconds: {
+    format: Number,
+    default: 86400,
+    env: 'ANON_MAX_EXPIRE_SECONDS'
+  },
+  max_downloads: {
+    format: Number,
+    default: 200,
+    env: 'MAX_DOWNLOADS'
+  },
+  anon_max_downloads: {
+    format: Number,
+    default: 20,
+    env: 'ANON_MAX_DOWNLOADS'
+  },
+  max_files_per_archive: {
+    format: Number,
+    default: 64,
+    env: 'MAX_FILES_PER_ARCHIVE'
+  },
+  max_archives_per_user: {
+    format: Number,
+    default: 16,
+    env: 'MAX_ARCHIVES_PER_USER'
   },
   redis_host: {
     format: String,
@@ -77,8 +102,13 @@ const conf = convict({
   },
   max_file_size: {
     format: Number,
-    default: 1024 * 1024 * 1024 * 3,
+    default: 1024 * 1024 * 1024 * 4,
     env: 'MAX_FILE_SIZE'
+  },
+  anon_max_file_size: {
+    format: Number,
+    default: 1024 * 1024 * 500,
+    env: 'ANON_MAX_FILE_SIZE'
   },
   l10n_dev: {
     format: Boolean,
@@ -94,6 +124,21 @@ const conf = convict({
     format: 'String',
     default: `${tmpdir()}${path.sep}send-${randomBytes(4).toString('hex')}`,
     env: 'FILE_DIR'
+  },
+  fxa_url: {
+    format: 'url',
+    default: 'https://stable.dev.lcip.org',
+    env: 'FXA_URL'
+  },
+  fxa_client_id: {
+    format: String,
+    default: 'b50ec33d3c9beb6d', // localhost
+    env: 'FXA_CLIENT_ID'
+  },
+  fxa_client_secret: {
+    format: String,
+    default: '05ac76fbe3e739c9effbaea439bc07d265c613c5e0da9070590a2378377c09d8', // localhost
+    env: 'FXA_CLIENT_SECRET'
   }
 });
 

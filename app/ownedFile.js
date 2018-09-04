@@ -22,6 +22,14 @@ export default class OwnedFile {
     this.timeLimit = obj.timeLimit;
   }
 
+  get hasPassword() {
+    return !!this._hasPassword;
+  }
+
+  get expired() {
+    return this.dlimit === this.dtotal || Date.now() > this.expiresAt;
+  }
+
   async setPassword(password) {
     try {
       this.password = password;
@@ -40,19 +48,17 @@ export default class OwnedFile {
     return del(this.id, this.ownerToken);
   }
 
-  changeLimit(dlimit) {
+  changeLimit(dlimit, user = {}) {
     if (this.dlimit !== dlimit) {
       this.dlimit = dlimit;
-      return setParams(this.id, this.ownerToken, { dlimit });
+      return setParams(this.id, this.ownerToken, user.bearerToken, { dlimit });
     }
     return Promise.resolve(true);
   }
 
-  get hasPassword() {
-    return !!this._hasPassword;
-  }
-
   async updateDownloadCount() {
+    const oldTotal = this.dtotal;
+    const oldLimit = this.dlimit;
     try {
       const result = await fileInfo(this.id, this.ownerToken);
       this.dtotal = result.dtotal;
@@ -63,6 +69,7 @@ export default class OwnedFile {
       }
       // ignore other errors
     }
+    return oldTotal !== this.dtotal || oldLimit !== this.dlimit;
   }
 
   toJSON() {

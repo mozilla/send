@@ -5,12 +5,18 @@
   padding: 0;
 }
 
+.account__avatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+}
+
 .account_dropdown {
   z-index: 2;
   position: absolute;
   top: 30px;
   left: -15px;
-  width: 150px;
+  min-width: 150px;
   list-style-type: none;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -61,4 +67,12 @@
 .account_dropdown__link:hover {
   background-color: var(--primaryControlBGColor);
   color: var(--primaryControlFGColor);
+}
+
+.account_dropdown__text {
+  display: block;
+  padding: 0 14px;
+  font-size: 13px;
+  color: var(--lightTextColor);
+  line-height: 24px;
 }

@@ -62,11 +62,11 @@ module.exports = function(state, emit) {
         onfocus=${onfocus}
         onblur=${onblur}
         onchange=${addFiles} />
-        
+
     </label>
 
     <div class="uploadOptions ${optionClass}">
-    ${expireInfo(state)}
+    ${expireInfo(state, emit)}
     ${setPasswordSection(state)}
     </div>
 
@@ -129,7 +129,7 @@ module.exports = function(state, emit) {
 
     emit('upload', {
       type: 'click',
-      dlCount: state.downloadCount,
+      dlimit: state.downloadCount || 1,
       password: state.password
     });
   }

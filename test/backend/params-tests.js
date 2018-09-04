@@ -40,7 +40,7 @@ describe('/api/params', function() {
   it('sends a 400 if dlimit is too large', function() {
     const req = request('x');
     const res = response();
-    req.body.dlimit = 21;
+    req.body.dlimit = 201;
     paramsRoute(req, res);
     sinon.assert.calledWith(res.sendStatus, 400);
   });

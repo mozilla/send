@@ -1,4 +1,4 @@
-/* global DEFAULT_EXPIRE_SECONDS */
+/* global DEFAULTS */
 import Nanobus from 'nanobus';
 import OwnedFile from './ownedFile';
 import Keychain from './keychain';
@@ -7,10 +7,8 @@ import { uploadWs } from './api';
 import { encryptedSize } from './ece';
 
 export default class FileSender extends Nanobus {
-  constructor(file, timeLimit) {
+  constructor() {
     super('FileSender');
-    this.timeLimit = timeLimit || DEFAULT_EXPIRE_SECONDS;
-    this.file = file;
     this.keychain = new Keychain();
     this.reset();
   }
@@ -44,42 +42,34 @@ export default class FileSender extends Nanobus {
     }
   }
 
-  readFile() {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsArrayBuffer(this.file);
-      // TODO: progress?
-      reader.onload = function(event) {
-        const plaintext = new Uint8Array(this.result);
-        resolve(plaintext);
-      };
-      reader.onerror = function(err) {
-        reject(err);
-      };
-    });
-  }
-
-  async upload() {
+  async upload(
+    file,
+    timeLimit = DEFAULTS.EXPIRE_SECONDS,
+    dlimit = 1,
+    bearerToken
+  ) {
     const start = Date.now();
     if (this.cancelled) {
       throw new Error(0);
     }
     this.msg = 'encryptingFile';
     this.emit('encrypting');
-    const totalSize = encryptedSize(this.file.size);
-    const encStream = await this.keychain.encryptStream(this.file.stream);
-    const metadata = await this.keychain.encryptMetadata(this.file);
+    const totalSize = encryptedSize(file.size);
+    const encStream = await this.keychain.encryptStream(file.stream);
+    const metadata = await this.keychain.encryptMetadata(file);
     const authKeyB64 = await this.keychain.authKeyB64();
 
     this.uploadRequest = uploadWs(
       encStream,
       metadata,
       authKeyB64,
+      timeLimit,
+      dlimit,
+      bearerToken,
       p => {
         this.progress = [p, totalSize];
         this.emit('progress');
-      },
-      this.timeLimit
+      }
     );
 
     if (this.cancelled) {
@@ -98,17 +88,17 @@ export default class FileSender extends Nanobus {
       const ownedFile = new OwnedFile({
         id: result.id,
         url: `${result.url}#${secretKey}`,
-        name: this.file.name,
-        size: this.file.size,
-        manifest: this.file.manifest,
+        name: file.name,
+        size: file.size,
+        manifest: file.manifest,
         time: time,
-        speed: this.file.size / (time / 1000),
+        speed: file.size / (time / 1000),
         createdAt: Date.now(),
-        expiresAt: Date.now() + this.timeLimit * 1000,
+        expiresAt: Date.now() + timeLimit * 1000,
         secretKey: secretKey,
         nonce: this.keychain.nonce,
         ownerToken: result.ownerToken,
-        timeLimit: this.timeLimit
+        timeLimit: timeLimit
       });
 
       return ownedFile;

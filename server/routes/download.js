@@ -14,15 +14,15 @@ module.exports = async function(req, res) {
       'WWW-Authenticate': `send-v1 ${req.nonce}`
     });
 
-    const file_stream = await storage.get(id);
+    const fileStream = await storage.get(id);
     let cancelled = false;
 
     req.on('close', () => {
       cancelled = true;
-      file_stream.destroy();
+      fileStream.destroy();
     });
 
-    file_stream.on('end', async () => {
+    fileStream.on('end', async () => {
       if (cancelled) {
         return;
       }
@@ -40,7 +40,7 @@ module.exports = async function(req, res) {
       }
     });
 
-    file_stream.pipe(res);
+    fileStream.pipe(res);
   } catch (e) {
     res.sendStatus(404);
   }

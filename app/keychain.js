@@ -4,13 +4,8 @@ const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
 export default class Keychain {
-  constructor(secretKeyB64, nonce, ivB64) {
+  constructor(secretKeyB64, nonce) {
     this._nonce = nonce || 'yRCdyQ1EMSA3mo4rqSkuNQ==';
-    if (ivB64) {
-      this.iv = b64ToArray(ivB64);
-    } else {
-      this.iv = crypto.getRandomValues(new Uint8Array(12));
-    }
     if (secretKeyB64) {
       this.rawSecret = b64ToArray(secretKeyB64);
     } else {
@@ -86,10 +81,6 @@ export default class Keychain {
     }
   }
 
-  setIV(ivB64) {
-    this.iv = b64ToArray(ivB64);
-  }
-
   setPassword(password, shareUrl) {
     this.authKeyPromise = crypto.subtle
       .importKey('raw', encoder.encode(password), { name: 'PBKDF2' }, false, [
@@ -145,20 +136,6 @@ export default class Keychain {
     return `send-v1 ${arrayToB64(new Uint8Array(sig))}`;
   }
 
-  async encryptFile(plaintext) {
-    const encryptKey = await this.encryptKeyPromise;
-    const ciphertext = await crypto.subtle.encrypt(
-      {
-        name: 'AES-GCM',
-        iv: this.iv,
-        tagLength: 128
-      },
-      encryptKey,
-      plaintext
-    );
-    return ciphertext;
-  }
-
   async encryptMetadata(metadata) {
     const metaKey = await this.metaKeyPromise;
     const ciphertext = await crypto.subtle.encrypt(
@@ -170,7 +147,6 @@ export default class Keychain {
       metaKey,
       encoder.encode(
         JSON.stringify({
-          iv: arrayToB64(this.iv),
           name: metadata.name,
           size: metadata.size,
           type: metadata.type || 'application/octet-stream',
@@ -187,20 +163,6 @@ export default class Keychain {
 
   decryptStream(cryptotext) {
     return decryptStream(cryptotext, this.rawSecret);
-  }
-
-  async decryptFile(ciphertext) {
-    const encryptKey = await this.encryptKeyPromise;
-    const plaintext = await crypto.subtle.decrypt(
-      {
-        name: 'AES-GCM',
-        iv: this.iv,
-        tagLength: 128
-      },
-      encryptKey,
-      ciphertext
-    );
-    return plaintext;
   }
 
   async decryptMetadata(ciphertext) {

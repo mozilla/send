@@ -1,4 +1,4 @@
-/* global DEFAULT_EXPIRE_SECONDS */
+/* global DEFAULTS */
 import assert from 'assert';
 import Archive from '../../../app/archive';
 import * as api from '../../../app/api';
@@ -23,8 +23,10 @@ describe('API', function() {
         enc,
         meta,
         verifierB64,
-        p,
-        DEFAULT_EXPIRE_SECONDS
+        DEFAULTS.EXPIRE_SECONDS,
+        1,
+        null,
+        p
       );
 
       const result = await up.result;
@@ -43,8 +45,9 @@ describe('API', function() {
         enc,
         meta,
         verifierB64,
-        p,
-        DEFAULT_EXPIRE_SECONDS
+        DEFAULTS.EXPIRE_SECONDS,
+        null,
+        p
       );
 
       up.cancel();

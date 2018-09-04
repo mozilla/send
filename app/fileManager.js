@@ -1,12 +1,11 @@
-/* global MAXFILESIZE */
-/* global DEFAULT_EXPIRE_SECONDS */
+/* global DEFAULTS LIMITS */
 import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
 import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
 import * as metrics from './metrics';
-import { hasPassword } from './api';
 import Archive from './archive';
 import { bytes } from './utils';
+import { prepareWrapKey } from './fxa';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -17,19 +16,8 @@ export default function(state, emitter) {
   }
 
   async function checkFiles() {
-    const files = state.storage.files.slice();
-    let rerender = false;
-    for (const file of files) {
-      const oldLimit = file.dlimit;
-      const oldTotal = file.dtotal;
-      await file.updateDownloadCount();
-      if (file.dtotal === file.dlimit) {
-        state.storage.remove(file.id);
-        rerender = true;
-      } else if (oldLimit !== file.dlimit || oldTotal !== file.dtotal) {
-        rerender = true;
-      }
-    }
+    const changes = await state.user.syncFileList();
+    const rerender = changes.incoming || changes.downloadCount;
     if (rerender) {
       render();
     }
@@ -57,8 +45,22 @@ export default function(state, emitter) {
     lastRender = Date.now();
   });
 
+  emitter.on('login', async () => {
+    const k = await prepareWrapKey(state.storage);
+    location.assign(`/api/fxa/login?keys_jwk=${k}`);
+  });
+
+  emitter.on('logout', () => {
+    state.user.logout();
+    emitter.emit('pushState', '/');
+  });
+
   emitter.on('changeLimit', async ({ file, value }) => {
-    await file.changeLimit(value);
+    const ok = await file.changeLimit(value, state.user);
+    if (!ok) {
+      // TODO
+      return;
+    }
     state.storage.writeFile(file);
     metrics.changedDownloadLimit(file);
   });
@@ -90,29 +92,33 @@ export default function(state, emitter) {
   });
 
   emitter.on('addFiles', async ({ files }) => {
-    if (state.archive) {
-      if (!state.archive.addFiles(files)) {
-        // eslint-disable-next-line no-alert
-        alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
-        return;
-      }
-    } else {
-      const archive = new Archive(files);
-      if (!archive.checkSize()) {
-        // eslint-disable-next-line no-alert
-        alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
-        return;
-      }
-      state.archive = archive;
+    const maxSize = state.user.maxSize;
+    state.archive = state.archive || new Archive();
+    try {
+      state.archive.addFiles(files, maxSize);
+    } catch (e) {
+      alert(
+        state.translate(e.message, {
+          size: bytes(maxSize),
+          count: LIMITS.MAX_FILES_PER_ARCHIVE
+        })
+      );
     }
     render();
   });
 
-  emitter.on('upload', async ({ type, dlCount, password }) => {
+  emitter.on('upload', async ({ type, dlimit, password }) => {
     if (!state.archive) return;
+    if (state.storage.files.length >= LIMITS.MAX_ARCHIVES_PER_USER) {
+      return alert(
+        state.translate('tooManyArchives', {
+          count: LIMITS.MAX_ARCHIVES_PER_USER
+        })
+      );
+    }
     const size = state.archive.size;
-    if (!state.timeLimit) state.timeLimit = DEFAULT_EXPIRE_SECONDS;
-    const sender = new FileSender(state.archive, state.timeLimit);
+    if (!state.timeLimit) state.timeLimit = DEFAULTS.EXPIRE_SECONDS;
+    const sender = new FileSender();
 
     sender.on('progress', updateProgress);
     sender.on('encrypting', render);
@@ -126,17 +132,21 @@ export default function(state, emitter) {
     try {
       metrics.startedUpload({ size, type });
 
-      const ownedFile = await sender.upload();
+      const ownedFile = await sender.upload(
+        state.archive,
+        state.timeLimit,
+        dlimit,
+        state.user.bearerToken
+      );
       ownedFile.type = type;
       state.storage.totalUploads += 1;
       metrics.completedUpload(ownedFile);
 
       state.storage.addFile(ownedFile);
-
+      // TODO integrate password into /upload request
       if (password) {
         emitter.emit('password', { password, file: ownedFile });
       }
-      emitter.emit('changeLimit', { file: ownedFile, value: dlCount });
 
       const cancelBtn = document.getElementById('cancel-upload');
       if (cancelBtn) {
@@ -185,17 +195,6 @@ export default function(state, emitter) {
     render();
   });
 
-  emitter.on('getPasswordExist', async ({ id }) => {
-    try {
-      state.fileInfo = await hasPassword(id);
-      render();
-    } catch (e) {
-      if (e.message === '404') {
-        return emitter.emit('pushState', '/404');
-      }
-    }
-  });
-
   emitter.on('getMetadata', async () => {
     const file = state.fileInfo;
 
@@ -204,7 +203,7 @@ export default function(state, emitter) {
       await receiver.getMetadata();
       state.transfer = receiver;
     } catch (e) {
-      if (e.message === '401') {
+      if (e.message === '401' || e.message === '404') {
         file.password = null;
         if (!file.requiresPassword) {
           return emitter.emit('pushState', '/404');

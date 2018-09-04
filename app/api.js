@@ -1,12 +1,16 @@
 import { arrayToB64, b64ToArray, delay } from './utils';
 import { ECE_RECORD_SIZE } from './ece';
 
-function post(obj) {
+function post(obj, bearerToken) {
+  const h = {
+    'Content-Type': 'application/json'
+  };
+  if (bearerToken) {
+    h['Authentication'] = `Bearer ${bearerToken}`;
+  }
   return {
     method: 'POST',
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    }),
+    headers: new Headers(h),
     body: JSON.stringify(obj)
   };
 }
@@ -43,13 +47,16 @@ export async function del(id, owner_token) {
   return response.ok;
 }
 
-export async function setParams(id, owner_token, params) {
+export async function setParams(id, owner_token, bearerToken, params) {
   const response = await fetch(
     `/api/params/${id}`,
-    post({
-      owner_token,
-      dlimit: params.dlimit
-    })
+    post(
+      {
+        owner_token,
+        dlimit: params.dlimit
+      },
+      bearerToken
+    )
   );
   return response.ok;
 }
@@ -62,14 +69,6 @@ export async function fileInfo(id, owner_token) {
     return obj;
   }
 
-  throw new Error(response.status);
-}
-
-export async function hasPassword(id) {
-  const response = await fetch(`/api/exists/${id}`);
-  if (response.ok) {
-    return response.json();
-  }
   throw new Error(response.status);
 }
 
@@ -114,17 +113,13 @@ function asyncInitWebSocket(server) {
 
 function listenForResponse(ws, canceller) {
   return new Promise((resolve, reject) => {
-    ws.addEventListener('message', function(msg) {
+    function handleMessage(msg) {
       try {
         const response = JSON.parse(msg.data);
         if (response.error) {
           throw new Error(response.error);
         } else {
-          resolve({
-            url: response.url,
-            id: response.id,
-            ownerToken: response.owner
-          });
+          resolve(response);
         }
       } catch (e) {
         ws.close();
@@ -132,7 +127,8 @@ function listenForResponse(ws, canceller) {
         canceller.error = e;
         reject(e);
       }
-    });
+    }
+    ws.addEventListener('message', handleMessage, { once: true });
   });
 }
 
@@ -141,6 +137,8 @@ async function upload(
   metadata,
   verifierB64,
   timeLimit,
+  dlimit,
+  bearerToken,
   onprogress,
   canceller
 ) {
@@ -159,12 +157,15 @@ async function upload(
     const fileMeta = {
       fileMetadata: metadataHeader,
       authorization: `send-v1 ${verifierB64}`,
-      timeLimit
+      bearer: bearerToken,
+      timeLimit,
+      dlimit
     };
-
-    const responsePromise = listenForResponse(ws, canceller);
-
+    const uploadInfoResponse = listenForResponse(ws, canceller);
     ws.send(JSON.stringify(fileMeta));
+    const uploadInfo = await uploadInfoResponse;
+
+    const completedResponse = listenForResponse(ws, canceller);
 
     const reader = stream.getReader();
     let state = await reader.read();
@@ -187,9 +188,9 @@ async function upload(
     const footer = new Uint8Array([0]);
     ws.send(footer);
 
-    const response = await responsePromise; //promise only fufills if response is good
+    await completedResponse;
     ws.close();
-    return response;
+    return uploadInfo;
   } catch (e) {
     ws.close(4000);
     throw e;
@@ -200,8 +201,10 @@ export function uploadWs(
   encrypted,
   metadata,
   verifierB64,
-  onprogress,
-  timeLimit
+  timeLimit,
+  dlimit,
+  bearerToken,
+  onprogress
 ) {
   const canceller = { cancelled: false };
 
@@ -216,6 +219,8 @@ export function uploadWs(
       metadata,
       verifierB64,
       timeLimit,
+      dlimit,
+      bearerToken,
       onprogress,
       canceller
     )
@@ -241,7 +246,6 @@ async function downloadS(id, keychain, signal) {
   if (response.status !== 200) {
     throw new Error(response.status);
   }
-  //const fileSize = response.headers.get('Content-Length');
 
   return response.body;
 }
@@ -331,4 +335,20 @@ export function downloadFile(id, keychain, onprogress) {
     cancel,
     result: tryDownload(id, keychain, onprogress, canceller, 2)
   };
+}
+
+export async function getFileList(bearerToken) {
+  const headers = new Headers({ Authorization: `Bearer ${bearerToken}` });
+  const response = await fetch('/api/filelist', { headers });
+  return response.body; // stream
+}
+
+export async function setFileList(bearerToken, data) {
+  const headers = new Headers({ Authorization: `Bearer ${bearerToken}` });
+  const response = await fetch('/api/filelist', {
+    headers,
+    method: 'POST',
+    body: data
+  });
+  return response.status === 200;
 }

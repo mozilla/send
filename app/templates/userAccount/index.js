@@ -1,33 +1,41 @@
 const html = require('choo/html');
-const assets = require('../../../common/assets');
 
-// eslint-disable-next-line no-unused-vars
-module.exports = function(state) {
-  const notLoggedInMenu = html`
+module.exports = function(state, emit) {
+  const user = state.user;
+  const menu = user.loggedIn
+    ? html`
+    <ul class="account_dropdown">
+      <li class="account_dropdown__text">
+        ${user.email}
+      </li>
+      <li>
+        <a class="account_dropdown__link" onclick=${logout}>${state.translate(
+        'logOut'
+      )}</a>
+      </li>
+    </ul>`
+    : html`
     <ul class="account_dropdown"
           tabindex="-1"
     >
       <li>
-        <a class=account_dropdown__link>${state.translate(
-          'accountMenuOption'
-        )}</a>
-      </li>
-      <li>
-        <a href="/signin"
-          class=account_dropdown__link>${state.translate(
-            'signInMenuOption'
-          )}</a>
+        <a class="account_dropdown__link" onclick=${login}>${state.translate(
+        'signInMenuOption'
+      )}</a>
       </li>
     </ul>
   `;
 
   return html`
     <div class="account">
-      <img
-      src="${assets.get('user.svg')}"
-      onclick=${avatarClick}
-      alt="account"/>
-      ${notLoggedInMenu}
+      <div class="account__avatar">
+        <img
+          class="account__avatar"
+          src="${user.avatar}"
+          onclick=${avatarClick}
+        />
+      </div>
+      ${menu}
     </div>`;
 
   function avatarClick(event) {
@@ -35,6 +43,16 @@ module.exports = function(state) {
     const dropdown = document.querySelector('.account_dropdown');
     dropdown.classList.toggle('visible');
     dropdown.focus();
+  }
+
+  function login(event) {
+    event.preventDefault();
+    emit('login');
+  }
+
+  function logout(event) {
+    event.preventDefault();
+    emit('logout');
   }
 
   //the onblur trick makes links unclickable wtf
