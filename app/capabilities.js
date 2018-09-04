@@ -69,7 +69,10 @@ export default async function capabilities() {
     streamDownload:
       nativeStreams &&
       'serviceWorker' in navigator &&
-      !/safari/i.test(navigator.userAgent),
+      !(
+        /safari/i.test(navigator.userAgent) &&
+        !/chrome/i.test(navigator.userAgent)
+      ),
     multifile: nativeStreams || polyStreams
   };
 }
