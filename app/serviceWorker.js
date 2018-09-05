@@ -41,7 +41,7 @@ async function decryptStream(id) {
       type = 'application/zip';
       size = zip.size;
     }
-    const readStream = transformStream(
+    const responseStream = transformStream(
       zipStream || decrypted,
       {
         transform(chunk, controller) {
@@ -62,22 +62,26 @@ async function decryptStream(id) {
       'Content-Type': type,
       'Content-Length': size
     };
-    return new Response(readStream, { headers });
+    return new Response(responseStream, { headers });
   } catch (e) {
     if (noSave) {
       return new Response(null, { status: e.message });
     }
 
-    const redirectRes = await fetch(`/download/${id}`);
-    return new Response(redirectRes.body, { status: 302 });
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: `/download/${id}`
+      }
+    });
   }
 }
 
 self.onfetch = event => {
   const req = event.request;
-  if (/\/api\/download\/[A-Fa-f0-9]{4,}/.test(req.url)) {
-    const id = req.url.split('/')[5];
-    event.respondWith(decryptStream(id));
+  const match = /\/api\/download\/([A-Fa-f0-9]{4,})/.exec(req.url);
+  if (match) {
+    event.respondWith(decryptStream(match[1]));
   }
 };
 
