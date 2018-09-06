@@ -9,7 +9,7 @@ uploadPageDropMessage = Depone ci tu file pro comenciar a lo cargar
 uploadPageSizeMessage = Pro evitar problemas, mantene tu file sub 1GB
 uploadPageBrowseButton = Elige un file sur tu computator
 uploadPageBrowseButton1 = Elige un file a cargar
-uploadPageMultipleFilesAlert = Le cargamento de plure files o de un plica actualmente non es supportate.
+uploadPageMultipleFilesAlert = Le cargamento de plure files o de un dossier non es actualmente admittite.
 uploadPageBrowseButtonTitle = Cargar le file
 uploadingPageProgress = Cargamento de { $filename } ({ $size })
 importingFile = Importation…
@@ -59,7 +59,7 @@ downloadFileTitle = Discargar le file cryptate
 downloadMessage = Tu amico te invia un file per Firefox Send, un servicio que te permitte de compartir files per un ligamine secur, private e cryptate, que expira automaticamente pro te assecurar que tu datos non resta online per sempre.
 # Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Discargar
-downloadNotification = Tu discargamento es completate.
+downloadNotification = Discargamento completate.
 downloadFinish = Discargamento completate
 # This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
@@ -88,7 +88,7 @@ expiryFileList = Expira in
 deleteFileList = Deler
 nevermindButton = No, gratias
 legalHeader = Terminos & confidentialitate
-legalNoticeTestPilot = Firefox Send es actualmente un  Experimento pilota, e subjecte a <a>Terminos de servicio</a> e <a>Notitia de confidentialitate</a> de Experimento pilota. Tu pote saper plus re iste experimento e su recolta de datos <a>hic</a>.
+legalNoticeTestPilot = Firefox Send es actualmente un experimento pilota, e subjecte a <a>Terminos de servicio</a> e <a>Notification de confidentialitate</a> de Experimento pilota. Tu pote saper plus re iste experimento e su recolta de datos <a>hic</a>.
 legalNoticeMozilla = Le uso del sito web de Firefox Send es anque subjecte a <a>Notitia de confidentialitate de sito web</a> e <a>Terminos de servicio sito web</a>.
 deletePopupText = Deler iste file?
 deletePopupYes = Si

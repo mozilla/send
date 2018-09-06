@@ -21,11 +21,11 @@ uploadingPageMessage = Assim que o seu ficheiro carregar irá poder definir as o
 uploadingPageCancel = Cancelar carregamento
 uploadCancelNotification = O seu carregamento foi cancelado.
 uploadingPageLargeFileMessage = Este ficheiro é grande e pode demorar um pouco a carregar. Fique onde está!
-uploadingFileNotification = Notificar-me quando o carregamento estiver completo.
+uploadingFileNotification = Notificar-me quando o carregamento estiver concluído.
 uploadSuccessConfirmHeader = Pronto para enviar
 uploadSvgAlt = Carregar
 uploadSuccessTimingHeader = A ligação para o seu ficheiro irá expirar depois de 1 transferência ou em 24 horas.
-expireInfo = A ligação para o seu ficheiro irá expirar depois de { $downloadCount } or { $timespan }.
+expireInfo = A ligação para o seu ficheiro irá expirar depois de { $downloadCount } ou { $timespan }.
 downloadCount =
     { $num ->
         [one] 1 transferência
@@ -52,7 +52,7 @@ unlockInputPlaceholder = Palavra-passe
 unlockButtonLabel = Desbloquear
 downloadFileTitle = Transferir ficheiro encriptado
 # Firefox Send is a brand name and should not be localized.
-downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiro com uma ligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
+downloadMessage = O seu amigo está a enviar-lhe um ficheiro com o Firefox Send, um serviço que lhe permite partilhar ficheiros com uma ligação segura, privada e encriptada que expira automaticamente para garantir que as suas coisas não fiquem online para sempre.
 # Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Transferir
 downloadNotification = A sua transferência foi concluída.
