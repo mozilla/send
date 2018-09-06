@@ -1,11 +1,16 @@
 /* eslint-disable no-console */
 
+import User from '../../app/user';
+import storage from '../../app/storage';
+
 export default function initialState(state, emitter) {
   const files = [];
 
   Object.assign(state, {
+    prefix: '/android_asset',
+    user: new User(undefined, storage),
     getAsset(name) {
-      return `/android_asset/${name}`;
+      return `${state.prefix}/${name}`;
     },
     translate: (...toTranslate) => {
       return toTranslate.map(o => JSON.stringify(o)).toString();
