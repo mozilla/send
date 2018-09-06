@@ -1,13 +1,13 @@
 const html = require('choo/html');
 
-import { setFileProtocolWSSUrl, getFileProtocolWSSUrl } from '../../app/api';
+import { setFileProtocolWssUrl, getFileProtocolWssUrl } from '../../app/api';
 
 export default function preferences(state, emit) {
-  const wssURL = getFileProtocolWSSUrl();
+  const wssURL = getFileProtocolWssUrl();
 
-  function updateWSSUrl(event) {
+  function updateWssUrl(event) {
     state.wssURL = event.target.value;
-    setFileProtocolWSSUrl(state.wssURL);
+    setFileProtocolWssUrl(state.wssURL);
     emit('render');
   }
 
@@ -27,7 +27,7 @@ export default function preferences(state, emit) {
           wss url:
         </dt>
         <dd>
-          <input type="text" onchange=${updateWSSUrl} value=${wssURL} />
+          <input type="text" onchange=${updateWssUrl} value=${wssURL} />
         </dd>
       </dl>
     </div>

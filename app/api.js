@@ -1,17 +1,23 @@
 import { arrayToB64, b64ToArray, delay } from './utils';
 import { ECE_RECORD_SIZE } from './ece';
 
-let fileProtocolWSSUrl =
-  (localStorage && localStorage.getItem('wssURL')) ||
-  'wss://send2.dev.lcip.org/api/ws';
-
-export function setFileProtocolWSSUrl(url) {
-  localStorage && localStorage.setItem('wssURL', url);
-  fileProtocolWSSUrl = url;
+let fileProtocolWssUrl = null;
+try {
+  fileProtocolWssUrl = localStorage.getItem('wssURL');
+} catch (e) {
+  // NOOP
+}
+if (!fileProtocolWssUrl) {
+  fileProtocolWssUrl = 'wss://send2.dev.lcip.org/api/ws';
 }
 
-export function getFileProtocolWSSUrl() {
-  return fileProtocolWSSUrl;
+export function setFileProtocolWssUrl(url) {
+  localStorage && localStorage.setItem('wssURL', url);
+  fileProtocolWssUrl = url;
+}
+
+export function getFileProtocolWssUrl() {
+  return fileProtocolWssUrl;
 }
 
 function post(obj, bearerToken) {
@@ -160,7 +166,7 @@ async function upload(
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
   const endpoint =
     window.location.protocol === 'file:'
-      ? fileProtocolWSSUrl
+      ? fileProtocolWssUrl
       : `${protocol}//${host}${port ? ':' : ''}${port}/api/ws`;
 
   const ws = await asyncInitWebSocket(endpoint);
