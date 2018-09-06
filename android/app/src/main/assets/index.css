@@ -102,3 +102,7 @@ body {
 .cancel {
   text-align: right;
 }
+
+#preferences {
+  text-align: left;
+}

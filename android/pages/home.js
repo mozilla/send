@@ -1,6 +1,15 @@
 const html = require('choo/html');
 
 export default function mainPage(state, emit) {
+  if (window.location.pathname === '/android/app/src/main/assets/') {
+    // Hack: For debugging the android app in a web browser from
+    // http://0.0.0.0:8080/android/app/src/main/assets/ after running webpack
+    state.prefix = '/android/app/src/main/assets';
+  }
+  function clickPreferences(event) {
+    event.preventDefault();
+    emit('pushState', '/preferences');
+  }
   function uploadFile(event) {
     event.preventDefault();
     const target = event.target;
@@ -16,6 +25,9 @@ export default function mainPage(state, emit) {
   return html`<body>
   <div id="white">
     <div id="centering">
+      <a href="#" onclick=${clickPreferences}>
+      preferenes
+      </a>
       <img src=${state.getAsset('encrypted-envelope.png')} />
       <h4>Private, Encrypted File Sharing</h4>
       <div>
