@@ -5,7 +5,7 @@ const mozlog = require('../log');
 const Limiter = require('../limiter');
 const Parser = require('../streamparser');
 const wsStream = require('websocket-stream/stream');
-const fxa = require('./fxa');
+const fxa = require('../fxa');
 
 const log = mozlog('send.upload');
 

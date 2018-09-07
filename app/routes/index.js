@@ -68,9 +68,14 @@ app.route('/legal', body(require('../pages/legal')));
 app.route('/error', body(require('../pages/error')));
 app.route('/blank', body(require('../pages/blank')));
 app.route('/signin', body(require('../pages/signin')));
-app.route('/api/fxa/oauth', function(state, emit) {
-  emit('replaceState', '/');
-  setTimeout(() => emit('render'));
+app.route('/api/fxa/oauth', async function(state, emit) {
+  try {
+    await state.user.finishLogin(state.query.code);
+    emit('replaceState', '/');
+  } catch (e) {
+    emit('replaceState', '/error');
+    setTimeout(() => emit('render'));
+  }
 });
 app.route('*', body(require('../pages/notFound')));
 

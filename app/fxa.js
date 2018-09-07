@@ -10,6 +10,16 @@ export async function prepareWrapKey(storage) {
   return jose.util.base64url.encode(JSON.stringify(keypair.toJSON()));
 }
 
+export async function preparePkce(storage) {
+  const verifier = arrayToB64(crypto.getRandomValues(new Uint8Array(64)));
+  storage.set('pkceVerifier', verifier);
+  const challenge = await crypto.subtle.digest(
+    'SHA-256',
+    encoder.encode(verifier)
+  );
+  return arrayToB64(new Uint8Array(challenge));
+}
+
 export async function getFileListKey(storage, bundle) {
   const keystore = await jose.JWK.asKeyStore(
     JSON.parse(storage.get('fxaWrapKey'))
@@ -39,6 +49,7 @@ export async function getFileListKey(storage, bundle) {
     true,
     ['encrypt', 'decrypt']
   );
+  storage.remove('fxaWrapKey');
   const rawFileListKey = await crypto.subtle.exportKey('raw', fileListKey);
   return arrayToB64(new Uint8Array(rawFileListKey));
 }

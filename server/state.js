@@ -5,8 +5,6 @@ const assets = require('../common/assets');
 
 module.exports = function(req) {
   const locale = req.language || 'en-US';
-  const userInfo = req.userInfo || { avatar: assets.get('user.svg') };
-  userInfo.loggedIn = !!userInfo.access_token;
   return {
     locale,
     translate: locales.getTranslator(locale),
@@ -21,7 +19,7 @@ module.exports = function(req) {
     fira: false,
     fileInfo: {},
     cspNonce: req.cspNonce,
-    user: userInfo,
+    user: { avatar: assets.get('user.svg'), loggedIn: false },
     layout
   };
 };

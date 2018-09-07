@@ -6,9 +6,6 @@ module.exports = function(state) {
   return state.cspNonce
     ? html`
   <script nonce="${state.cspNonce}">
-  const userInfo = ${
-    state.user.loggedIn ? raw(JSON.stringify(state.user)) : 'null'
-  };
   const downloadMetadata = ${
     state.downloadMetadata ? raw(JSON.stringify(state.downloadMetadata)) : '{}'
   };
