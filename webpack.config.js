@@ -183,6 +183,11 @@ const web = {
       {
         context: 'public',
         from: '*.*'
+      },
+      {
+        context: 'android/app/src/main/assets',
+        from: '*.*',
+        to: 'android_asset'
       }
     ]),
     new webpack.IgnorePlugin(/\.\.\/dist/), // used in common/*.js

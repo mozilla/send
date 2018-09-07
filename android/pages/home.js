@@ -1,11 +1,6 @@
 const html = require('choo/html');
 
 export default function mainPage(state, emit) {
-  if (window.location.pathname === '/android/app/src/main/assets/') {
-    // Hack: For debugging the android app in a web browser from
-    // http://0.0.0.0:8080/android/app/src/main/assets/ after running webpack
-    state.prefix = '/android/app/src/main/assets';
-  }
   function clickPreferences(event) {
     event.preventDefault();
     emit('pushState', '/preferences');
