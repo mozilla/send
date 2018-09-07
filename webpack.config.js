@@ -7,9 +7,20 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const webJsOptions = {
   babelrc: false,
-  presets: [['env', { modules: false }], 'stage-2'],
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        modules: false,
+        useBuiltIns: 'entry'
+      }
+    ]
+  ],
   // yo-yoify converts html template strings to direct dom api calls
-  plugins: ['yo-yoify']
+  plugins: [
+    'yo-yoify',
+    ['@babel/plugin-proposal-class-properties', { loose: false }]
+  ]
 };
 
 const serviceWorker = {
@@ -30,7 +41,7 @@ const web = {
   entry: {
     // babel-polyfill and fluent are directly included in vendor
     // because they are not explicitly referenced by app
-    vendor: ['babel-polyfill', 'fluent'],
+    vendor: ['@babel/polyfill', 'fluent'], //TODO: remove @babel/polyfill
     app: ['./app/main.js'],
     android: ['./android/android.js'],
     ios: ['./ios/ios.js']
@@ -67,9 +78,7 @@ const web = {
               },
               {
                 loader: 'babel-loader',
-                options: {
-                  presets: [['env', { modules: false }], 'stage-3']
-                }
+                options: webJsOptions
               }
             ]
           },
