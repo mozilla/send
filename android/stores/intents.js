@@ -4,6 +4,9 @@ export default function intentHandler(state, emitter) {
   window.addEventListener(
     'message',
     event => {
+      if (typeof event.data !== 'string' || !event.data.startsWith('data:')) {
+        return;
+      }
       fetch(event.data)
         .then(res => res.blob())
         .then(blob => {
