@@ -6,6 +6,7 @@ import * as metrics from './metrics';
 import Archive from './archive';
 import { bytes } from './utils';
 import { prepareWrapKey } from './fxa';
+import okDialog from './templates/okDialog';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -97,7 +98,7 @@ export default function(state, emitter) {
     try {
       state.archive.addFiles(files, maxSize);
     } catch (e) {
-      alert(
+      state.modal = okDialog(
         state.translate(e.message, {
           size: bytes(maxSize),
           count: LIMITS.MAX_FILES_PER_ARCHIVE
@@ -110,11 +111,12 @@ export default function(state, emitter) {
   emitter.on('upload', async ({ type, dlimit, password }) => {
     if (!state.archive) return;
     if (state.storage.files.length >= LIMITS.MAX_ARCHIVES_PER_USER) {
-      return alert(
+      state.modal = okDialog(
         state.translate('tooManyArchives', {
           count: LIMITS.MAX_ARCHIVES_PER_USER
         })
       );
+      return render();
     }
     const size = state.archive.size;
     if (!state.timeLimit) state.timeLimit = DEFAULTS.EXPIRE_SECONDS;

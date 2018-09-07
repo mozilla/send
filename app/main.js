@@ -35,6 +35,7 @@ import { getFileListKey } from './fxa';
     state.raven = Raven;
     state.user = new User(userInfo, storage);
     window.appState = state;
+    window.appEmit = emitter.emit.bind(emitter);
     let unsupportedReason = null;
     if (
       // Firefox < 50
