@@ -27,5 +27,4 @@ app.route('/', require('./pages/home').default);
 app.route('/upload', require('./pages/upload').default);
 app.route('/share/:id', require('./pages/share').default);
 app.route('/preferences', require('./pages/preferences').default);
-app.route('/android', require('./pages/home').default);
 app.mount('body');
