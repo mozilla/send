@@ -4,7 +4,7 @@ import { getFileList, setFileList } from './api';
 import { encryptStream, decryptStream } from './ece';
 import { b64ToArray, streamToArrayBuffer } from './utils';
 import { blobStream } from './streams';
-import { getFileListKey, prepareWrapKey, preparePkce } from './fxa';
+import { getFileListKey, prepareScopedBundleKey, preparePkce } from './fxa';
 
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
@@ -54,7 +54,7 @@ export default class User {
   }
 
   async login() {
-    const keys_jwk = await prepareWrapKey(this.storage);
+    const keys_jwk = await prepareScopedBundleKey(this.storage);
     const code_challenge = await preparePkce(this.storage);
     const params = new URLSearchParams({
       client_id: AUTH_CONFIG.client_id,
