@@ -1,4 +1,3 @@
-/* global userInfo */
 import 'fast-text-encoding'; // MS Edge support
 import 'fluent-intl-polyfill';
 import app from './routes';
@@ -13,7 +12,6 @@ import experiments from './experiments';
 import Raven from 'raven-js';
 import './main.css';
 import User from './user';
-import { getFileListKey } from './fxa';
 
 (async function start() {
   if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
@@ -23,9 +21,7 @@ import { getFileListKey } from './fxa';
   if (capa.streamDownload) {
     navigator.serviceWorker.register('/serviceWorker.js');
   }
-  if (userInfo && userInfo.keys_jwe) {
-    userInfo.fileListKey = await getFileListKey(storage, userInfo.keys_jwe);
-  }
+
   app.use((state, emitter) => {
     state.capabilities = capa;
     state.transfer = null;
@@ -33,7 +29,7 @@ import { getFileListKey } from './fxa';
     state.translate = locale.getTranslator();
     state.storage = storage;
     state.raven = Raven;
-    state.user = new User(userInfo, storage);
+    state.user = new User(storage);
     window.appState = state;
     window.appEmit = emitter.emit.bind(emitter);
     let unsupportedReason = null;

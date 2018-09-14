@@ -8,7 +8,7 @@ export default function initialState(state, emitter) {
 
   Object.assign(state, {
     prefix: '/android_asset',
-    user: new User(undefined, storage),
+    user: new User(storage),
     getAsset(name) {
       return `${state.prefix}/${name}`;
     },

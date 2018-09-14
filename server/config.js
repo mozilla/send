@@ -134,11 +134,6 @@ const conf = convict({
     format: String,
     default: 'b50ec33d3c9beb6d', // localhost
     env: 'FXA_CLIENT_ID'
-  },
-  fxa_client_secret: {
-    format: String,
-    default: '05ac76fbe3e739c9effbaea439bc07d265c613c5e0da9070590a2378377c09d8', // localhost
-    env: 'FXA_CLIENT_SECRET'
   }
 });
 

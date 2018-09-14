@@ -5,7 +5,6 @@ import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
 import * as metrics from './metrics';
 import Archive from './archive';
 import { bytes } from './utils';
-import { prepareWrapKey } from './fxa';
 import okDialog from './templates/okDialog';
 
 export default function(state, emitter) {
@@ -46,9 +45,8 @@ export default function(state, emitter) {
     lastRender = Date.now();
   });
 
-  emitter.on('login', async () => {
-    const k = await prepareWrapKey(state.storage);
-    location.assign(`/api/fxa/login?keys_jwk=${k}`);
+  emitter.on('login', () => {
+    state.user.login();
   });
 
   emitter.on('logout', () => {

@@ -1,20 +1,18 @@
-/* global LIMITS */
+/* global LIMITS AUTH_CONFIG */
 import assets from '../common/assets';
 import { getFileList, setFileList } from './api';
 import { encryptStream, decryptStream } from './ece';
 import { b64ToArray, streamToArrayBuffer } from './utils';
 import { blobStream } from './streams';
+import { getFileListKey, prepareScopedBundleKey, preparePkce } from './fxa';
 
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
 
 export default class User {
-  constructor(info, storage) {
-    if (info && storage) {
-      storage.user = info;
-    }
+  constructor(storage) {
     this.storage = storage;
-    this.data = info || storage.user || {};
+    this.data = storage.user || {};
   }
 
   get avatar() {
@@ -55,7 +53,50 @@ export default class User {
     return this.loggedIn ? LIMITS.MAX_DOWNLOADS : LIMITS.ANON.MAX_DOWNLOADS;
   }
 
-  login() {}
+  async login() {
+    const keys_jwk = await prepareScopedBundleKey(this.storage);
+    const code_challenge = await preparePkce(this.storage);
+    const params = new URLSearchParams({
+      client_id: AUTH_CONFIG.client_id,
+      code_challenge,
+      code_challenge_method: 'S256',
+      response_type: 'code',
+      scope: 'profile https://identity.mozilla.com/apps/send', //TODO param
+      state: 'todo',
+      keys_jwk
+    });
+    location.assign(
+      `${AUTH_CONFIG.authorization_endpoint}?${params.toString()}`
+    );
+  }
+
+  async finishLogin(code) {
+    const tokenResponse = await fetch(AUTH_CONFIG.token_endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        code,
+        client_id: AUTH_CONFIG.client_id,
+        code_verifier: this.storage.get('pkceVerifier')
+      })
+    });
+    const auth = await tokenResponse.json();
+    const infoResponse = await fetch(AUTH_CONFIG.userinfo_endpoint, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${auth.access_token}`
+      }
+    });
+    const userInfo = await infoResponse.json();
+    userInfo.keys_jwe = auth.keys_jwe;
+    userInfo.access_token = auth.access_token;
+    userInfo.fileListKey = await getFileListKey(this.storage, auth.keys_jwe);
+    this.storage.user = userInfo;
+    this.data = userInfo;
+    this.storage.remove('pkceVerifier');
+  }
 
   logout() {
     this.storage.user = null;

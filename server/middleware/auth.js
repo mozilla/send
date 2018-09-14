@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const storage = require('../storage');
-const fxa = require('../routes/fxa');
+const fxa = require('../fxa');
 
 module.exports = {
   hmac: async function(req, res, next) {
