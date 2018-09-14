@@ -2,6 +2,7 @@ const html = require('choo/html');
 const raw = require('choo/html/raw');
 const selectbox = require('../selectbox');
 const timeLimitText = require('../timeLimitText');
+const okDialog = require('../okDialog');
 
 module.exports = function(state, emit) {
   const el = html`<div> ${raw(
@@ -25,7 +26,7 @@ module.exports = function(state, emit) {
       value => {
         const max = state.user.maxDownloads;
         if (value > max) {
-          alert('todo: this setting requires an account');
+          state.modal = okDialog('todo: this setting requires an account');
           value = max;
         }
         state.downloadCount = value;
@@ -44,7 +45,7 @@ module.exports = function(state, emit) {
       value => {
         const max = state.user.maxExpireSeconds;
         if (value > max) {
-          alert('todo: this setting requires an account');
+          state.modal = okDialog('todo: this setting requires an account');
           value = max;
         }
         state.timeLimit = value;

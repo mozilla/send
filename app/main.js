@@ -31,6 +31,7 @@ import User from './user';
     state.raven = Raven;
     state.user = new User(storage);
     window.appState = state;
+    window.appEmit = emitter.emit.bind(emitter);
     let unsupportedReason = null;
     if (
       // Firefox < 50

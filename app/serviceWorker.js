@@ -71,7 +71,7 @@ async function decryptStream(id) {
     return new Response(null, {
       status: 302,
       headers: {
-        Location: `/download/${id}`
+        Location: `/download/${id}/#${file.key}`
       }
     });
   }

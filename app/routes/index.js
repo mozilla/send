@@ -8,6 +8,7 @@ const signupPromo = require('../templates/signupPromo');
 const activeBackground = require('../templates/activeBackground');
 const fileList = require('../templates/fileList');
 const profile = require('../templates/userAccount');
+const modal = require('../templates/modal');
 
 nanotiming.disabled = true;
 const app = choo();
@@ -18,9 +19,16 @@ function banner(state, emit) {
   }
 }
 
+function modalDialog(state, emit) {
+  if (state.modal) {
+    return modal(state, emit);
+  }
+}
+
 function body(template) {
   return function(state, emit) {
     const b = html`<body class="background ${activeBackground(state)}">
+      ${modalDialog(state, emit)}
       ${banner(state, emit)}
       <main class="main">
         <noscript>
