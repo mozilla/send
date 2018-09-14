@@ -157,7 +157,6 @@ const web = {
             }
           },
           'extract-loader',
-          'babel-loader',
           './build/fluent_loader'
         ]
       },

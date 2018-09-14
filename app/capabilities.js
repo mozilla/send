@@ -64,6 +64,7 @@ export default async function capabilities() {
   const polyStreams = nativeStreams ? false : polyfillStreams();
 
   return {
+    account: typeof localStorage !== 'undefined',
     crypto,
     streamUpload: nativeStreams || polyStreams,
     streamDownload:

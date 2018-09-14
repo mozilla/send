@@ -1,7 +1,7 @@
 const html = require('choo/html');
 
 module.exports = function(state) {
-  if (state.user.loggedIn) {
+  if (state.user.loggedIn || !state.capabilities.account) {
     return null;
   }
   return html`

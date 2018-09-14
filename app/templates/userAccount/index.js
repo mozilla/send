@@ -1,10 +1,16 @@
 const html = require('choo/html');
 
 module.exports = function(state, emit) {
+  if (!state.capabilities.account) {
+    return null;
+  }
   const user = state.user;
   const menu = user.loggedIn
     ? html`
-    <ul class="account_dropdown">
+    <ul
+      class="account_dropdown"
+      onblur=${hideMenu}
+      tabindex="-1">
       <li class="account_dropdown__text">
         ${user.email}
       </li>
@@ -15,9 +21,10 @@ module.exports = function(state, emit) {
       </li>
     </ul>`
     : html`
-    <ul class="account_dropdown"
-          tabindex="-1"
-    >
+    <ul
+      class="account_dropdown"
+      onblur=${hideMenu}
+      tabindex="-1">
       <li>
         <a class="account_dropdown__link" onclick=${login}>${state.translate(
         'signInMenuOption'
@@ -55,12 +62,9 @@ module.exports = function(state, emit) {
     emit('logout');
   }
 
-  //the onblur trick makes links unclickable wtf
-  /*
   function hideMenu(event) {
     event.stopPropagation();
     const dropdown = document.querySelector('.account_dropdown');
     dropdown.classList.remove('visible');
   }
-  */
 };
