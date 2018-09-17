@@ -62,9 +62,15 @@ export default async function capabilities() {
   const crypto = await checkCrypto();
   const nativeStreams = checkStreams();
   const polyStreams = nativeStreams ? false : polyfillStreams();
+  let account = false;
+  try {
+    account = !!localStorage;
+  } catch (e) {
+    // nevermind
+  }
 
   return {
-    account: typeof localStorage !== 'undefined',
+    account,
     crypto,
     streamUpload: nativeStreams || polyStreams,
     streamDownload:

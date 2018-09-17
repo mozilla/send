@@ -17,11 +17,15 @@ module.exports = function(state, emit) {
     return el;
   }
 
+  const counts = [1, 2, 3, 4, 5, 20, 50, 100, 200].filter(
+    i => state.capabilities.account || i <= state.user.maxDownloads
+  );
+
   const dlCountSelect = el.querySelector('#dlCount');
   el.replaceChild(
     selectbox(
       state.downloadCount || 1,
-      [1, 2, 3, 4, 5, 20, 50, 100, 200],
+      counts,
       num => state.translate('downloadCount', { num }),
       value => {
         const max = state.user.maxDownloads;
@@ -36,11 +40,15 @@ module.exports = function(state, emit) {
     dlCountSelect
   );
 
+  const expires = [300, 3600, 86400, 604800].filter(
+    i => state.capabilities.account || i <= state.user.maxExpireSeconds
+  );
+
   const timeSelect = el.querySelector('#timespan');
   el.replaceChild(
     selectbox(
       state.timeLimit || 86400,
-      [300, 3600, 86400, 604800],
+      expires,
       num => timeLimitText(state.translate, num),
       value => {
         const max = state.user.maxExpireSeconds;
