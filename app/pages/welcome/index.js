@@ -78,7 +78,7 @@ module.exports = function(state, emit) {
 
     <button
       class="btn ${btnUploading} ${sendFileClass}"
-      onclick=${upload}
+      onclick=${state.uploading ? noop : upload}
       title="${btnText}">
       ${btnText}
     </button>
@@ -90,6 +90,8 @@ module.exports = function(state, emit) {
 
   </div>
   `;
+
+  function noop() {}
 
   function dragover(event) {
     const div = document.querySelector('.uploadArea');
@@ -117,20 +119,22 @@ module.exports = function(state, emit) {
     }
   }
 
-  async function addFiles(event) {
+  function addFiles(event) {
     event.preventDefault();
     const newFiles = Array.from(event.target.files);
 
     emit('addFiles', { files: newFiles });
   }
 
-  async function upload(event) {
+  function upload(event) {
     event.preventDefault();
-
-    emit('upload', {
-      type: 'click',
-      dlimit: state.downloadCount || 1,
-      password: state.password
-    });
+    event.target.disabled = true;
+    if (!state.uploading) {
+      emit('upload', {
+        type: 'click',
+        dlimit: state.downloadCount || 1,
+        password: state.password
+      });
+    }
   }
 };
