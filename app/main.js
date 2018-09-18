@@ -1,6 +1,6 @@
 import 'fast-text-encoding'; // MS Edge support
 import 'fluent-intl-polyfill';
-import app from './routes';
+import routes from './routes';
 import capabilities from './capabilities';
 import locale from '../common/locales';
 import fileManager from './fileManager';
@@ -14,6 +14,7 @@ import './main.css';
 import User from './user';
 
 (async function start() {
+  const app = routes();
   if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
     Raven.config(window.SENTRY_ID, window.RAVEN_CONFIG).install();
   }

@@ -1,3 +1,5 @@
+import { browserName } from './utils';
+
 async function checkCrypto() {
   try {
     const key = await crypto.subtle.generateKey(
@@ -76,10 +78,7 @@ export default async function capabilities() {
     streamDownload:
       nativeStreams &&
       'serviceWorker' in navigator &&
-      !(
-        /safari/i.test(navigator.userAgent) &&
-        !/chrome/i.test(navigator.userAgent)
-      ),
+      browserName() !== 'safari',
     multifile: nativeStreams || polyStreams
   };
 }

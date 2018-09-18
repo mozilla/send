@@ -11,23 +11,25 @@ const profile = require('../templates/userAccount');
 const modal = require('../templates/modal');
 
 nanotiming.disabled = true;
-const app = choo();
 
-function banner(state, emit) {
-  if (state.promo && !state.route.startsWith('/unsupported/')) {
-    return fxPromo(state, emit);
+module.exports = function() {
+  const app = choo();
+
+  function banner(state, emit) {
+    if (state.promo && !state.route.startsWith('/unsupported/')) {
+      return fxPromo(state, emit);
+    }
   }
-}
 
-function modalDialog(state, emit) {
-  if (state.modal) {
-    return modal(state, emit);
+  function modalDialog(state, emit) {
+    if (state.modal) {
+      return modal(state, emit);
+    }
   }
-}
 
-function body(template) {
-  return function(state, emit) {
-    const b = html`<body class="background ${activeBackground(state)}">
+  function body(template) {
+    return function(state, emit) {
+      const b = html`<body class="background ${activeBackground(state)}">
       ${modalDialog(state, emit)}
       ${banner(state, emit)}
       <main class="main">
@@ -59,32 +61,32 @@ function body(template) {
       </main>
       ${footer(state)}
     </body>`;
-    if (state.layout) {
-      // server side only
-      return state.layout(state, b);
-    }
-    return b;
-  };
-}
-
-app.route('/', body(require('../pages/welcome')));
-app.route('/share/:id', body(require('../pages/share')));
-app.route('/download/:id', body(download));
-app.route('/download/:id/:key', body(download));
-app.route('/unsupported/:reason', body(require('../pages/unsupported')));
-app.route('/legal', body(require('../pages/legal')));
-app.route('/error', body(require('../pages/error')));
-app.route('/blank', body(require('../pages/blank')));
-app.route('/signin', body(require('../pages/signin')));
-app.route('/api/fxa/oauth', async function(state, emit) {
-  try {
-    await state.user.finishLogin(state.query.code);
-    emit('replaceState', '/');
-  } catch (e) {
-    emit('replaceState', '/error');
-    setTimeout(() => emit('render'));
+      if (state.layout) {
+        // server side only
+        return state.layout(state, b);
+      }
+      return b;
+    };
   }
-});
-app.route('*', body(require('../pages/notFound')));
 
-module.exports = app;
+  app.route('/', body(require('../pages/welcome')));
+  app.route('/share/:id', body(require('../pages/share')));
+  app.route('/download/:id', body(download));
+  app.route('/download/:id/:key', body(download));
+  app.route('/unsupported/:reason', body(require('../pages/unsupported')));
+  app.route('/legal', body(require('../pages/legal')));
+  app.route('/error', body(require('../pages/error')));
+  app.route('/blank', body(require('../pages/blank')));
+  app.route('/signin', body(require('../pages/signin')));
+  app.route('/api/fxa/oauth', async function(state, emit) {
+    try {
+      await state.user.finishLogin(state.query.code);
+      emit('replaceState', '/');
+    } catch (e) {
+      emit('replaceState', '/error');
+      setTimeout(() => emit('render'));
+    }
+  });
+  app.route('*', body(require('../pages/notFound')));
+  return app;
+};

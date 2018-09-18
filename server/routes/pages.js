@@ -10,11 +10,11 @@ function stripEvents(str) {
 
 module.exports = {
   index: function(req, res) {
-    res.send(stripEvents(routes.toString('/', state(req))));
+    res.send(stripEvents(routes().toString('/', state(req))));
   },
 
   blank: function(req, res) {
-    res.send(stripEvents(routes.toString('/blank', state(req))));
+    res.send(stripEvents(routes().toString('/blank', state(req))));
   },
 
   download: async function(req, res, next) {
@@ -24,7 +24,7 @@ module.exports = {
       res.set('WWW-Authenticate', `send-v1 ${nonce}`);
       res.send(
         stripEvents(
-          routes.toString(
+          routes().toString(
             `/download/${id}`,
             Object.assign(state(req), {
               downloadMetadata: { nonce, pwd }
@@ -40,7 +40,7 @@ module.exports = {
   unsupported: function(req, res) {
     res.send(
       stripEvents(
-        routes.toString(
+        routes().toString(
           `/unsupported/${req.params.reason}`,
           Object.assign(state(req), { fira: true })
         )
@@ -49,10 +49,10 @@ module.exports = {
   },
 
   legal: function(req, res) {
-    res.send(stripEvents(routes.toString('/legal', state(req))));
+    res.send(stripEvents(routes().toString('/legal', state(req))));
   },
 
   notfound: function(req, res) {
-    res.status(404).send(stripEvents(routes.toString('/404', state(req))));
+    res.status(404).send(stripEvents(routes().toString('/404', state(req))));
   }
 };
