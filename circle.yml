@@ -58,6 +58,15 @@ jobs:
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker build -t mozilla/send:latest .
       - run: docker push mozilla/send:latest
+  deploy_vnext:
+    machine: true
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t mozilla/send:vnext .
+      - run: docker push mozilla/send:vnext
   deploy_stage:
     machine: true
     steps:
@@ -74,11 +83,15 @@ workflows:
       - build:
           filters:
             branches:
-              ignore: master
+              ignore:
+                - master
+                - vnext
       - test:
           filters:
             branches:
-              ignore: master
+              ignore:
+                - master
+                - vnext
       # - integration_tests:
       #     filters:
       #       branches:
@@ -90,7 +103,9 @@ workflows:
       - build:
           filters:
             branches:
-              only: master
+              only:
+                - master
+                - vnext
             tags:
               ignore: /^v.*/
       - deploy_dev:
@@ -99,6 +114,14 @@ workflows:
           filters:
             branches:
               only: master
+            tags:
+              ignore: /^v.*/
+      - deploy_vnext:
+          requires:
+            - build
+          filters:
+            branches:
+              only: vnext
             tags:
               ignore: /^v.*/
   build_and_deploy_stage:
