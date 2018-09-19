@@ -18,6 +18,7 @@
 * [Localization](#localization)
 * [Contributing](#contributing)
 * [Testing](#testing)
+* [Android](#android)
 * [License](#license)
 
 ---
@@ -89,6 +90,12 @@ Pull requests are always welcome! Feel free to check out the list of ["good firs
 | Production  | <https://send.firefox.com/>
 | Stage       | <https://send.stage.mozaws.net/>
 | Development | <https://send.dev.mozaws.net/>
+
+---
+
+## Android
+
+The android implementation is contained in the `android` directory, and can be viewed locally for easy testing and editing by running `ANDROID=1 npm start` and then visiting <http://localhost:8080>. CSS and image files are located in the `android/app/src/main/assets` directory.
 
 ---
 
