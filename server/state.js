@@ -7,7 +7,7 @@ module.exports = function(req) {
   const locale = req.language || 'en-US';
   return {
     locale,
-    capabilities: { account: true },
+    capabilities: { account: false },
     translate: locales.getTranslator(locale),
     title: 'Firefox Send',
     description:
