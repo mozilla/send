@@ -1,3 +1,4 @@
+/* global AUTH_CONFIG */
 import { browserName } from './utils';
 
 async function checkCrypto() {
@@ -64,9 +65,9 @@ export default async function capabilities() {
   const crypto = await checkCrypto();
   const nativeStreams = checkStreams();
   const polyStreams = nativeStreams ? false : polyfillStreams();
-  let account = false;
+  let account = typeof AUTH_CONFIG !== 'undefined';
   try {
-    account = !!localStorage;
+    account = account && !!localStorage;
   } catch (e) {
     // nevermind
   }

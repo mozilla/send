@@ -29,8 +29,12 @@ if (config.analytics_id) {
 }
 
 module.exports = async function(req, res) {
-  const fxaConfig = await getFxaConfig();
-  fxaConfig.client_id = config.fxa_client_id;
+  let authConfig = '';
+  if (config.fxa_client_id) {
+    const fxaConfig = await getFxaConfig();
+    fxaConfig.client_id = config.fxa_client_id;
+    authConfig = `var AUTH_CONFIG = ${JSON.stringify(fxaConfig)};`;
+  }
   /* eslint-disable no-useless-escape */
   const jsconfig = `
   var isIE = /trident\\\/7\.|msie/i.test(navigator.userAgent);
@@ -53,7 +57,7 @@ module.exports = async function(req, res) {
   var DEFAULTS = {
     EXPIRE_SECONDS: ${config.default_expire_seconds}
   };
-  var AUTH_CONFIG = ${JSON.stringify(fxaConfig)};
+  ${authConfig};
   ${ga}
   ${sentry}
   `;

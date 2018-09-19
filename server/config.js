@@ -132,7 +132,7 @@ const conf = convict({
   },
   fxa_client_id: {
     format: String,
-    default: 'b50ec33d3c9beb6d', // localhost
+    default: '', // disabled
     env: 'FXA_CLIENT_ID'
   }
 });
