@@ -22,14 +22,15 @@ module.exports = function(state, emit) {
   }
 
   return html`
-    <button class="btn btn--download ${btnClass}" 
+    <button class="btn btn--download ${btnClass}"
       onclick=${download}>
         ${btnText}
     </button>`;
 
   function download(event) {
     event.preventDefault();
-    if (downloadState !== 'complete') {
+    event.target.disabled = true;
+    if (downloadState === 'ready') {
       emit('download', state.fileInfo);
     }
   }
