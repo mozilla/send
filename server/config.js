@@ -127,12 +127,12 @@ const conf = convict({
   },
   fxa_url: {
     format: 'url',
-    default: 'https://stable.dev.lcip.org',
+    default: 'https://send-fxa.dev.lcip.org',
     env: 'FXA_URL'
   },
   fxa_client_id: {
     format: String,
-    default: '', // disabled
+    default: 'fced6b5e3f4c66b9', // localhost
     env: 'FXA_CLIENT_ID'
   }
 });
