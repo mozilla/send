@@ -50,8 +50,7 @@ copiedUrl = نُسخ!
 deleteFileButton = احذف الملف
 sendAnotherFileLink = أرسِل ملفًا آخر
 # Alternative text used on the download link/button (indicates an action).
-downloadAltText =
-    .alt = نزّل
+downloadAltText = نزّل
 downloadsFileList = التنزيلات
 # Used as header in a column indicating the amount of time left before a
 # download link expires (e.g. "10h 5m")
@@ -102,8 +101,7 @@ legalNoticeMozilla = يخضع استخدام موقع «فَيَرفُكس سِ�
 deletePopupText = أأحذف هذا الملف؟
 deletePopupYes = نعم
 deletePopupCancel = ألغِ
-deleteButtonHover =
-    .title = احذف
+deleteButtonHover = احذف
 copyUrlHover = انسخ الرابط
 footerLinkLegal = القانونية
 # Test Pilot is a proper name and should not be localized.
