@@ -80,7 +80,7 @@ module.exports = function() {
   app.route('/signin', body(require('../pages/signin')));
   app.route('/api/fxa/oauth', async function(state, emit) {
     try {
-      await state.user.finishLogin(state.query.code);
+      await state.user.finishLogin(state.query.code, state.query.state);
       emit('replaceState', '/');
     } catch (e) {
       emit('replaceState', '/error');

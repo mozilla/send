@@ -2,9 +2,10 @@
 import assets from '../common/assets';
 import { getFileList, setFileList } from './api';
 import { encryptStream, decryptStream } from './ece';
-import { b64ToArray, streamToArrayBuffer } from './utils';
+import { arrayToB64, b64ToArray, streamToArrayBuffer } from './utils';
 import { blobStream } from './streams';
 import { getFileListKey, prepareScopedBundleKey, preparePkce } from './fxa';
+import storage from './storage';
 
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
@@ -54,6 +55,8 @@ export default class User {
   }
 
   async login() {
+    const state = arrayToB64(crypto.getRandomValues(new Uint8Array(16)));
+    storage.set('oauthState', state);
     const keys_jwk = await prepareScopedBundleKey(this.storage);
     const code_challenge = await preparePkce(this.storage);
     const params = new URLSearchParams({
@@ -62,7 +65,7 @@ export default class User {
       code_challenge_method: 'S256',
       response_type: 'code',
       scope: 'profile https://identity.mozilla.com/apps/send', //TODO param
-      state: 'todo',
+      state,
       keys_jwk
     });
     location.assign(
@@ -70,7 +73,12 @@ export default class User {
     );
   }
 
-  async finishLogin(code) {
+  async finishLogin(code, state) {
+    const localState = storage.get('oauthState');
+    storage.remove('oauthState');
+    if (state !== localState) {
+      throw new Error('state mismatch');
+    }
     const tokenResponse = await fetch(AUTH_CONFIG.token_endpoint, {
       method: 'POST',
       headers: {
