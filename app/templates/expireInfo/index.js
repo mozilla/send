@@ -1,3 +1,4 @@
+/* globals DEFAULTS */
 const html = require('choo/html');
 const raw = require('choo/html/raw');
 const selectbox = require('../selectbox');
@@ -17,7 +18,7 @@ module.exports = function(state, emit) {
     return el;
   }
 
-  const counts = [1, 2, 3, 4, 5, 20, 50, 100, 200].filter(
+  const counts = DEFAULTS.DOWNLOAD_COUNTS.filter(
     i => state.capabilities.account || i <= state.user.maxDownloads
   );
 
@@ -40,7 +41,7 @@ module.exports = function(state, emit) {
     dlCountSelect
   );
 
-  const expires = [300, 3600, 86400, 604800].filter(
+  const expires = DEFAULTS.EXPIRE_TIMES_SECONDS.filter(
     i => state.capabilities.account || i <= state.user.maxExpireSeconds
   );
 

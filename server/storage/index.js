@@ -3,6 +3,10 @@ const Metadata = require('../metadata');
 const mozlog = require('../log');
 const createRedisClient = require('./redis');
 
+function getPrefix(seconds) {
+  return Math.max(Math.floor(seconds / 86400), 1);
+}
+
 class DB {
   constructor(config) {
     const Storage = config.s3_bucket ? require('./s3') : require('./fs');
@@ -37,14 +41,7 @@ class DB {
   }
 
   async set(id, file, meta, expireSeconds = config.default_expire_seconds) {
-    const expireTimes = config.expire_times_seconds;
-    let i;
-    for (i = 0; i < expireTimes.length - 1; i++) {
-      if (expireSeconds <= expireTimes[i]) {
-        break;
-      }
-    }
-    const prefix = config.expire_prefixes[i];
+    const prefix = getPrefix(expireSeconds);
     const filePath = `${prefix}-${id}`;
     await this.storage.set(filePath, file);
     this.redis.hset(id, 'prefix', prefix);

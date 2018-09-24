@@ -9,16 +9,6 @@ const conf = convict({
     default: '',
     env: 'S3_BUCKET'
   },
-  num_of_prefixes: {
-    format: Number,
-    default: 5,
-    env: 'NUM_OF_PREFIXES'
-  },
-  expire_prefixes: {
-    format: Array,
-    default: ['5minutes', '1hour', '1day', '1week', '2weeks'],
-    env: 'EXPIRE_PREFIXES'
-  },
   expire_times_seconds: {
     format: Array,
     default: [300, 3600, 86400, 604800],
@@ -38,6 +28,11 @@ const conf = convict({
     format: Number,
     default: 86400,
     env: 'ANON_MAX_EXPIRE_SECONDS'
+  },
+  download_counts: {
+    format: Array,
+    default: [1, 2, 3, 4, 5, 20, 50, 100, 200],
+    env: 'DOWNLOAD_COUNTS'
   },
   max_downloads: {
     format: Number,

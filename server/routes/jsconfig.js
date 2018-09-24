@@ -55,6 +55,8 @@ module.exports = async function(req, res) {
     MAX_ARCHIVES_PER_USER: ${config.max_archives_per_user}
   };
   var DEFAULTS = {
+    DOWNLOAD_COUNTS: ${JSON.stringify(config.download_counts)},
+    EXPIRE_TIMES_SECONDS: ${JSON.stringify(config.expire_times_seconds)},
     EXPIRE_SECONDS: ${config.default_expire_seconds}
   };
   ${authConfig};

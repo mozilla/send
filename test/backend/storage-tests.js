@@ -23,8 +23,6 @@ class MockStorage {
 const config = {
   s3_bucket: 'foo',
   default_expire_seconds: 20,
-  num_of_prefixes: 3,
-  expire_prefixes: ['ten', 'twenty', 'thirty'],
   expire_times_seconds: [10, 20, 30],
   env: 'development',
   redis_host: 'localhost'
@@ -71,19 +69,19 @@ describe('Storage', function() {
     });
 
     it('adds right prefix based on expire time', async function() {
-      await storage.set('x', null, { foo: 'bar' }, 10);
+      await storage.set('x', null, { foo: 'bar' }, 300);
       const path_x = await storage.getPrefixedId('x');
-      assert.equal(path_x, 'ten-x');
+      assert.equal(path_x, '1-x');
       await storage.del('x');
 
-      await storage.set('y', null, { foo: 'bar' }, 11);
+      await storage.set('y', null, { foo: 'bar' }, 86400);
       const path_y = await storage.getPrefixedId('y');
-      assert.equal(path_y, 'twenty-y');
+      assert.equal(path_y, '1-y');
       await storage.del('y');
 
-      await storage.set('z', null, { foo: 'bar' }, 33);
+      await storage.set('z', null, { foo: 'bar' }, 86400 * 7);
       const path_z = await storage.getPrefixedId('z');
-      assert.equal(path_z, 'thirty-z');
+      assert.equal(path_z, '7-z');
       await storage.del('z');
     });
 
