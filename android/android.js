@@ -24,7 +24,11 @@ app.use(require('./stores/state').default);
 app.use(require('../app/fileManager').default);
 app.use(require('./stores/intents').default);
 app.route('/', require('./pages/home').default);
+app.route('/options', require('./pages/options').default);
 app.route('/upload', require('./pages/upload').default);
 app.route('/share/:id', require('./pages/share').default);
 app.route('/preferences', require('./pages/preferences').default);
+app.route('/error', require('./pages/error').default);
+//app.route('/debugging', require('./pages/debugging').default);
+// add /api/filelist
 app.mount('body');

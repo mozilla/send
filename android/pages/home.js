@@ -5,6 +5,7 @@ export default function mainPage(state, emit) {
     event.preventDefault();
     emit('pushState', '/preferences');
   }
+
   function uploadFile(event) {
     event.preventDefault();
     const target = event.target;
@@ -13,15 +14,16 @@ export default function mainPage(state, emit) {
       return;
     }
 
-    emit('pushState', '/upload');
+    emit('pushState', '/options');
     emit('addFiles', { files: [file] });
-    emit('upload', {});
   }
+
   return html`<body>
   <div id="white">
     <div id="centering">
-      <a href="#" onclick=${clickPreferences}>
-      preferenes
+      <img id="top-banner" src=${state.getAsset('top-banner.png')} />
+      <a id="hamburger" href="#" onclick=${clickPreferences}>
+        <img src=${state.getAsset('preferences.png')} />
       </a>
       <img src=${state.getAsset('encrypted-envelope.png')} />
       <h4>Private, Encrypted File Sharing</h4>
