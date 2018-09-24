@@ -17,6 +17,7 @@ export default function options(state, emit) {
         state.passwordDoesNotMatchError = false;
       }
     }
+    state.timeLimit = parseInt(event.target.maxTime);
     emit('upload', {
       type: 'click',
       dlimit: parseInt(event.target.numDownloads.value),
