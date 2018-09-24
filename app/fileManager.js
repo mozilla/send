@@ -51,6 +51,8 @@ export default function(state, emitter) {
 
   emitter.on('logout', () => {
     state.user.logout();
+    state.timeLimit = DEFAULTS.EXPIRE_SECONDS;
+    state.downloadCount = 1;
     emitter.emit('pushState', '/');
   });
 
