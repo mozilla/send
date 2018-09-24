@@ -359,7 +359,10 @@ export function downloadFile(id, keychain, onprogress) {
 export async function getFileList(bearerToken) {
   const headers = new Headers({ Authorization: `Bearer ${bearerToken}` });
   const response = await fetch('/api/filelist', { headers });
-  return response.body; // stream
+  if (response.ok) {
+    return response.body; // stream
+  }
+  throw new Error(response.status);
 }
 
 export async function setFileList(bearerToken, data) {
@@ -369,5 +372,5 @@ export async function setFileList(bearerToken, data) {
     method: 'POST',
     body: data
   });
-  return response.status === 200;
+  return response.ok;
 }
