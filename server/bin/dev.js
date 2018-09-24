@@ -44,6 +44,7 @@ module.exports = function(app, devServer) {
     app.get(`/download/:id${ID_REGEX}`, android);
     app.get('/completed', android);
     app.get('/preferences', android);
+    app.get('/options', android);
     app.get('/api/fxa/oauth', android);
   }
   routes(app);
