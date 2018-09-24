@@ -1,6 +1,8 @@
+/* globals LIMITS */
 const html = require('choo/html');
 const assets = require('../../../common/assets');
 const title = require('../../templates/title');
+const bytes = require('../../utils').bytes;
 
 module.exports = function(state, emit) {
   return html`
@@ -12,12 +14,11 @@ module.exports = function(state, emit) {
       <div class="signIn__info flexible">
         ${state.translate('accountBenefitTitle')}
       <ul>
-        <li>${state.translate('accountBenefitMultiFile')}</li>
-        <li>${state.translate('accountBenefitLargeFiles')}</li>
+        <li>${state.translate('accountBenefitLargeFiles', {
+          size: bytes(LIMITS.MAX_FILE_SIZE)
+        })}</li>
         <li>${state.translate('accountBenefitExpiry')}</li>
         <li>${state.translate('accountBenefitSync')}</li>
-        <li>${state.translate('accountBenefitNotify')}</li>
-        <li>${state.translate('accountBenefitMore')}</li>
       </ul>
       </div>
       <div class="signIn__form flexible">
@@ -33,16 +34,17 @@ module.exports = function(state, emit) {
             onsubmit=${submitEmail}
             data-no-csrf>
             <input
+              id="email-input"
               type="text"
               class="signIn__emailInput"
               placeholder=${state.translate('emailEntryPlaceholder')}/>
             <input
               class='noDisplay'
-              id="emailSubmit"
+              id="email-submit"
               type="submit"/>
           </form>
       </div>
-      <label class="btn" for="emailSubmit">
+      <label class="btn" for="email-submit">
         ${state.translate('signInContinueButton')}
       </label>
     </div>
@@ -50,6 +52,15 @@ module.exports = function(state, emit) {
 
   function submitEmail(event) {
     event.preventDefault();
-    emit('login');
+    const el = document.getElementById('email-input');
+    const email = el.value;
+    if (email) {
+      // just check if it's the right shape
+      const a = email.split('@');
+      if (a.length === 2 && a.every(s => s.length > 0)) {
+        return emit('login', email);
+      }
+    }
+    el.value = '';
   }
 };

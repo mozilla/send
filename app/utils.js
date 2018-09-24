@@ -60,7 +60,7 @@ function bytes(num) {
     return '0B';
   }
   const exponent = Math.min(Math.floor(Math.log10(num) / 3), UNITS.length - 1);
-  const n = Number(num / Math.pow(1000, exponent));
+  const n = Number(num / Math.pow(1024, exponent));
   let nStr = n.toFixed(1);
   if (LOCALIZE_NUMBERS) {
     try {

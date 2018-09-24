@@ -67,6 +67,7 @@ module.exports = function(app) {
   });
   app.use(express.json());
   app.get('/', language, pages.index);
+  app.get('/signin', pages.blank);
   app.get('/legal', language, pages.legal);
   app.get('/jsconfig.js', require('./jsconfig'));
   app.get(`/share/:id${ID_REGEX}`, language, pages.blank);

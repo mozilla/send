@@ -45,8 +45,8 @@ export default function(state, emitter) {
     lastRender = Date.now();
   });
 
-  emitter.on('login', () => {
-    state.user.login();
+  emitter.on('login', email => {
+    state.user.login(email);
   });
 
   emitter.on('logout', () => {

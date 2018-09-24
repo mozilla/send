@@ -54,12 +54,12 @@ export default class User {
     return this.loggedIn ? LIMITS.MAX_DOWNLOADS : LIMITS.ANON.MAX_DOWNLOADS;
   }
 
-  async login() {
+  async login(email) {
     const state = arrayToB64(crypto.getRandomValues(new Uint8Array(16)));
     storage.set('oauthState', state);
     const keys_jwk = await prepareScopedBundleKey(this.storage);
     const code_challenge = await preparePkce(this.storage);
-    const params = new URLSearchParams({
+    const options = {
       client_id: AUTH_CONFIG.client_id,
       code_challenge,
       code_challenge_method: 'S256',
@@ -67,7 +67,11 @@ export default class User {
       scope: 'profile https://identity.mozilla.com/apps/send', //TODO param
       state,
       keys_jwk
-    });
+    };
+    if (email) {
+      options.email = email;
+    }
+    const params = new URLSearchParams(options);
     location.assign(
       `${AUTH_CONFIG.authorization_endpoint}?${params.toString()}`
     );
