@@ -19,18 +19,13 @@
 }
 
 .legalSection__link {
-  color: #fff;
-  text-shadow: 0 0 3px #000;
+  color: var(--lightTextColor);
   white-space: nowrap;
   margin-right: 2vw;
 }
 
-.legalSection__link:visited {
-  color: #ededf0;
-}
-
 .legalSection__link:hover {
-  color: #d7d7db;
+  color: var(--textColor);
 }
 
 .footer__mozLogo {
@@ -46,13 +41,13 @@
 }
 
 .feedback {
-  background-color: var(--primaryControlBGColor);
+  background-color: #000;
   background-image: url('../assets/feedback.svg');
   background-position: 2px 4px;
   background-repeat: no-repeat;
   background-size: 18px;
   border-radius: 3px;
-  border: 1px solid var(--primaryControlBGColor);
+  border: 1px solid #000;
   color: var(--primaryControlFGColor);
   cursor: pointer;
   display: block;
@@ -65,15 +60,6 @@
   text-indent: 17px;
   transition: all 250ms ease-in-out;
   white-space: nowrap;
-}
-
-.feedback:hover,
-.feedback:focus {
-  min-width: 30px;
-  max-width: 300px;
-  text-indent: 2px;
-  padding: 5px 5px 5px 20px;
-  background-color: var(--primaryControlHoverColor);
 }
 
 .feedback:active {

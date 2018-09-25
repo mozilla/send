@@ -5,7 +5,6 @@ const download = require('./download');
 const footer = require('../templates/footer');
 const fxPromo = require('../templates/fxPromo');
 const signupPromo = require('../templates/signupPromo');
-const activeBackground = require('../templates/activeBackground');
 const fileList = require('../templates/fileList');
 const profile = require('../templates/userAccount');
 const modal = require('../templates/modal');
@@ -29,7 +28,7 @@ module.exports = function() {
 
   function body(template) {
     return function(state, emit) {
-      const b = html`<body class="background ${activeBackground(state)}">
+      const b = html`<body>
       ${modalDialog(state, emit)}
       ${banner(state, emit)}
       <main class="main">

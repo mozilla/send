@@ -3,7 +3,6 @@
 @import './pages/signin/signin.css';
 @import './pages/unsupported/unsupported.css';
 @import './pages/welcome/welcome.css';
-@import './templates/activeBackground/activeBackground.css';
 @import './templates/downloadButton/downloadButton.css';
 @import './templates/downloadPassword/downloadPassword.css';
 @import './templates/file/file.css';
