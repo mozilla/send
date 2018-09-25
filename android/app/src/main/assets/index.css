@@ -106,3 +106,19 @@ body {
 #preferences {
   text-align: left;
 }
+
+#hamburger {
+  position: fixed;
+  right: 2em;
+  top: 1em;
+}
+
+#top-banner {
+  position: fixed;
+  top: 1em;
+  left: 2em;
+}
+
+#options {
+  text-align: left;
+}
