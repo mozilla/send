@@ -53,11 +53,11 @@
   display: block;
   font-size: 12px;
   line-height: 12px;
-  padding: 5px;
+  padding: 5px 5px 5px 20px;
   overflow: hidden;
-  min-width: 12px;
-  max-width: 12px;
-  text-indent: 17px;
+  min-width: 30px;
+  max-width: 300px;
+  text-indent: 2px;
   transition: all 250ms ease-in-out;
   white-space: nowrap;
 }
