@@ -1,3 +1,4 @@
+/* globals DEFAULTS */
 const html = require('choo/html');
 
 export default function options(state, emit) {
@@ -55,15 +56,11 @@ export default function options(state, emit) {
           <div id="expires-after-section">
             <h5>Expires after</h5>
             <select name="numDownloads">
-              <option value="1">1 download</option>
-              <option value="2">2 downloads</option>
-              <option value="3">3 downloads</option>
-              <option value="4">4 downloads</option>
-              <option value="5">5 downloads</option>
-              <option value="20">20 downloads</option>
-              <option value="50">50 downloads</option>
-              <option value="100">100 downloads</option>
-              <option value="200">200 downloads</option>
+            ${DEFAULTS.DOWNLOAD_COUNTS.map(i => {
+              return html`<option value="${i}">${i} download${
+                i > 1 ? 's' : ''
+              }</option>`;
+            })}
             </select>
             or
             <select name="maxTime">
