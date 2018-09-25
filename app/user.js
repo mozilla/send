@@ -19,7 +19,7 @@ export default class User {
   get avatar() {
     const defaultAvatar = assets.get('user.svg');
     if (this.data.avatarDefault) {
-      return defaultAvatar;
+      return assets.get('firefox_logo-only.svg');
     }
     return this.data.avatar || defaultAvatar;
   }
