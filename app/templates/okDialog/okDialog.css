@@ -1,11 +1,11 @@
 .okDialog {
   display: flex;
   flex-direction: column;
-  height: 100px;
-  font-weight: 400;
-  padding: 10px;
+  max-width: 400px;
+  padding: 16px;
 }
 
 .okDialog__message {
-  margin-bottom: 10px;
+  margin: 32px;
+  text-align: center;
 }
