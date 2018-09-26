@@ -45,7 +45,7 @@ module.exports = function(app, devServer) {
     app.get('/completed', android);
     app.get('/preferences', android);
     app.get('/options', android);
-    app.get('/api/fxa/oauth', android);
+    app.get('/oauth', android);
   }
   routes(app);
   tests(app);

@@ -68,6 +68,7 @@ module.exports = function(app) {
   app.use(express.json());
   app.get('/', language, pages.index);
   app.get('/signin', pages.blank);
+  app.get('/oauth', pages.blank);
   app.get('/legal', language, pages.legal);
   app.get('/jsconfig.js', require('./jsconfig'));
   app.get(`/share/:id${ID_REGEX}`, language, pages.blank);
@@ -82,7 +83,6 @@ module.exports = function(app) {
   );
   app.get(`/api/exists/:id${ID_REGEX}`, require('./exists'));
   app.get(`/api/metadata/:id${ID_REGEX}`, auth.hmac, require('./metadata'));
-  app.get('/api/fxa/oauth', pages.blank);
   app.get('/api/filelist', auth.fxa, filelist.get);
   app.post('/api/filelist', auth.fxa, filelist.post);
   app.post('/api/upload', auth.fxa, require('./upload'));
