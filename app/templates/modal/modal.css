@@ -15,7 +15,6 @@
 
 .modal__box {
   max-width: 480px;
-  max-height: 300px;
   background: var(--pageBGColor);
   border-radius: 4px;
   color: var(--textColor);

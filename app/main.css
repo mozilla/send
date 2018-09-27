@@ -17,6 +17,7 @@
 @import './templates/popup/popup.css';
 @import './templates/selectbox/selectbox.css';
 @import './templates/setPasswordSection/setPasswordSection.css';
+@import './templates/signupDialog/signupDialog.css';
 @import './templates/signupPromo/signupPromo.css';
 @import './templates/title/title.css';
 @import './templates/uploadedFile/uploadedFile.css';

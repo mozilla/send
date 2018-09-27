@@ -4,7 +4,7 @@ module.exports = function(state, emit) {
   return html`
   <div class="modal" onclick=${close}>
     <div class="modal__box" onclick=${e => e.stopPropagation()}>
-      ${state.modal(state, close)}
+      ${state.modal(state, emit, close)}
     </div>
   </div>`;
 

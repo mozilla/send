@@ -1,7 +1,7 @@
 const html = require('choo/html');
 
 module.exports = function(message) {
-  return function(state, close) {
+  return function(state, emit, close) {
     return html`
     <div class="okDialog">
       <div class="okDialog__message">${message}</div>
