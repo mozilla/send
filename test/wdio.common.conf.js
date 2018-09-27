@@ -1,6 +1,6 @@
 const path = require('path');
 const tmp = require('tmp');
-const tmpDir = tmp.dirSync({ mode: '0750', prefix: 'integrationTestsTmpDir-' });
+const tmpDir = tmp.dirSync({ mode: '0777', prefix: 'integrationTestsTmpDir-' });
 
 exports.config = {
   specs: [path.join(__dirname, './integration/**/*-tests.js')],

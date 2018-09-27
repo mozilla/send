@@ -28,8 +28,12 @@ describe('Firefox Send', () => {
       downloadPage.waitForPageToLoad();
       downloadPage.downloadBtn();
       // Wait for download to complete
-      browser.waitForExist(downloadPage.downloadComplete);
-      browser.pause(5000);
+      browser.waitUntil(() => {
+        browser.waitForExist(downloadPage.downloadComplete);
+        return (
+          browser.getText(downloadPage.downloadComplete) === 'Download Complete'
+        );
+      });
       chai.assert.isTrue(fs.existsSync(`${downloadDir}/${file}`));
     });
   });

@@ -48,7 +48,10 @@ jobs:
             docker-compose --version
       - run:
           name: Setup
-          command: docker-compose pull
+          command: |
+          set -x
+          docker-compose pull
+          touch wdio-report.html
       - run:
           name: Run Integration tests
           command: |
@@ -56,7 +59,7 @@ jobs:
             docker-compose up -d
             sleep 10
             docker-compose ps
-            docker-compose exec --user circleci selenium-firefox npm run test-circle:selenium
+            docker-compose exec selenium-firefox npm run test-circle:selenium
       - store_artifacts:
           path: wdio-report.html
   deploy_dev:
