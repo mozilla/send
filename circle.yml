@@ -48,7 +48,7 @@ jobs:
             docker-compose --version
       - run:
           name: Setup
-          command: docker pull
+          command: docker-compose pull
       - run:
           name: Run Integration tests
           command: docker-compose exec selenium-firefox npm run test-circle:selenium
