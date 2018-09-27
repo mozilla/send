@@ -51,7 +51,12 @@ jobs:
           command: docker-compose pull
       - run:
           name: Run Integration tests
-          command: docker-compose exec selenium-firefox npm run test-circle:selenium
+          command: |
+            set -x
+            docker-compose up -d
+            sleep 10
+            docker-compose ps
+            docker-compose exec selenium-firefox npm run test-circle:selenium
       - store_artifacts:
           path: wdio-report.html
   deploy_dev:
