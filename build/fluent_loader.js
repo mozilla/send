@@ -1,16 +1,8 @@
-const { FluentBundle } = require('fluent');
+const { FluentResource } = require('fluent/compat');
 const fs = require('fs');
 
-function toJSON(map) {
-  return JSON.stringify(Array.from(map));
-}
-
-function merge(m1, m2) {
-  const result = new Map(m1);
-  for (const [k, v] of m2) {
-    result.set(k, v);
-  }
-  return result;
+function toJSON(resource) {
+  return JSON.stringify(Array.from(resource));
 }
 
 module.exports = function(source) {
@@ -20,34 +12,45 @@ module.exports = function(source) {
   if (!locale) {
     throw new Error(`couldn't find locale in: ${this.resourcePath}`);
   }
-  // load default language and "merge" contexts
-  // TODO: make this configurable
-  const en_ftl = fs.readFileSync(
-    require.resolve('../public/locales/en-US/send.ftl'),
-    'utf8'
-  );
-  const en = new FluentBundle('en-US');
-  en.addMessages(en_ftl);
-  // pre-parse the ftl
-  const context = new FluentBundle(locale);
-  context.addMessages(source);
 
-  const merged = merge(en._messages, context._messages);
+  // Parse the current language's translation file.
+  const locResource = FluentResource.fromString(source);
+  let enResource;
+
+  // If the current language is not en-US, also parse en-US to provide a
+  // fallback for missing translations.
+  if (locale !== 'en-US') {
+    const en_ftl = fs.readFileSync(
+      require.resolve('../public/locales/en-US/send.ftl'),
+      'utf8'
+    );
+    enResource = FluentResource.fromString(en_ftl);
+  }
+
   return `
 module.exports = \`
 if (typeof window === 'undefined') {
   var fluent = require('fluent');
 }
 (function () {
-  var bundle = new fluent.FluentBundle('${locale}', {useIsolating: false});
-  bundle._messages = new Map(${toJSON(merged)});
+  let bundles = [
+    ['${locale}', ${toJSON(locResource)}],
+    ${enResource ? `['en-US', ${toJSON(enResource)}]` : ''}
+  ].map(([locale, entries]) => {
+    let bundle = new fluent.FluentBundle(locale, {useIsolating: false});
+    bundle.addResource(new fluent.FluentResource(entries));
+    return bundle;
+  });
+
   function translate(id, data) {
-    var msg = bundle.getMessage(id);
-    if (typeof(msg) !== 'string' && !msg.val && msg.attrs) {
-      msg = msg.attrs.title || msg.attrs.alt
+    for (let bundle of bundles) {
+      if (bundle.hasMessage(id)) {
+        let message = bundle.getMessage(id);
+        return bundle.format(message, data);
+      }
     }
-    return bundle.format(msg, data);
   }
+
   if (typeof window === 'undefined') {
     module.exports = translate;
   }

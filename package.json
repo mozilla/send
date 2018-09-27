@@ -125,7 +125,7 @@
     "convict": "^4.4.0",
     "express": "^4.16.3",
     "express-ws": "^4.0.0",
-    "fluent": "^0.8.0",
+    "fluent": "^0.8.1",
     "fluent-langneg": "^0.1.0",
     "helmet": "^3.13.0",
     "mkdirp": "^0.5.1",
