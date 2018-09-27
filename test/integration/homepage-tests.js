@@ -35,7 +35,7 @@ describe('Firefox Send homepage', () => {
       let url = browser.getUrl();
       browser.waitUntil(() => {
         return url !== baseUrl;
-      }, 5000);
+      });
       chai.expect(url).to.include(link);
     });
   });
