@@ -35,17 +35,12 @@ jobs:
       - store_artifacts:
           path: coverage
   integration_tests:
-    machine: true
+    docker:
+      - image: circleci/node:8.12-browsers
     steps:
       - checkout
       - attach_workspace:
           at: .
-      - run:
-          name: Install Docker Compose
-          command: |
-            set -x
-            pip install docker-compose>=1.18
-            docker-compose --version
       - run:
           name: Setup
           command: docker-compose pull
@@ -56,7 +51,7 @@ jobs:
             docker-compose up -d
             sleep 10
             docker-compose ps
-            docker-compose exec selenium-firefox npm run test-circle:selenium
+            docker-compose exec --user circleci selenium-firefox npm run test-circle:selenium
       - store_artifacts:
           path: wdio-report.html
   deploy_dev:
