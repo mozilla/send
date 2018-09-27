@@ -47,9 +47,13 @@ jobs:
             pip install docker-compose>=1.18
             docker-compose --version
       - run:
-          command: npm run test-integration
+          name: Setup
+          command: docker pull
+      - run:
+          name: Run Integration tests
+          command: docker-compose exec selenium-firefox npm run test-circle:selenium
       - store_artifacts:
-          path: coverage/send-test.html
+          path: wdio-report.html
   deploy_dev:
     machine: true
     steps:
