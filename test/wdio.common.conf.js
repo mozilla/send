@@ -35,10 +35,10 @@ exports.config = {
   connectionRetryCount: 3,
   services: ['firefox-profile'],
   framework: 'mocha',
-  reporters: ['dot', 'spec', 'html-format'],
+  reporters: ['dot', 'spec'],
   mochaOpts: {
     ui: 'bdd',
-    timeout: 300000,
+    timeout: 30000,
     compilers: ['js:babel-register']
   }
 };

@@ -51,7 +51,6 @@ jobs:
           command: |
             set -x
             docker-compose pull
-            touch wdio-report.html
       - run:
           name: Run Integration tests
           command: |

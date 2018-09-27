@@ -119,9 +119,9 @@
     "wdio-docker-service": "^1.1.8",
     "wdio-dot-reporter": "0.0.9",
     "wdio-firefox-profile-service": "^0.1.3",
-    "wdio-html-format-reporter": "^0.2.9",
     "wdio-mocha-framework": "^0.5.13",
     "wdio-sauce-service": "^0.4.8",
+    "wdio-spec-reporter": "^0.1.5",
     "webdriverio": "^4.13.2",
     "webpack": "^3.12.0",
     "webpack-dev-middleware": "^2.0.6",
@@ -144,8 +144,7 @@
     "mkdirp": "^0.5.1",
     "mozlog": "^2.2.0",
     "raven": "^2.6.4",
-    "redis": "^2.8.0",
-    "wdio-spec-reporter": "^0.1.5"
+    "redis": "^2.8.0"
   },
   "availableLanguages": [
     "en-US",
