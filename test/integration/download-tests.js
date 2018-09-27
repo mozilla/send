@@ -29,7 +29,7 @@ describe('Firefox Send', () => {
       downloadPage.downloadBtn();
       // Wait for download to complete
       browser.waitForExist(downloadPage.downloadComplete);
-      browser.sleep(5000);
+      browser.pause(5000);
       chai.assert.isTrue(fs.existsSync(`${downloadDir}/${file}`));
     });
   });
