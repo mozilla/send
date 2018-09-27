@@ -9,7 +9,6 @@ uploadPageDropMessage = 파일을 끌어 놓아 업로드 시작
 uploadPageSizeMessage = 확실한 작동을 위해서, 파일의 크기가 1GB보다 작은 것이 좋음
 uploadPageBrowseButton = 컴퓨터의 파일을 선택
 uploadPageBrowseButton1 = 업로드 할 파일 선택
-    .title = 업로드 할 파일 선택
 uploadPageMultipleFilesAlert = 여러 개의 파일 또는 폴더를 업로드하는 것은 현재로선 지원되지 않습니다.
 uploadPageBrowseButtonTitle = 파일 업로드
 uploadingPageProgress = { $filename } ({ $size }) 업로드 중
