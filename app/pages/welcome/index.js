@@ -30,7 +30,7 @@ module.exports = function(state, emit) {
   }
 
   return html`
-  <div id="page-one" class="page ${fade}">
+  <div class="${fade}">
     ${title(state)}
 
     <label class="uploadArea"

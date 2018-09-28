@@ -1,85 +1,28 @@
 .signupPromo {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  right: 0;
-  height: 140px;
-  width: 150px;
-  background: #ffe900;
+  height: calc(var(--grid-basis) * 12.5);
+  width: calc(var(--grid-basis) * 12.5);
+  border: 3px solid black;
   font-size: 13px;
   font-weight: 500;
   text-align: center;
   justify-content: center;
+  transition: background 100ms;
 }
 
-.signupPromo::before {
-  content: '';
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 35px 140px 0;
-  border-color: transparent #ffe900 transparent;
-  position: absolute;
-  right: 100%;
-}
-
-.signupPromo::after {
-  content: '';
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 150px 35px 0;
-  border-color: transparent #ffe900 transparent;
-  position: absolute;
-  top: 100%;
-  left: 0%;
+.signupPromo:hover {
+  background: #ff1ad9;
 }
 
 .signupPromo__title {
-  color: #0a84ff;
+  color: black;
   font-size: 22px;
-  font-style: italic;
-  font-weight: 600;
+  font-weight: 900;
   padding: 6px;
 }
 
 .signupPromo__info {
-  color: var(--lightTextColor);
   padding: 6px;
-}
-
-.signupPromo__link {
-  z-index: 5;
-}
-
-.signupPromo__link:hover {
-  text-decoration: underline;
-}
-
-@media (max-device-width: 700px), (max-width: 700px) {
-  .signupPromo {
-    flex-direction: row;
-    align-items: center;
-    height: 40px;
-    width: 100%;
-  }
-
-  .signupPromo::before {
-    visibility: hidden;
-  }
-
-  .signupPromo::after {
-    border-width: 15px 50vw 0 50vw;
-    border-color: #ffe900 transparent transparent;
-  }
-}
-
-@media (max-device-width: 500px), (max-width: 500px) {
-  .signupPromo__link {
-    display: none;
-  }
-
-  .signupPromo {
-    overflow: hidden;
-  }
+  color: black;
 }

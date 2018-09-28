@@ -4,7 +4,7 @@
   --primaryControlBGColor: #0a84ff;
   --primaryControlFGColor: #fff;
   --primaryControlHoverColor: #0473e2;
-  --inputTextColor: #737373;
+  --inputTextColor: #000;
   --errorColor: #d70022;
   --linkColor: #0094fb;
   --textColor: #0c0c0d;
@@ -12,21 +12,39 @@
   --lightTextColor: #737373;
   --successControlBGColor: #12bc00;
   --successControlFGColor: #fff;
+  --large-box-shadow: 0 4px 16px rgba(12, 12, 13, 0.1);
+  --edge-size: 96px;
+  --grid-basis: 12px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'segoe ui',
-    'helvetica neue', helvetica, ubuntu, roboto, noto, arial, sans-serif;
-  font-weight: 200;
+  font-family: Futura, -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+    'segoe ui', 'helvetica neue', helvetica, ubuntu, roboto, noto, arial,
+    sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'segoe ui',
-    'helvetica neue', helvetica, ubuntu, roboto, noto, arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(500px, 1080px);
+  grid-template-rows: 54px 700px 54px;
+  align-content: center;
+  align-items: center;
+  justify-items: stretch;
+  justify-content: center;
+  font-family: Futura, -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+    'segoe ui', 'helvetica neue', helvetica, ubuntu, roboto, noto, arial,
+    sans-serif;
   height: 100vh;
+  background: #f9f9fa;
+  margin: 0;
+  padding: var(--grid-basis);
 }
 
 input,
@@ -42,62 +60,48 @@ a {
 }
 
 .main {
-  display: flex;
-  flex: auto;
-  padding: 0 25px;
-  box-sizing: border-box;
-  min-height: 500px;
-  max-height: 800px;
+  background: var(--pageBGColor);
+  box-shadow: var(--large-box-shadow);
+  display: grid;
+  grid-template-columns: minmax(400px, 1fr) 1fr;
+  width: 100%;
   height: 100%;
-}
-
-.stripedBox {
-  flex: none;
-  position: relative;
-  width: 400px;
-  margin-top: 32px;
-  background-color: white;
-  border-radius: 6px;
-  border: 3px solid rgba(12, 12, 12, 0.2);
-  background-clip: padding-box;
-  background-image: repeating-linear-gradient(
-    45deg,
-    white,
-    white 5px,
-    #ea000e 5px,
-    #ea000e 25px,
-    white 25px,
-    white 30px,
-    #0083ff 30px,
-    #0083ff 50px
-  );
-}
-
-.mainContent {
-  height: 100%;
-  background-color: white;
-  box-sizing: border-box;
-  margin: 0 10px;
-  padding: 10px 10px 28px;
-  display: flex;
-  flex-direction: column;
-}
-
-.spacer {
-  flex: auto;
-}
-
-.uploads {
-  flex: 0 0 262px;
-  box-sizing: border-box;
-  padding-top: 180px;
-  display: flex;
 }
 
 .noscript {
   text-align: center;
   border: 3px solid var(--errorColor);
   border-radius: 6px;
+}
+
+.main__file-manager,
+.main__context {
+  padding: calc(var(--grid-basis) * 2);
+}
+
+.main__file-manager {
+  border-right: 2px solid black;
+}
+
+.main__context {
+  display: flex;
+  flex-direction: column;
+}
+
+.main__context-footer,
+.main__signup-promo {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main__file-list {
+  flex: 1;
+}
+
+.footer__mozLogo {
+  width: 112px;
+  height: 32px;
+  margin-bottom: -5px;
 }
 
 .btn {
@@ -108,17 +112,15 @@ a {
   align-items: center;
   justify-content: center;
   padding: 0 10px;
-  box-sizing: border-box;
   font-size: 17px;
   font-weight: 500;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 0.56px;
-  color: var(--primaryControlFGColor);
-  background: var(--primaryControlBGColor);
+  color: white;
+  background: black;
   cursor: pointer;
   border: 0;
-  border-radius: 5px;
 }
 
 .btn:hover {

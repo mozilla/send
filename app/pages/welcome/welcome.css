@@ -4,10 +4,9 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  border: 1px dashed rgba(12, 12, 13, 0.2);
+  border: 2px dashed rgba(12, 12, 13, 0.2);
   margin: 0 0 10px;
   height: 400px;
-  border-radius: 4px;
   overflow: scroll;
   transition: transform 150ms;
   flex: 1;

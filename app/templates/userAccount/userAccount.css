@@ -1,8 +1,6 @@
 .account {
-  position: absolute;
-  right: 0;
-  margin: 0 21px;
   padding: 0;
+  margin-bottom: var(--grid-basis);
 }
 
 .account__avatar {
