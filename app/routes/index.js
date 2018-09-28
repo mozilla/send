@@ -8,6 +8,8 @@ const signupPromo = require('../templates/signupPromo');
 const fileList = require('../templates/fileList');
 const profile = require('../templates/userAccount');
 const modal = require('../templates/modal');
+const assets = require('../../common/assets');
+const header = require('../templates/header');
 
 nanotiming.disabled = true;
 
@@ -31,6 +33,7 @@ module.exports = function() {
       const b = html`<body>
       ${modalDialog(state, emit)}
       ${banner(state, emit)}
+      ${header(state)}
       <main class="main">
         <noscript>
           <div class="noscript">
@@ -43,19 +46,27 @@ module.exports = function() {
             <p>${state.translate('enableJavascript')}</p>
           </div>
         </noscript>
-        ${signupPromo(state)}
-        <div class="stripedBox">
-          <div class="mainContent">
-
-            ${profile(state, emit)}
-
-            ${template(state, emit)}
-          </div>
+        <div class="main__file-manager">
+          ${profile(state, emit)}
+          ${template(state, emit)}
         </div>
-
-        <div class="spacer"></div>
-        <div class="uploads">
-          ${fileList(state)}
+        <div class="main__context">
+          <div class="main__signup-promo">
+            ${signupPromo(state)}
+          </div>
+          <div class="main__file-list">
+            ${fileList(state)}
+          </div>
+          <div class="main__context-footer">
+            <a
+              href="https://www.mozilla.org"
+              class="socialSection__link">
+              <img
+                class="footer__mozLogo"
+                src="${assets.get('mozilla-logo.svg')}"
+                alt="mozilla"/>
+            </a>
+          </div>
         </div>
       </main>
       ${footer(state)}

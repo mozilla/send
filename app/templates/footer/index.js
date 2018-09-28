@@ -1,19 +1,14 @@
 const html = require('choo/html');
-const version = require('../../../package.json').version;
 const assets = require('../../../common/assets');
-const { browserName } = require('../../utils');
 
 module.exports = function(state) {
-  const browser = browserName();
-  const feedbackUrl = `https://qsurvey.mozilla.com/s3/txp-firefox-send?ver=${version}&browser=${browser}`;
-
   const footer = html`<footer class="footer">
     <div class="legalSection"
       onmouseover=${showDropDown}
       onmouseout=${hideDropDown}>
 
       <div class="legalSection__menu">
-        <img class="dropDownArrow" src="${assets.get('dropdown-arrow.svg')}"/> 
+        <img class="dropDownArrow" src="${assets.get('dropdown-arrow.svg')}"/>
         <a class="legalSection__link"
           href="https://www.mozilla.org/about/legal">
           ${state.translate('footerLinkLegal')}
@@ -52,13 +47,6 @@ module.exports = function(state) {
       </a>
     </div>
 
-    <a href="${feedbackUrl}"
-      rel="noreferrer noopener"
-      class="feedback"
-      alt="Feedback"
-      target="_blank">${state.translate('siteFeedback')}
-    </a>
-
     <a
       href="https://github.com/mozilla/send"
       class="socialSection__link footer_hiddenIcon">
@@ -74,15 +62,6 @@ module.exports = function(state) {
         class="socialSection__icon"
         src="${assets.get('twitter-icon.svg')}"
         alt="Twitter"/>
-    </a>
-
-    <a
-      href="https://www.mozilla.org"
-      class="socialSection__link">
-      <img
-        class="footer__mozLogo"
-        src="${assets.get('mozilla-logo.svg')}"
-        alt="mozilla"/>
     </a>
   </footer>`;
   // HACK

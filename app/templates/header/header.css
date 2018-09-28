@@ -1,9 +1,31 @@
 .header {
-  align-items: flex-start;
-  box-sizing: border-box;
+  align-items: flex-end;
   display: flex;
+  flex-direction: row;
+  height: calc(var(--grid-basis) * 4);
   justify-content: space-between;
-  height: 32px;
-  padding: 10px;
   width: 100%;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.feedback {
+  background-color: #979797;
+  background-image: url('../assets/feedback.svg');
+  background-position: 2px 4px;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  color: var(--primaryControlFGColor);
+  cursor: pointer;
+  display: block;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 5px 5px 5px 20px;
+  text-indent: 2px;
+  transition: all 250ms ease-in-out;
+  white-space: nowrap;
+  margin-left: calc(var(--grid-basis) * 2);
+  margin-bottom: 8px;
 }

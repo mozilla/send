@@ -1,14 +1,10 @@
 .boxTitle {
-  font-size: 15px;
-  text-align: center;
-  font-weight: 500;
-  margin: 9px 0 19px 0;
-  padding: 0 42px;
-  color: var(--lightTextColor);
+  margin: -2px 0 9px;
+  text-align: left;
+  font-weight: bold;
 }
 
 .boxSubtitle {
-  font-size: 12px;
-  font-weight: 300;
-  font-style: italic;
+  text-align: left;
+  font-weight: normal;
 }
