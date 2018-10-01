@@ -1,6 +1,8 @@
 const html = require('choo/html');
 const assets = require('../../../common/assets');
 const title = require('../../templates/title');
+const signupPromo = require('../../templates/signupPromo');
+const fileList = require('../../templates/fileList');
 const setPasswordSection = require('../../templates/setPasswordSection');
 const uploadBox = require('../../templates/uploadedFileList');
 const expireInfo = require('../../templates/expireInfo');
@@ -30,8 +32,29 @@ module.exports = function(state, emit) {
   }
 
   return html`
-  <div class="${fade}">
+  <div class="${fade} welcome">
     ${title(state)}
+
+    <div class="welcome__file-manager">
+    </div>
+    <div class="welcome__context">
+      <div class="welcome__signup-promo">
+        ${signupPromo(state)}
+      </div>
+      <div class="welcome__file-list">
+        ${fileList(state)}
+      </div>
+      <div class="welcome__context-footer">
+        <a
+          href="https://www.mozilla.org"
+          class="socialSection__link">
+          <img
+            class="footer__mozLogo"
+            src="${assets.get('mozilla-logo.svg')}"
+            alt="mozilla"/>
+        </a>
+      </div>
+    </div>
 
     <label class="uploadArea"
 
