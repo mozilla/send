@@ -4,11 +4,7 @@ const nanotiming = require('nanotiming');
 const download = require('./download');
 const footer = require('../templates/footer');
 const fxPromo = require('../templates/fxPromo');
-const signupPromo = require('../templates/signupPromo');
-const fileList = require('../templates/fileList');
-const profile = require('../templates/userAccount');
 const modal = require('../templates/modal');
-const assets = require('../../common/assets');
 const header = require('../templates/header');
 
 nanotiming.disabled = true;
@@ -28,12 +24,12 @@ module.exports = function() {
     }
   }
 
-  function body(template) {
+  function body(page) {
     return function(state, emit) {
       const b = html`<body>
       ${modalDialog(state, emit)}
       ${banner(state, emit)}
-      ${header(state)}
+      ${header(state, emit)}
       <main class="main">
         <noscript>
           <div class="noscript">
@@ -46,28 +42,7 @@ module.exports = function() {
             <p>${state.translate('enableJavascript')}</p>
           </div>
         </noscript>
-        <div class="main__file-manager">
-          ${profile(state, emit)}
-          ${template(state, emit)}
-        </div>
-        <div class="main__context">
-          <div class="main__signup-promo">
-            ${signupPromo(state)}
-          </div>
-          <div class="main__file-list">
-            ${fileList(state)}
-          </div>
-          <div class="main__context-footer">
-            <a
-              href="https://www.mozilla.org"
-              class="socialSection__link">
-              <img
-                class="footer__mozLogo"
-                src="${assets.get('mozilla-logo.svg')}"
-                alt="mozilla"/>
-            </a>
-          </div>
-        </div>
+        ${page(state, emit)}
       </main>
       ${footer(state)}
     </body>`;
