@@ -1,4 +1,4 @@
-selenium==3.14.0
+selenium==3.14.1
 flake8==3.5.0
 flake8-isort==2.5
 PyPOM==2.1.0
