@@ -16,7 +16,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - ./dist
+            - ./*
   test:
     docker:
       - image: circleci/node:10-browsers
@@ -46,9 +46,18 @@ jobs:
             pip install docker-compose>=1.18
             docker-compose --version
       - run:
-          command: npm run test-integration
-      - store_artifacts:
-          path: coverage/send-test.html
+          name: Setup
+          command: |
+            set -x
+            docker-compose pull
+      - run:
+          name: Run Integration tests
+          command: |
+            set -x
+            docker-compose up -d selenium-firefox
+            sleep 10
+            docker-compose ps
+            docker-compose exec selenium-firefox npm run test-circle:selenium
   deploy_dev:
     machine: true
     steps:
