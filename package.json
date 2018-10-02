@@ -1,15 +1,13 @@
 {
   "name": "firefox-send",
   "description": "File Sharing Experiment",
-  "version": "2.5.4",
+  "version": "3.0.0",
   "author": "Mozilla (https://mozilla.org)",
   "repository": "mozilla/send",
   "homepage": "https://github.com/mozilla/send/",
   "license": "MPL-2.0",
   "private": true,
   "scripts": {
-    "precommit": "lint-staged",
-    "prepush": "npm test",
     "clean": "rimraf dist",
     "build": "npm run clean && webpack",
     "lint": "npm-run-all lint:*",
@@ -31,6 +29,12 @@
     "start": "npm run clean && cross-env NODE_ENV=development FXA_CLIENT_ID=fced6b5e3f4c66b9 BASE_URL=http://localhost:8080 webpack-dev-server --mode=development",
     "android": "cross-env ANDROID=1 npm start",
     "prod": "node server/bin/prod.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
   },
   "lint-staged": {
     "*.js": [
@@ -54,14 +58,14 @@
     "node": ">=10.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.0",
+    "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@dannycoates/webpack-dev-server": "^3.1.4",
     "@mattiasbuelens/web-streams-polyfill": "0.1.0",
     "asmcrypto.js": "^2.3.2",
-    "babel-loader": "^8.0.2",
+    "babel-loader": "^8.0.4",
     "babel-plugin-istanbul": "^5.0.1",
     "babel-plugin-yo-yoify": "^2.0.0",
     "base64-js": "^1.3.0",
@@ -71,7 +75,7 @@
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "css-mqpacker": "^7.0.0",
-    "eslint": "^5.6.0",
+    "eslint": "^5.6.1",
     "eslint-plugin-mocha": "^5.2.0",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-security": "^1.4.0",
@@ -84,7 +88,7 @@
     "git-rev-sync": "^1.12.0",
     "html-loader": "^0.5.5",
     "http_ece": "^1.0.5",
-    "husky": "^0.14.3",
+    "husky": "^1.1.0",
     "lint-staged": "^7.3.0",
     "mocha": "^5.2.0",
     "morgan": "^1.9.1",
@@ -99,26 +103,26 @@
     "proxyquire": "^2.1.0",
     "puppeteer": "^1.8.0",
     "raven-js": "^3.27.0",
-    "redis-mock": "^0.32.0",
+    "redis-mock": "^0.33.0",
     "require-from-string": "^2.0.2",
     "rimraf": "^2.6.2",
     "sinon": "^6.3.4",
     "string-hash": "^1.1.3",
-    "stylelint": "^9.5.0",
+    "stylelint": "^9.6.0",
     "stylelint-config-standard": "^18.2.0",
-    "stylelint-no-unsupported-browser-features": "^3.0.1",
+    "stylelint-no-unsupported-browser-features": "^3.0.2",
     "svgo": "^1.1.1",
     "svgo-loader": "^2.2.0",
     "testpilot-ga": "^0.3.0",
     "val-loader": "^1.1.1",
-    "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-unassert-loader": "^1.2.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.321.0",
+    "aws-sdk": "^2.326.0",
     "babel-polyfill": "^6.26.0",
     "choo": "^6.12.1",
     "cldr-core": "^33.0.0",
