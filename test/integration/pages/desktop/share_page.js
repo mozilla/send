@@ -3,7 +3,7 @@ import Page from './page';
 export default class SharePage extends Page {
   constructor() {
     super();
-    this.sharePageLocator = '.sharePage';
+    this.sharePageLocator = '#shareWrapper';
     this.shareUrlLocator = '#fileUrl';
   }
 

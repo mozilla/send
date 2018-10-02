@@ -4,7 +4,7 @@ export default class DownloadPage extends Page {
   constructor() {
     super();
     this.downloadBtnLocator = '.btn--download';
-    this.downloadCompletedLocator = 'main .page.effect--fadeIn .title';
+    this.downloadCompletedLocator = '.btn--complete';
   }
 
   /**

@@ -8,17 +8,17 @@ let chaiWebdriver = require('chai-webdriverio').default;
 describe('Firefox Send homepage', () => {
   const baseUrl = browser.options['baseUrl'];
   const legalLinks = [
-    'mozilla',
-    'mozilla',
-    'about',
     'legal',
+    'about',
     'legal',
     'cookies',
     'report-infringement'
   ];
+  const socialLinks = ['github', 'twitter', 'mozilla'];
 
   beforeEach(() => {
     browser.url('/');
+    browser.pause(500);
   });
 
   it('should have the right title', () => {
@@ -26,17 +26,34 @@ describe('Firefox Send homepage', () => {
   });
 
   legalLinks.forEach((link, i) => {
-    it(`should navigate to the correct footer pages, page: ${link}`, () => {
+    it(`should navigate to the correct legal pages, page: ${link}`, () => {
       let homePage = new HomePage();
       // Click links on bottom of page
       var els = browser.elements(homePage.legalLinks);
+      if (i === 0) {
+      }
       browser.elementIdClick(els.value[i].ELEMENT);
       // Wait for page to load
-      let url = browser.getUrl();
       browser.waitUntil(() => {
+        let url = browser.getUrl();
         return url !== baseUrl;
       });
-      chai.expect(url).to.include(link);
+      chai.expect(browser.getUrl()).to.include(link);
+    });
+  });
+
+  socialLinks.forEach((link, i) => {
+    it(`should navigate to the correct social pages, page: ${link}`, () => {
+      let homePage = new HomePage();
+      // Click links on bottom of page
+      var els = browser.elements(homePage.socialLinks);
+      browser.elementIdClick(els.value[i].ELEMENT);
+      // Wait for page to load
+      browser.waitUntil(() => {
+        let url = browser.getUrl();
+        return url !== baseUrl;
+      });
+      chai.expect(browser.getUrl()).to.include(link);
     });
   });
 });

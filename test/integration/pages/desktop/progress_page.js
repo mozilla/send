@@ -4,8 +4,8 @@ import SharePage from './share_page';
 export default class ProgressPage extends Page {
   constructor() {
     super();
-    this.cancelBtnLocator = '#cancel-upload';
-    this.progressIconLocator = '.progress__bar';
+    this.cancelBtnLocator = '.uploadCancel';
+    this.progressIconLocator = '.btn--stripes';
   }
 
   /**
