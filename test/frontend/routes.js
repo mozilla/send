@@ -25,7 +25,8 @@ module.exports = function(app) {
           Object.setPrototypeOf(Combo.prototype, reporters.HTML.prototype)
           mocha.setup({
             ui: 'bdd',
-            reporter: Combo
+            reporter: Combo,
+            timeout: 5000
           })
           </script>
           <script src="/jsconfig.js"></script>
@@ -37,8 +38,7 @@ module.exports = function(app) {
         <body>
           <div id="mocha"></div>
           <script>
-          mocha.checkLeaks();
-          const runner = mocha.run();
+          window.runner = mocha.run();
           </script>
         </body>
       </html>

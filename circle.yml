@@ -6,10 +6,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: send-{{ checksum "package-lock.json" }}
+          key: send-build-{{ checksum "package-lock.json" }}
       - run: npm install
       - save_cache:
-          key: send-{{ checksum "package-lock.json" }}
+          key: send-build-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
       - run: npm run build
@@ -23,10 +23,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: send-{{ checksum "package-lock.json" }}
+          key: send-test-{{ checksum "package-lock.json" }}
       - run: npm install
       - save_cache:
-          key: send-{{ checksum "package-lock.json" }}
+          key: send-test-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
       - run: npm run lint
@@ -34,21 +34,19 @@ jobs:
       - store_artifacts:
           path: coverage
   integration_tests:
-    machine: true
+    docker:
+      - image: circleci/node:10
+      - image: selenium/standalone-firefox
     steps:
       - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: Install Docker Compose
-          command: |
-            set -x
-            pip install docker-compose>=1.18
-            docker-compose --version
-      - run:
-          command: npm run test-integration
-      - store_artifacts:
-          path: coverage/send-test.html
+      - restore_cache:
+          key: send-int-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: send-int-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run: npm run circleci-test-integration
   deploy_dev:
     machine: true
     steps:
@@ -92,12 +90,12 @@ workflows:
               ignore:
                 - master
                 - vnext
-      # - integration_tests:
-      #     filters:
-      #       branches:
-      #         ignore: master
-      #     requires:
-      #       - build
+      - integration_tests:
+          filters:
+            branches:
+              ignore: master
+          requires:
+            - build
   build_and_deploy_dev:
     jobs:
       - build:
