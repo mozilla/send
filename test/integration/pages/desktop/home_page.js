@@ -1,6 +1,6 @@
-import Page from './page';
+const Page = require('./page');
 
-export default class HomePage extends Page {
+class HomePage extends Page {
   constructor() {
     super();
     this.legalSectionLinks = '.legalSection .legalSection__link';
@@ -20,3 +20,4 @@ export default class HomePage extends Page {
     return this.socialLinksLocator;
   }
 }
+module.exports = HomePage;

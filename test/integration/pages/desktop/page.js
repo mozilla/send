@@ -1,4 +1,5 @@
-export default class Page {
+/* global browser */
+class Page {
   constructor() {}
 
   open(path) {
@@ -13,3 +14,4 @@ export default class Page {
    */
   waitForPageToLoad() {}
 }
+module.exports = Page;

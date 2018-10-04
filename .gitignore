@@ -12,3 +12,4 @@ ios/send-ios/assets/ios.js
 ios/send-ios/assets/vendor.js
 ios/send-ios.xcodeproj/project.xcworkspace/xcuserdata/*
 ios/send-ios.xcodeproj/xcuserdata/*
+test/integration/downloads

@@ -1,7 +1,8 @@
-import Page from './page';
-import SharePage from './share_page';
+/* global browser */
+const Page = require('./page');
+const SharePage = require('./share_page');
 
-export default class ProgressPage extends Page {
+class ProgressPage extends Page {
   constructor() {
     super();
     this.cancelBtnLocator = '.uploadCancel';
@@ -16,10 +17,10 @@ export default class ProgressPage extends Page {
   waitForPageToLoad() {
     browser.waitUntil(() => {
       browser.waitForExist(this.progressIconLocator);
-      let el = browser.element(this.progressIconLocator);
+      const el = browser.element(this.progressIconLocator);
       return browser.elementIdDisplayed(el.value.ELEMENT);
     });
-    let sharePage = new SharePage();
+    const sharePage = new SharePage();
     return sharePage.waitForPageToLoad();
   }
 
@@ -27,3 +28,4 @@ export default class ProgressPage extends Page {
     return this.cancelBtnLocator;
   }
 }
+module.exports = ProgressPage;

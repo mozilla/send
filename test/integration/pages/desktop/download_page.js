@@ -1,6 +1,7 @@
-import Page from './page';
+/* global browser */
+const Page = require('./page');
 
-export default class DownloadPage extends Page {
+class DownloadPage extends Page {
   constructor() {
     super();
     this.downloadBtnLocator = '.btn--download';
@@ -15,7 +16,7 @@ export default class DownloadPage extends Page {
   waitForPageToLoad() {
     browser.waitUntil(() => {
       browser.waitForExist(this.downloadBtnLocator);
-      let el = browser.element(this.downloadBtnLocator);
+      const el = browser.element(this.downloadBtnLocator);
       return browser.elementIdDisplayed(el.value.ELEMENT);
     });
     return this;
@@ -30,3 +31,4 @@ export default class DownloadPage extends Page {
     return this.downloadCompletedLocator;
   }
 }
+module.exports = DownloadPage;

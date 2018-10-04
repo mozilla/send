@@ -1,5 +1,10 @@
+// eslint-disable-next-line node/no-extraneous-require
 const ip = require('ip');
 const common = require('./wdio.common.conf');
+const dir =
+  common.config.capabilities[0]['moz:firefoxOptions'].prefs[
+    'browser.download.dir'
+  ];
 
 /*/
 
@@ -16,6 +21,7 @@ exports.config = Object.assign({}, common.config, {
     healthCheck: 'http://localhost:4444',
     options: {
       p: ['4444:4444'],
+      mount: `type=bind,source=${dir},destination=${dir},consistency=delegated`,
       shmSize: '2g'
     }
   }

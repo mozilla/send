@@ -1,6 +1,7 @@
-import Page from './page';
+/* global browser */
+const Page = require('./page');
 
-export default class SharePage extends Page {
+class SharePage extends Page {
   constructor() {
     super();
     this.sharePageLocator = '#shareWrapper';
@@ -10,7 +11,7 @@ export default class SharePage extends Page {
   waitForPageToLoad() {
     browser.waitUntil(() => {
       browser.waitForExist(this.sharePageLocator);
-      let el = browser.element(this.sharePageLocator);
+      const el = browser.element(this.sharePageLocator);
       return browser.elementIdDisplayed(el.value.ELEMENT);
     });
     return this;
@@ -20,3 +21,4 @@ export default class SharePage extends Page {
     return this.shareUrlLocator;
   }
 }
+module.exports = SharePage;

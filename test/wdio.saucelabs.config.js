@@ -9,18 +9,13 @@ Config for running saucelabs against localhost
 
 exports.config = Object.assign({}, common.config, {
   maxInstances: 2,
+  exclude: [path.join(__dirname, './integration/download-tests.js')],
   capabilities: [
     { browserName: 'firefox' },
     { browserName: 'chrome' },
     { browserName: 'MicrosoftEdge' },
     {
-      browserName: 'safari',
-      exclude: [
-        // The safari driver doesn't support file uploads
-        // via input elements, but unit-tests.js covers
-        // the lower level uploading
-        path.join(__dirname, './ui/upload-tests.js')
-      ]
+      browserName: 'safari'
     }
   ],
   services: ['sauce', require('./testServer')],
