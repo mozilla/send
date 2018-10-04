@@ -6,3 +6,4 @@ dist
 .nyc_output
 .tox
 .pytest_cache
+*.lock
