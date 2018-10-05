@@ -16,11 +16,10 @@ const wpm = middleware(webpack(config(null, { mode: 'development' })), {
 app.use(wpm);
 devRoutes(app, { middleware: wpm });
 
+// eslint-disable-next-line no-unused-vars
 function onConsole(msg) {
-  // excluding 'log' because mocha uses it to write the json output
-  if (msg.type() !== 'log') {
-    console.error(msg.text());
-  }
+  // uncomment to debug
+  // console.error(msg.text());
 }
 
 const server = app.listen(async function() {
