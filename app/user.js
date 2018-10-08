@@ -102,7 +102,6 @@ export default class User {
       }
     });
     const userInfo = await infoResponse.json();
-    userInfo.keys_jwe = auth.keys_jwe;
     userInfo.access_token = auth.access_token;
     userInfo.fileListKey = await getFileListKey(this.storage, auth.keys_jwe);
     this.storage.user = userInfo;
