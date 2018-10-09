@@ -1,4 +1,6 @@
 /* global EXPIRE_SECONDS */
+/* global EXPIRE_LIMIT */
+
 const html = require('choo/html');
 const raw = require('choo/html/raw');
 const assets = require('../../../common/assets');
@@ -104,7 +106,7 @@ function expireInfo(file, translate, emit) {
     })
   )}</div>`;
   const select = el.querySelector('select');
-  const options = [1, 2, 3, 4, 5, 20].filter(i => i > (file.dtotal || 0));
+  const options = EXPIRE_LIMIT.filter(i => i > (file.dtotal || 0));
   const t = num => translate('downloadCount', { num });
   const changed = value => emit('changeLimit', { file, value });
   el.replaceChild(selectbox(file.dlimit || 1, options, t, changed), select);

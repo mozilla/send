@@ -36,6 +36,7 @@ if (isIE && !isUnsupportedPage) {
 }
 var MAXFILESIZE = ${config.max_file_size};
 var EXPIRE_SECONDS = ${config.expire_seconds};
+var EXPIRE_LIMIT = [${config.expire_limit}];
 ${ga}
 ${sentry}
 `;
