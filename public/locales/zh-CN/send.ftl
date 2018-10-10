@@ -97,7 +97,7 @@ footerLinkLegal = 法律
 # Test Pilot is a proper name and should not be localized.
 footerLinkAbout = 关于 Test Pilot
 footerLinkPrivacy = 隐私
-footerLinkTerms = 条款
+footerLinkTerms = 使用条款
 footerLinkCookies = Cookie
 requirePasswordCheckbox = 持有密码才能下载此文件
 addPasswordButton = 添加密码
