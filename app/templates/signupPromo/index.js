@@ -4,6 +4,7 @@ module.exports = function(state) {
   if (state.user.loggedIn || !state.capabilities.account) {
     return null;
   }
+
   return html`
   <a href="/signin" class="signupPromo">
     <div class="signupPromo__title">${state.translate('signInPromoText')}</div>

@@ -1,10 +1,9 @@
 .boxTitle {
-  margin: -2px 0 9px;
-  text-align: left;
+  margin: 24px;
+  text-align: center;
   font-weight: bold;
 }
 
 .boxSubtitle {
-  text-align: left;
   font-weight: normal;
 }

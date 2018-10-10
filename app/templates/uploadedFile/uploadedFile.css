@@ -13,10 +13,6 @@
   position: relative;
 }
 
-.uploadedFile--completed {
-  background-color: #e8f2fe;
-}
-
 .uploadedFile__fileData {
   margin: 8px 16px 8px 44px;
 }

@@ -2,12 +2,12 @@
 @import './pages/share/share.css';
 @import './pages/signin/signin.css';
 @import './pages/unsupported/unsupported.css';
-@import './pages/welcome/welcome.css';
 @import './templates/downloadButton/downloadButton.css';
 @import './templates/downloadPassword/downloadPassword.css';
 @import './templates/file/file.css';
 @import './templates/fileIcon/fileIcon.css';
 @import './templates/fileList/fileList.css';
+@import './templates/fileManager/fileManager.css';
 @import './templates/footer/footer.css';
 @import './templates/fxPromo/fxPromo.css';
 @import './templates/header/header.css';

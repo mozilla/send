@@ -1,6 +1,5 @@
 .account {
   padding: 0;
-  margin-bottom: var(--grid-basis);
 }
 
 .account__avatar {
@@ -12,9 +11,6 @@
 .account_dropdown {
   z-index: 2;
   position: absolute;
-  top: 30px;
-  left: -15px;
-  min-width: 150px;
   list-style-type: none;
   border: 1px solid #ccc;
   border-radius: 4px;

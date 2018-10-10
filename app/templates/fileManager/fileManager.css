@@ -1,15 +1,19 @@
+.fileManager {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .uploadArea {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  border: 2px dashed rgba(12, 12, 13, 0.2);
-  margin: 0 0 10px;
-  height: 400px;
   overflow: scroll;
   transition: transform 150ms;
   flex: 1;
+  min-height: 90px;
 }
 
 .uploadArea__msg {
@@ -70,6 +74,7 @@
   top: 0;
   left: 0;
   flex: none;
+  height: 100%;
   width: 100%;
   border: none;
   z-index: 1;
@@ -79,6 +84,7 @@
   text-align: left;
   font-size: 13px;
   color: var(--lightTextColor);
+  margin: 24px;
 }
 
 .uploadOptions--faded {

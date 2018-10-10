@@ -1,11 +1,11 @@
 const html = require('choo/html');
 const raw = require('choo/html/raw');
-const assets = require('../../../common/assets');
 const notFound = require('../notFound');
 const deletePopup = require('../../templates/popup');
 const uploadedFileList = require('../../templates/uploadedFileList');
 const timeLimitText = require('../../templates/timeLimitText');
-const { allowedCopy, delay, fadeOut } = require('../../utils');
+const { allowedCopy, delay } = require('../../utils');
+const split = require('../split');
 
 module.exports = function(state, emit) {
   const file = state.storage.getFileById(state.params.id);
@@ -17,16 +17,13 @@ module.exports = function(state, emit) {
     ? ''
     : 'passwordReminder--hidden';
 
-  return html`
-    <div class="page effect--fadeIn" id="shareWrapper">
-      <a href="/" class="goBackButton"> 
-        <img src="${assets.get('back-arrow.svg')}"/> 
-      </a>
-      ${expireInfo(file, state.translate)}
-
-      ${uploadedFileList(file, state, emit)}
-
+  return split(
+    state,
+    uploadedFileList(file, state, emit),
+    html`
+    <div class="copySection">
       <div class="sharePage__copyText">
+        ${expireInfo(file, state.translate)}
         ${state.translate('copyUrlLabel')}
         <div class="sharePage__passwordReminder ${passwordReminderClass}">(don't forget the password too)</div>
       </div>
@@ -43,7 +40,7 @@ module.exports = function(state, emit) {
         title="${state.translate('copyUrlFormButton')}"
         onclick=${copyLink}>${state.translate('copyUrlFormButton')}
       </button>
-      
+
       <div class="sharePage__deletePopup">
         ${deletePopup(
           state.translate('deletePopupText'),
@@ -58,10 +55,8 @@ module.exports = function(state, emit) {
         title="${state.translate('deleteFileButton')}"
         onclick=${showDeletePopup}>${state.translate('deleteFileButton')}
       </button>
-
-    </div>
-
-  `;
+    </div>`
+  );
 
   function showDeletePopup() {
     const popup = document.querySelector('.popup');
@@ -91,7 +86,6 @@ module.exports = function(state, emit) {
 
   async function deleteFile() {
     emit('delete', { file, location: 'success-screen' });
-    await fadeOut('#shareWrapper');
     emit('pushState', '/');
   }
 };

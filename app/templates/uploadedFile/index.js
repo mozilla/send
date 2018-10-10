@@ -4,18 +4,10 @@ const bytes = require('../../utils').bytes;
 const fileIcon = require('../fileIcon');
 
 module.exports = function(file, index, state, emit, hasPassword) {
-  const transfer = state.transfer;
-  const transferState = transfer ? transfer.state : null;
-  const share = state.route.includes('share/');
-  const complete = share ? 'uploadedFile--completed' : '';
-
   const cancelVisible =
     state.route === '/' && !state.uploading
       ? 'uploadedFile__cancel--visible'
       : '';
-
-  const stampClass =
-    share || transferState === 'complete' ? 'uploadedFile__stamp--visible' : '';
 
   function cancel(event) {
     event.preventDefault();
@@ -25,8 +17,7 @@ module.exports = function(file, index, state, emit, hasPassword) {
   }
 
   return html`
-    <li class="uploadedFile ${complete}" id="${file.id}" 
-    >
+    <li class="uploadedFile" id="${file.id}">
 
       ${fileIcon(file.name, hasPassword)}
 
@@ -43,9 +34,6 @@ module.exports = function(file, index, state, emit, hasPassword) {
           <span>${bytes(file.size)}</span>
         </p>
       </div>
-
-      <img src="${assets.get('sent-done.svg')}"
-           class="uploadedFile__stamp ${stampClass}"/> 
     </li>
   `;
 };
