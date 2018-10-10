@@ -9,14 +9,16 @@ module.exports = function(state, emit) {
 
   const header = html`
   <header class="header">
-    <h1>Firefox Send</h1>
-    ${userAccount(state, emit)}
-    <a href="${feedbackUrl}"
-      rel="noreferrer noopener"
-      class="feedback"
-      alt="Feedback"
-      target="_blank">${state.translate('siteFeedback')}
-    </a>
+    <h1><a href="/">Firefox Send</a></h1>
+    <div class="header__controls">
+      ${userAccount(state, emit)}
+      <a href="${feedbackUrl}"
+        rel="noreferrer noopener"
+        class="feedback"
+        alt="Feedback"
+        target="_blank">${state.translate('siteFeedback')}
+      </a>
+    </div>
   </header>`;
   // HACK
   // We only want to render this once because we

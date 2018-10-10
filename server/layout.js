@@ -73,6 +73,17 @@ module.exports = function(state, body = '') {
     <script defer src="${assets.get('cryptofill.js')}"></script>
     <script defer src="${assets.get('app.js')}"></script>
   </head>
+  <noscript>
+    <div class="noscript">
+      <h2>${state.translate('javascriptRequired')}</h2>
+      <p>
+        <a class="link" href="https://github.com/mozilla/send/blob/master/docs/faq.md#why-does-firefox-send-require-javascript">
+        ${state.translate('whyJavascript')}
+        </a>
+      </p>
+      <p>${state.translate('enableJavascript')}</p>
+    </div>
+  </noscript>
   ${body}
   ${initScript(state)}
   </html>

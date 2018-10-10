@@ -7,9 +7,6 @@ const bytes = require('../../utils').bytes;
 module.exports = function(state, emit) {
   return html`
     <div class="page signInPage">
-      <a href="/" class="goBackButton">
-        <img src="${assets.get('back-arrow.svg')}"/>
-      </a>
       ${title(state)}
       <div class="signIn__info flexible">
         ${state.translate('accountBenefitTitle')}

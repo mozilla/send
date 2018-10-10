@@ -1,7 +1,7 @@
 const html = require('choo/html');
-const titleSection = require('../../templates/title');
 const downloadButton = require('../../templates/downloadButton');
 const downloadedFiles = require('../../templates/uploadedFileList');
+const split = require('../split');
 
 module.exports = function(state, emit) {
   const fileInfo = state.fileInfo;
@@ -21,18 +21,16 @@ module.exports = function(state, emit) {
   const bottomLink =
     state.transfer.state === 'downloading' ? cancelButton : trySendLink;
 
-  return html`
-    <div class="page">
-      ${titleSection(state)}
-
-      ${downloadedFiles(fileInfo, state, emit)}
+  return split(
+    state,
+    downloadedFiles(fileInfo, state, emit),
+    html`
+    <div class="copySection">
       <div class="description">${state.translate('downloadMessage2')}</div>
       ${downloadButton(state, emit)}
-
       ${bottomLink}
-
-    </div>
-  `;
+    </div>`
+  );
 
   function cancel() {
     if (state.transfer.state === 'downloading') {

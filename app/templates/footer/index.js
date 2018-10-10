@@ -3,18 +3,11 @@ const assets = require('../../../common/assets');
 
 module.exports = function(state) {
   const footer = html`<footer class="footer">
-    <div class="legalSection"
-      onmouseover=${showDropDown}
-      onmouseout=${hideDropDown}>
-
-      <div class="legalSection__menu">
-        <img class="dropDownArrow" src="${assets.get('dropdown-arrow.svg')}"/>
-        <a class="legalSection__link"
-          href="https://www.mozilla.org/about/legal">
-          ${state.translate('footerLinkLegal')}
-        </a>
-      </div>
-
+    <div class="legalSection">
+      <a class="legalSection__link"
+        href="https://www.mozilla.org/about/legal">
+        ${state.translate('footerLinkLegal')}
+      </a>
       <a
         href="https://testpilot.firefox.com/about"
         class="legalSection__link footer__dropdown footer__noDisplay">
@@ -71,18 +64,4 @@ module.exports = function(state) {
     return target && target.nodeName && target.nodeName === 'FOOTER';
   };
   return footer;
-
-  function showDropDown() {
-    const menus = document.querySelectorAll('.footer__dropdown');
-    menus.forEach(element => {
-      element.classList.remove('footer__noDisplay');
-    });
-  }
-
-  function hideDropDown() {
-    const menus = document.querySelectorAll('.footer__dropdown');
-    menus.forEach(element => {
-      element.classList.add('footer__noDisplay');
-    });
-  }
 };

@@ -22,17 +22,15 @@
 }
 
 .shareTitle {
-  color: var(--textColor);
   margin: 8px auto 15px;
-  text-align: center;
-  font-family: 'SF Pro Text', sans-serif;
-  font-size: 12px;
-  font-style: italic;
-  width: 280px;
 }
 
 .copySection {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px auto;
+  width: 80%;
 }
 
 .copySection__url {
@@ -48,6 +46,7 @@
   letter-spacing: 0;
   line-height: 18px;
   font-weight: 500;
+  width: 100%;
 }
 
 .copySection__url:disabled {

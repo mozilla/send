@@ -31,17 +31,6 @@ module.exports = function() {
       ${banner(state, emit)}
       ${header(state, emit)}
       <main class="main">
-        <noscript>
-          <div class="noscript">
-            <h2>${state.translate('javascriptRequired')}</h2>
-            <p>
-              <a class="link" href="https://github.com/mozilla/send/blob/master/docs/faq.md#why-does-firefox-send-require-javascript">
-              ${state.translate('whyJavascript')}
-              </a>
-            </p>
-            <p>${state.translate('enableJavascript')}</p>
-          </div>
-        </noscript>
         ${page(state, emit)}
       </main>
       ${footer(state)}
