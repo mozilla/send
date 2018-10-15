@@ -8,7 +8,7 @@
 .fileList__header {
   font-size: 16px;
   color: var(--lightTextColor);
-  font-weight: lighter;
+  font-weight: normal;
   text-align: left;
   background: rgba(0, 148, 251, 0.05);
   height: 40px;
