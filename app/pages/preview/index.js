@@ -23,6 +23,7 @@ module.exports = function(state, emit) {
 
   return split(
     state,
+    emit,
     downloadedFiles(fileInfo, state, emit),
     html`
     <div class="copySection">

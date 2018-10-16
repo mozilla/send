@@ -170,3 +170,4 @@ accountBenefitSync = Manage your uploads across devices
 manageAccount = Manage Account
 logOut = Sign Out
 okButton = Ok
+myUploads = My Uploads

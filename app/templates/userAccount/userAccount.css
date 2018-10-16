@@ -1,5 +1,6 @@
 .account {
-  padding: 0;
+  /* padding: 12px; */
+  position: relative;
 }
 
 .account__avatar {
@@ -18,6 +19,7 @@
   box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.2);
   padding: 11px 0;
   visibility: hidden;
+  white-space: nowrap;
   outline: 0;
 }
 

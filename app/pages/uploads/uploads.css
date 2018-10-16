@@ -1,0 +1,11 @@
+.myUploads {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: repeat(auto-fit, 150px);
+  grid-auto-columns: 150px;
+  grid-auto-rows: 160px;
+  list-style-type: none;
+  overflow: scroll;
+}

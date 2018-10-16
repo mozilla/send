@@ -30,11 +30,9 @@ module.exports = function() {
       ${modalDialog(state, emit)}
       ${banner(state, emit)}
       ${header(state, emit)}
-      <main class="main">
-        ${page(state, emit)}
-      </main>
+      ${page(state, emit)}
       ${footer(state)}
-    </body>`;
+      </body>`;
       if (state.layout) {
         // server side only
         return state.layout(state, b);
@@ -45,6 +43,7 @@ module.exports = function() {
 
   app.route('/', body(require('../pages/welcome')));
   app.route('/share/:id', body(require('../pages/share')));
+  app.route('/uploads', body(require('../pages/uploads')));
   app.route('/download/:id', body(download));
   app.route('/download/:id/:key', body(download));
   app.route('/unsupported/:reason', body(require('../pages/unsupported')));

@@ -4,9 +4,9 @@ const downloadPassword = require('../../templates/downloadPassword');
 
 module.exports = function(state, emit) {
   return html`
-    <div class="page">
+    <main class="main page">
       ${titleSection(state)}
-      
+
       <div class="description">${state.translate('downloadMessage2')}</div>
       ${downloadPassword(state, emit)}
 
@@ -14,6 +14,6 @@ module.exports = function(state, emit) {
         ${state.translate('sendYourFilesLink')}
       </a>
 
-    </div>
+    </main>
   `;
 };

@@ -4,7 +4,7 @@ const title = require('../templates/title');
 
 module.exports = function(state) {
   return html`
-    <div class="page">
+    <main class="main page">
       ${title(state)}
       <div class="title">${state.translate('legalHeader')}</div>
         ${raw(
@@ -20,7 +20,7 @@ module.exports = function(state) {
             'https://www.mozilla.org/about/legal/terms/mozilla/'
           ])
         )}
-    </div>
+    </main>
   `;
 };
 

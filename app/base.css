@@ -57,11 +57,14 @@ a {
   background: var(--pageBGColor);
   box-shadow: var(--large-box-shadow);
   width: 90%;
-  height: 100%;
   max-width: 960px;
+  min-height: 550px;
   max-height: 600px;
   align-self: center;
   margin: auto 0;
+  display: grid;
+  grid-template-columns: 70px 360px 1fr;
+  grid-template-areas: 'nav files content';
 }
 
 .split {
@@ -73,12 +76,11 @@ a {
 
 .split__left {
   height: 100%;
-  width: 360px;
-  margin: 0;
   border-right: 1px solid #d7d7db;
   display: flex;
   flex-direction: column;
   text-align: center;
+  grid-area: files;
 }
 
 .split__right {
@@ -88,6 +90,16 @@ a {
   align-items: flex-end;
   justify-content: center;
   position: relative;
+  grid-area: content;
+}
+
+.wide {
+  grid-area: files-start / files-start / content-end / content-end;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-left: 12px;
+  height: 100%;
 }
 
 .noscript {
@@ -187,8 +199,6 @@ a {
 
 .page {
   height: 100%;
-  width: 75%;
-  margin: 0 auto;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -275,16 +285,17 @@ a {
     align-items: center;
     max-height: none;
     width: 100%;
-  }
-
-  .split {
-    flex-direction: column-reverse;
-    align-items: center;
+    grid-template-columns: none;
+    grid-template-rows: 90px minmax(160px, 30vh) minmax(240px, 30vh) 70px;
+    grid-template-areas:
+      'promo'
+      'files'
+      'content'
+      'nav';
   }
 
   .split__left {
     border: none;
-    height: 600px;
   }
 
   .description {

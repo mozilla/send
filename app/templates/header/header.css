@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   height: 64px;
   background-color: white;
@@ -12,29 +12,4 @@
 
 .header h1 {
   margin: 0;
-}
-
-.header__controls {
-  justify-self: end;
-  display: grid;
-  grid-auto-flow: column;
-  grid-gap: 8px;
-  align-items: center;
-}
-
-.feedback {
-  background-color: #979797;
-  background-image: url('../assets/feedback.svg');
-  background-position: 2px 4px;
-  background-repeat: no-repeat;
-  background-size: 18px;
-  color: var(--primaryControlFGColor);
-  cursor: pointer;
-  display: block;
-  font-size: 12px;
-  line-height: 12px;
-  padding: 5px 5px 5px 20px;
-  text-indent: 2px;
-  transition: all 250ms ease-in-out;
-  white-space: nowrap;
 }
