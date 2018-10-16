@@ -10,9 +10,9 @@
   justify-content: center;
   transition: background 100ms;
   margin: 24px;
-  position: absolute;
-  top: 0;
-  right: 0;
+  grid-area: content;
+  justify-self: right;
+  z-index: 1;
 }
 
 .signupPromo:hover {
@@ -29,4 +29,14 @@
 .signupPromo__info {
   padding: 6px;
   color: black;
+}
+
+@media (max-device-width: 720px), (max-width: 720px) {
+  .signupPromo {
+    grid-area: promo;
+    margin: 0;
+    justify-self: auto;
+    height: 100%;
+    width: 100%;
+  }
 }

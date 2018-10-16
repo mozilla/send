@@ -1,7 +1,10 @@
 @import './base.css';
 @import './pages/share/share.css';
 @import './pages/signin/signin.css';
+@import './pages/uploads/uploads.css';
 @import './pages/unsupported/unsupported.css';
+@import './templates/archiveTile/archiveTile.css';
+@import './templates/controlArea/controlArea.css';
 @import './templates/downloadButton/downloadButton.css';
 @import './templates/downloadPassword/downloadPassword.css';
 @import './templates/file/file.css';

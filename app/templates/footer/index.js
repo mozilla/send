@@ -1,7 +1,11 @@
 const html = require('choo/html');
 const assets = require('../../../common/assets');
+const version = require('../../../package.json').version;
+const { browserName } = require('../../utils');
 
 module.exports = function(state) {
+  const browser = browserName();
+  const feedbackUrl = `https://qsurvey.mozilla.com/s3/txp-firefox-send?ver=${version}&browser=${browser}`;
   const footer = html`<footer class="footer">
     <div class="legalSection">
       <a class="legalSection__link"
@@ -39,7 +43,12 @@ module.exports = function(state) {
         Twitter
       </a>
     </div>
-
+    <a href="${feedbackUrl}"
+        rel="noreferrer noopener"
+        class="feedback"
+        alt="Feedback"
+        target="_blank">${state.translate('siteFeedback')}
+      </a>
     <a
       href="https://github.com/mozilla/send"
       class="socialSection__link footer_hiddenIcon">

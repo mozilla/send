@@ -1,0 +1,22 @@
+.controlArea {
+  border-right: 1px solid #d7d7db;
+}
+
+.controlArea > ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controlArea > ul > li {
+  margin: 12px;
+}
+
+@media (max-device-width: 720px), (max-width: 720px) {
+  .controlArea > ul {
+    flex-direction: row;
+  }
+}

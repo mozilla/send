@@ -32,7 +32,7 @@ module.exports = function(state) {
   }
 
   return html`
-    <div class="page unsupportedPage">
+    <main class="main page unsupportedPage">
       ${title(state)}
       <div class="error unsupportedPage__error">${strings.header}</div>
       <div class="description flexible">
@@ -53,7 +53,7 @@ module.exports = function(state) {
       <div class="unsupportedPage__info">
         ${strings.explainer}
       </div>
-    </div>`;
+    </main>`;
 };
 
 function outdatedStrings(state) {

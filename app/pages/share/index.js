@@ -19,6 +19,7 @@ module.exports = function(state, emit) {
 
   return split(
     state,
+    emit,
     uploadedFileList(file, state, emit),
     html`
     <div class="copySection">

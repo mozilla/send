@@ -94,8 +94,6 @@ workflows:
           filters:
             branches:
               ignore: master
-          requires:
-            - build
   build_and_deploy_dev:
     jobs:
       - build:
@@ -137,8 +135,6 @@ workflows:
             tags:
               only: /^v.*/
       - integration_tests:
-          requires:
-            - build
           filters:
             branches:
               ignore: /.*/

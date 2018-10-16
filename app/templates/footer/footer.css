@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .legalSection {
@@ -32,6 +33,24 @@
 
 .dropdown__only {
   display: none;
+}
+
+.feedback {
+  background-color: #000;
+  background-image: url('../assets/feedback.svg');
+  background-position: 2px 4px;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  color: var(--primaryControlFGColor);
+  cursor: pointer;
+  display: block;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 5px 5px 5px 20px;
+  text-indent: 2px;
+  transition: all 250ms ease-in-out;
+  white-space: nowrap;
+  margin-left: 12px;
 }
 
 @media (max-device-width: 720px), (max-width: 720px) {

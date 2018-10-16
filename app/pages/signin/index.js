@@ -6,7 +6,7 @@ const bytes = require('../../utils').bytes;
 
 module.exports = function(state, emit) {
   return html`
-    <div class="page signInPage">
+    <main class="main page signInPage">
       ${title(state)}
       <div class="signIn__info flexible">
         ${state.translate('accountBenefitTitle')}
@@ -44,7 +44,7 @@ module.exports = function(state, emit) {
       <label class="btn" for="email-submit">
         ${state.translate('signInContinueButton')}
       </label>
-    </div>
+    </main>
   `;
 
   function submitEmail(event) {
