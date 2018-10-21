@@ -9,7 +9,7 @@ uploadPageDropMessage = გადმოიტანეთ ფაილი აქ
 uploadPageSizeMessage = ყველაზე საიმედო მომსახურება, შეგიძლიათ ატვირთოთ არაუმეტეს 1GB ზომის ფაილი
 uploadPageBrowseButton = ფაილის არჩევა კომპიუტერიდან
 uploadPageBrowseButton1 = ფაილის არჩევა ასატვირთად
-uploadPageMultipleFilesAlert = ერთდროულად რამდენიმე ფაილის, ან საქაღალდის ატვირთვა, ამჟამად არაა ხელმისაწვდომი.
+uploadPageMultipleFilesAlert = ერთდროულად რამდენიმე ფაილის ან საქაღალდის ატვირთვა, ამჟამად არაა ხელმისაწვდომი.
 uploadPageBrowseButtonTitle = ფაილის ატვირთვა
 uploadingPageProgress = მიმდინარეობს ატვირთვა { $filename } ({ $size })
 importingFile = გადმოტანა...
@@ -24,7 +24,7 @@ uploadingPageLargeFileMessage = ფაილი დიდია და ატვ
 uploadingFileNotification = შეტყობინება, ატვირთვის დასრულებისას.
 uploadSuccessConfirmHeader = მზადაა გასაგზავნად
 uploadSvgAlt = ატვირთვა
-uploadSuccessTimingHeader = ფაილს ვადა გაუვა 1 ჩამოტვირთვის, ან 24 საათის მერე.
+uploadSuccessTimingHeader = ფაილს ვადა გაუვა 1 ჩამოტვირთვის ან 24 საათის მერე.
 expireInfo = ფაილის ბმულს, ვადა გაუვა { $downloadCount }, ან { $timespan } მერე.
 downloadCount =
     { $num ->
