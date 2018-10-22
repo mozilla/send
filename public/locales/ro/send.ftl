@@ -17,7 +17,7 @@ verifyingFile = Se verifică...
 encryptingFile = Se criptează…
 decryptingFile = Se decriptează…
 notifyUploadDone = Încărcarea s-a finalizat.
-uploadingPageMessage = După ce fișierul tău este încărcat vei putea seta opțiuni de expirare.
+uploadingPageMessage = După ce fișierul tău este încărcat, vei putea seta opțiuni de expirare.
 uploadingPageCancel = Anulează încărcarea
 uploadCancelNotification = Încărcarea a fost anulată.
 uploadingPageLargeFileMessage = Stai calm! Acest fișier este mare. S-ar putea să dureze un timp încărcarea.
@@ -68,7 +68,7 @@ fileSizeProgress = ({ $partialSize } din { $totalSize })
 # Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Încearcă Firefox Send
 downloadingPageProgress = Se descarcă { $filename } ({ $size })
-downloadingPageMessage = Te rugăm să păstrezi această file deschisă în timp ce preluăm fișierul și îl decriptăm.
+downloadingPageMessage = Te rugăm să lași această filă deschisă în timp ce preluăm fișierul și îl decriptăm.
 errorAltText = Eroare la încărcare
 errorPageHeader = Ceva a mers prost!
 errorPageMessage = A apărut o eroare la încărcarea fișierului.
@@ -92,7 +92,7 @@ nevermindButton = Uită
 legalHeader = Termeni de utilizare și politica de confidențialitate
 legalNoticeTestPilot = Firefox Send este în prezent un experiment Test Pilot și supus <a>Termenilor de utilizare a serviciului</a> și a <a>Politicii de confidențialitate</a> Test Pilot. Poți afla mai multe despre acest experiment și colectarea sa de date <a>aici</a>.
 legalNoticeMozilla = Folosirea site-ului Firefox Send mai este supusă <a>Politicii de confidențialitate pentru site-uri web</a> și a <a>Termenilor de utilizare a site-urilor web</a>.
-deletePopupText = Ștergi aceast fișier?
+deletePopupText = Ștergi acest fișier?
 deletePopupYes = Da
 deletePopupCancel = Renunță
 deleteButtonHover = Șterge
@@ -109,12 +109,12 @@ changePasswordButton = Modifică
 passwordTryAgain = Parola este incorectă. Încearcă din nou.
 reportIPInfringement = Raportează încălcarea proprietății intelectuale
 javascriptRequired = Firefox Send are nevoie de JavaScript
-whyJavascript = De ce are nevoie Firefox Send de JavaScript?
+whyJavascript = De ce Firefox Send are nevoie de JavaScript?
 enableJavascript = Te rugăm să reactivezi JavaScript și să încerci din nou.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
-expiresMinutes = { $minutes } m
+expiresMinutes = { $minutes }m
 # A short status message shown when a password is successfully set
 passwordIsSet = Parola a fost setată
 # A short status message shown when the user enters a long password
