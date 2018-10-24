@@ -1,11 +1,10 @@
 node_modules
-.git
+# .git TODO: exclude .git as soon as git-rev-sync is not needed for build
 .tox
 .DS_Store
 firefox
-assets
 docs
-public
-test
+scripts
+# test TODO: exclude test folder as soon as webpack production build is fixed
 coverage
 .nyc_output
