@@ -1,6 +1,6 @@
-@import 'tailwindcss/preflight';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
 
 a {
   color: inherit;
