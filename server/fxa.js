@@ -9,7 +9,10 @@ async function getFxaConfig() {
   if (fxaConfig && Date.now() - lastConfigRefresh < 1000 * 60 * 5) {
     return fxaConfig;
   }
-  const res = await fetch(`${config.fxa_url}/.well-known/openid-configuration`);
+  const res = await fetch(
+    `${config.fxa_url}/.well-known/openid-configuration`,
+    { timeout: 3000 }
+  );
   fxaConfig = await res.json();
   lastConfigRefresh = Date.now();
   return fxaConfig;

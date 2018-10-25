@@ -40,6 +40,10 @@ timespanMinutes = { $num ->
         [one] 1 minute
        *[other] { $num } minutes
     }
+timespanDays = { $num ->
+        [one] 1 day
+       *[other] { $num } days
+    }
 timespanWeeks = { $num ->
         [one] 1 week
        *[other] { $num } weeks

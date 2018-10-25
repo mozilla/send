@@ -66,8 +66,11 @@ export default function(state, emitter) {
     metrics.changedDownloadLimit(file);
   });
 
-  emitter.on('removeUpload', async ({ index }) => {
-    state.archive.remove(index);
+  emitter.on('removeUpload', file => {
+    state.archive.remove(file);
+    if (state.archive.numFiles === 0) {
+      state.archive = null;
+    }
     render();
   });
 
@@ -86,6 +89,7 @@ export default function(state, emitter) {
     } catch (e) {
       state.raven.captureException(e);
     }
+    render();
   });
 
   emitter.on('cancel', () => {
@@ -149,15 +153,26 @@ export default function(state, emitter) {
       if (password) {
         emitter.emit('password', { password, file: ownedFile });
       }
-
-      const cancelBtn = document.getElementById('cancel-upload');
-      if (cancelBtn) {
-        cancelBtn.hidden = 'hidden';
-      }
-      if (document.querySelector('.page')) {
-        await delay(1000);
-      }
-      emitter.emit('pushState', `/share/${ownedFile.id}`);
+      state.animation = () => {
+        const x = document.querySelector('.foo');
+        const y = x.previousElementSibling;
+        x.animate(
+          [
+            { transform: `translateY(-${y.getBoundingClientRect().height}px)` },
+            { transform: 'translateY(0)' }
+          ],
+          {
+            duration: 400,
+            easing: 'ease'
+          }
+        );
+        y.animate([{ opacity: 0 }, { opacity: 1 }], {
+          delay: 300,
+          duration: 100,
+          fill: 'both'
+        });
+      };
+      // emitter.emit('pushState', `/share/${ownedFile.id}`);
     } catch (err) {
       if (err.message === '0') {
         //cancelled. do nothing
@@ -176,6 +191,7 @@ export default function(state, emitter) {
       state.password = '';
       state.uploading = false;
       state.transfer = null;
+      render();
     }
   });
 
