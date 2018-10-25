@@ -3,7 +3,7 @@ const account = require('./account');
 
 module.exports = function(state, emit) {
   const header = html`
-  <header class="flex-none flex flex-row items-center bg-white w-full px-4 h-12 shadow-md justify-between">
+  <header class="flex-none flex flex-row items-center justify-between bg-white w-full px-4 h-12 md:shadow-md">
     <a
       class="header-logo"
       href="/">
