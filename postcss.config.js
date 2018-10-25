@@ -1,6 +1,7 @@
 const options = {
   plugins: {
     'postcss-import': {},
+    tailwindcss: {},
     'postcss-cssnext': {},
     'css-mqpacker': {}
   }

@@ -3,16 +3,16 @@ export default function(state, emitter) {
     document.body.addEventListener('dragover', event => {
       if (state.route === '/') {
         event.preventDefault();
-        const files = document.querySelector('.uploadedFilesWrapper');
-        files.classList.add('uploadArea--noEvents');
+        // const files = document.querySelector('.uploadedFilesWrapper');
+        // files.classList.add('uploadArea--noEvents');
       }
     });
     document.body.addEventListener('drop', event => {
       if (state.route === '/' && !state.uploading) {
         event.preventDefault();
-        document
-          .querySelector('.uploadArea')
-          .classList.remove('uploadArea--dragging');
+        // document
+        //   .querySelector('.uploadArea')
+        //   .classList.remove('uploadArea--dragging');
 
         const files = Array.from(event.dataTransfer.files);
 
