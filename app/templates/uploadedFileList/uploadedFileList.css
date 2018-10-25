@@ -1,9 +1,0 @@
-.uploadedFiles {
-  background: rgba(132, 193, 255, 0.1);
-  margin: 0;
-  padding: 0;
-  align-content: center;
-  flex: 1;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}

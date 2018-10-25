@@ -5,7 +5,7 @@ import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
 import * as metrics from './metrics';
 import Archive from './archive';
 import { bytes } from './utils';
-import okDialog from './templates/okDialog';
+import okDialog from './ui/okDialog';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -108,6 +108,9 @@ export default function(state, emitter) {
           count: LIMITS.MAX_FILES_PER_ARCHIVE
         })
       );
+      if (state.archive.numFiles === 0) {
+        state.archive = null;
+      }
     }
     render();
   });
