@@ -17,7 +17,7 @@ function banner(state, emit) {
 
 function body(main) {
   return function(state, emit) {
-    const b = html`<body class="flex flex-col font-sans bg-white md:h-screen md:bg-grey-lightest">
+    const b = html`<body class="flex flex-col items-center font-sans bg-blue-lightest md:h-screen md:bg-grey-lightest">
     ${state.modal && modal(state, emit)}
     ${banner(state, emit)}
     ${header(state, emit)}

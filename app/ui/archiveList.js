@@ -34,8 +34,12 @@ module.exports = function(state, emit) {
     archives.push(intro(state));
   }
   return html`
-  <section class="relative h-full w-full px-6">
-    <div class="pt-4 pb-2">${wip}</div>
-    ${list(archives, 'list-reset h-full overflow-y-scroll foo', 'py-2')}
+  <section class="relative h-full w-full px-6 md:flex md:flex-row">
+    <div class="pt-4 md:pb-4 md:mr-6 md:w-1/2">${wip}</div>
+    ${list(
+      archives,
+      'list-reset h-full md:w-1/2 overflow-y-scroll foo pt-2',
+      'py-2'
+    )}
   </section>`;
 };

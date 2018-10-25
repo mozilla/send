@@ -32,8 +32,6 @@ progress::-webkit-progress-value {
 }
 
 .main {
-  @apply bg-blue-lightest;
-
   min-height: calc(100vh - 6rem);
 }
 
@@ -73,9 +71,7 @@ progress::-webkit-progress-value {
     @apply shadow-md;
     @apply m-auto;
 
-    min-width: 30rem;
-    max-width: 60rem;
     min-height: 30rem;
-    max-height: 38rem;
+    max-height: 40rem;
   }
 }

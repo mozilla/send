@@ -83,9 +83,12 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-  <article class="relative flex flex-col bg-white border border-grey-light p-2 z-20">
-    ${list(state.archive.files.map(f => fileInfo(f, remove(f))), 'list-reset')}
-    <div class="border border-dashed border-blue-light mb-2">
+  <article class="relative h-full flex flex-col bg-white border border-grey-light p-2 z-20">
+    ${list(
+      state.archive.files.map(f => fileInfo(f, remove(f))),
+      'list-reset h-full overflow-y-scroll'
+    )}
+    <div class="flex-grow border border-dashed border-blue-light mb-2">
       <input
         id="file-upload"
         class="hidden"
@@ -102,7 +105,7 @@ module.exports.wip = function(state, emit) {
     </div>
     ${expiryOptions(state, emit)}
     <button
-      class="border rounded bg-blue text-white mt-2 py-2 px-6"
+      class="flex-none border rounded bg-blue text-white mt-2 py-2 px-6"
       title="${state.translate('uploadFilesButton')}"
       onclick=${upload}>
       ${state.translate('uploadFilesButton')}
@@ -181,7 +184,7 @@ module.exports.uploading = function(state, emit) {
 
 module.exports.empty = function(state, emit) {
   return html`
-  <article class="flex flex-col items-center justify-center border border-dashed border-blue-light p-8">
+  <article class="flex flex-col items-center justify-center border border-dashed border-blue-light p-8 h-full">
     <div class="p-1">${state.translate('uploadDropDragMessage')}</div>
     <input
       id="file-upload"
