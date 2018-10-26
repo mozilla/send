@@ -6,6 +6,7 @@ import * as metrics from './metrics';
 import Archive from './archive';
 import { bytes } from './utils';
 import okDialog from './ui/okDialog';
+import copyDialog from './ui/copyDialog';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -156,6 +157,7 @@ export default function(state, emitter) {
       if (password) {
         emitter.emit('password', { password, file: ownedFile });
       }
+      state.modal = copyDialog(ownedFile.url);
       state.animation = () => {
         const x = document.querySelector('.foo');
         const y = x.previousElementSibling;

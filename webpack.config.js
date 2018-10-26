@@ -200,7 +200,8 @@ const web = {
   ],
   devtool: 'source-map',
   devServer: {
-    before: require('./server/bin/dev'),
+    before:
+      process.env.NODE_ENV === 'development' && require('./server/bin/dev'),
     compress: true,
     hot: false,
     host: '0.0.0.0',
@@ -217,7 +218,7 @@ const web = {
 module.exports = (env, argv) => {
   const mode = argv.mode || 'production';
   console.error(`mode: ${mode}`);
-  web.mode = serviceWorker.mode = mode;
+  process.env.NODE_ENV = web.mode = serviceWorker.mode = mode;
   if (mode === 'development') {
     // istanbul instruments the source for code coverage
     webJsOptions.plugins.push('istanbul');
