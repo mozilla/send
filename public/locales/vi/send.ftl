@@ -25,6 +25,7 @@ uploadingFileNotification = Thông báo cho tôi khi tải lên hoàn tất.
 uploadSuccessConfirmHeader = Đã sẵn sàng để Gửi
 uploadSvgAlt = Tải lên
 uploadSuccessTimingHeader = Liên kết đến tập tin của bạn sẽ hết hạn sau 1 lượt tải về hoặc trong 24 giờ.
+expireInfo = Liên kết đến tập tin của bạn sẽ hết hạn sau { $downloadCount } hoặc { $timespan }.
 downloadCount =
     { $num ->
        *[other] lượt tải
@@ -40,6 +41,7 @@ deleteFileButton = Xóa tập tin
 sendAnotherFileLink = Gửi tập tin khác
 # Alternative text used on the download link/button (indicates an action).
 downloadAltText = Tải về
+downloadsFileList = Tải về
 # Used as header in a column indicating the amount of time left before a
 # download link expires (e.g. "10h 5m")
 timeFileList = Thời gian
@@ -99,6 +101,7 @@ footerLinkTerms = Điều khoản
 footerLinkCookies = Cookies
 requirePasswordCheckbox = Yêu cầu mật khẩu khi tải về tập tin này
 addPasswordButton = Thêm mật khẩu
+changePasswordButton = Thay đổi
 passwordTryAgain = Sai mật khẩu. Vui lòng thử lại.
 reportIPInfringement = Báo cáo vi phạm
 javascriptRequired = Firefox Send cần JavaScript
@@ -112,3 +115,5 @@ expiresMinutes = { $minutes } phút
 passwordIsSet = Đã đặt mật khẩu
 # A short status message shown when the user enters a long password
 maxPasswordLength = Độ dài mật khẩu tối đa: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Không thể đặt mật khẩu này
