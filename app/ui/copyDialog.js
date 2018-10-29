@@ -1,22 +1,22 @@
 const html = require('choo/html');
-const assets = require('../../common/assets');
 const { copyToClipboard } = require('../utils');
 
-module.exports = function(url) {
+module.exports = function(name, url) {
   return function(state, emit, close) {
     return html`
-    <div class="flex flex-col p-4">
-    <input
-      type="image"
-      class="self-end text-white"
-      alt="Close"
-      src="${assets.get('close-16.svg')}"
-      onclick=${close}/>
-      <h1 class="font-normal mt-2">${state.translate('notifyUploadDone')}</h1>
+    <div class="flex flex-col items-center text-center p-4 max-w-md">
+      <h1 class="font-normal my-4">${state.translate('notifyUploadDone')}</h1>
+      <p class="font-light text-grey-darker">${state.translate(
+        'copyUrlFormLabelWithName',
+        { filename: name }
+      )}</p>
       <input type="text" class="w-full my-4 border rounded leading-loose" value=${url} readonly="true"/>
       <button class="border rounded bg-blue text-white leading-loose w-full" onclick=${copy}>
         ${state.translate('copyUrlFormButton')}
       </button>
+      <a class="text-blue my-2 cursor-pointer" onclick=${close}>${state.translate(
+      'okButton'
+    )}</a>
     </div>`;
 
     function copy(event) {

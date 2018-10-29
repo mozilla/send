@@ -83,7 +83,7 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-  <article class="relative h-full flex flex-col bg-white border border-grey-light p-2 z-20">
+  <article class="h-full flex flex-col bg-white border border-grey-light p-2 z-20">
     ${list(
       state.archive.files.map(f => fileInfo(f, remove(f))),
       'list-reset h-full overflow-y-scroll'
@@ -153,7 +153,7 @@ module.exports.uploading = function(state, emit) {
   return html`
   <article
     id="${archive.id}"
-    class="relative z-20 flex flex-col items-start border border-grey-light bg-white p-3">
+    class="z-20 flex flex-col items-start border border-grey-light bg-white p-3">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-base font-semibold">${archive.name}</h1>
@@ -184,7 +184,7 @@ module.exports.uploading = function(state, emit) {
 
 module.exports.empty = function(state, emit) {
   return html`
-  <article class="flex flex-col items-center justify-center border border-dashed border-blue-light p-8 h-full">
+  <article class="flex flex-col items-center justify-center border border-dashed border-blue-light p-16 h-full">
     <div class="p-1">${state.translate('uploadDropDragMessage')}</div>
     <input
       id="file-upload"
@@ -211,7 +211,7 @@ module.exports.empty = function(state, emit) {
 module.exports.preview = function(state, emit) {
   const archive = state.fileInfo;
   return html`
-  <article class="relative flex flex-col bg-white border border-grey-light p-2 z-20">
+  <article class="flex flex-col bg-white border border-grey-light p-2 z-20">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-base font-semibold">${archive.name}</h1>
@@ -239,7 +239,7 @@ module.exports.downloading = function(state, emit) {
   const progress = state.transfer.progressRatio;
   const progressPercent = percent(progress);
   return html`
-  <article class="relative flex flex-col bg-white border border-grey-light p-2 z-20">
+  <article class="flex flex-col bg-white border border-grey-light p-2 z-20">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-base font-semibold">${archive.name}</h1>

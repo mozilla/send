@@ -157,7 +157,7 @@ export default function(state, emitter) {
       if (password) {
         emitter.emit('password', { password, file: ownedFile });
       }
-      state.modal = copyDialog(ownedFile.url);
+      state.modal = copyDialog(ownedFile.name, ownedFile.url);
       state.animation = () => {
         const x = document.querySelector('.foo');
         const y = x.previousElementSibling;
@@ -177,7 +177,6 @@ export default function(state, emitter) {
           fill: 'both'
         });
       };
-      // emitter.emit('pushState', `/share/${ownedFile.id}`);
     } catch (err) {
       if (err.message === '0') {
         //cancelled. do nothing

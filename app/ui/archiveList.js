@@ -34,7 +34,7 @@ module.exports = function(state, emit) {
     archives.push(intro(state));
   }
   return html`
-  <section class="relative h-full w-full px-6 md:flex md:flex-row">
+  <section class="h-full w-full px-6 md:flex md:flex-row">
     <div class="pt-4 md:pb-4 md:mr-6 md:w-1/2">${wip}</div>
     ${list(
       archives,

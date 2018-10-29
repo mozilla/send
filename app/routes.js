@@ -4,7 +4,6 @@ const nanotiming = require('nanotiming');
 const download = require('./ui/download');
 const footer = require('./ui/footer');
 const fxPromo = require('./ui/fxPromo');
-const modal = require('./ui/modal');
 const header = require('./ui/header');
 
 nanotiming.disabled = true;
@@ -18,7 +17,6 @@ function banner(state, emit) {
 function body(main) {
   return function(state, emit) {
     const b = html`<body class="flex flex-col items-center font-sans bg-blue-lightest md:h-screen md:bg-grey-lightest">
-    ${state.modal && modal(state, emit)}
     ${banner(state, emit)}
     ${header(state, emit)}
     ${main(state, emit)}
