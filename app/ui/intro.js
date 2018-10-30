@@ -3,7 +3,7 @@ const assets = require('../../common/assets');
 
 module.exports = function intro(state) {
   return html`
-  <article class="flex flex-col items-center justify-center bg-white border border-grey-light p-2">
+  <article class="flex flex-col items-center justify-center h-full bg-white border border-grey-light p-2">
     <p class="text-center">
       <div class="font-semibold">${state.translate('uploadPageHeader')}</div>
       <div class="italic">${state.translate('pageHeaderCredits')}</div>
