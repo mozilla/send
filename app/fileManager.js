@@ -158,25 +158,6 @@ export default function(state, emitter) {
         emitter.emit('password', { password, file: ownedFile });
       }
       state.modal = copyDialog(ownedFile.name, ownedFile.url);
-      state.animation = () => {
-        const x = document.querySelector('.foo');
-        const y = x.previousElementSibling;
-        x.animate(
-          [
-            { transform: `translateY(-${y.getBoundingClientRect().height}px)` },
-            { transform: 'translateY(0)' }
-          ],
-          {
-            duration: 400,
-            easing: 'ease'
-          }
-        );
-        y.animate([{ opacity: 0 }, { opacity: 1 }], {
-          delay: 300,
-          duration: 100,
-          fill: 'both'
-        });
-      };
     } catch (err) {
       if (err.message === '0') {
         //cancelled. do nothing

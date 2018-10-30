@@ -107,12 +107,21 @@ function fileInfo(file, action) {
 function archiveDetails(translate, archive) {
   if (archive.manifest.files.length > 1) {
     return html`
-    <details class="w-full">
+    <details class="w-full pb-1 overflow-y-hidden" ${
+      archive.open ? 'open' : ''
+    } ontoggle=${toggled}>
       <summary>${translate('fileCount', {
         num: archive.manifest.files.length
       })}</summary>
-      ${list(archive.manifest.files.map(f => fileInfo(f)), 'list-reset')}
+      ${list(
+        archive.manifest.files.map(f => fileInfo(f)),
+        'list-reset h-full overflow-y-scroll'
+      )}
     </details>`;
+  }
+  function toggled(event) {
+    event.stopPropagation();
+    archive.open = event.target.open;
   }
 }
 
@@ -286,9 +295,12 @@ module.exports.empty = function(state, emit) {
 
 module.exports.preview = function(state, emit) {
   const archive = state.fileInfo;
+  if (archive.open === undefined) {
+    archive.open = true;
+  }
   return html`
-  <article class="flex flex-col bg-white border border-grey-light p-2 z-20">
-    <p class="w-full mb-4">
+  <article class="flex flex-col max-h-full bg-white border border-grey-light p-2 z-20">
+    <p class="flex-none w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-base font-semibold">${archive.name}</h1>
       <div class="text-sm font-light">${bytes(archive.size)}</div>
@@ -296,7 +308,7 @@ module.exports.preview = function(state, emit) {
     ${archiveDetails(state.translate, archive)}
     <hr class="w-full border-t">
     <button
-      class="border rounded bg-blue text-white mt-2 py-2 px-6"
+      class="flex-none border rounded bg-blue text-white mt-2 py-2 px-6"
       title="${state.translate('downloadButtonLabel')}"
       onclick=${download}>
       ${state.translate('downloadButtonLabel')}

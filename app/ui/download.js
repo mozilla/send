@@ -1,6 +1,7 @@
 /* global downloadMetadata */
 const html = require('choo/html');
 const archiveTile = require('./archiveTile');
+const intro = require('./intro');
 
 function password(state, emit) {
   const fileInfo = state.fileInfo;
@@ -96,8 +97,9 @@ module.exports = function(state, emit) {
   }
   return html`
   <main class="main container">
-    <section class="relative h-full w-full my-4 px-6">
-      ${content}
+    <section class="relative h-full w-full px-6 md:flex md:flex-row">
+      <div class="pt-4 md:mr-6 md:pb-4 md:w-1/2">${content}</div>
+      <div class="pt-4 md:w-1/2">${intro(state)}</div>
     </section>
   </main>`;
 };
