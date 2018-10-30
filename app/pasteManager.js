@@ -7,6 +7,7 @@ function getString(item) {
 export default function(state, emitter) {
   window.addEventListener('paste', async event => {
     if (state.route !== '/' || state.uploading) return;
+    if (event.target.type === 'password') return;
 
     const items = Array.from(event.clipboardData.items);
     const transferFiles = items.filter(item => item.kind === 'file');
