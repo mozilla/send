@@ -233,11 +233,7 @@ export default function(state, emitter) {
       await dl;
       const time = Date.now() - start;
       const speed = size / (time / 1000);
-      if (document.querySelector('.page')) {
-        await delay(1000);
-      }
       state.storage.totalDownloads += 1;
-      state.transfer.reset();
       metrics.completedDownload({ size, time, speed });
     } catch (err) {
       if (err.message === '0') {

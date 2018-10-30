@@ -7,21 +7,21 @@ function password(state, emit) {
   const fileInfo = state.fileInfo;
   const invalid = fileInfo.password === null;
 
-  const visible = invalid ? 'visible' : 'invisible';
-  const invalidBtn = invalid ? '' : '';
-
   const div = html`
-    <div class="">
+    <div class="h-full flex flex-col items-center justify-center border border-grey-light bg-white">
       <label
-        class="${visible}"
+        id="password-error"
+        class="${invalid ? '' : 'invisible'} text-red"
         for="password-input">
         ${state.translate('passwordTryAgain')}
       </label>
 
-      <form class="" onsubmit=${checkPassword} data-no-csrf>
+      <form class="w-5/6" onsubmit=${checkPassword} data-no-csrf>
         <input id="password-input"
-          class=""
-          maxlength="64"
+          class="w-full border rounded ${
+            invalid ? 'border-red' : 'border-grey'
+          } leading-loose"
+          maxlength="32"
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"
           oninput=${inputChanged}
@@ -29,7 +29,7 @@ function password(state, emit) {
 
         <input type="submit"
           id="password-btn"
-          class="${invalidBtn}"
+          class="hidden"
           value="${state.translate('unlockInputLabel')}"/>
       </form>
     </div>`;
@@ -39,11 +39,10 @@ function password(state, emit) {
   }
 
   function inputChanged() {
-    //TODO
-    const input = document.querySelector('.passwordForm__error');
-    input.classList.remove('visible');
-    const btn = document.getElementById('password-btn');
-    btn.classList.remove('unlockBtn--error');
+    const label = document.getElementById('password-error');
+    const input = document.getElementById('password-input');
+    label.classList.add('invisible');
+    input.classList.remove('border-red');
   }
 
   function checkPassword(event) {
@@ -87,7 +86,15 @@ module.exports = function(state, emit) {
         content = archiveTile.downloading(state, emit);
         break;
       case 'complete':
-        content = ''; //TODO
+        content = html`
+        <div class="flex flex-col items-center justify-center h-full bg-white border border-grey-light p-2">
+          <h1 class="text-center">${state.translate('downloadFinish')}</h1>
+          <p class="">
+            <a href="/" class="text-blue">${state.translate(
+              'sendYourFilesLink'
+            )}</a>
+          </p>
+        </div>`;
         break;
       default:
         content = archiveTile.preview(state, emit);
@@ -99,7 +106,7 @@ module.exports = function(state, emit) {
   <main class="main container">
     <section class="relative h-full w-full px-6 md:flex md:flex-row">
       <div class="pt-4 md:mr-6 md:pb-4 md:w-1/2">${content}</div>
-      <div class="pt-4 md:w-1/2">${intro(state)}</div>
+      <div class="py-4 md:w-1/2">${intro(state)}</div>
     </section>
   </main>`;
 };
