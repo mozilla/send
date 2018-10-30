@@ -8,7 +8,7 @@ function password(state, emit) {
   const invalid = fileInfo.password === null;
 
   const div = html`
-    <div class="h-full flex flex-col items-center justify-center border border-grey-light bg-white">
+    <div class="h-full flex flex-col items-center justify-center border border-grey-light bg-white py-8">
       <label
         id="password-error"
         class="${invalid ? '' : 'invisible'} text-red"
@@ -105,7 +105,7 @@ module.exports = function(state, emit) {
   return html`
   <main class="main container">
     <section class="relative h-full w-full px-6 md:flex md:flex-row">
-      <div class="pt-4 md:mr-6 md:pb-4 md:w-1/2">${content}</div>
+      <div class="py-4 md:mr-6 md:w-1/2">${content}</div>
       <div class="py-4 md:w-1/2">${intro(state)}</div>
     </section>
   </main>`;

@@ -157,6 +157,12 @@ module.exports = function(state, emit, archive) {
   function copy(event) {
     event.stopPropagation();
     copyToClipboard(archive.url);
+    const text = event.target.lastChild;
+    text.textContent = state.translate('copiedUrl');
+    setTimeout(
+      () => (text.textContent = state.translate('copyUrlHover')),
+      1000
+    );
   }
 
   function del(event) {
