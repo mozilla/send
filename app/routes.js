@@ -32,7 +32,7 @@ function body(main) {
 
 module.exports = function() {
   const app = choo();
-  app.route('/', body(require('./ui/welcome')));
+  app.route('/', body(require('./ui/home')));
   app.route('/download/:id', body(download));
   app.route('/download/:id/:key', body(download));
   app.route('/unsupported/:reason', body(require('./ui/unsupported')));
