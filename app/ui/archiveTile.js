@@ -16,6 +16,81 @@ function expiryInfo(translate, archive) {
   );
 }
 
+function password(state) {
+  const MAX_LENGTH = 32;
+
+  return html`
+  <div class="my-2">
+    <div class="checkbox">
+      <input
+        id="add-password"
+        type="checkbox"
+        ${state.password ? 'checked' : ''}
+        autocomplete="off"
+        onchange=${togglePasswordInput}/>
+      <label for="add-password">
+        ${state.translate('addPasswordMessage')}
+      </label>
+    </div>
+    <input
+      id="password-input"
+      class="${
+        state.password ? '' : 'invisible'
+      } border rounded-sm focus:border-blue leading-normal mt-2"
+      autocomplete="off"
+      maxlength="${MAX_LENGTH}"
+      type="password"
+      oninput=${inputChanged}
+      onfocus=${focused}
+      placeholder="${state.translate('unlockInputPlaceholder')}"
+      value="${state.password || ''}"
+    >
+    <label
+      id="password-msg"
+      for="password-input"
+      class="block text-xs text-grey-darker mt-1"></label>
+  </div>`;
+
+  function togglePasswordInput(event) {
+    event.stopPropagation();
+    const checked = event.target.checked;
+    const input = document.getElementById('password-input');
+    if (checked) {
+      input.classList.remove('invisible');
+      input.focus();
+    } else {
+      input.classList.add('invisible');
+      input.value = '';
+      document.getElementById('password-msg').textContent = '';
+      state.password = null;
+    }
+  }
+
+  function inputChanged() {
+    const passwordInput = document.getElementById('password-input');
+    const pwdmsg = document.getElementById('password-msg');
+    const password = passwordInput.value;
+    const length = password.length;
+
+    if (length === MAX_LENGTH) {
+      pwdmsg.textContent = state.translate('maxPasswordLength', {
+        length: MAX_LENGTH
+      });
+    } else {
+      pwdmsg.textContent = '';
+    }
+    state.password = password;
+  }
+
+  function focused(event) {
+    event.preventDefault();
+    const el = document.getElementById('password-input');
+    if (el.placeholder !== state.translate('unlockInputPlaceholder')) {
+      el.placeholder = '';
+    }
+  }
+}
+
 function fileInfo(file, action) {
   return html`
     <article class="flex flex-row items-start p-3">
@@ -104,6 +179,7 @@ module.exports.wip = function(state, emit) {
       </label>
     </div>
     ${expiryOptions(state, emit)}
+    ${password(state, emit)}
     <button
       class="flex-none border rounded bg-blue text-white mt-2 py-2 px-6"
       title="${state.translate('uploadFilesButton')}"

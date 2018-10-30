@@ -95,7 +95,7 @@ module.exports = function(state, emit) {
     content = password(state, emit);
   }
   return html`
-  <main class="main">
+  <main class="main container">
     <section class="relative h-full w-full my-4 px-6">
       ${content}
     </section>

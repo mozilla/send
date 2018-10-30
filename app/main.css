@@ -67,6 +67,63 @@ progress::-webkit-progress-value {
   box-shadow: 0 0 5rem 5rem white;
 }
 
+.checkbox {
+  @apply leading-normal;
+  @apply select-none;
+}
+
+.checkbox > input[type='checkbox'] {
+  @apply absolute;
+  @apply opacity-0;
+}
+
+.checkbox > label {
+  @apply cursor-pointer;
+}
+
+.checkbox > label::before {
+  @apply bg-blue-lightest;
+  @apply border;
+  @apply rounded-sm;
+
+  content: '';
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.5rem;
+  float: left;
+}
+
+.checkbox > label:hover::before {
+  @apply border-blue;
+}
+
+.checkbox > input:focus + label::before {
+  @apply border-blue;
+}
+
+.checkbox > input:checked + label::before {
+  background-image: url('../assets/lock.svg');
+  background-position: center;
+  background-size: 1.25rem;
+  background-repeat: no-repeat;
+}
+
+.checkbox > input:disabled + label {
+  cursor: auto;
+}
+
+.checkbox > input:disabled + label::before {
+  background-image: url('../assets/lock.svg');
+  background-position: center;
+  background-size: 1.25rem;
+  background-repeat: no-repeat;
+  cursor: auto;
+}
+
+#password-msg::after {
+  content: '\200b';
+}
+
 @screen md {
   .main {
     @apply flex-1;

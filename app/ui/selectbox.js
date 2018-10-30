@@ -4,7 +4,7 @@ module.exports = function(selected, options, translate, changed) {
   let x = selected;
 
   return html`
-    <select class="appearance-none cursor-pointer border rounded-sm bg-blue-lightest p-1" onchange=${choose}>
+    <select class="appearance-none cursor-pointer border rounded-sm bg-blue-lightest hover:border-blue focus:border-blue p-1" onchange=${choose}>
       ${options.map(
         i =>
           html`<option value="${i}" ${
