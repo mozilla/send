@@ -1,13 +1,13 @@
-/* global browser document */
+/* global browser */
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 
 const DownloadPage = require('./pages/desktop/download_page');
 const HomePage = require('./pages/desktop/home_page');
-const SharePage = require('./pages/desktop/share_page');
 
 describe('Firefox Send', function() {
+  const homePage = new HomePage();
   const downloadDir =
     browser.desiredCapabilities['moz:firefoxOptions']['prefs'][
       'browser.download.dir'
@@ -16,35 +16,21 @@ describe('Firefox Send', function() {
   const testFiles = fs.readdirSync(testFilesPath);
 
   beforeEach(function() {
-    browser.url('/');
-    browser.execute(() => {
-      document.getElementById('file-upload').style.display = 'block';
-    });
-    browser.waitForExist('#file-upload');
+    homePage.open();
   });
 
   testFiles.forEach(file => {
     it(`should upload and download files, file: ${file}`, function() {
-      browser.execute(() => {
-        document.getElementById('file-upload').style.display = 'block';
-      });
-      browser.waitForExist('#file-upload');
-      const homePage = new HomePage();
-      browser.chooseFile('#file-upload', `${testFilesPath}/${file}`);
-      browser.click(homePage.readyToSend);
-      const sharePage = new SharePage();
-      browser.waitForExist(sharePage.fileUrl);
-      browser.url(browser.getValue(sharePage.fileUrl));
-      const downloadPage = new DownloadPage();
-      downloadPage.waitForPageToLoad();
-      downloadPage.downloadBtn();
-      // Wait for download to complete
-      browser.waitUntil(() => {
-        browser.waitForExist(downloadPage.downloadComplete);
-        return (
-          browser.getText(downloadPage.downloadComplete) === 'DOWNLOAD COMPLETE'
-        );
-      });
+      browser.chooseFile(homePage.uploadInput, `${testFilesPath}/${file}`);
+      browser.waitForExist(homePage.uploadButton);
+      browser.click(homePage.uploadButton);
+      browser.waitForExist(homePage.shareUrl);
+      const downloadPage = new DownloadPage(
+        browser.getValue(homePage.shareUrl)
+      );
+      downloadPage.open();
+      downloadPage.download();
+      browser.waitForExist(downloadPage.downloadComplete);
       assert.ok(fs.existsSync(path.join(downloadDir, file)));
     });
   });

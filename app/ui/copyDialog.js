@@ -10,7 +10,7 @@ module.exports = function(name, url) {
         'copyUrlFormLabelWithName',
         { filename: name }
       )}</p>
-      <input type="text" class="w-full my-4 border rounded leading-loose" value=${url} readonly="true"/>
+      <input type="text" id="share-url" class="w-full my-4 border rounded leading-loose" value=${url} readonly="true"/>
       <button class="border rounded bg-blue text-white leading-loose w-full" onclick=${copy}>
         ${state.translate('copyUrlFormButton')}
       </button>

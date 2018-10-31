@@ -196,6 +196,7 @@ module.exports.wip = function(state, emit) {
     ${expiryOptions(state, emit)}
     ${password(state, emit)}
     <button
+      id="upload-btn"
       class="flex-none border rounded bg-blue text-white mt-2 py-2 px-6"
       title="${state.translate('uploadFilesButton')}"
       onclick=${upload}>
@@ -314,6 +315,7 @@ module.exports.preview = function(state, emit) {
     ${archiveDetails(state.translate, archive)}
     <hr class="w-full border-t">
     <button
+      id="download-btn"
       class="flex-none border rounded bg-blue text-white mt-2 py-2 px-6"
       title="${state.translate('downloadButtonLabel')}"
       onclick=${download}>

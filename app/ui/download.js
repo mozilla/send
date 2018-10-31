@@ -87,7 +87,7 @@ module.exports = function(state, emit) {
         break;
       case 'complete':
         content = html`
-        <div class="flex flex-col items-center justify-center h-full bg-white border border-grey-light p-2">
+        <div id="download-complete" class="flex flex-col items-center justify-center h-full bg-white border border-grey-light p-2">
           <h1 class="text-center">${state.translate('downloadFinish')}</h1>
           <p class="">
             <a href="/" class="text-blue">${state.translate(

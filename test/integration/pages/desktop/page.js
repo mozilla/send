@@ -1,9 +1,11 @@
 /* global browser */
 class Page {
-  constructor() {}
+  constructor(path) {
+    this.path = path;
+  }
 
-  open(path) {
-    browser.url(path);
+  open() {
+    browser.url(this.path);
     this.waitForPageToLoad();
   }
 
@@ -12,6 +14,8 @@ class Page {
    * @returns {Object} An object representing the page.
    * @throws ElementNotFound
    */
-  waitForPageToLoad() {}
+  waitForPageToLoad() {
+    return this;
+  }
 }
 module.exports = Page;
