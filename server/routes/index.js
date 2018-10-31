@@ -67,8 +67,6 @@ module.exports = function(app) {
   });
   app.use(express.json());
   app.get('/', language, pages.index);
-  app.get('/signin', language, pages.blank);
-  app.get('/uploads', language, pages.blank);
   app.get('/oauth', language, pages.blank);
   app.get('/legal', language, pages.legal);
   app.get('/jsconfig.js', require('./jsconfig'));

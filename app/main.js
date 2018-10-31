@@ -35,14 +35,6 @@ import User from './user';
     window.appEmit = emitter.emit.bind(emitter);
     let unsupportedReason = null;
 
-    emitter.on('render', () => {
-      if (state.animation) {
-        window.requestAnimationFrame(() => {
-          state.animation();
-          state.animation = null;
-        });
-      }
-    });
     if (
       // Firefox < 50
       /firefox/i.test(navigator.userAgent) &&
