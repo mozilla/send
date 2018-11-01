@@ -21,14 +21,14 @@ module.exports = function(state, emit) {
     archives.push(intro(state));
   }
   return html`
-  <main class="main container relative">
+  <main class="main relative">
     ${state.modal && modal(state, emit)}
     <section class="h-full w-full px-6 md:flex md:flex-row">
-      <div class="pt-4 md:pb-4 md:mr-6 md:w-1/2">${wip}</div>
+      <div class="pt-6 md:pb-6 md:mr-6 md:w-1/2">${wip}</div>
       ${list(
         archives,
-        'list-reset h-full md:w-1/2 overflow-y-scroll pt-2',
-        'py-2'
+        'list-reset md:w-1/2 overflow-y-scroll pt-6 md:pb-6',
+        'h-full'
       )}
     </section>
   </main>`;
