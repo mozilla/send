@@ -59,14 +59,6 @@ progress::-webkit-progress-value {
   white-space: nowrap;
 }
 
-.bg-shades {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.border-modal {
-  box-shadow: 0 0 5rem 5rem white;
-}
-
 .checkbox {
   @apply leading-normal;
   @apply select-none;
