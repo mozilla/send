@@ -9,7 +9,14 @@ function getPrefix(seconds) {
 
 class DB {
   constructor(config) {
-    const Storage = config.s3_bucket ? require('./s3') : require('./fs');
+    let Storage = null;
+    if (config.s3_bucket) {
+      Storage = require('./s3');
+    } else if (config.gcs_bucket) {
+      Storage = require('./gcs');
+    } else {
+      Storage = require('./fs');
+    }
     this.log = mozlog('send.storage');
 
     this.storage = new Storage(config, this.log);

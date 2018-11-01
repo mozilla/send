@@ -9,6 +9,11 @@ const conf = convict({
     default: '',
     env: 'S3_BUCKET'
   },
+  gcs_bucket: {
+    format: String,
+    default: '',
+    env: 'GCS_BUCKET'
+  },
   expire_times_seconds: {
     format: Array,
     default: [300, 3600, 86400, 604800],
