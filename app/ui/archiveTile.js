@@ -174,7 +174,7 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-  <article class="h-full flex flex-col bg-white z-20">
+  <article class="flex flex-col bg-white z-20 md:h-full">
     ${list(
       state.archive.files.map(f => fileInfo(f, remove(f))),
       'list-reset h-full overflow-y-scroll p-4 bg-blue-lightest md:max-h-half-screen',
@@ -280,7 +280,7 @@ module.exports.uploading = function(state, emit) {
 
 module.exports.empty = function(state, emit) {
   return html`
-  <article class="flex flex-col items-center justify-center border border-dashed border-blue-light px-6 py-16 h-full">
+  <article class="flex flex-col items-center justify-center border border-dashed border-blue-light px-6 py-16 md:h-full">
     <img src="${assets.get('addfiles.svg')}" width="48" height="48"/>
     <div class="pt-6 pb-2 text-center text-lg font-bold uppercase tracking-wide">${state.translate(
       'uploadDropDragMessage'

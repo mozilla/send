@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const VersionPlugin = require('./build/version_plugin');
+const AndroidIndexPlugin = require('./build/android_index_plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const webJsOptions = {
@@ -182,11 +183,6 @@ const web = {
       {
         context: 'public',
         from: '*.*'
-      },
-      {
-        context: 'android/app/src/main/assets',
-        from: '*.*',
-        to: 'android_asset'
       }
     ]),
     new webpack.IgnorePlugin(/\.\.\/dist/), // used in common/*.js
@@ -196,6 +192,7 @@ const web = {
       filename: '[name].[hash:8].css'
     }),
     new VersionPlugin(),
+    new AndroidIndexPlugin(),
     new ManifestPlugin() // used by server side to resolve hashed assets
   ],
   devtool: 'source-map',

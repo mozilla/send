@@ -1,5 +1,3 @@
-const fs = require('fs');
-const path = require('path');
 const assets = require('../../common/assets');
 const locales = require('../../common/locales');
 const routes = require('../routes');
@@ -12,21 +10,6 @@ const config = require('../config');
 
 const ID_REGEX = '([0-9a-fA-F]{10})';
 
-const androidIndex = fs.readFileSync(
-  path.resolve(__dirname, '../../android/app/src/main/assets/index.html'),
-  'utf8'
-);
-
-function android(req, res) {
-  res.set('Content-Type', 'text/html');
-  res.send(
-    androidIndex
-      .replace('index.css', '/android_asset/index.css')
-      .replace('vendor.js', assets.get('vendor.js'))
-      .replace('android.js', assets.get('android.js'))
-  );
-}
-
 module.exports = function(app, devServer) {
   const wsapp = express();
   expressWs(wsapp, null, { perMessageDeflate: false });
@@ -36,6 +19,13 @@ module.exports = function(app, devServer) {
   assets.setMiddleware(devServer.middleware);
   locales.setMiddleware(devServer.middleware);
   app.use(morgan('dev', { stream: process.stderr }));
+  function android(req, res) {
+    const index = devServer.middleware.fileSystem.readFileSync(
+      devServer.middleware.getFilenameFromUrl('/index.html')
+    );
+    res.set('Content-Type', 'text/html');
+    res.send(index);
+  }
   if (process.env.ANDROID) {
     // map all html routes to the android index.html
     app.get('/', android);

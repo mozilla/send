@@ -6,8 +6,7 @@ dist
 .nyc_output
 .tox
 .pytest_cache
-android/app/src/main/assets/vendor.js
-android/app/src/main/assets/android.js
+android/app/src/main/assets
 ios/send-ios/assets/ios.js
 ios/send-ios/assets/vendor.js
 ios/send-ios.xcodeproj/project.xcworkspace/xcuserdata/*
