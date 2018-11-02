@@ -109,16 +109,13 @@ function fileInfo(file, action) {
 function archiveDetails(translate, archive) {
   if (archive.manifest.files.length > 1) {
     return html`
-    <details class="w-full pb-1 overflow-y-hidden" ${
+    <details class="w-full pb-1 overflow-y-scroll" ${
       archive.open ? 'open' : ''
     } ontoggle=${toggled}>
       <summary>${translate('fileCount', {
         num: archive.manifest.files.length
       })}</summary>
-      ${list(
-        archive.manifest.files.map(f => fileInfo(f)),
-        'list-reset h-full overflow-y-scroll'
-      )}
+      ${list(archive.manifest.files.map(f => fileInfo(f)), 'list-reset h-full')}
     </details>`;
   }
   function toggled(event) {
@@ -180,7 +177,7 @@ module.exports.wip = function(state, emit) {
   <article class="h-full flex flex-col bg-white z-20">
     ${list(
       state.archive.files.map(f => fileInfo(f, remove(f))),
-      'list-reset h-full overflow-y-scroll p-4 bg-blue-lightest max-h-half',
+      'list-reset h-full overflow-y-scroll p-4 bg-blue-lightest md:max-h-half-screen',
       'bg-white px-2 mb-3 border border-grey-light rounded'
     )}
     <div class="flex-grow p-4 bg-blue-lightest mb-6 font-medium">
@@ -319,7 +316,7 @@ module.exports.preview = function(state, emit) {
     archive.open = true;
   }
   return html`
-    <article class="flex flex-col bg-white border border-grey-light p-4 z-20">
+    <article class="flex flex-col max-h-full bg-white border border-grey-light p-4 z-20">
       <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium">${archive.name}</h1>
