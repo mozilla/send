@@ -9,6 +9,11 @@ const conf = convict({
     default: '',
     env: 'S3_BUCKET'
   },
+  gcs_bucket: {
+    format: String,
+    default: '',
+    env: 'GCS_BUCKET'
+  },
   redis_host: {
     format: String,
     default: 'localhost',

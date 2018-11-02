@@ -114,7 +114,8 @@
     "webpack-unassert-loader": "^1.2.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.329.0",
+    "@google-cloud/storage": "^2.0.3",
+    "aws-sdk": "^2.328.0",
     "babel-polyfill": "^6.26.0",
     "choo": "^6.13.0",
     "cldr-core": "^32.0.0",
@@ -122,6 +123,7 @@
     "convict": "^4.4.0",
     "express": "^4.16.3",
     "fluent": "^0.6.4",
+    "fast-crc32c": "^1.0.4",
     "fluent-langneg": "^0.1.0",
     "helmet": "^3.13.0",
     "mkdirp": "^0.5.1",
