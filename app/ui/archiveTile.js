@@ -21,7 +21,7 @@ function password(state) {
 
   return html`
   <div class="my-2">
-    <div class="checkbox">
+    <div class="checkbox inline-block mr-3">
       <input
         id="add-password"
         type="checkbox"
@@ -36,7 +36,7 @@ function password(state) {
       id="password-input"
       class="${
         state.password ? '' : 'invisible'
-      } border rounded-sm focus:border-blue leading-normal mt-2"
+      } border rounded-sm focus:border-blue leading-normal mt-2 py-1 px-2 h-8"
       autocomplete="off"
       maxlength="${MAX_LENGTH}"
       type="password"
@@ -93,11 +93,13 @@ function password(state) {
 
 function fileInfo(file, action) {
   return html`
-    <article class="flex flex-row items-start p-3">
+    <article class="flex flex-row items-center p-3">
       <img class="" src="${assets.get('blue_file.svg')}"/>
-      <p class="ml-3 w-full">
-        <h1 class="text-base font-semibold">${file.name}</h1>
-        <div class="text-sm font-light">${bytes(file.size)}</div>
+      <p class="ml-4 w-full">
+        <h1 class="text-sm font-medium">${file.name}</h1>
+        <div class="text-xs font-normal opacity-75 pt-1">${bytes(
+          file.size
+        )}</div>
         <div class="hidden">${file.type}</div>
       </p>
       ${action}
@@ -120,7 +122,7 @@ module.exports = function(state, emit, archive) {
   return html`
   <article
     id="${archive.id}"
-    class="flex flex-col items-start border border-grey-light bg-white p-3">
+    class="flex flex-col items-start border border-grey-light bg-white p-4 mb-3">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <input
@@ -129,18 +131,20 @@ module.exports = function(state, emit, archive) {
         alt="Delete"
         src="${assets.get('close-16.svg')}"
         onclick=${del}/>
-      <h1 class="text-base font-semibold">${archive.name}</h1>
-      <div class="text-sm font-light">${bytes(archive.size)}</div>
+      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <div class="text-xs font-normal opacity-75 pt-1">${bytes(
+        archive.size
+      )}</div>
     </p>
     <div class="text-xs text-grey-dark w-full mt-2 mb-2">
       ${expiryInfo(state.translate, archive)}
     </div>
     ${archiveDetails(state.translate, archive)}
-    <hr class="w-full border-t">
+    <hr class="w-full border-t my-4">
     <button
-      class="text-blue self-end"
+      class="text-blue self-end font-medium flex items-center"
       onclick=${copy}>
-      <img src="${assets.get('copy-16.svg')}" class="mr-1"/>
+      <img src="${assets.get('copy-16.svg')}" class="mr-2"/>
       ${state.translate('copyUrlHover')}
     </button>
   </article>`;
@@ -158,12 +162,13 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-  <article class="h-full flex flex-col bg-white border border-grey-light p-2 z-20">
+  <article class="h-full flex flex-col bg-white z-20">
     ${list(
       state.archive.files.map(f => fileInfo(f, remove(f))),
-      'list-reset h-full overflow-y-scroll'
+      'list-reset h-full overflow-y-scroll p-6 bg-blue-lightest max-h-half',
+      'bg-white px-2 mb-3 border border-grey-light rounded'
     )}
-    <div class="flex-grow border border-dashed border-blue-light mb-2">
+    <div class="flex-grow px-6 py-3 bg-blue-lightest mb-6 font-medium">
       <input
         id="file-upload"
         class="hidden"
@@ -172,7 +177,7 @@ module.exports.wip = function(state, emit) {
         onchange=${add} />
       <label
         for="file-upload"
-        class="flex flex-row items-center w-full h-full text-blue p-2"
+        class="flex flex-row items-center w-full h-full p-2 cursor-pointer"
         title="${state.translate('addFilesButton')}">
           <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2"/>
           ${state.translate('addFilesButton')}
@@ -181,10 +186,10 @@ module.exports.wip = function(state, emit) {
     ${expiryOptions(state, emit)}
     ${password(state, emit)}
     <button
-      class="flex-none border rounded bg-blue text-white mt-2 py-2 px-6"
-      title="${state.translate('uploadFilesButton')}"
+      class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 mt-4 flex flex-no-shrink items-center justify-center font-semibold"
+      title="${state.translate('uploadSuccessConfirmHeader')}"
       onclick=${upload}>
-      ${state.translate('uploadFilesButton')}
+      ${state.translate('uploadSuccessConfirmHeader')}
     </button>
   </article>`;
 
@@ -211,7 +216,7 @@ module.exports.wip = function(state, emit) {
     return html`
     <input
       type="image"
-      class="self-center text-white"
+      class="self-center text-white ml-4"
       alt="Delete"
       src="${assets.get('close-16.svg')}"
       onclick=${del}/>`;
@@ -232,8 +237,10 @@ module.exports.uploading = function(state, emit) {
     class="z-20 flex flex-col items-start border border-grey-light bg-white p-3">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-base font-semibold">${archive.name}</h1>
-      <div class="text-sm font-light">${bytes(archive.size)}</div>
+      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <div class="text-xs font-normal opacity-75 pt-1">${bytes(
+        archive.size
+      )}</div>
     </p>
     <div class="text-xs text-grey-dark w-full mt-2 mb-2">
       ${expiryInfo(state.translate, {
@@ -260,12 +267,12 @@ module.exports.uploading = function(state, emit) {
 
 module.exports.empty = function(state, emit) {
   return html`
-  <article class="flex flex-col items-center justify-center border border-dashed border-blue-light p-16 h-full">
+  <article class="flex flex-col items-center justify-center border border-dashed border-blue-light px-6 py-16 h-full">
     <img src="${assets.get('addfiles.svg')}" width="48" height="48"/>
-    <div class="pt-6 pb-2 text-lg font-bold uppercase tracking-wide">${state.translate(
+    <div class="pt-6 pb-2 text-center text-lg font-bold uppercase tracking-wide">${state.translate(
       'uploadDropDragMessage'
     )}</div>
-    <div class="pb-6 text-base italic">${state.translate(
+    <div class="pb-6 text-center text-base italic">${state.translate(
       'uploadDropClickMessage'
     )}</div>
     <input
@@ -276,9 +283,9 @@ module.exports.empty = function(state, emit) {
       onchange=${add} />
     <label
       for="file-upload"
-      class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-white py-2 px-6 h-12 mt-4 flex items-center justify-center font-semibold"
-      title="${state.translate('addFilesButton')}">
-        ${state.translate('addFilesButton')}
+      class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 mt-4 flex flex-no-shrink items-center justify-center font-semibold"
+      title="${state.translate('uploadPageBrowseButton2')}">
+        ${state.translate('uploadPageBrowseButton2')}
     </label>
   </article>`;
 
@@ -296,8 +303,10 @@ module.exports.preview = function(state, emit) {
   <article class="flex flex-col bg-white border border-grey-light p-2 z-20">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-base font-semibold">${archive.name}</h1>
-      <div class="text-sm font-light">${bytes(archive.size)}</div>
+      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <div class="text-xs font-normal opacity-75 pt-1">${bytes(
+        archive.size
+      )}</div>
     </p>
     ${archiveDetails(state.translate, archive)}
     <hr class="w-full border-t">
@@ -324,8 +333,10 @@ module.exports.downloading = function(state, emit) {
   <article class="flex flex-col bg-white border border-grey-light p-2 z-20">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-base font-semibold">${archive.name}</h1>
-      <div class="text-sm font-light">${bytes(archive.size)}</div>
+      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <div class="text-xs font-normal opacity-75 pt-1">${bytes(
+        archive.size
+      )}</div>
     </p>
     <div class="text-blue text-sm font-medium">${progressPercent}</div>
     <progress class="" value="${progress}">${progressPercent}</progress>

@@ -23,12 +23,12 @@ module.exports = function(state, emit) {
   return html`
   <main class="main relative">
     ${state.modal && modal(state, emit)}
-    <section class="h-full w-full px-6 md:flex md:flex-row">
-      <div class="pt-6 md:pb-6 md:mr-6 md:w-1/2">${wip}</div>
+    <section class="h-full w-full p-6 md:flex md:flex-row">
+      <div class="md:mr-6 md:w-1/2">${wip}</div>
       ${list(
         archives,
-        'list-reset md:w-1/2 overflow-y-scroll pt-6 md:pb-6',
-        'h-full'
+        'list-reset md:w-1/2 overflow-y-scroll mt-6 md:mt-0',
+        ''
       )}
     </section>
   </main>`;

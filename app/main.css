@@ -37,6 +37,11 @@ progress::-webkit-progress-value {
   width: 100%;
 }
 
+.main > section {
+  @apply bg-white;
+  @apply shadow;
+}
+
 .header-logo {
   background-image: url('../assets/send_logo.svg');
   background-position: left;
@@ -143,6 +148,10 @@ progress::-webkit-progress-value {
   content: '\200b';
 }
 
+.max-h-half {
+  max-height: 50vh;
+}
+
 @screen md {
   .main {
     @apply flex-1;
@@ -155,7 +164,6 @@ progress::-webkit-progress-value {
   }
 
   .main > section {
-    @apply bg-white;
     @apply shadow-md;
 
     max-height: 40rem;

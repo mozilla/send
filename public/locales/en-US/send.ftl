@@ -9,6 +9,7 @@ uploadPageDropMessage = Drop your file here to start uploading
 uploadPageSizeMessage = For the most reliable operation, it’s best to keep your file under 1GB
 uploadPageBrowseButton = Select a file on your computer
 uploadPageBrowseButton1 = Select a file to upload
+uploadPageBrowseButton2 = Select file(s) to upload
 uploadPageMultipleFilesAlert = Uploading multiple files or a folder is currently not supported.
 uploadPageBrowseButtonTitle = Upload file
 uploadingPageProgress = Uploading { $filename } ({ $size })
@@ -147,7 +148,7 @@ maxPasswordLength = Maximum password length: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = This password could not be set
 pageHeaderCredits = from the makers of Firefox
-addFilesButton = Select file(s) to upload
+addFilesButton = Add more files
 uploadFilesButton = Send
 uploadFileProgress = Sending
 uploadDropDragMessage = Drop files here
