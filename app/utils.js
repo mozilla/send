@@ -1,3 +1,4 @@
+const html = require('choo/html');
 const b64 = require('base64-js');
 
 function arrayToB64(array) {
@@ -182,6 +183,48 @@ async function streamToArrayBuffer(stream, size) {
   return result.buffer;
 }
 
+function list(items, ulStyle = '', liStyle = '') {
+  const lis = items.map(i => html`<li class="${liStyle}">${i}</li>`);
+  return html`<ul class="${ulStyle}">${lis}</ul>`;
+}
+
+function secondsToL10nId(seconds) {
+  if (seconds < 3600) {
+    return { id: 'timespanMinutes', num: Math.floor(seconds / 60) };
+  } else if (seconds < 86400) {
+    return { id: 'timespanHours', num: Math.floor(seconds / 3600) };
+  } else {
+    return { id: 'timespanDays', num: Math.floor(seconds / 86400) };
+  }
+}
+
+function timeLeft(milliseconds) {
+  const minutes = Math.floor(milliseconds / 1000 / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  if (days >= 1) {
+    return {
+      id: 'expiresDaysHoursMinutes',
+      days,
+      hours: hours % 24,
+      minutes: minutes % 60
+    };
+  }
+  if (hours >= 1) {
+    return {
+      id: 'expiresHoursMinutes',
+      hours,
+      minutes: minutes % 60
+    };
+  } else if (hours === 0) {
+    if (minutes === 0) {
+      return { id: 'expiresMinutes', minutes: '< 1' };
+    }
+    return { id: 'expiresMinutes', minutes };
+  }
+  return null;
+}
+
 module.exports = {
   fadeOut,
   delay,
@@ -196,5 +239,8 @@ module.exports = {
   isFile,
   openLinksInNewTab,
   browserName,
-  streamToArrayBuffer
+  streamToArrayBuffer,
+  list,
+  secondsToL10nId,
+  timeLeft
 };

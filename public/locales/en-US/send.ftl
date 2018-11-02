@@ -40,6 +40,10 @@ timespanMinutes = { $num ->
         [one] 1 minute
        *[other] { $num } minutes
     }
+timespanDays = { $num ->
+        [one] 1 day
+       *[other] { $num } days
+    }
 timespanWeeks = { $num ->
         [one] 1 week
        *[other] { $num } weeks
@@ -152,8 +156,8 @@ addPasswordMessage = Protect with password
 addPasswordLabel = Password:
 copyUrlLabel = Copy and share this link:
 passwordReminder = don't forget the password too
-signInPromoText = Sign In/Up!
-signInExplanation = It's free and gives you many more Send options
+signInPromoText = Sign In/Up
+signInExplanation = It's free and you can send bigger files.
 signInLearnMore = Learn more!
 downloadProgressButton = Downloading... { $progress }
 downloadMessage2 = Firefox Send lets you share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
@@ -170,3 +174,4 @@ accountBenefitSync = Manage your uploads across devices
 manageAccount = Manage Account
 logOut = Sign Out
 okButton = Ok
+myUploads = My Uploads

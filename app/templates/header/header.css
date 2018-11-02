@@ -1,9 +1,0 @@
-.header {
-  align-items: flex-start;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  height: 32px;
-  padding: 10px;
-  width: 100%;
-}

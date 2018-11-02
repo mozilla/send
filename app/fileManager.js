@@ -5,7 +5,8 @@ import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
 import * as metrics from './metrics';
 import Archive from './archive';
 import { bytes } from './utils';
-import okDialog from './templates/okDialog';
+import okDialog from './ui/okDialog';
+import copyDialog from './ui/copyDialog';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -66,8 +67,11 @@ export default function(state, emitter) {
     metrics.changedDownloadLimit(file);
   });
 
-  emitter.on('removeUpload', async ({ index }) => {
-    state.archive.remove(index);
+  emitter.on('removeUpload', file => {
+    state.archive.remove(file);
+    if (state.archive.numFiles === 0) {
+      state.archive = null;
+    }
     render();
   });
 
@@ -86,6 +90,7 @@ export default function(state, emitter) {
     } catch (e) {
       state.raven.captureException(e);
     }
+    render();
   });
 
   emitter.on('cancel', () => {
@@ -104,6 +109,9 @@ export default function(state, emitter) {
           count: LIMITS.MAX_FILES_PER_ARCHIVE
         })
       );
+      if (state.archive.numFiles === 0) {
+        state.archive = null;
+      }
     }
     render();
   });
@@ -149,15 +157,7 @@ export default function(state, emitter) {
       if (password) {
         emitter.emit('password', { password, file: ownedFile });
       }
-
-      const cancelBtn = document.getElementById('cancel-upload');
-      if (cancelBtn) {
-        cancelBtn.hidden = 'hidden';
-      }
-      if (document.querySelector('.page')) {
-        await delay(1000);
-      }
-      emitter.emit('pushState', `/share/${ownedFile.id}`);
+      state.modal = copyDialog(ownedFile.name, ownedFile.url);
     } catch (err) {
       if (err.message === '0') {
         //cancelled. do nothing
@@ -176,6 +176,7 @@ export default function(state, emitter) {
       state.password = '';
       state.uploading = false;
       state.transfer = null;
+      render();
     }
   });
 
@@ -232,11 +233,7 @@ export default function(state, emitter) {
       await dl;
       const time = Date.now() - start;
       const speed = size / (time / 1000);
-      if (document.querySelector('.page')) {
-        await delay(1000);
-      }
       state.storage.totalDownloads += 1;
-      state.transfer.reset();
       metrics.completedDownload({ size, time, speed });
     } catch (err) {
       if (err.message === '0') {

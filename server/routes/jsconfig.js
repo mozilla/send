@@ -31,9 +31,13 @@ if (config.analytics_id) {
 module.exports = async function(req, res) {
   let authConfig = '';
   if (config.fxa_client_id) {
-    const fxaConfig = await getFxaConfig();
-    fxaConfig.client_id = config.fxa_client_id;
-    authConfig = `var AUTH_CONFIG = ${JSON.stringify(fxaConfig)};`;
+    try {
+      const fxaConfig = await getFxaConfig();
+      fxaConfig.client_id = config.fxa_client_id;
+      authConfig = `var AUTH_CONFIG = ${JSON.stringify(fxaConfig)};`;
+    } catch (e) {
+      // continue without accounts
+    }
   }
   /* eslint-disable no-useless-escape */
   const jsconfig = `

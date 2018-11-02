@@ -67,13 +67,10 @@ module.exports = function(app) {
   });
   app.use(express.json());
   app.get('/', language, pages.index);
-  app.get('/signin', pages.blank);
-  app.get('/oauth', pages.blank);
+  app.get('/oauth', language, pages.blank);
   app.get('/legal', language, pages.legal);
   app.get('/jsconfig.js', require('./jsconfig'));
-  app.get(`/share/:id${ID_REGEX}`, language, pages.blank);
   app.get(`/download/:id${ID_REGEX}`, language, pages.download);
-  app.get('/completed', language, pages.blank);
   app.get('/unsupported/:reason', language, pages.unsupported);
   app.get(`/api/download/:id${ID_REGEX}`, auth.hmac, require('./download'));
   app.get(

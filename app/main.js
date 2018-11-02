@@ -34,6 +34,7 @@ import User from './user';
     window.appState = state;
     window.appEmit = emitter.emit.bind(emitter);
     let unsupportedReason = null;
+
     if (
       // Firefox < 50
       /firefox/i.test(navigator.userAgent) &&

@@ -2,10 +2,10 @@
 const Page = require('./page');
 
 class DownloadPage extends Page {
-  constructor() {
-    super();
-    this.downloadBtnLocator = '.btn--download';
-    this.downloadCompletedLocator = '.btn--complete';
+  constructor(path) {
+    super(path);
+    this.downloadButton = '#download-btn';
+    this.downloadComplete = '#download-complete';
   }
 
   /**
@@ -14,21 +14,12 @@ class DownloadPage extends Page {
    * @throws ElementNotFound
    */
   waitForPageToLoad() {
-    browser.waitUntil(() => {
-      browser.waitForExist(this.downloadBtnLocator);
-      const el = browser.element(this.downloadBtnLocator);
-      return browser.elementIdDisplayed(el.value.ELEMENT);
-    });
+    browser.waitForExist(this.downloadButton);
     return this;
   }
 
-  downloadBtn() {
-    this.waitForPageToLoad();
-    return browser.click(this.downloadBtnLocator);
-  }
-
-  get downloadComplete() {
-    return this.downloadCompletedLocator;
+  download() {
+    return browser.click(this.downloadButton);
   }
 }
 module.exports = DownloadPage;

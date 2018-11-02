@@ -1,25 +1,158 @@
-@import './base.css';
-@import './pages/share/share.css';
-@import './pages/signin/signin.css';
-@import './pages/unsupported/unsupported.css';
-@import './pages/welcome/welcome.css';
-@import './templates/downloadButton/downloadButton.css';
-@import './templates/downloadPassword/downloadPassword.css';
-@import './templates/file/file.css';
-@import './templates/fileIcon/fileIcon.css';
-@import './templates/fileList/fileList.css';
-@import './templates/footer/footer.css';
-@import './templates/fxPromo/fxPromo.css';
-@import './templates/header/header.css';
-@import './templates/modal/modal.css';
-@import './templates/okDialog/okDialog.css';
-@import './templates/passwordInput/passwordInput.css';
-@import './templates/popup/popup.css';
-@import './templates/selectbox/selectbox.css';
-@import './templates/setPasswordSection/setPasswordSection.css';
-@import './templates/signupDialog/signupDialog.css';
-@import './templates/signupPromo/signupPromo.css';
-@import './templates/title/title.css';
-@import './templates/uploadedFile/uploadedFile.css';
-@import './templates/uploadedFileList/uploadedFileList.css';
-@import './templates/userAccount/userAccount.css';
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+progress {
+  @apply bg-grey-light;
+  @apply rounded-sm;
+  @apply w-full;
+  @apply h-1;
+}
+
+progress::-moz-progress-bar {
+  @apply bg-blue;
+  @apply rounded-sm;
+}
+
+progress::-webkit-progress-bar {
+  @apply bg-grey-light;
+  @apply rounded-sm;
+  @apply w-full;
+  @apply h-1;
+}
+
+progress::-webkit-progress-value {
+  @apply bg-blue;
+  @apply rounded-sm;
+}
+
+.main {
+  display: flex;
+  max-width: 64rem;
+  width: 100%;
+}
+
+.main > section {
+  @apply bg-white;
+  @apply shadow;
+}
+
+.header-logo {
+  background-image: url('../assets/send_logo.svg');
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 1.8rem;
+  padding-left: 2.4rem;
+  text-decoration: none;
+}
+
+.header-logo h1 {
+  font-size: 1.5rem;
+}
+
+.mozilla-logo {
+  background-image: url('../assets/mozilla-logo.svg');
+  background-repeat: no-repeat;
+  background-size: 100px, 32px;
+  overflow: hidden;
+  text-indent: 120%;
+  white-space: nowrap;
+  display: inline-block;
+  height: 32px;
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.feedback-link {
+  background-color: #000;
+  background-image: url('../assets/feedback.svg');
+  background-position: 0.125rem 0.25rem;
+  background-repeat: no-repeat;
+  background-size: 1.125rem;
+  color: #fff;
+  display: block;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  padding: 0.375rem 0.375rem 0.375rem 1.25rem;
+  text-indent: 0.125rem;
+  white-space: nowrap;
+}
+
+.checkbox {
+  @apply leading-normal;
+  @apply select-none;
+}
+
+.checkbox > input[type='checkbox'] {
+  @apply absolute;
+  @apply opacity-0;
+}
+
+.checkbox > label {
+  @apply cursor-pointer;
+}
+
+.checkbox > label::before {
+  @apply bg-blue-lightest;
+  @apply border;
+  @apply rounded-sm;
+
+  content: '';
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.5rem;
+  float: left;
+}
+
+.checkbox > label:hover::before {
+  @apply border-blue;
+}
+
+.checkbox > input:focus + label::before {
+  @apply border-blue;
+}
+
+.checkbox > input:checked + label::before {
+  background-image: url('../assets/lock.svg');
+  background-position: center;
+  background-size: 1.25rem;
+  background-repeat: no-repeat;
+}
+
+.checkbox > input:disabled + label {
+  cursor: auto;
+}
+
+.checkbox > input:disabled + label::before {
+  background-image: url('../assets/lock.svg');
+  background-position: center;
+  background-size: 1.25rem;
+  background-repeat: no-repeat;
+  cursor: auto;
+}
+
+#password-msg::after {
+  content: '\200b';
+}
+
+@screen md {
+  .main {
+    @apply flex-1;
+    @apply self-center;
+    @apply items-center;
+    @apply my-10;
+
+    width: calc(100% - 3rem);
+    min-height: 30rem;
+    max-height: 40rem;
+  }
+
+  .main > section {
+    @apply shadow-md;
+  }
+}
