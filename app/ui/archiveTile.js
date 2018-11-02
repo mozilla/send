@@ -152,6 +152,12 @@ module.exports = function(state, emit, archive) {
   function copy(event) {
     event.stopPropagation();
     copyToClipboard(archive.url);
+    const text = event.target.lastChild;
+    text.textContent = state.translate('copiedUrl');
+    setTimeout(
+      () => (text.textContent = state.translate('copyUrlHover')),
+      1000
+    );
   }
 
   function del(event) {
@@ -165,10 +171,10 @@ module.exports.wip = function(state, emit) {
   <article class="h-full flex flex-col bg-white z-20">
     ${list(
       state.archive.files.map(f => fileInfo(f, remove(f))),
-      'list-reset h-full overflow-y-scroll p-6 bg-blue-lightest max-h-half',
+      'list-reset h-full overflow-y-scroll p-4 bg-blue-lightest max-h-half',
       'bg-white px-2 mb-3 border border-grey-light rounded'
     )}
-    <div class="flex-grow px-6 py-3 bg-blue-lightest mb-6 font-medium">
+    <div class="flex-grow p-4 bg-blue-lightest mb-6 font-medium">
       <input
         id="file-upload"
         class="hidden"
@@ -234,7 +240,7 @@ module.exports.uploading = function(state, emit) {
   return html`
   <article
     id="${archive.id}"
-    class="z-20 flex flex-col items-start border border-grey-light bg-white p-3">
+    class="z-20 flex flex-col items-start border border-grey-light bg-white p-4">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium">${archive.name}</h1>
@@ -249,10 +255,10 @@ module.exports.uploading = function(state, emit) {
         expiresAt: Date.now() + 500 + state.timeLimit * 1000
       })}
     </div>
-    <div class="text-blue text-sm font-medium">${progressPercent}</div>
-    <progress class="mb-1" value="${progress}">${progressPercent}</progress>
+    <div class="text-blue text-sm font-medium mt-2">${progressPercent}</div>
+    <progress class="my-3" value="${progress}">${progressPercent}</progress>
     <button
-      class="text-blue self-end"
+      class="text-blue self-end font-medium"
       onclick=${cancel}>
       ${state.translate('uploadingPageCancel')}
     </button>

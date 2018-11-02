@@ -8,7 +8,7 @@ module.exports = function() {
     <div class="flex flex-col p-4">
       <p class="p-8">
         ${state.translate('accountBenefitTitle')}
-        <ul class="my-2">
+        <ul class="my-2 leading-normal">
           <li>${state.translate('accountBenefitLargeFiles', {
             size: bytes(LIMITS.MAX_FILE_SIZE)
           })}</li>
@@ -22,18 +22,18 @@ module.exports = function() {
         <input
           id="email-input"
           type="text"
-          class="border rounded w-full px-2 text-lg text-grey-darker leading-loose"
+          class="border rounded w-full px-2 py-1 h-12 mb-4 text-lg text-grey-darker leading-loose"
           placeholder=${state.translate('emailEntryPlaceholder')}/>
         <input
           class="hidden"
           id="email-submit"
           type="submit"/>
       </form>
-      <label class="border rounded bg-blue text-white leading-loose text-center my-2" for="email-submit">
+      <label class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 w-full flex flex-no-shrink items-center justify-center font-semibold" for="email-submit">
         ${state.translate('signInMenuOption')}
       </label>
       <button
-        class=""
+        class="my-4 text-blue font-medium"
         title="${state.translate('deletePopupCancel')}"
         onclick=${close}>${state.translate('deletePopupCancel')}
       </button>

@@ -161,11 +161,10 @@ progress::-webkit-progress-value {
 
     width: calc(100% - 48px);
     min-height: 30rem;
+    max-height: 40rem;
   }
 
   .main > section {
     @apply shadow-md;
-
-    max-height: 40rem;
   }
 }
