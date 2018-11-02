@@ -32,16 +32,40 @@ progress::-webkit-progress-value {
 }
 
 .main {
-  min-height: calc(100vh - 6rem);
+  display: flex;
+  max-width: 64rem;
+  width: 100%;
+}
+
+.main > section {
+  @apply bg-white;
+  @apply shadow;
 }
 
 .header-logo {
   background-image: url('../assets/send_logo.svg');
   background-position: left;
   background-repeat: no-repeat;
-  background-size: 2rem;
-  padding-left: 2.5rem;
+  background-size: 1.8rem;
+  padding-left: 2.4rem;
   text-decoration: none;
+}
+
+.header-logo h1 {
+  font-size: 1.5rem;
+}
+
+.mozilla-logo {
+  background-image: url('../assets/mozilla-logo.svg');
+  background-repeat: no-repeat;
+  background-size: 100px, 32px;
+  overflow: hidden;
+  text-indent: 120%;
+  white-space: nowrap;
+  display: inline-block;
+  height: 32px;
+  width: 100px;
+  flex-shrink: 0;
 }
 
 .feedback-link {
@@ -120,11 +144,15 @@ progress::-webkit-progress-value {
   .main {
     @apply flex-1;
     @apply self-center;
-    @apply bg-white;
-    @apply shadow-md;
-    @apply m-auto;
+    @apply items-center;
+    @apply my-10;
 
+    width: calc(100% - 3rem);
     min-height: 30rem;
     max-height: 40rem;
+  }
+
+  .main > section {
+    @apply shadow-md;
   }
 }

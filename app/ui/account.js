@@ -1,6 +1,6 @@
 const html = require('choo/html');
 const itemClass =
-  'block p-2 text-grey-darkest hover:bg-blue hover:text-white cursor-pointer';
+  'block px-4 py-2 text-grey-darkest hover:bg-blue hover:text-white cursor-pointer';
 
 module.exports = function(state, emit) {
   if (!state.capabilities.account) {
@@ -22,7 +22,7 @@ module.exports = function(state, emit) {
       )}</a></li>`
     );
   }
-  return html`<div class="relative">
+  return html`<div class="relative h-8">
     <input
       type="image"
       alt="${user.email}"

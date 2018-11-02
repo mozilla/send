@@ -79,10 +79,10 @@ const colors = {
   'yellow-lighter': '#fff9c2',
   'yellow-lightest': '#fcfbeb',
 
-  'green-darkest': '#0f2f21',
-  'green-darker': '#1a4731',
-  'green-dark': '#1f9d55',
-  green: '#38c172',
+  'green-darkest': '#003706',
+  'green-darker': '#006504',
+  'green-dark': '#058b00',
+  green: '#12bc00',
   'green-light': '#51d88a',
   'green-lighter': '#a2f5bf',
   'green-lightest': '#e3fcec',
@@ -95,10 +95,10 @@ const colors = {
   'teal-lighter': '#a0f0ed',
   'teal-lightest': '#e8fffe',
 
-  'blue-darkest': '#12283a',
-  'blue-darker': '#1c3d5a',
-  'blue-dark': '#2779bd',
-  blue: '#3490dc',
+  'blue-darkest': '#002275',
+  'blue-darker': '#003eaa',
+  'blue-dark': '#0060df',
+  blue: '#0a84ff',
   'blue-light': '#6cb2eb',
   'blue-lighter': '#bcdefa',
   'blue-lightest': '#eff8ff',
@@ -604,6 +604,7 @@ module.exports = {
 
   maxHeight: {
     full: '100%',
+    'half-screen': '50vh',
     screen: '100vh'
   },
 

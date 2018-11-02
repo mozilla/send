@@ -6,6 +6,7 @@ describe('Firefox Send homepage', function() {
   const homePage = new HomePage();
   const baseUrl = browser.options['baseUrl'];
   const footerLinks = [
+    'mozilla',
     'legal',
     'about',
     'legal',
