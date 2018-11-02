@@ -31,16 +31,16 @@ module.exports = function(state) {
 
   return html`
     <main class="main container">
-      <div class="flex flex-col items-center bg-white m-6 p-4 border border-grey-light md:border-none md:px-12">
-      <h1 class="text-center">${strings.header}</h1>
-      <p class="my-16">
+      <div class="flex flex-col items-center bg-white m-6 p-6 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full md:h-full">
+      <h1 class="text-center text-2xl">${strings.header}</h1>
+      <p class="my-10 max-w-md leading-normal">
         ${strings.description}
       </p>
       ${why}
-      <a href="${url}" class="border border-green-light rounded bg-green flex items-center justify-center text-2xl text-white my-16 p-2">
+      <a href="${url}" class="border border-green-light rounded bg-green flex items-center justify-center text-2xl text-white my-10 p-4">
         <img
           src="${assets.get('firefox_logo-only.svg')}"
-          class="w-16"
+          class="w-10"
           alt="Firefox"/>
         ${buttonAction}
       </a>

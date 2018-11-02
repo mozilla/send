@@ -306,7 +306,7 @@ module.exports.empty = function(state, emit) {
 module.exports.preview = function(state, emit) {
   const archive = state.fileInfo;
   return html`
-  <article class="flex flex-col bg-white border border-grey-light p-2 z-20">
+  <article class="flex flex-col bg-white border border-grey-light p-4 z-20">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium">${archive.name}</h1>
@@ -315,13 +315,17 @@ module.exports.preview = function(state, emit) {
       )}</div>
     </p>
     ${archiveDetails(state.translate, archive)}
-    <hr class="w-full border-t">
     <button
-      class="border rounded bg-blue text-white mt-2 py-2 px-6"
+      class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white mt-4 py-2 px-6 h-12 w-full flex flex-no-shrink items-center justify-center font-semibold"
       title="${state.translate('downloadButtonLabel')}"
       onclick=${download}>
       ${state.translate('downloadButtonLabel')}
     </button>
+    <p class="mt-4 text-center">
+      <a href="/" class="text-blue font-medium">${state.translate(
+        'sendYourFilesLink'
+      )}</a>
+    </p>
   </article>`;
 
   function download(event) {
@@ -336,7 +340,7 @@ module.exports.downloading = function(state, emit) {
   const progress = state.transfer.progressRatio;
   const progressPercent = percent(progress);
   return html`
-  <article class="flex flex-col bg-white border border-grey-light p-2 z-20">
+  <article class="flex flex-col bg-white border border-grey-light p-4 z-20">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium">${archive.name}</h1>
@@ -344,10 +348,10 @@ module.exports.downloading = function(state, emit) {
         archive.size
       )}</div>
     </p>
-    <div class="text-blue text-sm font-medium">${progressPercent}</div>
-    <progress class="" value="${progress}">${progressPercent}</progress>
+    <div class="text-blue text-sm font-medium mt-2">${progressPercent}</div>
+    <progress class="my-3" value="${progress}">${progressPercent}</progress>
     <button
-      class="border rounded bg-grey-dark text-white mt-2 py-2 px-6"
+      class="border rounded bg-grey-dark text-white mt-2 text-center py-2 px-6 h-12 w-full flex flex-no-shrink items-center justify-center font-semibold"
       title="${state.translate('downloadCancel')}"
       onclick=${cancel}>
       ${state.translate('downloadCancel')}
