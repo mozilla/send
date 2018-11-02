@@ -20,14 +20,14 @@ module.exports = function(state, emit) {
   const right =
     archives.length < 1
       ? intro(state)
-      : list(archives, 'list-reset h-full overflow-y-scroll', 'pb-4');
+      : list(archives, 'list-reset h-full overflow-y-scroll', 'mb-3');
 
   return html`
-  <main class="main container md:relative">
+  <main class="main md:relative">
     ${state.modal && modal(state, emit)}
-    <section class="h-full w-full px-6 md:flex md:flex-row">
-      <div class="pt-4 md:pb-4 md:mr-6 md:w-1/2">${left}</div>
-      <div class="py-4 md:w-1/2">${right}</div>
+    <section class="h-full w-full p-6 md:flex md:flex-row z-10">
+      <div class="md:mr-6 md:w-1/2">${left}</div>
+      <div class="md:w-1/2 overflow-y-scroll mt-6 md:mt-0">${right}</div>
     </section>
   </main>`;
 };
