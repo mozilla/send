@@ -3,7 +3,7 @@ const assets = require('../../common/assets');
 
 module.exports = function intro(state) {
   return html`
-  <article class="flex flex-col items-center justify-between h-full bg-white border border-grey-light px-6 py-10">
+  <article class="flex flex-col items-center justify-between h-full bg-white border border-grey-light px-6 md:py-10 py-6">
     <p class="text-center">
       <div class="font-semibold leading-normal">${state.translate(
         'uploadPageHeader'
@@ -13,7 +13,7 @@ module.exports = function intro(state) {
       )}</div>
     </p>
     <img class="my-6" src="${assets.get('illustration_download.svg')}"/>
-    <p class="mx-6 max-w-sm text-sm opacity-50 leading-normal">${state.translate(
+    <p class="md:mx-6 max-w-sm text-sm opacity-50 leading-normal">${state.translate(
       'uploadPageExplainer'
     )}</p>
   </article>`;

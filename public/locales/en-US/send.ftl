@@ -147,7 +147,7 @@ maxPasswordLength = Maximum password length: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = This password could not be set
 pageHeaderCredits = from the makers of Firefox
-addFilesButton = Add file(s)
+addFilesButton = Select file(s) to upload
 uploadFilesButton = Send
 uploadFileProgress = Sending
 uploadDropDragMessage = Drop files here

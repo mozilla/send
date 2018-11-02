@@ -174,7 +174,7 @@ module.exports.wip = function(state, emit) {
         for="file-upload"
         class="flex flex-row items-center w-full h-full text-blue p-2"
         title="${state.translate('addFilesButton')}">
-          <img src="${assets.get('addfile.svg')}" class="w-6 h-6 mr-2"/>
+          <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2"/>
           ${state.translate('addFilesButton')}
       </label>
     </div>
@@ -261,7 +261,13 @@ module.exports.uploading = function(state, emit) {
 module.exports.empty = function(state, emit) {
   return html`
   <article class="flex flex-col items-center justify-center border border-dashed border-blue-light p-16 h-full">
-    <div class="p-1">${state.translate('uploadDropDragMessage')}</div>
+    <img src="${assets.get('addfiles.svg')}" width="48" height="48"/>
+    <div class="pt-6 pb-2 text-lg font-bold uppercase tracking-wide">${state.translate(
+      'uploadDropDragMessage'
+    )}</div>
+    <div class="pb-6 text-base italic">${state.translate(
+      'uploadDropClickMessage'
+    )}</div>
     <input
       id="file-upload"
       class="hidden"
@@ -270,7 +276,7 @@ module.exports.empty = function(state, emit) {
       onchange=${add} />
     <label
       for="file-upload"
-      class="border rounded bg-blue text-white py-2 px-6"
+      class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-white py-2 px-6 h-12 mt-4 flex items-center justify-center font-semibold"
       title="${state.translate('addFilesButton')}">
         ${state.translate('addFilesButton')}
     </label>
