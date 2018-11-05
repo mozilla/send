@@ -35,15 +35,20 @@ progress::-webkit-progress-value {
   display: flex;
   max-width: 64rem;
   width: 100%;
+  height: 100%;
 }
 
 .main > section {
   @apply bg-white;
-  @apply shadow;
+}
+
+.info {
+  height: 90%;
+  max-height: 32rem;
 }
 
 .header-logo {
-  background-image: url('../assets/send_logo.svg');
+  background-image: url('../assets/send_logo_white.svg');
   background-position: left;
   background-repeat: no-repeat;
   background-size: 1.8rem;
@@ -147,12 +152,17 @@ progress::-webkit-progress-value {
     @apply items-center;
     @apply my-10;
 
-    width: calc(100% - 3rem);
-    min-height: 30rem;
     max-height: 40rem;
+    width: calc(100% - 3rem);
+  }
+
+  .header-logo {
+    background-image: url('../assets/send_logo.svg');
   }
 
   .main > section {
     @apply shadow-md;
+
+    min-height: 30rem;
   }
 }

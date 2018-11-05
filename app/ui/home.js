@@ -23,7 +23,7 @@ module.exports = function(state, emit) {
       : list(archives, 'list-reset h-full overflow-y-scroll', 'mb-3');
 
   return html`
-  <main class="main md:relative">
+  <main class="main relative">
     ${state.modal && modal(state, emit)}
     <section class="h-full w-full p-6 md:flex md:flex-row z-10">
       <div class="md:mr-6 md:w-1/2">${left}</div>

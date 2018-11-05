@@ -10,7 +10,8 @@ module.exports = function(state, emit) {
   <div class="">
     ${raw(
       state.translate('frontPageExpireInfo', {
-        downloadCount: '<select id="dlCount"></select>',
+        downloadCount:
+          '<span class="lg:inline-block md:block sm:inline-block block"></span><select id="dlCount"></select>',
         timespan: '<select id="timespan"></select>'
       })
     )}

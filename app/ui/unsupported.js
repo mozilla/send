@@ -31,13 +31,13 @@ module.exports = function(state) {
 
   return html`
     <main class="main container">
-      <div class="flex flex-col items-center bg-white m-6 p-6 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full md:h-full">
+      <div class="flex flex-col items-center bg-white m-6 px-6 py-8 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full md:h-full">
       <h1 class="text-center text-2xl">${strings.header}</h1>
       <p class="my-10 max-w-md leading-normal">
         ${strings.description}
       </p>
       ${why}
-      <a href="${url}" class="border border-green-light rounded bg-green hover\:bg-green-dark focus\:bg-green-darker flex items-center justify-center text-2xl text-white my-10 py-4 px-6">
+      <a href="${url}" class="border border-green-light rounded bg-green hover\:bg-green-dark focus\:bg-green-darker flex items-center justify-center text-2xl text-white mt-10 py-4 px-6">
         <img
           src="${assets.get('firefox_logo-only.svg')}"
           class="w-10"
