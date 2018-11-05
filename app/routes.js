@@ -16,7 +16,7 @@ function banner(state, emit) {
 
 function body(main) {
   return function(state, emit) {
-    const b = html`<body class="flex flex-col items-center font-sans bg-blue-lightest md:min-h-screen md:bg-grey-lightest justify-between">
+    const b = html`<body class="flex flex-col items-center font-sans bg-blue-lightest md:h-screen md:bg-grey-lightest">
     ${banner(state, emit)}
     ${header(state, emit)}
     ${main(state, emit)}

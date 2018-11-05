@@ -42,11 +42,6 @@ progress::-webkit-progress-value {
   @apply bg-white;
 }
 
-.info {
-  height: 90%;
-  max-height: 32rem;
-}
-
 .header-logo {
   background-image: url('../assets/send_logo_white.svg');
   background-position: left;
@@ -150,8 +145,10 @@ progress::-webkit-progress-value {
     @apply flex-1;
     @apply self-center;
     @apply items-center;
-    @apply my-10;
+    @apply m-auto;
+    @apply py-8;
 
+    min-height: 33rem;
     max-height: 40rem;
     width: calc(100% - 3rem);
   }
@@ -162,7 +159,5 @@ progress::-webkit-progress-value {
 
   .main > section {
     @apply shadow-md;
-
-    min-height: 30rem;
   }
 }

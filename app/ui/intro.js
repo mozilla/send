@@ -4,7 +4,7 @@ const assets = require('../../common/assets');
 module.exports = function intro(state) {
   return html`
   <article class="flex flex-col items-center justify-center bg-white border border-grey-light md:border-none px-6 text-center md:py-0 py-6 md:mb-0 mb-6 h-full">
-    <div class="info flex flex-col items-center justify-between">
+    <div class="flex flex-col items-center justify-between h-full py-8">
       <p class="text-center">
         <div class="font-semibold leading-normal">${state.translate(
           'uploadPageHeader'
