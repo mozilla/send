@@ -3,11 +3,11 @@ const account = require('./account');
 
 module.exports = function(state, emit) {
   const header = html`
-  <header class="relative flex-none flex flex-row items-center justify-between bg-white w-full px-6 h-16 shadow z-20">
+  <header class="relative flex-none flex flex-row items-center justify-between bg-blue md:bg-white w-full px-6 h-16 md:shadow z-20">
     <a
       class="header-logo"
       href="/">
-      <h1 class="text-black font-normal">Firefox <b>Send</b></h1>
+      <h1 class="text-white md:text-black font-normal">Firefox <b>Send</b></h1>
     </a>
     ${account(state, emit)}
     <div class="invisible absolute pin-t pin-l mt-12 w-full flex flex-col items-center pointer-events-none">

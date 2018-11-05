@@ -16,10 +16,6 @@ module.exports = function(state) {
         ${state.translate('footerLinkLegal')}
       </a></li>
       <li class="m-2"><a
-        href="https://testpilot.firefox.com/about">
-        ${state.translate('footerLinkAbout')}
-      </a></li>
-      <li class="m-2"><a
         href="/legal">
         ${state.translate('footerLinkTerms')}
       </a></li>
