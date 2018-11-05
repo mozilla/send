@@ -96,7 +96,7 @@ function fileInfo(file, action) {
     <article class="flex flex-row items-center p-3">
       <img class="" src="${assets.get('blue_file.svg')}"/>
       <p class="ml-4 w-full">
-        <h1 class="text-sm font-medium">${file.name}</h1>
+        <h1 class="text-sm font-medium word-break-all">${file.name}</h1>
         <div class="text-xs font-normal opacity-75 pt-1">${bytes(
           file.size
         )}</div>
@@ -137,7 +137,7 @@ module.exports = function(state, emit, archive) {
         alt="Delete"
         src="${assets.get('close-16.svg')}"
         onclick=${del}/>
-      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
       <div class="text-xs font-normal opacity-75 pt-1">${bytes(
         archive.size
       )}</div>
@@ -251,7 +251,7 @@ module.exports.uploading = function(state, emit) {
     class="z-20 flex flex-col items-start border border-grey-light bg-white p-4">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
       <div class="text-xs font-normal opacity-75 pt-1">${bytes(
         archive.size
       )}</div>
@@ -320,7 +320,7 @@ module.exports.preview = function(state, emit) {
     <article class="flex flex-col max-h-full bg-white border border-grey-light p-4 z-20">
       <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
       <div class="text-xs font-normal opacity-75 pt-1">${bytes(
         archive.size
       )}</div>
@@ -350,7 +350,7 @@ module.exports.downloading = function(state, emit) {
   <article class="flex flex-col bg-white border border-grey-light p-4 z-20">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
       <div class="text-xs font-normal opacity-75 pt-1">${bytes(
         archive.size
       )}</div>

@@ -31,6 +31,10 @@ progress::-webkit-progress-value {
   @apply rounded-sm;
 }
 
+.word-break-all {
+  word-break: break-all;
+}
+
 .main {
   display: flex;
   max-width: 64rem;
