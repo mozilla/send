@@ -12,9 +12,6 @@ export default function initialState(state, emitter) {
     getAsset(name) {
       return `${state.prefix}/${name}`;
     },
-    translate: (...toTranslate) => {
-      return toTranslate.map(o => JSON.stringify(o)).toString();
-    },
     raven: {
       captureException: e => {
         console.error('ERROR ' + e + ' ' + e.stack);
