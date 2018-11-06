@@ -6,7 +6,7 @@ module.exports = function(name, url) {
     return html`
     <div class="flex flex-col items-center text-center p-4 max-w-sm">
       <h1 class="font-bold my-4">${state.translate('notifyUploadDone')}</h1>
-      <p class="font-normal leading-normal text-grey-darker">${state.translate(
+      <p class="font-normal leading-normal text-grey-darker word-break-all">${state.translate(
         'copyUrlFormLabelWithName',
         { filename: name }
       )}</p>

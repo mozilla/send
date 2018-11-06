@@ -128,7 +128,9 @@ export default class User {
       );
       list = JSON.parse(textDecoder.decode(decrypted));
     } catch (e) {
-      //
+      if (e.message === '401') {
+        return this.logout();
+      }
     }
     changes = await this.storage.merge(list);
     if (!changes.outgoing) {

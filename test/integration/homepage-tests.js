@@ -8,7 +8,6 @@ describe('Firefox Send homepage', function() {
   const footerLinks = [
     'mozilla',
     'legal',
-    'about',
     'legal',
     'cookies',
     'report-infringement',

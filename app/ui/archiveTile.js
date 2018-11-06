@@ -36,7 +36,7 @@ function password(state) {
       id="password-input"
       class="${
         state.password ? '' : 'invisible'
-      } border rounded-sm focus:border-blue leading-normal mt-2 py-1 px-2 h-8"
+      } border rounded-sm focus:border-blue leading-normal my-2 py-1 px-2 h-8"
       autocomplete="off"
       maxlength="${MAX_LENGTH}"
       type="password"
@@ -96,7 +96,7 @@ function fileInfo(file, action) {
     <article class="flex flex-row items-center p-3">
       <img class="" src="${assets.get('blue_file.svg')}"/>
       <p class="ml-4 w-full">
-        <h1 class="text-sm font-medium">${file.name}</h1>
+        <h1 class="text-sm font-medium word-break-all">${file.name}</h1>
         <div class="text-xs font-normal opacity-75 pt-1">${bytes(
           file.size
         )}</div>
@@ -137,7 +137,7 @@ module.exports = function(state, emit, archive) {
         alt="Delete"
         src="${assets.get('close-16.svg')}"
         onclick=${del}/>
-      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
       <div class="text-xs font-normal opacity-75 pt-1">${bytes(
         archive.size
       )}</div>
@@ -174,11 +174,13 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-  <article class="flex flex-col bg-white z-20 md:h-full">
+  <article class="h-full flex flex-col bg-white z-20" id="wip">
     ${list(
-      state.archive.files.map(f => fileInfo(f, remove(f))),
-      'list-reset h-full overflow-y-scroll p-4 bg-blue-lightest md:max-h-half-screen',
-      'bg-white px-2 mb-3 border border-grey-light rounded'
+      Array.from(state.archive.files)
+        .reverse()
+        .map(f => fileInfo(f, remove(f))),
+      'list-reset h-full overflow-y-scroll px-4 bg-blue-lightest md:max-h-half-screen',
+      'bg-white px-2 mt-3 border border-grey-light rounded'
     )}
     <div class="flex-grow p-4 bg-blue-lightest mb-6 font-medium">
       <input
@@ -199,7 +201,7 @@ module.exports.wip = function(state, emit) {
     ${password(state, emit)}
     <button
       id="upload-btn"
-      class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 mt-4 flex flex-no-shrink items-center justify-center font-semibold"
+      class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 flex flex-no-shrink items-center justify-center font-semibold"
       title="${state.translate('uploadSuccessConfirmHeader')}"
       onclick=${upload}>
       ${state.translate('uploadSuccessConfirmHeader')}
@@ -207,6 +209,7 @@ module.exports.wip = function(state, emit) {
   </article>`;
 
   function upload(event) {
+    window.scrollTo(0, 0);
     event.preventDefault();
     event.target.disabled = true;
     if (!state.uploading) {
@@ -223,6 +226,11 @@ module.exports.wip = function(state, emit) {
     const newFiles = Array.from(event.target.files);
 
     emit('addFiles', { files: newFiles });
+    setTimeout(() => {
+      document
+        .querySelector('#wip > ul > li:first-child')
+        .scrollIntoView({ block: 'center' });
+    });
   }
 
   function remove(file) {
@@ -250,7 +258,7 @@ module.exports.uploading = function(state, emit) {
     class="z-20 flex flex-col items-start border border-grey-light bg-white p-4">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
       <div class="text-xs font-normal opacity-75 pt-1">${bytes(
         archive.size
       )}</div>
@@ -280,7 +288,8 @@ module.exports.uploading = function(state, emit) {
 
 module.exports.empty = function(state, emit) {
   return html`
-  <article class="flex flex-col items-center justify-center border border-dashed border-blue-light px-6 py-16 md:h-full">
+  <article class="flex flex-col items-center justify-center border-2 border-dashed border-blue-light px-6 py-16 h-full"
+    onclick=${() => document.getElementById('file-upload').click()}>
     <img src="${assets.get('addfiles.svg')}" width="48" height="48"/>
     <div class="pt-6 pb-2 text-center text-lg font-bold uppercase tracking-wide">${state.translate(
       'uploadDropDragMessage'
@@ -293,7 +302,8 @@ module.exports.empty = function(state, emit) {
       class="hidden"
       type="file"
       multiple
-      onchange=${add} />
+      onchange=${add}
+      onclick=${e => e.stopPropagation()} />
     <label
       for="file-upload"
       class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 mt-4 flex flex-no-shrink items-center justify-center font-semibold"
@@ -319,7 +329,7 @@ module.exports.preview = function(state, emit) {
     <article class="flex flex-col max-h-full bg-white border border-grey-light p-4 z-20">
       <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
       <div class="text-xs font-normal opacity-75 pt-1">${bytes(
         archive.size
       )}</div>
@@ -349,7 +359,7 @@ module.exports.downloading = function(state, emit) {
   <article class="flex flex-col bg-white border border-grey-light p-4 z-20">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-sm font-medium">${archive.name}</h1>
+      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
       <div class="text-xs font-normal opacity-75 pt-1">${bytes(
         archive.size
       )}</div>
