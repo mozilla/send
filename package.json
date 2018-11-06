@@ -103,7 +103,7 @@
     "postcss-preset-env": "^6.3.1",
     "prettier": "^1.14.3",
     "proxyquire": "^2.1.0",
-    "puppeteer": "^1.10.0",
+    "puppeteer": "1.9.0",
     "raven-js": "^3.27.0",
     "redis-mock": "^0.37.0",
     "require-from-string": "^2.0.2",
