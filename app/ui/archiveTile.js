@@ -288,7 +288,8 @@ module.exports.uploading = function(state, emit) {
 
 module.exports.empty = function(state, emit) {
   return html`
-  <article class="flex flex-col items-center justify-center border-2 border-dashed border-blue-light px-6 py-16 h-full">
+  <article class="flex flex-col items-center justify-center border-2 border-dashed border-blue-light px-6 py-16 h-full"
+    onclick=${() => document.getElementById('file-upload').click()}>
     <img src="${assets.get('addfiles.svg')}" width="48" height="48"/>
     <div class="pt-6 pb-2 text-center text-lg font-bold uppercase tracking-wide">${state.translate(
       'uploadDropDragMessage'
@@ -301,7 +302,8 @@ module.exports.empty = function(state, emit) {
       class="hidden"
       type="file"
       multiple
-      onchange=${add} />
+      onchange=${add}
+      onclick=${e => e.stopPropagation()} />
     <label
       for="file-upload"
       class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 mt-4 flex flex-no-shrink items-center justify-center font-semibold"
