@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                 // val stream = contentResolver.openInputStream(imageUri)
             }
         }
-        mWebView!!.loadUrl("file:///android_asset/index.html")
+        mWebView!!.loadUrl("file:///android_asset/android.html")
     }
 
     @SuppressLint("NewApi")

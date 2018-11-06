@@ -42,7 +42,7 @@ class AndroidIndexPlugin {
       `
         .toString()
         .replace(/\n\s{6}/g, '\n');
-      compilation.assets['index.html'] = {
+      compilation.assets['android.html'] = {
         source() {
           return page;
         },

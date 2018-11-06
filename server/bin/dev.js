@@ -21,7 +21,7 @@ module.exports = function(app, devServer) {
   app.use(morgan('dev', { stream: process.stderr }));
   function android(req, res) {
     const index = devServer.middleware.fileSystem.readFileSync(
-      devServer.middleware.getFilenameFromUrl('/index.html')
+      devServer.middleware.getFilenameFromUrl('/android.html')
     );
     res.set('Content-Type', 'text/html');
     res.send(index);
