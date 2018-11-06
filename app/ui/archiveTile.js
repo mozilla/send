@@ -174,11 +174,13 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-  <article class="h-full flex flex-col bg-white z-20">
+  <article class="h-full flex flex-col bg-white z-20" id="wip">
     ${list(
-      state.archive.files.map(f => fileInfo(f, remove(f))),
-      'list-reset h-full overflow-y-scroll p-4 bg-blue-lightest md:max-h-half-screen',
-      'bg-white px-2 mb-3 border border-grey-light rounded'
+      Array.from(state.archive.files)
+        .reverse()
+        .map(f => fileInfo(f, remove(f))),
+      'list-reset h-full overflow-y-scroll px-4 bg-blue-lightest md:max-h-half-screen',
+      'bg-white px-2 mt-3 border border-grey-light rounded'
     )}
     <div class="flex-grow p-4 bg-blue-lightest mb-6 font-medium">
       <input
@@ -224,6 +226,11 @@ module.exports.wip = function(state, emit) {
     const newFiles = Array.from(event.target.files);
 
     emit('addFiles', { files: newFiles });
+    setTimeout(() => {
+      document
+        .querySelector('#wip > ul > li:first-child')
+        .scrollIntoView({ block: 'center' });
+    });
   }
 
   function remove(file) {
