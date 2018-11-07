@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import im.delight.android.webview.AdvancedWebView
 import android.graphics.Bitmap
+import android.content.Context
 import android.content.Intent
 import android.annotation.SuppressLint
 import android.net.Uri
@@ -13,7 +14,13 @@ import android.webkit.WebMessage
 import android.util.Log
 import android.util.Base64
 import android.webkit.ConsoleMessage
+import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
+import mozilla.components.service.fxa.Config
+import mozilla.components.service.fxa.FirefoxAccount
+import mozilla.components.service.fxa.OAuthInfo
+import mozilla.components.service.fxa.Profile
+import mozilla.components.service.fxa.FxaResult
 
 internal class LoggingWebChromeClient : WebChromeClient() {
     override fun onConsoleMessage(cm: ConsoleMessage): Boolean {
@@ -23,9 +30,17 @@ internal class LoggingWebChromeClient : WebChromeClient() {
     }
 }
 
+class WebAppInterface(private val mContext: MainActivity) {
+    @JavascriptInterface
+    fun beginOAuthFlow() {
+        mContext.beginOAuthFlow();
+    }
+}
+
 class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
     private var mWebView: AdvancedWebView? = null
     private var mToShare: String? = null
+    private var mAccount: FirefoxAccount? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,14 +49,17 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         mWebView = findViewById<WebView>(R.id.webview) as AdvancedWebView
         mWebView!!.setListener(this, this)
         mWebView!!.setWebChromeClient(LoggingWebChromeClient())
+        mWebView!!.addJavascriptInterface(WebAppInterface(this), "Android")
 
         val webSettings = mWebView!!.getSettings()
+        webSettings.setUserAgentString("Send Android")
         webSettings.setAllowUniversalAccessFromFileURLs(true)
         webSettings.setJavaScriptEnabled(true)
 
         val intent = getIntent()
         val action = intent.getAction()
         val type = intent.getType()
+
         if (Intent.ACTION_SEND.equals(action) && type != null) {
             if (type.equals("text/plain")) {
                 val sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)
@@ -51,12 +69,25 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                 val imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM) as Uri
                 Log.w("INTENT", "image/ " + imageUri)
                 mToShare = "data:text/plain;base64," + Base64.encodeToString(imageUri.path.toByteArray(), 16).trim()
-
-                // TODO Currently this causes a Permission Denied error
-                // val stream = contentResolver.openInputStream(imageUri)
             }
         }
         mWebView!!.loadUrl("file:///android_asset/android.html")
+
+    }
+
+    fun beginOAuthFlow() {
+        Config.custom("https://latest.dev.lcip.org").then(fun (value: Config): FxaResult<Unit> {
+            mAccount = FirefoxAccount(value, "12cc4070a481bc73", "fxaclient://android.redirect")
+            mAccount?.beginOAuthFlow(arrayOf("profile", "https://identity.mozilla.com/apps/send"), false)?.then(fun (url: String): FxaResult<Unit> {
+                Log.w("CONFIG", "GOT A URL " + url)
+                this@MainActivity.runOnUiThread({
+                    mWebView!!.loadUrl(url)
+                })
+                return FxaResult.fromValue(Unit)
+            })
+            Log.w("CONFIG", "CREATED FIREFOXACCOUNT")
+            return FxaResult.fromValue(Unit)
+        })
     }
 
     @SuppressLint("NewApi")
@@ -94,7 +125,24 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
     }
 
     override fun onPageStarted(url: String, favicon: Bitmap?) {
+        if (url.startsWith("fxaclient")) {
+            mWebView!!.loadUrl("file:///android_asset/android.html")
+            val parsed = Uri.parse(url)
+            val code = parsed.getQueryParameter("code")
+            val state = parsed.getQueryParameter("state")
+
+            code?.let { it ->
+                state?.let { state ->
+                    mAccount?.completeOAuthFlow(it, state)?.whenComplete {
+                        //displayAndPersistProfile(code, state)
+                        val toSend = "{\"code\": \"${it}\", \"state\": \"${state}\"}"
+                        //mToShare = "data:text/plain;base64," + Base64.encodeToString(toSend.toByteArray(), 16).trim()
+                    }
+                }
+            }
+        }
         Log.w("MAIN", "onPageStarted");
+        // account.completeOAuthFlow()
     }
 
     override fun onPageFinished(url: String) {

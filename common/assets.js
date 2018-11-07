@@ -1,6 +1,6 @@
 const genmap = require('../build/generate_asset_map');
 const isServer = typeof genmap === 'function';
-const prefix = '';
+let prefix = '';
 let manifest = {};
 try {
   //eslint-disable-next-line node/no-missing-require
@@ -15,6 +15,10 @@ function getAsset(name) {
   return prefix + assets[name];
 }
 
+function setPrefix(name) {
+  prefix = name;
+}
+
 function getMatches(match) {
   return Object.keys(assets)
     .filter(k => match.test(k))
@@ -22,6 +26,7 @@ function getMatches(match) {
 }
 
 const instance = {
+  setPrefix: setPrefix,
   get: getAsset,
   match: getMatches,
   setMiddleware: function(middleware) {

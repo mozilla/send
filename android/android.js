@@ -1,4 +1,4 @@
-/* global window */
+/* global window, navigator */
 
 window.LIMITS = {
   ANON: {
@@ -27,8 +27,15 @@ const locale = require('../common/locales');
 const home = require('../app/ui/home');
 const app = choo();
 
+if (navigator.userAgent === 'Send Android') {
+  assets.setPrefix('/android_asset');
+}
+
 function body(main) {
   return function(state, emit) {
+    /*const TODO = html`<a id="login" class="absolute pin-t pin-r z-50" href="#" onclick=${clickLogin}>
+    Login
+  </a>`;*/
     return html`<body class="flex flex-col items-center font-sans bg-blue-lightest md:h-screen md:bg-grey-lightest">
     ${header(state, emit)}
     <a id="hamburger" class="absolute pin-t pin-r z-50" href="#" onclick=${clickPreferences}>
@@ -36,6 +43,11 @@ function body(main) {
     </a>
     ${main(state, emit)}
     </body>`;
+
+    /*function clickLogin(event) {
+      event.preventDefault();
+      Android.beginOAuthFlow();
+    }*/
 
     function clickPreferences(event) {
       event.preventDefault();
