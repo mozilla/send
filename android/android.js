@@ -56,7 +56,15 @@ app.use((state, emitter) => {
     account: true
   }; //TODO
 
-  window.finishLogin = async function(profile, ikm) {
+  window.finishLogin = async function(stuff) {
+    const jwks = JSON.parse(stuff.keys);
+    const ikm = jwks['https://identity.mozilla.com/apps/send'].k;
+    const profile = {
+      displayName: stuff.displayName,
+      email: stuff.email,
+      avatar: stuff.avatar,
+      access_token: stuff.accessToken
+    };
     profile.fileListKey = await fxa.deriveFileListKey(ikm);
     state.user.info = profile;
     emitter.emit('render');

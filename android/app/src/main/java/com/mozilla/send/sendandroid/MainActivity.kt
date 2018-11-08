@@ -40,6 +40,7 @@ class WebAppInterface(private val mContext: MainActivity) {
 class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
     private var mWebView: AdvancedWebView? = null
     private var mToShare: String? = null
+    private var mToCall: String? = null
     private var mAccount: FirefoxAccount? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -126,21 +127,39 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
 
     override fun onPageStarted(url: String, favicon: Bitmap?) {
         if (url.startsWith("fxaclient")) {
+            // We load this here so the user doesn't see an ugly screen that says "can't handle fxaclient urls"...
             mWebView!!.loadUrl("file:///android_asset/android.html")
+
             val parsed = Uri.parse(url)
             val code = parsed.getQueryParameter("code")
             val state = parsed.getQueryParameter("state")
 
-            code?.let { it ->
+            code?.let { code ->
                 state?.let { state ->
-                    mAccount?.completeOAuthFlow(it, state)?.whenComplete {
+                    mAccount?.completeOAuthFlow(code, state)?.whenComplete { info ->
                         //displayAndPersistProfile(code, state)
-                         val toSend = "{\"code\": \"${it}\", \"state\": \"${state}\"}"
+                        val profile = mAccount?.getProfile(false)?.then(fun (profile: Profile): FxaResult<Unit> {
+                            val accessToken = info.accessToken
+                            val keys = info.keys
+                            val avatar = profile.avatar
+                            val displayName = profile.displayName
+                            val email = profile.email
+                            val uid = profile.uid
+                            val toPass = "{\"accessToken\": \"${accessToken}}\", \"keys\": '${keys}', \"avatar\": \"${avatar}\", \"displayName\": \"${displayName}\", \"email\": \"${email}\", \"uid\": \"${uid}\"}"
+                            mToCall = "finishLogin(${toPass})"
+                            this@MainActivity.runOnUiThread({
+                                // But then we also reload this here because we need to make sure onPageFinished runs after mToCall has been set.
+                                // We can't guarantee that onPageFinished has already been called at this point.
+                                mWebView!!.loadUrl("file:///android_asset/android.html")
+                            })
+
+
+                            return FxaResult.fromValue(Unit)
+                        })
 
                         // TODO get k from it.keys
                         // TODO get profile from mAccount.getProfile
                         // TODO get access_token
-                        // mWebView.evaluateJavascript("finishLogin()") //TODO arguments
 
                         //mToShare = "data:text/plain;base64," + Base64.encodeToString(toSend.toByteArray(), 16).trim()
                     }
@@ -156,14 +175,22 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         if (mToShare != null) {
             Log.w("INTENT", mToShare)
 
-            val webView = findViewById<WebView>(R.id.webview) as AdvancedWebView
-            webView.postWebMessage(WebMessage(mToShare), Uri.EMPTY)
+            mWebView?.postWebMessage(WebMessage(mToShare), Uri.EMPTY)
+            mToShare = null
         }
+        if (mToCall != null) {
+            this@MainActivity.runOnUiThread({
+                mWebView?.evaluateJavascript(mToCall, fun (value: String) {
+                    // noop
+                })
+            })
 
+            mToCall = null
+        }
     }
 
     override fun onPageError(errorCode: Int, description: String, failingUrl: String) {
-        Log.w("MAIN", "onPageError")
+        Log.w("MAIN", "onPageError " + description)
     }
 
     override fun onDownloadRequested(url: String, suggestedFilename: String, mimeType: String, contentLength: Long, contentDisposition: String, userAgent: String) {
