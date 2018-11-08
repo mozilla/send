@@ -16,28 +16,37 @@ export default class User {
     this.data = storage.user || {};
   }
 
+  get info() {
+    return this.data || this.storage.user || {};
+  }
+
+  set info(data) {
+    this.data = data;
+    this.storage.user = data;
+  }
+
   get avatar() {
     const defaultAvatar = assets.get('user.svg');
-    if (this.data.avatarDefault) {
+    if (this.info.avatarDefault) {
       return assets.get('firefox_logo-only.svg');
     }
-    return this.data.avatar || defaultAvatar;
+    return this.info.avatar || defaultAvatar;
   }
 
   get name() {
-    return this.data.displayName;
+    return this.info.displayName;
   }
 
   get email() {
-    return this.data.email;
+    return this.info.email;
   }
 
   get loggedIn() {
-    return !!this.data.access_token;
+    return !!this.info.access_token;
   }
 
   get bearerToken() {
-    return this.data.access_token;
+    return this.info.access_token;
   }
 
   get maxSize() {
@@ -104,15 +113,13 @@ export default class User {
     const userInfo = await infoResponse.json();
     userInfo.access_token = auth.access_token;
     userInfo.fileListKey = await getFileListKey(this.storage, auth.keys_jwe);
-    this.storage.user = userInfo;
-    this.data = userInfo;
+    this.info = userInfo;
     this.storage.remove('pkceVerifier');
   }
 
   logout() {
-    this.storage.user = null;
     this.storage.clearLocalFiles();
-    this.data = {};
+    this.info = {};
   }
 
   async syncFileList() {
@@ -124,7 +131,7 @@ export default class User {
     try {
       const encrypted = await getFileList(this.bearerToken);
       const decrypted = await streamToArrayBuffer(
-        decryptStream(encrypted, b64ToArray(this.data.fileListKey))
+        decryptStream(encrypted, b64ToArray(this.info.fileListKey))
       );
       list = JSON.parse(textDecoder.decode(decrypted));
     } catch (e) {
@@ -142,7 +149,7 @@ export default class User {
         textEncoder.encode(JSON.stringify(this.storage.files))
       ]);
       const encrypted = await streamToArrayBuffer(
-        encryptStream(blobStream(blob), b64ToArray(this.data.fileListKey))
+        encryptStream(blobStream(blob), b64ToArray(this.info.fileListKey))
       );
       await setFileList(this.bearerToken, encrypted);
     } catch (e) {
@@ -152,6 +159,6 @@ export default class User {
   }
 
   toJSON() {
-    return this.data;
+    return this.info;
   }
 }

@@ -76,9 +76,9 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
     }
 
     fun beginOAuthFlow() {
-        Config.custom("https://latest.dev.lcip.org").then(fun (value: Config): FxaResult<Unit> {
+        Config.custom("https://send-fxa.dev.lcip.org").then(fun (value: Config): FxaResult<Unit> {
             mAccount = FirefoxAccount(value, "12cc4070a481bc73", "fxaclient://android.redirect")
-            mAccount?.beginOAuthFlow(arrayOf("profile", "https://identity.mozilla.com/apps/send"), false)?.then(fun (url: String): FxaResult<Unit> {
+            mAccount?.beginOAuthFlow(arrayOf("profile", "https://identity.mozilla.com/apps/send"), true)?.then(fun (url: String): FxaResult<Unit> {
                 Log.w("CONFIG", "GOT A URL " + url)
                 this@MainActivity.runOnUiThread({
                     mWebView!!.loadUrl(url)
@@ -135,7 +135,13 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                 state?.let { state ->
                     mAccount?.completeOAuthFlow(it, state)?.whenComplete {
                         //displayAndPersistProfile(code, state)
-                        val toSend = "{\"code\": \"${it}\", \"state\": \"${state}\"}"
+                         val toSend = "{\"code\": \"${it}\", \"state\": \"${state}\"}"
+
+                        // TODO get k from it.keys
+                        // TODO get profile from mAccount.getProfile
+                        // TODO get access_token
+                        // mWebView.evaluateJavascript("finishLogin()") //TODO arguments
+
                         //mToShare = "data:text/plain;base64," + Base64.encodeToString(toSend.toByteArray(), 16).trim()
                     }
                 }
