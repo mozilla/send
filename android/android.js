@@ -1,4 +1,4 @@
-/* global window, navigator, Android */
+/* global window, navigator */
 
 window.LIMITS = {
   ANON: {
@@ -25,7 +25,6 @@ const assets = require('../common/assets');
 const header = require('../app/ui/header');
 const locale = require('../common/locales');
 const home = require('../app/ui/home');
-const fxa = require('../app/fxa');
 const app = choo();
 
 if (navigator.userAgent === 'Send Android') {
@@ -56,28 +55,16 @@ app.use((state, emitter) => {
     account: true
   }; //TODO
 
-  window.finishLogin = async function(stuff) {
-    const jwks = JSON.parse(stuff.keys);
-    const ikm = jwks['https://identity.mozilla.com/apps/send'].k;
-    const profile = {
-      displayName: stuff.displayName,
-      email: stuff.email,
-      avatar: stuff.avatar,
-      access_token: stuff.accessToken
-    };
-    profile.fileListKey = await fxa.deriveFileListKey(ikm);
-    state.user.info = profile;
+  window.finishLogin = async function(accountInfo) {
+    await state.user.finishLogin(accountInfo);
     emitter.emit('render');
   };
-  emitter.on('login', () => {
-    Android.beginOAuthFlow();
-  });
 
   // for debugging
   window.appState = state;
   window.appEmit = emitter.emit.bind(emitter);
 });
-// app.use(require('../app/fileManager').default);
+app.use(require('../app/fileManager').default);
 app.use(require('./stores/intents').default);
 app.route('/', body(home));
 app.route('/options', require('./pages/options').default);
