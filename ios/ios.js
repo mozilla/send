@@ -135,9 +135,9 @@ emitter.on('pushState', function(path) {
   console.log('pushState ' + path + ' ' + JSON.stringify(state));
 });
 
-const fileManager = require('../app/fileManager').default;
+const controller = require('../app/controller').default;
 try {
-  fileManager(state, emitter);
+  controller(state, emitter);
 } catch (e) {
   console.error('error' + e);
   console.error(e);

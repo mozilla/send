@@ -3,7 +3,7 @@ import 'fluent-intl-polyfill';
 import routes from './routes';
 import capabilities from './capabilities';
 import locale from '../common/locales';
-import fileManager from './fileManager';
+import controller from './controller';
 import dragManager from './dragManager';
 import pasteManager from './pasteManager';
 import storage from './storage';
@@ -54,7 +54,7 @@ import User from './user';
     }
   });
   app.use(metrics);
-  app.use(fileManager);
+  app.use(controller);
   app.use(dragManager);
   app.use(experiments);
   app.use(pasteManager);

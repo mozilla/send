@@ -33,13 +33,21 @@ if (navigator.userAgent === 'Send Android') {
 
 function body(main) {
   return function(state, emit) {
-    return html`<body class="flex flex-col items-center font-sans bg-blue-lightest md:h-screen md:bg-grey-lightest">
-      <a id="hamburger" class="absolute pin-t pin-r z-50" href="#" onclick=${clickPreferences}>
-        <img src=${assets.get('preferences.png')} />
-      </a>
-      ${header(state, emit)}
-      ${main(state, emit)}
-    </body>`;
+    return html`
+      <body
+        class="flex flex-col items-center font-sans bg-blue-lightest md:h-screen md:bg-grey-lightest"
+      >
+        <a
+          id="hamburger"
+          class="absolute pin-t pin-r z-50"
+          href="#"
+          onclick="${clickPreferences}"
+        >
+          <img src="${assets.get('preferences.png')}" />
+        </a>
+        ${header(state, emit)} ${main(state, emit)}
+      </body>
+    `;
 
     function clickPreferences(event) {
       event.preventDefault();
@@ -64,7 +72,7 @@ app.use((state, emitter) => {
   window.appState = state;
   window.appEmit = emitter.emit.bind(emitter);
 });
-app.use(require('../app/fileManager').default);
+app.use(require('../app/controller').default);
 app.use(require('./stores/intents').default);
 app.route('/', body(home));
 app.route('/options', require('./pages/options').default);
