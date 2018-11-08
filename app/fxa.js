@@ -146,12 +146,10 @@ export async function preparePkce(storage) {
   return arrayToB64(new Uint8Array(challenge));
 }
 
-export async function getFileListKey(storage, bundle) {
-  const jwks = await decryptBundle(storage, bundle);
-  const jwk = jwks['https://identity.mozilla.com/apps/send'];
+export async function deriveFileListKey(ikm) {
   const baseKey = await crypto.subtle.importKey(
     'raw',
-    b64ToArray(jwk.k),
+    b64ToArray(ikm),
     { name: 'HKDF' },
     false,
     ['deriveKey']
@@ -173,4 +171,10 @@ export async function getFileListKey(storage, bundle) {
   );
   const rawFileListKey = await crypto.subtle.exportKey('raw', fileListKey);
   return arrayToB64(new Uint8Array(rawFileListKey));
+}
+
+export async function getFileListKey(storage, bundle) {
+  const jwks = await decryptBundle(storage, bundle);
+  const jwk = jwks['https://identity.mozilla.com/apps/send'];
+  return deriveFileListKey(jwk.k);
 }

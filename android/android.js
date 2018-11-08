@@ -1,4 +1,4 @@
-/* global window */
+/* global window, navigator */
 
 window.LIMITS = {
   ANON: {
@@ -27,14 +27,18 @@ const locale = require('../common/locales');
 const home = require('../app/ui/home');
 const app = choo();
 
+if (navigator.userAgent === 'Send Android') {
+  assets.setPrefix('/android_asset');
+}
+
 function body(main) {
   return function(state, emit) {
     return html`<body class="flex flex-col items-center font-sans bg-blue-lightest md:h-screen md:bg-grey-lightest">
-    ${header(state, emit)}
-    <a id="hamburger" class="absolute pin-t pin-r z-50" href="#" onclick=${clickPreferences}>
-      <img src=${assets.get('preferences.png')} />
-    </a>
-    ${main(state, emit)}
+      <a id="hamburger" class="absolute pin-t pin-r z-50" href="#" onclick=${clickPreferences}>
+        <img src=${assets.get('preferences.png')} />
+      </a>
+      ${header(state, emit)}
+      ${main(state, emit)}
     </body>`;
 
     function clickPreferences(event) {
@@ -44,15 +48,22 @@ function body(main) {
   };
 }
 
+app.use(require('./stores/state').default);
 app.use((state, emitter) => {
   state.translate = locale.getTranslator();
-  state.capabilities = {}; //TODO
+  state.capabilities = {
+    account: true
+  }; //TODO
+
+  window.finishLogin = async function(accountInfo) {
+    await state.user.finishLogin(accountInfo);
+    emitter.emit('render');
+  };
 
   // for debugging
   window.appState = state;
   window.appEmit = emitter.emit.bind(emitter);
 });
-app.use(require('./stores/state').default);
 app.use(require('../app/fileManager').default);
 app.use(require('./stores/intents').default);
 app.route('/', body(home));
