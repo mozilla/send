@@ -20,36 +20,39 @@ function password(state) {
   const MAX_LENGTH = 32;
 
   return html`
-  <div class="my-2">
-    <div class="checkbox inline-block mr-3">
+    <div class="my-2">
+      <div class="checkbox inline-block mr-3">
+        <input
+          id="add-password"
+          type="checkbox"
+          ${state.password ? 'checked' : ''}
+          autocomplete="off"
+          onchange="${togglePasswordInput}"
+        />
+        <label for="add-password">
+          ${state.translate('addPasswordMessage')}
+        </label>
+      </div>
       <input
-        id="add-password"
-        type="checkbox"
-        ${state.password ? 'checked' : ''}
+        id="password-input"
+        class="${
+          state.password ? '' : 'invisible'
+        } border rounded-sm focus:border-blue leading-normal my-2 py-1 px-2 h-8"
         autocomplete="off"
-        onchange=${togglePasswordInput}/>
-      <label for="add-password">
-        ${state.translate('addPasswordMessage')}
-      </label>
+        maxlength="${MAX_LENGTH}"
+        type="password"
+        oninput="${inputChanged}"
+        onfocus="${focused}"
+        placeholder="${state.translate('unlockInputPlaceholder')}"
+        value="${state.password || ''}"
+      />
+      <label
+        id="password-msg"
+        for="password-input"
+        class="block text-xs text-grey-darker mt-1"
+      ></label>
     </div>
-    <input
-      id="password-input"
-      class="${
-        state.password ? '' : 'invisible'
-      } border rounded-sm focus:border-blue leading-normal my-2 py-1 px-2 h-8"
-      autocomplete="off"
-      maxlength="${MAX_LENGTH}"
-      type="password"
-      oninput=${inputChanged}
-      onfocus=${focused}
-      placeholder="${state.translate('unlockInputPlaceholder')}"
-      value="${state.password || ''}"
-    >
-    <label
-      id="password-msg"
-      for="password-input"
-      class="block text-xs text-grey-darker mt-1"></label>
-  </div>`;
+  `;
 
   function togglePasswordInput(event) {
     event.stopPropagation();
@@ -109,14 +112,26 @@ function fileInfo(file, action) {
 function archiveDetails(translate, archive) {
   if (archive.manifest.files.length > 1) {
     return html`
-    <details class="w-full pb-1 overflow-y-scroll" ${
-      archive.open ? 'open' : ''
-    } ontoggle=${toggled}>
-      <summary>${translate('fileCount', {
-        num: archive.manifest.files.length
-      })}</summary>
-      ${list(archive.manifest.files.map(f => fileInfo(f)), 'list-reset h-full')}
-    </details>`;
+      <details
+        class="w-full pb-1 overflow-y-scroll"
+        ${archive.open ? 'open' : ''}
+        ontoggle="${toggled}"
+      >
+        <summary
+          >${
+            translate('fileCount', {
+              num: archive.manifest.files.length
+            })
+          }</summary
+        >
+        ${
+          list(
+            archive.manifest.files.map(f => fileInfo(f)),
+            'list-reset h-full'
+          )
+        }
+      </details>
+    `;
   }
   function toggled(event) {
     event.stopPropagation();
@@ -174,39 +189,45 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-  <article class="h-full flex flex-col bg-white z-20" id="wip">
-    ${list(
-      Array.from(state.archive.files)
-        .reverse()
-        .map(f => fileInfo(f, remove(f))),
-      'list-reset h-full overflow-y-scroll px-4 bg-blue-lightest md:max-h-half-screen',
-      'bg-white px-2 mt-3 border border-grey-light rounded'
-    )}
-    <div class="flex-grow p-4 bg-blue-lightest mb-6 font-medium">
-      <input
-        id="file-upload"
-        class="hidden"
-        type="file"
-        multiple
-        onchange=${add} />
-      <label
-        for="file-upload"
-        class="flex flex-row items-center w-full h-full p-2 cursor-pointer"
-        title="${state.translate('addFilesButton')}">
-          <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2"/>
-          ${state.translate('addFilesButton')}
-      </label>
-    </div>
-    ${expiryOptions(state, emit)}
-    ${password(state, emit)}
-    <button
-      id="upload-btn"
-      class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 flex flex-no-shrink items-center justify-center font-semibold"
-      title="${state.translate('uploadSuccessConfirmHeader')}"
-      onclick=${upload}>
-      ${state.translate('uploadSuccessConfirmHeader')}
-    </button>
-  </article>`;
+    <article class="h-full flex flex-col bg-white z-20" id="wip">
+      ${
+        list(
+          Array.from(state.archive.files)
+            .reverse()
+            .map(f => fileInfo(f, remove(f))),
+          'list-reset h-full overflow-y-scroll px-4 bg-blue-lightest md:max-h-half-screen',
+          'bg-white px-2 mt-3 border border-grey-light rounded'
+        )
+      }
+      <div class="flex-grow p-4 bg-blue-lightest mb-6 font-medium">
+        <input
+          id="file-upload"
+          class="hidden"
+          type="file"
+          multiple
+          onchange="${add}"
+        />
+        <label
+          for="file-upload"
+          class="flex flex-row items-center w-full h-full p-2 cursor-pointer"
+          title="${state.translate('addFilesButton')}"
+        >
+          <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2" /> ${
+            state.translate('addFilesButton')
+          }
+        </label>
+      </div>
+      ${expiryOptions(state, emit)} ${password(state, emit)}
+      <button
+        id="upload-btn"
+        class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 flex flex-no-shrink items-center justify-center font-semibold"
+        title="${state.translate('uploadSuccessConfirmHeader')}"
+        onclick="${upload}"
+      >
+        ${state.translate('uploadSuccessConfirmHeader')}
+      </button>
+    </article>
+  `;
 
   function upload(event) {
     window.scrollTo(0, 0);
@@ -235,12 +256,14 @@ module.exports.wip = function(state, emit) {
 
   function remove(file) {
     return html`
-    <input
-      type="image"
-      class="self-center text-white ml-4"
-      alt="Delete"
-      src="${assets.get('close-16.svg')}"
-      onclick=${del}/>`;
+      <input
+        type="image"
+        class="self-center text-white ml-4"
+        alt="Delete"
+        src="${assets.get('close-16.svg')}"
+        onclick="${del}"
+      />
+    `;
     function del(event) {
       event.stopPropagation();
       emit('removeUpload', file);
@@ -288,29 +311,42 @@ module.exports.uploading = function(state, emit) {
 
 module.exports.empty = function(state, emit) {
   return html`
-  <article class="flex flex-col items-center justify-center border-2 border-dashed border-blue-light px-6 py-16 h-full"
-    onclick=${() => document.getElementById('file-upload').click()}>
-    <img src="${assets.get('addfiles.svg')}" width="48" height="48"/>
-    <div class="pt-6 pb-2 text-center text-lg font-bold uppercase tracking-wide">${state.translate(
-      'uploadDropDragMessage'
-    )}</div>
-    <div class="pb-6 text-center text-base italic">${state.translate(
-      'uploadDropClickMessage'
-    )}</div>
-    <input
-      id="file-upload"
-      class="hidden"
-      type="file"
-      multiple
-      onchange=${add}
-      onclick=${e => e.stopPropagation()} />
-    <label
-      for="file-upload"
-      class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 mt-4 flex flex-no-shrink items-center justify-center font-semibold"
-      title="${state.translate('addFilesButton')}">
+    <article
+      class="flex flex-col items-center justify-center border-2 border-dashed border-blue-light px-6 py-16 h-full"
+      onclick="${
+        e => {
+          if (e.target.tagName !== 'LABEL') {
+            document.getElementById('file-upload').click();
+          }
+        }
+      }"
+    >
+      <img src="${assets.get('addfiles.svg')}" width="48" height="48" />
+      <div
+        class="pt-6 pb-2 text-center text-lg font-bold uppercase tracking-wide"
+      >
+        ${state.translate('uploadDropDragMessage')}
+      </div>
+      <div class="pb-6 text-center text-base italic">
+        ${state.translate('uploadDropClickMessage')}
+      </div>
+      <input
+        id="file-upload"
+        class="hidden"
+        type="file"
+        multiple
+        onchange="${add}"
+        onclick="${e => e.stopPropagation()}"
+      />
+      <label
+        for="file-upload"
+        class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 mt-4 flex flex-no-shrink items-center justify-center font-semibold"
+        title="${state.translate('addFilesButton')}"
+      >
         ${state.translate('addFilesButton')}
-    </label>
-  </article>`;
+      </label>
+    </article>
+  `;
 
   function add(event) {
     event.preventDefault();
