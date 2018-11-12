@@ -24,7 +24,7 @@ import html from 'choo/html';
 import Raven from 'raven-js';
 
 import assets from '../common/assets';
-import header from '../app/ui/header';
+import Header from '../app/ui/header';
 import locale from '../common/locales';
 import storage from '../app/storage';
 import controller from '../app/controller';
@@ -59,7 +59,7 @@ function body(main) {
         >
           <img src="${assets.get('preferences.png')}" />
         </a>
-        ${header(state, emit)} ${main(state, emit)}
+        ${state.cache(Header, 'header').render()} ${main(state, emit)}
       </body>
     `;
 
