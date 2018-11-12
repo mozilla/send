@@ -2,7 +2,7 @@ selenium==3.141.0
 flake8==3.6.0
 flake8-isort==2.5
 PyPOM==2.2.0
-pytest==3.10.0
+pytest==3.10.1
 pytest-html==1.19.0
 pytest-selenium==1.14.0
 pytest-xdist==1.24.0
