@@ -6,13 +6,6 @@ module.exports = async function(req, res) {
   const id = req.params.id;
   try {
     const meta = req.meta;
-    const contentLength = await storage.length(id);
-    res.writeHead(200, {
-      'Content-Disposition': 'attachment',
-      'Content-Type': 'application/octet-stream',
-      'Content-Length': contentLength,
-      'WWW-Authenticate': `send-v1 ${req.nonce}`
-    });
     const file_stream = storage.get(id);
     let cancelled = false;
 
@@ -21,7 +14,7 @@ module.exports = async function(req, res) {
       file_stream.destroy();
     });
 
-    file_stream.on('end', async () => {
+    file_stream.pipe(res).on('finish', async () => {
       if (cancelled) {
         return;
       }
@@ -38,8 +31,6 @@ module.exports = async function(req, res) {
         log.info('StorageError:', id);
       }
     });
-
-    file_stream.pipe(res);
   } catch (e) {
     res.sendStatus(404);
   }

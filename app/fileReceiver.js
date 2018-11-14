@@ -47,7 +47,7 @@ export default class FileReceiver extends Nanobus {
     this.fileInfo.name = meta.name;
     this.fileInfo.type = meta.type;
     this.fileInfo.iv = meta.iv;
-    this.fileInfo.size = meta.size;
+    this.fileInfo.size = +meta.size;
     this.state = 'ready';
   }
 
@@ -57,7 +57,7 @@ export default class FileReceiver extends Nanobus {
       this.fileInfo.id,
       this.keychain,
       p => {
-        this.progress = p;
+        this.progress = [p, this.fileInfo.size];
         this.emit('progress');
       }
     );
