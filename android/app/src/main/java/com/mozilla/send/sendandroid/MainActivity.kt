@@ -149,7 +149,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                             mToCall = "finishLogin(${toPass})"
                             this@MainActivity.runOnUiThread({
                                 // But then we also reload this here because we need to make sure onPageFinished runs after mToCall has been set.
-                                // We can't guarantee that onPageFinished has already been called at this point.
+                                // We can't guarantee that onPageFinished wasn't already called at this point.
                                 mWebView!!.loadUrl("file:///android_asset/android.html")
                             })
 
@@ -181,11 +181,9 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         if (mToCall != null) {
             this@MainActivity.runOnUiThread({
                 mWebView?.evaluateJavascript(mToCall, fun (value: String) {
-                    // noop
+                    mToCall = null
                 })
             })
-
-            mToCall = null
         }
     }
 
