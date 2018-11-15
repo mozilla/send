@@ -49,7 +49,7 @@ function body(main) {
   return function(state, emit) {
     return html`
       <body
-        class="flex flex-col items-center font-sans bg-blue-lightest md:h-screen md:bg-grey-lightest"
+        class="flex flex-col items-center font-sans bg-blue-lightest h-screen"
       >
         <a
           id="hamburger"

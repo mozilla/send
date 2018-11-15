@@ -42,7 +42,7 @@ module.exports = function(state, emit) {
   }
 
   return html`
-    <main class="relative" style="display: flex">
+    <main class="flex relative h-full">
       ${state.modal && modal(state, emit)} ${content}
       <div class="fixed pin-r pin-b">
         ${button}
