@@ -189,13 +189,13 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-    <article class="flex flex-col bg-white z-20" id="wip">
+    <article class="flex flex-col bg-white z-20 md:h-full" id="wip">
       ${
         list(
           Array.from(state.archive.files)
             .reverse()
             .map(f => fileInfo(f, remove(f))),
-          'list-reset overflow-y-scroll px-4 bg-blue-lightest md:max-h-half-screen',
+          'list-reset overflow-y-scroll px-4 bg-blue-lightest md:h-full md:max-h-half-screen',
           'bg-white px-2 mt-3 border border-grey-light rounded'
         )
       }
