@@ -189,13 +189,13 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-    <article class="h-full flex flex-col bg-white z-20" id="wip">
+    <article class="flex flex-col bg-white z-20 md:h-full" id="wip">
       ${
         list(
           Array.from(state.archive.files)
             .reverse()
             .map(f => fileInfo(f, remove(f))),
-          'list-reset h-full overflow-y-scroll px-4 bg-blue-lightest md:max-h-half-screen',
+          'list-reset overflow-y-scroll px-4 bg-blue-lightest md:h-full md:max-h-half-screen',
           'bg-white px-2 mt-3 border border-grey-light rounded'
         )
       }
@@ -209,7 +209,7 @@ module.exports.wip = function(state, emit) {
         />
         <label
           for="file-upload"
-          class="flex flex-row items-center w-full h-full p-2 cursor-pointer"
+          class="flex flex-row items-center w-full p-2 cursor-pointer"
           title="${state.translate('addFilesButton')}"
         >
           <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2" /> ${

@@ -28,17 +28,21 @@ class AndroidIndexPlugin {
     compiler.hooks.emit.tap(NAME, compilation => {
       const files = chunkFileNames(compilation);
       const page = html`
-      <html lang="en-US">
-        <head>
-          <title>Firefox Send</title>
-          <link href="${files['app.css']}" rel="stylesheet">
-          <script src="${files['vendor.js']}"></script>
-          <script src="${assets['public/locales/en-US/send.ftl']}"></script>
-          <script src="${files['android.js']}"></script>
-        </head>
-        <body>
-        </body>
-      </html>
+        <html lang="en-US">
+          <head>
+            <title>Firefox Send</title>
+            <meta charset="utf-8" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
+            <link href="${files['app.css']}" rel="stylesheet" />
+            <script src="${files['vendor.js']}"></script>
+            <script src="${assets['public/locales/en-US/send.ftl']}"></script>
+            <script src="${files['android.js']}"></script>
+          </head>
+          <body></body>
+        </html>
       `
         .toString()
         .replace(/\n\s{6}/g, '\n');

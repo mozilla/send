@@ -1,42 +1,60 @@
 const html = require('choo/html');
+const { list } = require('../../app/utils');
+const archiveTile = require('../../app/ui/archiveTile');
+const modal = require('../../app/ui/modal');
+const intro = require('../../app/ui/intro');
+const assets = require('../../common/assets');
 
-export default function mainPage(state, emit) {
-  function clickPreferences(event) {
+module.exports = function(state, emit) {
+  function onchange(event) {
     event.preventDefault();
-    emit('pushState', '/preferences');
+    const newFiles = Array.from(event.target.files);
+
+    emit('addFiles', { files: newFiles });
   }
 
-  function uploadFile(event) {
-    event.preventDefault();
-    const target = event.target;
-    const file = target.files[0];
-    if (file.size === 0) {
-      return;
-    }
-
-    emit('pushState', '/options');
-    emit('addFiles', { files: [file] });
+  function onclick() {
+    document.getElementById('file-upload').click();
   }
 
-  return html`<body>
-  <div id="white">
-    <div id="centering">
-      <img id="top-banner" src=${state.getAsset('top-banner.png')} />
-      <a id="hamburger" href="#" onclick=${clickPreferences}>
-        <img src=${state.getAsset('preferences.png')} />
-      </a>
-      <img src=${state.getAsset('encrypted-envelope.png')} />
-      <h4>Private, Encrypted File Sharing</h4>
-      <div>
-        Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
+  const archives = state.storage.files
+    .map(archive => archiveTile(state, emit, archive))
+    .reverse();
+
+  let content = '';
+  let button = html`
+    <img
+      onclick="${onclick}"
+      style="padding: 1em"
+      src="${assets.get('addfile.svg')}"
+    />
+  `;
+  if (state.uploading) {
+    content = archiveTile.uploading(state, emit);
+  } else if (state.archive) {
+    content = archiveTile.wip(state, emit);
+    button = '';
+  } else {
+    content =
+      archives.length < 1
+        ? intro(state)
+        : list(archives, 'list-reset h-full overflow-y-scroll', 'mb-3');
+  }
+
+  return html`
+    <main class="relative" style="display: flex">
+      ${state.modal && modal(state, emit)} ${content}
+      <div class="fixed pin-r pin-b">
+        ${button}
+        <input
+          id="file-upload"
+          class="hidden"
+          type="file"
+          multiple
+          onchange="${onchange}"
+          onclick="${e => e.stopPropagation()}"
+        />
       </div>
-      <div id="spacer">
-      </div>
-      <label id="label" for="input">
-        <img src=${state.getAsset('cloud-upload.png')} />
-      </label>
-      <input id="input" name="input" type="file" onchange=${uploadFile} />
-    </div>
-  </div>
-</body>`;
-}
+    </main>
+  `;
+};

@@ -19,17 +19,31 @@ window.DEFAULTS = {
   EXPIRE_SECONDS: 3600
 };
 
-const choo = require('choo');
-const html = require('choo/html');
-const assets = require('../common/assets');
-const header = require('../app/ui/header');
-const locale = require('../common/locales');
-const home = require('../app/ui/home');
-const app = choo();
+import choo from 'choo';
+import html from 'choo/html';
+import Raven from 'raven-js';
+
+import assets from '../common/assets';
+import header from '../app/ui/header';
+import locale from '../common/locales';
+import storage from '../app/storage';
+import controller from '../app/controller';
+import User from './user';
+import intents from './stores/intents';
+import home from './pages/home';
+import upload from './pages/upload';
+import share from './pages/share';
+import preferences from './pages/preferences';
+import error from './pages/error';
 
 if (navigator.userAgent === 'Send Android') {
   assets.setPrefix('/android_asset');
 }
+
+const app = choo();
+//app.use(state);
+app.use(controller);
+app.use(intents);
 
 function body(main) {
   return function(state, emit) {
@@ -56,12 +70,14 @@ function body(main) {
   };
 }
 
-app.use(require('./stores/state').default);
 app.use((state, emitter) => {
   state.translate = locale.getTranslator();
   state.capabilities = {
     account: true
   }; //TODO
+  state.storage = storage;
+  state.user = new User(storage);
+  state.raven = Raven;
 
   window.finishLogin = async function(accountInfo) {
     await state.user.finishLogin(accountInfo);
@@ -72,14 +88,11 @@ app.use((state, emitter) => {
   window.appState = state;
   window.appEmit = emitter.emit.bind(emitter);
 });
-app.use(require('../app/controller').default);
-app.use(require('./stores/intents').default);
 app.route('/', body(home));
-app.route('/options', require('./pages/options').default);
-app.route('/upload', require('./pages/upload').default);
-app.route('/share/:id', require('./pages/share').default);
-app.route('/preferences', require('./pages/preferences').default);
-app.route('/error', require('./pages/error').default);
+app.route('/upload', upload);
+app.route('/share/:id', share);
+app.route('/preferences', preferences);
+app.route('/error', error);
 //app.route('/debugging', require('./pages/debugging').default);
 // add /api/filelist
 app.mount('body');
