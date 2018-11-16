@@ -1,3 +1,5 @@
 dist
+android/app/src/main/assets
+android/app/build
 assets/*.js
 coverage
