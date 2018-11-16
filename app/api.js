@@ -318,8 +318,8 @@ function download(id, keychain, onprogress, canceller) {
     });
 
     xhr.addEventListener('progress', function(event) {
-      if (event.lengthComputable && event.target.status === 200) {
-        onprogress([event.loaded, event.total]);
+      if (event.target.status === 200) {
+        onprogress(event.loaded);
       }
     });
     const auth = await keychain.authHeader();
@@ -327,7 +327,7 @@ function download(id, keychain, onprogress, canceller) {
     xhr.setRequestHeader('Authorization', auth);
     xhr.responseType = 'blob';
     xhr.send();
-    onprogress([0, 1]);
+    onprogress(0);
   });
 }
 

@@ -13,7 +13,7 @@ class GCSStorage {
   }
 
   getStream(id) {
-    return this.bucket.file(id).createReadStream();
+    return this.bucket.file(id).createReadStream({ validation: false });
   }
 
   set(id, file) {

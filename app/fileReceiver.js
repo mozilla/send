@@ -48,7 +48,7 @@ export default class FileReceiver extends Nanobus {
     this.fileInfo.name = meta.name;
     this.fileInfo.type = meta.type;
     this.fileInfo.iv = meta.iv;
-    this.fileInfo.size = meta.size;
+    this.fileInfo.size = +meta.size;
     this.fileInfo.manifest = meta.manifest;
     this.state = 'ready';
   }
@@ -77,7 +77,7 @@ export default class FileReceiver extends Nanobus {
       this.fileInfo.id,
       this.keychain,
       p => {
-        this.progress = p;
+        this.progress = [p, this.fileInfo.size];
         this.emit('progress');
       }
     );
@@ -113,7 +113,7 @@ export default class FileReceiver extends Nanobus {
 
   async downloadStream(noSave = false) {
     const onprogress = p => {
-      this.progress = p;
+      this.progress = [p, this.fileInfo.size];
       this.emit('progress');
     };
 
@@ -142,7 +142,7 @@ export default class FileReceiver extends Nanobus {
       };
       await this.sendMessageToSw(info);
 
-      onprogress([0, this.fileInfo.size]);
+      onprogress(0);
 
       if (noSave) {
         const res = await fetch(`/api/download/${this.fileInfo.id}`);
@@ -166,7 +166,7 @@ export default class FileReceiver extends Nanobus {
           id: this.fileInfo.id
         });
         prog = msg.progress;
-        onprogress([prog, this.fileInfo.size]);
+        onprogress(prog);
         await delay(1000);
       }
 
