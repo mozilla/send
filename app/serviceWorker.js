@@ -80,9 +80,15 @@ async function decryptStream(id) {
 }
 
 async function precache() {
+  const oldCaches = await caches.keys();
+  for (const c of oldCaches) {
+    if (c !== version) {
+      await caches.delete(c);
+    }
+  }
   const cache = await caches.open(version);
-  const x = assets.match(/.*\.(png|svg|jpg)$/);
-  await cache.addAll(x);
+  const images = assets.match(/.*\.(png|svg|jpg)$/);
+  await cache.addAll(images);
   return self.skipWaiting();
 }
 
