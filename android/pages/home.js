@@ -18,6 +18,7 @@ module.exports = function(state, emit) {
   }
 
   const archives = state.storage.files
+    .filter(archive => !archive.expired)
     .map(archive => archiveTile(state, emit, archive))
     .reverse();
 
