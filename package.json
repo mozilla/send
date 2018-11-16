@@ -140,7 +140,6 @@
     "convict": "^4.4.0",
     "express": "^4.16.3",
     "express-ws": "^4.0.0",
-    "fast-crc32c": "^1.0.4",
     "fluent": "^0.9.1",
     "fluent-langneg": "^0.1.0",
     "helmet": "^3.15.0",
