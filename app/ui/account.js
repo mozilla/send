@@ -52,20 +52,22 @@ class Account extends Component {
 
   createElement() {
     if (!this.enabled) {
-      return null;
+      return html`
+        <div></div>
+      `;
     }
     const user = this.state.user;
     const translate = this.state.translate;
     if (!this.local.loggedIn) {
       return html`
-      <div>
-        <button
-          class="p-2 border rounded border-white text-white hover:bg-white hover:text-blue md:text-blue md:border-blue md:hover:text-white md:hover:bg-blue"
-          onclick="${e => this.login(e)}"
-        >
-          ${translate('signInMenuOption')}
-        </button>
-      </div>
+        <div>
+          <button
+            class="p-2 border rounded border-white text-white hover:bg-white hover:text-blue md:text-blue md:border-blue md:hover:text-white md:hover:bg-blue"
+            onclick="${e => this.login(e)}"
+          >
+            ${translate('signInMenuOption')}
+          </button>
+        </div>
       `;
     }
     return html`
