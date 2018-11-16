@@ -1,5 +1,7 @@
 import 'fast-text-encoding'; // MS Edge support
 import 'fluent-intl-polyfill';
+import choo from 'choo';
+import nanotiming from 'nanotiming';
 import routes from './routes';
 import capabilities from './capabilities';
 import locale from '../common/locales';
@@ -14,7 +16,10 @@ import './main.css';
 import User from './user';
 
 (async function start() {
-  const app = routes();
+  const app = routes(choo());
+  if (process.env.NODE_ENV === 'production') {
+    nanotiming.disabled = true;
+  }
   if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
     Raven.config(window.SENTRY_ID, window.RAVEN_CONFIG).install();
   }

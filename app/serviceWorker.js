@@ -1,3 +1,5 @@
+import assets from '../common/assets';
+import { version } from '../package.json';
 import Keychain from './keychain';
 import { downloadStream } from './api';
 import { transformStream } from './streams';
@@ -8,11 +10,11 @@ let noSave = false;
 const map = new Map();
 
 self.addEventListener('install', event => {
-  self.skipWaiting();
+  event.waitUntil(precache());
 });
 
 self.addEventListener('activate', event => {
-  self.clients.claim();
+  event.waitUntil(self.clients.claim());
 });
 
 async function decryptStream(id) {
@@ -77,11 +79,32 @@ async function decryptStream(id) {
   }
 }
 
+async function precache() {
+  const oldCaches = await caches.keys();
+  for (const c of oldCaches) {
+    if (c !== version) {
+      await caches.delete(c);
+    }
+  }
+  const cache = await caches.open(version);
+  const images = assets.match(/.*\.(png|svg|jpg)$/);
+  await cache.addAll(images);
+  return self.skipWaiting();
+}
+
+async function cachedOrFetch(req) {
+  const cache = await caches.open(version);
+  const cached = await cache.match(req);
+  return cached || fetch(req);
+}
+
 self.onfetch = event => {
   const req = event.request;
   const match = /\/api\/download\/([A-Fa-f0-9]{4,})/.exec(req.url);
   if (match) {
     event.respondWith(decryptStream(match[1]));
+  } else {
+    event.respondWith(cachedOrFetch(req));
   }
 };
 

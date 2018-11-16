@@ -1,25 +1,34 @@
 const html = require('choo/html');
-const account = require('./account');
+const Component = require('choo/component');
+const Account = require('./account');
 
-module.exports = function(state, emit) {
-  const header = html`
-  <header class="relative flex-none flex flex-row items-center justify-between bg-blue md:bg-white w-full px-6 h-16 md:shadow z-20">
-    <a
-      class="header-logo"
-      href="/">
-      <h1 class="text-white md:text-black font-normal">Firefox <b>Send</b></h1>
-    </a>
-    ${account(state, emit)}
-    <div class="invisible absolute pin-t pin-l mt-12 w-full flex flex-col items-center pointer-events-none">
-      <div class="border rounded bg-grey-darkest text-white mt-2 p-2">Your upload has finished.<button class="border border-blue rounded-sm bg-blue text-white inline-block p-1 ml-2">Copy Link</button><button class="text-white inline-block p-1 ml-2">ⓧ</button></div>
-      ${state.toast ? state.toast() : ''}
-    </div>
-  </header>`;
-  // HACK
-  // We only want to render this once because we
-  // toggle the targets of the links with utils/openLinksInNewTab
-  // header.isSameNode = function(target) {
-  //   return target && target.nodeName && target.nodeName === 'HEADER';
-  // };
-  return header;
-};
+class Header extends Component {
+  constructor(name, state, emit) {
+    super(name);
+    this.state = state;
+    this.emit = emit;
+    this.account = state.cache(Account, 'account');
+  }
+
+  update() {
+    this.account.render();
+    return false;
+  }
+
+  createElement() {
+    return html`
+      <header
+        class="relative flex-none flex flex-row items-center justify-between bg-blue md:bg-white w-full px-6 h-16 md:shadow z-20"
+      >
+        <a class="header-logo" href="/">
+          <h1 class="text-white md:text-black font-normal">
+            Firefox <b>Send</b>
+          </h1>
+        </a>
+        ${this.account.render()}
+      </header>
+    `;
+  }
+}
+
+module.exports = Header;

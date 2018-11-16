@@ -184,8 +184,17 @@ async function streamToArrayBuffer(stream, size) {
 }
 
 function list(items, ulStyle = '', liStyle = '') {
-  const lis = items.map(i => html`<li class="${liStyle}">${i}</li>`);
-  return html`<ul class="${ulStyle}">${lis}</ul>`;
+  const lis = items.map(
+    i =>
+      html`
+        <li class="${liStyle}">${i}</li>
+      `
+  );
+  return html`
+    <ul class="${ulStyle}">
+      ${lis}
+    </ul>
+  `;
 }
 
 function secondsToL10nId(seconds) {
@@ -199,6 +208,9 @@ function secondsToL10nId(seconds) {
 }
 
 function timeLeft(milliseconds) {
+  if (milliseconds < 1) {
+    return { id: 'linkExpiredAlt' };
+  }
   const minutes = Math.floor(milliseconds / 1000 / 60);
   const hours = Math.floor(minutes / 60);
   const days = Math.floor(hours / 24);

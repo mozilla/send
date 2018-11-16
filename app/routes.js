@@ -1,37 +1,8 @@
 const choo = require('choo');
-const html = require('choo/html');
-const nanotiming = require('nanotiming');
 const download = require('./ui/download');
-const footer = require('./ui/footer');
-const fxPromo = require('./ui/fxPromo');
-const header = require('./ui/header');
+const body = require('./ui/body');
 
-nanotiming.disabled = true;
-
-function banner(state, emit) {
-  if (state.promo && !state.route.startsWith('/unsupported/')) {
-    return fxPromo(state, emit);
-  }
-}
-
-function body(main) {
-  return function(state, emit) {
-    const b = html`<body class="flex flex-col items-center font-sans bg-blue-lightest md:h-screen md:bg-grey-lightest">
-    ${banner(state, emit)}
-    ${header(state, emit)}
-    ${main(state, emit)}
-    ${footer(state)}
-    </body>`;
-    if (state.layout) {
-      // server side only
-      return state.layout(state, b);
-    }
-    return b;
-  };
-}
-
-module.exports = function() {
-  const app = choo();
+module.exports = function(app = choo()) {
   app.route('/', body(require('./ui/home')));
   app.route('/download/:id', body(download));
   app.route('/download/:id/:key', body(download));

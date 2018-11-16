@@ -6,6 +6,7 @@ dist
 .nyc_output
 .tox
 .pytest_cache
+*.iml
 android/app/src/main/assets
 ios/send-ios/assets/ios.js
 ios/send-ios/assets/vendor.js

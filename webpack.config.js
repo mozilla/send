@@ -34,7 +34,56 @@ const serviceWorker = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        include: [require.resolve('./assets/cryptofill')],
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash:8].[ext]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[hash:8].[ext]'
+        }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash:8].[ext]'
+            }
+          },
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [
+                { removeViewBox: false }, // true causes stretched images
+                { convertStyleToAttrs: true }, // for CSP, no unsafe-eval
+                { removeTitle: true } // for smallness
+              ]
+            }
+          }
+        ]
+      },
+      {
+        // loads all assets from assets/ for use by common/assets.js
+        test: require.resolve('./build/generate_asset_map.js'),
+        use: ['babel-loader', 'val-loader']
+      }
+    ]
+  },
+  plugins: [new webpack.IgnorePlugin(/\.\.\/dist/)]
 };
 
 const web = {
@@ -185,6 +234,7 @@ const web = {
         from: '*.*'
       }
     ]),
+    new webpack.EnvironmentPlugin(['NODE_ENV']),
     new webpack.IgnorePlugin(/\.\.\/dist/), // used in common/*.js
     new webpack.IgnorePlugin(/require-from-string/), // used in common/locales.js
     new webpack.HashedModuleIdsPlugin(),
