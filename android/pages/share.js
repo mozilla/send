@@ -26,8 +26,12 @@ export default function uploadComplete(state, emit) {
     emit('upload', {});
   }
 
-  const input = html`<input id="url" value=${file.url} readonly="true" />`;
-  const copyText = html`<span>Copy link</span>`;
+  const input = html`
+    <input id="url" value="${file.url}" readonly="true" />
+  `;
+  const copyText = html`
+    <span>Copy link</span>
+  `;
   return html`<body>
   <div id="white">
     <div class="card">

@@ -8,31 +8,39 @@ function password(state, emit) {
   const invalid = fileInfo.password === null;
 
   const div = html`
-    <div class="h-full flex flex-col items-center justify-center border border-grey-light bg-white py-8">
+    <div
+      class="h-full flex flex-col items-center justify-center border border-grey-light bg-white py-8"
+    >
       <label
         id="password-error"
         class="${invalid ? '' : 'invisible'} text-red my-4"
-        for="password-input">
+        for="password-input"
+      >
         ${state.translate('passwordTryAgain')}
       </label>
 
-      <form class="w-5/6" onsubmit=${checkPassword} data-no-csrf>
-        <input id="password-input"
+      <form class="w-5/6" onsubmit="${checkPassword}" data-no-csrf>
+        <input
+          id="password-input"
           class="w-full border rounded ${
             invalid ? 'border-red' : 'border-grey'
           } leading-loose px-2 py-1"
           maxlength="32"
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"
-          oninput=${inputChanged}
-          type="password" />
+          oninput="${inputChanged}"
+          type="password"
+        />
 
-        <input type="submit"
+        <input
+          type="submit"
           id="password-btn"
           class="hidden"
-          value="${state.translate('unlockInputLabel')}"/>
+          value="${state.translate('unlockInputLabel')}"
+        />
       </form>
-    </div>`;
+    </div>
+  `;
 
   if (!(div instanceof String)) {
     setTimeout(() => document.getElementById('password-input').focus());
@@ -87,16 +95,20 @@ module.exports = function(state, emit) {
         break;
       case 'complete':
         content = html`
-        <div id="download-complete" class="flex flex-col items-center justify-center h-full bg-white border border-grey-light p-2">
-          <h1 class="text-center font-bold my-4 text-2xl">${state.translate(
-            'downloadFinish'
-          )}</h1>
-          <p class="mb-4">
-            <a href="/" class="text-blue font-medium">${state.translate(
-              'sendYourFilesLink'
-            )}</a>
-          </p>
-        </div>`;
+          <div
+            id="download-complete"
+            class="flex flex-col items-center justify-center h-full bg-white border border-grey-light p-2"
+          >
+            <h1 class="text-center font-bold my-4 text-2xl">
+              ${state.translate('downloadFinish')}
+            </h1>
+            <p class="mb-4">
+              <a href="/" class="text-blue font-medium"
+                >${state.translate('sendYourFilesLink')}</a
+              >
+            </p>
+          </div>
+        `;
         break;
       default:
         content = archiveTile.preview(state, emit);
@@ -105,10 +117,11 @@ module.exports = function(state, emit) {
     content = password(state, emit);
   }
   return html`
-  <main class="main container">
-    <section class="relative h-full w-full p-6 md:flex md:flex-row">
-      <div class="md:mr-6 md:w-1/2">${content}</div>
-      <div class="md:w-1/2 mt-6 md:mt-0">${intro(state)}</div>
-    </section>
-  </main>`;
+    <main class="main container">
+      <section class="relative h-full w-full p-6 md:flex md:flex-row">
+        <div class="md:mr-6 md:w-1/2">${content}</div>
+        <div class="md:w-1/2 mt-6 md:mt-0">${intro(state)}</div>
+      </section>
+    </main>
+  `;
 };

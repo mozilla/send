@@ -16,21 +16,19 @@ export default function preferences(state, emit) {
     emit('pushState', '/');
   }
 
-  return html`<body>
-  <div id="white">
-    <div id="preferences">
-      <a onclick=${clickDone} href="#">
-      done
-      </a>
-      <dl>
-        <dt>
-          wss url:
-        </dt>
-        <dd>
-          <input type="text" onchange=${updateWssUrl} value=${wssURL} />
-        </dd>
-      </dl>
-    </div>
-  </div>
-</body>`;
+  return html`
+    <body>
+      <div id="white">
+        <div id="preferences">
+          <a onclick="${clickDone}" href="#"> done </a>
+          <dl>
+            <dt>wss url:</dt>
+            <dd>
+              <input type="text" onchange="${updateWssUrl}" value="${wssURL}" />
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </body>
+  `;
 }

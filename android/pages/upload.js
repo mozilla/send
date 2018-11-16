@@ -12,13 +12,15 @@ export default function progressBar(state, emit) {
     }
     emit('pushState', '/');
   }
-  return html`<body>
-  <div id="white">
-    <div class="card">
-      <div>${percent}%</div>
-      <span class="progress" style="width: ${percent}%">.</span>
-      <div class="cancel" onclick=${onclick}>CANCEL</div>
-    </div>
-  </div>
-</body>`;
+  return html`
+    <body>
+      <div id="white">
+        <div class="card">
+          <div>${percent}%</div>
+          <span class="progress" style="width: ${percent}%">.</span>
+          <div class="cancel" onclick="${onclick}">CANCEL</div>
+        </div>
+      </div>
+    </body>
+  `;
 }

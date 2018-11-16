@@ -5,10 +5,13 @@ module.exports = function(state) {
   // return '';
   return state.cspNonce
     ? html`
-  <script nonce="${state.cspNonce}">
-  const downloadMetadata = ${
-    state.downloadMetadata ? raw(JSON.stringify(state.downloadMetadata)) : '{}'
-  };
-  </script>`
+        <script nonce="${state.cspNonce}">
+          const downloadMetadata = ${
+            state.downloadMetadata
+              ? raw(JSON.stringify(state.downloadMetadata))
+              : '{}'
+          };
+        </script>
+      `
     : '';
 };
