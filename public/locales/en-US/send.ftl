@@ -52,6 +52,7 @@ fileCount = { $num ->
     [one] 1 file
    *[other] { $num } files
 }
+totalSize = Total Size: { $size }
 copyUrlFormLabelWithName = Copy and share the link to send your file: { $filename }
 copyUrlFormButton = Copy to clipboard
 copiedUrl = Copied!

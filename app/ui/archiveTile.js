@@ -209,12 +209,17 @@ module.exports.wip = function(state, emit) {
         />
         <label
           for="file-upload"
-          class="flex flex-row items-center w-full p-2 cursor-pointer"
+          class="flex flex-row items-center justify-between w-full p-2 cursor-pointer"
           title="${state.translate('addFilesButton')}"
         >
-          <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2" /> ${
-            state.translate('addFilesButton')
-          }
+          <div class="flex items-center">
+            <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2" /> ${
+              state.translate('addFilesButton')
+            }
+          </div>
+          <div class="font-normal text-sm text-grey-darker">
+            ${state.translate('totalSize', { size: bytes(state.archive.size) })}
+          </div>
         </label>
       </div>
       ${expiryOptions(state, emit)} ${password(state, emit)}
