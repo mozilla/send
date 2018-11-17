@@ -11,8 +11,7 @@ describe('Firefox Send homepage', function() {
     'legal',
     'cookies',
     'report-infringement',
-    'github',
-    'twitter'
+    'github'
   ];
 
   beforeEach(function() {

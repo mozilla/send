@@ -52,9 +52,6 @@ class Footer extends Component {
             <a href="https://github.com/mozilla/send">GitHub </a>
           </li>
           <li class="m-2">
-            <a href="https://twitter.com/FxTestPilot">Twitter </a>
-          </li>
-          <li class="m-2">
             <a
               href="${feedbackUrl}"
               rel="noreferrer noopener"
