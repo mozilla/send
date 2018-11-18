@@ -14,6 +14,7 @@ class DownloadPage extends Page {
    * @throws ElementNotFound
    */
   waitForPageToLoad() {
+    super.waitForPageToLoad();
     browser.waitForExist(this.downloadButton);
     return this;
   }

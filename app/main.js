@@ -1,10 +1,11 @@
+/* global LOCALE */
+import 'core-js';
 import 'fast-text-encoding'; // MS Edge support
 import 'fluent-intl-polyfill';
 import choo from 'choo';
 import nanotiming from 'nanotiming';
 import routes from './routes';
 import capabilities from './capabilities';
-import locale from '../common/locales';
 import controller from './controller';
 import dragManager from './dragManager';
 import pasteManager from './pasteManager';
@@ -14,6 +15,7 @@ import experiments from './experiments';
 import Raven from 'raven-js';
 import './main.css';
 import User from './user';
+import { getTranslator } from './locale';
 
 (async function start() {
   const app = routes(choo());
@@ -28,11 +30,13 @@ import User from './user';
     navigator.serviceWorker.register('/serviceWorker.js');
   }
 
+  const translate = await getTranslator(LOCALE);
+
   app.use((state, emitter) => {
     state.capabilities = capa;
     state.transfer = null;
     state.fileInfo = null;
-    state.translate = locale.getTranslator();
+    state.translate = translate;
     state.storage = storage;
     state.raven = Raven;
     state.user = new User(storage);

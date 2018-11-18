@@ -1,4 +1,4 @@
-/* global browser */
+/* global browser window */
 class Page {
   constructor(path) {
     this.path = path;
@@ -15,6 +15,12 @@ class Page {
    * @throws ElementNotFound
    */
   waitForPageToLoad() {
+    browser.waitUntil(function() {
+      return browser.execute(function() {
+        return typeof window.appState !== 'undefined';
+      });
+    }, 3000);
+    browser.pause(100);
     return this;
   }
 }

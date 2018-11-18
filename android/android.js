@@ -26,7 +26,6 @@ import Raven from 'raven-js';
 import { setApiUrlPrefix } from '../app/api';
 import assets from '../common/assets';
 import Header from '../app/ui/header';
-import locale from '../common/locales';
 import storage from '../app/storage';
 import controller from '../app/controller';
 import User from './user';
@@ -36,9 +35,9 @@ import upload from './pages/upload';
 import share from './pages/share';
 import preferences from './pages/preferences';
 import error from './pages/error';
+import { getTranslator } from '../app/locale';
 
 if (navigator.userAgent === 'Send Android') {
-  assets.setPrefix('/android_asset');
   setApiUrlPrefix('https://send2.dev.lcip.org');
 }
 
@@ -71,30 +70,32 @@ function body(main) {
     }
   };
 }
+(async function start() {
+  const translate = await getTranslator('en-US');
+  app.use(async (state, emitter) => {
+    state.translate = translate;
+    state.capabilities = {
+      account: true
+    }; //TODO
+    state.storage = storage;
+    state.user = new User(storage);
+    state.raven = Raven;
 
-app.use((state, emitter) => {
-  state.translate = locale.getTranslator();
-  state.capabilities = {
-    account: true
-  }; //TODO
-  state.storage = storage;
-  state.user = new User(storage);
-  state.raven = Raven;
+    window.finishLogin = async function(accountInfo) {
+      await state.user.finishLogin(accountInfo);
+      emitter.emit('render');
+    };
 
-  window.finishLogin = async function(accountInfo) {
-    await state.user.finishLogin(accountInfo);
-    emitter.emit('render');
-  };
-
-  // for debugging
-  window.appState = state;
-  window.appEmit = emitter.emit.bind(emitter);
-});
-app.route('/', body(home));
-app.route('/upload', upload);
-app.route('/share/:id', share);
-app.route('/preferences', preferences);
-app.route('/error', error);
-//app.route('/debugging', require('./pages/debugging').default);
-// add /api/filelist
-app.mount('body');
+    // for debugging
+    window.appState = state;
+    window.appEmit = emitter.emit.bind(emitter);
+  });
+  app.route('/', body(home));
+  app.route('/upload', upload);
+  app.route('/share/:id', share);
+  app.route('/preferences', preferences);
+  app.route('/error', error);
+  //app.route('/debugging', require('./pages/debugging').default);
+  // add /api/filelist
+  app.mount('body');
+})();

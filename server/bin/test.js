@@ -1,5 +1,4 @@
 const assets = require('../../common/assets');
-const locales = require('../../common/locales');
 const routes = require('../routes');
 const pages = require('../routes/pages');
 const tests = require('../../test/frontend/routes');
@@ -7,7 +6,6 @@ const expressWs = require('express-ws');
 
 module.exports = function(app, devServer) {
   assets.setMiddleware(devServer.middleware);
-  locales.setMiddleware(devServer.middleware);
   expressWs(app, null, { perMessageDeflate: false });
   app.ws('/api/ws', require('../routes/ws'));
   routes(app);

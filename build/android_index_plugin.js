@@ -15,16 +15,6 @@ function chunkFileNames(compilation) {
 }
 class AndroidIndexPlugin {
   apply(compiler) {
-    const assets = {};
-    compiler.hooks.compilation.tap(NAME, compilation => {
-      compilation.hooks.moduleAsset.tap(NAME, (mod, file) => {
-        if (mod.userRequest) {
-          assets[
-            path.join(path.dirname(file), path.basename(mod.userRequest))
-          ] = file;
-        }
-      });
-    });
     compiler.hooks.emit.tap(NAME, compilation => {
       const files = chunkFileNames(compilation);
       const page = html`
@@ -36,9 +26,8 @@ class AndroidIndexPlugin {
               name="viewport"
               content="width=device-width, initial-scale=1"
             />
+            <base href="file:///android_asset/" />
             <link href="${files['app.css']}" rel="stylesheet" />
-            <script src="${files['vendor.js']}"></script>
-            <script src="${assets['public/locales/en-US/send.ftl']}"></script>
             <script src="${files['android.js']}"></script>
           </head>
           <body></body>

@@ -1,5 +1,4 @@
 const assets = require('../../common/assets');
-const locales = require('../../common/locales');
 const routes = require('../routes');
 const pages = require('../routes/pages');
 const tests = require('../../test/frontend/routes');
@@ -17,7 +16,6 @@ module.exports = function(app, devServer) {
   wsapp.listen(8081, config.listen_address);
 
   assets.setMiddleware(devServer.middleware);
-  locales.setMiddleware(devServer.middleware);
   app.use(morgan('dev', { stream: process.stderr }));
   function android(req, res) {
     const index = devServer.middleware.fileSystem.readFileSync(

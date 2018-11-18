@@ -17,10 +17,10 @@ exports.config = Object.assign({}, common.config, {
   maxInstances: 1,
   services: ['docker', require('./testServer')],
   dockerOptions: {
-    image: 'selenium/standalone-firefox',
+    image: 'selenium/standalone-firefox-debug',
     healthCheck: 'http://localhost:4444',
     options: {
-      p: ['4444:4444'],
+      p: ['4444:4444', '5900:5900'],
       mount: `type=bind,source=${dir},destination=${dir},consistency=delegated`,
       shmSize: '2g'
     }

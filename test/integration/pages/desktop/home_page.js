@@ -12,6 +12,7 @@ class HomePage extends Page {
   }
 
   waitForPageToLoad() {
+    super.waitForPageToLoad();
     browser.waitForExist(this.uploadInput);
     this.showUploadInput();
     return this;
