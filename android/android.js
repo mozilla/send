@@ -23,6 +23,7 @@ import choo from 'choo';
 import html from 'choo/html';
 import Raven from 'raven-js';
 
+import { setApiUrlPrefix } from '../app/api';
 import assets from '../common/assets';
 import Header from '../app/ui/header';
 import locale from '../common/locales';
@@ -38,6 +39,7 @@ import error from './pages/error';
 
 if (navigator.userAgent === 'Send Android') {
   assets.setPrefix('/android_asset');
+  setApiUrlPrefix('https://send2.dev.lcip.org');
 }
 
 const app = choo();
