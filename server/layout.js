@@ -36,6 +36,8 @@ module.exports = function(state, body = '') {
           content="${state.baseUrl}${assets.get('send-twitter.jpg')}"
         />
         <meta property="og:url" content="${state.baseUrl}" />
+        <meta name="theme-color" content="#0a84ff" />
+        <link rel="manifest" href="/app.webmanifest" />
 
         <title>${state.title}</title>
 
