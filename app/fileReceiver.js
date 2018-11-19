@@ -1,7 +1,7 @@
 import Nanobus from 'nanobus';
 import Keychain from './keychain';
 import { delay, bytes, streamToArrayBuffer } from './utils';
-import { downloadFile, metadata } from './api';
+import { downloadFile, metadata, getApiUrl } from './api';
 import { blobStream } from './streams';
 import Zip from './zip';
 
@@ -145,14 +145,18 @@ export default class FileReceiver extends Nanobus {
       onprogress(0);
 
       if (noSave) {
-        const res = await fetch(`/api/download/${this.fileInfo.id}`);
+        const res = await fetch(getApiUrl(`/api/download/${this.fileInfo.id}`));
         if (res.status !== 200) {
           throw new Error(res.status);
         }
       } else {
-        const downloadUrl = `${location.protocol}//${
-          location.host
-        }/api/download/${this.fileInfo.id}`;
+        const downloadPath = `/api/download/${this.fileInfo.id}`;
+        let downloadUrl = getApiUrl(downloadPath);
+        if (downloadUrl === downloadPath) {
+          downloadUrl = `${location.protocol}//${location.host}/api/download/${
+            this.fileInfo.id
+          }`;
+        }
         const a = document.createElement('a');
         a.href = downloadUrl;
         document.body.appendChild(a);

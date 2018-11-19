@@ -20,6 +20,15 @@ export function getFileProtocolWssUrl() {
   return fileProtocolWssUrl;
 }
 
+let apiUrlPrefix = '';
+export function getApiUrl(path) {
+  return apiUrlPrefix + path;
+}
+
+export function setApiUrlPrefix(prefix) {
+  apiUrlPrefix = prefix;
+}
+
 function post(obj, bearerToken) {
   const h = {
     'Content-Type': 'application/json'
@@ -62,13 +71,16 @@ async function fetchWithAuthAndRetry(url, params, keychain) {
 }
 
 export async function del(id, owner_token) {
-  const response = await fetch(`/api/delete/${id}`, post({ owner_token }));
+  const response = await fetch(
+    getApiUrl(`/api/delete/${id}`),
+    post({ owner_token })
+  );
   return response.ok;
 }
 
 export async function setParams(id, owner_token, bearerToken, params) {
   const response = await fetch(
-    `/api/params/${id}`,
+    getApiUrl(`/api/params/${id}`),
     post(
       {
         owner_token,
@@ -81,7 +93,10 @@ export async function setParams(id, owner_token, bearerToken, params) {
 }
 
 export async function fileInfo(id, owner_token) {
-  const response = await fetch(`/api/info/${id}`, post({ owner_token }));
+  const response = await fetch(
+    getApiUrl(`/api/info/${id}`),
+    post({ owner_token })
+  );
 
   if (response.ok) {
     const obj = await response.json();
@@ -93,7 +108,7 @@ export async function fileInfo(id, owner_token) {
 
 export async function metadata(id, keychain) {
   const result = await fetchWithAuthAndRetry(
-    `/api/metadata/${id}`,
+    getApiUrl(`/api/metadata/${id}`),
     { method: 'GET' },
     keychain
   );
@@ -115,7 +130,7 @@ export async function metadata(id, keychain) {
 export async function setPassword(id, owner_token, keychain) {
   const auth = await keychain.authKeyB64();
   const response = await fetch(
-    `/api/password/${id}`,
+    getApiUrl(`/api/password/${id}`),
     post({ owner_token, auth })
   );
   return response.ok;
@@ -251,7 +266,7 @@ export function uploadWs(
 async function downloadS(id, keychain, signal) {
   const auth = await keychain.authHeader();
 
-  const response = await fetch(`/api/download/${id}`, {
+  const response = await fetch(getApiUrl(`/api/download/${id}`), {
     signal: signal,
     method: 'GET',
     headers: { Authorization: auth }
@@ -323,7 +338,7 @@ function download(id, keychain, onprogress, canceller) {
       }
     });
     const auth = await keychain.authHeader();
-    xhr.open('get', `/api/download/blob/${id}`);
+    xhr.open('get', getApiUrl(`/api/download/blob/${id}`));
     xhr.setRequestHeader('Authorization', auth);
     xhr.responseType = 'blob';
     xhr.send();
@@ -358,7 +373,7 @@ export function downloadFile(id, keychain, onprogress) {
 
 export async function getFileList(bearerToken) {
   const headers = new Headers({ Authorization: `Bearer ${bearerToken}` });
-  const response = await fetch('/api/filelist', { headers });
+  const response = await fetch(getApiUrl('/api/filelist'), { headers });
   if (response.ok) {
     return response.body; // stream
   }
@@ -367,7 +382,7 @@ export async function getFileList(bearerToken) {
 
 export async function setFileList(bearerToken, data) {
   const headers = new Headers({ Authorization: `Bearer ${bearerToken}` });
-  const response = await fetch('/api/filelist', {
+  const response = await fetch(getApiUrl('/api/filelist'), {
     headers,
     method: 'POST',
     body: data
