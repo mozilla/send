@@ -98,6 +98,9 @@ export default function(state, emitter) {
   });
 
   emitter.on('addFiles', async ({ files }) => {
+    if (files.length < 1) {
+      return;
+    }
     const maxSize = state.user.maxSize;
     state.archive = state.archive || new Archive();
     try {

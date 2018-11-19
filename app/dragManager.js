@@ -6,7 +6,12 @@ export default function(state, emitter) {
       }
     });
     document.body.addEventListener('drop', event => {
-      if (state.route === '/' && !state.uploading) {
+      if (
+        state.route === '/' &&
+        !state.uploading &&
+        event.dataTransfer &&
+        event.dataTransfer.files
+      ) {
         event.preventDefault();
         emitter.emit('addFiles', {
           files: Array.from(event.dataTransfer.files)
