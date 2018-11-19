@@ -413,6 +413,6 @@ module.exports.downloading = function(state, emit) {
   function cancel(event) {
     event.preventDefault();
     event.target.disabled = true;
-    emit('download', archive);
+    emit('cancel');
   }
 };
