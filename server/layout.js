@@ -96,7 +96,6 @@ module.exports = function(state, body = '') {
         <meta name="msapplication-config" content="/browserconfig.xml" />
 
         ${firaTag}
-        <script defer src="/jsconfig.js"></script>
         <script defer src="${assets.get('cryptofill.js')}"></script>
         <script defer src="${assets.get('app.js')}"></script>
       </head>

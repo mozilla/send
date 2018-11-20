@@ -1,5 +1,6 @@
 const html = require('choo/html');
 const assets = require('../../common/assets');
+const initScript = require('../../server/initScript');
 
 module.exports = function(app) {
   app.get('/mocha.css', function(req, res) {
@@ -29,10 +30,13 @@ module.exports = function(app) {
                 timeout: 5000
               });
             </script>
-            <script src="/jsconfig.js"></script>
+            ${
+              initScript({
+                cspNonce: 'test',
+                locale: 'en-US'
+              })
+            }
             <script src="${assets.get('cryptofill.js')}"></script>
-            <!-- <script src="${assets.get('runtime.js')}"></script> -->
-            <script src="${assets.get('vendor.js')}"></script>
             <script src="${assets.get('tests.js')}"></script>
           </head>
           <body>

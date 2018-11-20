@@ -9,16 +9,19 @@ function stripEvents(str) {
 }
 
 module.exports = {
-  index: function(req, res) {
-    res.send(stripEvents(routes().toString('/', state(req))));
+  index: async function(req, res) {
+    const appState = await state(req);
+    res.send(stripEvents(routes().toString('/', appState)));
   },
 
-  blank: function(req, res) {
-    res.send(stripEvents(routes().toString('/blank', state(req))));
+  blank: async function(req, res) {
+    const appState = await state(req);
+    res.send(stripEvents(routes().toString('/blank', appState)));
   },
 
   download: async function(req, res, next) {
     const id = req.params.id;
+    const appState = await state(req);
     try {
       const { nonce, pwd } = await storage.metadata(id);
       res.set('WWW-Authenticate', `send-v1 ${nonce}`);
@@ -26,7 +29,7 @@ module.exports = {
         stripEvents(
           routes().toString(
             `/download/${id}`,
-            Object.assign(state(req), {
+            Object.assign(appState, {
               downloadMetadata: { nonce, pwd }
             })
           )
@@ -37,22 +40,25 @@ module.exports = {
     }
   },
 
-  unsupported: function(req, res) {
+  unsupported: async function(req, res) {
+    const appState = await state(req);
     res.send(
       stripEvents(
         routes().toString(
           `/unsupported/${req.params.reason}`,
-          Object.assign(state(req), { fira: true })
+          Object.assign(appState, { fira: true })
         )
       )
     );
   },
 
-  legal: function(req, res) {
-    res.send(stripEvents(routes().toString('/legal', state(req))));
+  legal: async function(req, res) {
+    const appState = await state(req);
+    res.send(stripEvents(routes().toString('/legal', appState)));
   },
 
-  notfound: function(req, res) {
-    res.status(404).send(stripEvents(routes().toString('/404', state(req))));
+  notfound: async function(req, res) {
+    const appState = await state(req);
+    res.status(404).send(stripEvents(routes().toString('/404', appState)));
   }
 };
