@@ -70,6 +70,7 @@ module.exports = function(app) {
   app.get('/oauth', language, pages.blank);
   app.get('/legal', language, pages.legal);
   app.get('/jsconfig.js', require('./jsconfig'));
+  app.get('/app.webmanifest', language, require('./webmanifest'));
   app.get(`/download/:id${ID_REGEX}`, language, pages.download);
   app.get('/unsupported/:reason', language, pages.unsupported);
   app.get(`/api/download/:id${ID_REGEX}`, auth.hmac, require('./download'));
