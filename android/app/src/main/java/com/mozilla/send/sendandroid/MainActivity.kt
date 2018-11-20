@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
 
     fun beginOAuthFlow() {
         Config.custom("https://send-fxa.dev.lcip.org").then(fun (value: Config): FxaResult<Unit> {
-            mAccount = FirefoxAccount(value, "12cc4070a481bc73", "fxaclient://android.redirect")
+            mAccount = FirefoxAccount(value, "8ee4e99dcddd0997", "https://send.firefox.com/fxa/android-redirect.html")
             mAccount?.beginOAuthFlow(arrayOf("profile", "https://identity.mozilla.com/apps/send"), true)?.then(fun (url: String): FxaResult<Unit> {
                 Log.w("CONFIG", "GOT A URL " + url)
                 this@MainActivity.runOnUiThread({
@@ -129,8 +129,8 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
     }
 
     override fun onPageStarted(url: String, favicon: Bitmap?) {
-        if (url.startsWith("fxaclient")) {
-            // We load this here so the user doesn't see an ugly screen that says "can't handle fxaclient urls"...
+        if (url.startsWith("https://send.firefox.com/fxa/android-redirect.html")) {
+            // We load this here so the user doesn't see the android-redirect.html page
             mWebView!!.loadUrl("file:///android_asset/android.html")
 
             val parsed = Uri.parse(url)
@@ -159,18 +159,11 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
 
                             return FxaResult.fromValue(Unit)
                         })
-
-                        // TODO get k from it.keys
-                        // TODO get profile from mAccount.getProfile
-                        // TODO get access_token
-
-                        //mToShare = "data:text/plain;base64," + Base64.encodeToString(toSend.toByteArray(), 16).trim()
                     }
                 }
             }
         }
         Log.w("MAIN", "onPageStarted");
-        // account.completeOAuthFlow()
     }
 
     override fun onPageFinished(url: String) {
