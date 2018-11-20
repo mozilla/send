@@ -12,13 +12,13 @@ const webJsOptions = {
     [
       '@babel/preset-env',
       {
-        modules: false,
         useBuiltIns: 'entry'
       }
     ]
   ],
   // yo-yoify converts html template strings to direct dom api calls
   plugins: [
+    '@babel/plugin-syntax-dynamic-import',
     'yo-yoify',
     ['@babel/plugin-proposal-class-properties', { loose: false }]
   ]
@@ -89,17 +89,13 @@ const serviceWorker = {
 const web = {
   target: 'web',
   entry: {
-    // babel-polyfill and fluent are directly included in vendor
-    // because they are not explicitly referenced by app
-    vendor: ['@babel/polyfill', 'fluent'], //TODO: remove @babel/polyfill
     app: ['./app/main.js'],
     android: ['./android/android.js'],
     ios: ['./ios/ios.js']
   },
   output: {
     filename: '[name].[hash:8].js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -114,21 +110,6 @@ const web = {
                 options: {
                   name: '[name].[hash:8].[ext]'
                 }
-              }
-            ]
-          },
-          {
-            // fluent gets exposed as a global so that each language script
-            // can load independently and share it.
-            include: [path.dirname(require.resolve('fluent'))],
-            use: [
-              {
-                loader: 'expose-loader',
-                options: 'fluent'
-              },
-              {
-                loader: 'babel-loader',
-                options: webJsOptions
               }
             ]
           },
@@ -148,7 +129,10 @@ const web = {
           {
             // Strip asserts from our deps, mainly choojs family
             include: [path.resolve(__dirname, 'node_modules')],
-            exclude: [path.resolve(__dirname, 'node_modules/crc')],
+            exclude: [
+              path.resolve(__dirname, 'node_modules/crc'),
+              path.resolve(__dirname, 'node_modules/fluent')
+            ],
             loader: 'webpack-unassert-loader'
           }
         ]
@@ -197,18 +181,8 @@ const web = {
         })
       },
       {
-        // creates a js script for each ftl
         test: /\.ftl$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[hash:8].js'
-            }
-          },
-          'extract-loader',
-          './build/fluent_loader'
-        ]
+        use: 'raw-loader'
       },
       {
         // creates test.js for /test
@@ -218,11 +192,6 @@ const web = {
       {
         // loads all assets from assets/ for use by common/assets.js
         test: require.resolve('./build/generate_asset_map.js'),
-        use: ['babel-loader', 'val-loader']
-      },
-      {
-        // loads all the ftl from public/locales for use by common/locales.js
-        test: require.resolve('./build/generate_l10n_map.js'),
         use: ['babel-loader', 'val-loader']
       }
     ]
@@ -236,12 +205,10 @@ const web = {
     ]),
     new webpack.EnvironmentPlugin(['NODE_ENV']),
     new webpack.IgnorePlugin(/\.\.\/dist/), // used in common/*.js
-    new webpack.IgnorePlugin(/require-from-string/), // used in common/locales.js
-    new webpack.HashedModuleIdsPlugin(),
     new ExtractTextPlugin({
       filename: '[name].[hash:8].css'
     }),
-    new VersionPlugin(),
+    new VersionPlugin(), // used for the /__version__ route
     new AndroidIndexPlugin(),
     new ManifestPlugin() // used by server side to resolve hashed assets
   ],

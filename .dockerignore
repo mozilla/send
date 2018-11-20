@@ -5,7 +5,6 @@ node_modules
 firefox
 assets
 docs
-public
 test
 coverage
 .nyc_output

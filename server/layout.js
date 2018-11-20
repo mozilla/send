@@ -1,6 +1,5 @@
 const html = require('choo/html');
 const assets = require('../common/assets');
-const locales = require('../common/locales');
 const initScript = require('./initScript');
 
 module.exports = function(state, body = '') {
@@ -17,6 +16,7 @@ module.exports = function(state, body = '') {
     <!DOCTYPE html>
     <html lang="${state.locale}">
       <head>
+        <base href="/" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -95,9 +95,6 @@ module.exports = function(state, body = '') {
 
         ${firaTag}
         <script defer src="/jsconfig.js"></script>
-        <!-- <script defer src="${assets.get('runtime.js')}"></script> -->
-        <script defer src="${assets.get('vendor.js')}"></script>
-        <script defer src="${locales.get(state.locale)}"></script>
         <script defer src="${assets.get('cryptofill.js')}"></script>
         <script defer src="${assets.get('app.js')}"></script>
       </head>

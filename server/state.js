@@ -1,14 +1,14 @@
 const config = require('./config');
 const layout = require('./layout');
-const locales = require('../common/locales');
 const assets = require('../common/assets');
+const getTranslator = require('./locale');
 
 module.exports = function(req) {
   const locale = req.language || 'en-US';
   return {
     locale,
     capabilities: { account: false },
-    translate: locales.getTranslator(locale),
+    translate: getTranslator(locale),
     title: 'Firefox Send',
     description:
       'Encrypt and send files with a link that automatically expires to ensure your important documents don’t stay online forever.',

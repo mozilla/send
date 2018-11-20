@@ -52,9 +52,9 @@ function checkStreams() {
   }
 }
 
-function polyfillStreams() {
+async function polyfillStreams() {
   try {
-    require('@mattiasbuelens/web-streams-polyfill');
+    await import('@mattiasbuelens/web-streams-polyfill');
     return true;
   } catch (e) {
     return false;
@@ -64,7 +64,10 @@ function polyfillStreams() {
 export default async function capabilities() {
   const crypto = await checkCrypto();
   const nativeStreams = checkStreams();
-  const polyStreams = nativeStreams ? false : polyfillStreams();
+  let polyStreams = false;
+  if (!nativeStreams) {
+    polyStreams = await polyfillStreams();
+  }
   let account = typeof AUTH_CONFIG !== 'undefined';
   try {
     account = account && !!localStorage;

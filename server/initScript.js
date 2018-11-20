@@ -6,6 +6,7 @@ module.exports = function(state) {
   return state.cspNonce
     ? html`
         <script nonce="${state.cspNonce}">
+          const LOCALE = '${state.locale}';
           const downloadMetadata = ${
             state.downloadMetadata
               ? raw(JSON.stringify(state.downloadMetadata))
