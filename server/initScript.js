@@ -5,7 +5,7 @@ const config = require('./config');
 let sentry = '';
 if (config.sentry_id) {
   //eslint-disable-next-line node/no-missing-require
-  const version = require('../../dist/version.json');
+  const version = require('../dist/version.json');
   sentry = `
 var RAVEN_CONFIG = {
   release: '${version.version}',
