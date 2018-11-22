@@ -3,9 +3,10 @@ const storage = require('../storage');
 const config = require('../config');
 const mozlog = require('../log');
 const Limiter = require('../limiter');
-const Parser = require('../streamparser');
 const wsStream = require('websocket-stream/stream');
 const fxa = require('../fxa');
+
+const { Duplex } = require('stream');
 
 const log = mozlog('send.upload');
 
@@ -72,12 +73,27 @@ module.exports = function(ws, req) {
           id: newId
         })
       );
-
       const limiter = new Limiter(maxFileSize);
-      const parser = new Parser();
+      const flowControl = new Duplex({
+        read() {
+          ws.resume();
+        },
+        write(chunk, encoding, callback) {
+          if (chunk.length === 1 && chunk[0] === 0) {
+            this.push(null);
+          } else {
+            if (!this.push(chunk)) {
+              ws.pause();
+            }
+          }
+          callback();
+        }
+      });
+
       fileStream = wsStream(ws, { binary: true })
         .pipe(limiter)
-        .pipe(parser);
+        .pipe(flowControl);
+
       await storage.set(newId, fileStream, meta, timeLimit);
 
       if (ws.readyState === 1) {
