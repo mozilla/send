@@ -16,10 +16,9 @@ const webJsOptions = {
       }
     ]
   ],
-  // yo-yoify converts html template strings to direct dom api calls
   plugins: [
     '@babel/plugin-syntax-dynamic-import',
-    'yo-yoify',
+    'module:nanohtml',
     ['@babel/plugin-proposal-class-properties', { loose: false }]
   ]
 };
