@@ -38,7 +38,7 @@ timespanHours =
     }
 copyUrlFormLabelWithName = აიღეთ ბმულის ასლი და გააზიარეთ, ფაილის გასაგზავნად: { $filename }
 copyUrlFormButton = ასლის აღება
-copiedUrl = დაკოპირდა!
+copiedUrl = ასლი მზადაა!
 deleteFileButton = ფაილის წაშლა
 sendAnotherFileLink = სხვა ფაილის გაგზავნა
 # Alternative text used on the download link/button (indicates an action).
