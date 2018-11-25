@@ -36,8 +36,8 @@ timespanHours =
         [one] 1 საათი
        *[other] { $num } საათი
     }
-copyUrlFormLabelWithName = დააკოპირეთ და გააზიარეთ ბმული, ფაილის გასაგზავნად: { $filename }
-copyUrlFormButton = დაკოპირება
+copyUrlFormLabelWithName = აიღეთ ბმულის ასლი და გააზიარეთ, ფაილის გასაგზავნად: { $filename }
+copyUrlFormButton = ასლის აღება
 copiedUrl = დაკოპირდა!
 deleteFileButton = ფაილის წაშლა
 sendAnotherFileLink = სხვა ფაილის გაგზავნა
@@ -82,7 +82,7 @@ notSupportedOutdatedDetail = სამწუხაროდ, Firefox-ის ა�
 updateFirefox = Firefox-ის განახლება
 downloadFirefoxButtonSub = უფასო ჩამოტვირთვა
 uploadedFile = ფაილი
-copyFileList = URL-ბმულის დაკოპირება
+copyFileList = URL-ბმულის ასლი
 # expiryFileList is used as a column header
 expiryFileList = ვადის გასვლის დრო
 deleteFileList = წაშლა
@@ -94,7 +94,7 @@ deletePopupText = წაიშალოს ეს ფაილი?
 deletePopupYes = დიახ
 deletePopupCancel = გაუქმება
 deleteButtonHover = წაშლა
-copyUrlHover = URL-ს დაკოპირება
+copyUrlHover = URL-ს ასლი
 footerLinkLegal = იურიდიული ინფორმაცია
 # Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Test Pilot-ის შესახებ
