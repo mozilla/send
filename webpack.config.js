@@ -37,17 +37,6 @@ const serviceWorker = {
   module: {
     rules: [
       {
-        include: [require.resolve('./assets/cryptofill')],
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[hash:8].[ext]'
-            }
-          }
-        ]
-      },
-      {
         test: /\.(png|jpg)$/,
         loader: 'file-loader',
         options: {
@@ -102,15 +91,8 @@ const web = {
         test: /\.js$/,
         oneOf: [
           {
-            include: [require.resolve('./assets/cryptofill')],
-            use: [
-              {
-                loader: 'file-loader',
-                options: {
-                  name: '[name].[hash:8].[ext]'
-                }
-              }
-            ]
+            include: [require.resolve('./app/cryptofill')],
+            use: ['script-loader']
           },
           {
             loader: 'babel-loader',
@@ -120,6 +102,7 @@ const web = {
               // some dependencies need to get re-babeled because we
               // have different targets than their default configs
               path.resolve(__dirname, 'node_modules/testpilot-ga/src'),
+              path.resolve(__dirname, 'node_modules/fluent'),
               path.resolve(__dirname, 'node_modules/fluent-intl-polyfill'),
               path.resolve(__dirname, 'node_modules/intl-pluralrules')
             ],

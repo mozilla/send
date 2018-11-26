@@ -1,5 +1,5 @@
 dist
 android/app/src/main/assets
 android/app/build
-assets/*.js
+app/cryptofill.js
 coverage

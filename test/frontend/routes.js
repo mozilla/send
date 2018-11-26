@@ -36,7 +36,6 @@ module.exports = function(app) {
                 locale: 'en-US'
               })
             }
-            <script src="${assets.get('cryptofill.js')}"></script>
             <script src="${assets.get('tests.js')}"></script>
           </head>
           <body>

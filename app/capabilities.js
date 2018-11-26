@@ -35,9 +35,22 @@ async function checkCrypto() {
       false,
       ['deriveKey']
     );
+    await crypto.subtle.generateKey(
+      {
+        name: 'ECDH',
+        namedCurve: 'P-256'
+      },
+      true,
+      ['deriveBits']
+    );
     return true;
   } catch (err) {
-    return false;
+    try {
+      await import('./cryptofill');
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }
 
@@ -62,7 +75,7 @@ async function polyfillStreams() {
 }
 
 export default async function capabilities() {
-  const crypto = await checkCrypto();
+  let crypto = await checkCrypto();
   const nativeStreams = checkStreams();
   let polyStreams = false;
   if (!nativeStreams) {
@@ -72,7 +85,7 @@ export default async function capabilities() {
   try {
     account = account && !!localStorage;
   } catch (e) {
-    // nevermind
+    account = false;
   }
 
   return {
