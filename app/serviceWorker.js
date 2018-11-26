@@ -8,6 +8,9 @@ import contentDisposition from 'content-disposition';
 
 let noSave = false;
 const map = new Map();
+const IMAGES = /.*\.(png|svg|jpg)$/;
+const VERSIONED_ASSET = /\.[A-Fa-f0-9]{8}\.(js|css|png|svg|jpg)$/;
+const DOWNLOAD_URL = /\/api\/download\/([A-Fa-f0-9]{4,})/;
 
 self.addEventListener('install', event => {
   event.waitUntil(precache());
@@ -87,24 +90,33 @@ async function precache() {
     }
   }
   const cache = await caches.open(version);
-  const images = assets.match(/.*\.(png|svg|jpg)$/);
+  const images = assets.match(IMAGES);
   await cache.addAll(images);
   return self.skipWaiting();
 }
 
-async function cachedOrFetch(req) {
+async function cachedOrFetched(req) {
   const cache = await caches.open(version);
   const cached = await cache.match(req);
-  return cached || fetch(req);
+  if (cached) {
+    return cached;
+  }
+  const fetched = await fetch(req);
+  if (fetched.ok && VERSIONED_ASSET.test(req.url)) {
+    cache.put(req, fetched.clone());
+  }
+  return fetched;
 }
 
 self.onfetch = event => {
   const req = event.request;
-  const match = /\/api\/download\/([A-Fa-f0-9]{4,})/.exec(req.url);
-  if (match) {
-    event.respondWith(decryptStream(match[1]));
-  } else {
-    event.respondWith(cachedOrFetch(req));
+  if (req.method !== 'GET') return;
+  const url = new URL(req.url);
+  const dlmatch = DOWNLOAD_URL.exec(url.pathname); // TODO use #hashkey
+  if (dlmatch) {
+    event.respondWith(decryptStream(dlmatch[1]));
+  } else if (VERSIONED_ASSET.test(url.pathname)) {
+    event.respondWith(cachedOrFetched(req));
   }
 };
 
