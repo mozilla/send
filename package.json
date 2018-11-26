@@ -136,7 +136,6 @@
   "dependencies": {
     "@google-cloud/storage": "^2.3.1",
     "aws-sdk": "^2.362.0",
-    "babel-polyfill": "^6.26.0",
     "choo": "^6.12.1",
     "cldr-core": "^34.0.0",
     "convict": "^4.4.0",
