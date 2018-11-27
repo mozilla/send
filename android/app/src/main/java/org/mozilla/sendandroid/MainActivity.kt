@@ -80,8 +80,8 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
     }
 
     fun beginOAuthFlow() {
-        Config.custom("https://send-fxa.dev.lcip.org").then(fun (value: Config): FxaResult<Unit> {
-            mAccount = FirefoxAccount(value, "8ee4e99dcddd0997", "https://send.firefox.com/fxa/android-redirect.html")
+        Config.release().then(fun (value: Config): FxaResult<Unit> {
+            mAccount = FirefoxAccount(value, "20f7931c9054d833", "https://send.firefox.com/fxa/android-redirect.html")
             mAccount?.beginOAuthFlow(arrayOf("profile", "https://identity.mozilla.com/apps/send"), true)?.then(fun (url: String): FxaResult<Unit> {
                 Log.w("CONFIG", "GOT A URL " + url)
                 this@MainActivity.runOnUiThread({
