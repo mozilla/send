@@ -1,4 +1,4 @@
-package com.mozilla.send.sendandroid
+package org.mozilla.sendandroid
 
 
 import android.support.v7.app.AppCompatActivity

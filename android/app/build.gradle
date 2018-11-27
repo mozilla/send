@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.mozilla.send.sendandroid"
+        applicationId "org.mozilla.sendandroid"
         minSdkVersion 26
         targetSdkVersion 27
         versionCode 1
