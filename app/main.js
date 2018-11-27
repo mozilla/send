@@ -17,14 +17,16 @@ import './main.css';
 import User from './user';
 import { getTranslator } from './locale';
 
+if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
+  Raven.config(window.SENTRY_ID, window.RAVEN_CONFIG).install();
+}
+
+if (process.env.NODE_ENV === 'production') {
+  nanotiming.disabled = true;
+}
+
 (async function start() {
   const app = routes(choo());
-  if (process.env.NODE_ENV === 'production') {
-    nanotiming.disabled = true;
-  }
-  if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
-    Raven.config(window.SENTRY_ID, window.RAVEN_CONFIG).install();
-  }
   const capa = await capabilities();
   if (capa.streamDownload) {
     navigator.serviceWorker.register('/serviceWorker.js');
