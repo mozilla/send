@@ -28,8 +28,9 @@ if (process.env.NODE_ENV === 'production') {
 (async function start() {
   const app = routes(choo());
   const capa = await capabilities();
-  if (capa.streamDownload) {
-    navigator.serviceWorker.register('/serviceWorker.js');
+  if (capa.serviceWorker) {
+    await navigator.serviceWorker.register('/serviceWorker.js');
+    await navigator.serviceWorker.ready;
   }
 
   const translate = await getTranslator(LOCALE);

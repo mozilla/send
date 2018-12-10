@@ -75,6 +75,7 @@ async function polyfillStreams() {
 }
 
 export default async function capabilities() {
+  const serviceWorker = 'serviceWorker' in navigator;
   let crypto = await checkCrypto();
   const nativeStreams = checkStreams();
   let polyStreams = false;
@@ -91,11 +92,10 @@ export default async function capabilities() {
   return {
     account,
     crypto,
+    serviceWorker,
     streamUpload: nativeStreams || polyStreams,
     streamDownload:
-      nativeStreams &&
-      'serviceWorker' in navigator &&
-      browserName() !== 'safari',
+      nativeStreams && serviceWorker && browserName() !== 'safari',
     multifile: nativeStreams || polyStreams
   };
 }
