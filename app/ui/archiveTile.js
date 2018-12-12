@@ -20,7 +20,7 @@ function password(state) {
   const MAX_LENGTH = 32;
 
   return html`
-    <div class="my-2">
+    <div class="my-2 px-4-device">
       <div class="checkbox inline-block mr-3">
         <input
           id="add-password"
@@ -225,7 +225,7 @@ module.exports.wip = function(state, emit) {
       ${expiryOptions(state, emit)} ${password(state, emit)}
       <button
         id="upload-btn"
-        class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 flex flex-no-shrink items-center justify-center font-semibold"
+        class="rounded-device bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 flex flex-no-shrink items-center justify-center font-semibold"
         title="${state.translate('uploadSuccessConfirmHeader')}"
         onclick="${upload}"
       >

@@ -165,3 +165,23 @@ progress::-webkit-progress-value {
     @apply shadow-md;
   }
 }
+
+.rounded-device {
+  border-radius: 0.25rem;
+}
+
+.px-4-device {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media screen and (max-device-width: 576px) {
+  .rounded-device {
+    border-radius: 0;
+  }
+
+  .px-4-device {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

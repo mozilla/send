@@ -24,11 +24,13 @@ module.exports = function(state, emit) {
 
   let content = '';
   let button = html`
-    <img
+    <div
+      class="bg-blue rounded-full m-4 flex items-center justify-center shadow-lg"
+      style="width: 56px; height: 56px"
       onclick="${onclick}"
-      style="padding: 1em"
-      src="${assets.get('addfile.svg')}"
-    />
+    >
+      <img src="${assets.get('add.svg')}" />
+    </div>
   `;
   if (state.uploading) {
     content = archiveTile.uploading(state, emit);

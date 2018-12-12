@@ -7,7 +7,7 @@ const signupDialog = require('./signupDialog');
 
 module.exports = function(state, emit) {
   const el = html`
-    <div class="">
+    <div class="px-4-device">
       ${
         raw(
           state.translate('frontPageExpireInfo', {
