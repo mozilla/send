@@ -13,6 +13,7 @@ module.exports = function(app = choo()) {
   app.route('/oauth', async function(state, emit) {
     try {
       await state.user.finishLogin(state.query.code, state.query.state);
+      await state.user.syncFileList();
       emit('replaceState', '/');
     } catch (e) {
       emit('replaceState', '/error');

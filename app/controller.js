@@ -40,8 +40,6 @@ export default function(state, emitter) {
     checkFiles();
   });
 
-  emitter.on('navigate', checkFiles);
-
   emitter.on('render', () => {
     lastRender = Date.now();
   });
@@ -174,6 +172,7 @@ export default function(state, emitter) {
         emitter.emit('pushState', '/error');
       }
     } finally {
+      await state.user.syncFileList();
       openLinksInNewTab(links, false);
       state.archive = null;
       state.password = '';
@@ -265,8 +264,7 @@ export default function(state, emitter) {
   });
 
   setInterval(() => {
-    // poll for updates of the download counts
-    // TODO something for the share page: || state.route === '/share/:id'
+    // poll for updates of the upload list
     if (state.route === '/') {
       checkFiles();
     }
