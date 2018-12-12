@@ -226,10 +226,10 @@ module.exports.wip = function(state, emit) {
       <button
         id="upload-btn"
         class="rounded-device bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 flex flex-no-shrink items-center justify-center font-semibold"
-        title="${state.translate('uploadSuccessConfirmHeader')}"
+        title="${state.translate('uploadFilesButton')}"
         onclick="${upload}"
       >
-        ${state.translate('uploadSuccessConfirmHeader')}
+        ${state.translate('uploadFilesButton')}
       </button>
     </article>
   `;
