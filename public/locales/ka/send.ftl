@@ -95,7 +95,7 @@ deletePopupYes = დიახ
 deletePopupCancel = გაუქმება
 deleteButtonHover = წაშლა
 copyUrlHover = URL-ს ასლი
-footerLinkLegal = იურიდიული ინფორმაცია
+footerLinkLegal = სამართლებრივი საკითხები
 # Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Test Pilot-ის შესახებ
 footerLinkPrivacy = პირადულობა
