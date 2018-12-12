@@ -33,7 +33,9 @@ module.exports = function(state, emit) {
     </div>
   `;
   if (state.uploading) {
-    content = archiveTile.uploading(state, emit);
+    content = html`
+      <div class="p-6 w-full">${archiveTile.uploading(state, emit)}</div>
+    `;
   } else if (state.archive) {
     content = archiveTile.wip(state, emit);
     button = '';
@@ -41,11 +43,15 @@ module.exports = function(state, emit) {
     content =
       archives.length < 1
         ? intro(state)
-        : list(archives, 'list-reset h-full overflow-y-scroll', 'mb-3');
+        : list(
+            archives,
+            'list-reset h-full overflow-y-scroll w-full p-6',
+            'mb-3 w-full'
+          );
   }
 
   return html`
-    <main class="flex relative h-full">
+    <main class="flex relative h-full w-full">
       ${state.modal && modal(state, emit)} ${content}
       <div class="fixed pin-r pin-b">
         ${button}
