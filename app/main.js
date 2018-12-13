@@ -5,7 +5,7 @@ import 'fluent-intl-polyfill';
 import choo from 'choo';
 import nanotiming from 'nanotiming';
 import routes from './routes';
-import capabilities from './capabilities';
+import getCapabilities from './capabilities';
 import controller from './controller';
 import dragManager from './dragManager';
 import pasteManager from './pasteManager';
@@ -26,23 +26,25 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 (async function start() {
-  const app = routes(choo());
-  const capa = await capabilities();
-  if (capa.serviceWorker) {
+  const capabilities = await getCapabilities();
+  if (capabilities.serviceWorker) {
     await navigator.serviceWorker.register('/serviceWorker.js');
     await navigator.serviceWorker.ready;
   }
 
   const translate = await getTranslator(LOCALE);
+  window.initialState = {
+    capabilities,
+    translate,
+    storage,
+    raven: Raven,
+    user: new User(storage),
+    transfer: null,
+    fileInfo: null
+  };
 
+  const app = routes(choo());
   app.use((state, emitter) => {
-    state.capabilities = capa;
-    state.transfer = null;
-    state.fileInfo = null;
-    state.translate = translate;
-    state.storage = storage;
-    state.raven = Raven;
-    state.user = new User(storage);
     window.appState = state;
     window.appEmit = emitter.emit.bind(emitter);
     let unsupportedReason = null;

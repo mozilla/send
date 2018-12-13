@@ -74,7 +74,7 @@ async function polyfillStreams() {
   }
 }
 
-export default async function capabilities() {
+export default async function getCapabilities() {
   const serviceWorker = 'serviceWorker' in navigator;
   let crypto = await checkCrypto();
   const nativeStreams = checkStreams();
