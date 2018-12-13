@@ -20,7 +20,7 @@ function password(state) {
   const MAX_LENGTH = 32;
 
   return html`
-    <div class="my-2">
+    <div class="my-2 px-4-device">
       <div class="checkbox inline-block mr-3">
         <input
           id="add-password"
@@ -96,7 +96,7 @@ function password(state) {
 
 function fileInfo(file, action) {
   return html`
-    <article class="flex flex-row items-center p-3">
+    <article class="flex flex-row items-center p-3 w-full">
       <img class="" src="${assets.get('blue_file.svg')}"/>
       <p class="ml-4 w-full">
         <h1 class="text-sm font-medium word-break-all">${file.name}</h1>
@@ -143,7 +143,7 @@ module.exports = function(state, emit, archive) {
   return html`
   <article
     id="${archive.id}"
-    class="flex flex-col items-start border border-grey-light bg-white p-4">
+    class="flex flex-col items-start border border-grey-light bg-white p-4 w-full">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <input
@@ -189,7 +189,7 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-    <article class="flex flex-col bg-white z-20 md:h-full" id="wip">
+    <article class="flex flex-col bg-white z-20 md:h-full w-full" id="wip">
       ${
         list(
           Array.from(state.archive.files)
@@ -225,7 +225,7 @@ module.exports.wip = function(state, emit) {
       ${expiryOptions(state, emit)} ${password(state, emit)}
       <button
         id="upload-btn"
-        class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 flex flex-no-shrink items-center justify-center font-semibold"
+        class="rounded-device bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 flex flex-no-shrink items-center justify-center font-semibold"
         title="${state.translate('uploadFilesButton')}"
         onclick="${upload}"
       >
@@ -283,7 +283,7 @@ module.exports.uploading = function(state, emit) {
   return html`
   <article
     id="${archive.id}"
-    class="z-20 flex flex-col items-start border border-grey-light bg-white p-4">
+    class="z-20 flex flex-col items-start border border-grey-light bg-white p-4 w-full">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -317,7 +317,7 @@ module.exports.uploading = function(state, emit) {
 module.exports.empty = function(state, emit) {
   return html`
     <article
-      class="flex flex-col items-center justify-center border-2 border-dashed border-blue-light px-6 py-16 h-full"
+      class="flex flex-col items-center justify-center border-2 border-dashed border-blue-light px-6 py-16 h-full w-full"
       onclick="${
         e => {
           if (e.target.tagName !== 'LABEL') {
@@ -367,7 +367,7 @@ module.exports.preview = function(state, emit) {
     archive.open = true;
   }
   return html`
-    <article class="flex flex-col max-h-full bg-white border border-grey-light p-4 z-20">
+    <article class="flex flex-col max-h-full bg-white border border-grey-light p-4 z-20 w-full">
       <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -397,7 +397,7 @@ module.exports.downloading = function(state, emit) {
   const progress = state.transfer.progressRatio;
   const progressPercent = percent(progress);
   return html`
-  <article class="flex flex-col bg-white border border-grey-light p-4 z-20">
+  <article class="flex flex-col bg-white border border-grey-light p-4 z-20 w-full">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>

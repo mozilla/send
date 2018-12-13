@@ -24,14 +24,18 @@ module.exports = function(state, emit) {
 
   let content = '';
   let button = html`
-    <img
+    <div
+      class="bg-blue rounded-full m-4 flex items-center justify-center shadow-lg"
+      style="width: 56px; height: 56px"
       onclick="${onclick}"
-      style="padding: 1em"
-      src="${assets.get('addfile.svg')}"
-    />
+    >
+      <img src="${assets.get('add.svg')}" />
+    </div>
   `;
   if (state.uploading) {
-    content = archiveTile.uploading(state, emit);
+    content = html`
+      <div class="p-6 w-full">${archiveTile.uploading(state, emit)}</div>
+    `;
   } else if (state.archive) {
     content = archiveTile.wip(state, emit);
     button = '';
@@ -39,11 +43,15 @@ module.exports = function(state, emit) {
     content =
       archives.length < 1
         ? intro(state)
-        : list(archives, 'list-reset h-full overflow-y-scroll', 'mb-3');
+        : list(
+            archives,
+            'list-reset h-full overflow-y-scroll w-full p-6',
+            'mb-3 w-full'
+          );
   }
 
   return html`
-    <main class="flex relative h-full">
+    <main class="flex relative h-full w-full">
       ${state.modal && modal(state, emit)} ${content}
       <div class="fixed pin-r pin-b">
         ${button}
