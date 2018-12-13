@@ -18,9 +18,10 @@ module.exports = function(app, devServer) {
   assets.setMiddleware(devServer.middleware);
   app.use(morgan('dev', { stream: process.stderr }));
   function android(req, res) {
-    const index = devServer.middleware.fileSystem.readFileSync(
-      devServer.middleware.getFilenameFromUrl('/android.html')
-    );
+    const index = devServer.middleware.fileSystem
+      .readFileSync(devServer.middleware.getFilenameFromUrl('/android.html'))
+      .toString()
+      .replace('<base href="file:///android_asset/" />', '');
     res.set('Content-Type', 'text/html');
     res.send(index);
   }
