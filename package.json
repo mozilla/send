@@ -10,7 +10,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "prepush": "npm test",
-    "check": "nsp check",
+    "check": "npm audit",
     "clean": "rimraf dist",
     "build": "npm run clean && webpack -p",
     "lint": "npm-run-all lint:*",
@@ -29,7 +29,7 @@
     "test:frontend": "cross-env NODE_ENV=development node test/frontend/runner.js && nyc report --reporter=html",
     "test-integration": "docker-compose up --abort-on-container-exit --exit-code-from integration-tests --build --remove-orphans --quiet-pull && docker-compose down",
     "test-integration-stage": "cross-env BASE_URL=https://send.stage.mozaws.net npm run test-integration",
-    "start": "npm run clean && cross-env NODE_ENV=development webpack-dev-server",
+    "start": "npm run clean && npm run build && npm run prod",
     "prod": "node server/prod.js"
   },
   "lint-staged": {
@@ -86,7 +86,6 @@
     "nanobus": "^4.3.4",
     "nanotiming": "^7.3.1",
     "npm-run-all": "^4.1.5",
-    "nsp": "^3.2.1",
     "nyc": "^11.9.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^11.1.0",
@@ -109,7 +108,6 @@
     "val-loader": "^1.1.1",
     "webpack": "^3.12.0",
     "webpack-dev-middleware": "^2.0.6",
-    "webpack-dev-server": "2.9.1",
     "webpack-manifest-plugin": "^1.3.2",
     "webpack-unassert-loader": "^1.2.0"
   },
