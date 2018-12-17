@@ -24,6 +24,7 @@ import html from 'choo/html';
 import Raven from 'raven-js';
 
 import { setApiUrlPrefix } from '../app/api';
+import metrics from '../app/metrics';
 import assets from '../common/assets';
 import Header from '../app/ui/header';
 import storage from '../app/storage';
@@ -43,6 +44,7 @@ if (navigator.userAgent === 'Send Android') {
 
 const app = choo();
 //app.use(state);
+app.use(metrics);
 app.use(controller);
 app.use(intents);
 
