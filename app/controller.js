@@ -74,6 +74,7 @@ export default function(state, emitter) {
   });
 
   emitter.on('delete', async ({ file, location }) => {
+    console.log('ondelete');
     try {
       metrics.deletedUpload({
         size: file.size,
@@ -86,6 +87,7 @@ export default function(state, emitter) {
       state.storage.remove(file.id);
       await file.del();
     } catch (e) {
+      console.log(e.stack);
       state.raven.captureException(e);
     }
     render();
