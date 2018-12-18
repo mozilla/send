@@ -39,8 +39,16 @@ module.exports = function(state) {
   var isIE = /trident\\\/7\.|msie/i.test(navigator.userAgent);
   var isUnsupportedPage = /\\\/unsupported/.test(location.pathname);
   if (isIE && !isUnsupportedPage) {
-    window.location.replace('/unsupported/ie');
+    window.location.assign('/unsupported/ie');
   }
+  if (
+    // Firefox < 50
+    /firefox/i.test(navigator.userAgent) &&
+    parseInt(navigator.userAgent.match(/firefox\\/*([^\\n\\r]*)\./i)[1], 10) < 50
+  ) {
+    window.location.assign('/unsupported/outdated');
+  }
+
   var LIMITS = {
     ANON: {
       MAX_FILE_SIZE: ${config.anon_max_file_size},

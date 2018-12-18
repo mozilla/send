@@ -27,6 +27,9 @@ if (process.env.NODE_ENV === 'production') {
 
 (async function start() {
   const capabilities = await getCapabilities();
+  if (!capabilities.crypto) {
+    return window.location.assign('/unsupported/crypto');
+  }
   if (capabilities.serviceWorker) {
     await navigator.serviceWorker.register('/serviceWorker.js');
     await navigator.serviceWorker.ready;
@@ -44,29 +47,6 @@ if (process.env.NODE_ENV === 'production') {
   };
 
   const app = routes(choo());
-  app.use((state, emitter) => {
-    window.appState = state;
-    window.appEmit = emitter.emit.bind(emitter);
-    let unsupportedReason = null;
-
-    if (
-      // Firefox < 50
-      /firefox/i.test(navigator.userAgent) &&
-      parseInt(navigator.userAgent.match(/firefox\/*([^\n\r]*)\./i)[1], 10) < 50
-    ) {
-      unsupportedReason = 'outdated';
-    }
-    if (!state.capabilities.crypto) {
-      unsupportedReason = /firefox/i.test(navigator.userAgent)
-        ? 'outdated'
-        : 'gcm';
-    }
-    if (unsupportedReason) {
-      setTimeout(() =>
-        emitter.emit('replaceState', `/unsupported/${unsupportedReason}`)
-      );
-    }
-  });
   app.use(metrics);
   app.use(controller);
   app.use(dragManager);
