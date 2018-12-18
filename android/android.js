@@ -25,7 +25,7 @@ import Raven from 'raven-js';
 
 import { setApiUrlPrefix } from '../app/api';
 import metrics from '../app/metrics';
-import assets from '../common/assets';
+//import assets from '../common/assets';
 import Header from '../app/ui/header';
 import storage from '../app/storage';
 import controller from '../app/controller';
@@ -50,26 +50,30 @@ app.use(intents);
 
 function body(main) {
   return function(state, emit) {
-    return html`
-      <body
-        class="flex flex-col items-center font-sans bg-blue-lightest h-screen"
-      >
-        <a
-          id="hamburger"
-          class="absolute pin-t pin-r z-50"
-          href="#"
-          onclick="${clickPreferences}"
-        >
-          <img src="${assets.get('preferences.png')}" />
-        </a>
-        ${state.cache(Header, 'header').render()} ${main(state, emit)}
-      </body>
-    `;
-
+    /*
+      Disable the preferences menu for now since it is ugly and isn't
+      relevant to the beta
     function clickPreferences(event) {
       event.preventDefault();
       emit('pushState', '/preferences');
     }
+
+    const menu = html`<a
+        id="hamburger"
+        class="absolute pin-t pin-r z-50"
+        href="#"
+        onclick="${clickPreferences}"
+      >
+        <img src="${assets.get('preferences.png')}" />
+      </a>`;
+    */
+    return html`
+      <body
+        class="flex flex-col items-center font-sans bg-blue-lightest h-screen"
+      >
+        ${state.cache(Header, 'header').render()} ${main(state, emit)}
+      </body>
+    `;
   };
 }
 (async function start() {
