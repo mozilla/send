@@ -58,7 +58,6 @@ export default function(state, emitter) {
   emitter.on('changeLimit', async ({ file, value }) => {
     const ok = await file.changeLimit(value, state.user);
     if (!ok) {
-      // TODO
       return;
     }
     state.storage.writeFile(file);

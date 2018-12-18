@@ -35,7 +35,7 @@ module.exports = {
       await storage.set(
         id(req.user),
         fileStream,
-        { n: 'a' }, //TODO
+        null,
         config.max_expire_seconds
       );
       res.sendStatus(200);

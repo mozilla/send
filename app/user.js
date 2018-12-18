@@ -73,7 +73,7 @@ export default class User {
       code_challenge,
       code_challenge_method: 'S256',
       response_type: 'code',
-      scope: 'profile https://identity.mozilla.com/apps/send', //TODO param
+      scope: `profile ${AUTH_CONFIG.key_scope}`,
       state,
       keys_jwk
     };

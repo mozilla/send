@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const config = require('./config');
 
-const KEY_SCOPE = 'https://identity.mozilla.com/apps/send';
+const KEY_SCOPE = config.fxa_key_scope;
 let fxaConfig = null;
 let lastConfigRefresh = 0;
 
@@ -14,6 +14,7 @@ async function getFxaConfig() {
     { timeout: 3000 }
   );
   fxaConfig = await res.json();
+  fxaConfig.key_scope = KEY_SCOPE;
   lastConfigRefresh = Date.now();
   return fxaConfig;
 }

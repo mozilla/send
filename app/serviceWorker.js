@@ -112,7 +112,7 @@ self.onfetch = event => {
   const req = event.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  const dlmatch = DOWNLOAD_URL.exec(url.pathname); // TODO use #hashkey
+  const dlmatch = DOWNLOAD_URL.exec(url.pathname);
   if (dlmatch) {
     event.respondWith(decryptStream(dlmatch[1]));
   } else if (VERSIONED_ASSET.test(url.pathname)) {

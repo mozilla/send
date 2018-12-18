@@ -134,6 +134,11 @@ const conf = convict({
     format: String,
     default: '', // disabled
     env: 'FXA_CLIENT_ID'
+  },
+  fxa_key_scope: {
+    format: String,
+    default: 'https://identity.mozilla.com/apps/send',
+    env: 'FXA_KEY_SCOPE'
   }
 });
 

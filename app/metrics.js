@@ -27,7 +27,6 @@ export default function initialize(state, emitter) {
       cm6: storage.files.length,
       cm7: storage.totalDownloads
     });
-    //TODO restart handlers... somewhere
   });
   emitter.on('exit', exitEvent);
   emitter.on('experiment', experimentEvent);

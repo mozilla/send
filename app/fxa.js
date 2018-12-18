@@ -1,3 +1,4 @@
+/* global AUTH_CONFIG */
 import { arrayToB64, b64ToArray } from './utils';
 
 const encoder = new TextEncoder();
@@ -175,6 +176,6 @@ export async function deriveFileListKey(ikm) {
 
 export async function getFileListKey(storage, bundle) {
   const jwks = await decryptBundle(storage, bundle);
-  const jwk = jwks['https://identity.mozilla.com/apps/send'];
+  const jwk = jwks[AUTH_CONFIG.key_scope];
   return deriveFileListKey(jwk.k);
 }

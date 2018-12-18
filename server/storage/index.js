@@ -52,7 +52,9 @@ class DB {
     const filePath = `${prefix}-${id}`;
     await this.storage.set(filePath, file);
     this.redis.hset(id, 'prefix', prefix);
-    this.redis.hmset(id, meta);
+    if (meta) {
+      this.redis.hmset(id, meta);
+    }
     this.redis.expire(id, expireSeconds);
   }
 
