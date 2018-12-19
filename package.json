@@ -92,7 +92,7 @@
     "postcss-loader": "^2.1.6",
     "prettier": "^1.15.2",
     "proxyquire": "^1.8.0",
-    "puppeteer": "^1.10.0",
+    "puppeteer": "^1.11.0",
     "raven-js": "^3.27.0",
     "redis-mock": "^0.21.0",
     "require-from-string": "^2.0.2",

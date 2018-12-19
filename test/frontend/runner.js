@@ -23,7 +23,12 @@ function onConsole(msg) {
 
 const server = app.listen(async function() {
   let exitCode = -1;
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: [
+      // puppeteer >= 1.10.0 crashes on Circle CI without this flag set
+      '--no-sandbox'
+    ]
+  });
   try {
     const page = await browser.newPage();
     page.on('console', onConsole);
