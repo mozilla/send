@@ -6,6 +6,7 @@ import * as metrics from './metrics';
 import { bytes } from './utils';
 import okDialog from './ui/okDialog';
 import copyDialog from './ui/copyDialog';
+import signupDialog from './ui/signupDialog';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -98,12 +99,16 @@ export default function(state, emitter) {
     try {
       state.archive.addFiles(files, maxSize);
     } catch (e) {
-      state.modal = okDialog(
-        state.translate(e.message, {
-          size: bytes(maxSize),
-          count: LIMITS.MAX_FILES_PER_ARCHIVE
-        })
-      );
+      if (e.message === 'fileTooBig' && maxSize < LIMITS.MAX_FILE_SIZE) {
+        state.modal = signupDialog();
+      } else {
+        state.modal = okDialog(
+          state.translate(e.message, {
+            size: bytes(maxSize),
+            count: LIMITS.MAX_FILES_PER_ARCHIVE
+          })
+        );
+      }
     }
     render();
   });
