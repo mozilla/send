@@ -16,6 +16,9 @@ module.exports = async function(req) {
     }
   }
   return {
+    archive: {
+      numFiles: 0
+    },
     locale,
     capabilities: { account: false },
     translate: getTranslator(locale),

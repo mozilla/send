@@ -3,7 +3,6 @@ import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
 import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
 import * as metrics from './metrics';
-import Archive from './archive';
 import { bytes } from './utils';
 import okDialog from './ui/okDialog';
 import copyDialog from './ui/copyDialog';
@@ -66,9 +65,6 @@ export default function(state, emitter) {
 
   emitter.on('removeUpload', file => {
     state.archive.remove(file);
-    if (state.archive.numFiles === 0) {
-      state.archive = null;
-    }
     render();
   });
 
@@ -99,7 +95,6 @@ export default function(state, emitter) {
       return;
     }
     const maxSize = state.user.maxSize;
-    state.archive = state.archive || new Archive();
     try {
       state.archive.addFiles(files, maxSize);
     } catch (e) {
@@ -109,15 +104,11 @@ export default function(state, emitter) {
           count: LIMITS.MAX_FILES_PER_ARCHIVE
         })
       );
-      if (state.archive.numFiles === 0) {
-        state.archive = null;
-      }
     }
     render();
   });
 
   emitter.on('upload', async ({ type, dlimit, password }) => {
-    if (!state.archive) return;
     if (state.storage.files.length >= LIMITS.MAX_ARCHIVES_PER_USER) {
       state.modal = okDialog(
         state.translate('tooManyArchives', {
@@ -171,12 +162,12 @@ export default function(state, emitter) {
         emitter.emit('pushState', '/error');
       }
     } finally {
-      await state.user.syncFileList();
       openLinksInNewTab(links, false);
-      state.archive = null;
+      state.archive.clear();
       state.password = '';
       state.uploading = false;
       state.transfer = null;
+      await state.user.syncFileList();
       render();
     }
   });

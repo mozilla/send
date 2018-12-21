@@ -11,14 +11,14 @@ module.exports = function(state, emit) {
   let left = '';
   if (state.uploading) {
     left = archiveTile.uploading(state, emit);
-  } else if (state.archive) {
+  } else if (state.archive.numFiles > 0) {
     left = archiveTile.wip(state, emit);
   } else {
     left = archiveTile.empty(state, emit);
   }
   archives.reverse();
   const right =
-    archives.length < 1
+    archives.length === 0
       ? intro(state)
       : list(
           archives,

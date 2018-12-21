@@ -68,4 +68,8 @@ export default class Archive {
       this.files.splice(index, 1);
     }
   }
+
+  clear() {
+    this.files = [];
+  }
 }

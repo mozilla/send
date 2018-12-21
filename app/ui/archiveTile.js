@@ -345,6 +345,7 @@ module.exports.empty = function(state, emit) {
       />
       <label
         for="file-upload"
+        role="button"
         class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 mt-4 flex flex-no-shrink items-center justify-center font-semibold"
         title="${state.translate('addFilesButton')}"
       >
