@@ -1,0 +1,29 @@
+# Firefox Send is a brand name and should not be localized.
+title = Firefox Send
+siteSubtitle = web-kokeilu
+siteFeedback = Palaute
+uploadPageHeader = Yksityinen, salattu tiedostojen jakaminen
+uploadPageLearnMore = Lue lisää
+uploadPageDropMessage = Aloita lataaminen pudottamalla tiedosto tähän
+uploadPageBrowseButton = Valitse tiedosto tietokoneesta
+uploadPageBrowseButton1 = Valitse ladattava tiedosto
+uploadPageMultipleFilesAlert = Useiden tiedostojen tai kansion lataamista ei tällä hetkellä tueta.
+uploadPageBrowseButtonTitle = Lataa tiedosto
+uploadingPageProgress = Ladataan { $filename } ({ $size })
+importingFile = Tuodaan…
+verifyingFile = Tarkistetaan...
+encryptingFile = Salataan...
+decryptingFile = Puretaan salausta...
+notifyUploadDone = Latauksesi on päättynyt.
+uploadingPageCancel = Peruuta lataus
+uploadCancelNotification = Latauksesi peruutettiin.
+uploadingFileNotification = Ilmoita minulle, kun lataus on valmis.
+uploadSuccessConfirmHeader = Valmis lähettämään
+uploadSvgAlt = Lataa
+copyUrlFormButton = Kopioi leikepöydälle
+copiedUrl = Kopioitu!
+deleteFileButton = Poista tiedosto
+sendAnotherFileLink = Lähetä toinen tiedosto
+# Alternative text used on the download link/button (indicates an action).
+downloadAltText = Lataa
+downloadsFileList = Lataukset
