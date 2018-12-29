@@ -39,3 +39,19 @@ downloadFinish = Mopohuli Yilapato
 fileSizeProgress = ({ $partialSize } meyalo { $totalSize })
 # Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Yimontali Firefox Molawo
+downloadFirefoxButtonSub = Pereyi Mopohuli
+uploadedFile = Berkas
+copyFileList = Kupe'iya URL
+# expiryFileList is used as a column header
+expiryFileList = Mopulito To
+deleteFileList = Luluta
+nevermindButton = Sambelo
+deletePopupText = Luluta berkas botiya?
+deletePopupYes = Joo
+deletePopupCancel = Bataliya
+deleteButtonHover = Luluta
+copyUrlHover = Kupe'iya URL
+footerLinkLegal = Legal
+# Test Pilot is a proper name and should not be localized.
+footerLinkAbout = Tomimbihu Test Pilot
+changePasswordButton = Boli'a
