@@ -5,4 +5,4 @@ PyPOM==2.2.0
 pytest==4.0.2
 pytest-html==1.19.0
 pytest-selenium==1.14.0
-pytest-xdist==1.24.1
+pytest-xdist==1.25.0
