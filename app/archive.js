@@ -53,7 +53,9 @@ export default class Archive {
     if (this.files.length + files.length > LIMITS.MAX_FILES_PER_ARCHIVE) {
       throw new Error('tooManyFiles');
     }
-    const newFiles = files.filter(file => !isDupe(file, this.files));
+    const newFiles = files.filter(
+      file => file.size > 0 && !isDupe(file, this.files)
+    );
     const newSize = newFiles.reduce((total, file) => total + file.size, 0);
     if (this.size + newSize > maxSize) {
       throw new Error('fileTooBig');
