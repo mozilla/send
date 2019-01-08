@@ -5,7 +5,7 @@ module.exports = function(state) {
   return html`
     <main class="main container">
       <div
-        class="flex flex-col items-center bg-white m-6 px-6 py-8 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full md:h-full"
+        class="flex flex-col items-center bg-white m-6 px-6 py-8 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full"
       >
         <h1 class="text-pink-dark text-2xl text-center">
           ${state.translate('expiredPageHeader')}
