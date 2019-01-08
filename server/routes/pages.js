@@ -11,7 +11,7 @@ function stripEvents(str) {
 module.exports = {
   index: async function(req, res) {
     const appState = await state(req);
-    res.send(stripEvents(routes().toString('/', appState)));
+    res.send(stripEvents(routes().toString('/blank', appState)));
   },
 
   blank: async function(req, res) {

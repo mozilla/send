@@ -2,6 +2,7 @@
 const html = require('choo/html');
 const archiveTile = require('./archiveTile');
 const intro = require('./intro');
+const notFound = require('./notFound');
 
 function password(state, emit) {
   const fileInfo = state.fileInfo;
@@ -81,6 +82,9 @@ module.exports = function(state, emit) {
   let content = '';
   if (!state.fileInfo) {
     state.fileInfo = createFileInfo(state);
+    if (!state.fileInfo.nonce) {
+      return notFound(state);
+    }
   }
 
   if (!state.transfer && !state.fileInfo.requiresPassword) {
