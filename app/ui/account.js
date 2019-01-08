@@ -1,5 +1,6 @@
 const html = require('choo/html');
 const Component = require('choo/component');
+const signupDialog = require('./signupDialog');
 
 class Account extends Component {
   constructor(name, state, emit) {
@@ -26,7 +27,8 @@ class Account extends Component {
 
   login(event) {
     event.preventDefault();
-    this.emit('login');
+    this.state.modal = signupDialog();
+    this.emit('render');
   }
 
   logout(event) {
