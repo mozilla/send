@@ -26,6 +26,7 @@ import Raven from 'raven-js';
 import { setApiUrlPrefix } from '../app/api';
 import metrics from '../app/metrics';
 //import assets from '../common/assets';
+import Archive from '../app/archive';
 import Header from '../app/ui/header';
 import storage from '../app/storage';
 import controller from '../app/controller';
@@ -83,6 +84,7 @@ function body(main) {
     state.capabilities = {
       account: true
     }; //TODO
+    state.archive = new Archive();
     state.storage = storage;
     state.user = new User(storage);
     state.raven = Raven;
