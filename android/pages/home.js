@@ -36,7 +36,7 @@ module.exports = function(state, emit) {
     content = html`
       <div class="p-6 w-full">${archiveTile.uploading(state, emit)}</div>
     `;
-  } else if (state.archive) {
+  } else if (state.archive.numFiles > 0) {
     content = archiveTile.wip(state, emit);
     button = '';
   } else {
