@@ -19,7 +19,12 @@ class GCSStorage {
   set(id, file) {
     return new Promise((resolve, reject) => {
       file
-        .pipe(this.bucket.file(id).createWriteStream())
+        .pipe(
+          this.bucket.file(id).createWriteStream({
+            validation: false,
+            resumable: false
+          })
+        )
         .on('error', reject)
         .on('finish', resolve);
     });
