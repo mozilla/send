@@ -1,10 +1,11 @@
 const html = require('choo/html');
 
-module.exports = function(selected, options, translate, changed) {
+module.exports = function(selected, options, translate, changed, htmlId) {
   let x = selected;
 
   return html`
     <select
+      id="${htmlId}"
       class="appearance-none cursor-pointer border rounded-sm bg-blue-lightest hover:border-blue focus:border-blue px-2 py-1 my-2 h-8"
       onchange="${choose}"
     >
