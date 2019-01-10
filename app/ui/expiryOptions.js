@@ -42,7 +42,8 @@ module.exports = function(state, emit) {
         }
         state.downloadCount = value;
         emit('render');
-      }
+      },
+      'expire-after-dl-count-dropdown'
     ),
     dlCountSelect
   );
@@ -68,7 +69,8 @@ module.exports = function(state, emit) {
         }
         state.timeLimit = value;
         emit('render');
-      }
+      },
+      'expire-after-time-dropdown'
     ),
     timeSelect
   );
