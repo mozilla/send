@@ -98,6 +98,7 @@ export default class FileSender extends Nanobus {
         secretKey: secretKey,
         nonce: this.keychain.nonce,
         ownerToken: result.ownerToken,
+        dlimit,
         timeLimit: timeLimit
       });
 
