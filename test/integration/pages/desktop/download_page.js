@@ -4,6 +4,7 @@ const Page = require('./page');
 class DownloadPage extends Page {
   constructor(path) {
     super(path);
+    this.fileId = /download\/(\w+)\/#/.exec(path)[1];
     this.downloadButton = '#download-btn';
     this.downloadComplete = '#download-complete';
   }

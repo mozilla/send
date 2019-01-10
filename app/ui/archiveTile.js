@@ -142,7 +142,7 @@ function archiveDetails(translate, archive) {
 module.exports = function(state, emit, archive) {
   return html`
   <article
-    id="${archive.id}"
+    id="archive-${archive.id}"
     class="flex flex-col items-start border border-grey-light bg-white p-4 w-full">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>

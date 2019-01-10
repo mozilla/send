@@ -42,8 +42,8 @@ describe('Firefox Send', function() {
       `${testFilesPath}/${testFiles[0]}`
     );
     browser.waitForExist(homePage.uploadButton);
-    browser.waitForExist(homePage.downloadCountDropdown);
-    browser.selectByIndex(homePage.downloadCountDropdown, 1);
+    browser.waitForExist(homePage.downloadCountSelect);
+    browser.selectByIndex(homePage.downloadCountSelect, 1);
     browser.click(homePage.uploadButton);
     browser.waitForExist(homePage.shareUrl);
     const downloadPage = new DownloadPage(browser.getValue(homePage.shareUrl));
@@ -51,10 +51,10 @@ describe('Firefox Send', function() {
     downloadPage.download();
     browser.waitForExist(downloadPage.downloadComplete);
     browser.back();
-    browser.waitForExist(homePage.expiresAfterText);
-    assert.ok(
-      browser.getText(homePage.expiresAfterText).substring(0, 24) ===
-        expectedExpiresAfterText
+    browser.waitForExist(`#archive-${downloadPage.fileId}`);
+    assert.equal(
+      browser.getText(`#archive-${downloadPage.fileId} > div`).substring(0, 24),
+      expectedExpiresAfterText
     );
   });
 });

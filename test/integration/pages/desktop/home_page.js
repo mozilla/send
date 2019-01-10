@@ -9,8 +9,7 @@ class HomePage extends Page {
     this.uploadButton = '#upload-btn';
     this.progress = 'progress';
     this.shareUrl = '#share-url';
-    this.downloadCountDropdown = '#expire-after-dl-count-dropdown';
-    this.expiresAfterText = '.text-xs.text-grey-dark.w-full.mt-2.mb-2';
+    this.downloadCountSelect = '#expire-after-dl-count-select';
   }
 
   waitForPageToLoad() {
