@@ -33,7 +33,6 @@ module.exports = function(app, devServer) {
     app.get('/', android);
     app.get('/legal', android);
     app.get(`/share/:id${ID_REGEX}`, android);
-    app.get(`/download/:id${ID_REGEX}/:key`, android);
     app.get('/completed', android);
     app.get('/preferences', android);
     app.get('/options', android);
