@@ -131,7 +131,7 @@ export default class User {
     try {
       const encrypted = await getFileList(this.bearerToken);
       const decrypted = await streamToArrayBuffer(
-        decryptStream(encrypted, b64ToArray(this.info.fileListKey))
+        decryptStream(blobStream(encrypted), b64ToArray(this.info.fileListKey))
       );
       list = JSON.parse(textDecoder.decode(decrypted));
     } catch (e) {
