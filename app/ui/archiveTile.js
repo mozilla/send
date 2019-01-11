@@ -96,7 +96,7 @@ function password(state) {
 
 function fileInfo(file, action) {
   return html`
-    <article class="flex flex-row items-center p-3 w-full">
+    <send-file class="flex flex-row items-center p-3 w-full">
       <img class="" src="${assets.get('blue_file.svg')}"/>
       <p class="ml-4 w-full">
         <h1 class="text-sm font-medium word-break-all">${file.name}</h1>
@@ -106,7 +106,7 @@ function fileInfo(file, action) {
         <div class="hidden">${file.type}</div>
       </p>
       ${action}
-    </article>`;
+    </send-file>`;
 }
 
 function archiveDetails(translate, archive) {
@@ -141,7 +141,7 @@ function archiveDetails(translate, archive) {
 
 module.exports = function(state, emit, archive) {
   return html`
-  <article
+  <send-archive
     id="archive-${archive.id}"
     class="flex flex-col items-start border border-grey-light bg-white p-4 w-full">
     <p class="w-full">
@@ -168,7 +168,7 @@ module.exports = function(state, emit, archive) {
       <img src="${assets.get('copy-16.svg')}" class="mr-2"/>
       ${state.translate('copyUrlHover')}
     </button>
-  </article>`;
+  </send-archive>`;
 
   function copy(event) {
     event.stopPropagation();
@@ -189,7 +189,10 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-    <article class="flex flex-col bg-white z-20 md:h-full w-full" id="wip">
+    <send-upload-area
+      class="flex flex-col bg-white z-20 md:h-full w-full"
+      id="wip"
+    >
       ${
         list(
           Array.from(state.archive.files)
@@ -231,7 +234,7 @@ module.exports.wip = function(state, emit) {
       >
         ${state.translate('uploadFilesButton')}
       </button>
-    </article>
+    </send-upload-area>
   `;
 
   function upload(event) {
@@ -281,7 +284,7 @@ module.exports.uploading = function(state, emit) {
   const progressPercent = percent(progress);
   const archive = state.archive;
   return html`
-  <article
+  <send-upload-area
     id="${archive.id}"
     class="z-20 flex flex-col items-start border border-grey-light bg-white p-4 w-full">
     <p class="w-full">
@@ -305,7 +308,7 @@ module.exports.uploading = function(state, emit) {
       onclick=${cancel}>
       ${state.translate('uploadingPageCancel')}
     </button>
-  </article>`;
+  </send-upload-area>`;
 
   function cancel(event) {
     event.stopPropagation();
@@ -316,7 +319,7 @@ module.exports.uploading = function(state, emit) {
 
 module.exports.empty = function(state, emit) {
   return html`
-    <article
+    <send-upload-area
       class="flex flex-col items-center justify-center border-2 border-dashed border-blue-light px-6 py-16 h-full w-full"
       onclick="${
         e => {
@@ -351,7 +354,7 @@ module.exports.empty = function(state, emit) {
       >
         ${state.translate('addFilesButton')}
       </label>
-    </article>
+    </send-upload-area>
   `;
 
   function add(event) {
@@ -368,7 +371,7 @@ module.exports.preview = function(state, emit) {
     archive.open = true;
   }
   return html`
-    <article class="flex flex-col max-h-full bg-white border border-grey-light p-4 z-20 w-full">
+    <send-archive class="flex flex-col max-h-full bg-white border border-grey-light p-4 z-20 w-full">
       <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -384,7 +387,7 @@ module.exports.preview = function(state, emit) {
       onclick=${download}>
       ${state.translate('downloadButtonLabel')}
     </button>
-  </article>`;
+  </send-archive>`;
 
   function download(event) {
     event.preventDefault();
@@ -398,7 +401,7 @@ module.exports.downloading = function(state, emit) {
   const progress = state.transfer.progressRatio;
   const progressPercent = percent(progress);
   return html`
-  <article class="flex flex-col bg-white border border-grey-light p-4 z-20 w-full">
+  <send-archive class="flex flex-col bg-white border border-grey-light p-4 z-20 w-full">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -414,7 +417,7 @@ module.exports.downloading = function(state, emit) {
       onclick=${cancel}>
       ${state.translate('downloadCancel')}
     </button>
-  </article>`;
+  </send-archive>`;
 
   function cancel(event) {
     event.preventDefault();

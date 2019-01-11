@@ -8,7 +8,7 @@ module.exports = function() {
       document.getElementById('email-input').focus();
     });
     return html`
-    <div class="flex flex-col p-4">
+    <send-signup-dialog class="flex flex-col p-4">
       <p class="p-8">
         ${state.translate('accountBenefitTitle')}
         <ul class="my-2 leading-normal">
@@ -40,7 +40,7 @@ module.exports = function() {
         title="${state.translate('deletePopupCancel')}"
         onclick=${close}>${state.translate('deletePopupCancel')}
       </button>
-    </div>`;
+    </send-signup-dialog>`;
 
     function emailish(str) {
       if (!str) {
