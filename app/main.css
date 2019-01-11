@@ -185,3 +185,62 @@ progress::-webkit-progress-value {
     padding-right: 1rem;
   }
 }
+
+progress[value]::-webkit-progress-value {
+  /* stylelint-disable */
+  background-image: -webkit-linear-gradient(
+      -45deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.4) 20%,
+      rgba(255, 255, 255, 0.4) 40%,
+      transparent 40%,
+      transparent 60%,
+      rgba(255, 255, 255, 0.4) 60%,
+      rgba(255, 255, 255, 0.4) 80%,
+      transparent 80%
+    ),
+    -webkit-linear-gradient(left, #0a84ff, #0a84ff);
+  /* stylelint-enable */
+  border-radius: 2px;
+  background-size: 21px 20px, 100% 100%, 100% 100%;
+  -webkit-animation: animate-stripes 1s linear infinite;
+}
+
+progress[value]::-moz-progress-bar {
+  /* stylelint-disable */
+  background-image: -moz-linear-gradient(
+      135deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.4) 20%,
+      rgba(255, 255, 255, 0.4) 40%,
+      transparent 40%,
+      transparent 60%,
+      rgba(255, 255, 255, 0.4) 60%,
+      rgba(255, 255, 255, 0.4) 80%,
+      transparent 80%
+    ),
+    -moz-linear-gradient(left, #0a84ff, #0a84ff);
+  /* stylelint-enable */
+  border-radius: 2px;
+  background-size: 21px 20px, 100% 100%, 100% 100%;
+  animation: animate-stripes 1s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  100% {
+    background-position: -21px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  100% {
+    background-position: -21px 0;
+  }
+}
+
+:not(input) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

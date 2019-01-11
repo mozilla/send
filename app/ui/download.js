@@ -107,7 +107,9 @@ module.exports = function(state, emit) {
               ${state.translate('downloadFinish')}
             </h1>
             <p class="mb-4">
-              <a href="/" class="text-blue font-medium"
+              <a
+                href="/"
+                class="text-blue hover:text-blue-dark focus:text-blue-darker font-medium"
                 >${state.translate('sendYourFilesLink')}</a
               >
             </p>
