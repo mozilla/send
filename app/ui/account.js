@@ -62,18 +62,18 @@ class Account extends Component {
     const translate = this.state.translate;
     if (!this.local.loggedIn) {
       return html`
-        <div>
+        <send-account>
           <button
             class="p-2 border rounded border-white text-white hover:bg-white hover:text-blue md:text-blue md:border-blue md:hover:text-white md:hover:bg-blue"
             onclick="${e => this.login(e)}"
           >
             ${translate('signInMenuOption')}
           </button>
-        </div>
+        </send-account>
       `;
     }
     return html`
-      <div class="relative h-8">
+      <send-account class="relative h-8">
         <input
           type="image"
           alt="${user.email}"
@@ -97,7 +97,7 @@ class Account extends Component {
             </a>
           </li>
         </ul>
-      </div>
+      </send-account>
     `;
   }
 }

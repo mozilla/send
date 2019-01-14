@@ -4,7 +4,9 @@ const { copyToClipboard } = require('../utils');
 module.exports = function(name, url) {
   return function(state, emit, close) {
     return html`
-      <div class="flex flex-col items-center text-center p-4 max-w-sm">
+      <send-copy-dialog
+        class="flex flex-col items-center text-center p-4 max-w-sm"
+      >
         <h1 class="font-bold my-4">${state.translate('notifyUploadDone')}</h1>
         <p class="font-normal leading-normal text-grey-darker word-break-all">
           ${state.translate('copyUrlFormLabelWithName', { filename: name })}
@@ -25,7 +27,7 @@ module.exports = function(name, url) {
         <a class="text-blue my-4 font-medium cursor-pointer" onclick="${close}"
           >${state.translate('okButton')}</a
         >
-      </div>
+      </send-copy-dialog>
     `;
 
     function copy(event) {

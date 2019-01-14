@@ -36,7 +36,6 @@ describe('Firefox Send', function() {
   });
 
   it('should update the download count on home page after 1 download', function() {
-    const expectedExpiresAfterText = 'Expires after 1 download';
     browser.chooseFile(
       homePage.uploadInput,
       `${testFilesPath}/${testFiles[0]}`
@@ -51,10 +50,10 @@ describe('Firefox Send', function() {
     downloadPage.download();
     browser.waitForExist(downloadPage.downloadComplete);
     browser.back();
-    browser.waitForExist(`#archive-${downloadPage.fileId}`);
+    browser.waitForExist('send-archive');
     assert.equal(
-      browser.getText(`#archive-${downloadPage.fileId} > div`).substring(0, 24),
-      expectedExpiresAfterText
+      browser.getText('send-archive > div').substring(0, 24),
+      'Expires after 1 download'
     );
   });
 });

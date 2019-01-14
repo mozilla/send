@@ -13,7 +13,7 @@ class Promo extends Component {
 
   createElement() {
     return html`
-      <div
+      <send-promo
         class="w-full flex-none flex flex-row items-center content-center justify-center text-sm bg-grey-light leading-tight text-grey-darkest px-4 py-3"
       >
         <div class="flex items-center mx-auto">
@@ -31,7 +31,7 @@ class Promo extends Component {
             >
           </span>
         </div>
-      </div>
+      </send-promo>
     `;
   }
 }

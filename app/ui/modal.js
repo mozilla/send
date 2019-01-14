@@ -2,7 +2,7 @@ const html = require('choo/html');
 
 module.exports = function(state, emit) {
   return html`
-    <div
+    <send-modal
       class="absolute pin flex items-center justify-center overflow-hidden z-40 bg-cloud md:my-8"
       onclick="${close}"
     >
@@ -14,7 +14,7 @@ module.exports = function(state, emit) {
           ${state.modal(state, emit, close)}
         </div>
       </div>
-    </div>
+    </send-modal>
   `;
 
   function close(event) {
