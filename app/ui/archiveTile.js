@@ -163,7 +163,7 @@ module.exports = function(state, emit, archive) {
     ${archiveDetails(state.translate, archive)}
     <hr class="w-full border-t my-4">
     <button
-      class="text-blue self-end font-medium flex items-center"
+      class="text-blue hover:text-blue-dark focus:text-blue-darker self-end font-medium flex items-center"
       onclick=${copy}>
       <img src="${assets.get('copy-16.svg')}" class="mr-2"/>
       ${state.translate('copyUrlHover')}
@@ -304,7 +304,7 @@ module.exports.uploading = function(state, emit) {
     <div class="text-blue text-sm font-medium mt-2">${progressPercent}</div>
     <progress class="my-3" value="${progress}">${progressPercent}</progress>
     <button
-      class="text-blue self-end font-medium"
+      class="text-blue hover:text-blue-dark focus:text-blue-darker self-end font-medium"
       onclick=${cancel}>
       ${state.translate('uploadingPageCancel')}
     </button>

@@ -24,7 +24,9 @@ module.exports = function(name, url) {
         >
           ${state.translate('copyUrlFormButton')}
         </button>
-        <a class="text-blue my-4 font-medium cursor-pointer" onclick="${close}"
+        <a
+          class="text-blue hover:text-blue-dark focus:text-blue-darker my-4 font-medium cursor-pointer"
+          onclick="${close}"
           >${state.translate('okButton')}</a
         >
       </send-copy-dialog>
