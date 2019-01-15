@@ -157,6 +157,9 @@ class Storage {
     const workingFiles = this.files.slice();
     for (const f of workingFiles) {
       const cc = await f.updateDownloadCount();
+      if (cc) {
+        await this.writeFile(f);
+      }
       downloadCount = downloadCount || cc;
       outgoing = outgoing || f.expired;
       if (f.expired) {

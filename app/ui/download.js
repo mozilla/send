@@ -2,6 +2,7 @@
 const html = require('choo/html');
 const archiveTile = require('./archiveTile');
 const intro = require('./intro');
+const modal = require('./modal');
 const notFound = require('./notFound');
 
 function password(state, emit) {
@@ -122,6 +123,7 @@ module.exports = function(state, emit) {
   }
   return html`
     <main class="main container">
+      ${state.modal && modal(state, emit)}
       <section class="relative h-full w-full p-6 md:flex md:flex-row">
         <div class="md:mr-6 md:w-1/2">${content}</div>
         <div class="md:w-1/2 mt-6 md:mt-0">${intro(state)}</div>
