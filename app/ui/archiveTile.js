@@ -3,7 +3,14 @@
 const html = require('choo/html');
 const raw = require('choo/html/raw');
 const assets = require('../../common/assets');
-const { bytes, copyToClipboard, list, percent, timeLeft } = require('../utils');
+const {
+  browserName,
+  bytes,
+  copyToClipboard,
+  list,
+  percent,
+  timeLeft
+} = require('../utils');
 const expiryOptions = require('./expiryOptions');
 
 function expiryInfo(translate, archive) {
@@ -143,7 +150,7 @@ function archiveDetails(translate, archive) {
 
 module.exports = function(state, emit, archive) {
   const copyOrShare =
-    typeof window.Android !== 'object'
+    browserName() !== 'android-app'
       ? html`
           <button
             class="text-blue hover:text-blue-dark focus:text-blue-darker self-end font-medium flex items-center"
