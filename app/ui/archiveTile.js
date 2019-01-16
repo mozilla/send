@@ -1,7 +1,16 @@
+/* global Android */
+
 const html = require('choo/html');
 const raw = require('choo/html/raw');
 const assets = require('../../common/assets');
-const { bytes, copyToClipboard, list, percent, timeLeft } = require('../utils');
+const {
+  browserName,
+  bytes,
+  copyToClipboard,
+  list,
+  percent,
+  timeLeft
+} = require('../utils');
 const expiryOptions = require('./expiryOptions');
 
 function expiryInfo(translate, archive) {
@@ -140,6 +149,26 @@ function archiveDetails(translate, archive) {
 }
 
 module.exports = function(state, emit, archive) {
+  const copyOrShare =
+    browserName() !== 'android-app'
+      ? html`
+          <button
+            class="text-blue hover:text-blue-dark focus:text-blue-darker self-end font-medium flex items-center"
+            onclick=${copy}
+          >
+            <img src="${assets.get('copy-16.svg')}" class="mr-2" /> ${
+              state.translate('copyUrlHover')
+            }
+          </button>
+        `
+      : html`
+          <button
+            class="text-blue hover:text-blue-dark focus:text-blue-darker self-end font-medium flex items-center"
+            onclick=${share}
+          >
+            <img src="${assets.get('share-16.svg')}" class="mr-2" /> Share
+          </button>
+        `;
   return html`
   <send-archive
     id="archive-${archive.id}"
@@ -162,12 +191,7 @@ module.exports = function(state, emit, archive) {
     </div>
     ${archiveDetails(state.translate, archive)}
     <hr class="w-full border-t my-4">
-    <button
-      class="text-blue hover:text-blue-dark focus:text-blue-darker self-end font-medium flex items-center"
-      onclick=${copy}>
-      <img src="${assets.get('copy-16.svg')}" class="mr-2"/>
-      ${state.translate('copyUrlHover')}
-    </button>
+    ${copyOrShare}
   </send-archive>`;
 
   function copy(event) {
@@ -184,6 +208,11 @@ module.exports = function(state, emit, archive) {
   function del(event) {
     event.stopPropagation();
     emit('delete', { file: archive, location: 'success-screen' });
+  }
+
+  function share(event) {
+    event.stopPropagation();
+    Android.shareUrl(archive.url);
   }
 };
 

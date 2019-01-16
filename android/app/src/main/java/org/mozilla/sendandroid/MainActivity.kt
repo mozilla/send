@@ -35,6 +35,11 @@ class WebAppInterface(private val mContext: MainActivity) {
     fun beginOAuthFlow() {
         mContext.beginOAuthFlow();
     }
+
+    @JavascriptInterface
+    fun shareUrl(url: String) {
+        mContext.shareUrl(url)
+    }
 }
 
 class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
@@ -92,6 +97,14 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
             Log.w("CONFIG", "CREATED FIREFOXACCOUNT")
             return FxaResult.fromValue(Unit)
         })
+    }
+
+    fun shareUrl(url: String) {
+        val shareIntent = Intent()
+        shareIntent.action = Intent.ACTION_SEND
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_TEXT, url);
+        startActivity(Intent.createChooser(shareIntent, ""))
     }
 
     @SuppressLint("NewApi")
