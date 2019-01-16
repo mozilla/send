@@ -161,7 +161,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                             val displayName = profile.displayName
                             val email = profile.email
                             val uid = profile.uid
-                            val toPass = "{\"accessToken\": \"${accessToken}}\", \"keys\": '${keys}', \"avatar\": \"${avatar}\", \"displayName\": \"${displayName}\", \"email\": \"${email}\", \"uid\": \"${uid}\"}"
+                            val toPass = "{\"accessToken\": \"${accessToken}\", \"keys\": '${keys}', \"avatar\": \"${avatar}\", \"displayName\": \"${displayName}\", \"email\": \"${email}\", \"uid\": \"${uid}\"}"
                             mToCall = "finishLogin(${toPass})"
                             this@MainActivity.runOnUiThread({
                                 // But then we also reload this here because we need to make sure onPageFinished runs after mToCall has been set.
