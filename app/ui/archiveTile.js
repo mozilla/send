@@ -20,7 +20,7 @@ function password(state) {
   const MAX_LENGTH = 32;
 
   return html`
-    <div class="my-2 px-4-device">
+    <div class="my-2 px-4 md:px-0">
       <div class="checkbox inline-block mr-3">
         <input
           id="add-password"
@@ -228,7 +228,7 @@ module.exports.wip = function(state, emit) {
       ${expiryOptions(state, emit)} ${password(state, emit)}
       <button
         id="upload-btn"
-        class="rounded-device bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 flex flex-no-shrink items-center justify-center font-semibold"
+        class="btn md:rounded flex-no-shrink"
         title="${state.translate('uploadFilesButton')}"
         onclick="${upload}"
       >
@@ -349,7 +349,7 @@ module.exports.empty = function(state, emit) {
       <label
         for="file-upload"
         role="button"
-        class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 mt-4 flex flex-no-shrink items-center justify-center font-semibold"
+        class="btn rounded flex items-center mt-4"
         title="${state.translate('addFilesButton')}"
       >
         ${state.translate('addFilesButton')}
@@ -382,7 +382,7 @@ module.exports.preview = function(state, emit) {
     ${archiveDetails(state.translate, archive)}
     <button
       id="download-btn"
-      class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white mt-4 py-2 px-6 h-12 w-full flex flex-no-shrink items-center justify-center font-semibold"
+      class="btn rounded mt-4 w-full flex-no-shrink"
       title="${state.translate('downloadButtonLabel')}"
       onclick=${download}>
       ${state.translate('downloadButtonLabel')}

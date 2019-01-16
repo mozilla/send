@@ -21,14 +21,14 @@ class Header extends Component {
       browserName() === 'android-app'
         ? html`
             <a class="header-logo">
-              <h1 class="text-white md:text-black font-normal">
+              <h1 class="text-2xl text-white md:text-black font-normal">
                 Firefox <b>Send</b>
               </h1>
             </a>
           `
         : html`
             <a class="header-logo" href="/">
-              <h1 class="text-white md:text-black font-normal">
+              <h1 class="text-2xl text-white md:text-black font-normal">
                 Firefox <b>Send</b>
               </h1>
             </a>

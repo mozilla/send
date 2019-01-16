@@ -32,7 +32,7 @@ module.exports = function() {
           id="email-submit"
           type="submit"/>
       </form>
-      <label class="rounded bg-blue hover\:bg-blue-dark focus\:bg-blue-darker cursor-pointer text-center text-white py-2 px-6 h-12 w-full flex flex-no-shrink items-center justify-center font-semibold" for="email-submit">
+      <label class="btn rounded w-full flex flex-no-shrink items-center justify-center" for="email-submit">
         ${state.translate('signInMenuOption')}
       </label>
       <button
