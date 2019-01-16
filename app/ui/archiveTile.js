@@ -218,10 +218,7 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-    <send-upload-area
-      class="flex flex-col bg-white z-20 md:h-full w-full"
-      id="wip"
-    >
+    <send-upload-area class="flex flex-col bg-white md:h-full w-full" id="wip">
       ${
         list(
           Array.from(state.archive.files)
@@ -315,7 +312,7 @@ module.exports.uploading = function(state, emit) {
   return html`
   <send-upload-area
     id="${archive.id}"
-    class="z-20 flex flex-col items-start border border-grey-light bg-white p-4 w-full">
+    class="flex flex-col items-start border border-grey-light bg-white p-4 w-full">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -400,7 +397,7 @@ module.exports.preview = function(state, emit) {
     archive.open = true;
   }
   return html`
-    <send-archive class="flex flex-col max-h-full bg-white border border-grey-light p-4 z-20 w-full">
+    <send-archive class="flex flex-col max-h-full bg-white border border-grey-light p-4 w-full">
       <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -430,7 +427,7 @@ module.exports.downloading = function(state, emit) {
   const progress = state.transfer.progressRatio;
   const progressPercent = percent(progress);
   return html`
-  <send-archive class="flex flex-col bg-white border border-grey-light p-4 z-20 w-full">
+  <send-archive class="flex flex-col bg-white border border-grey-light p-4 w-full">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
