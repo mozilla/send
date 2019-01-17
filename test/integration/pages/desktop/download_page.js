@@ -15,13 +15,14 @@ class DownloadPage extends Page {
    * @throws ElementNotFound
    */
   waitForPageToLoad() {
-    super.waitForPageToLoad();
-    browser.waitForExist(this.downloadButton);
+    $(this.downloadButton).waitForExist(5000);
     return this;
   }
 
   download() {
-    return browser.click(this.downloadButton);
+    let element = $(this.downloadButton);
+    element.waitForExist(5000);
+    return element.click();
   }
 }
 module.exports = DownloadPage;

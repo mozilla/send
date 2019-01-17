@@ -8,10 +8,7 @@ const HomePage = require('./pages/desktop/home_page');
 
 describe('Firefox Send', function() {
   const homePage = new HomePage();
-  const downloadDir =
-    browser.desiredCapabilities['moz:firefoxOptions']['prefs'][
-      'browser.download.dir'
-    ];
+  const downloadDir = path.join(__dirname, 'downloads');
   const testFilesPath = path.join(__dirname, 'fixtures');
   const testFiles = fs.readdirSync(testFilesPath);
 
@@ -21,39 +18,33 @@ describe('Firefox Send', function() {
 
   testFiles.forEach(file => {
     it(`should upload and download files, file: ${file}`, function() {
-      browser.chooseFile(homePage.uploadInput, `${testFilesPath}/${file}`);
-      browser.waitForExist(homePage.uploadButton);
-      browser.click(homePage.uploadButton);
-      browser.waitForExist(homePage.shareUrl);
+      homePage.uploadFile(testFilesPath, file);
+      $(homePage.shareUrl).waitForExist(5000);
       const downloadPage = new DownloadPage(
-        browser.getValue(homePage.shareUrl)
+        $(homePage.shareUrl).getValue()
       );
-      downloadPage.open();
+      homePage.closeSharePopup();
+      downloadPage.open()
       downloadPage.download();
-      browser.waitForExist(downloadPage.downloadComplete);
+      $(downloadPage.downloadComplete).waitForExist(5000);
       assert.ok(fs.existsSync(path.join(downloadDir, file)));
     });
   });
 
   it('should update the download count on home page after 1 download', function() {
-    browser.chooseFile(
-      homePage.uploadInput,
-      `${testFilesPath}/${testFiles[0]}`
-    );
-    browser.waitForExist(homePage.uploadButton);
-    browser.waitForExist(homePage.downloadCountSelect);
-    browser.selectByIndex(homePage.downloadCountSelect, 1);
-    browser.click(homePage.uploadButton);
-    browser.waitForExist(homePage.shareUrl);
-    const downloadPage = new DownloadPage(browser.getValue(homePage.shareUrl));
+    const expectedExpiresAfterText = 'Expires after 1 download';
+    homePage.uploadFile(testFilesPath, testFiles[0], 1);
+    const downloadPage = new DownloadPage(
+      $(homePage.shareUrl).getValue());
+    homePage.closeSharePopup();
     downloadPage.open();
     downloadPage.download();
-    browser.waitForExist(downloadPage.downloadComplete);
+    $(downloadPage.downloadComplete).waitForExist(5000);
     browser.back();
-    browser.waitForExist('send-archive');
+    $(`#archive-${downloadPage.fileId}`).waitForExist(5000);
     assert.equal(
-      browser.getText('send-archive > div').substring(0, 24),
-      'Expires after 1 download'
+      $(`#archive-${downloadPage.fileId} > div`).getText().substring(0, 24),
+      expectedExpiresAfterText
     );
   });
 });

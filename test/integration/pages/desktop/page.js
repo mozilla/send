@@ -15,8 +15,8 @@ class Page {
    * @throws ElementNotFound
    */
   waitForPageToLoad() {
-    browser.waitUntil(function() {
-      return browser.execute(function() {
+    browser.waitUntil(() => {
+      return browser.execute(() => {
         return typeof window.appState !== 'undefined';
       });
     }, 3000);

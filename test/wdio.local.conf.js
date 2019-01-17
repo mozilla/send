@@ -9,8 +9,11 @@ Config for running selenium against localhost
 /*/
 
 exports.config = Object.assign({}, common.config, {
+  runner: 'local',
+  services: [],
   baseUrl: `http://${ip.address()}:8000`,
   maxInstances: 1,
   bail: 1,
-  services: [require('./testServer')]
+  services: [require('./testServer')],
+  path: '/'
 });

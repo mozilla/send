@@ -4,7 +4,7 @@ const HomePage = require('./pages/desktop/home_page');
 
 describe('Firefox Send homepage', function() {
   const homePage = new HomePage();
-  const baseUrl = browser.options['baseUrl'];
+  const baseUrl = browser.config['baseUrl'];
   const footerLinks = [
     'mozilla',
     'legal',
@@ -25,8 +25,8 @@ describe('Firefox Send homepage', function() {
   footerLinks.forEach((link, i) => {
     it(`should navigate to the correct page: ${link}`, function() {
       // Click links on bottom of page
-      const els = browser.elements(homePage.footerLinks);
-      browser.elementIdClick(els.value[i].ELEMENT);
+      const els = $$(homePage.footerLinks);
+      els[i].click()
       // Wait for page to load
       browser.waitUntil(() => {
         const url = browser.getUrl();
