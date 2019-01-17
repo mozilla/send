@@ -1,156 +1,125 @@
-# Send Metrics
-The metrics collection and analysis plan for Send, a forthcoming Test Pilot experiment.
+# Send V2 Metrics Definitions
 
-## Analysis
-Data collected by Send will be used to answer the following high-level questions:
+## Key Value Prop
 
-- Do users send files?
-	- How often? How many?
-	- What is the retention?
-	- What is the distribution of senders?
-- How do recipients interact with promotional UI elements?
-	- Are file recipients converted to file senders?
-	- Are non-Firefox users converted to Firefox users?
-- Where does it go wrong?
-	- How often are there errors in uploading or downloading files?
-	- What types of errors to users commonly see?
-	- At what point do errors affect retention?
+Quickly and privately transfer large files from any device to any device.
 
-## Collection
-Data will be collected with Google Analytics and follow [Test Pilot standards](https://github.com/mozilla/testpilot/blob/master/docs/experiments/ga.md) for reporting.
+## Key Business Question to Answer
 
-### Custom Metrics
-- `cm1` - the size of the file, in bytes.
-- `cm2` - the amount of time it took to complete the file transfer, in milliseconds. Only include if the file completed transferring (ref: `cd2`).
-- `cm3` - the rate of the file transfer, in bytes per second. This is computed by dividing `cm1` by `cm2`, not by monitoring transfer speeds. Only include if the file completed transferring (ref: `cd2`).
-- `cm4` - the amount of time until the file will expire, in milliseconds.
-- `cm5` - the number of files the user has ever uploaded.
-- `cm6` - the number of unexpired files the user has uploaded.
-- `cm7` - the number of files the user has ever downloaded.
-- `cm8` - the number of downloads permitted by the uploader.
+Is the value proposition of a large encrypted file transfer service enough to drive Firefox Account relationships for non-Firefox users.
 
-### Custom Dimensions
-- `cd1` - the method by which the user initiated an upload. One of `drag`, `click`.
-- `cd2` - the reason that the file transfer stopped. One of `completed`, `errored`, `cancelled`.
-- `cd3` - the destination of a link click. One of `experiment-page`, `download-firefox`, `twitter`, `github`, `cookies`, `terms`, `privacy`, `about`, `legal`, `mozilla`.
-- `cd4` - the location from which the user copied the URL to an upload file. One of `success-screen`, `upload-list`.
-- `cd5` - the referring location. One of `completed-download`, `errored-download`, `cancelled-download`, `completed-upload`, `errored-upload`, `cancelled-upload`, `testpilot`, `external`.
-- `cd6` - identifying information about an error. Exclude if there is no error involved. **TODO:** enumerate a list of possibilities.
+## Hypotheses to Test
 
-### Events
+### Primary - In support of Relationships KPI
 
-_NB:_ due to how files are being tracked, there are no events indicating file expiry. This carries some risk: most notably, we can only derive expiration rates by looking at download rates, which is prone to skew if there are problems in data collection.
+We believe that a privacy-respecting file transfer service can drive Firefox Accounts beyond the Firefox Browser.
 
-#### `upload-started`
-Triggered whenever a user begins uploading a file. Includes:
+We will know this to be true when we see 250k Firefox Account creations from non-Firefox contexts w/in six months of launch.
 
-- `ec` - `sender`
-- `ea` - `upload-started`
-- `cm1`
-- `cm5`
-- `cm6`
-- `cm7`
-- `cd1`
-- `cd5`
+### Secondary - In support of Revenue KPI
 
-#### `upload-stopped`
-Triggered whenever a user stops uploading a file. Includes:
+We believe that a privacy respecting service accessible beyond the reach of Firefox will provide a valuable platform to research, communicate with, and market to conscious choosers we have traditionally found hard to reach.
 
-- `ec` - `sender`
-- `ea` - `upload-stopped`
-- `cm1`
-- `cm2`
-- `cm3`
-- `cm5`
-- `cm6`
-- `cm7`
-- `cd1`
-- `cd2`
-- `cd6`
+We will know this to be true when we can conduct six research tasks (surveys, A/B tests, fake doors, etc) in support of premium services KPIs in the first six months after launch.
 
-#### `download-limit-changed`
-Triggered whenever the sender changes the download limit. Includes:
+## Overview of Key Measures
 
-- `ec` - `sender`
-- `ea` - `download-limit-changed`
-- `cm1`
-- `cm5`
-- `cm6`
-- `cm7`
-- `cm8`
+* Number of people using the service to send and receive files
+  * Why: measure of service size. Important for understanding addressable market size
+* Percent of users who have or create an FxAccount via Send
+  * Why: representation of % of any service users who might be amenable to an upsell
+* % of downloaders who convert into uploaders
+  * Why: represents a measure of our key growth-loop potential
+* Count of uploads and size
+  * Why: Represents cost of service on a running basis
 
-#### `password-added`
-Triggered whenever a password is added to a file. Includes:
+## Key Funnels
+* App Open or Visit `--- DESIRED OUTCOME --->` Successful Upload
+* Download UI Visit `--- DESIRED OUTCOME --->` Successful Download
+* FxA UI Engagement `--- DESIRED OUTCOME --->` Authenticate
+* **STRETCH** App Open or Visit `--- DESIRED OUTCOME --->` Successful Download
 
-- `cm1`
-- `cm5`
-- `cm6`
-- `cm7`
+## Complete Schema
 
-#### `download-started`
-Triggered whenever a user begins downloading a file. Includes:
 
-- `ec` - `recipient`
-- `ea` - `download-started`
-- `cm1`
-- `cm4`
-- `cm5`
-- `cm6`
-- `cm7`
+Please see, **See Amplitude HTTP API**(https://amplitude.zendesk.com/hc/en-us/articles/204771828) for HTTP API reference.
 
-#### `download-stopped`
-Triggered whenever a user stops downloading a file.
+### Event Structure
 
-- `ec` - `recipient`
-- `ea` - `download-stopped`
-- `cm1`
-- `cm2` (if possible and applicable)
-- `cm3` (if possible and applicable)
-- `cm5`
-- `cm6`
-- `cm7`
-- `cd2`
-- `cd6`
+* `app_version` **string** ∙ app version `Android 1.5` or `Web 1.2.5`
+* `country` **string** ∙ Can be captured using [FxA Geo Library](https://github.com/mozilla/fxa-geodb)
+* `device_id` **string** ∙ required, should be a unique hash
+* `event_properties` **dictionary** ∙ [see list below](#event-properties)
+* `event_type` **string** ∙ [see list below](#events)
+* `insert_id` **string** ∙ unique event id used by amplitude to dedupe events
+* `language` **string** ∙ App language
+* `os_name` **string** ∙ `Mac OS X`, `iOS`, `Windows`, etc.
+* `os_version` **string** ∙ `10.01`, `400`, etc
+* `region` **string** ∙ Can be captured using [FxA Geo Library](https://github.com/mozilla/fxa-geodb)
+* `session_id` **long** ∙ start time in ms since epoch (this should only be changed at the start of a session, but sent with each ping), set to -1 if event is out of session, such as expiration
+* `time` **long** ∙ The timestamp of the event in milliseconds since epoch
+* `user_id` **string** ∙ required unless device ID is present, should be a double hash of FxA email
+* `user_properties` **dictionary** ∙ [see list below](#user-properties). All user properties can be passed with all events. Amplitude will automatically drop user properties that do not change
 
-#### `exited`
-Fired whenever a user follows a link external to Send.
+### User Properties
 
-- `ec` - `recipient`, `sender`, or `other`, as applicable.
-- `ea` - `exited`
-- `cd3`
+* `Has account` **boolean** ∙ whether the user is account active
+* `First action` **string** ∙ did this user `upload` or `download` first
+* `Total uploads` **num** ∙ running sum of bundles uploaded
+* `Total upload size` **float** ∙ running sum of total MB uploaded
+* `Total downloads` **num** ∙ running count of bundles downloaded
+* `Total download size` **float** ∙ running sum of total MB downloaded
+* `Total clients` **num** ∙ running tally of total clients sharing a UID
+* `Current uploads` **int** ∙ count of current unexpired files
+* `User agent Browser` **string** ∙ browser or if app `App` derived from UA string
+* `User Agent version` **string** ∙ browser version or if app `App Version` derived from UA string
+* `UTM campaign` **string** ∙ referrer
+* `UTM content` **string** ∙ referrer
+* `UTM medium` **string** ∙ referrer
+* `UTM source` **string** ∙ referrer
+* `UTM term` **string** ∙ referrer
+* `Experiments` **array of strings** ∙ set of experiments the user is in
 
-#### `upload-deleted`
-Fired whenever a user deletes a file they’ve uploaded.
+### Event Properties
 
-- `ec` - `sender`
-- `ea` - `upload-deleted`
-- `cm1`
-- `cm2`
-- `cm3`
-- `cm4`
-- `cm5`
-- `cm6`
-- `cm7`
-- `cd1`
-- `cd4`
+1. `Bundle id` **string** ∙ Guid for bundle
+2. `Bundle creation timestamp` **long** ∙ The timestamp of bundle creation in milliseconds since epoch
+3. `Number of files` **int** ∙ Number of files in bundle
+4. `Size of files` **float** ∙ Size of files in MB
+5. `Transfer rate` **float** ∙ rate of transfter in bytes per second
+6. `Total downloads` **int** ∙ number of downloads set
+7. `Total duration` **string** ∙ Time for bundle expiry, one of `5 minutes` `one hour` etc
+8. `Password added` **boolean** ∙ Did the user add a password to the bundle
+9. `Remaining downloads` **int** ∙ number of remaining downloads for a file
+10. `Remaining time` **long** ∙ time until a bundle expires
+11. `Reason transfer stopped` **string** ∙ One of `completed`, `errored` or `canceled`
+12. `FxA prompt trigger` **string** ∙ One of `time options`, `count options`, `bundle size`, `shoulder button`
+13. `Location of URL copy` **string** ∙ Where did the user copy the share url `success-screen` or `upload-list`
+14. `Site exit path` **string** ∙ Name of external link followed ... `download-firefox`, `twitter`, `github`, `cookies`, `terms`, `privacy`, `about`, `legal`, `mozilla`
+15. `Expiry reason` **string** ∙ one of `time limit hit`, `download limit hit`, `user deleted`
+16. `Error code` **String** ∙ Error code if added
 
-#### `copied`
-Fired whenever a user copies the URL of an upload file.
+### Event Types
 
-- `ec` - `sender`
-- `ea` - `copied`
-- `cd4`
+ The following list is of required `event_type` definitions. If adding new event types please use the syntax `Group - verb subject modifier`
 
-#### `restarted`
-Fired whenever the user interrupts any part of funnel to return to the start of it (e.g. with a “send another file” or “send your own files” link).
-
-- `ec` - `recipient`, `sender`, or `other`, as applicable.
-- `ea` - `restarted`
-- `cd2`
-
-#### `unsupported`
-Fired whenever a user is presented a message saying that their browser is unsupported due to missing crypto APIs.
-
-- `ec` - `recipient` or `sender`, as applicable.
-- `ea` - `unsupported`
-- `cd6`
+| Event | Event Properties | Description |
+|-------|------------------|-------------|
+| `{ Uploader, Downloader, Unsupported } - visit` | `none` | When a user visits the site, or opens the app, grouped by interface at open. Note, a number of API properties and User Properties should be set with this event |
+|`{ Uploader, Downloader, Unsupported } - exit` | `none` | When a user exits the site via click event on a link that directs to another domain |
+| `Uploader - start bundle upload` | `1, 2, 3, 4, 6, 7, 8, 16 (if applicable)` | When a user begins to upload a bundle for the site |
+| `Uploader - stop bundle upload` | `1, 2, 3, 4, 5, 6, 7, 8, 11, 16 (if applicable)` | When a user stops an upload or an upload stops for any reason |
+| `Uploader - delete bundle` | `1, 2, 3, 4, 6, 7, 8, 9, 10` | When a user deletes their bundle |
+| `Uploader - copy bundle url` | `1, 13` | When a user copies the url of a bundle they create |
+| `Uploader - dismiss copy bundle dialog` | `1` | When a user dismisses the bundle copy dialog |
+| `{ Uploader, Downloader } - start bundle download` | `1, 2, 3, 4, 6, 7, 8, 9, 10, 16 (if applicable)` | When a user begins to download a bundle. Remaining downloads should be decremented after event. |
+| `{ Uploader, Downloader } - stop bundle download` | `1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16 (if applicable)` | When a a download ends for any reason |
+| `Downloader - click try send cta` | `1` | When a downloader clicks the prompt to try Firefox Send |
+| `Downloader - unlock bundle success` | `1` | When a downloader successfully unlocks a file |
+| `Downloader - unlock bundle failure` | `1` | When a downloader fails to unlock a file (only send once per session) |
+| `Uploader - trigger signup cta` | `12` | When an uploader triggers the CTA via change to expiry options |
+| `Signup - interact with email` | `12` | when a user inputs anything into the email submission form |
+| `Signup - cancel signup` | `12` | When a user opts out of signing up |
+| `Signup - submit signup` | `12` | When a user submits a sign up to fxa and we begin OAuth dance |
+| `Server - expire bundle` | `1, 2, 3, 4, 6, 7, 8, 9, 10, 15` | when the server expires a bundle for any reason |
+| `Error` | `16` | Fallback event for any errors that occur. Use the error code event property to specify an error type |
