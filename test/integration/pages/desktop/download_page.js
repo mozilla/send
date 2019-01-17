@@ -20,7 +20,7 @@ class DownloadPage extends Page {
   }
 
   download() {
-    let element = $(this.downloadButton);
+    const element = $(this.downloadButton);
     element.waitForExist(5000);
     return element.click();
   }

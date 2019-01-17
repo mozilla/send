@@ -10,19 +10,21 @@ exports.config = {
   specs: [path.join(__dirname, './integration/**/*-tests.js')],
   exclude: [],
   maxInstances: 10,
-  capabilities: [{
-    browserName: 'firefox',
-    'moz:firefoxOptions': {
-      log: { level: 'trace' },
-      prefs: {
-        'browser.download.panel.shown': false,
-        'browser.helperApps.neverAsk.openFile': 'text/plain',
-        'browser.helperApps.neverAsk.saveToDisk': 'text/plain',
-        'browser.download.folderList': 2,
-        'browser.download.dir': dir
-      },
+  capabilities: [
+    {
+      browserName: 'firefox',
+      'moz:firefoxOptions': {
+        log: { level: 'trace' },
+        prefs: {
+          'browser.download.panel.shown': false,
+          'browser.helperApps.neverAsk.openFile': 'text/plain',
+          'browser.helperApps.neverAsk.saveToDisk': 'text/plain',
+          'browser.download.folderList': 2,
+          'browser.download.dir': dir
+        }
+      }
     }
-  }],
+  ],
   pageLoadStrategy: 'normal',
   watch: false,
   logLevel: 'error',

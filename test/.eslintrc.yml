@@ -3,10 +3,12 @@ env:
 
 extends:
   - plugin:mocha/recommended
+  - plugin:wdio/recommended
 
 plugins:
   - mocha
   - node
+  - wdio
 
 rules:
   node/no-unpublished-require: off

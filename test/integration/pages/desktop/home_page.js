@@ -30,7 +30,7 @@ class HomePage extends Page {
   }
 
   closeSharePopup() {
-    const element = $(this.sharePopup)
+    const element = $(this.sharePopup);
 
     element.waitForExist(5000);
     element.click();
@@ -45,7 +45,7 @@ class HomePage extends Page {
     uploadButton.waitForExist(5000);
     downloadCountSelect.waitForExist(1000);
     downloadCountSelect.selectByIndex(index);
-    uploadButton.click()
+    uploadButton.click();
   }
 }
 module.exports = HomePage;

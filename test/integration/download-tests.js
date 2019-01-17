@@ -20,11 +20,9 @@ describe('Firefox Send', function() {
     it(`should upload and download files, file: ${file}`, function() {
       homePage.uploadFile(testFilesPath, file);
       $(homePage.shareUrl).waitForExist(5000);
-      const downloadPage = new DownloadPage(
-        $(homePage.shareUrl).getValue()
-      );
+      const downloadPage = new DownloadPage($(homePage.shareUrl).getValue());
       homePage.closeSharePopup();
-      downloadPage.open()
+      downloadPage.open();
       downloadPage.download();
       $(downloadPage.downloadComplete).waitForExist(5000);
       assert.ok(fs.existsSync(path.join(downloadDir, file)));
@@ -34,8 +32,7 @@ describe('Firefox Send', function() {
   it('should update the download count on home page after 1 download', function() {
     const expectedExpiresAfterText = 'Expires after 1 download';
     homePage.uploadFile(testFilesPath, testFiles[0], 1);
-    const downloadPage = new DownloadPage(
-      $(homePage.shareUrl).getValue());
+    const downloadPage = new DownloadPage($(homePage.shareUrl).getValue());
     homePage.closeSharePopup();
     downloadPage.open();
     downloadPage.download();
@@ -43,7 +40,9 @@ describe('Firefox Send', function() {
     browser.back();
     $(`#archive-${downloadPage.fileId}`).waitForExist(5000);
     assert.equal(
-      $(`#archive-${downloadPage.fileId} > div`).getText().substring(0, 24),
+      $(`#archive-${downloadPage.fileId} > div`)
+        .getText()
+        .substring(0, 24),
       expectedExpiresAfterText
     );
   });

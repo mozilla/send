@@ -26,7 +26,7 @@ describe('Firefox Send homepage', function() {
     it(`should navigate to the correct page: ${link}`, function() {
       // Click links on bottom of page
       const els = $$(homePage.footerLinks);
-      els[i].click()
+      els[i].click();
       // Wait for page to load
       browser.waitUntil(() => {
         const url = browser.getUrl();
