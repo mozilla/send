@@ -225,3 +225,7 @@ progress::-moz-progress-bar {
 }
 
 @tailwind utilities;
+
+.word-break-all {
+  word-break: break-all;
+}
