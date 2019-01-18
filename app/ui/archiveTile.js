@@ -177,7 +177,7 @@ module.exports = function(state, emit, archive) {
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <input
         type="image"
-        class="float-right self-center text-white"
+        class="float-right self-center text-white delete"
         alt="Delete"
         src="${assets.get('close-16.svg')}"
         onclick=${del}/>
@@ -292,7 +292,7 @@ module.exports.wip = function(state, emit) {
     return html`
       <input
         type="image"
-        class="self-center text-white ml-4"
+        class="self-center text-white ml-4 delete"
         alt="Delete"
         src="${assets.get('close-16.svg')}"
         onclick="${del}"
