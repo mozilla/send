@@ -36,7 +36,7 @@ module.exports = function() {
         ${state.translate('signInMenuOption')}
       </label>
       <button
-        class="my-4 text-blue font-medium"
+        class="my-4 text-blue hover:text-blue-dark focus:text-blue-darker font-medium"
         title="${state.translate('deletePopupCancel')}"
         onclick=${close}>${state.translate('deletePopupCancel')}
       </button>
