@@ -1,4 +1,4 @@
-/* global LIMITS */
+/* global LIMITS DEFAULTS */
 import { blobStream, concatStream } from './streams';
 
 function isDupe(newFile, array) {
@@ -17,6 +17,9 @@ function isDupe(newFile, array) {
 export default class Archive {
   constructor(files = []) {
     this.files = Array.from(files);
+    this.timeLimit = DEFAULTS.EXPIRE_SECONDS;
+    this.dlimit = 1;
+    this.password = null;
   }
 
   get name() {
@@ -73,5 +76,8 @@ export default class Archive {
 
   clear() {
     this.files = [];
+    this.dlimit = 1;
+    this.timeLimit = DEFAULTS.EXPIRE_SECONDS;
+    this.password = null;
   }
 }

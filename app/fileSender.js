@@ -1,4 +1,3 @@
-/* global DEFAULTS */
 import Nanobus from 'nanobus';
 import OwnedFile from './ownedFile';
 import Keychain from './keychain';
@@ -42,29 +41,24 @@ export default class FileSender extends Nanobus {
     }
   }
 
-  async upload(
-    file,
-    timeLimit = DEFAULTS.EXPIRE_SECONDS,
-    dlimit = 1,
-    bearerToken
-  ) {
+  async upload(archive, bearerToken) {
     const start = Date.now();
     if (this.cancelled) {
       throw new Error(0);
     }
     this.msg = 'encryptingFile';
     this.emit('encrypting');
-    const totalSize = encryptedSize(file.size);
-    const encStream = await this.keychain.encryptStream(file.stream);
-    const metadata = await this.keychain.encryptMetadata(file);
+    const totalSize = encryptedSize(archive.size);
+    const encStream = await this.keychain.encryptStream(archive.stream);
+    const metadata = await this.keychain.encryptMetadata(archive);
     const authKeyB64 = await this.keychain.authKeyB64();
 
     this.uploadRequest = uploadWs(
       encStream,
       metadata,
       authKeyB64,
-      timeLimit,
-      dlimit,
+      archive.timeLimit,
+      archive.dlimit,
       bearerToken,
       p => {
         this.progress = [p, totalSize];
@@ -88,18 +82,18 @@ export default class FileSender extends Nanobus {
       const ownedFile = new OwnedFile({
         id: result.id,
         url: `${result.url}#${secretKey}`,
-        name: file.name,
-        size: file.size,
-        manifest: file.manifest,
+        name: archive.name,
+        size: archive.size,
+        manifest: archive.manifest,
         time: time,
-        speed: file.size / (time / 1000),
+        speed: archive.size / (time / 1000),
         createdAt: Date.now(),
-        expiresAt: Date.now() + timeLimit * 1000,
+        expiresAt: Date.now() + archive.timeLimit * 1000,
         secretKey: secretKey,
         nonce: this.keychain.nonce,
         ownerToken: result.ownerToken,
-        dlimit,
-        timeLimit: timeLimit
+        dlimit: archive.dlimit,
+        timeLimit: archive.timeLimit
       });
 
       return ownedFile;

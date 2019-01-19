@@ -34,7 +34,7 @@ function password(state) {
         <input
           id="add-password"
           type="checkbox"
-          ${state.password ? 'checked' : ''}
+          ${state.archive.password ? 'checked' : ''}
           autocomplete="off"
           onchange="${togglePasswordInput}"
         />
@@ -44,7 +44,7 @@ function password(state) {
       </div>
       <input
         id="password-input"
-        class="${state.password
+        class="${state.archive.password
           ? ''
           : 'invisible'} border rounded-sm focus:border-blue leading-normal my-2 py-1 px-2 h-8"
         autocomplete="off"
@@ -53,7 +53,7 @@ function password(state) {
         oninput="${inputChanged}"
         onfocus="${focused}"
         placeholder="${state.translate('unlockInputPlaceholder')}"
-        value="${state.password || ''}"
+        value="${state.archive.password || ''}"
       />
       <label
         id="password-msg"
@@ -74,7 +74,7 @@ function password(state) {
       input.classList.add('invisible');
       input.value = '';
       document.getElementById('password-msg').textContent = '';
-      state.password = null;
+      state.archive.password = null;
     }
   }
 
@@ -91,7 +91,7 @@ function password(state) {
     } else {
       pwdmsg.textContent = '';
     }
-    state.password = password;
+    state.archive.password = password;
   }
 
   function focused(event) {
@@ -219,7 +219,7 @@ module.exports = function(state, emit, archive) {
 
   function del(event) {
     event.stopPropagation();
-    emit('delete', { file: archive, location: 'success-screen' });
+    emit('delete', archive);
   }
 
   function share(event) {
@@ -279,11 +279,7 @@ module.exports.wip = function(state, emit) {
     event.preventDefault();
     event.target.disabled = true;
     if (!state.uploading) {
-      emit('upload', {
-        type: 'click',
-        dlimit: state.downloadCount || 1,
-        password: state.password
-      });
+      emit('upload');
     }
   }
 
@@ -333,9 +329,9 @@ module.exports.uploading = function(state, emit) {
     </p>
     <div class="text-xs text-grey-dark w-full mt-2 mb-2">
       ${expiryInfo(state.translate, {
-        dlimit: state.downloadCount || 1,
+        dlimit: state.archive.dlimit,
         dtotal: 0,
-        expiresAt: Date.now() + 500 + state.timeLimit * 1000
+        expiresAt: Date.now() + 500 + state.archive.timeLimit * 1000
       })}
     </div>
     <div class="text-blue text-sm font-medium mt-2">${progressPercent}</div>

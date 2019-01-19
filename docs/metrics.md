@@ -39,87 +39,89 @@ We will know this to be true when we can conduct six research tasks (surveys, A/
 * FxA UI Engagement `--- DESIRED OUTCOME --->` Authenticate
 * **STRETCH** App Open or Visit `--- DESIRED OUTCOME --->` Successful Download
 
-## Complete Schema
-
+## Amplitude Schema
 
 Please see, **See Amplitude HTTP API**(https://amplitude.zendesk.com/hc/en-us/articles/204771828) for HTTP API reference.
 
-### Event Structure
+## Metric Events
 
-* `app_version` **string** ∙ app version `Android 1.5` or `Web 1.2.5`
-* `country` **string** ∙ Can be captured using [FxA Geo Library](https://github.com/mozilla/fxa-geodb)
-* `device_id` **string** ∙ required, should be a unique hash
-* `event_properties` **dictionary** ∙ [see list below](#event-properties)
-* `event_type` **string** ∙ [see list below](#events)
-* `insert_id` **string** ∙ unique event id used by amplitude to dedupe events
-* `language` **string** ∙ App language
-* `os_name` **string** ∙ `Mac OS X`, `iOS`, `Windows`, etc.
-* `os_version` **string** ∙ `10.01`, `400`, etc
-* `region` **string** ∙ Can be captured using [FxA Geo Library](https://github.com/mozilla/fxa-geodb)
-* `session_id` **long** ∙ start time in ms since epoch (this should only be changed at the start of a session, but sent with each ping), set to -1 if event is out of session, such as expiration
-* `time` **long** ∙ The timestamp of the event in milliseconds since epoch
-* `user_id` **string** ∙ required unless device ID is present, should be a double hash of FxA email
-* `user_properties` **dictionary** ∙ [see list below](#user-properties). All user properties can be passed with all events. Amplitude will automatically drop user properties that do not change
+In support of our KPIs we collect events from two separate contexts, server and client. The events are designed to have minimal correlation between contexts.
 
-### User Properties
+Server events collect lifecycle information about individual uploads but no user information; also time precision is truncated to hour increments. Client events collect information about how users interact with the UI but no upload identifiers.
 
-* `Has account` **boolean** ∙ whether the user is account active
-* `First action` **string** ∙ did this user `upload` or `download` first
-* `Total uploads` **num** ∙ running sum of bundles uploaded
-* `Total upload size` **float** ∙ running sum of total MB uploaded
-* `Total downloads` **num** ∙ running count of bundles downloaded
-* `Total download size` **float** ∙ running sum of total MB downloaded
-* `Total clients` **num** ∙ running tally of total clients sharing a UID
-* `Current uploads` **int** ∙ count of current unexpired files
-* `User agent Browser` **string** ∙ browser or if app `App` derived from UA string
-* `User Agent version` **string** ∙ browser version or if app `App Version` derived from UA string
-* `UTM campaign` **string** ∙ referrer
-* `UTM content` **string** ∙ referrer
-* `UTM medium` **string** ∙ referrer
-* `UTM source` **string** ∙ referrer
-* `UTM term` **string** ∙ referrer
-* `Experiments` **array of strings** ∙ set of experiments the user is in
+### Server Events
 
-### Event Properties
+Server events allow us to aggregate data about file lifecycle without collecting data about individual users. In this context `user_id` and `user_properties` describe the uploaded archive.
 
-1. `Bundle id` **string** ∙ Guid for bundle
-2. `Bundle creation timestamp` **long** ∙ The timestamp of bundle creation in milliseconds since epoch
-3. `Number of files` **int** ∙ Number of files in bundle
-4. `Size of files` **float** ∙ Size of files in MB
-5. `Transfer rate` **float** ∙ rate of transfter in bytes per second
-6. `Total downloads` **int** ∙ number of downloads set
-7. `Total duration` **string** ∙ Time for bundle expiry, one of `5 minutes` `one hour` etc
-8. `Password added` **boolean** ∙ Did the user add a password to the bundle
-9. `Remaining downloads` **int** ∙ number of remaining downloads for a file
-10. `Remaining time` **long** ∙ time until a bundle expires
-11. `Reason transfer stopped` **string** ∙ One of `completed`, `errored` or `canceled`
-12. `FxA prompt trigger` **string** ∙ One of `time options`, `count options`, `bundle size`, `shoulder button`
-13. `Location of URL copy` **string** ∙ Where did the user copy the share url `success-screen` or `upload-list`
-14. `Site exit path` **string** ∙ Name of external link followed ... `download-firefox`, `twitter`, `github`, `cookies`, `terms`, `privacy`, `about`, `legal`, `mozilla`
-15. `Expiry reason` **string** ∙ one of `time limit hit`, `download limit hit`, `user deleted`
-16. `Error code` **String** ∙ Error code if added
+* `session_id` -1 (not part of a session)
+* `user_id` hash of (archive_id + owner_id)
+* `app_version` package.json version
+* `time` timestamp truncated to hour precision
+* `country`
+* `region`
+* `event_type` [server_upload | server_download | server_delete]
+* `user_properties`
+  * `download_limit` set number of downloads
+  * `time_limit` set expiry duration
+  * `size` approximate size (log10)
+  * `anonymous` true if anonymous, false if fxa
+* `event_properties`
+  * `download_count` downloads completed
+  * `ttl` time remaining before expiry truncated to hour
 
-### Event Types
+### Client Events
 
- The following list is of required `event_type` definitions. If adding new event types please use the syntax `Group - verb subject modifier`
+Client events allow us to aggregate data about how the user interface is being used without tracking the lifecycle of individual files. In this context `user_id` and `user_properties` describe the user. The `user_id` and `device_id` change for all users at the beginning of each month.
 
-| Event | Event Properties | Description |
-|-------|------------------|-------------|
-| `{ Uploader, Downloader, Unsupported } - visit` | `none` | When a user visits the site, or opens the app, grouped by interface at open. Note, a number of API properties and User Properties should be set with this event |
-|`{ Uploader, Downloader, Unsupported } - exit` | `none` | When a user exits the site via click event on a link that directs to another domain |
-| `Uploader - start bundle upload` | `1, 2, 3, 4, 6, 7, 8, 16 (if applicable)` | When a user begins to upload a bundle for the site |
-| `Uploader - stop bundle upload` | `1, 2, 3, 4, 5, 6, 7, 8, 11, 16 (if applicable)` | When a user stops an upload or an upload stops for any reason |
-| `Uploader - delete bundle` | `1, 2, 3, 4, 6, 7, 8, 9, 10` | When a user deletes their bundle |
-| `Uploader - copy bundle url` | `1, 13` | When a user copies the url of a bundle they create |
-| `Uploader - dismiss copy bundle dialog` | `1` | When a user dismisses the bundle copy dialog |
-| `{ Uploader, Downloader } - start bundle download` | `1, 2, 3, 4, 6, 7, 8, 9, 10, 16 (if applicable)` | When a user begins to download a bundle. Remaining downloads should be decremented after event. |
-| `{ Uploader, Downloader } - stop bundle download` | `1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16 (if applicable)` | When a a download ends for any reason |
-| `Downloader - click try send cta` | `1` | When a downloader clicks the prompt to try Firefox Send |
-| `Downloader - unlock bundle success` | `1` | When a downloader successfully unlocks a file |
-| `Downloader - unlock bundle failure` | `1` | When a downloader fails to unlock a file (only send once per session) |
-| `Uploader - trigger signup cta` | `12` | When an uploader triggers the CTA via change to expiry options |
-| `Signup - interact with email` | `12` | when a user inputs anything into the email submission form |
-| `Signup - cancel signup` | `12` | When a user opts out of signing up |
-| `Signup - submit signup` | `12` | When a user submits a sign up to fxa and we begin OAuth dance |
-| `Server - expire bundle` | `1, 2, 3, 4, 6, 7, 8, 9, 10, 15` | when the server expires a bundle for any reason |
-| `Error` | `16` | Fallback event for any errors that occur. Use the error code event property to specify an error type |
+* `session_id` timestamp
+* `user_id` hash of (fxa_id + Date.year + Date.month)
+* `device_id` hash of (localStorage random id + Date.year + Date.month)
+* `platform` [web | android]
+* `country`
+* `region`
+* `language`
+* `time` timestamp
+* `os_name`
+* `event_type` [client_visit | client_upload | client_download | client_delete | client_login | client_logout]
+* `event_properties`
+  * `browser`
+  * `browser_version`
+  * `status` [ ok | error | cancel ]
+  * Event specific properties (see below)
+* `user_properties`
+  * `active_count` number of active uploads
+  * `anonymous` true if anonymous, false if fxa
+  * `experiments` list of experiment ids the user is participating in
+  * `first_action` how this use came to Send the first time [ upload | download ]
+
+#### Visit Event
+
+  * `entrypoint` [ upload | download ]
+
+#### Upload Event
+
+  * `download_limit` download limit
+  * `file_count` number of files
+  * `password_protected` boolean
+  * `size` approximate size (log10)
+  * `time_limit` time limit
+  * `duration` approximate transfer duration (log10)
+
+#### Download Event
+
+  * `password_protected` boolean
+  * `size` approximate size (log10)
+  * `duration` approximate transfer duration (log10)
+
+#### Delete Event
+
+  * `age` hours since uploaded
+  * `downloaded` downloaded at least once
+
+#### Login Event
+
+  * `trigger` [button | time | count | size]
+
+#### Logout Event
+
+  * `trigger` [button | timeout]

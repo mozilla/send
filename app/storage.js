@@ -1,4 +1,4 @@
-import { isFile } from './utils';
+import { arrayToB64, isFile } from './utils';
 import OwnedFile from './ownedFile';
 
 class Mem {
@@ -56,6 +56,15 @@ class Storage {
       }
     }
     return fs;
+  }
+
+  get id() {
+    let id = this.engine.getItem('device_id');
+    if (!id) {
+      id = arrayToB64(crypto.getRandomValues(new Uint8Array(16)));
+      this.engine.setItem('device_id', id);
+    }
+    return id;
   }
 
   get totalDownloads() {

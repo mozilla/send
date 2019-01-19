@@ -24,11 +24,6 @@ var SENTRY_ID = '${config.sentry_id}';
 `;
 }
 
-let ga = '';
-if (config.analytics_id) {
-  ga = `var GOOGLE_ANALYTICS_ID = '${config.analytics_id}';`;
-}
-
 module.exports = function(state) {
   const authConfig = state.authConfig
     ? `var AUTH_CONFIG = ${JSON.stringify(state.authConfig)};`
@@ -71,7 +66,6 @@ module.exports = function(state) {
     state.downloadMetadata ? raw(JSON.stringify(state.downloadMetadata)) : '{}'
   };
   ${authConfig};
-  ${ga}
   ${sentry}
   `;
   return state.cspNonce
