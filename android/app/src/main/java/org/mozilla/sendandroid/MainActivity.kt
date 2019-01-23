@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         super.onDestroy()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
         mWebView!!.onActivityResult(requestCode, resultCode, intent)
         // ...
