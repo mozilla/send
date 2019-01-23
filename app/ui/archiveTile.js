@@ -4,11 +4,11 @@ const html = require('choo/html');
 const raw = require('choo/html/raw');
 const assets = require('../../common/assets');
 const {
-  browserName,
   bytes,
   copyToClipboard,
   list,
   percent,
+  platform,
   timeLeft
 } = require('../utils');
 const expiryOptions = require('./expiryOptions');
@@ -44,9 +44,9 @@ function password(state) {
       </div>
       <input
         id="password-input"
-        class="${
-          state.password ? '' : 'invisible'
-        } border rounded-sm focus:border-blue leading-normal my-2 py-1 px-2 h-8"
+        class="${state.password
+          ? ''
+          : 'invisible'} border rounded-sm focus:border-blue leading-normal my-2 py-1 px-2 h-8"
         autocomplete="off"
         maxlength="${MAX_LENGTH}"
         type="password"
@@ -127,18 +127,14 @@ function archiveDetails(translate, archive) {
         ontoggle="${toggled}"
       >
         <summary
-          >${
-            translate('fileCount', {
-              num: archive.manifest.files.length
-            })
-          }</summary
+          >${translate('fileCount', {
+            num: archive.manifest.files.length
+          })}</summary
         >
-        ${
-          list(
-            archive.manifest.files.map(f => fileInfo(f)),
-            'list-reset h-full'
-          )
-        }
+        ${list(
+          archive.manifest.files.map(f => fileInfo(f)),
+          'list-reset h-full'
+        )}
       </details>
     `;
   }
@@ -150,15 +146,14 @@ function archiveDetails(translate, archive) {
 
 module.exports = function(state, emit, archive) {
   const copyOrShare =
-    browserName() !== 'android-app'
+    platform() !== 'android'
       ? html`
           <button
             class="text-blue hover:text-blue-dark focus:text-blue-darker self-end font-medium flex items-center"
             onclick=${copy}
           >
-            <img src="${assets.get('copy-16.svg')}" class="mr-2" /> ${
-              state.translate('copyUrlHover')
-            }
+            <img src="${assets.get('copy-16.svg')}" class="mr-2" />
+            ${state.translate('copyUrlHover')}
           </button>
         `
       : html`
@@ -168,6 +163,19 @@ module.exports = function(state, emit, archive) {
           >
             <img src="${assets.get('share-24.svg')}" class="mr-2" /> Share
           </button>
+        `;
+  const dl =
+    platform() === 'web'
+      ? html`
+          <a
+            class="text-blue hover:text-blue-dark focus:text-blue-darker font-medium"
+            href="${archive.url}"
+          >
+            ${state.translate('downloadButtonLabel')}
+          </a>
+        `
+      : html`
+          <div></div>
         `;
   return html`
   <send-archive
@@ -191,7 +199,10 @@ module.exports = function(state, emit, archive) {
     </div>
     ${archiveDetails(state.translate, archive)}
     <hr class="w-full border-t my-4">
-    ${copyOrShare}
+    <div class="flex justify-between w-full">
+      ${dl}
+      ${copyOrShare}
+    </div>
   </send-archive>`;
 
   function copy(event) {
@@ -219,15 +230,13 @@ module.exports = function(state, emit, archive) {
 module.exports.wip = function(state, emit) {
   return html`
     <send-upload-area class="flex flex-col bg-white md:h-full w-full" id="wip">
-      ${
-        list(
-          Array.from(state.archive.files)
-            .reverse()
-            .map(f => fileInfo(f, remove(f))),
-          'list-reset overflow-y-scroll px-4 bg-blue-lightest md:h-full md:max-h-half-screen',
-          'bg-white px-2 mt-3 border border-grey-light rounded'
-        )
-      }
+      ${list(
+        Array.from(state.archive.files)
+          .reverse()
+          .map(f => fileInfo(f, remove(f))),
+        'list-reset overflow-y-scroll px-4 bg-blue-lightest md:h-full md:max-h-half-screen',
+        'bg-white px-2 mt-3 border border-grey-light rounded'
+      )}
       <div class="flex-grow p-4 bg-blue-lightest mb-6 font-medium">
         <input
           id="file-upload"
@@ -242,9 +251,8 @@ module.exports.wip = function(state, emit) {
           title="${state.translate('addFilesButton')}"
         >
           <div class="flex items-center">
-            <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2" /> ${
-              state.translate('addFilesButton')
-            }
+            <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2" />
+            ${state.translate('addFilesButton')}
           </div>
           <div class="font-normal text-sm text-grey-darker">
             ${state.translate('totalSize', { size: bytes(state.archive.size) })}
@@ -347,13 +355,11 @@ module.exports.empty = function(state, emit) {
   return html`
     <send-upload-area
       class="flex flex-col items-center justify-center border-2 border-dashed border-blue-light px-6 py-16 h-full w-full"
-      onclick="${
-        e => {
-          if (e.target.tagName !== 'LABEL') {
-            document.getElementById('file-upload').click();
-          }
+      onclick="${e => {
+        if (e.target.tagName !== 'LABEL') {
+          document.getElementById('file-upload').click();
         }
-      }"
+      }}"
     >
       <img src="${assets.get('addfiles.svg')}" width="48" height="48" />
       <div

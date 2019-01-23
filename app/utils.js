@@ -1,3 +1,4 @@
+/* global Android */
 const html = require('choo/html');
 const b64 = require('base64-js');
 
@@ -240,6 +241,13 @@ function timeLeft(milliseconds) {
   return null;
 }
 
+function platform() {
+  if (typeof Android === 'object') {
+    return 'android';
+  }
+  return 'web';
+}
+
 module.exports = {
   fadeOut,
   delay,
@@ -257,5 +265,6 @@ module.exports = {
   streamToArrayBuffer,
   list,
   secondsToL10nId,
-  timeLeft
+  timeLeft,
+  platform
 };
