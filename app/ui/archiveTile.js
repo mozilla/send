@@ -166,7 +166,7 @@ module.exports = function(state, emit, archive) {
             class="text-blue hover:text-blue-dark focus:text-blue-darker self-end font-medium flex items-center"
             onclick=${share}
           >
-            <img src="${assets.get('share-16.svg')}" class="mr-2" /> Share
+            <img src="${assets.get('share-24.svg')}" class="mr-2" /> Share
           </button>
         `;
   return html`
