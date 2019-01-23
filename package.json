@@ -128,7 +128,7 @@
     "wdio-sauce-service": "^0.4.14",
     "wdio-spec-reporter": "^0.1.5",
     "webdriverio": "^4.14.2",
-    "webpack": "^4.29.0",
+    "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1",
     "webpack-dev-middleware": "^3.5.1",
     "webpack-manifest-plugin": "^2.0.4",
