@@ -24,9 +24,9 @@ function password(state, emit) {
       <form class="w-5/6" onsubmit="${checkPassword}" data-no-csrf>
         <input
           id="password-input"
-          class="w-full border rounded ${
-            invalid ? 'border-red' : 'border-grey'
-          } leading-loose px-2 py-1"
+          class="w-full border rounded ${invalid
+            ? 'border-red'
+            : 'border-grey'} leading-loose px-2 py-1"
           maxlength="32"
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"

@@ -8,15 +8,13 @@ const signupDialog = require('./signupDialog');
 module.exports = function(state, emit) {
   const el = html`
     <div class="px-4 md:px-0">
-      ${
-        raw(
-          state.translate('frontPageExpireInfo', {
-            downloadCount:
-              '<span class="lg:inline-block md:block sm:inline-block block"></span><select id="dlCount"></select>',
-            timespan: '<select id="timespan"></select>'
-          })
-        )
-      }
+      ${raw(
+        state.translate('frontPageExpireInfo', {
+          downloadCount:
+            '<span class="lg:inline-block md:block sm:inline-block block"></span><select id="dlCount"></select>',
+          timespan: '<select id="timespan"></select>'
+        })
+      )}
     </div>
   `;
   if (el.__encoded) {

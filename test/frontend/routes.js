@@ -30,12 +30,10 @@ module.exports = function(app) {
                 timeout: 5000
               });
             </script>
-            ${
-              initScript({
-                cspNonce: 'test',
-                locale: 'en-US'
-              })
-            }
+            ${initScript({
+              cspNonce: 'test',
+              locale: 'en-US'
+            })}
             <script src="${assets.get('tests.js')}"></script>
           </head>
           <body>
