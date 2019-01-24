@@ -1,7 +1,7 @@
 const html = require('choo/html');
 const Component = require('choo/component');
 const Account = require('./account');
-const { browserName } = require('../utils');
+const { platform } = require('../utils');
 
 class Header extends Component {
   constructor(name, state, emit) {
@@ -18,7 +18,7 @@ class Header extends Component {
 
   createElement() {
     const title =
-      browserName() === 'android-app'
+      platform() === 'android'
         ? html`
             <a class="header-logo">
               <h1 class="text-2xl text-white md:text-black font-normal">
