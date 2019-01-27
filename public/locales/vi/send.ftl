@@ -24,24 +24,24 @@ uploadingPageLargeFileMessage = Tập tin này khá nặng và sẽ tốn một 
 uploadingFileNotification = Thông báo cho tôi khi tải lên hoàn tất.
 uploadSuccessConfirmHeader = Đã sẵn sàng để gửi
 uploadSvgAlt = Tải lên
-uploadSuccessTimingHeader = Liên kết đến tập tin của bạn sẽ hết hạn sau 1 lượt tải về hoặc trong 24 giờ.
+uploadSuccessTimingHeader = Liên kết đến tập tin của bạn sẽ hết hạn sau 1 lượt tải hoặc trong 24 giờ.
 expireInfo = Liên kết đến tập tin của bạn sẽ hết hạn sau { $downloadCount } hoặc { $timespan }.
 downloadCount =
     { $num ->
-       *[other] lượt tải
+       *[other] { $num } lượt tải
     }
 timespanHours =
     { $num ->
-       *[other] giờ
+       *[other] { $num } giờ
     }
 copyUrlFormLabelWithName = Sao chép và chia sẻ liên kết để gửi tập tin của bạn: { $filename }
-copyUrlFormButton = Sao chép vào vùng nhớ tạm
+copyUrlFormButton = Sao chép vào bộ nhớ tạm
 copiedUrl = Đã sao chép!
 deleteFileButton = Xóa tập tin
 sendAnotherFileLink = Gửi tập tin khác
 # Alternative text used on the download link/button (indicates an action).
-downloadAltText = Tải về
-downloadsFileList = Tải về
+downloadAltText = Tải xuống
+downloadsFileList = Tải xuống
 # Used as header in a column indicating the amount of time left before a
 # download link expires (e.g. "10h 5m")
 timeFileList = Thời gian
