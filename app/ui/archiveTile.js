@@ -168,9 +168,10 @@ module.exports = function(state, emit, archive) {
     platform() === 'web'
       ? html`
           <a
-            class="text-blue hover:text-blue-dark focus:text-blue-darker font-medium"
+            class="flex items-end text-blue hover:text-blue-dark focus:text-blue-darker font-medium"
             href="${archive.url}"
           >
+            <img src="${assets.get('download.svg')}" class="mr-1" />
             ${state.translate('downloadButtonLabel')}
           </a>
         `
