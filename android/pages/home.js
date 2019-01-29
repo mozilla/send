@@ -46,7 +46,7 @@ module.exports = function(state, emit) {
         ? intro(state)
         : list(
             archives,
-            'list-reset h-full overflow-y-scroll w-full p-6',
+            'list-reset h-full overflow-y-auto w-full p-6',
             'mb-3 w-full'
           );
   }

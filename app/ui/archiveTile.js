@@ -122,7 +122,7 @@ function archiveDetails(translate, archive) {
   if (archive.manifest.files.length > 1) {
     return html`
       <details
-        class="w-full pb-1 overflow-y-scroll"
+        class="w-full pb-1"
         ${archive.open ? 'open' : ''}
         ontoggle="${toggled}"
       >
@@ -235,7 +235,7 @@ module.exports.wip = function(state, emit) {
         Array.from(state.archive.files)
           .reverse()
           .map(f => fileInfo(f, remove(f))),
-        'list-reset overflow-y-scroll px-4 bg-blue-lightest md:h-full md:max-h-half-screen',
+        'list-reset overflow-y-auto px-4 bg-blue-lightest md:h-full md:max-h-half-screen',
         'bg-white px-2 mt-3 border border-grey-light rounded'
       )}
       <div class="flex-grow p-4 bg-blue-lightest mb-6 font-medium">

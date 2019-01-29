@@ -22,7 +22,7 @@ module.exports = function(state, emit) {
       ? intro(state)
       : list(
           archives,
-          'list-reset h-full overflow-y-scroll w-full',
+          'list-reset h-full overflow-y-auto w-full',
           'mb-3 w-full'
         );
 
