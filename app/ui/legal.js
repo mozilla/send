@@ -1,9 +1,11 @@
 const html = require('choo/html');
 const raw = require('choo/html/raw');
+const modal = require('./modal');
 
-module.exports = function(state) {
+module.exports = function(state, emit) {
   return html`
     <main class="main container">
+      ${state.modal && modal(state, emit)}
       <div
         class="flex flex-col items-center bg-white m-6 px-6 py-8 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full md:h-full"
       >
