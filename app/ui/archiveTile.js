@@ -29,7 +29,7 @@ function password(state) {
   const MAX_LENGTH = 32;
 
   return html`
-    <div class="my-2 px-4 md:px-0">
+    <div class="my-2 px-4">
       <div class="checkbox inline-block mr-3">
         <input
           id="add-password"
@@ -238,7 +238,9 @@ module.exports.wip = function(state, emit) {
         'list-reset overflow-y-auto px-4 bg-blue-lightest md:h-full md:max-h-half-screen',
         'bg-white px-2 mt-3 border border-grey-light rounded'
       )}
-      <div class="flex-grow p-4 bg-blue-lightest mb-6 font-medium">
+      <div
+        class="flex-grow flex items-end p-4 bg-blue-lightest mb-6 font-medium"
+      >
         <input
           id="file-upload"
           class="hidden"
@@ -263,7 +265,7 @@ module.exports.wip = function(state, emit) {
       ${expiryOptions(state, emit)} ${password(state, emit)}
       <button
         id="upload-btn"
-        class="btn md:rounded flex-no-shrink"
+        class="btn rounded flex-no-shrink"
         title="${state.translate('uploadFilesButton')}"
         onclick="${upload}"
       >
