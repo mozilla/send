@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import android.content.Context
 import android.content.Intent
 import android.annotation.SuppressLint
+import android.content.ComponentName
 import android.net.Uri
 import android.webkit.WebView
 import android.webkit.WebMessage
@@ -103,8 +104,10 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         val shareIntent = Intent()
         shareIntent.action = Intent.ACTION_SEND
         shareIntent.type = "text/plain"
-        shareIntent.putExtra(Intent.EXTRA_TEXT, url);
-        startActivity(Intent.createChooser(shareIntent, ""))
+        shareIntent.putExtra(Intent.EXTRA_TEXT, url)
+        val chooser = Intent.createChooser(shareIntent, "")
+        chooser.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayOf(ComponentName(applicationContext, MainActivity::class.java)))
+        startActivity(chooser)
     }
 
     @SuppressLint("NewApi")
