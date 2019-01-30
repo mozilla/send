@@ -404,15 +404,17 @@ module.exports.preview = function(state, emit) {
     archive.open = true;
   }
   return html`
-    <send-archive class="flex flex-col max-h-full bg-white border border-grey-light p-4 w-full">
-      <p class="w-full mb-4">
+  <send-archive class="flex flex-col max-h-full bg-white border border-grey-light p-4 w-full md:w-4/5">
+    <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
       <div class="text-xs font-normal opacity-75 pt-1">${bytes(
         archive.size
       )}</div>
     </p>
-    ${archiveDetails(state.translate, archive)}
+    <div class="h-full md:h-48 overflow-y-auto">
+      ${archiveDetails(state.translate, archive)}
+    </div>
     <button
       id="download-btn"
       class="btn rounded mt-4 w-full flex-no-shrink"
@@ -429,12 +431,12 @@ module.exports.preview = function(state, emit) {
   }
 };
 
-module.exports.downloading = function(state, emit) {
+module.exports.downloading = function(state) {
   const archive = state.fileInfo;
   const progress = state.transfer.progressRatio;
   const progressPercent = percent(progress);
   return html`
-  <send-archive class="flex flex-col bg-white border border-grey-light p-4 w-full">
+  <send-archive class="flex flex-col bg-white border border-grey-light p-4 w-full md:w-4/5">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -444,17 +446,5 @@ module.exports.downloading = function(state, emit) {
     </p>
     <div class="text-blue text-sm font-medium mt-2">${progressPercent}</div>
     <progress class="my-3" value="${progress}">${progressPercent}</progress>
-    <button
-      class="border rounded bg-grey-dark text-white mt-2 text-center py-2 px-6 h-12 w-full flex flex-no-shrink items-center justify-center font-semibold"
-      title="${state.translate('downloadCancel')}"
-      onclick=${cancel}>
-      ${state.translate('downloadCancel')}
-    </button>
   </send-archive>`;
-
-  function cancel(event) {
-    event.preventDefault();
-    event.target.disabled = true;
-    emit('cancel');
-  }
 };

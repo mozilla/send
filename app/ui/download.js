@@ -1,7 +1,6 @@
 /* global downloadMetadata */
 const html = require('choo/html');
 const archiveTile = require('./archiveTile');
-const intro = require('./intro');
 const modal = require('./modal');
 const notFound = require('./notFound');
 
@@ -11,20 +10,17 @@ function password(state, emit) {
 
   const div = html`
     <div
-      class="h-full flex flex-col items-center justify-center border border-grey-light bg-white py-8"
+      class="h-full w-full flex flex-col items-center justify-center bg-white py-8"
     >
-      <label
-        id="password-error"
-        class="${invalid ? '' : 'invisible'} text-red my-4"
-        for="password-input"
+      <h1 class="mb-4">${state.translate('downloadFileTitle')}</h1>
+      <form
+        class="flex flex-row flex-no-wrap w-full md:w-4/5"
+        onsubmit="${checkPassword}"
+        data-no-csrf
       >
-        ${state.translate('passwordTryAgain')}
-      </label>
-
-      <form class="w-5/6" onsubmit="${checkPassword}" data-no-csrf>
         <input
           id="password-input"
-          class="w-full border rounded ${invalid
+          class="w-full border-l border-t border-b rounded-l-sm ${invalid
             ? 'border-red'
             : 'border-grey'} leading-loose px-2 py-1"
           maxlength="32"
@@ -33,14 +29,22 @@ function password(state, emit) {
           oninput="${inputChanged}"
           type="password"
         />
-
         <input
           type="submit"
           id="password-btn"
-          class="hidden"
-          value="${state.translate('unlockInputLabel')}"
+          class="btn rounded-r-sm ${invalid
+            ? 'bg-red hover:bg-red focus:bg-red'
+            : ''}"
+          value="${state.translate('unlockButtonLabel')}"
         />
       </form>
+      <label
+        id="password-error"
+        class="${invalid ? '' : 'invisible'} text-red my-4"
+        for="password-input"
+      >
+        ${state.translate('passwordTryAgain')}
+      </label>
     </div>
   `;
 
@@ -48,14 +52,19 @@ function password(state, emit) {
     setTimeout(() => document.getElementById('password-input').focus());
   }
 
-  function inputChanged() {
+  function inputChanged(event) {
+    event.stopPropagation();
+    event.preventDefault();
     const label = document.getElementById('password-error');
     const input = document.getElementById('password-input');
+    const btn = document.getElementById('password-btn');
     label.classList.add('invisible');
     input.classList.remove('border-red');
+    btn.classList.remove('bg-red', 'hover:bg-red', 'focus:bg-red');
   }
 
   function checkPassword(event) {
+    event.stopPropagation();
     event.preventDefault();
     const password = document.getElementById('password-input').value;
     if (password.length > 0) {
@@ -96,13 +105,18 @@ module.exports = function(state, emit) {
     switch (state.transfer.state) {
       case 'downloading':
       case 'decrypting':
-        content = archiveTile.downloading(state, emit);
+        content = html`
+          <div class="flex flex-col w-full h-full items-center mt-8">
+            <h1 class="mb-4">${state.translate('downloadingTitle')}</h1>
+            ${archiveTile.downloading(state, emit)}
+          </div>
+        `;
         break;
       case 'complete':
         content = html`
           <div
             id="download-complete"
-            class="flex flex-col items-center justify-center h-full bg-white border border-grey-light p-2"
+            class="flex flex-col items-center justify-center h-full w-full bg-white border border-grey-light p-2"
           >
             <h1 class="text-center font-bold my-4 text-2xl">
               ${state.translate('downloadFinish')}
@@ -118,7 +132,12 @@ module.exports = function(state, emit) {
         `;
         break;
       default:
-        content = archiveTile.preview(state, emit);
+        content = html`
+          <div class="flex flex-col w-full h-full items-center mt-8">
+            <h1 class="mb-4">${state.translate('downloadFileTitle')}</h1>
+            ${archiveTile.preview(state, emit)}
+          </div>
+        `;
     }
   } else if (state.fileInfo.requiresPassword && !state.fileInfo.password) {
     content = password(state, emit);
@@ -127,8 +146,7 @@ module.exports = function(state, emit) {
     <main class="main container">
       ${state.modal && modal(state, emit)}
       <section class="relative h-full w-full p-6 md:flex md:flex-row">
-        <div class="md:mr-6 md:w-1/2">${content}</div>
-        <div class="md:w-1/2 mt-6 md:mt-0">${intro(state)}</div>
+        ${content}
       </section>
     </main>
   `;
