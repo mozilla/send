@@ -1,4 +1,4 @@
-const { Storage } = require('@google-cloud/storage');
+const { Storage } = require('@jbuck/google-cloud-storage');
 const storage = new Storage();
 
 class GCSStorage {
