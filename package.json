@@ -112,7 +112,7 @@
     "webpack-unassert-loader": "^1.2.0"
   },
   "dependencies": {
-    "@google-cloud/storage": "^2.3.1",
+    "@google-cloud/storage": "^2.4.2",
     "aws-sdk": "^2.362.0",
     "babel-polyfill": "^6.26.0",
     "choo": "^6.13.0",
