@@ -91,7 +91,7 @@ deletePopupYes = Sim
 deletePopupCancel = Cancelar
 deleteButtonHover = Apagar
 copyUrlHover = Copiar URL
-footerLinkLegal = Informações legais
+footerLinkLegal = Informação legal
 # Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Acerca do Test Pilot
 footerLinkPrivacy = Privacidade
