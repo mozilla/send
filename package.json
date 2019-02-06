@@ -135,7 +135,7 @@
     "webpack-unassert-loader": "^1.2.0"
   },
   "dependencies": {
-    "@google-cloud/storage": "2.1.0",
+    "@google-cloud/storage": "^2.4.2",
     "aws-sdk": "^2.392.0",
     "choo": "^6.12.1",
     "cldr-core": "^34.0.0",
