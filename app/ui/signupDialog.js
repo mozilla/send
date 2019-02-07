@@ -4,9 +4,7 @@ const { bytes } = require('../utils');
 
 module.exports = function() {
   return function(state, emit, close) {
-    setTimeout(function() {
-      document.getElementById('email-input').focus();
-    });
+    let submitting = false;
     return html`
     <send-signup-dialog class="flex flex-col p-4">
       <p class="p-8">
@@ -39,6 +37,10 @@ module.exports = function() {
 
     function submit(event) {
       event.preventDefault();
+      if (submitting) {
+        return;
+      }
+      submitting = true;
       emit('login', null);
     }
   };
