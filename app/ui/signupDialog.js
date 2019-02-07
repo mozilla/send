@@ -20,13 +20,8 @@ module.exports = function() {
         </ul>
       </p>
       <form
-        onsubmit=${submitEmail}
+        onsubmit=${submit}
         data-no-csrf>
-        <input
-          id="email-input"
-          type="text"
-          class="border rounded w-full px-2 py-1 h-12 mb-4 text-lg text-grey-darker leading-loose"
-          placeholder=${state.translate('emailEntryPlaceholder')}/>
         <input
           class="hidden"
           id="email-submit"
@@ -42,20 +37,9 @@ module.exports = function() {
       </button>
     </send-signup-dialog>`;
 
-    function emailish(str) {
-      if (!str) {
-        return false;
-      }
-      // just check if it's the right shape
-      const a = str.split('@');
-      return a.length === 2 && a.every(s => s.length > 0);
-    }
-
-    function submitEmail(event) {
+    function submit(event) {
       event.preventDefault();
-      const el = document.getElementById('email-input');
-      const email = el.value;
-      emit('login', emailish(email) ? email : null);
+      emit('login', null);
     }
   };
 };
