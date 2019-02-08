@@ -1,12 +1,11 @@
 /* global LIMITS */
 const html = require('choo/html');
-const { bytes } = require('../utils');
+const { bytes, platform } = require('../utils');
 
 module.exports = function() {
   return function(state, emit, close) {
-    setTimeout(function() {
-      document.getElementById('email-input').focus();
-    });
+    const hidden = platform() === 'android' ? 'hidden' : '';
+    let submitting = false;
     return html`
     <send-signup-dialog class="flex flex-col p-4">
       <p class="p-8">
@@ -25,12 +24,12 @@ module.exports = function() {
         <input
           id="email-input"
           type="text"
-          class="border rounded w-full px-2 py-1 h-12 mb-4 text-lg text-grey-darker leading-loose"
-          placeholder=${state.translate('emailEntryPlaceholder')}/>
+          class="${hidden} border rounded w-full px-2 py-1 h-12 mb-4 text-lg text-grey-darker leading-loose"
+          placeholder=${state.translate('emailEntryPlaceholder')} />
         <input
           class="hidden"
           id="email-submit"
-          type="submit"/>
+          type="submit" />
       </form>
       <label class="btn rounded w-full flex flex-no-shrink items-center justify-center" for="email-submit">
         ${state.translate('signInMenuOption')}
@@ -53,6 +52,11 @@ module.exports = function() {
 
     function submitEmail(event) {
       event.preventDefault();
+      if (submitting) {
+        return;
+      }
+      submitting = true;
+
       const el = document.getElementById('email-input');
       const email = el.value;
       emit('login', emailish(email) ? email : null);
