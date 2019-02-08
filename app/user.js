@@ -28,7 +28,7 @@ export default class User {
   get avatar() {
     const defaultAvatar = assets.get('user.svg');
     if (this.info.avatarDefault) {
-      return assets.get('firefox_logo-only.svg');
+      return defaultAvatar;
     }
     return this.info.avatar || defaultAvatar;
   }
