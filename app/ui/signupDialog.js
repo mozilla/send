@@ -1,9 +1,10 @@
 /* global LIMITS */
 const html = require('choo/html');
-const { bytes } = require('../utils');
+const { bytes, platform } = require('../utils');
 
 module.exports = function() {
   return function(state, emit, close) {
+    const hidden = platform() === 'android' ? 'hidden' : '';
     let submitting = false;
     return html`
     <send-signup-dialog class="flex flex-col p-4">
@@ -18,12 +19,17 @@ module.exports = function() {
         </ul>
       </p>
       <form
-        onsubmit=${submit}
+        onsubmit=${submitEmail}
         data-no-csrf>
+        <input
+          id="email-input"
+          type="text"
+          class="${hidden} border rounded w-full px-2 py-1 h-12 mb-4 text-lg text-grey-darker leading-loose"
+          placeholder=${state.translate('emailEntryPlaceholder')} />
         <input
           class="hidden"
           id="email-submit"
-          type="submit"/>
+          type="submit" />
       </form>
       <label class="btn rounded w-full flex flex-no-shrink items-center justify-center" for="email-submit">
         ${state.translate('signInMenuOption')}
@@ -35,13 +41,25 @@ module.exports = function() {
       </button>
     </send-signup-dialog>`;
 
-    function submit(event) {
+    function emailish(str) {
+      if (!str) {
+        return false;
+      }
+      // just check if it's the right shape
+      const a = str.split('@');
+      return a.length === 2 && a.every(s => s.length > 0);
+    }
+
+    function submitEmail(event) {
       event.preventDefault();
       if (submitting) {
         return;
       }
       submitting = true;
-      emit('login', null);
+
+      const el = document.getElementById('email-input');
+      const email = el.value;
+      emit('login', emailish(email) ? email : null);
     }
   };
 };
