@@ -1,7 +1,7 @@
 {
   "name": "firefox-send",
   "description": "File Sharing Experiment",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "author": "Mozilla (https://mozilla.org)",
   "repository": "mozilla/send",
   "homepage": "https://github.com/mozilla/send/",
