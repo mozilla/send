@@ -91,7 +91,8 @@ function body(main) {
 
     window.finishLogin = async function(accountInfo) {
       await state.user.finishLogin(accountInfo);
-      emitter.emit('render');
+      await state.user.syncFileList();
+      emitter.emit('replaceState', '/');
     };
 
     // for debugging
