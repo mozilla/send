@@ -1,6 +1,12 @@
 /* global browser */
 const Page = require('./page');
 
+/*
+  An object with archiveId as key and useCase as value
+  Can be used to retrive files according to it's use case
+*/
+const uploadedFilesUseCase = {};
+
 class DownloadPage extends Page {
   constructor(path) {
     super(path);
@@ -22,6 +28,42 @@ class DownloadPage extends Page {
 
   download() {
     return browser.click(this.downloadButton);
+  }
+
+  setUseCase(id, useCase) {
+    uploadedFilesUseCase[id] = useCase;
+  }
+
+  getUploadedFiles(useCase) {
+    const elements = [];
+    Object.keys(uploadedFilesUseCase).map(archiveId => {
+      if (
+        useCase === undefined ||
+        useCase === uploadedFilesUseCase[archiveId]
+      ) {
+        elements.push(new UploadedFile(archiveId));
+      }
+    });
+    return elements;
+  }
+}
+
+class UploadedFile {
+  constructor(archiveId) {
+    this.archiveId = archiveId;
+    this.element = browser.element(`#${archiveId}`);
+  }
+
+  getName() {
+    return this.element.element('p > h1').getText();
+  }
+
+  getExpiryText() {
+    return this.element.element('p > div:nth-child(2)').getText();
+  }
+
+  getUseCase() {
+    return uploadedFilesUseCase[this.archiveId];
   }
 }
 module.exports = DownloadPage;
