@@ -21,21 +21,21 @@ class Header extends Component {
       platform() === 'android'
         ? html`
             <a class="header-logo">
-              <h1 class="text-2xl text-white md:text-black font-normal">
-                Firefox <b>Send</b>
+              <h1 class="text-3xl text-white md:text-black font-normal">
+                <b>Firefox</b> Send
               </h1>
             </a>
           `
         : html`
             <a class="header-logo" href="/">
-              <h1 class="text-2xl text-white md:text-black font-normal">
-                Firefox <b>Send</b>
+              <h1 class="text-3xl text-white md:text-black font-normal">
+                <b>Firefox</b> Send
               </h1>
             </a>
           `;
     return html`
       <header
-        class="relative flex-none flex flex-row items-center justify-between bg-blue md:bg-white w-full px-6 h-16 md:shadow z-20"
+        class="relative flex-none flex flex-row items-center justify-between bg-black w-full px-6 h-16 z-20 md:bg-transparent"
       >
         ${title} ${this.account.render()}
       </header>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="7px" height="12px" viewBox="0 0 7 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53 (72520) - https://sketchapp.com -->
+    <title>D8471D57-B56D-4AA0-B2BD-A1A6D29ABA2C</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M11.983616,7.98361603 C11.9835405,7.63002294 11.8430152,7.29093967 11.5929494,7.04094936 L7.59294936,3.04094936 C7.06977751,2.53565308 6.23816966,2.54287953 5.72385793,3.05719126 C5.2095462,3.57150299 5.20231975,4.40311085 5.70761603,4.92628269 L8.76494936,7.98361603 L5.70761603,11.0409494 C5.20231975,11.5641212 5.2095462,12.3957291 5.72385793,12.9100408 C6.23816966,13.4243525 7.06977751,13.431579 7.59294936,12.9262827 L11.5929494,8.92628269 C11.8430152,8.67629239 11.9835405,8.33720911 11.983616,7.98361603 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Send_Home-With-Files" transform="translate(-773.000000, -257.000000)">
+            <g id="List-Item-1" transform="translate(744.000000, 168.000000)">
+                <g id="Expand-Icon" transform="translate(24.000000, 87.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Shape" fill="#0060DF" fill-rule="nonzero" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

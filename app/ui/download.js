@@ -145,7 +145,9 @@ module.exports = function(state, emit) {
   return html`
     <main class="main container">
       ${state.modal && modal(state, emit)}
-      <section class="relative h-full w-full p-6 md:flex md:flex-row">
+      <section
+        class="relative h-full w-full p-6 md:flex md:flex-row md:rounded-lg md:shadow-big"
+      >
         ${content}
       </section>
     </main>

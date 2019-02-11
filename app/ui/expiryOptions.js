@@ -6,7 +6,7 @@ const selectbox = require('./selectbox');
 
 module.exports = function(state, emit) {
   const el = html`
-    <div class="px-4">
+    <div class="px-1">
       ${raw(
         state.translate('frontPageExpireInfo', {
           downloadCount:

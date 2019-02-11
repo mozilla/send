@@ -13,8 +13,15 @@ a {
   text-decoration: none;
 }
 
+body {
+  background-image: url('../assets/bg.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .btn {
-  @apply bg-blue;
+  @apply bg-blue-dark;
   @apply text-white;
   @apply font-semibold;
   @apply cursor-pointer;
@@ -24,11 +31,11 @@ a {
 }
 
 .btn:hover {
-  @apply bg-blue-dark;
+  @apply bg-blue-darker;
 }
 
 .btn:focus {
-  @apply bg-blue-dark;
+  @apply bg-blue-darker;
 }
 
 .checkbox {
@@ -46,7 +53,7 @@ a {
 }
 
 .checkbox > label::before {
-  @apply bg-blue-lightest;
+  /* @apply bg-grey-lightest; */
   @apply border;
   @apply rounded-sm;
 
@@ -58,14 +65,17 @@ a {
 }
 
 .checkbox > label:hover::before {
-  @apply border-blue;
+  @apply border-blue-dark;
 }
 
 .checkbox > input:focus + label::before {
-  @apply border-blue;
+  @apply border-blue-dark;
 }
 
 .checkbox > input:checked + label::before {
+  @apply bg-blue-dark;
+  @apply border-blue-dark;
+
   background-image: url('../assets/lock.svg');
   background-position: center;
   background-size: 1.25rem;
@@ -77,6 +87,9 @@ a {
 }
 
 .checkbox > input:disabled + label::before {
+  @apply bg-blue-dark;
+  @apply border-blue-dark;
+
   background-image: url('../assets/lock.svg');
   background-position: center;
   background-size: 1.25rem;
@@ -116,11 +129,11 @@ footer li:hover {
 }
 
 .header-logo {
-  background-image: url('../assets/send_logo_white.svg');
+  background-image: url('../assets/logo.svg');
   background-position: left;
   background-repeat: no-repeat;
-  background-size: 1.8rem;
-  padding-left: 2.4rem;
+  background-size: 2.25rem;
+  padding-left: 3rem;
   text-decoration: none;
 }
 
@@ -220,7 +233,7 @@ progress::-moz-progress-bar {
 
 @screen md {
   .header-logo {
-    background-image: url('../assets/send_logo.svg');
+    background-image: url('../assets/logo.svg');
   }
 
   .main {
@@ -234,14 +247,21 @@ progress::-moz-progress-bar {
     max-height: 40rem;
     width: calc(100% - 3rem);
   }
-
-  .main > section {
-    @apply shadow-md;
-  }
 }
 
 @tailwind utilities;
 
 .word-break-all {
   word-break: break-all;
+}
+
+@responsive {
+  .shadow-light {
+    box-shadow: 0 0 8px 0 rgba(12, 12, 13, 0.1);
+  }
+
+  .shadow-big {
+    box-shadow: 0 0 32px 0 rgba(12, 12, 13, 0.1),
+      0 2px 16px 0 rgba(12, 12, 13, 0.05);
+  }
 }

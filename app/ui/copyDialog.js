@@ -18,7 +18,7 @@ module.exports = function(name, url) {
           value="${url}"
           readonly="true"
         />
-        <button class="btn rounded w-full flex-no-shrink" onclick="${copy}">
+        <button class="btn rounded-lg w-full flex-no-shrink" onclick="${copy}">
           ${state.translate('copyUrlFormButton')}
         </button>
         <a

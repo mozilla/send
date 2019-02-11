@@ -29,7 +29,7 @@ function password(state) {
   const MAX_LENGTH = 32;
 
   return html`
-    <div class="my-2 px-4">
+    <div class="my-2 px-1">
       <div class="checkbox inline-block mr-3">
         <input
           id="add-password"
@@ -46,7 +46,7 @@ function password(state) {
         id="password-input"
         class="${state.archive.password
           ? ''
-          : 'invisible'} border rounded-sm focus:border-blue leading-normal my-2 py-1 px-2 h-8"
+          : 'invisible'} border rounded-sm focus:border-blue-dark leading-normal my-2 py-1 px-2 h-8"
         autocomplete="off"
         maxlength="${MAX_LENGTH}"
         type="password"
@@ -126,7 +126,7 @@ function archiveDetails(translate, archive) {
         ${archive.open ? 'open' : ''}
         ontoggle="${toggled}"
       >
-        <summary
+        <summary class="text-blue-dark text-sm cursor-pointer"
           >${translate('fileCount', {
             num: archive.manifest.files.length
           })}</summary
@@ -149,7 +149,7 @@ module.exports = function(state, emit, archive) {
     platform() !== 'android'
       ? html`
           <button
-            class="text-blue hover:text-blue-dark focus:text-blue-darker self-end font-medium flex items-center"
+            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end font-medium flex items-center"
             onclick=${copy}
           >
             <img src="${assets.get('copy-16.svg')}" class="mr-2" />
@@ -158,7 +158,7 @@ module.exports = function(state, emit, archive) {
         `
       : html`
           <button
-            class="text-blue hover:text-blue-dark focus:text-blue-darker self-end font-medium flex items-center"
+            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end font-medium flex items-center"
             onclick=${share}
           >
             <img src="${assets.get('share-24.svg')}" class="mr-2" /> Share
@@ -168,10 +168,10 @@ module.exports = function(state, emit, archive) {
     platform() === 'web'
       ? html`
           <a
-            class="flex items-end text-blue hover:text-blue-dark focus:text-blue-darker font-medium"
+            class="flex items-baseline text-blue-dark hover:text-blue-darker focus:text-blue-darker font-medium"
             href="${archive.url}"
           >
-            <img src="${assets.get('download.svg')}" class="mr-1" />
+            <img src="${assets.get('dl.svg')}" class="mr-2" />
             ${state.translate('downloadButtonLabel')}
           </a>
         `
@@ -181,7 +181,7 @@ module.exports = function(state, emit, archive) {
   return html`
   <send-archive
     id="archive-${archive.id}"
-    class="flex flex-col items-start border border-grey-light bg-white p-4 w-full">
+    class="flex flex-col items-start rounded shadow-light bg-white p-4 w-full">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <input
@@ -235,11 +235,11 @@ module.exports.wip = function(state, emit) {
         Array.from(state.archive.files)
           .reverse()
           .map(f => fileInfo(f, remove(f))),
-        'list-reset overflow-y-auto px-4 bg-blue-lightest md:h-full md:max-h-half-screen',
-        'bg-white px-2 mt-3 border border-grey-light rounded'
+        'bg-grey-lightest rounded-t list-reset overflow-y-auto px-4 md:h-full md:max-h-half-screen',
+        'bg-white px-2 my-2 shadow-light rounded'
       )}
       <div
-        class="flex-grow flex items-end p-4 bg-blue-lightest mb-6 font-medium"
+        class="flex-grow flex items-end p-4 bg-grey-lightest rounded-b mb-6 font-medium"
       >
         <input
           id="file-upload"
@@ -265,7 +265,7 @@ module.exports.wip = function(state, emit) {
       ${expiryOptions(state, emit)} ${password(state, emit)}
       <button
         id="upload-btn"
-        class="btn rounded flex-no-shrink"
+        class="btn rounded-lg flex-no-shrink"
         title="${state.translate('uploadFilesButton')}"
         onclick="${upload}"
       >
@@ -319,7 +319,7 @@ module.exports.uploading = function(state, emit) {
   return html`
   <send-upload-area
     id="${archive.id}"
-    class="flex flex-col items-start border border-grey-light bg-white p-4 w-full">
+    class="flex flex-col items-start rounded shadow-light bg-white p-4 w-full">
     <p class="w-full">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -334,10 +334,10 @@ module.exports.uploading = function(state, emit) {
         expiresAt: Date.now() + 500 + state.archive.timeLimit * 1000
       })}
     </div>
-    <div class="text-blue text-sm font-medium mt-2">${progressPercent}</div>
+    <div class="text-blue-dark text-sm font-medium mt-2">${progressPercent}</div>
     <progress class="my-3" value="${progress}">${progressPercent}</progress>
     <button
-      class="text-blue hover:text-blue-dark focus:text-blue-darker self-end font-medium"
+      class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end font-medium"
       onclick=${cancel}>
       ${state.translate('uploadingPageCancel')}
     </button>
@@ -353,7 +353,7 @@ module.exports.uploading = function(state, emit) {
 module.exports.empty = function(state, emit) {
   return html`
     <send-upload-area
-      class="flex flex-col items-center justify-center border-2 border-dashed border-blue-light px-6 py-16 h-full w-full"
+      class="flex flex-col items-center justify-center border-2 border-dashed border-grey rounded px-6 py-16 h-full w-full"
       onclick="${e => {
         if (e.target.tagName !== 'LABEL') {
           document.getElementById('file-upload').click();
@@ -362,7 +362,7 @@ module.exports.empty = function(state, emit) {
     >
       <img src="${assets.get('addfiles.svg')}" width="48" height="48" />
       <div
-        class="pt-6 pb-2 text-center text-lg font-bold uppercase tracking-wide"
+        class="pt-6 pb-2 text-center text-lg font-bold capitalize tracking-wide"
       >
         ${state.translate('uploadDropDragMessage')}
       </div>
@@ -380,7 +380,7 @@ module.exports.empty = function(state, emit) {
       <label
         for="file-upload"
         role="button"
-        class="btn rounded flex items-center mt-4"
+        class="btn rounded-lg flex items-center mt-4"
         title="${state.translate('addFilesButton')}"
       >
         ${state.translate('addFilesButton')}
@@ -402,7 +402,7 @@ module.exports.preview = function(state, emit) {
     archive.open = true;
   }
   return html`
-  <send-archive class="flex flex-col max-h-full bg-white border border-grey-light p-4 w-full md:w-4/5">
+  <send-archive class="flex flex-col max-h-full bg-white rounded shadow-light p-4 w-full md:w-4/5">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -415,7 +415,7 @@ module.exports.preview = function(state, emit) {
     </div>
     <button
       id="download-btn"
-      class="btn rounded mt-4 w-full flex-no-shrink"
+      class="btn rounded-lg mt-4 w-full flex-no-shrink"
       title="${state.translate('downloadButtonLabel')}"
       onclick=${download}>
       ${state.translate('downloadButtonLabel')}
@@ -434,7 +434,7 @@ module.exports.downloading = function(state) {
   const progress = state.transfer.progressRatio;
   const progressPercent = percent(progress);
   return html`
-  <send-archive class="flex flex-col bg-white border border-grey-light p-4 w-full md:w-4/5">
+  <send-archive class="flex flex-col bg-white rounded shadow-light p-4 w-full md:w-4/5">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -442,7 +442,7 @@ module.exports.downloading = function(state) {
         archive.size
       )}</div>
     </p>
-    <div class="text-blue text-sm font-medium mt-2">${progressPercent}</div>
+    <div class="text-blue-dark text-sm font-medium mt-2">${progressPercent}</div>
     <progress class="my-3" value="${progress}">${progressPercent}</progress>
   </send-archive>`;
 };

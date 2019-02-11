@@ -49,10 +49,10 @@ const colors = {
   'grey-darkest': '#3d4852',
   'grey-darker': '#606f7b',
   'grey-dark': '#8795a1',
-  grey: '#b8c2cc',
+  grey: '#B1B1B3',
   'grey-light': '#dae1e7',
   'grey-lighter': '#f1f5f8',
-  'grey-lightest': '#f8fafc',
+  'grey-lightest': '#F9F9FA',
   white: '#ffffff',
 
   'red-darkest': '#3b0d0c',

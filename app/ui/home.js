@@ -22,16 +22,18 @@ module.exports = function(state, emit) {
       ? intro(state)
       : list(
           archives,
-          'list-reset h-full overflow-y-auto w-full',
-          'mb-3 w-full'
+          'list-reset p-2 h-full overflow-y-auto w-full',
+          'mb-4 w-full'
         );
 
   return html`
     <main class="main relative">
       ${state.modal && modal(state, emit)}
-      <section class="h-full w-full p-6 md:flex md:flex-row z-10">
-        <div class="md:mr-6 md:w-1/2 w-full">${left}</div>
-        <div class="md:w-1/2 mt-6 md:mt-0 w-full">${right}</div>
+      <section
+        class="h-full w-full p-6 z-10 md:flex md:flex-row md:rounded-lg md:shadow-big"
+      >
+        <div class="px-2 w-full md:px-0 md:mr-6 md:w-1/2">${left}</div>
+        <div class="mt-6 w-full md:w-1/2 md:-m-2">${right}</div>
       </section>
     </main>
   `;

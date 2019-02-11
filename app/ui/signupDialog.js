@@ -32,7 +32,7 @@ module.exports = function(trigger) {
           id="email-submit"
           type="submit" />
       </form>
-      <label class="btn rounded w-full flex flex-no-shrink items-center justify-center" for="email-submit">
+      <label class="btn rounded-lg w-full flex flex-no-shrink items-center justify-center" for="email-submit">
         ${state.translate('signInMenuOption')}
       </label>
       <button
