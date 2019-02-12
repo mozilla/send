@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const express = require('express');
 const helmet = require('helmet');
+const uaparser = require('ua-parser-js');
 const storage = require('../storage');
 const config = require('../config');
 const auth = require('../middleware/auth');
@@ -12,6 +13,7 @@ const IS_DEV = config.env === 'development';
 const ID_REGEX = '([0-9a-fA-F]{10})';
 
 module.exports = function(app) {
+  app.set('trust proxy', true);
   app.use(helmet());
   app.use(
     helmet.hsts({
@@ -19,6 +21,10 @@ module.exports = function(app) {
       force: !IS_DEV
     })
   );
+  app.use(function(req, res, next) {
+    req.ua = uaparser(req.header('user-agent'));
+    next();
+  });
   app.use(function(req, res, next) {
     req.cspNonce = crypto.randomBytes(16).toString('hex');
     next();
@@ -35,12 +41,10 @@ module.exports = function(app) {
             'wss://send.firefox.com',
             'https://*.dev.lcip.org',
             'https://*.accounts.firefox.com',
-            'https://sentry.prod.mozaws.net',
-            'https://www.google-analytics.com'
+            'https://sentry.prod.mozaws.net'
           ],
           imgSrc: [
             "'self'",
-            'https://www.google-analytics.com',
             'https://*.dev.lcip.org',
             'https://firefoxusercontent.com'
           ],
@@ -92,7 +96,7 @@ module.exports = function(app) {
     require('./params')
   );
   app.post(`/api/info/:id${ID_REGEX}`, auth.owner, require('./info'));
-
+  app.post('/api/metrics', require('./metrics'));
   app.get('/__version__', function(req, res) {
     res.sendFile(require.resolve('../../dist/version.json'));
   });

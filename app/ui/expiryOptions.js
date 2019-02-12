@@ -3,7 +3,6 @@ const html = require('choo/html');
 const raw = require('choo/html/raw');
 const { secondsToL10nId } = require('../utils');
 const selectbox = require('./selectbox');
-const signupDialog = require('./signupDialog');
 
 module.exports = function(state, emit) {
   const el = html`
@@ -29,17 +28,17 @@ module.exports = function(state, emit) {
   const dlCountSelect = el.querySelector('#dlCount');
   el.replaceChild(
     selectbox(
-      state.downloadCount || 1,
+      state.archive.dlimit,
       counts,
       num => state.translate('downloadCount', { num }),
       value => {
         const max = state.user.maxDownloads;
+        state.archive.dlimit = Math.min(value, max);
         if (value > max) {
-          state.modal = signupDialog();
-          value = max;
+          emit('signup-cta', 'count');
+        } else {
+          emit('render');
         }
-        state.downloadCount = value;
-        emit('render');
       },
       'expire-after-dl-count-select'
     ),
@@ -53,7 +52,7 @@ module.exports = function(state, emit) {
   const timeSelect = el.querySelector('#timespan');
   el.replaceChild(
     selectbox(
-      state.timeLimit || 86400,
+      state.archive.timeLimit,
       expires,
       num => {
         const l10n = secondsToL10nId(num);
@@ -61,12 +60,12 @@ module.exports = function(state, emit) {
       },
       value => {
         const max = state.user.maxExpireSeconds;
+        state.archive.timeLimit = Math.min(value, max);
         if (value > max) {
-          state.modal = signupDialog();
-          value = max;
+          emit('signup-cta', 'time');
+        } else {
+          emit('render');
         }
-        state.timeLimit = value;
-        emit('render');
       },
       'expire-after-time-select'
     ),

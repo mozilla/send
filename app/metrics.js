@@ -1,296 +1,172 @@
-import testPilotGA from 'testpilot-ga/src/TestPilotGA';
 import storage from './storage';
-
-let hasLocalStorage = false;
-try {
-  hasLocalStorage = typeof localStorage !== 'undefined';
-} catch (e) {
-  // when disabled, any mention of localStorage throws an error
-}
-
-const analytics = new testPilotGA({
-  an: 'Firefox Send',
-  ds: 'web',
-  tid: window.GOOGLE_ANALYTICS_ID
-});
+import { platform } from './utils';
 
 let appState = null;
-let experiment = null;
+// let experiment = null;
+const HOUR = 1000 * 60 * 60;
+const events = [];
+let session_id = Date.now();
+const lang = document.querySelector('html').lang;
 
 export default function initialize(state, emitter) {
   appState = state;
+  if (!appState.user.firstAction) {
+    appState.user.firstAction = appState.route === '/' ? 'upload' : 'download';
+  }
   emitter.on('DOMContentLoaded', () => {
-    addExitHandlers();
-    experiment = storage.enrolled[0];
-    sendEvent(category(), 'visit', {
-      cm5: storage.totalUploads,
-      cm6: storage.files.length,
-      cm7: storage.totalDownloads
+    // experiment = storage.enrolled[0];
+    addEvent('client_visit', {
+      entrypoint: appState.route === '/' ? 'upload' : 'download'
     });
   });
-  emitter.on('exit', exitEvent);
   emitter.on('experiment', experimentEvent);
+  window.addEventListener('unload', submitEvents);
 }
 
-function category() {
-  switch (appState.route) {
-    case '/':
-    case '/share/:id':
-      return 'sender';
-    case '/download/:id/:key':
-    case '/download/:id':
-    case '/completed':
-      return 'recipient';
-    default:
-      return 'other';
-  }
+function sizeOrder(n) {
+  return Math.floor(Math.log10(n));
 }
 
-function sendEvent() {
-  const args = Array.from(arguments);
-  if (experiment && args[2]) {
-    args[2].xid = experiment[0];
-    args[2].xvar = experiment[1];
+function submitEvents() {
+  if (navigator.doNotTrack === '1') {
+    return;
   }
-  return (
-    hasLocalStorage && analytics.sendEvent.apply(analytics, args).catch(() => 0)
+  const data = new Blob(
+    [
+      JSON.stringify({
+        now: Date.now(),
+        session_id,
+        lang,
+        platform: platform(),
+        events
+      })
+    ],
+    { type: 'application/json' }
   );
-}
-
-function urlToMetric(url) {
-  switch (url) {
-    case 'https://www.mozilla.org/':
-      return 'mozilla';
-    case 'https://www.mozilla.org/about/legal':
-      return 'legal';
-    case 'https://testpilot.firefox.com/about':
-      return 'about';
-    case 'https://testpilot.firefox.com/privacy':
-      return 'privacy';
-    case 'https://testpilot.firefox.com/terms':
-      return 'terms';
-    case 'https://www.mozilla.org/privacy/websites/#cookies':
-      return 'cookies';
-    case 'https://github.com/mozilla/send':
-      return 'github';
-    case 'https://twitter.com/FxTestPilot':
-      return 'twitter';
-    case 'https://www.mozilla.org/firefox/new/?scene=2':
-      return 'download-firefox';
-    case 'https://qsurvey.mozilla.com/s3/txp-firefox-send':
-      return 'survey';
-    case 'https://testpilot.firefox.com/':
-    case 'https://testpilot.firefox.com/experiments/send':
-      return 'testpilot';
-    case 'https://www.mozilla.org/firefox/new/?utm_campaign=send-acquisition&utm_medium=referral&utm_source=send.firefox.com':
-      return 'promo';
-    default:
-      return 'other';
+  events.splice(0);
+  if (!navigator.sendBeacon) {
+    return;
   }
+  navigator.sendBeacon('/api/metrics', data);
 }
 
-function setReferrer(state) {
-  if (category() === 'sender') {
-    if (state) {
-      storage.referrer = `${state}-upload`;
+async function addEvent(event_type, event_properties) {
+  const user_id = await appState.user.metricId();
+  const device_id = await appState.user.deviceId();
+  events.push({
+    device_id,
+    event_properties,
+    event_type,
+    time: Date.now(),
+    user_id,
+    user_properties: {
+      anonymous: !appState.user.loggedIn,
+      first_action: appState.user.firstAction,
+      active_count: storage.files.length
     }
-  } else if (category() === 'recipient') {
-    if (state) {
-      storage.referrer = `${state}-download`;
-    }
+  });
+  if (events.length === 25) {
+    submitEvents();
   }
 }
 
-function externalReferrer() {
-  if (/^https:\/\/testpilot\.firefox\.com/.test(document.referrer)) {
-    return 'testpilot';
-  }
-  return 'external';
-}
-
-function takeReferrer() {
-  const referrer = storage.referrer || externalReferrer();
-  storage.referrer = null;
-  return referrer;
-}
-
-function startedUpload(params) {
-  return sendEvent('sender', 'upload-started', {
-    cm1: params.size,
-    cm5: storage.totalUploads,
-    cm6: storage.files.length + 1,
-    cm7: storage.totalDownloads,
-    cd1: params.type,
-    cd5: takeReferrer()
+function cancelledUpload(archive, duration) {
+  return addEvent('client_upload', {
+    download_limit: archive.dlimit,
+    duration: sizeOrder(duration),
+    file_count: archive.numFiles,
+    password_protected: !!archive.password,
+    size: sizeOrder(archive.size),
+    status: 'cancel',
+    time_limit: archive.timeLimit
   });
 }
 
-function cancelledUpload(params) {
-  setReferrer('cancelled');
-  return sendEvent('sender', 'upload-stopped', {
-    cm1: params.size,
-    cm5: storage.totalUploads,
-    cm6: storage.files.length,
-    cm7: storage.totalDownloads,
-    cd1: params.type,
-    cd2: 'cancelled'
+function completedUpload(archive, duration) {
+  return addEvent('client_upload', {
+    download_limit: archive.dlimit,
+    duration: sizeOrder(duration),
+    file_count: archive.numFiles,
+    password_protected: !!archive.password,
+    size: sizeOrder(archive.size),
+    status: 'ok',
+    time_limit: archive.timeLimit
   });
 }
 
-function completedUpload(params) {
-  return sendEvent('sender', 'upload-stopped', {
-    cm1: params.size,
-    cm2: params.time,
-    cm3: params.speed,
-    cm5: storage.totalUploads,
-    cm6: storage.files.length,
-    cm7: storage.totalDownloads,
-    cd1: params.type,
-    cd2: 'completed'
-  });
-}
-
-function addedPassword(params) {
-  return sendEvent('sender', 'password-added', {
-    cm1: params.size,
-    cm5: storage.totalUploads,
-    cm6: storage.files.length,
-    cm7: storage.totalDownloads
-  });
-}
-
-function startedDownload(params) {
-  return sendEvent('recipient', 'download-started', {
-    cm1: params.size,
-    cm4: params.ttl,
-    cm5: storage.totalUploads,
-    cm6: storage.files.length,
-    cm7: storage.totalDownloads
+function stoppedUpload(archive) {
+  return addEvent('client_upload', {
+    download_limit: archive.dlimit,
+    file_count: archive.numFiles,
+    password_protected: !!archive.password,
+    size: sizeOrder(archive.size),
+    status: 'error',
+    time_limit: archive.timeLimit
   });
 }
 
 function stoppedDownload(params) {
-  return sendEvent('recipient', 'download-stopped', {
-    cm1: params.size,
-    cm5: storage.totalUploads,
-    cm6: storage.files.length,
-    cm7: storage.totalDownloads,
-    cd2: 'errored',
-    cd6: params.err
-  });
-}
-
-function cancelledDownload(params) {
-  setReferrer('cancelled');
-  return sendEvent('recipient', 'download-stopped', {
-    cm1: params.size,
-    cm5: storage.totalUploads,
-    cm6: storage.files.length,
-    cm7: storage.totalDownloads,
-    cd2: 'cancelled'
-  });
-}
-
-function stoppedUpload(params) {
-  return sendEvent('sender', 'upload-stopped', {
-    cm1: params.size,
-    cm5: storage.totalUploads,
-    cm6: storage.files.length,
-    cm7: storage.totalDownloads,
-    cd1: params.type,
-    cd2: 'errored',
-    cd6: params.err
-  });
-}
-
-function changedDownloadLimit(params) {
-  return sendEvent('sender', 'download-limit-changed', {
-    cm1: params.size,
-    cm5: storage.totalUploads,
-    cm6: storage.files.length,
-    cm7: storage.totalDownloads,
-    cm8: params.dlimit
+  return addEvent('client_download', {
+    duration: sizeOrder(params.duration),
+    password_protected: params.password_protected,
+    size: sizeOrder(params.size),
+    status: 'error'
   });
 }
 
 function completedDownload(params) {
-  return sendEvent('recipient', 'download-stopped', {
-    cm1: params.size,
-    cm2: params.time,
-    cm3: params.speed,
-    cm5: storage.totalUploads,
-    cm6: storage.files.length,
-    cm7: storage.totalDownloads,
-    cd2: 'completed'
+  return addEvent('client_download', {
+    duration: sizeOrder(params.duration),
+    password_protected: params.password_protected,
+    size: sizeOrder(params.size),
+    status: 'ok'
   });
 }
 
-function deletedUpload(params) {
-  return sendEvent(category(), 'upload-deleted', {
-    cm1: params.size,
-    cm2: params.time,
-    cm3: params.speed,
-    cm4: params.ttl,
-    cm5: storage.totalUploads,
-    cm6: storage.files.length,
-    cm7: storage.totalDownloads,
-    cd1: params.type,
-    cd4: params.location
-  });
-}
-
-function unsupported(params) {
-  return sendEvent(category(), 'unsupported', {
-    cd6: params.err
-  });
-}
-
-function copiedLink(params) {
-  return sendEvent('sender', 'copied', {
-    cd4: params.location
-  });
-}
-
-function exitEvent(target) {
-  return sendEvent(category(), 'exited', {
-    cd3: urlToMetric(target.currentTarget.href)
+function deletedUpload(ownedFile) {
+  return addEvent('client_delete', {
+    age: Math.floor((Date.now() - ownedFile.createdAt) / HOUR),
+    downloaded: ownedFile.dtotal > 0,
+    status: 'ok'
   });
 }
 
 function experimentEvent(params) {
-  return sendEvent(category(), 'experiment', params);
+  return addEvent('client_experiment', params);
 }
 
-// eslint-disable-next-line no-unused-vars
-function addExitHandlers() {
-  const links = Array.from(document.querySelectorAll('a'));
-  links.forEach(l => {
-    if (/^http/.test(l.getAttribute('href'))) {
-      l.addEventListener('click', exitEvent);
-    }
+function submittedSignup(params) {
+  return addEvent('client_login', {
+    status: 'ok',
+    trigger: params.trigger
   });
 }
 
-function restart(state) {
-  setReferrer(state);
-  return sendEvent(category(), 'restarted', {
-    cd2: state
+function canceledSignup(params) {
+  return addEvent('client_login', {
+    status: 'cancel',
+    trigger: params.trigger
   });
+}
+
+function loggedOut(params) {
+  addEvent('client_logout', {
+    status: 'ok',
+    trigger: params.trigger
+  });
+  // flush events and start new anon session
+  submitEvents();
+  session_id = Date.now();
 }
 
 export {
-  copiedLink,
-  startedUpload,
   cancelledUpload,
   stoppedUpload,
   completedUpload,
-  changedDownloadLimit,
   deletedUpload,
-  startedDownload,
-  cancelledDownload,
   stoppedDownload,
   completedDownload,
-  addedPassword,
-  restart,
-  unsupported
+  submittedSignup,
+  canceledSignup,
+  loggedOut
 };

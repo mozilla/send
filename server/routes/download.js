@@ -1,6 +1,7 @@
 const storage = require('../storage');
 const mozlog = require('../log');
 const log = mozlog('send.download');
+const { statDownloadEvent } = require('../amplitude');
 
 module.exports = async function(req, res) {
   const id = req.params.id;
@@ -21,6 +22,14 @@ module.exports = async function(req, res) {
 
       const dl = meta.dl + 1;
       const dlimit = meta.dlimit;
+      const ttl = await storage.ttl(id);
+      statDownloadEvent({
+        id,
+        ip: req.ip,
+        owner: meta.owner,
+        download_count: dl,
+        ttl
+      });
       try {
         if (dl >= dlimit) {
           await storage.del(id);

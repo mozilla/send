@@ -11,14 +11,7 @@ module.exports = function(app = choo()) {
   app.route('/error', body(require('./ui/error')));
   app.route('/blank', body(require('./ui/blank')));
   app.route('/oauth', async function(state, emit) {
-    try {
-      await state.user.finishLogin(state.query.code, state.query.state);
-      await state.user.syncFileList();
-      emit('replaceState', '/');
-    } catch (e) {
-      emit('replaceState', '/error');
-      setTimeout(() => emit('render'));
-    }
+    emit('authenticate', state.query.code, state.query.state);
   });
   app.route('*', body(require('./ui/notFound')));
   return app;

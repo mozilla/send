@@ -5,6 +5,7 @@ const mozlog = require('../log');
 const Limiter = require('../limiter');
 const wsStream = require('websocket-stream/stream');
 const fxa = require('../fxa');
+const { statUploadEvent } = require('../amplitude');
 
 const { Duplex } = require('stream');
 
@@ -105,6 +106,15 @@ module.exports = function(ws, req) {
         // in order to avoid having to check socket state and clean
         // up storage, possibly with an exception that we can catch.
         ws.send(JSON.stringify({ ok: true }));
+        statUploadEvent({
+          id: newId,
+          ip: req.ip,
+          owner,
+          dlimit,
+          timeLimit,
+          anonymous: !user,
+          size: limiter.length
+        });
       }
     } catch (e) {
       log.error('upload', e);

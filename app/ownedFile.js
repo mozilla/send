@@ -8,7 +8,6 @@ export default class OwnedFile {
     this.url = obj.url;
     this.name = obj.name;
     this.size = obj.size;
-    this.type = obj.type;
     this.manifest = obj.manifest;
     this.time = obj.time;
     this.speed = obj.speed;
@@ -78,7 +77,6 @@ export default class OwnedFile {
       url: this.url,
       name: this.name,
       size: this.size,
-      type: this.type,
       manifest: this.manifest,
       time: this.time,
       speed: this.speed,

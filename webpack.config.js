@@ -101,7 +101,6 @@ const web = {
               path.resolve(__dirname, 'common'),
               // some dependencies need to get re-babeled because we
               // have different targets than their default configs
-              path.resolve(__dirname, 'node_modules/testpilot-ga/src'),
               path.resolve(__dirname, 'node_modules/fluent'),
               path.resolve(__dirname, 'node_modules/fluent-intl-polyfill'),
               path.resolve(__dirname, 'node_modules/intl-pluralrules')

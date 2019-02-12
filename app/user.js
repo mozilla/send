@@ -9,6 +9,16 @@ import storage from './storage';
 
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
+const anonId = arrayToB64(crypto.getRandomValues(new Uint8Array(16)));
+
+async function hashId(id) {
+  const d = new Date();
+  const month = d.getUTCMonth();
+  const year = d.getUTCFullYear();
+  const encoded = textEncoder.encode(`${id}:${year}:${month}`);
+  const hash = await crypto.subtle.digest('SHA-256', encoded);
+  return arrayToB64(new Uint8Array(hash.slice(16)));
+}
 
 export default class User {
   constructor(storage) {
@@ -23,6 +33,14 @@ export default class User {
   set info(data) {
     this.data = data;
     this.storage.user = data;
+  }
+
+  get firstAction() {
+    return this.storage.get('firstAction');
+  }
+
+  set firstAction(action) {
+    this.storage.set('firstAction', action);
   }
 
   get avatar() {
@@ -61,6 +79,14 @@ export default class User {
 
   get maxDownloads() {
     return this.loggedIn ? LIMITS.MAX_DOWNLOADS : LIMITS.ANON.MAX_DOWNLOADS;
+  }
+
+  async metricId() {
+    return this.loggedIn ? hashId(this.info.uid) : undefined;
+  }
+
+  async deviceId() {
+    return this.loggedIn ? hashId(this.storage.id) : hashId(anonId);
   }
 
   async login(email) {
