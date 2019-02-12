@@ -1,6 +1,7 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Molawo
 siteSubtitle = web yimontalo
+siteFeedback = Potunu
 uploadPageLearnMore = Pobalajariya po'olo
 uploadPageBrowseButton = Tulawota berkas to delomo komputermu
 uploadPageBrowseButton1 = Tulawota berkas u detohulo
@@ -14,6 +15,10 @@ uploadingPageLargeFileMessage = Berkas botiya damango wawu paralu wakutu ngope'e
 uploadingFileNotification = Poleleya ola'u wonu ma yilapato lodetohu.
 uploadSuccessConfirmHeader = Siap Molawo
 uploadSvgAlt = Detohe
+timespanHours =
+    { $num ->
+       *[other] { $num } jam
+    }
 copiedUrl = Yilami
 deleteFileButton = Luluta berkas
 sendAnotherFileLink = Lawola berkas uwewo
@@ -39,6 +44,7 @@ downloadFinish = Mopohuli Yilapato
 fileSizeProgress = ({ $partialSize } meyalo { $totalSize })
 # Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Yimontali Firefox Molawo
+downloadingPageProgress = Modetohu { $filename } ({ $size })
 downloadFirefoxButtonSub = Pereyi Mopohuli
 uploadedFile = Berkas
 copyFileList = Kupe'iya URL
