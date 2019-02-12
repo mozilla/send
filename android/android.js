@@ -45,7 +45,6 @@ if (navigator.userAgent === 'Send Android') {
 
 const app = choo();
 //app.use(state);
-app.use(metrics);
 app.use(controller);
 app.use(intents);
 
@@ -79,7 +78,7 @@ function body(main) {
 }
 (async function start() {
   const translate = await getTranslator('en-US');
-  app.use(async (state, emitter) => {
+  app.use((state, emitter) => {
     state.translate = translate;
     state.capabilities = {
       account: true
@@ -99,6 +98,7 @@ function body(main) {
     window.appState = state;
     window.appEmit = emitter.emit.bind(emitter);
   });
+  app.use(metrics);
   app.route('/', body(home));
   app.route('/upload', upload);
   app.route('/share/:id', share);
