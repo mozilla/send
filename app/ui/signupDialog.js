@@ -25,7 +25,7 @@ module.exports = function(trigger) {
         <input
           id="email-input"
           type="text"
-          class="${hidden} border rounded w-full px-2 py-1 h-12 mb-4 text-lg text-grey-darker leading-loose"
+          class="${hidden} border rounded-lg w-full px-2 py-1 h-12 mb-4 text-lg text-grey-darker leading-loose"
           placeholder=${state.translate('emailEntryPlaceholder')} />
         <input
           class="hidden"
@@ -36,7 +36,7 @@ module.exports = function(trigger) {
         ${state.translate('signInMenuOption')}
       </label>
       <button
-        class="my-4 text-blue hover:text-blue-dark focus:text-blue-darker font-medium"
+        class="my-4 text-blue-dark hover:text-blue-darker focus:text-blue-darker font-medium"
         title="${state.translate('deletePopupCancel')}"
         onclick=${cancel}>${state.translate('deletePopupCancel')}
       </button>

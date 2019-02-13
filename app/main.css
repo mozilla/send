@@ -231,6 +231,12 @@ progress::-moz-progress-bar {
   }
 }
 
+select {
+  background-image: url('../assets/select-arrow.svg');
+  background-position: calc(100% - 0.75rem);
+  background-repeat: no-repeat;
+}
+
 @screen md {
   .header-logo {
     background-image: url('../assets/logo.svg');
@@ -251,10 +257,6 @@ progress::-moz-progress-bar {
 
 @tailwind utilities;
 
-.word-break-all {
-  word-break: break-all;
-}
-
 @responsive {
   .shadow-light {
     box-shadow: 0 0 8px 0 rgba(12, 12, 13, 0.1);
@@ -264,4 +266,8 @@ progress::-moz-progress-bar {
     box-shadow: 0 0 32px 0 rgba(12, 12, 13, 0.1),
       0 2px 16px 0 rgba(12, 12, 13, 0.05);
   }
+}
+
+.word-break-all {
+  word-break: break-all;
 }

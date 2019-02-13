@@ -14,7 +14,7 @@ module.exports = function(name, url) {
         <input
           type="text"
           id="share-url"
-          class="w-full my-4 border rounded leading-loose h-12 px-2 py-1"
+          class="w-full my-4 border rounded-lg leading-loose h-12 px-2 py-1"
           value="${url}"
           readonly="true"
         />
@@ -22,7 +22,7 @@ module.exports = function(name, url) {
           ${state.translate('copyUrlFormButton')}
         </button>
         <a
-          class="text-blue hover:text-blue-dark focus:text-blue-darker my-4 font-medium cursor-pointer"
+          class="text-blue-dark hover:text-blue-darker focus:text-blue-darker my-4 font-medium cursor-pointer"
           onclick="${close}"
           >${state.translate('okButton')}</a
         >

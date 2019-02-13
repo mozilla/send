@@ -46,7 +46,7 @@ function password(state) {
         id="password-input"
         class="${state.archive.password
           ? ''
-          : 'invisible'} border rounded-sm focus:border-blue-dark leading-normal my-1 py-1 px-2 h-8"
+          : 'invisible'} border rounded focus:border-blue-dark leading-normal my-1 py-1 px-2 h-8"
         autocomplete="off"
         maxlength="${MAX_LENGTH}"
         type="password"
