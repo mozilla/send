@@ -29,7 +29,7 @@ function password(state) {
   const MAX_LENGTH = 32;
 
   return html`
-    <div class="my-2 px-1">
+    <div class="mb-2 px-1">
       <div class="checkbox inline-block mr-3">
         <input
           id="add-password"
@@ -46,7 +46,7 @@ function password(state) {
         id="password-input"
         class="${state.archive.password
           ? ''
-          : 'invisible'} border rounded-sm focus:border-blue-dark leading-normal my-2 py-1 px-2 h-8"
+          : 'invisible'} border rounded-sm focus:border-blue-dark leading-normal my-1 py-1 px-2 h-8"
         autocomplete="off"
         maxlength="${MAX_LENGTH}"
         type="password"
@@ -58,7 +58,7 @@ function password(state) {
       <label
         id="password-msg"
         for="password-input"
-        class="block text-xs text-grey-darker mt-1"
+        class="block text-xs text-grey-darker"
       ></label>
     </div>
   `;
@@ -235,11 +235,11 @@ module.exports.wip = function(state, emit) {
         Array.from(state.archive.files)
           .reverse()
           .map(f => fileInfo(f, remove(f))),
-        'bg-grey-lightest rounded-t list-reset overflow-y-auto px-4 md:h-full md:max-h-half-screen',
+        'bg-grey-lightest rounded-t list-reset overflow-y-auto px-6 py-4 md:h-full md:max-h-half-screen',
         'bg-white px-2 my-2 shadow-light rounded'
       )}
       <div
-        class="flex-grow flex items-end p-4 bg-grey-lightest rounded-b mb-6 font-medium"
+        class="flex-grow flex items-end p-4 bg-grey-lightest rounded-b mb-1 font-medium"
       >
         <input
           id="file-upload"
