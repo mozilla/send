@@ -5,14 +5,7 @@ const HomePage = require('./pages/desktop/home_page');
 describe('Firefox Send homepage', function() {
   const homePage = new HomePage();
   const baseUrl = browser.options['baseUrl'];
-  const footerLinks = [
-    'mozilla',
-    'legal',
-    'legal',
-    'cookies',
-    'report-infringement',
-    'github'
-  ];
+  const footerLinks = ['mozilla', 'legal', 'legal', 'cookies', 'github'];
 
   beforeEach(function() {
     homePage.open();
