@@ -105,8 +105,20 @@ details {
   overflow: hidden;
 }
 
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary > svg {
+  transition: all 0.25s cubic-bezier(0.07, 0.95, 0, 1);
+}
+
 details[open] {
   overflow-y: auto;
+}
+
+details[open] > summary > svg {
+  transform: rotate(90deg);
 }
 
 footer li:hover {
