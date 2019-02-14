@@ -23,7 +23,6 @@ body {
 .btn {
   @apply bg-blue-dark;
   @apply text-white;
-  @apply font-semibold;
   @apply cursor-pointer;
   @apply py-2;
   @apply px-6;

@@ -160,7 +160,7 @@ module.exports = function(state, emit, archive) {
     platform() !== 'android'
       ? html`
           <button
-            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end font-medium flex items-center"
+            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end flex items-center"
             onclick=${copy}
           >
             <img src="${assets.get('copy-16.svg')}" class="mr-2" />
@@ -169,7 +169,7 @@ module.exports = function(state, emit, archive) {
         `
       : html`
           <button
-            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end font-medium flex items-center"
+            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end flex items-center"
             onclick=${share}
           >
             <img src="${assets.get('share-24.svg')}" class="mr-2" /> Share
@@ -179,7 +179,7 @@ module.exports = function(state, emit, archive) {
     platform() === 'web'
       ? html`
           <a
-            class="flex items-baseline text-blue-dark hover:text-blue-darker focus:text-blue-darker font-medium"
+            class="flex items-baseline text-blue-dark hover:text-blue-darker focus:text-blue-darker"
             href="${archive.url}"
           >
             <img src="${assets.get('dl.svg')}" class="mr-2" />
@@ -310,7 +310,7 @@ module.exports.wip = function(state, emit) {
     return html`
       <input
         type="image"
-        class="self-center text-white ml-4 delete"
+        class="self-center text-white ml-4 h-4"
         alt="Delete"
         src="${assets.get('close-16.svg')}"
         onclick="${del}"
