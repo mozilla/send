@@ -40,7 +40,7 @@ module.exports = function(state, body = '') {
         <link rel="manifest" href="/app.webmanifest" />
 
         <title>${state.title}</title>
-
+        <link rel="stylesheet" type="text/css" href="/inter.css" />
         <link
           rel="stylesheet"
           type="text/css"

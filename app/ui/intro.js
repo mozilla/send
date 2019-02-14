@@ -13,7 +13,7 @@ module.exports = function intro(state) {
         <p class="max-w-sm font-light leading-normal">
           ${state.translate('uploadPageExplainer')}
         </p>
-        <img class="my-6" src="${assets.get('illustration_download.svg')}" />
+        <img class="-mb-12" src="${assets.get('intro.png')}" />
       </div>
     </send-intro>
   `;
