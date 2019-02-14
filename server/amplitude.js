@@ -101,6 +101,7 @@ function clientEvent(event, ua, language, session_id, deltaT, platform, ip) {
     downloaded: ep.downloaded,
     download_limit: ep.download_limit,
     duration: ep.duration,
+    entrypoint: ep.entrypoint,
     file_count: ep.file_count,
     password_protected: ep.password_protected,
     size: ep.size,
