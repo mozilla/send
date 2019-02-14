@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="22px" height="32px" viewBox="0 0 22 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
-    <title>Group 8</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.5">
-        <g id="Group-8" fill="#0A84FF">
-            <path d="M2,0 L11.9428571,0 L21.665206,8.66172902 C21.8781869,8.85147558 22,9.12314407 22,9.40838886 L22,30 C22,31.1045695 21.1045695,32 20,32 L2,32 C0.8954305,32 1.3527075e-16,31.1045695 0,30 L0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 Z" id="Rectangle-14"></path>
-            <path d="M12,0 L22,9 L15,9 C13.3431458,9 12,7.65685425 12,6 L12,0 Z" id="Triangle"></path>
+<svg width="26px" height="32px" viewBox="0 0 26 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53 (72520) - https://sketchapp.com -->
+    <title>6AF7DAB4-6456-44F2-AABE-F001D910B641</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M21.848475,31.6653183 L2.89005487,31.6653183 C1.32717435,31.6653183 0.104050469,30.3742431 0.104050469,28.8793139 L0.104050469,2.7860044 C0.104050469,1.22312388 1.39512568,0 2.89005487,0 L14.7135857,0 C15.4610503,0 16.2085149,0.271805307 16.6841742,0.815415921 L23.8190635,7.95030523 C24.3626741,8.49391584 24.6344794,9.17342911 24.6344794,9.9208937 L24.6344794,28.8793139 C24.6344794,30.3742431 23.4113555,31.6653183 21.848475,31.6653183 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Send_Ready_to_Send-Spec" transform="translate(-277.000000, -206.000000)">
+            <g id="List-Item-1" transform="translate(253.000000, 192.000000)">
+                <g id="Locked-File-Icon" transform="translate(24.000000, 14.000000)">
+                    <g id="File-Icon">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#45A1FF" opacity="0.6" xlink:href="#path-1"></use>
+                        <path d="M24.3031318,10.6474633 L16.7826187,10.6474633 C15.2742552,10.6474633 14.051485,9.42469306 14.051485,7.91632957 L14.051485,0.395816478" id="Path" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" mask="url(#mask-2)"></path>
+                        <path d="M7.2830232,8.93885547 L8.91906464,8.93885547" id="Path" stroke="#0060DF" stroke-width="2" stroke-linecap="round" mask="url(#mask-2)"></path>
+                        <path d="M7.2830232,15.7798836 L17.5412669,15.7798836" id="Path" stroke="#0060DF" stroke-width="2" stroke-linecap="round" mask="url(#mask-2)"></path>
+                        <path d="M7.2830232,22.6209117 L17.5412669,22.6209117" id="Path" stroke="#0060DF" stroke-width="2" stroke-linecap="round" mask="url(#mask-2)"></path>
+                    </g>
+                </g>
+            </g>
         </g>
     </g>
 </svg>

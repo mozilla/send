@@ -106,7 +106,7 @@ function password(state) {
 function fileInfo(file, action) {
   return html`
     <send-file class="flex flex-row items-center p-3 w-full">
-      <img class="" src="${assets.get('blue_file.svg')}"/>
+      <img class="h-8" src="${assets.get('blue_file.svg')}"/>
       <p class="ml-4 w-full">
         <h1 class="text-sm font-medium word-break-all">${file.name}</h1>
         <div class="text-xs font-normal opacity-75 pt-1">${bytes(
