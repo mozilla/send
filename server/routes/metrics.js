@@ -2,7 +2,7 @@ const { sendBatch, clientEvent } = require('../amplitude');
 
 module.exports = async function(req, res) {
   try {
-    const data = req.body;
+    const data = JSON.parse(req.body); // see http://crbug.com/490015
     const deltaT = Date.now() - data.now;
     const events = data.events.map(e =>
       clientEvent(

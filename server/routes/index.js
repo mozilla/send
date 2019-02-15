@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const express = require('express');
+const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const uaparser = require('ua-parser-js');
 const storage = require('../storage');
@@ -69,7 +69,8 @@ module.exports = function(app) {
     res.set('Cache-Control', 'no-cache');
     next();
   });
-  app.use(express.json());
+  app.use(bodyParser.json());
+  app.use(bodyParser.text());
   app.get('/', language, pages.index);
   app.get('/oauth', language, pages.blank);
   app.get('/legal', language, pages.legal);

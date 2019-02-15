@@ -136,6 +136,7 @@
   "dependencies": {
     "@google-cloud/storage": "^2.4.2",
     "aws-sdk": "^2.400.0",
+    "body-parser": "^1.18.3",
     "choo": "^6.12.1",
     "cldr-core": "^34.0.0",
     "convict": "^4.4.1",

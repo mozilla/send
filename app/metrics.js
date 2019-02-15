@@ -41,13 +41,17 @@ function submitEvents() {
         events
       })
     ],
-    { type: 'application/json' }
+    { type: 'text/plain' } // see http://crbug.com/490015
   );
   events.splice(0);
   if (!navigator.sendBeacon) {
     return;
   }
-  navigator.sendBeacon('/api/metrics', data);
+  try {
+    navigator.sendBeacon('/api/metrics', data);
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 async function addEvent(event_type, event_properties) {
