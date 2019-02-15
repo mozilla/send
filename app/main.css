@@ -148,6 +148,13 @@ footer li:hover {
   text-decoration: none;
 }
 
+.intro {
+  max-width: unset;
+  height: unset;
+  margin-bottom: -3rem;
+  margin-right: -7rem;
+}
+
 .main {
   display: flex;
   max-width: 64rem;

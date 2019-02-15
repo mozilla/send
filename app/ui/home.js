@@ -30,7 +30,7 @@ module.exports = function(state, emit) {
     <main class="main relative">
       ${state.modal && modal(state, emit)}
       <section
-        class="h-full w-full p-6 z-10 md:flex md:flex-row md:rounded-lg md:shadow-big"
+        class="h-full w-full p-6 z-10 overflow-hidden md:flex md:flex-row md:rounded-lg md:shadow-big"
       >
         <div class="px-2 w-full md:px-0 md:mr-6 md:w-1/2">${left}</div>
         <div class="mt-6 w-full md:w-1/2 md:-m-2">${right}</div>
