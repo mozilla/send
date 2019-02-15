@@ -20,7 +20,7 @@ function password(state, emit) {
       >
         <input
           id="password-input"
-          class="w-full border-l border-t border-b rounded-l-sm ${invalid
+          class="w-full border-l border-t border-b rounded-l-lg rounded-r-none ${invalid
             ? 'border-red'
             : 'border-grey'} leading-loose px-2 py-1"
           maxlength="32"
@@ -32,7 +32,7 @@ function password(state, emit) {
         <input
           type="submit"
           id="password-btn"
-          class="btn rounded-r-sm ${invalid
+          class="btn rounded-r-lg rounded-l-none ${invalid
             ? 'bg-red hover:bg-red focus:bg-red'
             : ''}"
           value="${state.translate('unlockButtonLabel')}"
