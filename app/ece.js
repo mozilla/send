@@ -282,7 +282,8 @@ class StreamSlicer {
 }
 
 export function encryptedSize(size, rs = ECE_RECORD_SIZE) {
-  return 21 + size + 16 * Math.floor(size / (rs - 17));
+  const chunk_meta = TAG_LENGTH + 1; // Chunk metadata, tag and delimiter
+  return 21 + size + chunk_meta * Math.ceil(size / (rs - chunk_meta));
 }
 
 /*
