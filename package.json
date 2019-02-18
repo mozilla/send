@@ -105,7 +105,7 @@
     "postcss-preset-env": "^6.5.0",
     "prettier": "^1.16.4",
     "proxyquire": "^2.1.0",
-    "puppeteer": "^1.12.2",
+    "puppeteer": "1.11.0",
     "raven-js": "^3.27.0",
     "raw-loader": "^1.0.0",
     "redis-mock": "^0.43.0",
