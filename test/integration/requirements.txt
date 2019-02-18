@@ -4,5 +4,5 @@ flake8-isort==2.6.0
 PyPOM==2.2.0
 pytest==4.2.1
 pytest-html==1.20.0
-pytest-selenium==1.15.1
+pytest-selenium==1.16.0
 pytest-xdist==1.26.1
