@@ -58,7 +58,7 @@ module.exports = function(state, body = '') {
         <link
           rel="mask-icon"
           href="${assets.get('safari-pinned-tab.svg')}"
-          color="#5bbad5"
+          color="#838383"
         />
         <script defer src="${assets.get('app.js')}"></script>
       </head>

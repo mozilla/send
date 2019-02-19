@@ -49,6 +49,7 @@ if (process.env.NODE_ENV === 'production') {
   };
 
   const app = routes(choo());
+  window.app = app;
   app.use(metrics);
   app.use(controller);
   app.use(dragManager);
