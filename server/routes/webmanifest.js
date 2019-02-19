@@ -7,20 +7,20 @@ module.exports = function(req, res) {
     lang: req.language,
     icons: [
       {
-        src: assets.get('favicon-144.png'),
+        src: assets.get('android-chrome-192x192.png'),
         type: 'image/png',
-        sizes: '144x144'
+        sizes: '192x192'
       },
       {
-        src: assets.get('send_logo.svg'),
-        type: 'image/svg',
-        sizes: '192x192 512x512'
+        src: assets.get('android-chrome-512x512.png'),
+        type: 'image/png',
+        sizes: '512x512'
       }
     ],
     start_url: '/',
     display: 'standalone',
     orientation: 'portrait',
-    theme_color: '#0a84ff',
+    theme_color: '#ffffff',
     background_color: 'white'
   };
   res.set('Content-Type', 'application/manifest+json');

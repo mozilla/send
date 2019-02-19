@@ -3,19 +3,11 @@ const assets = require('../common/assets');
 const initScript = require('./initScript');
 
 module.exports = function(state, body = '') {
-  const firaTag = state.fira
-    ? html`
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://code.cdn.mozilla.net/fonts/fira.css"
-        />
-      `
-    : '';
   return html`
     <!DOCTYPE html>
     <html lang="${state.locale}">
       <head>
+        <title>${state.title}</title>
         <base href="/" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta charset="utf-8" />
@@ -36,66 +28,38 @@ module.exports = function(state, body = '') {
           content="${state.baseUrl}${assets.get('send-twitter.jpg')}"
         />
         <meta property="og:url" content="${state.baseUrl}" />
-        <meta name="theme-color" content="#0a84ff" />
-        <link rel="manifest" href="/app.webmanifest" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="msapplication-TileColor" content="#da532c" />
 
-        <title>${state.title}</title>
+        <link rel="manifest" href="/app.webmanifest" />
         <link rel="stylesheet" type="text/css" href="/inter.css" />
         <link
           rel="stylesheet"
           type="text/css"
           href="${assets.get('app.css')}"
         />
-
-        <!-- generic favicons -->
-        <link rel="icon" href="${assets.get('favicon-32.png')}" sizes="32x32" />
-        <link rel="icon" href="${assets.get('favicon-96.png')}" sizes="96x96" />
-        <link
-          rel="icon"
-          href="${assets.get('favicon-128.png')}"
-          sizes="128x128"
-        />
-        <link
-          rel="icon"
-          href="${assets.get('favicon-228.png')}"
-          sizes="228x228"
-        />
-
-        <!-- Android -->
-        <link
-          rel="shortcut icon"
-          href="${assets.get('favicon-196.png')}"
-          sizes="196x196"
-        />
-
-        <!-- iOS -->
         <link
           rel="apple-touch-icon"
-          href="${assets.get('favicon-120.png')}"
-          sizes="120x120"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="${assets.get('favicon-152.png')}"
-          sizes="152x152"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="${assets.get('favicon-180.png')}"
           sizes="180x180"
+          href="${assets.get('apple-touch-icon.png')}"
         />
-
-        <!-- Windows 8 IE 10 -->
-        <meta name="msapplication-TileColor" content="#FFFFFF" />
-        <meta
-          name="msapplication-TileImage"
-          content="${assets.get('favicon-144.png')}"
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="${assets.get('favicon-32x32.png')}"
         />
-
-        <!-- Windows 8.1 + IE11 and above -->
-        <meta name="msapplication-config" content="/browserconfig.xml" />
-
-        ${firaTag}
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="${assets.get('favicon-16x16.png')}"
+        />
+        <link
+          rel="mask-icon"
+          href="${assets.get('safari-pinned-tab.svg')}"
+          color="#5bbad5"
+        />
         <script defer src="${assets.get('app.js')}"></script>
       </head>
       <noscript>
