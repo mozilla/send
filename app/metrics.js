@@ -1,5 +1,6 @@
 import storage from './storage';
 import { platform } from './utils';
+import { sendMetrics } from './api';
 
 let appState = null;
 // let experiment = null;
@@ -31,27 +32,21 @@ function submitEvents() {
   if (navigator.doNotTrack === '1') {
     return;
   }
-  const data = new Blob(
-    [
-      JSON.stringify({
-        now: Date.now(),
-        session_id,
-        lang,
-        platform: platform(),
-        events
-      })
-    ],
-    { type: 'text/plain' } // see http://crbug.com/490015
+  sendMetrics(
+    new Blob(
+      [
+        JSON.stringify({
+          now: Date.now(),
+          session_id,
+          lang,
+          platform: platform(),
+          events
+        })
+      ],
+      { type: 'text/plain' } // see http://crbug.com/490015
+    )
   );
   events.splice(0);
-  if (!navigator.sendBeacon) {
-    return;
-  }
-  try {
-    navigator.sendBeacon('/api/metrics', data);
-  } catch (e) {
-    console.error(e);
-  }
 }
 
 async function addEvent(event_type, event_properties) {

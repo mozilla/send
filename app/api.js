@@ -390,3 +390,14 @@ export async function setFileList(bearerToken, data) {
   });
   return response.ok;
 }
+
+export function sendMetrics(blob) {
+  if (!navigator.sendBeacon) {
+    return;
+  }
+  try {
+    navigator.sendBeacon(getApiUrl('/api/metrics'), blob);
+  } catch (e) {
+    console.error(e);
+  }
+}
