@@ -1,6 +1,7 @@
 const html = require('choo/html');
 const Component = require('choo/component');
 const Account = require('./account');
+const assets = require('../../common/assets');
 const { platform } = require('../utils');
 
 class Header extends Component {
@@ -20,22 +21,14 @@ class Header extends Component {
     const title =
       platform() === 'android'
         ? html`
-            <a class="header-logo">
-              <h1 class="text-3xl text-white md:text-black font-normal">
-                <b>Firefox</b> Send
-              </h1>
-            </a>
+            <a class=""><img src="${assets.get('logo.svg')}"/></a>
           `
         : html`
-            <a class="header-logo" href="/">
-              <h1 class="text-3xl text-white md:text-black font-normal">
-                <b>Firefox</b> Send
-              </h1>
-            </a>
+            <a class="" href="/"><img src="${assets.get('logo.svg')}"/></a>
           `;
     return html`
       <header
-        class="relative flex-none flex flex-row items-center justify-between bg-black w-full px-6 h-16 z-20 md:bg-transparent"
+        class="relative flex-none flex flex-row items-center justify-between w-full px-6 h-16 z-20 bg-transparent"
       >
         ${title} ${this.account.render()}
       </header>

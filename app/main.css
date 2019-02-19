@@ -139,15 +139,6 @@ footer li:hover {
   white-space: nowrap;
 }
 
-.header-logo {
-  background-image: url('../assets/logo.svg');
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: 2.25rem;
-  padding-left: 3rem;
-  text-decoration: none;
-}
-
 .intro {
   max-width: 100%;
   height: unset;
@@ -254,10 +245,6 @@ select {
 }
 
 @screen md {
-  .header-logo {
-    background-image: url('../assets/logo.svg');
-  }
-
   .intro {
     max-width: unset;
     height: unset;
