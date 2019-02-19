@@ -142,10 +142,7 @@ function archiveDetails(translate, archive) {
             num: archive.manifest.files.length
           })}
         </summary>
-        ${list(
-          archive.manifest.files.map(f => fileInfo(f)),
-          'list-reset h-full'
-        )}
+        ${list(archive.manifest.files.map(f => fileInfo(f)), 'list-reset')}
       </details>
     `;
   }
@@ -241,7 +238,7 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-    <send-upload-area class="flex flex-col bg-white md:h-full w-full" id="wip">
+    <send-upload-area class="flex flex-col bg-white h-full w-full" id="wip">
       ${list(
         Array.from(state.archive.files)
           .reverse()

@@ -149,10 +149,8 @@ footer li:hover {
 }
 
 .intro {
-  max-width: unset;
+  max-width: 100%;
   height: unset;
-  margin-bottom: -3rem;
-  margin-right: -7rem;
 }
 
 .main {
@@ -258,6 +256,13 @@ select {
 @screen md {
   .header-logo {
     background-image: url('../assets/logo.svg');
+  }
+
+  .intro {
+    max-width: unset;
+    height: unset;
+    margin-bottom: -3rem;
+    margin-right: -7rem;
   }
 
   .main {
