@@ -167,7 +167,11 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                             val toPass = "{\"accessToken\": \"${accessToken}\", \"keys\": '${keys}', \"avatar\": \"${avatar}\", \"displayName\": \"${displayName}\", \"email\": \"${email}\", \"uid\": \"${uid}\"}"
                             mToCall = "finishLogin(${toPass})"
                             this@MainActivity.runOnUiThread({
-                                // But then we also reload this here because we need to make sure onPageFinished runs after mToCall has been set.
+                                // Clear the history so that the user can't use the back button to see broken pages
+                                // that were inserted into the history by the login process.
+                                mWebView!!.clearHistory()
+
+                                // We also reload this here because we need to make sure onPageFinished runs after mToCall has been set.
                                 // We can't guarantee that onPageFinished wasn't already called at this point.
                                 mWebView!!.loadUrl("file:///android_asset/android.html")
                             })
