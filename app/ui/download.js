@@ -66,7 +66,10 @@ function password(state, emit) {
   function checkPassword(event) {
     event.stopPropagation();
     event.preventDefault();
-    const password = document.getElementById('password-input').value;
+    const el = document.getElementById('password-input');
+    const password = el.value;
+    // clear the value to prevent the save password dialog
+    el.value = '';
     if (password.length > 0) {
       document.getElementById('password-btn').disabled = true;
       state.fileInfo.url = window.location.href;
