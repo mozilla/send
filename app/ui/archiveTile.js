@@ -374,14 +374,16 @@ module.exports.empty = function(state, emit) {
       >
         ${state.translate('uploadDropDragMessage')}
       </div>
-      <div class="pb-6 text-center text-base italic">
+      <div class="text-center text-base italic">
         ${state.translate('uploadDropClickMessage')}
       </div>
       <input
         id="file-upload"
-        class="hidden"
+        class="opacity-0"
         type="file"
         multiple
+        onfocus="${focus}"
+        onblur="${blur}"
         onchange="${add}"
         onclick="${e => e.stopPropagation()}"
       />
@@ -395,6 +397,14 @@ module.exports.empty = function(state, emit) {
       </label>
     </send-upload-area>
   `;
+
+  function focus(event) {
+    event.target.nextElementSibling.classList.add('bg-blue-darker');
+  }
+
+  function blur(event) {
+    event.target.nextElementSibling.classList.remove('bg-blue-darker');
+  }
 
   function add(event) {
     event.preventDefault();
