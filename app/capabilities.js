@@ -75,7 +75,8 @@ async function polyfillStreams() {
 }
 
 export default async function getCapabilities() {
-  const serviceWorker = 'serviceWorker' in navigator;
+  const serviceWorker =
+    'serviceWorker' in navigator && browserName() !== 'edge';
   let crypto = await checkCrypto();
   const nativeStreams = checkStreams();
   let polyStreams = false;
