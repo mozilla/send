@@ -28,13 +28,11 @@ module.exports = function(trigger) {
           class="${hidden} border rounded-lg w-full px-2 py-1 h-12 mb-4 text-lg text-grey-darker leading-loose"
           placeholder=${state.translate('emailEntryPlaceholder')} />
         <input
-          class="hidden"
+          class="btn rounded-lg w-full flex flex-no-shrink items-center justify-center"
+          value="${state.translate('signInMenuOption')}"
           id="email-submit"
           type="submit" />
       </form>
-      <label class="btn rounded-lg w-full flex flex-no-shrink items-center justify-center" for="email-submit">
-        ${state.translate('signInMenuOption')}
-      </label>
       <button
         class="my-4 text-blue-dark hover:text-blue-darker focus:text-blue-darker font-medium"
         title="${state.translate('deletePopupCancel')}"
