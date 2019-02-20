@@ -18,14 +18,18 @@ module.exports = function(name, url) {
           value="${url}"
           readonly="true"
         />
-        <button class="btn rounded-lg w-full flex-no-shrink" onclick="${copy}">
+        <button
+          class="btn rounded-lg w-full flex-no-shrink focus:outline"
+          onclick="${copy}"
+        >
           ${state.translate('copyUrlFormButton')}
         </button>
-        <a
-          class="text-blue-dark hover:text-blue-darker focus:text-blue-darker my-4 font-medium cursor-pointer"
+        <button
+          class="text-blue-dark hover:text-blue-darker focus:text-blue-darker my-4 font-medium cursor-pointer focus:outline"
           onclick="${close}"
-          >${state.translate('okButton')}</a
         >
+          ${state.translate('okButton')}
+        </button>
       </send-copy-dialog>
     `;
 

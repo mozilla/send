@@ -68,8 +68,6 @@ function password(state, emit) {
     event.preventDefault();
     const el = document.getElementById('password-input');
     const password = el.value;
-    // clear the value to prevent the save password dialog
-    el.value = '';
     if (password.length > 0) {
       document.getElementById('password-btn').disabled = true;
       state.fileInfo.url = window.location.href;

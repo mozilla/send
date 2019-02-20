@@ -157,7 +157,7 @@ module.exports = function(state, emit, archive) {
     platform() !== 'android'
       ? html`
           <button
-            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end flex items-center"
+            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker focus:outline self-end flex items-center"
             onclick=${copy}
           >
             <img src="${assets.get('copy-16.svg')}" class="mr-2" />
@@ -178,6 +178,7 @@ module.exports = function(state, emit, archive) {
           <a
             class="flex items-baseline text-blue-dark hover:text-blue-darker focus:text-blue-darker"
             href="${archive.url}"
+            tabindex="0"
           >
             <img src="${assets.get('dl.svg')}" class="mr-2" />
             ${state.translate('downloadButtonLabel')}
@@ -194,7 +195,7 @@ module.exports = function(state, emit, archive) {
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <input
         type="image"
-        class="float-right self-center text-white delete"
+        class="float-right self-center text-white hover:opacity-75 focus:outline"
         alt="Delete"
         src="${assets.get('close-16.svg')}"
         onclick=${del}/>
@@ -251,9 +252,11 @@ module.exports.wip = function(state, emit) {
       >
         <input
           id="file-upload"
-          class="hidden"
+          class="opacity-0 w-0"
           type="file"
           multiple
+          onfocus="${focus}"
+          onblur="${blur}"
           onchange="${add}"
         />
         <label
@@ -273,7 +276,7 @@ module.exports.wip = function(state, emit) {
       ${expiryOptions(state, emit)} ${password(state, emit)}
       <button
         id="upload-btn"
-        class="btn rounded-lg flex-no-shrink"
+        class="btn rounded-lg flex-no-shrink focus:outline"
         title="${state.translate('uploadFilesButton')}"
         onclick="${upload}"
       >
@@ -281,6 +284,16 @@ module.exports.wip = function(state, emit) {
       </button>
     </send-upload-area>
   `;
+
+  function focus(event) {
+    event.target.nextElementSibling.firstElementChild.classList.add('outline');
+  }
+
+  function blur(event) {
+    event.target.nextElementSibling.firstElementChild.classList.remove(
+      'outline'
+    );
+  }
 
   function upload(event) {
     window.scrollTo(0, 0);
@@ -307,7 +320,7 @@ module.exports.wip = function(state, emit) {
     return html`
       <input
         type="image"
-        class="self-center text-white ml-4 h-4"
+        class="self-center text-white ml-4 h-4 hover:opacity-75 focus:outline"
         alt="Delete"
         src="${assets.get('close-16.svg')}"
         onclick="${del}"
@@ -399,11 +412,14 @@ module.exports.empty = function(state, emit) {
   `;
 
   function focus(event) {
-    event.target.nextElementSibling.classList.add('bg-blue-darker');
+    event.target.nextElementSibling.classList.add('bg-blue-darker', 'outline');
   }
 
   function blur(event) {
-    event.target.nextElementSibling.classList.remove('bg-blue-darker');
+    event.target.nextElementSibling.classList.remove(
+      'bg-blue-darker',
+      'outline'
+    );
   }
 
   function add(event) {
@@ -433,7 +449,7 @@ module.exports.preview = function(state, emit) {
     </div>
     <button
       id="download-btn"
-      class="btn rounded-lg mt-4 w-full flex-no-shrink"
+      class="btn rounded-lg mt-4 w-full flex-no-shrink focus:outline"
       title="${state.translate('downloadButtonLabel')}"
       onclick=${download}>
       ${state.translate('downloadButtonLabel')}
