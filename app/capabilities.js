@@ -47,7 +47,7 @@ async function checkCrypto() {
   } catch (err) {
     try {
       window.asmCrypto = await import('asmcrypto.js');
-      await import('./cryptofill');
+      await import('@dannycoates/webcrypto-liner/build/shim');
       return true;
     } catch (e) {
       return false;
