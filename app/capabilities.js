@@ -46,7 +46,7 @@ async function checkCrypto() {
     return true;
   } catch (err) {
     try {
-      await import('./cryptofill');
+      require('./cryptofill');
       return true;
     } catch (e) {
       return false;

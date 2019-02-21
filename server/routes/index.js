@@ -54,8 +54,6 @@ module.exports = function(app) {
               return `'nonce-${req.cspNonce}'`;
             }
           ],
-          styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
-          fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
           formAction: ["'none'"],
           frameAncestors: ["'none'"],
           objectSrc: ["'none'"],
