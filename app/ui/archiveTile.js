@@ -180,6 +180,7 @@ module.exports = function(state, emit, archive) {
           <a
             class="flex items-baseline text-blue-dark hover:text-blue-darker focus:text-blue-darker"
             href="${archive.url}"
+            title="${state.translate('downloadButtonLabel')}"
             tabindex="0"
           >
             <img src="${assets.get('dl.svg')}" class="mr-2" />
