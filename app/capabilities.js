@@ -86,7 +86,7 @@ export default async function getCapabilities() {
   }
   let account = typeof AUTH_CONFIG !== 'undefined';
   try {
-    account = account && !!localStorage;
+    account = account && !!localStorage && browserName() !== 'edge';
   } catch (e) {
     account = false;
   }
