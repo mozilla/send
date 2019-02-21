@@ -75,7 +75,7 @@ class Account extends Component {
         <input
           type="image"
           alt="${user.email}"
-          class="w-8 h-8 rounded-full border text-blue md:text-white"
+          class="w-8 h-8 rounded-full border text-blue md:text-white focus:outline"
           src="${user.avatar}"
           onclick="${e => this.avatarClick(e)}"
         />
@@ -83,16 +83,15 @@ class Account extends Component {
           id="accountMenu"
           class="invisible list-reset absolute pin-t pin-r mt-10 pt-2 pb-2 bg-white shadow-md whitespace-no-wrap outline-none z-50"
           onblur="${e => this.hideMenu(e)}"
-          tabindex="-1"
         >
           <li class="p-2 text-grey-dark">${user.email}</li>
           <li>
-            <a
-              class="block px-4 py-2 text-grey-darkest hover:bg-blue hover:text-white cursor-pointer"
+            <button
+              class="block w-full text-left px-4 py-2 text-grey-darkest hover:bg-blue hover:text-white cursor-pointer focus:outline"
               onclick="${e => this.logout(e)}"
             >
               ${translate('logOut')}
-            </a>
+            </button>
           </li>
         </ul>
       </send-account>
