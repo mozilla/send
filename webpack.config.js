@@ -91,10 +91,6 @@ const web = {
         test: /\.js$/,
         oneOf: [
           {
-            include: [require.resolve('./app/cryptofill')],
-            use: ['script-loader']
-          },
-          {
             loader: 'babel-loader',
             include: [
               path.resolve(__dirname, 'app'),

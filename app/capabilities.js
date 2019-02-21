@@ -46,7 +46,8 @@ async function checkCrypto() {
     return true;
   } catch (err) {
     try {
-      require('./cryptofill');
+      window.asmCrypto = await import('asmcrypto.js');
+      await import('./cryptofill');
       return true;
     } catch (e) {
       return false;

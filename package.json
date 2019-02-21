@@ -67,7 +67,7 @@
     "@dannycoates/webpack-dev-server": "^3.1.4",
     "@fullhuman/postcss-purgecss": "^1.1.0",
     "@mattiasbuelens/web-streams-polyfill": "0.2.1",
-    "asmcrypto.js": "^2.3.2",
+    "asmcrypto.js": "^0.22.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-istanbul": "^5.1.1",
     "base64-js": "^1.3.0",
