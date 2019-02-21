@@ -159,6 +159,7 @@ module.exports = function(state, emit, archive) {
           <button
             class="text-blue-dark hover:text-blue-darker focus:text-blue-darker focus:outline self-end flex items-center"
             onclick=${copy}
+            title="${state.translate('copyUrlHover')}"
           >
             <img src="${assets.get('copy-16.svg')}" class="mr-2" />
             ${state.translate('copyUrlHover')}
@@ -168,6 +169,7 @@ module.exports = function(state, emit, archive) {
           <button
             class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end flex items-center"
             onclick=${share}
+            title="Share"
           >
             <img src="${assets.get('share-24.svg')}" class="mr-2" /> Share
           </button>
@@ -196,7 +198,8 @@ module.exports = function(state, emit, archive) {
       <input
         type="image"
         class="float-right self-center text-white hover:opacity-75 focus:outline"
-        alt="Delete"
+        alt="${state.translate('deleteButtonHover')}"
+        title="${state.translate('deleteButtonHover')}"
         src="${assets.get('close-16.svg')}"
         onclick=${del}/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -243,7 +246,9 @@ module.exports.wip = function(state, emit) {
       ${list(
         Array.from(state.archive.files)
           .reverse()
-          .map(f => fileInfo(f, remove(f))),
+          .map(f =>
+            fileInfo(f, remove(f, state.translate('deleteButtonHover')))
+          ),
         'bg-grey-lightest rounded-t list-reset overflow-y-auto px-6 py-4 md:h-full md:max-h-half-screen',
         'bg-white px-2 my-2 shadow-light rounded'
       )}
@@ -252,26 +257,29 @@ module.exports.wip = function(state, emit) {
       >
         <input
           id="file-upload"
-          class="opacity-0 w-0"
+          class="opacity-0 w-0 h-0 appearance-none"
           type="file"
           multiple
           onfocus="${focus}"
           onblur="${blur}"
           onchange="${add}"
         />
-        <label
-          for="file-upload"
-          class="flex flex-row items-center justify-between w-full p-2 cursor-pointer"
+        <div
+          class="flex flex-row items-center justify-between w-full p-2"
           title="${state.translate('addFilesButton')}"
         >
-          <div class="flex items-center">
+          <label
+            for="file-upload"
+            class="flex items-center cursor-pointer"
+            title="${state.translate('addFilesButton')}"
+          >
             <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2" />
             ${state.translate('addFilesButton')}
-          </div>
+          </label>
           <div class="font-normal text-sm text-grey-darker">
             ${state.translate('totalSize', { size: bytes(state.archive.size) })}
           </div>
-        </label>
+        </div>
       </div>
       ${expiryOptions(state, emit)} ${password(state, emit)}
       <button
@@ -316,12 +324,13 @@ module.exports.wip = function(state, emit) {
     });
   }
 
-  function remove(file) {
+  function remove(file, desc) {
     return html`
       <input
         type="image"
         class="self-center text-white ml-4 h-4 hover:opacity-75 focus:outline"
-        alt="Delete"
+        alt="${desc}"
+        title="${desc}"
         src="${assets.get('close-16.svg')}"
         onclick="${del}"
       />
@@ -359,7 +368,8 @@ module.exports.uploading = function(state, emit) {
     <progress class="my-3" value="${progress}">${progressPercent}</progress>
     <button
       class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end font-medium"
-      onclick=${cancel}>
+      onclick=${cancel}
+      title="${state.translate('uploadingPageCancel')}">
       ${state.translate('uploadingPageCancel')}
     </button>
   </send-upload-area>`;

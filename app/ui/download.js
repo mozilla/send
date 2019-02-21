@@ -36,6 +36,7 @@ function password(state, emit) {
             ? 'bg-red hover:bg-red focus:bg-red'
             : ''}"
           value="${state.translate('unlockButtonLabel')}"
+          title="${state.translate('unlockButtonLabel')}"
         />
       </form>
       <label

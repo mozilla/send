@@ -21,12 +21,14 @@ module.exports = function(name, url) {
         <button
           class="btn rounded-lg w-full flex-no-shrink focus:outline"
           onclick="${copy}"
+          title="${state.translate('copyUrlFormButton')}"
         >
           ${state.translate('copyUrlFormButton')}
         </button>
         <button
           class="text-blue-dark hover:text-blue-darker focus:text-blue-darker my-4 font-medium cursor-pointer focus:outline"
           onclick="${close}"
+          title="${state.translate('okButton')}"
         >
           ${state.translate('okButton')}
         </button>

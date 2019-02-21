@@ -30,6 +30,7 @@ module.exports = function(trigger) {
         <input
           class="btn rounded-lg w-full flex flex-no-shrink items-center justify-center"
           value="${state.translate('signInMenuOption')}"
+          title="${state.translate('signInMenuOption')}"
           id="email-submit"
           type="submit" />
       </form>
