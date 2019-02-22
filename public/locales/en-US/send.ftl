@@ -105,6 +105,7 @@ notSupportedDetailUpdate = Firefox Send will not work with this browser. Send wo
 notSupportedLink = Why is my browser not supported?
 notSupportedOutdatedDetail = Unfortunately this version of Firefox does not support the web technology that powers Firefox Send. You’ll need to update your browser.
 updateFirefox = Update Firefox
+downloadFirefox = Download Firefox
 downloadFirefoxButtonSub = Free Download
 uploadedFile = File
 copyFileList = Copy URL
