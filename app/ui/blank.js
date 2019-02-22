@@ -2,7 +2,7 @@ const html = require('choo/html');
 
 module.exports = function() {
   return html`
-    <main class="main relative">
+    <main class="main">
       <section
         class="h-full w-full p-6 z-10 md:flex md:flex-row md:rounded-lg md:shadow-big"
       >

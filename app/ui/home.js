@@ -27,7 +27,7 @@ module.exports = function(state, emit) {
         );
 
   return html`
-    <main class="main relative">
+    <main class="main">
       ${state.modal && modal(state, emit)}
       <section
         class="h-full w-full p-6 z-10 overflow-hidden md:flex md:flex-row md:rounded-lg md:shadow-big"

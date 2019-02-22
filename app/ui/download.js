@@ -153,7 +153,7 @@ module.exports = function(state, emit) {
     content = password(state, emit);
   }
   return html`
-    <main class="main container">
+    <main class="main">
       ${state.modal && modal(state, emit)}
       <section class="relative h-full w-full p-6 md:rounded-lg md:shadow-big">
         ${content}

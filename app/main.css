@@ -146,6 +146,7 @@ footer li:hover {
 
 .main {
   display: flex;
+  position: relative;
   max-width: 64rem;
   width: 100%;
   height: 100%;
