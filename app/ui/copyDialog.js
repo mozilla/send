@@ -7,9 +7,12 @@ module.exports = function(name, url) {
       <send-copy-dialog
         class="flex flex-col items-center text-center p-4 max-w-sm"
       >
-        <h1 class="font-bold my-4">${state.translate('notifyUploadDone')}</h1>
+        <h1 class="font-bold my-4">
+          ${state.translate('notifyUploadEncryptDone')}
+        </h1>
         <p class="font-normal leading-normal text-grey-darker word-break-all">
-          ${state.translate('copyUrlFormLabelWithName', { filename: name })}
+          ${state.translate('copyUrlFormLabel')} <br />
+          ${name}
         </p>
         <input
           type="text"
@@ -21,9 +24,9 @@ module.exports = function(name, url) {
         <button
           class="btn rounded-lg w-full flex-no-shrink focus:outline"
           onclick="${copy}"
-          title="${state.translate('copyUrlFormButton')}"
+          title="${state.translate('copyUrlFormButtonText')}"
         >
-          ${state.translate('copyUrlFormButton')}
+          ${state.translate('copyUrlFormButtonText')}
         </button>
         <button
           class="text-blue-dark hover:text-blue-darker focus:text-blue-darker my-4 font-medium cursor-pointer focus:outline"

@@ -57,7 +57,7 @@ const LOCALIZE_NUMBERS = !!(
 );
 
 const UNITS = ['B', 'kB', 'MB', 'GB'];
-function bytes(num) {
+function bytes(num, decimalDigits = 1) {
   if (num < 1) {
     return '0B';
   }
@@ -68,8 +68,8 @@ function bytes(num) {
     try {
       const locale = document.querySelector('html').lang;
       nStr = n.toLocaleString(locale, {
-        minimumFractionDigits: 1,
-        maximumFractionDigits: 1
+        minimumFractionDigits: decimalDigits,
+        maximumFractionDigits: decimalDigits
       });
     } catch (e) {
       // fall through

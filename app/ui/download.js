@@ -12,7 +12,7 @@ function password(state, emit) {
     <div
       class="h-full w-full flex flex-col items-center justify-center bg-white py-8"
     >
-      <h1 class="mb-4">${state.translate('downloadFileTitle')}</h1>
+      <h1 class="mb-4">${state.translate('downloadFilesTitle')}</h1>
       <form
         class="flex flex-row flex-no-wrap w-full md:w-4/5"
         onsubmit="${checkPassword}"
@@ -118,15 +118,17 @@ module.exports = function(state, emit) {
         content = html`
           <div
             id="download-complete"
-            class="flex flex-col items-center justify-center h-full w-full bg-white border border-grey-light p-2"
+            class="flex flex-col items-center justify-center h-full w-full bg-white p-2"
           >
             <h1 class="text-center font-bold my-4 text-2xl">
               ${state.translate('downloadFinish')}
             </h1>
+            <p class="pb-2">${state.translate('downloadFinishText')}</p>
             <p class="mb-4">
               <a
                 href="/"
-                class="text-blue hover:text-blue-dark focus:text-blue-darker font-medium"
+                class="btn rounded-lg flex items-center mt-4"
+                role="button"
                 >${state.translate('sendYourFilesLink')}</a
               >
             </p>
@@ -136,7 +138,14 @@ module.exports = function(state, emit) {
       default:
         content = html`
           <div class="flex flex-col w-full h-full items-center mt-12">
-            <h1 class="">${state.translate('downloadFileTitle')}</h1>
+            <h1 class="mb-4">${state.translate('downloadFilesTitle')}</h1>
+            <p class="w-full md:w-4/5 pb-4 mb-4 text-center">
+              ${state.translate('downloadFileText', {
+                name: 'name',
+                timeSpan: 'time span',
+                downloadCount: 'download count'
+              })}
+            </p>
             ${archiveTile.preview(state, emit)}
           </div>
         `;

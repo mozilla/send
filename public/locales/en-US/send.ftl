@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteSubtitle = web experiment
 siteFeedback = Feedback
 uploadPageHeader = Private, Encrypted File Sharing
 uploadPageExplainer = Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
@@ -16,9 +15,9 @@ importingFile = Importing…
 verifyingFile = Verifying…
 encryptingFile = Encrypting…
 decryptingFile = Decrypting…
-notifyUploadDone = Your upload has finished.
+notifyUploadEncryptDone = Your file is encrypted and ready to send.
 uploadingPageMessage = Once your file uploads you will be able to set expiry options.
-uploadingPageCancel = Cancel upload
+uploadingPageCancel = Cancel
 uploadCancelNotification = Your upload was cancelled.
 downloadCancel = Cancel download
 uploadingPageLargeFileMessage = This file is large and may take a while to upload. Sit tight!
@@ -52,9 +51,9 @@ fileCount = { $num ->
     [one] 1 file
    *[other] { $num } files
 }
-totalSize = Total Size: { $size }
-copyUrlFormLabelWithName = Copy and share the link to send your file: { $filename }
-copyUrlFormButton = Copy to clipboard
+totalSize = Total size: { $size }
+copyUrlFormLabel = Copy the link to share your file:
+copyUrlFormButtonText = Copy link
 copiedUrl = Copied!
 deleteFileButton = Delete file
 sendAnotherFileLink = Send another file
@@ -71,13 +70,15 @@ downloadFileSize = ({ $size })
 unlockInputLabel = Enter Password
 unlockInputPlaceholder = Password
 unlockButtonLabel = Unlock
-downloadFileTitle = Download Encrypted File
+downloadFilesTitle = Download Files
+downloadFileText = {$name} was encrypted with Firefox Send, and will expire after { $timeSpan } or { $downloadCount }.
 # Firefox Send is a brand name and should not be localized.
 downloadMessage = Your friend is sending you a file with Firefox Send, a service that allows you to share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
 # Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Download
 downloadNotification = Your download has completed.
 downloadFinish = Download Complete
+downloadFinishText = Try Firefox Send for simple, safe file sharing.
 # This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } of { $totalSize })
 # Firefox Send is a brand name and should not be localized.
@@ -98,10 +99,10 @@ tooManyArchives = { $count ->
     *[other] Only { $count } archives are allowed.
 }
 linkExpiredAlt = Link expired
-expiredPageHeader = This link has expired or never existed in the first place!
+expiredPageHeaderUpdate = This link has expired.
 notSupportedHeader = Your browser is not supported.
 # Firefox Send is a brand name and should not be localized.
-notSupportedDetail = Unfortunately this browser does not support the web technology that powers Firefox Send. You’ll need to try another browser. We recommend Firefox!
+notSupportedDetailUpdate = Firefox Send will not work with this browser. Send works best with the latest version of Firefox, and will work with the current version of most browsers.
 notSupportedLink = Why is my browser not supported?
 notSupportedOutdatedDetail = Unfortunately this version of Firefox does not support the web technology that powers Firefox Send. You’ll need to update your browser.
 updateFirefox = Update Firefox
@@ -121,8 +122,6 @@ deletePopupCancel = Cancel
 deleteButtonHover = Delete
 copyUrlHover = Copy URL
 footerLinkLegal = Legal
-# Test Pilot is a proper name and should not be localized.
-footerLinkAbout = About Test Pilot
 footerLinkPrivacy = Privacy
 footerLinkTerms = Terms
 footerLinkPrivacyAndTerms = Privacy & Terms
@@ -149,9 +148,10 @@ maxPasswordLength = Maximum password length: { $length }
 passwordSetError = This password could not be set
 pageHeaderCredits = from the makers of Firefox
 addFilesButton = Add file(s)
+addFilesButtonWithSize = Add file(s) up to { $size }
 uploadFilesButton = Upload
 uploadDropDragMessage = Drop files here
-uploadDropClickMessage = or click to select a file
+uploadDropButtonMessage = or click to select files
 addPasswordMessage = Protect with password
 addPasswordLabel = Password:
 copyUrlLabel = Copy and share this link:
@@ -162,15 +162,18 @@ signInLearnMore = Learn more!
 downloadProgressButton = Downloading... { $progress }
 downloadMessage2 = Firefox Send lets you share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
 signInEmailEnter = Enter your Email
-emailEntryPlaceholder = Email
+emailEntryPlaceholder = Enter your email
+signInSizeBump = Sign in to send up to {$size}
 signInContinueMessage = to continue to Firefox Send
 signInContinueButton = Continue
 signInMenuOption = Sign in/up
+signInNextOption = Continue
 accountMenuOption = Firefox Account
-accountBenefitTitle = With a free Firefox Account with Send you can:
-accountBenefitLargeFiles = Upload larger files (up to { $size })
-accountBenefitExpiry = Have more expiry options
-accountBenefitSync = Manage your uploads across devices
+accountBenefitTitle = Create a Firefox Account or sign in to:
+accountBenefitLargeFiles = Share files up to { $size}
+accountBenefitExpiry = Share files with more people
+accountBenefitExpiryTwo = Keep links active for up to { days } days
+accountBenefitSync = Manage shared files from any device
 manageAccount = Manage Account
 logOut = Sign Out
 okButton = Ok
