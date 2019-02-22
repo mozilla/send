@@ -414,7 +414,7 @@ module.exports.empty = function(state, emit) {
       </div>
       <input
         id="file-upload"
-        class="opacity-0"
+        class="opacity-0 w-0 h-0 appearance-none"
         type="file"
         multiple
         onfocus="${focus}"
