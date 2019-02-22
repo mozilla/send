@@ -15,7 +15,7 @@ importingFile = Importing…
 verifyingFile = Verifying…
 encryptingFile = Encrypting…
 decryptingFile = Decrypting…
-notifyUploadEncryptDone = Your file is encrypted and ready to send.
+notifyUploadEncryptDone = Your file is encrypted and ready to share.
 uploadingPageMessage = Once your file uploads you will be able to set expiry options.
 uploadingPageCancel = Cancel
 uploadCancelNotification = Your upload was cancelled.
@@ -71,7 +71,6 @@ unlockInputLabel = Enter Password
 unlockInputPlaceholder = Password
 unlockButtonLabel = Unlock
 downloadFilesTitle = Download Files
-downloadFileText = {$name} was encrypted with Firefox Send, and will expire after { $timeSpan } or { $downloadCount }.
 # Firefox Send is a brand name and should not be localized.
 downloadMessage = Your friend is sending you a file with Firefox Send, a service that allows you to share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
 # Text and title used on the download link/button (indicates an action).

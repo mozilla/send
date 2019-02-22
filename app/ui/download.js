@@ -140,11 +140,7 @@ module.exports = function(state, emit) {
           <div class="flex flex-col w-full h-full items-center mt-12">
             <h1 class="mb-4">${state.translate('downloadFilesTitle')}</h1>
             <p class="w-full md:w-4/5 pb-4 mb-4 text-center">
-              ${state.translate('downloadFileText', {
-                name: 'name',
-                timeSpan: 'time span',
-                downloadCount: 'download count'
-              })}
+              ${state.translate('downloadMessage')}
             </p>
             ${archiveTile.preview(state, emit)}
           </div>
