@@ -265,9 +265,12 @@ module.exports.wip = function(state, emit) {
           onblur="${blur}"
           onchange="${add}"
         />
-        <div
-          class="flex flex-row items-center justify-between w-full p-2"
-          title="${state.translate('addFilesButton')}"
+        <label
+          for="file-upload"
+          class="flex flex-row items-center justify-between w-full p-2 cursor-pointer"
+          title="${state.translate('addFilesButtonWithSize', {
+            size: bytes(1000000)
+          })}"
         >
           <label
             for="file-upload"
@@ -275,10 +278,14 @@ module.exports.wip = function(state, emit) {
             title="${state.translate('addFilesButton')}"
           >
             <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2" />
-            ${state.translate('addFilesButton')}
-          </label>
+            ${state.translate('addFilesButtonWithSize', {
+              size: bytes(1000000)
+            })}
+          </div>
           <div class="font-normal text-sm text-grey-darker">
-            ${state.translate('totalSize', { size: bytes(state.archive.size) })}
+            ${state.translate('totalSizeUpdate', {
+              size: bytes(state.archive.size)
+            })}
           </div>
         </div>
       </div>
@@ -370,8 +377,8 @@ module.exports.uploading = function(state, emit) {
     <button
       class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end font-medium"
       onclick=${cancel}
-      title="${state.translate('uploadingPageCancel')}">
-      ${state.translate('uploadingPageCancel')}
+      title="${state.translate('uploadingPageCancelShort')}">
+      ${state.translate('uploadingPageCancelShort')}
     </button>
   </send-upload-area>`;
 
@@ -398,8 +405,8 @@ module.exports.empty = function(state, emit) {
       >
         ${state.translate('uploadDropDragMessage')}
       </div>
-      <div class="text-center text-base italic">
-        ${state.translate('uploadDropClickMessage')}
+      <div class="pb-6 text-center text-base">
+        ${state.translate('uploadDropButtonMessage')}
       </div>
       <input
         id="file-upload"
@@ -415,10 +422,17 @@ module.exports.empty = function(state, emit) {
         for="file-upload"
         role="button"
         class="btn rounded-lg flex items-center mt-4"
-        title="${state.translate('addFilesButton')}"
+        title="${state.translate('addFilesButtonWithSize', {
+          size: bytes(1000000)
+        })}"
       >
-        ${state.translate('addFilesButton')}
+        ${state.translate('addFilesButtonWithSize', {
+          size: bytes(1000000)
+        })}
       </label>
+      <a class="center font-medium text-xs text-grey-dark mt-4 mb-2">
+        ${state.translate('signInSizeBump', { size: bytes(1000000) })}
+      </a>
     </send-upload-area>
   `;
 

@@ -69,7 +69,7 @@ function outdatedStrings(state) {
 function unsupportedStrings(state) {
   return {
     header: state.translate('notSupportedHeader'),
-    description: state.translate('notSupportedDetail'),
+    description: state.translate('notSupportedDetailUpdate'),
     button: state.translate('downloadFirefoxButtonSub')
   };
 }
