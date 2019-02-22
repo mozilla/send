@@ -3,6 +3,8 @@ const html = require('choo/html');
 const { bytes, platform } = require('../utils');
 const { canceledSignup, submittedSignup } = require('../metrics');
 
+const DAYS = Math.floor(LIMITS.MAX_EXPIRE_SECONDS / 86400);
+
 module.exports = function(trigger) {
   return function(state, emit, close) {
     const hidden = platform() === 'android' ? 'hidden' : '';
@@ -15,7 +17,7 @@ module.exports = function(trigger) {
           size: bytes(LIMITS.MAX_FILE_SIZE)
         })}</li>
         <li>${state.translate('accountBenefitExpiry')}</li>
-        <li>${state.translate('accountBenefitExpiryTwo')}</li>
+        <li>${state.translate('accountBenefitExpiryTwo', { count: DAYS })}</li>
         <li>${state.translate('accountBenefitSync')}</li>
       </ul>
       <form

@@ -13,6 +13,9 @@ function password(state, emit) {
       class="h-full w-full flex flex-col items-center justify-center bg-white py-8"
     >
       <h1 class="mb-4">${state.translate('downloadFilesTitle')}</h1>
+      <p class="w-full mb-4 md:w-4/5 font-light text-center">
+        ${state.translate('downloadMessage')}
+      </p>
       <form
         class="flex flex-row flex-no-wrap w-full md:w-4/5"
         onsubmit="${checkPassword}"
@@ -137,9 +140,9 @@ module.exports = function(state, emit) {
         break;
       default:
         content = html`
-          <div class="flex flex-col w-full h-full items-center mt-12">
+          <div class="flex flex-col w-full h-full items-center justify-center">
             <h1 class="mb-4">${state.translate('downloadFilesTitle')}</h1>
-            <p class="w-full md:w-4/5 pb-4 mb-4 text-center">
+            <p class="w-full md:w-4/5 font-light text-center">
               ${state.translate('downloadMessage')}
             </p>
             ${archiveTile.preview(state, emit)}

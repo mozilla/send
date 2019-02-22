@@ -162,16 +162,18 @@ downloadProgressButton = Downloading... { $progress }
 downloadMessage2 = Firefox Send lets you share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
 signInEmailEnter = Enter your Email
 emailEntryPlaceholder = Enter your email
-signInSizeBump = Sign in to send up to {$size}
+signInSizeBump = Sign in to send up to { $size }
 signInContinueMessage = to continue to Firefox Send
 signInContinueButton = Continue
 signInMenuOption = Sign in/up
 signInNextOption = Continue
 accountMenuOption = Firefox Account
 accountBenefitTitle = Create a Firefox Account or sign in to:
-accountBenefitLargeFiles = Share files up to { $size}
+accountBenefitLargeFiles = Share files up to { $size }
 accountBenefitExpiry = Share files with more people
-accountBenefitExpiryTwo = Keep links active for up to { days } days
+accountBenefitExpiryTwo = { $count ->
+    *[other] Keep links active for up to { $count } days
+}
 accountBenefitSync = Manage shared files from any device
 manageAccount = Manage Account
 logOut = Sign Out
