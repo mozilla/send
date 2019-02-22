@@ -259,7 +259,7 @@ select {
     @apply m-auto;
     @apply py-8;
 
-    min-height: 33rem;
+    min-height: 36rem;
     max-height: 40rem;
     width: calc(100% - 3rem);
   }

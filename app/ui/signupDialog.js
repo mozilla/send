@@ -25,7 +25,7 @@ module.exports = function(trigger) {
           id="email-input"
           type="text"
           class="${hidden} border rounded-lg w-full px-2 py-1 h-12 mb-4 text-lg text-grey-darker leading-loose"
-          placeholder=${state.translate('emailEntryPlaceholderUpdate')} />
+          placeholder=${state.translate('emailEntryPlaceholder')} />
         <input
           class="btn rounded-lg w-full flex flex-no-shrink items-center justify-center"
           value="${state.translate('signInMenuOption')}"
