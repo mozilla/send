@@ -7,7 +7,9 @@ module.exports = function(name, url) {
       <send-copy-dialog
         class="flex flex-col items-center text-center p-4 max-w-sm"
       >
-        <h1 class="font-bold my-4">${state.translate('notifyUploadDone')}</h1>
+        <h1 class="font-bold my-4">
+          ${state.translate('notifyUploadEncryptDone')}
+        </h1>
         <p class="font-normal leading-normal text-grey-darker word-break-all">
           ${state.translate('copyUrlFormLabel')} <br />
           ${name}
