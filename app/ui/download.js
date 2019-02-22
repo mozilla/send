@@ -135,8 +135,8 @@ module.exports = function(state, emit) {
         break;
       default:
         content = html`
-          <div class="flex flex-col w-full h-full items-center mt-8">
-            <h1 class="mb-4">${state.translate('downloadFileTitle')}</h1>
+          <div class="flex flex-col w-full h-full items-center mt-12">
+            <h1 class="">${state.translate('downloadFileTitle')}</h1>
             ${archiveTile.preview(state, emit)}
           </div>
         `;
@@ -147,9 +147,7 @@ module.exports = function(state, emit) {
   return html`
     <main class="main container">
       ${state.modal && modal(state, emit)}
-      <section
-        class="relative h-full w-full p-6 md:flex md:flex-row md:rounded-lg md:shadow-big"
-      >
+      <section class="relative h-full w-full p-6 md:rounded-lg md:shadow-big">
         ${content}
       </section>
     </main>

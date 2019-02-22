@@ -447,7 +447,8 @@ module.exports.preview = function(state, emit) {
     archive.open = true;
   }
   return html`
-  <send-archive class="flex flex-col max-h-full bg-white rounded shadow-light p-4 w-full md:w-4/5">
+  <send-archive class="flex flex-col max-h-full bg-white p-4 w-full md:w-128">
+    <div class="border rounded py-3 px-6">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
@@ -457,6 +458,7 @@ module.exports.preview = function(state, emit) {
     </p>
     <div class="h-full md:h-48 overflow-y-auto">
       ${archiveDetails(state.translate, archive)}
+    </div>
     </div>
     <button
       id="download-btn"
