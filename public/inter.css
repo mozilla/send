@@ -2,6 +2,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 100;
+  font-display: optional;
   src: url('Inter-Thin.woff2') format('woff2'),
     url('Inter-Thin.woff') format('woff');
 }
@@ -10,6 +11,7 @@
   font-family: 'Inter';
   font-style: italic;
   font-weight: 100;
+  font-display: optional;
   src: url('Inter-ThinItalic.woff2') format('woff2'),
     url('Inter-ThinItalic.woff') format('woff');
 }
@@ -18,6 +20,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 200;
+  font-display: optional;
   src: url('Inter-ExtraLight.woff2') format('woff2'),
     url('Inter-ExtraLight.woff') format('woff');
 }
@@ -26,6 +29,7 @@
   font-family: 'Inter';
   font-style: italic;
   font-weight: 200;
+  font-display: optional;
   src: url('Inter-ExtraLightItalic.woff2') format('woff2'),
     url('Inter-ExtraLightItalic.woff') format('woff');
 }
@@ -34,6 +38,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 300;
+  font-display: optional;
   src: url('Inter-Light.woff2') format('woff2'),
     url('Inter-Light.woff') format('woff');
 }
@@ -42,6 +47,7 @@
   font-family: 'Inter';
   font-style: italic;
   font-weight: 300;
+  font-display: optional;
   src: url('Inter-LightItalic.woff2') format('woff2'),
     url('Inter-LightItalic.woff') format('woff');
 }
@@ -50,6 +56,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
+  font-display: optional;
   src: url('Inter-Regular.woff2') format('woff2'),
     url('Inter-Regular.woff') format('woff');
 }
@@ -58,6 +65,7 @@
   font-family: 'Inter';
   font-style: italic;
   font-weight: 400;
+  font-display: optional;
   src: url('Inter-Italic.woff2') format('woff2'),
     url('Inter-Italic.woff') format('woff');
 }
@@ -66,6 +74,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
+  font-display: optional;
   src: url('Inter-Medium.woff2') format('woff2'),
     url('Inter-Medium.woff') format('woff');
 }
@@ -74,6 +83,7 @@
   font-family: 'Inter';
   font-style: italic;
   font-weight: 500;
+  font-display: optional;
   src: url('Inter-MediumItalic.woff2') format('woff2'),
     url('Inter-MediumItalic.woff') format('woff');
 }
@@ -82,6 +92,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
+  font-display: optional;
   src: url('Inter-SemiBold.woff2') format('woff2'),
     url('Inter-SemiBold.woff') format('woff');
 }
@@ -90,6 +101,7 @@
   font-family: 'Inter';
   font-style: italic;
   font-weight: 600;
+  font-display: optional;
   src: url('Inter-SemiBoldItalic.woff2') format('woff2'),
     url('Inter-SemiBoldItalic.woff') format('woff');
 }
@@ -98,6 +110,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
+  font-display: optional;
   src: url('Inter-Bold.woff2') format('woff2'),
     url('Inter-Bold.woff') format('woff');
 }
@@ -106,6 +119,7 @@
   font-family: 'Inter';
   font-style: italic;
   font-weight: 700;
+  font-display: optional;
   src: url('Inter-BoldItalic.woff2') format('woff2'),
     url('Inter-BoldItalic.woff') format('woff');
 }
@@ -114,6 +128,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 800;
+  font-display: optional;
   src: url('Inter-ExtraBold.woff2') format('woff2'),
     url('Inter-ExtraBold.woff') format('woff');
 }
@@ -122,6 +137,7 @@
   font-family: 'Inter';
   font-style: italic;
   font-weight: 800;
+  font-display: optional;
   src: url('Inter-ExtraBoldItalic.woff2') format('woff2'),
     url('Inter-ExtraBoldItalic.woff') format('woff');
 }
@@ -130,6 +146,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 900;
+  font-display: optional;
   src: url('Inter-Black.woff2') format('woff2'),
     url('Inter-Black.woff') format('woff');
 }
@@ -138,6 +155,7 @@
   font-family: 'Inter';
   font-style: italic;
   font-weight: 900;
+  font-display: optional;
   src: url('Inter-BlackItalic.woff2') format('woff2'),
     url('Inter-BlackItalic.woff') format('woff');
 }
