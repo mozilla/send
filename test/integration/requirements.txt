@@ -1,5 +1,5 @@
 selenium==3.141.0
-flake8==3.7.5
+flake8==3.7.7
 flake8-isort==2.6.0
 PyPOM==2.2.0
 pytest==4.2.0
