@@ -10,7 +10,7 @@ module.exports = function(app = choo()) {
   app.route('/legal', body(require('./ui/legal')));
   app.route('/error', body(require('./ui/error')));
   app.route('/blank', body(require('./ui/blank')));
-  app.route('/oauth', async function(state, emit) {
+  app.route('/oauth', function(state, emit) {
     emit('authenticate', state.query.code, state.query.state);
   });
   app.route('*', body(require('./ui/notFound')));

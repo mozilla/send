@@ -70,6 +70,7 @@ module.exports = function(app) {
   app.use(bodyParser.json());
   app.use(bodyParser.text());
   app.get('/', language, pages.index);
+  app.get('/error', language, pages.blank);
   app.get('/oauth', language, pages.blank);
   app.get('/legal', language, pages.legal);
   app.get('/app.webmanifest', language, require('./webmanifest'));

@@ -107,7 +107,19 @@ export default function(state, emitter) {
     render();
   });
 
+  /*
+    FIXME choo on Edge double-triggers loaded routes
+    causing 'authenticate' to fire twice which leads to
+    an error. Until that's fixed we have authLocked to
+    prevent the second event from causing the error.
+    Once choo doesn't double-trigger we can remove authLocked.
+  */
+  let authLocked = false;
   emitter.on('authenticate', async (code, oauthState) => {
+    if (authLocked) {
+      return;
+    }
+    authLocked = true;
     try {
       await state.user.finishLogin(code, oauthState);
       await state.user.syncFileList();
@@ -116,6 +128,7 @@ export default function(state, emitter) {
       emitter.emit('replaceState', '/error');
       setTimeout(render);
     }
+    authLocked = false;
   });
 
   emitter.on('upload', async () => {
