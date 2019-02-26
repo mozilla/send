@@ -108,8 +108,8 @@ function fileInfo(file, action) {
     <send-file class="flex flex-row items-center p-3 w-full">
       <img class="h-8" src="${assets.get('blue_file.svg')}"/>
       <p class="ml-4 w-full">
-        <h1 class="text-sm font-medium word-break-all">${file.name}</h1>
-        <div class="text-xs font-normal opacity-75 pt-1">${bytes(
+        <h1 class="text-base font-medium word-break-all">${file.name}</h1>
+        <div class="text-sm font-normal opacity-75 pt-1">${bytes(
           file.size
         )}</div>
         <div class="hidden">${file.type}</div>
@@ -203,12 +203,12 @@ module.exports = function(state, emit, archive) {
         title="${state.translate('deleteButtonHover')}"
         src="${assets.get('close-16.svg')}"
         onclick=${del}/>
-      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
-      <div class="text-xs font-normal opacity-75 pt-1">${bytes(
+      <h1 class="text-base font-medium word-break-all">${archive.name}</h1>
+      <div class="text-sm font-normal opacity-75 pt-1">${bytes(
         archive.size
       )}</div>
     </p>
-    <div class="text-xs text-grey-dark w-full mt-2 mb-2">
+    <div class="text-sm opacity-75 w-full mt-2 mb-2">
       ${expiryInfo(state.translate, archive)}
     </div>
     ${archiveDetails(state.translate, archive)}
@@ -388,11 +388,17 @@ module.exports.empty = function(state, emit) {
   const upsell = state.user.loggedIn
     ? ''
     : html`
-        <p class="center font-medium text-xs text-grey-dark mt-4 mb-2">
+        <button
+          class="center font-medium text-sm text-blue-dark hover:text-blue-darker focus:text-blue-darker mt-4 mb-2"
+          onclick="${event => {
+            event.stopPropagation();
+            emit('signup-cta');
+          }}"
+        >
           ${state.translate('signInSizeBump', {
             size: bytes(state.LIMITS.MAX_FILE_SIZE, 0)
           })}
-        </p>
+        </button>
       `;
   return html`
     <send-upload-area
@@ -462,19 +468,25 @@ module.exports.preview = function(state, emit) {
   if (archive.open === undefined) {
     archive.open = true;
   }
+  const single = archive.manifest.files.length === 1;
+  const details = single
+    ? ''
+    : html`
+        <div class="mt-4 h-full md:h-48 overflow-y-auto">
+          ${archiveDetails(state.translate, archive)}
+        </div>
+      `;
   return html`
   <send-archive class="flex flex-col max-h-full bg-white p-4 w-full md:w-128">
     <div class="border rounded py-3 px-6">
-    <p class="w-full mb-4">
-      <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
-      <div class="text-xs font-normal opacity-75 pt-1">${bytes(
-        archive.size
-      )}</div>
-    </p>
-    <div class="h-full md:h-48 overflow-y-auto">
-      ${archiveDetails(state.translate, archive)}
-    </div>
+      <p class="w-full">
+        <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
+        <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
+        <div class="text-xs font-normal opacity-75 pt-1">${bytes(
+          archive.size
+        )}</div>
+      </p>
+      ${details}
     </div>
     <button
       id="download-btn"
@@ -497,7 +509,7 @@ module.exports.downloading = function(state) {
   const progress = state.transfer.progressRatio;
   const progressPercent = percent(progress);
   return html`
-  <send-archive class="flex flex-col bg-white rounded shadow-light p-4 w-full md:w-4/5">
+  <send-archive class="flex flex-col bg-white rounded shadow-light p-4 w-full max-w-sm md:w-128">
     <p class="w-full mb-4">
       <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
       <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>

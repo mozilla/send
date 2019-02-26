@@ -111,7 +111,9 @@ module.exports = function(state, emit) {
       case 'downloading':
       case 'decrypting':
         content = html`
-          <div class="flex flex-col w-full h-full items-center mt-8">
+          <div
+            class="flex flex-col w-full h-full items-center md:justify-center md:-mt-8"
+          >
             <h1 class="mb-4">${state.translate('downloadingTitle')}</h1>
             ${archiveTile.downloading(state, emit)}
           </div>
@@ -126,7 +128,9 @@ module.exports = function(state, emit) {
             <h1 class="text-center font-bold my-4 text-2xl">
               ${state.translate('downloadFinish')}
             </h1>
-            <p class="pb-2">${state.translate('downloadFinishText')}</p>
+            <p class="pb-2 text-grey-darkest leading-normal">
+              ${state.translate('downloadFinishText')}
+            </p>
             <p class="mb-4">
               <a
                 href="/"
@@ -142,7 +146,9 @@ module.exports = function(state, emit) {
         content = html`
           <div class="flex flex-col w-full h-full items-center justify-center">
             <h1 class="mb-4">${state.translate('downloadFilesTitle')}</h1>
-            <p class="w-full md:w-4/5 font-light text-center">
+            <p
+              class="w-full md:w-4/5 font-light text-grey-darkest text-center leading-normal"
+            >
               ${state.translate('downloadMessage')}
             </p>
             ${archiveTile.preview(state, emit)}

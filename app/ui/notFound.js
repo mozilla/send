@@ -9,7 +9,7 @@ module.exports = function(state, emit) {
       <div
         class="flex flex-col items-center bg-white m-6 px-6 py-8 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full"
       >
-        <h1 class="text-pink-dark text-2xl text-center">
+        <h1 class="text-2xl text-center">
           ${state.translate('expiredPageHeaderUpdate')}
         </h1>
         <img
@@ -17,7 +17,9 @@ module.exports = function(state, emit) {
           src="${assets.get('illustration_expired.svg')}"
           id="expired-img"
         />
-        <p class="pb-2">${state.translate('downloadFinishText')}</p>
+        <p class="pb-2 text-grey-darkest">
+          ${state.translate('downloadFinishText')}
+        </p>
         <p class="mb-4">
           <a
             href="/"

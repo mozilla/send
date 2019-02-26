@@ -10,7 +10,7 @@ module.exports = function(name, url) {
         <h1 class="font-bold my-4">
           ${state.translate('notifyUploadEncryptDone')}
         </h1>
-        <p class="font-normal leading-normal text-grey-darker word-break-all">
+        <p class="font-normal leading-normal text-grey-darkest word-break-all">
           ${state.translate('copyUrlFormLabel')} <br />
           ${name}
         </p>
