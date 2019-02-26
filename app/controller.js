@@ -1,4 +1,3 @@
-/* global LIMITS */
 import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
 import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
@@ -87,15 +86,19 @@ export default function(state, emitter) {
     }
     const maxSize = state.user.maxSize;
     try {
-      state.archive.addFiles(files, maxSize);
+      state.archive.addFiles(
+        files,
+        maxSize,
+        state.LIMITS.MAX_FILES_PER_ARCHIVE
+      );
     } catch (e) {
-      if (e.message === 'fileTooBig' && maxSize < LIMITS.MAX_FILE_SIZE) {
+      if (e.message === 'fileTooBig' && maxSize < state.LIMITS.MAX_FILE_SIZE) {
         return emitter.emit('signup-cta', 'size');
       }
       state.modal = okDialog(
         state.translate(e.message, {
           size: bytes(maxSize),
-          count: LIMITS.MAX_FILES_PER_ARCHIVE
+          count: state.LIMITS.MAX_FILES_PER_ARCHIVE
         })
       );
     }
@@ -119,10 +122,10 @@ export default function(state, emitter) {
   });
 
   emitter.on('upload', async () => {
-    if (state.storage.files.length >= LIMITS.MAX_ARCHIVES_PER_USER) {
+    if (state.storage.files.length >= state.LIMITS.MAX_ARCHIVES_PER_USER) {
       state.modal = okDialog(
         state.translate('tooManyArchives', {
-          count: LIMITS.MAX_ARCHIVES_PER_USER
+          count: state.LIMITS.MAX_ARCHIVES_PER_USER
         })
       );
       return render();

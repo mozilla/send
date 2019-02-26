@@ -401,3 +401,14 @@ export function sendMetrics(blob) {
     console.error(e);
   }
 }
+
+export async function getConstants() {
+  const response = await fetch(getApiUrl('/config'));
+
+  if (response.ok) {
+    const obj = await response.json();
+    return obj;
+  }
+
+  throw new Error(response.status);
+}

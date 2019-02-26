@@ -1,6 +1,7 @@
 const html = require('choo/html');
 const raw = require('choo/html/raw');
 const config = require('./config');
+const clientConstants = require('./clientConstants');
 
 let sentry = '';
 if (config.sentry_id) {
@@ -44,23 +45,8 @@ module.exports = function(state) {
     window.location.assign('/unsupported/outdated');
   }
 
-  var LIMITS = {
-    ANON: {
-      MAX_FILE_SIZE: ${config.anon_max_file_size},
-      MAX_DOWNLOADS: ${config.anon_max_downloads},
-      MAX_EXPIRE_SECONDS: ${config.anon_max_expire_seconds},
-    },
-    MAX_FILE_SIZE: ${config.max_file_size},
-    MAX_DOWNLOADS: ${config.max_downloads},
-    MAX_EXPIRE_SECONDS: ${config.max_expire_seconds},
-    MAX_FILES_PER_ARCHIVE: ${config.max_files_per_archive},
-    MAX_ARCHIVES_PER_USER: ${config.max_archives_per_user}
-  };
-  var DEFAULTS = {
-    DOWNLOAD_COUNTS: ${JSON.stringify(config.download_counts)},
-    EXPIRE_TIMES_SECONDS: ${JSON.stringify(config.expire_times_seconds)},
-    EXPIRE_SECONDS: ${config.default_expire_seconds}
-  };
+  var LIMITS = ${JSON.stringify(clientConstants.LIMITS)};
+  var DEFAULTS = ${JSON.stringify(clientConstants.DEFAULTS)};
   const LOCALE = '${state.locale}';
   const downloadMetadata = ${
     state.downloadMetadata ? raw(JSON.stringify(state.downloadMetadata)) : '{}'

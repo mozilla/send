@@ -1,4 +1,3 @@
-/* global LIMITS AUTH_CONFIG */
 import assets from '../common/assets';
 import { getFileList, setFileList } from './api';
 import { encryptStream, decryptStream } from './ece';
@@ -21,7 +20,9 @@ async function hashId(id) {
 }
 
 export default class User {
-  constructor(storage) {
+  constructor(storage, limits, authConfig) {
+    this.authConfig = authConfig;
+    this.limits = limits;
     this.storage = storage;
     this.data = storage.user || {};
   }
@@ -68,17 +69,21 @@ export default class User {
   }
 
   get maxSize() {
-    return this.loggedIn ? LIMITS.MAX_FILE_SIZE : LIMITS.ANON.MAX_FILE_SIZE;
+    return this.loggedIn
+      ? this.limits.MAX_FILE_SIZE
+      : this.limits.ANON.MAX_FILE_SIZE;
   }
 
   get maxExpireSeconds() {
     return this.loggedIn
-      ? LIMITS.MAX_EXPIRE_SECONDS
-      : LIMITS.ANON.MAX_EXPIRE_SECONDS;
+      ? this.limits.MAX_EXPIRE_SECONDS
+      : this.limits.ANON.MAX_EXPIRE_SECONDS;
   }
 
   get maxDownloads() {
-    return this.loggedIn ? LIMITS.MAX_DOWNLOADS : LIMITS.ANON.MAX_DOWNLOADS;
+    return this.loggedIn
+      ? this.limits.MAX_DOWNLOADS
+      : this.limits.ANON.MAX_DOWNLOADS;
   }
 
   async metricId() {
@@ -95,11 +100,11 @@ export default class User {
     const keys_jwk = await prepareScopedBundleKey(this.storage);
     const code_challenge = await preparePkce(this.storage);
     const options = {
-      client_id: AUTH_CONFIG.client_id,
+      client_id: this.authConfig.client_id,
       code_challenge,
       code_challenge_method: 'S256',
       response_type: 'code',
-      scope: `profile ${AUTH_CONFIG.key_scope}`,
+      scope: `profile ${this.authConfig.key_scope}`,
       state,
       keys_jwk
     };
@@ -108,7 +113,7 @@ export default class User {
     }
     const params = new URLSearchParams(options);
     location.assign(
-      `${AUTH_CONFIG.authorization_endpoint}?${params.toString()}`
+      `${this.authConfig.authorization_endpoint}?${params.toString()}`
     );
   }
 
@@ -118,19 +123,19 @@ export default class User {
     if (state !== localState) {
       throw new Error('state mismatch');
     }
-    const tokenResponse = await fetch(AUTH_CONFIG.token_endpoint, {
+    const tokenResponse = await fetch(this.authConfig.token_endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         code,
-        client_id: AUTH_CONFIG.client_id,
+        client_id: this.authConfig.client_id,
         code_verifier: this.storage.get('pkceVerifier')
       })
     });
     const auth = await tokenResponse.json();
-    const infoResponse = await fetch(AUTH_CONFIG.userinfo_endpoint, {
+    const infoResponse = await fetch(this.authConfig.userinfo_endpoint, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.access_token}`

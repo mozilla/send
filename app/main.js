@@ -1,4 +1,4 @@
-/* global LOCALE */
+/* global AUTH_CONFIG DEFAULTS LIMITS LOCALE */
 import 'core-js';
 import 'fast-text-encoding'; // MS Edge support
 import 'fluent-intl-polyfill';
@@ -41,12 +41,14 @@ if (process.env.NODE_ENV === 'production') {
 
   const translate = await getTranslator(LOCALE);
   window.initialState = {
-    archive: new Archive(),
+    LIMITS,
+    DEFAULTS,
+    archive: new Archive([], DEFAULTS.EXPIRE_SECONDS),
     capabilities,
     translate,
     storage,
     raven: Raven,
-    user: new User(storage),
+    user: new User(storage, LIMITS, AUTH_CONFIG),
     transfer: null,
     fileInfo: null
   };

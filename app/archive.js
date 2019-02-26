@@ -1,4 +1,3 @@
-/* global LIMITS DEFAULTS */
 import { blobStream, concatStream } from './streams';
 
 function isDupe(newFile, array) {
@@ -15,9 +14,10 @@ function isDupe(newFile, array) {
 }
 
 export default class Archive {
-  constructor(files = []) {
+  constructor(files = [], defaultTimeLimit = 86400) {
     this.files = Array.from(files);
-    this.timeLimit = DEFAULTS.EXPIRE_SECONDS;
+    this.defaultTimeLimit = defaultTimeLimit;
+    this.timeLimit = defaultTimeLimit;
     this.dlimit = 1;
     this.password = null;
   }
@@ -52,8 +52,8 @@ export default class Archive {
     return concatStream(this.files.map(file => blobStream(file)));
   }
 
-  addFiles(files, maxSize) {
-    if (this.files.length + files.length > LIMITS.MAX_FILES_PER_ARCHIVE) {
+  addFiles(files, maxSize, maxFiles) {
+    if (this.files.length + files.length > maxFiles) {
       throw new Error('tooManyFiles');
     }
     const newFiles = files.filter(
@@ -77,7 +77,7 @@ export default class Archive {
   clear() {
     this.files = [];
     this.dlimit = 1;
-    this.timeLimit = DEFAULTS.EXPIRE_SECONDS;
+    this.timeLimit = this.defaultTimeLimit;
     this.password = null;
   }
 }

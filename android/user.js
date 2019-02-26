@@ -3,8 +3,8 @@ import User from '../app/user';
 import { deriveFileListKey } from '../app/fxa';
 
 export default class AndroidUser extends User {
-  constructor(storage) {
-    super(storage);
+  constructor(storage, limits) {
+    super(storage, limits);
   }
 
   async login() {
