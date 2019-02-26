@@ -10,7 +10,7 @@ function password(state, emit) {
 
   const div = html`
     <div
-      class="h-full w-full flex flex-col items-center justify-center bg-white py-8"
+      class="h-full w-full flex flex-col items-center justify-center bg-white py-8 max-w-md mx-auto"
     >
       <h1 class="mb-4">${state.translate('downloadFilesTitle')}</h1>
       <p
