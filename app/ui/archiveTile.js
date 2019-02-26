@@ -392,7 +392,7 @@ module.exports.empty = function(state, emit) {
           class="center font-medium text-sm text-blue-dark hover:text-blue-darker focus:text-blue-darker mt-4 mb-2"
           onclick="${event => {
             event.stopPropagation();
-            emit('signup-cta');
+            emit('signup-cta', 'drop');
           }}"
         >
           ${state.translate('signInSizeBump', {
