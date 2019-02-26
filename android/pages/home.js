@@ -38,7 +38,11 @@ module.exports = function(state, emit) {
     `;
     button = '';
   } else if (state.archive.numFiles > 0) {
-    content = archiveTile.wip(state, emit);
+    content = html`
+      <section class="p-4 h-full w-full">
+        ${archiveTile.wip(state, emit)}
+      </section>
+    `;
     button = '';
   } else {
     content =
@@ -52,7 +56,7 @@ module.exports = function(state, emit) {
   }
 
   return html`
-    <main class="flex relative h-full w-full">
+    <main class="main">
       ${state.modal && modal(state, emit)} ${content}
       <div class="fixed pin-r pin-b">
         ${button}
