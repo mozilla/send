@@ -1,29 +1,9 @@
 /* global window, navigator */
-
-window.LIMITS = {
-  ANON: {
-    MAX_FILE_SIZE: 1024 * 1024 * 1024 * 2,
-    MAX_DOWNLOADS: 20,
-    MAX_EXPIRE_SECONDS: 86400
-  },
-  MAX_FILE_SIZE: 1024 * 1024 * 1024 * 2,
-  MAX_DOWNLOADS: 200,
-  MAX_EXPIRE_SECONDS: 604800,
-  MAX_FILES_PER_ARCHIVE: 64,
-  MAX_ARCHIVES_PER_USER: 16
-};
-
-window.DEFAULTS = {
-  DOWNLOAD_COUNTS: [1, 2, 3, 4, 5, 20, 50, 100, 200],
-  EXPIRE_TIMES_SECONDS: [300, 3600, 86400, 604800],
-  EXPIRE_SECONDS: 3600
-};
-
 import choo from 'choo';
 import html from 'choo/html';
 import Raven from 'raven-js';
 
-import { setApiUrlPrefix } from '../app/api';
+import { setApiUrlPrefix, getConstants } from '../app/api';
 import metrics from '../app/metrics';
 //import assets from '../common/assets';
 import Archive from '../app/archive';
@@ -78,14 +58,17 @@ function body(main) {
 }
 (async function start() {
   const translate = await getTranslator('en-US');
+  const { LIMITS, DEFAULTS } = await getConstants();
   app.use((state, emitter) => {
+    state.LIMITS = LIMITS;
+    state.DEFAULTS = DEFAULTS;
     state.translate = translate;
     state.capabilities = {
       account: true
     }; //TODO
-    state.archive = new Archive();
+    state.archive = new Archive([], DEFAULTS.EXPIRE_SECONDS);
     state.storage = storage;
-    state.user = new User(storage);
+    state.user = new User(storage, LIMITS);
     state.raven = Raven;
 
     window.finishLogin = async function(accountInfo) {

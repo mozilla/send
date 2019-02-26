@@ -1,4 +1,4 @@
-/* global Android LIMITS */
+/* global Android */
 
 const html = require('choo/html');
 const raw = require('choo/html/raw');
@@ -390,7 +390,7 @@ module.exports.empty = function(state, emit) {
     : html`
         <p class="center font-medium text-xs text-grey-dark mt-4 mb-2">
           ${state.translate('signInSizeBump', {
-            size: bytes(LIMITS.MAX_FILE_SIZE, 0)
+            size: bytes(state.LIMITS.MAX_FILE_SIZE, 0)
           })}
         </p>
       `;

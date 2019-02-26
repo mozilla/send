@@ -1,4 +1,3 @@
-/* globals DEFAULTS */
 const html = require('choo/html');
 const raw = require('choo/html/raw');
 const { secondsToL10nId } = require('../utils');
@@ -21,7 +20,7 @@ module.exports = function(state, emit) {
     return el;
   }
 
-  const counts = DEFAULTS.DOWNLOAD_COUNTS.filter(
+  const counts = state.DEFAULTS.DOWNLOAD_COUNTS.filter(
     i => state.capabilities.account || i <= state.user.maxDownloads
   );
 
@@ -45,7 +44,7 @@ module.exports = function(state, emit) {
     dlCountSelect
   );
 
-  const expires = DEFAULTS.EXPIRE_TIMES_SECONDS.filter(
+  const expires = state.DEFAULTS.EXPIRE_TIMES_SECONDS.filter(
     i => state.capabilities.account || i <= state.user.maxExpireSeconds
   );
 

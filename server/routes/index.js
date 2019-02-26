@@ -8,6 +8,7 @@ const auth = require('../middleware/auth');
 const language = require('../middleware/language');
 const pages = require('./pages');
 const filelist = require('./filelist');
+const clientConstants = require('../clientConstants');
 
 const IS_DEV = config.env === 'development';
 const ID_REGEX = '([0-9a-fA-F]{10})';
@@ -70,6 +71,9 @@ module.exports = function(app) {
   app.use(bodyParser.json());
   app.use(bodyParser.text());
   app.get('/', language, pages.index);
+  app.get('/config', function(req, res) {
+    res.json(clientConstants);
+  });
   app.get('/error', language, pages.blank);
   app.get('/oauth', language, pages.blank);
   app.get('/legal', language, pages.legal);
