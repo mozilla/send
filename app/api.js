@@ -371,9 +371,9 @@ export function downloadFile(id, keychain, onprogress) {
   };
 }
 
-export async function getFileList(bearerToken) {
+export async function getFileList(bearerToken, kid) {
   const headers = new Headers({ Authorization: `Bearer ${bearerToken}` });
-  const response = await fetch(getApiUrl('/api/filelist'), { headers });
+  const response = await fetch(getApiUrl(`/api/filelist/${kid}`), { headers });
   if (response.ok) {
     const encrypted = await response.blob();
     return encrypted;
@@ -381,9 +381,9 @@ export async function getFileList(bearerToken) {
   throw new Error(response.status);
 }
 
-export async function setFileList(bearerToken, data) {
+export async function setFileList(bearerToken, kid, data) {
   const headers = new Headers({ Authorization: `Bearer ${bearerToken}` });
-  const response = await fetch(getApiUrl('/api/filelist'), {
+  const response = await fetch(getApiUrl(`/api/filelist/${kid}`), {
     headers,
     method: 'POST',
     body: data

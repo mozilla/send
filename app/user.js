@@ -159,10 +159,13 @@ export default class User {
       return this.storage.merge();
     }
     let list = [];
+    const key = b64ToArray(this.info.fileListKey);
+    const sha = await crypto.subtle.digest('SHA-256', key);
+    const kid = arrayToB64(new Uint8Array(sha)).substring(0, 16);
     try {
-      const encrypted = await getFileList(this.bearerToken);
+      const encrypted = await getFileList(this.bearerToken, kid);
       const decrypted = await streamToArrayBuffer(
-        decryptStream(blobStream(encrypted), b64ToArray(this.info.fileListKey))
+        decryptStream(blobStream(encrypted), key)
       );
       list = JSON.parse(textDecoder.decode(decrypted));
     } catch (e) {
@@ -180,9 +183,9 @@ export default class User {
         textEncoder.encode(JSON.stringify(this.storage.files))
       ]);
       const encrypted = await streamToArrayBuffer(
-        encryptStream(blobStream(blob), b64ToArray(this.info.fileListKey))
+        encryptStream(blobStream(blob), key)
       );
-      await setFileList(this.bearerToken, encrypted);
+      await setFileList(this.bearerToken, kid, encrypted);
     } catch (e) {
       //
     }
