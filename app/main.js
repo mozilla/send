@@ -1,4 +1,4 @@
-/* global AUTH_CONFIG DEFAULTS LIMITS LOCALE */
+/* global DEFAULTS LIMITS LOCALE */
 import 'core-js';
 import 'fast-text-encoding'; // MS Edge support
 import 'fluent-intl-polyfill';
@@ -48,7 +48,7 @@ if (process.env.NODE_ENV === 'production') {
     translate,
     storage,
     raven: Raven,
-    user: new User(storage, LIMITS, AUTH_CONFIG),
+    user: new User(storage, LIMITS, window.AUTH_CONFIG),
     transfer: null,
     fileInfo: null
   };

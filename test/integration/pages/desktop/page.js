@@ -17,7 +17,7 @@ class Page {
   waitForPageToLoad() {
     browser.waitUntil(function() {
       return browser.execute(function() {
-        return typeof window.appState !== 'undefined';
+        return typeof window.app !== 'undefined';
       });
     }, 3000);
     browser.pause(100);
