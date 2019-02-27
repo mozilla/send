@@ -181,3 +181,7 @@ logOut = Sign Out
 okButton = Ok
 myUploads = My Uploads
 downloadingTitle = Downloading
+noStreamsWarning = ⚠️ This browser might not be able to decrypt a file this big. ⚠️
+noStreamsOptionCopy = Copy the link to open in another browser
+noStreamsOptionFirefox = Try our favorite browser
+noStreamsOptionDownload = Use this browser
