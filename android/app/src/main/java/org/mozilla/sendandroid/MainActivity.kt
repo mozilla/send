@@ -14,6 +14,7 @@ import android.webkit.WebView
 import android.webkit.WebMessage
 import android.util.Log
 import android.util.Base64
+import android.view.View
 import android.webkit.ConsoleMessage
 import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
@@ -60,6 +61,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         mWebView!!.setListener(this, this)
         mWebView!!.setWebChromeClient(LoggingWebChromeClient())
         mWebView!!.addJavascriptInterface(WebAppInterface(this), "Android")
+        mWebView!!.setLayerType(View.LAYER_TYPE_HARDWARE, null);
 
         val webSettings = mWebView!!.getSettings()
         webSettings.setUserAgentString("Send Android")
