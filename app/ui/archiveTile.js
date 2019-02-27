@@ -112,10 +112,23 @@ function fileInfo(file, action) {
         <div class="text-sm font-normal opacity-75 pt-1">${bytes(
           file.size
         )}</div>
-        <div class="hidden">${file.type}</div>
       </p>
       ${action}
     </send-file>`;
+}
+
+function archiveInfo(archive, action) {
+  return html`
+    <p class="w-full flex items-center">
+      <img class="mr-3" src="${assets.get('blue_file.svg')}"/>
+      <p class="flex-grow">
+        <h1 class="text-base font-medium word-break-all">${archive.name}</h1>
+        <div class="text-sm font-normal opacity-75 pt-1">${bytes(
+          archive.size
+        )}</div>
+      </p>
+      ${action}
+    </p>`;
 }
 
 function archiveDetails(translate, archive) {
@@ -191,33 +204,33 @@ module.exports = function(state, emit, archive) {
           <div></div>
         `;
   return html`
-  <send-archive
-    id="archive-${archive.id}"
-    class="flex flex-col items-start rounded shadow-light bg-white p-4 w-full">
-    <p class="w-full">
-      <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <input
-        type="image"
-        class="float-right self-center text-white hover:opacity-75 focus:outline"
-        alt="${state.translate('deleteButtonHover')}"
-        title="${state.translate('deleteButtonHover')}"
-        src="${assets.get('close-16.svg')}"
-        onclick=${del}/>
-      <h1 class="text-base font-medium word-break-all">${archive.name}</h1>
-      <div class="text-sm font-normal opacity-75 pt-1">${bytes(
-        archive.size
-      )}</div>
-    </p>
-    <div class="text-sm opacity-75 w-full mt-2 mb-2">
-      ${expiryInfo(state.translate, archive)}
-    </div>
-    ${archiveDetails(state.translate, archive)}
-    <hr class="w-full border-t my-4">
-    <div class="flex justify-between w-full">
-      ${dl}
-      ${copyOrShare}
-    </div>
-  </send-archive>`;
+    <send-archive
+      id="archive-${archive.id}"
+      class="flex flex-col items-start rounded shadow-light bg-white p-4 w-full"
+    >
+      ${archiveInfo(
+        archive,
+        html`
+          <input
+            type="image"
+            class="self-start text-white hover:opacity-75 focus:outline"
+            alt="${state.translate('deleteButtonHover')}"
+            title="${state.translate('deleteButtonHover')}"
+            src="${assets.get('close-16.svg')}"
+            onclick=${del}
+          />
+        `
+      )}
+      <div class="text-sm opacity-75 w-full mt-2 mb-2">
+        ${expiryInfo(state.translate, archive)}
+      </div>
+      ${archiveDetails(state.translate, archive)}
+      <hr class="w-full border-t my-4" />
+      <div class="flex justify-between w-full">
+        ${dl} ${copyOrShare}
+      </div>
+    </send-archive>
+  `;
 
   function copy(event) {
     event.stopPropagation();
@@ -258,7 +271,7 @@ module.exports.wip = function(state, emit) {
       >
         <input
           id="file-upload"
-          class="opacity-0 w-0 h-0 appearance-none"
+          class="opacity-0 w-0 h-0 appearance-none absolute"
           type="file"
           multiple
           onfocus="${focus}"
@@ -350,32 +363,31 @@ module.exports.uploading = function(state, emit) {
   const progressPercent = percent(progress);
   const archive = state.archive;
   return html`
-  <send-upload-area
-    id="${archive.id}"
-    class="flex flex-col items-start rounded shadow-light bg-white p-4 w-full">
-    <p class="w-full">
-      <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
-      <div class="text-xs font-normal opacity-75 pt-1">${bytes(
-        archive.size
-      )}</div>
-    </p>
-    <div class="text-xs text-grey-dark w-full mt-2 mb-2">
-      ${expiryInfo(state.translate, {
-        dlimit: state.archive.dlimit,
-        dtotal: 0,
-        expiresAt: Date.now() + 500 + state.archive.timeLimit * 1000
-      })}
-    </div>
-    <div class="text-blue-dark text-sm font-medium mt-2">${progressPercent}</div>
-    <progress class="my-3" value="${progress}">${progressPercent}</progress>
-    <button
-      class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end font-medium"
-      onclick=${cancel}
-      title="${state.translate('uploadingPageCancelShort')}">
-      ${state.translate('uploadingPageCancelShort')}
-    </button>
-  </send-upload-area>`;
+    <send-upload-area
+      id="${archive.id}"
+      class="flex flex-col items-start rounded shadow-light bg-white p-4 w-full"
+    >
+      ${archiveInfo(archive)}
+      <div class="text-xs text-grey-dark w-full mt-2 mb-2">
+        ${expiryInfo(state.translate, {
+          dlimit: state.archive.dlimit,
+          dtotal: 0,
+          expiresAt: Date.now() + 500 + state.archive.timeLimit * 1000
+        })}
+      </div>
+      <div class="text-blue-dark text-sm font-medium mt-2">
+        ${progressPercent}
+      </div>
+      <progress class="my-3" value="${progress}">${progressPercent}</progress>
+      <button
+        class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end font-medium"
+        onclick=${cancel}
+        title="${state.translate('uploadingPageCancelShort')}"
+      >
+        ${state.translate('uploadingPageCancelShort')}
+      </button>
+    </send-upload-area>
+  `;
 
   function cancel(event) {
     event.stopPropagation();
@@ -420,7 +432,7 @@ module.exports.empty = function(state, emit) {
       </div>
       <input
         id="file-upload"
-        class="opacity-0 w-0 h-0 appearance-none"
+        class="opacity-0 w-0 h-0 appearance-none absolute"
         type="file"
         multiple
         onfocus="${focus}"
@@ -477,25 +489,20 @@ module.exports.preview = function(state, emit) {
         </div>
       `;
   return html`
-  <send-archive class="flex flex-col max-h-full bg-white p-4 w-full md:w-128">
-    <div class="border rounded py-3 px-6">
-      <p class="w-full">
-        <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-        <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
-        <div class="text-xs font-normal opacity-75 pt-1">${bytes(
-          archive.size
-        )}</div>
-      </p>
-      ${details}
-    </div>
-    <button
-      id="download-btn"
-      class="btn rounded-lg mt-4 w-full flex-no-shrink focus:outline"
-      title="${state.translate('downloadButtonLabel')}"
-      onclick=${download}>
-      ${state.translate('downloadButtonLabel')}
-    </button>
-  </send-archive>`;
+    <send-archive class="flex flex-col max-h-full bg-white p-4 w-full md:w-128">
+      <div class="border rounded py-3 px-6">
+        ${archiveInfo(archive)} ${details}
+      </div>
+      <button
+        id="download-btn"
+        class="btn rounded-lg mt-4 w-full flex-no-shrink focus:outline"
+        title="${state.translate('downloadButtonLabel')}"
+        onclick=${download}
+      >
+        ${state.translate('downloadButtonLabel')}
+      </button>
+    </send-archive>
+  `;
 
   function download(event) {
     event.preventDefault();
@@ -509,15 +516,14 @@ module.exports.downloading = function(state) {
   const progress = state.transfer.progressRatio;
   const progressPercent = percent(progress);
   return html`
-  <send-archive class="flex flex-col bg-white rounded shadow-light p-4 w-full max-w-sm md:w-128">
-    <p class="w-full mb-4">
-      <img class="float-left mr-3" src="${assets.get('blue_file.svg')}"/>
-      <h1 class="text-sm font-medium word-break-all">${archive.name}</h1>
-      <div class="text-xs font-normal opacity-75 pt-1">${bytes(
-        archive.size
-      )}</div>
-    </p>
-    <div class="text-blue-dark text-sm font-medium mt-2">${progressPercent}</div>
-    <progress class="my-3" value="${progress}">${progressPercent}</progress>
-  </send-archive>`;
+    <send-archive
+      class="flex flex-col bg-white rounded shadow-light p-4 w-full max-w-sm md:w-128"
+    >
+      ${archiveInfo(archive)}
+      <div class="text-blue-dark text-sm font-medium mt-2">
+        ${progressPercent}
+      </div>
+      <progress class="my-3" value="${progress}">${progressPercent}</progress>
+    </send-archive>
+  `;
 };
