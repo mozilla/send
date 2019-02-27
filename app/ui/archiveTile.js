@@ -120,7 +120,7 @@ function fileInfo(file, action) {
 function archiveInfo(archive, action) {
   return html`
     <p class="w-full flex items-center">
-      <img class="mr-3" src="${assets.get('blue_file.svg')}"/>
+      <img class="mr-3 flex-no-shrink" src="${assets.get('blue_file.svg')}"/>
       <p class="flex-grow">
         <h1 class="text-base font-medium word-break-all">${archive.name}</h1>
         <div class="text-sm font-normal opacity-75 pt-1">${bytes(
@@ -213,7 +213,7 @@ module.exports = function(state, emit, archive) {
         html`
           <input
             type="image"
-            class="self-start text-white hover:opacity-75 focus:outline"
+            class="self-start flex-no-shrink text-white hover:opacity-75 focus:outline"
             alt="${state.translate('deleteButtonHover')}"
             title="${state.translate('deleteButtonHover')}"
             src="${assets.get('close-16.svg')}"
