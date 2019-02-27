@@ -427,7 +427,7 @@ module.exports.empty = function(state, emit) {
       >
         ${state.translate('uploadDropDragMessage')}
       </div>
-      <div class="pb-6 text-center text-base">
+      <div class="pb-6 text-center text-base italic">
         ${state.translate('uploadDropButtonMessage')}
       </div>
       <input

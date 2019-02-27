@@ -1,6 +1,7 @@
 /* global downloadMetadata */
 const html = require('choo/html');
 const archiveTile = require('./archiveTile');
+const assets = require('../../common/assets');
 const modal = require('./modal');
 const notFound = require('./notFound');
 
@@ -133,6 +134,7 @@ module.exports = function(state, emit) {
             <p class="pb-2 text-grey-darkest leading-normal">
               ${state.translate('downloadFinishText')}
             </p>
+            <img src="${assets.get('completed.svg')}" class="" />
             <p class="mb-4">
               <a
                 href="/"

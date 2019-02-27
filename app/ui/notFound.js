@@ -7,19 +7,15 @@ module.exports = function(state, emit) {
     <main class="main">
       ${state.modal && modal(state, emit)}
       <div
-        class="flex flex-col items-center bg-white m-6 px-6 py-8 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full"
+        class="flex flex-col items-center h-full w-full p-6 z-10 overflow-hidden md:rounded-lg md:shadow-big"
       >
-        <h1 class="text-2xl text-center">
+        <h1 class="text-center font-bold my-4 text-2xl">
           ${state.translate('expiredPageHeaderUpdate')}
         </h1>
-        <img
-          class="my-16"
-          src="${assets.get('illustration_expired.svg')}"
-          id="expired-img"
-        />
-        <p class="pb-2 text-grey-darkest">
+        <p class="pb-2 max-w-md text-center text-grey-darkest leading-normal">
           ${state.translate('downloadFinishText')}
         </p>
+        <img src="${assets.get('notFound.svg')}" class="" />
         <p class="mb-4">
           <a
             href="/"

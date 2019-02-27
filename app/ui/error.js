@@ -7,18 +7,23 @@ module.exports = function(state, emit) {
     <main class="main">
       ${state.modal && modal(state, emit)}
       <div
-        class="flex flex-col items-center bg-white m-6 px-6 py-8 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full md:h-full"
+        class="flex flex-col items-center h-full w-full p-6 z-10 overflow-hidden md:rounded-lg md:shadow-big"
       >
-        <h1 class="text-2xl text-center">
+        <h1 class="text-center font-bold my-4 text-2xl">
           ${state.translate('errorPageHeader')}
         </h1>
-        <img class="my-16" src="${assets.get('illustration_error.svg')}" />
-        <p class="max-w-md leading-normal">
+        <p class="pb-2 max-w-md text-center text-grey-darkest leading-normal">
           ${state.translate('uploadPageExplainer')}
         </p>
-        <a class="text-blue mt-10 font-medium" href="/">
-          ${state.translate('sendYourFilesLink')}
-        </a>
+        <img class="" src="${assets.get('error.svg')}" />
+        <p class="mb-4">
+          <a
+            href="/"
+            class="btn rounded-lg flex items-center mt-4"
+            role="button"
+            >${state.translate('sendYourFilesLink')}</a
+          >
+        </p>
       </div>
     </main>
   `;
