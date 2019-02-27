@@ -146,7 +146,9 @@ module.exports = function(state, emit) {
         break;
       default:
         content = html`
-          <div class="flex flex-col w-full h-full items-center justify-center">
+          <div
+            class="flex flex-col w-full max-w-md h-full mx-auto items-center justify-center"
+          >
             <h1 class="mb-4">${state.translate('downloadFilesTitle')}</h1>
             <p
               class="w-full md:w-4/5 font-light text-grey-darkest text-center leading-normal"
