@@ -26,16 +26,16 @@ module.exports = function(state, emit) {
   return html`
     <main class="main">
       ${state.modal && modal(state, emit)}
-      <div
+      <section
         class="flex flex-col items-center justify-center text-center bg-white m-6 px-6 py-8 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full md:h-full"
       >
         <h1 class="">${strings.header}</h1>
-        <p class=" mt-4 mb-8 max-w-md leading-normal">${strings.description}</p>
+        <p class="mt-4 mb-8 max-w-md leading-normal">${strings.description}</p>
         ${why}
         <a href="${url}" class="btn rounded-lg mt-8 px-8">
           ${strings.button}
         </a>
-      </div>
+      </section>
     </main>
   `;
 };

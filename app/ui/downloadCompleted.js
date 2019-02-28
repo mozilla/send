@@ -7,13 +7,13 @@ module.exports = function(state) {
       id="download-complete"
       class="flex flex-col items-center justify-center h-full w-full bg-white p-2"
     >
-      <h1 class="text-center font-bold my-4 text-2xl">
+      <h1 class="text-center font-bold my-2">
         ${state.translate('downloadFinish')}
       </h1>
-      <p class="pb-2 text-grey-darkest leading-normal">
+      <p class="text-grey-darkest leading-normal">
         ${state.translate('downloadFinishText')}
       </p>
-      <img src="${assets.get('completed.svg')}" class="max-w-sm" />
+      <img src="${assets.get('completed.svg')}" class="my-12 h-48" />
       <p class="mb-4">
         <a href="/" class="btn rounded-lg flex items-center mt-4" role="button"
           >${state.translate('sendYourFilesLink')}</a

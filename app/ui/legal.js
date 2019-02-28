@@ -9,7 +9,7 @@ module.exports = function(state, emit) {
       <div
         class="flex flex-col items-center bg-white m-6 px-6 py-8 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full md:h-full"
       >
-        <h1 class="text-2xl text-center">${state.translate('legalHeader')}</h1>
+        <h1 class="text-center">${state.translate('legalHeader')}</h1>
         ${raw(
           replaceLinks(state.translate('legalNoticeTestPilot'), [
             'https://testpilot.firefox.com/terms',
