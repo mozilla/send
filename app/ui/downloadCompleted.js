@@ -13,7 +13,7 @@ module.exports = function(state) {
       <p class="pb-2 text-grey-darkest leading-normal">
         ${state.translate('downloadFinishText')}
       </p>
-      <img src="${assets.get('completed.svg')}" class="" />
+      <img src="${assets.get('completed.svg')}" class="max-w-sm" />
       <p class="mb-4">
         <a href="/" class="btn rounded-lg flex items-center mt-4" role="button"
           >${state.translate('sendYourFilesLink')}</a

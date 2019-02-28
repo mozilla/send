@@ -15,7 +15,7 @@ module.exports = function(state, emit) {
         <p class="pb-2 max-w-md text-center text-grey-darkest leading-normal">
           ${state.translate('uploadPageExplainer')}
         </p>
-        <img class="" src="${assets.get('error.svg')}" />
+        <img class="max-w-sm" src="${assets.get('error.svg')}" />
         <p class="mb-4">
           <a
             href="/"
