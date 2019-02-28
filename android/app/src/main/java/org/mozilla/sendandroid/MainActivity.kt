@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         setContentView(R.layout.activity_main)
 
         // https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews
-        WebView.setWebContentsDebuggingEnabled(true); // TODO only dev builds
+        // WebView.setWebContentsDebuggingEnabled(true); // TODO only dev builds
 
         mWebView = findViewById<WebView>(R.id.webview) as AdvancedWebView
         mWebView!!.setListener(this, this)
