@@ -10,11 +10,11 @@ module.exports = function(state, emit) {
     >
       <h1 class="mb-4">${state.translate('downloadFilesTitle')}</h1>
       <p
-        class="w-full md:w-4/5 font-light text-orange-dark text-center leading-normal"
+        class="w-full p-2 border border-yellow-light rounded md:w-4/5 text-orange-dark bg-yellow-lighter text-center leading-normal"
       >
-        ${state.translate('noStreamsWarning')}
+        ⚠️ ${state.translate('noStreamsWarning')} ⚠️
       </p>
-      <form class="" onsubmit=${submit}>
+      <form class="md:w-128" onsubmit=${submit}>
         <fieldset class="border rounded p-4 my-4" onchange=${optionChanged}>
           <div class="flex items-center mb-2">
             <img class="mr-3 flex-no-shrink" src="${assets.get(
