@@ -15,7 +15,7 @@ module.exports = function(state, emit) {
         <p class="pb-2 max-w-md text-center text-grey-darkest leading-normal">
           ${state.translate('downloadFinishText')}
         </p>
-        <img src="${assets.get('notFound.svg')}" class="" />
+        <img src="${assets.get('notFound.svg')}" class="max-w-sm" />
         <p class="mb-4">
           <a
             href="/"
