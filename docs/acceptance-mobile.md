@@ -21,15 +21,15 @@ Adapted from [this spreadsheet](https://airtable.com/shrkcBPOLkvNFOrpp)
 - [ ] It should allow users to select and send multiple files in one URL
 - [ ] It should limit the sendable file size to 1GB
 - [ ] It should allow users to set an expiration time of 5 minutes, 1 hour, or 24 hours
-- [ ] It should allow users to set an download count of 1, 10 or 20 downloads
+- [ ] It should allow users to set an download count of 1 downloads
 
 ### Authenticated Users
 - [ ] It should indicate that the user is signed in via Firefox Account
 - [ ] It should allow the user to sign out
 - [ ] It should allow users to select and send multiple files in one URL
-- [ ] It should limit users to sending 4GB per Send
+- [ ] It should limit users to sending 2.5GB per Send
 - [ ] It should allow users to extend Send times up to 1 Week
-- [ ] It should allow users to extend Send download counts up to 200 times
+- [ ] It should allow users to extend Send download counts up to 100 times
 
 ### Cards
 - [ ] It should display the name of the sent file/files
@@ -76,8 +76,3 @@ This document tracks differences between the UX spec for Firefox Send and the in
 * 7.1: The last screen on this page depicts a network error notification on the selection screen. Instead the user should hit the send button, be taken back to the cards and display the card as in 5.1.2
 * 7.3: May not be necessary...we can ask for permissions on install.
 * 8.1: Notifications do not block launch
-
-
-
-
-
