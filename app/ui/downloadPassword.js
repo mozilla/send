@@ -9,9 +9,7 @@ module.exports = function(state, emit) {
       class="h-full w-full flex flex-col items-center justify-center bg-white py-8 max-w-md mx-auto"
     >
       <h1 class="mb-4">${state.translate('downloadFilesTitle')}</h1>
-      <p
-        class="w-full mb-4 md:w-4/5 font-light text-center text-grey-darkest leading-normal"
-      >
+      <p class="w-full mb-4 text-center text-grey-darkest leading-normal">
         ${state.translate('downloadMessage')}
       </p>
       <form

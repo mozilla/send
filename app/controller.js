@@ -269,7 +269,7 @@ export default function(state, emitter) {
 
   setInterval(() => {
     // poll for updates of the upload list
-    if (state.route === '/') {
+    if (!state.modal && state.route === '/') {
       checkFiles();
     }
   }, 2 * 60 * 1000);
@@ -277,6 +277,7 @@ export default function(state, emitter) {
   setInterval(() => {
     // poll for rerendering the file list countdown timers
     if (
+      !state.modal &&
       state.route === '/' &&
       state.storage.files.length > 0 &&
       Date.now() - lastRender > 30000
