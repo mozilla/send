@@ -57,13 +57,15 @@ const LOCALIZE_NUMBERS = !!(
 );
 
 const UNITS = ['B', 'kB', 'MB', 'GB'];
-function bytes(num, decimalDigits = 1) {
+function bytes(num) {
   if (num < 1) {
     return '0B';
   }
   const exponent = Math.min(Math.floor(Math.log10(num) / 3), UNITS.length - 1);
   const n = Number(num / Math.pow(1024, exponent));
-  let nStr = n.toFixed(1);
+  const decimalDigits = Math.floor(n) === n ? 0 : 1;
+  console.log(n, decimalDigits);
+  let nStr = n.toFixed(decimalDigits);
   if (LOCALIZE_NUMBERS) {
     try {
       const locale = document.querySelector('html').lang;

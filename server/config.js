@@ -36,17 +36,17 @@ const conf = convict({
   },
   download_counts: {
     format: Array,
-    default: [1, 2, 3, 4, 5, 20, 50, 100, 200],
+    default: [1, 2, 3, 4, 5, 20, 50, 100],
     env: 'DOWNLOAD_COUNTS'
   },
   max_downloads: {
     format: Number,
-    default: 200,
+    default: 100,
     env: 'MAX_DOWNLOADS'
   },
   anon_max_downloads: {
     format: Number,
-    default: 20,
+    default: 5,
     env: 'ANON_MAX_DOWNLOADS'
   },
   max_files_per_archive: {
@@ -107,12 +107,12 @@ const conf = convict({
   },
   max_file_size: {
     format: Number,
-    default: 1024 * 1024 * 1024 * 4,
+    default: 1024 * 1024 * 1024 * 2.5,
     env: 'MAX_FILE_SIZE'
   },
   anon_max_file_size: {
     format: Number,
-    default: 1024 * 1024 * 500,
+    default: 1024 * 1024 * 1024,
     env: 'ANON_MAX_FILE_SIZE'
   },
   l10n_dev: {

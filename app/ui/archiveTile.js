@@ -408,7 +408,7 @@ module.exports.empty = function(state, emit) {
           }}"
         >
           ${state.translate('signInSizeBump', {
-            size: bytes(state.LIMITS.MAX_FILE_SIZE, 0)
+            size: bytes(state.LIMITS.MAX_FILE_SIZE)
           })}
         </button>
       `;
@@ -445,11 +445,11 @@ module.exports.empty = function(state, emit) {
         role="button"
         class="btn rounded-lg flex items-center mt-4"
         title="${state.translate('addFilesButtonWithSize', {
-          size: bytes(state.user.maxSize, 0)
+          size: bytes(state.user.maxSize)
         })}"
       >
         ${state.translate('addFilesButtonWithSize', {
-          size: bytes(state.user.maxSize, 0)
+          size: bytes(state.user.maxSize)
         })}
       </label>
       ${upsell}
