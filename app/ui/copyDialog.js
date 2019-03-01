@@ -5,7 +5,7 @@ module.exports = function(name, url) {
   return function(state, emit, close) {
     return html`
       <send-copy-dialog
-        class="flex flex-col items-center text-center p-4 max-w-sm"
+        class="flex flex-col items-center text-center p-4 max-w-sm m-auto"
       >
         <h1 class="font-bold my-4">
           ${state.translate('notifyUploadEncryptDone')}
