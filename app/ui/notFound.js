@@ -12,11 +12,11 @@ module.exports = function(state, emit) {
         <h1 class="text-center font-bold my-2">
           ${state.translate('expiredPageHeaderUpdate')}
         </h1>
+        <img src="${assets.get('notFound.svg')}" class="my-12" />
         <p class="max-w-md text-center text-grey-darkest leading-normal">
           ${state.translate('downloadFinishText')}
         </p>
-        <img src="${assets.get('notFound.svg')}" class="my-12" />
-        <p class="">
+        <p class="my-5">
           <a href="/" class="btn rounded-lg flex items-center" role="button"
             >${state.translate('sendYourFilesLink')}</a
           >
