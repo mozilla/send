@@ -10,15 +10,21 @@ module.exports = function(trigger) {
     let submitting = false;
     return html`
       <send-signup-dialog
-        class="flex flex-col md:flex-row justify-center px-8 md:px-24 w-full h-full"
+        class="flex flex-col lg:flex-row justify-center px-8 md:px-24 w-full h-full"
       >
         <img
           src="${assets.get('firefox_logo-only.svg')}"
           class="h-16 mt-1 mb-4"
         />
-        <section class="flex flex-col flex-no-shrink self-center mx-6 max-w-xs">
-          <h1 class="font-bold">${state.translate('accountBenefitTitle')}</h1>
-          <ul class="leading-normal text-grey-darkest my-2 mt-4 pl-4">
+        <section
+          class="flex flex-col flex-no-shrink self-center lg:mx-6 lg:max-w-xs"
+        >
+          <h1 class="font-bold text-center lg:text-left">
+            ${state.translate('accountBenefitTitle')}
+          </h1>
+          <ul
+            class="leading-normal text-grey-darkest my-2 mt-4 pl-4 md:self-center"
+          >
             <li>
               ${state.translate('accountBenefitLargeFiles', {
                 size: bytes(state.LIMITS.MAX_FILE_SIZE)
@@ -31,7 +37,9 @@ module.exports = function(trigger) {
             <li>${state.translate('accountBenefitSync')}</li>
           </ul>
         </section>
-        <section class="flex flex-col flex-grow self-center m-4 max-w-xs">
+        <section
+          class="flex flex-col flex-grow m-4 md:self-center md:w-128 lg:max-w-xs"
+        >
           <form onsubmit=${submitEmail} data-no-csrf>
             <input
               id="email-input"
