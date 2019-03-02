@@ -89,6 +89,7 @@ deleteFileList = Poista
 nevermindButton = Unohda koko juttu
 legalHeader = Ehdot ja yksityisyys
 legalNoticeTestPilot = Firefox Send on tällä hetkellä Test Pilot -kokeilu, ja siihen sovelletaan Test Pilot <a>käyttöehtoja</a> ja <a>tietosuojakäytäntöjä</a>. Saat lisätietoja tästä kokeilusta ja sen tiedonkeruusta <a>täällä</a>.
+legalNoticeMozilla = Firefox Send -sivuston käyttöön sovelletaan Mozillan <a>verkkosivustojen yksityisyyskäytäntöjä</a> ja <a>verkkosivustojen käyttöehtoja</a>.
 deletePopupText = Poista tämä tiedosto?
 deletePopupYes = Kyllä
 deletePopupCancel = Peruuta
