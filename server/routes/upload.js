@@ -41,7 +41,7 @@ module.exports = function(req, res) {
     }
   });
 
-  req.on('close', async err => {
+  req.on('aborted', async err => {
     try {
       await storage.del(newId);
     } catch (e) {

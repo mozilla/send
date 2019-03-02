@@ -9,7 +9,7 @@ module.exports = async function(req, res) {
     const file_stream = storage.get(id);
     let cancelled = false;
 
-    req.on('close', () => {
+    req.on('aborted', () => {
       cancelled = true;
       file_stream.destroy();
     });
