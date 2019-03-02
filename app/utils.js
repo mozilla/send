@@ -64,7 +64,6 @@ function bytes(num) {
   const exponent = Math.min(Math.floor(Math.log10(num) / 3), UNITS.length - 1);
   const n = Number(num / Math.pow(1024, exponent));
   const decimalDigits = Math.floor(n) === n ? 0 : 1;
-  console.log(n, decimalDigits);
   let nStr = n.toFixed(decimalDigits);
   if (LOCALIZE_NUMBERS) {
     try {
