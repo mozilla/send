@@ -45,7 +45,7 @@ npm install
 npm start
 ```
 
-Then browse to http://localhost:8080
+Then browse to http://localhost:1443
 
 ---
 
