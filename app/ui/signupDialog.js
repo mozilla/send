@@ -43,7 +43,7 @@ module.exports = function(trigger) {
           <form onsubmit=${submitEmail} data-no-csrf>
             <input
               id="email-input"
-              type="text"
+              type="email"
               class="${hidden} border rounded-lg w-full px-2 py-1 h-12 mb-3 text-lg text-grey-darker leading-loose"
               placeholder=${state.translate('emailEntryPlaceholder')}
             />
