@@ -30,9 +30,9 @@ module.exports = function(trigger) {
                 size: bytes(state.LIMITS.MAX_FILE_SIZE)
               })}
             </li>
-            <li>${state.translate('accountBenefitExpiry')}</li>
+            <li>${state.translate('accountBenefitDownloadCount')}</li>
             <li>
-              ${state.translate('accountBenefitExpiryTwo', { count: DAYS })}
+              ${state.translate('accountBenefitTimeLimit', { count: DAYS })}
             </li>
             <li>${state.translate('accountBenefitSync')}</li>
             <li>${state.translate('accountBenefitMoz')}</li>
@@ -46,12 +46,12 @@ module.exports = function(trigger) {
               id="email-input"
               type="email"
               class="${hidden} border rounded-lg w-full px-2 py-1 h-12 mb-3 text-lg text-grey-darker leading-loose"
-              placeholder=${state.translate('emailEntryPlaceholder')}
+              placeholder=${state.translate('emailPlaceholder')}
             />
             <input
               class="btn rounded-lg w-full flex flex-no-shrink items-center justify-center"
-              value="${state.translate('signInMenuOption')}"
-              title="${state.translate('signInMenuOption')}"
+              value="${state.translate('signInButton')}"
+              title="${state.translate('signInButton')}"
               id="email-submit"
               type="submit"
             />

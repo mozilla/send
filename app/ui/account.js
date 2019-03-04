@@ -64,9 +64,9 @@ class Account extends Component {
           <button
             class="p-2 md:p-4 border rounded-lg text-blue-dark border-blue-dark hover:text-white hover:bg-blue-dark focus:outline"
             onclick="${e => this.login(e)}"
-            title="${translate('signInMenuOption')}"
+            title="${translate('signInButton')}"
           >
-            ${translate('signInMenuOption')}
+            ${translate('signInButton')}
           </button>
         </send-account>
       `;
@@ -90,9 +90,9 @@ class Account extends Component {
             <button
               class="block w-full text-left px-4 py-2 text-grey-darkest hover:bg-blue hover:text-white cursor-pointer focus:outline"
               onclick="${e => this.logout(e)}"
-              title="${translate('logOut')}"
+              title="${translate('signOut')}"
             >
-              ${translate('logOut')}
+              ${translate('signOut')}
             </button>
           </li>
         </ul>

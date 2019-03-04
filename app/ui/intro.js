@@ -8,10 +8,10 @@ module.exports = function intro(state) {
     >
       <div class="flex flex-col justify-end h-full">
         <h1 class="font-bold">
-          ${state.translate('uploadPageHeaderUpdate')}
+          ${state.translate('introTitle')}
         </h1>
         <p class="max-w-sm mt-2 pr-16 font-light leading-normal">
-          ${state.translate('uploadPageExplainerUpdate')}
+          ${state.translate('introDescription')}
         </p>
         <img class="intro" src="${assets.get('intro.svg')}" />
       </div>

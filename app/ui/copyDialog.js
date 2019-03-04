@@ -11,7 +11,7 @@ module.exports = function(name, url) {
           ${state.translate('notifyUploadEncryptDone')}
         </h1>
         <p class="font-normal leading-normal text-grey-darkest word-break-all">
-          ${state.translate('copyUrlFormLabel')} <br />
+          ${state.translate('copyLinkDescription')} <br />
           ${name}
         </p>
         <input
@@ -24,9 +24,9 @@ module.exports = function(name, url) {
         <button
           class="btn rounded-lg w-full flex-no-shrink focus:outline"
           onclick="${copy}"
-          title="${state.translate('copyUrlFormButtonText')}"
+          title="${state.translate('copyLinkButton')}"
         >
-          ${state.translate('copyUrlFormButtonText')}
+          ${state.translate('copyLinkButton')}
         </button>
         <button
           class="text-blue-dark hover:text-blue-darker focus:text-blue-darker my-4 font-medium cursor-pointer focus:outline"
