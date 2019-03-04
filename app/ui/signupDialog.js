@@ -35,6 +35,7 @@ module.exports = function(trigger) {
               ${state.translate('accountBenefitExpiryTwo', { count: DAYS })}
             </li>
             <li>${state.translate('accountBenefitSync')}</li>
+            <li>${state.translate('accountBenefitMoz')}</li>
           </ul>
         </section>
         <section

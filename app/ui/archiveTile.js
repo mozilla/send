@@ -425,10 +425,12 @@ module.exports.empty = function(state, emit) {
       <div
         class="pt-6 pb-2 text-center text-lg font-bold capitalize tracking-wide"
       >
-        ${state.translate('uploadDropDragMessage')}
+        ${state.translate('uploadDropDragMessageUpdate')}
       </div>
-      <div class="pb-6 text-center text-base italic">
-        ${state.translate('uploadDropButtonMessage')}
+      <div class="pb-6 text-center text-base">
+        ${state.translate('uploadDropButtonMessageUpdate', {
+          size: bytes(state.user.maxSize)
+        })}
       </div>
       <input
         id="file-upload"
@@ -444,13 +446,11 @@ module.exports.empty = function(state, emit) {
         for="file-upload"
         role="button"
         class="btn rounded-lg flex items-center mt-4"
-        title="${state.translate('addFilesButtonWithSize', {
+        title="${state.translate('addFilesButtonWithSizeUpdate', {
           size: bytes(state.user.maxSize)
         })}"
       >
-        ${state.translate('addFilesButtonWithSize', {
-          size: bytes(state.user.maxSize)
-        })}
+        ${state.translate('addFilesButton')}
       </label>
       ${upsell}
     </send-upload-area>

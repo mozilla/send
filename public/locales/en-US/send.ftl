@@ -1,8 +1,8 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteFeedback = Feedback
-uploadPageHeader = Private, Encrypted File Sharing
-uploadPageExplainer = Send files through a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
+uploadPageHeaderUpdate = Simple, private file sharing
+uploadPageExplainerUpdate = Firefox Send lets you share files with end-to-end encryption and a link that automatically expires. So you can keep what you share private and make sure your stuff doesn't stay online forever.
 uploadPageLearnMore = Learn more
 uploadPageDropMessage = Drop your file here to start uploading
 uploadPageSizeMessage = For the most reliable operation, it’s best to keep your file under 1GB
@@ -15,7 +15,7 @@ importingFile = Importing…
 verifyingFile = Verifying…
 encryptingFile = Encrypting…
 decryptingFile = Decrypting…
-notifyUploadEncryptDone = Your file is encrypted and ready to share.
+notifyUploadEncryptDoneUpdate = Your file is encrypted and ready to send
 uploadingPageMessage = Once your file uploads you will be able to set expiry options.
 uploadingPageCancel = Cancel
 uploadCancelNotification = Your upload was cancelled.
@@ -70,13 +70,13 @@ downloadFileSize = ({ $size })
 unlockInputLabel = Enter Password
 unlockInputPlaceholder = Password
 unlockButtonLabel = Unlock
-downloadFilesTitle = Download Files
+downloadFilesTitleUpdate = Download files
 # Firefox Send is a brand name and should not be localized.
-downloadMessage = Your friend is sending you a file with Firefox Send, a service that allows you to share files with a safe, private, and encrypted link that automatically expires to ensure your stuff does not remain online forever.
+downloadMessageUpdate = This file was shared via Firefox Send with end-to-end encryption and a link that automatically expires.
 # Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Download
 downloadNotification = Your download has completed.
-downloadFinish = Download Complete
+downloadFinishUpdate = Download complete
 downloadFinishText = Try Firefox Send for simple, safe file sharing.
 # This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } of { $totalSize })
@@ -114,8 +114,30 @@ expiryFileList = Expires In
 deleteFileList = Delete
 nevermindButton = Never mind
 legalHeader = Terms & Privacy
-legalNoticeTestPilot = Firefox Send is currently a Test Pilot experiment, and subject to the Test Pilot <a>Terms of Service</a> and <a>Privacy Notice</a>. You can learn more about this experiment and its data collection <a>here</a>.
-legalNoticeMozilla = Use of the Firefox Send website is also subject to Mozilla’s <a>Websites Privacy Notice</a> and <a>Websites Terms of Use</a>.
+legalTitle = Send Privacy Notice
+legalDateStamp = Version 1.0, dated March 12, 2019
+legalNoticeSend = When Mozilla receives information from you, our <a>Mozilla Privacy Policy</a> describes how we handle that information. Below are the top things you should know about Firefox Send.  You can also view the code <a>here</a>.
+legalNoticeSendContentHeader = Content
+legalNoticeSendContent = Mozilla receives an encrypted copy of the file you upload but we cannot access the content or name of your encrypted file.  Depending on how you use Send, files are stored for a maximum of either 24 hours or 7 days.  If you choose a download cap, the file may be deleted sooner.
+legalNoticeSendDataHeader = Data on your device
+legalNoticeSendData = So that you can check status or delete files, basic information about your uploaded files is stored on your local device.  This includes our identifier for the file, the filename, and the file’s download URL. This is cleared if you delete your uploaded file or upon visiting Send after the file expires.
+legalNoticeSendPersonalHeader = Personal data
+legalNoticeSendPersonal = The following is necessary to provide the service
+legalNoticeSendNonPersonalHeader = Non-personal data
+legalNoticeSendNonPersonal = We receive the following to improve our service and performance
+legalNoticeSendThirdPartyHeader = Third Party Services
+legalNoticeSendThirdParty = We use Google Cloud Platform
+legalNoticeSendIPHeader = IP addresses
+legalNoticeSendIP = We receive IP addresses of downloaders and uploaders as part of our standard server logs.  These are retained for 90 days, and for that period, may be connected to activity of a file’s download URL.  Although we develop our services in ways that minimize identification, you should know that it may be possible to correlate the IP address of a Send user to the IP address of other Mozilla services with accounts; and if there is a match, this could identify the account email address.
+legalNoticeSendFXAHeader = Firefox Account
+legalNoticeSendFXA = This is required for authentication only if you wish to upload larger file sizes.  Your Firefox Account record will retain aggregate data on your usage of Send: for example, if you created a Firefox Account in connection with Send, number of files sent and approximate file sizes, and how many times you’ve used the service.
+legalNoticeSendInteractionHeader = Interaction data
+legalNoticeSendInteraction = This includes information such as number of people sending and receiving files, number of files uploaded and approximate file sizes, percentage of file downloaders who become uploaders, how people engage with the website (time spent, clicks, referrer information, site exit path, use of passwords)
+legalNoticeSendTechnicalHeader = Technical data
+legalNoticeSendTechnical = This includes information such as operating system, browser, language preference, country, timestamps, duration for file transfer, reasons for errors, reasons for file expiration.
+
+
+
 deletePopupText = Delete this file?
 deletePopupYes = Yes
 deletePopupCancel = Cancel
@@ -147,11 +169,10 @@ maxPasswordLength = Maximum password length: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = This password could not be set
 pageHeaderCredits = from the makers of Firefox
-addFilesButton = Add file(s)
-addFilesButtonWithSize = Add file(s) up to { $size }
+addFilesButton = Select files to upload
 uploadFilesButton = Upload
-uploadDropDragMessage = Drop files here
-uploadDropButtonMessage = or click to select files
+uploadDropDragMessageUpdate = Drag and drop files
+uploadDropButtonMessageUpdate = or click to to send up to { $size }
 addPasswordMessage = Protect with password
 addPasswordLabel = Password:
 copyUrlLabel = Copy and share this link:
@@ -176,9 +197,10 @@ accountBenefitExpiryTwo = { $count ->
     *[other] Keep links active for up to { $count } days
 }
 accountBenefitSync = Manage shared files from any device
+accountBenefitMoz = Learn about other Mozilla services
 manageAccount = Manage Account
 logOut = Sign Out
-okButton = Ok
+okButtonUpdate = OK
 myUploads = My Uploads
 downloadingTitle = Downloading
 noStreamsWarning = This browser might not be able to decrypt a file this big.

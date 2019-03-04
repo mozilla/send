@@ -8,9 +8,9 @@ module.exports = function(message) {
         <button
           class="btn rounded-lg w-full flex-no-shrink"
           onclick="${close}"
-          title="${state.translate('okButton')}"
+          title="${state.translate('okButtonUpdate')}"
         >
-          ${state.translate('okButton')}
+          ${state.translate('okButtonUpdate')}
         </button>
       </send-ok-dialog>
     `;
