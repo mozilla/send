@@ -8,7 +8,7 @@ module.exports = function(name, url) {
         class="flex flex-col items-center text-center p-4 max-w-sm m-auto"
       >
         <h1 class="font-bold my-4">
-          ${state.translate('notifyUploadEncryptDoneUpdate')}
+          ${state.translate('notifyUploadEncryptDone')}
         </h1>
         <p class="font-normal leading-normal text-grey-darkest word-break-all">
           ${state.translate('copyUrlFormLabel')} <br />
@@ -31,9 +31,9 @@ module.exports = function(name, url) {
         <button
           class="text-blue-dark hover:text-blue-darker focus:text-blue-darker my-4 font-medium cursor-pointer focus:outline"
           onclick="${close}"
-          title="${state.translate('okButtonUpdate')}"
+          title="${state.translate('okButton')}"
         >
-          ${state.translate('okButtonUpdate')}
+          ${state.translate('okButton')}
         </button>
       </send-copy-dialog>
     `;

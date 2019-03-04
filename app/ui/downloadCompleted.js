@@ -8,7 +8,7 @@ module.exports = function(state) {
       class="flex flex-col items-center justify-center h-full w-full bg-white p-2"
     >
       <h1 class="text-center font-bold my-2">
-        ${state.translate('downloadFinishUpdate')}
+        ${state.translate('downloadFinish')}
       </h1>
       <img src="${assets.get('completed.svg')}" class="my-12 h-48" />
       <p class="text-grey-darkest leading-normal">

@@ -102,7 +102,7 @@ export default class FileReceiver extends Nanobus {
           type: this.fileInfo.type
         });
       }
-      this.msg = 'downloadFinishUpdate';
+      this.msg = 'downloadFinish';
       this.emit('complete');
       this.state = 'complete';
     } catch (e) {
@@ -175,7 +175,7 @@ export default class FileReceiver extends Nanobus {
       }
 
       this.downloadRequest = null;
-      this.msg = 'downloadFinishUpdate';
+      this.msg = 'downloadFinish';
       this.emit('complete');
       this.state = 'complete';
     } catch (e) {

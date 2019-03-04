@@ -425,10 +425,10 @@ module.exports.empty = function(state, emit) {
       <div
         class="pt-6 pb-2 text-center text-lg font-bold capitalize tracking-wide"
       >
-        ${state.translate('uploadDropDragMessageUpdate')}
+        ${state.translate('uploadDropDragMessage')}
       </div>
       <div class="pb-6 text-center text-base">
-        ${state.translate('uploadDropButtonMessageUpdate', {
+        ${state.translate('uploadDropButtonMessage', {
           size: bytes(state.user.maxSize)
         })}
       </div>
