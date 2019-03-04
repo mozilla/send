@@ -16,7 +16,7 @@ const expiryOptions = require('./expiryOptions');
 function expiryInfo(translate, archive) {
   const l10n = timeLeft(archive.expiresAt - Date.now());
   return raw(
-    translate('frontPageExpireInfo', {
+    translate('archiveExpiryInfo', {
       downloadCount: translate('downloadCount', {
         num: archive.dlimit - archive.dtotal
       }),
@@ -39,7 +39,7 @@ function password(state) {
           onchange="${togglePasswordInput}"
         />
         <label for="add-password">
-          ${state.translate('addPasswordMessage')}
+          ${state.translate('addPassword')}
         </label>
       </div>
       <input
@@ -172,10 +172,10 @@ module.exports = function(state, emit, archive) {
           <button
             class="text-blue-dark hover:text-blue-darker focus:text-blue-darker focus:outline self-end flex items-center"
             onclick=${copy}
-            title="${state.translate('copyUrlHover')}"
+            title="${state.translate('copyLinkButton')}"
           >
             <img src="${assets.get('copy-16.svg')}" class="mr-2" />
-            ${state.translate('copyUrlHover')}
+            ${state.translate('copyLinkButton')}
           </button>
         `
       : html`
@@ -238,7 +238,7 @@ module.exports = function(state, emit, archive) {
     const text = event.target.lastChild;
     text.textContent = state.translate('copiedUrl');
     setTimeout(
-      () => (text.textContent = state.translate('copyUrlHover')),
+      () => (text.textContent = state.translate('copyLinkButton')),
       1000
     );
   }
@@ -301,10 +301,10 @@ module.exports.wip = function(state, emit) {
       <button
         id="upload-btn"
         class="btn rounded-lg flex-no-shrink focus:outline"
-        title="${state.translate('uploadFilesButton')}"
+        title="${state.translate('uploadButton')}"
         onclick="${upload}"
       >
-        ${state.translate('uploadFilesButton')}
+        ${state.translate('uploadButton')}
       </button>
     </send-upload-area>
   `;
@@ -425,10 +425,12 @@ module.exports.empty = function(state, emit) {
       <div
         class="pt-6 pb-2 text-center text-lg font-bold capitalize tracking-wide"
       >
-        ${state.translate('uploadDropDragMessage')}
+        ${state.translate('dragAndDropFiles')}
       </div>
-      <div class="pb-6 text-center text-base italic">
-        ${state.translate('uploadDropButtonMessage')}
+      <div class="pb-6 text-center text-base">
+        ${state.translate('orClickWithSize', {
+          size: bytes(state.user.maxSize)
+        })}
       </div>
       <input
         id="file-upload"
@@ -444,13 +446,11 @@ module.exports.empty = function(state, emit) {
         for="file-upload"
         role="button"
         class="btn rounded-lg flex items-center mt-4"
-        title="${state.translate('addFilesButtonWithSize', {
+        title="${state.translate('addFilesButtonWithSizeUpdate', {
           size: bytes(state.user.maxSize)
         })}"
       >
-        ${state.translate('addFilesButtonWithSize', {
-          size: bytes(state.user.maxSize)
-        })}
+        ${state.translate('addFilesButton')}
       </label>
       ${upsell}
     </send-upload-area>
