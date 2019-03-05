@@ -117,13 +117,10 @@ passwordIsSet = Password set
 maxPasswordLength = Maximum password length: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = This password could not be set
-#
-#
-#
-# shared ->
-#
-#
-#
+
+# Denotes strings shared across versions
+ [[ shared ]]
+
 #  title = Firefox Send
 #  siteFeedback = Feedback
 #  importingFile = Importing…
@@ -168,16 +165,20 @@ passwordSetError = This password could not be set
 #  maxPasswordLength = Maximum password length: { $length }
 #  # A short status message shown when there was an error setting the password
 #  passwordSetError = This password could not be set
-#
-#
-#
-# vnext ->
-#
-#
-#
+
+# New strings for the vNext version of Firefox Send
+[[ vnext ]]
+
+# Firefox Send, Send and Firefox Account are proper names and should not be localized
+# If used in context, the words send and account should be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox-account = Firefox Account
+
 introTitle = Simple, private file sharing
-introDescription = Firefox Send lets you share files with end-to-end encryption and a link that automatically expires. So you can keep what you share private and make sure your stuff doesn't stay online forever.
+introDescription = { -send-brand } lets you share files with end-to-end encryption and a link that automatically expires. So you can keep what you share private and make sure your stuff doesn't stay online forever.
 notifyUploadEncryptDone = Your file is encrypted and ready to send
+# variables refer to the number of downloads or the length of time files are valid shares
 archiveExpiryInfo = Expires after { $downloadCount } or { $timespan }
 timespanMinutes = { $num ->
         [one] 1 minute
@@ -195,13 +196,13 @@ fileCount = { $num ->
     [one] 1 file
    *[other] { $num } files
 }
+# $size refers to megabytes or gigabytes
 totalSize = Total size: { $size }
 copyLinkDescription = Copy the link to share your file:
 copyLinkButton = Copy link
 downloadTitle = Download files
-# Firefox Send is a brand name and should not be localized.
-downloadDescription = This file was shared via Firefox Send with end-to-end encryption and a link that automatically expires.
-trySendDescription = Try Firefox Send for simple, safe file sharing.
+downloadDescription = This file was shared via { -send-brand } with end-to-end encryption and a link that automatically expires.
+trySendDescription = Try { -send-brand } for simple, safe file sharing.
 # count will always be > 10
 tooManyFiles = { $count ->
     *[other] Only { $count } files can be uploaded at a time.
@@ -212,40 +213,22 @@ tooManyArchives = { $count ->
 }
 expiredTitle = This link has expired.
 # Firefox Send is a brand name and should not be localized.
-notSupportedDescription = Firefox Send will not work with this browser. Send works best with the latest version of Firefox, and will work with the current version of most browsers.
+notSupportedDescription = { -send-brand } will not work with this browser. Send works best with the latest version of Firefox, and will work with the current version of most browsers.
 downloadFirefox = Download Firefox
-legalTitle = Send Privacy Notice
+legalTitle = { -send-short-brand } Send Privacy Notice
 legalDateStamp = Version 1.0, dated March 12, 2019
-legalNoticeSend = When Mozilla receives information from you, our <a>Mozilla Privacy Policy</a> describes how we handle that information. Below are the top things you should know about Firefox Send.  You can also view the code <a>here</a>.
-legalNoticeSendContentHeader = Content
-legalNoticeSendContent = Mozilla receives an encrypted copy of the file you upload but we cannot access the content or name of your encrypted file.  Depending on how you use Send, files are stored for a maximum of either 24 hours or 7 days.  If you choose a download cap, the file may be deleted sooner.
-legalNoticeSendDataHeader = Data on your device
-legalNoticeSendData = So that you can check status or delete files, basic information about your uploaded files is stored on your local device.  This includes our identifier for the file, the filename, and the file’s download URL. This is cleared if you delete your uploaded file or upon visiting Send after the file expires.
-legalNoticeSendPersonalHeader = Personal data
-legalNoticeSendPersonal = The following is necessary to provide the service
-legalNoticeSendNonPersonalHeader = Non-personal data
-legalNoticeSendNonPersonal = We receive the following to improve our service and performance
-legalNoticeSendThirdPartyHeader = Third Party Services
-legalNoticeSendThirdParty = We use Google Cloud Platform
-legalNoticeSendIPHeader = IP addresses
-legalNoticeSendIP = We receive IP addresses of downloaders and uploaders as part of our standard server logs.  These are retained for 90 days, and for that period, may be connected to activity of a file’s download URL.  Although we develop our services in ways that minimize identification, you should know that it may be possible to correlate the IP address of a Send user to the IP address of other Mozilla services with accounts; and if there is a match, this could identify the account email address.
-legalNoticeSendFXAHeader = Firefox Account
-legalNoticeSendFXA = This is required for authentication only if you wish to upload larger file sizes.  Your Firefox Account record will retain aggregate data on your usage of Send: for example, if you created a Firefox Account in connection with Send, number of files sent and approximate file sizes, and how many times you’ve used the service.
-legalNoticeSendInteractionHeader = Interaction data
-legalNoticeSendInteraction = This includes information such as number of people sending and receiving files, number of files uploaded and approximate file sizes, percentage of file downloaders who become uploaders, how people engage with the website (time spent, clicks, referrer information, site exit path, use of passwords)
-legalNoticeSendTechnicalHeader = Technical data
-legalNoticeSendTechnical = This includes information such as operating system, browser, language preference, country, timestamps, duration for file transfer, reasons for errors, reasons for file expiration.
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Select files to upload
 uploadButton = Upload
+# The next two lines are two parts of a split title. You can see them at https://send2.dev.lcip.org
 dragAndDropFiles = Drag and drop files
 orClickWithSize = or click to to send up to { $size }
 addPassword = Protect with password
 emailPlaceholder = Enter your email
 signInSizeBump = Sign in to send up to { $size }
 signInButton = Sign in/up
-accountBenefitTitle = Create a Firefox Account or sign in
+accountBenefitTitle = Create a { -firefox-account } or sign in
 accountBenefitLargeFiles = Share files up to { $size }
 accountBenefitDownloadCount = Share files with more people
 accountBenefitTimeLimit = { $count ->
@@ -253,7 +236,7 @@ accountBenefitTimeLimit = { $count ->
 }
 accountBenefitSync = Manage shared files from any device
 accountBenefitMoz = Learn about other Mozilla services
-signOut = Sign Out
+signOut = Sign out
 okButton = OK
 downloadingTitle = Downloading
 noStreamsWarning = This browser might not be able to decrypt a file this big.
