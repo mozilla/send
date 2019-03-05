@@ -119,3 +119,69 @@ passwordIsSet = Jelszó megadva
 maxPasswordLength = Maximális jelszóhossz: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Ez a jelszó nem állítható be
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Egyszerű, privát fájlmegosztás
+notifyUploadEncryptDone = A fájl titkosítva és készen áll a küldésre
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = { $downloadCount } vagy { $timespan } után elévül
+timespanMinutes =
+    { $num ->
+        [one] 1 perc
+       *[other] { $num } perc
+    }
+timespanDays =
+    { $num ->
+        [one] 1 nap
+       *[other] { $num } nap
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 hét
+       *[other] { $num } hét
+    }
+fileCount =
+    { $num ->
+        [one] 1 fájl
+       *[other] { $num } fájl
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Teljes méret: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Másolja a hivatkozást a fájl megosztásához:
+copyLinkButton = Hivatkozás másolása
+downloadTitle = Fájlok letöltése
+downloadDescription = Ez a fájl a { -send-brand } szolgáltatással lett megosztva, végpontok közötti titkosítással, és a hivatkozás automatikusan elévül.
+trySendDescription = Próbálja ki a { -send-brand }et az egyszerű, biztonságos fájlmegosztásért.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Egyszerre csak 1 fájl tölthető fel.
+       *[other] Egyszerre csak { $count } fájl tölthető fel.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Csak 1 archívum engedélyezett.
+       *[other] Csak { $count } archívum engedélyezett.
+    }
+expiredTitle = Ez a hivatkozás elévült.
+notSupportedDescription = A { -send-brand } nem működik ebben a böngészőben. A { -send-short-brand } a { -firefox } legfrissebb verziójával működik a legjobban, de működik a legtöbb böngésző aktuális verziójával is.
+downloadFirefox = A { -firefox } letöltése
+legalTitle = { -send-short-brand } adatvédelmi nyilatkozat
+legalDateStamp = 1.0-s verzió, kelt 2019. március 12-én
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }n { $hours }ó { $minutes }p
+addFilesButton = Válassza ki a feltöltendő fájlokat
+uploadButton = Feltöltés
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Húzza ide a fájlokat
+addPassword = Jelszavas védelem
+emailPlaceholder = Adja meg az e-mail címét
+signInButton = Bejelentkezés/regisztráció
