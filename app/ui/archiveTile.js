@@ -382,9 +382,9 @@ module.exports.uploading = function(state, emit) {
       <button
         class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end font-medium"
         onclick=${cancel}
-        title="${state.translate('uploadingPageCancelShort')}"
+        title="${state.translate('deletePopupCancel')}"
       >
-        ${state.translate('uploadingPageCancelShort')}
+        ${state.translate('deletePopupCancel')}
       </button>
     </send-upload-area>
   `;
