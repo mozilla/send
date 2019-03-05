@@ -263,11 +263,11 @@ module.exports.wip = function(state, emit) {
           .map(f =>
             fileInfo(f, remove(f, state.translate('deleteButtonHover')))
           ),
-        'bg-grey-lightest rounded-t list-reset overflow-y-auto px-6 py-4 md:h-full md:max-h-half-screen',
+        'flex-shrink bg-grey-lightest rounded-t list-reset overflow-y-auto px-6 py-4 md:h-full md:max-h-half-screen',
         'bg-white px-2 my-2 shadow-light rounded'
       )}
       <div
-        class="flex-grow flex items-end p-4 bg-grey-lightest rounded-b mb-1 font-medium"
+        class="flex-no-shrink flex-grow flex items-end p-4 bg-grey-lightest rounded-b mb-1 font-medium"
       >
         <input
           id="file-upload"
