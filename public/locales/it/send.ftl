@@ -119,3 +119,33 @@ passwordIsSet = Password impostata
 maxPasswordLength = Lunghezza massima della password: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Impossibile impostare la password
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+timespanMinutes =
+    { $num ->
+        [one] 1 minuto
+       *[other] { $num } minuti
+    }
+timespanDays =
+    { $num ->
+        [one] 1 giorno
+       *[other] { $num } giorni
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 settimana
+       *[other] { $num } settimane
+    }
+fileCount = { $num } file
+downloadFirefox = Scarica { -firefox }
+legalTitle = Informativa sulla privacy di { -send-short-brand }
+legalDateStamp = Version 1.0 del 12 marzo 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }g { $hours }h { $minutes }m
+okButton = OK
