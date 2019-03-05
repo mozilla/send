@@ -119,3 +119,44 @@ passwordIsSet = Senha definida
 maxPasswordLength = Tamanho máximo da senha: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Essa senha não pôde ser definida
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Compartilhamento de arquivos fácil e privativo
+introDescription = { -send-brand } permite compartilhar arquivos com criptografia ponto a ponto e um link que expira automaticamente. Assim você pode manter o que compartilha privativo e ter certeza que suas coisas não fiquem online para sempre.
+notifyUploadEncryptDone = Seu arquivo foi criptografado e está pronto para ser enviado
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Expira após { $downloadCount } ou { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 minuto
+       *[other] { $num } minutos
+    }
+timespanDays =
+    { $num ->
+        [one] 1 dia
+       *[other] { $num } dias
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 semana
+       *[other] { $num } semanas
+    }
+fileCount =
+    { $num ->
+        [one] 1 arquivo
+       *[other] { $num } arquivos
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Tamanho total: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Copie o link para compartilhar seu arquivo:
+copyLinkButton = Copiar link
+downloadTitle = Baixar arquivos
+downloadDescription = Este arquivo foi compartilhado via { -send-brand } com criptografia ponto a ponto e um link que expira automaticamente.
+trySendDescription = Experimente o { -send-brand } para compartilhamento de arquivos simples e seguro.
