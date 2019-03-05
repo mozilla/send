@@ -160,3 +160,49 @@ copyLinkButton = Copiar link
 downloadTitle = Baixar arquivos
 downloadDescription = Este arquivo foi compartilhado via { -send-brand } com criptografia ponto a ponto e um link que expira automaticamente.
 trySendDescription = Experimente o { -send-brand } para compartilhamento de arquivos simples e seguro.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Somente 1 arquivo pode ser enviado por vez.
+       *[other] Somente { $count } arquivos podem ser enviados por vez.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Só é permitido 1 pacote.
+       *[other] Só são permitidos { $count } pacotes.
+    }
+expiredTitle = Este link expirou.
+notSupportedDescription = O { -send-brand } não funciona com este navegador. O { -send-short-brand } funciona melhor com a versão mais recente do { -firefox } e funcionará com a versão atual da maioria dos navegadores.
+downloadFirefox = Baixar o { -firefox }
+legalTitle = Aviso de privacidade do { -send-short-brand }
+legalDateStamp = Versão 1.0, de 12 de março de 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = Selecionar arquivos para enviar
+uploadButton = Enviar
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Arraste e solte arquivos
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = ou clique para enviar até { $size }
+addPassword = Proteger com senha
+emailPlaceholder = Informe seu e-mail
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Entre na sua conta para enviar até { $size }
+signInButton = Entrar / Cadastrar-se
+accountBenefitTitle = Crie uma Conta { -firefox } ou entre na sua conta
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Compartilhe arquivos até { $size }
+accountBenefitDownloadCount = Compartilhe arquivos com mais pessoas
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Manter links ativos por até 1 dia
+       *[other] Manter links ativos por até { $count } dias
+    }
+accountBenefitSync = Gerencie arquivos compartilhados a partir de qualquer dispositivo
+accountBenefitMoz = Conheça outros serviços da { -mozilla }
+signOut = Sair
+okButton = OK
+downloadingTitle = Baixando
+noStreamsWarning = Este navegador pode não conseguir descriptografar um arquivo tão grande.
