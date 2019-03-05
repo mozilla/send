@@ -127,4 +127,85 @@ passwordSetError = Det här lösenordet kunde inte ställas in
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Enkel, privat fildelning
+introDescription = { -send-brand } låter dig dela filer med end-to-end-kryptering och en länk som automatiskt upphör. Så att du kan behålla det du delar privat och se till att dina saker inte stannar online för alltid.
+notifyUploadEncryptDone = Din fil är krypterad och redo att skicka
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Förfaller efter { $downloadCount } eller { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 minut
+       *[other] { $num } minuter
+    }
+timespanDays =
+    { $num ->
+        [one] 1 dag
+       *[other] { $num } dagar
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 vecka
+       *[other] { $num } veckor
+    }
+fileCount =
+    { $num ->
+        [one] 1 fil
+       *[other] { $num } filer
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Total storlek: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Kopiera länken för att dela din fil:
+copyLinkButton = Kopiera länk
+downloadTitle = Ladda ner filer
+downloadDescription = Den här filen delades via { -send-brand } med end-to-end-kryptering och en länk som automatiskt upphör.
+trySendDescription = Prova { -send-brand } för enkel, säker fildelning.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Endast 1 fil  kan laddas upp i taget.
+       *[other] Endast { $count } filer kan laddas upp i taget.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Endast 1 arkiv är tillåten.
+       *[other] Endast { $count } arkiv är tillåtna.
+    }
+expiredTitle = Den här länken har upphört.
+notSupportedDescription = { -send-brand } fungerar inte med den här webbläsaren. { -send-short-brand } fungerar bäst med den senaste versionen av { -firefox } och kommer att fungera med den nuvarande versionen av de flesta webbläsare.
+downloadFirefox = Hämta { -firefox }
+legalTitle = { -send-short-brand } sekretesspolicy
+legalDateStamp = Version 1.0, daterad den 12 mars 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }t { $minutes }m
+addFilesButton = Välj filer som ska laddas upp
+uploadButton = Ladda upp
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Dra och släpp filer
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = eller klicka för att skicka upp till { $size }
+addPassword = Skydda med lösenord
+emailPlaceholder = Ange din e-postadress
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Logga in för att skicka upp till { $size }
+signInButton = Logga in/registrera dig
+accountBenefitTitle = Skapa ett { -firefox }-konto eller logga in
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Dela filer upp till { $size }
 accountBenefitDownloadCount = Dela filer med fler personer
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Håll länk aktiv i upp till 1 dag
+       *[other] Håll länkar aktiva i upp till { $count } dagar
+    }
+accountBenefitSync = Hantera delade filer från vilken enhet som helst
+accountBenefitMoz = Läs om andra { -mozilla }-tjänster
+signOut = Logga ut
+okButton = OK
+downloadingTitle = Laddar ner
+noStreamsWarning = Den här webbläsaren kanske inte kan dekryptera en fil så stor.
+noStreamsOptionCopy = Kopiera länken för att öppna i en annan webbläsare
+noStreamsOptionFirefox = Prova vår favoritwebbläsare
+noStreamsOptionDownload = Fortsätt med den här webbläsaren
