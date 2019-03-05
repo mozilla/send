@@ -114,8 +114,17 @@ expiresHoursMinutes = { $hours }t { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
 # A short status message shown when a password is successfully set
-passwordIsSet = Lösenord satt 
+passwordIsSet = Lösenord satt
 # A short status message shown when the user enters a long password
 maxPasswordLength = Maximal lösenordslängd: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Det här lösenordet kunde inte ställas in
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+accountBenefitDownloadCount = Dela filer med fler personer
