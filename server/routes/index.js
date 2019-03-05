@@ -41,6 +41,7 @@ module.exports = function(app) {
             'wss://*.mozaws.net',
             'wss://send.firefox.com',
             'https://*.dev.lcip.org',
+            'https://accounts.firefox.com',
             'https://*.accounts.firefox.com',
             'https://sentry.prod.mozaws.net'
           ],
