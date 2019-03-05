@@ -121,7 +121,6 @@ passwordSetError = This password could not be set
 ## New strings for the vNext version of Firefox Send
 
 # Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
-# If used in context, the words send and account should be localized
 -send-brand = Firefox Send
 -send-short-brand = Send
 -firefox = Firefox
