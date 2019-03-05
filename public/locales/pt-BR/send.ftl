@@ -2,13 +2,13 @@
 title = Firefox Send
 siteSubtitle = experimento web
 siteFeedback = Opinião
-uploadPageHeader = Compartilhamento de arquivos privados e criptografados
+uploadPageHeader = Compartilhamento de arquivos com criptografia e privacidade
 uploadPageExplainer = Envie arquivos por meio de um link seguro, privado e criptografado que expira automaticamente para garantir que as suas coisas não permaneçam on-line para sempre.
 uploadPageLearnMore = Saiba mais
 uploadPageDropMessage = Arraste o arquivo para cá para iniciar o envio
 uploadPageSizeMessage = Para uma operação mais confiável, é melhor manter seu arquivo menor que 1GB
 uploadPageBrowseButton = Selecione um arquivo em seu computador
-uploadPageBrowseButton1 = Selecione um arquivo para carregar
+uploadPageBrowseButton1 = Selecione um arquivo para enviar
 uploadPageMultipleFilesAlert = Enviar múltiplos arquivos ou uma pasta ainda não é suportado.
 uploadPageBrowseButtonTitle = Enviar arquivo
 uploadingPageProgress = Enviando { $filename } ({ $size })
@@ -46,7 +46,7 @@ downloadAltText = Baixar
 downloadsFileList = Downloads
 # Used as header in a column indicating the amount of time left before a
 # download link expires (e.g. "10h 5m")
-timeFileList = Hora
+timeFileList = Tempo
 # Used as header in a column indicating the number of times a file has been
 # downloaded
 downloadFileName = Baixar { $filename }
@@ -206,3 +206,6 @@ signOut = Sair
 okButton = OK
 downloadingTitle = Baixando
 noStreamsWarning = Este navegador pode não conseguir descriptografar um arquivo tão grande.
+noStreamsOptionCopy = Copiar o link para abrir em outro navegador
+noStreamsOptionFirefox = Experimentar nosso navegador preferido
+noStreamsOptionDownload = Continuar com este navegador
