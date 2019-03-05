@@ -120,16 +120,15 @@ passwordSetError = This password could not be set
 
 ## New strings for the vNext version of Firefox Send
 
-# Firefox Send, Send and Firefox Account are proper names and should not be localized
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
 # If used in context, the words send and account should be localized
 -send-brand = Firefox Send
 -send-short-brand = Send
--firefox-account = Firefox Account
 -firefox = Firefox
 -mozilla = Mozilla
 
 introTitle = Simple, private file sharing
-introDescription = { -send-brand } lets you share files with end-to-end encryption and a link that automatically expires. So you can keep what you share private and make sure your stuff doesn't stay online forever.
+introDescription = { -send-brand } lets you share files with end-to-end encryption and a link that automatically expires. So you can keep what you share private and make sure your stuff doesn’t stay online forever.
 notifyUploadEncryptDone = Your file is encrypted and ready to send
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Expires after { $downloadCount } or { $timespan }
@@ -159,10 +158,12 @@ downloadDescription = This file was shared via { -send-brand } with end-to-end e
 trySendDescription = Try { -send-brand } for simple, safe file sharing.
 # count will always be > 10
 tooManyFiles = { $count ->
+     [one] Only 1 file can be uploaded at a time.
     *[other] Only { $count } files can be uploaded at a time.
 }
 # count will always be > 10
 tooManyArchives = { $count ->
+     [one] Only 1 archive is allowed.
     *[other] Only { $count } archives are allowed.
 }
 expiredTitle = This link has expired.
@@ -178,13 +179,13 @@ uploadButton = Upload
 dragAndDropFiles = Drag and drop files
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
-orClickWithSize = or click to to send up to { $size }
+orClickWithSize = or click to send up to { $size }
 addPassword = Protect with password
 emailPlaceholder = Enter your email
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 signInSizeBump = Sign in to send up to { $size }
 signInButton = Sign in/up
-accountBenefitTitle = Create a { -firefox-account } or sign in
+accountBenefitTitle = Create a { -firefox } Account or sign in
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 accountBenefitLargeFiles = Share files up to { $size }
 accountBenefitDownloadCount = Share files with more people
