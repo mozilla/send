@@ -115,3 +115,93 @@ passwordIsSet = Palavra-passe definida
 maxPasswordLength = Comprimento máximo de palavra-passe: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Esta palavra-passe não pôde ser definida
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Partilha de ficheiros simples e privada
+introDescription = O { -send-brand } permite partilhar ficheiros com encriptação de ponta a ponta e uma ligação que expira automaticamente. Para que possa manter o que partilha privado e garantir que as suas coisas não fiquem online para sempre.
+notifyUploadEncryptDone = O seu ficheiro está encriptado e pronto a enviar
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Expira após { $downloadCount } ou { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 minuto
+       *[other] { $num } minutos
+    }
+timespanDays =
+    { $num ->
+        [one] 1 dia
+       *[other] { $num } dias
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 semana
+       *[other] { $num } semanas
+    }
+fileCount =
+    { $num ->
+        [one] 1 ficheiro
+       *[other] { $num } ficheiros
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Tamanho total: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Copie o link para partilhar o seu ficheiro:
+copyLinkButton = Copiar ligação
+downloadTitle = Transferir ficheiros
+downloadDescription = Este ficheiro foi partilhado via { -send-brand } com encriptação de ponta a ponta e uma ligação que expira automaticamente.
+trySendDescription = Experimente o { -send-brand } para uma partilha de ficheiros simples e segura.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Apenas 1 ficheiro pode ser carregado de cada vez.
+       *[other] Apenas { $count } ficheiros podem ser carregados de cada vez.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Apenas 1 ficheiro é permitido.
+       *[other] Apenas { $count } ficheiros são permitidos.
+    }
+expiredTitle = Esta ligação expirou.
+notSupportedDescription = O { -send-brand } não funciona com este navegador. O { -send-short-brand } funciona melhor com a versão mais recente do { -firefox } e irá funcionar com a versão atual da maioria dos navegadores.
+downloadFirefox = Transferir o { -firefox }
+legalTitle = Aviso de privacidade do { -send-short-brand }
+legalDateStamp = Versão 1.0, de 12 de março de 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = Selecione ficheiros para carregar
+uploadButton = Carregar
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Arraste e largue ficheiros
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = ou clique para enviar até { $size }
+addPassword = Proteger com palavra-passe
+emailPlaceholder = Introduza o seu email
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Inicie sessão para enviar até { $size }
+signInButton = Iniciar sessão/registar
+accountBenefitTitle = Crie uma Conta { -firefox } ou inicie sessão
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Partilhe ficheiros até { $size }
+accountBenefitDownloadCount = Partilhe ficheiros com mais pessoas
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Manter ligações ativas até 1 dia
+       *[other] Manter ligações ativas até { $count } dias
+    }
+accountBenefitSync = Gira ficheiros partilhas a partir de qualquer dispositivo
+accountBenefitMoz = Saber mais acerca de outros serviços da { -mozilla }
+signOut = Terminar sessão
+okButton = OK
+downloadingTitle = A transferir
+noStreamsWarning = Este navegador pode não conseguir desencriptar um ficheiro tão grande.
+noStreamsOptionCopy = Copie a ligação para abrir noutro navegador
+noStreamsOptionFirefox = Experimente o nosso navegador favorito
+noStreamsOptionDownload = Continuar com este navegador
