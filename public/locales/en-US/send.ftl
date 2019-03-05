@@ -118,67 +118,20 @@ maxPasswordLength = Maximum password length: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = This password could not be set
 
-# Denotes strings shared across versions
- [[ shared ]]
-
-#  title = Firefox Send
-#  siteFeedback = Feedback
-#  importingFile = Importing…
-#  encryptingFile = Encrypting…
-#  decryptingFile = Decrypting…
-#  downloadCount = { $num ->
-#          [one] 1 download
-#         *[other] { $num } downloads
-#      }
-#  timespanHours = { $num ->
-#          [one] 1 hour
-#         *[other] { $num } hours
-#      }
-#  copiedUrl = Copied!
-#  unlockInputPlaceholder = Password
-#  unlockButtonLabel = Unlock
-#  downloadButtonLabel = Download
-#  downloadFinish = Download complete
-#  fileSizeProgress = ({ $partialSize } of { $totalSize })
-#  sendYourFilesLink = Try Firefox Send
-#  errorPageHeader = Something went wrong!
-#  fileTooBig = That file is too big to upload. It should be less than { $size }.
-#  linkExpiredAlt = Link expired
-#  notSupportedHeader = Your browser is not supported.
-#  notSupportedLink = Why is my browser not supported?
-#  notSupportedOutdatedDetail = Unfortunately this version of Firefox does not support the web technology that powers Firefox Send. You’ll need to update your browser.
-#  updateFirefox = Update Firefox
-#  deletePopupCancel = Cancel
-#  deleteButtonHover = Delete
-#  footerLinkLegal = Legal
-#  footerLinkPrivacy = Privacy
-#  footerLinkCookies = Cookies
-#  passwordTryAgain = Incorrect password. Try again.
-#  javascriptRequired = Firefox Send requires JavaScript
-#  whyJavascript = Why does Firefox Send require JavaScript?
-#  enableJavascript = Please enable JavaScript and try again.
-#  # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
-#  expiresHoursMinutes = { $hours }h { $minutes }m
-#  # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
-#  expiresMinutes = { $minutes }m
-#  # A short status message shown when the user enters a long password
-#  maxPasswordLength = Maximum password length: { $length }
-#  # A short status message shown when there was an error setting the password
-#  passwordSetError = This password could not be set
-
-# New strings for the vNext version of Firefox Send
-[[ vnext ]]
+## New strings for the vNext version of Firefox Send
 
 # Firefox Send, Send and Firefox Account are proper names and should not be localized
 # If used in context, the words send and account should be localized
 -send-brand = Firefox Send
 -send-short-brand = Send
 -firefox-account = Firefox Account
+-firefox = Firefox
+-mozilla = Mozilla
 
 introTitle = Simple, private file sharing
 introDescription = { -send-brand } lets you share files with end-to-end encryption and a link that automatically expires. So you can keep what you share private and make sure your stuff doesn't stay online forever.
 notifyUploadEncryptDone = Your file is encrypted and ready to send
-# variables refer to the number of downloads or the length of time files are valid shares
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Expires after { $downloadCount } or { $timespan }
 timespanMinutes = { $num ->
         [one] 1 minute
@@ -196,8 +149,9 @@ fileCount = { $num ->
     [one] 1 file
    *[other] { $num } files
 }
-# $size refers to megabytes or gigabytes
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
 totalSize = Total size: { $size }
+# the next line after the colon contains a file name
 copyLinkDescription = Copy the link to share your file:
 copyLinkButton = Copy link
 downloadTitle = Download files
@@ -212,30 +166,34 @@ tooManyArchives = { $count ->
     *[other] Only { $count } archives are allowed.
 }
 expiredTitle = This link has expired.
-# Firefox Send is a brand name and should not be localized.
-notSupportedDescription = { -send-brand } will not work with this browser. Send works best with the latest version of Firefox, and will work with the current version of most browsers.
-downloadFirefox = Download Firefox
-legalTitle = { -send-short-brand } Send Privacy Notice
+notSupportedDescription = { -send-brand } will not work with this browser. { -send-short-brand } works best with the latest version of { -firefox }, and will work with the current version of most browsers.
+downloadFirefox = Download { -firefox }
+legalTitle = { -send-short-brand } Privacy Notice
 legalDateStamp = Version 1.0, dated March 12, 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Select files to upload
 uploadButton = Upload
-# The next two lines are two parts of a split title. You can see them at https://send2.dev.lcip.org
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Drag and drop files
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
 orClickWithSize = or click to to send up to { $size }
 addPassword = Protect with password
 emailPlaceholder = Enter your email
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
 signInSizeBump = Sign in to send up to { $size }
 signInButton = Sign in/up
 accountBenefitTitle = Create a { -firefox-account } or sign in
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
 accountBenefitLargeFiles = Share files up to { $size }
 accountBenefitDownloadCount = Share files with more people
 accountBenefitTimeLimit = { $count ->
+     [one] Keep links active for up to 1 day
     *[other] Keep links active for up to { $count } days
 }
 accountBenefitSync = Manage shared files from any device
-accountBenefitMoz = Learn about other Mozilla services
+accountBenefitMoz = Learn about other { -mozilla } services
 signOut = Sign out
 okButton = OK
 downloadingTitle = Downloading
