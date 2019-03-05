@@ -103,7 +103,10 @@ export default class User {
         utm_campaign: utms.campaign || 'none'
       });
       const res = await fetch(
-        `${this.authConfig.issuer}/metrics-flow?${params.toString()}`
+        `${this.authConfig.issuer}/metrics-flow?${params.toString()}`,
+        {
+          mode: 'cors'
+        }
       );
       const { flowId, flowBeginTime } = await res.json();
       this.flowId = flowId;
