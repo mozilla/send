@@ -104,10 +104,16 @@ function clientEvent(event, ua, language, session_id, deltaT, platform, ip) {
     entrypoint: ep.entrypoint,
     file_count: ep.file_count,
     password_protected: ep.password_protected,
+    referrer: ep.referrer,
     size: ep.size,
     time_limit: ep.time_limit,
     trigger: ep.trigger,
-    ttl: ep.ttl
+    ttl: ep.ttl,
+    utm_campaign: ep.utm_campaign,
+    utm_content: ep.utm_content,
+    utm_medium: ep.utm_medium,
+    utm_source: ep.utm_source,
+    utm_term: ep.utm_term
   };
   const user_properties = {
     active_count: up.active_count,

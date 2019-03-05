@@ -106,6 +106,14 @@ export default function(state, emitter) {
   });
 
   emitter.on('signup-cta', source => {
+    const query = state.query;
+    state.user.startAuthFlow(source, {
+      campaign: query.utm_campaign,
+      content: query.utm_content,
+      medium: query.utm_medium,
+      source: query.utm_source,
+      term: query.utm_term
+    });
     state.modal = signupDialog(source);
     render();
   });

@@ -94,6 +94,29 @@ export default class User {
     return this.loggedIn ? hashId(this.storage.id) : hashId(anonId);
   }
 
+  async startAuthFlow(source, utms = {}) {
+    try {
+      const params = new URLSearchParams({
+        entrypoint: `send-${source}`,
+        form_type: 'email',
+        utm_source: utms.source || 'send',
+        utm_campaign: utms.campaign || 'none'
+      });
+      const res = await fetch(
+        `${this.authConfig.issuer}/metrics-flow?${params.toString()}`
+      );
+      const { flowId, flowBeginTime } = await res.json();
+      this.flowId = flowId;
+      this.flowBeginTime = flowBeginTime;
+      this.utms = utms;
+    } catch (e) {
+      console.error(e);
+      this.flowId = null;
+      this.flowBeginTime = null;
+      this.utms = null;
+    }
+  }
+
   async login(email) {
     const state = arrayToB64(crypto.getRandomValues(new Uint8Array(16)));
     storage.set('oauthState', state);
@@ -110,6 +133,17 @@ export default class User {
     };
     if (email) {
       options.email = email;
+    }
+    if (this.flowId && this.flowBeginTime) {
+      options.flow_id = this.flowId;
+      options.flow_begin_time = this.flowBeginTime;
+    }
+    if (this.utms) {
+      options.utm_campaign = this.utms.campaign || 'none';
+      options.utm_content = this.utms.content || 'none';
+      options.utm_medium = this.utms.medium || 'none';
+      options.utm_source = this.utms.source || 'send';
+      options.utm_term = this.utms.term || 'none';
     }
     const params = new URLSearchParams(options);
     location.assign(

@@ -16,8 +16,15 @@ export default function initialize(state, emitter) {
   }
   emitter.on('DOMContentLoaded', () => {
     // experiment = storage.enrolled[0];
+    const query = appState.query;
     addEvent('client_visit', {
-      entrypoint: appState.route === '/' ? 'upload' : 'download'
+      entrypoint: appState.route === '/' ? 'upload' : 'download',
+      referrer: document.referrer,
+      utm_campaign: query.utm_campaign,
+      utm_content: query.utm_content,
+      utm_medium: query.utm_medium,
+      utm_source: query.utm_source,
+      utm_term: query.utm_term
     });
   });
   emitter.on('experiment', experimentEvent);
