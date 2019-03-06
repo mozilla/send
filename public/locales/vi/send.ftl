@@ -85,7 +85,7 @@ copyFileList = Sao chép URL
 expiryFileList = Hết hạn trong
 deleteFileList = Xóa
 nevermindButton = Đừng bận tâm
-legalHeader = Điều khoản & Quyền riêng tư
+legalHeader = Điều khoản & quyền riêng tư
 legalNoticeTestPilot = Firefox Send hiện tại đang là một thử nghiệm Test Pilot, và phải tuân theo <a>Điều khoản dịch vụ</a> và <a>Lưu ý về Quyền riêng tư</a>. Bạn có thể tìm hiểu thêm về thử nghiệm này và dữ liệu được thu thập <a>tại đây</a>.
 legalNoticeMozilla = Sử dụng trang web Firefox Send cũng phải tuân theo Mozilla's <a>Lưu ý về Quyền riêng tư của trang web</a> và <a>Điều khoản sử dụng của trang web</a>.
 deletePopupText = Xóa tập tin này?
@@ -158,6 +158,11 @@ trySendDescription = Hãy thử { -send-brand } để chia sẻ tập tin đơn 
 tooManyFiles =
     { $count ->
        *[other] Chỉ { $count } tập tin có thể tải lên mỗi lần.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+       *[other] Chỉ cho phép { $count } lưu trữ.
     }
 expiredTitle = Liên kết này đã hết hạn.
 notSupportedDescription = { -send-brand } sẽ không hoạt động với trình duyệt này. { -send-short-brand } hoạt động tốt nhất với phiên bản { -firefox } mới nhất và sẽ hoạt động với phiên bản hiện tại của hầu hết các trình duyệt.
