@@ -119,3 +119,54 @@ passwordIsSet = Passord innstilt
 maxPasswordLength = Maksimum passordlengde: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Dette passordet kunne ikkje stillast inn
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Enkel, privat fildeling
+timespanMinutes =
+    { $num ->
+        [one] 1 minutt
+       *[other] { $num } minutt
+    }
+timespanDays =
+    { $num ->
+        [one] 1 dag
+       *[other] { $num } dagar
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 veke
+       *[other] { $num } veker
+    }
+fileCount =
+    { $num ->
+        [one] 1 fil
+       *[other] { $num } filer
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Total storleik: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Kopier lenka for å dele fila di:
+copyLinkButton = Kopier lenke
+downloadTitle = Last ned filer
+downloadFirefox = Last ned { -firefox }
+legalDateStamp = Versjon 1.0, datert den 12 mars 2019
+uploadButton = Last opp
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Dra og slepp filer
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = eller klikk for å senda opp til { $size }
+addPassword = Vern med passord
+emailPlaceholder = Skriv inn e-postadressa di
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = LOgg inn for å senda opp til { $size }
+signInButton = Logg inn/Registrer deg
+signOut = Logg ut
+okButton = OK
+downloadingTitle = Lastar ned
