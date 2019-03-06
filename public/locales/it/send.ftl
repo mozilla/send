@@ -127,6 +127,10 @@ passwordSetError = Impossibile impostare la password
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Condividi file in modo semplice e riservato
+notifyUploadEncryptDone = Il file è crittato e pronto per l’invio
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Scade dopo { $downloadCount } o dopo { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 minuto
@@ -143,9 +147,50 @@ timespanWeeks =
        *[other] { $num } settimane
     }
 fileCount = { $num } file
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Dimensione totale: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Copia il link per condividere il file:
+copyLinkButton = Copia link
+downloadTitle = Scarica file
+trySendDescription = Prova { -send-brand } per condividere file in modo semplice e sicuro.
+# count will always be > 10
+tooManyFiles = È possibile caricare solo { $count } file alla volta.
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] È consentito solo un archivio.
+       *[other] Sono consentiti solo { $count } archivi.
+    }
+expiredTitle = Questo link è scaduto.
+notSupportedDescription = Non è possibile utilizzare { -send-brand } con questo browser. { -send-short-brand } funziona al meglio con l’ultima versione di { -firefox } ma è compatibile con l’ultima versione della maggior parte dei browser.
 downloadFirefox = Scarica { -firefox }
 legalTitle = Informativa sulla privacy di { -send-short-brand }
 legalDateStamp = Version 1.0 del 12 marzo 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }g { $hours }h { $minutes }m
+addFilesButton = Seleziona i file da caricare
+uploadButton = Carica
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Trascina e rilascia i file
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = o fai clic per inviare fino a { $size }
+addPassword = Proteggi con una password
+emailPlaceholder = Inserisci il tuo indirizzo email
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Accedi per inviare fino a { $size }
+signInButton = Accedi o registrati
+accountBenefitTitle = Crea un account { -firefox } o accedi
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Condividi file fino a { $size }
+accountBenefitDownloadCount = Condividi file con più persone
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Mantieni link attivi per 1 giorno
+       *[other] Mantieni link attivi per { $count } giorni
+    }
+accountBenefitSync = Gestisci i file condivisi da qualsiasi dispositivo
+signOut = Disconnetti
 okButton = OK
+downloadingTitle = Download in corso…
