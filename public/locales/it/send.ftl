@@ -194,3 +194,7 @@ accountBenefitSync = Gestisci i file condivisi da qualsiasi dispositivo
 signOut = Disconnetti
 okButton = OK
 downloadingTitle = Download in corso…
+noStreamsWarning = Questo browser potrebbe non essere in grado di decrittare un file così grande.
+noStreamsOptionCopy = Copia il link e aprilo in un altro browser
+noStreamsOptionFirefox = Prova il nostro browser preferito
+noStreamsOptionDownload = Continua con questo browser
