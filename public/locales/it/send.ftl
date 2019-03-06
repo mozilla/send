@@ -128,6 +128,7 @@ passwordSetError = Impossibile impostare la password
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Condividi file in modo semplice e riservato
+introDescription = { -send-brand } permette di condividere file con crittografia end-to-end attraverso un link che scade automaticamente. In questo modo hai la garanzia che i tuoi contenuti vengano condivisi in modo riservato e non rimangano online per sempre.
 notifyUploadEncryptDone = Il file è crittato e pronto per l’invio
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Scade dopo { $downloadCount } o dopo { $timespan }
@@ -153,6 +154,7 @@ totalSize = Dimensione totale: { $size }
 copyLinkDescription = Copia il link per condividere il file:
 copyLinkButton = Copia link
 downloadTitle = Scarica file
+downloadDescription = Questo file è stato condiviso tramite { -send-brand } con crittografia end-to-end e un link che scade automaticamente.
 trySendDescription = Prova { -send-brand } per condividere file in modo semplice e sicuro.
 # count will always be > 10
 tooManyFiles = È possibile caricare solo { $count } file alla volta.
@@ -191,6 +193,7 @@ accountBenefitTimeLimit =
        *[other] Mantieni link attivi per { $count } giorni
     }
 accountBenefitSync = Gestisci i file condivisi da qualsiasi dispositivo
+accountBenefitMoz = Scopri altri servizi { -mozilla }
 signOut = Disconnetti
 okButton = OK
 downloadingTitle = Download in corso…
