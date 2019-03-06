@@ -123,3 +123,15 @@ passwordIsSet = Hesło je so nastajiło
 maxPasswordLength = Maksimalna dołhosć hesła: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Tute hesło njeda so nastajić
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Jednore, priwatne datajowe dźělenje
+notifyUploadEncryptDone = Waša dataja je zaklučowana a hotowa za słanje
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Spadnje po { $downloadCount } abo { $timespan }
