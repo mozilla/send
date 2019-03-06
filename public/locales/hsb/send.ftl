@@ -132,6 +132,7 @@ passwordSetError = Tute hesło njeda so nastajić
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Jednore, priwatne datajowe dźělenje
+introDescription = { -send-brand } wam zmóžnja, dataje ze zaklučowanjom kónc do kónca a wotkazom dźělić, kotryž awtomatisce spadnje. Tak móžeće dźěleny wobsah priwatny dźeržeć a zawěsćić, zo waše daty online na přeco njewóstanu.
 notifyUploadEncryptDone = Waša dataja je zaklučowana a hotowa za słanje
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Spadnje po { $downloadCount } abo { $timespan }
@@ -188,6 +189,7 @@ tooManyArchives =
        *[other] Jenož { $count } archiwow je dowolene.
     }
 expiredTitle = Tutón wotkaz je spadnjeny.
+notSupportedDescription = { -send-brand } z tutym wobhladowakom njefunguje. { -send-short-brand } najlěpje z najnowšej wersiju { -firefox } funguje, a funguje z aktualnej wersiju najwjace wobhladowakow.
 downloadFirefox = { -firefox } scáhnyć
 legalTitle = Zdźělenka priwatnosće { -send-short-brand }
 legalDateStamp = Wersija 1.0 wot 12. měrca 2019
@@ -216,3 +218,12 @@ accountBenefitTimeLimit =
         [few] Wotkazy do { $count } dnjow aktiwne dźeržeć
        *[other] Wotkazy do { $count } dnjow aktiwne dźeržeć
     }
+accountBenefitSync = Dźělene dataje z někajkeho grata rjadować
+accountBenefitMoz = ZHońće wjace wo druhich słužbach { -mozilla }
+signOut = Wotzjewić
+okButton = W porjadku
+downloadingTitle = Sćahuje so
+noStreamsWarning = Tutón wobhladowak njemóhł tajku wulku dataju dešifrować.
+noStreamsOptionCopy = Kopěrujće wotkaz, zo byšće jón w druhim wobhladowaku wočinił
+noStreamsOptionFirefox = Wupruwujće naš najlubši wobhladowak
+noStreamsOptionDownload = Z tutym wobhladowakom pokročować
