@@ -23,7 +23,7 @@ uploadCancelNotification = Você cancelou o envio.
 uploadingPageLargeFileMessage = Esse arquivo é grande e pode demorar para ser enviado. Aguarde!
 uploadingFileNotification = Me avise quando completar o envio.
 uploadSuccessConfirmHeader = Pronto para enviar
-uploadSvgAlt = Enviado
+uploadSvgAlt = Enviar
 uploadSuccessTimingHeader = O link para o seu arquivo expirará após 1 download ou em 24 horas.
 expireInfo = O link para o seu arquivo expirará após { $downloadCount } ou { $timepan }.
 downloadCount =
@@ -60,7 +60,7 @@ downloadMessage = Seu amigo está te enviando um arquivo através do Firefox Sen
 # Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Baixar
 downloadNotification = Seu download terminou.
-downloadFinish = Download completo
+downloadFinish = Download concluído
 # This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } de { $totalSize })
 # Firefox Send is a brand name and should not be localized.
