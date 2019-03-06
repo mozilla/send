@@ -6,6 +6,7 @@ import Archive from '../../../app/archive';
 import { b64ToArray } from '../../../app/utils';
 import { blobStream, concatStream } from '../../../app/streams';
 import { decryptStream, encryptStream } from '../../../app/ece.js';
+import { encryptedSize } from '../../../app/utils';
 
 const rs = 36;
 
@@ -99,6 +100,12 @@ describe('Streaming', function() {
       }
 
       assert.deepEqual(result, decrypted);
+    });
+  });
+
+  describe('encryptedSize', function() {
+    it('matches the size of an encrypted buffer', function() {
+      assert.equal(encryptedSize(buffer.length, rs), encrypted.length);
     });
   });
 });

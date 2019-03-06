@@ -6,6 +6,7 @@ const Limiter = require('../limiter');
 const wsStream = require('websocket-stream/stream');
 const fxa = require('../fxa');
 const { statUploadEvent } = require('../amplitude');
+const { encryptedSize } = require('../../app/utils');
 
 const { Duplex } = require('stream');
 
@@ -74,7 +75,7 @@ module.exports = function(ws, req) {
           id: newId
         })
       );
-      const limiter = new Limiter(maxFileSize);
+      const limiter = new Limiter(encryptedSize(maxFileSize));
       const flowControl = new Duplex({
         read() {
           ws.resume();
@@ -92,8 +93,8 @@ module.exports = function(ws, req) {
       });
 
       fileStream = wsStream(ws, { binary: true })
-        .pipe(limiter)
-        .pipe(flowControl);
+        .pipe(flowControl)
+        .pipe(limiter); // limiter needs to be the last in the chain
 
       await storage.set(newId, fileStream, meta, timeLimit);
 

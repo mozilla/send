@@ -281,11 +281,6 @@ class StreamSlicer {
   }
 }
 
-export function encryptedSize(size, rs = ECE_RECORD_SIZE) {
-  const chunk_meta = TAG_LENGTH + 1; // Chunk metadata, tag and delimiter
-  return 21 + size + chunk_meta * Math.ceil(size / (rs - chunk_meta));
-}
-
 /*
 input: a ReadableStream containing data to be transformed
 key:  Uint8Array containing key of size KEY_LENGTH

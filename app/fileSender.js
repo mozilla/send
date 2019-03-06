@@ -3,7 +3,7 @@ import OwnedFile from './ownedFile';
 import Keychain from './keychain';
 import { arrayToB64, bytes } from './utils';
 import { uploadWs } from './api';
-import { encryptedSize } from './ece';
+import { encryptedSize } from './utils';
 
 export default class FileSender extends Nanobus {
   constructor() {

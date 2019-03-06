@@ -249,6 +249,13 @@ function platform() {
   return 'web';
 }
 
+const ECE_RECORD_SIZE = 1024 * 64;
+const TAG_LENGTH = 16;
+function encryptedSize(size, rs = ECE_RECORD_SIZE, tagLength = TAG_LENGTH) {
+  const chunk_meta = tagLength + 1; // Chunk metadata, tag and delimiter
+  return 21 + size + chunk_meta * Math.ceil(size / (rs - chunk_meta));
+}
+
 module.exports = {
   fadeOut,
   delay,
@@ -267,5 +274,6 @@ module.exports = {
   list,
   secondsToL10nId,
   timeLeft,
-  platform
+  platform,
+  encryptedSize
 };

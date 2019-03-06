@@ -11,6 +11,7 @@ class Limiter extends Transform {
     this.length += chunk.length;
     this.push(chunk);
     if (this.length > this.limit) {
+      console.error('LIMIT', this.length, this.limit);
       return callback(new Error('limit'));
     }
     callback();

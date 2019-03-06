@@ -3,6 +3,7 @@ const storage = require('../storage');
 const config = require('../config');
 const mozlog = require('../log');
 const Limiter = require('../limiter');
+const { encryptedSize } = require('../../app/utils');
 
 const log = mozlog('send.upload');
 
@@ -22,7 +23,7 @@ module.exports = async function(req, res) {
   };
 
   try {
-    const limiter = new Limiter(config.max_file_size);
+    const limiter = new Limiter(encryptedSize(config.max_file_size));
     const fileStream = req.pipe(limiter);
     //this hasn't been updated to expiration time setting yet
     //if you want to fallback to this code add this
