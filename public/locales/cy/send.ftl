@@ -11,7 +11,7 @@ uploadPageBrowseButton = Dewiswch ffeil ar eich cyfrifiadur
 uploadPageBrowseButton1 = Dewiswch ffeil i'w llwytho i fyny
 uploadPageMultipleFilesAlert = Nid yw llwytho nifer lluosog o ffeiliau neu ffolder yn cael ei gynnal ar hyn o bryd.
 uploadPageBrowseButtonTitle = Llwytho ffeil i fyny
-uploadingPageProgress = Llwytho $filename}  i fyny ({ $size })
+uploadingPageProgress = Llwytho { $filename } ({ $maint }) i fyny
 importingFile = Mewnforio…
 verifyingFile = Wrthi'n gwirio…
 encryptingFile = Wrthi'n amgryptio…
@@ -127,3 +127,16 @@ passwordIsSet = Wedi gosod y cyfrinair
 maxPasswordLength = Hyd mwyaf cyfrinair: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Nid oedd modd gosod y cyfrinair hwn
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Anfon
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Rhannu ffeiliau syml a phreifat
+introDescription = Mae { -send-brand } yn gadael i chi rannu ffeiliau gydag amgryptio o'r dechrau i'r diwedd a dolen sy'n dod i ben yn awtomatig. Felly gallwch chi gadw'r hyn rydych chi'n ei rannu'n breifat a sicrhau nad yw'ch pethau'n aros ar-lein am byth.
+notifyUploadEncryptDone = Mae eich ffeil wedi'i hamgryptio ac yn barod i'w hanfon
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Yn dod i ben ar ôl { $downloadCount } neu { $timespan }
