@@ -158,7 +158,7 @@ totalSize = Totale grutte: { $size }
 copyLinkDescription = Kopiearje de keppeling, om jo bestannen te dielen:
 copyLinkButton = Keppeling kopierje
 downloadTitle = Bestannen downloade
-downloadDescription = Dit bestân is mei ein-nei-ein-fersifering en in keppeling dy't automatysk ferrint dield fia { -send-brand }.
+downloadDescription = Dit bestân is mei ein-ta-ein-fersifering en in keppeling dy't automatysk ferrint dield fia { -send-brand }.
 trySendDescription = Probearje { -send-brand }, om ienfâldich en privee bestannen te dielen.
 # count will always be > 10
 tooManyFiles =
