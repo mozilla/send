@@ -119,3 +119,48 @@ passwordIsSet = Wachtwurd ynsteld
 maxPasswordLength = Maksimale wachtwurdlingte: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Dit wachtwurd koe net ynsteld wurde
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Ienfâldich, privee bestannen diele
+timespanMinutes =
+    { $num ->
+        [one] 1 minute
+       *[other] { $num } minuten
+    }
+timespanDays =
+    { $num ->
+        [one] 1 dei
+       *[other] { $num } dagen
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 wike
+       *[other] { $num } wiken
+    }
+fileCount =
+    { $num ->
+        [one] 1 bestân
+       *[other] { $num } bestannen
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Totale grutte: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Kopiearje de keppeling, om jo bestannen te dielen:
+copyLinkButton = Keppeling kopierje
+downloadTitle = Bestannen downloade
+downloadFirefox = { -firefox } downloade
+legalDateStamp = Ferzje 1.0, datearre 12 maart 2019
+uploadButton = Oplade
+emailPlaceholder = Fier jo e-mailadres yn
+signOut = Ofmelde
+okButton = OK
+downloadingTitle = Downloade
+noStreamsOptionCopy = Kopiearje de koppeling om yn in oare browser te iepenjen
+noStreamsOptionFirefox = Probearje ús favorite browser
+noStreamsOptionDownload = Trochgean mei dizze browser
