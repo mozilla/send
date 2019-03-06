@@ -182,6 +182,29 @@ addFilesButton = Válassza ki a feltöltendő fájlokat
 uploadButton = Feltöltés
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Húzza ide a fájlokat
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = vagy jelentkezzen be, és küldjön legfeljebb { $size }-ot
 addPassword = Jelszavas védelem
 emailPlaceholder = Adja meg az e-mail címét
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Jelentkezzen be, és küldjön legfeljebb { $size }-ot
 signInButton = Bejelentkezés/regisztráció
+accountBenefitTitle = Hozzon létre egy { -firefox } fiókot vagy jelentkezzen be
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Osszon meg fájlokat { $size }-ig
+accountBenefitDownloadCount = Osszon meg fájlokat több emberrel
+accountBenefitTimeLimit =
+    { $count ->
+        [one] A hivatkozások aktívan tartása legfeljebb 1 napig
+       *[other] A hivatkozások aktívan tartása legfeljebb { $count } napig
+    }
+accountBenefitSync = Kezelje a megosztott fájlokat bármely eszközről
+accountBenefitMoz = Ismerje meg a többi { -mozilla } szolgáltatást
+signOut = Kijelentkezés
+okButton = OK
+downloadingTitle = Letöltés
+noStreamsWarning = Előfordulhat, hogy a böngésző nem fog tudni visszafejteni egy ekkora fájlt.
+noStreamsOptionCopy = Másolja a hivatkozást, és nyissa meg egy másik böngészőben
+noStreamsOptionFirefox = Próbálja ki a kedvenc böngészőnket
+noStreamsOptionDownload = Folytatás ezzel a böngészővel
