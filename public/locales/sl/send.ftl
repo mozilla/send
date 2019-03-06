@@ -137,6 +137,7 @@ copyLinkButton = Kopiraj povezavo
 downloadTitle = Prenesi datoteke
 expiredTitle = Ta povezava je potekla.
 downloadFirefox = Prenesite { -firefox }
+addFilesButton = Izberite datoteke za nalaganje
 uploadButton = Prenesi
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Povlecite in spustite datoteke
