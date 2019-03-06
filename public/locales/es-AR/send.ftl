@@ -129,3 +129,46 @@ passwordSetError = No se pudo establecer la contraseña
 -mozilla = Mozilla
 introTitle = Intercambio de archivos sencillo y privado
 introDescription = { -send-brand } le permite compartir archivos con cifrado de extremo a extremo y un enlace que caduca automáticamente. Así puede mantener privado lo que comparte y asegurarse de que sus cosas no permanezcan en línea para siempre.
+notifyUploadEncryptDone = Su archivo está cifrado y listo para enviar
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Vence después de { $downloadCount } o { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 minuto
+       *[other] { $num } minutos
+    }
+timespanDays =
+    { $num ->
+        [one] 1 día
+       *[other] { $num } días
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 semana
+       *[other] { $num } semanas
+    }
+fileCount =
+    { $num ->
+        [one] 1 file
+       *[other] { $num } archivos
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Tamaño total: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Copiar el enlace para compartir su archivo:
+copyLinkButton = Copiar enlace
+downloadTitle = Descargar archivos
+downloadDescription = Este archivo se compartió a través de { -send-brand } con cifrado de extremo a extremo y un enlace que caduca automáticamente.
+trySendDescription = Pruebe { -send-brand } para compartir archivos de forma sencilla y segura.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Solo se puede subir 1 archivo a la vez.
+       *[other] Solo se pueden subir archivos { $count } a la vez.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Solo se permite 1 archivo.
+       *[other] Solo se permiten { $count } archivos.
+    }
