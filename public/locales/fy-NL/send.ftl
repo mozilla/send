@@ -128,6 +128,7 @@ passwordSetError = Dit wachtwurd koe net ynsteld wurde
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Ienfâldich, privee bestannen diele
+introDescription = Mei { -send-brand } kinne jo bestannen mei ein-ta-ein-fersifering en in automatysk ferrinnende keppeling diele. Sa kinne jo de dielde ynhâld privee hâlde, sadat jo gegevens net foar altyd online bliuwt.
 notifyUploadEncryptDone = Jo bestân is fersifere en ree om te ferstjoeren
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Ferrint nei { $downloadCount } of { $timespan }
@@ -165,6 +166,14 @@ tooManyFiles =
         [one] Der kin maksimaal ien bestân opladen wurde.
        *[other] Der kinne maksimaal { $count } bestannen opladen wurde.
     }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Der is mar ien argyf tastien.
+       *[other] Der binne mar { $count } argiven tastien.
+    }
+expiredTitle = Dizze keppeling is ferrûn.
+notSupportedDescription = { -send-brand } funksjonearret net mei dizze browser. { -send-short-brand } funksjonearret it bêste mei de nijste ferzje fan { -firefox } en funksjonearret mei de aktuele ferzje fan de measte browsers.
 downloadFirefox = { -firefox } downloade
 legalTitle = { -send-short-brand }-privacyferklearring
 legalDateStamp = Ferzje 1.0, datearre 12 maart 2019
