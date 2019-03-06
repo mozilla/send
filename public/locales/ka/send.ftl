@@ -119,3 +119,9 @@ passwordIsSet = პაროლი დაყენებულია
 maxPasswordLength = პაროლის დაშვებული ზომა: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = ამ პაროლის დაყენება ვერ ხერხდება
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
