@@ -119,3 +119,41 @@ passwordIsSet = Επιτυχής ορισμός κωδικού
 maxPasswordLength = Μέγιστο μήκος κωδικού: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Δεν ήταν δυνατός ο ορισμός αυτού του κωδικού
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+timespanMinutes =
+    { $num ->
+        [one] 1 λεπτό
+       *[other] { $num } λεπτά
+    }
+timespanDays =
+    { $num ->
+        [one] 1 ημέρα
+       *[other] { $num } ημέρες
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 εβδομάδα
+       *[other] { $num } εβδομάδες
+    }
+fileCount =
+    { $num ->
+        [one] 1 αρχείο
+       *[other] { $num } αρχεία
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Συνολικό μέγεθος: { $size }
+copyLinkButton = Αντιγραφή συνδέσμου
+downloadTitle = Λήψη αρχείων
+expiredTitle = Αυτός ο σύνδεσμος έχει λήξει.
+downloadFirefox = Λήψη του { -firefox }
+emailPlaceholder = Εισάγετε το email σας
+signInButton = Σύνδεση/εγγραφή
+signOut = Αποσύνδεση
+okButton = OK
