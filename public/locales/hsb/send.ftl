@@ -171,3 +171,48 @@ copyLinkButton = Wotkaz kopěrować
 downloadTitle = Dataj sćahnyć
 downloadDescription = Tuta dataja je so přez { -send-brand } ze zaklučowanjom kónc do kónca a wotkazom dźěliła, kotryž awtomatisce spadnje.
 trySendDescription = Spytajće { -send-brand } za jednore, wěste datajowe dźělenje.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Jenož { $count } dataja da so na jedne dobo nahrać.
+        [two] Jenož { $count } dataji datej so na jedne dobo nahrać.
+        [few] Jenož { $count } dataje dadźa so na jedne dobo nahrać.
+       *[other] Jenož { $count } datajow da so na jedne dobo nahrać.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Jenož { $count } archiw je dowoleny.
+        [two] Jenož { $count } archiwaj stej dowolenej.
+        [few] Jenož { $count } archiwy su dowolene.
+       *[other] Jenož { $count } archiwow je dowolene.
+    }
+expiredTitle = Tutón wotkaz je spadnjeny.
+downloadFirefox = { -firefox } scáhnyć
+legalTitle = Zdźělenka priwatnosće { -send-short-brand }
+legalDateStamp = Wersija 1.0 wot 12. měrca 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = Dataje za nahrawanje wubrać
+uploadButton = Nahrać
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Ćehńće a wotkładźće dataje
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = abo klikńće, zo byšće do { $size } pósłał
+addPassword = Z hesłom škitać
+emailPlaceholder = Zapodajće swoju e-mejlowu adresu
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Přizjewće so, zo byšće do { $size } pósłał
+signInButton = Přizjewić/Registrować
+accountBenefitTitle = Załožće konto { -firefox } abo přizjewće so
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Dataje do { $size } dźělić
+accountBenefitDownloadCount = Dataje z wjace ludźimi dźělić
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Wotkazy do { $count } dnja aktiwne dźeržeć
+        [two] Wotkazy do { $count } dnjow aktiwne dźeržeć
+        [few] Wotkazy do { $count } dnjow aktiwne dźeržeć
+       *[other] Wotkazy do { $count } dnjow aktiwne dźeržeć
+    }
