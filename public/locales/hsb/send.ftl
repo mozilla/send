@@ -169,7 +169,7 @@ totalSize = Cyłkowna wulkosć: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Kopěrujće wotkaz, zo byšće swoju dataju dźělił:
 copyLinkButton = Wotkaz kopěrować
-downloadTitle = Dataj sćahnyć
+downloadTitle = Dataje sćahnyć
 downloadDescription = Tuta dataja je so přez { -send-brand } ze zaklučowanjom kónc do kónca a wotkazom dźěliła, kotryž awtomatisce spadnje.
 trySendDescription = Spytajće { -send-brand } za jednore, wěste datajowe dźělenje.
 # count will always be > 10
