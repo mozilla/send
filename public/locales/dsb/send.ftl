@@ -123,3 +123,44 @@ passwordIsSet = Gronidło jo se nastajiło
 maxPasswordLength = Maksimalna dłujkosć gronidła: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Toś to gronidło njedajo se nastajiś
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Jadnore, priwatne datajowe źělenje
+introDescription = { -send-brand } wam zmóžnja, dataje z koděrowanim kóńc do kóńca a wótkazom źěliś, kótaryž awtomatiski spadnjo. Tak móžośo źělone wopśimjeśe priwatne źaržaś a zawěsćiś, až waše daty online na pśecej njewóstanu.
+notifyUploadEncryptDone = Waša dataja jo skoděrowana za słanje
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Spadnjo pó { $downloadCount } abo { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] { $num } minuta
+        [two] { $num } minuśe
+        [few] { $num } minuty
+       *[other] { $num } minutow
+    }
+timespanDays =
+    { $num ->
+        [one] { $num } źeń
+        [two] { $num } dnja
+        [few] { $num } dny
+       *[other] { $num } dnjow
+    }
+timespanWeeks =
+    { $num ->
+        [one] { $num } tyźeń
+        [two] { $num } tyźenja
+        [few] { $num } tyźenje
+       *[other] { $num } tyźenjow
+    }
+fileCount =
+    { $num ->
+        [one] { $num } dataja
+        [two] { $num } dataji
+        [few] { $num } dataje
+       *[other] { $num } datajow
+    }
