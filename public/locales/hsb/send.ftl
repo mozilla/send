@@ -135,3 +135,39 @@ introTitle = Jednore, priwatne datajowe dźělenje
 notifyUploadEncryptDone = Waša dataja je zaklučowana a hotowa za słanje
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Spadnje po { $downloadCount } abo { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] { $num } mjeńšina
+        [two] { $num } mjeńšinje
+        [few] { $num } mjeńšiny
+       *[other] { $num } mjeńšin
+    }
+timespanDays =
+    { $num ->
+        [one] { $num } dźeń
+        [two] { $num } dnjej
+        [few] { $num } dny
+       *[other] { $num } dnjow
+    }
+timespanWeeks =
+    { $num ->
+        [one] { $num } tydźeń
+        [two] { $num } njedźeli
+        [few] { $num } njedźele
+       *[other] { $num } njedźel
+    }
+fileCount =
+    { $num ->
+        [one] { $num } dataja
+        [two] { $num } dataji
+        [few] { $num } dataje
+       *[other] { $num } datajow
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Cyłkowna wulkosć: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Kopěrujće wotkaz, zo byšće swoju dataju dźělił:
+copyLinkButton = Wotkaz kopěrować
+downloadTitle = Dataj sćahnyć
+downloadDescription = Tuta dataja je so přez { -send-brand } ze zaklučowanjom kónc do kónca a wotkazom dźěliła, kotryž awtomatisce spadnje.
+trySendDescription = Spytajće { -send-brand } za jednore, wěste datajowe dźělenje.
