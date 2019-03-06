@@ -157,7 +157,16 @@ totalSize = Totale grutte: { $size }
 copyLinkDescription = Kopiearje de keppeling, om jo bestannen te dielen:
 copyLinkButton = Keppeling kopierje
 downloadTitle = Bestannen downloade
+downloadDescription = Dit bestân is mei ein-nei-ein-fersifering en in keppeling dy't automatysk ferrint dield fia { -send-brand }.
+trySendDescription = Probearje { -send-brand }, om ienfâldich en privee bestannen te dielen.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Der kin maksimaal ien bestân opladen wurde.
+       *[other] Der kinne maksimaal { $count } bestannen opladen wurde.
+    }
 downloadFirefox = { -firefox } downloade
+legalTitle = { -send-short-brand }-privacyferklearring
 legalDateStamp = Ferzje 1.0, datearre 12 maart 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }o { $minutes }m
