@@ -123,3 +123,29 @@ passwordIsSet = Geslo je nastavljeno
 maxPasswordLength = Največja dolžina gesla: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Gesla ni mogoče nastaviti
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Preprosto, zasebno deljenje datotek
+notifyUploadEncryptDone = Vaša datoteka je šifrirana in pripravljena za pošiljanje
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Skupna velikost: { $size }
+copyLinkButton = Kopiraj povezavo
+downloadTitle = Prenesi datoteke
+expiredTitle = Ta povezava je potekla.
+downloadFirefox = Prenesite { -firefox }
+addFilesButton = Izberite datoteke za nalaganje
+uploadButton = Prenesi
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Povlecite in spustite datoteke
+emailPlaceholder = Vnesite e-poštni naslov
+accountBenefitTitle = Ustvarite { -firefox } Račun ali se prijavite
+signOut = Odjava
+okButton = V redu
+downloadingTitle = Prenašanje
+noStreamsOptionDownload = Nadaljujte s tem brskalnikom

@@ -25,6 +25,7 @@ uploadingFileNotification = Avísame cuando se complete la xuba.
 uploadSuccessConfirmHeader = Preparáu pa unviar
 uploadSvgAlt = Xubir
 uploadSuccessTimingHeader = L'enllaz del to ficheru caducará dempués d'una descarga o en 24 hores.
+expireInfo = L'enllaz al ficheru va caducar tres { $downloadCount } o { $timespan }.
 downloadCount =
     { $num ->
         [one] 1 descarga
@@ -43,6 +44,9 @@ sendAnotherFileLink = Unviar otru ficheru
 # Alternative text used on the download link/button (indicates an action).
 downloadAltText = Baxar
 downloadsFileList = Descargues
+# Used as header in a column indicating the amount of time left before a
+# download link expires (e.g. "10h 5m")
+timeFileList = Tiempu
 # Used as header in a column indicating the number of times a file has been
 # downloaded
 downloadFileName = Baxar { $filename }
@@ -101,5 +105,16 @@ requirePasswordCheckbox = Riquir una contraseña pa baxar esti ficheru
 addPasswordButton = Amestar contraseña
 changePasswordButton = Camudar
 passwordTryAgain = Contraseña incorreuta. Volvi tentalo.
+javascriptRequired = Firefox Send rique JavaScript
+whyJavascript = ¿Por qué Firefox Send rique JavaScript?
+enableJavascript = Activa JavaScript y volvi tentalo, por favor.
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
+# A short status message shown when a password is successfully set
+passwordIsSet = Afitóse la contraseña
+# A short status message shown when the user enters a long password
+maxPasswordLength = Llargor máximu de la contraseña: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Nun pudo afitase esta contraseña

@@ -22,24 +22,26 @@ uploadingPageCancel = Hủy tải lên
 uploadCancelNotification = Quá trình tải lên đã bị hủy.
 uploadingPageLargeFileMessage = Tập tin này khá nặng và sẽ tốn một chút thời gian để tải lên. Chờ chút nhé!
 uploadingFileNotification = Thông báo cho tôi khi tải lên hoàn tất.
-uploadSuccessConfirmHeader = Đã sẵn sàng để Gửi
+uploadSuccessConfirmHeader = Đã sẵn sàng để gửi
 uploadSvgAlt = Tải lên
-uploadSuccessTimingHeader = Liên kết đến tập tin của bạn sẽ hết hạn sau 1 lượt tải về hoặc trong 24 giờ.
+uploadSuccessTimingHeader = Liên kết đến tập tin của bạn sẽ hết hạn sau 1 lượt tải hoặc trong 24 giờ.
+expireInfo = Liên kết đến tập tin của bạn sẽ hết hạn sau { $downloadCount } hoặc { $timespan }.
 downloadCount =
     { $num ->
-       *[other] lượt tải
+       *[other] { $num } lượt tải
     }
 timespanHours =
     { $num ->
-       *[other] giờ
+       *[other] { $num } giờ
     }
 copyUrlFormLabelWithName = Sao chép và chia sẻ liên kết để gửi tập tin của bạn: { $filename }
-copyUrlFormButton = Sao chép vào vùng nhớ tạm
+copyUrlFormButton = Sao chép vào bộ nhớ tạm
 copiedUrl = Đã sao chép!
 deleteFileButton = Xóa tập tin
 sendAnotherFileLink = Gửi tập tin khác
 # Alternative text used on the download link/button (indicates an action).
-downloadAltText = Tải về
+downloadAltText = Tải xuống
+downloadsFileList = Tải xuống
 # Used as header in a column indicating the amount of time left before a
 # download link expires (e.g. "10h 5m")
 timeFileList = Thời gian
@@ -83,7 +85,7 @@ copyFileList = Sao chép URL
 expiryFileList = Hết hạn trong
 deleteFileList = Xóa
 nevermindButton = Đừng bận tâm
-legalHeader = Điều khoản & Quyền riêng tư
+legalHeader = Điều khoản & quyền riêng tư
 legalNoticeTestPilot = Firefox Send hiện tại đang là một thử nghiệm Test Pilot, và phải tuân theo <a>Điều khoản dịch vụ</a> và <a>Lưu ý về Quyền riêng tư</a>. Bạn có thể tìm hiểu thêm về thử nghiệm này và dữ liệu được thu thập <a>tại đây</a>.
 legalNoticeMozilla = Sử dụng trang web Firefox Send cũng phải tuân theo Mozilla's <a>Lưu ý về Quyền riêng tư của trang web</a> và <a>Điều khoản sử dụng của trang web</a>.
 deletePopupText = Xóa tập tin này?
@@ -96,9 +98,10 @@ footerLinkLegal = Pháp lý
 footerLinkAbout = Về Test Pilot
 footerLinkPrivacy = Quyền riêng tư
 footerLinkTerms = Điều khoản
-footerLinkCookies = Cookies
+footerLinkCookies = Cookie
 requirePasswordCheckbox = Yêu cầu mật khẩu khi tải về tập tin này
 addPasswordButton = Thêm mật khẩu
+changePasswordButton = Thay đổi
 passwordTryAgain = Sai mật khẩu. Vui lòng thử lại.
 reportIPInfringement = Báo cáo vi phạm
 javascriptRequired = Firefox Send cần JavaScript
@@ -112,3 +115,88 @@ expiresMinutes = { $minutes } phút
 passwordIsSet = Đã đặt mật khẩu
 # A short status message shown when the user enters a long password
 maxPasswordLength = Độ dài mật khẩu tối đa: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Không thể đặt mật khẩu này
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Chia sẻ tập tin đơn giản, riêng tư
+introDescription = { -send-brand } cho phép bạn chia sẻ các tập tin với mã hóa đầu cuối và một liên kết tự động hết hạn. Vì vậy, bạn có thể giữ những gì bạn chia sẻ riêng tư và đảm bảo dữ liệu của bạn không trực tuyến vĩnh viễn.
+notifyUploadEncryptDone = Tập tin của bạn được mã hóa và sẵn sàng để gửi
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Hết hạn sau { $downloadCount } hoặc { $timespan }
+timespanMinutes =
+    { $num ->
+       *[other] { $num } phút
+    }
+timespanDays =
+    { $num ->
+       *[other] { $num } ngày
+    }
+timespanWeeks =
+    { $num ->
+       *[other] { $num } tuần
+    }
+fileCount =
+    { $num ->
+       *[other] { $num } tập tin
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Tổng kích thước: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Sao chép liên kết để chia sẻ tập tin của bạn:
+copyLinkButton = Sao chép liên kết
+downloadTitle = Tải tập tin
+downloadDescription = Tập tin này đã được chia sẻ qua { -send-brand } với mã hóa đầu cuối và liên kết tự động hết hạn.
+trySendDescription = Hãy thử { -send-brand } để chia sẻ tập tin đơn giản, an toàn.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+       *[other] Chỉ { $count } tập tin có thể tải lên mỗi lần.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+       *[other] Chỉ cho phép { $count } lưu trữ.
+    }
+expiredTitle = Liên kết này đã hết hạn.
+notSupportedDescription = { -send-brand } sẽ không hoạt động với trình duyệt này. { -send-short-brand } hoạt động tốt nhất với phiên bản { -firefox } mới nhất và sẽ hoạt động với phiên bản hiện tại của hầu hết các trình duyệt.
+downloadFirefox = Tải xuống { -firefox }
+legalTitle = Thông báo bảo mật { -send-short-brand }
+legalDateStamp = Phiên bản 1.0, ngày 12 tháng 3 năm 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } ngày { $hours } giờ { $minutes } phút
+addFilesButton = Chọn tập tin để tải lên
+uploadButton = Tải lên
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Kéo và thả tập tin
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = hoặc nhấp để gửi tối đa { $size }
+addPassword = Bảo vệ bằng mật khẩu
+emailPlaceholder = Nhập email của bạn
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Đăng nhập để gửi tối đa { $size }
+signInButton = Đăng nhập hoặc đăng ký
+accountBenefitTitle = Tạo tài khoản { -firefox } hoặc đăng nhập
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Chia sẻ tập tin lên tới { $size }
+accountBenefitDownloadCount = Chia sẻ tập tin với nhiều người hơn
+accountBenefitTimeLimit =
+    { $count ->
+       *[other] Giữ liên kết hoạt động tối đa { $count } ngày
+    }
+accountBenefitSync = Quản lý tập tin được chia sẻ từ mọi thiết bị
+accountBenefitMoz = Tìm hiểu về các dịch vụ khác của { -mozilla }
+signOut = Đăng xuất
+okButton = OK
+downloadingTitle = Đang tải xuống
+noStreamsWarning = Trình duyệt này có khả năng không thể giải mã một tập tin lớn này.
+noStreamsOptionCopy = Sao chép liên kết để mở trong một trình duyệt khác
+noStreamsOptionFirefox = Hãy dùng thử trình duyệt yêu thích của chúng tôi
+noStreamsOptionDownload = Tiếp tục với trình duyệt này

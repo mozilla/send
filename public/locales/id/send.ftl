@@ -9,7 +9,6 @@ uploadPageDropMessage = Lepas berkas Anda di sini untuk mulai mengunggah
 uploadPageSizeMessage = Untuk pengoperasian yang paling andal, sebaiknya jaga berkas Anda di bawah 1GB
 uploadPageBrowseButton = Pilih berkas pada komputer Anda
 uploadPageBrowseButton1 = Pilih berkas untuk diunggah
-    .title = Pilih berkas untuk diunggah
 uploadPageMultipleFilesAlert = Saat ini belum mendukung pengunggahan beberapa berkas atau folder.
 uploadPageBrowseButtonTitle = Unggah berkas
 uploadingPageProgress = Mengunggah { $filename } ({ $size })

@@ -119,3 +119,93 @@ passwordIsSet = Wachtwurd ynsteld
 maxPasswordLength = Maksimale wachtwurdlingte: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Dit wachtwurd koe net ynsteld wurde
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Ienfâldich, privee bestannen diele
+introDescription = Mei { -send-brand } kinne jo bestannen mei ein-ta-ein-fersifering en in automatysk ferrinnende keppeling diele. Sa kinne jo de dielde ynhâld privee hâlde, sadat jo gegevens net foar altyd online bliuwt.
+notifyUploadEncryptDone = Jo bestân is fersifere en ree om te ferstjoeren
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Ferrint nei { $downloadCount } of { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 minute
+       *[other] { $num } minuten
+    }
+timespanDays =
+    { $num ->
+        [one] 1 dei
+       *[other] { $num } dagen
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 wike
+       *[other] { $num } wiken
+    }
+fileCount =
+    { $num ->
+        [one] 1 bestân
+       *[other] { $num } bestannen
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Totale grutte: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Kopiearje de keppeling, om jo bestannen te dielen:
+copyLinkButton = Keppeling kopierje
+downloadTitle = Bestannen downloade
+downloadDescription = Dit bestân is mei ein-ta-ein-fersifering en in keppeling dy't automatysk ferrint dield fia { -send-brand }.
+trySendDescription = Probearje { -send-brand }, om ienfâldich en privee bestannen te dielen.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Der kin maksimaal ien bestân opladen wurde.
+       *[other] Der kinne maksimaal { $count } bestannen opladen wurde.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Der is mar ien argyf tastien.
+       *[other] Der binne mar { $count } argiven tastien.
+    }
+expiredTitle = Dizze keppeling is ferrûn.
+notSupportedDescription = { -send-brand } funksjonearret net mei dizze browser. { -send-short-brand } funksjonearret it bêste mei de nijste ferzje fan { -firefox } en funksjonearret mei de aktuele ferzje fan de measte browsers.
+downloadFirefox = { -firefox } downloade
+legalTitle = { -send-short-brand }-privacyferklearring
+legalDateStamp = Ferzje 1.0, datearre 12 maart 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }o { $minutes }m
+addFilesButton = Bestannen selektearje om op te laden
+uploadButton = Oplade
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Sleep en pleats bestannen
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = of stjoer oant { $size } troch te klikken
+addPassword = Mei wachtwurd beskermje
+emailPlaceholder = Fier jo e-mailadres yn
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Meld jo oan, om bestannen oant { $size } te stjoeren
+signInButton = Oanmelde/Registrearje
+accountBenefitTitle = Meitsje in { -firefox }-account of meld jo oan
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Diel bestannen oant { $size }
+accountBenefitDownloadCount = Diel bestannen mei mear minsken
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Keppeling oant ien dei lang aktyf hâlde
+       *[other] Keppeling oant { $count } dagen lang aktyf hâlde
+    }
+accountBenefitSync = Behear dielde bestannen fan elk apparaat ôf
+accountBenefitMoz = Lês mear oer oare { -mozilla }-tsjinsten
+signOut = Ofmelde
+okButton = OK
+downloadingTitle = Downloade
+noStreamsWarning = Dizze browser kin in sa'n grut bestân mooglik net fersiferje.
+noStreamsOptionCopy = Kopiearje de koppeling om yn in oare browser te iepenjen
+noStreamsOptionFirefox = Probearje ús favorite browser
+noStreamsOptionDownload = Trochgean mei dizze browser

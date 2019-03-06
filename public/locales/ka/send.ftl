@@ -9,7 +9,7 @@ uploadPageDropMessage = გადმოიტანეთ ფაილი აქ
 uploadPageSizeMessage = ყველაზე საიმედო მომსახურება, შეგიძლიათ ატვირთოთ არაუმეტეს 1GB ზომის ფაილი
 uploadPageBrowseButton = ფაილის არჩევა კომპიუტერიდან
 uploadPageBrowseButton1 = ფაილის არჩევა ასატვირთად
-uploadPageMultipleFilesAlert = ერთდროულად რამდენიმე ფაილის, ან საქაღალდის ატვირთვა, ამჟამად არაა ხელმისაწვდომი.
+uploadPageMultipleFilesAlert = ერთდროულად რამდენიმე ფაილის ან საქაღალდის ატვირთვა, ამჟამად არაა ხელმისაწვდომი.
 uploadPageBrowseButtonTitle = ფაილის ატვირთვა
 uploadingPageProgress = მიმდინარეობს ატვირთვა { $filename } ({ $size })
 importingFile = გადმოტანა...
@@ -24,7 +24,7 @@ uploadingPageLargeFileMessage = ფაილი დიდია და ატვ
 uploadingFileNotification = შეტყობინება, ატვირთვის დასრულებისას.
 uploadSuccessConfirmHeader = მზადაა გასაგზავნად
 uploadSvgAlt = ატვირთვა
-uploadSuccessTimingHeader = ფაილს ვადა გაუვა 1 ჩამოტვირთვის, ან 24 საათის მერე.
+uploadSuccessTimingHeader = ფაილს ვადა გაუვა 1 ჩამოტვირთვის ან 24 საათის მერე.
 expireInfo = ფაილის ბმულს, ვადა გაუვა { $downloadCount }, ან { $timespan } მერე.
 downloadCount =
     { $num ->
@@ -36,9 +36,9 @@ timespanHours =
         [one] 1 საათი
        *[other] { $num } საათი
     }
-copyUrlFormLabelWithName = დააკოპირეთ და გააზიარეთ ბმული, ფაილის გასაგზავნად: { $filename }
-copyUrlFormButton = დაკოპირება
-copiedUrl = დაკოპირდა!
+copyUrlFormLabelWithName = აიღეთ ბმულის ასლი და გააზიარეთ, ფაილის გასაგზავნად: { $filename }
+copyUrlFormButton = ასლის აღება
+copiedUrl = ასლი მზადაა!
 deleteFileButton = ფაილის წაშლა
 sendAnotherFileLink = სხვა ფაილის გაგზავნა
 # Alternative text used on the download link/button (indicates an action).
@@ -82,7 +82,7 @@ notSupportedOutdatedDetail = სამწუხაროდ, Firefox-ის ა�
 updateFirefox = Firefox-ის განახლება
 downloadFirefoxButtonSub = უფასო ჩამოტვირთვა
 uploadedFile = ფაილი
-copyFileList = URL ბმულის დაკოპირება
+copyFileList = URL-ბმულის ასლი
 # expiryFileList is used as a column header
 expiryFileList = ვადის გასვლის დრო
 deleteFileList = წაშლა
@@ -94,8 +94,8 @@ deletePopupText = წაიშალოს ეს ფაილი?
 deletePopupYes = დიახ
 deletePopupCancel = გაუქმება
 deleteButtonHover = წაშლა
-copyUrlHover = URL-ს დაკოპირება
-footerLinkLegal = იურიდიული ინფორმაცია
+copyUrlHover = URL-ს ასლი
+footerLinkLegal = სამართლებრივი საკითხები
 # Test Pilot is a proper name and should not be localized.
 footerLinkAbout = Test Pilot-ის შესახებ
 footerLinkPrivacy = პირადულობა
@@ -119,3 +119,12 @@ passwordIsSet = პაროლი დაყენებულია
 maxPasswordLength = პაროლის დაშვებული ზომა: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = ამ პაროლის დაყენება ვერ ხერხდება
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = ფაილის გაზიარება მარტივად, უსაფრთხოდ

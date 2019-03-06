@@ -46,7 +46,7 @@ downloadAltText = Descargar
 downloadsFileList = Descargas
 # Used as header in a column indicating the amount of time left before a
 # download link expires (e.g. "10h 5m")
-timeFileList = Tiempo 
+timeFileList = Tiempo
 # Used as header in a column indicating the number of times a file has been
 # downloaded
 downloadFileName = Descargar { $filename }
@@ -119,3 +119,93 @@ passwordIsSet = Contraseña establecida
 maxPasswordLength = Longitud máxima de la contraseña: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = No se pudo establecer la contraseña
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Intercambio de archivos sencillo y privado
+introDescription = { -send-brand } le permite compartir archivos con cifrado de extremo a extremo y un enlace que caduca automáticamente. Así puede mantener privado lo que comparte y asegurarse de que sus cosas no permanezcan en línea para siempre.
+notifyUploadEncryptDone = Su archivo está cifrado y listo para enviar
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Vence después de { $downloadCount } o { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 minuto
+       *[other] { $num } minutos
+    }
+timespanDays =
+    { $num ->
+        [one] 1 día
+       *[other] { $num } días
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 semana
+       *[other] { $num } semanas
+    }
+fileCount =
+    { $num ->
+        [one] 1 file
+       *[other] { $num } archivos
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Tamaño total: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Copiar el enlace para compartir su archivo:
+copyLinkButton = Copiar enlace
+downloadTitle = Descargar archivos
+downloadDescription = Este archivo se compartió a través de { -send-brand } con cifrado de extremo a extremo y un enlace que caduca automáticamente.
+trySendDescription = Pruebe { -send-brand } para compartir archivos de forma sencilla y segura.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Solo se puede subir 1 archivo a la vez.
+       *[other] Solo se pueden subir archivos { $count } a la vez.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Solo se permite 1 archivo.
+       *[other] Solo se permiten { $count } archivos.
+    }
+expiredTitle = Este enlace caducó.
+notSupportedDescription = { -send-brand } no funcionará con este navegador. { -send-short-brand } funciona mejor con la última versión de { -firefox }, y funcionará con la versión actual de la mayoría de los navegadores.
+downloadFirefox = Descargue { -firefox }
+legalTitle = Aviso de privacidad de { -send-short-brand }
+legalDateStamp = Versión 1.0, con fecha 12 de marzo de 2019.
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = Seleccionar archivos para subir
+uploadButton = Subir
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Arrastrar y soltar archivos
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = o haga clic para enviar hasta { $size }
+addPassword = Proteger con contraseña
+emailPlaceholder = Ingrese su correo electrónico
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Inicie sesión para enviar hasta { $size }
+signInButton = Iniciar sesión/registrarse
+accountBenefitTitle = Cree una cuenta de { -firefox } o inicie la sesión
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Compartir archivos hasta { $size }
+accountBenefitDownloadCount = Compartir archivos con más personas
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Mantenga los enlaces activos hasta por 1 día
+       *[other] Mantenga los enlaces activos hasta por { $count } días
+    }
+accountBenefitSync = Administre archivos compartidos desde cualquier dispositivo.
+accountBenefitMoz = Conocer sobre otros servicios de { -mozilla }
+signOut = Salir
+okButton = Aceptar
+downloadingTitle = Descargando
+noStreamsWarning = Es posible que este navegador no pueda descifrar un archivo tan grande.
+noStreamsOptionCopy = Copiar el enlace para abrir en otro navegador.
+noStreamsOptionFirefox = Pruebe nuestro navegador favorito
+noStreamsOptionDownload = Continuar con este navegador
