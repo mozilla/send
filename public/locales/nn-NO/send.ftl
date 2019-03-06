@@ -22,7 +22,7 @@ uploadingPageCancel = Avbryt opplasting
 uploadCancelNotification = Opplastinga di vart avbroten
 uploadingPageLargeFileMessage = Denne fila er stor, og det kan ta litt tid å laste henne opp. Ver tolmodig!
 uploadingFileNotification = Varsle meg når opplastinga er ferdig.
-uploadSuccessConfirmHeader = Klår til å senda
+uploadSuccessConfirmHeader = Klar til å sende
 uploadSvgAlt = Last opp
 uploadSuccessTimingHeader = Lenka til fila di går ut etter 1 nedlasting eller om 24 timar.
 expireInfo = Lenka til fila di vil gå ut etter { $downloadCount } eller { $timespan }.
@@ -56,7 +56,7 @@ unlockInputPlaceholder = Passord
 unlockButtonLabel = Lås opp
 downloadFileTitle = Last ned kryptert fil
 # Firefox Send is a brand name and should not be localized.
-downloadMessage = Vennen din sender deg eni fil med Firefox Send, ei teneste som lar deg dele filer med ei sikker, privat og kryptert lenke, som automatisk går ut, for å sikre at ting ikkje vert verande på nettet for alltid.
+downloadMessage = Vennen din sender deg ei fil med Firefox Send, ei teneste som lar deg dele filer med ei sikker, privat og kryptert lenke, som automatisk går ut, for å sikre at ting ikkje vert verande på nettet for alltid.
 # Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Last ned
 downloadNotification = Nedlastinga er fullført.
