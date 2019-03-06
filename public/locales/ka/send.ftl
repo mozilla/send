@@ -201,3 +201,11 @@ accountBenefitTimeLimit =
        *[other] დატოვეთ ფაილები { $count } დღემდე
     }
 accountBenefitSync = მართეთ გაზიარებული ფაილები ნებისმიერი მოწყობილობიდან
+accountBenefitMoz = გაეცანით { -mozilla }-ს სხვა მომსახურებებს
+signOut = გამოსვლა
+okButton = კარგი
+downloadingTitle = მიმდინარეობს ჩამოტვირთვა
+noStreamsWarning = ამ ბრაუზერმა, შესაძლოა ვერ მოახერხოს ასეთი დიდი ფაილის გაშიფვრა.
+noStreamsOptionCopy = ბმულის ასლის აღება სხვა ბრაუზერში გასახსნელად
+noStreamsOptionFirefox = სცადეთ ჩვენი რჩეული ბრაუზერი
+noStreamsOptionDownload = განაგრძეთ ამ ბრაუზერით
