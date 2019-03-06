@@ -128,6 +128,9 @@ passwordSetError = Dit wachtwurd koe net ynsteld wurde
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Ienfâldich, privee bestannen diele
+notifyUploadEncryptDone = Jo bestân is fersifere en ree om te ferstjoeren
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Ferrint nei { $downloadCount } of { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 minute
@@ -156,11 +159,35 @@ copyLinkButton = Keppeling kopierje
 downloadTitle = Bestannen downloade
 downloadFirefox = { -firefox } downloade
 legalDateStamp = Ferzje 1.0, datearre 12 maart 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }o { $minutes }m
+addFilesButton = Bestannen selektearje om op te laden
 uploadButton = Oplade
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Sleep en pleats bestannen
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = of stjoer oant { $size } troch te klikken
+addPassword = Mei wachtwurd beskermje
 emailPlaceholder = Fier jo e-mailadres yn
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Meld jo oan, om bestannen oant { $size } te stjoeren
+signInButton = Oanmelde/Registrearje
+accountBenefitTitle = Meitsje in { -firefox }-account of meld jo oan
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Diel bestannen oant { $size }
+accountBenefitDownloadCount = Diel bestannen mei mear minsken
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Keppeling oant ien dei lang aktyf hâlde
+       *[other] Keppeling oant { $count } dagen lang aktyf hâlde
+    }
+accountBenefitSync = Behear dielde bestannen fan elk apparaat ôf
+accountBenefitMoz = Lês mear oer oare { -mozilla }-tsjinsten
 signOut = Ofmelde
 okButton = OK
 downloadingTitle = Downloade
+noStreamsWarning = Dizze browser kin in sa'n grut bestân mooglik net fersiferje.
 noStreamsOptionCopy = Kopiearje de koppeling om yn in oare browser te iepenjen
 noStreamsOptionFirefox = Probearje ús favorite browser
 noStreamsOptionDownload = Trochgean mei dizze browser
