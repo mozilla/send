@@ -38,7 +38,7 @@ module.exports = function(app) {
           connectSrc: [
             "'self'",
             'wss://*.dev.lcip.org',
-            'wss://*.mozaws.net',
+            'wss://*.send.nonprod.cloudops.mozgcp.net',
             'wss://send.firefox.com',
             'https://*.dev.lcip.org',
             'https://accounts.firefox.com',
