@@ -55,6 +55,9 @@ export default function(state, emitter) {
 
   emitter.on('removeUpload', file => {
     state.archive.remove(file);
+    if (state.archive.numFiles === 0) {
+      state.archive.clear();
+    }
     render();
   });
 

@@ -446,7 +446,7 @@ module.exports.empty = function(state, emit) {
         for="file-upload"
         role="button"
         class="btn rounded-lg flex items-center mt-4"
-        title="${state.translate('addFilesButtonWithSizeUpdate', {
+        title="${state.translate('addFilesButton', {
           size: bytes(state.user.maxSize)
         })}"
       >
