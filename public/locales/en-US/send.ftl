@@ -1,5 +1,3 @@
-## strings inherited from Send version 1
-
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteFeedback = Feedback
@@ -26,7 +24,7 @@ fileTooBig = That file is too big to upload. It should be less than { $size }
 linkExpiredAlt = Link expired
 notSupportedHeader = Your browser is not supported.
 notSupportedLink = Why is my browser not supported?
-notSupportedOutdatedDetail = Unfortunately this version of Firefox does not port the web technology that powers Firefox Send. You’ll need to update your wser.
+notSupportedOutdatedDetail = Unfortunately this version of Firefox does not support the web technology that powers Firefox Send. You’ll need to update your browser.
 updateFirefox = Update Firefox
 deletePopupCancel = Cancel
 deleteButtonHover = Delete
@@ -37,9 +35,9 @@ passwordTryAgain = Incorrect password. Try again.
 javascriptRequired = Firefox Send requires JavaScript
 whyJavascript = Why does Firefox Send require JavaScript?
 enableJavascript = Please enable JavaScript and try again.
-# A short representation of a countdown timer containing the number of hours  minutes remaining as digits, example "13h 47m"
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
-# A short representation of a countdown timer containing the number of utes remaining as digits, example "56m"
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
 # A short status message shown when the user enters a long password
 maxPasswordLength = Maximum password length: { $length }
