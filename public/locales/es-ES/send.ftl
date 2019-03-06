@@ -122,10 +122,14 @@ passwordSetError = No se ha podido establecer la contraseña
 
 ## New strings for the vNext version of Firefox Send
 
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
 -send-short-brand = Enviar
 -firefox = Firefox
 -mozilla = Mozilla
 notifyUploadEncryptDone = El archivo está cifrado y listo para enviar
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Caduca tras { $downloadCount } o { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 minuto
