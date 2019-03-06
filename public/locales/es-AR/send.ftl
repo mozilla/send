@@ -46,7 +46,7 @@ downloadAltText = Descargar
 downloadsFileList = Descargas
 # Used as header in a column indicating the amount of time left before a
 # download link expires (e.g. "10h 5m")
-timeFileList = Tiempo 
+timeFileList = Tiempo
 # Used as header in a column indicating the number of times a file has been
 # downloaded
 downloadFileName = Descargar { $filename }
@@ -119,3 +119,13 @@ passwordIsSet = Contraseña establecida
 maxPasswordLength = Longitud máxima de la contraseña: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = No se pudo establecer la contraseña
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Intercambio de archivos sencillo y privado
+introDescription = { -send-brand } le permite compartir archivos con cifrado de extremo a extremo y un enlace que caduca automáticamente. Así puede mantener privado lo que comparte y asegurarse de que sus cosas no permanezcan en línea para siempre.
