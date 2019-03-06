@@ -131,6 +131,7 @@ passwordSetError = Gesla ni mogoče nastaviti
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Preprosto, zasebno deljenje datotek
 notifyUploadEncryptDone = Vaša datoteka je šifrirana in pripravljena za pošiljanje
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 totalSize = Skupna velikost: { $size }
@@ -143,6 +144,7 @@ uploadButton = Prenesi
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Povlecite in spustite datoteke
 emailPlaceholder = Vnesite e-poštni naslov
+accountBenefitTitle = Ustvarite { -firefox } Račun ali se prijavite
 signOut = Odjava
 okButton = V redu
 downloadingTitle = Prenašanje
