@@ -172,3 +172,22 @@ tooManyArchives =
         [one] Solo se permite 1 archivo.
        *[other] Solo se permiten { $count } archivos.
     }
+expiredTitle = Este enlace caducó.
+notSupportedDescription = { -send-brand } no funcionará con este navegador. { -send-short-brand } funciona mejor con la última versión de { -firefox }, y funcionará con la versión actual de la mayoría de los navegadores.
+downloadFirefox = Descargue { -firefox }
+legalTitle = Aviso de privacidad de { -send-short-brand }
+legalDateStamp = Versión 1.0, con fecha 12 de marzo de 2019.
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = Seleccionar archivos para subir
+uploadButton = Subir
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Arrastrar y soltar archivos
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = o haga clic para enviar hasta { $size }
+addPassword = Proteger con contraseña
+emailPlaceholder = Ingrese su correo electrónico
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Inicie sesión para enviar hasta { $size }
+signInButton = Iniciar sesión/registrarse
