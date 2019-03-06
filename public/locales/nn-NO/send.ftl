@@ -22,7 +22,7 @@ uploadingPageCancel = Avbryt opplasting
 uploadCancelNotification = Opplastinga di vart avbroten
 uploadingPageLargeFileMessage = Denne fila er stor, og det kan ta litt tid å laste henne opp. Ver tolmodig!
 uploadingFileNotification = Varsle meg når opplastinga er ferdig.
-uploadSuccessConfirmHeader = Klår til å senda
+uploadSuccessConfirmHeader = Klar til å sende
 uploadSvgAlt = Last opp
 uploadSuccessTimingHeader = Lenka til fila di går ut etter 1 nedlasting eller om 24 timar.
 expireInfo = Lenka til fila di vil gå ut etter { $downloadCount } eller { $timespan }.
@@ -56,7 +56,7 @@ unlockInputPlaceholder = Passord
 unlockButtonLabel = Lås opp
 downloadFileTitle = Last ned kryptert fil
 # Firefox Send is a brand name and should not be localized.
-downloadMessage = Vennen din sender deg eni fil med Firefox Send, ei teneste som lar deg dele filer med ei sikker, privat og kryptert lenke, som automatisk går ut, for å sikre at ting ikkje vert verande på nettet for alltid.
+downloadMessage = Vennen din sender deg ei fil med Firefox Send, ei teneste som lar deg dele filer med ei sikker, privat og kryptert lenke, som automatisk går ut, for å sikre at ting ikkje vert verande på nettet for alltid.
 # Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Last ned
 downloadNotification = Nedlastinga er fullført.
@@ -119,3 +119,54 @@ passwordIsSet = Passord innstilt
 maxPasswordLength = Maksimum passordlengde: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Dette passordet kunne ikkje stillast inn
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Enkel, privat fildeling
+timespanMinutes =
+    { $num ->
+        [one] 1 minutt
+       *[other] { $num } minutt
+    }
+timespanDays =
+    { $num ->
+        [one] 1 dag
+       *[other] { $num } dagar
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 veke
+       *[other] { $num } veker
+    }
+fileCount =
+    { $num ->
+        [one] 1 fil
+       *[other] { $num } filer
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Total storleik: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Kopier lenka for å dele fila di:
+copyLinkButton = Kopier lenke
+downloadTitle = Last ned filer
+downloadFirefox = Last ned { -firefox }
+legalDateStamp = Versjon 1.0, datert den 12 mars 2019
+uploadButton = Last opp
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Dra og slepp filer
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = eller klikk for å senda opp til { $size }
+addPassword = Vern med passord
+emailPlaceholder = Skriv inn e-postadressa di
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = LOgg inn for å senda opp til { $size }
+signInButton = Logg inn/Registrer deg
+signOut = Logg ut
+okButton = OK
+downloadingTitle = Lastar ned

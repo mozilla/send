@@ -97,13 +97,13 @@ footerLinkLegal = 法律
 # Test Pilot is a proper name and should not be localized.
 footerLinkAbout = 关于 Test Pilot
 footerLinkPrivacy = 隐私
-footerLinkTerms = 条款
+footerLinkTerms = 使用条款
 footerLinkCookies = Cookie
 requirePasswordCheckbox = 持有密码才能下载此文件
 addPasswordButton = 添加密码
 changePasswordButton = 更改
 passwordTryAgain = 密码不正确。请重试。
-reportIPInfringement = 举报知识产权侵权
+reportIPInfringement = 举报侵犯知识产权
 javascriptRequired = Firefox Send 需要 JavaScript
 whyJavascript = 为什么 Firefox Send 需要 JavaScript？
 enableJavascript = 请启用 JavaScript 并重试。
@@ -117,3 +117,40 @@ passwordIsSet = 密码已设置
 maxPasswordLength = 最大密码长度：{ $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = 未能设置此密码
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+timespanMinutes =
+    { $num ->
+        [one] 1 分钟
+       *[other] { $num } 分钟
+    }
+timespanDays =
+    { $num ->
+        [one] 1 天
+       *[other] { $num } 天
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 周
+       *[other] { $num } 周
+    }
+fileCount =
+    { $num ->
+        [one] 1 个文件
+       *[other] { $num } 个文件
+    }
+copyLinkButton = 复制链接
+downloadTitle = 下载文件
+expiredTitle = 此链接已过期。
+legalTitle = { -send-short-brand } 隐私声明
+addFilesButton = 选择要上传的文件
+uploadButton = 上传
+signInButton = 登录 / 注册
+signOut = 退出
+okButton = 确定

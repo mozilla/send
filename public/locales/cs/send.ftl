@@ -121,3 +121,82 @@ passwordIsSet = Heslo nastaveno
 maxPasswordLength = Maximální délka hesla: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Toto heslo nemohlo být nastaveno
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Jednoduché a soukromé sdílení souborů
+introDescription = Se službou { -send-brand } jsou sdílené soubory šifrované end-to-end, takže ani mi nevíme, co sdílíte. Platnost odkazů je navíc omezená. Soubory tak můžete sdílet soukromě a máte také jistotu, že se nezůstanou na internetu válet navždy.
+notifyUploadEncryptDone = Váš soubor je zašifrovaný a připraven k odeslání
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Platnost vyprší po { $downloadCount } nebo za { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] jednu minutu
+        [few] { $num } minuty
+       *[other] { $num } minut
+    }
+timespanDays =
+    { $num ->
+        [one] jeden den
+        [few] { $num } dny
+       *[other] { $num } dní
+    }
+timespanWeeks =
+    { $num ->
+        [one] jeden týden
+        [few] { $num } týdny
+       *[other] { $num } týdnů
+    }
+fileCount =
+    { $num ->
+        [one] jeden soubor
+        [few] { $num } soubory
+       *[other] { $num } souborů
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Celková velikost: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Soubor můžete sdílet tímto odkazem:
+copyLinkButton = Zkopírovat odkaz
+downloadTitle = Stáhnout soubory
+downloadDescription = Tento soubor byl sdílen přes službu { -send-brand } s end-to-end šifrováním a odkazem s omezenou platností.
+trySendDescription = Zkuste { -send-brand } pro jednoduché a bezpečné sdílení souborů
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Najednou lze nahrávat jen jeden soubor.
+        [few] Najednou lze nahrávat jen { $count } soubory.
+       *[other] Najednou lze nahrávat jen { $count } souborů.
+    }
+expiredTitle = Platnost tohoto odkazu vypršela.
+notSupportedDescription = { -send-brand } nebude v tomto prohlížeči fungovat. Nejlépe { -send-short-brand } funguje v nejnovější verzi prohlížeče { -firefox } nebo aktuálních verzích nejpoužívanějších prohlížečů.
+downloadFirefox = Stáhnout { -firefox }
+legalTitle = Zásady služby { -send-short-brand } pro ochranu osobních údajů
+legalDateStamp = Verze 1.0, 12. března 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = Vyberte soubory k nahrání
+uploadButton = Nahrát
+addPassword = Chránit heslem
+emailPlaceholder = Zadejte svoji e-mailovou adresu
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Pro odesílání souborů až do velikosti { $size } se prosím přihlaste
+signInButton = Přihlášení/Registrace
+accountBenefitTitle = Vytvořte si účet Firefoxu nebo se přihlaste
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Sdílejte soubory až do velikosti { $size }
+accountBenefitDownloadCount = Sdílejte soubory s více lidmi
+accountBenefitSync = Správa sdílených souborů z jakéhokoliv zařízení
+accountBenefitMoz = Zjistit více o dalších službách od Mozilly
+signOut = Odhlásit se
+okButton = OK
+downloadingTitle = Stahování
+noStreamsWarning = Dešifrování tak velikého souboru se v tomto prohlížeči nemusí podařit.
+noStreamsOptionCopy = Zkopírujte odkaz pro otevření v jiném prohlížeči
+noStreamsOptionFirefox = Vyzkoušejte náš oblíbený prohlížeč
+noStreamsOptionDownload = Pokračovat v tomto prohlížeči

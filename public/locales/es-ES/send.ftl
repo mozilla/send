@@ -119,3 +119,88 @@ passwordIsSet = Contraseña establecida
 maxPasswordLength = Longitud máxima de la contraseña: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = No se ha podido establecer la contraseña
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Enviar
+-firefox = Firefox
+-mozilla = Mozilla
+notifyUploadEncryptDone = El archivo está cifrado y listo para enviar
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Caduca tras { $downloadCount } o { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 minuto
+       *[other] { $num } minutos
+    }
+timespanDays =
+    { $num ->
+        [one] 1 día
+       *[other] { $num } días
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 semana
+       *[other] { $num } semanas
+    }
+fileCount =
+    { $num ->
+        [one] 1 archivo
+       *[other] { $num } archivos
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Tamaño total: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Copiar el enlace para compartir el archivo:
+copyLinkButton = Copiar enlace
+downloadTitle = Descargar archivos
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Solo se puede subir 1 archivo a la vez.
+       *[other] Solo se pueden subir { $count } archivos a la vez.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Solo se permite 1 archivo.
+       *[other] Solo se permiten { $count } archivos.
+    }
+expiredTitle = Este enlace ha expirado.
+downloadFirefox = Descargar { -firefox }
+legalTitle = Aviso de privacidad de { -send-short-brand }
+legalDateStamp = Versión 1.0 del 12 de marzo de 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = Seleccionar archivos para subir
+uploadButton = Subir
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Arrastrar y soltar archivos
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = o hacer clic para enviar hasta { $size }
+addPassword = Proteger con contraseña
+emailPlaceholder = Introducir dirección de correo
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Iniciar sesión para enviar hasta { $size }
+signInButton = Iniciar sesión/registrarse
+accountBenefitTitle = Crear una cuenta { -firefox } o iniciar sesión
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Compartir archivos de hasta { $size }
+accountBenefitDownloadCount = Compartir archivos con más gente
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Mantener enlaces activos durante 1 día
+       *[other] Mantener enlaces activos durante { $count } días
+    }
+accountBenefitSync = Administrar los archivos compartidos desde cualquier dispositivo
+accountBenefitMoz = Saber más sobre otros servicios de { -mozilla }
+signOut = Cerrar sesión
+okButton = Vale
+downloadingTitle = Descargando
+noStreamsWarning = Puede que este navegador no pueda descifrar un archivo tan grande.
+noStreamsOptionCopy = Copiar el enlace para abrirlo en otro navegador
+noStreamsOptionFirefox = Probar nuestro navegador favorito
+noStreamsOptionDownload = Continuar en este navegador

@@ -11,7 +11,7 @@ uploadPageBrowseButton = Dewiswch ffeil ar eich cyfrifiadur
 uploadPageBrowseButton1 = Dewiswch ffeil i'w llwytho i fyny
 uploadPageMultipleFilesAlert = Nid yw llwytho nifer lluosog o ffeiliau neu ffolder yn cael ei gynnal ar hyn o bryd.
 uploadPageBrowseButtonTitle = Llwytho ffeil i fyny
-uploadingPageProgress = Llwytho $filename}  i fyny ({ $size })
+uploadingPageProgress = Llwytho { $filename } ({ $maint }) i fyny
 importingFile = Mewnforio…
 verifyingFile = Wrthi'n gwirio…
 encryptingFile = Wrthi'n amgryptio…
@@ -127,3 +127,121 @@ passwordIsSet = Wedi gosod y cyfrinair
 maxPasswordLength = Hyd mwyaf cyfrinair: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Nid oedd modd gosod y cyfrinair hwn
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Anfon
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Rhannu ffeiliau syml a phreifat
+introDescription = Mae { -send-brand } yn gadael i chi rannu ffeiliau gydag amgryptio o'r dechrau i'r diwedd a dolen sy'n dod i ben yn awtomatig. Felly gallwch chi gadw'r hyn rydych chi'n ei rannu'n breifat a sicrhau nad yw'ch pethau'n aros ar-lein am byth.
+notifyUploadEncryptDone = Mae eich ffeil wedi'i hamgryptio ac yn barod i'w hanfon
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Yn dod i ben ar ôl { $downloadCount } neu { $timespan }
+timespanMinutes =
+    { $num ->
+        [zero] 0 munud
+        [one] 1 munud
+        [two] { $num } munud
+        [few] { $num } munud
+        [many] { $num } munud
+       *[other] { $num } munud
+    }
+timespanDays =
+    { $num ->
+        [zero] 0 diwrnod
+        [one] 1 dwrnod
+        [two] { $num } diwrnod
+        [few] { $num } diwrnod
+        [many] { $num } diwrnod
+       *[other] { $num } diwrnod
+    }
+timespanWeeks =
+    { $num ->
+        [zero] 0 wythnos
+        [one] 1 wythnos
+        [two] { $num } wythnos
+        [few] { $num } wythnos
+        [many] { $num } wythnos
+       *[other] { $num } wythnos
+    }
+fileCount =
+    { $num ->
+        [zero] 0 ffeil
+        [one] 1 ffeil
+        [two] { $num } ffeil
+        [few] { $num } ffeil
+        [many] { $num } ffeil
+       *[other] { $num } ffeil
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Cyfanswm maint: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Copïwch y ddolen i rannu eich ffeil:
+copyLinkButton = Copïo'r ddolen
+downloadTitle = Llwytho ffeiliau i lawr
+downloadDescription = Rhannwyd y ffeil hon trwy { -send-brand } gydag amgryptiad o'r dechrau i'r diwedd a dolen sy'n dod i ben yn awtomatig.
+trySendDescription = Rhowch gynnig ar { -send-brand } ar gyfer rhannu ffeiliau syml a diogel.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [zero] Nid oes modd llwytho ffeiliau i fyny.
+        [one] Dim ond 1 ffeil y mae modd ei llwytho i fyny ar y tro.
+        [two] Dim ond ffeiliau { $count } y mae modd eu llwytho i fyny ar y tro.
+        [few] Dim ond ffeiliau { $count } y mae modd eu llwytho i fyny ar y tro.
+        [many] Dim ond ffeiliau { $count } y mae modd eu llwytho i fyny ar y tro.
+       *[other] Dim ond ffeiliau { $count } y mae modd eu llwytho i fyny ar y tro.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [zero] Dim caniatâd i archifau.
+        [one] Dim ond 1 archif y'n cael ei ganiatáu.
+        [two] Dim ond { $count } archif sy'n cael eu caniatáu.
+        [few] Dim ond { $count } archif sy'n cael eu caniatáu.
+        [many] Dim ond { $count } archif sy'n cael eu caniatáu.
+       *[other] Dim ond { $count } archif sy'n cael eu caniatáu.
+    }
+expiredTitle = Mae'r ddolen hon wedi dod i ben.
+notSupportedDescription = Ni fydd { -send-brand } yn gweithio gyda'r porwr hwn. Mae { -send-short-brand } yn gweithio orau gyda'r fersiwn ddiweddaraf o { -firefox }, a bydd yn gweithio gyda'r fersiwn gyfredol o'r rhan fwyaf o borwyr.
+downloadFirefox = Llwytho { -firefox } i Lawr
+legalTitle = Hysbysiad Preifatrwydd { -send-short-brand }
+legalDateStamp = Fersiwn 1.0, dyddiedig Mawrth 12, 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } d { $hours } a { $minutes } m
+addFilesButton = Dewis ffeiliau i'w llwytho i fyny
+uploadButton = Llwytho i fyny
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Llusgo a gollwng ffeiliau
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = neu glicio i anfon hyd at { $size }
+addPassword = Diogelu gyda chyfrinair
+emailPlaceholder = Rhowch eich e-bost
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Mewngofnodi i anfon hyd at { $size }
+signInButton = Mewngofnodi/Cofrestru
+accountBenefitTitle = Creu Cyfrif { -firefox } neu fewngofnodi
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Rhannu ffeiliau hyd at { $size }
+accountBenefitDownloadCount = Rhannu ffeiliau gyda mwy o bobl
+accountBenefitTimeLimit =
+    { $count ->
+        [zero] Cadw dolenni'n weithredol am hyd at 0 diwrnod
+        [one] Cadw dolenni'n weithredol am hyd at 1 diwrnod
+        [two] Cadw dolenni'n weithredol am hyd at { $count } diwrnod
+        [few] Cadw dolenni'n weithredol am hyd at { $count } diwrnod
+        [many] Cadw dolenni'n weithredol am hyd at { $count } diwrnod
+       *[other] Cadw dolenni'n weithredol am hyd at { $count } diwrnod
+    }
+accountBenefitSync = Rheoli ffeiliau sy'n cael eu rhannu o unrhyw ddyfais
+accountBenefitMoz = Dysgu am wasanaethau eraill { -mozilla }
+signOut = Allgofnodi
+okButton = Iawn
+downloadingTitle = Llwytho i Lawr
+noStreamsWarning = Efallai na fydd y porwr hwn yn gallu dadgryptio ffeil mor fawr a hon.
+noStreamsOptionCopy = Copïwch y ddolen i'w agor mewn porwr arall
+noStreamsOptionFirefox = Rhowch gynnig ar ein hoff porwr
+noStreamsOptionDownload = Parhau gyda'r porwr hwn
