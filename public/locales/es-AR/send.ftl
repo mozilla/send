@@ -191,3 +191,21 @@ emailPlaceholder = Ingrese su correo electrónico
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 signInSizeBump = Inicie sesión para enviar hasta { $size }
 signInButton = Iniciar sesión/registrarse
+accountBenefitTitle = Cree una cuenta de { -firefox } o inicie la sesión
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Compartir archivos hasta { $size }
+accountBenefitDownloadCount = Compartir archivos con más personas
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Mantenga los enlaces activos hasta por 1 día
+       *[other] Mantenga los enlaces activos hasta por { $count } días
+    }
+accountBenefitSync = Administre archivos compartidos desde cualquier dispositivo.
+accountBenefitMoz = Conocer sobre otros servicios de { -mozilla }
+signOut = Salir
+okButton = Aceptar
+downloadingTitle = Descargando
+noStreamsWarning = Es posible que este navegador no pueda descifrar un archivo tan grande.
+noStreamsOptionCopy = Copiar el enlace para abrir en otro navegador.
+noStreamsOptionFirefox = Pruebe nuestro navegador favorito
+noStreamsOptionDownload = Continuar con este navegador
