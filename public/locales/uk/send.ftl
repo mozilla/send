@@ -121,3 +121,42 @@ passwordIsSet = Пароль встановлено
 maxPasswordLength = Найбільша довжина паролю: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Неможливо встановити цей пароль
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Простий, приватний обмін файлами
+timespanMinutes =
+    { $num ->
+        [one] 1 хвилина
+        [few] { $num } хвилини
+       *[other] { $num } хвилин
+    }
+timespanDays =
+    { $num ->
+        [one] 1 день
+        [few] { $num } дні
+       *[other] { $num } днів
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 тиждень
+        [few] { $num } тижні
+       *[other] { $num } тижнів
+    }
+fileCount =
+    { $num ->
+        [one] 1 файл
+        [few] { $num } файли
+       *[other] { $num } файлів
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Загальний розмір: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Скопіюйте посилання, щоб надати спільний доступ до файлу:
+copyLinkButton = Копіювати посилання
+downloadTitle = Завантажити файли
