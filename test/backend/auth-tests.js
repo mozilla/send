@@ -31,7 +31,7 @@ const storedMeta = {
 
 const authMiddleware = proxyquire('../../server/middleware/auth', {
   '../storage': storage
-});
+}).hmac;
 
 describe('Owner Middleware', function() {
   afterEach(function() {

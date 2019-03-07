@@ -1,16 +1,289 @@
-@import './base.css';
-@import './templates/header/header.css';
-@import './templates/downloadButton/downloadButton.css';
-@import './templates/progress/progress.css';
-@import './templates/passwordInput/passwordInput.css';
-@import './templates/downloadPassword/downloadPassword.css';
-@import './templates/setPasswordSection/setPasswordSection.css';
-@import './templates/footer/footer.css';
-@import './templates/fxPromo/fxPromo.css';
-@import './templates/selectbox/selectbox.css';
-@import './templates/fileList/fileList.css';
-@import './templates/file/file.css';
-@import './templates/popup/popup.css';
-@import './pages/welcome/welcome.css';
-@import './pages/share/share.css';
-@import './pages/unsupported/unsupported.css';
+@tailwind preflight;
+@tailwind components;
+
+:not(input) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 1px dotted grey;
+}
+
+body {
+  background-image: url('../assets/bg.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn {
+  @apply bg-blue-dark;
+  @apply text-white;
+  @apply cursor-pointer;
+  @apply py-4;
+  @apply px-6;
+}
+
+.btn:hover {
+  @apply bg-blue-darker;
+}
+
+.btn:focus {
+  @apply bg-blue-darker;
+}
+
+.checkbox {
+  @apply leading-normal;
+  @apply select-none;
+}
+
+.checkbox > input[type='checkbox'] {
+  @apply absolute;
+  @apply opacity-0;
+}
+
+.checkbox > label {
+  @apply cursor-pointer;
+}
+
+.checkbox > label::before {
+  /* @apply bg-grey-lightest; */
+  @apply border;
+  @apply rounded-sm;
+
+  content: '';
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.5rem;
+  float: left;
+}
+
+.checkbox > label:hover::before {
+  @apply border-blue-dark;
+}
+
+.checkbox > input:focus + label::before {
+  @apply border-blue-dark;
+}
+
+.checkbox > input:checked + label::before {
+  @apply bg-blue-dark;
+  @apply border-blue-dark;
+
+  background-image: url('../assets/lock.svg');
+  background-position: center;
+  background-size: 1.25rem;
+  background-repeat: no-repeat;
+}
+
+.checkbox > input:disabled + label {
+  cursor: auto;
+}
+
+.checkbox > input:disabled + label::before {
+  @apply bg-blue-dark;
+  @apply border-blue-dark;
+
+  background-image: url('../assets/lock.svg');
+  background-position: center;
+  background-size: 1.25rem;
+  background-repeat: no-repeat;
+  cursor: auto;
+}
+
+details {
+  overflow: hidden;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary > svg {
+  transition: all 0.25s cubic-bezier(0.07, 0.95, 0, 1);
+}
+
+details[open] {
+  overflow-y: auto;
+}
+
+details[open] > summary > svg {
+  transform: rotate(90deg);
+}
+
+footer li:hover {
+  text-decoration: underline;
+}
+
+.feedback-link {
+  background-color: #000;
+  background-image: url('../assets/feedback.svg');
+  background-position: 0.125rem 0.25rem;
+  background-repeat: no-repeat;
+  background-size: 1.125rem;
+  color: #fff;
+  display: block;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  padding: 0.375rem 0.375rem 0.375rem 1.25rem;
+  text-indent: 0.125rem;
+  white-space: nowrap;
+}
+
+.intro {
+  max-width: 100%;
+  height: unset;
+}
+
+.main {
+  display: flex;
+  position: relative;
+  max-width: 64rem;
+  width: 100%;
+  height: 100%;
+}
+
+.main > section {
+  @apply bg-white;
+}
+
+.mozilla-logo {
+  background-image: url('../assets/mozilla-logo.svg');
+  background-repeat: no-repeat;
+  background-size: 100px, 32px;
+  overflow: hidden;
+  text-indent: 120%;
+  white-space: nowrap;
+  display: inline-block;
+  height: 32px;
+  width: 100px;
+  flex-shrink: 0;
+}
+
+#password-msg::after {
+  content: '\200b';
+}
+
+progress {
+  @apply bg-grey-light;
+  @apply rounded-sm;
+  @apply w-full;
+  @apply h-1;
+}
+
+progress::-webkit-progress-bar {
+  @apply bg-grey-light;
+  @apply rounded-sm;
+  @apply w-full;
+  @apply h-1;
+}
+
+progress::-webkit-progress-value {
+  /* stylelint-disable */
+  background-image: -webkit-linear-gradient(
+      -45deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.4) 20%,
+      rgba(255, 255, 255, 0.4) 40%,
+      transparent 40%,
+      transparent 60%,
+      rgba(255, 255, 255, 0.4) 60%,
+      rgba(255, 255, 255, 0.4) 80%,
+      transparent 80%
+    ),
+    -webkit-linear-gradient(left, #0a84ff, #0a84ff);
+  /* stylelint-enable */
+  border-radius: 2px;
+  background-size: 21px 20px, 100% 100%, 100% 100%;
+  -webkit-animation: animate-stripes 1s linear infinite;
+}
+
+progress::-moz-progress-bar {
+  /* stylelint-disable */
+  background-image: -moz-linear-gradient(
+      135deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.4) 20%,
+      rgba(255, 255, 255, 0.4) 40%,
+      transparent 40%,
+      transparent 60%,
+      rgba(255, 255, 255, 0.4) 60%,
+      rgba(255, 255, 255, 0.4) 80%,
+      transparent 80%
+    ),
+    -moz-linear-gradient(left, #0a84ff, #0a84ff);
+  /* stylelint-enable */
+  border-radius: 2px;
+  background-size: 21px 20px, 100% 100%, 100% 100%;
+  animation: animate-stripes 1s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  100% {
+    background-position: -21px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  100% {
+    background-position: -21px 0;
+  }
+}
+
+select {
+  background-image: url('../assets/select-arrow.svg');
+  background-position: calc(100% - 0.75rem);
+  background-repeat: no-repeat;
+}
+
+@screen md {
+  .intro {
+    max-width: unset;
+    height: unset;
+    margin-bottom: -3rem;
+    margin-right: -7rem;
+  }
+
+  .main {
+    @apply flex-1;
+    @apply self-center;
+    @apply items-center;
+    @apply m-auto;
+    @apply py-8;
+
+    min-height: 36rem;
+    max-height: 40rem;
+    width: calc(100% - 3rem);
+  }
+}
+
+@tailwind utilities;
+
+@responsive {
+  .shadow-light {
+    box-shadow: 0 0 8px 0 rgba(12, 12, 13, 0.1);
+  }
+
+  .shadow-big {
+    box-shadow: 0 0 32px 0 rgba(12, 12, 13, 0.1),
+      0 2px 16px 0 rgba(12, 12, 13, 0.05);
+  }
+}
+
+@variants focus {
+  .outline {
+    outline: 1px dotted grey;
+  }
+}
+
+.word-break-all {
+  word-break: break-all;
+}

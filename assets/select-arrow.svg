@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="6px" viewBox="0 0 8 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53 (72520) - https://sketchapp.com -->
+    <title>37845F0A-2932-4C2D-98E1-89BE1B168092</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M6,8.48771202 C5.73480519,8.48765538 5.48049273,8.3822614 5.293,8.19471202 L2.293,5.19471202 C1.91402779,4.80233313 1.91944763,4.17862724 2.30518142,3.79289345 C2.69091522,3.40715965 3.31462111,3.40173981 3.707,3.78071202 L6,6.07371202 L8.293,3.78071202 C8.68537889,3.40173981 9.30908478,3.40715965 9.69481858,3.79289345 C10.0805524,4.17862724 10.0859722,4.80233313 9.707,5.19471202 L6.707,8.19471202 C6.51950727,8.3822614 6.26519481,8.48765538 6,8.48771202 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Components-Sheet" transform="translate(-199.000000, -489.000000)">
+            <g id="Dropdown-1" transform="translate(52.000000, 475.707031)">
+                <g id="Arrow-Icon" transform="translate(145.000000, 10.000000)">
+                    <rect id="bouding-box" x="0" y="0" width="12" height="12"></rect>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Shape" fill="#0C0C0D" fill-rule="nonzero" opacity="0.599283854" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -8,7 +8,7 @@ export default class OwnedFile {
     this.url = obj.url;
     this.name = obj.name;
     this.size = obj.size;
-    this.type = obj.type;
+    this.manifest = obj.manifest;
     this.time = obj.time;
     this.speed = obj.speed;
     this.createdAt = obj.createdAt;
@@ -18,6 +18,15 @@ export default class OwnedFile {
     this.dtotal = obj.dtotal || 0;
     this.keychain = new Keychain(obj.secretKey, obj.nonce);
     this._hasPassword = !!obj.hasPassword;
+    this.timeLimit = obj.timeLimit;
+  }
+
+  get hasPassword() {
+    return !!this._hasPassword;
+  }
+
+  get expired() {
+    return this.dlimit === this.dtotal || Date.now() > this.expiresAt;
   }
 
   async setPassword(password) {
@@ -38,19 +47,17 @@ export default class OwnedFile {
     return del(this.id, this.ownerToken);
   }
 
-  changeLimit(dlimit) {
+  changeLimit(dlimit, user = {}) {
     if (this.dlimit !== dlimit) {
       this.dlimit = dlimit;
-      return setParams(this.id, this.ownerToken, { dlimit });
+      return setParams(this.id, this.ownerToken, user.bearerToken, { dlimit });
     }
     return Promise.resolve(true);
   }
 
-  get hasPassword() {
-    return !!this._hasPassword;
-  }
-
   async updateDownloadCount() {
+    const oldTotal = this.dtotal;
+    const oldLimit = this.dlimit;
     try {
       const result = await fileInfo(this.id, this.ownerToken);
       this.dtotal = result.dtotal;
@@ -61,6 +68,7 @@ export default class OwnedFile {
       }
       // ignore other errors
     }
+    return oldTotal !== this.dtotal || oldLimit !== this.dlimit;
   }
 
   toJSON() {
@@ -69,7 +77,7 @@ export default class OwnedFile {
       url: this.url,
       name: this.name,
       size: this.size,
-      type: this.type,
+      manifest: this.manifest,
       time: this.time,
       speed: this.speed,
       createdAt: this.createdAt,
@@ -78,7 +86,8 @@ export default class OwnedFile {
       ownerToken: this.ownerToken,
       dlimit: this.dlimit,
       dtotal: this.dtotal,
-      hasPassword: this.hasPassword
+      hasPassword: this.hasPassword,
+      timeLimit: this.timeLimit
     };
   }
 }

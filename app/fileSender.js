@@ -1,14 +1,13 @@
-/* global EXPIRE_SECONDS */
 import Nanobus from 'nanobus';
 import OwnedFile from './ownedFile';
 import Keychain from './keychain';
 import { arrayToB64, bytes } from './utils';
-import { uploadFile } from './api';
+import { uploadWs } from './api';
+import { encryptedSize } from './utils';
 
 export default class FileSender extends Nanobus {
-  constructor(file) {
+  constructor() {
     super('FileSender');
-    this.file = file;
     this.keychain = new Keychain();
     this.reset();
   }
@@ -18,7 +17,9 @@ export default class FileSender extends Nanobus {
   }
 
   get progressIndefinite() {
-    return ['fileSizeProgress', 'notifyUploadDone'].indexOf(this.msg) === -1;
+    return (
+      ['fileSizeProgress', 'notifyUploadEncryptDone'].indexOf(this.msg) === -1
+    );
   }
 
   get sizes() {
@@ -42,67 +43,61 @@ export default class FileSender extends Nanobus {
     }
   }
 
-  readFile() {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsArrayBuffer(this.file);
-      // TODO: progress?
-      reader.onload = function(event) {
-        const plaintext = new Uint8Array(this.result);
-        resolve(plaintext);
-      };
-      reader.onerror = function(err) {
-        reject(err);
-      };
-    });
-  }
-
-  async upload() {
+  async upload(archive, bearerToken) {
     const start = Date.now();
-    const plaintext = await this.readFile();
     if (this.cancelled) {
       throw new Error(0);
     }
     this.msg = 'encryptingFile';
     this.emit('encrypting');
-    const encrypted = await this.keychain.encryptFile(plaintext);
-    const metadata = await this.keychain.encryptMetadata(this.file);
+    const totalSize = encryptedSize(archive.size);
+    const encStream = await this.keychain.encryptStream(archive.stream);
+    const metadata = await this.keychain.encryptMetadata(archive);
     const authKeyB64 = await this.keychain.authKeyB64();
-    if (this.cancelled) {
-      throw new Error(0);
-    }
-    this.uploadRequest = uploadFile(
-      encrypted,
+
+    this.uploadRequest = uploadWs(
+      encStream,
       metadata,
       authKeyB64,
-      this.keychain,
+      archive.timeLimit,
+      archive.dlimit,
+      bearerToken,
       p => {
-        this.progress = p;
+        this.progress = [p, totalSize];
         this.emit('progress');
       }
     );
+
+    if (this.cancelled) {
+      throw new Error(0);
+    }
+
     this.msg = 'fileSizeProgress';
     this.emit('progress'); // HACK to kick MS Edge
     try {
       const result = await this.uploadRequest.result;
       const time = Date.now() - start;
-      this.msg = 'notifyUploadDone';
+      this.msg = 'notifyUploadEncryptDone';
       this.uploadRequest = null;
       this.progress = [1, 1];
       const secretKey = arrayToB64(this.keychain.rawSecret);
       const ownedFile = new OwnedFile({
         id: result.id,
         url: `${result.url}#${secretKey}`,
-        name: this.file.name,
-        size: this.file.size,
+        name: archive.name,
+        size: archive.size,
+        manifest: archive.manifest,
         time: time,
-        speed: this.file.size / (time / 1000),
+        speed: archive.size / (time / 1000),
         createdAt: Date.now(),
-        expiresAt: Date.now() + EXPIRE_SECONDS * 1000,
+        expiresAt: Date.now() + archive.timeLimit * 1000,
         secretKey: secretKey,
         nonce: this.keychain.nonce,
-        ownerToken: result.ownerToken
+        ownerToken: result.ownerToken,
+        dlimit: archive.dlimit,
+        timeLimit: archive.timeLimit
       });
+
       return ownedFile;
     } catch (e) {
       this.msg = 'errorPageHeader';

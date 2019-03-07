@@ -1,41 +1,6 @@
 import hash from 'string-hash';
 
-const experiments = {
-  S9wqVl2SQ4ab2yZtqDI3Dw: {
-    id: 'S9wqVl2SQ4ab2yZtqDI3Dw',
-    run: function(variant, state, emitter) {
-      switch (variant) {
-        case 1:
-          state.promo = 'blue';
-          break;
-        case 2:
-          state.promo = 'pink';
-          break;
-        default:
-          state.promo = 'grey';
-      }
-      emitter.emit('render');
-    },
-    eligible: function() {
-      return (
-        !/firefox|fxios/i.test(navigator.userAgent) &&
-        document.querySelector('html').lang === 'en-US'
-      );
-    },
-    variant: function(state) {
-      const n = this.luckyNumber(state);
-      if (n < 0.33) {
-        return 0;
-      }
-      return n < 0.66 ? 1 : 2;
-    },
-    luckyNumber: function(state) {
-      return luckyNumber(
-        `${this.id}:${state.storage.get('testpilot_ga__cid')}`
-      );
-    }
-  }
-};
+const experiments = {};
 
 //Returns a number between 0 and 1
 // eslint-disable-next-line no-unused-vars

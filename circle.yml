@@ -6,10 +6,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: send-{{ checksum "package-lock.json" }}
+          key: send-build-{{ checksum "package-lock.json" }}
       - run: npm install
       - save_cache:
-          key: send-{{ checksum "package-lock.json" }}
+          key: send-build-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
       - run: npm run build
@@ -23,33 +23,30 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: send-{{ checksum "package-lock.json" }}
+          key: send-test-{{ checksum "package-lock.json" }}
       - run: npm install
       - save_cache:
-          key: send-{{ checksum "package-lock.json" }}
+          key: send-test-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
-      - run: npm run check
       - run: npm run lint
       - run: npm run test
       - store_artifacts:
           path: coverage
   integration_tests:
-    machine: true
+    docker:
+      - image: circleci/node:10
+      - image: selenium/standalone-firefox
     steps:
       - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: Install Docker Compose
-          command: |
-            set -x
-            pip install docker-compose>=1.18
-            docker-compose --version
-      - run:
-          command: npm run test-integration
-      - store_artifacts:
-          path: coverage/send-test.html
+      - restore_cache:
+          key: send-int-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: send-int-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run: npm run circleci-test-integration
   deploy_dev:
     machine: true
     steps:
@@ -59,6 +56,15 @@ jobs:
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker build -t mozilla/send:latest .
       - run: docker push mozilla/send:latest
+  deploy_vnext:
+    machine: true
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t mozilla/send:vnext .
+      - run: docker push mozilla/send:vnext
   deploy_stage:
     machine: true
     steps:
@@ -75,23 +81,27 @@ workflows:
       - build:
           filters:
             branches:
-              ignore: master
+              ignore:
+                - master
+                - vnext
       - test:
           filters:
             branches:
-              ignore: master
+              ignore:
+                - master
+                - vnext
       - integration_tests:
           filters:
             branches:
               ignore: master
-          requires:
-            - build
   build_and_deploy_dev:
     jobs:
       - build:
           filters:
             branches:
-              only: master
+              only:
+                - master
+                - vnext
             tags:
               ignore: /^v.*/
       - deploy_dev:
@@ -100,6 +110,14 @@ workflows:
           filters:
             branches:
               only: master
+            tags:
+              ignore: /^v.*/
+      - deploy_vnext:
+          requires:
+            - build
+          filters:
+            branches:
+              only: vnext
             tags:
               ignore: /^v.*/
   build_and_deploy_stage:
@@ -117,8 +135,6 @@ workflows:
             tags:
               only: /^v.*/
       - integration_tests:
-          requires:
-            - build
           filters:
             branches:
               ignore: /.*/

@@ -1,156 +1,127 @@
-# Send Metrics
-The metrics collection and analysis plan for Send, a forthcoming Test Pilot experiment.
+# Send V2 Metrics Definitions
 
-## Analysis
-Data collected by Send will be used to answer the following high-level questions:
+## Key Value Prop
 
-- Do users send files?
-	- How often? How many?
-	- What is the retention?
-	- What is the distribution of senders?
-- How do recipients interact with promotional UI elements?
-	- Are file recipients converted to file senders?
-	- Are non-Firefox users converted to Firefox users?
-- Where does it go wrong?
-	- How often are there errors in uploading or downloading files?
-	- What types of errors to users commonly see?
-	- At what point do errors affect retention?
+Quickly and privately transfer large files from any device to any device.
 
-## Collection
-Data will be collected with Google Analytics and follow [Test Pilot standards](https://github.com/mozilla/testpilot/blob/master/docs/experiments/ga.md) for reporting.
+## Key Business Question to Answer
 
-### Custom Metrics
-- `cm1` - the size of the file, in bytes.
-- `cm2` - the amount of time it took to complete the file transfer, in milliseconds. Only include if the file completed transferring (ref: `cd2`).
-- `cm3` - the rate of the file transfer, in bytes per second. This is computed by dividing `cm1` by `cm2`, not by monitoring transfer speeds. Only include if the file completed transferring (ref: `cd2`).
-- `cm4` - the amount of time until the file will expire, in milliseconds.
-- `cm5` - the number of files the user has ever uploaded.
-- `cm6` - the number of unexpired files the user has uploaded.
-- `cm7` - the number of files the user has ever downloaded.
-- `cm8` - the number of downloads permitted by the uploader.
+Is the value proposition of a large encrypted file transfer service enough to drive Firefox Account relationships for non-Firefox users.
 
-### Custom Dimensions
-- `cd1` - the method by which the user initiated an upload. One of `drag`, `click`.
-- `cd2` - the reason that the file transfer stopped. One of `completed`, `errored`, `cancelled`.
-- `cd3` - the destination of a link click. One of `experiment-page`, `download-firefox`, `twitter`, `github`, `cookies`, `terms`, `privacy`, `about`, `legal`, `mozilla`.
-- `cd4` - the location from which the user copied the URL to an upload file. One of `success-screen`, `upload-list`.
-- `cd5` - the referring location. One of `completed-download`, `errored-download`, `cancelled-download`, `completed-upload`, `errored-upload`, `cancelled-upload`, `testpilot`, `external`.
-- `cd6` - identifying information about an error. Exclude if there is no error involved. **TODO:** enumerate a list of possibilities.
+## Hypotheses to Test
 
-### Events
+### Primary - In support of Relationships KPI
 
-_NB:_ due to how files are being tracked, there are no events indicating file expiry. This carries some risk: most notably, we can only derive expiration rates by looking at download rates, which is prone to skew if there are problems in data collection.
+We believe that a privacy-respecting file transfer service can drive Firefox Accounts beyond the Firefox Browser.
 
-#### `upload-started`
-Triggered whenever a user begins uploading a file. Includes:
+We will know this to be true when we see 250k Firefox Account creations from non-Firefox contexts w/in six months of launch.
 
-- `ec` - `sender`
-- `ea` - `upload-started`
-- `cm1`
-- `cm5`
-- `cm6`
-- `cm7`
-- `cd1`
-- `cd5`
+### Secondary - In support of Revenue KPI
 
-#### `upload-stopped`
-Triggered whenever a user stops uploading a file. Includes:
+We believe that a privacy respecting service accessible beyond the reach of Firefox will provide a valuable platform to research, communicate with, and market to conscious choosers we have traditionally found hard to reach.
 
-- `ec` - `sender`
-- `ea` - `upload-stopped`
-- `cm1`
-- `cm2`
-- `cm3`
-- `cm5`
-- `cm6`
-- `cm7`
-- `cd1`
-- `cd2`
-- `cd6`
+We will know this to be true when we can conduct six research tasks (surveys, A/B tests, fake doors, etc) in support of premium services KPIs in the first six months after launch.
 
-#### `download-limit-changed`
-Triggered whenever the sender changes the download limit. Includes:
+## Overview of Key Measures
 
-- `ec` - `sender`
-- `ea` - `download-limit-changed`
-- `cm1`
-- `cm5`
-- `cm6`
-- `cm7`
-- `cm8`
+* Number of people using the service to send and receive files
+  * Why: measure of service size. Important for understanding addressable market size
+* Percent of users who have or create an FxAccount via Send
+  * Why: representation of % of any service users who might be amenable to an upsell
+* % of downloaders who convert into uploaders
+  * Why: represents a measure of our key growth-loop potential
+* Count of uploads and size
+  * Why: Represents cost of service on a running basis
 
-#### `password-added`
-Triggered whenever a password is added to a file. Includes:
+## Key Funnels
+* App Open or Visit `--- DESIRED OUTCOME --->` Successful Upload
+* Download UI Visit `--- DESIRED OUTCOME --->` Successful Download
+* FxA UI Engagement `--- DESIRED OUTCOME --->` Authenticate
+* **STRETCH** App Open or Visit `--- DESIRED OUTCOME --->` Successful Download
 
-- `cm1`
-- `cm5`
-- `cm6`
-- `cm7`
+## Amplitude Schema
 
-#### `download-started`
-Triggered whenever a user begins downloading a file. Includes:
+Please see, **See Amplitude HTTP API**(https://amplitude.zendesk.com/hc/en-us/articles/204771828) for HTTP API reference.
 
-- `ec` - `recipient`
-- `ea` - `download-started`
-- `cm1`
-- `cm4`
-- `cm5`
-- `cm6`
-- `cm7`
+## Metric Events
 
-#### `download-stopped`
-Triggered whenever a user stops downloading a file.
+In support of our KPIs we collect events from two separate contexts, server and client. The events are designed to have minimal correlation between contexts.
 
-- `ec` - `recipient`
-- `ea` - `download-stopped`
-- `cm1`
-- `cm2` (if possible and applicable)
-- `cm3` (if possible and applicable)
-- `cm5`
-- `cm6`
-- `cm7`
-- `cd2`
-- `cd6`
+Server events collect lifecycle information about individual uploads but no user information; also time precision is truncated to hour increments. Client events collect information about how users interact with the UI but no upload identifiers.
 
-#### `exited`
-Fired whenever a user follows a link external to Send.
+### Server Events
 
-- `ec` - `recipient`, `sender`, or `other`, as applicable.
-- `ea` - `exited`
-- `cd3`
+Server events allow us to aggregate data about file lifecycle without collecting data about individual users. In this context `user_id` and `user_properties` describe the uploaded archive.
 
-#### `upload-deleted`
-Fired whenever a user deletes a file they’ve uploaded.
+* `session_id` -1 (not part of a session)
+* `user_id` hash of (archive_id + owner_id)
+* `app_version` package.json version
+* `time` timestamp truncated to hour precision
+* `country`
+* `region`
+* `event_type` [server_upload | server_download | server_delete]
+* `user_properties`
+  * `download_limit` set number of downloads
+  * `time_limit` set expiry duration
+  * `size` approximate size (log10)
+  * `anonymous` true if anonymous, false if fxa
+* `event_properties`
+  * `download_count` downloads completed
+  * `ttl` time remaining before expiry truncated to hour
 
-- `ec` - `sender`
-- `ea` - `upload-deleted`
-- `cm1`
-- `cm2`
-- `cm3`
-- `cm4`
-- `cm5`
-- `cm6`
-- `cm7`
-- `cd1`
-- `cd4`
+### Client Events
 
-#### `copied`
-Fired whenever a user copies the URL of an upload file.
+Client events allow us to aggregate data about how the user interface is being used without tracking the lifecycle of individual files. In this context `user_id` and `user_properties` describe the user. The `user_id` and `device_id` change for all users at the beginning of each month.
 
-- `ec` - `sender`
-- `ea` - `copied`
-- `cd4`
+* `session_id` timestamp
+* `user_id` hash of (fxa_id + Date.year + Date.month)
+* `device_id` hash of (localStorage random id + Date.year + Date.month)
+* `platform` [web | android]
+* `country`
+* `region`
+* `language`
+* `time` timestamp
+* `os_name`
+* `event_type` [client_visit | client_upload | client_download | client_delete | client_login | client_logout]
+* `event_properties`
+  * `browser`
+  * `browser_version`
+  * `status` [ ok | error | cancel ]
+  * Event specific properties (see below)
+* `user_properties`
+  * `active_count` number of active uploads
+  * `anonymous` true if anonymous, false if fxa
+  * `experiments` list of experiment ids the user is participating in
+  * `first_action` how this use came to Send the first time [ upload | download ]
 
-#### `restarted`
-Fired whenever the user interrupts any part of funnel to return to the start of it (e.g. with a “send another file” or “send your own files” link).
+#### Visit Event
 
-- `ec` - `recipient`, `sender`, or `other`, as applicable.
-- `ea` - `restarted`
-- `cd2`
+  * `entrypoint` [ upload | download ]
 
-#### `unsupported`
-Fired whenever a user is presented a message saying that their browser is unsupported due to missing crypto APIs.
+#### Upload Event
 
-- `ec` - `recipient` or `sender`, as applicable.
-- `ea` - `unsupported`
-- `cd6`
+  * `download_limit` download limit
+  * `file_count` number of files
+  * `password_protected` boolean
+  * `size` approximate size (log10)
+  * `time_limit` time limit
+  * `duration` approximate transfer duration (log10)
+
+#### Download Event
+
+  * `password_protected` boolean
+  * `size` approximate size (log10)
+  * `duration` approximate transfer duration (log10)
+
+#### Delete Event
+
+  * `age` hours since uploaded
+  * `downloaded` downloaded at least once
+
+#### Login Event
+
+  * `trigger` [button | time | count | size]
+
+#### Logout Event
+
+  * `trigger` [button | timeout]

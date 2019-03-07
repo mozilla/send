@@ -3,6 +3,10 @@ const Metadata = require('../metadata');
 const mozlog = require('../log');
 const createRedisClient = require('./redis');
 
+function getPrefix(seconds) {
+  return Math.max(Math.floor(seconds / 86400), 1);
+}
+
 class DB {
   constructor(config) {
     let Storage = null;
@@ -14,8 +18,9 @@ class DB {
       Storage = require('./fs');
     }
     this.log = mozlog('send.storage');
-    this.expireSeconds = config.expire_seconds;
+
     this.storage = new Storage(config, this.log);
+
     this.redis = createRedisClient(config);
     this.redis.on('error', err => {
       this.log.error('Redis:', err);
@@ -27,27 +32,40 @@ class DB {
     return Math.ceil(result) * 1000;
   }
 
-  length(id) {
-    return this.storage.length(id);
+  async getPrefixedId(id) {
+    const prefix = await this.redis.hgetAsync(id, 'prefix');
+    return `${prefix}-${id}`;
   }
 
-  get(id) {
-    return this.storage.getStream(id);
+  async length(id) {
+    const filePath = await this.getPrefixedId(id);
+    return this.storage.length(filePath);
   }
 
-  async set(id, file, meta) {
-    await this.storage.set(id, file);
-    this.redis.hmset(id, meta);
-    this.redis.expire(id, this.expireSeconds);
+  async get(id) {
+    const filePath = await this.getPrefixedId(id);
+    return this.storage.getStream(filePath);
+  }
+
+  async set(id, file, meta, expireSeconds = config.default_expire_seconds) {
+    const prefix = getPrefix(expireSeconds);
+    const filePath = `${prefix}-${id}`;
+    await this.storage.set(filePath, file);
+    this.redis.hset(id, 'prefix', prefix);
+    if (meta) {
+      this.redis.hmset(id, meta);
+    }
+    this.redis.expire(id, expireSeconds);
   }
 
   setField(id, key, value) {
     this.redis.hset(id, key, value);
   }
 
-  del(id) {
+  async del(id) {
+    const filePath = await this.getPrefixedId(id);
+    this.storage.del(filePath);
     this.redis.del(id);
-    return this.storage.del(id);
   }
 
   async ping() {

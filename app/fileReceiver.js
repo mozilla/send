@@ -1,7 +1,9 @@
 import Nanobus from 'nanobus';
 import Keychain from './keychain';
-import { bytes } from './utils';
-import { metadata, downloadFile } from './api';
+import { delay, bytes, streamToArrayBuffer } from './utils';
+import { downloadFile, metadata, getApiUrl } from './api';
+import { blobStream } from './streams';
+import Zip from './zip';
 
 export default class FileReceiver extends Nanobus {
   constructor(fileInfo) {
@@ -43,15 +45,33 @@ export default class FileReceiver extends Nanobus {
 
   async getMetadata() {
     const meta = await metadata(this.fileInfo.id, this.keychain);
-    this.keychain.setIV(meta.iv);
     this.fileInfo.name = meta.name;
     this.fileInfo.type = meta.type;
     this.fileInfo.iv = meta.iv;
     this.fileInfo.size = +meta.size;
+    this.fileInfo.manifest = meta.manifest;
     this.state = 'ready';
   }
 
-  async download(noSave = false) {
+  sendMessageToSw(msg) {
+    return new Promise((resolve, reject) => {
+      const channel = new MessageChannel();
+
+      channel.port1.onmessage = function(event) {
+        if (event.data === undefined) {
+          reject('bad response from serviceWorker');
+        } else if (event.data.error !== undefined) {
+          reject(event.data.error);
+        } else {
+          resolve(event.data);
+        }
+      };
+
+      navigator.serviceWorker.controller.postMessage(msg, [channel.port2]);
+    });
+  }
+
+  async downloadBlob(noSave = false) {
     this.state = 'downloading';
     this.downloadRequest = await downloadFile(
       this.fileInfo.id,
@@ -67,7 +87,14 @@ export default class FileReceiver extends Nanobus {
       this.msg = 'decryptingFile';
       this.state = 'decrypting';
       this.emit('decrypting');
-      const plaintext = await this.keychain.decryptFile(ciphertext);
+      let size = this.fileInfo.size;
+      let plainStream = this.keychain.decryptStream(blobStream(ciphertext));
+      if (this.fileInfo.type === 'send-archive') {
+        const zip = new Zip(this.fileInfo.manifest, plainStream);
+        plainStream = zip.stream;
+        size = zip.size;
+      }
+      const plaintext = await streamToArrayBuffer(plainStream, size);
       if (!noSave) {
         await saveFile({
           plaintext,
@@ -76,11 +103,95 @@ export default class FileReceiver extends Nanobus {
         });
       }
       this.msg = 'downloadFinish';
+      this.emit('complete');
       this.state = 'complete';
     } catch (e) {
       this.downloadRequest = null;
       throw e;
     }
+  }
+
+  async downloadStream(noSave = false) {
+    const onprogress = p => {
+      this.progress = [p, this.fileInfo.size];
+      this.emit('progress');
+    };
+
+    this.downloadRequest = {
+      cancel: () => {
+        this.sendMessageToSw({ request: 'cancel', id: this.fileInfo.id });
+      }
+    };
+
+    try {
+      this.state = 'downloading';
+
+      const info = {
+        request: 'init',
+        id: this.fileInfo.id,
+        filename: this.fileInfo.name,
+        type: this.fileInfo.type,
+        manifest: this.fileInfo.manifest,
+        key: this.fileInfo.secretKey,
+        requiresPassword: this.fileInfo.requiresPassword,
+        password: this.fileInfo.password,
+        url: this.fileInfo.url,
+        size: this.fileInfo.size,
+        nonce: this.keychain.nonce,
+        noSave
+      };
+      await this.sendMessageToSw(info);
+
+      onprogress(0);
+
+      if (noSave) {
+        const res = await fetch(getApiUrl(`/api/download/${this.fileInfo.id}`));
+        if (res.status !== 200) {
+          throw new Error(res.status);
+        }
+      } else {
+        const downloadPath = `/api/download/${this.fileInfo.id}`;
+        let downloadUrl = getApiUrl(downloadPath);
+        if (downloadUrl === downloadPath) {
+          downloadUrl = `${location.protocol}//${location.host}/api/download/${
+            this.fileInfo.id
+          }`;
+        }
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        document.body.appendChild(a);
+        a.click();
+      }
+
+      let prog = 0;
+      while (prog < this.fileInfo.size) {
+        const msg = await this.sendMessageToSw({
+          request: 'progress',
+          id: this.fileInfo.id
+        });
+        prog = msg.progress;
+        onprogress(prog);
+        await delay(1000);
+      }
+
+      this.downloadRequest = null;
+      this.msg = 'downloadFinish';
+      this.emit('complete');
+      this.state = 'complete';
+    } catch (e) {
+      this.downloadRequest = null;
+      if (e === 'cancelled' || e.message === '400') {
+        throw new Error(0);
+      }
+      throw e;
+    }
+  }
+
+  download(options) {
+    if (options.stream) {
+      return this.downloadStream(options.noSave);
+    }
+    return this.downloadBlob(options.noSave);
   }
 }
 

@@ -14,4 +14,4 @@ COPY --chown=app:app . .
 ENV PORT=1443
 EXPOSE $PORT
 
-CMD ["node", "server/prod.js"]
+CMD ["node", "server/bin/prod.js"]

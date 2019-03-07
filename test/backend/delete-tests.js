@@ -2,7 +2,8 @@ const sinon = require('sinon');
 const proxyquire = require('proxyquire').noCallThru();
 
 const storage = {
-  del: sinon.stub()
+  del: sinon.stub(),
+  ttl: sinon.stub()
 };
 
 function request(id) {

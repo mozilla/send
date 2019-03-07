@@ -15,3 +15,9 @@ You can also run them in headless Chrome by using `npm run test:frontend`. The r
 Unit tests reside in `test/backend`
 
 Backend test can be run with `npm run test:backend`. [Sinon](http://sinonjs.org/) and [proxyquire](https://github.com/thlorenz/proxyquire) are used for mocking.
+
+## Integration
+
+Integration tests include UI tests that run with Selenium.
+
+The preferred way to run these locally is with `npm run test-integration` which requires docker. To watch the tests connect with VNC. On mac enter `vnc://localhost:5900` in Safari and use the password `secret` to connect. For info on debugging a test see the [wdio debug docs](http://webdriver.io/api/utility/debug.html).

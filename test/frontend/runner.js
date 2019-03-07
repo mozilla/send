@@ -7,18 +7,19 @@ const webpack = require('webpack');
 const config = require('../../webpack.config');
 const middleware = require('webpack-dev-middleware');
 const express = require('express');
-const devRoutes = require('../../server/dev');
+const devRoutes = require('../../server/bin/test');
 const app = express();
 
-const wpm = middleware(webpack(config), { logLevel: 'silent' });
+const wpm = middleware(webpack(config(null, { mode: 'development' })), {
+  logLevel: 'silent'
+});
 app.use(wpm);
 devRoutes(app, { middleware: wpm });
 
+// eslint-disable-next-line no-unused-vars
 function onConsole(msg) {
-  // excluding 'log' because mocha uses it to write the json output
-  if (msg.type() !== 'log') {
-    console.error(msg.text());
-  }
+  // uncomment to debug
+  // console.error(msg.text());
 }
 
 const server = app.listen(async function() {
@@ -35,7 +36,8 @@ const server = app.listen(async function() {
     page.on('pageerror', console.log.bind(console));
     await page.goto(`http://127.0.0.1:${server.address().port}/test`);
     await page.waitFor(() => typeof runner.testResults !== 'undefined', {
-      timeout: 5000
+      polling: 1000,
+      timeout: 15000
     });
     const results = await page.evaluate(() => runner.testResults);
     const coverage = await page.evaluate(() => __coverage__);

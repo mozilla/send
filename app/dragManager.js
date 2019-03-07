@@ -1,6 +1,3 @@
-/* global MAXFILESIZE */
-const { bytes } = require('./utils');
-
 export default function(state, emitter) {
   emitter.on('DOMContentLoaded', () => {
     document.body.addEventListener('dragover', event => {
@@ -9,29 +6,16 @@ export default function(state, emitter) {
       }
     });
     document.body.addEventListener('drop', event => {
-      if (state.route === '/' && !state.uploading) {
+      if (
+        state.route === '/' &&
+        !state.uploading &&
+        event.dataTransfer &&
+        event.dataTransfer.files
+      ) {
         event.preventDefault();
-        document
-          .querySelector('.uploadArea')
-          .classList.remove('uploadArea--dragging');
-        const target = event.dataTransfer;
-        if (target.files.length === 0) {
-          return;
-        }
-        if (target.files.length > 1) {
-          // eslint-disable-next-line no-alert
-          return alert(state.translate('uploadPageMultipleFilesAlert'));
-        }
-        const file = target.files[0];
-        if (file.size === 0) {
-          return;
-        }
-        if (file.size > MAXFILESIZE) {
-          // eslint-disable-next-line no-alert
-          alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
-          return;
-        }
-        emitter.emit('upload', { file, type: 'drop' });
+        emitter.emit('addFiles', {
+          files: Array.from(event.dataTransfer.files)
+        });
       }
     });
   });

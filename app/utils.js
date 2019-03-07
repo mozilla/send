@@ -1,3 +1,5 @@
+/* global Android */
+const html = require('choo/html');
 const b64 = require('base64-js');
 
 function arrayToB64(array) {
@@ -22,46 +24,6 @@ function loadShim(polyfill) {
   });
 }
 
-async function canHasSend() {
-  try {
-    const key = await window.crypto.subtle.generateKey(
-      {
-        name: 'AES-GCM',
-        length: 128
-      },
-      true,
-      ['encrypt', 'decrypt']
-    );
-    await window.crypto.subtle.encrypt(
-      {
-        name: 'AES-GCM',
-        iv: window.crypto.getRandomValues(new Uint8Array(12)),
-        tagLength: 128
-      },
-      key,
-      new ArrayBuffer(8)
-    );
-    await window.crypto.subtle.importKey(
-      'raw',
-      window.crypto.getRandomValues(new Uint8Array(16)),
-      'PBKDF2',
-      false,
-      ['deriveKey']
-    );
-    await window.crypto.subtle.importKey(
-      'raw',
-      window.crypto.getRandomValues(new Uint8Array(16)),
-      'HKDF',
-      false,
-      ['deriveKey']
-    );
-    return true;
-  } catch (err) {
-    console.error(err);
-    return false;
-  }
-}
-
 function isFile(id) {
   return /^[0-9a-fA-F]{10}$/.test(id);
 }
@@ -75,7 +37,7 @@ function copyToClipboard(str) {
   if (navigator.userAgent.match(/iphone|ipad|ipod/i)) {
     const range = document.createRange();
     range.selectNodeContents(aux);
-    const sel = window.getSelection();
+    const sel = getSelection();
     sel.removeAllRanges();
     sel.addRange(range);
     aux.setSelectionRange(0, str.length);
@@ -100,14 +62,15 @@ function bytes(num) {
     return '0B';
   }
   const exponent = Math.min(Math.floor(Math.log10(num) / 3), UNITS.length - 1);
-  const n = Number(num / Math.pow(1000, exponent));
-  let nStr = n.toFixed(1);
+  const n = Number(num / Math.pow(1024, exponent));
+  const decimalDigits = Math.floor(n) === n ? 0 : 1;
+  let nStr = n.toFixed(decimalDigits);
   if (LOCALIZE_NUMBERS) {
     try {
       const locale = document.querySelector('html').lang;
       nStr = n.toLocaleString(locale, {
-        minimumFractionDigits: 1,
-        maximumFractionDigits: 1
+        minimumFractionDigits: decimalDigits,
+        maximumFractionDigits: decimalDigits
       });
     } catch (e) {
       // fall through
@@ -168,6 +131,131 @@ function openLinksInNewTab(links, should = true) {
   return links;
 }
 
+function browserName() {
+  try {
+    if (/firefox/i.test(navigator.userAgent)) {
+      return 'firefox';
+    }
+    if (/edge/i.test(navigator.userAgent)) {
+      return 'edge';
+    }
+    if (/trident/i.test(navigator.userAgent)) {
+      return 'ie';
+    }
+    if (/chrome/i.test(navigator.userAgent)) {
+      return 'chrome';
+    }
+    if (/safari/i.test(navigator.userAgent)) {
+      return 'safari';
+    }
+    if (/send android/i.test(navigator.userAgent)) {
+      return 'android-app';
+    }
+    return 'other';
+  } catch (e) {
+    return 'unknown';
+  }
+}
+
+async function streamToArrayBuffer(stream, size) {
+  const reader = stream.getReader();
+  let state = await reader.read();
+
+  if (size) {
+    const result = new Uint8Array(size);
+    let offset = 0;
+    while (!state.done) {
+      result.set(state.value, offset);
+      offset += state.value.length;
+      state = await reader.read();
+    }
+    return result.buffer;
+  }
+
+  const parts = [];
+  let len = 0;
+  while (!state.done) {
+    parts.push(state.value);
+    len += state.value.length;
+    state = await reader.read();
+  }
+  let offset = 0;
+  const result = new Uint8Array(len);
+  for (const part of parts) {
+    result.set(part, offset);
+    offset += part.length;
+  }
+  return result.buffer;
+}
+
+function list(items, ulStyle = '', liStyle = '') {
+  const lis = items.map(
+    i =>
+      html`
+        <li class="${liStyle}">${i}</li>
+      `
+  );
+  return html`
+    <ul class="${ulStyle}">
+      ${lis}
+    </ul>
+  `;
+}
+
+function secondsToL10nId(seconds) {
+  if (seconds < 3600) {
+    return { id: 'timespanMinutes', num: Math.floor(seconds / 60) };
+  } else if (seconds < 86400) {
+    return { id: 'timespanHours', num: Math.floor(seconds / 3600) };
+  } else {
+    return { id: 'timespanDays', num: Math.floor(seconds / 86400) };
+  }
+}
+
+function timeLeft(milliseconds) {
+  if (milliseconds < 1) {
+    return { id: 'linkExpiredAlt' };
+  }
+  const minutes = Math.floor(milliseconds / 1000 / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  if (days >= 1) {
+    return {
+      id: 'expiresDaysHoursMinutes',
+      days,
+      hours: hours % 24,
+      minutes: minutes % 60
+    };
+  }
+  if (hours >= 1) {
+    return {
+      id: 'expiresHoursMinutes',
+      hours,
+      minutes: minutes % 60
+    };
+  } else if (hours === 0) {
+    if (minutes === 0) {
+      return { id: 'expiresMinutes', minutes: '< 1' };
+    }
+    return { id: 'expiresMinutes', minutes };
+  }
+  return null;
+}
+
+function platform() {
+  if (typeof Android === 'object') {
+    return 'android';
+  }
+  return 'web';
+}
+
+const ECE_RECORD_SIZE = 1024 * 64;
+const TAG_LENGTH = 16;
+function encryptedSize(size, rs = ECE_RECORD_SIZE, tagLength = TAG_LENGTH) {
+  const chunk_meta = tagLength + 1; // Chunk metadata, tag and delimiter
+  return 21 + size + chunk_meta * Math.ceil(size / (rs - chunk_meta));
+}
+
 module.exports = {
   fadeOut,
   delay,
@@ -179,7 +267,13 @@ module.exports = {
   arrayToB64,
   b64ToArray,
   loadShim,
-  canHasSend,
   isFile,
-  openLinksInNewTab
+  openLinksInNewTab,
+  browserName,
+  streamToArrayBuffer,
+  list,
+  secondsToL10nId,
+  timeLeft,
+  platform,
+  encryptedSize
 };

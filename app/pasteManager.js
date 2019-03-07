@@ -1,25 +1,36 @@
-/* global MAXFILESIZE */
-import { bytes } from './utils';
+function getString(item) {
+  return new Promise(resolve => {
+    item.getAsString(resolve);
+  });
+}
 
 export default function(state, emitter) {
-  window.addEventListener('paste', event => {
+  window.addEventListener('paste', async event => {
     if (state.route !== '/' || state.uploading) return;
+    if (['password', 'text'].includes(event.target.type)) return;
 
-    for (const item of event.clipboardData.items) {
-      if (!item.type.includes('image')) continue;
-
-      const file = item.getAsFile();
-
-      if (!file) continue; // Sometimes null
-
-      if (file.size > MAXFILESIZE) {
-        // eslint-disable-next-line no-alert
-        alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
-        continue;
+    const items = Array.from(event.clipboardData.items);
+    const transferFiles = items.filter(item => item.kind === 'file');
+    const strings = items.filter(item => item.kind === 'string');
+    if (transferFiles.length) {
+      const promises = transferFiles.map(async (f, i) => {
+        const blob = f.getAsFile();
+        if (!blob) {
+          return null;
+        }
+        const name = await getString(strings[i]);
+        const file = new File([blob], name, { type: blob.type });
+        return file;
+      });
+      const files = (await Promise.all(promises)).filter(f => !!f);
+      if (files.length) {
+        emitter.emit('addFiles', { files });
       }
-
-      emitter.emit('upload', { file, type: 'paste' });
-      return; // return here since only one file is allowed to be uploaded at a time
+    } else if (strings.length) {
+      strings[0].getAsString(s => {
+        const file = new File([s], 'pasted.txt', { type: 'text/plain' });
+        emitter.emit('addFiles', { files: [file] });
+      });
     }
   });
 }

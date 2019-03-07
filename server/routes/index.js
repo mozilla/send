@@ -1,22 +1,20 @@
-const express = require('express');
-const busboy = require('connect-busboy');
+const crypto = require('crypto');
+const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const uaparser = require('ua-parser-js');
 const storage = require('../storage');
 const config = require('../config');
 const auth = require('../middleware/auth');
-const owner = require('../middleware/owner');
 const language = require('../middleware/language');
 const pages = require('./pages');
+const filelist = require('./filelist');
+const clientConstants = require('../clientConstants');
 
 const IS_DEV = config.env === 'development';
 const ID_REGEX = '([0-9a-fA-F]{10})';
-const uploader = busboy({
-  limits: {
-    fileSize: config.max_file_size
-  }
-});
 
 module.exports = function(app) {
+  app.set('trust proxy', true);
   app.use(helmet());
   app.use(
     helmet.hsts({
@@ -24,6 +22,14 @@ module.exports = function(app) {
       force: !IS_DEV
     })
   );
+  app.use(function(req, res, next) {
+    req.ua = uaparser(req.header('user-agent'));
+    next();
+  });
+  app.use(function(req, res, next) {
+    req.cspNonce = crypto.randomBytes(16).toString('hex');
+    next();
+  });
   if (!IS_DEV) {
     app.use(
       helmet.contentSecurityPolicy({
@@ -31,13 +37,25 @@ module.exports = function(app) {
           defaultSrc: ["'self'"],
           connectSrc: [
             "'self'",
-            'https://sentry.prod.mozaws.net',
-            'https://www.google-analytics.com'
+            'wss://*.dev.lcip.org',
+            'wss://*.send.nonprod.cloudops.mozgcp.net',
+            'wss://send.firefox.com',
+            'https://*.dev.lcip.org',
+            'https://accounts.firefox.com',
+            'https://*.accounts.firefox.com',
+            'https://sentry.prod.mozaws.net'
           ],
-          imgSrc: ["'self'", 'https://www.google-analytics.com'],
-          scriptSrc: ["'self'"],
-          styleSrc: ["'self'", 'https://code.cdn.mozilla.net'],
-          fontSrc: ["'self'", 'https://code.cdn.mozilla.net'],
+          imgSrc: [
+            "'self'",
+            'https://*.dev.lcip.org',
+            'https://firefoxusercontent.com'
+          ],
+          scriptSrc: [
+            "'self'",
+            function(req) {
+              return `'nonce-${req.cspNonce}'`;
+            }
+          ],
           formAction: ["'none'"],
           frameAncestors: ["'none'"],
           objectSrc: ["'none'"],
@@ -51,23 +69,39 @@ module.exports = function(app) {
     res.set('Cache-Control', 'no-cache');
     next();
   });
-  app.use(express.json());
+  app.use(bodyParser.json());
+  app.use(bodyParser.text());
   app.get('/', language, pages.index);
+  app.get('/config', function(req, res) {
+    res.json(clientConstants);
+  });
+  app.get('/error', language, pages.blank);
+  app.get('/oauth', language, pages.blank);
   app.get('/legal', language, pages.legal);
-  app.get('/jsconfig.js', require('./jsconfig'));
-  app.get(`/share/:id${ID_REGEX}`, language, pages.blank);
+  app.get('/app.webmanifest', language, require('./webmanifest'));
   app.get(`/download/:id${ID_REGEX}`, language, pages.download);
-  app.get('/completed', language, pages.blank);
   app.get('/unsupported/:reason', language, pages.unsupported);
-  app.get(`/api/download/:id${ID_REGEX}`, auth, require('./download'));
+  app.get(`/api/download/:id${ID_REGEX}`, auth.hmac, require('./download'));
+  app.get(
+    `/api/download/blob/:id${ID_REGEX}`,
+    auth.hmac,
+    require('./download')
+  );
   app.get(`/api/exists/:id${ID_REGEX}`, require('./exists'));
-  app.get(`/api/metadata/:id${ID_REGEX}`, auth, require('./metadata'));
-  app.post('/api/upload', uploader, require('./upload'));
-  app.post(`/api/delete/:id${ID_REGEX}`, owner, require('./delete'));
-  app.post(`/api/password/:id${ID_REGEX}`, owner, require('./password'));
-  app.post(`/api/params/:id${ID_REGEX}`, owner, require('./params'));
-  app.post(`/api/info/:id${ID_REGEX}`, owner, require('./info'));
-
+  app.get(`/api/metadata/:id${ID_REGEX}`, auth.hmac, require('./metadata'));
+  app.get('/api/filelist/:id([\\w-]{16})', auth.fxa, filelist.get);
+  app.post('/api/filelist/:id([\\w-]{16})', auth.fxa, filelist.post);
+  app.post('/api/upload', auth.fxa, require('./upload'));
+  app.post(`/api/delete/:id${ID_REGEX}`, auth.owner, require('./delete'));
+  app.post(`/api/password/:id${ID_REGEX}`, auth.owner, require('./password'));
+  app.post(
+    `/api/params/:id${ID_REGEX}`,
+    auth.owner,
+    auth.fxa,
+    require('./params')
+  );
+  app.post(`/api/info/:id${ID_REGEX}`, auth.owner, require('./info'));
+  app.post('/api/metrics', require('./metrics'));
   app.get('/__version__', function(req, res) {
     res.sendFile(require.resolve('../../dist/version.json'));
   });

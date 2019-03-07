@@ -1,78 +1,82 @@
 const html = require('choo/html');
 const assets = require('../common/assets');
-const locales = require('../common/locales');
+const initScript = require('./initScript');
 
 module.exports = function(state, body = '') {
-  const firaTag = state.fira
-    ? html`<link rel="stylesheet" type="text/css" href="https://code.cdn.mozilla.net/fonts/fira.css" />`
-    : '';
   return html`
-  <!DOCTYPE html>
-  <html lang="${state.locale}">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!DOCTYPE html>
+    <html lang="${state.locale}">
+      <head>
+        <title>${state.title}</title>
+        <base href="/" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta property="og:title" content="${state.title}"/>
-    <meta name="twitter:title" content="${state.title}"/>
-    <meta name="description" content="${state.description}"/>
-    <meta property="og:description" content="${state.description}"/>
-    <meta name="twitter:description" content="${state.description}"/>
-    <meta name="twitter:card" content="summary"/>
-    <meta property="og:image" content="${state.baseUrl}${assets.get(
-    'send-fb.jpg'
-  )}"/>
-    <meta name="twitter:image" content="${state.baseUrl}${assets.get(
-    'send-twitter.jpg'
-  )}"/>
-    <meta property="og:url" content="${state.baseUrl}"/>
+        <meta property="og:title" content="${state.title}" />
+        <meta name="twitter:title" content="${state.title}" />
+        <meta name="description" content="${state.description}" />
+        <meta property="og:description" content="${state.description}" />
+        <meta name="twitter:description" content="${state.description}" />
+        <meta name="twitter:card" content="summary" />
+        <meta
+          property="og:image"
+          content="${state.baseUrl}${assets.get('send-fb.jpg')}"
+        />
+        <meta
+          name="twitter:image"
+          content="${state.baseUrl}${assets.get('send-twitter.jpg')}"
+        />
+        <meta property="og:url" content="${state.baseUrl}" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="msapplication-TileColor" content="#da532c" />
 
-    <title>${state.title}</title>
-
-    <link rel="stylesheet" type="text/css" href="${assets.get('style.css')}" />
-
-    <!-- generic favicons -->
-    <link rel="icon" href="${assets.get('favicon-32.png')}" sizes="32x32">
-    <link rel="icon" href="${assets.get('favicon-96.png')}" sizes="96x96">
-    <link rel="icon" href="${assets.get('favicon-128.png')}" sizes="128x128">
-    <link rel="icon" href="${assets.get('favicon-228.png')}" sizes="228x228">
-
-    <!-- Android -->
-    <link rel="shortcut icon" href="${assets.get(
-      'favicon-196.png'
-    )}" sizes="196x196">
-
-    <!-- iOS -->
-    <link rel="apple-touch-icon" href="${assets.get(
-      'favicon-120.png'
-    )}" sizes="120x120">
-    <link rel="apple-touch-icon" href="${assets.get(
-      'favicon-152.png'
-    )}" sizes="152x152">
-    <link rel="apple-touch-icon" href="${assets.get(
-      'favicon-180.png'
-    )}" sizes="180x180">
-
-    <!-- Windows 8 IE 10-->
-    <meta name="msapplication-TileColor" content="#FFFFFF">
-    <meta name="msapplication-TileImage" content="${assets.get(
-      'favicon-144.png'
-    )}">
-
-    <!-- Windows 8.1 + IE11 and above -->
-    <meta name="msapplication-config" content="/browserconfig.xml"/>
-
-
-    ${firaTag}
-    <script defer src="/jsconfig.js"></script>
-    <script defer src="${assets.get('runtime.js')}"></script>
-    <script defer src="${assets.get('vendor.js')}"></script>
-    <script defer src="${locales.get(state.locale)}"></script>
-    <script defer src="${assets.get('cryptofill.js')}"></script>
-    <script defer src="${assets.get('app.js')}"></script>
-  </head>
-  ${body}
-  </html>
+        <link rel="manifest" href="/app.webmanifest" />
+        <link rel="stylesheet" type="text/css" href="/inter.css" />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="${assets.get('app.css')}"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="${assets.get('apple-touch-icon.png')}"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="${assets.get('favicon-32x32.png')}"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="${assets.get('favicon-16x16.png')}"
+        />
+        <link
+          rel="mask-icon"
+          href="${assets.get('safari-pinned-tab.svg')}"
+          color="#838383"
+        />
+        <script defer src="${assets.get('app.js')}"></script>
+      </head>
+      <noscript>
+        <div class="noscript">
+          <h2>${state.translate('javascriptRequired')}</h2>
+          <p>
+            <a
+              class="link"
+              href="https://github.com/mozilla/send/blob/master/docs/faq.md#why-does-firefox-send-require-javascript"
+            >
+              ${state.translate('whyJavascript')}
+            </a>
+          </p>
+          <p>${state.translate('enableJavascript')}</p>
+        </div>
+      </noscript>
+      ${body} ${initScript(state)}
+    </html>
   `;
 };

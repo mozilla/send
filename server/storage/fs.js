@@ -26,9 +26,8 @@ class FSStorage {
       const filepath = path.join(this.dir, id);
       const fstream = fs.createWriteStream(filepath);
       file.pipe(fstream);
-      file.on('limit', () => {
-        file.unpipe(fstream);
-        fstream.destroy(new Error('limit'));
+      file.on('error', err => {
+        fstream.destroy(err);
       });
       fstream.on('error', err => {
         fs.unlinkSync(filepath);
