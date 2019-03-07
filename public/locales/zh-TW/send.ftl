@@ -117,3 +117,27 @@ passwordIsSet = 已設定密碼
 maxPasswordLength = 最大密碼長度: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = 無法設定此密碼
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+timespanMinutes =
+    { $num ->
+       *[other] { $num } 分鐘
+    }
+timespanDays =
+    { $num ->
+       *[other] { $num } 天
+    }
+timespanWeeks =
+    { $num ->
+       *[other] { $num } 週
+    }
+fileCount =
+    { $num ->
+       *[other] { $num } 個檔案
+    }
