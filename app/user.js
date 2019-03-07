@@ -126,6 +126,7 @@ export default class User {
     const keys_jwk = await prepareScopedBundleKey(this.storage);
     const code_challenge = await preparePkce(this.storage);
     const options = {
+      action: 'email',
       client_id: this.authConfig.client_id,
       code_challenge,
       code_challenge_method: 'S256',
