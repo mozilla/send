@@ -30,7 +30,6 @@ module.exports = async function(req) {
     storage: {
       files: []
     },
-    fira: false,
     fileInfo: {},
     cspNonce: req.cspNonce,
     user: { avatar: assets.get('user.svg'), loggedIn: false },

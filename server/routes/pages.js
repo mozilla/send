@@ -44,10 +44,7 @@ module.exports = {
     const appState = await state(req);
     res.send(
       stripEvents(
-        routes().toString(
-          `/unsupported/${req.params.reason}`,
-          Object.assign(appState, { fira: true })
-        )
+        routes().toString(`/unsupported/${req.params.reason}`, appState)
       )
     );
   },
