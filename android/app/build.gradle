@@ -20,6 +20,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "abi"
+
+    productFlavors {
+        x86     { dimension "abi" }
+        x86_64  { dimension "abi" }
+        arm     { dimension "abi" }
+        aarch64 { dimension "abi" }
+    }
 }
 
 dependencies {
@@ -32,6 +40,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.github.delight-im:Android-AdvancedWebView:v3.0.0'
     implementation "org.mozilla.components:service-firefox-accounts:${rootProject.ext.android_components_version}"
+    x86Implementation     "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-x86:${rootProject.ext.geckoviewVersion}"
+    x86_64Implementation  "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-x86_64:${rootProject.ext.geckoviewVersion}"
+    armImplementation     "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-armeabi-v7a:${rootProject.ext.geckoviewVersion}"
+    aarch64Implementation "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-arm64-v8a:${rootProject.ext.geckoviewVersion}"
 }
 
 task generateAndLinkBundle(type: Exec, description: 'Generate the android.js bundle and link it into the assets directory') {

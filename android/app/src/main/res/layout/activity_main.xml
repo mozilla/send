@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <im.delight.android.webview.AdvancedWebView
-        android:id="@+id/webview"
+    <org.mozilla.geckoview.GeckoView
+        android:id="@+id/geckoview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>
