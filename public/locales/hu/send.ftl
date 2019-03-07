@@ -128,6 +128,7 @@ passwordSetError = Ez a jelszó nem állítható be
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Egyszerű, privát fájlmegosztás
+introDescription = A { -send-brand }del végpontok közötti titkosítással oszthat meg fájlokat, a hivatkozások pedig automatikusan lejárnak. Így bizalmasan tarthatja azt, amit megoszt, és biztosíthatja, hogy a dolgok nem maradnak örökre online.
 notifyUploadEncryptDone = A fájl titkosítva és készen áll a küldésre
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = { $downloadCount } vagy { $timespan } után elévül
