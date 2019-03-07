@@ -7,7 +7,7 @@ const locales = fs.readdirSync(localesPath);
 function makeBundle(locale) {
   const bundle = new FluentBundle(locale, { useIsolating: false });
   bundle.addMessages(
-    fs.readFileSync(path.resolve(localesPath, locale, 'send.ftl'))
+    fs.readFileSync(path.resolve(localesPath, locale, 'send.ftl'), 'utf8')
   );
   return [locale, bundle];
 }
