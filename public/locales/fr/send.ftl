@@ -119,3 +119,38 @@ passwordIsSet = Mot de passe défini
 maxPasswordLength = Longueur maximale du mot de passe : { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Ce mot de passe n’a pas pu être défini
+
+## New strings for the vNext version of Firefox Send
+
+-mozilla = Mozilla
+introTitle = Partage de fichiers simple et privé
+introDescription = { -send-brand } vous permet de partager des fichiers chiffrés de bout en bout ainsi qu’un lien qui expire automatiquement. Ainsi, vous pouvez garder ce que vous partagez en privé et vous assurer que vos contenus ne restent pas en ligne pour toujours.
+notifyUploadEncryptDone = Votre fichier est chiffré et prêt à l’envoi
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Expire après { $downloadCount } ou { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 minute
+       *[other] { $num } minutes
+    }
+timespanDays =
+    { $num ->
+        [one] 1 jour
+       *[other] { $num } jours
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 semaine
+       *[other] { $num } semaines
+    }
+fileCount =
+    { $num ->
+        [one] 1 fichier
+       *[other] { $num } fichiers
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Taille totale : { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Copiez le lien pour partager votre fichier :
+copyLinkButton = Copier le lien
+downloadTitle = Télécharger les fichiers
