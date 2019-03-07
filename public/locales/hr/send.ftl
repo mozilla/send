@@ -11,7 +11,7 @@ uploadPageBrowseButton = Izaberite datoteku na računalu
 uploadPageBrowseButton1 = Izaberite datoteku za otpremanje
 uploadPageMultipleFilesAlert = Otpremanje fascikala ili više datoteka trenutno nije podržano.
 uploadPageBrowseButtonTitle = Otpremi datoteku
-uploadingPageProgress = Otpremam { $filename } ({ $size })
+uploadingPageProgress = Prijenos { $filename } ({ $size })
 importingFile = Uvozim...
 verifyingFile = Potvrđujem...
 encryptingFile = Šifriram...
@@ -28,15 +28,15 @@ uploadSuccessTimingHeader = Veza prema vašoj datoteci će isteći nakon jednog 
 expireInfo = Veza prema vašoj datoteci će isteći nakon { $downloadCount } ili { $timespan }.
 downloadCount =
     { $num ->
-        [one] preuzimanja
-        [few] preuzimanja
-       *[other] preuzimanja
+        [one] { $num } preuzimanja
+        [few] { $num } preuzimanja
+       *[other] { $num } preuzimanja
     }
 timespanHours =
     { $num ->
-        [one] sata
-        [few] sata
-       *[other] sati
+        [one] { $num } sata
+        [few] { $num } sata
+       *[other] { $num } sati
     }
 copyUrlFormLabelWithName = Iskopirajte i podijelite vezu da biste poslali vašu datoteku: { $filename }
 copyUrlFormButton = Kopiraj u međuspremnik
@@ -67,7 +67,7 @@ downloadFinish = Preuzimanje je završeno.
 fileSizeProgress = ({ $partialSize } od { $totalSize })
 # Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Isprobajte Firefox Send
-downloadingPageProgress = Preuzimam datoteku { $filename } ({ $size })
+downloadingPageProgress = Preuzimanje datoteke { $filename } ({ $size })
 downloadingPageMessage = Ostavite ovaj jezičak otvorenim dok ne dobavimo vašu datoteku i dok je ne dešifriramo.
 errorAltText = Greška pri otpremanju
 errorPageHeader = Nešto je pošlo naopako!
@@ -121,3 +121,6 @@ passwordIsSet = Lozinka je postavljena
 maxPasswordLength = Najveća dužina lozinke: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Ne možemo postaviti ovu lozinku
+
+## New strings for the vNext version of Firefox Send
+
