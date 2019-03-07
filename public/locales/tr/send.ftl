@@ -115,3 +115,16 @@ passwordIsSet = Parola ayarlandı
 maxPasswordLength = Maksimum parola uzunluğu: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Parola ayarlanamadı
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Basit ve gizli dosya paylaşımı
+notifyUploadEncryptDone = Dosyanız şifrelendi ve gönderilmeye hazır
+signOut = Çıkış yap
+okButton = Tamam
+downloadingTitle = İndiriliyor
