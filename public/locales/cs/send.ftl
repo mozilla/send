@@ -25,7 +25,7 @@ uploadingFileNotification = Upozornit, až bude nahrávání dokončeno.
 uploadSuccessConfirmHeader = Připraveno k odeslání
 uploadSvgAlt = Nahrát
 uploadSuccessTimingHeader = Platnost odkazu na váš soubor vyprší po jeho prvním stažení, nebo po 24 hodinách.
-expireInfo = Platnost odkazu na váš soubor vyprší po { $downloadCount } nebo { $timespan }.
+expireInfo = Platnost odkazu na váš soubor vyprší po { $downloadCount } nebo za { $timespan }.
 downloadCount =
     { $num ->
         [one] jednom stažení
@@ -34,9 +34,9 @@ downloadCount =
     }
 timespanHours =
     { $num ->
-        [one] jedné hodině
-        [few] { $num } hodinách
-       *[other] { $num } hodinách
+        [one] hodinu
+        [few] { $num } hodiny
+       *[other] { $num } hodin
     }
 copyUrlFormLabelWithName = Zkopírujte a sdílejte odkaz na váš soubor: { $filename }
 copyUrlFormButton = Zkopírovat do schránky
@@ -130,7 +130,7 @@ passwordSetError = Toto heslo nemohlo být nastaveno
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Jednoduché a soukromé sdílení souborů
-introDescription = Se službou { -send-brand } jsou sdílené soubory šifrované end-to-end, takže ani mi nevíme, co sdílíte. Platnost odkazů je navíc omezená. Soubory tak můžete sdílet soukromě a máte také jistotu, že se nezůstanou na internetu válet navždy.
+introDescription = Se službou { -send-brand } jsou sdílené soubory šifrované end-to-end, takže ani my nevíme, co sdílíte. Platnost odkazů je navíc omezená. Soubory tak můžete sdílet soukromě a s jistotou, že se nezůstanou na internetu válet navždy.
 notifyUploadEncryptDone = Váš soubor je zašifrovaný a připraven k odeslání
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Platnost vyprší po { $downloadCount } nebo za { $timespan }
@@ -148,7 +148,7 @@ timespanDays =
     }
 timespanWeeks =
     { $num ->
-        [one] jeden týden
+        [one] týden
         [few] { $num } týdny
        *[other] { $num } týdnů
     }
@@ -173,6 +173,13 @@ tooManyFiles =
         [few] Najednou lze nahrávat jen { $count } soubory.
        *[other] Najednou lze nahrávat jen { $count } souborů.
     }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Povolen je nejvýše jeden archiv.
+        [few] Povoleny jsou nejvýše { $count } archivy.
+       *[other] Povoleno je nejvýše { $count } archivů.
+    }
 expiredTitle = Platnost tohoto odkazu vypršela.
 notSupportedDescription = { -send-brand } nebude v tomto prohlížeči fungovat. Nejlépe { -send-short-brand } funguje v nejnovější verzi prohlížeče { -firefox } nebo aktuálních verzích nejpoužívanějších prohlížečů.
 downloadFirefox = Stáhnout { -firefox }
@@ -182,6 +189,8 @@ legalDateStamp = Verze 1.0, 12. března 2019
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Vyberte soubory k nahrání
 uploadButton = Nahrát
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Přetažením myší nebo kliknutím sem
 addPassword = Chránit heslem
 emailPlaceholder = Zadejte svoji e-mailovou adresu
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
