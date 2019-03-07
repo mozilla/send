@@ -76,3 +76,7 @@ fileCount =
     }
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 totalSize = Total størrelse: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Kopier lenken for å dele filen din:
+copyLinkButton = Kopier lenke
+downloadTitle = Last ned filer
