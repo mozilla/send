@@ -125,6 +125,7 @@ passwordSetError = 未能设置此密码
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = 简单、私密的文件分享服务
 timespanMinutes =
     { $num ->
         [one] 1 分钟
@@ -145,9 +146,12 @@ fileCount =
         [one] 1 个文件
        *[other] { $num } 个文件
     }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = 总大小：{ $size }
 copyLinkButton = 复制链接
 downloadTitle = 下载文件
 expiredTitle = 此链接已过期。
+downloadFirefox = 下载 { -firefox }
 legalTitle = { -send-short-brand } 隐私声明
 addFilesButton = 选择要上传的文件
 uploadButton = 上传
