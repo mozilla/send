@@ -164,3 +164,20 @@ totalSize = Загальний розмір: { $size }
 copyLinkDescription = Скопіюйте посилання, щоб надати спільний доступ до файлу:
 copyLinkButton = Копіювати посилання
 downloadTitle = Завантажити файли
+downloadDescription = Цей файл було надіслано через { -send-brand } з використанням наскрізного шифрування і посиланням, що має обмежений термін дії.
+trySendDescription = Спробуйте { -send-brand } для простого, захищеного обміну файлами.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Лише 1 файл можна вивантажити за один раз.
+        [few] Лише { $count } файли можна вивантажити за один раз.
+       *[other] Лише { $count } файлів можна вивантажити за один раз.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Дозволяється лише 1 архів.
+        [few] Дозволяється лише { $count } архіви.
+       *[other] Дозволяється лише { $count } архівів.
+    }
+expiredTitle = Термін дії цього посилання завершився.
