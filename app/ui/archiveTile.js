@@ -422,9 +422,7 @@ module.exports.empty = function(state, emit) {
       }}"
     >
       <img src="${assets.get('addfiles.svg')}" width="48" height="48" />
-      <div
-        class="pt-6 pb-2 text-center text-lg font-bold capitalize tracking-wide"
-      >
+      <div class="pt-6 pb-2 text-center text-lg font-bold tracking-wide">
         ${state.translate('dragAndDropFiles')}
       </div>
       <div class="pb-6 text-center text-base">
