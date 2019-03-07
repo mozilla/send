@@ -12,19 +12,24 @@ module.exports = function(state, emit) {
         <p class="mt-2">${state.translate('legalDateStamp')}</p>
         <div class="overflow-scroll py-8 px-12">
           <p class="leading-normal">
-            When Mozilla receives information from you, our
+            <span>When Mozilla receives information from you, our</span>
             <a
               href="https://www.mozilla.org/privacy/"
               target="__blank"
               rel="noopener noreferrer"
+              class="text-blue-dark hover:underline"
               >Mozilla Privacy Policy</a
             >
-            describes how we handle that information. Below are the top things
-            you should know about Firefox Send. You can also view the code
+            <span
+              >describes how we handle that information. Below are the top
+              things you should know about Firefox Send. You can also view the
+              code</span
+            >
             <a
               href="https://github.com/mozilla/send/blob/master/docs/metrics.md"
               target="__blank"
               rel="noopener noreferrer"
+              class="text-blue-dark hover:underline"
               >here</a
             >.
           </p>
