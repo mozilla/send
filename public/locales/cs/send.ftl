@@ -191,17 +191,26 @@ addFilesButton = Vyberte soubory k nahrání
 uploadButton = Nahrát
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Přetažením myší nebo kliknutím sem
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = můžete poslat až { $size }
 addPassword = Chránit heslem
 emailPlaceholder = Zadejte svoji e-mailovou adresu
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
-signInSizeBump = Pro odesílání souborů až do velikosti { $size } se prosím přihlaste
-signInButton = Přihlášení/Registrace
+signInSizeBump = Pro odesílání souborů o velikosti až { $size } se prosím přihlaste
+signInButton = Přihlásit/Registrovat se
 accountBenefitTitle = Vytvořte si účet Firefoxu nebo se přihlaste
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
-accountBenefitLargeFiles = Sdílejte soubory až do velikosti { $size }
+accountBenefitLargeFiles = Sdílejte soubory o velikosti až { $size }
 accountBenefitDownloadCount = Sdílejte soubory s více lidmi
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Odkazy platné až jeden den
+        [few] Odkazy platné až { $count } dny
+       *[other] Odkazy platné až { $count } dní
+    }
 accountBenefitSync = Správa sdílených souborů z jakéhokoliv zařízení
-accountBenefitMoz = Zjistit více o dalších službách od Mozilly
+accountBenefitMoz = Více informací o dalších službách od Mozilly
 signOut = Odhlásit se
 okButton = OK
 downloadingTitle = Stahování
