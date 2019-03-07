@@ -130,6 +130,10 @@ passwordSetError = Неможливо встановити цей пароль
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Простий, приватний обмін файлами
+introDescription = { -send-brand } дозволяє обмінюватися файлами з використанням наскрізного шифрування та посиланнями з обмеженим терміном дії. Отже, ви можете можете бути певними, що ваші дані зберігаються приватно і не залишаються в мережі назавжди.
+notifyUploadEncryptDone = Ваш файл зашифрований і готовий до надсилання
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Термін зберігання завершується після { $downloadCount } або { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 хвилина
