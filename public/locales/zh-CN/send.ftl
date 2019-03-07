@@ -173,6 +173,7 @@ expiredTitle = 此链接已过期。
 notSupportedDescription = { -send-brand } 无法在此浏览器上正常工作。{ -send-short-brand } 与最新版本 { -firefox } 配合使用体验最佳，也适用于目前的大多数浏览器。
 downloadFirefox = 下载 { -firefox }
 legalTitle = { -send-short-brand } 隐私声明
+legalDateStamp = 版本 1.0，日期 2019年3月12日
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } 天 { $hours } 小时 { $minutes } 分钟
 addFilesButton = 选择要上传的文件
