@@ -20,18 +20,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "abi"
+
+    productFlavors {
+        x86     { dimension "abi" }
+        x86_64  { dimension "abi" }
+        arm     { dimension "abi" }
+        aarch64 { dimension "abi" }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.0.0'
     implementation "org.mozilla.components:service-firefox-accounts:${rootProject.ext.android_components_version}"
+    x86Implementation     "org.mozilla.geckoview:geckoview-${geckoviewChannel}-x86:${geckoviewVersion}"
+    x86_64Implementation  "org.mozilla.geckoview:geckoview-${geckoviewChannel}-x86_64:${geckoviewVersion}"
+    armImplementation     "org.mozilla.geckoview:geckoview-${geckoviewChannel}-armeabi-v7a:${geckoviewVersion}"
+    aarch64Implementation "org.mozilla.geckoview:geckoview-${geckoviewChannel}-arm64-v8a:${geckoviewVersion}"
 }
 
 task generateAndLinkBundle(type: Exec, description: 'Generate the android.js bundle and link it into the assets directory') {
