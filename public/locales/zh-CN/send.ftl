@@ -126,6 +126,8 @@ passwordSetError = 未能设置此密码
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = 简单、私密的文件分享服务
+introDescription = 使用 { -send-brand } 端到端加密分享文件，链接到期即焚。分享更私密，文件到期真正无痕迹。
+notifyUploadEncryptDone = 您的文件已加密并可以发送
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = { $downloadCount } 次下载或 { $timespan } 后过期
 timespanMinutes =
@@ -154,7 +156,21 @@ totalSize = 总大小：{ $size }
 copyLinkDescription = 复制链接以分享文件：
 copyLinkButton = 复制链接
 downloadTitle = 下载文件
+downloadDescription = 此文件通过端到端加密的 { -send-brand } 与您分享，链接到期即焚。
+trySendDescription = 试试 { -send-brand }，简单、私密的文件分享服务。
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] 一次只可上传 1 个文件。
+       *[other] 一次只可上传 { $count } 个文件。
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+       *[other] 只可上传 { $count } 个档案。
+    }
 expiredTitle = 此链接已过期。
+notSupportedDescription = { -send-brand } 无法在此浏览器上正常工作。{ -send-short-brand } 与最新版本 { -firefox } 配合使用体验最佳，也适用于目前的大多数浏览器。
 downloadFirefox = 下载 { -firefox }
 legalTitle = { -send-short-brand } 隐私声明
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
@@ -163,17 +179,29 @@ addFilesButton = 选择要上传的文件
 uploadButton = 上传
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = 拖放文件
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = 或点此传送最大 { $size } 的文件
+addPassword = 密码保护
 emailPlaceholder = 请输入您的电子邮件地址
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = 登录以传送最大 { $size } 文件
 signInButton = 登录 / 注册
 accountBenefitTitle = 创建一个 { -firefox } 账户或登录
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = 分享最大 { $size } 文件
+accountBenefitDownloadCount = 与更多人分享文件
 accountBenefitTimeLimit =
     { $count ->
         [one] 链接有效期延至 1 天
        *[other] 链接有效期延至 { $count } 天
     }
+accountBenefitSync = 任何设备上都能管理分享的文件
 accountBenefitMoz = 了解其他 { -mozilla } 服务
 signOut = 退出
 okButton = 确定
 downloadingTitle = 正在下载
+noStreamsWarning = 此浏览器可能无法解密这么大的文件。
 noStreamsOptionCopy = 复制链接以在其他浏览器中打开
+noStreamsOptionFirefox = 试试大家最喜爱的浏览器
 noStreamsOptionDownload = 使用此浏览器继续
