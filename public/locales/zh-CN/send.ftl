@@ -126,6 +126,8 @@ passwordSetError = 未能设置此密码
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = 简单、私密的文件分享服务
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = { $downloadCount } 次下载或 { $timespan } 后过期
 timespanMinutes =
     { $num ->
         [one] 1 分钟
@@ -153,8 +155,12 @@ downloadTitle = 下载文件
 expiredTitle = 此链接已过期。
 downloadFirefox = 下载 { -firefox }
 legalTitle = { -send-short-brand } 隐私声明
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } 天 { $hours } 小时 { $minutes } 分钟
 addFilesButton = 选择要上传的文件
 uploadButton = 上传
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = 拖放文件
 emailPlaceholder = 请输入您的电子邮件地址
 signInButton = 登录 / 注册
 accountBenefitTitle = 创建一个 { -firefox } 账户或登录
