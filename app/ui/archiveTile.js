@@ -291,9 +291,11 @@ module.exports.wip = function(state, emit) {
             ${state.translate('addFilesButton')}
           </label>
           <div class="font-normal text-sm text-grey-darker">
-            ${state.translate('totalSize', {
-              size: bytes(state.archive.size)
-            })}
+            ${platform() === 'android'
+              ? bytes(state.archive.size)
+              : state.translate('totalSize', {
+                  size: bytes(state.archive.size)
+                })}
           </div>
         </div>
       </div>
