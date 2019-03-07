@@ -108,9 +108,9 @@ javascriptRequired = Firefox Send 需要 JavaScript
 whyJavascript = 为什么 Firefox Send 需要 JavaScript？
 enableJavascript = 请启用 JavaScript 并重试。
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
-expiresHoursMinutes = { $hours }时 { $minutes }分
+expiresHoursMinutes = { $hours } 小时 { $minutes } 分钟
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
-expiresMinutes = { $minutes }分
+expiresMinutes = { $minutes } 分钟
 # A short status message shown when a password is successfully set
 passwordIsSet = 密码已设置
 # A short status message shown when the user enters a long password
@@ -150,6 +150,8 @@ fileCount =
     }
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 totalSize = 总大小：{ $size }
+# the next line after the colon contains a file name
+copyLinkDescription = 复制链接以分享文件：
 copyLinkButton = 复制链接
 downloadTitle = 下载文件
 expiredTitle = 此链接已过期。
@@ -164,7 +166,14 @@ dragAndDropFiles = 拖放文件
 emailPlaceholder = 请输入您的电子邮件地址
 signInButton = 登录 / 注册
 accountBenefitTitle = 创建一个 { -firefox } 账户或登录
+accountBenefitTimeLimit =
+    { $count ->
+        [one] 链接有效期延至 1 天
+       *[other] 链接有效期延至 { $count } 天
+    }
 accountBenefitMoz = 了解其他 { -mozilla } 服务
 signOut = 退出
 okButton = 确定
 downloadingTitle = 正在下载
+noStreamsOptionCopy = 复制链接以在其他浏览器中打开
+noStreamsOptionDownload = 使用此浏览器继续
