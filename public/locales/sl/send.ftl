@@ -28,10 +28,10 @@ uploadSuccessTimingHeader = Povezava do vaše datoteke bo potekla po enem prenos
 expireInfo = Povezava do vaše datoteke bo potekla čez { $downloadCount } ali { $timespan }.
 downloadCount =
     { $num ->
-        [one] 1 prenos
-        [two] { $num } prenosa
-        [few] { $num } prenosi
-       *[other] { $num } prenosov
+        [one] 1 prenosu
+        [two] { $num } prenosih
+        [few] { $num } prenosih
+       *[other] { $num } prenosih
     }
 timespanHours =
     { $num ->
@@ -133,8 +133,33 @@ passwordSetError = Gesla ni mogoče nastaviti
 -mozilla = Mozilla
 introTitle = Preprosto, zasebno deljenje datotek
 notifyUploadEncryptDone = Vaša datoteka je šifrirana in pripravljena za pošiljanje
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Poteče po { $downloadCount } ali čez { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 minuto
+        [two] { $num } minuti
+        [few] { $num } minute
+       *[other] { $num } minut
+    }
+timespanDays =
+    { $num ->
+        [one] 1 dan
+        [two] { $num } dni
+        [few] { $num } dni
+       *[other] { $num } dni
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 teden
+        [two] { $num } tedna
+        [few] { $num } tedne
+       *[other] { $num } tednov
+    }
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 totalSize = Skupna velikost: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Kopirajte povezavo za deljenje datoteke:
 copyLinkButton = Kopiraj povezavo
 downloadTitle = Prenesi datoteke
 expiredTitle = Ta povezava je potekla.
@@ -143,9 +168,14 @@ addFilesButton = Izberite datoteke za nalaganje
 uploadButton = Prenesi
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Povlecite in spustite datoteke
+addPassword = Zaščiti z geslom
 emailPlaceholder = Vnesite e-poštni naslov
+signInButton = Prijava/Registracija
 accountBenefitTitle = Ustvarite { -firefox } Račun ali se prijavite
 signOut = Odjava
 okButton = V redu
 downloadingTitle = Prenašanje
+noStreamsWarning = Ta brskalnik morda ne bo zmogel dešifrirati tako velike datoteke.
+noStreamsOptionCopy = Kopirajte povezavo, da jo odprete v drugem brskalniku
+noStreamsOptionFirefox = Poskusite z našim najljubšim brskalnikom
 noStreamsOptionDownload = Nadaljujte s tem brskalnikom
