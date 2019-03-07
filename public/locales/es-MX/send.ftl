@@ -118,3 +118,43 @@ passwordIsSet = Contraseña establecida
 maxPasswordLength = Longitud máxima de la contraseña: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = No se ha podido establecer la contraseña
+
+## New strings for the vNext version of Firefox Send
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Enviar
+-firefox = Firefox
+-mozilla = Mozilla
+timespanMinutes =
+    { $num ->
+        [one] 1 minuto
+       *[other] { $num } minutos
+    }
+timespanDays =
+    { $num ->
+        [one] 1 día
+       *[other] { $num } días
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 semana
+       *[other] { $num } semanas
+    }
+fileCount =
+    { $num ->
+        [one] 1 archivo
+       *[other] { $num } archivos
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Tamaño total: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Copiar el enlace para compartir el archivo:
+copyLinkButton = Copiar enlace
+downloadTitle = Descargar archivos
+expiredTitle = Este enlace ha expirado.
+downloadFirefox = Descargar { -firefox }
+addFilesButton = Seleccionar archivos para subir
+uploadButton = Subir
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Arrastrar y soltar archivos
