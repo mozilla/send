@@ -181,3 +181,40 @@ tooManyArchives =
        *[other] Дозволяється лише { $count } архівів.
     }
 expiredTitle = Термін дії цього посилання завершився.
+notSupportedDescription = { -send-brand } не працюватиме з цим браузером. { -send-short-brand } найкраще працює з найновішою версією { -firefox }, а також з більшістю інших браузерів.
+downloadFirefox = Завантажити { -firefox }
+legalTitle = Повідомлення про приватність { -send-short-brand }
+legalDateStamp = Версія 1.0 від 12 березня 2019 року
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }д { $hours }г { $minutes }хв
+addFilesButton = Оберіть файли для вивантаження
+uploadButton = Вивантажити
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Перетягуйте файли
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = або натисніть, щоб надіслати до { $size }
+addPassword = Захист паролем
+emailPlaceholder = Введіть свою електронну пошту
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Увійдіть, щоб надсилати файли розміром до { $size }
+signInButton = Вхід чи Реєстрація
+accountBenefitTitle = Створіть обліковий запис { -firefox } або увійдіть
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Обмінюйтесь файлами розміром до { $size }
+accountBenefitDownloadCount = Обмінюйтесь файлами з більшою кількістю людей
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Зберігати посилання активними протягом 1 дня
+        [few] Зберігати посилання активними протягом { $count } днів
+       *[other] Зберігати посилання активними протягом { $count } днів
+    }
+accountBenefitSync = Керуйте спільними файлами з буль-якого пристрою
+accountBenefitMoz = Дізнайтеся про інші сервіси { -mozilla }
+signOut = Вийти
+okButton = Гаразд
+downloadingTitle = Завантаження
+noStreamsWarning = Цьому браузеру може не вдатися розшифрувати такий великий файл.
+noStreamsOptionCopy = Скопіюйте посилання, щоб відкрити його в іншому браузері
+noStreamsOptionFirefox = Спробуйте наш улюблений браузер
+noStreamsOptionDownload = Продовжити в цьому браузері
