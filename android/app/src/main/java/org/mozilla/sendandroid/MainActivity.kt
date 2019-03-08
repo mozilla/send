@@ -48,9 +48,37 @@ class MainActivity : AppCompatActivity() {
     private var mToShare: String? = null
     private var mToCall: String? = null
     private var mSessionFeature: SessionFeature? = null
+    private var mGeckoRuntime: GeckoRuntime? = null
+    private var mGeckoEngine: GeckoEngine? = null
+    private var mSessionManager: SessionManager? = null
+    private var mEngineView: EngineView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if(mEngineView == null) {
+            val builder = GeckoRuntimeSettings.Builder().consoleOutput(true).remoteDebuggingEnabled(true)
+            mGeckoRuntime = GeckoRuntime.create(applicationContext, builder.build())
+            val settings = DefaultSettings()
+            settings.userAgentString = "Send Android"
+            mGeckoEngine = GeckoEngine(applicationContext, settings, mGeckoRuntime!!)
+            mSessionManager =
+                SessionManager(mGeckoEngine!!, defaultSession = { Session("resource://android/assets/hello.html") })
+            val sessionUseCases = SessionUseCases(mSessionManager!!)
+            val sessionId = "sendandroid"
+            mEngineView = mGeckoEngine!!.createView(applicationContext)
+            mSessionFeature = SessionFeature(
+                mSessionManager!!,
+                sessionUseCases,
+                mEngineView!!,
+                sessionId
+            )
+
+            val initialSession = Session("resource://android/assets/hello.html")
+            mSessionManager!!.add(initialSession, selected = true)
+            mEngineView!!.render(mSessionManager!!.getOrCreateEngineSession())
+        }
+
         setContentView(R.layout.activity_main)
 
         val intent = getIntent()
@@ -72,25 +100,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateView(parent: View?, name: String, context: Context, attrs: AttributeSet): View? {
         if (name == EngineView::class.java.name) {
-            val builder = GeckoRuntimeSettings.Builder().consoleOutput(true).remoteDebuggingEnabled(true)
-            val runtime = GeckoRuntime.create(context, builder.build())
-            val settings = DefaultSettings()
-            settings.userAgentString = "Send Android"
-            val engine = GeckoEngine(context, settings, runtime)
-            val sessionManager = SessionManager(engine, defaultSession = { Session("resource://android/assets/hello.html") })
-            val sessionUseCases = SessionUseCases(sessionManager)
-            val engineView = engine.createView(context, attrs)
-            val sessionId = "sendandroid"
-            mSessionFeature = SessionFeature(
-                   sessionManager,
-                   sessionUseCases,
-                   engineView,
-                   sessionId)
-
-            val initialSession = Session("resource://android/assets/hello.html")
-            sessionManager.add(initialSession, selected = true)
-            engineView.render(sessionManager.getOrCreateEngineSession())
-            return engineView.asView()
+            return mEngineView!!.asView()
         } else {
             return super.onCreateView(parent, name, context, attrs)
         }
