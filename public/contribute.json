@@ -15,8 +15,8 @@
     },
     "urls": {
       "prod": "https://send.firefox.com/",
-      "stage": "https://send.stage.mozaws.net/",
-      "dev": "https://send.dev.mozaws.net/"
+      "stage": "https://stage.send.nonprod.cloudops.mozgcp.net/",
+      "dev": "https://send2.dev.lcip.org/"
     },
   "keywords": [
     "JavaScript",

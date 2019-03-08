@@ -86,8 +86,8 @@ Pull requests are always welcome! Feel free to check out the list of ["good firs
 | ENVIRONMENT | URL
 |-------------|-----
 | Production  | <https://send.firefox.com/>
-| Stage       | <https://send.stage.mozaws.net/>
-| Development | <https://send.dev.mozaws.net/>
+| Stage       | <https://stage.send.nonprod.cloudops.mozgcp.net/>
+| Development | <https://send2.dev.lcip.org/>
 
 ---
 
