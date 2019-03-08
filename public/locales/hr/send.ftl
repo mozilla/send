@@ -25,7 +25,7 @@ fileSizeProgress = ({ $partialSize } od { $totalSize })
 sendYourFilesLink = Isprobajte Firefox Send
 errorPageHeader = Nešto je pošlo naopako!
 fileTooBig = Datoteka je prevelika za prijenos. Treba biti manja od { $size }.
-linkExpiredAlt = Veza je istekla
+linkExpiredAlt = Poveznica je istekla
 notSupportedHeader = Vaš preglednik nije podržan.
 notSupportedLink = Zašto moj preglednik nije podržan?
 notSupportedOutdatedDetail = Nažalost, ovo izdanje Firefoxa ne podržava web tehnologiju koja omogućava Firefox Send. Morat ćete ažurirati vaš preglednik.
@@ -46,7 +46,7 @@ expiresMinutes = { $minutes }m
 # A short status message shown when the user enters a long password
 maxPasswordLength = Najveća dužina lozinke: { $length }
 # A short status message shown when there was an error setting the password
-passwordSetError = Ne možemo postaviti ovu lozinku
+passwordSetError = Lozinku nije moguće postaviti
 
 ## Send version 2 strings
 
@@ -87,10 +87,10 @@ fileCount =
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 totalSize = Ukupna veličina: { $size }
 # the next line after the colon contains a file name
-copyLinkDescription = Kopirajte vezu da biste podijelili svoju datoteku:
+copyLinkDescription = Kopirajte poveznicu da biste podijelili svoju datoteku:
 copyLinkButton = Kopiraj poveznicu
 downloadTitle = Preuzmite datoteke
-downloadDescription = Ova datoteka je podjeljena putem { -send-brand } s kriptiranjem od kraja do kraja i vezom koja automatski istječe.
+downloadDescription = Ova datoteka je podjeljena putem { -send-brand } s kriptiranjem i poveznicom koja automatski istječe.
 trySendDescription = Probajte { -send-brand } za jednostavno i sigurno dijeljenje datoteka.
 # count will always be > 10
 tooManyFiles =
@@ -131,9 +131,9 @@ accountBenefitLargeFiles = Dijelite datoteke do { $size }
 accountBenefitDownloadCount = Dijelite datoteke s više osoba
 accountBenefitTimeLimit =
     { $count ->
-        [one] Neka veze budu aktivne { $count } dan
-        [few] Neka veze budu aktivne { $count } dana
-       *[other] Neka veze budu aktivne { $count } dana
+        [one] Neka poveznice budu aktivne { $count } dan
+        [few] Neka poveznice budu aktivne { $count } dana
+       *[other] Neka poveznice budu aktivne { $count } dana
     }
 accountBenefitSync = Upravljanje dijeljenim datotekama s bilo kojeg uređaja
 accountBenefitMoz = Saznajte više o drugim { -mozilla } uslugama
