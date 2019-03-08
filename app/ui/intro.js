@@ -10,7 +10,7 @@ module.exports = function intro(state) {
         <h1 class="font-bold">
           ${state.translate('introTitle')}
         </h1>
-        <p class="max-w-sm mt-2 pr-16 leading-normal">
+        <p class="max-w-sm leading-normal mt-6 md:mt-2 md:pr-16">
           ${state.translate('introDescription')}
         </p>
         <img class="intro" src="${assets.get('intro.svg')}" />

@@ -1,4 +1,5 @@
 /* global window, navigator */
+import 'fluent-intl-polyfill';
 import choo from 'choo';
 import html from 'choo/html';
 import Raven from 'raven-js';
@@ -78,9 +79,7 @@ function body(main) {
     }; //TODO
     state.archive = new Archive([], DEFAULTS.EXPIRE_SECONDS);
     state.storage = storage;
-    state.user = new User(storage, LIMITS, {
-      issuer: 'https://accounts.firefox.com'
-    });
+    state.user = new User(storage, LIMITS);
     state.raven = Raven;
   });
   app.use(metrics);

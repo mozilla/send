@@ -11,6 +11,10 @@ export default class AndroidUser extends User {
     Android.beginOAuthFlow();
   }
 
+  startAuthFlow() {
+    return Promise.resolve();
+  }
+
   async finishLogin(accountInfo) {
     const jwks = JSON.parse(accountInfo.keys);
     const ikm = jwks['https://identity.mozilla.com/apps/send'].k;
