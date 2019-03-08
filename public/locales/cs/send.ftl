@@ -1,5 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+title = { -send-brand }
 siteFeedback = Zpětná vazba
 importingFile = Probíhá import…
 encryptingFile = Probíhá šifrování…
@@ -22,22 +22,22 @@ unlockButtonLabel = Odemknout
 downloadButtonLabel = Stáhnout
 downloadFinish = Stahování dokončeno
 fileSizeProgress = ({ $partialSize } z { $totalSize })
-sendYourFilesLink = Vyzkoušejte Firefox Send
+sendYourFilesLink = Vyzkoušejte { -send-brand(case: "acc") }
 errorPageHeader = Nastala chyba!
 fileTooBig = Tento soubor je příliš veliký. Velikost nahrávaných souborů by neměla překročit { $size }.
 linkExpiredAlt = Platnost odkazu vypršela
 notSupportedHeader = Váš prohlížeč není podporován.
 notSupportedLink = Proč není můj prohlížeč podporovaný?
-notSupportedOutdatedDetail = Tato verze Firefoxu bohužel nepodporuje webovou technologii, která pohání Firefox Send. Musíte aktualizovat svůj prohlížeč.
-updateFirefox = Aktualizovat Firefox
+notSupportedOutdatedDetail = Tato verze { -firefox(case: "gen") } bohužel nepodporuje webovou technologii, která pohání { -send-brand(case: "acc") }. Musíte aktualizovat svůj prohlížeč.
+updateFirefox = Aktualizovat { -firefox(case: "acc") }
 deletePopupCancel = Zrušit
 deleteButtonHover = Smazat
 footerLinkLegal = Právní informace
 footerLinkPrivacy = Soukromí
 footerLinkCookies = Cookies
 passwordTryAgain = Špatné heslo. Zkuste to znovu.
-javascriptRequired = Firefox Send vyžaduje povolený JavaScript
-whyJavascript = Proč Firefox Send vyžaduje povolený JavaScript?
+javascriptRequired = { -send-brand } vyžaduje povolený JavaScript
+whyJavascript = Proč { -send-brand } vyžaduje povolený JavaScript?
 enableJavascript = Povolte JavaScript a zkuste to znovu.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours } h { $minutes } m
