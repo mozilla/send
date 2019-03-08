@@ -18,6 +18,7 @@ import share from './pages/share';
 import preferences from './pages/preferences';
 import error from './pages/error';
 import { getTranslator } from '../app/locale';
+import { delay } from '../app/utils';
 
 if (navigator.userAgent === 'Send Android') {
   setApiUrlPrefix('https://send2.dev.lcip.org');
@@ -27,6 +28,15 @@ const app = choo();
 //app.use(state);
 app.use(controller);
 app.use(intents);
+
+window.finishLogin = async function(accountInfo) {
+  while (!(app.state && app.state.user)) {
+    await delay();
+  }
+  await app.state.user.finishLogin(accountInfo);
+  await app.state.user.syncFileList();
+  app.emitter.emit('replaceState', '/');
+};
 
 function body(main) {
   return function(state, emit) {
@@ -59,7 +69,7 @@ function body(main) {
 (async function start() {
   const translate = await getTranslator('en-US');
   const { LIMITS, DEFAULTS } = await getConstants();
-  app.use((state, emitter) => {
+  app.use(state => {
     state.LIMITS = LIMITS;
     state.DEFAULTS = DEFAULTS;
     state.translate = translate;
@@ -68,18 +78,10 @@ function body(main) {
     }; //TODO
     state.archive = new Archive([], DEFAULTS.EXPIRE_SECONDS);
     state.storage = storage;
-    state.user = new User(storage, LIMITS);
+    state.user = new User(storage, LIMITS, {
+      issuer: 'https://accounts.firefox.com'
+    });
     state.raven = Raven;
-
-    window.finishLogin = async function(accountInfo) {
-      await state.user.finishLogin(accountInfo);
-      await state.user.syncFileList();
-      emitter.emit('replaceState', '/');
-    };
-
-    // for debugging
-    window.appState = state;
-    window.appEmit = emitter.emit.bind(emitter);
   });
   app.use(metrics);
   app.route('/', body(home));
@@ -91,3 +93,5 @@ function body(main) {
   // add /api/filelist
   app.mount('body');
 })();
+
+window.app = app;
