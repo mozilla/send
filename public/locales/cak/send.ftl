@@ -126,3 +126,12 @@ accountBenefitTimeLimit =
         [one] Ke' atzija' ri taq ximonel chi 1 q'ij
        *[other] Ke'atzija' ri taq ximonel chi { $count } taq q'ij
     }
+accountBenefitSync = Ke'anuk'samajij komonin taq yakb'äl pa xab'achike okisab'äl
+accountBenefitMoz = Tawetamaj chij ch'aqa' chik { -mozilla } taq samaj
+signOut = Titz'apïx molojri'ïl
+okButton = ÜTZ
+downloadingTitle = Niqasäx
+noStreamsWarning = Rik'in jub'a' re okik'amaya'l re' man nitikïr ta nretamaj rusik'ixik nima'q taq yakb'äl.
+noStreamsOptionCopy = Tiwachib'ëx ri ximonel richin nijaq pa jun chik okik'amaya'l
+noStreamsOptionFirefox = Tatojtob'ej ri jeb'ël qokik'amaya'l
+noStreamsOptionDownload = Kisamäj na rik'in re okik'amaya'l re'
