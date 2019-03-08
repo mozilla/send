@@ -29,6 +29,7 @@ import mozilla.components.concept.engine.DefaultSettings
 import mozilla.components.browser.engine.gecko.GeckoEngine
 import mozilla.components.browser.engine.gecko.GeckoEngineSession
 import mozilla.components.concept.engine.EngineView
+import mozilla.components.feature.session.EngineViewPresenter
 
 internal class LoggingWebChromeClient : WebChromeClient() {
     override fun onConsoleMessage(cm: ConsoleMessage): Boolean {
@@ -83,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         if (name == EngineView::class.java.name) {
             val defaultSettings = DefaultSettings()
             val engine = GeckoEngine(context, defaultSettings)
-            val sessionManager = SessionManager(engine, defaultSession = { Session("data:,helloooo") })
+            val sessionManager = SessionManager(engine, defaultSession = { Session("resource://android/assets/hello.html") })
             val sessionUseCases = SessionUseCases(sessionManager)
             val engineView = engine.createView(context, attrs)
             val sessionId = "sendandroid"
@@ -95,6 +96,7 @@ class MainActivity : AppCompatActivity() {
 
             val initialSession = Session("data:,helloworld")
             sessionManager.add(initialSession)
+            engineView.render(sessionManager.getOrCreateEngineSession(initialSession))
             return engineView.asView()
         } else {
             return super.onCreateView(parent, name, context, attrs)

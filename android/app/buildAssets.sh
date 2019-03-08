@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+exit 0
 if [ -d "../../node_modules" ]
 then
   echo "node_modules already present."
