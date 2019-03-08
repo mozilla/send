@@ -92,5 +92,55 @@ copyLinkButton = Kopiraj poveznicu
 downloadTitle = Preuzmite datoteke
 downloadDescription = Ova datoteka je podjeljena putem { -send-brand } s kriptiranjem od kraja do kraja i vezom koja automatski istječe.
 trySendDescription = Probajte { -send-brand } za jednostavno i sigurno dijeljenje datoteka.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Istovremeno se može prenijeti samo { $count } datoteka.
+        [few] Istovremeno se može prenijeti samo { $count } datoteke.
+       *[other] Istovremeno se može prenijeti samo { $count } datoteka.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Dozvoljena je samo { $count } arhiva.
+        [few] Dozvoljene su samo { $count } arhive.
+       *[other] Dozvoljeno je samo { $count } arhiva.
+    }
+expiredTitle = Poveznica je istekla.
+notSupportedDescription = { -send-brand } neće raditi s ovim preglednikom. { -send-short-brand } radi najbolje s zadnjom { -firefox } inačicom i radit će s trenutnom inačicom većine preglednika.
 downloadFirefox = Preuzmite { -firefox }
+legalTitle = { -send-short-brand } politika privatnosti
+legalDateStamp = Inačica 1.0, od 12. ožujka 2019. godine
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }s { $minutes }m
+addFilesButton = Odaberite datoteke za prijenos
+uploadButton = Prijenos
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Povucite i ispustite datoteke
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = ili kliknite za slanje do { $size }
+addPassword = Zaštitite lozinkom
+emailPlaceholder = Unesite svoju adresu e-pošte
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Prijavite se za slanje do { $size }
+signInButton = Prijavite se
+accountBenefitTitle = Stvorite { -firefox } račun ili se prijavite
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Dijelite datoteke do { $size }
+accountBenefitDownloadCount = Dijelite datoteke s više osoba
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Neka veze budu aktivne { $count } dan
+        [few] Neka veze budu aktivne { $count } dana
+       *[other] Neka veze budu aktivne { $count } dana
+    }
+accountBenefitSync = Upravljanje dijeljenim datotekama s bilo kojeg uređaja
+accountBenefitMoz = Saznajte više o drugim { -mozilla } uslugama
 signOut = Odjavi se
+okButton = U redu
+downloadingTitle = Preuzimanje
+noStreamsWarning = Ovaj preglednik možda neće moći dekriptirati datoteku ove veličine.
+noStreamsOptionCopy = Kopirajte poveznicu kako biste je otvorili u drugom pregledniku
+noStreamsOptionFirefox = Isprobajte naš omiljeni preglednik
+noStreamsOptionDownload = Nastavite s ovim preglednikom
