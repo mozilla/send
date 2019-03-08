@@ -13,7 +13,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled false
     }
     buildTypes {
         release {
@@ -37,9 +36,9 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
-    implementation "org.mozilla.components:service-firefox-accounts:${rootProject.ext.fxa_component_version}"
-    implementation "org.mozilla.components:browser-engine-gecko-beta:${rootProject.ext.android_components_version}"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation "org.mozilla.components:service-firefox-accounts:${rootProject.ext.android_components_version}"
+    implementation "org.mozilla.components:browser-engine-gecko-${rootProject.ext.geckoviewChannel}:${rootProject.ext.android_components_version}"
     implementation "org.mozilla.components:concept-engine:${rootProject.ext.android_components_version}"
     implementation "org.mozilla.components:feature-session:${rootProject.ext.android_components_version}"
     implementation "org.mozilla.components:browser-session:${rootProject.ext.android_components_version}"
