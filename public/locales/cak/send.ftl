@@ -98,4 +98,31 @@ tooManyArchives =
         [one] Xa xe 1 yakb'äl niya' q'ij chi re.
        *[other] Xa xe { $count } taq yakb'äl niya' q'ij chi ke.
     }
-expiredTitle = Xk'is ruq'ij re ximonel re'.
+expiredTitle = Xk'is yan ruq'ij re ximonel re'.
+notSupportedDescription = Man xtisamäj ta ri { -send-brand } rik'in re okik'amaya'l re'. Nisamäj ütz ri { -send-short-brand } rik'in ri ruk'isib'äl ruwäch { -firefox }, chuqa' xtisamäj rik'in ri ruwäch k'o wakami pa ronojel okik'amaya'l.
+downloadFirefox = Tiqasäx { -firefox }
+legalTitle = Rutzijol Richinanem { -send-short-brand }
+legalDateStamp = Ruwäch 1.0, ruq'ijul marso 12, 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }q { $hours }r { $minutes }ch'
+addFilesButton = Kecha' taq yakb'äl richin yejotob'äx
+uploadButton = Tijotob'äx
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Keqirirëx chuqa' ke'osq'opïx taq yakb'äl
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = o tapitz'a' richin natäq k'a { $size }
+addPassword = Tichajïx rik'in ewan tzij
+emailPlaceholder = Tatz'ib'aj ataqoya'l
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Tatikirisaj molojri'ïl richin natäq k'a { $size }
+signInButton = Tatikirisaj molojri'ïl/tatz'ib'aj ab'i'
+accountBenefitTitle = Tatz'uku' jun { -firefox } Rub'i' Ataqoy'al o Tatikirisaj molojri'ïl
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Ke'akomonij taq yakb'äl k'a { $size }
+accountBenefitDownloadCount = Ke'akomonij taq yakb'äl kik'in ch'aqa' chik winaqi'
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Ke' atzija' ri taq ximonel chi 1 q'ij
+       *[other] Ke'atzija' ri taq ximonel chi { $count } taq q'ij
+    }
