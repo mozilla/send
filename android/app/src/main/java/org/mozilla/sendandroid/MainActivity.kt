@@ -1,25 +1,14 @@
 package org.mozilla.sendandroid
 
-
 import android.os.Bundle
-import android.graphics.Bitmap
 import android.content.Intent
-import android.annotation.SuppressLint
-import android.content.ComponentName
 import android.content.Context
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.util.AttributeSet
 import android.util.Log
 import android.util.Base64
 import android.view.View
-import android.webkit.ConsoleMessage
-import android.webkit.JavascriptInterface
-import android.webkit.WebChromeClient
-import mozilla.components.service.fxa.Config
-import mozilla.components.service.fxa.FirefoxAccount
-import mozilla.components.service.fxa.Profile
-import mozilla.components.service.fxa.FxaResult
+import androidx.appcompat.app.AppCompatActivity
 
 import mozilla.components.feature.session.SessionFeature
 import mozilla.components.feature.session.SessionUseCases
@@ -27,10 +16,9 @@ import mozilla.components.browser.session.SessionManager
 import mozilla.components.browser.session.Session
 import mozilla.components.concept.engine.DefaultSettings
 import mozilla.components.browser.engine.gecko.GeckoEngine
-import mozilla.components.browser.engine.gecko.GeckoEngineSession
 import mozilla.components.concept.engine.EngineView
-import mozilla.components.feature.session.EngineViewPresenter
 
+/*
 internal class LoggingWebChromeClient : WebChromeClient() {
     override fun onConsoleMessage(cm: ConsoleMessage): Boolean {
         Log.w("CONTENT", String.format("%s @ %d: %s",
@@ -39,6 +27,7 @@ internal class LoggingWebChromeClient : WebChromeClient() {
     }
 }
 
+// TODO Replace with geckoview equivalent
 class WebAppInterface(private val mContext: MainActivity) {
     @JavascriptInterface
     fun beginOAuthFlow() {
@@ -50,13 +39,12 @@ class WebAppInterface(private val mContext: MainActivity) {
         mContext.shareUrl(url)
     }
 }
-
+*/
 
 class MainActivity : AppCompatActivity() {
     // private var mWebView: AdvancedWebView? = null
     private var mToShare: String? = null
     private var mToCall: String? = null
-    private var mAccount: FirefoxAccount? = null
     private var mSessionFeature: SessionFeature? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,12 +63,12 @@ class MainActivity : AppCompatActivity() {
             } else if (type.startsWith("image/")) {
                 val imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM) as Uri
                 Log.w("INTENT", "image/ " + imageUri)
-                mToShare = "data:text/plain;base64," + Base64.encodeToString(imageUri.path.toByteArray(), 16).trim()
+                mToShare = "data:text/plain;base64," + Base64.encodeToString(imageUri.path!!.toByteArray(), 16).trim()
             }
         }
     }
 
-    override fun onCreateView(parent: View?, name: String?, context: Context, attrs: AttributeSet?): View? {
+    override fun onCreateView(parent: View?, name: String, context: Context, attrs: AttributeSet): View? {
         if (name == EngineView::class.java.name) {
             val defaultSettings = DefaultSettings()
             val engine = GeckoEngine(context, defaultSettings)
@@ -95,8 +83,8 @@ class MainActivity : AppCompatActivity() {
                    sessionId)
 
             val initialSession = Session("data:,helloworld")
-            sessionManager.add(initialSession)
-            engineView.render(sessionManager.getOrCreateEngineSession(initialSession))
+            sessionManager.add(initialSession, selected = true)
+            engineView.render(sessionManager.getOrCreateEngineSession())
             return engineView.asView()
         } else {
             return super.onCreateView(parent, name, context, attrs)
@@ -132,7 +120,7 @@ class MainActivity : AppCompatActivity() {
             mSessionFeature!!.stop()
         }
     }
-
+/*
     fun beginOAuthFlow() {
         Config.release().then(fun (value: Config): FxaResult<Unit> {
             mAccount = FirefoxAccount(value, "20f7931c9054d833", "https://send.firefox.com/fxa/android-redirect.html")
@@ -262,5 +250,5 @@ class MainActivity : AppCompatActivity() {
     fun onExternalPageRequest(url: String) {
         Log.w("MAIN", "onExternalPageRequest")
     }
-
+*/
 }
