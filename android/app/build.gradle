@@ -5,11 +5,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "org.mozilla.sendandroid"
         minSdkVersion 26
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -20,18 +20,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "abi"
+
+    productFlavors {
+        x86 { dimension "abi" }
+        x86_64 { dimension "abi" }
+        arm { dimension "abi" }
+        aarch64 { dimension "abi" }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.0.0'
-    implementation "org.mozilla.components:service-firefox-accounts:${rootProject.ext.android_components_version}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation "org.mozilla.components:service-firefox-accounts:${rootProject.ext.fxa_component_version}"
+    implementation "org.mozilla.components:browser-engine-gecko-beta:${rootProject.ext.android_components_version}"
+    implementation "org.mozilla.components:concept-engine:${rootProject.ext.android_components_version}"
+    implementation "org.mozilla.components:feature-session:${rootProject.ext.android_components_version}"
+    implementation "org.mozilla.components:browser-session:${rootProject.ext.android_components_version}"
+    x86Implementation     "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-x86:${rootProject.ext.geckoviewVersion}"
+    x86_64Implementation  "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-x86_64:${rootProject.ext.geckoviewVersion}"
+    armImplementation     "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-armeabi-v7a:${rootProject.ext.geckoviewVersion}"
+    aarch64Implementation "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-arm64-v8a:${rootProject.ext.geckoviewVersion}"
 }
 
 task generateAndLinkBundle(type: Exec, description: 'Generate the android.js bundle and link it into the assets directory') {
