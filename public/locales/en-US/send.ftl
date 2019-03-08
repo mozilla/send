@@ -1,5 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+title = { -send-brand }
 siteFeedback = Feedback
 importingFile = Importing…
 encryptingFile = Encrypting…
@@ -18,22 +18,22 @@ unlockButtonLabel = Unlock
 downloadButtonLabel = Download
 downloadFinish = Download complete
 fileSizeProgress = ({ $partialSize } of { $totalSize })
-sendYourFilesLink = Try Firefox Send
+sendYourFilesLink = Try { -send-brand }
 errorPageHeader = Something went wrong!
 fileTooBig = That file is too big to upload. It should be less than { $size }
 linkExpiredAlt = Link expired
 notSupportedHeader = Your browser is not supported.
 notSupportedLink = Why is my browser not supported?
-notSupportedOutdatedDetail = Unfortunately this version of Firefox does not support the web technology that powers Firefox Send. You’ll need to update your browser.
-updateFirefox = Update Firefox
+notSupportedOutdatedDetail = Unfortunately this version of { -firefox } does not support the web technology that powers { -send-brand }. You’ll need to update your browser.
+updateFirefox = Update { -firefox }
 deletePopupCancel = Cancel
 deleteButtonHover = Delete
 footerLinkLegal = Legal
 footerLinkPrivacy = Privacy
 footerLinkCookies = Cookies
 passwordTryAgain = Incorrect password. Try again.
-javascriptRequired = Firefox Send requires JavaScript
-whyJavascript = Why does Firefox Send require JavaScript?
+javascriptRequired = { -send-brand } requires JavaScript
+whyJavascript = Why does { -send-brand } require JavaScript?
 enableJavascript = Please enable JavaScript and try again.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
@@ -51,6 +51,7 @@ passwordSetError = This password could not be set
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+-firefox-account = Firefox Account
 
 introTitle = Simple, private file sharing
 introDescription = { -send-brand } lets you share files with end-to-end encryption and a link that automatically expires. So you can keep what you share private and make sure your stuff doesn’t stay online forever.
@@ -110,7 +111,7 @@ emailPlaceholder = Enter your email
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 signInSizeBump = Sign in to send up to { $size }
 signInButton = Sign in/up
-accountBenefitTitle = Create a { -firefox } Account or sign in
+accountBenefitTitle = Create a { -firefox-account } or sign in
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 accountBenefitLargeFiles = Share files up to { $size }
 accountBenefitDownloadCount = Share files with more people
