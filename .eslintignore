@@ -2,3 +2,4 @@ dist
 assets
 firefox
 coverage
+app/pages/welcome/index.js

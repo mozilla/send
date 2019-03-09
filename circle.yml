@@ -110,25 +110,25 @@ workflows:
               ignore: /.*/
             tags:
               only: /^v.*/
-      - test:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
-      - integration_tests:
-          requires:
-            - build
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+      # - test:
+      #     filters:
+      #       branches:
+      #         ignore: /.*/
+      #       tags:
+      #         only: /^v.*/
+      # - integration_tests:
+      #     requires:
+      #       - build
+      #     filters:
+      #       branches:
+      #         ignore: /.*/
+      #       tags:
+      #         only: /^v.*/
       - deploy_stage:
           requires:
             - build
-            - test
-            - integration_tests
+            # - test
+            # - integration_tests
           filters:
             branches:
               ignore: /.*/

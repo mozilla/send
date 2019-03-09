@@ -31,7 +31,7 @@ export default function(state, emitter) {
           alert(state.translate('fileTooBig', { size: bytes(MAXFILESIZE) }));
           return;
         }
-        emitter.emit('upload', { file, type: 'drop' });
+        // emitter.emit('upload', { file, type: 'drop' });
       }
     });
   });
