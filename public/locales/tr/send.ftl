@@ -50,6 +50,7 @@ passwordSetError = Parola ayarlanamadı
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Basit ve gizli dosya paylaşımı
+introDescription = { -send-brand } ile dosyalarınızı uçtan uca şifreleme ve otomatik olarak silinen bir bağlantıyla paylaşın. Böylece özel dosyalarınız güvenle saklanır, bir süre sonra kendi kendine silinir.
 notifyUploadEncryptDone = Dosyanız şifrelendi ve gönderilmeye hazır
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = { $downloadCount } veya { $timespan } sonra silinecek
@@ -113,8 +114,20 @@ emailPlaceholder = E-posta adresinizi yazın
 signInSizeBump = { $size }’ye kadar dosya göndermek için giriş yapın
 signInButton = Giriş/Kayıt
 accountBenefitTitle = { -firefox } Hesabı açın veya giriş yapın
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = { $size } boyutlu dosyaları paylaşma
+accountBenefitDownloadCount = Daha fazla kişiyle dosya paylaşma
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Bağlantıları 1 güne kadar aktif tutma
+       *[other] Bağlantıları { $count } güne kadar aktif tutma
+    }
+accountBenefitSync = Paylaştığınız dosyaları başka cihazlardan yönetebilme
+accountBenefitMoz = Diğer { -mozilla } servisleri hakkında bilgi alma
 signOut = Çıkış yap
 okButton = Tamam
 downloadingTitle = İndiriliyor
+noStreamsWarning = Bu tarayıcı bu kadar büyük bir dosyanın şifresini çözemeyebilir.
+noStreamsOptionCopy = Bağlantıyı başka bir tarayıcıda açmak için kopyala
 noStreamsOptionFirefox = En sevdiğimiz tarayıcıyı deneyin
 noStreamsOptionDownload = Bu tarayıcıyla devam edin
