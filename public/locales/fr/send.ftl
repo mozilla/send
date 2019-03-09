@@ -84,3 +84,47 @@ totalSize = Taille totale : { $size }
 copyLinkDescription = Copiez le lien pour partager votre fichier :
 copyLinkButton = Copier le lien
 downloadTitle = Télécharger les fichiers
+downloadDescription = Ce fichier a été partagé via { -send-brand } avec un chiffrement de bout en bout et un lien qui expire automatiquement.
+trySendDescription = Essayez { -send-brand } pour un partage de fichiers simple et sécurisé.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Un seul fichier peut être envoyé à la fois.
+       *[other] Seuls { $count } fichiers peuvent être envoyés à la fois.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Une seule archive est autorisée.
+       *[other] Seules { $count } archives sont autorisées.
+    }
+expiredTitle = Ce lien a expiré.
+notSupportedDescription = { -send-brand } ne fonctionnera pas avec ce navigateur. { -send-short-brand } fonctionne mieux avec la dernière version de { -firefox } et fonctionnera avec la dernière version de la plupart des navigateurs.
+downloadFirefox = Télécharger { -firefox }
+legalTitle = Politique de confidentialité de { -send-short-brand }
+legalDateStamp = Version 1.0 du 12 mars 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } j { $hours } h { $minutes } min
+addFilesButton = Sélectionnez des fichiers à envoyer
+uploadButton = Envoyer
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = ou cliquez pour envoyer jusqu’à { $size }
+addPassword = Protéger par mot de passe
+emailPlaceholder = Saisissez votre adresse électronique
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Connectez-vous pour envoyer jusqu’à { $size }
+signInButton = Se connecter/S’inscrire
+accountBenefitTitle = Créez un compte { -firefox } ou connectez-vous
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Partagez des fichiers jusqu’à { $size }
+accountBenefitDownloadCount = Partagez des fichiers avec davantage de personnes
+accountBenefitSync = Gérez les fichiers partagés à partir de n’importe quel appareil
+accountBenefitMoz = Apprenez-en davantage sur les autres services { -mozilla }
+signOut = Se déconnecter
+okButton = OK
+downloadingTitle = Téléchargement en cours
+noStreamsWarning = Ce navigateur pourrait ne pas être en mesure de déchiffrer un fichier aussi volumineux.
+noStreamsOptionCopy = Copiez le lien pour l’ouvrir dans un autre navigateur
+noStreamsOptionFirefox = Essayez notre navigateur préféré
+noStreamsOptionDownload = Continuer avec ce navigateur
