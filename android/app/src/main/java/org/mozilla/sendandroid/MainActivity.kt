@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             settings.userAgentString = "Send Android"
             mGeckoEngine = GeckoEngine(applicationContext, settings, mGeckoRuntime!!)
             mSessionManager =
-                SessionManager(mGeckoEngine!!, defaultSession = { Session("resource://android/assets/hello.html") })
+                SessionManager(mGeckoEngine!!, defaultSession = { Session("resource://android/assets/android.html") })
             val sessionUseCases = SessionUseCases(mSessionManager!!)
             val sessionId = "sendandroid"
             mEngineView = mGeckoEngine!!.createView(applicationContext)
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                 sessionId
             )
 
-            val initialSession = Session("resource://android/assets/hello.html")
+            val initialSession = Session("resource://android/assets/android.html")
             mSessionManager!!.add(initialSession, selected = true)
             mEngineView!!.render(mSessionManager!!.getOrCreateEngineSession())
         }

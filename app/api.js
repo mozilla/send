@@ -403,12 +403,32 @@ export function sendMetrics(blob) {
 }
 
 export async function getConstants() {
-  const response = await fetch(getApiUrl('/config'));
+  // XXX Hardcode for now
+  return {
+    LIMITS: {
+      ANON: {
+        MAX_FILE_SIZE: 1073741824,
+        MAX_DOWNLOADS: 1,
+        MAX_EXPIRE_SECONDS: 86400
+      },
+      MAX_FILE_SIZE: 2684354560,
+      MAX_DOWNLOADS: 100,
+      MAX_EXPIRE_SECONDS: 604800,
+      MAX_FILES_PER_ARCHIVE: 64,
+      MAX_ARCHIVES_PER_USER: 16
+    },
+    DEFAULTS: {
+      DOWNLOAD_COUNTS: [1, 2, 3, 4, 5, 20, 50, 100],
+      EXPIRE_TIMES_SECONDS: [300, 3600, 86400, 604800],
+      EXPIRE_SECONDS: 86400
+    }
+  };
+  /*const response = await fetch(getApiUrl('/config'));
 
   if (response.ok) {
     const obj = await response.json();
     return obj;
   }
 
-  throw new Error(response.status);
+  throw new Error(response.status);*/
 }

@@ -22,7 +22,7 @@ module.exports = function(app, devServer) {
       .readFileSync(devServer.middleware.getFilenameFromUrl('/android.html'))
       .toString()
       .replace(
-        '<base href="file:///android_asset/" />',
+        '<base href="resource://android/assets/" />',
         '<base href="http://localhost:8080/" />'
       );
     res.set('Content-Type', 'text/html');
