@@ -54,6 +54,7 @@ passwordSetError = Adgangskoden kunne ikke sættes
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Enkel, privat fildeling
+introDescription = { -send-brand } gør det muligt at dele filer via et tidsbegrænset link og med end to end-kryptering. På den måde kan du dele filer privat og samtidig være sikker på, at det delte ikke forbliver online for evigt.
 notifyUploadEncryptDone = Din fil er krypteret og klar til at blive sendt
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Udløber efter { $downloadCount } eller { $timespan }
@@ -98,20 +99,33 @@ tooManyArchives =
        *[other] Kun { $count } arkiver er tilladt.
     }
 expiredTitle = Dette link er udløbet.
+notSupportedDescription = { -send-brand } virker ikke med denne browser. { -send-short-brand } virker bedst med den nyeste version af { -firefox } og med de fleste andre nye browsere.
 downloadFirefox = Hent { -firefox }
+legalTitle = { -send-short-brand }, om privatlivspolitik
+legalDateStamp = Version 1.0, udsendt d. 12. marts 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } d. { $hours } t. { $minutes } m.
 addFilesButton = Vælg filer, der skal uploades
 uploadButton = Upload
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Træk og slip filer
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = eller klik for at sende filer på op til { $size }
 addPassword = Beskyt med adgangskode
 emailPlaceholder = Indtast din mailadresse
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Log ind for at sende filer på op til { $size }
 signInButton = Log ind/tilmeld dig
 accountBenefitTitle = Opret en { -firefox }-konto eller log ind
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 accountBenefitLargeFiles = Del filer på op til { $size }
 accountBenefitDownloadCount = Del filer med flere personer
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Bevar links aktive i op til 1 dag
+       *[other] Bevar links aktive i op til { $count } dage
+    }
 accountBenefitSync = Håndter delte filer på enhver enhed
 accountBenefitMoz = Læs om andre tjenester fra { -mozilla }
 signOut = Log ud
