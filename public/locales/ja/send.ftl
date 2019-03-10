@@ -88,6 +88,16 @@ legalTitle = { -send-short-brand } プライバシー通知
 expiresDaysHoursMinutes = { $days } 日 { $hours } 時 { $minutes } 分
 addFilesButton = アップロードするファイルを選択
 uploadButton = アップロード
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = ファイルをドラッグ＆ドロップ
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = または、クリックして最大 { $size } のファイルを送信
+addPassword = パスワードで保護
+emailPlaceholder = メールアドレスを入力
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = ログインすると最大 { $size } のファイルを送信できます
 signInButton = ログイン/登録
+accountBenefitTitle = { -firefox } アカウントを作成またはログイン
 okButton = OK
 downloadingTitle = ダウンロード中
