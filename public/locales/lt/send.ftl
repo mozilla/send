@@ -6,9 +6,9 @@ encryptingFile = Šifruojama…
 decryptingFile = Iššifruojama…
 downloadCount =
     { $num ->
-        [one] { $num } parsisiuntimas
-        [few] { $num } parsisiuntimai
-       *[other] { $num } parsisiuntimų
+        [one] { $num } kartą
+        [few] { $num } kartus
+       *[other] { $num } kartų
     }
 timespanHours =
     { $num ->
@@ -36,8 +36,56 @@ footerLinkLegal = Teisinė informacija
 footerLinkPrivacy = Privatumas
 footerLinkCookies = Slapukai
 passwordTryAgain = Slaptažodis netinka. Bandykite dar kartą.
-javascriptRequired = „Firefox Send“ veikimui būtina įjungti „JavaScript“ palaikymą
+javascriptRequired = „Firefox Send“ veikimui būtina įgalinti „JavaScript“ palaikymą
 whyJavascript = Kodėl „Firefox Send“ neveikia išjungus „JavaScript“?
+enableJavascript = Įgalinkit „JavaScript“ ir bandykite dar kartą.
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } val. { $minutes } min.
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } min.
+# A short status message shown when the user enters a long password
+maxPasswordLength = Didžiausias leistinas slaptažodžio ilgis: { $length } simb.
+# A short status message shown when there was an error setting the password
+passwordSetError = Slaptažodžio nustatyti nepavyko
 
 ## Send version 2 strings
 
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Paprastas ir privatus dalijimasis failais
+introDescription = „{ -send-brand }“ suteikia galimybę dalintis failais, pasitelkiant abipusį šifravimą ir riboto galiojimo saitus. Tai padeda pasidalintus failus išlaikyti privačiais ir užtikrina, jog trumpam įkelti failai neliks pasiekiami internete amžinai.
+notifyUploadEncryptDone = Failas užšifruotas ir parengtas išsiuntimui
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Nustos galioti parsisiuntus { $downloadCount } arba po { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] { $num } minutė
+        [few] { $num } minutės
+       *[other] { $num } minučių
+    }
+timespanDays =
+    { $num ->
+        [one] { $num } diena
+        [few] { $num } dienos
+       *[other] { $num } dienų
+    }
+timespanWeeks =
+    { $num ->
+        [one] { $num } savaitė
+        [few] { $num } savaitės
+       *[other] { $num } savaičių
+    }
+fileCount =
+    { $num ->
+        [one] { $num } failas
+        [few] { $num } failai
+       *[other] { $num } failų
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Bendras dydis: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Nukopijuokite saitą, jeigu norite pasidalinti failu:
+copyLinkButton = Kopijuoti saitą
