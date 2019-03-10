@@ -82,6 +82,7 @@ tooManyFiles =
     { $count ->
        *[other] 一度にアップロードできるのは { $count } ファイルまでです。
     }
+expiredTitle = このリンクは期限切れです。
 downloadFirefox = { -firefox } をダウンロード
 legalTitle = { -send-short-brand } プライバシー通知
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
@@ -99,5 +100,18 @@ emailPlaceholder = メールアドレスを入力
 signInSizeBump = ログインすると最大 { $size } のファイルを送信できます
 signInButton = ログイン/登録
 accountBenefitTitle = { -firefox } アカウントを作成またはログイン
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = 最大 { $size } までのファイルを共有
+accountBenefitDownloadCount = より多くの人とファイルを共有
+accountBenefitTimeLimit =
+    { $count ->
+       *[other] リンクを { $count } 日間有効化
+    }
+accountBenefitSync = 様々な端末から共有したファイルを管理
+accountBenefitMoz = { -mozilla } の他のサービスについて詳しく学ぶ
+signOut = ログアウト
 okButton = OK
 downloadingTitle = ダウンロード中
+noStreamsWarning = このブラウザーは、この大きさのファイルを復号化できません。
+noStreamsOptionCopy = リンクをコピーして他のブラウザーで開いてください
+noStreamsOptionDownload = このブラウザーで続ける
