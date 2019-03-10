@@ -78,6 +78,7 @@ totalSize = 總大小: { $size }
 copyLinkDescription = 複製鏈結即可分享您的檔案:
 copyLinkButton = 複製鏈結
 downloadTitle = 下載檔案
+downloadDescription = 此檔案是透過 { -send-brand } 進行分享，以點對點加密的方式來分享檔案，並提供會自動失效的鏈結。
 trySendDescription = 快試試 { -send-brand }，簡單而安全地分享檔案。
 # count will always be > 10
 tooManyFiles =
@@ -89,7 +90,8 @@ tooManyArchives =
     { $count ->
        *[other] 僅允許 { $count } 個壓縮檔。
     }
-expiredTitle = 此鏈結已經過期。
+expiredTitle = 此鏈結已經失效。
+notSupportedDescription = 無法於此瀏覽器使用 { -send-brand }。在最新版的 { -firefox } 中使用 { -send-short-brand } 會有最佳效果，也可在大部分瀏覽器的最新版本當中使用。
 downloadFirefox = 下載 { -firefox }
 legalTitle = { -send-short-brand } 隱私權公告
 legalDateStamp = 1.0 版，2019 年 3 月 12 日生效
@@ -101,15 +103,15 @@ uploadButton = 上傳
 dragAndDropFiles = 拖放檔案到此處
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
-orClickWithSize = 或點擊即可傳送最大 { $size }
+orClickWithSize = 或點擊即可傳送最大 { $size } 的檔案
 addPassword = 使用密碼保護
 emailPlaceholder = 輸入您的電子郵件地址
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
-signInSizeBump = 登入後即可傳送最大 { $size }
+signInSizeBump = 登入後即可傳送最大 { $size } 的檔案
 signInButton = 登入 / 註冊
 accountBenefitTitle = 註冊 { -firefox } 帳號或登入
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
-accountBenefitLargeFiles = 分享最大 { $size }
+accountBenefitLargeFiles = 分享最大 { $size } 的檔案
 accountBenefitDownloadCount = 分享檔案給更多人
 accountBenefitTimeLimit =
     { $count ->
