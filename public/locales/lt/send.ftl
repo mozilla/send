@@ -54,7 +54,15 @@ passwordSetError = Slaptažodžio nustatyti nepavyko
 -send-brand = Firefox Send
 -send-short-brand = Send
 -firefox = Firefox
--mozilla = Mozilla
+-mozilla =
+    { $case ->
+       *[nominative] Mozilla
+        [genitive] Mozillos
+        [dative] Mozillai
+        [accusative] Mozillą
+        [instrumental] Mozilla
+        [locative] Mozilloje
+    }
 introTitle = Paprastas ir privatus dalijimasis failais
 introDescription = „{ -send-brand }“ suteikia galimybę dalintis failais, pasitelkiant abipusį šifravimą ir riboto galiojimo saitus. Tai padeda pasidalintus failus išlaikyti privačiais ir užtikrina, jog trumpam įkelti failai neliks pasiekiami internete amžinai.
 notifyUploadEncryptDone = Failas užšifruotas ir parengtas išsiuntimui
@@ -129,3 +137,7 @@ accountBenefitTimeLimit =
        *[other] Išlaikykite saitus galiojančiais iki { $count } dienų.
     }
 accountBenefitSync = Tvarkykite failus, kuriais dalijatės, iš bet kurio įrenginio
+accountBenefitMoz = Sužinokite apie kitas „{ -mozilla(case: "genitive") }“ paslaugas
+signOut = Atsijungti
+okButton = Gerai
+downloadingTitle = Parsiunčiama
