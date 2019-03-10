@@ -55,15 +55,26 @@ passwordSetError = Gesla ni mogoče nastaviti
 # Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
 -send-brand = Firefox Send
 -send-short-brand = Send
--firefox = Firefox
+-firefox =
+    { $sklon ->
+       *[imenovalnik] Firefox
+        [rodilnik] Firefoxa
+        [dajalnik] Firefoxu
+        [tozilnik] Firefox
+        [mestnik] Firefoxu
+        [orodnik] Firefoxom
+    }
 -mozilla =
     { $sklon ->
        *[imenovalnik] Mozilla
         [rodilnik] Mozille
         [dajalnik] Mozilli
         [tozilnik] Mozillo
+        [mestnik] Mozilli
+        [orodnik] Mozillo
     }
 introTitle = Preprosto, zasebno deljenje datotek
+introDescription = { -send-brand } vam omogoča v celoti šifrirano pošiljanje datotek s povezavo, ki samodejno poteče. Z njim lahko zasebno delite svoje datoteke in zagotovite, da ne bodo za vedno ostale na spletu.
 notifyUploadEncryptDone = Vaša datoteka je šifrirana in pripravljena za pošiljanje
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Poteče po { $downloadCount } ali čez { $timespan }
@@ -101,6 +112,7 @@ totalSize = Skupna velikost: { $size }
 copyLinkDescription = Kopirajte povezavo za deljenje datoteke:
 copyLinkButton = Kopiraj povezavo
 downloadTitle = Prenesi datoteke
+trySendDescription = Preizkusite { -send-brand } za preprosto in varno deljenje datotek.
 # count will always be > 10
 tooManyFiles =
     { $count ->
@@ -118,6 +130,7 @@ tooManyArchives =
        *[other] Dovoljenih je največ { $count } arhivov.
     }
 expiredTitle = Ta povezava je potekla.
+notSupportedDescription = { -send-brand } v tem brskalniku ne bo deloval. { -send-short-brand } najbolje deluje v najnovejši različici { -firefox(sklon: "rodilnik") }, deloval pa bo tudi v trenutni različici večine brskalnikov.
 downloadFirefox = Prenesite { -firefox }
 legalTitle = Obvestilo o zasebnosti za { -send-short-brand }
 legalDateStamp = Različica 1.0, v veljavi od 12. marca 2019
@@ -134,7 +147,10 @@ emailPlaceholder = Vnesite e-poštni naslov
 signInSizeBump = Prijavite se za pošiljanje do { $size }
 signInButton = Prijava/Registracija
 accountBenefitTitle = Ustvarite { -firefox } Račun ali se prijavite
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Delite datoteke do velikosti { $size }
 accountBenefitDownloadCount = Delite datoteke z več osebami
+accountBenefitSync = Upravljajte deljene datoteke s katerekoli naprave
 accountBenefitMoz = Več o drugih storitvah { -mozilla(sklon: "rodilnik") }
 signOut = Odjava
 okButton = V redu
