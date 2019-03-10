@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':geckoview-default-arm64-v8a-67.0.20190307213331'

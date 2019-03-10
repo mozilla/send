@@ -24,14 +24,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    flavorDimensions "abi"
-
-    productFlavors {
-        x86 { dimension "abi" }
-        x86_64 { dimension "abi" }
-        arm { dimension "abi" }
-        aarch64 { dimension "abi" }
-    }
 }
 
 dependencies {
@@ -42,10 +34,7 @@ dependencies {
     implementation "org.mozilla.components:concept-engine:${rootProject.ext.android_components_version}"
     implementation "org.mozilla.components:feature-session:${rootProject.ext.android_components_version}"
     implementation "org.mozilla.components:browser-session:${rootProject.ext.android_components_version}"
-    x86Implementation     "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-x86:${rootProject.ext.geckoviewVersion}"
-    x86_64Implementation  "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-x86_64:${rootProject.ext.geckoviewVersion}"
-    armImplementation     "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-armeabi-v7a:${rootProject.ext.geckoviewVersion}"
-    aarch64Implementation "org.mozilla.geckoview:geckoview-${rootProject.ext.geckoviewChannel}-arm64-v8a:${rootProject.ext.geckoviewVersion}"
+    implementation project(':geckoview-default-arm64-v8a-67.0.20190307213331')
 }
 
 task generateAndLinkBundle(type: Exec, description: 'Generate the android.js bundle and link it into the assets directory') {

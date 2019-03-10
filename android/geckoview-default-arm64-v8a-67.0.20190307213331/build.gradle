@@ -1,0 +1,4 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('geckoview-default-arm64-v8a-67.0.20190307213331.aar'))
+dependencies {
+}
