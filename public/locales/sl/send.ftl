@@ -56,7 +56,13 @@ passwordSetError = Gesla ni mogoče nastaviti
 -send-brand = Firefox Send
 -send-short-brand = Send
 -firefox = Firefox
--mozilla = Mozilla
+-mozilla =
+    { $sklon ->
+       *[imenovalnik] Mozilla
+        [rodilnik] Mozille
+        [dajalnik] Mozilli
+        [tozilnik] Mozillo
+    }
 introTitle = Preprosto, zasebno deljenje datotek
 notifyUploadEncryptDone = Vaša datoteka je šifrirana in pripravljena za pošiljanje
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
@@ -119,10 +125,17 @@ addFilesButton = Izberite datoteke za nalaganje
 uploadButton = Prenesi
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Povlecite in spustite datoteke
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = ali kliknite za pošiljanje do { $size }
 addPassword = Zaščiti z geslom
 emailPlaceholder = Vnesite e-poštni naslov
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Prijavite se za pošiljanje do { $size }
 signInButton = Prijava/Registracija
 accountBenefitTitle = Ustvarite { -firefox } Račun ali se prijavite
+accountBenefitDownloadCount = Delite datoteke z več osebami
+accountBenefitMoz = Več o drugih storitvah { -mozilla(sklon: "rodilnik") }
 signOut = Odjava
 okButton = V redu
 downloadingTitle = Prenašanje
