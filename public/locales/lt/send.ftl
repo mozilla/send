@@ -89,3 +89,17 @@ totalSize = Bendras dydis: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Nukopijuokite saitą, jeigu norite pasidalinti failu:
 copyLinkButton = Kopijuoti saitą
+downloadTitle = Parsisiųsti failus
+downloadDescription = Šiuo failu pasidalinta per „{ -send-brand }“, pasitelkiant abipusį šifravimą ir riboto galiojimo saitą.
+trySendDescription = Išbandykite „{ -send-brand }“ paprastam ir saugiam dalijimuisi failais.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Vienu metu galima įkelti ne daugiau kaip { $count } failą.
+        [few] Vienu metu galima įkelti ne daugiau kaip { $count } failus.
+       *[other] Vienu metu galima įkelti ne daugiau kaip { $count } failų.
+    }
+expiredTitle = Šis saitas nebegalioja.
+notSupportedDescription = „{ -send-brand }“ su šia naršykle neveikia. „{ -send-short-brand }“ geriausiai veikia su paskiausia „{ -firefox }“ laida, o taip pat veikia su daugumos kitų naršyklių paskiausiomis laidomis.
+downloadFirefox = Parsisiųsti „{ -firefox }“
+legalTitle = „{ -send-short-brand }“ privatumo pranešimas
