@@ -5,6 +5,7 @@ import * as metrics from './metrics';
 import { bytes } from './utils';
 import okDialog from './ui/okDialog';
 import copyDialog from './ui/copyDialog';
+import shareDialog from './ui/shareDialog';
 import signupDialog from './ui/signupDialog';
 
 export default function(state, emitter) {
@@ -168,7 +169,9 @@ export default function(state, emitter) {
           file: ownedFile
         });
       }
-      state.modal = copyDialog(ownedFile.name, ownedFile.url);
+      state.modal = state.capabilities.share
+        ? shareDialog(ownedFile.name, ownedFile.url)
+        : copyDialog(ownedFile.name, ownedFile.url);
     } catch (err) {
       if (err.message === '0') {
         //cancelled. do nothing

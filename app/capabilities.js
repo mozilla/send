@@ -90,6 +90,7 @@ export default async function getCapabilities() {
   } catch (e) {
     account = false;
   }
+  const share = !!navigator.share;
 
   return {
     account,
@@ -98,6 +99,7 @@ export default async function getCapabilities() {
     streamUpload: nativeStreams || polyStreams,
     streamDownload:
       nativeStreams && serviceWorker && browserName() !== 'safari',
-    multifile: nativeStreams || polyStreams
+    multifile: nativeStreams || polyStreams,
+    share
   };
 }
