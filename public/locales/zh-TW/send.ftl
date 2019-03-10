@@ -1,31 +1,9 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteSubtitle = 網頁實驗
 siteFeedback = 意見回饋
-uploadPageHeader = 私密、有加密的檔案分享服務
-uploadPageExplainer = 透過安全、隱私、加密過的管道來傳送檔案，而且鏈結會自動過期，可確保您的東西不會在網路上無限停留。
-uploadPageLearnMore = 了解更多
-uploadPageDropMessage = 將檔案放到此處開始上傳
-uploadPageSizeMessage = 為了讓系統能最穩定地執行，請盡量將檔案控制在 1GB 以下。
-uploadPageBrowseButton = 選擇您電腦上的檔案
-uploadPageBrowseButton1 = 選擇要上傳的檔案
-uploadPageMultipleFilesAlert = 目前暫不支援上傳多個檔案或資料夾。
-uploadPageBrowseButtonTitle = 上傳檔案
-uploadingPageProgress = 正在上傳 { $filename }（{ $size }）
 importingFile = 匯入中…
-verifyingFile = 驗證中…
 encryptingFile = 加密中…
 decryptingFile = 解密中…
-notifyUploadDone = 已完成上傳。
-uploadingPageMessage = 檔案上傳後，即可設定過期時間。
-uploadingPageCancel = 取消上傳
-uploadCancelNotification = 已取消上傳。
-uploadingPageLargeFileMessage = 這個檔案有點大，可能需要花點時間上傳，再等會兒！
-uploadingFileNotification = 上傳完成時通知我。
-uploadSuccessConfirmHeader = 準備好傳送
-uploadSvgAlt = 上傳
-uploadSuccessTimingHeader = 您的檔案鏈結將會在首次下載，或 24 小時後失效。
-expireInfo = 檔案鏈結將在 { $downloadCount }或 { $timespan }後失效。
 downloadCount =
     { $num ->
        *[other] { $num } 次下載
@@ -34,76 +12,26 @@ timespanHours =
     { $num ->
        *[other] { $num } 小時
     }
-copyUrlFormLabelWithName = 複製並分享鏈結來傳送您的檔案: { $filename }
-copyUrlFormButton = 複製到剪貼簿
 copiedUrl = 已複製！
-deleteFileButton = 刪除檔案
-sendAnotherFileLink = 傳送另一個檔案
-# Alternative text used on the download link/button (indicates an action).
-downloadAltText = 下載
-downloadsFileList = 下載次數
-# Used as header in a column indicating the amount of time left before a
-# download link expires (e.g. "10h 5m")
-timeFileList = 剩餘時間
-# Used as header in a column indicating the number of times a file has been
-# downloaded
-downloadFileName = 下載 { $filename }
-downloadFileSize = （{ $size }）
-unlockInputLabel = 輸入密碼
 unlockInputPlaceholder = 密碼
 unlockButtonLabel = 解鎖
-downloadFileTitle = 下載加密過的檔案
-# Firefox Send is a brand name and should not be localized.
-downloadMessage = 您的朋友正透過 Firefox Send 傳送檔案給您。這是一個可讓您透過安全、隱密、並且會將鏈結加密過，自動失效以確保檔案不會在網路上無限停留的檔案分享服務。
-# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = 下載
-downloadNotification = 下載完成。
 downloadFinish = 下載完成
-# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = （{ $partialSize }，共 { $totalSize }）
-# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = 試用 Firefox Send
-downloadingPageProgress = 正在下載 { $filename }（{ $size }）
-downloadingPageMessage = 請保留此分頁開啟，我們將取回這個檔案並進行解密。
-errorAltText = 上傳錯誤
 errorPageHeader = 有些東西不對勁！
-errorPageMessage = 上傳檔案時發生錯誤。
-errorPageLink = 傳送另一個檔案
 fileTooBig = 檔案太大無法上傳。檔案大小限制為 { $size }。
 linkExpiredAlt = 鏈結已過期
-expiredPageHeader = 鏈結已失效，或根本不存在！
 notSupportedHeader = 不支援您的瀏覽器。
-# Firefox Send is a brand name and should not be localized.
-notSupportedDetail = 很可惜，您使用的瀏覽器並不支援 Firefox Send 所需的 Web 技術。請改用其他瀏覽器，我們推薦使用 Firefox！
 notSupportedLink = 為什麼我的瀏覽器不支援？
 notSupportedOutdatedDetail = 很可惜，此版本的 Firefox 不支援 Firefox Send 所需的 Web 技術。請更新瀏覽器後再使用。
 updateFirefox = 更新 Firefox
-downloadFirefoxButtonSub = 免費下載
-uploadedFile = 檔案
-copyFileList = 複製網址
-# expiryFileList is used as a column header
-expiryFileList = 失效於
-deleteFileList = 刪除
-nevermindButton = 沒關係
-legalHeader = 使用條款及隱私權
-legalNoticeTestPilot = Firefox Send 目前是一個 Test Pilot 實驗，依照 Test Pilot 的<a>服務條款</a>及<a>隱私權公告</a>提供服務。您可以在<a>此處</a>了解實驗內容，以及所收集資料的詳細資訊。
-legalNoticeMozilla = 使用 Firefox Send 網站時，亦受到 Mozilla 的<a>網站隱私權公告</a>以及<a>網站使用條款</a>約束。
-deletePopupText = 真的要刪除這個檔案嗎？
-deletePopupYes = 好的，刪除
 deletePopupCancel = 取消
 deleteButtonHover = 刪除
-copyUrlHover = 複製網址
 footerLinkLegal = 法律資訊
-# Test Pilot is a proper name and should not be localized.
-footerLinkAbout = 關於 Test Pilot
 footerLinkPrivacy = 隱私權
-footerLinkTerms = 使用條款
 footerLinkCookies = Cookie
-requirePasswordCheckbox = 需要密碼才能下載此檔案
-addPasswordButton = 新增密碼
-changePasswordButton = 變更
 passwordTryAgain = 密碼不正確，請再試一次。
-reportIPInfringement = 回報智慧財產權濫用情況
 javascriptRequired = Firefox Send 需要開啟 JavaScript 功能
 whyJavascript = 為什麼 Firefox Send 需要 JavaScript 才能使用？
 enableJavascript = 請開啟 JavaScript 功能後再試一次。
@@ -111,20 +39,23 @@ enableJavascript = 請開啟 JavaScript 功能後再試一次。
 expiresHoursMinutes = { $hours } 時 { $minutes } 分
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes } 分鐘
-# A short status message shown when a password is successfully set
-passwordIsSet = 已設定密碼
 # A short status message shown when the user enters a long password
 maxPasswordLength = 最大密碼長度: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = 無法設定此密碼
 
-## New strings for the vNext version of Firefox Send
+## Send version 2 strings
 
 # Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
 -send-brand = Firefox Send
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = 簡單而私密的檔案共享服務
+introDescription = { -send-brand } 讓您可透過點對點加密的方式來分享檔案，並提供會自動失效的鏈結。這樣一來就可以保留分享時的隱私，也確保檔案不會永久保存於網路上。
+notifyUploadEncryptDone = 已加密您的檔案，可以傳送
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = { $downloadCount } 次下載或 { $timespan } 後失效
 timespanMinutes =
     { $num ->
        *[other] { $num } 分鐘
@@ -141,3 +72,55 @@ fileCount =
     { $num ->
        *[other] { $num } 個檔案
     }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = 總大小: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = 複製鏈結即可分享您的檔案:
+copyLinkButton = 複製鏈結
+downloadTitle = 下載檔案
+trySendDescription = 快試試 { -send-brand }，簡單而安全地分享檔案。
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+       *[other] 一次僅能上傳 { $count } 個檔案。
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+       *[other] 僅允許 { $count } 個壓縮檔。
+    }
+expiredTitle = 此鏈結已經過期。
+downloadFirefox = 下載 { -firefox }
+legalTitle = { -send-short-brand } 隱私權公告
+legalDateStamp = 1.0 版，2019 年 3 月 12 日生效
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } 天 { $hours } 小時 { $minutes } 分鐘
+addFilesButton = 選擇要上傳的檔案
+uploadButton = 上傳
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = 拖放檔案到此處
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = 或點擊即可傳送最大 { $size }
+addPassword = 使用密碼保護
+emailPlaceholder = 輸入您的電子郵件地址
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = 登入後即可傳送最大 { $size }
+signInButton = 登入 / 註冊
+accountBenefitTitle = 註冊 { -firefox } 帳號或登入
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = 分享最大 { $size }
+accountBenefitDownloadCount = 分享檔案給更多人
+accountBenefitTimeLimit =
+    { $count ->
+       *[other] 將檔案鏈結保留 { $count } 天有效
+    }
+accountBenefitSync = 從任何裝置管理分享的檔案
+accountBenefitMoz = 了解其他 { -mozilla } 服務的更多資訊
+signOut = 登出
+okButton = 確定
+downloadingTitle = 下載中
+noStreamsWarning = 此瀏覽器無法解密這麼大的檔案。
+noStreamsOptionCopy = 複製鏈結，用其他瀏覽器開啟
+noStreamsOptionFirefox = 試試我們最愛的瀏覽器
+noStreamsOptionDownload = 繼續使用目前的瀏覽器
