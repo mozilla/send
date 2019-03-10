@@ -3,7 +3,7 @@ const html = require('choo/html');
 /* Possible strings for l10n
 shareLinkDescription = Share the link to your file:
 shareLinkButton = Share link
-shareMessage = Download { $name } with { -send-brand }: simple, safe file sharing
+shareMessage = Download "{ $name }" with { -send-brand }: simple, safe file sharing
  */
 
 module.exports = function(name, url) {
@@ -48,14 +48,17 @@ module.exports = function(name, url) {
       try {
         await navigator.share({
           title: state.translate('-send-brand'),
-          text: `Download ${name} with Firefox Send: simple, safe file sharing`,
+          text: `Download "${name}" with Firefox Send: simple, safe file sharing`,
           //state.translate('shareMessage', { name }),
           url
         });
       } catch (e) {
+        if (e.code === e.ABORT_ERR) {
+          return;
+        }
         console.error(e);
       }
-      setTimeout(close, 1000);
+      close();
     }
   };
 };

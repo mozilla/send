@@ -167,8 +167,17 @@ function archiveDetails(translate, archive) {
 
 module.exports = function(state, emit, archive) {
   const copyOrShare =
-    platform() !== 'android'
+    state.capabilities.share || platform() === 'android'
       ? html`
+          <button
+            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end flex items-end"
+            onclick=${share}
+            title="Share"
+          >
+            <img src="${assets.get('share-24.svg')}" class="mr-2" />Share
+          </button>
+        `
+      : html`
           <button
             class="text-blue-dark hover:text-blue-darker focus:text-blue-darker focus:outline self-end flex items-center"
             onclick=${copy}
@@ -176,15 +185,6 @@ module.exports = function(state, emit, archive) {
           >
             <img src="${assets.get('copy-16.svg')}" class="mr-2" />
             ${state.translate('copyLinkButton')}
-          </button>
-        `
-      : html`
-          <button
-            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end flex items-center"
-            onclick=${share}
-            title="Share"
-          >
-            <img src="${assets.get('share-24.svg')}" class="mr-2" /> Share
           </button>
         `;
   const dl =
@@ -248,9 +248,24 @@ module.exports = function(state, emit, archive) {
     emit('delete', archive);
   }
 
-  function share(event) {
+  async function share(event) {
     event.stopPropagation();
-    Android.shareUrl(archive.url);
+    if (state.capabilities.share) {
+      try {
+        await navigator.share({
+          title: state.translate('-send-brand'),
+          text: `Download "${
+            archive.name
+          }" with Firefox Send: simple, safe file sharing`,
+          //state.translate('shareMessage', { name }),
+          url: archive.url
+        });
+      } catch (e) {
+        // ignore
+      }
+    } else {
+      Android.shareUrl(archive.url);
+    }
   }
 };
 
