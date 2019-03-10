@@ -26,12 +26,17 @@ fileTooBig = ফাইলটি আপলোড করার জন্যে খ
 linkExpiredAlt = লিঙ্ক মেয়াদউত্তীর্ণ হয়েছে
 notSupportedHeader = আপনার ব্রাউজার সমর্থিত নয়।
 notSupportedLink = আমার ব্রাউজার কেন সমর্থিত নয়?
+notSupportedOutdatedDetail = দুর্ভাগ্যবশত Firefox এই সংস্করণটি ওয়েব প্রযুক্তিকে সমর্থন করে না যা Firefox Send কে সমর্থন করে। আপনাকে আপনার ব্রাউজারটি আপডেট করতে হবে।
 updateFirefox = Firefox হালনাগাদ করুন
 deletePopupCancel = বাতিল
 deleteButtonHover = মুছে ফেলুন
 footerLinkLegal = আইনগত
 footerLinkPrivacy = গোপনীয়তা
 footerLinkCookies = কুকি
+passwordTryAgain = ভুল পাসওয়ার্ড। আবার চেষ্টা করুন।
+javascriptRequired = Firefox Send এর জাভাস্ক্রিপ্ট প্রয়োজন।
+whyJavascript = কেন Firefox Send এর জাভাস্ক্রিপ্ট প্রয়োজন?
+enableJavascript = জাভাস্ক্রিপ্ট সক্রিয় করুন এবং আবার চেষ্টা করুন।
 
 ## Send version 2 strings
 
