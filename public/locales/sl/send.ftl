@@ -13,7 +13,7 @@ downloadCount =
     }
 timespanHours =
     { $num ->
-        [one] 1 ura
+        [one] 1 uro
         [two] { $num } uri
         [few] { $num } ure
        *[other] { $num } ur
@@ -135,7 +135,7 @@ downloadFirefox = Prenesite { -firefox }
 legalTitle = Obvestilo o zasebnosti za { -send-short-brand }
 legalDateStamp = Različica 1.0, v veljavi od 12. marca 2019
 addFilesButton = Izberite datoteke za nalaganje
-uploadButton = Prenesi
+uploadButton = Naloži
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Povlecite in spustite datoteke
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
