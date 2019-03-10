@@ -107,11 +107,13 @@ legalDateStamp = Version 1.0 du 12 mars 2019
 expiresDaysHoursMinutes = { $days } j { $hours } h { $minutes } min
 addFilesButton = Sélectionnez des fichiers à envoyer
 uploadButton = Envoyer
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Glissez-déposez des fichiers
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 orClickWithSize = ou cliquez pour envoyer jusqu’à { $size }
 addPassword = Protéger par mot de passe
-emailPlaceholder = Saisissez votre adresse électronique
+emailPlaceholder = Votre adresse électronique
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 signInSizeBump = Connectez-vous pour envoyer jusqu’à { $size }
 signInButton = Se connecter/S’inscrire
