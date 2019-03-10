@@ -54,6 +54,9 @@ passwordSetError = Dette passordet kunne ikke settes
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Enkel, privat fildeling
+notifyUploadEncryptDone = Filen din er kryptert og klar til å sende
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Utløper etter { $downloadCount } eller { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 minutt
