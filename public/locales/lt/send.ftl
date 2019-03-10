@@ -103,3 +103,29 @@ expiredTitle = Šis saitas nebegalioja.
 notSupportedDescription = „{ -send-brand }“ su šia naršykle neveikia. „{ -send-short-brand }“ geriausiai veikia su paskiausia „{ -firefox }“ laida, o taip pat veikia su daugumos kitų naršyklių paskiausiomis laidomis.
 downloadFirefox = Parsisiųsti „{ -firefox }“
 legalTitle = „{ -send-short-brand }“ privatumo pranešimas
+legalDateStamp = 1.0 versija, 2019 m. kovo 12 d
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } d. { $hours } val. { $minutes } min.
+addFilesButton = Rinktis failus įkėlimui
+uploadButton = Įkelti
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Užtempkite ir numeskite failus čia
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = arba spustelėkite mygtuką ir dalinkitės failais iki { $size }
+addPassword = Apsaugoti slaptažodžiu
+emailPlaceholder = Įveskite savo el. pašto adresą
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Prisijunkite, jeigu norite siųsti iki { $size }
+signInButton = Prisijungti / registruotis
+accountBenefitTitle = Susikurkite „{ -firefox }“ paskyrą arba prisijunkite
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Dalinkitės iki { $size } dydžio failais
+accountBenefitDownloadCount = Dalinkitės su daugiau žmonių
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Išlaikykite saitus galiojančiais iki { $count } dienos.
+        [few] Išlaikykite saitus galiojančiais iki { $count } dienų.
+       *[other] Išlaikykite saitus galiojančiais iki { $count } dienų.
+    }
+accountBenefitSync = Tvarkykite failus, kuriais dalijatės, iš bet kurio įrenginio
