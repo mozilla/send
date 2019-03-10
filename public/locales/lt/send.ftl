@@ -107,6 +107,13 @@ tooManyFiles =
         [few] Vienu metu galima įkelti ne daugiau kaip { $count } failus.
        *[other] Vienu metu galima įkelti ne daugiau kaip { $count } failų.
     }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Leidžiama turėti iki ne daugiau kaip { $count } archyvą.
+        [few] Leidžiama turėti iki ne daugiau kaip { $count } archyvus.
+       *[other] Leidžiama turėti iki ne daugiau kaip { $count } archyvų.
+    }
 expiredTitle = Šis saitas nebegalioja.
 notSupportedDescription = „{ -send-brand }“ su šia naršykle neveikia. „{ -send-short-brand }“ geriausiai veikia su paskiausia „{ -firefox }“ laida, o taip pat veikia su daugumos kitų naršyklių paskiausiomis laidomis.
 downloadFirefox = Parsisiųsti „{ -firefox }“
@@ -141,3 +148,7 @@ accountBenefitMoz = Sužinokite apie kitas „{ -mozilla(case: "genitive") }“ 
 signOut = Atsijungti
 okButton = Gerai
 downloadingTitle = Parsiunčiama
+noStreamsWarning = jūsų naršyklei gali nepavykti iššifruoti tokio didelio failo.
+noStreamsOptionCopy = Nukopijuokite saitą ir atverkite jį kita naršykle
+noStreamsOptionFirefox = Išbandykite mūsų mėgstamiausią naršyklę
+noStreamsOptionDownload = Tęsti naudojantis šia naršykle
