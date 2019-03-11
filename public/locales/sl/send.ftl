@@ -150,6 +150,13 @@ accountBenefitTitle = Ustvarite { -firefox } Račun ali se prijavite
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 accountBenefitLargeFiles = Delite datoteke do velikosti { $size }
 accountBenefitDownloadCount = Delite datoteke z več osebami
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Ohranite povezave dejavne do en dan
+        [two] Ohranite povezave dejavne do { $count } dni
+        [few] Ohranite povezave dejavne do { $count } dni
+       *[other] Ohranite povezave dejavne do { $count } dni
+    }
 accountBenefitSync = Upravljajte deljene datoteke s katerekoli naprave
 accountBenefitMoz = Več o drugih storitvah { -mozilla(sklon: "rodilnik") }
 signOut = Odjava
