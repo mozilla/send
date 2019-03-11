@@ -1,14 +1,14 @@
 {
   "manifest_version": 2,
-  "name": "SendAndroidCommsBridge",
+  "name": "send-android-comms-bridge",
   "version": "1.0",
 
   "description": "Communicates between send android kotlin code and js content code.",
 
   "content_scripts": [
     {
-      "matches": ["resource://*/*"],
-      "js": ["borderify.js"]
+      "matches": ["http://fzzzy-send-gv.s3-website-us-west-2.amazonaws.com/*"],
+      "js": ["send-android-comms-bridge.js"]
     }
   ],
   "permissions": [

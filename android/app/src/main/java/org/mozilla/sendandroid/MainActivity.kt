@@ -17,6 +17,7 @@ import mozilla.components.browser.session.Session
 import mozilla.components.concept.engine.DefaultSettings
 import mozilla.components.browser.engine.gecko.GeckoEngine
 import mozilla.components.concept.engine.EngineView
+import org.json.JSONObject
 import org.mozilla.geckoview.*
 
 
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             settings.userAgentString = "Send Android"
             mGeckoEngine = GeckoEngine(applicationContext, settings, mGeckoRuntime!!)
             mSessionManager =
-                SessionManager(mGeckoEngine!!, defaultSession = { Session("resource://android/assets/android.html") })
+                SessionManager(mGeckoEngine!!, defaultSession = { Session("http://fzzzy-send-gv.s3-website-us-west-2.amazonaws.com/android.html") })
             val sessionUseCases = SessionUseCases(mSessionManager!!)
             val sessionId = "sendandroid"
             mEngineView = mGeckoEngine!!.createView(applicationContext)
@@ -82,6 +83,7 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onConnect(source: WebExtension, port: WebExtension.Port, session: GeckoSession?) {
                     Log.e("DEBUG", "onConnect")
+                    port.postMessage(JSONObject("{\"message\": \"helloworld\"}"))
                 }
 
                 override fun onMessage(source: WebExtension, message: Any, session: GeckoSession?): GeckoResult<Any>? {
@@ -89,11 +91,11 @@ class MainActivity : AppCompatActivity() {
                     return GeckoResult.fromValue("MessageResponse")
                 }
             }
-            mGeckoRuntime!!.registerWebExtension(WebExtension("resource://android/assets/borderify/", "sendandroid-borderify", messageDelegate)).then({
+            mGeckoRuntime!!.registerWebExtension(WebExtension("resource://android/assets/send-android-comms-bridge/", "send-android-comms-bridge", messageDelegate)).then({
                 Log.e("DEBUG", "REGISTERCOMPLETE")
                 GeckoResult.fromValue(Unit)
             })
-            val initialSession = Session("resource://android/assets/android.html")
+            val initialSession = Session("http://fzzzy-send-gv.s3-website-us-west-2.amazonaws.com/android.html")
             mSessionManager!!.add(initialSession, selected = true)
             mEngineView!!.render(mSessionManager!!.getOrCreateEngineSession())
 

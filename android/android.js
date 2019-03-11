@@ -84,7 +84,7 @@ function body(main) {
   });
   app.use(metrics);
   app.route('/', body(home));
-  app.route('/assets/android.html', body(home));
+  app.route('/android.html', body(home));
   app.route('/upload', upload);
   app.route('/share/:id', share);
   app.route('/preferences', preferences);

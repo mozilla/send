@@ -20,11 +20,11 @@ module.exports = function(app, devServer) {
   function android(req, res) {
     const index = devServer.middleware.fileSystem
       .readFileSync(devServer.middleware.getFilenameFromUrl('/android.html'))
-      .toString()
-      .replace(
-        '<base href="resource://android/assets/" />',
-        '<base href="http://localhost:8080/" />'
-      );
+      .toString();
+    //.replace(
+    //  '<base href="resource://android/assets/" />',
+    //  '<base href="http://localhost:8080/" />'
+    //);
     res.set('Content-Type', 'text/html');
     res.send(index);
   }

@@ -26,7 +26,6 @@ class AndroidIndexPlugin {
               name="viewport"
               content="width=device-width, initial-scale=1"
             />
-            <base href="resource://android/assets/" />
             <link href="${files['app.css']}" rel="stylesheet" />
             <script src="${files['android.js']}"></script>
           </head>
