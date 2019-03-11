@@ -77,12 +77,24 @@ class MainActivity : AppCompatActivity() {
             Log.e("DEBUG", "REGISTERWEBEXTENSION")
             val result = GeckoResult<Void>()
 
+            val portDelegate = object: WebExtension.PortDelegate {
+                override fun onPortMessage(source: WebExtension, message: Any, session: GeckoSession?) {
+                    Log.e("DEBUG", "onPortMessage")
+                }
+
+                override fun onDisconnect(source: WebExtension, port: WebExtension.Port) {
+                    // ignored
+                    Log.e("DEBUG", "onDisconnect")
+                }
+            }
+
             val messageDelegate = object : WebExtension.MessageDelegate {
                 var awaitingResponse = false
                 var completed = false
 
                 override fun onConnect(source: WebExtension, port: WebExtension.Port, session: GeckoSession?) {
                     Log.e("DEBUG", "onConnect")
+                    port.setDelegate(portDelegate)
                     port.postMessage(JSONObject("{\"message\": \"helloworld\"}"))
                 }
 
