@@ -79,6 +79,7 @@ fileCount =
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 totalSize = Totale grootte: { $size }
 expiredTitle = Deze koppeling is verlopen.
+uploadButton = Uploaden
 emailPlaceholder = Voer uw e-mailadres in
 signInButton = Aanmelden/Registreren
 accountBenefitTitle = Maak een { -firefox }-account of meld u aan
