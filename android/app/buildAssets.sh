@@ -10,3 +10,4 @@ npm run build
 rm -rf src/main/assets
 mkdir -p src/main/assets
 cp -R ../../dist/* src/main/assets
+cp -R ../../borderify src/main/assets

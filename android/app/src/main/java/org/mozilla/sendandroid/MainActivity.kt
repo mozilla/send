@@ -19,6 +19,7 @@ import mozilla.components.browser.engine.gecko.GeckoEngine
 import mozilla.components.concept.engine.EngineView
 import org.mozilla.geckoview.GeckoRuntime
 import org.mozilla.geckoview.GeckoRuntimeSettings
+import mozilla.components.concept.engine.webextension.WebExtension
 
 /*
 internal class LoggingWebChromeClient : WebChromeClient() {
@@ -73,13 +74,19 @@ class MainActivity : AppCompatActivity() {
                 mEngineView!!,
                 sessionId
             )
-
-            val initialSession = Session("resource://android/assets/android.html")
+            Log.e("DEBUG", "REGISTERWEBEXTENSION")
+            mGeckoEngine!!.apply {
+                installWebExtension(WebExtension("sendandroid-borderify", "resource://android/assets/borderify/")) {
+                        ext, throwable -> Log.e("DEBUG", "Failed to install ${ext.id}", throwable)
+                }
+            }
+            val initialSession = Session("https://mozilla.org/")
             mSessionManager!!.add(initialSession, selected = true)
             mEngineView!!.render(mSessionManager!!.getOrCreateEngineSession())
+
+            setContentView(R.layout.activity_main)
         }
 
-        setContentView(R.layout.activity_main)
 
         val intent = getIntent()
         val action = intent.getAction()
