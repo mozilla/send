@@ -250,7 +250,9 @@ module.exports = function(state, emit, archive) {
 
   async function share(event) {
     event.stopPropagation();
-    if (state.capabilities.share) {
+    if (platform() === 'android') {
+      Android.shareUrl(archive.url);
+    } else {
       try {
         await navigator.share({
           title: state.translate('-send-brand'),
@@ -263,8 +265,6 @@ module.exports = function(state, emit, archive) {
       } catch (e) {
         // ignore
       }
-    } else {
-      Android.shareUrl(archive.url);
     }
   }
 };
