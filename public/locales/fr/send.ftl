@@ -121,6 +121,11 @@ accountBenefitTitle = Créez un compte { -firefox } ou connectez-vous
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 accountBenefitLargeFiles = Partagez des fichiers jusqu’à { $size }
 accountBenefitDownloadCount = Partagez des fichiers avec davantage de personnes
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Maintenez les liens actifs jusqu’à 1 journée
+       *[other] Maintenez les liens actifs jusqu’à { $count } jours
+    }
 accountBenefitSync = Gérez les fichiers partagés à partir de n’importe quel appareil
 accountBenefitMoz = Apprenez-en davantage sur les autres services { -mozilla }
 signOut = Se déconnecter
