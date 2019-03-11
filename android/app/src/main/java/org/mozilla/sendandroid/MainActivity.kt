@@ -17,9 +17,8 @@ import mozilla.components.browser.session.Session
 import mozilla.components.concept.engine.DefaultSettings
 import mozilla.components.browser.engine.gecko.GeckoEngine
 import mozilla.components.concept.engine.EngineView
-import org.mozilla.geckoview.GeckoRuntime
-import org.mozilla.geckoview.GeckoRuntimeSettings
-import mozilla.components.concept.engine.webextension.WebExtension
+import org.mozilla.geckoview.*
+
 
 /*
 internal class LoggingWebChromeClient : WebChromeClient() {
@@ -75,12 +74,26 @@ class MainActivity : AppCompatActivity() {
                 sessionId
             )
             Log.e("DEBUG", "REGISTERWEBEXTENSION")
-            mGeckoEngine!!.apply {
-                installWebExtension(WebExtension("sendandroid-borderify", "resource://android/assets/borderify/")) {
-                        ext, throwable -> Log.e("DEBUG", "Failed to install ${ext.id}", throwable)
+            val result = GeckoResult<Void>()
+
+            val messageDelegate = object : WebExtension.MessageDelegate {
+                var awaitingResponse = false
+                var completed = false
+
+                override fun onConnect(source: WebExtension, port: WebExtension.Port, session: GeckoSession?) {
+                    Log.e("DEBUG", "onConnect")
+                }
+
+                override fun onMessage(source: WebExtension, message: Any, session: GeckoSession?): GeckoResult<Any>? {
+                    Log.e("DEBUG", "onMessage")
+                    return GeckoResult.fromValue("MessageResponse")
                 }
             }
-            val initialSession = Session("https://mozilla.org/")
+            mGeckoRuntime!!.registerWebExtension(WebExtension("resource://android/assets/borderify/", "sendandroid-borderify", messageDelegate)).then({
+                Log.e("DEBUG", "REGISTERCOMPLETE")
+                GeckoResult.fromValue(Unit)
+            })
+            val initialSession = Session("resource://android/assets/android.html")
             mSessionManager!!.add(initialSession, selected = true)
             mEngineView!!.render(mSessionManager!!.getOrCreateEngineSession())
 
