@@ -90,4 +90,23 @@ uploadButton = আপলোড
 dragAndDropFiles = ফাইল টেনে এনে ছাড়ুন
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
-orClickWithSize = বা { $size } পর্যন্ত আকারের ফাইল পাঠাতে ক্লিক করুন
+orClickWithSize = বা সর্বোচ্চ { $size } আকারের ফাইল পাঠাতে ক্লিক করুন
+addPassword = পাসওয়ার্ড দ্বারা সুরক্ষিত রাখুন
+emailPlaceholder = আপনার ইমেইল দিন
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = সর্বোচ্চ { $size } আকারের ফাইল প্রেরণ করতে সাইন ইন করুন
+signInButton = সাইন ইন/আপ
+accountBenefitTitle = { -firefox } অ্যাকাউন্ট তৈরি অথবা সাইন ইন করুন
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = সর্বোচ্চ { $size } আকারের ফাইল শেয়ার করুন
+accountBenefitDownloadCount = আরও মানুষের সাথে ফাইল শেয়ার করুন
+accountBenefitTimeLimit =
+    { $count ->
+        [one] ১ দিন পর্যন্ত লিঙ্ক সক্রিয় রাখুন
+       *[other] { $count } দিন পর্যন্ত লিঙ্ক সক্রিয় রাখুন
+    }
+accountBenefitSync = যেকোন ডিভাইস থেকে শেয়ার করা ফাইল পরিচালনা করুন
+accountBenefitMoz = অন্যান্য { -mozilla } সেবা সম্পর্কে জানুন
+signOut = সাইন আউট
+okButton = ঠিক আছে
+downloadingTitle = ডাউনলোড হচ্ছে
