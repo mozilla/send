@@ -8,7 +8,7 @@ try {
   // NOOP
 }
 if (!fileProtocolWssUrl) {
-  fileProtocolWssUrl = 'wss://send2.dev.lcip.org/api/ws';
+  fileProtocolWssUrl = 'wss://send.firefox.com/api/ws';
 }
 
 export function setFileProtocolWssUrl(url) {
