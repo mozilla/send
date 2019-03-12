@@ -12,93 +12,67 @@ module.exports = function(state, emit) {
         <p class="mt-2">${state.translate('legalDateStamp')}</p>
         <div class="overflow-scroll py-8 px-12">
           <p class="leading-normal">
-            <span>When Mozilla receives information from you, our</span>
-            <a
-              href="https://www.mozilla.org/privacy/"
-              target="__blank"
-              rel="noopener noreferrer"
-              class="text-blue-dark hover:underline"
-              >Mozilla Privacy Policy</a
-            >
             <span
-              >describes how we handle that information. Below are the top
-              things you should know about Firefox Send. You can also view the
-              code</span
-            >
-            <a
-              href="https://github.com/mozilla/send/blob/master/docs/metrics.md"
+              >Send is a service from Mozilla that allows you to send electronic
+              files through a safe, private, and encrypted link that
+              automatically expires to ensure your stuff does not remain online
+              forever. Send is also subject to our</span
+            ><a
+              href="https://www.mozilla.org/privacy/websites"
               target="__blank"
               rel="noopener noreferrer"
               class="text-blue-dark hover:underline"
-              >here</a
-            >.
+              > Websites Privacy Policy</a
+            ><span
+              >. When you visit the Send website, information such as your IP
+              address is temporarily retained as part of a standard server
+              log.</span
+            >
           </p>
+          <br>
+          <p>
+            Here are the other key things you should know about what is
+            happening when you use Send:
           <ul class="mt-6 leading-normal">
             <li class="mb-4">
-              <b>Content</b>: Mozilla receives an encrypted copy of the file you
-              upload but we cannot access the content or name of your encrypted
-              file. By default, files are stored for a maximum of either 24
-              hours or 7 days. If you choose a download cap, the file can be
-              deleted from our server sooner.
+              Mozilla receives an encrypted copy of the file you upload, and
+              basic information about the file, such as filename, file hash, and
+              file size. Mozilla does not have the ability to access the content
+              of your encrypted file, and only keeps it for the time or number
+              of downloads indicated.
             </li>
             <li class="mb-4">
-              <b>Data on your device</b>: So that you can check status or delete
-              files, basic information about your uploaded files is stored on
-              your local device. This includes our identifier for the file, the
-              filename, and the file’s unique download URL. This is cleared if
-              you delete your uploaded file or upon visiting Send after the file
-              expires. Note, however, that the URL will persist in your browsing
-              history (and with whomever you shared it) until manually deleted.
+              To allow you to see the status of your previously uploaded files,
+              or delete them, basic information about your uploaded files are
+              stored on your local device, such as Send’s identifier for the
+              file, the filename, and the file’s unique download link. This is
+              cleared if you delete your uploaded file or upon visiting Send
+              after the file expires.
             </li>
             <li class="mb-4">
-              <b>Personal data</b>: The following is necessary to provide the
-              service:
-              <ul class="mt-6 leading-normal">
-                <li class="mb-4">
-                  <u>IP addresses</u>: We receive IP addresses of downloaders
-                  and uploaders as part of our standard server logs. These are
-                  retained for 90 days, and for that period, may be connected to
-                  activity of a file’s download URL. Although we develop our
-                  services in ways that minimize identification, you should know
-                  that it may be possible to correlate the IP address of a Send
-                  user to the IP address of other Mozilla services with
-                  accounts; and if there is a match, this could identify the
-                  account email address.
-                </li>
-                <li class="mb-4">
-                  <u>Firefox Account</u>: This is required for authentication
-                  only if you wish to upload larger file sizes. Your Firefox
-                  Account record will retain aggregate data on your usage of
-                  Send: for example, if you created a Firefox Account in
-                  connection with Send, number of files sent and approximate
-                  file sizes, and how many times you’ve used the service.
-                </li>
-              </ul>
+              Anyone you provide with the unique link (including the encryption
+              key) to your encrypted file will be able to download and access
+              that file. You should not provide the link to anyone you do not
+              want to have access to your encrypted file.
             </li>
             <li class="mb-4">
-              <b>Non-personal data</b>: We receive the following to improve our
-              service and performance:
-              <ul class="mt-6 leading-normal">
-                <li class="mb-4">
-                  <u>Interaction data</u>: This includes information such as
-                  number of people sending and receiving files, number of files
-                  uploaded and approximate file sizes, percentage of file
-                  downloaders who become uploaders, how people engage with the
-                  website (time spent, clicks, referrer information, site exit
-                  path, use of passwords).
-                </li>
-                <li class="mb-4">
-                  <u>Technical data</u>: This includes information such as
-                  operating system, browser, language preference, country,
-                  timestamps, duration for file transfer, reasons for errors,
-                  reasons for file expiration.
-                </li>
-              </ul>
+              Send will also collect information about the performance and your
+              use of the service, such as how often you upload files, how long
+              your files remain with Mozilla before they expire, any errors
+              related to file transfers, and what cryptographic protocols your
+              browser supports.
             </li>
             <li class="mb-4">
-              <b>Third Party Services</b>: We use Google Cloud Platform.
+              You can learn more about the data Send collects<a
+                href="https://github.com/mozilla/send/blob/master/docs/metrics.md"
+                target="__blank"
+                rel="noopener noreferrer"
+                class="text-blue-dark hover:underline"
+                > here</a
+              >.
             </li>
           </ul>
+          </p>
         </div>
       </div>
     </main>
