@@ -154,9 +154,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         Log.e("DEBUG", "ONACTIVITYRESULT")
-        if (mPort != null) {
-            mPort!!.postMessage(JSONObject("{\"cmd\": \"checkFiles\"}"))
-        }
         mPromptFeature!!.onActivityResult(requestCode, resultCode, data)
     }
 
