@@ -52,6 +52,7 @@ passwordSetError = このパスワードは設定できませんでした
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = 簡単に、プライベートにファイル共有
+introDescription = { -send-brand } では、暗号化してファイル共有でき、リンクは自動的に期限切れになります。そのため、共有するものをプライベートに保管でき、オンライン上に永遠に残さないようにできます。
 notifyUploadEncryptDone = ファイルが暗号化され、送信する準備ができました
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = 有効期間: { $downloadCount } または { $timespan }
@@ -77,10 +78,17 @@ totalSize = 合計サイズ: { $size }
 copyLinkDescription = リンクをコピーしてファイルを共有:
 copyLinkButton = リンクをコピー
 downloadTitle = ファイルをダウンロード
+downloadDescription = このファイルは { -send-brand } により、暗号化されて共有されました。リンクは自動的に期限切れになります。
+trySendDescription = 簡単で安全なファイル共有ができる { -send-brand } を試してください。
 # count will always be > 10
 tooManyFiles =
     { $count ->
        *[other] 一度にアップロードできるのは { $count } ファイルまでです。
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+       *[other] { $count } 回までしかダウンロードできません。
     }
 expiredTitle = このリンクは期限切れです。
 downloadFirefox = { -firefox } をダウンロード
