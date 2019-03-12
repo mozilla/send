@@ -83,8 +83,25 @@ totalSize = Total storleik: { $size }
 copyLinkDescription = Kopier lenka for å dele fila di:
 copyLinkButton = Kopier lenke
 downloadTitle = Last ned filer
+trySendDescription = Prøv { -send-brand } for enkel og sikker fildeling.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Berre 1 fil  kan lastast opp om gongen.
+       *[other] Berre { $count } filer kan lastast opp om gongen.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Berre 1 arkiv er lov.
+       *[other] Berre { $count } arkiv er lov.
+    }
+expiredTitle = Denne lenka har gått ut.
 downloadFirefox = Last ned { -firefox }
+legalTitle = { -send-short-brand }, om personvernpraksis
 legalDateStamp = Versjon 1.0, datert den 12 mars 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }t { $minutes }m
 addFilesButton = Vel filer som skal lastast opp
 uploadButton = Last opp
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
@@ -97,13 +114,21 @@ emailPlaceholder = Skriv inn e-postadressa di
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 signInSizeBump = LOgg inn for å senda opp til { $size }
 signInButton = Logg inn/Registrer deg
-accountBenefitTitle = Skapa ett { -firefox }-konto eller logg in
+accountBenefitTitle = Lag ein { -firefox }-konto eller logg inn
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 accountBenefitLargeFiles = Del filer opp til { $size }
 accountBenefitDownloadCount = Del filer med fleire personar
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Hald lenka aktiv opp til 1 dag
+       *[other] Hald lenker aktive opp til { $count } dagar
+    }
+accountBenefitSync = Handter delte filer frå alle einingar
 accountBenefitMoz = Les om andre { -mozilla }-tenster
 signOut = Logg ut
 okButton = OK
 downloadingTitle = Lastar ned
+noStreamsWarning = Denne nettlesaren kan kanskje ikkje dekryptere ei så stor fil.
+noStreamsOptionCopy = Kopier lenka for å opne henne i ein annan nettlesar
 noStreamsOptionFirefox = Prøv favorittnettlesaren vår
 noStreamsOptionDownload = Fortset med denne nettlesaren
