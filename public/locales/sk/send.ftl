@@ -55,6 +55,8 @@ passwordSetError = Heslo nešlo nastaviť
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Jednoduché a súkromné zdieľanie súborov
+introDescription = S { -send-brand(case: "ins") } sú zdieľané súbory šifrované end-to-end, takže ani my nevieme, čo zdieľate. Platnosť odkazu je navyše obmedzená. Súbory tak môžete zdieľať súkromne a s istotou, že neostanú na internete naveky.
 notifyUploadEncryptDone = Váš súbor je zašifrovaný a pripravený na odoslanie
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Platnosť odkazu vyprší po { $downloadCount } alebo po { $timespan }
@@ -76,18 +78,69 @@ timespanWeeks =
         [few] { $num } týždňoch
        *[other] { $num } týždňoch
     }
+fileCount =
+    { $num ->
+        [one] 1 súbor
+        [few] { $num } súbory
+       *[other] { $num } súborov
+    }
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 totalSize = Celková veľkosť: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Súbor môžete zdieľať pomocou tohto odkazu:
 copyLinkButton = Kopírovať odkaz
 downloadTitle = Prevziať súbory
+downloadDescription = Tento súbor bol zdieľaný prostredníctvom služby { -send-brand }, ktorá poskytuje end-to-end šifrovanie a odkazy s obmedzenou platnosťou.
+trySendDescription = Vyskúšajte jednoduché a bezpečné zdieľanie súborov so službou { -send-brand }
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Naraz možno nahrávať len 1 súbor.
+        [few] Naraz možno nahrávať len { $count } súbory.
+       *[other] Naraz možno nahrávať len { $count } súborov.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Povolený je najviac 1 archív.
+        [few] Povolené sú najviac { $count } archívy.
+       *[other] Povolených je najviac { $count } archívov.
+    }
 expiredTitle = Platnosť odkazu vypršala.
+notSupportedDescription = { -send-brand } nebude v tomto prehliadači fungovať. { -send-short-brand } najlepšie funguje v najnovšej verzii { -firefox(case: "gen") } alebo aktuálnych verziách najpoužívanejších prehliadačov.
 downloadFirefox = Prevziať { -firefox }
+legalTitle = Zásady ochrany súkromia služby { -send-short-brand }
+legalDateStamp = Verzia 1.0, z 12. marca 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } d { $hours } h { $minutes } min
 addFilesButton = Vyberte súbory pre nahratie
 uploadButton = Nahrať
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Pretiahnutím súboru alebo kliknutím sem
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = môžete poslať až { $size }
+addPassword = Chrániť heslom
 emailPlaceholder = Zadajte e-mailovú adresu
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Pre odoslanie súborov s veľkosťou až { $size }, sa, prosím, prihláste
+signInButton = Prihlásiť sa/Zaregistrovať sa
+accountBenefitTitle = Vytvorte si účet { -firefox } alebo sa prihláste
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Zdieľanie súborov s veľkosťou až { $size }
+accountBenefitDownloadCount = Zdieľanie súborov s viacerými ľuďmi
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Odkazy platné až 1 deň
+        [few] Odkazy platné až { $count } dni
+       *[other] Odkazy platné až { $count } dní
+    }
+accountBenefitSync = Správa zdieľaných súborov z akéhokoľvek zariadenia
+accountBenefitMoz = Ďalšie informácie o ďalších službách od { -mozilla(case: "gen") }
 signOut = Odhlásiť sa
 okButton = OK
 downloadingTitle = Preberá sa
 noStreamsWarning = Tento prehliadač nemusí byť schopný dešifrovať takto veľký súbor.
+noStreamsOptionCopy = Skopírovať odkaz pre otvorenie v inom prehliadači
 noStreamsOptionFirefox = Vyskúšajte náš obľúbený prehliadač
 noStreamsOptionDownload = Pokračovať v tomto prehliadači
