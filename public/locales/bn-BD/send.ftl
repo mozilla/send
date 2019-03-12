@@ -54,6 +54,7 @@ passwordSetError = এই পাসওয়ার্ড সেট করা য
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = সহজ, ব্যক্তিগত ফাইল শেয়ার
+introDescription = { -send-brand } ফাইল এনক্রিপশন ও স্বয়ংক্রিয়ভাবে মেয়াদ শেষ হবে এমন একটি লিঙ্কের মাধ্যমে শুরু-থেকে-শেষ পর্যন্ত শেয়ার করতে দেয়। একারণে আপনি যা শেয়ার করেন তা গোপন রাখতে এবং আপনার জিনিস চিরদিনের জন্য অনলাইনে থাকবে না তা নিশ্চিত করতে পারেন।
 notifyUploadEncryptDone = আপনার ফাইল এনক্রিপ্ট করা হয়েছে এবং প্রেরণ করতে প্রস্তুত
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = { $downloadCount } বা { $timespan } পরে মেয়াদ শেষ হবে
@@ -98,6 +99,7 @@ tooManyArchives =
        *[other] কেবল { $count } আর্কাইভ অনুমোদিত।
     }
 expiredTitle = এই লিঙ্কের মেয়াদ শেষ হয়ে গেছে।
+notSupportedDescription = { -send-brand } এই ব্রাউজারের সাথে কাজ করবে না। { -firefox } এর সাম্প্রতিকতম সংস্করণে { -send-short-brand } সর্বোত্তমভাবে কাজ করবে, এবং এটি বেশিরভাগ ব্রাউজারের বর্তমান সংস্করণে কাজ করবে।
 downloadFirefox = { -firefox } ডাউনলোড করুন
 legalTitle = { -send-short-brand } গোপনীয়তা নোটিশ
 legalDateStamp = সংস্করণ ১.০, ১২ মার্চ, ২০১৯ তারিখ
