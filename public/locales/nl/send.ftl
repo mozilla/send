@@ -1,31 +1,9 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteSubtitle = webexperiment
 siteFeedback = Feedback
-uploadPageHeader = Privé, versleuteld bestanden delen
-uploadPageExplainer = Stuur bestanden via een veilige, private en versleutelde koppeling die automatisch verloopt, zodat u zeker weet dat uw zaken niet onbeperkt online blijven.
-uploadPageLearnMore = Meer info
-uploadPageDropMessage = Sleep uw bestand hiernaartoe om het te uploaden
-uploadPageSizeMessage = Voor de meest betrouwbare werking kunt u uw bestand het beste onder de 1 GB houden
-uploadPageBrowseButton = Selecteer een bestand op uw computer
-uploadPageBrowseButton1 = Selecteer een bestand om te uploaden
-uploadPageMultipleFilesAlert = Het uploaden van meerdere bestanden of een map wordt momenteel niet ondersteund.
-uploadPageBrowseButtonTitle = bestand uploaden
-uploadingPageProgress = { $filename } ({ $size }) wordt geüpload
 importingFile = Importeren…
-verifyingFile = Verifiëren…
 encryptingFile = Versleutelen…
 decryptingFile = Ontcijferen…
-notifyUploadDone = Uw upload is voltooid.
-uploadingPageMessage = Zodra uw bestand wordt geüpload, kunt u vervalopties instellen.
-uploadingPageCancel = Uploaden annuleren
-uploadCancelNotification = Uw upload is geannuleerd.
-uploadingPageLargeFileMessage = Dit bestand is groot en het uploaden kan even duren. Even geduld…
-uploadingFileNotification = Mij waarschuwen zodra het uploaden is voltooid
-uploadSuccessConfirmHeader = Gereed voor verzending
-uploadSvgAlt = Uploaden
-uploadSuccessTimingHeader = De koppeling naar uw bestand zal na 1 download of 24 uur verlopen.
-expireInfo = De koppeling naar uw bestand zal na { $downloadCount } of { $timespan } verlopen.
 downloadCount =
     { $num ->
         [one] 1 download
@@ -36,76 +14,26 @@ timespanHours =
         [one] 1 uur
        *[other] { $num } uur
     }
-copyUrlFormLabelWithName = Kopieer en deel de koppeling om uw bestand te verzenden: { $filename }
-copyUrlFormButton = Kopiëren naar klembord
 copiedUrl = Gekopieerd!
-deleteFileButton = Bestand verwijderen
-sendAnotherFileLink = Nog een bestand verzenden
-# Alternative text used on the download link/button (indicates an action).
-downloadAltText = Downloaden
-downloadsFileList = Downloads
-# Used as header in a column indicating the amount of time left before a
-# download link expires (e.g. "10h 5m")
-timeFileList = Tijd
-# Used as header in a column indicating the number of times a file has been
-# downloaded
-downloadFileName = { $filename } downloaden
-downloadFileSize = ({ $size })
-unlockInputLabel = Voer wachtwoord in
 unlockInputPlaceholder = Wachtwoord
 unlockButtonLabel = Ontgrendelen
-downloadFileTitle = Versleuteld bestand downloaden
-# Firefox Send is a brand name and should not be localized.
-downloadMessage = Uw vriend(in) stuurt u een bestand met Firefox Send, een dienst waarmee u bestanden kunt verzenden met een veilige, private en versleutelde koppeling die automatisch verloopt, zodat u zeker weet dat uw zaken niet onbeperkt online blijven.
-# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Downloaden
-downloadNotification = Uw download is voltooid.
 downloadFinish = Downloaden voltooid
-# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } van { $totalSize })
-# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Firefox Send proberen
-downloadingPageProgress = { $filename } ({ $size }) wordt gedownload
-downloadingPageMessage = Laat dit tabblad geopend terwijl uw bestand wordt opgehaald en ontcijferd.
-errorAltText = Uploadfout
 errorPageHeader = Er is iets misgegaan!
-errorPageMessage = Er is een fout opgetreden bij het uploaden van het bestand.
-errorPageLink = Nog een bestand verzenden
 fileTooBig = Dat bestand is te groot om te worden geüpload. Het moet kleiner zijn dan { $size }.
 linkExpiredAlt = Koppeling verlopen
-expiredPageHeader = Deze koppeling is verlopen of heeft überhaupt nooit bestaan!
 notSupportedHeader = Uw browser wordt niet ondersteund.
-# Firefox Send is a brand name and should not be localized.
-notSupportedDetail = Helaas ondersteunt deze browser de webtechnologie die Firefox Send gebruikt niet. U dient een andere browser te proberen. Firefox wordt aanbevolen!
 notSupportedLink = Waarom wordt mijn browser niet ondersteund?
 notSupportedOutdatedDetail = Helaas ondersteunt deze versie van Firefox de webtechnologie die Firefox Send gebruikt niet. U dient uw browser bij te werken.
 updateFirefox = Firefox bijwerken
-downloadFirefoxButtonSub = Gratis download
-uploadedFile = Bestand
-copyFileList = URL kopiëren
-# expiryFileList is used as a column header
-expiryFileList = Verloopt over
-deleteFileList = Verwijderen
-nevermindButton = Maakt niet uit
-legalHeader = Voorwaarden en privacy
-legalNoticeTestPilot = Firefox Send is momenteel een Test Pilot-experiment en onderhevig aan de <a>Servicevoorwaarden</a> en <a>Privacyverklaring</a> van Test Pilot. <a>Hier</a> vindt u meer info over dit experiment en de gegevensverzameling ervan.
-legalNoticeMozilla = Gebruik van de Firefox Send-website is ook onderhevig aan de <a>Privacyverklaring voor websites</a> en <a>Servicevoorwaarden voor websites</a> van Mozilla.
-deletePopupText = Dit bestand verwijderen?
-deletePopupYes = Ja
 deletePopupCancel = Annuleren
 deleteButtonHover = Verwijderen
-copyUrlHover = URL kopiëren
 footerLinkLegal = Juridisch
-# Test Pilot is a proper name and should not be localized.
-footerLinkAbout = Over Test Pilot
 footerLinkPrivacy = Privacy
-footerLinkTerms = Voorwaarden
 footerLinkCookies = Cookies
-requirePasswordCheckbox = Een wachtwoord vereisen om dit bestand te downloaden
-addPasswordButton = Wachtwoord toevoegen
-changePasswordButton = Wijzigen
 passwordTryAgain = Onjuist wachtwoord. Probeer het opnieuw.
-reportIPInfringement = IE-inbreuk melden
 javascriptRequired = Firefox Send vereist JavaScript
 whyJavascript = Waarom vereist Firefox Send JavaScript?
 enableJavascript = Schakel JavaScript in en probeer het opnieuw.
@@ -113,9 +41,97 @@ enableJavascript = Schakel JavaScript in en probeer het opnieuw.
 expiresHoursMinutes = { $hours }u { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
-# A short status message shown when a password is successfully set
-passwordIsSet = Wachtwoord ingesteld
 # A short status message shown when the user enters a long password
 maxPasswordLength = Maximale wachtwoordlengte: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Dit wachtwoord kon niet worden ingesteld
+
+## Send version 2 strings
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Eenvoudig, privé bestanden delen
+introDescription = Met { -send-brand } kunt u bestanden delen met end-to-endversleuteling en een koppeling die automatisch verloopt. Hierdoor kunt u privé houden wat u wilt delen en er zeker van zijn dat uw zaken niet voor altijd online blijven.
+notifyUploadEncryptDone = Uw bestand is versleuteld en klaar voor verzending
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Verloopt na { $downloadCount } of { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 minuut
+       *[other] { $num } minuten
+    }
+timespanDays =
+    { $num ->
+        [one] 1 dag
+       *[other] { $num } dagen
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 week
+       *[other] { $num } weken
+    }
+fileCount =
+    { $num ->
+        [one] 1 bestand
+       *[other] { $num } bestanden
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Totale grootte: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Kopieer de koppeling om uw bestand te delen:
+copyLinkButton = Koppeling kopiëren
+downloadTitle = Bestanden downloaden
+downloadDescription = Dit bestand is gedeeld via { -send-brand } met end-to-endversleuteling en een koppeling die automatisch verloopt.
+trySendDescription = Probeer { -send-brand } voor eenvoudig, veilig bestanden delen.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Er kan slechts één bestand tegelijk worden geüpload.
+       *[other] Er kunnen slechts { $count } bestanden tegelijk worden geüpload.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Slechts één archief is toegestaan.
+       *[other] Slechts { $count } archieven zijn toegestaan.
+    }
+expiredTitle = Deze koppeling is verlopen.
+notSupportedDescription = { -send-brand } werkt niet met deze browser. { -send-short-brand } werkt het beste met de nieuwste versie van { -firefox }, en werkt met de huidige versie van de meeste browsers.
+downloadFirefox = { -firefox } downloaden
+legalTitle = Privacybeleid van { -send-short-brand }
+legalDateStamp = Versie 1.0 d.d. 12 maart 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }u { $minutes }m
+addFilesButton = Selecteer te uploaden bestanden
+uploadButton = Uploaden
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Versleep bestanden
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = of klik om tot { $size } te versturen
+addPassword = Beveiligen met wachtwoord
+emailPlaceholder = Voer uw e-mailadres in
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Meld u aan om tot { $size } te versturen
+signInButton = Aanmelden/Registreren
+accountBenefitTitle = Maak een { -firefox }-account of meld u aan
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Bestanden tot { $size } delen
+accountBenefitDownloadCount = Bestanden met meerdere personen delen
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Koppelingen tot één dag actief houden
+       *[other] Koppelingen tot { $count } dagen actief houden
+    }
+accountBenefitSync = Gedeelde bestanden vanaf andere apparaten beheren
+accountBenefitMoz = Info over andere services van { -mozilla }
+signOut = Afmelden
+okButton = OK
+downloadingTitle = Downloaden
+noStreamsWarning = Deze browser kan een bestand van deze omvang mogelijk niet ontcijferen.
+noStreamsOptionCopy = Koppeling kopiëren om in een andere browser te openen
+noStreamsOptionFirefox = Onze favoriete browser proberen
+noStreamsOptionDownload = Doorgaan met deze browser

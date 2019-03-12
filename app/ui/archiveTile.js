@@ -167,8 +167,17 @@ function archiveDetails(translate, archive) {
 
 module.exports = function(state, emit, archive) {
   const copyOrShare =
-    platform() !== 'android'
+    state.capabilities.share || platform() === 'android'
       ? html`
+          <button
+            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end flex items-end"
+            onclick=${share}
+            title="Share link"
+          >
+            <img src="${assets.get('share-24.svg')}" class="mr-2" />Share link
+          </button>
+        `
+      : html`
           <button
             class="text-blue-dark hover:text-blue-darker focus:text-blue-darker focus:outline self-end flex items-center"
             onclick=${copy}
@@ -176,15 +185,6 @@ module.exports = function(state, emit, archive) {
           >
             <img src="${assets.get('copy-16.svg')}" class="mr-2" />
             ${state.translate('copyLinkButton')}
-          </button>
-        `
-      : html`
-          <button
-            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end flex items-center"
-            onclick=${share}
-            title="Share"
-          >
-            <img src="${assets.get('share-24.svg')}" class="mr-2" /> Share
           </button>
         `;
   const dl =
@@ -248,9 +248,24 @@ module.exports = function(state, emit, archive) {
     emit('delete', archive);
   }
 
-  function share(event) {
+  async function share(event) {
     event.stopPropagation();
-    window.shareUrl(archive.url);
+    if (platform() === 'android') {
+      window.shareUrl(archive.url);
+    } else {
+      try {
+        await navigator.share({
+          title: state.translate('-send-brand'),
+          text: `Download "${
+            archive.name
+          }" with Firefox Send: simple, safe file sharing`,
+          //state.translate('shareMessage', { name }),
+          url: archive.url
+        });
+      } catch (e) {
+        // ignore
+      }
+    }
   }
 };
 
@@ -397,21 +412,22 @@ module.exports.uploading = function(state, emit) {
 };
 
 module.exports.empty = function(state, emit) {
-  const upsell = state.user.loggedIn
-    ? ''
-    : html`
-        <button
-          class="center font-medium text-sm text-blue-dark hover:text-blue-darker focus:text-blue-darker mt-4 mb-2"
-          onclick="${event => {
-            event.stopPropagation();
-            emit('signup-cta', 'drop');
-          }}"
-        >
-          ${state.translate('signInSizeBump', {
-            size: bytes(state.LIMITS.MAX_FILE_SIZE)
-          })}
-        </button>
-      `;
+  const upsell =
+    state.user.loggedIn || !state.capabilities.account
+      ? ''
+      : html`
+          <button
+            class="center font-medium text-sm text-blue-dark hover:text-blue-darker focus:text-blue-darker mt-4 mb-2"
+            onclick="${event => {
+              event.stopPropagation();
+              emit('signup-cta', 'drop');
+            }}"
+          >
+            ${state.translate('signInSizeBump', {
+              size: bytes(state.LIMITS.MAX_FILE_SIZE)
+            })}
+          </button>
+        `;
   return html`
     <send-upload-area
       class="flex flex-col items-center justify-center border-2 border-dashed border-grey rounded px-6 py-16 h-full w-full"

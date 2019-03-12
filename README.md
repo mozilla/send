@@ -1,6 +1,5 @@
 # Firefox Send
 
-[![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=aFFIMHNEWFcrNHJaMU1LRkJnUDhOQkNHMmh2WHBscjJsZHcwK1h0dkhwdz0tLXRpN1RXcysybUtxTFFTVGRtWjVGeHc9PQ==--c56129be8c75941b115c5b5e5d3ed10b3c7dca6b)](https://www.browserstack.com/automate/public-build/aFFIMHNEWFcrNHJaMU1LRkJnUDhOQkNHMmh2WHBscjJsZHcwK1h0dkhwdz0tLXRpN1RXcysybUtxTFFTVGRtWjVGeHc9PQ==--c56129be8c75941b115c5b5e5d3ed10b3c7dca6b)
 [![CircleCI](https://img.shields.io/circleci/project/github/mozilla/send.svg)](https://circleci.com/gh/mozilla/send)
 
 **Docs:** [FAQ](docs/faq.md), [Encryption](docs/encryption.md), [Build](docs/build.md), [Docker](docs/docker.md), [Metrics](docs/metrics.md), [More](docs/)
@@ -87,8 +86,8 @@ Pull requests are always welcome! Feel free to check out the list of ["good firs
 | ENVIRONMENT | URL
 |-------------|-----
 | Production  | <https://send.firefox.com/>
-| Stage       | <https://send.stage.mozaws.net/>
-| Development | <https://send.dev.mozaws.net/>
+| Stage       | <https://stage.send.nonprod.cloudops.mozgcp.net/>
+| Development | <https://send2.dev.lcip.org/>
 
 ---
 

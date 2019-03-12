@@ -20,7 +20,7 @@ module.exports = function(req, res) {
     start_url: '/',
     display: 'standalone',
     orientation: 'portrait',
-    theme_color: '#ffffff',
+    theme_color: '#220033',
     background_color: 'white'
   };
   res.set('Content-Type', 'application/manifest+json');

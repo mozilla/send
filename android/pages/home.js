@@ -34,16 +34,10 @@ module.exports = function(state, emit) {
     </div>
   `;
   if (state.uploading) {
-    content = html`
-      <div class="p-6 w-full">${archiveTile.uploading(state, emit)}</div>
-    `;
+    content = archiveTile.uploading(state, emit);
     button = '';
   } else if (state.archive.numFiles > 0) {
-    content = html`
-      <section class="p-4 h-full w-full">
-        ${archiveTile.wip(state, emit)}
-      </section>
-    `;
+    content = archiveTile.wip(state, emit);
     button = '';
   } else {
     content =
@@ -51,15 +45,20 @@ module.exports = function(state, emit) {
         ? intro(state)
         : list(
             archives,
-            'list-reset h-full overflow-y-auto w-full p-6',
+            'list-reset h-full overflow-y-auto w-full',
             'mb-3 w-full'
           );
   }
 
   return html`
     <main class="main">
-      ${state.modal && modal(state, emit)} ${content}
-      <div class="fixed pin-r pin-b">
+      ${state.modal && modal(state, emit)}
+      <section
+        class="h-full w-full p-6 z-10 overflow-hidden md:flex md:flex-row md:rounded-lg md:shadow-big"
+      >
+        ${content}
+      </section>
+      <div class="fixed pin-r pin-b z-20">
         ${button}
         <input
           class="hidden"

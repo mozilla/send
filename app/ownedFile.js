@@ -4,6 +4,9 @@ import { del, fileInfo, setParams, setPassword } from './api';
 
 export default class OwnedFile {
   constructor(obj) {
+    if (!obj.manifest) {
+      throw new Error('invalid file object');
+    }
     this.id = obj.id;
     this.url = obj.url;
     this.name = obj.name;

@@ -1,35 +1,13 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteSubtitle = веб-эксперимент
 siteFeedback = Отзывы
-uploadPageHeader = Приватный, зашифрованный обмен файлами
-uploadPageExplainer = Отсылайте файлы, используя безопасные, приватные и зашифрованные ссылки, по истечении срока действия которых ваши файлы не останутся в сети навсегда.
-uploadPageLearnMore = Подробнее
-uploadPageDropMessage = Перетащите свой файл сюда, чтобы начать загрузку
-uploadPageSizeMessage = Для более надёжной работы сервиса, размер вашего файла не должен превышать 1ГБ.
-uploadPageBrowseButton = Выбрать файл с моего компьютера
-uploadPageBrowseButton1 = Выбрать файл для загрузки
-uploadPageMultipleFilesAlert = Загрузка нескольких файлов или папок в настоящее время не поддерживается.
-uploadPageBrowseButtonTitle = Загрузить файл
-uploadingPageProgress = Загружаю { $filename } ({ $size })
 importingFile = Импортирование...
-verifyingFile = Проверка...
 encryptingFile = Шифрование...
 decryptingFile = Расшифровка...
-notifyUploadDone = Ваша загрузка завершена.
-uploadingPageMessage = Как только вы загрузите свой файл, вы сможете установить срок хранения.
-uploadingPageCancel = Отменить загрузку
-uploadCancelNotification = Ваша загрузка была отменена.
-uploadingPageLargeFileMessage = Этот файл довольно большой и его загрузка может занять продолжительное время. Держитесь!
-uploadingFileNotification = Оповестить меня, когда загрузка завершится.
-uploadSuccessConfirmHeader = Готов к отправке
-uploadSvgAlt = Загрузить
-uploadSuccessTimingHeader = Ссылка на ваш файл станет недоступна после 1 загрузки файла или через 24 часа.
-expireInfo = Ссылка на ваш файл станет недоступна после { $downloadCount } файла или через { $timespan }.
 downloadCount =
     { $num ->
-        [one] { $num } загрузка
-        [few] { $num } загрузки
+        [one] { $num } загрузки
+        [few] { $num } загрузок
        *[other] { $num } загрузок
     }
 timespanHours =
@@ -38,76 +16,26 @@ timespanHours =
         [few] { $num } часа
        *[other] { $num } часов
     }
-copyUrlFormLabelWithName = Скопировать и поделиться ссылкой на отправку вашего файла: { $filename }
-copyUrlFormButton = Скопировать в буфер обмена
 copiedUrl = Скопировано!
-deleteFileButton = Удалить файл
-sendAnotherFileLink = Отправить другой файл
-# Alternative text used on the download link/button (indicates an action).
-downloadAltText = Загрузить
-downloadsFileList = Загрузки
-# Used as header in a column indicating the amount of time left before a
-# download link expires (e.g. "10h 5m")
-timeFileList = Время
-# Used as header in a column indicating the number of times a file has been
-# downloaded
-downloadFileName = Загрузить { $filename }
-downloadFileSize = ({ $size })
-unlockInputLabel = Введите пароль
 unlockInputPlaceholder = Пароль
 unlockButtonLabel = Разблокировать
-downloadFileTitle = Загрузить зашифрованный файл
-# Firefox Send is a brand name and should not be localized.
-downloadMessage = Ваш друг отправил вам файл с помощью Firefox Send, сервиса, который позволяет вам делиться файлами, используя безопасные, приватные и зашифрованные ссылки, по истечении срока действия которых ваши файлы не остаются в сети навсегда.
-# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Загрузить
-downloadNotification = Ваша загрузка завершена.
 downloadFinish = Загрузка завершена
-# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } из { $totalSize })
-# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Попробовать Firefox Send
-downloadingPageProgress = Загрузка { $filename } ({ $size })
-downloadingPageMessage = Пожалуйста, оставьте эту вкладку открытой, пока мы загружаем ваш файл и расшифровываем его.
-errorAltText = Ошибка загрузки
 errorPageHeader = Что-то пошло не так!
-errorPageMessage = Произошла ошибка при загрузке файла.
-errorPageLink = Отправить другой файл.
 fileTooBig = Этот файл слишком большой для загрузки. Он должен быть меньше { $size }.
 linkExpiredAlt = Истёк срок действия ссылки
-expiredPageHeader = Истёк срок действия ссылки или ее никогда не существовало!
 notSupportedHeader = Ваш браузер не поддерживается.
-# Firefox Send is a brand name and should not be localized.
-notSupportedDetail = К сожалению, этот браузер не поддерживает веб-технологию, благодаря которой работает Firefox Send. Ваш нужно попробовать использовать другой браузер. Мы рекомендуем Firefox!
 notSupportedLink = Почему мой браузер не поддерживается?
 notSupportedOutdatedDetail = К сожалению, эта версия Firefox не поддерживает веб-технологию, благодаря которой работает Firefox Send. Ваш нужно обновить свой браузер.
 updateFirefox = Обновить Firefox
-downloadFirefoxButtonSub = Бесплатная загрузка
-uploadedFile = Файл
-copyFileList = Скопировать URL
-# expiryFileList is used as a column header
-expiryFileList = Срок действия истекает через
-deleteFileList = Удалить
-nevermindButton = Неважно
-legalHeader = Условия и конфиденциальность
-legalNoticeTestPilot = Firefox Send в настоящее время является экспериментом лётчика-испытателя, и поэтому подпадает под <a>условия службы</a> и <a>уведомление о приватности</a> лётчика-испытателя. Вы можете узнать больше об этом эксперименте и его сборе данных <a>здесь</a>.
-legalNoticeMozilla = Использование сайта Firefox Send также подпадает под <a>уведомление о конфиденциальности веб-сайтов</a> и <a>правила использования веб-сайтов</a> Mozilla.
-deletePopupText = Удалить этот файл?
-deletePopupYes = Да
 deletePopupCancel = Отмена
 deleteButtonHover = Удалить
-copyUrlHover = Скопировать URL
 footerLinkLegal = Права
-# Test Pilot is a proper name and should not be localized.
-footerLinkAbout = О программе лётчика-испытателя
 footerLinkPrivacy = Приватность
-footerLinkTerms = Условия
 footerLinkCookies = Куки
-requirePasswordCheckbox = Требовать пароль для загрузки этого файла
-addPasswordButton = Добавить пароль
-changePasswordButton = Изменить
 passwordTryAgain = Неверный пароль. Попробуйте снова.
-reportIPInfringement = Сообщить о нарушении прав на интеллектуальную собственность
 javascriptRequired = Для Firefox Send необходим JavaScript
 whyJavascript = Почему Firefox Send требуется JavaScript?
 enableJavascript = Пожалуйста, включите JavaScript и попробуйте снова.
@@ -115,9 +43,104 @@ enableJavascript = Пожалуйста, включите JavaScript и попр
 expiresHoursMinutes = { $hours } ч. { $minutes } мин.
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes } мин.
-# A short status message shown when a password is successfully set
-passwordIsSet = Пароль установлен
 # A short status message shown when the user enters a long password
 maxPasswordLength = Максимальная длина пароля: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Этот пароль не может быть установлен
+
+## Send version 2 strings
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Простой и безопасный обмен файлами
+introDescription = { -send-brand } позволяет вам делиться файлами со сквозным шифрованием и ограниченным сроком действия ссылки на загрузку. Так что, вы сможете делиться файлами приватно и они не останутся в сети навсегда.
+notifyUploadEncryptDone = Ваш файл зашифрован и готов к отправке
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Срок хранения истекает после { $downloadCount } или через { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] { $num } минуту
+        [few] { $num } минуты
+       *[other] { $num } минут
+    }
+timespanDays =
+    { $num ->
+        [one] { $num } день
+        [few] { $num } дня
+       *[other] { $num } дней
+    }
+timespanWeeks =
+    { $num ->
+        [one] { $num } неделю
+        [few] { $num } недели
+       *[other] { $num } недель
+    }
+fileCount =
+    { $num ->
+        [one] { $num } файл
+        [few] { $num } файла
+       *[other] { $num } файлов
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = Общий размер: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Скопируйте ссылку, чтобы поделиться своим файлом:
+copyLinkButton = Копировать ссылку
+downloadTitle = Загрузить файлы
+downloadDescription = Этот файл был отправлен через { -send-brand } со сквозным шифрованием и ограниченным сроком действия ссылки на загрузку.
+trySendDescription = Испытайте простой и безопасный обмен файлами с помощью { -send-brand }.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Только { $count } файл может загружаться одновременно.
+        [few] Только { $count } файла могут загружаться одновременно.
+       *[other] Только { $count } файлов могут загружаться одновременно.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Только { $count } архив разрешён.
+        [few] Только { $count } архива разрешено.
+       *[other] Только { $count } архивов разрешено.
+    }
+expiredTitle = Срок действия этой ссылки истёк.
+notSupportedDescription = { -send-brand } не будет работать в этом браузере. { -send-short-brand } лучше всего работает с последней версией { -firefox }, и будет работать с последними версиями популярных браузеров.
+downloadFirefox = Загрузить { -firefox }
+legalTitle = Политика приватности { -send-short-brand }
+legalDateStamp = Версия 1.0, от 12 марта 2019 года
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } дн. { $hours } ч. { $minutes } мин.
+addFilesButton = Выберите файлы для выгрузки
+uploadButton = Выгрузить
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Перетащите файлы сюда
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = или щёлкните здесь, чтобы отправить их (до { $size })
+addPassword = Защитить паролем
+emailPlaceholder = Введите ваш адрес электронной почты
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+signInSizeBump = Войдите, чтобы отправлять файлы до { $size }
+signInButton = Войти/Зарегистрироваться
+accountBenefitTitle = Создайте Аккаунт { -firefox } или войдите
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitLargeFiles = Делитесь файлами до { $size }
+accountBenefitDownloadCount = Делитесь файлами с несколькими людьми
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Оставить ссылку активной в течение { $count } дня
+        [few] Оставить ссылку активной в течение { $count } дней
+       *[other] Оставить ссылку активной в течение { $count } дней
+    }
+accountBenefitSync = Управляйте своими файлами с любого устройства
+accountBenefitMoz = Узнайте о других службах { -mozilla }
+signOut = Выйти
+okButton = OK
+downloadingTitle = Загрузка
+noStreamsWarning = Этот браузер может не иметь возможности расшифровать такой большой файл.
+noStreamsOptionCopy = Скопируйте ссылку, чтобы открыть в другом браузере
+noStreamsOptionFirefox = Попробуйте наш любимый браузер
+noStreamsOptionDownload = Продолжить в этом браузере

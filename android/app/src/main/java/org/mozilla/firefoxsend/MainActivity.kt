@@ -1,4 +1,4 @@
-package org.mozilla.sendandroid
+package org.mozilla.firefoxsend
 
 import android.os.Bundle
 import android.content.Intent

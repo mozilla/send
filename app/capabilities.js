@@ -1,4 +1,4 @@
-/* global AUTH_CONFIG */
+/* global AUTH_CONFIG LOCALE */
 import { browserName } from './utils';
 
 async function checkCrypto() {
@@ -90,6 +90,8 @@ export default async function getCapabilities() {
   } catch (e) {
     account = false;
   }
+  const share =
+    typeof navigator.share === 'function' && LOCALE.startsWith('en'); // en until strings merge
 
   return {
     account,
@@ -98,6 +100,7 @@ export default async function getCapabilities() {
     streamUpload: nativeStreams || polyStreams,
     streamDownload:
       nativeStreams && serviceWorker && browserName() !== 'safari',
-    multifile: nativeStreams || polyStreams
+    multifile: nativeStreams || polyStreams,
+    share
   };
 }

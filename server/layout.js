@@ -21,15 +21,15 @@ module.exports = function(state, body = '') {
         <meta name="twitter:card" content="summary" />
         <meta
           property="og:image"
-          content="${state.baseUrl}${assets.get('send-fb.jpg')}"
+          content="${state.baseUrl}/${assets.get('send-fb.jpg')}"
         />
         <meta
           name="twitter:image"
-          content="${state.baseUrl}${assets.get('send-twitter.jpg')}"
+          content="${state.baseUrl}/${assets.get('send-twitter.jpg')}"
         />
         <meta property="og:url" content="${state.baseUrl}" />
-        <meta name="theme-color" content="#ffffff" />
-        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#220033" />
+        <meta name="msapplication-TileColor" content="#220033" />
 
         <link rel="manifest" href="/app.webmanifest" />
         <link rel="stylesheet" type="text/css" href="/inter.css" />
