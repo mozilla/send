@@ -112,6 +112,7 @@ totalSize = Skupna velikost: { $size }
 copyLinkDescription = Kopirajte povezavo za deljenje datoteke:
 copyLinkButton = Kopiraj povezavo
 downloadTitle = Prenesi datoteke
+downloadDescription = Ta datoteka je bila v skupni rabi preko { -send-brand } s šifriranjem od konca do konca in povezavo, ki samodejno poteče.
 trySendDescription = Preizkusite { -send-brand } za preprosto in varno deljenje datotek.
 # count will always be > 10
 tooManyFiles =
@@ -134,6 +135,8 @@ notSupportedDescription = { -send-brand } v tem brskalniku ne bo deloval. { -sen
 downloadFirefox = Prenesite { -firefox }
 legalTitle = Obvestilo o zasebnosti za { -send-short-brand }
 legalDateStamp = Različica 1.0, v veljavi od 12. marca 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Izberite datoteke za nalaganje
 uploadButton = Naloži
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
