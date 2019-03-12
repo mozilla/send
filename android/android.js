@@ -22,7 +22,7 @@ import { getTranslator } from '../app/locale';
 import { delay } from '../app/utils';
 
 if (navigator.userAgent === 'Send Android') {
-  setApiUrlPrefix('https://send2.dev.lcip.org');
+  setApiUrlPrefix('https://send.firefox.com');
 }
 
 const app = choo();
