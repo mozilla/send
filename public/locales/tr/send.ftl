@@ -104,7 +104,7 @@ expiresDaysHoursMinutes = { $days } g { $hours } sa { $minutes } dk
 addFilesButton = Yüklenecek dosyaları seçin
 uploadButton = Yükle
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
-dragAndDropFiles = { $size }’ye kadar dosyalarınızı göndermek için
+dragAndDropFiles = Dosyaları sürükleyip bırakın
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 orClickWithSize = dosyaları sürükleyip bırakın veya buraya tıklayın
