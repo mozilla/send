@@ -21,11 +21,11 @@ module.exports = function(state, body = '') {
         <meta name="twitter:card" content="summary" />
         <meta
           property="og:image"
-          content="${state.baseUrl}${assets.get('send-fb.jpg')}"
+          content="${state.baseUrl}/${assets.get('send-fb.jpg')}"
         />
         <meta
           name="twitter:image"
-          content="${state.baseUrl}${assets.get('send-twitter.jpg')}"
+          content="${state.baseUrl}/${assets.get('send-twitter.jpg')}"
         />
         <meta property="og:url" content="${state.baseUrl}" />
         <meta name="theme-color" content="#220033" />
