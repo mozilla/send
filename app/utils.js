@@ -56,7 +56,7 @@ const LOCALIZE_NUMBERS = !!(
   typeof navigator === 'object'
 );
 
-const UNITS = ['B', 'kB', 'MB', 'GB'];
+const UNITS = ['bytes', 'kb', 'mb', 'gb'];
 function bytes(num) {
   if (num < 1) {
     return '0B';
@@ -76,7 +76,10 @@ function bytes(num) {
       // fall through
     }
   }
-  return `${nStr}${UNITS[exponent]}`;
+  return translate('fileSize', {
+    num: nStr,
+    units: translate(UNITS[exponent])
+  });
 }
 
 function percent(ratio) {
@@ -256,6 +259,13 @@ function encryptedSize(size, rs = ECE_RECORD_SIZE, tagLength = TAG_LENGTH) {
   return 21 + size + chunk_meta * Math.ceil(size / (rs - chunk_meta));
 }
 
+let translate = function() {
+  throw new Error('uninitialized translate function. call setTranslate first');
+};
+function setTranslate(t) {
+  translate = t;
+}
+
 module.exports = {
   fadeOut,
   delay,
@@ -275,5 +285,6 @@ module.exports = {
   secondsToL10nId,
   timeLeft,
   platform,
-  encryptedSize
+  encryptedSize,
+  setTranslate
 };
