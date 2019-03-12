@@ -23,7 +23,7 @@ errorPageHeader = 何か問題が発生しました。
 fileTooBig = このファイルは大きすぎるためアップロードできません。上限は { $size } です。
 linkExpiredAlt = リンク期限切れ
 notSupportedHeader = お使いのブラウザーには対応していません。
-notSupportedLink = なぜ私のブラウザには対応していないのでしょうか？
+notSupportedLink = なぜ私のブラウザーには対応していないのでしょうか？
 notSupportedOutdatedDetail = 残念ながらお使いのバージョンの Firefox は Firefox Send が活用しているウェブ技術に対応していません。ブラウザーを更新する必要があります。
 updateFirefox = Firefox を更新
 deletePopupCancel = キャンセル
@@ -91,8 +91,10 @@ tooManyArchives =
        *[other] { $count } 回までしかダウンロードできません。
     }
 expiredTitle = このリンクは期限切れです。
+notSupportedDescription = { -send-brand } は、このブラウザーでは動作しません。{ -send-short-brand } は最新バージョンの { -firefox } で最もよく動作し、その他の現バージョンのブラウザーでも動作します。
 downloadFirefox = { -firefox } をダウンロード
 legalTitle = { -send-short-brand } プライバシー通知
+legalDateStamp = バージョン 1.0, 2019年3月12日時点
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } 日 { $hours } 時 { $minutes } 分
 addFilesButton = アップロードするファイルを選択
