@@ -53,6 +53,10 @@ passwordSetError = এই পাসওয়ার্ড সেট করা য
 -send-short-brand = প্রেরণ
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = সহজ, ব্যক্তিগত ফাইল শেয়ার
+notifyUploadEncryptDone = আপনার ফাইল এনক্রিপ্ট করা হয়েছে এবং প্রেরণ করতে প্রস্তুত
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = { $downloadCount } বা { $timespan } পরে মেয়াদ শেষ হবে
 timespanMinutes =
     { $num ->
         [one] ১ মিনিট
@@ -79,6 +83,20 @@ totalSize = মোট আকার: { $size }
 copyLinkDescription = আপনার ফাইল শেয়ার করতে লিঙ্ক অনুলিপি করুন:
 copyLinkButton = লিঙ্ক অনুলিপি
 downloadTitle = ফাইল ডাউনলোড
+downloadDescription = ফাইলটি { -send-brand } এর মাধ্যমে এনক্রিপশন ও স্বয়ংক্রিয় মেয়াদ শেষ হবে এমন একটি লিঙ্কের মাধ্যমে শুরু-থেকে-শেষ পর্যন্ত শেয়ার করা হয়েছে।
+trySendDescription = সহজ ও নিরাপদ ফাইল শেয়ারের জন্য { -send-brand } ব্যবহার করুন।
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] একবারে কেবল ১টি ফাইল আপলোড করা যাবে।
+       *[other] একবারে কেবল { $count }টি ফাইল আপলোড করা যাবে।
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] কেবল ১টি আর্কাইভ অনুমোদিত।
+       *[other] কেবল { $count } আর্কাইভ অনুমোদিত।
+    }
 downloadFirefox = { -firefox } ডাউনলোড করুন
 legalTitle = { -send-short-brand } গোপনীয়তা নোটিশ
 legalDateStamp = সংস্করণ ১.০, ১২ মার্চ, ২০১৯ তারিখ
@@ -110,3 +128,7 @@ accountBenefitMoz = অন্যান্য { -mozilla } সেবা সম্
 signOut = সাইন আউট
 okButton = ঠিক আছে
 downloadingTitle = ডাউনলোড হচ্ছে
+noStreamsWarning = এই ব্রাউজার এতো বড় একটি ফাইল ডিক্রিপ্ট করতে সক্ষম নয়।
+noStreamsOptionCopy = অন্য ব্রাউজারে খুলতে লিঙ্ক অনুলিপি করুন
+noStreamsOptionFirefox = আমাদের জনপ্রিয় ব্রাউজার ব্যবহার করুন
+noStreamsOptionDownload = এই ব্রাউজার ব্যবহার অব্যহত রাখুন
