@@ -112,7 +112,7 @@ addPassword = Parola koruması ekle
 emailPlaceholder = E-posta adresinizi yazın
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 signInSizeBump = { $size }’ye kadar dosya göndermek için giriş yapın
-signInButton = Giriş/Kayıt
+signInButton = Giriş yap/kaydol
 accountBenefitTitle = { -firefox } Hesabı açın veya giriş yapın
 # size is a localized number followed by a unit of bytes, ex. 2.5GB
 accountBenefitLargeFiles = { $size } boyutlu dosyaları paylaşma
