@@ -37,6 +37,19 @@ passwordTryAgain = ভুল পাসওয়ার্ড। আবার চ�
 javascriptRequired = Firefox Send এর জাভাস্ক্রিপ্ট প্রয়োজন।
 whyJavascript = কেন Firefox Send এর জাভাস্ক্রিপ্ট প্রয়োজন?
 enableJavascript = জাভাস্ক্রিপ্ট সক্রিয় করুন এবং আবার চেষ্টা করুন।
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }ঘ { $minutes }মি
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }মি
+# A short status message shown when the user enters a long password
+maxPasswordLength = সর্বোচ্চ পাসওয়ার্ড দৈর্ঘ্য:{ $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = এই পাসওয়ার্ড সেট করা যাবে না
 
 ## Send version 2 strings
 
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = প্রেরণ
+-firefox = Firefox
+-mozilla = Mozilla
