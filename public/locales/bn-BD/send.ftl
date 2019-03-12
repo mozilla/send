@@ -53,3 +53,41 @@ passwordSetError = এই পাসওয়ার্ড সেট করা য
 -send-short-brand = প্রেরণ
 -firefox = Firefox
 -mozilla = Mozilla
+timespanMinutes =
+    { $num ->
+        [one] ১ মিনিট
+       *[other] { $num } মিনিট
+    }
+timespanDays =
+    { $num ->
+        [one] ১ দিন
+       *[other] { $num } দিন
+    }
+timespanWeeks =
+    { $num ->
+        [one] ১ সপ্তাহ
+       *[other] { $num } সপ্তাহ
+    }
+fileCount =
+    { $num ->
+        [one] ১টি ফাইল
+       *[other] { $num }টি ফাইল
+    }
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+totalSize = মোট আকার: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = আপনার ফাইল শেয়ার করতে লিঙ্ক অনুলিপি করুন:
+copyLinkButton = লিঙ্ক অনুলিপি
+downloadTitle = ফাইল ডাউনলোড
+downloadFirefox = { -firefox } ডাউনলোড করুন
+legalTitle = { -send-short-brand } গোপনীয়তা নোটিশ
+legalDateStamp = সংস্করণ ১.০, ১২ মার্চ, ২০১৯ তারিখ
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }দি { $hours }ঘ { $minutes }মি
+addFilesButton = আপলোডের জন্য ফাইল নির্বাচন করুন
+uploadButton = আপলোড
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = ফাইল টেনে এনে ছাড়ুন
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# size is a localized number followed by a unit of bytes, ex. 2.5GB
+orClickWithSize = বা { $size } পর্যন্ত আকারের ফাইল পাঠাতে ক্লিক করুন
