@@ -1,11 +1,10 @@
-package org.mozilla.sendandroid
+package org.mozilla.firefoxsend
 
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import im.delight.android.webview.AdvancedWebView
 import android.graphics.Bitmap
-import android.content.Context
 import android.content.Intent
 import android.annotation.SuppressLint
 import android.content.ComponentName
@@ -20,7 +19,6 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
 import mozilla.components.service.fxa.Config
 import mozilla.components.service.fxa.FirefoxAccount
-import mozilla.components.service.fxa.OAuthInfo
 import mozilla.components.service.fxa.Profile
 import mozilla.components.service.fxa.FxaResult
 
