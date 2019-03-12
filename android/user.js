@@ -1,4 +1,4 @@
-/* global Android */
+/* global window */
 import User from '../app/user';
 import { deriveFileListKey } from '../app/fxa';
 
@@ -8,7 +8,7 @@ export default class AndroidUser extends User {
   }
 
   async login() {
-    Android.beginOAuthFlow();
+    window.beginOAuthFlow();
   }
 
   async finishLogin(accountInfo) {

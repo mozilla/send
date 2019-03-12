@@ -7,6 +7,7 @@ const assets = require('../../common/assets');
 
 module.exports = function(state, emit) {
   function onchange(event) {
+    console.error('ONCHANGE');
     event.preventDefault();
     const newFiles = Array.from(event.target.files);
 
@@ -61,10 +62,10 @@ module.exports = function(state, emit) {
       <div class="fixed pin-r pin-b">
         ${button}
         <input
-          id="file-upload"
           class="hidden"
+          id="file-upload"
+          name="file-upload"
           type="file"
-          multiple
           onchange="${onchange}"
           onclick="${e => e.stopPropagation()}"
         />

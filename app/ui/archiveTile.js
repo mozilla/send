@@ -1,4 +1,4 @@
-/* global Android */
+/* global window */
 
 const html = require('choo/html');
 const raw = require('choo/html/raw');
@@ -250,7 +250,7 @@ module.exports = function(state, emit, archive) {
 
   function share(event) {
     event.stopPropagation();
-    Android.shareUrl(archive.url);
+    window.shareUrl(archive.url);
   }
 };
 

@@ -3,7 +3,7 @@ import choo from 'choo';
 import html from 'choo/html';
 import Raven from 'raven-js';
 
-import { setApiUrlPrefix, getConstants } from '../app/api';
+import { setApiUrlPrefix, setWssUrl, getConstants } from '../app/api';
 import metrics from '../app/metrics';
 //import assets from '../common/assets';
 import Archive from '../app/archive';
@@ -21,6 +21,7 @@ import { getTranslator } from '../app/locale';
 
 if (navigator.userAgent === 'Send Android') {
   setApiUrlPrefix('https://send2.dev.lcip.org');
+  setWssUrl('wss://send2.dev.lcip.org/api/ws');
 }
 
 const app = choo();

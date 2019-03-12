@@ -17,6 +17,7 @@ import mozilla.components.browser.session.Session
 import mozilla.components.concept.engine.DefaultSettings
 import mozilla.components.browser.engine.gecko.GeckoEngine
 import mozilla.components.concept.engine.EngineView
+import mozilla.components.feature.prompts.PromptFeature
 import org.json.JSONObject
 import org.mozilla.geckoview.*
 
@@ -43,6 +44,7 @@ class WebAppInterface(private val mContext: MainActivity) {
     }
 }
 */
+private const val REQUEST_CODE_PROMPT_PERMISSIONS = 2
 
 class MainActivity : AppCompatActivity() {
     // private var mWebView: AdvancedWebView? = null
@@ -53,20 +55,23 @@ class MainActivity : AppCompatActivity() {
     private var mGeckoEngine: GeckoEngine? = null
     private var mSessionManager: SessionManager? = null
     private var mEngineView: EngineView? = null
+    private var mPromptFeature: PromptFeature? = null
+    private var mPort: WebExtension.Port? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         if(mEngineView == null) {
-            val builder = GeckoRuntimeSettings.Builder().consoleOutput(true).remoteDebuggingEnabled(true)
+            val builder = GeckoRuntimeSettings.Builder().consoleOutput(true)
             mGeckoRuntime = GeckoRuntime.create(applicationContext, builder.build())
             val settings = DefaultSettings()
+            settings.remoteDebuggingEnabled = true
             settings.userAgentString = "Send Android"
             mGeckoEngine = GeckoEngine(applicationContext, settings, mGeckoRuntime!!)
             mSessionManager =
-                SessionManager(mGeckoEngine!!, defaultSession = { Session("http://fzzzy-send-gv.s3-website-us-west-2.amazonaws.com/android.html") })
+                SessionManager(mGeckoEngine!!)
             val sessionUseCases = SessionUseCases(mSessionManager!!)
-            val sessionId = "sendandroid"
+            val sessionId = "Send Android"
             mEngineView = mGeckoEngine!!.createView(applicationContext)
             mSessionFeature = SessionFeature(
                 mSessionManager!!,
@@ -75,7 +80,6 @@ class MainActivity : AppCompatActivity() {
                 sessionId
             )
             Log.e("DEBUG", "REGISTERWEBEXTENSION")
-            val result = GeckoResult<Void>()
 
             val portDelegate = object: WebExtension.PortDelegate {
                 override fun onPortMessage(source: WebExtension, message: Any, session: GeckoSession?) {
@@ -89,28 +93,37 @@ class MainActivity : AppCompatActivity() {
             }
 
             val messageDelegate = object : WebExtension.MessageDelegate {
-                var awaitingResponse = false
-                var completed = false
-
                 override fun onConnect(source: WebExtension, port: WebExtension.Port, session: GeckoSession?) {
                     Log.e("DEBUG", "onConnect")
+                    mPort = port
                     port.setDelegate(portDelegate)
                     port.postMessage(JSONObject("{\"message\": \"helloworld\"}"))
                 }
 
                 override fun onMessage(source: WebExtension, message: Any, session: GeckoSession?): GeckoResult<Any>? {
-                    Log.e("DEBUG", "onMessage")
-                    return GeckoResult.fromValue("MessageResponse")
+                    return GeckoResult.fromValue(Unit)
                 }
             }
-            mGeckoRuntime!!.registerWebExtension(WebExtension("resource://android/assets/send-android-comms-bridge/", "send-android-comms-bridge", messageDelegate)).then({
-                Log.e("DEBUG", "REGISTERCOMPLETE")
-                GeckoResult.fromValue(Unit)
-            })
+
+            mGeckoRuntime!!.registerWebExtension(WebExtension(
+                "resource://android/assets/send-android-comms-bridge/",
+                "send-android-comms-bridge",
+                messageDelegate)).then({
+                    Log.e("DEBUG", "REGISTERCOMPLETE")
+                    GeckoResult.fromValue(Unit)
+                })
             val initialSession = Session("http://fzzzy-send-gv.s3-website-us-west-2.amazonaws.com/android.html")
             mSessionManager!!.add(initialSession, selected = true)
             mEngineView!!.render(mSessionManager!!.getOrCreateEngineSession())
 
+            mPromptFeature = PromptFeature(
+                activity = this,
+                sessionManager = mSessionManager!!,
+                fragmentManager = supportFragmentManager,
+                onNeedToRequestPermissions = { permissions ->
+                    Log.e("DEBUG","onNeedToRequestPermissions")
+                    requestPermissions(permissions, REQUEST_CODE_PROMPT_PERMISSIONS)
+                })
             setContentView(R.layout.activity_main)
         }
 
@@ -130,6 +143,21 @@ class MainActivity : AppCompatActivity() {
                 mToShare = "data:text/plain;base64," + Base64.encodeToString(imageUri.path!!.toByteArray(), 16).trim()
             }
         }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        Log.e("DEBUG", "ONREQUESTPERMISSIONSRESULT")
+        when (requestCode) {
+            REQUEST_CODE_PROMPT_PERMISSIONS -> mPromptFeature!!.onPermissionsResult(permissions, grantResults)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        Log.e("DEBUG", "ONACTIVITYRESULT")
+        if (mPort != null) {
+            mPort!!.postMessage(JSONObject("{\"cmd\": \"checkFiles\"}"))
+        }
+        mPromptFeature!!.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onCreateView(parent: View?, name: String, context: Context, attrs: AttributeSet): View? {
@@ -161,12 +189,18 @@ class MainActivity : AppCompatActivity() {
         if (mSessionFeature != null) {
             mSessionFeature!!.start()
         }
+        if (mPromptFeature != null) {
+            mPromptFeature!!.start()
+        }
     }
 
     override fun onStop() {
         super.onStop()
         if (mSessionFeature != null) {
             mSessionFeature!!.stop()
+        }
+        if (mPromptFeature != null) {
+            mPromptFeature!!.stop()
         }
     }
 /*
