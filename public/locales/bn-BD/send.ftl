@@ -97,6 +97,7 @@ tooManyArchives =
         [one] কেবল ১টি আর্কাইভ অনুমোদিত।
        *[other] কেবল { $count } আর্কাইভ অনুমোদিত।
     }
+expiredTitle = এই লিঙ্কের মেয়াদ শেষ হয়ে গেছে।
 downloadFirefox = { -firefox } ডাউনলোড করুন
 legalTitle = { -send-short-brand } গোপনীয়তা নোটিশ
 legalDateStamp = সংস্করণ ১.০, ১২ মার্চ, ২০১৯ তারিখ
