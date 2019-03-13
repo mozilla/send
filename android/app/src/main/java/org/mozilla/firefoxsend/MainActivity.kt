@@ -66,17 +66,15 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
             }
         }
 
-        val action = intent.action
         val type = intent.type
-
-        if (Intent.ACTION_SEND == action && type != null) {
+        if (Intent.ACTION_SEND == intent.action && type != null) {
             if (type == "text/plain") {
                 val sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)
-                Log.d(TAG_INTENT, "text/plain " + sharedText)
+                Log.d(TAG_INTENT, "text/plain $sharedText")
                 mToShare = "data:text/plain;base64," + Base64.encodeToString(sharedText.toByteArray(), 16).trim()
             } else if (type.startsWith("image/")) {
                 val imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM) as Uri
-                Log.d(TAG_INTENT, "image/ " + imageUri)
+                Log.d(TAG_INTENT, "image/ $imageUri")
                 mToShare = "data:text/plain;base64," + Base64.encodeToString(imageUri.path.toByteArray(), 16).trim()
             }
         }
@@ -88,7 +86,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
             mAccount = FirefoxAccount(value, "20f7931c9054d833", "https://send.firefox.com/fxa/android-redirect.html")
             mAccount?.beginOAuthFlow(arrayOf("profile", "https://identity.mozilla.com/apps/send"), true)
                     ?.then { url ->
-                        Log.d(TAG_CONFIG, "GOT A URL " + url)
+                        Log.d(TAG_CONFIG, "GOT A URL $url")
                         this@MainActivity.runOnUiThread {
                             webView.loadUrl(url)
                         }
@@ -106,8 +104,9 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
             putExtra(Intent.EXTRA_TEXT, url)
         }
 
+        val components = arrayOf(ComponentName(applicationContext, MainActivity::class.java))
         val chooser = Intent.createChooser(shareIntent, "")
-                .putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayOf(ComponentName(applicationContext, MainActivity::class.java)))
+                .putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, components)
 
         startActivity(chooser)
     }
