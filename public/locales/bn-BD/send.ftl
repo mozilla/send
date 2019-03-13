@@ -78,7 +78,17 @@ fileCount =
         [one] ১টি ফাইল
        *[other] { $num }টি ফাইল
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = মোট আকার: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = আপনার ফাইল শেয়ার করতে লিঙ্ক অনুলিপি করুন:
@@ -110,15 +120,15 @@ uploadButton = আপলোড
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = ফাইল টেনে এনে ছাড়ুন
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = বা সর্বোচ্চ { $size } আকারের ফাইল পাঠাতে ক্লিক করুন
 addPassword = পাসওয়ার্ড দ্বারা সুরক্ষিত রাখুন
 emailPlaceholder = আপনার ইমেইল দিন
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = সর্বোচ্চ { $size } আকারের ফাইল প্রেরণ করতে সাইন ইন করুন
 signInButton = সাইন ইন/আপ
 accountBenefitTitle = { -firefox } অ্যাকাউন্ট তৈরি অথবা সাইন ইন করুন
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = সর্বোচ্চ { $size } আকারের ফাইল শেয়ার করুন
 accountBenefitDownloadCount = আরও মানুষের সাথে ফাইল শেয়ার করুন
 accountBenefitTimeLimit =
