@@ -51,9 +51,10 @@ describe('Firefox Send', function() {
     browser.waitForExist(downloadPage.downloadComplete);
     browser.back();
     browser.waitForExist('send-archive');
-    assert.equal(
-      browser.getText('send-archive > div:first-of-type').substring(0, 24),
-      'Expires after 1 download'
+    assert(
+      browser
+        .getText('send-archive > div:first-of-type')
+        .includes('Expires after 1 download')
     );
   });
 });
