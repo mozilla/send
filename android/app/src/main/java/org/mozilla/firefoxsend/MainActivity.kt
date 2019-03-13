@@ -1,6 +1,5 @@
 package org.mozilla.firefoxsend
 
-
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import im.delight.android.webview.AdvancedWebView
@@ -17,6 +16,7 @@ import android.view.View
 import android.webkit.ConsoleMessage
 import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
+import kotlinx.android.synthetic.main.activity_main.*
 import mozilla.components.service.fxa.Config
 import mozilla.components.service.fxa.FirefoxAccount
 import mozilla.components.service.fxa.Profile
@@ -43,7 +43,7 @@ class WebAppInterface(private val mContext: MainActivity) {
 }
 
 class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
-    private var mWebView: AdvancedWebView? = null
+
     private var mToShare: String? = null
     private var mToCall: String? = null
     private var mAccount: FirefoxAccount? = null
@@ -55,20 +55,21 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         // https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews
         // WebView.setWebContentsDebuggingEnabled(true); // TODO only dev builds
 
-        mWebView = findViewById<WebView>(R.id.webview) as AdvancedWebView
-        mWebView!!.setListener(this, this)
-        mWebView!!.setWebChromeClient(LoggingWebChromeClient())
-        mWebView!!.addJavascriptInterface(WebAppInterface(this), "Android")
-        mWebView!!.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        webView.apply {
+            setListener(this@MainActivity, this@MainActivity)
+            addJavascriptInterface(WebAppInterface(this@MainActivity), JS_INTERFACE_NAME)
+            setLayerType(View.LAYER_TYPE_HARDWARE, null)
+            webChromeClient = LoggingWebChromeClient()
 
-        val webSettings = mWebView!!.getSettings()
-        webSettings.setUserAgentString("Send Android")
-        webSettings.setAllowUniversalAccessFromFileURLs(true)
-        webSettings.setJavaScriptEnabled(true)
+            settings.apply {
+                userAgentString = "Send Android"
+                allowUniversalAccessFromFileURLs = true
+                javaScriptEnabled = true
+            }
+        }
 
-        val intent = getIntent()
-        val action = intent.getAction()
-        val type = intent.getType()
+        val action = intent.action
+        val type = intent.type
 
         if (Intent.ACTION_SEND.equals(action) && type != null) {
             if (type.equals("text/plain")) {
@@ -81,8 +82,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                 mToShare = "data:text/plain;base64," + Base64.encodeToString(imageUri.path.toByteArray(), 16).trim()
             }
         }
-        mWebView!!.loadUrl("file:///android_asset/android.html")
-
+        webView.loadUrl("file:///android_asset/android.html")
     }
 
     fun beginOAuthFlow() {
@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
             mAccount?.beginOAuthFlow(arrayOf("profile", "https://identity.mozilla.com/apps/send"), true)?.then(fun (url: String): FxaResult<Unit> {
                 Log.w("CONFIG", "GOT A URL " + url)
                 this@MainActivity.runOnUiThread({
-                    mWebView!!.loadUrl(url)
+                    webView.loadUrl(url)
                 })
                 return FxaResult.fromValue(Unit)
             })
@@ -113,31 +113,31 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
     @SuppressLint("NewApi")
     override fun onResume() {
         super.onResume()
-        mWebView!!.onResume()
+        webView.onResume()
         // ...
     }
 
     @SuppressLint("NewApi")
     override fun onPause() {
-        mWebView!!.onPause()
+        webView.onPause()
         // ...
         super.onPause()
     }
 
     override fun onDestroy() {
-        mWebView!!.onDestroy()
+        webView.onDestroy()
         // ...
         super.onDestroy()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
-        mWebView!!.onActivityResult(requestCode, resultCode, intent)
+        webView.onActivityResult(requestCode, resultCode, intent)
         // ...
     }
 
     override fun onBackPressed() {
-        if (!mWebView!!.onBackPressed()) {
+        if (!webView.onBackPressed()) {
             return
         }
         // ...
@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
     override fun onPageStarted(url: String, favicon: Bitmap?) {
         if (url.startsWith("https://send.firefox.com/fxa/android-redirect.html")) {
             // We load this here so the user doesn't see the android-redirect.html page
-            mWebView!!.loadUrl("file:///android_asset/android.html")
+            webView.loadUrl("file:///android_asset/android.html")
 
             val parsed = Uri.parse(url)
             val code = parsed.getQueryParameter("code")
@@ -169,11 +169,11 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                             this@MainActivity.runOnUiThread({
                                 // Clear the history so that the user can't use the back button to see broken pages
                                 // that were inserted into the history by the login process.
-                                mWebView!!.clearHistory()
+                                webView.clearHistory()
 
                                 // We also reload this here because we need to make sure onPageFinished runs after mToCall has been set.
                                 // We can't guarantee that onPageFinished wasn't already called at this point.
-                                mWebView!!.loadUrl("file:///android_asset/android.html")
+                                webView.loadUrl("file:///android_asset/android.html")
                             })
 
 
@@ -191,12 +191,12 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         if (mToShare != null) {
             Log.w("INTENT", mToShare)
 
-            mWebView?.postWebMessage(WebMessage(mToShare), Uri.EMPTY)
+            webView.postWebMessage(WebMessage(mToShare), Uri.EMPTY)
             mToShare = null
         }
         if (mToCall != null) {
             this@MainActivity.runOnUiThread({
-                mWebView?.evaluateJavascript(mToCall, fun (value: String) {
+                webView.evaluateJavascript(mToCall, fun (value: String) {
                     mToCall = null
                 })
             })
@@ -215,4 +215,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         Log.w("MAIN", "onExternalPageRequest")
     }
 
+    companion object {
+        private const val JS_INTERFACE_NAME = "Android"
+    }
 }
