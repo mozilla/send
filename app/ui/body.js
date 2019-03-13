@@ -4,7 +4,15 @@ const Header = require('./header');
 const Footer = require('./footer');
 
 function banner(state) {
-  if (state.promo && !state.route.startsWith('/unsupported/')) {
+  if (state.layout) {
+    return; // server side
+  }
+  const show =
+    !state.capabilities.standalone &&
+    !/firefox/i.test(navigator.userAgent) &&
+    document.querySelector('html').lang.startsWith('en') &&
+    !state.route.startsWith('/unsupported/');
+  if (show) {
     return state.cache(Promo, 'promo').render();
   }
 }

@@ -27,7 +27,8 @@ class Promo extends Component {
             <a
               class="text-blue"
               href="https://www.mozilla.org/firefox/new/?utm_campaign=send-acquisition&utm_medium=referral&utm_source=send.firefox.com"
-              >Download Firefox now ≫</a
+            >
+              Download Firefox now ≫</a
             >
           </span>
         </div>

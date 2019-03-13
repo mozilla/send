@@ -93,6 +93,10 @@ export default async function getCapabilities() {
   const share =
     typeof navigator.share === 'function' && LOCALE.startsWith('en'); // en until strings merge
 
+  const standalone =
+    window.matchMedia('(display-mode: standalone)').matches ||
+    navigator.standalone;
+
   return {
     account,
     crypto,
@@ -101,6 +105,7 @@ export default async function getCapabilities() {
     streamDownload:
       nativeStreams && serviceWorker && browserName() !== 'safari',
     multifile: nativeStreams || polyStreams,
-    share
+    share,
+    standalone
   };
 }
