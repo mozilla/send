@@ -76,7 +76,17 @@ fileCount =
         [one] 1 个文件
        *[other] { $num } 个文件
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = 总大小：{ $size }
 # the next line after the colon contains a file name
 copyLinkDescription = 复制链接以分享文件：
@@ -107,15 +117,15 @@ uploadButton = 上传
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = 拖放文件
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = 或点此传送最大 { $size } 的文件
 addPassword = 密码保护
 emailPlaceholder = 请输入您的电子邮件地址
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = 登录以传送最大 { $size } 文件
 signInButton = 登录 / 注册
 accountBenefitTitle = 创建一个 { -firefox } 账户或登录
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = 分享最大 { $size } 文件
 accountBenefitDownloadCount = 与更多人分享文件
 accountBenefitTimeLimit =
