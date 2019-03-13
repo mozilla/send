@@ -74,7 +74,17 @@ fileCount =
         [one] 1 ficheiro
        *[other] { $num } ficheiros
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Tamanho total: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Copie a ligação para partilhar o seu ficheiro:
@@ -106,15 +116,15 @@ uploadButton = Carregar
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Arraste e largue ficheiros
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = ou clique para enviar até { $size }
 addPassword = Proteger com palavra-passe
 emailPlaceholder = Introduzir o seu email
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Iniciar sessão para enviar até { $size }
 signInButton = Iniciar sessão/registar
 accountBenefitTitle = Crie uma Conta { -firefox } ou inicie sessão
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Partilhe ficheiros até { $size }
 accountBenefitDownloadCount = Partilhe ficheiros com mais pessoas
 accountBenefitTimeLimit =
