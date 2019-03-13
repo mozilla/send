@@ -54,10 +54,10 @@ passwordSetError = Essa senha não pôde ser definida
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Compartilhamento de arquivos fácil e privativo
-introDescription = { -send-brand } permite compartilhar arquivos com criptografia ponto a ponto e um link que expira automaticamente. Assim você pode manter o que compartilha privativo e ter certeza que suas coisas não fiquem online para sempre.
+introDescription = O { -send-brand } permite compartilhar arquivos com criptografia ponto a ponto e um link que expira automaticamente. Assim você pode manter o que compartilha privativo e ter certeza que suas coisas não ficarão online para sempre.
 notifyUploadEncryptDone = Seu arquivo foi criptografado e está pronto para ser enviado
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
-archiveExpiryInfo = Expira após { $downloadCount } ou { $timespan }
+archiveExpiryInfo = Expirar após { $downloadCount } ou { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 minuto
@@ -78,7 +78,17 @@ fileCount =
         [one] 1 arquivo
        *[other] { $num } arquivos
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Tamanho total: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Copie o link para compartilhar seu arquivo:
@@ -110,15 +120,15 @@ uploadButton = Enviar
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Arraste e solte arquivos
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = ou clique para enviar até { $size }
 addPassword = Proteger com senha
 emailPlaceholder = Informe seu e-mail
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Entre na sua conta para enviar até { $size }
 signInButton = Entrar / Cadastrar-se
 accountBenefitTitle = Crie uma Conta { -firefox } ou entre na sua conta
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Compartilhe arquivos até { $size }
 accountBenefitDownloadCount = Compartilhe arquivos com mais pessoas
 accountBenefitTimeLimit =
