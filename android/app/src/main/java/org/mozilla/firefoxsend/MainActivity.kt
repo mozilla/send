@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
     private var mToCall: String? = null
     private var mAccount: FirefoxAccount? = null
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
