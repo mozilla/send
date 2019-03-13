@@ -35,8 +35,13 @@ if (process.env.NODE_ENV === 'production') {
     return window.location.assign('/unsupported/crypto');
   }
   if (capabilities.serviceWorker) {
-    await navigator.serviceWorker.register('/serviceWorker.js');
-    await navigator.serviceWorker.ready;
+    try {
+      await navigator.serviceWorker.register('/serviceWorker.js');
+      await navigator.serviceWorker.ready;
+    } catch (e) {
+      // continue but disable streaming downloads
+      capabilities.streamDownload = false;
+    }
   }
 
   const translate = await getTranslator(LOCALE);
