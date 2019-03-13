@@ -17,6 +17,7 @@ import './main.css';
 import User from './user';
 import { getTranslator } from './locale';
 import Archive from './archive';
+import { setTranslate } from './utils';
 
 if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
   Raven.config(window.SENTRY_ID, window.RAVEN_CONFIG).install();
@@ -45,6 +46,7 @@ if (process.env.NODE_ENV === 'production') {
   }
 
   const translate = await getTranslator(LOCALE);
+  setTranslate(translate);
   window.initialState = {
     LIMITS,
     DEFAULTS,
