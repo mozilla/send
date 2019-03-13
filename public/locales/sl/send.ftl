@@ -106,7 +106,15 @@ fileCount =
         [few] { $num } datoteke
        *[other] { $num } datotek
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Skupna velikost: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Kopirajte povezavo za deljenje datoteke:
@@ -142,15 +150,15 @@ uploadButton = Naloži
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Povlecite in spustite datoteke
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = ali kliknite za pošiljanje do { $size }
 addPassword = Zaščiti z geslom
 emailPlaceholder = Vnesite e-poštni naslov
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Prijavite se za pošiljanje do { $size }
 signInButton = Prijava/Registracija
 accountBenefitTitle = Ustvarite { -firefox } Račun ali se prijavite
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Delite datoteke do velikosti { $size }
 accountBenefitDownloadCount = Delite datoteke z več osebami
 accountBenefitTimeLimit =
