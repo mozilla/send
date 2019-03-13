@@ -74,7 +74,17 @@ fileCount =
         [one] 1 dosya
        *[other] { $num } dosya
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num } { $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Toplam boyut: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Dosyanızı paylaşmak için bağlantıyı kopyalayın:
@@ -106,15 +116,15 @@ uploadButton = Yükle
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Dosyaları sürükleyip bırakarak
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = veya buraya tıklayarak { $size }’ye kadar dosyalarınızı gönderebilirsiniz
 addPassword = Parola koruması ekle
 emailPlaceholder = E-posta adresinizi yazın
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = { $size }’ye kadar dosya göndermek için giriş yapın
 signInButton = Giriş yap/kaydol
 accountBenefitTitle = { -firefox } Hesabı açın veya giriş yapın
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = { $size } boyutlu dosyaları paylaşma
 accountBenefitDownloadCount = Daha fazla kişiyle dosya paylaşma
 accountBenefitTimeLimit =
