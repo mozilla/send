@@ -24,7 +24,7 @@ module.exports = function(req, res, next) {
     req.language = 'en-US';
     return next();
   }
-  const langs = header.replace(/\s/g, '').match(acceptLanguages);
+  const langs = header.replace(/\s/g, '').match(acceptLanguages) || ['en-US'];
   const preferred = langs
     .map(l => {
       const parts = l.split(';');
