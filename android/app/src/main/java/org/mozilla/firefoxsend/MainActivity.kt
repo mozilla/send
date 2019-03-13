@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
                 GeckoResult.fromValue(Unit)
             })
-            val initialUrl = "http://10.0.1.16/android.html?" + LocalDateTime.now()
+            val initialUrl = " http://fzzzy-send-gv.s3-website-us-west-2.amazonaws.com/android.html?" + LocalDateTime.now()
             val initialSession = Session(initialUrl)
             initialSession.register(object: Session.Observer {
                 override fun onLoadingStateChanged(session: Session, loading: Boolean) {
