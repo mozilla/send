@@ -35,8 +35,7 @@ jobs:
           path: coverage
   integration_tests:
     docker:
-      - image: circleci/node:10
-      - image: selenium/standalone-firefox
+      - image: circleci/node:10-browsers
     steps:
       - checkout
       - restore_cache:
@@ -46,7 +45,9 @@ jobs:
           key: send-int-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
-      - run: npm run circleci-test-integration
+      - run: 
+          name: Run integration test
+          command: ./scripts/bin/run-integration-test-circleci.sh
   deploy_dev:
     machine: true
     steps:
