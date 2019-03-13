@@ -44,7 +44,7 @@ expiresHoursMinutes = { $hours } val. { $minutes } min.
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes } min.
 # A short status message shown when the user enters a long password
-maxPasswordLength = Didžiausias leistinas slaptažodžio ilgis: { $length } simb.
+maxPasswordLength = Didžiausias leistinas slaptažodžio ilgis: { $length } simb.
 # A short status message shown when there was an error setting the password
 passwordSetError = Slaptažodžio nustatyti nepavyko
 
@@ -70,20 +70,20 @@ notifyUploadEncryptDone = Failas užšifruotas ir parengtas išsiuntimui
 archiveExpiryInfo = Nustos galioti parsisiuntus { $downloadCount } arba po { $timespan }
 timespanMinutes =
     { $num ->
-        [one] { $num } minutė
-        [few] { $num } minutės
+        [one] { $num } minutės
+        [few] { $num } minučių
        *[other] { $num } minučių
     }
 timespanDays =
     { $num ->
-        [one] { $num } diena
-        [few] { $num } dienos
+        [one] { $num } dienos
+        [few] { $num } dienų
        *[other] { $num } dienų
     }
 timespanWeeks =
     { $num ->
-        [one] { $num } savaitė
-        [few] { $num } savaitės
+        [one] { $num } savaitės
+        [few] { $num } savaičių
        *[other] { $num } savaičių
     }
 fileCount =
@@ -92,7 +92,17 @@ fileCount =
         [few] { $num } failai
        *[other] { $num } failų
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = kB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num } { $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Bendras dydis: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Nukopijuokite saitą, jeigu norite pasidalinti failu:
@@ -126,15 +136,15 @@ uploadButton = Įkelti
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Užtempkite ir numeskite failus čia
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = arba spustelėkite mygtuką ir dalinkitės failais iki { $size }
 addPassword = Apsaugoti slaptažodžiu
 emailPlaceholder = Įveskite savo el. pašto adresą
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Prisijunkite, jeigu norite siųsti iki { $size }
 signInButton = Prisijungti / registruotis
 accountBenefitTitle = Susikurkite „{ -firefox }“ paskyrą arba prisijunkite
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Dalinkitės iki { $size } dydžio failais
 accountBenefitDownloadCount = Dalinkitės su daugiau žmonių
 accountBenefitTimeLimit =
