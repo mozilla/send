@@ -5,8 +5,11 @@
 
   document.body.style.border = '5px solid red';
   window.addEventListener('message', function(event) {
+    console.log('bridge', JSON.stringify(event.data));
     if (event.source === window && event.data) {
-      console.error('Content script received message: "' + event.data + '"');
+      console.error(
+        'Content script received message: "' + JSON.stringify(event.data) + '"'
+      );
       port.postMessage(event.data);
     }
   });
@@ -22,9 +25,6 @@
       window.postMessage(response, '*');
     }
     if (response.cmd === 'finishLogin') {
-      response.keys = {
-        'https://identity.mozilla.com/apps/send': response.key
-      };
       window.postMessage(response, '*');
     }
     console.error(`Received: ${JSON.stringify(response)}`);

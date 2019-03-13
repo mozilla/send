@@ -41,20 +41,20 @@ if (navigator.userAgent === 'Send Android') {
     console.error('SHAREURL');
     window.postMessage({ cmd: 'shareUrl', url }, '*');
   };
+
+  window.finishLogin = async function(accountInfo) {
+    while (!(app.state && app.state.user)) {
+      await delay();
+    }
+    await app.state.user.finishLogin(accountInfo);
+    await app.state.user.syncFileList();
+    app.emitter.emit('replaceState', '/');
+  };
 }
 
 //app.use(state);
 app.use(controller);
 app.use(intents);
-
-window.finishLogin = async function(accountInfo) {
-  while (!(app.state && app.state.user)) {
-    await delay();
-  }
-  await app.state.user.finishLogin(accountInfo);
-  await app.state.user.syncFileList();
-  app.emitter.emit('replaceState', '/');
-};
 
 function body(main) {
   return function(state, emit) {

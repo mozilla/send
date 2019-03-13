@@ -7,7 +7,7 @@
 
   "content_scripts": [
     {
-      "matches": ["http://172.20.10.2/*"],
+      "matches": ["http://10.0.1.16/*"],
       "js": ["send-android-comms-bridge.js"]
     }
   ],

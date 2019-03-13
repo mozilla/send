@@ -30,9 +30,8 @@ import mozilla.components.service.fxa.Config
 import mozilla.components.service.fxa.FirefoxAccount
 import org.json.JSONObject
 import org.mozilla.geckoview.*
-import org.mozilla.gecko.Clipboard.setText
-import android.os.CountDownTimer
 
+import java.time.LocalDateTime
 
 
 const val REQUEST_CODE_PROMPT_PERMISSIONS = 2
@@ -140,7 +139,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
                 GeckoResult.fromValue(Unit)
             })
-            val initialUrl = "http://172.20.10.2/android.html"
+            val initialUrl = "http://10.0.1.16/android.html?" + LocalDateTime.now()
             val initialSession = Session(initialUrl)
             initialSession.register(object: Session.Observer {
                 override fun onLoadingStateChanged(session: Session, loading: Boolean) {
@@ -155,17 +154,28 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                         val state = parsed.getQueryParameter("state")
 
                         launch {
+                            var avatar = ""
+                            var kty = ""
+                            var k = ""
+                            var kid = ""
                             mAccount!!.completeOAuthFlow(code!!, state!!).await()
                             val profile = mAccount!!.getProfile().await()
+                            profile.avatar?.let { avatar = it.url }
                             val token = mAccount!!.getAccessToken("https://identity.mozilla.com/apps/send").await()
-                            val accessToken = token.token
-                            val key = token.key
-                            val avatar = profile.avatar
-                            val displayName = profile.displayName
-                            val email = profile.email
-                            val uid = profile.uid
-                            val toPass = "{\"cmd\": \"finishLogin\", \"accessToken\": \"${accessToken}\", \"key\": '${key}', \"avatar\": \"${avatar}\", \"displayName\": \"${displayName}\", \"email\": \"${email}\", \"uid\": \"${uid}\"}"
-
+                            token.key?.let {
+                                kty = it.kty
+                                k = it.k
+                                kid = it.kid
+                            }
+                            val toPass = "{\"cmd\": \"finishLogin\", \"displayName\": \"" + profile.displayName +
+                                    "\", \"uid\": \"" + profile.uid +
+                                    "\", \"avatar\": \"" + avatar +
+                                    "\", \"email\": \"" + profile.email +
+                                    "\", \"accessToken\": \"" + token.token +
+                                    "\", \"keys\": {\"https://identity.mozilla.com/apps/send\": {\"kty\": \"" + kty +
+                                    "\", \"scope\": \"https://identity.mozilla.com/apps/send\", \"k\": \"" + k +
+                                    "\", \"kid\": \"" + kid + "\"}}}"
+                            Log.e("DEBUG", "toPass"+toPass)
                             MainActivity.mPort!!.postMessage(JSONObject(toPass))
                         }
                     }
