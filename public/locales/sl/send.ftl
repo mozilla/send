@@ -114,6 +114,8 @@ kb = KB
 mb = MB
 # gibibyte abbreviation
 gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num } { $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Skupna velikost: { $size }
 # the next line after the colon contains a file name
