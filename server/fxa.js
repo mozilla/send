@@ -9,13 +9,17 @@ async function getFxaConfig() {
   if (fxaConfig && Date.now() - lastConfigRefresh < 1000 * 60 * 5) {
     return fxaConfig;
   }
-  const res = await fetch(
-    `${config.fxa_url}/.well-known/openid-configuration`,
-    { timeout: 3000 }
-  );
-  fxaConfig = await res.json();
-  fxaConfig.key_scope = KEY_SCOPE;
-  lastConfigRefresh = Date.now();
+  try {
+    const res = await fetch(
+      `${config.fxa_url}/.well-known/openid-configuration`,
+      { timeout: 3000 }
+    );
+    fxaConfig = await res.json();
+    fxaConfig.key_scope = KEY_SCOPE;
+    lastConfigRefresh = Date.now();
+  } catch (e) {
+    // continue with previous fxaConfig
+  }
   return fxaConfig;
 }
 
