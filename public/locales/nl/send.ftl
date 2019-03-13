@@ -78,7 +78,17 @@ fileCount =
         [one] 1 bestand
        *[other] { $num } bestanden
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num } { $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Totale grootte: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Kopieer de koppeling om uw bestand te delen:
@@ -110,15 +120,15 @@ uploadButton = Uploaden
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Versleep bestanden
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = of klik om tot { $size } te versturen
 addPassword = Beveiligen met wachtwoord
 emailPlaceholder = Voer uw e-mailadres in
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Meld u aan om tot { $size } te versturen
 signInButton = Aanmelden/Registreren
 accountBenefitTitle = Maak een { -firefox }-account of meld u aan
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Bestanden tot { $size } delen
 accountBenefitDownloadCount = Bestanden met meerdere personen delen
 accountBenefitTimeLimit =
