@@ -21,7 +21,7 @@ Adapted from [this spreadsheet](https://airtable.com/shrkcBPOLkvNFOrpp)
 - [ ] It should allow users to select and send multiple files in one URL
 - [ ] It should limit the sendable file size to 1GB
 - [ ] It should allow users to set an expiration time of 5 minutes, 1 hour, or 24 hours
-- [ ] It should allow users to set an download count of 1 downloads
+- [ ] It should allow users to set a download count of 1 downloads
 
 ### Authenticated Users
 - [ ] It should indicate that the user is signed in via Firefox Account
@@ -63,8 +63,8 @@ This document tracks differences between the UX spec for Firefox Send and the in
 
 [Spec Link](https://mozilla.invisionapp.com/share/GNN6KKOQ5XS)
 
-* 1.1: Spec describes toolbar which may not be possible given the application framework we're using. In particular, issues with the spec include the color, logo and different font weights may be at issue.
-* 1.2: Spec's treatment of FxA UI may be difficult to match. We should use the default OAuth implementation and re-evaluate UX once we see an implementation demo. Also, the landing page UI should display a log-in CTA directly and not require users click into the the hamburger menu.
+* 1.1: Spec describes toolbar which may not be possible given the application framework we're using. In particular, issues with the spec include the color, logo and different font weights may be an issue.
+* 1.2: Spec's treatment of FxA UI may be difficult to match. We should use the default OAuth implementation and re-evaluate UX once we see an implementation demo. Also, the landing page UI should display a log-in CTA directly and not require users click into the hamburger menu.
 * 2.1: MVP will only include file picker. Signed in users will be able to select multiple files. File selection flow will be Android-native. Probably don't have the ability to add notifications as in the last screen on this page.
 * 2.1: @fzzzy will provide screenshots of this flow for UX evaluation and comment.
 * 3.1.4: The spec shows deleting the last item in an unshared set returning the user to the picker menu. Instead, it should return to the app home page.
