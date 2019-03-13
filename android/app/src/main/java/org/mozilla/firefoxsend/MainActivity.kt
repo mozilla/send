@@ -1,5 +1,11 @@
 package org.mozilla.firefoxsend
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+
 import android.content.ComponentName
 import android.os.Bundle
 import android.content.Intent
@@ -20,36 +26,22 @@ import mozilla.components.concept.engine.DefaultSettings
 import mozilla.components.browser.engine.gecko.GeckoEngine
 import mozilla.components.concept.engine.EngineView
 import mozilla.components.feature.prompts.PromptFeature
+import mozilla.components.service.fxa.Config
+import mozilla.components.service.fxa.FirefoxAccount
 import org.json.JSONObject
 import org.mozilla.geckoview.*
+import org.mozilla.gecko.Clipboard.setText
+import android.os.CountDownTimer
 
 
-/*
-internal class LoggingWebChromeClient : WebChromeClient() {
-    override fun onConsoleMessage(cm: ConsoleMessage): Boolean {
-        Log.w("CONTENT", String.format("%s @ %d: %s",
-                cm.message(), cm.lineNumber(), cm.sourceId()))
-        return true
-    }
-}
 
-// TODO Replace with geckoview equivalent
-class WebAppInterface(private val mContext: MainActivity) {
-    @JavascriptInterface
-    fun beginOAuthFlow() {
-        mContext.beginOAuthFlow();
-    }
+const val REQUEST_CODE_PROMPT_PERMISSIONS = 2
 
-    @JavascriptInterface
-    fun shareUrl(url: String) {
-        mContext.shareUrl(url)
-    }
-}
-*/
-private const val REQUEST_CODE_PROMPT_PERMISSIONS = 2
+class MainActivity : AppCompatActivity(), CoroutineScope {
+    private lateinit var mJob: Job
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + mJob
 
-class MainActivity : AppCompatActivity() {
-    // private var mWebView: AdvancedWebView? = null
     companion object {
         var mToShare: String? = null
         var mToCall: String? = null
@@ -62,11 +54,13 @@ class MainActivity : AppCompatActivity() {
         var mPort: WebExtension.Port? = null
         var mInitialized = false
         var mWebExtensionRegistered = false
+        var mAccount: FirefoxAccount? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        mJob = Job()
         if(!MainActivity.mInitialized) {
             MainActivity.mInitialized = true
             val builder = GeckoRuntimeSettings.Builder().consoleOutput(true)
@@ -88,6 +82,7 @@ class MainActivity : AppCompatActivity() {
             )
 
 
+
             val portDelegate = object: WebExtension.PortDelegate {
                 override fun onPortMessage(source: WebExtension, message: Any, session: GeckoSession?) {
                     Log.e("DEBUG", "onPortMessage" + message)
@@ -102,7 +97,11 @@ class MainActivity : AppCompatActivity() {
                                 val chooser = Intent.createChooser(shareIntent, "")
                                 chooser.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayOf(ComponentName(applicationContext, MainActivity::class.java)))
                                 startActivity(chooser)
-                                1                            }
+                            }
+                        }
+                        if (message.get("cmd") == "beginOAuthFlow") {
+                            Log.e("DEBUG", "beginOAuthFlow")
+                            beginOAuthFlow()
                         }
                     }
                 }
@@ -141,8 +140,37 @@ class MainActivity : AppCompatActivity() {
 
                 GeckoResult.fromValue(Unit)
             })
+            val initialUrl = "http://172.20.10.2/android.html"
+            val initialSession = Session(initialUrl)
+            initialSession.register(object: Session.Observer {
+                override fun onLoadingStateChanged(session: Session, loading: Boolean) {
+                    super.onLoadingStateChanged(session, loading)
+                    Log.e("DEBUG", "onLoadingStateChanged "+loading+" "+session.url)
+                    if (!loading && session.url.startsWith(
+                            "https://send.firefox.com/fxa/android-redirect.html")) {
+                        MainActivity.mSessionManager!!.getOrCreateEngineSession().loadUrl(initialUrl)
+                        Log.e("DEBUG", "LOADING IT!!!!")
+                        val parsed = Uri.parse(session.url)
+                        val code = parsed.getQueryParameter("code")
+                        val state = parsed.getQueryParameter("state")
 
-            val initialSession = Session("http://172.20.10.2/android.html?5")
+                        launch {
+                            mAccount!!.completeOAuthFlow(code!!, state!!).await()
+                            val profile = mAccount!!.getProfile().await()
+                            val token = mAccount!!.getAccessToken("https://identity.mozilla.com/apps/send").await()
+                            val accessToken = token.token
+                            val key = token.key
+                            val avatar = profile.avatar
+                            val displayName = profile.displayName
+                            val email = profile.email
+                            val uid = profile.uid
+                            val toPass = "{\"cmd\": \"finishLogin\", \"accessToken\": \"${accessToken}\", \"key\": '${key}', \"avatar\": \"${avatar}\", \"displayName\": \"${displayName}\", \"email\": \"${email}\", \"uid\": \"${uid}\"}"
+
+                            MainActivity.mPort!!.postMessage(JSONObject(toPass))
+                        }
+                    }
+                }
+            })
             MainActivity.mSessionManager!!.add(initialSession, selected = true)
 
             MainActivity.mPromptFeature = PromptFeature(
@@ -231,6 +259,27 @@ class MainActivity : AppCompatActivity() {
         if (MainActivity.mPromptFeature != null) {
             MainActivity.mPromptFeature!!.stop()
         }
+    }
+
+    fun beginOAuthFlow() {
+        val config = Config.release("20f7931c9054d833", "https://send.firefox.com/fxa/android-redirect.html")
+        mAccount = FirefoxAccount(config)
+        launch {
+            val url = mAccount!!.beginOAuthFlow(arrayOf("profile", "https://identity.mozilla.com/apps/send"), true).await()
+            Log.e("DEBUG", "login" + url)
+            MainActivity.mSessionManager!!.getOrCreateEngineSession().loadUrl(url)
+            Log.e("DEBUG", "called")
+
+            //openWebView(url)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (mAccount != null) {
+            mAccount!!.close()
+        }
+        mJob.cancel()
     }
 /*
     fun beginOAuthFlow() {

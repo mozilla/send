@@ -18,10 +18,13 @@
       port.postMessage('we got the first message');
       first = false;
     }
-    if (response.cmd === 'finishLogin') {
-      window.finishLogin(response.accountInfo);
-    }
     if (response.cmd === 'incomingShare') {
+      window.postMessage(response, '*');
+    }
+    if (response.cmd === 'finishLogin') {
+      response.keys = {
+        'https://identity.mozilla.com/apps/send': response.key
+      };
       window.postMessage(response, '*');
     }
     console.error(`Received: ${JSON.stringify(response)}`);
