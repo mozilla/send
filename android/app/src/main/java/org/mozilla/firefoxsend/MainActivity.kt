@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import mozilla.components.service.fxa.Config
 import mozilla.components.service.fxa.FirefoxAccount
 import mozilla.components.service.fxa.FxaResult
-import mozilla.components.service.fxa.Profile
+import org.json.JSONObject
 
 internal class LoggingWebChromeClient : WebChromeClient() {
     override fun onConsoleMessage(cm: ConsoleMessage): Boolean {
@@ -143,20 +143,19 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
             // We load this here so the user doesn't see the android-redirect.html page
             webView.loadUrl("file:///android_asset/android.html")
 
-            val parsed = Uri.parse(url)
-            parsed.getQueryParameter("code")?.let { code ->
-                parsed.getQueryParameter("state")?.let { state ->
+            val uri = Uri.parse(url)
+            uri.getQueryParameter("code")?.let { code ->
+                uri.getQueryParameter("state")?.let { state ->
                     mAccount?.completeOAuthFlow(code, state)?.whenComplete { info ->
-                        //displayAndPersistProfile(code, state)
-                        val profile = mAccount?.getProfile(false)?.then(fun (profile: Profile): FxaResult<Unit> {
-                            val accessToken = info.accessToken
-                            val keys = info.keys
-                            val avatar = profile.avatar
-                            val displayName = profile.displayName
-                            val email = profile.email
-                            val uid = profile.uid
-                            val toPass = "{\"accessToken\": \"$accessToken\", \"keys\": '$keys', \"avatar\": \"$avatar\", \"displayName\": \"$displayName\", \"email\": \"$email\", \"uid\": \"$uid\"}"
-                            mToCall = "finishLogin($toPass)"
+                        mAccount?.getProfile(false)?.then { profile ->
+                            val profileJsonPayload = JSONObject()
+                                    .put("accessToken", info.accessToken)
+                                    .put("keys", info.keys)
+                                    .put("avatar", profile.avatar)
+                                    .put("displayName", profile.displayName)
+                                    .put("email", profile.email)
+                                    .put("uid", profile.uid).toString()
+                            mToCall = "finishLogin($profileJsonPayload)"
                             this@MainActivity.runOnUiThread {
                                 // Clear the history so that the user can't use the back button to see broken pages
                                 // that were inserted into the history by the login process.
@@ -166,10 +165,8 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                                 // We can't guarantee that onPageFinished wasn't already called at this point.
                                 webView.loadUrl("file:///android_asset/android.html")
                             }
-
-
-                            return FxaResult.fromValue(Unit)
-                        })
+                            FxaResult.fromValue(Unit)
+                        }
                     }
                 }
             }
