@@ -21,7 +21,7 @@ Send use 128-bit AES-GCM encryption via the [Web Crypto API](https://developer.m
 1. The browser loads the share url page, which includes an authentication nonce
 2. The browser imports the secret key from the url fragment
 3. The same 3 keys as above are derived
-4. The browser signs the nonce with it's signing key and requests the metadata
+4. The browser signs the nonce with its signing key and requests the metadata
 5. The encrypted metadata is decrypted and presented on the page
 6. The browser makes another authenticated request to download the encrypted file
 7. The browser downloads and decrypts the file
