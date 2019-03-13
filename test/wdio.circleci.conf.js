@@ -9,7 +9,7 @@ Config for running selenium from a circleci docker container against localhost
 /*/
 
 exports.config = Object.assign({}, common.config, {
-  baseUrl: `http://${ip.address()}:8080`,
+  baseUrl: `http://${ip.address()}:8000`,
   maxInstances: 1,
   bail: 1,
   services: [require('./testServer'), 'selenium-standalone']
