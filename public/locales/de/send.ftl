@@ -54,7 +54,7 @@ passwordSetError = Dieses Passwort konnte nicht eingerichtet werden
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Einfach und privat Dateien versenden
-introDescription = Mit { -send-brand } kannst du Dateien sicher mit anderen teilen – mit End-to-End-Verschlüsselung und einem Freigabe-Link, der automatisch abläuft. So bleiben deine geteilten Inhalte privat und du kannst sicherstellen, dass deine Daten nicht für immer online bleiben.
+introDescription = Mit { -send-brand } kannst du Dateien sicher mit anderen teilen – mit End-to-End-Verschlüsselung und einem Freigabe-Link, der automatisch abläuft. So bleiben deine geteilten Inhalte privat und du kannst sicherstellen, dass deine Daten nicht für immer im Web herumschwirren.
 notifyUploadEncryptDone = Deine Datei ist verschlüsselt und zum Senden bereit
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Läuft ab nach { $downloadCount } oder { $timespan }
@@ -118,30 +118,30 @@ expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Dateien zum Hochladen auswählen
 uploadButton = Hochladen
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
-dragAndDropFiles = Dateien ziehen und ablegen
+dragAndDropFiles = Dateien per Drag & Drop einfügen
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = oder klicken, um bis zu { $size } zu senden
 addPassword = Mit Passwort schützen
-emailPlaceholder = Geben Sie Ihre E-Mail-Adresse ein
+emailPlaceholder = E-Mail-Adresse eingeben
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-signInSizeBump = Melden Sie sich an, um Dateien bis { $size } zu senden
+signInSizeBump = Melde dich an, um Dateien bis { $size } zu senden
 signInButton = Anmelden/Registrieren
-accountBenefitTitle = Erstellen Sie ein { -firefox }-Konto oder melden Sie sich an
+accountBenefitTitle = Erstelle ein { -firefox }-Konto oder melde dich an
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Dateien bis zu { $size } teilen
-accountBenefitDownloadCount = Teilen Sie Dateien mit anderen Menschen
+accountBenefitDownloadCount = Teile Dateien mit weiteren Leuten
 accountBenefitTimeLimit =
     { $count ->
         [one] Link bis zu einen Tag lang aktiv halten
        *[other] Link bis zu { $count } Tage lang aktiv halten
     }
 accountBenefitSync = Geteilte Dateien von anderen Geräten aus verwalten
-accountBenefitMoz = Erfahren Sie mehr über andere { -mozilla }-Dienste
+accountBenefitMoz = Erfahre mehr über andere { -mozilla }-Dienste
 signOut = Abmelden
 okButton = OK
 downloadingTitle = Wird heruntergeladen…
 noStreamsWarning = Dieser Browser kann eine so große Datei möglicherweise nicht entschlüsseln.
-noStreamsOptionCopy = Kopieren Sie den Link, um ihn in einem anderen Browser zu öffnen
-noStreamsOptionFirefox = Probieren Sie unseren Lieblingsbrowser aus
+noStreamsOptionCopy = Kopiere den Link, um ihn in einem anderen Browser zu öffnen
+noStreamsOptionFirefox = Probiere unseren Lieblingsbrowser aus
 noStreamsOptionDownload = Mit diesem Browser weitermachen
