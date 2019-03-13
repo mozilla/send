@@ -1,6 +1,6 @@
 # Server Code
 
-The server provides the API, serves static assets, and renders the pages for Send. The production entrypoint is [prod.js](./prod.js) and the development entrypoint is [dev.js](./dev.js) via `webpack-dev-server`.
+The server provides the API, serves static assets, and renders the pages for Send. The production entrypoint is [prod.js](./bin/prod.js) and the development entrypoint is [dev.js](./bin/dev.js) via `webpack-dev-server`.
 
 ## Server configuration
 
