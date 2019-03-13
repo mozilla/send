@@ -24,19 +24,19 @@ sendYourFilesLink = Firefox Send ausprobieren
 errorPageHeader = Ein Fehler ist aufgetreten!
 fileTooBig = Die Datei ist zu groß zum Hochladen. Sie sollte maximal { $size } groß sein.
 linkExpiredAlt = Link abgelaufen
-notSupportedHeader = Ihr Browser wird nicht unterstützt.
+notSupportedHeader = Dein Browser wird nicht unterstützt.
 notSupportedLink = Warum wird mein Browser nicht unterstützt?
-notSupportedOutdatedDetail = Leider unterstützt diese Firefox-Version die Web-Technologie nicht, auf der Firefox Send basiert. Sie müssen Ihren Browser aktualisieren.
+notSupportedOutdatedDetail = Leider unterstützt diese Firefox-Version die Web-Technologie nicht, auf der Firefox Send basiert. Du musst deinen Browser aktualisieren.
 updateFirefox = Firefox aktualisieren
 deletePopupCancel = Abbrechen
 deleteButtonHover = Löschen
 footerLinkLegal = Rechtliches
 footerLinkPrivacy = Datenschutz
 footerLinkCookies = Cookies
-passwordTryAgain = Falsches Passwort. Versuchen Sie es erneut.
+passwordTryAgain = Falsches Passwort. Versuche es nochmal.
 javascriptRequired = Firefox Send benötigt JavaScript
 whyJavascript = Warum benötigt Firefox Send JavaScript?
-enableJavascript = Bitte aktivieren Sie JavaScript und versuchen Sie es erneut.
+enableJavascript = Bitte aktiviere JavaScript und versuche es erneut.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
@@ -53,9 +53,9 @@ passwordSetError = Dieses Passwort konnte nicht eingerichtet werden
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
-introTitle = Einfache, private Dateifreigabe
-introDescription = Mit { -send-brand } können Sie Dateien mit Ende-zu-Ende-Verschlüsselung und einem automatisch ablaufenden Link freigeben. So können Sie die geteilten Inhalte privat halten und sicherstellen, dass Ihre Daten nicht für immer online bleiben.
-notifyUploadEncryptDone = Ihre Datei ist verschlüsselt und zum Senden bereit
+introTitle = Einfach und privat Dateien versenden
+introDescription = Mit { -send-brand } kannst du Dateien sicher mit anderen teilen – mit End-to-End-Verschlüsselung und einem Freigabe-Link, der automatisch abläuft. So bleiben deine geteilten Inhalte privat und du kannst sicherstellen, dass deine Daten nicht für immer online bleiben.
+notifyUploadEncryptDone = Deine Datei ist verschlüsselt und zum Senden bereit
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Läuft ab nach { $downloadCount } oder { $timespan }
 timespanMinutes =
@@ -91,11 +91,11 @@ fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Gesamtgröße: { $size }
 # the next line after the colon contains a file name
-copyLinkDescription = Kopieren Sie den Link, um Ihre Datei zu teilen:
+copyLinkDescription = Kopiere den Link, um deine Datei zu teilen:
 copyLinkButton = Link kopieren
 downloadTitle = Dateien herunterladen
-downloadDescription = Diese Datei wurde über { -send-brand } mit Ende-zu-Ende-Verschlüsselung und einem automatisch ablaufenden Link geteilt.
-trySendDescription = Probieren Sie { -send-brand } aus, um einfach und privat Dateien zu teilen.
+downloadDescription = Diese Datei wurde über { -send-brand } mit End-to-End-Verschlüsselung und einem automatisch ablaufenden Link geteilt.
+trySendDescription = Probiere { -send-brand } aus, um einfach und sicher Dateien zu versenden.
 # count will always be > 10
 tooManyFiles =
     { $count ->
