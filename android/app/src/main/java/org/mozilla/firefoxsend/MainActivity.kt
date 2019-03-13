@@ -52,9 +52,7 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews
-        // WebView.setWebContentsDebuggingEnabled(true); // TODO only dev builds
-
+        WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG)
         webView.apply {
             setListener(this@MainActivity, this@MainActivity)
             addJavascriptInterface(WebAppInterface(this@MainActivity), JS_INTERFACE_NAME)
