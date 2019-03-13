@@ -1,5 +1,6 @@
 package org.mozilla.firefoxsend
 
+import android.content.ComponentName
 import android.os.Bundle
 import android.content.Intent
 import android.content.Context
@@ -8,6 +9,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.util.Base64
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 
 import mozilla.components.feature.session.SessionFeature
@@ -48,42 +50,61 @@ private const val REQUEST_CODE_PROMPT_PERMISSIONS = 2
 
 class MainActivity : AppCompatActivity() {
     // private var mWebView: AdvancedWebView? = null
-    private var mToShare: String? = null
-    private var mToCall: String? = null
-    private var mSessionFeature: SessionFeature? = null
-    private var mGeckoRuntime: GeckoRuntime? = null
-    private var mGeckoEngine: GeckoEngine? = null
-    private var mSessionManager: SessionManager? = null
-    private var mEngineView: EngineView? = null
-    private var mPromptFeature: PromptFeature? = null
-    private var mPort: WebExtension.Port? = null
+    companion object {
+        var mToShare: String? = null
+        var mToCall: String? = null
+        var mSessionFeature: SessionFeature? = null
+        var mGeckoRuntime: GeckoRuntime? = null
+        var mGeckoEngine: GeckoEngine? = null
+        var mSessionManager: SessionManager? = null
+        var mEngineView: EngineView? = null
+        var mPromptFeature: PromptFeature? = null
+        var mPort: WebExtension.Port? = null
+        var mInitialized = false
+        var mWebExtensionRegistered = false
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(mEngineView == null) {
+        if(!MainActivity.mInitialized) {
+            MainActivity.mInitialized = true
             val builder = GeckoRuntimeSettings.Builder().consoleOutput(true)
-            mGeckoRuntime = GeckoRuntime.create(applicationContext, builder.build())
+            MainActivity.mGeckoRuntime = GeckoRuntime.create(applicationContext, builder.build())
             val settings = DefaultSettings()
             settings.remoteDebuggingEnabled = true
             settings.userAgentString = "Send Android"
-            mGeckoEngine = GeckoEngine(applicationContext, settings, mGeckoRuntime!!)
-            mSessionManager =
-                SessionManager(mGeckoEngine!!)
-            val sessionUseCases = SessionUseCases(mSessionManager!!)
+            MainActivity.mGeckoEngine = GeckoEngine(applicationContext, settings, MainActivity.mGeckoRuntime!!)
+            MainActivity.mSessionManager =
+                SessionManager(MainActivity.mGeckoEngine!!)
+            val sessionUseCases = SessionUseCases(MainActivity.mSessionManager!!)
             val sessionId = "Send Android"
-            mEngineView = mGeckoEngine!!.createView(applicationContext)
-            mSessionFeature = SessionFeature(
-                mSessionManager!!,
+            MainActivity.mEngineView = MainActivity.mGeckoEngine!!.createView(applicationContext)
+            MainActivity.mSessionFeature = SessionFeature(
+                MainActivity.mSessionManager!!,
                 sessionUseCases,
-                mEngineView!!,
+                MainActivity.mEngineView!!,
                 sessionId
             )
-            Log.e("DEBUG", "REGISTERWEBEXTENSION")
+
 
             val portDelegate = object: WebExtension.PortDelegate {
                 override fun onPortMessage(source: WebExtension, message: Any, session: GeckoSession?) {
-                    Log.e("DEBUG", "onPortMessage")
+                    Log.e("DEBUG", "onPortMessage" + message)
+                    if (message is JSONObject) {
+                        if (message.get("cmd") == "shareUrl") {
+                            val url = message.get("url")
+                            if (url is String) {
+                                val shareIntent = Intent()
+                                shareIntent.action = Intent.ACTION_SEND
+                                shareIntent.type = "text/plain"
+                                shareIntent.putExtra(Intent.EXTRA_TEXT, url)
+                                val chooser = Intent.createChooser(shareIntent, "")
+                                chooser.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayOf(ComponentName(applicationContext, MainActivity::class.java)))
+                                startActivity(chooser)
+                                1                            }
+                        }
+                    }
                 }
 
                 override fun onDisconnect(source: WebExtension, port: WebExtension.Port) {
@@ -95,9 +116,14 @@ class MainActivity : AppCompatActivity() {
             val messageDelegate = object : WebExtension.MessageDelegate {
                 override fun onConnect(source: WebExtension, port: WebExtension.Port, session: GeckoSession?) {
                     Log.e("DEBUG", "onConnect")
-                    mPort = port
+                    MainActivity.mPort = port
                     port.setDelegate(portDelegate)
                     port.postMessage(JSONObject("{\"message\": \"helloworld\"}"))
+                    if (MainActivity.mToShare != null) {
+                        Log.e("DEBUG", "WE HAVE SOMETHING TO SHARE!")
+                        shareSomething()
+                    }
+
                 }
 
                 override fun onMessage(source: WebExtension, message: Any, session: GeckoSession?): GeckoResult<Any>? {
@@ -105,28 +131,32 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            mGeckoRuntime!!.registerWebExtension(WebExtension(
+            Log.e("DEBUG", "REGISTERWEBEXTENSION")
+            MainActivity.mGeckoRuntime!!.registerWebExtension(WebExtension(
                 "resource://android/assets/send-android-comms-bridge/",
                 "send-android-comms-bridge",
                 messageDelegate)).then({
-                    Log.e("DEBUG", "REGISTERCOMPLETE")
-                    GeckoResult.fromValue(Unit)
-                })
-            val initialSession = Session("http://fzzzy-send-gv.s3-website-us-west-2.amazonaws.com/android.html")
-            mSessionManager!!.add(initialSession, selected = true)
-            mEngineView!!.render(mSessionManager!!.getOrCreateEngineSession())
+                MainActivity.mWebExtensionRegistered = true
+                Log.e("DEBUG", "REGISTERCOMPLETE")
 
-            mPromptFeature = PromptFeature(
+                GeckoResult.fromValue(Unit)
+            })
+
+            val initialSession = Session("http://172.20.10.2/android.html?5")
+            MainActivity.mSessionManager!!.add(initialSession, selected = true)
+
+            MainActivity.mPromptFeature = PromptFeature(
                 activity = this,
-                sessionManager = mSessionManager!!,
+                sessionManager = MainActivity.mSessionManager!!,
                 fragmentManager = supportFragmentManager,
                 onNeedToRequestPermissions = { permissions ->
                     Log.e("DEBUG","onNeedToRequestPermissions")
                     requestPermissions(permissions, REQUEST_CODE_PROMPT_PERMISSIONS)
                 })
-            setContentView(R.layout.activity_main)
         }
 
+        setContentView(R.layout.activity_main)
+        MainActivity.mEngineView!!.render(MainActivity.mSessionManager!!.getOrCreateEngineSession())
 
         val intent = getIntent()
         val action = intent.getAction()
@@ -136,68 +166,70 @@ class MainActivity : AppCompatActivity() {
             if (type.equals("text/plain")) {
                 val sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)
                 Log.w("INTENT", "text/plain " + sharedText)
-                mToShare = "data:text/plain;base64," + Base64.encodeToString(sharedText.toByteArray(), 16).trim()
+                MainActivity.mToShare = "data:text/plain;base64," + Base64.encodeToString(sharedText.toByteArray(), 16).trim()
+                if (MainActivity.mWebExtensionRegistered) {
+                    shareSomething()
+                }
             } else if (type.startsWith("image/")) {
                 val imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM) as Uri
                 Log.w("INTENT", "image/ " + imageUri)
-                mToShare = "data:text/plain;base64," + Base64.encodeToString(imageUri.path!!.toByteArray(), 16).trim()
+                MainActivity.mToShare = "data:text/plain;base64," + Base64.encodeToString(imageUri.path!!.toByteArray(), 16).trim()
+                if (MainActivity.mWebExtensionRegistered) {
+                    shareSomething()
+                }
             }
         }
+    }
+
+    fun shareSomething() {
+        Log.e("DEBUG", "shareSomething!!!")
+        MainActivity.mPort!!.postMessage(JSONObject(
+            "{\"cmd\": \"incomingShare\", \"url\": \"" + MainActivity.mToShare + "\"}"))
+
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         Log.e("DEBUG", "ONREQUESTPERMISSIONSRESULT")
         when (requestCode) {
-            REQUEST_CODE_PROMPT_PERMISSIONS -> mPromptFeature!!.onPermissionsResult(permissions, grantResults)
+            REQUEST_CODE_PROMPT_PERMISSIONS -> MainActivity.mPromptFeature!!.onPermissionsResult(permissions, grantResults)
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         Log.e("DEBUG", "ONACTIVITYRESULT")
-        mPromptFeature!!.onActivityResult(requestCode, resultCode, data)
+        MainActivity.mPromptFeature!!.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onCreateView(parent: View?, name: String, context: Context, attrs: AttributeSet): View? {
         if (name == EngineView::class.java.name) {
-            return mEngineView!!.asView()
+            val toReturn = MainActivity.mEngineView!!.asView()
+            val parent = toReturn.parent
+            if (parent is ViewGroup) {
+                parent.removeView(toReturn)
+            }
+            return toReturn
         } else {
             return super.onCreateView(parent, name, context, attrs)
         }
-
-        // https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews
-        // WebView.setWebContentsDebuggingEnabled(true); // TODO only dev builds
-
-        // mWebView = findViewById<WebView>(R.id.webview) as AdvancedWebView
-        // mWebView!!.setListener(this, this)
-        // mWebView!!.setWebChromeClient(LoggingWebChromeClient())
-        // mWebView!!.addJavascriptInterface(WebAppInterface(this), "Android")
-        // mWebView!!.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-
-        // val webSettings = mWebView!!.getSettings()
-        // webSettings.setUserAgentString("Send Android")
-        // webSettings.setAllowUniversalAccessFromFileURLs(true)
-        // webSettings.setJavaScriptEnabled(true)
-
-
-        // mWebView!!.loadUrl("file:///android_asset/android.html")
     }
+
     override fun onStart() {
         super.onStart()
-        if (mSessionFeature != null) {
-            mSessionFeature!!.start()
+        if (MainActivity.mSessionFeature != null) {
+            MainActivity.mSessionFeature!!.start()
         }
-        if (mPromptFeature != null) {
-            mPromptFeature!!.start()
+        if (MainActivity.mPromptFeature != null) {
+            MainActivity.mPromptFeature!!.start()
         }
     }
 
     override fun onStop() {
         super.onStop()
-        if (mSessionFeature != null) {
-            mSessionFeature!!.stop()
+        if (MainActivity.mSessionFeature != null) {
+            MainActivity.mSessionFeature!!.stop()
         }
-        if (mPromptFeature != null) {
-            mPromptFeature!!.stop()
+        if (MainActivity.mPromptFeature != null) {
+            MainActivity.mPromptFeature!!.stop()
         }
     }
 /*
@@ -214,16 +246,6 @@ class MainActivity : AppCompatActivity() {
             Log.w("CONFIG", "CREATED FIREFOXACCOUNT")
             return FxaResult.fromValue(Unit)
         })
-    }
-
-    fun shareUrl(url: String) {
-        val shareIntent = Intent()
-        shareIntent.action = Intent.ACTION_SEND
-        shareIntent.type = "text/plain"
-        shareIntent.putExtra(Intent.EXTRA_TEXT, url)
-        val chooser = Intent.createChooser(shareIntent, "")
-        chooser.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayOf(ComponentName(applicationContext, MainActivity::class.java)))
-        startActivity(chooser)
     }
 
     @SuppressLint("NewApi")

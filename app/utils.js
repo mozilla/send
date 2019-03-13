@@ -1,4 +1,3 @@
-/* global Android */
 const html = require('choo/html');
 const b64 = require('base64-js');
 
@@ -243,7 +242,7 @@ function timeLeft(milliseconds) {
 }
 
 function platform() {
-  if (typeof Android === 'object') {
+  if (navigator.userAgent === 'Send Android') {
     return 'android';
   }
   return 'web';

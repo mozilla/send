@@ -7,7 +7,7 @@
 
   "content_scripts": [
     {
-      "matches": ["http://fzzzy-send-gv.s3-website-us-west-2.amazonaws.com/*"],
+      "matches": ["http://172.20.10.2/*"],
       "js": ["send-android-comms-bridge.js"]
     }
   ],

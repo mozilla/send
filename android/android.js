@@ -21,12 +21,28 @@ import error from './pages/error';
 import { getTranslator } from '../app/locale';
 import { delay } from '../app/utils';
 
+const app = choo();
+
 if (navigator.userAgent === 'Send Android') {
   setApiUrlPrefix('https://send2.dev.lcip.org');
   setWssUrl('wss://send2.dev.lcip.org/api/ws');
+
+  window.beginOAuthFlow = function() {
+    console.error('BEGINOUAUTH FLOW');
+    window.postMessage(
+      {
+        cmd: 'beginOAuthFlow'
+      },
+      '*'
+    );
+  };
+
+  window.shareUrl = function(url) {
+    console.error('SHAREURL');
+    window.postMessage({ cmd: 'shareUrl', url }, '*');
+  };
 }
 
-const app = choo();
 //app.use(state);
 app.use(controller);
 app.use(intents);
