@@ -9,10 +9,7 @@ module.exports = function(state, body = '') {
       <head>
         <title>${state.title}</title>
         <base href="/" />
-        <meta
-          name="robots"
-          content="${state.route === 'download/:id' ? 'none' : 'all'},noarchive"
-        />
+        <meta name="robots" content="${state.robots},noarchive" />
         <meta name="google" content="nositelinkssearchbox" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta charset="utf-8" />

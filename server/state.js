@@ -7,6 +7,10 @@ const { getFxaConfig } = require('./fxa');
 module.exports = async function(req) {
   const locale = req.language || 'en-US';
   let authConfig = null;
+  let robots = 'none';
+  if (req.route && req.route.path === '/') {
+    robots = 'all';
+  }
   if (config.fxa_client_id) {
     try {
       authConfig = await getFxaConfig();
@@ -33,7 +37,7 @@ module.exports = async function(req) {
     fileInfo: {},
     cspNonce: req.cspNonce,
     user: { avatar: assets.get('user.svg'), loggedIn: false },
-    route: req.route ? req.route.path : null,
+    robots,
     authConfig,
     layout
   };
