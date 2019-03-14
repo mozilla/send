@@ -33,6 +33,7 @@ module.exports = async function(req) {
     fileInfo: {},
     cspNonce: req.cspNonce,
     user: { avatar: assets.get('user.svg'), loggedIn: false },
+    route: req.route.path,
     authConfig,
     layout
   };
