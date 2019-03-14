@@ -78,7 +78,17 @@ fileCount =
         [one] 1 yakb'äl
        *[other] { $num } taq yakb'äl
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Ronojel runimilem: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Tawachib'ej ri ximonel richin nakomonij ri ayakb'al:
@@ -110,15 +120,15 @@ uploadButton = Tijotob'äx
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Keqirirëx chuqa' ke'osq'opïx taq yakb'äl
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = o tapitz'a' richin natäq k'a { $size }
 addPassword = Tichajïx rik'in ewan tzij
 emailPlaceholder = Tatz'ib'aj ataqoya'l
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Tatikirisaj molojri'ïl richin natäq k'a { $size }
 signInButton = Tatikirisaj molojri'ïl/tatz'ib'aj ab'i'
 accountBenefitTitle = Tatz'uku' jun { -firefox } Rub'i' Ataqoy'al o Tatikirisaj molojri'ïl
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Ke'akomonij taq yakb'äl k'a { $size }
 accountBenefitDownloadCount = Ke'akomonij taq yakb'äl kik'in ch'aqa' chik winaqi'
 accountBenefitTimeLimit =
