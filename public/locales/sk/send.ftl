@@ -84,7 +84,17 @@ fileCount =
         [few] { $num } súbory
        *[other] { $num } súborov
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = kB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num } { $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Celková veľkosť: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Súbor môžete zdieľať pomocou tohto odkazu:
@@ -118,15 +128,15 @@ uploadButton = Nahrať
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Pretiahnutím súboru alebo kliknutím sem
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = môžete poslať až { $size }
 addPassword = Chrániť heslom
 emailPlaceholder = Zadajte e-mailovú adresu
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Pre odoslanie súborov s veľkosťou až { $size }, sa, prosím, prihláste
 signInButton = Prihlásiť sa/Zaregistrovať sa
 accountBenefitTitle = Vytvorte si účet { -firefox } alebo sa prihláste
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Zdieľanie súborov s veľkosťou až { $size }
 accountBenefitDownloadCount = Zdieľanie súborov s viacerými ľuďmi
 accountBenefitTimeLimit =
