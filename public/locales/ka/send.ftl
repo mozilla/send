@@ -94,7 +94,7 @@ totalSize = სულ ზომა: { $size }
 copyLinkDescription = ბმულის ასლი ფაილის გასაზიარებლად:
 copyLinkButton = ბმულის ასლი
 downloadTitle = ფაილების ჩამოტვირთვა
-downloadDescription = ფაილის გაზიარებულია { -send-brand }-ის საშუალებით, გამჭოლი დაშიფვრითა და ვადიანი ბმულით.
+downloadDescription = ფაილი გაზიარებულია { -send-brand }-ის საშუალებით, გამჭოლი დაშიფვრითა და ვადიანი ბმულით.
 trySendDescription = გამოსცადეთ { -send-brand }, ფაილების გაზიარება მარტივად, დაცულად.
 # count will always be > 10
 tooManyFiles =
