@@ -90,6 +90,18 @@ totalSize = Dimension total: { $size }
 copyLinkDescription = Copia le ligamine pro compartir le file:
 copyLinkButton = Copiar ligamine
 downloadTitle = Discargar files
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Solo 1 file al vice pote ser cargate.
+       *[other] Solo { $count } files al vice pote ser cargate.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Solo 1 archivo es consentite.
+       *[other] Solo { $count } archivos es consentite.
+    }
 expiredTitle = Iste ligamine ha expirate.
 downloadFirefox = Discargar { -firefox }
 legalTitle = Politica de confidentialitate de { -send-short-brand }
