@@ -112,3 +112,11 @@ accountBenefitTitle = Crea un conto { -firefox } o registra te
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Comparti files usque { $size }
 accountBenefitDownloadCount = Comparti files con plus de personas
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Retene active le ligamine pro 1 die
+       *[other] Retene active le ligamine pro { $count } dies
+    }
+signOut = Disconnecter
+okButton = OK
+downloadingTitle = Discargamento
