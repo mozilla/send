@@ -57,4 +57,29 @@ describe('Firefox Send', function() {
         .includes('Expires after 1 download')
     );
   });
+
+  it('should ensure that the downloaded file size matches the uploaded file size', function() {
+    browser.chooseFile(
+      homePage.uploadInput,
+      `${testFilesPath}/${testFiles[0]}`
+    );
+    // get the file size for upload
+    const uploadSize = fs.statSync(`${testFilesPath}/${testFiles[0]}`).size;
+
+    browser.waitForExist(homePage.uploadButton);
+    browser.click(homePage.uploadButton);
+
+    browser.waitForExist(homePage.shareUrl);
+    const downloadPage = new DownloadPage(browser.getValue(homePage.shareUrl));
+    downloadPage.open();
+    downloadPage.download();
+    browser.waitForExist(downloadPage.downloadComplete);
+
+    // get the file size for download
+    const downloadFile = path.join(downloadDir, `${testFiles[0]}`);
+    const downloadSize = fs.statSync(downloadFile).size;
+
+    // check if upload and download file sizes are equal
+    assert.equal(uploadSize, downloadSize);
+  });
 });
