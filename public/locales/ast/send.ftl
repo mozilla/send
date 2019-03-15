@@ -20,7 +20,7 @@ unlockButtonLabel = Desbloquiar
 downloadButtonLabel = Baxar
 downloadFinish = Completóse la descarga
 fileSizeProgress = ({ $partialSize } de { $totalSize })
-sendYourFilesLink = Prueba Firefox Send
+sendYourFilesLink = Probar Firefox Send
 errorPageHeader = ¡Daqué foi mal!
 fileTooBig = Esti ficheru ye mui grande como pa xubilu. Debería tener menos de { $size }.
 linkExpiredAlt = Caducó l'enllaz
@@ -50,6 +50,7 @@ passwordSetError = Nun pudo afitase esta contraseña
 
 # Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
 -send-brand = Firefox Send
+-send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Compartición de ficheros privada y cenciella
@@ -91,7 +92,9 @@ totalSize = Tamañu total: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Copia l'enllaz pa compartir el ficheru:
 copyLinkButton = Copiar l'enllaz
+downloadTitle = Descarga de ficheros
 downloadDescription = Esti ficheru compartióse per { -send-brand } con cifráu puntu a puntu y un enllaz que caduca automáticamente.
+trySendDescription = Prueba { -send-brand } pa una compartición de ficheros cenciella y segura.
 # count will always be > 10
 tooManyFiles =
     { $count ->
@@ -117,6 +120,7 @@ dragAndDropFiles = Arrastra y suelta ficheros
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = o calca pa unviar hasta { $size }
 addPassword = Protexer con una contraseña
+emailPlaceholder = Introduz el to corréu
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Anicia sesión pa unviar hasta { $size }
 signInButton = Rexistrase/aniciar sesión
@@ -131,5 +135,7 @@ accountBenefitTimeLimit =
     }
 accountBenefitSync = Xestiona los ficheros compartíos dende cualesquier preséu
 accountBenefitMoz = Deprendi más tocante a otros servicios de { -mozilla }
+signOut = Zarrar sesión
 okButton = Aceutar
+downloadingTitle = Baxando
 noStreamsWarning = Esti restolador quiciabes nun seya a descifrar un ficheru d'esti tamañu.
