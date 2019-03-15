@@ -32,7 +32,7 @@ describe('Owner Middleware', function() {
     const next = sinon.stub();
     storage.metadata.returns(Promise.resolve(null));
     const res = response();
-    await ownerMiddleware(request('x', 'y'), res);
+    await ownerMiddleware(request('a', 'y'), res, next);
     sinon.assert.notCalled(next);
     sinon.assert.calledWith(res.sendStatus, 404);
   });
@@ -42,7 +42,7 @@ describe('Owner Middleware', function() {
     const meta = { owner: 'y' };
     storage.metadata.returns(Promise.resolve(meta));
     const res = response();
-    await ownerMiddleware(request('x', null), res);
+    await ownerMiddleware(request('b', null), res, next);
     sinon.assert.notCalled(next);
     sinon.assert.calledWith(res.sendStatus, 401);
   });
@@ -52,7 +52,7 @@ describe('Owner Middleware', function() {
     const meta = { owner: 'y' };
     storage.metadata.returns(Promise.resolve(meta));
     const res = response();
-    await ownerMiddleware(request('x', 'z'), res);
+    await ownerMiddleware(request('c', 'z'), res, next);
     sinon.assert.notCalled(next);
     sinon.assert.calledWith(res.sendStatus, 401);
   });
@@ -61,7 +61,7 @@ describe('Owner Middleware', function() {
     const next = sinon.stub();
     storage.metadata.returns(Promise.reject(new Error()));
     const res = response();
-    await ownerMiddleware(request('x', 'y'), res);
+    await ownerMiddleware(request('d', 'y'), res, next);
     sinon.assert.notCalled(next);
     sinon.assert.calledWith(res.sendStatus, 401);
   });
@@ -70,7 +70,7 @@ describe('Owner Middleware', function() {
     const next = sinon.stub();
     const meta = { owner: 'y' };
     storage.metadata.returns(Promise.resolve(meta));
-    const req = request('x', 'y');
+    const req = request('e', 'y');
     const res = response();
     await ownerMiddleware(req, res, next);
     assert.equal(req.meta, meta);

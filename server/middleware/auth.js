@@ -1,3 +1,4 @@
+const assert = require('assert');
 const crypto = require('crypto');
 const storage = require('../storage');
 const fxa = require('../fxa');
@@ -19,7 +20,7 @@ module.exports = {
         );
         hmac.update(Buffer.from(meta.nonce, 'base64'));
         const verifyHash = hmac.digest();
-        if (verifyHash.equals(Buffer.from(auth, 'base64'))) {
+        if (crypto.timingSafeEqual(verifyHash, Buffer.from(auth, 'base64'))) {
           req.nonce = crypto.randomBytes(16).toString('base64');
           storage.setField(id, 'nonce', req.nonce);
           res.set('WWW-Authenticate', `send-v1 ${req.nonce}`);
@@ -48,7 +49,11 @@ module.exports = {
         if (!req.meta) {
           return res.sendStatus(404);
         }
-        req.authorized = req.meta.owner === ownerToken;
+        const metaOwner = Buffer.from(req.meta.owner, 'utf8');
+        const owner = Buffer.from(ownerToken, 'utf8');
+        assert(metaOwner.length > 0);
+        assert(metaOwner.length === owner.length);
+        req.authorized = crypto.timingSafeEqual(metaOwner, owner);
       } catch (e) {
         req.authorized = false;
       }
