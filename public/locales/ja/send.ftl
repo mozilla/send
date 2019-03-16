@@ -72,7 +72,17 @@ fileCount =
     { $num ->
        *[other] { $num } ファイル
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = 合計サイズ: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = リンクをコピーしてファイルを共有:
@@ -102,15 +112,15 @@ uploadButton = アップロード
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = ファイルをドラッグ＆ドロップ
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = または、クリックして最大 { $size } のファイルを送信
 addPassword = パスワードで保護
 emailPlaceholder = メールアドレスを入力
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = ログインすると最大 { $size } のファイルを送信できます
 signInButton = ログイン/登録
 accountBenefitTitle = { -firefox } アカウントを作成またはログイン
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = 最大 { $size } までのファイルを共有
 accountBenefitDownloadCount = より多くの人とファイルを共有
 accountBenefitTimeLimit =
