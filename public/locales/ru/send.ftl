@@ -84,7 +84,17 @@ fileCount =
         [few] { $num } файла
        *[other] { $num } файлов
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = Б
+# kibibyte abbreviation
+kb = КБ
+# mebibyte abbreviation
+mb = МБ
+# gibibyte abbreviation
+gb = ГБ
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Общий размер: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Скопируйте ссылку, чтобы поделиться своим файлом:
@@ -118,15 +128,15 @@ uploadButton = Выгрузить
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Перетащите файлы сюда
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = или щёлкните здесь, чтобы отправить их (до { $size })
 addPassword = Защитить паролем
 emailPlaceholder = Введите ваш адрес электронной почты
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Войдите, чтобы отправлять файлы до { $size }
 signInButton = Войти/Зарегистрироваться
 accountBenefitTitle = Создайте Аккаунт { -firefox } или войдите
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Делитесь файлами до { $size }
 accountBenefitDownloadCount = Делитесь файлами с несколькими людьми
 accountBenefitTimeLimit =
