@@ -62,7 +62,7 @@ timespanMinutes =
     }
 timespanDays =
     { $num ->
-       *[other] hari
+       *[other] { $num } hari
     }
 timespanWeeks =
     { $num ->
@@ -72,6 +72,14 @@ fileCount =
     { $num ->
        *[other] { $num } berkas
     }
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
 # localized number and byte abbreviation. example "2.5MB"
 fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
