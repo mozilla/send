@@ -53,6 +53,8 @@ passwordSetError = Esta contraseña no pudo ser establecida
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Intercambio de archivos sencillo y privado
+notifyUploadEncryptDone = Tu archivo está cifrado y listo para enviar
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Expira después de { $downloadCount } o { $timespan }
 timespanMinutes =
@@ -87,10 +89,22 @@ gb = GB
 fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Tamaño total: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Copiar el enlace para compartir el archivo:
 copyLinkButton = Copiar enlace
 downloadTitle = Bajando archivos
+downloadDescription = Este archivo fue compartido a través de { -send-brand } con cifrado de punto a punto y un enlace que expira automáticamente.
+trySendDescription = Prueba { -send-brand } para compartir archivos de forma sencilla y segura.
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Solo 1 archivo está permitido.
+       *[other] Solo { $count } archivos están permitidos.
+    }
 expiredTitle = Este enlace ha expirado.
 downloadFirefox = Bajar { -firefox }
+legalTitle = Aviso de privacidad de { -send-short-brand }
+legalDateStamp = Versión 1.0 del 12 de marzo de 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Selecciona los archivos a subir
@@ -109,6 +123,12 @@ accountBenefitTitle = Crea una cuenta de { -firefox } o conéctate
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Comparte archivos de hasta { $size }
 accountBenefitDownloadCount = Comparte archivos con más personas
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Mantener enlaces activos durante 1 día
+       *[other] Mantener enlaces activos durante { $count } días
+    }
+accountBenefitSync = Administrar los archivos compartidos desde cualquier dispositivo
 accountBenefitMoz = Aprender más acerca de otros servicios de { -mozilla }
 signOut = Salir
 okButton = Aceptar
