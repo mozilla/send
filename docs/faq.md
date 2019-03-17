@@ -1,6 +1,6 @@
 ## How big of a file can I transfer with Firefox Send?
 
-There is a 2GB file size limit built in to Send, however, in practice you may
+There is a 2.5GB file size limit built in to Send(1GB for non-signed in users), however, in practice you may
 be unable to send files that large.  Send encrypts and decrypts the files in
 the browser which is great for security but will tax your system resources.  In
 particular you can expect to see your memory usage go up by at least the size
