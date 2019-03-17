@@ -54,6 +54,7 @@ passwordSetError = Esta contraseña no pudo ser establecida
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Intercambio de archivos sencillo y privado
+introDescription = { -send-brand } te permite compartir archivos con cifrado de extremo a extremo y un enlace que expira automáticamente. Así puedes mantener lo que compartes en privado y asegurarte de que tus cosas no permanezcan en línea para siempre.
 notifyUploadEncryptDone = Tu archivo está cifrado y listo para enviar
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Expira después de { $downloadCount } o { $timespan }
@@ -96,12 +97,19 @@ downloadTitle = Bajando archivos
 downloadDescription = Este archivo fue compartido a través de { -send-brand } con cifrado de punto a punto y un enlace que expira automáticamente.
 trySendDescription = Prueba { -send-brand } para compartir archivos de forma sencilla y segura.
 # count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Solo 1 archivo puede ser subido a la vez.
+       *[other] Solo { $count } archivos pueden ser subidos a la vez.
+    }
+# count will always be > 10
 tooManyArchives =
     { $count ->
         [one] Solo 1 archivo está permitido.
        *[other] Solo { $count } archivos están permitidos.
     }
 expiredTitle = Este enlace ha expirado.
+notSupportedDescription = { -send-brand } no funcionará con este navegador. { -send-short-brand } funciona mejor con la última versión de { -firefox } y con la versión actual de la mayoría de los navegadores.
 downloadFirefox = Bajar { -firefox }
 legalTitle = Aviso de privacidad de { -send-short-brand }
 legalDateStamp = Versión 1.0 del 12 de marzo de 2019
