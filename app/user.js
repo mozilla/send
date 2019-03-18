@@ -94,10 +94,12 @@ export default class User {
     return this.loggedIn ? hashId(this.storage.id) : hashId(anonId);
   }
 
-  async startAuthFlow(source, utms = {}) {
+  async startAuthFlow(trigger, utms = {}) {
+    this.utms = utms;
+    this.trigger = trigger;
     try {
       const params = new URLSearchParams({
-        entrypoint: `send-${source}`,
+        entrypoint: `send-${trigger}`,
         form_type: 'email',
         utm_source: utms.source || 'send',
         utm_campaign: utms.campaign || 'none'
@@ -111,12 +113,10 @@ export default class User {
       const { flowId, flowBeginTime } = await res.json();
       this.flowId = flowId;
       this.flowBeginTime = flowBeginTime;
-      this.utms = utms;
     } catch (e) {
       console.error(e);
       this.flowId = null;
       this.flowBeginTime = null;
-      this.utms = null;
     }
   }
 
@@ -141,6 +141,9 @@ export default class User {
     if (this.flowId && this.flowBeginTime) {
       options.flow_id = this.flowId;
       options.flow_begin_time = this.flowBeginTime;
+    }
+    if (this.trigger) {
+      options.endpoint = `send-${this.trigger}`;
     }
     if (this.utms) {
       options.utm_campaign = this.utms.campaign || 'none';
