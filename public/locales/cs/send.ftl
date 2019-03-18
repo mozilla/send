@@ -166,7 +166,7 @@ dragAndDropFiles = Přetažením myší nebo kliknutím sem
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = můžete poslat až { $size }
-addPassword = Chránit heslem
+addPassword = Ochránit heslem
 emailPlaceholder = Zadejte svoji e-mailovou adresu
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Pro odesílání souborů o velikosti až { $size } se prosím přihlaste
