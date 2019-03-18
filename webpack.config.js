@@ -40,7 +40,7 @@ const serviceWorker = {
         test: /\.(png|jpg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[hash:8].[ext]'
+          name: '[name].[contenthash:8].[ext]'
         }
       },
       {
@@ -49,7 +49,7 @@ const serviceWorker = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[hash:8].[ext]'
+              name: '[name].[contenthash:8].[ext]'
             }
           },
           {
@@ -82,7 +82,8 @@ const web = {
     ios: ['./ios/ios.js']
   },
   output: {
-    filename: '[name].[hash:8].js',
+    chunkFilename: '[name].[contenthash:8].js',
+    filename: '[name].[contenthash:8].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -124,7 +125,7 @@ const web = {
         test: /\.(png|jpg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[hash:8].[ext]'
+          name: '[name].[contenthash:8].[ext]'
         }
       },
       {
@@ -133,7 +134,7 @@ const web = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[hash:8].[ext]'
+              name: '[name].[contenthash:8].[ext]'
             }
           },
           {
@@ -189,7 +190,7 @@ const web = {
     new webpack.EnvironmentPlugin(['NODE_ENV']),
     new webpack.IgnorePlugin(/\.\.\/dist/), // used in common/*.js
     new ExtractTextPlugin({
-      filename: '[name].[hash:8].css'
+      filename: '[name].[md5:contenthash:8].css'
     }),
     new VersionPlugin(), // used for the /__version__ route
     new AndroidIndexPlugin(),
