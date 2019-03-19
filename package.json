@@ -28,6 +28,7 @@
     "test-integration": "cross-env NODE_ENV=development wdio test/wdio.docker.conf.js",
     "test-integration:android": "cross-env NODE_ENV=development ANDROID=1 wdio test/wdio.local.conf.js",
     "circleci-test-integration": "cross-env NODE_ENV=development wdio test/wdio.circleci.conf.js",
+    "circleci-test-integration:android": "cross-env NODE_ENV=development ANDROID=1 wdio test/wdio.circleci.conf.js",
     "start": "npm run clean && cross-env NODE_ENV=development FXA_CLIENT_ID=fced6b5e3f4c66b9 BASE_URL=http://localhost:8080 webpack-dev-server --mode=development",
     "android": "cross-env ANDROID=1 npm start",
     "prod": "node server/bin/prod.js"

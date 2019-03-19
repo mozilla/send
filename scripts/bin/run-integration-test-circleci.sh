@@ -25,4 +25,4 @@ mozdownload --version latest --type daily --destination ~/project/firefox-downlo
 export PATH=~/project/firefox:$PATH
 mozinstall $(ls -t firefox-downloads/firefox_nightly/*.tar.bz2 | head -1)
 firefox --version
- npm run circleci-test-integration
+npm run ${INTEGRATION_TEST_JOB}
