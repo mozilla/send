@@ -25,7 +25,7 @@ module.exports = {
           .toString()
           .replace(
             '<base href="file:///android_asset/" />',
-            '<base href="http://localhost:8080/" />'
+            '<base href="http://localhost:8000/" />'
           );
         res.set('Content-Type', 'text/html');
         res.send(index);
@@ -48,7 +48,7 @@ module.exports = {
       tests(app);
 
       wpm.waitUntilValid(() => {
-        server = app.listen(8080, resolve);
+        server = app.listen(8000, resolve);
       });
     });
   },
