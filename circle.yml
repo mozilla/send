@@ -160,6 +160,12 @@ workflows:
               ignore: /.*/
             tags:
               only: /^v.*/
+      - android-integration_tests:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
       - deploy_stage:
           requires:
             - build
