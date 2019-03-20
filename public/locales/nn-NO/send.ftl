@@ -109,6 +109,7 @@ tooManyArchives =
        *[other] Berre { $count } arkiv er lov.
     }
 expiredTitle = Denne lenka har gått ut.
+notSupportedDescription = { -send-brand } fungerer ikkje med denne nettlesaren. { -send-short-brand } fungerer best med siste versjon av { -firefox } og med dei fleste andre nye nettlesarar.
 downloadFirefox = Last ned { -firefox }
 legalTitle = { -send-short-brand }, om personvernpraksis
 legalDateStamp = Versjon 1.0, datert den 12 mars 2019
