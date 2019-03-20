@@ -85,3 +85,5 @@ downloadTitle = 파일 다운로드
 downloadFirefox = 다운로드 { -firefox }
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }일 { $hours }시간 { $minutes }분
+signInButton = 로그인/등록
+signOut = 로그 아웃
