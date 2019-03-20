@@ -31,7 +31,7 @@ module.exports.updateFavicon = function(percentageString) {
       context.beginPath();
       context.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
       context.strokeStyle = color;
-      context.lineCap = 'square'; // butt, round or square
+      context.lineCap = 'square';
       context.lineWidth = lineWidth;
       context.stroke();
     };
