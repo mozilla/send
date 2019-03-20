@@ -24,11 +24,10 @@ module.exports.updateFavicon = function(percentageString) {
     const context = canvas.getContext('2d');
     canvas.width = canvas.height = size;
 
-    context.translate(size / 2, size / 2);
+    context.translate(size * 0.5, size * 0.5);
 
-    const radius = (size - loaderWidth) / 2;
-
-    const drawCircle = function(color, lineWidth, percent) {
+    const drawCircle = function(color, lineWidth, outerWidth, percent) {
+      const radius = (outerWidth - loaderWidth) * 0.5;
       context.beginPath();
       context.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
       context.strokeStyle = color;
@@ -38,8 +37,8 @@ module.exports.updateFavicon = function(percentageString) {
     };
 
     const drawNewFavicon = function() {
-      drawCircle('#efefef', loaderWidth, 1);
-      drawCircle(loaderColor, loaderWidth, progress);
+      drawCircle('#efefef', loaderWidth, size, 1);
+      drawCircle(loaderColor, loaderWidth, size, progress);
     };
 
     drawNewFavicon(link);
