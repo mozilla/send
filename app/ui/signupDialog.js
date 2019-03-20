@@ -12,10 +12,14 @@ module.exports = function(trigger) {
       <send-signup-dialog
         class="flex flex-col lg:flex-row justify-center px-8 md:px-24 w-full h-full"
       >
-        <img
-          src="${assets.get('firefox_logo-only.svg')}"
-          class="h-16 mt-1 mb-4"
-        />
+        <section
+          class="flex flex-col flex-no-shrink self-center firefox-signup-logo"
+        >
+          <img
+            src="${assets.get('firefox_logo-only.svg')}"
+            class="h-16 mt-1 mb-4"
+          />
+        </section>
         <section
           class="flex flex-col flex-no-shrink self-center lg:mx-6 lg:max-w-xs"
         >

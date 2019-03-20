@@ -9,7 +9,7 @@ module.exports = function(state, emit) {
       <div
         class="h-full w-full max-h-screen absolute pin-t flex items-center justify-center"
       >
-        <div class="w-full" onclick="${e => e.stopPropagation()}">
+        <div class="w-full h-full" onclick="${e => e.stopPropagation()}">
           ${state.modal(state, emit, close)}
         </div>
       </div>
