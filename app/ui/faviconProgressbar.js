@@ -37,12 +37,12 @@ module.exports.updateFavicon = function(percentageString) {
       context.stroke();
     };
 
-    const drawNewGraph = function() {
+    const drawNewFavicon = function() {
       drawCircle('#efefef', lineWidth, 100 / 100);
       drawCircle(color, lineWidth, percentage / 100);
     };
 
-    drawNewGraph(link);
+    drawNewFavicon(link);
     link.href = canvas.toDataURL();
     document.getElementsByTagName('head')[0].appendChild(link);
   }
