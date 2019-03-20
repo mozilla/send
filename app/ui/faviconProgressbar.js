@@ -16,7 +16,7 @@ module.exports.updateFavicon = function(percentageString) {
     const size = 32;
 
     const lineWidth = 5;
-    const color = '#339BFF';
+    const color = '#0090ed';
 
     const span = document.createElement('span');
     span.textContent = percentageString;
