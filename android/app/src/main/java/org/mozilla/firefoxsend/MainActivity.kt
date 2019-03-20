@@ -1,5 +1,6 @@
 package org.mozilla.firefoxsend
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Bitmap
