@@ -37,7 +37,7 @@ module.exports.updateFavicon = function(percentageString) {
     };
 
     const drawNewFavicon = function() {
-      drawCircle('#efefef', lineWidth, 100 / 100);
+      drawCircle('#efefef', lineWidth, 1);
       drawCircle(color, lineWidth, percentage / 100);
     };
 
