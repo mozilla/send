@@ -293,7 +293,7 @@ select {
   word-break: break-all;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
   .firefox-signup-logo {
     margin-bottom: 0;
     margin-top: 90px;
