@@ -27,7 +27,7 @@ module.exports.updateFavicon = function(percentageString) {
     context.translate(size * 0.5, size * 0.5);
 
     const drawCircle = function(color, lineWidth, outerWidth, percent) {
-      const radius = (outerWidth - loaderWidth) * 0.5;
+      const radius = (outerWidth - lineWidth) * 0.5;
       context.beginPath();
       context.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
       context.strokeStyle = color;
