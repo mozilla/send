@@ -28,16 +28,14 @@ function drawNewFavicon(progressRatio) {
 
 module.exports.updateFavicon = function(progressRatio) {
   if (platform() === 'web') {
-    const link = document.querySelector("link[rel*='icon']");
+    const link = document.querySelector("link[rel='icon'][sizes='32x32']");
     const progress = progressRatio * 100;
     if (progress === 0 || progress === 100) {
       link.type = 'image/png';
       link.href = assets.get('favicon-32x32.png');
-      document.getElementsByTagName('head')[0].appendChild(link);
       return;
     }
 
     link.href = drawNewFavicon(progressRatio);
-    document.getElementsByTagName('head')[0].appendChild(link);
   }
 };

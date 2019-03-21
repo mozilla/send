@@ -85,6 +85,7 @@ export default function(state, emitter) {
 
   emitter.on('cancel', () => {
     state.transfer.cancel();
+    faviconProgressbar.updateFavicon(0);
   });
 
   emitter.on('addFiles', async ({ files }) => {
@@ -163,6 +164,7 @@ export default function(state, emitter) {
       state.storage.totalUploads += 1;
       const duration = Date.now() - start;
       metrics.completedUpload(archive, duration);
+      faviconProgressbar.updateFavicon(0);
 
       state.storage.addFile(ownedFile);
       // TODO integrate password into /upload request
@@ -254,6 +256,7 @@ export default function(state, emitter) {
         duration,
         password_protected: file.requiresPassword
       });
+      faviconProgressbar.updateFavicon(0);
     } catch (err) {
       if (err.message === '0') {
         // download cancelled
