@@ -1,6 +1,7 @@
 const { platform } = require('../utils');
 const assets = require('../../common/assets');
 
+const size = 32;
 const loaderWidth = 5;
 const loaderColor = '#0090ed';
 
@@ -19,7 +20,6 @@ function drawCircle(canvas, context, color, lineWidth, outerWidth, percent) {
 
 function drawNewFavicon(progressRatio) {
   const canvas = document.createElement('canvas');
-  const size = 32;
   const context = canvas.getContext('2d');
   drawCircle(canvas, context, '#efefef', loaderWidth, size, 1);
   drawCircle(canvas, context, loaderColor, loaderWidth, size, progressRatio);
