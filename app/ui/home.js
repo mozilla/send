@@ -3,7 +3,6 @@ const { list } = require('../utils');
 const archiveTile = require('./archiveTile');
 const modal = require('./modal');
 const intro = require('./intro');
-const faviconProgressbar = require('./faviconProgressbar');
 
 module.exports = function(state, emit) {
   const archives = state.storage.files
@@ -14,10 +13,8 @@ module.exports = function(state, emit) {
   if (state.uploading) {
     left = archiveTile.uploading(state, emit);
   } else if (state.archive.numFiles > 0) {
-    faviconProgressbar.updateFavicon('0%');
     left = archiveTile.wip(state, emit);
   } else {
-    faviconProgressbar.updateFavicon('0%');
     left = archiveTile.empty(state, emit);
   }
   archives.reverse();

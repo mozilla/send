@@ -7,6 +7,7 @@ import okDialog from './ui/okDialog';
 import copyDialog from './ui/copyDialog';
 import shareDialog from './ui/shareDialog';
 import signupDialog from './ui/signupDialog';
+import faviconProgressbar from './ui/faviconProgressbar';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -28,6 +29,7 @@ export default function(state, emitter) {
     if (updateTitle) {
       emitter.emit('DOMTitleChange', percent(state.transfer.progressRatio));
     }
+    faviconProgressbar.updateFavicon(state.transfer.progressRatio);
     render();
   }
 
@@ -36,6 +38,7 @@ export default function(state, emitter) {
     document.addEventListener('focus', () => {
       updateTitle = false;
       emitter.emit('DOMTitleChange', 'Firefox Send');
+      faviconProgressbar.updateFavicon(0);
     });
     checkFiles();
   });

@@ -3,7 +3,6 @@
 const html = require('choo/html');
 const raw = require('choo/html/raw');
 const assets = require('../../common/assets');
-const faviconProgressBar = require('./faviconProgressbar');
 const {
   bytes,
   copyToClipboard,
@@ -378,7 +377,6 @@ module.exports.uploading = function(state, emit) {
   const progress = state.transfer.progressRatio;
   const progressPercent = percent(progress);
   const archive = state.archive;
-  faviconProgressBar.updateFavicon(progressPercent);
   return html`
     <send-upload-area
       id="${archive.id}"
