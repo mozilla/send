@@ -56,6 +56,7 @@ passwordSetError = Această parolă nu a putut fi setată
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Partajare de fișiere simplă și privată
+introDescription = { -send-brand } îți permite să partajezi fișiere cu criptare end-to-end și un link care expiră automat. Deci, poți păstra confidențial ceea ce partajezi și te poți asigura că ce ai partajat nu rămâne online pentru totdeauna.
 notifyUploadEncryptDone = Fișierul tău este criptat și gata de trimitere
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Expiră după { $downloadCount } sau { $timespan }
@@ -83,10 +84,23 @@ fileCount =
         [few] { $num } fișiere
        *[other] { $num } de fișiere
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Mărime totală: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Copiază linkul pentru partajarea fișierului:
 copyLinkButton = Copiază linkul
 downloadTitle = Descarcă fișierele
+downloadDescription = Acest fișier a fost partajat prin { -send-brand }, cu criptare end-to-end și un link ce expiră automat.
 trySendDescription = Încearcă { -send-brand } pentru o partajare de fișiere simplă și sigură.
 # count will always be > 10
 tooManyFiles =
@@ -103,6 +117,7 @@ tooManyArchives =
        *[other] Numai { $count } de arhive sunt permise.
     }
 expiredTitle = Acest link a expirat.
+notSupportedDescription = { -send-brand } nu va funcționa pe acest browser. { -send-short-brand } funcționează cel mai bine cu ultima versiune de { -firefox } și va funcționa cu versiunea curentă a majorității browserelor.
 downloadFirefox = Descarcă { -firefox }
 legalTitle = Politica de confidențialitate { -send-short-brand }
 legalDateStamp = Versiunea 1.0 din data de 12 martie 2019
@@ -113,14 +128,23 @@ uploadButton = Încarcă
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Trage și plasează fișierele
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = sau dă clic pentru a trimite până la { $size }
 addPassword = Protejează cu parolă
 emailPlaceholder = Introdu e-mailul tău
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Autentifică-te ca să trimiți până la { $size }
 signInButton = Autentificare/Înregistrare
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+accountBenefitTitle = Creează un cont { -firefox } sau autentifică-te
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Partajează fișiere de până la { $size }
 accountBenefitDownloadCount = Partajează fișiere cu mai multe persoane
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Păstrează linkurile active până la 1 zi
+        [few] Păstrează linkurile active până la { $count } zile
+       *[other] Păstrează linkurile active până la { $count } de zile
+    }
 accountBenefitSync = Gestionează fișierele partajate de pe orice dispozitiv
 accountBenefitMoz = Află despre celelalte servicii { -mozilla }
 signOut = Deconectare
