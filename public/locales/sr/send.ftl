@@ -102,3 +102,37 @@ copyLinkButton = Копирај везу
 downloadTitle = Преузми датотеке
 downloadDescription = Ова датотека је подељена преко услуге { -send-brand } која омогућава шифровање с краја на крај преко везе која самостално истиче.
 trySendDescription = Пробајте { -send-brand } за једноставно и безбедно дељење датотека.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Можете отпремити само { $count } датотеку истовремено.
+        [few] Можете отпремити само { $count } датотеке истовремено.
+       *[other] Можете отпремити само { $count } датотека истовремено.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Дозвољена је само { $count } архива.
+        [few] Дозвољене су само { $count } архиве.
+       *[other] Дозвољено је само { $count } архива.
+    }
+expiredTitle = Ова веза је истекла.
+notSupportedDescription = { -send-brand } неће радити у овом прегледачу. { -send-short-brand } најбоље ради са последњим издањем прегледача { -firefox } и радиће са тренутним издањима већине других прегледача.
+downloadFirefox = Преузми { -firefox }
+legalTitle = Политика приватности услуге { -send-short-brand }
+legalDateStamp = Издање 1.0, датум објављивања 12. март 2019. године
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }д { $hours }ч { $minutes }м
+addFilesButton = Изаберите датотеке за отпремање
+uploadButton = Отпреми
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Превуците и пустите датотеке
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = или кликните за слање садржаја великог до { $size }
+addPassword = Заштити лозинком
+emailPlaceholder = Унесите вашу е-адресу
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Пријавите се да пошаљете садржај до { $size }
+signInButton = Пријава/регистрација
+accountBenefitTitle = Направите { -firefox } налог или се пријавите
