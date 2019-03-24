@@ -54,6 +54,7 @@ passwordSetError = Tätä salasanaa ei voitu asettaa
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Helppoa ja yksityistä tiedostonjakoa
+notifyUploadEncryptDone = Tiedosto on salattu ja valmis lähetettäväksi
 timespanMinutes =
     { $num ->
         [one] 1 minuutti
@@ -88,6 +89,7 @@ fileSize = { $num } { $units }
 totalSize = Koko yhteensä: { $size }
 copyLinkButton = Kopioi linkki
 downloadTitle = Lataa tiedostot
+trySendDescription = Kokeile { -send-brand } -palvelua jakaaksesi tiedostoja helposti ja turvallisesti.
 expiredTitle = Tämä linkki on vanhentunut.
 notSupportedDescription = { -send-brand } ei toimi tällä selaimella. { -send-short-brand } toimii parhaiten { -firefox }in uusimmalla versiolla, ja toimii useimpien selainten uusimmilla versioilla.
 downloadFirefox = Lataa { -firefox }
@@ -100,6 +102,10 @@ uploadButton = Lähetä
 addPassword = Suojaa salasanalla
 emailPlaceholder = Kirjoita sähköpostiosoitteesi
 signInButton = Kirjaudu tai rekisteröidy
+accountBenefitTitle = Luo { -firefox }-tili tai kirjaudu sisään
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Jaa tiedostoja, joiden koko on enintään { $size }
+accountBenefitDownloadCount = Jaa tiedostoja useamman ihmisen kesken
 accountBenefitMoz = Lue lisää muista { -mozilla }-palveluista
 signOut = Kirjaudu ulos
 okButton = OK
