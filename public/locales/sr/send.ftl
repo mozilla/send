@@ -100,3 +100,5 @@ totalSize = Укупна величина: { $size }
 copyLinkDescription = Копирајте везу да бисте поделили вашу датотеку:
 copyLinkButton = Копирај везу
 downloadTitle = Преузми датотеке
+downloadDescription = Ова датотека је подељена преко услуге { -send-brand } која омогућава шифровање с краја на крај преко везе која самостално истиче.
+trySendDescription = Пробајте { -send-brand } за једноставно и безбедно дељење датотека.
