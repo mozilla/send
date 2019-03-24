@@ -53,6 +53,11 @@ passwordSetError = Δεν ήταν δυνατός ο ορισμός αυτού �
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Απλή, ιδιωτική κοινή χρήση αρχείων
+introDescription = Το { -send-brand } σάς επιτρέπει να μοιράζεστε αρχεία με από άκρη σε άκρη κρυπτογράφηση και ένα σύνδεσμο που λήγει αυτόματα. Έτσι, ό,τι μοιράζεστε παραμένει ιδιωτικό και είστε βέβαιοι πως δεν παραμένει στο διαδίκτυο για πάντα.
+notifyUploadEncryptDone = Το αρχείο σας έχει κρυπτογραφηθεί και είναι έτοιμο για αποστολή
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Λήγει μετά από { $downloadCount } ή { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 λεπτό
@@ -85,15 +90,36 @@ gb = GB
 fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Συνολικό μέγεθος: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Αντιγράψτε το σύνδεσμο για να μοιραστείτε το αρχείο:
 copyLinkButton = Αντιγραφή συνδέσμου
 downloadTitle = Λήψη αρχείων
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Μόνο 1 αρχείο μπορεί να μεταφορτωθεί κάθε φορά.
+       *[other] Μόνο { $count } αρχεία μπορούν να μεταφορτωθούν κάθε φορά.
+    }
 expiredTitle = Αυτός ο σύνδεσμος έχει λήξει.
 downloadFirefox = Λήψη του { -firefox }
+legalTitle = Σημείωση Απορρήτου { -send-short-brand }
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }η { $hours }ώ { $minutes }λ
 addFilesButton = Επιλέξτε αρχεία για μεταφόρτωση
 uploadButton = Μεταφόρτωση
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Σύρετε και εναποθέστε αρχεία
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = ή κάντε κλικ για να στείλετε μέχρι { $size }
+addPassword = Προστασία με κωδικό πρόσβασης
 emailPlaceholder = Εισάγετε το email σας
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Συνδεθείτε για να στείλετε μέχρι { $size }
 signInButton = Σύνδεση/εγγραφή
 accountBenefitMoz = Μάθετε για τις άλλες υπηρεσίες της { -mozilla }
 signOut = Αποσύνδεση
 okButton = OK
 downloadingTitle = Λήψη
+noStreamsOptionFirefox = Δοκιμάστε το αγαπημένο μας πρόγραμμα περιήγησης
+noStreamsOptionDownload = Συνέχεια με αυτό το πρόγραμμα περιήγησης
