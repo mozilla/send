@@ -132,3 +132,5 @@ accountBenefitTimeLimit =
 signOut = Disconnecter
 okButton = OK
 downloadingTitle = Discargamento
+noStreamsOptionFirefox = Prova nostre navigator favorite
+noStreamsOptionDownload = Continuar con iste navigator
