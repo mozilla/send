@@ -130,9 +130,22 @@ dragAndDropFiles = Превуците и пустите датотеке
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = или кликните за слање садржаја великог до { $size }
-addPassword = Заштити лозинком
+addPassword = Заштитите лозинком
 emailPlaceholder = Унесите вашу е-адресу
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Пријавите се да пошаљете садржај до { $size }
 signInButton = Пријава/регистрација
 accountBenefitTitle = Направите { -firefox } налог или се пријавите
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Поделите датотеке велике до { $size }
+accountBenefitDownloadCount = Поделите датотеке са више особа
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Остави везе активним највише { $count } дан
+        [few] Остави везе активним највише { $count } дана
+       *[other] Остави везе активним највише { $count } дана
+    }
+accountBenefitSync = Управљајте подељеним датотекама са било ког уређаја
+accountBenefitMoz = Сазнајте више о другим { -mozilla }-иним услугама
+signOut = Одјава
+okButton = У реду
