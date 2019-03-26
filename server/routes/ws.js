@@ -23,7 +23,7 @@ module.exports = function(ws, req) {
 
   ws.once('message', async function(message) {
     try {
-      const newId = crypto.randomBytes(5).toString('hex');
+      const newId = crypto.randomBytes(8).toString('hex');
       const owner = crypto.randomBytes(10).toString('hex');
 
       const fileInfo = JSON.parse(message);
