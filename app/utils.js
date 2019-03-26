@@ -25,7 +25,7 @@ function loadShim(polyfill) {
 }
 
 function isFile(id) {
-  return /^[0-9a-fA-F]{10}$/.test(id);
+  return /^[0-9a-fA-F]{10,16}$/.test(id);
 }
 
 function copyToClipboard(str) {
