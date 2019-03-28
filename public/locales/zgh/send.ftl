@@ -20,8 +20,14 @@ downloadFinish = ⵜⵎⴷⴰ ⵜⴰⴳⴰⵎⵜ
 fileSizeProgress = ({ $partialSize } ⵙⴳ { $totalSize })
 sendYourFilesLink = ⴰⵔⵎ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ
 errorPageHeader = ⵜⵙⴰⵔ ⴽⵔⴰ ⵏ ⵜⵣⴳⴰⵍⵜ!
+notSupportedHeader = ⵓⵔ ⵉⵜⵜⵡⴰⵏⵏⴰⵍ ⵓⵎⵙⵙⴰⵔⴰ ⵏⵏⴽ.
+notSupportedLink = ⵎⴰⵖⴼ ⵓⵔ ⵉⵜⵜⵡⴰⵏⵏⴰⵍ ⵓⵎⵙⵙⴰⵔⴰ ⵉⵏⵓ?
+notSupportedOutdatedDetail = ⵙ ⵜⵎⴳⵕⵥⴰ, ⵜⴰⵍⵇⵇⵎⵜ ⴰ ⵏ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵓⵔ ⴷⴰ ⵜⴻⵜⵜⵏⴰⵍ ⵜⴰⵜⵉⴽⵏⵓⵍⵓⵊⵉⵜ ⵏ ⵓⵡⵉⴱ ⵏⵏⴰ ⵙ ⵉⵙⵡⵓⵔⵓⵢ ⴼⴰⵓⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ. ⵔⴰⴷ ⵜⴰⵙⵔⴷ ⴰⴷ ⵜⵙⴷⵖⵉⴷ ⴰⵎⵙⵙⴰⵔⴰ ⵏⵏⴽ.
+updateFirefox = ⵙⴷⵖⵉ ⴼⴰⵢⵔⴼⵓⴽⵙ
 deletePopupCancel = ⵙⵔ
 deleteButtonHover = ⴽⴽⵙ
+footerLinkPrivacy = ⵜⵉⵏⵏⵓⵜⵍⴰ
+footerLinkCookies = ⵉⴽⵓⴽⵉⵜⵏ
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }ⵙⵔⴳ { $minutes }ⵙⴷ
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
@@ -64,7 +70,11 @@ mb = ⵎⵜ
 gb = ⵊⵜ
 # localized number and byte abbreviation. example "2.5MB"
 fileSize = { $num }{ $units }
+# the next line after the colon contains a file name
+copyLinkDescription = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ ⴰⴼⴰⴷ ⴰⴷ ⵜⴱⴹⵓⴷ ⴰⴼⴰⵢⵍⵓ ⵏⵏⴽ:
+copyLinkButton = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ
 downloadTitle = ⴰⴳⵎ ⵉⴼⵓⵢⵍⴰ
+notSupportedDescription = ⵓⵔ ⵔⴰⴷ ⵉⵙⵡⵓⵔⵉ { -send-brand } ⵙ ⵓⵎⵙⵙⴰⵔⴰ ⴰ. ⴷⴰ ⵉⵙⵡⵓⵔⵓⵢ { -send-short-brand } ⵎⵍⵉⵃ ⵙ ⵜⵍⵇⵇⵎⵜ ⵜⴰⵎⴳⴳⴰⵔⵓⵜ ⵏ { -firefox }, ⴷ ⵔⴰⴷ ⵉⵙⵡⵓⵔⵉ ⵙ ⵜⵍⵇⵇⵎⵜ ⵜⴰⵎⵉⵔⴰⵏⵜ ⵏ ⵓⵎⴰⵜⴰ ⵏ ⵉⵎⵙⵙⴰⵔⴰⵜⵏ.
 downloadFirefox = ⴰⴳⵎ { -firefox }
 legalDateStamp = ⵜⴰⵍⵇⵇⵎⵜ 1.0, ⵜⵉⵏ 12 ⵎⴰⵕⵚ 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
@@ -83,3 +93,4 @@ accountBenefitDownloadCount = ⴱⴹⵓ ⵉⴼⵓⵢⵍⴰ ⴰⴽⴷ ⵡⵓⴳ�
 signOut = ⴼⴼⵖ
 okButton = ⵡⴰⵅⵅⴰ
 downloadingTitle = ⴰⴳⴰⵎ
+noStreamsOptionCopy = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ ⴰⴼⴰⴷ ⴰⴷ ⵜ ⵜⵕⵥⵎⴷ ⴳ ⴽⵔⴰ ⵏ ⵓⵎⵙⵙⴰⵔⴰ ⵢⴰⴹⵏ
