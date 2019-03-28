@@ -1,5 +1,6 @@
 # Firefox Send is a brand name and should not be localized.
 title = ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ
+siteFeedback = ⵜⴰⵙⴷⵎⵉⵔⵜ
 importingFile = ⴰⵙⴽⵛⵎ...
 downloadCount =
     { $num ->
@@ -13,6 +14,7 @@ timespanHours =
     }
 copiedUrl = ⵉⵏⵖⵍ!
 unlockInputPlaceholder = ⵜⴰⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ
+unlockButtonLabel = ⴽⴽⵙ ⴰⵔⴳⴰⵍ
 downloadButtonLabel = ⴰⴳⵎ
 downloadFinish = ⵜⵎⴷⴰ ⵜⴰⴳⴰⵎⵜ
 fileSizeProgress = ({ $partialSize } ⵙⴳ { $totalSize })
@@ -67,6 +69,8 @@ downloadFirefox = ⴰⴳⵎ { -firefox }
 legalDateStamp = ⵜⴰⵍⵇⵇⵎⵜ 1.0, ⵜⵉⵏ 12 ⵎⴰⵕⵚ 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }ⵙ { $hours }ⵙⵔⴳ { $minutes }ⵙⴷ
+addFilesButton = ⵙⵜⵢ ⵉⴼⵓⵢⵍⴰ ⵉ ⵓⵙⵙⴽⵜⵔ
+uploadButton = ⵙⵙⴽⵜⵔ
 addPassword = ⴰⵔⵢ ⵙ ⵜⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ
 emailPlaceholder = ⵙⵙⴽⵛⵎ ⵉⵎⴰⵢⵍ ⵏⵏⴽ
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
