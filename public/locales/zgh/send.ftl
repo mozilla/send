@@ -81,6 +81,8 @@ legalDateStamp = ⵜⴰⵍⵇⵇⵎⵜ 1.0, ⵜⵉⵏ 12 ⵎⴰⵕⵚ 2019
 expiresDaysHoursMinutes = { $days }ⵙ { $hours }ⵙⵔⴳ { $minutes }ⵙⴷ
 addFilesButton = ⵙⵜⵢ ⵉⴼⵓⵢⵍⴰ ⵉ ⵓⵙⵙⴽⵜⵔ
 uploadButton = ⵙⵙⴽⵜⵔ
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = ⵙⵓⵛⵛⴹ, ⵜⵙⵔⵙⴷ ⵉⴼⵓⵢⵍⴰ
 addPassword = ⴰⵔⵢ ⵙ ⵜⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ
 emailPlaceholder = ⵙⵙⴽⵛⵎ ⵉⵎⴰⵢⵍ ⵏⵏⴽ
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
