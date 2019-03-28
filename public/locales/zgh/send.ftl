@@ -11,8 +11,10 @@ timespanHours =
         [one] { $num } ⵜⵙⵔⴰⴳⵜ
        *[other] { $num } ⵜⵙⵔⴰⴳⵉⵏ
     }
+copiedUrl = ⵉⵏⵖⵍ!
 unlockInputPlaceholder = ⵜⴰⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ
 downloadButtonLabel = ⴰⴳⵎ
+downloadFinish = ⵜⵎⴷⴰ ⵜⴰⴳⴰⵎⵜ
 fileSizeProgress = ({ $partialSize } ⵙⴳ { $totalSize })
 sendYourFilesLink = ⴰⵔⵎ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ
 errorPageHeader = ⵜⵙⴰⵔ ⴽⵔⴰ ⵏ ⵜⵣⴳⴰⵍⵜ!
@@ -62,9 +64,11 @@ gb = ⵊⵜ
 fileSize = { $num }{ $units }
 downloadTitle = ⴰⴳⵎ ⵉⴼⵓⵢⵍⴰ
 downloadFirefox = ⴰⴳⵎ { -firefox }
+legalDateStamp = ⵜⴰⵍⵇⵇⵎⵜ 1.0, ⵜⵉⵏ 12 ⵎⴰⵕⵚ 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }ⵙ { $hours }ⵙⵔⴳ { $minutes }ⵙⴷ
 addPassword = ⴰⵔⵢ ⵙ ⵜⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ
+emailPlaceholder = ⵙⵙⴽⵛⵎ ⵉⵎⴰⵢⵍ ⵏⵏⴽ
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = ⴽⵛⵎ ⴰⴼⴰⴷ ⴰⴷ ⵜⴰⵣⵏⴷ ⴰⵔ { $size }
 signInButton = ⴽⵛⵎ/ⵣⵎⵎⴻⵎ
