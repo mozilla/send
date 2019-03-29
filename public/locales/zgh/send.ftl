@@ -35,10 +35,13 @@ footerLinkCookies = ⵉⴽⵓⴽⵉⵜⵏ
 passwordTryAgain = ⵜⴰⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ ⵓⵔ ⵢⵓⵖⴷⵏ. ⴰⵔⵎ ⴷⴰⵖ.
 javascriptRequired = ⴷⴰ ⵉⵜⵜⴰⵙⵔ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ ⵊⴰⴼⴰⵙⴽⵔⵉⴱⵜ
 whyJavascript = ⵎⴰⵖⴼ ⴷⴰ ⵉⵜⵜⴰⵙⵔ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ ⵊⴰⴼⴰⵙⴽⵔⵉⴱⵜ?
+enableJavascript = ⵎⴽ ⵜⵓⴼⵉⴷ, ⵙⵏⵓⵛⵛⴳ ⵊⴰⴼⴰⵙⴽⵔⵉⴱⵜ, ⵜⴰⵔⵎⴷ ⴷⴰⵖ.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }ⵙⵔⴳ { $minutes }ⵙⴷ
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }ⵙⴷ
+# A short status message shown when the user enters a long password
+maxPasswordLength = ⵜⵉⵖⵣⵉ ⵜⴰⵎⵓⵣⵣⵓⵔⵜ ⵏ ⵜⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ: { $length }
 
 ## Send version 2 strings
 
@@ -47,6 +50,9 @@ expiresMinutes = { $minutes }ⵙⴷ
 -send-short-brand = ⵙⵉⵏⴷ
 -firefox = ⴼⴰⵢⵔⴼⵓⴽⵙ
 -mozilla = ⵎⵓⵣⵉⵍⴰ
+notifyUploadEncryptDone = ⵉⵏⵜⵍ ⵓⴼⴰⵢⵍⵓ ⵏⵏⴽ, ⵉⵃⵢⵢⵍ ⵉ ⵡⴰⵣⴰⵏ
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = ⴰⴷ ⵉⵎⵎⵜ ⴷⴼⴼⵉⵔ { $downloadCount } ⵏⵉⵖ ⴷ { $timespan }
 timespanMinutes =
     { $num ->
         [one] { $num } ⵜⵓⵙⴷⵉⴷⵜ
@@ -81,6 +87,7 @@ fileSize = { $num }{ $units }
 copyLinkDescription = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ ⴰⴼⴰⴷ ⴰⴷ ⵜⴱⴹⵓⴷ ⴰⴼⴰⵢⵍⵓ ⵏⵏⴽ:
 copyLinkButton = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ
 downloadTitle = ⴰⴳⵎ ⵉⴼⵓⵢⵍⴰ
+expiredTitle = ⵉⵎⵎⵓⵜ ⵓⵙⵖⵏ ⴰ.
 notSupportedDescription = ⵓⵔ ⵔⴰⴷ ⵉⵙⵡⵓⵔⵉ { -send-brand } ⵙ ⵓⵎⵙⵙⴰⵔⴰ ⴰ. ⴷⴰ ⵉⵙⵡⵓⵔⵓⵢ { -send-short-brand } ⵎⵍⵉⵃ ⵙ ⵜⵍⵇⵇⵎⵜ ⵜⴰⵎⴳⴳⴰⵔⵓⵜ ⵏ { -firefox }, ⴷ ⵔⴰⴷ ⵉⵙⵡⵓⵔⵉ ⵙ ⵜⵍⵇⵇⵎⵜ ⵜⴰⵎⵉⵔⴰⵏⵜ ⵏ ⵓⵎⴰⵜⴰ ⵏ ⵉⵎⵙⵙⴰⵔⴰⵜⵏ.
 downloadFirefox = ⴰⴳⵎ { -firefox }
 legalDateStamp = ⵜⴰⵍⵇⵇⵎⵜ 1.0, ⵜⵉⵏ 12 ⵎⴰⵕⵚ 2019
