@@ -53,6 +53,7 @@ passwordSetError = Awal-agi uffir ur izmir ara ad ittwabaded
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Afessas, beṭṭu n ifuyla s wudem uslig
 timespanMinutes =
     { $num ->
         [one] 1 n tsedat
@@ -92,6 +93,7 @@ downloadTitle = Sider ifuyla
 expiredTitle = Immut useɣwen.
 downloadFirefox = Sider { -firefox }
 uploadButton = Sali
+addPassword = Ḥrez s wawal uffir
 emailPlaceholder = Sekcem imayl inek
 signInButton = Kcem/jerred
 signOut = Ffeɣ
