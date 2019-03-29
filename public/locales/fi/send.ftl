@@ -118,18 +118,18 @@ expiresDaysHoursMinutes = { $days } pv { $hours } t { $minutes } min
 addFilesButton = Valitse lähetettävät tiedostot
 uploadButton = Lähetä
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
-dragAndDropFiles = Raahaa ja pudota tiedostot
+dragAndDropFiles = Vedä ja pudota tiedostot
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = tai napsauta lähettääksesi tiedostoja, joiden koko voi olla enintään { $size }
 addPassword = Suojaa salasanalla
 emailPlaceholder = Kirjoita sähköpostiosoitteesi
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-signInSizeBump = Kirjautumalla voit lähettää tiedostoja, joiden koko voi olla enintään { $size }
+signInSizeBump = Kirjautumalla voit lähettää jopa { $size } suuria tiedostoja
 signInButton = Kirjaudu tai rekisteröidy
 accountBenefitTitle = Luo { -firefox }-tili tai kirjaudu sisään
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-accountBenefitLargeFiles = Jaa tiedostoja, joiden koko on enintään { $size }
+accountBenefitLargeFiles = Jaa jopa { $size } suuria tiedostoja
 accountBenefitDownloadCount = Jaa tiedostoja useamman ihmisen kesken
 accountBenefitTimeLimit =
     { $count ->
