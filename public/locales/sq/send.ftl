@@ -55,6 +55,9 @@ passwordSetError = Ky fjalëkalim s’u caktua dot
 -mozilla = Mozilla
 introTitle = Ndarje e thjeshtë, private, kartelash me të tjerët
 introDescription = { -send-brand } ju lejon të ndani kartela me të tjerët, me fshehtëzim skaj-më-skaj dhe me një lidhje që skadon automatikisht. Kështu mund ta mbani private atë që ndani me të tjerë dhe të garantoni që gjërat tuaja s’do të qëndrojnë në linjë përgjithmonë.
+notifyUploadEncryptDone = Kartela juaj është fshehtëzuar dhe gati për dërgim
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Skadon pas { $downloadCount } ose { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 minutë
@@ -91,7 +94,22 @@ totalSize = Madhësia gjithsej: { $size }
 copyLinkDescription = Kopjoni lidhjen për dhënien e kartelës tuaj:
 copyLinkButton = Kopjoje lidhjen
 downloadTitle = Shkarkoni kartela
+downloadDescription = Kjo kartelë u nda me të tjerët përmes { -send-brand }, me fshehtëzim skaj-më-skaj dhe një lidhje që skadon automatikisht.
+trySendDescription = Provoni { -send-brand }, për ndarje të thjeshtë, të parrezik, kartelash me të tjerët.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Mund të ngarkohet vetëm 1 kartelë në herë.
+       *[other] Mund të ngarkohen vetëm { $count } kartela në herë.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Lejohet vetëm 1 arkiv.
+       *[other] Lejohen vetëm { $count } arkiva.
+    }
 expiredTitle = Kjo lidhje ka skaduar.
+notSupportedDescription = { -send-brand } s’do të funksionojë me këtë shfletues. { -send-short-brand } funksionin më mirë me versionin më të ri të { -firefox }, dhe do të funksionojë me versionin e tanishëm të shumicës së shfletuesve.
 downloadFirefox = Shkarkoni { -firefox }
 legalTitle = Njoftim Privatësie Për { -send-short-brand }
 legalDateStamp = Version 1.0, daton 12 mars, 2019
@@ -110,6 +128,8 @@ emailPlaceholder = Jepni email-in tuaj
 signInSizeBump = Bëni hyrjen që të dërgoni deri më { $size }
 signInButton = Hyni/Regjistrohuni
 accountBenefitTitle = Krijoni një Llogari { -firefox } ose bëni hyrjen në një të tillë
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Ndani me të tjerët kartela deri { $size }
 accountBenefitDownloadCount = Ndani kartela me më tepër persona
 accountBenefitTimeLimit =
     { $count ->
