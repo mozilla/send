@@ -92,7 +92,10 @@ copyLinkButton = Nɣel aseɣwen
 downloadTitle = Sider ifuyla
 expiredTitle = Immut useɣwen.
 downloadFirefox = Sider { -firefox }
+addFilesButton = Fren ifuyla ad tessaliḍ
 uploadButton = Sali
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Ẓuɣer sakin sers ifuyla
 addPassword = Ḥrez s wawal uffir
 emailPlaceholder = Sekcem imayl inek
 signInButton = Kcem/jerred
