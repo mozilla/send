@@ -3,7 +3,7 @@ title = ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ
 siteFeedback = ⵜⴰⵙⴷⵎⵉⵔⵜ
 importingFile = ⴰⵙⴽⵛⵎ...
 encryptingFile = ⴰⵙⵙⵏⵜⵍ...
-decryptingFile = ⴰⵔⴰⵏⵜⴰⵍ...
+decryptingFile = ⵜⵓⴽⴽⵙⴰ ⵏ ⵓⵙⵙⵏⵜⵍ...
 downloadCount =
     { $num ->
         [one] { $num } ⵜⴰⴳⴰⵎⵜ
@@ -83,6 +83,8 @@ mb = ⵎⵜ
 gb = ⵊⵜ
 # localized number and byte abbreviation. example "2.5MB"
 fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = ⵜⵉⴷⴷⵉ ⵉⵎⵎⵓⵜⵜⵔⵏ: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ ⴰⴼⴰⴷ ⴰⴷ ⵜⴱⴹⵓⴷ ⴰⴼⴰⵢⵍⵓ ⵏⵏⴽ:
 copyLinkButton = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ
@@ -108,6 +110,7 @@ accountBenefitTitle = ⵙⵏⴼⵍⵓⵍ ⴰⵎⵉⴹⴰⵏ ⵏ { -firefox } ⵏ
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = ⴱⴹⵓ ⵉⴼⵓⵢⵍⴰ ⴰⵔ { $size }
 accountBenefitDownloadCount = ⴱⴹⵓ ⵉⴼⵓⵢⵍⴰ ⴰⴽⴷ ⵡⵓⴳⴳⴰⵔ ⵏ ⵎⴷⴷⵏ
+accountBenefitSync = ⵙⵡⵓⴷⴷⵓ ⵉⴼⵓⵢⵍⴰ ⵜⵜⵓⴱⴹⴰⵏⵉⵏ ⵙⴳ ⴽⵓ ⴰⵍⵍⴰⵍ
 accountBenefitMoz = ⵍⵎⴷ ⵖⴼ ⵜⵏⵓⴼⴰ ⵢⴰⴹⵏⵉⵏ ⵏ { -mozilla }
 signOut = ⴼⴼⵖ
 okButton = ⵡⴰⵅⵅⴰ
