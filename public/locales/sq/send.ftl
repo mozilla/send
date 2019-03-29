@@ -1,31 +1,9 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteSubtitle = eksperiment web
 siteFeedback = Përshtypje
-uploadPageHeader = Shkëmbim Privat, i Fshehtëzuar, Kartelash
-uploadPageExplainer = Dërgoni kartela përmes një lidhjeje të parrezik, private dhe të fshehtëzuar, që skadon automatikisht për të garantuar që gjërat tuaja nuk mbesin në internet përgjithmonë.
-uploadPageLearnMore = Mësoni më tepër
-uploadPageDropMessage = Që të fillojë ngarkimi, hidheni kartelën tuaj këtu 
-uploadPageSizeMessage = Për ecurinë më të qëndrueshme, më e mira është t’i mbani kartelat tuaja nën 1GB
-uploadPageBrowseButton = Përzgjidhni një kartelë nga kompjuteri juaj
-uploadPageBrowseButton1 = Përzgjidhni një kartelë për ngarkim
-uploadPageMultipleFilesAlert = Ngarkimi i shumë kartelave njëherësh, ose i një dosjeje, hëpërhë nuk mbulohen.
-uploadPageBrowseButtonTitle = Ngarkoje kartelën
-uploadingPageProgress = Po ngarkohet { $filename } ({ $size })
 importingFile = Po importohet…
-verifyingFile = Po verifikohet…
 encryptingFile = Po fshehtëzohet…
 decryptingFile = Po shfshehtëzohet…
-notifyUploadDone = Ngarkimi juaj përfundoi.
-uploadingPageMessage = Do të jeni në gjendje të caktoni parametra skadimi sapo kartela juaj të jetë ngarkuar.
-uploadingPageCancel = Anuloje ngarkimin
-uploadCancelNotification = Ngarkimi juaj u anulua.
-uploadingPageLargeFileMessage = Kjo kartelë është e madhe dhe mund të dojë ca kohë të ngarkohet. Rrini këtu!
-uploadingFileNotification = Njoftomë kur të jetë plotësuar ngarkimi .
-uploadSuccessConfirmHeader = Gati për Dërgim
-uploadSvgAlt = Ngarkoje
-uploadSuccessTimingHeader = Lidhja për te kartela juaj do të skadojë pas 1 shkarkimi ose pas 24 orësh.
-expireInfo = Lidhja për te kartela juaj do të skadojë pas { $downloadCount } ose { $timespan }.
 downloadCount =
     { $num ->
         [one] 1 shkarkimi
@@ -36,76 +14,26 @@ timespanHours =
         [one] 1 ore
        *[other] { $num } orësh
     }
-copyUrlFormLabelWithName = Kopjojeni dhe jepuani të tjerëve lidhje që të dërgoni kartelën tuaj: { $filename }
-copyUrlFormButton = Kopjoje te e papastra
 copiedUrl = U kopjua!
-deleteFileButton = Fshije kartelën
-sendAnotherFileLink = Dërgoni një kartelë tjetër
-# Alternative text used on the download link/button (indicates an action).
-downloadAltText = Shkarkoje
-downloadsFileList = Shkarkime
-# Used as header in a column indicating the amount of time left before a
-# download link expires (e.g. "10h 5m")
-timeFileList = Kohë
-# Used as header in a column indicating the number of times a file has been
-# downloaded
-downloadFileName = Shkarkoje { $filename }
-downloadFileSize = ({ $size })
-unlockInputLabel = Jepni Fjalëkalimin
 unlockInputPlaceholder = Fjalëkalim
 unlockButtonLabel = Zhbllokoje
-downloadFileTitle = Shkarko Kartelën e Fshehtëzuar
-# Firefox Send is a brand name and should not be localized.
-downloadMessage = Shoku juaj po ju dërgon një kartelë me Firefox Send, një shërbim që ju lejon të shkëmbeni kartela përmes një lidhjeje të parrezik, private, dhe të fshehtëzuar, që skadon automatikisht, për të garantuar që gjërat tuaja të mos mbeten në internet përgjithmonë.
-# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Shkarkoje
-downloadNotification = Shkarkimi juaj u plotësua.
 downloadFinish = Shkarkim i Plotësuar
-# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } nga { $totalSize }) gjithsej
-# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = Provoni Firefox Send
-downloadingPageProgress = Po shkarkohet { $filename } ({ $size })
-downloadingPageMessage = Ju lutemi, lëreni hapur këtë skedë ndërkohë që ne sjellim dhe shfshehtëzojmë kartelën tuaj.
-errorAltText = Gabim ngarkimi
 errorPageHeader = Diç shkoi ters!
-errorPageMessage = Pati një gabim gjatë ngarkimit të kartelës.
-errorPageLink = Dërgoni një kartelë tjetër
 fileTooBig = Kjo kartelë është shumë e madhe për ngarkim. Do të duhej të ishte më pak se { $size }.
 linkExpiredAlt = Lidhja skadoi
-expiredPageHeader = Kjo lidhje ka skaduar ose s’ka ekzistuar kurrë!
 notSupportedHeader = Shfletuesi juaj nuk mbulohet.
-# Firefox Send is a brand name and should not be localized.
-notSupportedDetail = Mjerisht, ky shfletues nuk mbulon teknologjinë web mbi të cilën bazohet Firefox Send.Do t’ju duhet të provoni një shfletues tjetër. Ju këshillojmë Firefox-in!
 notSupportedLink = Pse nuk mbulohet ky shfletues?
 notSupportedOutdatedDetail = Mjerisht, ky version i Firefox-it nuk e mbulon teknologjinë web mbi të cilën bazohet Firefox Send. Do t’ju duhet të përditësoni shfletuesin tuaj.
 updateFirefox = Përditësojeni Firefox-in
-downloadFirefoxButtonSub = Shkarkim Falas
-uploadedFile = Kartelë
-copyFileList = Kopjo URL-në
-# expiryFileList is used as a column header
-expiryFileList = Skadon Më
-deleteFileList = Fshije
-nevermindButton = S’prish punë
-legalHeader = Kushte & Privatësi
-legalNoticeTestPilot = Firefox Send është një eksperiment Pilot Testesh dhe subjekt i <a>Kushteve të Shërbimit</a> dhe <a>Shënim Privacësie</a> për Pilot Testesh. <a>Këtu</a> mund të mësoni më tepër mbi këtë eksperiment dhe grumbullimit të të dhënave që ai kryen.
-legalNoticeMozilla = Përdorimi i sajtit Firefox Send është gjithashtu subjekt i <a>Shënimit Mbi Privatësi Sajtesh</a> të Mozilla-s dhe <a>Kushteve të Përdorimit të Sajtit</a>.
-deletePopupText = Të fshihet kjo kartelë?
-deletePopupYes = Po
 deletePopupCancel = Anuloje
 deleteButtonHover = Fshije
-copyUrlHover = Kopjoji URL-në
 footerLinkLegal = Ligjore
-# Test Pilot is a proper name and should not be localized.
-footerLinkAbout = Rreth Pilot Testesh
 footerLinkPrivacy = Privatësi
-footerLinkTerms = Kushte
 footerLinkCookies = Cookies
-requirePasswordCheckbox = Kërko doemos një fjalëkalim për shkarkim të kësaj kartele
-addPasswordButton = Shtoni fjalëkalim
-changePasswordButton = Ndryshoje
 passwordTryAgain = Fjalëkalim i pasaktë. Riprovoni.
-reportIPInfringement = Raportoni Cenim IP-je
 javascriptRequired = Firefox Send lyp JavaScript
 whyJavascript = Ç’i duhet Firefox Send-it JavaScript-i?
 enableJavascript = Ju lutemi, aktivizoni JavaScript-in dhe riprovoni.
@@ -113,9 +41,87 @@ enableJavascript = Ju lutemi, aktivizoni JavaScript-in dhe riprovoni.
 expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
-# A short status message shown when a password is successfully set
-passwordIsSet = Fjalëkalimi u caktua
 # A short status message shown when the user enters a long password
 maxPasswordLength = Gjatësi maksimum fjalëkalimi: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Ky fjalëkalim s’u caktua dot
+
+## Send version 2 strings
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Ndarje e thjeshtë, private, kartelash me të tjerët
+introDescription = { -send-brand } ju lejon të ndani kartela me të tjerët, me fshehtëzim skaj-më-skaj dhe me një lidhje që skadon automatikisht. Kështu mund ta mbani private atë që ndani me të tjerë dhe të garantoni që gjërat tuaja s’do të qëndrojnë në linjë përgjithmonë.
+timespanMinutes =
+    { $num ->
+        [one] 1 minutë
+       *[other] { $num } minuta
+    }
+timespanDays =
+    { $num ->
+        [one] 1 ditë
+       *[other] { $num } ditë
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 javë
+       *[other] { $num } javë
+    }
+fileCount =
+    { $num ->
+        [one] 1 kartelë
+       *[other] { $num } kartela
+    }
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = Madhësia gjithsej: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Kopjoni lidhjen për dhënien e kartelës tuaj:
+copyLinkButton = Kopjoje lidhjen
+downloadTitle = Shkarkoni kartela
+expiredTitle = Kjo lidhje ka skaduar.
+downloadFirefox = Shkarkoni { -firefox }
+legalTitle = Njoftim Privatësie Për { -send-short-brand }
+legalDateStamp = Version 1.0, daton 12 mars, 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = Përzgjidhni kartela për ngarkim
+uploadButton = Ngarkoje
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Tërhiqni dhe lini kartela
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = ose klikoni që të dërgohen deri në { $size }
+addPassword = Mbrojini me fjalëkalim
+emailPlaceholder = Jepni email-in tuaj
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Bëni hyrjen që të dërgoni deri më { $size }
+signInButton = Hyni/Regjistrohuni
+accountBenefitTitle = Krijoni një Llogari { -firefox } ose bëni hyrjen në një të tillë
+accountBenefitDownloadCount = Ndani kartela me më tepër persona
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Mbaji aktive lidhjet për deri 1 ditë
+       *[other] Mbaji aktive lidhjet për deri { $count } ditë
+    }
+accountBenefitSync = Administroni nga çfarëdo pajisje kartela të përbashkëta
+accountBenefitMoz = Mësoni më tepër rreth shërbimesh { -mozilla }
+signOut = Dilni
+okButton = OK
+downloadingTitle = Shkarkim
+noStreamsWarning = Ky shfletues mund të mos jetë në gjendje të shfshehtëzojë një kartelë kaq të madhe.
+noStreamsOptionCopy = Kopjoje lidhjen për ta hapur në një tjetër shfletues
+noStreamsOptionFirefox = Provoni shfletuesin tonë të parapëlqyer
+noStreamsOptionDownload = Vazhdo me këtë shfletues
