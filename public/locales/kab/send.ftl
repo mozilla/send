@@ -48,4 +48,53 @@ passwordSetError = Awal-agi uffir ur izmir ara ad ittwabaded
 
 ## Send version 2 strings
 
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
 -mozilla = Mozilla
+timespanMinutes =
+    { $num ->
+        [one] 1 n tsedat
+       *[other] { $num } n tsedatin
+    }
+timespanDays =
+    { $num ->
+        [one] 1 n wass
+       *[other] { $num } n wussan
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 n dduṛt
+       *[other] { $num } n ledwaṛ
+    }
+fileCount =
+    { $num ->
+        [one] 1 n ufaylu
+       *[other] { $num } n ifuyla
+    }
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KAṬ
+# mebibyte abbreviation
+mb = MAṬ
+# gibibyte abbreviation
+gb = GAṬ
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = Tuɣzi s umata: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Nɣel aseɣwen akken ad tebḍuḍ afaylu-inek
+copyLinkButton = Nɣel aseɣwen
+downloadTitle = Sider ifuyla
+expiredTitle = Immut useɣwen.
+downloadFirefox = Sider { -firefox }
+uploadButton = Sali
+emailPlaceholder = Sekcem imayl inek
+signInButton = Kcem/jerred
+signOut = Ffeɣ
+okButton = IH
+downloadingTitle = Azdam
+noStreamsOptionDownload = Kemmel akked iminig-a
