@@ -87,6 +87,7 @@ fileSize = { $num }{ $units }
 copyLinkDescription = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ ⴰⴼⴰⴷ ⴰⴷ ⵜⴱⴹⵓⴷ ⴰⴼⴰⵢⵍⵓ ⵏⵏⴽ:
 copyLinkButton = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ
 downloadTitle = ⴰⴳⵎ ⵉⴼⵓⵢⵍⴰ
+downloadDescription = ⵉⵜⵜⵓⴱⴹⴰ ⵓⴼⴰⵢⵍⵓ ⴰ ⵙⴳ { -send-brand } ⵙ ⵓⵙⵙⵏⵜⵍ ⵙⴳ ⵜⴰⵎⴰ ⴰⵔ ⵜⴰⵎⴰ ⴷ ⵢⴰⵏ ⵓⵙⵖⵏ ⵏⵏⴰ ⵉⵜⵜⵎⵎⵜⴰⵜⵏ ⵙ ⵓⵡⵔⵎⴰⵏ.
 expiredTitle = ⵉⵎⵎⵓⵜ ⵓⵙⵖⵏ ⴰ.
 notSupportedDescription = ⵓⵔ ⵔⴰⴷ ⵉⵙⵡⵓⵔⵉ { -send-brand } ⵙ ⵓⵎⵙⵙⴰⵔⴰ ⴰ. ⴷⴰ ⵉⵙⵡⵓⵔⵓⵢ { -send-short-brand } ⵎⵍⵉⵃ ⵙ ⵜⵍⵇⵇⵎⵜ ⵜⴰⵎⴳⴳⴰⵔⵓⵜ ⵏ { -firefox }, ⴷ ⵔⴰⴷ ⵉⵙⵡⵓⵔⵉ ⵙ ⵜⵍⵇⵇⵎⵜ ⵜⴰⵎⵉⵔⴰⵏⵜ ⵏ ⵓⵎⴰⵜⴰ ⵏ ⵉⵎⵙⵙⴰⵔⴰⵜⵏ.
 downloadFirefox = ⴰⴳⵎ { -firefox }
