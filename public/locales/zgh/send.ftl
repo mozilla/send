@@ -24,9 +24,9 @@ sendYourFilesLink = ⴰⵔⵎ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ
 errorPageHeader = ⵜⵙⴰⵔ ⴽⵔⴰ ⵏ ⵜⵣⴳⴰⵍⵜ!
 fileTooBig = ⵉⵎⵇⵇⵓⵔ ⴱⴰⵀⵔⴰ ⵓⴼⴰⵢⵍⵓ ⴰ ⵅⴼ ⵓⵙⵙⴽⵜⵔ. ⵉⵅⵚⵚⴰ ⵜ ⴰⴷ ⵢⵉⵍⵉ ⴷⴷⴰⵡ { $size }
 linkExpiredAlt = ⵉⵎⵎⵓⵜ ⵓⵙⵖⵏ
-notSupportedHeader = ⵓⵔ ⵉⵜⵜⵡⴰⵏⵏⴰⵍ ⵓⵎⵙⵙⴰⵔⴰ ⵏⵏⴽ.
+notSupportedHeader = ⵓⵔ ⵉⵜⵜⵡⴰⵏⵏⴰⵍ ⵓⵎⵙⵙⴰⵔⴰ ⵏⵏⵓⵏ.
 notSupportedLink = ⵎⴰⵖⴼ ⵓⵔ ⵉⵜⵜⵡⴰⵏⵏⴰⵍ ⵓⵎⵙⵙⴰⵔⴰ ⵉⵏⵓ?
-notSupportedOutdatedDetail = ⵙ ⵜⵎⴳⵕⵥⴰ, ⵜⴰⵍⵇⵇⵎⵜ ⴰ ⵏ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵓⵔ ⴷⴰ ⵜⴻⵜⵜⵏⴰⵍ ⵜⴰⵜⵉⴽⵏⵓⵍⵓⵊⵉⵜ ⵏ ⵓⵡⵉⴱ ⵏⵏⴰ ⵙ ⵉⵙⵡⵓⵔⵓⵢ ⴼⴰⵓⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ. ⵔⴰⴷ ⵜⴰⵙⵔⴷ ⴰⴷ ⵜⵙⴷⵖⵉⴷ ⴰⵎⵙⵙⴰⵔⴰ ⵏⵏⴽ.
+notSupportedOutdatedDetail = ⵙ ⵜⵎⴳⵕⵥⴰ, ⵜⴰⵍⵇⵇⵎⵜ ⴰ ⵏ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵓⵔ ⴷⴰ ⵜⴻⵜⵜⵏⴰⵍ ⵜⴰⵜⵉⴽⵏⵓⵍⵓⵊⵉⵜ ⵏ ⵓⵡⵉⴱ ⵏⵏⴰ ⵙ ⵉⵙⵡⵓⵔⵓⵢ ⴼⴰⵓⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ. ⵔⴰⴷ ⵜⴰⵙⵔⵎ ⴰⴷ ⵜⵙⴷⵖⵉⵎ ⴰⵎⵙⵙⴰⵔⴰ ⵏⵏⵓⵏ.
 updateFirefox = ⵙⴷⵖⵉ ⴼⴰⵢⵔⴼⵓⴽⵙ
 deletePopupCancel = ⵙⵔ
 deleteButtonHover = ⴽⴽⵙ
@@ -50,7 +50,7 @@ maxPasswordLength = ⵜⵉⵖⵣⵉ ⵜⴰⵎⵓⵣⵣⵓⵔⵜ ⵏ ⵜⴳⵓⵔ
 -send-short-brand = ⵙⵉⵏⴷ
 -firefox = ⴼⴰⵢⵔⴼⵓⴽⵙ
 -mozilla = ⵎⵓⵣⵉⵍⴰ
-notifyUploadEncryptDone = ⵉⵏⵜⵍ ⵓⴼⴰⵢⵍⵓ ⵏⵏⴽ, ⵉⵃⵢⵢⵍ ⵉ ⵡⴰⵣⴰⵏ
+notifyUploadEncryptDone = ⵉⵏⵜⵍ ⵓⴼⴰⵢⵍⵓ ⵏⵏⵓⵏ, ⵉⵃⵢⵢⵍ ⵉ ⵡⴰⵣⴰⵏ
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = ⴰⴷ ⵉⵎⵎⵜ ⴷⴼⴼⵉⵔ { $downloadCount } ⵏⵉⵖ ⴷ { $timespan }
 timespanMinutes =
@@ -86,7 +86,7 @@ fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = ⵜⵉⴷⴷⵉ ⵉⵎⵎⵓⵜⵜⵔⵏ: { $size }
 # the next line after the colon contains a file name
-copyLinkDescription = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ ⴰⴼⴰⴷ ⴰⴷ ⵜⴱⴹⵓⴷ ⴰⴼⴰⵢⵍⵓ ⵏⵏⴽ:
+copyLinkDescription = ⵙⵙⵏⵖⵍⴰⵜ ⴰⵙⵖⵏ ⴰⴼⴰⴷ ⴰⴷ ⵜⴱⴹⵓⵎ ⴰⴼⴰⵢⵍⵓ ⵏⵏⵓⵏ:
 copyLinkButton = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ
 downloadTitle = ⴰⴳⵎ ⵉⴼⵓⵢⵍⴰ
 downloadDescription = ⵉⵜⵜⵓⴱⴹⴰ ⵓⴼⴰⵢⵍⵓ ⴰ ⵙⴳ { -send-brand } ⵙ ⵓⵙⵙⵏⵜⵍ ⵙⴳ ⵜⴰⵎⴰ ⴰⵔ ⵜⴰⵎⴰ ⴷ ⵢⴰⵏ ⵓⵙⵖⵏ ⵏⵏⴰ ⵉⵜⵜⵎⵎⵜⴰⵜⵏ ⵙ ⵓⵡⵔⵎⴰⵏ.
@@ -110,7 +110,12 @@ accountBenefitTitle = ⵙⵏⴼⵍⵓⵍ ⴰⵎⵉⴹⴰⵏ ⵏ { -firefox } ⵏ
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = ⴱⴹⵓ ⵉⴼⵓⵢⵍⴰ ⴰⵔ { $size }
 accountBenefitDownloadCount = ⴱⴹⵓ ⵉⴼⵓⵢⵍⴰ ⴰⴽⴷ ⵡⵓⴳⴳⴰⵔ ⵏ ⵎⴷⴷⵏ
-accountBenefitSync = ⵙⵡⵓⴷⴷⵓ ⵉⴼⵓⵢⵍⴰ ⵜⵜⵓⴱⴹⴰⵏⵉⵏ ⵙⴳ ⴽⵓ ⴰⵍⵍⴰⵍ
+accountBenefitTimeLimit =
+    { $count ->
+        [one] ⴰⵊⵊⴰⵜ ⵉⵙⵖⴰⵏ ⴰⴷ ⵜⵜⵏⵓⵛⵛⵓⴳⵏ ⴰⵔ { $count } ⵡⴰⵙⵙ
+       *[other] ⴰⵊⵊⴰⵜ ⵉⵙⵖⴰⵏ ⴰⴷ ⵜⵜⵏⵓⵛⵛⵓⴳⵏ ⴰⵔ { $count } ⵡⵓⵙⵙⴰⵏ
+    }
+accountBenefitSync = ⵙⵡⵓⴷⴷⵡⴰⵜ ⵉⴼⵓⵢⵍⴰ ⵜⵜⵓⴱⴹⴰⵏⵉⵏ ⵙⴳ ⴽⵓ ⴰⵍⵍⴰⵍ
 accountBenefitMoz = ⵍⵎⴷ ⵖⴼ ⵜⵏⵓⴼⴰ ⵢⴰⴹⵏⵉⵏ ⵏ { -mozilla }
 signOut = ⴼⴼⵖ
 okButton = ⵡⴰⵅⵅⴰ
