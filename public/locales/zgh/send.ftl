@@ -2,6 +2,8 @@
 title = ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ
 siteFeedback = ⵜⴰⵙⴷⵎⵉⵔⵜ
 importingFile = ⴰⵙⴽⵛⵎ...
+encryptingFile = ⴰⵙⵙⵏⵜⵍ...
+decryptingFile = ⴰⵔⴰⵏⵜⴰⵍ...
 downloadCount =
     { $num ->
         [one] { $num } ⵜⴰⴳⴰⵎⵜ
@@ -20,6 +22,8 @@ downloadFinish = ⵜⵎⴷⴰ ⵜⴰⴳⴰⵎⵜ
 fileSizeProgress = ({ $partialSize } ⵙⴳ { $totalSize })
 sendYourFilesLink = ⴰⵔⵎ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ
 errorPageHeader = ⵜⵙⴰⵔ ⴽⵔⴰ ⵏ ⵜⵣⴳⴰⵍⵜ!
+fileTooBig = ⵉⵎⵇⵇⵓⵔ ⴱⴰⵀⵔⴰ ⵓⴼⴰⵢⵍⵓ ⴰ ⵅⴼ ⵓⵙⵙⴽⵜⵔ. ⵉⵅⵚⵚⴰ ⵜ ⴰⴷ ⵢⵉⵍⵉ ⴷⴷⴰⵡ { $size }
+linkExpiredAlt = ⵉⵎⵎⵓⵜ ⵓⵙⵖⵏ
 notSupportedHeader = ⵓⵔ ⵉⵜⵜⵡⴰⵏⵏⴰⵍ ⵓⵎⵙⵙⴰⵔⴰ ⵏⵏⴽ.
 notSupportedLink = ⵎⴰⵖⴼ ⵓⵔ ⵉⵜⵜⵡⴰⵏⵏⴰⵍ ⵓⵎⵙⵙⴰⵔⴰ ⵉⵏⵓ?
 notSupportedOutdatedDetail = ⵙ ⵜⵎⴳⵕⵥⴰ, ⵜⴰⵍⵇⵇⵎⵜ ⴰ ⵏ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵓⵔ ⴷⴰ ⵜⴻⵜⵜⵏⴰⵍ ⵜⴰⵜⵉⴽⵏⵓⵍⵓⵊⵉⵜ ⵏ ⵓⵡⵉⴱ ⵏⵏⴰ ⵙ ⵉⵙⵡⵓⵔⵓⵢ ⴼⴰⵓⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ. ⵔⴰⴷ ⵜⴰⵙⵔⴷ ⴰⴷ ⵜⵙⴷⵖⵉⴷ ⴰⵎⵙⵙⴰⵔⴰ ⵏⵏⴽ.
@@ -28,6 +32,9 @@ deletePopupCancel = ⵙⵔ
 deleteButtonHover = ⴽⴽⵙ
 footerLinkPrivacy = ⵜⵉⵏⵏⵓⵜⵍⴰ
 footerLinkCookies = ⵉⴽⵓⴽⵉⵜⵏ
+passwordTryAgain = ⵜⴰⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ ⵓⵔ ⵢⵓⵖⴷⵏ. ⴰⵔⵎ ⴷⴰⵖ.
+javascriptRequired = ⴷⴰ ⵉⵜⵜⴰⵙⵔ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ ⵊⴰⴼⴰⵙⴽⵔⵉⴱⵜ
+whyJavascript = ⵎⴰⵖⴼ ⴷⴰ ⵉⵜⵜⴰⵙⵔ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ ⵊⴰⴼⴰⵙⴽⵔⵉⴱⵜ?
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }ⵙⵔⴳ { $minutes }ⵙⴷ
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
