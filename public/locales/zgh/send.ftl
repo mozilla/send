@@ -120,5 +120,7 @@ accountBenefitMoz = ⵍⵎⴷ ⵖⴼ ⵜⵏⵓⴼⴰ ⵢⴰⴹⵏⵉⵏ ⵏ { -m
 signOut = ⴼⴼⵖ
 okButton = ⵡⴰⵅⵅⴰ
 downloadingTitle = ⴰⴳⴰⵎ
+noStreamsWarning = ⵉⵣⵎⵔ ⵓⵎⵙⵙⴰⵔⴰ ⴰ ⴰⴷ ⵓⵔ ⵉⵖⴰⵢ ⴰⴷ ⵉⴽⴽⵙ ⴰⵙⵙⵏⵜⵍ ⵉ ⵢⴰⵏ ⵓⴼⴰⵢⵍⵓ ⵉⵎⵇⵇⵓⵔⵏ ⵙ ⵡⴰⵏⵛⵜ ⴰ.
 noStreamsOptionCopy = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ ⴰⴼⴰⴷ ⴰⴷ ⵜ ⵜⵕⵥⵎⴷ ⴳ ⴽⵔⴰ ⵏ ⵓⵎⵙⵙⴰⵔⴰ ⵢⴰⴹⵏ
+noStreamsOptionFirefox = ⴰⵔⵎⴰⵜ ⴰⵎⵙⵙⴰⵔⴰ ⵏⵏⵖ ⴰⵎⵓⴼⴰⵢ
 noStreamsOptionDownload = ⵙⵎⴷ ⵙ ⵓⵎⵙⵙⴰⵔⴰ ⴰ
