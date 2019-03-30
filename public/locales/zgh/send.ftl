@@ -121,3 +121,4 @@ signOut = ⴼⴼⵖ
 okButton = ⵡⴰⵅⵅⴰ
 downloadingTitle = ⴰⴳⴰⵎ
 noStreamsOptionCopy = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ ⴰⴼⴰⴷ ⴰⴷ ⵜ ⵜⵕⵥⵎⴷ ⴳ ⴽⵔⴰ ⵏ ⵓⵎⵙⵙⴰⵔⴰ ⵢⴰⴹⵏ
+noStreamsOptionDownload = ⵙⵎⴷ ⵙ ⵓⵎⵙⵙⴰⵔⴰ ⴰ
