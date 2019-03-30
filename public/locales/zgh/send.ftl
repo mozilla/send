@@ -36,7 +36,7 @@ footerLinkCookies = ⵉⴽⵓⴽⵉⵜⵏ
 passwordTryAgain = ⵜⴰⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ ⵓⵔ ⵢⵓⵖⴷⵏ. ⴰⵔⵎ ⴷⴰⵖ.
 javascriptRequired = ⴷⴰ ⵉⵜⵜⴰⵙⵔ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ ⵊⴰⴼⴰⵙⴽⵔⵉⴱⵜ
 whyJavascript = ⵎⴰⵖⴼ ⴷⴰ ⵉⵜⵜⴰⵙⵔ ⴼⴰⵢⵔⴼⵓⴽⵙ ⵙⵉⵏⴷ ⵊⴰⴼⴰⵙⴽⵔⵉⴱⵜ?
-enableJavascript = ⵎⴽ ⵜⵓⴼⵉⴷ, ⵙⵏⵓⵛⵛⴳ ⵊⴰⴼⴰⵙⴽⵔⵉⴱⵜ, ⵜⴰⵔⵎⴷ ⴷⴰⵖ.
+enableJavascript = ⵎⴽ ⵜⵓⴼⴰⵎ, ⵙⵏⵓⵛⵛⴳⴰⵜ ⵊⴰⴼⴰⵙⴽⵔⵉⴱⵜ, ⵜⴰⵔⵎⵎ ⴷⴰⵖ.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }ⵙⵔⴳ { $minutes }ⵙⴷ
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
