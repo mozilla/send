@@ -51,6 +51,7 @@ maxPasswordLength = ⵜⵉⵖⵣⵉ ⵜⴰⵎⵓⵣⵣⵓⵔⵜ ⵏ ⵜⴳⵓⵔ
 -send-short-brand = ⵙⵉⵏⴷ
 -firefox = ⴼⴰⵢⵔⴼⵓⴽⵙ
 -mozilla = ⵎⵓⵣⵉⵍⴰ
+introTitle = ⴰⴱⵟⵟⵓ ⴰⴼⵔⴰⵔ ⴷ ⵡⵓⵙⵍⵉⴳ ⵏ ⵉⴼⵓⵢⵍⴰ
 notifyUploadEncryptDone = ⵉⵏⵜⵍ ⵓⴼⴰⵢⵍⵓ ⵏⵏⵓⵏ, ⵉⵃⵢⵢⵍ ⵉ ⵡⴰⵣⴰⵏ
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = ⴰⴷ ⵉⵎⵎⵜ ⴷⴼⴼⵉⵔ { $downloadCount } ⵏⵉⵖ ⴷ { $timespan }
@@ -91,6 +92,13 @@ copyLinkDescription = ⵙⵙⵏⵖⵍⴰⵜ ⴰⵙⵖⵏ ⴰⴼⴰⴷ ⴰⴷ ⵜ
 copyLinkButton = ⵙⵙⵏⵖⵍ ⴰⵙⵖⵏ
 downloadTitle = ⴰⴳⵎ ⵉⴼⵓⵢⵍⴰ
 downloadDescription = ⵉⵜⵜⵓⴱⴹⴰ ⵓⴼⴰⵢⵍⵓ ⴰ ⵙⴳ { -send-brand } ⵙ ⵓⵙⵙⵏⵜⵍ ⵙⴳ ⵜⴰⵎⴰ ⴰⵔ ⵜⴰⵎⴰ ⴷ ⵢⴰⵏ ⵓⵙⵖⵏ ⵏⵏⴰ ⵉⵜⵜⵎⵎⵜⴰⵜⵏ ⵙ ⵓⵡⵔⵎⴰⵏ.
+trySendDescription = ⴰⵔⵎ { -send-brand } ⵉ ⵓⴱⵟⵟⵓ ⴰⴼⵔⴰⵔ ⴷ ⵡⵓⴼⵔⵉⴳ.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] ⵖⴰⵙ { $count } ⵓⴼⴰⵢⵍⵓ ⴰⵢ ⵉⵣⵎⵔⵏ ⴰⴷ ⵉⴽⵜⵔ ⴳ ⵢⴰⵜ ⵜⵉⴽⴽⵍⵜ.
+       *[other] ⵖⴰⵙ { $count } ⵉⴼⵓⵢⵍⴰ ⴰⵢ ⵉⵣⵎⵔⵏ ⴰⴷ ⴽⵜⵔⵏ ⴳ ⵢⴰⵜ ⵜⵉⴽⴽⵍⵜ.
+    }
 expiredTitle = ⵉⵎⵎⵓⵜ ⵓⵙⵖⵏ ⴰ.
 notSupportedDescription = ⵓⵔ ⵔⴰⴷ ⵉⵙⵡⵓⵔⵉ { -send-brand } ⵙ ⵓⵎⵙⵙⴰⵔⴰ ⴰ. ⴷⴰ ⵉⵙⵡⵓⵔⵓⵢ { -send-short-brand } ⵎⵍⵉⵃ ⵙ ⵜⵍⵇⵇⵎⵜ ⵜⴰⵎⴳⴳⴰⵔⵓⵜ ⵏ { -firefox }, ⴷ ⵔⴰⴷ ⵉⵙⵡⵓⵔⵉ ⵙ ⵜⵍⵇⵇⵎⵜ ⵜⴰⵎⵉⵔⴰⵏⵜ ⵏ ⵓⵎⴰⵜⴰ ⵏ ⵉⵎⵙⵙⴰⵔⴰⵜⵏ.
 downloadFirefox = ⴰⴳⵎ { -firefox }
