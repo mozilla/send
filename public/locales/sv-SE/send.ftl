@@ -55,7 +55,7 @@ passwordSetError = Det här lösenordet kunde inte ställas in
 -mozilla = Mozilla
 introTitle = Enkel, privat fildelning
 introDescription = { -send-brand } låter dig dela filer med end-to-end-kryptering och en länk som automatiskt upphör. Så att du kan behålla det du delar privat och se till att dina saker inte stannar online för alltid.
-notifyUploadEncryptDone = Din fil är krypterad och redo att skicka
+notifyUploadEncryptDone = Din fil är krypterad och redo att skickas
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Förfaller efter { $downloadCount } eller { $timespan }
 timespanMinutes =
