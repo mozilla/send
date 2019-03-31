@@ -11,9 +11,7 @@ const langData = require('cldr-core/supplemental/likelySubtags.json');
 const acceptLanguages = /(([a-zA-Z]+(-[a-zA-Z0-9]+){0,2})|\*)(;q=[0-1](\.[0-9]+)?)?/g;
 
 function allLangs() {
-  return fs.readdirSync(
-    path.join(__dirname, '..', '..', 'dist', 'public', 'locales')
-  );
+  return fs.readdirSync(path.join(__dirname, '..', '..', 'public', 'locales'));
 }
 
 const languages = config.l10n_dev ? allLangs() : availableLanguages;
