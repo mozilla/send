@@ -111,7 +111,7 @@ uploadButton = ⵙⵙⴽⵜⵔ
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = ⵙⵓⵛⵛⴹ, ⵜⵙⵔⵙⴷ ⵉⴼⵓⵢⵍⴰ
 addPassword = ⴰⵔⵢ ⵙ ⵜⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ
-emailPlaceholder = ⵙⵙⴽⵛⵎ ⵉⵎⴰⵢⵍ ⵏⵏⴽ
+emailPlaceholder = ⵙⵙⴽⵛⵎⴰⵜ ⵉⵎⴰⵢⵍ ⵏⵏⵓⵏ
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = ⴽⵛⵎ ⴰⴼⴰⴷ ⴰⴷ ⵜⴰⵣⵏⴷ ⴰⵔ { $size }
 signInButton = ⴽⵛⵎ/ⵣⵎⵎⴻⵎ
