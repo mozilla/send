@@ -47,6 +47,25 @@ jobs:
             - node_modules
       - run: 
           name: Run integration test
+          environment:
+            INTEGRATION_TEST_JOB: "circleci-test-integration"
+          command: ./scripts/bin/run-integration-test-circleci.sh
+  android_integration_tests:
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: send-int-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: send-int-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run: 
+          name: Run integration test
+          environment:
+            INTEGRATION_TEST_JOB: "circleci-test-integration:android"
           command: ./scripts/bin/run-integration-test-circleci.sh
   deploy_dev:
     machine: true
@@ -141,11 +160,18 @@ workflows:
               ignore: /.*/
             tags:
               only: /^v.*/
+      - android_integration_tests:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
       - deploy_stage:
           requires:
             - build
             - test
             - integration_tests
+            - android_integration_tests
           filters:
             branches:
               ignore: /.*/
