@@ -7,7 +7,7 @@ const expressWs = require('express-ws');
 const morgan = require('morgan');
 const config = require('../config');
 
-const ID_REGEX = '([0-9a-fA-F]{10})';
+const ID_REGEX = '([0-9a-fA-F]{10, 16})';
 
 module.exports = function(app, devServer) {
   const wsapp = express();
