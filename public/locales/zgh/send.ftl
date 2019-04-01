@@ -54,6 +54,7 @@ passwordSetError = ⵓⵔ ⵜⵣⵎⵉⵔ ⵜⴳⵓⵔⵉ ⴰ ⵏ ⵓⵣⵔⴰ�
 -firefox = ⴼⴰⵢⵔⴼⵓⴽⵙ
 -mozilla = ⵎⵓⵣⵉⵍⴰ
 introTitle = ⴰⴱⵟⵟⵓ ⴰⴼⵔⴰⵔ ⴷ ⵡⵓⵙⵍⵉⴳ ⵏ ⵉⴼⵓⵢⵍⴰ
+introDescription = ⴷⴰ ⴽⵯⵏ ⵉⵜⵜⴰⵊⵊⴰ { -send-brand } ⴰⴷ ⵜⴱⴹⵓⵎ ⵉⴼⵓⵢⵍⴰ ⵙ ⵓⵙⵙⵏⵜⵍ ⵙⴳ ⵜⴰⵎⴰ ⴰⵔ ⵜⴰⵎⴰ ⴷ ⵢⴰⵏ ⵓⵙⵖⵏ ⵏⵏⴰ ⵉⵜⵜⵎⵎⵜⴰⵜⵏ ⵙ ⵓⵡⵔⵎⴰⵏ. ⵙ ⵓⵢⴰ, ⵜⵣⵎⵔⵎ ⴰⴷ ⵜⴰⵊⵊⵎ ⴰⵢⵏⵏⴰ ⵜⴱⵟⵟⵓⵎ ⴷ ⵓⵙⵍⵉⴳ, ⵜⵙⵙⵉⵖⵥⵉⵏⵎ ⵎⴰⵙ ⵓⵔ ⵔⴰⴷ ⴰⴱⴷⴰ ⵉⵇⵇⵉⵎ ⵡⴰⵏⵏⴰⴷ ⵏⵏⵓⵏ ⴳ ⵉⴼⵉⵍⵉ.
 notifyUploadEncryptDone = ⵉⵏⵜⵍ ⵓⴼⴰⵢⵍⵓ ⵏⵏⵓⵏ, ⵉⵃⵢⵢⵍ ⵉ ⵡⴰⵣⴰⵏ
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = ⴰⴷ ⵉⵎⵎⵜ ⴷⴼⴼⵉⵔ { $downloadCount } ⵏⵉⵖ ⴷ { $timespan }
@@ -111,7 +112,10 @@ expiresDaysHoursMinutes = { $days }ⵙ { $hours }ⵙⵔⴳ { $minutes }ⵙⴷ
 addFilesButton = ⵙⵜⵢ ⵉⴼⵓⵢⵍⴰ ⵉ ⵓⵙⵙⴽⵜⵔ
 uploadButton = ⵙⵙⴽⵜⵔ
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
-dragAndDropFiles = ⵙⵓⵛⵛⴹ, ⵜⵙⵔⵙⴷ ⵉⴼⵓⵢⵍⴰ
+dragAndDropFiles = ⵙⵓⵛⵛⴹⴰⵜ, ⵜⵙⵔⵙⵎ ⵉⴼⵓⵢⵍⴰ
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = ⵏⵉⵖ ⵜⴽⵍⵉⴽⵉⵎ ⴰⴼⴰⴷ ⴰⴷ ⵜⴰⵣⵏⵎ ⴰⵔ { $size }
 addPassword = ⴰⵔⵢ ⵙ ⵜⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ
 emailPlaceholder = ⵙⵙⴽⵛⵎⴰⵜ ⵉⵎⴰⵢⵍ ⵏⵏⵓⵏ
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
