@@ -102,6 +102,12 @@ tooManyFiles =
         [one] ⵖⴰⵙ { $count } ⵓⴼⴰⵢⵍⵓ ⴰⵢ ⵉⵣⵎⵔⵏ ⴰⴷ ⵉⴽⵜⵔ ⴳ ⵢⴰⵜ ⵜⵉⴽⴽⵍⵜ.
        *[other] ⵖⴰⵙ { $count } ⵉⴼⵓⵢⵍⴰ ⴰⵢ ⵉⵣⵎⵔⵏ ⴰⴷ ⴽⵜⵔⵏ ⴳ ⵢⴰⵜ ⵜⵉⴽⴽⵍⵜ.
     }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] ⵖⴰⵙ { $count } ⵜⵎⵃⴹⵉⵜ ⴰⵢ ⵉⵔⵔⴳⵏ.
+       *[other] ⵖⴰⵙ { $count } ⵜⵎⵃⴹⴰⵢ ⴰⵢ ⵉⵔⵔⴳⵏ.
+    }
 expiredTitle = ⵉⵎⵎⵓⵜ ⵓⵙⵖⵏ ⴰ.
 notSupportedDescription = ⵓⵔ ⵔⴰⴷ ⵉⵙⵡⵓⵔⵉ { -send-brand } ⵙ ⵓⵎⵙⵙⴰⵔⴰ ⴰ. ⴷⴰ ⵉⵙⵡⵓⵔⵓⵢ { -send-short-brand } ⵎⵍⵉⵃ ⵙ ⵜⵍⵇⵇⵎⵜ ⵜⴰⵎⴳⴳⴰⵔⵓⵜ ⵏ { -firefox }, ⴷ ⵔⴰⴷ ⵉⵙⵡⵓⵔⵉ ⵙ ⵜⵍⵇⵇⵎⵜ ⵜⴰⵎⵉⵔⴰⵏⵜ ⵏ ⵓⵎⴰⵜⴰ ⵏ ⵉⵎⵙⵙⴰⵔⴰⵜⵏ.
 downloadFirefox = ⴰⴳⵎ { -firefox }
