@@ -43,6 +43,8 @@ expiresHoursMinutes = { $hours }ⵙⵔⴳ { $minutes }ⵙⴷ
 expiresMinutes = { $minutes }ⵙⴷ
 # A short status message shown when the user enters a long password
 maxPasswordLength = ⵜⵉⵖⵣⵉ ⵜⴰⵎⵓⵣⵣⵓⵔⵜ ⵏ ⵜⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = ⵓⵔ ⵜⵣⵎⵉⵔ ⵜⴳⵓⵔⵉ ⴰ ⵏ ⵓⵣⵔⴰⵢ ⴰⴷ ⵜⴻⵜⵜⵓⵙⵖⵍ
 
 ## Send version 2 strings
 
