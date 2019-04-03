@@ -103,6 +103,7 @@ tooManyFiles =
 expiredTitle = Αυτός ο σύνδεσμος έχει λήξει.
 downloadFirefox = Λήψη του { -firefox }
 legalTitle = Σημείωση Απορρήτου { -send-short-brand }
+legalDateStamp = Έκδοση 1.0, από 12 Μαρτίου 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }η { $hours }ώ { $minutes }λ
 addFilesButton = Επιλέξτε αρχεία για μεταφόρτωση
@@ -121,5 +122,6 @@ accountBenefitMoz = Μάθετε για τις άλλες υπηρεσίες τ�
 signOut = Αποσύνδεση
 okButton = OK
 downloadingTitle = Λήψη
+noStreamsOptionCopy = Αντιγράψτε το σύνδεσμο για άνοιγμα σε άλλο πρόγραμμα περιήγησης
 noStreamsOptionFirefox = Δοκιμάστε το αγαπημένο μας πρόγραμμα περιήγησης
 noStreamsOptionDownload = Συνέχεια με αυτό το πρόγραμμα περιήγησης
