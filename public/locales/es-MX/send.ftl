@@ -77,6 +77,10 @@ fileCount =
         [one] 1 archivo
        *[other] { $num } archivos
     }
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
 # mebibyte abbreviation
 mb = MB
 # gibibyte abbreviation
