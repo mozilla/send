@@ -19,6 +19,8 @@ import share from './pages/share';
 import preferences from './pages/preferences';
 import error from './pages/error';
 import { getTranslator } from '../app/locale';
+import { setTranslate } from '../app/utils';
+
 import { delay } from '../app/utils';
 
 if (navigator.userAgent === 'Send Android') {
@@ -69,6 +71,7 @@ function body(main) {
 }
 (async function start() {
   const translate = await getTranslator('en-US');
+  setTranslate(translate);
   const { LIMITS, DEFAULTS } = await getConstants();
   app.use(state => {
     state.LIMITS = LIMITS;
