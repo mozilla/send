@@ -71,11 +71,11 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
         if (Intent.ACTION_SEND == intent.action && type != null) {
             if (type == "text/plain") {
                 val sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)
-                Log.d(TAG_INTENT, "text/plain $sharedText")
+                // Log.d(TAG_INTENT, "text/plain $sharedText")
                 mToShare = "data:text/plain;base64," + Base64.encodeToString(sharedText.toByteArray(), 16).trim()
             } else if (type.startsWith("image/")) {
                 val imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM) as Uri
-                Log.d(TAG_INTENT, "image/ $imageUri")
+                // Log.d(TAG_INTENT, "image/ $imageUri")
                 mToShare = "data:text/plain;base64," + Base64.encodeToString(imageUri.path.toByteArray(), 16).trim()
             }
         }
@@ -87,13 +87,13 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
             mAccount = FirefoxAccount(value, "20f7931c9054d833", "https://send.firefox.com/fxa/android-redirect.html")
             mAccount?.beginOAuthFlow(arrayOf("profile", "https://identity.mozilla.com/apps/send"), true)
                     ?.then { url ->
-                        Log.d(TAG_CONFIG, "GOT A URL $url")
+                        // Log.d(TAG_CONFIG, "GOT A URL $url")
                         this@MainActivity.runOnUiThread {
                             webView.loadUrl(url)
                         }
                         FxaResult.fromValue(Unit)
                     }
-            Log.d(TAG_CONFIG, "CREATED FIREFOXACCOUNT")
+            // Log.d(TAG_CONFIG, "CREATED FIREFOXACCOUNT")
             FxaResult.fromValue(Unit)
         }
     }
@@ -172,13 +172,21 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                 }
             }
         }
-        Log.d(TAG_MAIN, "onPageStarted")
+        if (!url.startsWith("file:///android_asset/") && !url.startsWith("https://accounts.firefox.com/")) {
+            // Don't allow loading anything other than the app in our webview
+            // It should be possible to do this with shouldOverrideUrlLoading
+            // but it didn't seem to be working, so this works as a hack.
+            webView.loadUrl("file:///android_asset/android.html")
+            Log.d(TAG_MAIN, "BAD URL " + url)
+        } else {
+            // Log.d(TAG_MAIN, "onPageStarted " + url)
+        }
     }
 
     override fun onPageFinished(url: String) {
-        Log.d(TAG_MAIN, "onPageFinished")
+        // Log.d(TAG_MAIN, "onPageFinished")
         if (mToShare != null) {
-            Log.d(TAG_INTENT, mToShare)
+            // Log.d(TAG_INTENT, mToShare)
 
             webView.postWebMessage(WebMessage(mToShare), Uri.EMPTY)
             mToShare = null
@@ -202,11 +210,11 @@ class MainActivity : AppCompatActivity(), AdvancedWebView.Listener {
                                      contentLength: Long,
                                      contentDisposition: String,
                                      userAgent: String) {
-        Log.d(TAG_MAIN, "onDownloadRequested")
+        // Log.d(TAG_MAIN, "onDownloadRequested")
     }
 
     override fun onExternalPageRequest(url: String) {
-        Log.d(TAG_MAIN, "onExternalPageRequest($url)")
+        // Log.d(TAG_MAIN, "onExternalPageRequest($url)")
     }
 
     companion object {
