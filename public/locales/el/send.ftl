@@ -94,13 +94,22 @@ totalSize = Συνολικό μέγεθος: { $size }
 copyLinkDescription = Αντιγράψτε το σύνδεσμο για να μοιραστείτε το αρχείο:
 copyLinkButton = Αντιγραφή συνδέσμου
 downloadTitle = Λήψη αρχείων
+downloadDescription = Αυτό το αρχείο διαμοιράστηκε μέσω του { -send-brand } με κρυπτογράφηση από άκρο σε άκρο και με ένα σύνδεσμο που λήγει αυτόματα.
+trySendDescription = Δοκιμάστε το { -send-brand } για απλό, ασφαλή διαμοιρασμό αρχείων.
 # count will always be > 10
 tooManyFiles =
     { $count ->
         [one] Μόνο 1 αρχείο μπορεί να μεταφορτωθεί κάθε φορά.
        *[other] Μόνο { $count } αρχεία μπορούν να μεταφορτωθούν κάθε φορά.
     }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Μόνο 1 αρχείο επιτρέπεται.
+       *[other] Μόνο { $count } αρχεία επιτρέπονται.
+    }
 expiredTitle = Αυτός ο σύνδεσμος έχει λήξει.
+notSupportedDescription = Το { -send-brand } δεν θα λειτουργήσει με αυτό το πρόγραμμα περιήγησης. Το { -send-short-brand } λειτουργεί καλύτερα με την πιο πρόσφατη έκδοση του { -firefox }, καθώς και με την τρέχουσα έκδοση των περισσότερων προγραμμάτων περιήγησης.
 downloadFirefox = Λήψη του { -firefox }
 legalTitle = Σημείωση Απορρήτου { -send-short-brand }
 legalDateStamp = Έκδοση 1.0, από 12 Μαρτίου 2019
@@ -118,10 +127,21 @@ emailPlaceholder = Εισάγετε το email σας
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Συνδεθείτε για να στείλετε μέχρι { $size }
 signInButton = Σύνδεση/εγγραφή
+accountBenefitTitle = Δημιουργία λογαριασμού { -firefox } ή σύνδεση
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Μοιραστείτε αρχεία έως { $size }
+accountBenefitDownloadCount = Μοιραστείτε αρχεία με περισσότερα άτομα
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Να παραμείνουν οι σύνδεσμοι ενεργοί έως και 1 ημέρα
+       *[other] Να παραμείνουν οι σύνδεσμοι ενεργοί έως και { $count } ημέρες
+    }
+accountBenefitSync = Διαχειριστείτε τα διαμοιρασμένα αρχεία από οποιαδήποτε συσκευή
 accountBenefitMoz = Μάθετε για τις άλλες υπηρεσίες της { -mozilla }
 signOut = Αποσύνδεση
 okButton = OK
 downloadingTitle = Λήψη
+noStreamsWarning = Αυτό το πρόγραμμα περιήγησης ενδέχεται να μην μπορέσει να αποκρυπτογραφήσει αρχεία αυτού του μεγέθους.
 noStreamsOptionCopy = Αντιγράψτε το σύνδεσμο για άνοιγμα σε άλλο πρόγραμμα περιήγησης
 noStreamsOptionFirefox = Δοκιμάστε το αγαπημένο μας πρόγραμμα περιήγησης
 noStreamsOptionDownload = Συνέχεια με αυτό το πρόγραμμα περιήγησης
