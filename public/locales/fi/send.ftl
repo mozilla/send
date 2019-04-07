@@ -125,11 +125,11 @@ orClickWithSize = tai napsauta lähettääksesi tiedostoja, joiden koko voi olla
 addPassword = Suojaa salasanalla
 emailPlaceholder = Kirjoita sähköpostiosoitteesi
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-signInSizeBump = Kirjautumalla voit lähettää jopa { $size } suuria tiedostoja
+signInSizeBump = Kirjautumalla voit lähettää jopa { $size } kokoisia tiedostoja
 signInButton = Kirjaudu tai rekisteröidy
 accountBenefitTitle = Luo { -firefox }-tili tai kirjaudu sisään
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-accountBenefitLargeFiles = Jaa jopa { $size } suuria tiedostoja
+accountBenefitLargeFiles = Jaa jopa { $size } kokoisia tiedostoja
 accountBenefitDownloadCount = Jaa tiedostoja useamman ihmisen kesken
 accountBenefitTimeLimit =
     { $count ->
