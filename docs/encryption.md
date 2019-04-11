@@ -7,8 +7,8 @@ Send use 128-bit AES-GCM encryption via the [Web Crypto API](https://developer.m
 ### Uploading
 
 1. A new secret key is generated with `crypto.getRandomValues`
-2. The secret key is used to derive 3 more keys via HKDF SHA-256
-    - an encryption key for the file (AES-GCM)
+2. The secret key is used to derive more keys via HKDF SHA-256
+    - a series of encryption keys for the file, via [ECE](https://tools.ietf.org/html/rfc8188) (AES-GCM)
     - an encryption key for the file metadata (AES-GCM)
     - a signing key for request authentication (HMAC SHA-256)
 3. The file and metadata are encrypted with their corresponding keys
