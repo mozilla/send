@@ -286,7 +286,7 @@ module.exports.wip = function(state, emit) {
       >
         <input
           id="file-upload"
-          class="opacity-0 w-0 h-0 appearance-none absolute"
+          class="opacity-0 w-0 h-0 appearance-none absolute overflow-hidden"
           type="file"
           multiple
           onfocus="${focus}"
