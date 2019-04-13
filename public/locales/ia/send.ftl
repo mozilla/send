@@ -54,6 +54,9 @@ passwordSetError = Iste contrasigno non pote ser definite
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Comparti file in maniera confidential
+notifyUploadEncryptDone = Tu file es cryptate e preste pro ser inviate.
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Expira post { $downloadCount } o { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 minuta
@@ -129,8 +132,11 @@ accountBenefitTimeLimit =
         [one] Retene active le ligamine pro 1 die
        *[other] Retene active le ligamine pro { $count } dies
     }
+accountBenefitSync = Gere files compartite ab ulle apparato
+accountBenefitMoz = Discoperi altere servicios de { -mozilla }
 signOut = Disconnecter
 okButton = OK
 downloadingTitle = Discargamento
+noStreamsOptionCopy = Copiar le ligamine e aperir lo in un altere navigator
 noStreamsOptionFirefox = Prova nostre navigator favorite
 noStreamsOptionDownload = Continuar con iste navigator
