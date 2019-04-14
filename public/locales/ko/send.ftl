@@ -95,6 +95,7 @@ tooManyArchives =
        *[other] { $count }개의 아카이브만 허용됩니다.
     }
 expiredTitle = 이 링크는 만료되었습니다.
+notSupportedDescription = { -send-brand }는 이 브라우저와 작동하지 않습니다. { -send-short-brand }는 최신 { -firefox }와 가장 잘 작동하며, 대부분의 최신 웹 브라우저와도 잘 작동합니다.
 downloadFirefox = 다운로드 { -firefox }
 legalTitle = { -send-short-brand } 개인정보 보호 공지
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
@@ -110,6 +111,10 @@ accountBenefitTitle = { -firefox } 계정을 하나 만들거나, 로그인
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = { $size }까지의 파일 공유
 accountBenefitDownloadCount = 더 많은 사람들과 함께 파일 공유
+accountBenefitTimeLimit =
+    { $count ->
+       *[other] 최대 { $count }일까지 링크 유지
+    }
 accountBenefitSync = 어떤 기기에서든지 공유된 링크 관리
 accountBenefitMoz = 더 많은 { -mozilla } 서비스에 대해 알아보기
 signOut = 로그아웃
