@@ -62,6 +62,10 @@ class DB {
     this.redis.hset(id, key, value);
   }
 
+  incrementField(id, key, increment = 1) {
+    this.redis.hincrby(id, key, increment);
+  }
+
   async del(id) {
     const filePath = await this.getPrefixedId(id);
     this.storage.del(filePath);

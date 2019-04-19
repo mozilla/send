@@ -34,7 +34,7 @@ module.exports = async function(req, res) {
         if (dl >= dlimit) {
           await storage.del(id);
         } else {
-          await storage.setField(id, 'dl', dl);
+          await storage.incrementField(id, 'dl');
         }
       } catch (e) {
         log.info('StorageError:', id);
