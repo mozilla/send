@@ -37,6 +37,59 @@ passwordTryAgain = രഹസ്യവാക്ക് തെറ്റാണ്. �
 javascriptRequired = ഫയർഫോക്സ് സെൻഡ് പ്രവർത്തിക്കാൻ ജാവാസ്ക്രിപ്റ്റ് വേണം
 whyJavascript = ഫയർഫോക്സ് സെൻഡ് പ്രവർത്തിക്കാൻ എന്തിനാണ് ജാവാസ്ക്രിപ്റ്റ്?
 enableJavascript = ദയവായി ജാവാസ്ക്രിപ്റ്റ് പ്രവർത്തനസജ്ജമാക്കിയിട്ട് വീണ്ടും ശ്രമിക്കുക.
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } മണിക്കൂർ { $minutes } മിനുട്ട്
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } മിനുട്ട്
+# A short status message shown when the user enters a long password
+maxPasswordLength = രഹസ്യവാക്കിന്റെ പരമാവധി നീളം: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = ഈ രഹസ്യവാക്ക് ക്രമീകരിക്കാനായില്ല
 
 ## Send version 2 strings
 
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = ഫയർഫോക്സ് സെൻഡ്
+-send-short-brand = സെൻഡ്
+-firefox = ഫയർഫോക്സ്
+-mozilla = മോസില്ല
+introTitle = ലളിതവും സ്വകാര്യവുമായ ഫയൽ പങ്കിടൽ
+notifyUploadEncryptDone = നിങ്ങളുടെ ഫയൽ എൻക്രിപ്റ്റ് ചെയ്തിരിക്കുന്നു, അയയ്ക്കാൻ തയ്യാറാണ്
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = { $downloadCount } അല്ലെങ്കിൽ { $timespan } കഴിഞ്ഞാൽ കാലഹരണപ്പെടും
+timespanMinutes =
+    { $num ->
+        [one] മിനുട്ട്
+       *[other] { $num } മിനുട്ടുകൾ
+    }
+timespanDays =
+    { $num ->
+        [one] 1 ദിവസം
+       *[other] { $num } ദിവസങ്ങൾ
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 ആഴ്ച
+       *[other] { $num } ആഴ്ചകൾ
+    }
+fileCount =
+    { $num ->
+        [one] 1 ഫയൽ
+       *[other] { $num } ഫയലുകൾ
+    }
+# byte abbreviation
+bytes = ബൈറ്റ്
+# kibibyte abbreviation
+kb = കി.ബൈ
+# mebibyte abbreviation
+mb = എംബി
+# gibibyte abbreviation
+gb = ജിബി
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = ആകെ വലിപ്പം: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = നിങ്ങളുടെ ഫയൽ പങ്കിടാനുള്ള ലിങ്ക് പകർത്തുക:
+copyLinkButton = ലിങ്ക് പകർത്തുക
+downloadTitle = ഫയലുകൾ ഡൗൺലോഡുചെയ്യുക
