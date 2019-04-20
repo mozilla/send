@@ -60,17 +60,17 @@ archiveExpiryInfo = { $downloadCount } അല്ലെങ്കിൽ { $timespa
 timespanMinutes =
     { $num ->
         [one] മിനുട്ട്
-       *[other] { $num } മിനുട്ടുകൾ
+       *[other] { $num } മിനുട്ട്
     }
 timespanDays =
     { $num ->
         [one] 1 ദിവസം
-       *[other] { $num } ദിവസങ്ങൾ
+       *[other] { $num } ദിവസം
     }
 timespanWeeks =
     { $num ->
         [one] 1 ആഴ്ച
-       *[other] { $num } ആഴ്ചകൾ
+       *[other] { $num } ആഴ്ച
     }
 fileCount =
     { $num ->
@@ -93,3 +93,45 @@ totalSize = ആകെ വലിപ്പം: { $size }
 copyLinkDescription = നിങ്ങളുടെ ഫയൽ പങ്കിടാനുള്ള ലിങ്ക് പകർത്തുക:
 copyLinkButton = ലിങ്ക് പകർത്തുക
 downloadTitle = ഫയലുകൾ ഡൗൺലോഡുചെയ്യുക
+downloadDescription = ഈ ഫയൽ { -send-brand } ഉപയോഗിച്ച് എൻഡ്-ടു-എൻഡ് എൻക്രിപ്ഷനോടും തനിയെ കാലഹരണപ്പെടുന്ന ഒരു ലിങ്കോടും കൂടി പങ്കിട്ടതാണ്.
+trySendDescription = ലളിതവും സുരക്ഷിതവുമായ ഫയൽ പങ്കിടലിനായി { -send-brand } പരീക്ഷിക്കുക.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] ഒരേസമയം 1 ഫയൽ മാത്രമേ അപ്‌ലോഡു ചെയ്യാൻ കഴിയൂ.
+       *[other] ഒരേസമയം { $count } ഫയലുകൾ മാത്രമേ അപ്‌ലോഡു ചെയ്യാൻ കഴിയൂ.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] ഒരു ആർക്കൈവ് മാത്രമേ അനുവദിച്ചിട്ടുള്ളൂ.
+       *[other] { $count } ആർക്കൈവുകൾ മാത്രമേ അനുവദിച്ചിട്ടുള്ളൂ.
+    }
+expiredTitle = ഈ ലിങ്ക് കാലഹരണപ്പെട്ടു.
+notSupportedDescription = ഈ ബ്രൌസറിൽ { -send-brand } പ്രവർത്തിക്കില്ല. { -send-short-brand } { -firefox }- ന്റെ ഏറ്റവും പുതിയ പതിപ്പിൽ വളരെ നന്നായി പ്രവർത്തിക്കുന്നു, കൂടാതെ മിക്ക ബ്രൌസറുകളുടെയും നിലവിലെ പതിപ്പിൽ പ്രവർത്തിക്കുകയും ചെയ്യും.
+downloadFirefox = { -firefox } ഡൗണ്‍ലോഡ് ചെയ്യുക
+legalTitle = { -send-short-brand } സ്വകാര്യതാ അറിയിപ്പ്
+legalDateStamp = 2019 മാർച്ച് 12 തീയതിയിൽ പതിപ്പ് 1.0
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } ദിവസം { $hours } മണിക്കൂർ { $minutes } മിനിറ്റ്
+addFilesButton = അപ്‌ലോഡ് ചെയ്യാനുള്ള ഫയലുകൾ തിരഞ്ഞെടുക്കുക
+uploadButton = അപ്‍ലോഡ്
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = ഫയലുകൾ വലിച്ചിടുക
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = അല്ലെങ്കിൽ { $size } വരെ അയയ്ക്കുന്നതിന് അമർത്തുക
+addPassword = രഹസ്യവാക്ക് ഉപയോഗിച്ച് സംരക്ഷിക്കുക
+emailPlaceholder = നിങ്ങളുടെ ഇമെയിൽ നൽകുക
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = { $size } വരെയുള്ള ഫയലുകൾ അയയ്ക്കുന്നതിന് പ്രവേശിക്കുക
+signInButton = പ്രവേശിക്കുക / അക്കൗണ്ട് തുടങ്ങുക
+accountBenefitTitle = ഒരു { -firefox } അക്കൗണ്ട് സൃഷ്ടിക്കുക അല്ലെങ്കിൽ പ്രവേശിക്കുക
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = { $size } വരെയുള്ള ഫയലുകൾ പങ്കിടുക
+accountBenefitDownloadCount = കൂടുതൽ ആളുകളുമായി ഫയലുകൾ പങ്കിടുക
+accountBenefitTimeLimit =
+    { $count ->
+        [one] ഒരു ദിവസം വരെ ലിങ്കുകൾ സജീവമായി നിലനിർത്തുക
+       *[other] { $count } ദിവസം വരെ ലിങ്കുകൾ സജീവമായി നിലനിർത്തുക
+    }
