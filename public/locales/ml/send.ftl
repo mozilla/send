@@ -135,3 +135,12 @@ accountBenefitTimeLimit =
         [one] ഒരു ദിവസം വരെ ലിങ്കുകൾ സജീവമായി നിലനിർത്തുക
        *[other] { $count } ദിവസം വരെ ലിങ്കുകൾ സജീവമായി നിലനിർത്തുക
     }
+accountBenefitSync = ഏതൊരു ഉപകരണത്തിൽ നിന്നും പങ്കിട്ട ഫയലുകൾ കൈകാര്യം ചെയ്യുക
+accountBenefitMoz = മറ്റ് { -mozilla } സേവനങ്ങളെക്കുറിച്ച് അറിയുക
+signOut = പുറത്തിറങ്ങുക
+okButton = ശരി
+downloadingTitle = ഡൌണ്‍ലോഡ് ചെയ്യുന്നു
+noStreamsWarning = ഇത്ര വലിയ ഫയൽ ബ്രൌസറില്‍ ഡീക്രിപ്റ്റ് ചെയ്യാൻ കഴിഞ്ഞേക്കില്ല.
+noStreamsOptionCopy = മറ്റൊരു ബ്രൗസറിൽ തുറക്കുന്നതിന് ലിങ്ക് പകർത്തുക
+noStreamsOptionFirefox = ഞങ്ങളുടെ പ്രിയപ്പെട്ട ബ്രൗസർ പരീക്ഷിക്കുക
+noStreamsOptionDownload = ഈ ബ്രൗസറിൽ തുടരുക
