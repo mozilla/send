@@ -54,6 +54,7 @@ passwordSetError = Iste contrasigno non pote ser definite
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Comparti file in maniera confidential
+introDescription = { -send-brand } te pone in grado de compartir files con cryptographia bilateral e un ligamine que automaticamente expira. Assi que tu pote mantener private lo que tu comparti e liberar te del anxietate que tu problema resta online per sempre.
 notifyUploadEncryptDone = Tu file es cryptate e preste pro ser inviate.
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Expira post { $downloadCount } o { $timespan }
@@ -93,6 +94,8 @@ totalSize = Dimension total: { $size }
 copyLinkDescription = Copia le ligamine pro compartir le file:
 copyLinkButton = Copiar ligamine
 downloadTitle = Discargar files
+downloadDescription = Iste file era compartite via { -send-brand } con cryptographia bilateral e un ligamine que expira automaticamente.
+trySendDescription = Prova { -send-brand } pro le compartimento de file simple e secur.
 # count will always be > 10
 tooManyFiles =
     { $count ->
@@ -106,6 +109,7 @@ tooManyArchives =
        *[other] Solo { $count } archivos es consentite.
     }
 expiredTitle = Iste ligamine ha expirate.
+notSupportedDescription = { -send-brand } non functionara con iste navigator. { -send-short-brand } functiona melio con le ultime version de { -firefox }, e functionara con le version actual de plure navigatores.
 downloadFirefox = Discargar { -firefox }
 legalTitle = Politica de confidentialitate de { -send-short-brand }
 legalDateStamp = Version 1.0 del 12 martio 2019
@@ -137,6 +141,7 @@ accountBenefitMoz = Discoperi altere servicios de { -mozilla }
 signOut = Disconnecter
 okButton = OK
 downloadingTitle = Discargamento
+noStreamsWarning = Iste navigator pote non pote decifrar un file assi grande.
 noStreamsOptionCopy = Copiar le ligamine e aperir lo in un altere navigator
 noStreamsOptionFirefox = Prova nostre navigator favorite
 noStreamsOptionDownload = Continuar con iste navigator
