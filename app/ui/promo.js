@@ -3,8 +3,9 @@ const Component = require('choo/component');
 const assets = require('../../common/assets');
 
 class Promo extends Component {
-  constructor(name) {
+  constructor(name, state) {
     super(name);
+    this.state = state;
   }
 
   update() {
@@ -22,13 +23,12 @@ class Promo extends Component {
             class="w-6"
             alt="Firefox"
           />
-          <span class="ml-3"
-            >Send is brought to you by the all-new Firefox.${' '}
+          <span class="ml-3">
+            ${this.state.translate('downloadFirefoxPromo')}${' '}
             <a
               class="text-blue"
               href="https://www.mozilla.org/firefox/new/?utm_campaign=send-acquisition&utm_medium=referral&utm_source=send.firefox.com"
-            >
-              Download Firefox now ≫</a
+              >${this.state.translate('downloadFirefox')}</a
             >
           </span>
         </div>
