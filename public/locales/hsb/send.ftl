@@ -163,3 +163,4 @@ noStreamsWarning = Tutón wobhladowak njemóhł tajku wulku dataju dešifrować.
 noStreamsOptionCopy = Kopěrujće wotkaz, zo byšće jón w druhim wobhladowaku wočinił
 noStreamsOptionFirefox = Wupruwujće naš najlubši wobhladowak
 noStreamsOptionDownload = Z tutym wobhladowakom pokročować
+downloadFirefoxPromo = { -send-short-brand } so wam přez cyle nowy { -firefox } přinjese.
