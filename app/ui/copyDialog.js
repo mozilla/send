@@ -2,7 +2,7 @@ const html = require('choo/html');
 const { copyToClipboard } = require('../utils');
 
 module.exports = function(name, url) {
-  return function(state, emit, close) {
+  const dialog = function(state, emit, close) {
     return html`
       <send-copy-dialog
         class="flex flex-col items-center text-center p-4 max-w-sm m-auto"
@@ -45,4 +45,6 @@ module.exports = function(name, url) {
       setTimeout(close, 1000);
     }
   };
+  dialog.type = 'copy';
+  return dialog;
 };

@@ -1,5 +1,5 @@
-/* global AUTH_CONFIG LOCALE */
-import { browserName } from './utils';
+/* global AUTH_CONFIG */
+import { browserName, locale } from './utils';
 
 async function checkCrypto() {
   try {
@@ -91,7 +91,7 @@ export default async function getCapabilities() {
     account = false;
   }
   const share =
-    typeof navigator.share === 'function' && LOCALE.startsWith('en'); // en until strings merge
+    typeof navigator.share === 'function' && locale().startsWith('en'); // en until strings merge
 
   const standalone =
     window.matchMedia('(display-mode: standalone)').matches ||

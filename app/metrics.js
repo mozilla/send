@@ -1,5 +1,5 @@
 import storage from './storage';
-import { platform } from './utils';
+import { platform, locale } from './utils';
 import { sendMetrics } from './api';
 
 let appState = null;
@@ -7,7 +7,7 @@ let appState = null;
 const HOUR = 1000 * 60 * 60;
 const events = [];
 let session_id = Date.now();
-const lang = document.querySelector('html').lang;
+const lang = locale();
 
 export default function initialize(state, emitter) {
   appState = state;
