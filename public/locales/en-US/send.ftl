@@ -137,3 +137,4 @@ noStreamsWarning = This browser might not be able to decrypt a file this big.
 noStreamsOptionCopy = Copy the link to open in another browser
 noStreamsOptionFirefox = Try our favorite browser
 noStreamsOptionDownload = Continue with this browser
+downloadFirefoxPromo = { -send-short-brand } is brought to you by the all-new { -firefox }.
