@@ -141,3 +141,4 @@ noStreamsWarning = Este navegador pode não conseguir desencriptar um ficheiro t
 noStreamsOptionCopy = Copie a ligação para abrir noutro navegador
 noStreamsOptionFirefox = Experimente o nosso navegador favorito
 noStreamsOptionDownload = Continuar com este navegador
+downloadFirefoxPromo = O { -send-short-brand } é trazido a si pelo novo { -firefox }.
