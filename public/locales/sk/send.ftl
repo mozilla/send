@@ -154,3 +154,4 @@ noStreamsWarning = Tento prehliadač nemusí byť schopný dešifrovať takto ve
 noStreamsOptionCopy = Skopírovať odkaz pre otvorenie v inom prehliadači
 noStreamsOptionFirefox = Vyskúšajte náš obľúbený prehliadač
 noStreamsOptionDownload = Pokračovať v tomto prehliadači
+downloadFirefoxPromo = { -send-short-brand } vám prináša najnovší { -firefox }.
