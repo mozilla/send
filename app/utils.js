@@ -14,6 +14,10 @@ function b64ToArray(str) {
   return b64.toByteArray(str + '==='.slice((str.length + 3) % 4));
 }
 
+function locale() {
+  return document.querySelector('html').lang;
+}
+
 function loadShim(polyfill) {
   return new Promise((resolve, reject) => {
     const shim = document.createElement('script');
@@ -67,8 +71,7 @@ function bytes(num) {
   let nStr = n.toFixed(decimalDigits);
   if (LOCALIZE_NUMBERS) {
     try {
-      const locale = document.querySelector('html').lang;
-      nStr = n.toLocaleString(locale, {
+      nStr = n.toLocaleString(locale(), {
         minimumFractionDigits: decimalDigits,
         maximumFractionDigits: decimalDigits
       });
@@ -85,8 +88,7 @@ function bytes(num) {
 function percent(ratio) {
   if (LOCALIZE_NUMBERS) {
     try {
-      const locale = document.querySelector('html').lang;
-      return ratio.toLocaleString(locale, { style: 'percent' });
+      return ratio.toLocaleString(locale(), { style: 'percent' });
     } catch (e) {
       // fall through
     }
@@ -96,8 +98,7 @@ function percent(ratio) {
 
 function number(n) {
   if (LOCALIZE_NUMBERS) {
-    const locale = document.querySelector('html').lang;
-    return n.toLocaleString(locale);
+    return n.toLocaleString(locale());
   }
   return n.toString();
 }
@@ -267,6 +268,7 @@ function setTranslate(t) {
 }
 
 module.exports = {
+  locale,
   fadeOut,
   delay,
   allowedCopy,

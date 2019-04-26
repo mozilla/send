@@ -144,6 +144,11 @@ const conf = convict({
     format: String,
     default: 'https://identity.mozilla.com/apps/send',
     env: 'FXA_KEY_SCOPE'
+  },
+  survey_url: {
+    format: String,
+    default: '',
+    env: 'SURVEY_URL'
   }
 });
 

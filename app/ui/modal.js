@@ -21,7 +21,6 @@ module.exports = function(state, emit) {
       event.preventDefault();
       event.stopPropagation();
     }
-    state.modal = null;
-    emit('render');
+    emit('closeModal');
   }
 };

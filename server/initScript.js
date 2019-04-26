@@ -47,8 +47,8 @@ module.exports = function(state) {
 
   var LIMITS = ${JSON.stringify(clientConstants.LIMITS)};
   var DEFAULTS = ${JSON.stringify(clientConstants.DEFAULTS)};
-  const LOCALE = '${state.locale}';
-  const downloadMetadata = ${
+  var PREFS = ${JSON.stringify(state.prefs)};
+  var downloadMetadata = ${
     state.downloadMetadata ? raw(JSON.stringify(state.downloadMetadata)) : '{}'
   };
   ${authConfig};
