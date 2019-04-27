@@ -136,3 +136,4 @@ noStreamsWarning = Peramban ini mungkin tidak dapat mendekripsi berkas sebesar i
 noStreamsOptionCopy = Salin tautan untuk dibuka di peramban lainnya
 noStreamsOptionFirefox = Coba peramban favorit kami
 noStreamsOptionDownload = Lanjutkan dengan peramban ini
+downloadFirefoxPromo = { -send-short-brand } dipersembahkan untuk Anda oleh { -firefox } terbaru.
