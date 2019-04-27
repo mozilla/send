@@ -136,3 +136,4 @@ noStreamsWarning = 此瀏覽器無法解密這麼大的檔案。
 noStreamsOptionCopy = 複製鏈結，用其他瀏覽器開啟
 noStreamsOptionFirefox = 試試我們最愛的瀏覽器
 noStreamsOptionDownload = 繼續使用目前的瀏覽器
+downloadFirefoxPromo = { -send-short-brand } 是由全新的 { -firefox } 提供。
