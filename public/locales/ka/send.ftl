@@ -145,3 +145,4 @@ noStreamsWarning = ამ ბრაუზერმა, შესაძლოა 
 noStreamsOptionCopy = ბმულის ასლის აღება სხვა ბრაუზერში გასახსნელად
 noStreamsOptionFirefox = სცადეთ ჩვენი რჩეული ბრაუზერი
 noStreamsOptionDownload = განაგრძეთ ამ ბრაუზერით
+downloadFirefoxPromo = { -send-short-brand }-ს წარმოგიდგინეთ უახლესი { -firefox }.
