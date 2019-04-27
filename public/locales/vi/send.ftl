@@ -136,3 +136,4 @@ noStreamsWarning = Trình duyệt này có khả năng không thể giải mã m
 noStreamsOptionCopy = Sao chép liên kết để mở trong một trình duyệt khác
 noStreamsOptionFirefox = Hãy dùng thử trình duyệt yêu thích của chúng tôi
 noStreamsOptionDownload = Tiếp tục với trình duyệt này
+downloadFirefoxPromo = { -send-short-brand } được mang đến cho bạn bởi { -firefox } hoàn toàn mới.
