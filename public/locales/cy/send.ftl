@@ -181,3 +181,4 @@ noStreamsWarning = Efallai na fydd y porwr hwn yn gallu dadgryptio ffeil mor faw
 noStreamsOptionCopy = Copïwch y ddolen i'w agor mewn porwr arall
 noStreamsOptionFirefox = Rhowch gynnig ar ein hoff porwr
 noStreamsOptionDownload = Parhau gyda'r porwr hwn
+downloadFirefoxPromo = Mae { -send-short-brand } yn cael ei gynnig i ci gan y { -firefox } newydd.
