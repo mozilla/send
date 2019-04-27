@@ -190,3 +190,4 @@ noStreamsWarning = Dešifrování tak velikého souboru se v tomto prohlížeči
 noStreamsOptionCopy = Zkopírujte odkaz pro otevření v jiném prohlížeči
 noStreamsOptionFirefox = Vyzkoušejte náš oblíbený prohlížeč
 noStreamsOptionDownload = Pokračovat v tomto prohlížeči
+downloadFirefoxPromo = { -send-short-brand } od aplikace { -firefox }.
