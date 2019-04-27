@@ -179,3 +179,4 @@ noStreamsWarning = Ta brskalnik morda ne bo zmogel dešifrirati tako velike dato
 noStreamsOptionCopy = Kopirajte povezavo, da jo odprete v drugem brskalniku
 noStreamsOptionFirefox = Poskusite z našim najljubšim brskalnikom
 noStreamsOptionDownload = Nadaljujte s tem brskalnikom
+downloadFirefoxPromo = { -send-short-brand } vam omogoča čisto novi { -firefox }.
