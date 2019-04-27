@@ -145,3 +145,4 @@ noStreamsWarning = Denne browser kan muligvis ikke dekryptere en fil, der er så
 noStreamsOptionCopy = Kopier linket for at åbne det i en anden browser
 noStreamsOptionFirefox = Prøv vores favorit-browser
 noStreamsOptionDownload = Fortsæt med denne browser
+downloadFirefoxPromo = { -send-short-brand } præsenteres af den nye { -firefox }.
