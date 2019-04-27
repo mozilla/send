@@ -145,3 +145,4 @@ noStreamsWarning = Előfordulhat, hogy a böngésző nem fog tudni visszafejteni
 noStreamsOptionCopy = Másolja a hivatkozást, és nyissa meg egy másik böngészőben
 noStreamsOptionFirefox = Próbálja ki a kedvenc böngészőnket
 noStreamsOptionDownload = Folytatás ezzel a böngészővel
+downloadFirefoxPromo = A { -send-short-brand }et a vadonatúj { -firefox } hozza el Önnek.
