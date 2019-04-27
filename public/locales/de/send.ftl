@@ -145,3 +145,4 @@ noStreamsWarning = Dieser Browser kann eine so große Datei möglicherweise nich
 noStreamsOptionCopy = Kopiere den Link, um ihn in einem anderen Browser zu öffnen
 noStreamsOptionFirefox = Probiere unseren Lieblingsbrowser aus
 noStreamsOptionDownload = Mit diesem Browser weitermachen
+downloadFirefoxPromo = { -send-short-brand } wird Ihnen präsentiert vom brandneuen { -firefox }.
