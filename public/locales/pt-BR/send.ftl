@@ -145,3 +145,4 @@ noStreamsWarning = Este navegador pode não conseguir descriptografar um arquivo
 noStreamsOptionCopy = Copiar o link para abrir em outro navegador
 noStreamsOptionFirefox = Experimentar nosso navegador preferido
 noStreamsOptionDownload = Continuar com este navegador
+downloadFirefoxPromo = O { -send-short-brand } é apresentado pelo novo { -firefox }.
