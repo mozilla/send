@@ -162,3 +162,4 @@ noStreamsWarning = jūsų naršyklei gali nepavykti iššifruoti tokio didelio f
 noStreamsOptionCopy = Nukopijuokite saitą ir atverkite jį kita naršykle
 noStreamsOptionFirefox = Išbandykite mūsų mėgstamiausią naršyklę
 noStreamsOptionDownload = Tęsti naudojantis šia naršykle
+downloadFirefoxPromo = „{ -send-short-brand }“ jums atkeliauja iš naujosios „{ -firefox }“.
