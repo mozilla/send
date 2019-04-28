@@ -145,3 +145,4 @@ noStreamsWarning = Es posible que este navegador no pueda descifrar un archivo t
 noStreamsOptionCopy = Copiar el enlace para abrirlo en otro navegador
 noStreamsOptionFirefox = Prueba nuestro navegador favorito
 noStreamsOptionDownload = Continuar con este navegador
+downloadFirefoxPromo = { -send-short-brand } es traído a ti por el renovado { -firefox }.
