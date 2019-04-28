@@ -145,3 +145,4 @@ noStreamsWarning = Iste navigator pote non pote decifrar un file assi grande.
 noStreamsOptionCopy = Copiar le ligamine e aperir lo in un altere navigator
 noStreamsOptionFirefox = Prova nostre navigator favorite
 noStreamsOptionDownload = Continuar con iste navigator
+downloadFirefoxPromo = { -send-short-brand } es portate a te per le novissime { -firefox }.
