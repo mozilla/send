@@ -163,3 +163,4 @@ noStreamsWarning = Toś ten wobglědowak njamógał taku wjeliku dataju dešifr�
 noStreamsOptionCopy = Kopěrujśo wótkaz, aby jen w drugim wobglědowaku wócynił
 noStreamsOptionFirefox = Wopytajśo naš nejlubšy wobglědowak
 noStreamsOptionDownload = Z toś tym wobglědowakom pókšacowaś
+downloadFirefoxPromo = { -send-short-brand } se wam pśez cele nowy { -firefox } pśinjaso.
