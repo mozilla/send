@@ -145,3 +145,4 @@ noStreamsWarning = Deze browser kan een bestand van deze omvang mogelijk niet on
 noStreamsOptionCopy = Koppeling kopiëren om in een andere browser te openen
 noStreamsOptionFirefox = Onze favoriete browser proberen
 noStreamsOptionDownload = Doorgaan met deze browser
+downloadFirefoxPromo = { -send-short-brand } wordt u aangeboden door het volledig vernieuwde { -firefox }.
