@@ -137,3 +137,4 @@ noStreamsWarning = Questo browser potrebbe non essere in grado di decrittare un 
 noStreamsOptionCopy = Copia il link e aprilo in un altro browser
 noStreamsOptionFirefox = Prova il nostro browser preferito
 noStreamsOptionDownload = Continua con questo browser
+downloadFirefoxPromo = { -send-short-brand } viene offerto dal nuovissimo { -firefox }.
