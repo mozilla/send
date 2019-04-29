@@ -145,3 +145,4 @@ noStreamsWarning = Αυτό το πρόγραμμα περιήγησης ενδ�
 noStreamsOptionCopy = Αντιγράψτε το σύνδεσμο για άνοιγμα σε άλλο πρόγραμμα περιήγησης
 noStreamsOptionFirefox = Δοκιμάστε το αγαπημένο μας πρόγραμμα περιήγησης
 noStreamsOptionDownload = Συνέχεια με αυτό το πρόγραμμα περιήγησης
+downloadFirefoxPromo = Το { -send-short-brand } παρέχεται σε εσάς από το ολοκαίνουριο { -firefox }.
