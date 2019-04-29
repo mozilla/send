@@ -154,3 +154,4 @@ noStreamsWarning = Este posibil ca acest browser să nu poată decripta un fiși
 noStreamsOptionCopy = Copiază linkul pentru a-l deschide într-un alt browser
 noStreamsOptionFirefox = Încearcă browserul nostru favorit
 noStreamsOptionDownload = Continuă cu acest browser
+downloadFirefoxPromo = { -send-short-brand } îți este adus de noul { -firefox }.
