@@ -145,3 +145,4 @@ noStreamsWarning = Dizze browser kin in sa'n grut bestân mooglik net fersiferje
 noStreamsOptionCopy = Kopiearje de koppeling om yn in oare browser te iepenjen
 noStreamsOptionFirefox = Probearje ús favorite browser
 noStreamsOptionDownload = Trochgean mei dizze browser
+downloadFirefoxPromo = { -send-short-brand } wurdt jo oanbean troch it folslein fernijde { -firefox }.
