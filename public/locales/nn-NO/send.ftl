@@ -145,3 +145,4 @@ noStreamsWarning = Denne nettlesaren kan kanskje ikkje dekryptere ei så stor fi
 noStreamsOptionCopy = Kopier lenka for å opne henne i ein annan nettlesar
 noStreamsOptionFirefox = Prøv favorittnettlesaren vår
 noStreamsOptionDownload = Fortset med denne nettlesaren
+downloadFirefoxPromo = { -send-short-brand } vert presentert for deg av den heilt nye { -firefox }.
