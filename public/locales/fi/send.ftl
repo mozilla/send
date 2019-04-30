@@ -65,13 +65,13 @@ timespanMinutes =
     }
 timespanDays =
     { $num ->
-        [one] 1 päivä
-       *[other] { $num } päivää
+        [one] 1 päivän
+       *[other] { $num } päivän
     }
 timespanWeeks =
     { $num ->
-        [one] 1 viikko
-       *[other] { $num } viikkoa
+        [one] 1 viikon
+       *[other] { $num } viikon
     }
 fileCount =
     { $num ->
@@ -145,3 +145,4 @@ noStreamsWarning = Tämä selain ei välttämättä osaa purkaa salausta näin s
 noStreamsOptionCopy = Kopioi linkki avataksesi sen toisessa selaimessa
 noStreamsOptionFirefox = Kokeile suosikkiselaintamme
 noStreamsOptionDownload = Jatka tällä selaimella
+downloadFirefoxPromo = { -send-short-brand } on olemassa kiitos uuden { -firefox }in.
