@@ -119,7 +119,7 @@ addPassword = Protect with password
 emailPlaceholder = Enter your email
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Sign in to send up to { $size }
-signInButton = Sign in/up
+signInButton = Sign in
 accountBenefitTitle = Create a { -firefox } Account or sign in
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Share files up to { $size }
