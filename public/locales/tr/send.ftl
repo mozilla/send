@@ -141,3 +141,4 @@ noStreamsWarning = Bu tarayıcı bu kadar büyük bir dosyanın şifresini çöz
 noStreamsOptionCopy = Bağlantıyı başka bir tarayıcıda açmak için kopyala
 noStreamsOptionFirefox = En sevdiğimiz tarayıcıyı deneyin
 noStreamsOptionDownload = Bu tarayıcıyla devam edin
+downloadFirefoxPromo = { -send-short-brand }, yepyeni { -firefox } tarafından sunulmaktadır.
