@@ -170,7 +170,7 @@ addPassword = Ochránit heslem
 emailPlaceholder = Zadejte svoji e-mailovou adresu
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Pro odesílání souborů o velikosti až { $size } se prosím přihlaste
-signInButton = Přihlásit/Registrovat se
+signInOnlyButton = Přihlásit se
 accountBenefitTitle = Vytvořte si účet { -firefox(case: "gen") } nebo se přihlaste
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Sdílejte soubory o velikosti až { $size }
@@ -191,3 +191,8 @@ noStreamsOptionCopy = Zkopírujte odkaz pro otevření v jiném prohlížeči
 noStreamsOptionFirefox = Vyzkoušejte náš oblíbený prohlížeč
 noStreamsOptionDownload = Pokračovat v tomto prohlížeči
 downloadFirefoxPromo = { -send-short-brand } od aplikace { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Sdílet odkaz na soubor:
+shareLinkButton = Sdílet odkaz
+# $name is the name of the file
+shareMessage = Stáhněte si soubor „{ $name }“ s { -send-brand(case: "ins") } - jednoduché a bezpečné sdílení souborů
