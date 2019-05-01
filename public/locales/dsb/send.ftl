@@ -142,7 +142,7 @@ addPassword = Z gronidłom šćitaś
 emailPlaceholder = Zapódajśo swóju e-mailowu adresu
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Pśizjawśo se, aby do { $size } pósłał
-signInButton = Pśizjawiś/Registrěrowaś
+signInOnlyButton = Pśizjawiś
 accountBenefitTitle = Załožćo konto { -firefox } abo pśizjawśo se
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Dataje do { $size } źěliś
@@ -164,3 +164,8 @@ noStreamsOptionCopy = Kopěrujśo wótkaz, aby jen w drugim wobglědowaku wócyn
 noStreamsOptionFirefox = Wopytajśo naš nejlubšy wobglědowak
 noStreamsOptionDownload = Z toś tym wobglědowakom pókšacowaś
 downloadFirefoxPromo = { -send-short-brand } se wam pśez cele nowy { -firefox } pśinjaso.
+# the next line after the colon contains a file name
+shareLinkDescription = Źělśo wótkaz k swójej dataji:
+shareLinkButton = Wótkaz źěliś
+# $name is the name of the file
+shareMessage = Ześěgniśo „{ $name }“ z { -send-brand }: jadnore, wěste źělenje datajow
