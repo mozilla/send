@@ -126,7 +126,7 @@ addPassword = Beveiligen met wachtwoord
 emailPlaceholder = Voer uw e-mailadres in
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Meld u aan om tot { $size } te versturen
-signInButton = Aanmelden/Registreren
+signInOnlyButton = Aanmelden
 accountBenefitTitle = Maak een { -firefox }-account of meld u aan
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Bestanden tot { $size } delen
@@ -146,3 +146,6 @@ noStreamsOptionCopy = Koppeling kopiëren om in een andere browser te openen
 noStreamsOptionFirefox = Onze favoriete browser proberen
 noStreamsOptionDownload = Doorgaan met deze browser
 downloadFirefoxPromo = { -send-short-brand } wordt u aangeboden door het volledig vernieuwde { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Deel de koppeling naar uw bestand:
+shareLinkButton = Koppeling delen
