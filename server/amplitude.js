@@ -113,7 +113,9 @@ function clientEvent(event, ua, language, session_id, deltaT, platform, ip) {
     utm_content: ep.utm_content,
     utm_medium: ep.utm_medium,
     utm_source: ep.utm_source,
-    utm_term: ep.utm_term
+    utm_term: ep.utm_term,
+    experiment: ep.experiment,
+    variant: ep.variant
   };
   const user_properties = {
     active_count: up.active_count,
