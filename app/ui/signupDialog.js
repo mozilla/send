@@ -50,8 +50,8 @@ module.exports = function(trigger) {
             />
             <input
               class="btn rounded-lg w-full flex flex-no-shrink items-center justify-center"
-              value="${state.translate('signInButton')}"
-              title="${state.translate('signInButton')}"
+              value="${state.translate('signInOnlyButton')}"
+              title="${state.translate('signInOnlyButton')}"
               id="email-submit"
               type="submit"
             />
