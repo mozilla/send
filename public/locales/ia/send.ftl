@@ -126,7 +126,7 @@ addPassword = Proteger per contrasigno
 emailPlaceholder = Insere tu adresse email
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Accede pro inviar usque { $size }
-signInButton = Authentica/registra te
+signInOnlyButton = Authentica te
 accountBenefitTitle = Crea un conto { -firefox } o registra te
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Comparti files usque { $size }
@@ -146,3 +146,6 @@ noStreamsOptionCopy = Copiar le ligamine e aperir lo in un altere navigator
 noStreamsOptionFirefox = Prova nostre navigator favorite
 noStreamsOptionDownload = Continuar con iste navigator
 downloadFirefoxPromo = { -send-short-brand } es portate a te per le novissime { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Condivide le ligamine a tu file:
+shareLinkButton = Condivide ligamine
