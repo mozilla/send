@@ -149,3 +149,5 @@ downloadFirefoxPromo = { -send-short-brand } es portate a te per le novissime { 
 # the next line after the colon contains a file name
 shareLinkDescription = Condivide le ligamine a tu file:
 shareLinkButton = Condivide ligamine
+# $name is the name of the file
+shareMessage = Discarga “{ $name }” con { -send-brand }: condivide files in modo simple e secur
