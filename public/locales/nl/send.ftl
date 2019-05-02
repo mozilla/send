@@ -149,3 +149,5 @@ downloadFirefoxPromo = { -send-short-brand } wordt u aangeboden door het volledi
 # the next line after the colon contains a file name
 shareLinkDescription = Deel de koppeling naar uw bestand:
 shareLinkButton = Koppeling delen
+# $name is the name of the file
+shareMessage = Download ‘{ $name }’ met { -send-brand }: eenvoudig, veilig bestanden delen
