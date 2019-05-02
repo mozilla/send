@@ -10,7 +10,14 @@ module.exports = function(config) {
   const redis = require(redis_lib);
   const client = redis.createClient({
     host: config.redis_host,
-    connect_timeout: 10000
+    retry_strategy: options => {
+      if (options.total_retry_time > 10000) {
+        client.emit('error', 'Retry time exhausted');
+        return new Error('Retry time exhausted');
+      }
+
+      return 500;
+    }
   });
 
   client.ttlAsync = promisify(client.ttl);
