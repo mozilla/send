@@ -45,6 +45,9 @@ function statUploadEvent(data) {
       size: orderOfMagnitude(data.size),
       anonymous: data.anonymous
     },
+    event_properties: {
+      agent: data.agent
+    },
     event_id: 0
   };
   return sendBatch([event]);
@@ -61,6 +64,7 @@ function statDownloadEvent(data) {
     time: truncateToHour(Date.now()),
     event_type: 'server_download',
     event_properties: {
+      agent: data.agent,
       download_count: data.download_count,
       ttl: data.ttl
     },
@@ -80,6 +84,7 @@ function statDeleteEvent(data) {
     time: truncateToHour(Date.now()),
     event_type: 'server_delete',
     event_properties: {
+      agent: data.agent,
       download_count: data.download_count,
       ttl: data.ttl
     },

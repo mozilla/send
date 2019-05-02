@@ -12,6 +12,7 @@ const ID_REGEX = '([0-9a-fA-F]{10, 16})';
 module.exports = function(app, devServer) {
   const wsapp = express();
   expressWs(wsapp, null, { perMessageDeflate: false });
+  routes(wsapp);
   wsapp.ws('/api/ws', require('../routes/ws'));
   wsapp.listen(8081, config.listen_address);
 

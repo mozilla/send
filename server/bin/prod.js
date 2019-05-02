@@ -13,8 +13,8 @@ if (config.sentry_dsn) {
 const app = express();
 
 expressWs(app, null, { perMessageDeflate: false });
-app.ws('/api/ws', require('../routes/ws'));
 routes(app);
+app.ws('/api/ws', require('../routes/ws'));
 
 app.use(
   express.static(path.resolve(__dirname, '../../dist/'), {

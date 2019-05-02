@@ -7,8 +7,8 @@ const expressWs = require('express-ws');
 module.exports = function(app, devServer) {
   assets.setMiddleware(devServer.middleware);
   expressWs(app, null, { perMessageDeflate: false });
-  app.ws('/api/ws', require('../routes/ws'));
   routes(app);
+  app.ws('/api/ws', require('../routes/ws'));
   tests(app);
   // webpack-dev-server routes haven't been added yet
   // so wait for next tick to add 404 handler
