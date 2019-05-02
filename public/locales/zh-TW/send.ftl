@@ -89,7 +89,7 @@ copyLinkDescription = 複製鏈結即可分享您的檔案:
 copyLinkButton = 複製鏈結
 downloadTitle = 下載檔案
 downloadDescription = 此檔案是透過 { -send-brand } 進行分享，以點對點加密的方式來分享檔案，並提供會自動失效的鏈結。
-trySendDescription = 快試試 { -send-brand }，簡單而安全地分享檔案。
+trySendDescription = 快試試 { -send-brand }，簡單安全的檔案分享機制。
 # count will always be > 10
 tooManyFiles =
     { $count ->
@@ -118,7 +118,7 @@ addPassword = 使用密碼保護
 emailPlaceholder = 輸入您的電子郵件地址
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = 登入後即可傳送最大 { $size } 的檔案
-signInButton = 登入 / 註冊
+signInOnlyButton = 登入
 accountBenefitTitle = 註冊 { -firefox } 帳號或登入
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = 分享最大 { $size } 的檔案
@@ -137,3 +137,8 @@ noStreamsOptionCopy = 複製鏈結，用其他瀏覽器開啟
 noStreamsOptionFirefox = 試試我們最愛的瀏覽器
 noStreamsOptionDownload = 繼續使用目前的瀏覽器
 downloadFirefoxPromo = { -send-short-brand } 是由全新的 { -firefox } 提供。
+# the next line after the colon contains a file name
+shareLinkDescription = 您的檔案鏈結:
+shareLinkButton = 分享鏈結
+# $name is the name of the file
+shareMessage = 使用 { -send-brand } 下載「{ $name }」: 簡單安全的檔案分享機制
