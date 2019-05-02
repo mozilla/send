@@ -126,7 +126,7 @@ addPassword = Protegido con contraseña
 emailPlaceholder = Ingresa tu correo
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Conéctate para enviar hasta { $size }
-signInButton = Conectarse/registrarse
+signInOnlyButton = Conectarse
 accountBenefitTitle = Crea una cuenta de { -firefox } o conéctate
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Comparte archivos de hasta { $size }
@@ -146,3 +146,8 @@ noStreamsOptionCopy = Copiar el enlace para abrirlo en otro navegador
 noStreamsOptionFirefox = Prueba nuestro navegador favorito
 noStreamsOptionDownload = Continuar con este navegador
 downloadFirefoxPromo = { -send-short-brand } es traído a ti por el renovado { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Comparte el enlace a tu dispositivo:
+shareLinkButton = Compartir enlace
+# $name is the name of the file
+shareMessage = Baja "{ $name }" con { -send-brand }: compartir archivos de forma simple y segura
