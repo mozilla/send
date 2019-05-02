@@ -158,7 +158,7 @@ addPassword = Diogelu gyda chyfrinair
 emailPlaceholder = Rhowch eich e-bost
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Mewngofnodi i anfon hyd at { $size }
-signInButton = Mewngofnodi/Cofrestru
+signInOnlyButton = Mewngofnodi
 accountBenefitTitle = Creu Cyfrif { -firefox } neu fewngofnodi
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Rhannu ffeiliau hyd at { $size }
@@ -182,3 +182,8 @@ noStreamsOptionCopy = Copïwch y ddolen i'w agor mewn porwr arall
 noStreamsOptionFirefox = Rhowch gynnig ar ein hoff porwr
 noStreamsOptionDownload = Parhau gyda'r porwr hwn
 downloadFirefoxPromo = Mae { -send-short-brand } yn cael ei gynnig i ci gan y { -firefox } newydd.
+# the next line after the colon contains a file name
+shareLinkDescription = Rhannu'r ddolen i'ch ffeil:
+shareLinkButton = Rhannu'r ddolen
+# $name is the name of the file
+shareMessage = Llwytho i lawr “{ $name }” gyda { -send-brand }: rhannu ffeiliau syml a diogel
