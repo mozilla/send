@@ -149,3 +149,5 @@ downloadFirefoxPromo = { -send-short-brand } vous est proposé par le tout nouve
 # the next line after the colon contains a file name
 shareLinkDescription = Partagez le lien vers votre fichier :
 shareLinkButton = Partager le lien
+# $name is the name of the file
+shareMessage = Télécharger « { $name } » avec { -send-brand } : un moyen simple et sûr de partager des fichiers
