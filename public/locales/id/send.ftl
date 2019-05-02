@@ -118,7 +118,7 @@ addPassword = Lindungi dengan kata sandi
 emailPlaceholder = Masukkan surel Anda
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Masuk untuk dapat mengirim hingga { $size }
-signInButton = Masuk/Daftar
+signInOnlyButton = Masuk
 accountBenefitTitle = Buat { -firefox } Account atau masuk
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Bagikan berkas hingga { $size }
@@ -137,3 +137,8 @@ noStreamsOptionCopy = Salin tautan untuk dibuka di peramban lainnya
 noStreamsOptionFirefox = Coba peramban favorit kami
 noStreamsOptionDownload = Lanjutkan dengan peramban ini
 downloadFirefoxPromo = { -send-short-brand } dipersembahkan untuk Anda oleh { -firefox } terbaru.
+# the next line after the colon contains a file name
+shareLinkDescription = Bagikan tautan ke berkas Anda:
+shareLinkButton = Bagikan tautan
+# $name is the name of the file
+shareMessage = Unduh "{ $name }" dengan { -send-brand }: berbagi berkas dengan sederhana dan aman
