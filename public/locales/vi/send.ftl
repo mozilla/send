@@ -118,7 +118,7 @@ addPassword = Bảo vệ bằng mật khẩu
 emailPlaceholder = Nhập email của bạn
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Đăng nhập để gửi tối đa { $size }
-signInButton = Đăng nhập hoặc đăng ký
+signInOnlyButton = Đăng nhập
 accountBenefitTitle = Tạo tài khoản { -firefox } hoặc đăng nhập
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Chia sẻ tập tin lên tới { $size }
@@ -137,3 +137,8 @@ noStreamsOptionCopy = Sao chép liên kết để mở trong một trình duyệ
 noStreamsOptionFirefox = Hãy dùng thử trình duyệt yêu thích của chúng tôi
 noStreamsOptionDownload = Tiếp tục với trình duyệt này
 downloadFirefoxPromo = { -send-short-brand } được mang đến cho bạn bởi { -firefox } hoàn toàn mới.
+# the next line after the colon contains a file name
+shareLinkDescription = Chia sẻ liên kết đến tập tin của bạn:
+shareLinkButton = Chia sẻ liên kết
+# $name is the name of the file
+shareMessage = Tải xuống “{ $name }“ với { -send-brand }: chia sẻ tập tin đơn giản, an toàn
