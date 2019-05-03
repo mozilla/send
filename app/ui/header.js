@@ -28,7 +28,7 @@ class Header extends Component {
           `;
     return html`
       <header
-        class="relative flex-none flex flex-row items-center justify-between w-full px-6 h-16 md:h-24 z-20 bg-transparent"
+        class="main-header relative flex-none flex flex-row items-center justify-between w-full px-6 md:px-8 h-16 md:h-24 z-20 bg-transparent"
       >
         ${title} ${this.account.render()}
       </header>
