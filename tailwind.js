@@ -51,6 +51,7 @@ const colors = {
   'grey-dark': '#8795a1',
   grey: '#B1B1B3',
   'grey-light': '#dae1e7',
+  'grey-transparent': 'hsla(250, 13%, 9%, .2)',
   'grey-lighter': '#f1f5f8',
   'grey-lightest': '#F9F9FA',
   white: '#ffffff',
@@ -300,7 +301,7 @@ module.exports = {
     none: 1,
     tight: 1.25,
     normal: 1.5,
-    loose: 2
+    loose: 1.75
   },
 
   /*
@@ -431,6 +432,7 @@ module.exports = {
     sm: '.125rem',
     default: '.25rem',
     lg: '.5rem',
+    xl: '1rem',
     full: '9999px'
   },
 
