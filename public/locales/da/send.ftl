@@ -126,7 +126,7 @@ addPassword = Beskyt med adgangskode
 emailPlaceholder = Indtast din mailadresse
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Log ind for at sende filer på op til { $size }
-signInButton = Log ind/tilmeld dig
+signInOnlyButton = Log ind
 accountBenefitTitle = Opret en { -firefox }-konto eller log ind
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Del filer på op til { $size }
@@ -146,3 +146,8 @@ noStreamsOptionCopy = Kopier linket for at åbne det i en anden browser
 noStreamsOptionFirefox = Prøv vores favorit-browser
 noStreamsOptionDownload = Fortsæt med denne browser
 downloadFirefoxPromo = { -send-short-brand } præsenteres af den nye { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Del linket til din fil:
+shareLinkButton = Del link
+# $name is the name of the file
+shareMessage = Hent { $name } med { -send-brand } - simpel og sikker fildeling
