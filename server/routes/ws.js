@@ -114,7 +114,8 @@ module.exports = function(ws, req) {
           dlimit,
           timeLimit,
           anonymous: !user,
-          size: limiter.length
+          size: limiter.length,
+          agent: req.ua.browser.name || req.ua.ua.substring(0, 6)
         });
       }
     } catch (e) {
