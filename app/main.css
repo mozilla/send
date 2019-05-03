@@ -8,6 +8,14 @@
   user-select: none;
 }
 
+:root {
+  --violet-gradient: linear-gradient(
+    -180deg,
+    rgba(144, 89, 255, 0.8) 0%,
+    rgba(144, 89, 255, 0.4) 100%
+  );
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -300,3 +308,66 @@ select {
 .word-break-all {
   word-break: break-all;
 }
+
+.signin {
+  border-radius: 6px;
+  transition-property: transform, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.07, 0.95, 0, 1);
+}
+
+.signin:hover,
+.signin:focus {
+  @apply shadow-btn;
+
+  transform: scale(1.0625);
+}
+
+.signin:hover:active {
+  transform: scale(0.9375);
+}
+
+/* begin signin button color experiment */
+
+.white-blue {
+  @apply border-blue-dark;
+  @apply border-2;
+  @apply text-blue-dark;
+}
+
+.white-blue:hover,
+.white-blue:focus {
+  @apply bg-blue-dark;
+  @apply text-white;
+}
+
+.blue {
+  @apply bg-blue-dark;
+  @apply text-white;
+}
+
+.white-violet {
+  @apply border-violet;
+  @apply border-2;
+  @apply text-violet;
+}
+
+.white-violet:hover,
+.white-violet:focus {
+  @apply bg-violet;
+  @apply text-white;
+
+  background-image: var(--violet-gradient);
+}
+
+.violet {
+  @apply bg-violet;
+  @apply text-white;
+}
+
+.violet:hover,
+.violet:focus {
+  background-image: var(--violet-gradient);
+}
+
+/* end signin button color experiment */
