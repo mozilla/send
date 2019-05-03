@@ -126,7 +126,7 @@ addPassword = Tichajïx rik'in ewan tzij
 emailPlaceholder = Tatz'ib'aj ataqoya'l
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Tatikirisaj molojri'ïl richin natäq k'a { $size }
-signInButton = Tatikirisaj molojri'ïl/tatz'ib'aj ab'i'
+signInOnlyButton = Titikirisäx molojri'ïl
 accountBenefitTitle = Tatz'uku' jun { -firefox } Rub'i' Ataqoy'al o Tatikirisaj molojri'ïl
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Ke'akomonij taq yakb'äl k'a { $size }
@@ -145,3 +145,9 @@ noStreamsWarning = Rik'in jub'a' re okik'amaya'l re' man nitikïr ta nretamaj ru
 noStreamsOptionCopy = Tiwachib'ëx ri ximonel richin nijaq pa jun chik okik'amaya'l
 noStreamsOptionFirefox = Tatojtob'ej ri jeb'ël qokik'amaya'l
 noStreamsOptionDownload = Kisamäj na rik'in re okik'amaya'l re'
+downloadFirefoxPromo = Ja ri k'ak'a' { -firefox } nusüj ri { -send-short-brand } chawe.
+# the next line after the colon contains a file name
+shareLinkDescription = Nakomonij ri ximonel rik'in ri awokisab'al:
+shareLinkButton = Tikomonïx ximonel
+# $name is the name of the file
+shareMessage = Tiqasäx "{ $name }" rik'in { -send-brand }: man k'ayew ta chuqa' ütz kikomonik ri yakb'äl
