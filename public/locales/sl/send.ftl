@@ -183,3 +183,5 @@ downloadFirefoxPromo = { -send-short-brand } vam omogoča čisto novi { -firefox
 # the next line after the colon contains a file name
 shareLinkDescription = Delite povezavo do datoteke:
 shareLinkButton = Deli povezavo
+# $name is the name of the file
+shareMessage = Prenesite "{ $name }" s { -send-brand }om: enostavno in varno deljenje datotek
