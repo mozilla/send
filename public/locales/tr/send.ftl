@@ -122,7 +122,7 @@ addPassword = Parola koruması ekle
 emailPlaceholder = E-posta adresinizi yazın
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = { $size }’ye kadar dosya göndermek için giriş yapın
-signInButton = Giriş yap/kaydol
+signInOnlyButton = Giriş yap
 accountBenefitTitle = { -firefox } Hesabı açın veya giriş yapın
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = { $size } boyutlu dosyaları paylaşma
@@ -142,3 +142,8 @@ noStreamsOptionCopy = Bağlantıyı başka bir tarayıcıda açmak için kopyala
 noStreamsOptionFirefox = En sevdiğimiz tarayıcıyı deneyin
 noStreamsOptionDownload = Bu tarayıcıyla devam edin
 downloadFirefoxPromo = { -send-short-brand }, yepyeni { -firefox } tarafından sunulmaktadır.
+# the next line after the colon contains a file name
+shareLinkDescription = Dosyanızın bağlantısını paylaşın:
+shareLinkButton = Bağlantıyı paylaş
+# $name is the name of the file
+shareMessage = “{ $name }” dosyasını { -send-brand } ile indirin: basit ve güvenli dosya paylaşımı
