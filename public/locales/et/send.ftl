@@ -89,10 +89,37 @@ gb = GB
 fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Kogusuurus: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Faili jagamiseks kopeeri link:
 copyLinkButton = Kopeeri link
 downloadTitle = Failide allalaadimine
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Vaid 1 arhiveerimine on lubatud.
+       *[other] Vaid { $count } arhiveerimist on lubatud.
+    }
+expiredTitle = Link on aegunud.
+downloadFirefox = Laadi { -firefox } alla
+legalTitle = { -send-short-brand } privaatsusteade
+legalDateStamp = Versioon 1.0, alates 12. märts 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }p { $hours }t { $minutes }m
+addFilesButton = Vali failid üleslaadimiseks
 uploadButton = Laadi üles
+addPassword = Kaitse parooliga
+emailPlaceholder = Sisesta e-posti aadress
 signInOnlyButton = Logi sisse
+accountBenefitTitle = Loo { -firefox }i konto või logi sisse
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Jaga kuni { $size } suuruseid faile
+accountBenefitDownloadCount = Jaga faile enamate inimestega
+accountBenefitSync = Jagatud faile saad hallata mis tahes seadmes
+accountBenefitMoz = Rohkem teavet teistest { -mozilla } teenustest
 signOut = Logi välja
 okButton = Olgu
+downloadingTitle = Allalaadimine
+noStreamsOptionCopy = Kopeeri link teises brauseris avamiseks
+noStreamsOptionFirefox = Proovi meie lemmikbrauserit
+noStreamsOptionDownload = Jätka selle brauseriga
 shareLinkButton = Jaga linki
