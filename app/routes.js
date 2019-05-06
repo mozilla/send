@@ -10,6 +10,7 @@ module.exports = function(app = choo({ hash: true })) {
   app.route('/legal', body(require('./ui/legal')));
   app.route('/error', body(require('./ui/error')));
   app.route('/blank', body(require('./ui/blank')));
+  app.route('/qr', body(require('./ui/displayQR')));
   app.route('/oauth', function(state, emit) {
     emit('authenticate', state.query.code, state.query.state);
   });
