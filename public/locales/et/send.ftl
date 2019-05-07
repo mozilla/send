@@ -20,7 +20,7 @@ unlockButtonLabel = Ava
 downloadButtonLabel = Laadi alla
 downloadFinish = Allalaadimine lõpetati
 fileSizeProgress = ({ $partialSize }/{ $totalSize })
-sendYourFilesLink = Proovi Firefox Sendi
+sendYourFilesLink = Proovi Firefox Send'i
 errorPageHeader = Midagi läks valesti!
 fileTooBig = Fail on üleslaadimiseks liiga suur. See peaks olema väiksem kui { $size }.
 linkExpiredAlt = Link on aegunud
@@ -131,12 +131,23 @@ accountBenefitTitle = Loo { -firefox }i konto või logi sisse
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Jaga kuni { $size } suuruseid faile
 accountBenefitDownloadCount = Jaga faile enamate inimestega
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Hoia linke aktiivsena 1 päev
+       *[other] Hoia linke aktiivsena kuni { $count } päeva
+    }
 accountBenefitSync = Jagatud faile saad hallata mis tahes seadmes
 accountBenefitMoz = Rohkem teavet teistest { -mozilla } teenustest
 signOut = Logi välja
 okButton = Olgu
 downloadingTitle = Allalaadimine
+noStreamsWarning = Sinu veebilehitseja ei pruugi suuta nii suurt faili dekrüptida.
 noStreamsOptionCopy = Kopeeri link teises brauseris avamiseks
 noStreamsOptionFirefox = Proovi meie lemmikbrauserit
 noStreamsOptionDownload = Jätka selle brauseriga
+downloadFirefoxPromo = { -send-short-brand } toob sinuni uhiuus { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Jaga linki failile:
 shareLinkButton = Jaga linki
+# $name is the name of the file
+shareMessage = Laadi “{ $name }” alla teenusega { -send-brand }, mis pakub lihtsat ja turvalist failijagamist
