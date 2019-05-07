@@ -59,7 +59,7 @@ class Account extends Component {
     }
     const user = this.state.user;
     const translate = this.state.translate;
-    if (!this.local.loggedIn) {
+    if (!user.loggedIn) {
       return html`
         <send-account>
           <button
