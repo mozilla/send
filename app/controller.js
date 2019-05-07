@@ -8,6 +8,7 @@ import copyDialog from './ui/copyDialog';
 import shareDialog from './ui/shareDialog';
 import signupDialog from './ui/signupDialog';
 import surveyDialog from './ui/surveyDialog';
+import qrDialog from './ui/qrDialog';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -303,6 +304,11 @@ export default function(state, emitter) {
     } else {
       state.modal = null;
     }
+    render();
+  });
+
+  emitter.on('displayQRCode', url => {
+    state.modal = qrDialog(url);
     render();
   });
 

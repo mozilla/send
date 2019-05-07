@@ -13,6 +13,7 @@ timespanHours = { $num ->
        *[other] { $num } hours
     }
 copiedUrl = Copied!
+qrDialogMessage = For your convenience, here's a QR code containing that same link
 unlockInputPlaceholder = Password
 unlockButtonLabel = Unlock
 downloadButtonLabel = Download
