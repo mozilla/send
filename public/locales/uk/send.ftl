@@ -134,7 +134,7 @@ addPassword = Захист паролем
 emailPlaceholder = Введіть свою електронну пошту
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Увійдіть, щоб надсилати файли розміром до { $size }
-signInButton = Вхід чи Реєстрація
+signInOnlyButton = Увійти
 accountBenefitTitle = Створіть обліковий запис { -firefox } або увійдіть
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Обмінюйтесь файлами розміром до { $size }
@@ -155,3 +155,8 @@ noStreamsOptionCopy = Скопіюйте посилання, щоб відкри
 noStreamsOptionFirefox = Спробуйте наш улюблений браузер
 noStreamsOptionDownload = Продовжити в цьому браузері
 downloadFirefoxPromo = { -send-short-brand } доступний для вас в цілком новому { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Надішліть посилання на свій файл:
+shareLinkButton = Поділитись посиланням
+# $name is the name of the file
+shareMessage = Завантажте “{ $name }” з { -send-brand }: простий та безпечний обмін файлами
