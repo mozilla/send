@@ -126,7 +126,7 @@ addPassword = Mbrojini me fjalëkalim
 emailPlaceholder = Jepni email-in tuaj
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Bëni hyrjen që të dërgoni deri më { $size }
-signInButton = Hyni/Regjistrohuni
+signInOnlyButton = Hyni
 accountBenefitTitle = Krijoni një Llogari { -firefox } ose bëni hyrjen në një të tillë
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Ndani me të tjerët kartela deri { $size }
@@ -145,3 +145,9 @@ noStreamsWarning = Ky shfletues mund të mos jetë në gjendje të shfshehtëzoj
 noStreamsOptionCopy = Kopjoje lidhjen për ta hapur në një tjetër shfletues
 noStreamsOptionFirefox = Provoni shfletuesin tonë të parapëlqyer
 noStreamsOptionDownload = Vazhdo me këtë shfletues
+downloadFirefoxPromo = { -send-short-brand } ju vjen nga { -firefox }-i i ri fringo.
+# the next line after the colon contains a file name
+shareLinkDescription = Ndani me të tjerët lidhjen për te kartela juaj:
+shareLinkButton = Ndani me të tjerët lidhjen
+# $name is the name of the file
+shareMessage = Shkarkojeni “{ $name }” me { -send-brand }: shkëmbim kartelash dhe thjesht dhe pa rrezik
