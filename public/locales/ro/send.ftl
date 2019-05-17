@@ -134,7 +134,7 @@ addPassword = Protejează cu parolă
 emailPlaceholder = Introdu e-mailul tău
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Autentifică-te ca să trimiți până la { $size }
-signInButton = Autentificare/Înregistrare
+signInOnlyButton = Autentificare
 accountBenefitTitle = Creează un cont { -firefox } sau autentifică-te
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Partajează fișiere de până la { $size }
@@ -155,3 +155,8 @@ noStreamsOptionCopy = Copiază linkul pentru a-l deschide într-un alt browser
 noStreamsOptionFirefox = Încearcă browserul nostru favorit
 noStreamsOptionDownload = Continuă cu acest browser
 downloadFirefoxPromo = { -send-short-brand } îți este adus de noul { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Partajează linkul către fișier:
+shareLinkButton = Partajează linkul
+# $name is the name of the file
+shareMessage = Descarcă „{ $name }” cu { -send-brand }: partajare simplă și sigură a fișierelor
