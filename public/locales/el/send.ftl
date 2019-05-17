@@ -126,7 +126,7 @@ addPassword = Προστασία με κωδικό πρόσβασης
 emailPlaceholder = Εισάγετε το email σας
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Συνδεθείτε για να στείλετε μέχρι { $size }
-signInButton = Σύνδεση/εγγραφή
+signInOnlyButton = Σύνδεση
 accountBenefitTitle = Δημιουργία λογαριασμού { -firefox } ή σύνδεση
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Μοιραστείτε αρχεία έως { $size }
@@ -146,3 +146,8 @@ noStreamsOptionCopy = Αντιγράψτε το σύνδεσμο για άνοι
 noStreamsOptionFirefox = Δοκιμάστε το αγαπημένο μας πρόγραμμα περιήγησης
 noStreamsOptionDownload = Συνέχεια με αυτό το πρόγραμμα περιήγησης
 downloadFirefoxPromo = Το { -send-short-brand } παρέχεται σε εσάς από το ολοκαίνουριο { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Μοιραστείτε το σύνδεσμο του αρχείου σας:
+shareLinkButton = Κοινή χρήση συνδέσμου
+# $name is the name of the file
+shareMessage = Λήψη του “{ $name }” με το { -send-brand }: απλός και ασφαλής διαμοιρασμός αρχείων
