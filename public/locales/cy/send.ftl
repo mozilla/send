@@ -6,21 +6,21 @@ encryptingFile = Wrthi'n amgryptio…
 decryptingFile = Wrthi'n dadgryptio…
 downloadCount =
     { $num ->
-        [zero] Llwythi i lawr
-        [one] Llwyth i lawr
-        [two] Lwyth i lawr
-        [few] Llwyth i lawr
-        [many] Llwyth i lawr
-       *[other] Llwyth i lawr
+        [zero] Dim llwythi i lawr
+        [one] 1 llwyth i lawr
+        [two] { $num } llwyth i lawr
+        [few] { $num } llwyth i lawr
+        [many] { $num } llwyth i lawr
+       *[other] { $num } llwyth i lawr
     }
 timespanHours =
     { $num ->
         [zero] awr
-        [one] awr
-        [two] awr
-        [few] awr
-        [many] awr
-       *[other] awr
+        [one] 1 awr
+        [two] { $num } awr
+        [few] { $num } awr
+        [many] { $num } awr
+       *[other] { $num } awr
     }
 copiedUrl = Wedi eu copïo!
 unlockInputPlaceholder = Cyfrinair
@@ -78,7 +78,7 @@ timespanMinutes =
 timespanDays =
     { $num ->
         [zero] 0 diwrnod
-        [one] 1 dwrnod
+        [one] 1 diwrnod
         [two] { $num } diwrnod
         [few] { $num } diwrnod
         [many] { $num } diwrnod
