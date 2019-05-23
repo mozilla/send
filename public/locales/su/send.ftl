@@ -49,3 +49,17 @@ passwordSetError = Ieu kecap sandi teu bisa disét
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Simpel, babagi koropak privat
+introDescription = { -send-brand } migampang anjeun babagi koropak kalawan énkripsi tungtung-ka-tungtung sarta tutumbu nu otomatis kadaluwarsa. Sahingga anjeun bisa ngaraksa naon nu ku anjeun bagi sacara privat jeung mastikeun banda anjeun teu salawasna daring.
+notifyUploadEncryptDone = Koropak anjeun kaénkripsi sarta siap dikirim.
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Kadaluwarsa sanggeu { $downloadCount } atawa { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] samenit
+       *[other] { $num } menit
+    }
+timespanDays =
+    { $num ->
+        [one] sapoé
+       *[other] { $num } poé
+    }
