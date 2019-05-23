@@ -63,3 +63,51 @@ timespanDays =
         [one] sapoé
        *[other] { $num } poé
     }
+timespanWeeks =
+    { $num ->
+        [one] saminggu
+       *[other] { $num } minggu
+    }
+fileCount =
+    { $num ->
+        [one] sakoropak
+       *[other] { $num } koropak
+    }
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = Ukuran total: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Tiron tutumbu pikeun babagi koropak anjeun:
+copyLinkButton = Tiron tutumbu
+downloadTitle = Undeur koropak
+downloadDescription = Ieu koropak geus dibagikeun liwat { -send-brand } kalawan énkripsi tungtung-ka-tungtung sarta tutumbuna otomatis kadaluwarsa.
+trySendDescription = Pecakan { -send-brand } pikeun simpelna, babagi koropak aman.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Ayeuna kur sakoropak nu bisa diunjal.
+       *[other] Ngan { $count } koropak nu bisa diunjal sakaligus.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Ngan saarsip nu diidinan.
+       *[other] Ngan { $count } arsip nu diidinan.
+    }
+expiredTitle = Ieu tutumbu geus kadaluwarsa.
+notSupportedDescription = { -send-brand } moal jalan di ieu panyungsi. { -send-short-brand } jalan naker dina { -firefox } vérsi pamganyarna, sarta bakal jalan di loba panyungsi vérsi kiwari.
+downloadFirefox = Undeur { -firefox }
+legalDateStamp = Versi 1.0, kaping 12 Maret 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }p { $hours }j { $minutes }m
+addFilesButton = Pilih koropak unjalkeuneun
+uploadButton = Unjal
