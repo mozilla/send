@@ -1,3 +1,6 @@
+# Firefox Send is a brand name and should not be localized.
+title = Firefox Send
+siteFeedback = Pangdeudeul
 importingFile = Ngimpor...
 encryptingFile = Ngénkripsi...
 decryptingFile = Ngadékripsi...
@@ -106,6 +109,7 @@ tooManyArchives =
 expiredTitle = Ieu tutumbu geus kadaluwarsa.
 notSupportedDescription = { -send-brand } moal jalan di ieu panyungsi. { -send-short-brand } jalan naker dina { -firefox } vérsi pamganyarna, sarta bakal jalan di loba panyungsi vérsi kiwari.
 downloadFirefox = Undeur { -firefox }
+legalTitle = { -send-short-brand } Wawar Privasi
 legalDateStamp = Versi 1.0, kaping 12 Maret 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }p { $hours }j { $minutes }m
@@ -143,3 +147,5 @@ downloadFirefoxPromo = { -send-short-brand } téh disanggakeun keur anjeun kalaw
 # the next line after the colon contains a file name
 shareLinkDescription = Bagikeun tutumbu ka koropak anjeun:
 shareLinkButton = Bagikeun tutumbu
+# $name is the name of the file
+shareMessage = Undeur "{ $name }" ku { -send-brand }: simpel, babagi koropak aman
