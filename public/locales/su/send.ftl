@@ -111,3 +111,35 @@ legalDateStamp = Versi 1.0, kaping 12 Maret 2019
 expiresDaysHoursMinutes = { $days }p { $hours }j { $minutes }m
 addFilesButton = Pilih koropak unjalkeuneun
 uploadButton = Unjal
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Ésérkeun sarta ésotkeun koropak
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = atawa klik pikeun ngirim nika { $size }
+addPassword = Piningan ku kecap sandi
+emailPlaceholder = Asupkeun surélék anjeun
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Asup sangkan bisa ngirim nika { $size }
+signInOnlyButton = Asup
+accountBenefitTitle = Jieun akun { -firefox } atawa asup
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Bagikeun koropak nika { $size }
+accountBenefitDownloadCount = Bagikeun koropak ka balaréa
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Aktipkeun tutumbu jang sapoéeun
+       *[other] Aktipkeun tutumbu jang { $count } poé
+    }
+accountBenefitSync = Kokolakeun koropak nu dibagikeun ti parangkat mana wé
+accountBenefitMoz = Tengetan ngeunaan layanan { -mozilla } lianna
+signOut = Kaluar
+okButton = OKÉH
+downloadingTitle = Ngundeur
+noStreamsWarning = Ieu panyungsi kawasna mah teu bisa ngadékrip koropak badag kieu.
+noStreamsOptionCopy = Tiron tutumbu jang bukaeun di panyungsi séjén
+noStreamsOptionFirefox = Pecakan panyungsi karesep kami
+noStreamsOptionDownload = Tuluykeun ku ieu panyungsi
+downloadFirefoxPromo = { -send-short-brand } téh disanggakeun keur anjeun kalawan { -firefox } sarwa anyar.
+# the next line after the colon contains a file name
+shareLinkDescription = Bagikeun tutumbu ka koropak anjeun:
+shareLinkButton = Bagikeun tutumbu
