@@ -31,6 +31,21 @@ footerLinkCookies = Kuki
 passwordTryAgain = Kecap sandi salah. Pecakan deui.
 javascriptRequired = Firefox Send merlukeun JavaScript
 whyJavascript = Naha Firefox Send merlukeun JavaScript?
+enableJavascript = Mangga hurungkeun JavaScript sarta pecakan deui.
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }j { $minutes }m
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
+# A short status message shown when the user enters a long password
+maxPasswordLength = Panjang sandi maksimal: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Ieu kecap sandi teu bisa disét
 
 ## Send version 2 strings
 
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Simpel, babagi koropak privat
