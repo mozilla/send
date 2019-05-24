@@ -34,7 +34,7 @@ footerLinkCookies = Kuki
 passwordTryAgain = Kecap sandi salah. Pecakan deui.
 javascriptRequired = Firefox Send merlukeun JavaScript
 whyJavascript = Naha Firefox Send merlukeun JavaScript?
-enableJavascript = Mangga hurungkeun JavaScript sarta pecakan deui.
+enableJavascript = Prak hurungkeun JavaScript sarta pecakan deui.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }j { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
