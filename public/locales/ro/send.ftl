@@ -119,7 +119,7 @@ tooManyArchives =
 expiredTitle = Acest link a expirat.
 notSupportedDescription = { -send-brand } nu va funcționa pe acest browser. { -send-short-brand } funcționează cel mai bine cu ultima versiune de { -firefox } și va funcționa cu versiunea curentă a majorității browserelor.
 downloadFirefox = Descarcă { -firefox }
-legalTitle = Politica de confidențialitate { -send-short-brand }
+legalTitle = Declarație de confidențialitate { -send-short-brand }
 legalDateStamp = Versiunea 1.0 din data de 12 martie 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }z { $hours }h { $minutes }m
