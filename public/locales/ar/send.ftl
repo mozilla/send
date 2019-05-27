@@ -113,7 +113,7 @@ totalSize = إجمالي الحجم: { $size }
 copyLinkDescription = انسخ هذا الرابط لتُشارك الملف:
 copyLinkButton = انسخ الرابط
 downloadTitle = نزّل الملفات
-downloadDescription = شارك أحد هذا الملف معك عبر { -send-brand } وعمّاه بتعمية من الطرفين وبرابط ينقضي تلقائيا.
+downloadDescription = شارك أحد هذا الملف معك عبر { -send-brand } وعمّاه بتعمية من الطرفين وبرابط ينقضي أجله تلقائيا.
 trySendDescription = جرِّب { -send-brand } وشارِك ملفاتك بلا عناء وبخصوصية تامة.
 # count will always be > 10
 tooManyFiles =
@@ -158,6 +158,15 @@ accountBenefitTitle = أنشِئ حساب { -firefox } أو لِج إلى حسا
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = شارِك ملفات يصل حجمها { $size }
 accountBenefitDownloadCount = شارِك الملفات مع أناس أكثر وأكثر
+accountBenefitTimeLimit =
+    { $count ->
+        [zero] لا تُبقِ أي روابط نشطة
+        [one] أبقِ الروابط نشطة لمدة تصل إلى يوم واحد
+        [two] أبقِ الروابط نشطة لمدة تصل إلى يومين اثنين
+        [few] أبقِ الروابط نشطة لمدة تصل إلى { $count } أيام
+        [many] أبقِ الروابط نشطة لمدة تصل إلى { $count } يومًا
+       *[other] أبقِ الروابط نشطة لمدة تصل إلى { $count } يوم
+    }
 accountBenefitSync = أدِر ملفاتك التي شاركتها من أيّ جهاز تريد
 accountBenefitMoz = اطّلع على المزيد حول خدمات { -mozilla }
 signOut = اخرج
@@ -165,6 +174,7 @@ okButton = حسنًا
 downloadingTitle = يجري التنزيل
 noStreamsWarning = هناك احتمال بألا يقدر هذا المتصفح على فكّ تعمية الملفات الكبيرة كهذا.
 noStreamsOptionCopy = انسخ الرابط لتفتحه في متصفح آخر
+noStreamsOptionFirefox = جرّب متصفّحنا المفضل
 noStreamsOptionDownload = واصِل بهذا المتصفح
 # the next line after the colon contains a file name
 shareLinkDescription = شارِك الرابط الذي يصل إلى الملف:
