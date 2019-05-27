@@ -117,7 +117,7 @@ tooManyArchives =
        *[many] Dozwolonych jest tylko { $count } archiwów.
     }
 expiredTitle = Ten odnośnik wygasł.
-notSupportedDescription = { -send-brand } nie będzie działać w tej przeglądarce. { -send-short-brand } najlepiej działa w najnowszej wersji Firefoksa, ale będzie działać także w aktualnych wersjach większości przeglądarek.
+notSupportedDescription = { -send-brand } nie będzie działać w tej przeglądarce. { -send-short-brand } najlepiej działa w najnowszej wersji przeglądarki { -firefox }, ale będzie działać także w aktualnych wersjach większości przeglądarek.
 downloadFirefox = Pobierz Firefoksa
 legalTitle = Zasady ochrony prywatności serwisu { -send-short-brand }
 legalDateStamp = Wersja 1.0 z 12 marca 2019 r.
