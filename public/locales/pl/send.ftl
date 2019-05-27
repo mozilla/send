@@ -118,7 +118,7 @@ tooManyArchives =
     }
 expiredTitle = Ten odnośnik wygasł.
 notSupportedDescription = { -send-brand } nie będzie działać w tej przeglądarce. { -send-short-brand } najlepiej działa w najnowszej wersji przeglądarki { -firefox }, ale będzie działać także w aktualnych wersjach większości przeglądarek.
-downloadFirefox = Pobierz Firefoksa
+downloadFirefox = Pobierz przeglądarkę { -firefox }
 legalTitle = Zasady ochrony prywatności serwisu { -send-short-brand }
 legalDateStamp = Wersja 1.0 z 12 marca 2019 r.
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
@@ -135,7 +135,7 @@ emailPlaceholder = Wpisz adres e-mail
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Zaloguj się, aby wysłać do { $size }
 signInOnlyButton = Zaloguj się
-accountBenefitTitle = Utwórz konto Firefoksa lub zaloguj się
+accountBenefitTitle = Utwórz konto { -firefox } lub zaloguj się
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Udostępniaj pliki do { $size }
 accountBenefitDownloadCount = Udostępniaj pliki większej liczbie osób
@@ -146,7 +146,7 @@ accountBenefitTimeLimit =
        *[many] Odnośniki aktywne przez { $count } dni
     }
 accountBenefitSync = Zarządzaj udostępnionymi plikami z każdego urządzenia
-accountBenefitMoz = Poznaj inne serwisy Mozilli
+accountBenefitMoz = Poznaj inne serwisy organizacji { -mozilla }
 signOut = Wyloguj się
 okButton = OK
 downloadingTitle = Pobieranie
