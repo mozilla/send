@@ -145,7 +145,7 @@ expiresDaysHoursMinutes = { $days }يوم { $hours }سا { $minutes }دق
 addFilesButton = حدّد الملفات التي تريد رفعها
 uploadButton = ارفع
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
-dragAndDropFiles = اسحب الملفات وأفلِتها
+dragAndDropFiles = اسحب الملفات وأفلِتها هنا
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = أو انقر لإرسال ملفات يصل حجمها { $size }
@@ -176,6 +176,7 @@ noStreamsWarning = هناك احتمال بألا يقدر هذا المتصفح
 noStreamsOptionCopy = انسخ الرابط لتفتحه في متصفح آخر
 noStreamsOptionFirefox = جرّب متصفّحنا المفضل
 noStreamsOptionDownload = واصِل بهذا المتصفح
+downloadFirefoxPromo = ‏{ -send-short-brand } تقدمة { -firefox } الجديد الأنيق.
 # the next line after the colon contains a file name
 shareLinkDescription = شارِك الرابط الذي يصل إلى الملف:
 shareLinkButton = شارِك الرابط
