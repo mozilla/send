@@ -307,6 +307,7 @@ select {
 
 .word-break-all {
   word-break: break-all;
+  line-break: anywhere;
 }
 
 .signin {
