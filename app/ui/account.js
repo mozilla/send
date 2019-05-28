@@ -9,7 +9,7 @@ class Account extends Component {
     this.enabled = state.capabilities.account;
     this.local = state.components[name] = {};
     this.buttonClass = '';
-    this.setState();
+    this.setLocal();
   }
 
   avatarClick(event) {
@@ -39,7 +39,7 @@ class Account extends Component {
     return this.local.loggedIn !== this.state.user.loggedIn;
   }
 
-  setState() {
+  setLocal() {
     const changed = this.changed();
     if (changed) {
       this.local.loggedIn = this.state.user.loggedIn;
@@ -48,7 +48,7 @@ class Account extends Component {
   }
 
   update() {
-    return this.setState();
+    return this.setLocal();
   }
 
   createElement() {
@@ -59,6 +59,7 @@ class Account extends Component {
     }
     const user = this.state.user;
     const translate = this.state.translate;
+    this.setLocal();
     if (!this.local.loggedIn) {
       return html`
         <send-account>
