@@ -149,3 +149,5 @@ shareLinkDescription = Bagikeun tutumbu ka koropak anjeun:
 shareLinkButton = Bagikeun tutumbu
 # $name is the name of the file
 shareMessage = Undeur "{ $name }" ku { -send-brand }: simpel, babagi koropak aman
+trailheadPromo = Aya cara pikeun ngamankeun privasi anjeun.  Jabung jeung Firefox.
+learnMore = Lenyepan.
