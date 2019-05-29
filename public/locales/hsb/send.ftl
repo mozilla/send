@@ -169,3 +169,5 @@ shareLinkDescription = Dźělće wotkaz k swojej dataji:
 shareLinkButton = Wotkaz dźělić
 # $name is the name of the file
 shareMessage = Sćehńće „{ $name }“ z { -send-brand }: jednore, wěste dźělenje datajow
+trailheadPromo = Je móžnosć, wašu priwatnosć škitać. Přińdźće k Firefox.
+learnMore = Dalše informacije.
