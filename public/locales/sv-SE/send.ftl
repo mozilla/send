@@ -151,3 +151,5 @@ shareLinkDescription = Dela länken till din fil:
 shareLinkButton = Dela länk
 # $name is the name of the file
 shareMessage = Ladda ner "{ $name }" med { -send-brand }: enkel, säker fildelning
+trailheadPromo = Det finns ett sätt att skydda din integritet. Gå med i Firefox.
+learnMore = Läs mer.
