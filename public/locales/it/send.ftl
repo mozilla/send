@@ -137,9 +137,11 @@ noStreamsWarning = Questo browser potrebbe non essere in grado di decrittare un 
 noStreamsOptionCopy = Copia il link e aprilo in un altro browser
 noStreamsOptionFirefox = Prova il nostro browser preferito
 noStreamsOptionDownload = Continua con questo browser
-downloadFirefoxPromo = { -send-short-brand } viene offerto dal nuovissimo { -firefox }.
+downloadFirefoxPromo = { -send-short-brand } è offerto dal nuovissimo { -firefox }.
 # the next line after the colon contains a file name
 shareLinkDescription = Condividi il link al tuo file:
 shareLinkButton = Condividi link
 # $name is the name of the file
 shareMessage = Scarica “{ $name }” con { -send-brand }: condivisione di file semplice e sicura
+trailheadPromo = C’è un modo per proteggere la tua privacy. Entra a far parte di Firefox.
+learnMore = Ulteriori informazioni.
