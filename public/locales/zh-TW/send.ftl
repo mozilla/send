@@ -142,3 +142,5 @@ shareLinkDescription = 您的檔案鏈結:
 shareLinkButton = 分享鏈結
 # $name is the name of the file
 shareMessage = 使用 { -send-brand } 下載「{ $name }」: 簡單安全的檔案分享機制
+trailheadPromo = 有種方法可以保護您的隱私，加入 Firefox。
+learnMore = 了解更多。
