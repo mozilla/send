@@ -151,3 +151,5 @@ shareLinkDescription = Condivide le ligamine a tu file:
 shareLinkButton = Condivide ligamine
 # $name is the name of the file
 shareMessage = Discarga “{ $name }” con { -send-brand }: condivide files in modo simple e secur
+trailheadPromo = Il ha un via pro proteger tu confidentialitate. Junge te a Firefox!
+learnMore = Saper plus.
