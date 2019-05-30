@@ -19,16 +19,16 @@ class Promo extends Component {
       >
         <div class="flex items-center mx-auto">
           <img
-            src="${assets.get('firefox_logo-only.svg')}"
+            src="${assets.get('master-logo.svg')}"
             class="w-6"
             alt="Firefox"
           />
           <span class="ml-3">
-            ${this.state.translate('downloadFirefoxPromo')}${' '}
+            ${this.state.translate('trailheadPromo')}${' '}
             <a
               class="text-blue"
-              href="https://www.mozilla.org/firefox/new/?utm_campaign=send-acquisition&utm_medium=referral&utm_source=send.firefox.com"
-              >${this.state.translate('downloadFirefox')}</a
+              href="http://www.mozilla.org/firefox/accounts/?utm_source=send.firefox.com&utm_medium=banner&utm_campaign=trailhead&utm_content=protect-your-privacy"
+              >${this.state.translate('learnMore')}</a
             >
           </span>
         </div>
