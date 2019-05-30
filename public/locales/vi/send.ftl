@@ -142,3 +142,5 @@ shareLinkDescription = Chia sẻ liên kết đến tập tin của bạn:
 shareLinkButton = Chia sẻ liên kết
 # $name is the name of the file
 shareMessage = Tải xuống “{ $name }“ với { -send-brand }: chia sẻ tập tin đơn giản, an toàn
+trailheadPromo = Đây là một cách để bảo vệ sự riêng tư của bạn. Tham gia Firefox.
+learnMore = Tìm hiểu thêm.
