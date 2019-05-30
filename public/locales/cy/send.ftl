@@ -187,3 +187,5 @@ shareLinkDescription = Rhannu'r ddolen i'ch ffeil:
 shareLinkButton = Rhannu'r ddolen
 # $name is the name of the file
 shareMessage = Llwytho i lawr “{ $name }” gyda { -send-brand }: rhannu ffeiliau syml a diogel
+trailheadPromo = Mae ffordd o ddiogelu eich preifatrwydd. Ymunwch â Firefox.
+learnMore = Dysgu rhagor.
