@@ -151,3 +151,5 @@ shareLinkDescription = Ossza meg a fájlja hivatkozását:
 shareLinkButton = Hivatkozás megosztása
 # $name is the name of the file
 shareMessage = „{ $name }” letöltése a { -send-brand } segítségével: egyszerű, biztonságos fájlmegosztás
+trailheadPromo = Védje meg a magánszféráját. Csatlakozzon a Firefoxhoz.
+learnMore = További tudnivalók.
