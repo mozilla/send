@@ -151,3 +151,5 @@ shareLinkDescription = Μοιραστείτε το σύνδεσμο του αρ�
 shareLinkButton = Κοινή χρήση συνδέσμου
 # $name is the name of the file
 shareMessage = Λήψη του “{ $name }” με το { -send-brand }: απλός και ασφαλής διαμοιρασμός αρχείων
+trailheadPromo = Υπάρχει τρόπος να προστατέψετε το απόρρητό σας. Συμμετάσχετε στο Firefox.
+learnMore = Μάθετε περισσότερα.
