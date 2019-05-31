@@ -51,6 +51,7 @@ const colors = {
   'grey-dark': '#8795a1',
   grey: '#B1B1B3',
   'grey-light': '#dae1e7',
+  'grey-banner': '#f0f0f4',
   'grey-transparent': 'hsla(250, 13%, 9%, .2)',
   'grey-lighter': '#f1f5f8',
   'grey-lightest': '#F9F9FA',
