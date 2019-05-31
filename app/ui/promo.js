@@ -15,7 +15,7 @@ class Promo extends Component {
   createElement() {
     return html`
       <send-promo
-        class="w-full flex-row items-center content-center justify-center bg-white text-grey-darkest px-4 py-3 flex border-b-default border-grey-banner leading-normal"
+        class="w-full flex-row items-center content-center justify-center bg-white text-grey-darkest px-4 py-3 flex border-b border-grey-banner leading-normal"
       >
         <div class="flex items-center mx-auto">
           <img
@@ -23,7 +23,7 @@ class Promo extends Component {
             class="w-6 h-6"
             alt="Firefox"
           />
-          <span class="ml-3 md:ml-4 text-xs sm:text-base">
+          <span class="ml-2 sm:ml-4 text-xs sm:text-base">
             ${this.state.translate('trailheadPromo')}${' '}
             <a
               class="underline text-blue-dark"
