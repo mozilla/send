@@ -15,18 +15,18 @@ class Promo extends Component {
   createElement() {
     return html`
       <send-promo
-        class="w-full flex-none flex-row items-center content-center justify-center text-sm bg-grey-light leading-tight text-grey-darkest px-4 py-3 hidden md:flex"
+        class="w-full flex-row items-center content-center justify-center bg-white text-grey-darkest px-4 py-3 flex border-b border-grey-banner leading-normal"
       >
         <div class="flex items-center mx-auto">
           <img
             src="${assets.get('master-logo.svg')}"
-            class="w-6"
+            class="w-6 h-6"
             alt="Firefox"
           />
-          <span class="ml-3">
+          <span class="ml-2 sm:ml-4 text-xs sm:text-base">
             ${this.state.translate('trailheadPromo')}${' '}
             <a
-              class="text-blue"
+              class="underline text-blue-dark"
               href="http://www.mozilla.org/firefox/accounts/?utm_source=send.firefox.com&utm_medium=banner&utm_campaign=trailhead&utm_content=protect-your-privacy"
               >${this.state.translate('learnMore')}</a
             >
