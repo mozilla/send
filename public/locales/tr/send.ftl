@@ -147,3 +147,5 @@ shareLinkDescription = Dosyanızın bağlantısını paylaşın:
 shareLinkButton = Bağlantıyı paylaş
 # $name is the name of the file
 shareMessage = “{ $name }” dosyasını { -send-brand } ile indirin: basit ve güvenli dosya paylaşımı
+trailheadPromo = Gizliliğinizi korumanın bir yolu var. Firefox’a katılın.
+learnMore = Daha fazla bilgi alın.
