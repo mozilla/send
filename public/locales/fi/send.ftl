@@ -151,3 +151,5 @@ shareLinkDescription = Jaa linkki tiedostoosi:
 shareLinkButton = Jaa linkki
 # $name is the name of the file
 shareMessage = Lataa tiedosto ”{ $name }” { -send-brand } -palvelusta: yksinkertaista ja turvallista tiedostonjakoa
+trailheadPromo = On tapa suojata yksityisyyttään. Liity Firefoxiin.
+learnMore = Lue lisää.
