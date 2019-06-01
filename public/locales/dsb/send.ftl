@@ -169,3 +169,5 @@ shareLinkDescription = Źělśo wótkaz k swójej dataji:
 shareLinkButton = Wótkaz źěliś
 # $name is the name of the file
 shareMessage = Ześěgniśo „{ $name }“ z { -send-brand }: jadnore, wěste źělenje datajow
+trailheadPromo = Jo móžnosć, wašu priwatnosć šćitaś. Pśiźćo k Firefox.
+learnMore = Dalšne informacije.
