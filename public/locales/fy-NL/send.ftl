@@ -151,3 +151,5 @@ shareLinkDescription = Diel de keppeling nei jo bestân:
 shareLinkButton = Keppeling diele
 # $name is the name of the file
 shareMessage = Download ‘{ $name }’ mei { -send-brand }: ienfâldich, feilich bestannen diele
+trailheadPromo = Der is in manier om jo privacy te beskermjen. Doch mei mei Firefox.
+learnMore = Mear ynfo.
