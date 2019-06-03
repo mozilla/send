@@ -151,3 +151,5 @@ shareLinkDescription = Deel de koppeling naar uw bestand:
 shareLinkButton = Koppeling delen
 # $name is the name of the file
 shareMessage = Download ‘{ $name }’ met { -send-brand }: eenvoudig, veilig bestanden delen
+trailheadPromo = Er is een manier om uw privacy te beschermen. Doe mee met Firefox.
+learnMore = Meer info.
