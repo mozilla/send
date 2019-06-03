@@ -160,3 +160,5 @@ shareLinkDescription = Partajează linkul către fișier:
 shareLinkButton = Partajează linkul
 # $name is the name of the file
 shareMessage = Descarcă „{ $name }” cu { -send-brand }: partajare simplă și sigură a fișierelor
+trailheadPromo = Există o modalitate de a-ți proteja confidențialitatea. Alătură-te Firefox.
+learnMore = Află mai multe.
