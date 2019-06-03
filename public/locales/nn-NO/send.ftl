@@ -151,3 +151,4 @@ shareLinkDescription = Del lenka til fila di:
 shareLinkButton = Del lenke
 # $name is the name of the file
 shareMessage = Last ned "{ $name }" med { -send-brand }: enkel, trygg fildelning
+trailheadPromo = Det finst ein måte å ta vare på personvernet ditt. Ver med Firefox, på ferda.
