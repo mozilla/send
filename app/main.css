@@ -311,6 +311,7 @@ select {
 }
 
 .signin {
+  backface-visibility: hidden;
   border-radius: 6px;
   transition-property: transform, background-color;
   transition-duration: 250ms;
