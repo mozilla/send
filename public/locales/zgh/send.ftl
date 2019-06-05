@@ -126,7 +126,6 @@ addPassword = ⴰⵔⵢ ⵙ ⵜⴳⵓⵔⵉ ⵏ ⵓⵣⵔⴰⵢ
 emailPlaceholder = ⵙⵙⴽⵛⵎⴰⵜ ⵉⵎⴰⵢⵍ ⵏⵏⵓⵏ
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = ⴽⵛⵎ ⴰⴼⴰⴷ ⴰⴷ ⵜⴰⵣⵏⴷ ⴰⵔ { $size }
-signInButton = ⴽⵛⵎ/ⵣⵎⵎⴻⵎ
 accountBenefitTitle = ⵙⵏⴼⵍⵓⵍ ⴰⵎⵉⴹⴰⵏ ⵏ { -firefox } ⵏⵉⵖ ⵜⵣⵎⵎⴻⵎⴷ
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = ⴱⴹⵓ ⵉⴼⵓⵢⵍⴰ ⴰⵔ { $size }
@@ -145,3 +144,6 @@ noStreamsWarning = ⵉⵣⵎⵔ ⵓⵎⵙⵙⴰⵔⴰ ⴰ ⴰⴷ ⵓⵔ ⵉⵖ�
 noStreamsOptionCopy = ⵙⵙⵏⵖⵍⴰⵜ ⴰⵙⵖⵏ ⴰⴼⴰⴷ ⴰⴷ ⵜ ⵜⵕⵥⵎⵎ ⴳ ⴽⵔⴰ ⵏ ⵓⵎⵙⵙⴰⵔⴰ ⵢⴰⴹⵏ
 noStreamsOptionFirefox = ⴰⵔⵎⴰⵜ ⴰⵎⵙⵙⴰⵔⴰ ⵏⵏⵖ ⴰⵎⵓⴼⴰⵢ
 noStreamsOptionDownload = ⵙⵎⴷ ⵙ ⵓⵎⵙⵙⴰⵔⴰ ⴰ
+# the next line after the colon contains a file name
+shareLinkDescription = ⴱⴹⵓⵢⴰⵜ ⴰⵙⵖⵏ ⵖⵔ ⵓⴼⴰⵢⵍⵓ ⵏⵏⵓⵏ:
+shareLinkButton = ⴱⴹⵓ ⴰⵙⵖⵏ
