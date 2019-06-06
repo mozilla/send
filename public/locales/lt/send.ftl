@@ -168,3 +168,5 @@ shareLinkDescription = Pasidalinkite saitu į jūsų failą:
 shareLinkButton = Dalintis saitu
 # $name is the name of the file
 shareMessage = Atsisiųskite „{ $name }“ su „{ -send-brand }“: paprastas, saugus dalinimasis failais
+trailheadPromo = Yra būdas apsaugoti jūsų privatumą. Naudokite „Firefox“.
+learnMore = Sužinoti daugiau.
