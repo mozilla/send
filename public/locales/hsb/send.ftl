@@ -142,7 +142,7 @@ addPassword = Z hesłom škitać
 emailPlaceholder = Zapodajće swoju e-mejlowu adresu
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Přizjewće so, zo byšće do { $size } pósłał
-signInButton = Přizjewić/Registrować
+signInOnlyButton = Přizjewić
 accountBenefitTitle = Załožće konto { -firefox } abo přizjewće so
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Dataje do { $size } dźělić
@@ -163,3 +163,11 @@ noStreamsWarning = Tutón wobhladowak njemóhł tajku wulku dataju dešifrować.
 noStreamsOptionCopy = Kopěrujće wotkaz, zo byšće jón w druhim wobhladowaku wočinił
 noStreamsOptionFirefox = Wupruwujće naš najlubši wobhladowak
 noStreamsOptionDownload = Z tutym wobhladowakom pokročować
+downloadFirefoxPromo = { -send-short-brand } so wam přez cyle nowy { -firefox } přinjese.
+# the next line after the colon contains a file name
+shareLinkDescription = Dźělće wotkaz k swojej dataji:
+shareLinkButton = Wotkaz dźělić
+# $name is the name of the file
+shareMessage = Sćehńće „{ $name }“ z { -send-brand }: jednore, wěste dźělenje datajow
+trailheadPromo = Je móžnosć, wašu priwatnosć škitać. Přińdźće k Firefox.
+learnMore = Dalše informacije.

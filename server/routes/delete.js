@@ -13,7 +13,8 @@ module.exports = async function(req, res) {
       ip: req.ip,
       owner: meta.owner,
       download_count: meta.dl,
-      ttl
+      ttl,
+      agent: req.ua.browser.name || req.ua.ua.substring(0, 6)
     });
   } catch (e) {
     res.sendStatus(404);

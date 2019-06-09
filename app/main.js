@@ -1,4 +1,4 @@
-/* global DEFAULTS LIMITS LOCALE */
+/* global DEFAULTS LIMITS PREFS */
 import 'core-js';
 import 'fast-text-encoding'; // MS Edge support
 import 'fluent-intl-polyfill';
@@ -17,7 +17,7 @@ import './main.css';
 import User from './user';
 import { getTranslator } from './locale';
 import Archive from './archive';
-import { setTranslate } from './utils';
+import { setTranslate, locale } from './utils';
 
 if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
   Raven.config(window.SENTRY_ID, window.RAVEN_CONFIG).install();
@@ -45,11 +45,12 @@ if (process.env.NODE_ENV === 'production') {
     }
   }
 
-  const translate = await getTranslator(LOCALE);
+  const translate = await getTranslator(locale());
   setTranslate(translate);
   window.initialState = {
     LIMITS,
     DEFAULTS,
+    PREFS,
     archive: new Archive([], DEFAULTS.EXPIRE_SECONDS),
     capabilities,
     translate,
@@ -62,10 +63,10 @@ if (process.env.NODE_ENV === 'production') {
 
   const app = routes(choo());
   window.app = app;
+  app.use(experiments);
   app.use(metrics);
   app.use(controller);
   app.use(dragManager);
-  app.use(experiments);
   app.use(pasteManager);
   app.mount('body');
 })();

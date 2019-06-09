@@ -28,13 +28,14 @@ module.exports = async function(req, res) {
         ip: req.ip,
         owner: meta.owner,
         download_count: dl,
-        ttl
+        ttl,
+        agent: req.ua.browser.name || req.ua.ua.substring(0, 6)
       });
       try {
         if (dl >= dlimit) {
           await storage.del(id);
         } else {
-          await storage.setField(id, 'dl', dl);
+          await storage.incrementField(id, 'dl');
         }
       } catch (e) {
         log.info('StorageError:', id);

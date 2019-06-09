@@ -126,7 +126,7 @@ addPassword = Mei wachtwurd beskermje
 emailPlaceholder = Fier jo e-mailadres yn
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Meld jo oan, om bestannen oant { $size } te stjoeren
-signInButton = Oanmelde/Registrearje
+signInOnlyButton = Oanmelde
 accountBenefitTitle = Meitsje in { -firefox }-account of meld jo oan
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Diel bestannen oant { $size }
@@ -145,3 +145,11 @@ noStreamsWarning = Dizze browser kin in sa'n grut bestân mooglik net fersiferje
 noStreamsOptionCopy = Kopiearje de koppeling om yn in oare browser te iepenjen
 noStreamsOptionFirefox = Probearje ús favorite browser
 noStreamsOptionDownload = Trochgean mei dizze browser
+downloadFirefoxPromo = { -send-short-brand } wurdt jo oanbean troch it folslein fernijde { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Diel de keppeling nei jo bestân:
+shareLinkButton = Keppeling diele
+# $name is the name of the file
+shareMessage = Download ‘{ $name }’ mei { -send-brand }: ienfâldich, feilich bestannen diele
+trailheadPromo = Der is in manier om jo privacy te beskermjen. Doch mei mei Firefox.
+learnMore = Mear ynfo.

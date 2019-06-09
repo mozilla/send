@@ -119,7 +119,7 @@ addPassword = Protect with password
 emailPlaceholder = Enter your email
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Sign in to send up to { $size }
-signInButton = Sign in/up
+signInOnlyButton = Sign in
 accountBenefitTitle = Create a { -firefox } Account or sign in
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Share files up to { $size }
@@ -137,3 +137,11 @@ noStreamsWarning = This browser might not be able to decrypt a file this big.
 noStreamsOptionCopy = Copy the link to open in another browser
 noStreamsOptionFirefox = Try our favorite browser
 noStreamsOptionDownload = Continue with this browser
+downloadFirefoxPromo = { -send-short-brand } is brought to you by the all-new { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Share the link to your file:
+shareLinkButton = Share link
+# $name is the name of the file
+shareMessage = Download “{ $name }” with { -send-brand }: simple, safe file sharing
+trailheadPromo = There is a way to protect your privacy. Join Firefox.
+learnMore = Learn more.

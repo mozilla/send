@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -31,7 +29,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.github.delight-im:Android-AdvancedWebView:v3.0.0'
-    implementation "org.mozilla.components:service-firefox-accounts:${rootProject.ext.android_components_version}"
+    implementation "org.mozilla.components:service-firefox-accounts:$android_components_version"
 }
 
 task generateAndLinkBundle(type: Exec, description: 'Generate the android.js bundle and link it into the assets directory') {

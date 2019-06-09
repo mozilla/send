@@ -19,6 +19,10 @@ module.exports = async function(req) {
       // continue without accounts
     }
   }
+  const prefs = {};
+  if (config.survey_url) {
+    prefs.surveyUrl = config.survey_url;
+  }
   return {
     archive: {
       numFiles: 0
@@ -39,6 +43,7 @@ module.exports = async function(req) {
     user: { avatar: assets.get('user.svg'), loggedIn: false },
     robots,
     authConfig,
+    prefs,
     layout
   };
 };

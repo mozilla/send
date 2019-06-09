@@ -126,7 +126,7 @@ addPassword = Vern med passord
 emailPlaceholder = Skriv inn e-postadressa di
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Logg inn for å sende filer på opptil { $size }
-signInButton = Logg inn/Registrer deg
+signInOnlyButton = Logg inn
 accountBenefitTitle = Lag ein { -firefox }-konto eller logg inn
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Del filer på opptil { $size }
@@ -145,3 +145,11 @@ noStreamsWarning = Denne nettlesaren kan kanskje ikkje dekryptere ei så stor fi
 noStreamsOptionCopy = Kopier lenka for å opne henne i ein annan nettlesar
 noStreamsOptionFirefox = Prøv favorittnettlesaren vår
 noStreamsOptionDownload = Fortset med denne nettlesaren
+downloadFirefoxPromo = { -send-short-brand } vert presentert for deg av den heilt nye { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Del lenka til fila di:
+shareLinkButton = Del lenke
+# $name is the name of the file
+shareMessage = Last ned "{ $name }" med { -send-brand }: enkel, trygg fildelning
+trailheadPromo = Det finst ein måte å ta vare på personvernet ditt. Ver med Firefox på ferda.
+learnMore = Les meir.

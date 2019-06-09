@@ -18,23 +18,6 @@ export default class Keychain {
       false,
       ['deriveKey']
     );
-    this.encryptKeyPromise = this.secretKeyPromise.then(function(secretKey) {
-      return crypto.subtle.deriveKey(
-        {
-          name: 'HKDF',
-          salt: new Uint8Array(),
-          info: encoder.encode('encryption'),
-          hash: 'SHA-256'
-        },
-        secretKey,
-        {
-          name: 'AES-GCM',
-          length: 128
-        },
-        false,
-        ['encrypt', 'decrypt']
-      );
-    });
     this.metaKeyPromise = this.secretKeyPromise.then(function(secretKey) {
       return crypto.subtle.deriveKey(
         {

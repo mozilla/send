@@ -2,12 +2,13 @@ import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
 import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
 import * as metrics from './metrics';
-import { bytes } from './utils';
+import { bytes, locale } from './utils';
 import okDialog from './ui/okDialog';
 import copyDialog from './ui/copyDialog';
 import shareDialog from './ui/shareDialog';
 import signupDialog from './ui/signupDialog';
 import faviconProgressbar from './ui/faviconProgressbar';
+import surveyDialog from './ui/surveyDialog';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -285,6 +286,22 @@ export default function(state, emitter) {
   emitter.on('copy', ({ url }) => {
     copyToClipboard(url);
     // metrics.copiedLink({ location });
+  });
+
+  emitter.on('closeModal', () => {
+    if (
+      state.PREFS.surveyUrl &&
+      ['copy', 'share'].includes(state.modal.type) &&
+      locale().startsWith('en') &&
+      (state.storage.totalUploads > 1 || state.storage.totalDownloads > 0) &&
+      !state.user.surveyed
+    ) {
+      state.user.surveyed = true;
+      state.modal = surveyDialog();
+    } else {
+      state.modal = null;
+    }
+    render();
   });
 
   setInterval(() => {

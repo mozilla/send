@@ -1,31 +1,9 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteSubtitle = veebieksperiment
 siteFeedback = Tagasiside
-uploadPageHeader = Privaatne ja krüpteeritud failiedastus
-uploadPageExplainer = Firefox Send võimaldab saata faile üle ohutu, privaatse ja krüpteeritud kanali. Failid kustutatakse automaatselt, et need ei jääks internetti igaveseks.
-uploadPageLearnMore = Rohkem teavet
-uploadPageDropMessage = Faili üleslaadimiseks lohista see siia
-uploadPageSizeMessage = Parima kogemuse saamiseks tasub faili suurus hoida alla 1GB
-uploadPageBrowseButton = Vali fail arvutist
-uploadPageBrowseButton1 = Vali fail üleslaadimiseks
-uploadPageMultipleFilesAlert = Mitme faili või kausta üleslaadimine pole praegu toetatud.
-uploadPageBrowseButtonTitle = Laadi fail üles
-uploadingPageProgress = Faili { $filename } ({ $size }) üleslaadimine
 importingFile = Importimine...
-verifyingFile = Kontrollimine…
 encryptingFile = Krüptimine…
 decryptingFile = Dekrüptimine...
-notifyUploadDone = Üleslaadimine on lõpetatud.
-uploadingPageMessage = Aegumise sätteid saab muuta siis, kui faili üles laaditakse.
-uploadingPageCancel = Katkesta üleslaadimine
-uploadCancelNotification = Üleslaadimine katkestati
-uploadingPageLargeFileMessage = Fail on suur ja selle üleslaadimine võib aega võtta.
-uploadingFileNotification = Teavita mind üleslaadimise lõppemisest.
-uploadSuccessConfirmHeader = Saatmiseks valmis
-uploadSvgAlt = Laadi üles
-uploadSuccessTimingHeader = Link failile aegub pärast 1. allalaadimist või 24 tunni möödumisel.
-expireInfo = Link failile aegub peale { $downloadCount } või { $timespan }.
 downloadCount =
     { $num ->
         [one] üht allalaadimist
@@ -33,79 +11,29 @@ downloadCount =
     }
 timespanHours =
     { $num ->
-        [one] üht tundi
-       *[other] { $num } tundi
+        [one] 1 tunni
+       *[other] { $num } tunni
     }
-copyUrlFormLabelWithName = Kopeeri ja jaga linki faili allalaadimiseks: { $filename }
-copyUrlFormButton = Kopeeri vahemällu
 copiedUrl = Kopeeritud!
-deleteFileButton = Kustuta fail
-sendAnotherFileLink = Saada järgmine fail
-# Alternative text used on the download link/button (indicates an action).
-downloadAltText = Laadi alla
-downloadsFileList = Allalaadimised
-# Used as header in a column indicating the amount of time left before a
-# download link expires (e.g. "10h 5m")
-timeFileList = Aega jäänud
-# Used as header in a column indicating the number of times a file has been
-# downloaded
-downloadFileName = Laadi fail { $filename } alla
-downloadFileSize = ({ $size })
-unlockInputLabel = Sisesta parool
 unlockInputPlaceholder = Parool
 unlockButtonLabel = Ava
-downloadFileTitle = Krüptitud faili allalaadimine
-# Firefox Send is a brand name and should not be localized.
-downloadMessage = Sulle on saadetud fail Firefox Sendiga - teenusega, mis lubab faile ohutult, privaatselt ja krüpteeritult jagada. Failid kustutatakse automaatselt, et need ei jääks internetti igaveseks.
-# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Laadi alla
-downloadNotification = Allalaadimine on lõpetatud.
 downloadFinish = Allalaadimine lõpetati
-# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize }/{ $totalSize })
-# Firefox Send is a brand name and should not be localized.
-sendYourFilesLink = Proovi Firefox Sendi
-downloadingPageProgress = Faili { $filename } ({ $size }) allalaadimine
-downloadingPageMessage = Palun jäta see kaart lahti, kuni fail on alla laaditud ja dekrüptitud.
-errorAltText = Viga üleslaadimisel
+sendYourFilesLink = Proovi Firefox Send'i
 errorPageHeader = Midagi läks valesti!
-errorPageMessage = Faili üleslaadimisel esines viga.
-errorPageLink = Saada järgmine fail
 fileTooBig = Fail on üleslaadimiseks liiga suur. See peaks olema väiksem kui { $size }.
 linkExpiredAlt = Link on aegunud
-expiredPageHeader = See link on aegunud või seda pole kunagi olnudki!
 notSupportedHeader = Sinu brauser pole toetatud.
-# Firefox Send is a brand name and should not be localized.
-notSupportedDetail = Kahjuks ei toeta see brauser veebitehnoloogiaid, mis teevad Firefox Sendi toimimise võimalikuks. Sa pead proovima teise brauseriga. Me soovitame Firefoxi!
 notSupportedLink = Miks mu brauser toetatud pole?
 notSupportedOutdatedDetail = Kahjuks ei toeta see Firefoxi versioon veebitehnoloogiaid, mis teevad Firefox Sendi toimimise võimalikuks. Sa pead oma brauserit uuendama.
 updateFirefox = Uuenda Firefox
-downloadFirefoxButtonSub = Laadi alla tasuta
-uploadedFile = Fail
-copyFileList = Kopeeri URL
-# expiryFileList is used as a column header
-expiryFileList = Aegub
-deleteFileList = Kustuta
-nevermindButton = Ära pane tähele
-legalHeader = Tingimused ja privaatsusreeglid
-legalNoticeTestPilot = Firefox Send on praegu Test Piloti eksperiment ja sellele rakenduvad Test Piloti <a>teenusetingimused</a> ning <a>privaatsusreeglid</a>. Rohkem teavet selle eksperimendi ja kogutavate andmete kohta leiab <a>siit</a>.
-legalNoticeMozilla = Firefox Sendi veebilehe kasutamisele rakenduvad ka Mozilla <a>veebilehtede privaatsusreeglid</a> ja <a>veebilehtede teenusetingimused</a>.
-deletePopupText = Kas kustutada see fail?
-deletePopupYes = Jah
 deletePopupCancel = Loobu
 deleteButtonHover = Kustuta
-copyUrlHover = Kopeeri URL
 footerLinkLegal = Õiguslik teave
-# Test Pilot is a proper name and should not be localized.
-footerLinkAbout = Test Pilotist
 footerLinkPrivacy = Privaatsusest
-footerLinkTerms = Teenusetingimused
 footerLinkCookies = Küpsistest
-requirePasswordCheckbox = Selle faili allalaadimiseks nõutakse parooli
-addPasswordButton = Lisa parool
-changePasswordButton = Muuda
 passwordTryAgain = Vale parool. Palun proovi uuesti.
-reportIPInfringement = Intellektuaalomandi keelatud kasutamise raporteerimine
 javascriptRequired = Firefox Send'i kasutamiseks tuleb JavaScript lubada
 whyJavascript = Miks Firefox Send JavaScripti vajab?
 enableJavascript = Palun luba JavaScript ja proovi uuesti.
@@ -113,9 +41,113 @@ enableJavascript = Palun luba JavaScript ja proovi uuesti.
 expiresHoursMinutes = { $hours }t { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
-# A short status message shown when a password is successfully set
-passwordIsSet = Parool on muudetud
 # A short status message shown when the user enters a long password
 maxPasswordLength = Maksimaalne parooli pikkus: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Parooli muutmine ebaõnnestus
+
+## Send version 2 strings
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Lihtne ja privaatne failijagamine
+introDescription = { -send-brand } võimaldab sul faile jagada otspunktkrüpteerimise ning automaatselt aeguva lingiga. Nii saad jagatava privaatsena hoida ja kindlustada, et su asjad igavesti internetti vedelema ei jää.
+notifyUploadEncryptDone = Sinu fail on krüptitud ja saatmiseks valmis
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Aegub peale { $downloadCount } või { $timespan } järel
+timespanMinutes =
+    { $num ->
+        [one] 1 minuti
+       *[other] { $num } minuti
+    }
+timespanDays =
+    { $num ->
+        [one] 1 päeva
+       *[other] { $num } päeva
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 nädala
+       *[other] { $num } nädala
+    }
+fileCount =
+    { $num ->
+        [one] 1 fail
+       *[other] { $num } faili
+    }
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = kB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = Kogusuurus: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Faili jagamiseks kopeeri link:
+copyLinkButton = Kopeeri link
+downloadTitle = Failide allalaadimine
+downloadDescription = See fail jagati teenuse { -send-brand } kaudu otspunktkrüpteeritult ja automaatselt aeguva lingiga.
+trySendDescription = Proovi lihtsaks ja turvaliseks failijagamiseks { -send-brand } teenust.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Korraga saab üles laadida vaid 1 faili.
+       *[other] Korraga saab üles laadida vaid { $count } faili.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Vaid 1 arhiveerimine on lubatud.
+       *[other] Vaid { $count } arhiveerimist on lubatud.
+    }
+expiredTitle = Link on aegunud.
+notSupportedDescription = { -send-brand } ei tööta selle veebilehitsejaga. Kõige paremini töötab { -send-short-brand } uusima { -firefox }iga ja töötab ka enamikes teistes uuendatud brauserites.
+downloadFirefox = Laadi { -firefox } alla
+legalTitle = { -send-short-brand } privaatsusteade
+legalDateStamp = Versioon 1.0, alates 12. märts 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }p { $hours }t { $minutes }m
+addFilesButton = Vali failid üleslaadimiseks
+uploadButton = Laadi üles
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Lohista failid siia
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = või klõpsa kuni { $size } suuruste failide saatmiseks
+addPassword = Kaitse parooliga
+emailPlaceholder = Sisesta e-posti aadress
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Logi sisse ning saad saata kuni { $size } suuruseid faile
+signInOnlyButton = Logi sisse
+accountBenefitTitle = Loo { -firefox }i konto või logi sisse
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Jaga kuni { $size } suuruseid faile
+accountBenefitDownloadCount = Jaga faile enamate inimestega
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Hoia linke aktiivsena 1 päev
+       *[other] Hoia linke aktiivsena kuni { $count } päeva
+    }
+accountBenefitSync = Jagatud faile saad hallata mis tahes seadmes
+accountBenefitMoz = Rohkem teavet teistest { -mozilla } teenustest
+signOut = Logi välja
+okButton = Olgu
+downloadingTitle = Allalaadimine
+noStreamsWarning = Sinu veebilehitseja ei pruugi suuta nii suurt faili dekrüptida.
+noStreamsOptionCopy = Kopeeri link teises brauseris avamiseks
+noStreamsOptionFirefox = Proovi meie lemmikbrauserit
+noStreamsOptionDownload = Jätka selle brauseriga
+downloadFirefoxPromo = { -send-short-brand } toob sinuni uhiuus { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Jaga linki failile:
+shareLinkButton = Jaga linki
+# $name is the name of the file
+shareMessage = Laadi “{ $name }” alla teenusega { -send-brand }, mis pakub lihtsat ja turvalist failijagamist

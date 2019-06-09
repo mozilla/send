@@ -51,6 +51,8 @@ const colors = {
   'grey-dark': '#8795a1',
   grey: '#B1B1B3',
   'grey-light': '#dae1e7',
+  'grey-banner': '#f0f0f4',
+  'grey-transparent': 'hsla(250, 13%, 9%, .2)',
   'grey-lighter': '#f1f5f8',
   'grey-lightest': '#F9F9FA',
   white: '#ffffff',
@@ -126,7 +128,8 @@ const colors = {
   'pink-light': '#fa7ea8',
   'pink-lighter': '#ffbbca',
   'pink-lightest': '#ffebef',
-  cloud: 'rgba(255, 255, 255, 0.8)'
+  cloud: 'rgba(255, 255, 255, 0.8)',
+  violet: 'hsl(258, 57%, 35%)'
 };
 
 module.exports = {
@@ -300,7 +303,7 @@ module.exports = {
     none: 1,
     tight: 1.25,
     normal: 1.5,
-    loose: 2
+    loose: 1.75
   },
 
   /*
@@ -431,6 +434,7 @@ module.exports = {
     sm: '.125rem',
     default: '.25rem',
     lg: '.5rem',
+    xl: '1rem',
     full: '9999px'
   },
 
@@ -735,7 +739,9 @@ module.exports = {
     inner: 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',
     outline: '0 0 0 3px rgba(52,144,220,0.5)',
     none: 'none',
-    cloud: '0 0 5rem 5rem white'
+    cloud: '0 0 5rem 5rem white',
+    btn:
+      'inset 0 -6px 12px 0 rgba(0,70,144,0.25), 0 4px 6px 0 rgba(34,0,51,0.04), 0 1px 10px 0 rgba(7,48,114,0.12), 0 2px 8px -1px rgba(14,13,26,0.08)'
   },
 
   /*

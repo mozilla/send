@@ -55,7 +55,7 @@ passwordSetError = Det här lösenordet kunde inte ställas in
 -mozilla = Mozilla
 introTitle = Enkel, privat fildelning
 introDescription = { -send-brand } låter dig dela filer med end-to-end-kryptering och en länk som automatiskt upphör. Så att du kan behålla det du delar privat och se till att dina saker inte stannar online för alltid.
-notifyUploadEncryptDone = Din fil är krypterad och redo att skicka
+notifyUploadEncryptDone = Din fil är krypterad och redo att skickas
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Förfaller efter { $downloadCount } eller { $timespan }
 timespanMinutes =
@@ -126,7 +126,7 @@ addPassword = Skydda med lösenord
 emailPlaceholder = Ange din e-postadress
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Logga in för att skicka upp till { $size }
-signInButton = Logga in/registrera dig
+signInOnlyButton = Logga in
 accountBenefitTitle = Skapa ett { -firefox }-konto eller logga in
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Dela filer upp till { $size }
@@ -145,3 +145,11 @@ noStreamsWarning = Den här webbläsaren kanske inte kan dekryptera en fil så s
 noStreamsOptionCopy = Kopiera länken för att öppna i en annan webbläsare
 noStreamsOptionFirefox = Prova vår favoritwebbläsare
 noStreamsOptionDownload = Fortsätt med den här webbläsaren
+downloadFirefoxPromo = { -send-short-brand } presenteras för dig av den helt nya { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Dela länken till din fil:
+shareLinkButton = Dela länk
+# $name is the name of the file
+shareMessage = Ladda ner "{ $name }" med { -send-brand }: enkel, säker fildelning
+trailheadPromo = Det finns ett sätt att skydda din integritet. Gå med i Firefox.
+learnMore = Läs mer.

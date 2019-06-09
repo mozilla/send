@@ -1,31 +1,9 @@
 # Firefox Send is a brand name and should not be localized.
 title = فَيَرفُكس سِنْد
-siteSubtitle = تجربة وِبّيّة
 siteFeedback = الانطباعات
-uploadPageHeader = شارِك ملفاتك بخصوصية وتعمية
-uploadPageExplainer = أرسل الملفات عبر رابط آمن خاص ومعمّى تنتهي صلاحيته تلقائيا لتضمن عدم بقاء ما ترسله إلى الأبد.
-uploadPageLearnMore = اطّلع على المزيد
-uploadPageDropMessage = أسقِط ملفّك هنا لبدء الرفع
-uploadPageSizeMessage = لتتحصل على أفضل تجربة، من المستحسن أن يكون الملف أصغر من 1 غ.بايت
-uploadPageBrowseButton = اختر ملفًا على حاسوبك
-uploadPageBrowseButton1 = اختر ملفّا لرفعه
-uploadPageMultipleFilesAlert = رفع عدة ملفات (أو رفع مجلد) ليس مدعوما حاليا.
-uploadPageBrowseButtonTitle = ارفع ملفًا
-uploadingPageProgress = يرفع { $filename } ({ $size })
 importingFile = يستورد…
-verifyingFile = يتحقق…
 encryptingFile = يعمّي…
 decryptingFile = يفك التعمية…
-notifyUploadDone = انتهى الرفع.
-uploadingPageMessage = ما إن يُرفع الملف سيُتاح ضبط خيارات انتهاء صلاحيته.
-uploadingPageCancel = ألغِ الرفع
-uploadCancelNotification = أُلغي الرفع.
-uploadingPageLargeFileMessage = هذا الملف كبير الحجم وسيأخذ رفعه وقتا. انتظر رجاءً.
-uploadingFileNotification = أعلِمني عندما يكتمل الرفع.
-uploadSuccessConfirmHeader = جاهز للإرسال
-uploadSvgAlt = ارفع
-uploadSuccessTimingHeader = ستنتهي صلاحية الرابط الذي يشير إلى الملف في حال: نُزِّل لأول مرة، أو مرّ ٢٤ ساعة على رفعه.
-expireInfo = ستنتهي صلاحية رابط الملف بعد { $downloadCount } أو { $timespan }.
 downloadCount =
     { $num ->
         [zero] لا تنزيلات
@@ -44,76 +22,26 @@ timespanHours =
         [many] { $num } ساعة
        *[other] { $num } ساعة
     }
-copyUrlFormLabelWithName = انسخ الرابط وشاركه لإرسال الملف: { $filename }
-copyUrlFormButton = انسخ إلى الحافظة
 copiedUrl = نُسخ!
-deleteFileButton = احذف الملف
-sendAnotherFileLink = أرسِل ملفًا آخر
-# Alternative text used on the download link/button (indicates an action).
-downloadAltText = نزّل
-downloadsFileList = التنزيلات
-# Used as header in a column indicating the amount of time left before a
-# download link expires (e.g. "10h 5m")
-timeFileList = الوقت
-# Used as header in a column indicating the number of times a file has been
-# downloaded
-downloadFileName = نزّل { $filename }
-downloadFileSize = ({ $size })
-unlockInputLabel = أدخل كلمة السر
 unlockInputPlaceholder = كلمة السر
 unlockButtonLabel = افتح القفل
-downloadFileTitle = نزِّل الملف المعمّى
-# Firefox Send is a brand name and should not be localized.
-downloadMessage = يُرسل إليك صديقك ملفا عبر «فَيَرفُكس سِنْد»، وهي خدمة تتيح لك مشاركة الملفات عبر رابط آمن وخاص ومعمّى، حيث تنتهي صلاحياتها تلقائيا لتضمن عدم بقاء ما ترسله إلى الأبد.
-# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = نزّل
-downloadNotification = لقد اكتمل التنزيل.
 downloadFinish = اكتمل التنزيل
-# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } من أصل { $totalSize })
-# Firefox Send is a brand name and should not be localized.
 sendYourFilesLink = جرِّب «فَيَرفُكس سِنْد»
-downloadingPageProgress = ينزّل { $filename } ({ $size })
-downloadingPageMessage = رجاء أبقِ هذا اللسان مفتوحا حتى نجلب الملف ونفك تعميته.
-errorAltText = خطأ أثناء الرفع
 errorPageHeader = حدث خطب ما.
-errorPageMessage = حدث خطب ما أثناء رفع الملف.
-errorPageLink = أرسل ملفا آخر
 fileTooBig = حجم الملف كبير للغاية لرفعه. يجب أن يكون أصغر من { $size }.
 linkExpiredAlt = انتهت صلاحية الرابط
-expiredPageHeader = انتهت صلاحية هذا الرابط أو لم يكن موجودا في المقام الأول!
 notSupportedHeader = متصفحك غير مدعوم.
-# Firefox Send is a brand name and should not be localized.
-notSupportedDetail = للأسف فإن متصفحك لا يدعم تقنية الوِب التي يعتمد عليها «فَيَرفُكس سِنْد». عليك تجربة متصفح آخر، ونحن ننصحك بِفَيَرفُكس!
 notSupportedLink = لماذا متصفحي غير مدعوم؟
 notSupportedOutdatedDetail = للأسف فإن إصدارة فَيَرفُكس هذه لا تدعم تقنية الوِب التي يعتمد عليها «فَيَرفُكس سِنْد». عليك تحديث متصفحك.
 updateFirefox = حدّث فَيَرفُكس
-downloadFirefoxButtonSub = تنزيل مجاني
-uploadedFile = ملف
-copyFileList = انسخ الرابط
-# expiryFileList is used as a column header
-expiryFileList = ينتهي في
-deleteFileList = احذف
-nevermindButton = لا بأس
-legalHeader = الشروط والخصوصية
-legalNoticeTestPilot = «فَيَرفُكس سِنْد» جزء من اختبار تجريبي حاليًا و يخضع <a>لبنود خدمة</a> الاختبار التجريبي و <a>تنويه الخصوصية</a>. يمكنك التعرف على مزيد من المعلومات حول هذه التجربة وجمع البيانات<a>هنا</a>.
-legalNoticeMozilla = يخضع استخدام موقع «فَيَرفُكس سِنْد» إلى<a>تنويه خصوصية المواقع</a> و <a>بنود خدمة المواقع</a>.
-deletePopupText = أأحذف هذا الملف؟
-deletePopupYes = نعم
 deletePopupCancel = ألغِ
 deleteButtonHover = احذف
-copyUrlHover = انسخ الرابط
 footerLinkLegal = القانونية
-# Test Pilot is a proper name and should not be localized.
-footerLinkAbout = حول الاختبار التجريبي
 footerLinkPrivacy = الخصوصية
-footerLinkTerms = الشروط
 footerLinkCookies = الكعكات
-requirePasswordCheckbox = اطلب كلمة سر لتنزيل هذا الملف
-addPasswordButton = أضِف كلمة سر
-changePasswordButton = غيّر
 passwordTryAgain = كلمة السر خاطئة. أعِد المحاولة.
-reportIPInfringement = أبلغ عن انتهاك للملكية الفكرية
 javascriptRequired = يتطلب فَيَرفُكس سِنْد جافاسكربت
 whyJavascript = لماذا يتطلب فَيَرفُكس سِنْد جافاسكربت؟
 enableJavascript = رجاء فعّل جافاسكربت ثم أعد المحاولة.
@@ -121,9 +49,136 @@ enableJavascript = رجاء فعّل جافاسكربت ثم أعد المحاو
 expiresHoursMinutes = { $hours }س { $minutes }د
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }د
-# A short status message shown when a password is successfully set
-passwordIsSet = ضُبطت كلمة السر
 # A short status message shown when the user enters a long password
 maxPasswordLength = أقصر طول لكلمة السر: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = يجب ألا تُضبط كلمة السر هذه
+
+## Send version 2 strings
+
+introTitle = شارِك ملفاتك بلا عناء وبخصوصية تامة
+introDescription = يتيح لك { -send-brand } مشاركة الملفات عبر تعميتها من الطرفين وإتاحتها في رابط ينقضي أجله تلقائيا. هكذا يمكنك إبقاء ما شاركته خاصًا فتضمن بأن ملفاتك لن تبقى في الوِب أبد الدهر.
+notifyUploadEncryptDone = اكتملت تعمية الملف وأصبح جاهزًا لإرساله
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = ينقضي بعد { $downloadCount } أو { $timespan }
+timespanMinutes =
+    { $num ->
+        [zero] أقل من دقيقة
+        [one] دقيقة واحدة
+        [two] دقيقتين اثنتين
+        [few] { $num } دقائق
+        [many] { $num } دقيقة
+       *[other] { $num } دقيقة
+    }
+timespanDays =
+    { $num ->
+        [zero] أقل من يوم
+        [one] يوم واحد
+        [two] يومين اثنين
+        [few] { $num } أيام
+        [many] { $num } يومًا
+       *[other] { $num } يوم
+    }
+timespanWeeks =
+    { $num ->
+        [zero] أقل من أسبوع
+        [one] أسبوع واحد
+        [two] أسبوعين اثنين
+        [few] { $num } أسابيع
+        [many] { $num } أسبوعًا
+       *[other] { $num } أسبوع
+    }
+fileCount =
+    { $num ->
+        [zero] { $num } ملف
+        [one] ملف واحد
+        [two] ملفان اثنان
+        [few] { $num } ملفات
+        [many] { $num } ملفًا
+       *[other] { $num } ملف
+    }
+# byte abbreviation
+bytes = بايت
+# kibibyte abbreviation
+kb = ك.بايت
+# mebibyte abbreviation
+mb = م.بايت
+# gibibyte abbreviation
+gb = ج.بايت
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num } { $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = إجمالي الحجم: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = انسخ هذا الرابط لتُشارك الملف:
+copyLinkButton = انسخ الرابط
+downloadTitle = نزّل الملفات
+downloadDescription = شارك أحد هذا الملف معك عبر { -send-brand } وعمّاه بتعمية من الطرفين وبرابط ينقضي أجله تلقائيا.
+trySendDescription = جرِّب { -send-brand } وشارِك ملفاتك بلا عناء وبخصوصية تامة.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [zero] لا يمكنك تنزيل أي ملف في آن واحد.
+        [one] لا يمكنك تنزيل ما يزيد على ملف واحد في آن واحد.
+        [two] لا يمكنك تنزيل ما يزيد على ملفين اثنين في آن واحد.
+        [few] لا يمكنك تنزيل ما يزيد على { $count } ملفات في آن واحد.
+        [many] لا يمكنك تنزيل ما يزيد على { $count } ملفًا في آن واحد.
+       *[other] لا يمكنك تنزيل ما يزيد على { $count } ملف في آن واحد.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [zero] الأرشيفات ممنوعة.
+        [one] لا يُسمح إلا بأرشيف واحد.
+        [two] لا يُسمح إلا بأرشيفين اثنين.
+        [few] لا يُسمح إلا ب‍ { $count } أرشيفات.
+        [many] لا يُسمح إلا ب‍ { $count } أرشيفًا.
+       *[other] لا يُسمح إلا ب‍ { $count } أرشيف.
+    }
+expiredTitle = انقضى وقت الرابط.
+notSupportedDescription = لن يعمل { -send-brand } في هذا المتصفح. أفضل المتصفحات التي يعمل معها { -send-short-brand } هو { -firefox } بآخر إصدارة، كما وأحدث إصدارة من أغلب المتصفحات الموجودة.
+downloadFirefox = نزِّل { -firefox }
+legalTitle = تنويه خصوصية { -send-short-brand }
+legalDateStamp = الإصدارة ١٫٠ بتاريخ ١٢ مارس ٢٠١٩
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }يوم { $hours }سا { $minutes }دق
+addFilesButton = حدّد الملفات التي تريد رفعها
+uploadButton = ارفع
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = اسحب الملفات وأفلِتها هنا
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = أو انقر لإرسال ملفات يصل حجمها { $size }
+addPassword = احمِه بكلمة سر
+emailPlaceholder = أدخل بريدك الإلكتروني
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = لِج وأرسِل ملفات يصل حجمها { $size }
+signInOnlyButton = لِج
+accountBenefitTitle = أنشِئ حساب { -firefox } أو لِج إلى حسابك
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = شارِك ملفات يصل حجمها { $size }
+accountBenefitDownloadCount = شارِك الملفات مع أناس أكثر وأكثر
+accountBenefitTimeLimit =
+    { $count ->
+        [zero] لا تُبقِ أي روابط نشطة
+        [one] أبقِ الروابط نشطة لمدة تصل إلى يوم واحد
+        [two] أبقِ الروابط نشطة لمدة تصل إلى يومين اثنين
+        [few] أبقِ الروابط نشطة لمدة تصل إلى { $count } أيام
+        [many] أبقِ الروابط نشطة لمدة تصل إلى { $count } يومًا
+       *[other] أبقِ الروابط نشطة لمدة تصل إلى { $count } يوم
+    }
+accountBenefitSync = أدِر ملفاتك التي شاركتها من أيّ جهاز تريد
+accountBenefitMoz = اطّلع على المزيد حول خدمات { -mozilla }
+signOut = اخرج
+okButton = حسنًا
+downloadingTitle = يجري التنزيل
+noStreamsWarning = هناك احتمال بألا يقدر هذا المتصفح على فكّ تعمية الملفات الكبيرة كهذا.
+noStreamsOptionCopy = انسخ الرابط لتفتحه في متصفح آخر
+noStreamsOptionFirefox = جرّب متصفّحنا المفضل
+noStreamsOptionDownload = واصِل بهذا المتصفح
+downloadFirefoxPromo = ‏{ -send-short-brand } تقدمة { -firefox } الجديد الأنيق.
+# the next line after the colon contains a file name
+shareLinkDescription = شارِك الرابط الذي يصل إلى الملف:
+shareLinkButton = شارِك الرابط
+# $name is the name of the file
+shareMessage = نزِّل ”{ $name }“ عبر { -send-brand }: خدمة لمشاركة الملفات بلا عناء وبخصوصية تامة

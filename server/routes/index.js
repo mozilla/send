@@ -11,7 +11,7 @@ const filelist = require('./filelist');
 const clientConstants = require('../clientConstants');
 
 const IS_DEV = config.env === 'development';
-const ID_REGEX = '([0-9a-fA-F]{10})';
+const ID_REGEX = '([0-9a-fA-F]{10,16})';
 
 module.exports = function(app) {
   app.set('trust proxy', true);
@@ -48,7 +48,8 @@ module.exports = function(app) {
           imgSrc: [
             "'self'",
             'https://*.dev.lcip.org',
-            'https://firefoxusercontent.com'
+            'https://firefoxusercontent.com',
+            'https://secure.gravatar.com'
           ],
           scriptSrc: [
             "'self'",

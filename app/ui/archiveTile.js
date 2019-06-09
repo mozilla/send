@@ -286,7 +286,7 @@ module.exports.wip = function(state, emit) {
       >
         <input
           id="file-upload"
-          class="opacity-0 w-0 h-0 appearance-none absolute"
+          class="opacity-0 w-0 h-0 appearance-none absolute overflow-hidden"
           type="file"
           multiple
           onfocus="${focus}"
@@ -430,7 +430,7 @@ module.exports.empty = function(state, emit) {
         `;
   return html`
     <send-upload-area
-      class="flex flex-col items-center justify-center border-2 border-dashed border-grey rounded px-6 py-16 h-full w-full"
+      class="flex flex-col items-center justify-center border-2 border-dashed border-grey-transparent rounded px-6 py-16 h-full w-full"
       onclick="${e => {
         if (e.target.tagName !== 'LABEL') {
           document.getElementById('file-upload').click();
@@ -448,7 +448,7 @@ module.exports.empty = function(state, emit) {
       </div>
       <input
         id="file-upload"
-        class="opacity-0 w-0 h-0 appearance-none absolute"
+        class="opacity-0 w-0 h-0 appearance-none absolute overflow-hidden"
         type="file"
         multiple
         onfocus="${focus}"

@@ -6,7 +6,8 @@ encryptingFile = Encriptando...
 decryptingFile = Desencriptando...
 downloadCount =
     { $num ->
-       *[one] 1 descarga
+        [one] 1 descarga
+       *[other] { $num } descargas
     }
 timespanHours =
     { $num ->
@@ -77,6 +78,10 @@ fileCount =
         [one] 1 archivo
        *[other] { $num } archivos
     }
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
 # mebibyte abbreviation
 mb = MB
 # gibibyte abbreviation

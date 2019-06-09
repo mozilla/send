@@ -8,7 +8,7 @@ const { encryptedSize } = require('../../app/utils');
 const log = mozlog('send.upload');
 
 module.exports = async function(req, res) {
-  const newId = crypto.randomBytes(5).toString('hex');
+  const newId = crypto.randomBytes(8).toString('hex');
   const metadata = req.header('X-File-Metadata');
   const auth = req.header('Authorization');
   if (!metadata || !auth) {

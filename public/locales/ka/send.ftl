@@ -126,7 +126,7 @@ addPassword = პაროლით დაცვა
 emailPlaceholder = შეიყვანეთ ელფოსტა
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = შედით ანგარიშზე, რომ გაგზავნოთ { $size }-მდე
-signInButton = ანგარიშზე შესვლა/შექმნა
+signInOnlyButton = შესვლა
 accountBenefitTitle = შექმენით { -firefox }-ანგარიში ან შედით
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = გააზიარეთ ფაილები { $size }-მდე
@@ -145,3 +145,11 @@ noStreamsWarning = ამ ბრაუზერმა, შესაძლოა 
 noStreamsOptionCopy = ბმულის ასლის აღება სხვა ბრაუზერში გასახსნელად
 noStreamsOptionFirefox = სცადეთ ჩვენი რჩეული ბრაუზერი
 noStreamsOptionDownload = განაგრძეთ ამ ბრაუზერით
+downloadFirefoxPromo = { -send-short-brand }-ს წარმოგიდგინეთ უახლესი { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = ფაილის ბმულის გაზიარება:
+shareLinkButton = ბმულის გაზიარება
+# $name is the name of the file
+shareMessage = ჩამოტვირთეთ „{ $name }“ { -send-brand }-ით: ფაილების გაზიარება მარტივად, უსაფრთხოდ
+trailheadPromo = გზა, თქვენი პირადულობის დასაცავად. შემოუერთდით Firefox-ს.
+learnMore = იხილეთ ვრცლად.

@@ -10,6 +10,7 @@ USER app
 WORKDIR /app
 COPY --chown=app:app --from=builder /app .
 COPY --chown=app:app . .
+RUN ln -s dist/version.json version.json
 
 ENV PORT=1443
 EXPOSE $PORT

@@ -142,7 +142,7 @@ addPassword = Apsaugoti slaptažodžiu
 emailPlaceholder = Įveskite savo el. pašto adresą
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Prisijunkite, jeigu norite siųsti iki { $size }
-signInButton = Prisijungti / registruotis
+signInOnlyButton = Prisijungti
 accountBenefitTitle = Susikurkite „{ -firefox }“ paskyrą arba prisijunkite
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Dalinkitės iki { $size } dydžio failais
@@ -162,3 +162,11 @@ noStreamsWarning = jūsų naršyklei gali nepavykti iššifruoti tokio didelio f
 noStreamsOptionCopy = Nukopijuokite saitą ir atverkite jį kita naršykle
 noStreamsOptionFirefox = Išbandykite mūsų mėgstamiausią naršyklę
 noStreamsOptionDownload = Tęsti naudojantis šia naršykle
+downloadFirefoxPromo = „{ -send-short-brand }“ jums atkeliauja iš naujosios „{ -firefox }“.
+# the next line after the colon contains a file name
+shareLinkDescription = Pasidalinkite saitu į jūsų failą:
+shareLinkButton = Dalintis saitu
+# $name is the name of the file
+shareMessage = Atsisiųskite „{ $name }“ su „{ -send-brand }“: paprastas, saugus dalinimasis failais
+trailheadPromo = Yra būdas apsaugoti jūsų privatumą. Naudokite „Firefox“.
+learnMore = Sužinoti daugiau.

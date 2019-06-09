@@ -23,7 +23,7 @@ module.exports = function(ws, req) {
 
   ws.once('message', async function(message) {
     try {
-      const newId = crypto.randomBytes(5).toString('hex');
+      const newId = crypto.randomBytes(8).toString('hex');
       const owner = crypto.randomBytes(10).toString('hex');
 
       const fileInfo = JSON.parse(message);
@@ -114,7 +114,8 @@ module.exports = function(ws, req) {
           dlimit,
           timeLimit,
           anonymous: !user,
-          size: limiter.length
+          size: limiter.length,
+          agent: req.ua.browser.name || req.ua.ua.substring(0, 6)
         });
       }
     } catch (e) {

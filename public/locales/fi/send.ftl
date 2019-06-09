@@ -1,31 +1,9 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteSubtitle = web-kokeilu
 siteFeedback = Palaute
-uploadPageHeader = Yksityinen, salattu tiedostojen jakaminen
-uploadPageExplainer = Lähetä tiedostoja turvallisen, yksityisen ja salatun linkin kautta. Linkki vanhenee automaattisesti, joten tietosi eivät pysy verkossa ikuisesti.
-uploadPageLearnMore = Lue lisää
-uploadPageDropMessage = Aloita lataaminen pudottamalla tiedosto tähän
-uploadPageSizeMessage = Luotettavin toiminta saadaan pitämällä tiedostokoko alle 1 Gt
-uploadPageBrowseButton = Valitse tiedosto tietokoneesta
-uploadPageBrowseButton1 = Valitse ladattava tiedosto
-uploadPageMultipleFilesAlert = Useiden tiedostojen tai kansion lataamista ei tällä hetkellä tueta.
-uploadPageBrowseButtonTitle = Lataa tiedosto
-uploadingPageProgress = Ladataan { $filename } ({ $size })
 importingFile = Tuodaan…
-verifyingFile = Tarkistetaan...
 encryptingFile = Salataan...
 decryptingFile = Puretaan salausta...
-notifyUploadDone = Latauksesi on päättynyt.
-uploadingPageMessage = Kun tiedostojen lataaminen on valmista, voit määrittää vanhentumisvaihtoehdot.
-uploadingPageCancel = Peruuta lataus
-uploadCancelNotification = Latauksesi peruutettiin.
-uploadingPageLargeFileMessage = Tämä tiedosto on suuri ja sen lataaminen saattaa kestää jonkin aikaa. Nyt malttia peliin!
-uploadingFileNotification = Ilmoita minulle, kun lataus on valmis.
-uploadSuccessConfirmHeader = Valmis lähettämään
-uploadSvgAlt = Lataa
-uploadSuccessTimingHeader = Linkki tiedostoon vanhenee 1 latauksen tai 24 tunnin kuluttua.
-expireInfo = Linkki tiedostoon vanhenee { $downloadCount } tai { $timespan } kuluttua.
 downloadCount =
     { $num ->
         [one] yhden latauksen
@@ -36,86 +14,142 @@ timespanHours =
         [one] 1 tunnin
        *[other] { $num } tunnin
     }
-copyUrlFormLabelWithName = Kopioi ja jaa linkki lähettämääsi tiedostoon: { $filename }
-copyUrlFormButton = Kopioi leikepöydälle
 copiedUrl = Kopioitu!
-deleteFileButton = Poista tiedosto
-sendAnotherFileLink = Lähetä toinen tiedosto
-# Alternative text used on the download link/button (indicates an action).
-downloadAltText = Lataa
-downloadsFileList = Lataukset
-# Used as header in a column indicating the amount of time left before a
-# download link expires (e.g. "10h 5m")
-timeFileList = Aika
-# Used as header in a column indicating the number of times a file has been
-# downloaded
-downloadFileName = { $filename } ladattu
-downloadFileSize = ({ $size })
-unlockInputLabel = Syötä salasana
 unlockInputPlaceholder = Salasana
 unlockButtonLabel = Avaa
-downloadFileTitle = Lataa salattu tiedosto
-# Firefox Send is a brand name and should not be localized.
-downloadMessage = Ystäväsi lähettää sinulle tiedoston Firefox Send -palvelulla, jonka avulla voidaan jakaa tiedostoja turvallisen, yksityisen ja salatun linkin kautta. Linkki vanhenee automaattisesti, joten tiedot eivät säily verkossa ikuisesti.
-# Text and title used on the download link/button (indicates an action).
 downloadButtonLabel = Lataa
-downloadNotification = Latauksesi on valmis.
 downloadFinish = Lataus valmis
-# This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = { $partialSize } / { $totalSize }
-# Firefox Send is a brand name and should not be localized.
-sendYourFilesLink = Kokeile Firefox Sendiä
-downloadingPageProgress = Ladataan { $filename } ({ $size })
-downloadingPageMessage = Jätä tämä välilehti auki siksi aikaa kun haemme tiedoston ja puramme sen.
-errorAltText = Latausvirhe
+sendYourFilesLink = Kokeile Firefox Send -palvelua
 errorPageHeader = Jokin meni pieleen!
-errorPageMessage = Tiedoston lataamisessa on tapahtunut virhe.
-errorPageLink = Lähetä toinen tiedosto
 fileTooBig = Tämä tiedosto on liian suuri ladattavaksi. Sen pitäisi olla pienempi kuin { $size }.
 linkExpiredAlt = Linkki on vanhentunut
-expiredPageHeader = Tämä linkki on vanhentunut tai sitä ei ole koskaan ollut olemassa!
 notSupportedHeader = Selaintasi ei tueta.
-# Firefox Send is a brand name and should not be localized.
-notSupportedDetail = Valitettavasti tämä selain ei tue Firefox Sendiä käyttävää web-tekniikkaa. Sinun on kokeiltava toista selainta. Suosittelemme Firefoxia!
 notSupportedLink = Miksi selaintani ei tueta?
 notSupportedOutdatedDetail = Valitettavasti tämä Firefoxin versio ei tue Firefox Sendiä käyttävää web-tekniikkaa. Sinun on päivitettävä selaimesi.
 updateFirefox = Päivitä Firefox
-downloadFirefoxButtonSub = Ilmainen lataus
-uploadedFile = Tiedosto
-copyFileList = Kopioi osoite
-# expiryFileList is used as a column header
-expiryFileList = Vanhenee
-deleteFileList = Poista
-nevermindButton = Unohda koko juttu
-legalHeader = Ehdot ja yksityisyys
-legalNoticeTestPilot = Firefox Send on tällä hetkellä Test Pilot -kokeilu, ja siihen sovelletaan Test Pilot <a>käyttöehtoja</a> ja <a>tietosuojakäytäntöjä</a>. Saat lisätietoja tästä kokeilusta ja sen tiedonkeruusta <a>täällä</a>.
-legalNoticeMozilla = Firefox Send -sivuston käyttöön sovelletaan Mozillan <a>verkkosivustojen yksityisyyskäytäntöjä</a> ja <a>verkkosivustojen käyttöehtoja</a>.
-deletePopupText = Poista tämä tiedosto?
-deletePopupYes = Kyllä
 deletePopupCancel = Peruuta
 deleteButtonHover = Poista
-copyUrlHover = Kopioi osoite
 footerLinkLegal = Juridiset asiat
-# Test Pilot is a proper name and should not be localized.
-footerLinkAbout = Tietoja Test Pilotista
 footerLinkPrivacy = Tietosuoja
-footerLinkTerms = Ehdot
 footerLinkCookies = Evästeet
-requirePasswordCheckbox = Vaadi salasanaa tämän tiedoston lataamiseen
-addPasswordButton = Lisää salasana
-changePasswordButton = Muuta
 passwordTryAgain = Väärä salasana. Yritä uudelleen.
-reportIPInfringement = Ilmoita IP-rikkomuksesta
 javascriptRequired = Firefox-Send vaatii JavaScriptin
 whyJavascript = Miksi Firefox Send vaatii JavaScriptin?
 enableJavascript = Ota JavaScript käyttöön ja yritä uudelleen.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
-expiresHoursMinutes = { $hours }t { $minutes }min
+expiresHoursMinutes = { $hours } t { $minutes } min
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
-expiresMinutes = { $minutes }min
-# A short status message shown when a password is successfully set
-passwordIsSet = Salasana asetettu
+expiresMinutes = { $minutes } min
 # A short status message shown when the user enters a long password
 maxPasswordLength = Salasanan enimmäispituus: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Tätä salasanaa ei voitu asettaa
+
+## Send version 2 strings
+
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Send
+-firefox = Firefox
+-mozilla = Mozilla
+introTitle = Helppoa ja yksityistä tiedostonjakoa
+introDescription = { -send-brand } mahdollistaa tiedostojen jakamisen automaattisesti vanhenevalla linkillä. Tiedostojen jakaminen tapahtuu päästä päähän -salattuna. Näin jakamasi tiedostot pysyvät yksityisinä ja voit olla varma, etteivät lähettämäsi tiedostot pysy verkossa ikuisesti.
+notifyUploadEncryptDone = Tiedosto on salattu ja valmis lähetettäväksi
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Vanhenee { $downloadCount } tai { $timespan } jälkeen
+timespanMinutes =
+    { $num ->
+        [one] 1 minuutin
+       *[other] { $num } minuutin
+    }
+timespanDays =
+    { $num ->
+        [one] 1 päivän
+       *[other] { $num } päivän
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 viikon
+       *[other] { $num } viikon
+    }
+fileCount =
+    { $num ->
+        [one] 1 tiedosto
+       *[other] { $num } tiedostoa
+    }
+# byte abbreviation
+bytes = t
+# kibibyte abbreviation
+kb = kt
+# mebibyte abbreviation
+mb = Mt
+# gibibyte abbreviation
+gb = Gt
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num } { $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = Koko yhteensä: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Kopioi linkki jakaaksesi tiedoston:
+copyLinkButton = Kopioi linkki
+downloadTitle = Lataa tiedostot
+downloadDescription = Tämä tiedosto jaettiin { -send-brand } -palvelun kautta päästä päähän -salattuna ja automaattisesti vanhenevalla linkillä.
+trySendDescription = Kokeile { -send-brand } -palvelua jakaaksesi tiedostoja helposti ja turvallisesti.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Vain 1 tiedosto on mahdollistaa lähettää kerralla.
+       *[other] Vain { $count } tiedostoa on mahdollista lähettää kerralla.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Vain 1 arkisto on sallittu.
+       *[other] Vain { $count } arkistoa on sallittu.
+    }
+expiredTitle = Tämä linkki on vanhentunut.
+notSupportedDescription = { -send-brand } ei toimi tällä selaimella. { -send-short-brand } toimii parhaiten { -firefox }in uusimmalla versiolla, ja toimii useimpien selainten uusimmilla versioilla.
+downloadFirefox = Lataa { -firefox }
+legalTitle = { -send-short-brand }-yksityisyyskäytäntö
+legalDateStamp = Versio 1.0, päivätty 13. maaliskuuta 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } pv { $hours } t { $minutes } min
+addFilesButton = Valitse lähetettävät tiedostot
+uploadButton = Lähetä
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Vedä ja pudota tiedostot
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = tai napsauta lähettääksesi tiedostoja, joiden koko voi olla enintään { $size }
+addPassword = Suojaa salasanalla
+emailPlaceholder = Kirjoita sähköpostiosoitteesi
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Kirjautumalla voit lähettää jopa { $size } kokoisia tiedostoja
+signInOnlyButton = Kirjaudu sisään
+accountBenefitTitle = Luo { -firefox }-tili tai kirjaudu sisään
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Jaa jopa { $size } kokoisia tiedostoja
+accountBenefitDownloadCount = Jaa tiedostoja useamman ihmisen kesken
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Säilytä linkit aktiivisina 1 päivän ajan
+       *[other] Säilytä linkit aktiivisina { $count } päivän ajan
+    }
+accountBenefitSync = Hallitse jaettuja tiedostoja miltä tahansa laitteelta
+accountBenefitMoz = Lue lisää muista { -mozilla }-palveluista
+signOut = Kirjaudu ulos
+okButton = OK
+downloadingTitle = Ladataan
+noStreamsWarning = Tämä selain ei välttämättä osaa purkaa salausta näin suurikokoisista tiedostoista.
+noStreamsOptionCopy = Kopioi linkki avataksesi sen toisessa selaimessa
+noStreamsOptionFirefox = Kokeile suosikkiselaintamme
+noStreamsOptionDownload = Jatka tällä selaimella
+downloadFirefoxPromo = { -send-short-brand } on olemassa kiitos uuden { -firefox }in.
+# the next line after the colon contains a file name
+shareLinkDescription = Jaa linkki tiedostoosi:
+shareLinkButton = Jaa linkki
+# $name is the name of the file
+shareMessage = Lataa tiedosto ”{ $name }” { -send-brand } -palvelusta: yksinkertaista ja turvallista tiedostonjakoa
+trailheadPromo = On tapa suojata yksityisyyttään. Liity Firefoxiin.
+learnMore = Lue lisää.
