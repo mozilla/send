@@ -160,3 +160,5 @@ shareLinkDescription = Dijelite poveznicu na svoju datoteku:
 shareLinkButton = Dijeli poveznicu
 # $name is the name of the file
 shareMessage = Preuzmite “{ $name }” sa { -send-brand }: jednostavno i sigurno dijeljenje datoteka
+trailheadPromo = Postoji način da zaštitite svoju privatnost. Pridružite se Firefoxu.
+learnMore = Saznajte više.
