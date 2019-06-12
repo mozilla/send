@@ -160,3 +160,5 @@ shareLinkDescription = Поделитесь ссылкой на ваш файл:
 shareLinkButton = Поделиться ссылкой
 # $name is the name of the file
 shareMessage = Загрузите «{ $name }» с { -send-brand }: простой и безопасный обмен файлами
+trailheadPromo = Существует способ защитить вашу приватность. Присоединяйтесь к Firefox.
+learnMore = Подробнее.
