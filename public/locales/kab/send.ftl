@@ -54,6 +54,8 @@ passwordSetError = Awal-agi uffir ur izmir ara ad ittwabaded
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Afessas, beṭṭu n ifuyla s wudem uslig
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Ad yemmet deffir { $downloadCount } neɣ { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 n tsedat
@@ -90,6 +92,7 @@ totalSize = Tuɣzi s umata: { $size }
 copyLinkDescription = Nɣel aseɣwen akken ad tebḍuḍ afaylu-inek
 copyLinkButton = Nɣel aseɣwen
 downloadTitle = Sider ifuyla
+downloadDescription = Afaylu-a yettwabḍa s { -send-brand } s uwgelhen s ṭṭerf ɣer ṭṭerf s useɣwen ara yemmten s wudem awurman.
 expiredTitle = Immut useɣwen.
 downloadFirefox = Sider { -firefox }
 legalDateStamp = Lqem  1.0, azemz n 12 Meɣres 2019
@@ -99,9 +102,13 @@ uploadButton = Sali
 dragAndDropFiles = Ẓuɣer sakin sers ifuyla
 addPassword = Ḥrez s wawal uffir
 emailPlaceholder = Sekcem imayl inek
+signInOnlyButton = Qqen
 signOut = Ffeɣ
 okButton = IH
 downloadingTitle = Azdam
+noStreamsOptionFirefox = Ɛreḍ iminig-ik ufrin
 noStreamsOptionDownload = Kemmel akked iminig-a
+# the next line after the colon contains a file name
+shareLinkDescription = Bḍu aseɣwen ɣer ufaylu-ik:
 shareLinkButton = Bḍu aseɣwen
 learnMore = Issin ugar.
