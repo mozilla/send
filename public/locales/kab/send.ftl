@@ -54,6 +54,8 @@ passwordSetError = Awal-agi uffir ur izmir ara ad ittwabaded
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Afessas, beṭṭu n ifuyla s wudem uslig
+introDescription = { -send-brand } ad k(yeǧǧ ad tebḍuḍ ifuyla iwgelhanensi ṭṭerf ɣer ṭṭerf akked useɣwen ara yemmten s wudem awurman. Daɣen, ad tizmireḍ ad tḥ€rzeḍ ayen i tbeṭṭuḍ s wudem uslig daɣen ad temneḍ imi agbur-ik ur yettɣimi ara srid i lebda.
+notifyUploadEncryptDone = Afaylu-ik yewgelhen daɣen ihegga i tuzna
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Ad yemmet deffir { $downloadCount } neɣ { $timespan }
 timespanMinutes =
@@ -94,16 +96,39 @@ copyLinkButton = Nɣel aseɣwen
 downloadTitle = Sider ifuyla
 downloadDescription = Afaylu-a yettwabḍa s { -send-brand } s uwgelhen s ṭṭerf ɣer ṭṭerf s useɣwen ara yemmten s wudem awurman.
 trySendDescription = Ɛreḍ { -send-brand } i beḍḍu afessas n ifuyla s wudem ameɣtu.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Ala 1 n ufaylu i yemzren ad yali i tikkelt.
+       *[other] Ala { $count } n yifuyla i yemzren ad alin i tikkelt.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Ala 1 n teṛcibt i yettwasirgen.
+       *[other] Ala { $count } n teṛcibin i yettwasiregn.
+    }
 expiredTitle = Immut useɣwen.
 downloadFirefox = Sider { -firefox }
+legalTitle = Tasertit tabaḍnit n { -send-short-brand }
 legalDateStamp = Lqem  1.0, azemz n 12 Meɣres 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } ass { $hours } srg { $minutes } tsd
 addFilesButton = Fren ifuyla ad tessaliḍ
 uploadButton = Sali
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Ẓuɣer sakin sers ifuyla
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = neɣ sit akken ad tazneḍ arma d { $size }
 addPassword = Ḥrez s wawal uffir
 emailPlaceholder = Sekcem imayl inek
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Qqen akken ad tazneḍ arma d { $size }
 signInOnlyButton = Qqen
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Bḍu ifuyla arma d { $size }
+accountBenefitDownloadCount = Bḍu ifuyla d wugan n medden
 signOut = Ffeɣ
 okButton = IH
 downloadingTitle = Azdam
