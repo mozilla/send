@@ -93,6 +93,7 @@ copyLinkDescription = Nɣel aseɣwen akken ad tebḍuḍ afaylu-inek
 copyLinkButton = Nɣel aseɣwen
 downloadTitle = Sider ifuyla
 downloadDescription = Afaylu-a yettwabḍa s { -send-brand } s uwgelhen s ṭṭerf ɣer ṭṭerf s useɣwen ara yemmten s wudem awurman.
+trySendDescription = Ɛreḍ { -send-brand } i beḍḍu afessas n ifuyla s wudem ameɣtu.
 expiredTitle = Immut useɣwen.
 downloadFirefox = Sider { -firefox }
 legalDateStamp = Lqem  1.0, azemz n 12 Meɣres 2019
