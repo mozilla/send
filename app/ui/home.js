@@ -20,11 +20,7 @@ module.exports = function(state, emit) {
   const right =
     archives.length === 0
       ? intro(state)
-      : list(
-          archives,
-          'list-reset p-2 h-full overflow-y-auto w-full',
-          'mb-4 w-full'
-        );
+      : list(archives, 'p-2 h-full overflow-y-auto w-full', 'mb-4 w-full');
 
   return html`
     <main class="main">

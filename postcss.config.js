@@ -6,7 +6,7 @@ class TailwindExtractor {
 
 const options = {
   plugins: [
-    require('tailwindcss')('./tailwind.js'),
+    require('tailwindcss')('./tailwind.config.js'),
     require('postcss-preset-env')
   ]
 };

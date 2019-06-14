@@ -104,6 +104,7 @@ module.exports = function(app) {
   app.post(`/api/info/:id${ID_REGEX}`, auth.owner, require('./info'));
   app.post('/api/metrics', require('./metrics'));
   app.get('/__version__', function(req, res) {
+    // eslint-disable-next-line node/no-missing-require
     res.sendFile(require.resolve('../../dist/version.json'));
   });
 

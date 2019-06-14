@@ -118,7 +118,7 @@
     "stylelint-no-unsupported-browser-features": "^3.0.2",
     "svgo": "^1.2.2",
     "svgo-loader": "^2.2.0",
-    "tailwindcss": "^0.7.4",
+    "tailwindcss": "^1.0.3",
     "val-loader": "^1.1.1",
     "wdio-docker-service": "^1.4.2",
     "wdio-dot-reporter": "0.0.10",
