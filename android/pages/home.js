@@ -42,11 +42,7 @@ module.exports = function(state, emit) {
     content =
       archives.length < 1
         ? intro(state)
-        : list(
-            archives,
-            'list-reset h-full overflow-y-auto w-full',
-            'mb-3 w-full'
-          );
+        : list(archives, 'h-full overflow-y-auto w-full', 'mb-3 w-full');
   }
 
   return html`
@@ -57,7 +53,7 @@ module.exports = function(state, emit) {
       >
         ${content}
       </section>
-      <div class="fixed pin-r pin-b z-20">
+      <div class="fixed right-0 bottom-0 z-20">
         ${button}
         <input
           id="file-upload"

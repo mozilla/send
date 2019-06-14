@@ -8,7 +8,9 @@ module.exports = function(state, emit) {
     <div
       class="flex flex-col w-full max-w-md h-full mx-auto items-center justify-center"
     >
-      <h1 class="mb-4">${state.translate('downloadTitle')}</h1>
+      <h1 class="mb-4 text-3xl font-bold">${state.translate(
+        'downloadTitle'
+      )}</h1>
       <p
         class="w-full p-2 border border-yellow-light rounded md:w-4/5 text-orange-dark bg-yellow-lighter text-center leading-normal"
       >
@@ -17,7 +19,7 @@ module.exports = function(state, emit) {
       <form class="md:w-128" onsubmit=${submit}>
         <fieldset class="border rounded p-4 my-4" onchange=${optionChanged}>
           <div class="flex items-center mb-2">
-            <img class="mr-3 flex-no-shrink" src="${assets.get(
+            <img class="mr-3 flex-shrink-0" src="${assets.get(
               'blue_file.svg'
             )}"/>
             <p class="flex-grow">
@@ -49,7 +51,7 @@ module.exports = function(state, emit) {
           </div>
         </fieldset>
         <input
-            class="btn rounded-lg w-full flex flex-no-shrink items-center justify-center"
+            class="btn rounded-lg w-full flex flex-shrink-0 items-center justify-center"
             value="${state.translate('copyLinkButton')}"
             title="${state.translate('copyLinkButton')}"
             type="submit" />

@@ -7,7 +7,7 @@ module.exports = function(name, url) {
       <send-copy-dialog
         class="flex flex-col items-center text-center p-4 max-w-sm m-auto"
       >
-        <h1 class="font-bold my-4">
+        <h1 class="text-3xl font-bold my-4">
           ${state.translate('notifyUploadEncryptDone')}
         </h1>
         <p class="font-normal leading-normal text-grey-darkest word-break-all">
@@ -22,7 +22,7 @@ module.exports = function(name, url) {
           readonly="true"
         />
         <button
-          class="btn rounded-lg w-full flex-no-shrink focus:outline"
+          class="btn rounded-lg w-full flex-shrink-0 focus:outline"
           onclick="${copy}"
           title="${state.translate('copyLinkButton')}"
         >

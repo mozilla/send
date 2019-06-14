@@ -28,7 +28,7 @@ class Footer extends Component {
           Mozilla
         </a>
         <ul
-          class="list-reset flex flex-col md:flex-row items-start md:items-center md:justify-end"
+          class="flex flex-col md:flex-row items-start md:items-center md:justify-end"
         >
           <li class="m-2">
             <a href="https://www.mozilla.org/about/legal/terms/services/#send">

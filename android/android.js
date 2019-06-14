@@ -53,7 +53,7 @@ function body(main) {
 
     const menu = html`<a
         id="hamburger"
-        class="absolute pin-t pin-r z-50"
+        class="absolute top-0 right-0 z-50"
         href="#"
         onclick="${clickPreferences}"
       >
