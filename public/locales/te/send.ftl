@@ -68,3 +68,48 @@ timespanWeeks =
         [one] 1 వారం
        *[other] { $num } వారాలు
     }
+fileCount =
+    { $num ->
+        [one] 1 ఫైలు
+       *[other] { $num } ఫైళ్లు
+    }
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = మొత్తం పరిమాణం: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = మీ ఫైలును భాగస్వామ్యం చేయడానికి ఈ లంకెను నకలు చేయండి:
+copyLinkButton = లంకెను నకలుతీయి
+downloadTitle = ఫైళ్లను దింపుకోండి
+downloadFirefox = { -firefox } ను దింపుకోండి
+legalTitle = { -send-short-brand } గోప్యతా నోటీసు
+legalDateStamp = వెర్షన్ 1.0, మార్చి 12, 2019 నాటిది
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = ఎక్కించడానికి ఫైళ్ళను ఎంచుకోండి
+uploadButton = ఎక్కించు
+addPassword = సంకేతపదంతో రక్షించండి
+emailPlaceholder = ఈ ఈమెయిలును ఇవ్వండి
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = { $size } వరకు పంపడానికి ప్రవేశించండి
+signInOnlyButton = ప్రవేశించండి
+accountBenefitTitle = ఒక { -firefox } ఖాతాని సృష్టించండి లేదా ప్రవేశించండి
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = { $size } పరిమాణం ఫైళ్ళ వరకు పంచుకోండి
+accountBenefitDownloadCount = ఫైళ్లను ఎక్కువ మందితో పంచుకోండి
+okButton = సరే
+downloadingTitle = దింపుకుంటోంది
+noStreamsWarning = ఈ బ్రౌజర్ ఈ ఫైలును పెద్దగా డీక్రిప్ట్ చేయలేకపోవచ్చు.
+noStreamsOptionCopy = మరొక బ్రౌజర్‌లో తెరవడానికి లంకెను నకలు చేయండి
+noStreamsOptionFirefox = మా అభిమాన బ్రౌజర్‌ను ప్రయత్నించండి
+noStreamsOptionDownload = ఈ బ్రౌజర్‌తో కొనసాగించండి
+downloadFirefoxPromo = { -send-short-brand } క్రొత్త { -firefox } ద్వారా మీ ముందుకు తీసుకురాబడుతుంది.
+learnMore = ఇంకా తెలుసుకోండి.
