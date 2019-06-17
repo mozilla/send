@@ -100,7 +100,7 @@ totalSize = Mărime totală: { $size }
 copyLinkDescription = Copiază linkul pentru partajarea fișierului:
 copyLinkButton = Copiază linkul
 downloadTitle = Descarcă fișierele
-downloadDescription = Acest fișier a fost partajat prin { -send-brand }, cu criptare capăt-la-capăt și un link ce expiră automat.
+downloadDescription = Acest fișier a fost partajat prin { -send-brand }, cu criptare capăt-la-capăt și un link care expiră automat.
 trySendDescription = Încearcă { -send-brand } pentru o partajare de fișiere simplă și sigură.
 # count will always be > 10
 tooManyFiles =
@@ -133,7 +133,7 @@ orClickWithSize = sau dă clic pentru a trimite până la { $size }
 addPassword = Protejează cu parolă
 emailPlaceholder = Introdu e-mailul tău
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-signInSizeBump = Autentifică-te ca să trimiți până la { $size }
+signInSizeBump = Autentifică-te pentru a trimite până la { $size }
 signInOnlyButton = Autentificare
 accountBenefitTitle = Creează un cont { -firefox } sau autentifică-te
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
