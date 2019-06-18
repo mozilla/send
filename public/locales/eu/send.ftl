@@ -50,6 +50,7 @@ passwordSetError = Pasahitz hau ezin da ezarri
 
 # Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
 -send-brand = Firefox Send
+-send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Partekatu fitxategiak modu sinple eta pribatuan
@@ -76,7 +77,6 @@ dragAndDropFiles = Arrastatu eta jaregin fitxategiak
 orClickWithSize = edo egin klik { $size } arte igotzeko
 addPassword = Babestu pasahitzarekin
 emailPlaceholder = Idatzi zure helbide elektronikoa
-signInButton = Hasi saioa/eman izena
 accountBenefitTitle = Sortu { -firefox } kontu bat edo hasi saioa
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Partekatu { $size } arteko fitxategiak
