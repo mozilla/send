@@ -151,3 +151,5 @@ shareLinkDescription = Ndani me të tjerët lidhjen për te kartela juaj:
 shareLinkButton = Ndani me të tjerët lidhjen
 # $name is the name of the file
 shareMessage = Shkarkojeni “{ $name }” me { -send-brand }: shkëmbim kartelash dhe thjesht dhe pa rrezik
+trailheadPromo = Ka një rrugë për të mbrojtur privatësinë tuaj. Bëhuni pjesë e Firefox-it.
+learnMore = Mësoni më tepër.
