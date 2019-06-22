@@ -23,11 +23,17 @@ COPY . /app/
 WORKDIR /app
 RUN set -x \
     # Build
-    && rm -f package-lock.json \
     && npm install \
-    && npm run build \
-    # Delete 'node_modules' dir
-    && rm -rf node_modules
+    && npm run build
+USER root
+RUN set -x \
+    # Delete useless dirs
+    && rm -rf \
+        node_modules \
+        .git \
+        android \
+        ios \
+        test
 
 
 # Download prod dependencies

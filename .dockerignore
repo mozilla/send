@@ -1,14 +1,8 @@
-# All hidden files
-./.*
-
 # Dirs
 node_modules/
-firefox/
-assets/
-docs/
-test/
-coverage/
 dist/
+.*/
+!.git/
 
 # Files
 Dockerfile
