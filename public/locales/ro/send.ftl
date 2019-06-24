@@ -133,7 +133,7 @@ orClickWithSize = sau dă clic pentru a trimite până la { $size }
 addPassword = Protejează cu parolă
 emailPlaceholder = Introdu e-mailul tău
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-signInSizeBump = Autentifică-te ca să trimiți până la { $size }
+signInSizeBump = Autentifică-te pentru a trimite până la { $size }
 signInOnlyButton = Autentificare
 accountBenefitTitle = Creează un cont { -firefox } sau autentifică-te
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
