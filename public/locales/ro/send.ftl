@@ -101,7 +101,7 @@ copyLinkDescription = Copiază linkul pentru partajarea fișierului:
 copyLinkButton = Copiază linkul
 downloadTitle = Descarcă fișierele
 downloadDescription = Acest fișier a fost partajat prin { -send-brand }, cu criptare end-to-end și un link ce expiră automat.
-trySendDescription = Încearcă { -send-brand } pentru o partajare de fișiere simplă și sigură.
+trySendDescription = Încearcă { -send-brand } pentru o partajare simplă și sigură a fișierelor.
 # count will always be > 10
 tooManyFiles =
     { $count ->
