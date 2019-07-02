@@ -35,7 +35,7 @@ deleteButtonHover = Șterge
 footerLinkLegal = Mențiuni legale
 footerLinkPrivacy = Confidențialitate
 footerLinkCookies = Cookie-uri
-passwordTryAgain = Parola este incorectă. Încearcă din nou.
+passwordTryAgain = Parolă incorectă. Încearcă din nou.
 javascriptRequired = Firefox Send necesită JavaScript
 whyJavascript = De ce Firefox Send necesită JavaScript?
 enableJavascript = Te rugăm să reactivezi JavaScript și să încerci din nou.
@@ -100,7 +100,7 @@ totalSize = Mărime totală: { $size }
 copyLinkDescription = Copiază linkul pentru partajarea fișierului:
 copyLinkButton = Copiază linkul
 downloadTitle = Descarcă fișierele
-downloadDescription = Acest fișier a fost partajat prin { -send-brand }, cu criptare end-to-end și un link ce expiră automat.
+downloadDescription = Acest fișier a fost partajat prin { -send-brand }, cu criptare capăt-la-capăt și un link care expiră automat.
 trySendDescription = Încearcă { -send-brand } pentru o partajare simplă și sigură a fișierelor.
 # count will always be > 10
 tooManyFiles =
