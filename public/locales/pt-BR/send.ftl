@@ -143,7 +143,7 @@ okButton = OK
 downloadingTitle = Baixando
 noStreamsWarning = Este navegador pode não conseguir descriptografar um arquivo tão grande.
 noStreamsOptionCopy = Copiar o link para abrir em outro navegador
-noStreamsOptionFirefox = Experimentar nosso navegador preferido
+noStreamsOptionFirefox = Experimente nosso navegador preferido
 noStreamsOptionDownload = Continuar com este navegador
 downloadFirefoxPromo = O { -send-short-brand } é apresentado pelo novo { -firefox }.
 # the next line after the colon contains a file name
