@@ -8,7 +8,7 @@ function banner(state) {
     return; // server side
   }
   const show =
-    !state.capabilities.standalone && !state.route.startsWith('/unsupported/');
+    !state.capabilities.standalone && !state.route.startsWith('/unsupported/') && (navigator.userAgent.indexOf("Firefox") == -1);
   if (show) {
     return state.cache(Promo, 'promo').render();
   }
