@@ -54,6 +54,8 @@ passwordSetError = לא ניתן להגדיר את הססמה הזאת
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = שיתוף קבצים פרטי ופשוט
+introDescription = { -send-brand } מאפשר לך לשתף קבצים עם הצפנה מקצה לקצה וקישור עם תפוגה אוטומטית. בצורה זו תוכלו לשתף קבצים באופן פרטי ולהבטיח שהדברים שלכם לא נשארים ברשת לנצח.
 notifyUploadEncryptDone = הקובץ שלך מוצפן ומוכן לשליחה
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = יפוג לאחר { $downloadCount } או { $timespan }
@@ -114,10 +116,29 @@ notSupportedDescription = ‏{ -send-brand } לא יפעל עם דפדפן זה.
 downloadFirefox = הורדת { -firefox }
 legalTitle = הצהרת פרטיות של { -send-short-brand }
 legalDateStamp = גרסה 1.0, בתאריך 12 במרץ 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } ימים { $hours } שעות { $minutes } דקות
 addFilesButton = בחירת קבצים להעלאה
 uploadButton = העלאה
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = גרירה והשלכת קבצים
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = או ללחוץ כדי לשלוח קבצים עד לגודל של { $size }
 addPassword = הגנה באמצעות ססמה
+emailPlaceholder = נא להכניס כתובת דוא״ל
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = נא להירשם כדי לשלוח קבצים עד גודל של { $size }
 signInOnlyButton = כניסה
+accountBenefitTitle = נא ליצור חשבון { -firefox } או להיכנס לחשבון
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = שיתוף קבצים עד גודל של { $size }
+accountBenefitDownloadCount = שיתוף קבצים עם יותר אנשים
+accountBenefitTimeLimit =
+    { $count ->
+        [one] שמירה על קישורים פעילים עד ליום אחד
+       *[other] שמירה על קישורים פעילים עד ל־{ $count } ימים
+    }
 accountBenefitSync = ניהול קבצים משותפים מכל מכשיר
 accountBenefitMoz = מידע נוסף על שירותי { -mozilla } אחרים
 signOut = יציאה
@@ -125,10 +146,13 @@ okButton = אישור
 downloadingTitle = בהורדה
 noStreamsWarning = ייתכן שדפדפן זה לא יוכל לפענח קובץ בגודל כזה.
 noStreamsOptionCopy = העתקת הקישור לפתיחה בדפדפן אחר
+noStreamsOptionFirefox = נסו את הדפדפן המועדף עלינו
 noStreamsOptionDownload = המשך בדפדפן זה
+downloadFirefoxPromo = { -send-short-brand } מובא אליך בחסות { -firefox }
 # the next line after the colon contains a file name
 shareLinkDescription = שיתוף הקישור לקובץ שלך:
 shareLinkButton = שיתוף קישור
 # $name is the name of the file
 shareMessage = הורדת ״{ $name }״ עם { -send-brand }: שיתוף קבצים פשוט ובטוח
+trailheadPromo = ישנן דרכים נוספות להגן על הפרטיות שלכם. הצטרפו אל Firefox.
 learnMore = מידע נוסף.
