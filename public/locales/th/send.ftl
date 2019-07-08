@@ -81,9 +81,18 @@ addFilesButton = เลือกไฟล์ที่จะอัปโหลด
 uploadButton = อัปโหลด
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = ลากแล้วปล่อยไฟล์
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = หรือคลิกเพื่อส่งได้ถึง { $size }
+addPassword = ปกป้องด้วยรหัสผ่าน
 emailPlaceholder = ป้อนอีเมลของคุณ
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = ลงชื่อเข้าเพื่อส่งได้ถึง { $size }
 signInOnlyButton = ลงชื่อเข้า
 accountBenefitTitle = สร้างบัญชี { -firefox } หรือลงชื่อเข้า
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = แบ่งปันไฟล์สูงสุดถึง { $size }
+accountBenefitDownloadCount = แบ่งปันไฟล์กับผู้คนมากขึ้น
 accountBenefitSync = จัดการไฟล์ที่แบ่งปันจากอุปกรณ์ใด ๆ
 accountBenefitMoz = เรียนรู้เกี่ยวกับบริการ { -mozilla } อื่น ๆ
 signOut = ลงชื่อออก
