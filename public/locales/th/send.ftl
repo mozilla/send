@@ -20,8 +20,11 @@ downloadFinish = การดาวน์โหลดเสร็จสมบู
 fileSizeProgress = ({ $partialSize } จาก { $totalSize })
 sendYourFilesLink = ลองใช้ Firefox Send
 errorPageHeader = มีบางอย่างผิดพลาด!
+fileTooBig = ไฟล์นั้นใหญ่เกินกว่าจะอัปโหลดได้ ไฟล์ที่จะอัปโหลดควรมีขนาดน้อยกว่า { $size }
 linkExpiredAlt = ลิงก์หมดอายุแล้ว
 notSupportedHeader = ไม่รองรับเบราว์เซอร์ของคุณ
+notSupportedLink = ทำไมจึงไม่รองรับเบราว์เซอร์ของฉัน?
+notSupportedOutdatedDetail = น่าเสียดายที่ Firefox รุ่นนี้ไม่สนับสนุนเทคโนโลยีเว็บที่ขับเคลื่อน Firefox Send คุณจะต้องอัปเดตเบราว์เซอร์ของคุณ
 updateFirefox = อัปเดต Firefox
 deletePopupCancel = ยกเลิก
 deleteButtonHover = ลบ
@@ -30,7 +33,16 @@ footerLinkPrivacy = ความเป็นส่วนตัว
 footerLinkCookies = คุกกี้
 passwordTryAgain = รหัสผ่านไม่ถูกต้อง ลองอีกครั้ง
 javascriptRequired = Firefox Send จำเป็นต้องใช้ JavaScript
+whyJavascript = ทำไม Firefox Send จึงจำเป็นต้องใช้ JavaScript?
 enableJavascript = โปรดเปิดใช้งาน JavaScript แล้วลองอีกครั้ง
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } ชม. { $minutes } นาที
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } นาที
+# A short status message shown when the user enters a long password
+maxPasswordLength = ความยาวรหัสผ่านสูงสุด: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = ไม่สามารถตั้งรหัสผ่านนี้ได้
 
 ## Send version 2 strings
 
@@ -75,8 +87,18 @@ totalSize = ขนาดรวม: { $size }
 copyLinkDescription = คัดลอกลิงก์เพื่อแบ่งปันไฟล์ของคุณ:
 copyLinkButton = คัดลอกลิงก์
 downloadTitle = ดาวน์โหลดไฟล์
+trySendDescription = ลองใช้ { -send-brand } สำหรับการแบ่งปันไฟล์ที่ง่ายและปลอดภัย
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+       *[other] สามารถอัปโหลดได้ครั้งละ { $count } ไฟล์เท่านั้น
+    }
 expiredTitle = ลิงก์นี้หมดอายุแล้ว
+notSupportedDescription = { -send-brand } จะไม่ทำงานกับเบราว์เซอร์นี้ { -send-short-brand } จะทำงานได้ดีที่สุดกับ { -firefox } รุ่นล่าสุด และจะทำงานกับเบราว์เซอร์ส่วนใหญ่ที่เป็นรุ่นปัจจุบัน
 downloadFirefox = ดาวน์โหลด { -firefox }
+legalTitle = ประกาศความเป็นส่วนตัวของ { -send-short-brand }
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } วัน { $hours } ชม. { $minutes } นาที
 addFilesButton = เลือกไฟล์ที่จะอัปโหลด
 uploadButton = อัปโหลด
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
@@ -98,6 +120,7 @@ accountBenefitMoz = เรียนรู้เกี่ยวกับบริ
 signOut = ลงชื่อออก
 okButton = ตกลง
 downloadingTitle = กำลังดาวน์โหลด
+noStreamsWarning = เบราว์เซอร์นี้อาจไม่สามารถถอดรหัสไฟล์ขนาดใหญ่เท่านี้ได้
 noStreamsOptionCopy = คัดลอกลิงก์เพื่อเปิดในเบราว์เซอร์อื่น
 noStreamsOptionFirefox = ลองเบราว์เซอร์โปรดของเรา
 noStreamsOptionDownload = ดำเนินการต่อด้วยเบราว์เซอร์นี้
