@@ -55,7 +55,7 @@ introTitle = 簡單而私密的檔案共享服務
 introDescription = { -send-brand } 讓您可透過點對點加密的方式來分享檔案，並提供會自動失效的鏈結。這樣一來就可以保留分享時的隱私，也確保檔案不會永久保存於網路上。
 notifyUploadEncryptDone = 已加密您的檔案，可以傳送
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
-archiveExpiryInfo = { $downloadCount } 次下載或 { $timespan } 後失效
+archiveExpiryInfo = { $downloadCount } 或 { $timespan } 後失效
 timespanMinutes =
     { $num ->
        *[other] { $num } 分鐘
