@@ -153,9 +153,7 @@ export default class FileReceiver extends Nanobus {
         const downloadPath = `/api/download/${this.fileInfo.id}`;
         let downloadUrl = getApiUrl(downloadPath);
         if (downloadUrl === downloadPath) {
-          downloadUrl = `${location.protocol}//${location.host}/api/download/${
-            this.fileInfo.id
-          }`;
+          downloadUrl = `${location.protocol}//${location.host}/api/download/${this.fileInfo.id}`;
         }
         const a = document.createElement('a');
         a.href = downloadUrl;
