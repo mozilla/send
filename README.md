@@ -48,6 +48,12 @@ Then browse to http://localhost:8080
 
 ---
 
+## Deploy to Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+---
+
 ## Commands
 
 | Command          | Description |
