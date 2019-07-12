@@ -16,6 +16,7 @@
 * [Localization](#localization)
 * [Contributing](#contributing)
 * [Testing](#testing)
+* [Deployment](#deployment)
 * [Android](#android)
 * [License](#license)
 
@@ -88,6 +89,12 @@ Pull requests are always welcome! Feel free to check out the list of ["good firs
 | Production  | <https://send.firefox.com/>
 | Stage       | <https://stage.send.nonprod.cloudops.mozgcp.net/>
 | Development | <https://send2.dev.lcip.org/>
+
+---
+
+## Deployment
+
+see also [docs/deployment.md](docs/deployment.md)
 
 ---
 
