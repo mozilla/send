@@ -2,6 +2,7 @@
 title = Firefox Send
 siteFeedback = Zvirikutaurwa
 importingFile = Kutora faira
+encryptingFile = Kuinikiriputa
 enableJavascript = Ndinokumbira mubvumidze JavaScript moedza zvekare
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }maawa { $minutes }mineti
