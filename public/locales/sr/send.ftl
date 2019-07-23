@@ -134,7 +134,7 @@ addPassword = Заштитите лозинком
 emailPlaceholder = Унесите вашу е-адресу
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Пријавите се да пошаљете садржај до { $size }
-signInButton = Пријава/регистрација
+signInOnlyButton = Пријавите се
 accountBenefitTitle = Направите { -firefox } налог или се пријавите
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Поделите датотеке велике до { $size }
@@ -154,3 +154,10 @@ noStreamsWarning = Овај прегледач можда неће моћи да
 noStreamsOptionCopy = Копирај везу за отварање у другом прегледачу
 noStreamsOptionFirefox = Пробајте наш омиљени прегледач
 noStreamsOptionDownload = Наставите у овом прегледачу
+# the next line after the colon contains a file name
+shareLinkDescription = Поделите везу до датотеке:
+shareLinkButton = Поделите везу
+# $name is the name of the file
+shareMessage = Преузмите „{ $name }“ помоћу програма { -send-brand }:  једноставно и безбедно дељење датотека
+trailheadPromo = Постоји начин да заштитите вашу приватност. Придружите се Firefox-у.
+learnMore = Сазнајте више.
