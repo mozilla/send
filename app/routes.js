@@ -13,6 +13,7 @@ module.exports = function(app = choo()) {
   app.route('/oauth', function(state, emit) {
     emit('authenticate', state.query.code, state.query.state);
   });
+  app.route('/login', body(require('./ui/home')));
   app.route('*', body(require('./ui/notFound')));
   return app;
 };
