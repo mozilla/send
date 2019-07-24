@@ -154,6 +154,7 @@ noStreamsWarning = Овај прегледач можда неће моћи да
 noStreamsOptionCopy = Копирај везу за отварање у другом прегледачу
 noStreamsOptionFirefox = Пробајте наш омиљени прегледач
 noStreamsOptionDownload = Наставите у овом прегледачу
+downloadFirefoxPromo = { -send-short-brand } вам је омогућен захваљући потпуно новом програму { -firefox }.
 # the next line after the colon contains a file name
 shareLinkDescription = Поделите везу до датотеке:
 shareLinkButton = Поделите везу
