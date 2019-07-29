@@ -2,7 +2,7 @@ const { availableLanguages } = require('../../package.json');
 const config = require('../config');
 const fs = require('fs');
 const path = require('path');
-const { negotiateLanguages } = require('fluent-langneg');
+const { negotiateLanguages } = require('@fluent/langneg');
 const langData = require('cldr-core/supplemental/likelySubtags.json');
 
 // We return early in the middleware if the lang header is long.

@@ -1,7 +1,7 @@
 /* global DEFAULTS LIMITS PREFS */
 import 'core-js';
 import 'fast-text-encoding'; // MS Edge support
-import 'fluent-intl-polyfill';
+import 'intl-pluralrules';
 import choo from 'choo';
 import nanotiming from 'nanotiming';
 import routes from './routes';
@@ -47,6 +47,7 @@ if (process.env.NODE_ENV === 'production') {
 
   const translate = await getTranslator(locale());
   setTranslate(translate);
+  // eslint-disable-next-line require-atomic-updates
   window.initialState = {
     LIMITS,
     DEFAULTS,
@@ -62,6 +63,7 @@ if (process.env.NODE_ENV === 'production') {
   };
 
   const app = routes(choo());
+  // eslint-disable-next-line require-atomic-updates
   window.app = app;
   app.use(experiments);
   app.use(metrics);

@@ -1,4 +1,4 @@
-import { FluentBundle } from 'fluent';
+import { FluentBundle } from '@fluent/bundle';
 
 function makeBundle(locale, ftl) {
   const bundle = new FluentBundle(locale, { useIsolating: false });

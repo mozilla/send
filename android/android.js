@@ -1,5 +1,4 @@
-/* global window, navigator */
-import 'fluent-intl-polyfill';
+import 'intl-pluralrules';
 import choo from 'choo';
 import html from 'choo/html';
 import Raven from 'raven-js';
