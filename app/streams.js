@@ -1,4 +1,4 @@
-/* global ReadableStream TransformStream */
+/* global TransformStream */
 
 export function transformStream(readable, transformer, oncancel) {
   try {

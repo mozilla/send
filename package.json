@@ -80,6 +80,7 @@
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
     "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-mocha": "^6.0.0",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-security": "^1.4.0",

@@ -4,6 +4,7 @@ env:
 
 extends:
   - eslint:recommended
+  - prettier
   - plugin:node/recommended
   - plugin:security/recommended
 
@@ -22,13 +23,5 @@ rules:
   security/detect-non-literal-fs-filename: off
   security/detect-object-injection: off
 
-  eol-last: [error, always]
-  eqeqeq: error
-  no-alert: warn
-  no-console: warn
-  no-path-concat: error
   no-unused-vars: [error, {argsIgnorePattern: "^_|err|event|next|reject"}]
-  no-var: error
-  one-var: [error, never]
-  prefer-const: error
-  quotes: [error, single, {avoidEscape: true}]
+  require-atomic-updates: warn

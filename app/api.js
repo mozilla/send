@@ -312,12 +312,13 @@ export function downloadStream(id, keychain) {
 
 //////////////////
 
-function download(id, keychain, onprogress, canceller) {
+async function download(id, keychain, onprogress, canceller) {
+  const auth = await keychain.authHeader();
   const xhr = new XMLHttpRequest();
   canceller.oncancel = function() {
     xhr.abort();
   };
-  return new Promise(async function(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     xhr.addEventListener('loadend', function() {
       canceller.oncancel = function() {};
       const authHeader = xhr.getResponseHeader('WWW-Authenticate');
@@ -337,7 +338,6 @@ function download(id, keychain, onprogress, canceller) {
         onprogress(event.loaded);
       }
     });
-    const auth = await keychain.authHeader();
     xhr.open('get', getApiUrl(`/api/download/blob/${id}`));
     xhr.setRequestHeader('Authorization', auth);
     xhr.responseType = 'blob';
