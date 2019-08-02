@@ -18,8 +18,8 @@ module.exports = {
       app.use(wpm);
       assets.setMiddleware(wpm);
       expressWs(app, null, { perMessageDeflate: false });
-      app.ws('/api/ws', require('../server/routes/ws'));
       routes(app);
+      app.ws('/api/ws', require('../server/routes/ws'));
       tests(app);
       wpm.waitUntilValid(() => {
         server = app.listen(8000, resolve);
