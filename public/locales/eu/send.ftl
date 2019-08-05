@@ -23,7 +23,7 @@ fileSizeProgress = ({ $totalSize } / { $partialSize })
 sendYourFilesLink = Probatu Firefox Send
 errorPageHeader = Zerbait gaizki joan da!
 fileTooBig = Fitxategia handiegia da kargatzeko. { $size } baino txikiagoa izan behar du.
-linkExpiredAlt = Lotura iraungita
+linkExpiredAlt = Lotura iraungi da
 notSupportedHeader = Zure nabigatzailea ez da onartzen.
 notSupportedLink = Zergatik ez da nire nabigatzailea onartzen?
 notSupportedOutdatedDetail = Zoritxarrez Firefox bertsio honek ez du Firefox Send-ek behar duen web teknologia onartzen. Zure nabigatzailea eguneratu behar duzu.
@@ -54,7 +54,7 @@ passwordSetError = Pasahitz hau ezin da ezarri
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Partekatu fitxategiak modu sinple eta pribatuan
-introDescription = { -send-brand } tresna fitxategiak partekatzeko da, muturretik muturrerako enkriptatzearekin eta automatikoki iraungitzen diren estekekin. Hortaz, partekatzen duzuna pribatua izango da eta ziur egon zaitezke zure fitxategiak ez direla online egongo betirako.
+introDescription = { -send-brand } tresna fitxategiak partekatzeko da, muturretik muturrera zifratuta eta automatikoki iraungitzen diren loturekin. Hortaz, partekatzen duzuna pribatua izango da eta ziur egon zaitezke zure fitxategiak ez direla online egongo betirako.
 notifyUploadEncryptDone = Zure fitxategia zifratuta eta bidaltzeko prest dago
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = { $downloadCount } edo { $timespan } ondoren iraungiko da
@@ -94,7 +94,7 @@ totalSize = Tamaina guztira: { $size }
 copyLinkDescription = Kopiatu fitxategia partekatzeko lotura:
 copyLinkButton = Kopiatu lotura
 downloadTitle = Deskargatu fitxategiak
-downloadDescription = { -send-brand } bidez partekatu da fitxategia muturretik muturrerako enkriptatzearekin eta automatikoki iraungitzen den lotura batekin.
+downloadDescription = { -send-brand } bidez partekatu da fitxategia muturretik muturrera zifratuta eta automatikoki iraungitzen den lotura batekin.
 trySendDescription = Probatu { -send-brand } fitxategiak partekatzeko modu sinple eta segururako.
 # count will always be > 10
 tooManyFiles =
@@ -109,6 +109,7 @@ tooManyArchives =
        *[other] Soilik { $count } artxibo onartzen dira.
     }
 expiredTitle = Lotura hau iraungi da.
+notSupportedDescription = { -send-brand } ez da nabigatzaile honetan ibiliko. { -send-short-brand } hobeto dabil { -firefox }(r)en azken bertsioarekin; halaber, nabigatzaile gehienen azken bertsioarekin ibiliko da.
 downloadFirefox = Deskargatu { -firefox }
 legalTitle = { -send-short-brand } pribatutasun-oharra
 legalDateStamp = 1.0 bertsioa, 2019ko martxoaren 12koa.
@@ -140,3 +141,15 @@ accountBenefitMoz = { -mozilla }ren beste zerbitzuei buruzko argibide gehiago
 signOut = Amaitu saioa
 okButton = Ados
 downloadingTitle = Deskargatzen
+noStreamsWarning = Baliteke nabigatzailea gai ez izatea horrelako tamaina handiko fitxategiak deszifratzeko.
+noStreamsOptionCopy = Kopiatu lotura beste nabigatzaile batean irekitzeko
+noStreamsOptionFirefox = Probatu gure nabigatzaile gogokoena
+noStreamsOptionDownload = Jarraitu nabigatzaile honekin
+downloadFirefoxPromo = Erabat berritutako { -firefox }(e)k eskaintzen dizu { -send-short-brand }
+# the next line after the colon contains a file name
+shareLinkDescription = Partekatu zure fitxategirako lotura:
+shareLinkButton = Partekatu lotura
+# $name is the name of the file
+shareMessage = Deskargatu "{ $name }" { -send-brand } erabiliz: fitxategi-partekatze sinple eta segurua
+trailheadPromo = Badago zure pribatutasuna babesteko modua. Egizu bat Firefoxekin.
+learnMore = Argibide gehiago.
