@@ -182,3 +182,4 @@ shareLinkDescription = شارِك الرابط الذي يصل إلى الملف
 shareLinkButton = شارِك الرابط
 # $name is the name of the file
 shareMessage = نزِّل ”{ $name }“ عبر { -send-brand }: خدمة لمشاركة الملفات بلا عناء وبخصوصية تامة
+learnMore = اطّلع على المزيد.
