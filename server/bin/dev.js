@@ -3,7 +3,7 @@ const routes = require('../routes');
 const pages = require('../routes/pages');
 const tests = require('../../test/frontend/routes');
 const express = require('express');
-const expressWs = require('express-ws');
+const expressWs = require('@dannycoates/express-ws');
 const morgan = require('morgan');
 const config = require('../config');
 

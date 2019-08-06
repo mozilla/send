@@ -147,7 +147,16 @@ function asyncInitWebSocket(server) {
 
 function listenForResponse(ws, canceller) {
   return new Promise((resolve, reject) => {
+    function handleClose(event) {
+      // a 'close' event before a 'message' event means the request failed
+      ws.removeEventListener('message', handleMessage);
+      const error = canceller.cancelled
+        ? canceller.error
+        : new Error('connection closed');
+      reject(error);
+    }
     function handleMessage(msg) {
+      ws.removeEventListener('close', handleClose);
       try {
         const response = JSON.parse(msg.data);
         if (response.error) {
@@ -156,13 +165,11 @@ function listenForResponse(ws, canceller) {
           resolve(response);
         }
       } catch (e) {
-        ws.close();
-        canceller.cancelled = true;
-        canceller.error = e;
         reject(e);
       }
     }
     ws.addEventListener('message', handleMessage, { once: true });
+    ws.addEventListener('close', handleClose, { once: true });
   });
 }
 
@@ -215,7 +222,10 @@ async function upload(
       onprogress(size);
       size += buf.length;
       state = await reader.read();
-      while (ws.bufferedAmount > ECE_RECORD_SIZE * 2) {
+      while (
+        ws.bufferedAmount > ECE_RECORD_SIZE * 2 &&
+        ws.readyState === WebSocket.OPEN
+      ) {
         await delay();
       }
     }

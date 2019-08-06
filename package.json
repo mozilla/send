@@ -137,6 +137,7 @@
     "webpack-unassert-loader": "^1.2.0"
   },
   "dependencies": {
+    "@dannycoates/express-ws": "^5.0.1",
     "@fluent/bundle": "^0.13.0",
     "@fluent/langneg": "^0.3.0",
     "@google-cloud/storage": "^3.0.4",
@@ -146,7 +147,6 @@
     "cldr-core": "^35.1.0",
     "convict": "^5.1.0",
     "express": "^4.17.1",
-    "express-ws": "github:dannycoates/express-ws",
     "fxa-geodb": "^1.0.4",
     "helmet": "^3.20.0",
     "mkdirp": "^0.5.1",
@@ -155,8 +155,7 @@
     "raven": "^2.6.4",
     "redis": "^2.8.0",
     "selenium-standalone": "^6.15.6",
-    "ua-parser-js": "^0.7.20",
-    "websocket-stream": "^5.5.0"
+    "ua-parser-js": "^0.7.20"
   },
   "availableLanguages": [
     "en-US",

@@ -2,7 +2,7 @@ const assets = require('../../common/assets');
 const routes = require('../routes');
 const pages = require('../routes/pages');
 const tests = require('../../test/frontend/routes');
-const expressWs = require('express-ws');
+const expressWs = require('@dannycoates/express-ws');
 
 module.exports = function(app, devServer) {
   assets.setMiddleware(devServer.middleware);

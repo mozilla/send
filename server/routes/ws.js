@@ -3,12 +3,11 @@ const storage = require('../storage');
 const config = require('../config');
 const mozlog = require('../log');
 const Limiter = require('../limiter');
-const wsStream = require('websocket-stream/stream');
 const fxa = require('../fxa');
 const { statUploadEvent } = require('../amplitude');
 const { encryptedSize } = require('../../app/utils');
 
-const { Duplex } = require('stream');
+const { Transform } = require('stream');
 
 const log = mozlog('send.upload');
 
@@ -76,25 +75,19 @@ module.exports = function(ws, req) {
         })
       );
       const limiter = new Limiter(encryptedSize(maxFileSize));
-      const flowControl = new Duplex({
-        read() {
-          ws.resume();
-        },
-        write(chunk, encoding, callback) {
+      const eof = new Transform({
+        transform: function(chunk, encoding, callback) {
           if (chunk.length === 1 && chunk[0] === 0) {
             this.push(null);
           } else {
-            if (!this.push(chunk)) {
-              ws.pause();
-            }
+            this.push(chunk);
           }
           callback();
         }
       });
+      const wsStream = ws.constructor.createWebSocketStream(ws);
 
-      fileStream = wsStream(ws, { binary: true })
-        .pipe(flowControl)
-        .pipe(limiter); // limiter needs to be the last in the chain
+      fileStream = wsStream.pipe(eof).pipe(limiter); // limiter needs to be the last in the chain
 
       await storage.set(newId, fileStream, meta, timeLimit);
 
@@ -126,8 +119,8 @@ module.exports = function(ws, req) {
             error: e === 'limit' ? 413 : 500
           })
         );
-        ws.close();
       }
     }
+    ws.close();
   });
 };
