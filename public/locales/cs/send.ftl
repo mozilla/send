@@ -196,5 +196,5 @@ shareLinkDescription = Sdílet odkaz na soubor:
 shareLinkButton = Sdílet odkaz
 # $name is the name of the file
 shareMessage = Stáhněte si soubor „{ $name }“ s { -send-brand(case: "ins") } - jednoduché a bezpečné sdílení souborů
-trailheadPromo = Existuje snadný způsob pro ochranu vašeho soukromí. Používejte Firefox.
+trailheadPromo = Existuje způsob, jak ochránit své soukromí. Používejte Firefox.
 learnMore = Zjistit více.
