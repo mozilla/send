@@ -19,7 +19,10 @@ unlockInputPlaceholder = Senhal
 unlockButtonLabel = Desverrolhar
 downloadButtonLabel = Telecargar
 downloadFinish = Telecargament acabat
+fileSizeProgress = ({ $partialSize } sus { $totalSize })
 sendYourFilesLink = Ensajar Firefox Send
+errorPageHeader = I a quicòm que truca.
+fileTooBig = Aqueste fichièr es tròp gròs per l’enviar. Sa talha deu èsser inferiora a { $size }.
 linkExpiredAlt = Lo ligam a expirat
 notSupportedHeader = Vòstre navegador es pas compatible.
 notSupportedLink = Perqué mon navegador es pas compatible ?
@@ -51,6 +54,8 @@ passwordSetError = Aqueste senhal a pas pogut èsser definit
 -mozilla = Mozilla
 introTitle = Partatge simple e privat de fichièrs
 notifyUploadEncryptDone = Vòstre fichièr es chifrat e prèst per mandadís
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Expira aprèp { $downloadCount } o { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 minuta
@@ -87,17 +92,60 @@ totalSize = Talha totala : { $size }
 copyLinkDescription = Copiatz lo ligam per partejar vòstre fichièr :
 copyLinkButton = Copiar lo ligam
 downloadTitle = Telecargar los fichièrs
+trySendDescription = Ensajatz { -send-brand } per un partiment de fichièrs simple e segur.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Òm pòt pas qu’enviar 1 fichièr al còp.
+       *[other] Òm pòt pas qu’enviar { $count } fichièrs al còp.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Pas qu’un archiu es autorizat.
+       *[other] Pas que { $count } archius son autorizats.
+    }
 expiredTitle = Aqueste ligam a expirat.
 downloadFirefox = Telecargar { -firefox }
+legalTitle = Avís de confidencialitat de { -send-short-brand }
 legalDateStamp = Version 1.0 del 12 de març de 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } j { $hours } h { $minutes } min
 addFilesButton = Seleccionatz los fichièrs de mandar
 uploadButton = Enviar
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Lissatz-depausatz de fichièrs
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = o clicatz per enviar fins a { $size }
 addPassword = Protegir amb un senhal
 emailPlaceholder = Picatz vòstra adreça electronica
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Connectatz-vos per enviar fins a { $size }
 signInOnlyButton = Connexion
+accountBenefitTitle = Creatz un compte { -firefox } o connectatz-vos
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Partejatz de fichièrs fins a { $size }
+accountBenefitDownloadCount = Partejatz de fichièrs amb mai de personas
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Mantenètz los ligams actius fins a 1 jorn
+       *[other] Mantenètz los ligams actius fins a { $count } jorns
+    }
+accountBenefitSync = Gerissètz los fichièrs partejats de qualque siá periferic estant
+accountBenefitMoz = Aprenètz-ne mai suls autres servicis { -mozilla }
 signOut = Desconnexion
+okButton = D'acòrd
 downloadingTitle = Telecargament
+noStreamsWarning = Pòt arribar qu’aqueste navegador pòsca pas deschifrar un fichièr tan gròs.
+noStreamsOptionCopy = Copiatz lo ligam per lo dobrir dins un autre navegador
+noStreamsOptionFirefox = Ensajatz nòstre navegador preferit
+noStreamsOptionDownload = Contunhar amb aqueste navegador
+downloadFirefoxPromo = Lo nòu { -firefox } vos provesís { -send-short-brand }.
+# the next line after the colon contains a file name
+shareLinkDescription = Partejatz lo ligam cap a vòstre fichièr :
 shareLinkButton = Partejar lo ligam
+# $name is the name of the file
+shareMessage = Telecargar « { $name } » amb { -send-brand } : un biais simple e segur de partejar de fichièrs.
+trailheadPromo = Existís un biais de protegir vòstra vida privada. Rejonhètz Firefox.
 learnMore = Ne saber mai.
