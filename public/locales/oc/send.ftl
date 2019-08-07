@@ -54,6 +54,7 @@ passwordSetError = Aqueste senhal a pas pogut èsser definit
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Partatge simple e privat de fichièrs
+introDescription = { -send-brand } vos permet de partejar de fichièr amb un chiframent del cap a la fin e un ligam qu’expira automaticament. Atal podètz gardar  privat çò que partejatz e vos assegurar que demorarà pas en linha per totjorn.
 notifyUploadEncryptDone = Vòstre fichièr es chifrat e prèst per mandadís
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Expira aprèp { $downloadCount } o { $timespan }
@@ -93,6 +94,7 @@ totalSize = Talha totala : { $size }
 copyLinkDescription = Copiatz lo ligam per partejar vòstre fichièr :
 copyLinkButton = Copiar lo ligam
 downloadTitle = Telecargar los fichièrs
+downloadDescription = Aqueste fichièr foguèt partejat via { -send-brand } amb chiframent del cap a la fin e un ligam qu’expira automaticament.
 trySendDescription = Ensajatz { -send-brand } per un partiment de fichièrs simple e segur.
 # count will always be > 10
 tooManyFiles =
@@ -107,6 +109,7 @@ tooManyArchives =
        *[other] Pas que { $count } archius son autorizats.
     }
 expiredTitle = Aqueste ligam a expirat.
+notSupportedDescription = { -send-brand } foncionarà pas amb aqueste navegador. { -send-short-brand } fonciona melhor amb la darrièra version de { -firefox } e foncionarà amb la version mai recenta de la màger part dels navegadors.
 downloadFirefox = Telecargar { -firefox }
 legalTitle = Avís de confidencialitat de { -send-short-brand }
 legalDateStamp = Version 1.0 del 12 de març de 2019
