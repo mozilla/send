@@ -26,6 +26,7 @@ fileTooBig = Aqueste fichièr es tròp gròs per l’enviar. Sa talha deu èsser
 linkExpiredAlt = Lo ligam a expirat
 notSupportedHeader = Vòstre navegador es pas compatible.
 notSupportedLink = Perqué mon navegador es pas compatible ?
+notSupportedOutdatedDetail = Aquesta version de Firefox es pas compatibla amb la tecnologia web amb la quala fonciona Firefox Send. Vos cal metre a jorn lo navegador.
 updateFirefox = Metre a jorn Firefox
 deletePopupCancel = Anullar
 deleteButtonHover = Suprimir
