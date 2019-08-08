@@ -112,6 +112,7 @@ export default class FileReceiver extends Nanobus {
   }
 
   async downloadStream(noSave = false) {
+    const start = Date.now();
     const onprogress = p => {
       this.progress = [p, this.fileInfo.size];
       this.emit('progress');
@@ -162,11 +163,29 @@ export default class FileReceiver extends Nanobus {
       }
 
       let prog = 0;
+      let hangs = 0;
       while (prog < this.fileInfo.size) {
         const msg = await this.sendMessageToSw({
           request: 'progress',
           id: this.fileInfo.id
         });
+        if (msg.progress === prog) {
+          hangs++;
+        } else {
+          hangs = 0;
+        }
+        if (hangs > 30) {
+          // TODO: On Chrome we don't get a cancel
+          // signal so one is indistinguishable from
+          // a hang. We may be able to detect
+          // which end is hung in the service worker
+          // to improve on this.
+          const e = new Error('hung download');
+          e.duration = Date.now() - start;
+          e.size = this.fileInfo.size;
+          e.progress = prog;
+          throw e;
+        }
         prog = msg.progress;
         onprogress(prog);
         await delay(1000);
