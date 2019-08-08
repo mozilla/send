@@ -176,14 +176,13 @@ export default function(state, emitter) {
     } catch (err) {
       if (err.message === '0') {
         //cancelled. do nothing
-        const duration = Date.now() - start;
-        metrics.cancelledUpload(archive, duration);
+        metrics.cancelledUpload(archive, err.duration);
         render();
       } else {
         // eslint-disable-next-line no-console
         console.error(err);
         state.raven.captureException(err);
-        metrics.stoppedUpload(archive);
+        metrics.stoppedUpload(archive, err.duration);
         emitter.emit('pushState', '/error');
       }
     } finally {

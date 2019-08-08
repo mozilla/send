@@ -11,6 +11,15 @@ if (!fileProtocolWssUrl) {
   fileProtocolWssUrl = 'wss://send.firefox.com/api/ws';
 }
 
+export class ConnectionError extends Error {
+  constructor(cancelled, duration, size) {
+    super(cancelled ? '0' : 'connection closed');
+    this.cancelled = cancelled;
+    this.duration = duration;
+    this.size = size;
+  }
+}
+
 export function setFileProtocolWssUrl(url) {
   localStorage && localStorage.setItem('wssURL', url);
   fileProtocolWssUrl = url;
@@ -150,10 +159,7 @@ function listenForResponse(ws, canceller) {
     function handleClose(event) {
       // a 'close' event before a 'message' event means the request failed
       ws.removeEventListener('message', handleMessage);
-      const error = canceller.cancelled
-        ? canceller.error
-        : new Error('connection closed');
-      reject(error);
+      reject(new ConnectionError(canceller.cancelled));
     }
     function handleMessage(msg) {
       ws.removeEventListener('close', handleClose);
@@ -183,6 +189,8 @@ async function upload(
   onprogress,
   canceller
 ) {
+  let size = 0;
+  const start = Date.now();
   const host = window.location.hostname;
   const port = window.location.port;
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -210,7 +218,6 @@ async function upload(
 
     const reader = stream.getReader();
     let state = await reader.read();
-    let size = 0;
     while (!state.done) {
       if (canceller.cancelled) {
         ws.close();
@@ -236,7 +243,12 @@ async function upload(
     }
 
     await completedResponse;
+    uploadInfo.duration = Date.now() - start;
     return uploadInfo;
+  } catch (e) {
+    e.size = size;
+    e.duration = Date.now() - start;
+    throw e;
   } finally {
     if (![WebSocket.CLOSED, WebSocket.CLOSING].includes(ws.readyState)) {
       ws.close();
@@ -257,7 +269,6 @@ export function uploadWs(
 
   return {
     cancel: function() {
-      canceller.error = new Error(0);
       canceller.cancelled = true;
     },
 
@@ -297,7 +308,7 @@ async function downloadS(id, keychain, signal) {
   return response.body;
 }
 
-async function tryDownloadStream(id, keychain, signal, tries = 1) {
+async function tryDownloadStream(id, keychain, signal, tries = 2) {
   try {
     const result = await downloadS(id, keychain, signal);
     return result;
@@ -319,7 +330,7 @@ export function downloadStream(id, keychain) {
   }
   return {
     cancel,
-    result: tryDownloadStream(id, keychain, controller.signal, 2)
+    result: tryDownloadStream(id, keychain, controller.signal)
   };
 }
 
@@ -359,7 +370,7 @@ async function download(id, keychain, onprogress, canceller) {
   });
 }
 
-async function tryDownload(id, keychain, onprogress, canceller, tries = 1) {
+async function tryDownload(id, keychain, onprogress, canceller, tries = 2) {
   try {
     const result = await download(id, keychain, onprogress, canceller);
     return result;
@@ -380,7 +391,7 @@ export function downloadFile(id, keychain, onprogress) {
   }
   return {
     cancel,
-    result: tryDownload(id, keychain, onprogress, canceller, 2)
+    result: tryDownload(id, keychain, onprogress, canceller)
   };
 }
 

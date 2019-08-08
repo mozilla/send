@@ -107,9 +107,10 @@ function completedUpload(archive, duration) {
   });
 }
 
-function stoppedUpload(archive) {
+function stoppedUpload(archive, duration = 0) {
   return addEvent('client_upload', {
     download_limit: archive.dlimit,
+    duration: sizeOrder(duration),
     file_count: archive.numFiles,
     password_protected: !!archive.password,
     size: sizeOrder(archive.size),
