@@ -22,7 +22,7 @@ class GCSStorage {
         .pipe(
           this.bucket.file(id).createWriteStream({
             validation: false,
-            resumable: false
+            resumable: true
           })
         )
         .on('error', reject)
