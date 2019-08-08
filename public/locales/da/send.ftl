@@ -151,3 +151,5 @@ shareLinkDescription = Del linket til din fil:
 shareLinkButton = Del link
 # $name is the name of the file
 shareMessage = Hent { $name } med { -send-brand } - simpel og sikker fildeling
+trailheadPromo = Beskyt dine digitale rettigheder. Slut dig til Firefox.
+learnMore = Læs mere.
