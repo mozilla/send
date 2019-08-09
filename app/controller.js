@@ -181,7 +181,10 @@ export default function(state, emitter) {
       } else {
         // eslint-disable-next-line no-console
         console.error(err);
-        state.raven.captureException(err);
+        state.raven.captureException(err, {
+          duration: err.duration,
+          size: err.size
+        });
         metrics.stoppedUpload(archive, err.duration);
         emitter.emit('pushState', '/error');
       }
@@ -261,7 +264,11 @@ export default function(state, emitter) {
         state.transfer = null;
         const location = err.message === '404' ? '/404' : '/error';
         if (location === '/error') {
-          state.raven.captureException(err);
+          state.raven.captureException(err, {
+            duration: err.duration,
+            size: err.size,
+            progress: err.progress
+          });
           const duration = Date.now() - start;
           metrics.stoppedDownload({
             size,
