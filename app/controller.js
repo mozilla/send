@@ -76,7 +76,7 @@ export default function(state, emitter) {
       state.storage.remove(ownedFile.id);
       await ownedFile.del();
     } catch (e) {
-      state.raven.captureException(e);
+      state.sentry.captureException(e);
     }
     render();
   });
@@ -181,9 +181,10 @@ export default function(state, emitter) {
       } else {
         // eslint-disable-next-line no-console
         console.error(err);
-        state.raven.captureException(err, {
-          duration: err.duration,
-          size: err.size
+        state.sentry.withScope(scope => {
+          scope.setExtra('duration', err.duration);
+          scope.setExtra('size', err.size);
+          state.sentry.captureException(err);
         });
         metrics.stoppedUpload(archive, err.duration);
         emitter.emit('pushState', '/error');
@@ -264,10 +265,11 @@ export default function(state, emitter) {
         state.transfer = null;
         const location = err.message === '404' ? '/404' : '/error';
         if (location === '/error') {
-          state.raven.captureException(err, {
-            duration: err.duration,
-            size: err.size,
-            progress: err.progress
+          state.sentry.withScope(scope => {
+            scope.setExtra('duration', err.duration);
+            scope.setExtra('size', err.size);
+            scope.setExtra('progress', err.progress);
+            state.sentry.captureException(err);
           });
           const duration = Date.now() - start;
           metrics.stoppedDownload({

@@ -1,7 +1,7 @@
 import 'intl-pluralrules';
 import choo from 'choo';
 import html from 'choo/html';
-import Raven from 'raven-js';
+import * as Sentry from '@sentry/browser';
 
 import { setApiUrlPrefix, getConstants } from '../app/api';
 import metrics from '../app/metrics';
@@ -82,7 +82,7 @@ function body(main) {
     state.archive = new Archive([], DEFAULTS.EXPIRE_SECONDS);
     state.storage = storage;
     state.user = new User(storage, LIMITS);
-    state.raven = Raven;
+    state.sentry = Sentry;
   });
   app.use(metrics);
   app.route('/', body(home));

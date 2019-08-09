@@ -12,7 +12,7 @@ export default function initialState(state, emitter) {
     getAsset(name) {
       return `${state.prefix}/${name}`;
     },
-    raven: {
+    sentry: {
       captureException: e => {
         console.error('ERROR ' + e + ' ' + e.stack);
       }

@@ -12,15 +12,15 @@ import pasteManager from './pasteManager';
 import storage from './storage';
 import metrics from './metrics';
 import experiments from './experiments';
-import Raven from 'raven-js';
+import * as Sentry from '@sentry/browser';
 import './main.css';
 import User from './user';
 import { getTranslator } from './locale';
 import Archive from './archive';
 import { setTranslate, locale } from './utils';
 
-if (navigator.doNotTrack !== '1' && window.RAVEN_CONFIG) {
-  Raven.config(window.SENTRY_ID, window.RAVEN_CONFIG).install();
+if (navigator.doNotTrack !== '1' && window.SENTRY_CONFIG) {
+  Sentry.init(window.SENTRY_CONFIG);
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -56,7 +56,7 @@ if (process.env.NODE_ENV === 'production') {
     capabilities,
     translate,
     storage,
-    raven: Raven,
+    sentry: Sentry,
     user: new User(storage, LIMITS, window.AUTH_CONFIG),
     transfer: null,
     fileInfo: null

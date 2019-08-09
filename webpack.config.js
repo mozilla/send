@@ -114,6 +114,7 @@ const web = {
             exclude: [
               path.resolve(__dirname, 'node_modules/crc'),
               path.resolve(__dirname, 'node_modules/@fluent'),
+              path.resolve(__dirname, 'node_modules/@sentry'),
               path.resolve(__dirname, 'node_modules/tslib'),
               path.resolve(__dirname, 'node_modules/webcrypto-core')
             ],

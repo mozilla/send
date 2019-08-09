@@ -1,13 +1,13 @@
 const express = require('express');
 const path = require('path');
-const Raven = require('raven');
+const Sentry = require('@sentry/node');
 const config = require('../config');
 const routes = require('../routes');
 const pages = require('../routes/pages');
 const expressWs = require('@dannycoates/express-ws');
 
 if (config.sentry_dsn) {
-  Raven.config(config.sentry_dsn).install();
+  Sentry.init({ dsn: config.sentry_dsn });
 }
 
 const app = express();
