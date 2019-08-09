@@ -146,11 +146,13 @@ export async function setPassword(id, owner_token, keychain) {
 }
 
 function asyncInitWebSocket(server) {
-  return new Promise(resolve => {
-    const ws = new WebSocket(server);
-    ws.onopen = () => {
-      resolve(ws);
-    };
+  return new Promise((resolve, reject) => {
+    try {
+      const ws = new WebSocket(server);
+      ws.addEventListener('open', () => resolve(ws), { once: true });
+    } catch (e) {
+      reject(new ConnectionError(false));
+    }
   });
 }
 
