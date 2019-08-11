@@ -89,6 +89,7 @@ totalSize = మొత్తం పరిమాణం: { $size }
 copyLinkDescription = మీ ఫైలును భాగస్వామ్యం చేయడానికి ఈ లంకెను నకలు చేయండి:
 copyLinkButton = లంకెను నకలుతీయి
 downloadTitle = ఫైళ్లను దింపుకోండి
+expiredTitle = ఈ లంకె గడువు ముగిసింది.
 downloadFirefox = { -firefox } ను దింపుకోండి
 legalTitle = { -send-short-brand } గోప్యతా నోటీసు
 legalDateStamp = వెర్షన్ 1.0, మార్చి 12, 2019 నాటిది
@@ -96,6 +97,11 @@ legalDateStamp = వెర్షన్ 1.0, మార్చి 12, 2019 నా�
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = ఎక్కించడానికి ఫైళ్ళను ఎంచుకోండి
 uploadButton = ఎక్కించు
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = ఫైళ్ళను లాగండి మరియు వదలండి
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = లేదా { $size } వరకు పంపడానికి నొక్కండి
 addPassword = సంకేతపదంతో రక్షించండి
 emailPlaceholder = ఈ ఈమెయిలును ఇవ్వండి
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
@@ -105,6 +111,7 @@ accountBenefitTitle = ఒక { -firefox } ఖాతాని సృష్టి�
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = { $size } పరిమాణం ఫైళ్ళ వరకు పంచుకోండి
 accountBenefitDownloadCount = ఫైళ్లను ఎక్కువ మందితో పంచుకోండి
+accountBenefitSync = ఏదైనా పరికరం నుండి పంచుకున్న ఫైళ్ళను నిర్వహించండి
 signOut = నిష్క్రమించు
 okButton = సరే
 downloadingTitle = దింపుకుంటోంది
