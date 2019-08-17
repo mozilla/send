@@ -87,7 +87,7 @@ totalSize = Tổng kích thước: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Sao chép liên kết để chia sẻ tập tin của bạn:
 copyLinkButton = Sao chép liên kết
-downloadTitle = Tải tập tin
+downloadTitle = Tải xuống tập tin
 downloadDescription = Tập tin này đã được chia sẻ qua { -send-brand } với mã hóa đầu cuối và liên kết tự động hết hạn.
 trySendDescription = Hãy thử { -send-brand } để chia sẻ tập tin đơn giản, an toàn.
 # count will always be > 10
