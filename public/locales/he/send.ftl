@@ -7,13 +7,13 @@ decryptingFile = מתבצע פענוח...
 downloadCount =
     { $num ->
         [one] הורדה אחת
-       *[other] { $number } הורדות
+       *[other] { $num } הורדות
     }
 timespanHours =
     { $num ->
         [one] שעה אחת
         [two] שעתיים
-       *[other] { $number } שעות
+       *[other] { $num } שעות
     }
 copiedUrl = הועתק!
 unlockInputPlaceholder = ססמה
