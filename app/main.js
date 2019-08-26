@@ -62,7 +62,7 @@ if (process.env.NODE_ENV === 'production') {
     fileInfo: null
   };
 
-  const app = routes(choo());
+  const app = routes(choo({ hash: true }));
   // eslint-disable-next-line require-atomic-updates
   window.app = app;
   app.use(experiments);
