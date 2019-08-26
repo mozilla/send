@@ -76,8 +76,8 @@ async function polyfillStreams() {
 }
 
 export default async function getCapabilities() {
-  const serviceWorker =
-    'serviceWorker' in navigator && browserName() !== 'edge';
+  const browser = browserName();
+  const serviceWorker = 'serviceWorker' in navigator && browser !== 'edge';
   let crypto = await checkCrypto();
   const nativeStreams = checkStreams();
   let polyStreams = false;
@@ -97,13 +97,16 @@ export default async function getCapabilities() {
     window.matchMedia('(display-mode: standalone)').matches ||
     navigator.standalone;
 
+  const mobileFirefox =
+    browser === 'firefox' && /mobile/i.test(navigator.userAgent);
+
   return {
     account,
     crypto,
     serviceWorker,
     streamUpload: nativeStreams || polyStreams,
     streamDownload:
-      nativeStreams && serviceWorker && browserName() !== 'safari',
+      nativeStreams && serviceWorker && browser !== 'safari' && !mobileFirefox,
     multifile: nativeStreams || polyStreams,
     share,
     standalone
