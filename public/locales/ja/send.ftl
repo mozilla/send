@@ -140,4 +140,5 @@ shareLinkDescription = ファイルへのリンクを共有しましょう:
 shareLinkButton = リンクを共有
 # $name is the name of the file
 shareMessage = { -send-brand } で "{ $name }" をダウンロード: シンプルで安全なファイル共有
+trailheadPromo = プライバシーを保護する方法があります。Firefox を試してください。
 learnMore = 詳細情報
