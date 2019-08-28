@@ -11,6 +11,15 @@ if (!fileProtocolWssUrl) {
   fileProtocolWssUrl = 'wss://send.firefox.com/api/ws';
 }
 
+export class ConnectionError extends Error {
+  constructor(cancelled, duration, size) {
+    super(cancelled ? '0' : 'connection closed');
+    this.cancelled = cancelled;
+    this.duration = duration;
+    this.size = size;
+  }
+}
+
 export function setFileProtocolWssUrl(url) {
   localStorage && localStorage.setItem('wssURL', url);
   fileProtocolWssUrl = url;
@@ -137,17 +146,25 @@ export async function setPassword(id, owner_token, keychain) {
 }
 
 function asyncInitWebSocket(server) {
-  return new Promise(resolve => {
-    const ws = new WebSocket(server);
-    ws.onopen = () => {
-      resolve(ws);
-    };
+  return new Promise((resolve, reject) => {
+    try {
+      const ws = new WebSocket(server);
+      ws.addEventListener('open', () => resolve(ws), { once: true });
+    } catch (e) {
+      reject(new ConnectionError(false));
+    }
   });
 }
 
 function listenForResponse(ws, canceller) {
   return new Promise((resolve, reject) => {
+    function handleClose(event) {
+      // a 'close' event before a 'message' event means the request failed
+      ws.removeEventListener('message', handleMessage);
+      reject(new ConnectionError(canceller.cancelled));
+    }
     function handleMessage(msg) {
+      ws.removeEventListener('close', handleClose);
       try {
         const response = JSON.parse(msg.data);
         if (response.error) {
@@ -156,13 +173,11 @@ function listenForResponse(ws, canceller) {
           resolve(response);
         }
       } catch (e) {
-        ws.close();
-        canceller.cancelled = true;
-        canceller.error = e;
         reject(e);
       }
     }
     ws.addEventListener('message', handleMessage, { once: true });
+    ws.addEventListener('close', handleClose, { once: true });
   });
 }
 
@@ -176,6 +191,8 @@ async function upload(
   onprogress,
   canceller
 ) {
+  let size = 0;
+  const start = Date.now();
   const host = window.location.hostname;
   const port = window.location.port;
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -203,31 +220,41 @@ async function upload(
 
     const reader = stream.getReader();
     let state = await reader.read();
-    let size = 0;
     while (!state.done) {
-      const buf = state.value;
       if (canceller.cancelled) {
-        throw canceller.error;
+        ws.close();
       }
-
+      if (ws.readyState !== WebSocket.OPEN) {
+        break;
+      }
+      const buf = state.value;
       ws.send(buf);
-
       onprogress(size);
       size += buf.length;
       state = await reader.read();
-      while (ws.bufferedAmount > ECE_RECORD_SIZE * 2) {
+      while (
+        ws.bufferedAmount > ECE_RECORD_SIZE * 2 &&
+        ws.readyState === WebSocket.OPEN &&
+        !canceller.cancelled
+      ) {
         await delay();
       }
     }
-    const footer = new Uint8Array([0]);
-    ws.send(footer);
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(new Uint8Array([0])); //EOF
+    }
 
     await completedResponse;
-    ws.close();
+    uploadInfo.duration = Date.now() - start;
     return uploadInfo;
   } catch (e) {
-    ws.close(4000);
+    e.size = size;
+    e.duration = Date.now() - start;
     throw e;
+  } finally {
+    if (![WebSocket.CLOSED, WebSocket.CLOSING].includes(ws.readyState)) {
+      ws.close();
+    }
   }
 }
 
@@ -244,7 +271,6 @@ export function uploadWs(
 
   return {
     cancel: function() {
-      canceller.error = new Error(0);
       canceller.cancelled = true;
     },
 
@@ -284,7 +310,7 @@ async function downloadS(id, keychain, signal) {
   return response.body;
 }
 
-async function tryDownloadStream(id, keychain, signal, tries = 1) {
+async function tryDownloadStream(id, keychain, signal, tries = 2) {
   try {
     const result = await downloadS(id, keychain, signal);
     return result;
@@ -306,18 +332,19 @@ export function downloadStream(id, keychain) {
   }
   return {
     cancel,
-    result: tryDownloadStream(id, keychain, controller.signal, 2)
+    result: tryDownloadStream(id, keychain, controller.signal)
   };
 }
 
 //////////////////
 
-function download(id, keychain, onprogress, canceller) {
+async function download(id, keychain, onprogress, canceller) {
+  const auth = await keychain.authHeader();
   const xhr = new XMLHttpRequest();
   canceller.oncancel = function() {
     xhr.abort();
   };
-  return new Promise(async function(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     xhr.addEventListener('loadend', function() {
       canceller.oncancel = function() {};
       const authHeader = xhr.getResponseHeader('WWW-Authenticate');
@@ -337,7 +364,6 @@ function download(id, keychain, onprogress, canceller) {
         onprogress(event.loaded);
       }
     });
-    const auth = await keychain.authHeader();
     xhr.open('get', getApiUrl(`/api/download/blob/${id}`));
     xhr.setRequestHeader('Authorization', auth);
     xhr.responseType = 'blob';
@@ -346,7 +372,7 @@ function download(id, keychain, onprogress, canceller) {
   });
 }
 
-async function tryDownload(id, keychain, onprogress, canceller, tries = 1) {
+async function tryDownload(id, keychain, onprogress, canceller, tries = 2) {
   try {
     const result = await download(id, keychain, onprogress, canceller);
     return result;
@@ -367,7 +393,7 @@ export function downloadFile(id, keychain, onprogress) {
   }
   return {
     cancel,
-    result: tryDownload(id, keychain, onprogress, canceller, 2)
+    result: tryDownload(id, keychain, onprogress, canceller)
   };
 }
 

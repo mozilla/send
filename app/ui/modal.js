@@ -3,11 +3,11 @@ const html = require('choo/html');
 module.exports = function(state, emit) {
   return html`
     <send-modal
-      class="absolute pin flex items-center justify-center overflow-hidden z-40 bg-white md:rounded-lg md:my-8"
+      class="absolute inset-0 flex items-center justify-center overflow-hidden z-40 bg-white md:rounded-xl md:my-8"
       onclick="${close}"
     >
       <div
-        class="h-full w-full max-h-screen absolute pin-t flex items-center justify-center"
+        class="h-full w-full max-h-screen absolute top-0 flex items-center justify-center"
       >
         <div class="w-full h-full" onclick="${e => e.stopPropagation()}">
           ${state.modal(state, emit, close)}
@@ -21,7 +21,6 @@ module.exports = function(state, emit) {
       event.preventDefault();
       event.stopPropagation();
     }
-    state.modal = null;
-    emit('render');
+    emit('closeModal');
   }
 };

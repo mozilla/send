@@ -12,18 +12,11 @@ module.exports = function(trigger) {
       <send-signup-dialog
         class="flex flex-col lg:flex-row justify-center px-8 md:px-24 w-full h-full"
       >
+        <img src="${assets.get('master-logo.svg')}" class="h-16 mt-1 mb-4" />
         <section
-          class="flex flex-col flex-no-shrink self-center firefox-signup-logo"
+          class="flex flex-col flex-shrink-0 self-center lg:mx-6 lg:max-w-xs"
         >
-          <img
-            src="${assets.get('firefox_logo-only.svg')}"
-            class="h-16 mt-1 mb-4"
-          />
-        </section>
-        <section
-          class="flex flex-col flex-no-shrink self-center lg:mx-6 lg:max-w-xs"
-        >
-          <h1 class="font-bold text-center lg:text-left">
+          <h1 class="text-3xl font-bold text-center lg:text-left">
             ${state.translate('accountBenefitTitle')}
           </h1>
           <ul
@@ -53,9 +46,9 @@ module.exports = function(trigger) {
               placeholder=${state.translate('emailPlaceholder')}
             />
             <input
-              class="btn rounded-lg w-full flex flex-no-shrink items-center justify-center"
-              value="${state.translate('signInButton')}"
-              title="${state.translate('signInButton')}"
+              class="btn rounded-lg w-full flex flex-shrink-0 items-center justify-center"
+              value="${state.translate('signInOnlyButton')}"
+              title="${state.translate('signInOnlyButton')}"
               id="email-submit"
               type="submit"
             />

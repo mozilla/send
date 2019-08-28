@@ -118,7 +118,7 @@ addPassword = パスワードで保護
 emailPlaceholder = メールアドレスを入力
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = ログインすると最大 { $size } のファイルを送信できます
-signInButton = ログイン/登録
+signInOnlyButton = ログイン
 accountBenefitTitle = { -firefox } アカウントを作成またはログイン
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = 最大 { $size } までのファイルを共有
@@ -135,3 +135,10 @@ downloadingTitle = ダウンロード中
 noStreamsWarning = このブラウザーは、この大きさのファイルを復号化できません。
 noStreamsOptionCopy = リンクをコピーして他のブラウザーで開いてください
 noStreamsOptionDownload = このブラウザーで続ける
+# the next line after the colon contains a file name
+shareLinkDescription = ファイルへのリンクを共有しましょう:
+shareLinkButton = リンクを共有
+# $name is the name of the file
+shareMessage = { -send-brand } で "{ $name }" をダウンロード: シンプルで安全なファイル共有
+trailheadPromo = プライバシーを保護する方法があります。Firefox を試してください。
+learnMore = 詳細情報

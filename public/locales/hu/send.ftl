@@ -126,7 +126,7 @@ addPassword = Jelszavas védelem
 emailPlaceholder = Adja meg az e-mail címét
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Jelentkezzen be, és küldjön legfeljebb { $size }-ot
-signInButton = Bejelentkezés/regisztráció
+signInOnlyButton = Bejelentkezés
 accountBenefitTitle = Hozzon létre egy { -firefox } fiókot vagy jelentkezzen be
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Osszon meg fájlokat { $size }-ig
@@ -145,3 +145,11 @@ noStreamsWarning = Előfordulhat, hogy a böngésző nem fog tudni visszafejteni
 noStreamsOptionCopy = Másolja a hivatkozást, és nyissa meg egy másik böngészőben
 noStreamsOptionFirefox = Próbálja ki a kedvenc böngészőnket
 noStreamsOptionDownload = Folytatás ezzel a böngészővel
+downloadFirefoxPromo = A { -send-short-brand }et a vadonatúj { -firefox } hozza el Önnek.
+# the next line after the colon contains a file name
+shareLinkDescription = Ossza meg a fájlja hivatkozását:
+shareLinkButton = Hivatkozás megosztása
+# $name is the name of the file
+shareMessage = „{ $name }” letöltése a { -send-brand } segítségével: egyszerű, biztonságos fájlmegosztás
+trailheadPromo = Védje meg a magánszféráját. Csatlakozzon a Firefoxhoz.
+learnMore = További tudnivalók.

@@ -1,5 +1,5 @@
-/* global AUTH_CONFIG LOCALE */
-import { browserName } from './utils';
+/* global AUTH_CONFIG */
+import { browserName, locale } from './utils';
 
 async function checkCrypto() {
   try {
@@ -76,8 +76,8 @@ async function polyfillStreams() {
 }
 
 export default async function getCapabilities() {
-  const serviceWorker =
-    'serviceWorker' in navigator && browserName() !== 'edge';
+  const browser = browserName();
+  const serviceWorker = 'serviceWorker' in navigator && browser !== 'edge';
   let crypto = await checkCrypto();
   const nativeStreams = checkStreams();
   let polyStreams = false;
@@ -91,11 +91,14 @@ export default async function getCapabilities() {
     account = false;
   }
   const share =
-    typeof navigator.share === 'function' && LOCALE.startsWith('en'); // en until strings merge
+    typeof navigator.share === 'function' && locale().startsWith('en'); // en until strings merge
 
   const standalone =
     window.matchMedia('(display-mode: standalone)').matches ||
     navigator.standalone;
+
+  const mobileFirefox =
+    browser === 'firefox' && /mobile/i.test(navigator.userAgent);
 
   return {
     account,
@@ -103,7 +106,7 @@ export default async function getCapabilities() {
     serviceWorker,
     streamUpload: nativeStreams || polyStreams,
     streamDownload:
-      nativeStreams && serviceWorker && browserName() !== 'safari',
+      nativeStreams && serviceWorker && browser !== 'safari' && !mobileFirefox,
     multifile: nativeStreams || polyStreams,
     share,
     standalone

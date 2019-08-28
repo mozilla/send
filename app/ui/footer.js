@@ -19,7 +19,7 @@ class Footer extends Component {
     const feedbackUrl = `https://qsurvey.mozilla.com/s3/Firefox-Send-Product-Feedback?ver=${version}&browser=${browser}`;
     return html`
       <footer
-        class="flex flex-col md:flex-row items-start w-full flex-none self-start p-6 font-medium text-xs text-grey-dark md:items-center justify-between"
+        class="flex flex-col md:flex-row items-start w-full flex-none self-start p-6 md:p-8 font-medium text-xs text-grey-dark md:items-center justify-between"
       >
         <a
           class="mozilla-logo pb-10 md:pb-0 m-2"
@@ -28,7 +28,7 @@ class Footer extends Component {
           Mozilla
         </a>
         <ul
-          class="list-reset flex flex-col md:flex-row items-start md:items-center md:justify-end"
+          class="flex flex-col md:flex-row items-start md:items-center md:justify-end"
         >
           <li class="m-2">
             <a href="https://www.mozilla.org/about/legal/terms/services/#send">

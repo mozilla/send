@@ -123,7 +123,7 @@ addPassword = 密码保护
 emailPlaceholder = 请输入您的电子邮件地址
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = 登录以传送最大 { $size } 文件
-signInButton = 登录 / 注册
+signInOnlyButton = 登录
 accountBenefitTitle = 创建一个 { -firefox } 账户或登录
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = 分享最大 { $size } 文件
@@ -142,3 +142,11 @@ noStreamsWarning = 此浏览器可能无法解密这么大的文件。
 noStreamsOptionCopy = 复制链接以在其他浏览器中打开
 noStreamsOptionFirefox = 试试大家最喜爱的浏览器
 noStreamsOptionDownload = 使用此浏览器继续
+downloadFirefoxPromo = { -send-short-brand } 由焕然一新的 { -firefox } 为您奉上。
+# the next line after the colon contains a file name
+shareLinkDescription = 您的文件链接：
+shareLinkButton = 分享链接
+# $name is the name of the file
+shareMessage = 使用 { -send-brand } 下载“{ $name }”：简单、安全的文件分享服务
+trailheadPromo = 有种方法可以保护您的隐私，加入 Firefox。
+learnMore = 详细了解。

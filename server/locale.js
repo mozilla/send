@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { FluentBundle } = require('fluent');
+const { FluentBundle } = require('@fluent/bundle');
 const localesPath = path.resolve(__dirname, '../public/locales');
 const locales = fs.readdirSync(localesPath);
 

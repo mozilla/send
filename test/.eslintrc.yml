@@ -19,5 +19,7 @@ rules:
   mocha/no-pending-tests: error
   mocha/no-return-and-callback: warn
   mocha/no-skipped-tests: error
+  mocha/no-setup-in-describe: off
+  mocha/no-hooks-for-single-case: off
 
   no-console: off # ¯\_(ツ)_/¯

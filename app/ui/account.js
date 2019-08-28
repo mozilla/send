@@ -8,7 +8,8 @@ class Account extends Component {
     this.emit = emit;
     this.enabled = state.capabilities.account;
     this.local = state.components[name] = {};
-    this.setState();
+    this.buttonClass = '';
+    this.setLocal();
   }
 
   avatarClick(event) {
@@ -38,7 +39,7 @@ class Account extends Component {
     return this.local.loggedIn !== this.state.user.loggedIn;
   }
 
-  setState() {
+  setLocal() {
     const changed = this.changed();
     if (changed) {
       this.local.loggedIn = this.state.user.loggedIn;
@@ -47,7 +48,7 @@ class Account extends Component {
   }
 
   update() {
-    return this.setState();
+    return this.setLocal();
   }
 
   createElement() {
@@ -58,15 +59,17 @@ class Account extends Component {
     }
     const user = this.state.user;
     const translate = this.state.translate;
+    this.setLocal();
     if (!this.local.loggedIn) {
       return html`
         <send-account>
           <button
-            class="p-2 md:p-4 border rounded-lg text-blue-dark border-blue-dark hover:text-white hover:bg-blue-dark focus:outline"
+            class="px-4 py-2 md:px-8 md:py-4 focus:outline signin ${this
+              .buttonClass}"
             onclick="${e => this.login(e)}"
-            title="${translate('signInButton')}"
+            title="${translate('signInOnlyButton')}"
           >
-            ${translate('signInButton')}
+            ${translate('signInOnlyButton')}
           </button>
         </send-account>
       `;
@@ -82,7 +85,7 @@ class Account extends Component {
         />
         <ul
           id="accountMenu"
-          class="invisible list-reset absolute pin-t pin-r mt-10 pt-2 pb-2 bg-white shadow-md whitespace-no-wrap outline-none z-50"
+          class="invisible absolute top-0 right-0 mt-10 pt-2 pb-2 bg-white shadow-md whitespace-no-wrap outline-none z-50"
           onblur="${e => this.hideMenu(e)}"
         >
           <li class="p-2 text-grey-dark">${user.email}</li>

@@ -1,21 +1,23 @@
 import storage from './storage';
-import { platform } from './utils';
+import { platform, locale } from './utils';
 import { sendMetrics } from './api';
 
 let appState = null;
-// let experiment = null;
+let experiment = null;
 const HOUR = 1000 * 60 * 60;
 const events = [];
 let session_id = Date.now();
-const lang = document.querySelector('html').lang;
+const lang = locale();
 
 export default function initialize(state, emitter) {
   appState = state;
-  if (!appState.user.firstAction) {
-    appState.user.firstAction = appState.route === '/' ? 'upload' : 'download';
-  }
+
   emitter.on('DOMContentLoaded', () => {
-    // experiment = storage.enrolled[0];
+    experiment = storage.enrolled;
+    if (!appState.user.firstAction) {
+      appState.user.firstAction =
+        appState.route === '/' ? 'upload' : 'download';
+    }
     const query = appState.query;
     addEvent('client_visit', {
       entrypoint: appState.route === '/' ? 'upload' : 'download',
@@ -59,6 +61,11 @@ function submitEvents() {
 async function addEvent(event_type, event_properties) {
   const user_id = await appState.user.metricId();
   const device_id = await appState.user.deviceId();
+  const ab_id = Object.keys(experiment)[0];
+  if (ab_id) {
+    event_properties.experiment = ab_id;
+    event_properties.variant = experiment[ab_id];
+  }
   events.push({
     device_id,
     event_properties,
@@ -100,9 +107,10 @@ function completedUpload(archive, duration) {
   });
 }
 
-function stoppedUpload(archive) {
+function stoppedUpload(archive, duration = 0) {
   return addEvent('client_upload', {
     download_limit: archive.dlimit,
+    duration: sizeOrder(duration),
     file_count: archive.numFiles,
     password_protected: !!archive.password,
     size: sizeOrder(archive.size),

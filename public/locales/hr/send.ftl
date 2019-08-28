@@ -134,7 +134,7 @@ addPassword = Zaštitite lozinkom
 emailPlaceholder = Unesite svoju adresu e-pošte
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Prijavite se za slanje do { $size }
-signInButton = Prijavite se
+signInOnlyButton = Prijavi se
 accountBenefitTitle = Stvorite { -firefox } račun ili se prijavite
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Dijelite datoteke do { $size }
@@ -154,3 +154,11 @@ noStreamsWarning = Ovaj preglednik možda neće moći dekriptirati datoteku ove 
 noStreamsOptionCopy = Kopirajte poveznicu kako biste je otvorili u drugom pregledniku
 noStreamsOptionFirefox = Isprobajte naš omiljeni preglednik
 noStreamsOptionDownload = Nastavite s ovim preglednikom
+downloadFirefoxPromo = Potpuno novi { -firefox } vam donosi { -send-short-brand }.
+# the next line after the colon contains a file name
+shareLinkDescription = Dijelite poveznicu na svoju datoteku:
+shareLinkButton = Dijeli poveznicu
+# $name is the name of the file
+shareMessage = Preuzmite “{ $name }” sa { -send-brand }: jednostavno i sigurno dijeljenje datoteka
+trailheadPromo = Postoji način da zaštitite svoju privatnost. Pridružite se Firefoxu.
+learnMore = Saznajte više.

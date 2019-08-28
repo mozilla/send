@@ -8,9 +8,11 @@ module.exports = function(state, emit) {
       <div
         class="flex flex-col items-center bg-white m-4 px-6 py-8 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full md:h-full"
       >
-        <h1 class="text-center">${state.translate('legalTitle')}</h1>
+        <h1 class="text-center text-3xl font-bold">
+          ${state.translate('legalTitle')}
+        </h1>
         <p class="mt-2">${state.translate('legalDateStamp')}</p>
-        <div class="overflow-scroll py-8 px-12">
+        <div class="overflow-y-scroll py-8 px-12">
           <p class="leading-normal">
             <span>When Mozilla receives information from you, our</span>
             <a

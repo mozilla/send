@@ -44,7 +44,6 @@ export default class FileSender extends Nanobus {
   }
 
   async upload(archive, bearerToken) {
-    const start = Date.now();
     if (this.cancelled) {
       throw new Error(0);
     }
@@ -76,7 +75,6 @@ export default class FileSender extends Nanobus {
     this.emit('progress'); // HACK to kick MS Edge
     try {
       const result = await this.uploadRequest.result;
-      const time = Date.now() - start;
       this.msg = 'notifyUploadEncryptDone';
       this.uploadRequest = null;
       this.progress = [1, 1];
@@ -87,8 +85,8 @@ export default class FileSender extends Nanobus {
         name: archive.name,
         size: archive.size,
         manifest: archive.manifest,
-        time: time,
-        speed: archive.size / (time / 1000),
+        time: result.duration,
+        speed: archive.size / (result.duration / 1000),
         createdAt: Date.now(),
         expiresAt: Date.now() + archive.timeLimit * 1000,
         secretKey: secretKey,

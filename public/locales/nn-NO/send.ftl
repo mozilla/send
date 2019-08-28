@@ -54,6 +54,7 @@ passwordSetError = Dette passordet kunne ikkje stillast inn
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Enkel, privat fildeling
+introDescription = { -send-brand } lèt deg dele filer via ei tidsavgrensa lenke med ende-til-ende-kryptering. På den måten kan du dele filer privat og samstundes vere trygg på at det ikkje ligg på nettet for alltid.
 notifyUploadEncryptDone = Fila di er kryptert og klar til å bli sendt
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Går ut etter { $downloadCount } eller { $timespan }
@@ -93,6 +94,7 @@ totalSize = Total storleik: { $size }
 copyLinkDescription = Kopier lenka for å dele fila di:
 copyLinkButton = Kopier lenke
 downloadTitle = Last ned filer
+downloadDescription = Denne fila vart delt via { -send-brand } med ende-til-ende-kryptering og ei lenke som automatisk går ut.
 trySendDescription = Prøv { -send-brand } for enkel og sikker fildeling.
 # count will always be > 10
 tooManyFiles =
@@ -107,6 +109,7 @@ tooManyArchives =
        *[other] Berre { $count } arkiv er lov.
     }
 expiredTitle = Denne lenka har gått ut.
+notSupportedDescription = { -send-brand } fungerer ikkje med denne nettlesaren. { -send-short-brand } fungerer best med siste versjon av { -firefox } og med dei fleste andre nye nettlesarar.
 downloadFirefox = Last ned { -firefox }
 legalTitle = { -send-short-brand }, om personvernpraksis
 legalDateStamp = Versjon 1.0, datert den 12 mars 2019
@@ -118,22 +121,22 @@ uploadButton = Last opp
 dragAndDropFiles = Dra og slepp filer
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-orClickWithSize = eller klikk for å senda opp til { $size }
+orClickWithSize = eller klikk for å sende filer på opptil { $size }
 addPassword = Vern med passord
 emailPlaceholder = Skriv inn e-postadressa di
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-signInSizeBump = LOgg inn for å senda opp til { $size }
-signInButton = Logg inn/Registrer deg
+signInSizeBump = Logg inn for å sende filer på opptil { $size }
+signInOnlyButton = Logg inn
 accountBenefitTitle = Lag ein { -firefox }-konto eller logg inn
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-accountBenefitLargeFiles = Del filer opp til { $size }
+accountBenefitLargeFiles = Del filer på opptil { $size }
 accountBenefitDownloadCount = Del filer med fleire personar
 accountBenefitTimeLimit =
     { $count ->
-        [one] Hald lenka aktiv opp til 1 dag
-       *[other] Hald lenker aktive opp til { $count } dagar
+        [one] Hald lenka aktiv opptil 1 dag
+       *[other] Hald lenker aktive opptil { $count } dagar
     }
-accountBenefitSync = Handter delte filer frå alle einingar
+accountBenefitSync = Handter delte filer frå kva som helst eining
 accountBenefitMoz = Les om andre { -mozilla }-tenster
 signOut = Logg ut
 okButton = OK
@@ -142,3 +145,11 @@ noStreamsWarning = Denne nettlesaren kan kanskje ikkje dekryptere ei så stor fi
 noStreamsOptionCopy = Kopier lenka for å opne henne i ein annan nettlesar
 noStreamsOptionFirefox = Prøv favorittnettlesaren vår
 noStreamsOptionDownload = Fortset med denne nettlesaren
+downloadFirefoxPromo = { -send-short-brand } vert presentert for deg av den heilt nye { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Del lenka til fila di:
+shareLinkButton = Del lenke
+# $name is the name of the file
+shareMessage = Last ned "{ $name }" med { -send-brand }: enkel, trygg fildelning
+trailheadPromo = Det finst ein måte å ta vare på personvernet ditt. Ver med Firefox på ferda.
+learnMore = Les meir.

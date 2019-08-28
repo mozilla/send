@@ -120,7 +120,7 @@ function fileInfo(file, action) {
 function archiveInfo(archive, action) {
   return html`
     <p class="w-full flex items-center">
-      <img class="mr-3 flex-no-shrink" src="${assets.get('blue_file.svg')}"/>
+      <img class="mr-3 flex-shrink-0" src="${assets.get('blue_file.svg')}"/>
       <p class="flex-grow">
         <h1 class="text-base font-medium word-break-all">${archive.name}</h1>
         <div class="text-sm font-normal opacity-75 pt-1">${bytes(
@@ -155,7 +155,7 @@ function archiveDetails(translate, archive) {
             num: archive.manifest.files.length
           })}
         </summary>
-        ${list(archive.manifest.files.map(f => fileInfo(f)), 'list-reset')}
+        ${list(archive.manifest.files.map(f => fileInfo(f)))}
       </details>
     `;
   }
@@ -213,7 +213,7 @@ module.exports = function(state, emit, archive) {
         html`
           <input
             type="image"
-            class="self-start flex-no-shrink text-white hover:opacity-75 focus:outline"
+            class="self-start flex-shrink-0 text-white hover:opacity-75 focus:outline"
             alt="${state.translate('deleteButtonHover')}"
             title="${state.translate('deleteButtonHover')}"
             src="${assets.get('close-16.svg')}"
@@ -256,9 +256,7 @@ module.exports = function(state, emit, archive) {
       try {
         await navigator.share({
           title: state.translate('-send-brand'),
-          text: `Download "${
-            archive.name
-          }" with Firefox Send: simple, safe file sharing`,
+          text: `Download "${archive.name}" with Firefox Send: simple, safe file sharing`,
           //state.translate('shareMessage', { name }),
           url: archive.url
         });
@@ -278,15 +276,15 @@ module.exports.wip = function(state, emit) {
           .map(f =>
             fileInfo(f, remove(f, state.translate('deleteButtonHover')))
           ),
-        'flex-shrink bg-grey-lightest rounded-t list-reset overflow-y-auto px-6 py-4 md:h-full md:max-h-half-screen',
+        'flex-shrink bg-grey-lightest rounded-t overflow-y-auto px-6 py-4 md:h-full md:max-h-half-screen',
         'bg-white px-2 my-2 shadow-light rounded'
       )}
       <div
-        class="flex-no-shrink flex-grow flex items-end p-4 bg-grey-lightest rounded-b mb-1 font-medium"
+        class="flex-shrink-0 flex-grow flex items-end p-4 bg-grey-lightest rounded-b mb-1 font-medium"
       >
         <input
           id="file-upload"
-          class="opacity-0 w-0 h-0 appearance-none absolute"
+          class="opacity-0 w-0 h-0 appearance-none absolute overflow-hidden"
           type="file"
           multiple
           onfocus="${focus}"
@@ -315,7 +313,7 @@ module.exports.wip = function(state, emit) {
       ${expiryOptions(state, emit)} ${password(state, emit)}
       <button
         id="upload-btn"
-        class="btn rounded-lg flex-no-shrink focus:outline"
+        class="btn rounded-lg flex-shrink-0 focus:outline"
         title="${state.translate('uploadButton')}"
         onclick="${upload}"
       >
@@ -430,7 +428,7 @@ module.exports.empty = function(state, emit) {
         `;
   return html`
     <send-upload-area
-      class="flex flex-col items-center justify-center border-2 border-dashed border-grey rounded px-6 py-16 h-full w-full"
+      class="flex flex-col items-center justify-center border-2 border-dashed border-grey-transparent rounded px-6 py-16 h-full w-full"
       onclick="${e => {
         if (e.target.tagName !== 'LABEL') {
           document.getElementById('file-upload').click();
@@ -448,7 +446,7 @@ module.exports.empty = function(state, emit) {
       </div>
       <input
         id="file-upload"
-        class="opacity-0 w-0 h-0 appearance-none absolute"
+        class="opacity-0 w-0 h-0 appearance-none absolute overflow-hidden"
         type="file"
         multiple
         onfocus="${focus}"
@@ -509,7 +507,7 @@ module.exports.preview = function(state, emit) {
       </div>
       <button
         id="download-btn"
-        class="btn rounded-lg mt-4 w-full flex-no-shrink focus:outline"
+        class="btn rounded-lg mt-4 w-full flex-shrink-0 focus:outline"
         title="${state.translate('downloadButtonLabel')}"
         onclick=${download}
       >

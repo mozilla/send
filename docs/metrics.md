@@ -68,6 +68,7 @@ Server events allow us to aggregate data about file lifecycle without collecting
 * `event_properties`
   * `download_count` downloads completed
   * `ttl` time remaining before expiry truncated to hour
+  * `agent` the browser name or first 6 characters of the user agent that made the request
 
 ### Client Events
 

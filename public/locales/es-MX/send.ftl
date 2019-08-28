@@ -6,7 +6,8 @@ encryptingFile = Encriptando...
 decryptingFile = Desencriptando...
 downloadCount =
     { $num ->
-       *[one] 1 descarga
+        [one] 1 descarga
+       *[other] { $num } descargas
     }
 timespanHours =
     { $num ->
@@ -77,7 +78,17 @@ fileCount =
         [one] 1 archivo
        *[other] { $num } archivos
     }
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Tamaño total: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Copiar el enlace para compartir el archivo:
@@ -109,15 +120,15 @@ uploadButton = Subir
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Arrastrar y soltar archivos
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = o hacer clic para enviar hasta { $size }
 addPassword = Protegido con contraseña
 emailPlaceholder = Ingresa tu correo electrónico
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Iniciar sesión para enviar hasta { $size }
-signInButton = Iniciar sesión/registrarse
+signInOnlyButton = Iniciar sesión
 accountBenefitTitle = Crear una cuenta de { -firefox } o iniciar sesión
-# size is a localized number followed by a unit of bytes, ex. 2.5GB
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Compartir archivos de hasta { $size }
 accountBenefitDownloadCount = Compartir archivos con más personas
 accountBenefitTimeLimit =
@@ -134,3 +145,11 @@ noStreamsWarning = Puede que este navegador no pueda descifrar un archivo tan gr
 noStreamsOptionCopy = Copiar el enlace para abrir en otro navegador
 noStreamsOptionFirefox = Prueba nuestro navegador favorito
 noStreamsOptionDownload = Continuar con este navegador
+downloadFirefoxPromo = { -send-short-brand } te lo ofrece el nuevo { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Comparte el enlace a tu archivo:
+shareLinkButton = Enlace para compartir
+# $name is the name of the file
+shareMessage = Descarga «{ $name }» con { -send-brand }: es sencillo y seguro
+trailheadPromo = Existe una forma de proteger tu privacidad. Únete a Firefox.
+learnMore = Saber más.

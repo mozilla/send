@@ -1,22 +1,16 @@
 const html = require('choo/html');
 
-/* Possible strings for l10n
-shareLinkDescription = Share the link to your file:
-shareLinkButton = Share link
-shareMessage = Download "{ $name }" with { -send-brand }: simple, safe file sharing
- */
-
 module.exports = function(name, url) {
-  return function(state, emit, close) {
+  const dialog = function(state, emit, close) {
     return html`
       <send-share-dialog
         class="flex flex-col items-center text-center p-4 max-w-sm m-auto"
       >
-        <h1 class="font-bold my-4">
+        <h1 class="text-3xl font-bold my-4">
           ${state.translate('notifyUploadEncryptDone')}
         </h1>
         <p class="font-normal leading-normal text-grey-darkest word-break-all">
-          Share the link to your file:<br />
+          ${state.translate('shareLinkDescription')}<br />
           ${name}
         </p>
         <input
@@ -27,11 +21,11 @@ module.exports = function(name, url) {
           readonly="true"
         />
         <button
-          class="btn rounded-lg w-full flex-no-shrink focus:outline"
+          class="btn rounded-lg w-full flex-shrink-0 focus:outline"
           onclick="${share}"
-          title="Share link"
+          title="${state.translate('shareLinkButton')}"
         >
-          Share link
+          ${state.translate('shareLinkButton')}
         </button>
         <button
           class="text-blue-dark hover:text-blue-darker focus:text-blue-darker my-4 font-medium cursor-pointer focus:outline"
@@ -48,8 +42,7 @@ module.exports = function(name, url) {
       try {
         await navigator.share({
           title: state.translate('-send-brand'),
-          text: `Download "${name}" with Firefox Send: simple, safe file sharing`,
-          //state.translate('shareMessage', { name }),
+          text: state.translate('shareMessage', { name }),
           url
         });
       } catch (e) {
@@ -61,4 +54,6 @@ module.exports = function(name, url) {
       close();
     }
   };
+  dialog.type = 'share';
+  return dialog;
 };

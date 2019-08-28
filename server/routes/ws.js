@@ -3,12 +3,11 @@ const storage = require('../storage');
 const config = require('../config');
 const mozlog = require('../log');
 const Limiter = require('../limiter');
-const wsStream = require('websocket-stream/stream');
 const fxa = require('../fxa');
 const { statUploadEvent } = require('../amplitude');
 const { encryptedSize } = require('../../app/utils');
 
-const { Duplex } = require('stream');
+const { Transform } = require('stream');
 
 const log = mozlog('send.upload');
 
@@ -23,7 +22,7 @@ module.exports = function(ws, req) {
 
   ws.once('message', async function(message) {
     try {
-      const newId = crypto.randomBytes(5).toString('hex');
+      const newId = crypto.randomBytes(8).toString('hex');
       const owner = crypto.randomBytes(10).toString('hex');
 
       const fileInfo = JSON.parse(message);
@@ -76,25 +75,19 @@ module.exports = function(ws, req) {
         })
       );
       const limiter = new Limiter(encryptedSize(maxFileSize));
-      const flowControl = new Duplex({
-        read() {
-          ws.resume();
-        },
-        write(chunk, encoding, callback) {
+      const eof = new Transform({
+        transform: function(chunk, encoding, callback) {
           if (chunk.length === 1 && chunk[0] === 0) {
             this.push(null);
           } else {
-            if (!this.push(chunk)) {
-              ws.pause();
-            }
+            this.push(chunk);
           }
           callback();
         }
       });
+      const wsStream = ws.constructor.createWebSocketStream(ws);
 
-      fileStream = wsStream(ws, { binary: true })
-        .pipe(flowControl)
-        .pipe(limiter); // limiter needs to be the last in the chain
+      fileStream = wsStream.pipe(eof).pipe(limiter); // limiter needs to be the last in the chain
 
       await storage.set(newId, fileStream, meta, timeLimit);
 
@@ -114,7 +107,8 @@ module.exports = function(ws, req) {
           dlimit,
           timeLimit,
           anonymous: !user,
-          size: limiter.length
+          size: limiter.length,
+          agent: req.ua.browser.name || req.ua.ua.substring(0, 6)
         });
       }
     } catch (e) {
@@ -125,8 +119,8 @@ module.exports = function(ws, req) {
             error: e === 'limit' ? 413 : 500
           })
         );
-        ws.close();
       }
     }
+    ws.close();
   });
 };

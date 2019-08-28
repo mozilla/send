@@ -86,16 +86,13 @@ class Storage {
     this.engine.setItem('referrer', str);
   }
   get enrolled() {
-    return JSON.parse(this.engine.getItem('experiments') || '[]');
+    return JSON.parse(this.engine.getItem('ab_experiments') || '{}');
   }
 
   enroll(id, variant) {
-    const enrolled = this.enrolled;
-    // eslint-disable-next-line no-unused-vars
-    if (!enrolled.find(([i, v]) => i === id)) {
-      enrolled.push([id, variant]);
-      this.engine.setItem('experiments', JSON.stringify(enrolled));
-    }
+    const enrolled = {};
+    enrolled[id] = variant;
+    this.engine.setItem('ab_experiments', JSON.stringify(enrolled));
   }
 
   get files() {

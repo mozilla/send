@@ -8,12 +8,10 @@ if (config.sentry_id) {
   //eslint-disable-next-line node/no-missing-require
   const version = require('../dist/version.json');
   sentry = `
-var RAVEN_CONFIG = {
+var SENTRY_CONFIG = {
+  dsn: '${config.sentry_id}',
   release: '${version.version}',
-  tags: {
-    commit: '${version.commit}'
-  },
-  dataCallback: function (data) {
+  beforeSend: function (data) {
     var hash = window.location.hash;
     if (hash) {
       return JSON.parse(JSON.stringify(data).replace(new RegExp(hash.slice(1), 'g'), ''));
@@ -21,7 +19,6 @@ var RAVEN_CONFIG = {
     return data;
   }
 }
-var SENTRY_ID = '${config.sentry_id}';
 `;
 }
 
@@ -47,8 +44,8 @@ module.exports = function(state) {
 
   var LIMITS = ${JSON.stringify(clientConstants.LIMITS)};
   var DEFAULTS = ${JSON.stringify(clientConstants.DEFAULTS)};
-  const LOCALE = '${state.locale}';
-  const downloadMetadata = ${
+  var PREFS = ${JSON.stringify(state.prefs)};
+  var downloadMetadata = ${
     state.downloadMetadata ? raw(JSON.stringify(state.downloadMetadata)) : '{}'
   };
   ${authConfig};

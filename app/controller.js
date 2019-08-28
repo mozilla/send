@@ -2,11 +2,12 @@ import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
 import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
 import * as metrics from './metrics';
-import { bytes } from './utils';
+import { bytes, locale } from './utils';
 import okDialog from './ui/okDialog';
 import copyDialog from './ui/copyDialog';
 import shareDialog from './ui/shareDialog';
 import signupDialog from './ui/signupDialog';
+import surveyDialog from './ui/surveyDialog';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -75,7 +76,7 @@ export default function(state, emitter) {
       state.storage.remove(ownedFile.id);
       await ownedFile.del();
     } catch (e) {
-      state.raven.captureException(e);
+      state.sentry.captureException(e);
     }
     render();
   });
@@ -175,14 +176,17 @@ export default function(state, emitter) {
     } catch (err) {
       if (err.message === '0') {
         //cancelled. do nothing
-        const duration = Date.now() - start;
-        metrics.cancelledUpload(archive, duration);
+        metrics.cancelledUpload(archive, err.duration);
         render();
       } else {
         // eslint-disable-next-line no-console
         console.error(err);
-        state.raven.captureException(err);
-        metrics.stoppedUpload(archive);
+        state.sentry.withScope(scope => {
+          scope.setExtra('duration', err.duration);
+          scope.setExtra('size', err.size);
+          state.sentry.captureException(err);
+        });
+        metrics.stoppedUpload(archive, err.duration);
         emitter.emit('pushState', '/error');
       }
     } finally {
@@ -261,7 +265,12 @@ export default function(state, emitter) {
         state.transfer = null;
         const location = err.message === '404' ? '/404' : '/error';
         if (location === '/error') {
-          state.raven.captureException(err);
+          state.sentry.withScope(scope => {
+            scope.setExtra('duration', err.duration);
+            scope.setExtra('size', err.size);
+            scope.setExtra('progress', err.progress);
+            state.sentry.captureException(err);
+          });
           const duration = Date.now() - start;
           metrics.stoppedDownload({
             size,
@@ -279,6 +288,22 @@ export default function(state, emitter) {
   emitter.on('copy', ({ url }) => {
     copyToClipboard(url);
     // metrics.copiedLink({ location });
+  });
+
+  emitter.on('closeModal', () => {
+    if (
+      state.PREFS.surveyUrl &&
+      ['copy', 'share'].includes(state.modal.type) &&
+      locale().startsWith('en') &&
+      (state.storage.totalUploads > 1 || state.storage.totalDownloads > 0) &&
+      !state.user.surveyed
+    ) {
+      state.user.surveyed = true;
+      state.modal = surveyDialog();
+    } else {
+      state.modal = null;
+    }
+    render();
   });
 
   setInterval(() => {

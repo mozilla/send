@@ -1,8 +1,7 @@
-/* global window, navigator */
-import 'fluent-intl-polyfill';
+import 'intl-pluralrules';
 import choo from 'choo';
 import html from 'choo/html';
-import Raven from 'raven-js';
+import * as Sentry from '@sentry/browser';
 
 import { setApiUrlPrefix, getConstants } from '../app/api';
 import metrics from '../app/metrics';
@@ -19,6 +18,8 @@ import share from './pages/share';
 import preferences from './pages/preferences';
 import error from './pages/error';
 import { getTranslator } from '../app/locale';
+import { setTranslate } from '../app/utils';
+
 import { delay } from '../app/utils';
 
 if (navigator.userAgent === 'Send Android') {
@@ -51,7 +52,7 @@ function body(main) {
 
     const menu = html`<a
         id="hamburger"
-        class="absolute pin-t pin-r z-50"
+        class="absolute top-0 right-0 z-50"
         href="#"
         onclick="${clickPreferences}"
       >
@@ -69,6 +70,7 @@ function body(main) {
 }
 (async function start() {
   const translate = await getTranslator('en-US');
+  setTranslate(translate);
   const { LIMITS, DEFAULTS } = await getConstants();
   app.use(state => {
     state.LIMITS = LIMITS;
@@ -80,7 +82,7 @@ function body(main) {
     state.archive = new Archive([], DEFAULTS.EXPIRE_SECONDS);
     state.storage = storage;
     state.user = new User(storage, LIMITS);
-    state.raven = Raven;
+    state.sentry = Sentry;
   });
   app.use(metrics);
   app.route('/', body(home));

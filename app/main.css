@@ -1,4 +1,9 @@
-@tailwind preflight;
+@tailwind base;
+
+html {
+  line-height: 1.15;
+}
+
 @tailwind components;
 
 :not(input) {
@@ -6,6 +11,14 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+:root {
+  --violet-gradient: linear-gradient(
+    -180deg,
+    rgba(144, 89, 255, 0.8) 0%,
+    rgba(144, 89, 255, 0.4) 100%
+  );
 }
 
 a {
@@ -31,6 +44,7 @@ body {
   @apply cursor-pointer;
   @apply py-4;
   @apply px-6;
+  @apply font-semibold;
 }
 
 .btn:hover {
@@ -139,6 +153,11 @@ footer li:hover {
   white-space: nowrap;
 }
 
+.main-header img {
+  height: 32px;
+  width: 170px;
+}
+
 .intro {
   max-width: 100%;
   height: unset;
@@ -159,7 +178,7 @@ footer li:hover {
 .mozilla-logo {
   background-image: url('../assets/mozilla-logo.svg');
   background-repeat: no-repeat;
-  background-size: 100px, 32px;
+  background-size: 100px, 48px;
   overflow: hidden;
   text-indent: 120%;
   white-space: nowrap;
@@ -250,6 +269,11 @@ select {
 }
 
 @screen md {
+  .main-header img {
+    height: 48px;
+    width: auto;
+  }
+
   .intro {
     max-width: unset;
     height: unset;
@@ -265,7 +289,7 @@ select {
     @apply py-8;
 
     min-height: 36rem;
-    max-height: 40rem;
+    max-height: 42rem;
     width: calc(100% - 3rem);
   }
 }
@@ -278,8 +302,9 @@ select {
   }
 
   .shadow-big {
-    box-shadow: 0 0 32px 0 rgba(12, 12, 13, 0.1),
-      0 2px 16px 0 rgba(12, 12, 13, 0.05);
+    box-shadow: 0 12px 18px 2px rgba(34, 0, 51, 0.04),
+      0 6px 22px 4px rgba(7, 48, 114, 0.12),
+      0 6px 10px -4px rgba(14, 13, 26, 0.12);
   }
 }
 
@@ -291,11 +316,69 @@ select {
 
 .word-break-all {
   word-break: break-all;
+  line-break: anywhere;
 }
 
-@media screen and (max-width: 991px) {
-  .firefox-signup-logo {
-    margin-bottom: 0;
-    margin-top: 90px;
-  }
+.signin {
+  backface-visibility: hidden;
+  border-radius: 6px;
+  transition-property: transform, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.07, 0.95, 0, 1);
 }
+
+.signin:hover,
+.signin:focus {
+  @apply shadow-btn;
+
+  transform: scale(1.0625);
+}
+
+.signin:hover:active {
+  transform: scale(0.9375);
+}
+
+/* begin signin button color experiment */
+
+.white-blue {
+  @apply border-blue-dark;
+  @apply border-2;
+  @apply text-blue-dark;
+}
+
+.white-blue:hover,
+.white-blue:focus {
+  @apply bg-blue-dark;
+  @apply text-white;
+}
+
+.blue {
+  @apply bg-blue-dark;
+  @apply text-white;
+}
+
+.white-violet {
+  @apply border-violet;
+  @apply border-2;
+  @apply text-violet;
+}
+
+.white-violet:hover,
+.white-violet:focus {
+  @apply bg-violet;
+  @apply text-white;
+
+  background-image: var(--violet-gradient);
+}
+
+.violet {
+  @apply bg-violet;
+  @apply text-white;
+}
+
+.violet:hover,
+.violet:focus {
+  background-image: var(--violet-gradient);
+}
+
+/* end signin button color experiment */

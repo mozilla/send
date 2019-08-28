@@ -44,6 +44,14 @@ export default class User {
     this.storage.set('firstAction', action);
   }
 
+  get surveyed() {
+    return this.storage.get('surveyed');
+  }
+
+  set surveyed(yes) {
+    this.storage.set('surveyed', yes);
+  }
+
   get avatar() {
     const defaultAvatar = assets.get('user.svg');
     if (this.info.avatarDefault) {
@@ -143,7 +151,7 @@ export default class User {
       options.flow_begin_time = this.flowBeginTime;
     }
     if (this.trigger) {
-      options.endpoint = `send-${this.trigger}`;
+      options.entrypoint = `send-${this.trigger}`;
     }
     if (this.utms) {
       options.utm_campaign = this.utms.campaign || 'none';

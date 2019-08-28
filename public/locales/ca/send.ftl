@@ -126,7 +126,7 @@ addPassword = Protegeix amb contrasenya
 emailPlaceholder = Introduïu la vostra adreça electrònica
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Inicieu la sessió per enviar fins a { $size }
-signInButton = Inicieu la sessió o registreu-vos
+signInOnlyButton = Inicia la sessió
 accountBenefitTitle = Creeu un compte del { -firefox } o inicieu la sessió
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Compartiu fitxers fins a { $size }
@@ -145,3 +145,9 @@ noStreamsWarning = Pot ser que aquest navegador no pugui desxifrar un fitxer tan
 noStreamsOptionCopy = Copieu l'enllaç per obrir-lo en un altre navegador
 noStreamsOptionFirefox = Proveu el nostre navegador preferit
 noStreamsOptionDownload = Segueix amb aquest navegador
+downloadFirefoxPromo = El nou { -firefox } us ofereix el { -send-short-brand }
+# the next line after the colon contains a file name
+shareLinkDescription = Compartiu l'enllaç al vostre fitxer:
+shareLinkButton = Comparteix l'enllaç
+# $name is the name of the file
+shareMessage = Baixeu «{ $name }» amb el { -send-brand }: compartició de fitxers senzilla i segura

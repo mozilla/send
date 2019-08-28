@@ -12,7 +12,8 @@ const webJsOptions = {
     [
       '@babel/preset-env',
       {
-        useBuiltIns: 'entry'
+        useBuiltIns: 'entry',
+        corejs: 3
       }
     ]
   ],
@@ -102,8 +103,7 @@ const web = {
                 __dirname,
                 'node_modules/@dannycoates/webcrypto-liner'
               ),
-              path.resolve(__dirname, 'node_modules/fluent'),
-              path.resolve(__dirname, 'node_modules/fluent-intl-polyfill'),
+              path.resolve(__dirname, 'node_modules/@fluent'),
               path.resolve(__dirname, 'node_modules/intl-pluralrules')
             ],
             options: webJsOptions
@@ -113,7 +113,8 @@ const web = {
             include: [path.resolve(__dirname, 'node_modules')],
             exclude: [
               path.resolve(__dirname, 'node_modules/crc'),
-              path.resolve(__dirname, 'node_modules/fluent'),
+              path.resolve(__dirname, 'node_modules/@fluent'),
+              path.resolve(__dirname, 'node_modules/@sentry'),
               path.resolve(__dirname, 'node_modules/tslib'),
               path.resolve(__dirname, 'node_modules/webcrypto-core')
             ],
@@ -215,6 +216,7 @@ const web = {
 
 module.exports = (env, argv) => {
   const mode = argv.mode || 'production';
+  // eslint-disable-next-line no-console
   console.error(`mode: ${mode}`);
   process.env.NODE_ENV = web.mode = serviceWorker.mode = mode;
   if (mode === 'development') {

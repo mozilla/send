@@ -24,7 +24,7 @@ downloadFinish = Загрузка завершена
 fileSizeProgress = ({ $partialSize } из { $totalSize })
 sendYourFilesLink = Попробовать Firefox Send
 errorPageHeader = Что-то пошло не так!
-fileTooBig = Этот файл слишком большой для загрузки. Он должен быть меньше { $size }.
+fileTooBig = Файл слишком большой. Он должен быть меньше { $size }.
 linkExpiredAlt = Истёк срок действия ссылки
 notSupportedHeader = Ваш браузер не поддерживается.
 notSupportedLink = Почему мой браузер не поддерживается?
@@ -134,7 +134,7 @@ addPassword = Защитить паролем
 emailPlaceholder = Введите ваш адрес электронной почты
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Войдите, чтобы отправлять файлы до { $size }
-signInButton = Войти/Зарегистрироваться
+signInOnlyButton = Войти
 accountBenefitTitle = Создайте Аккаунт { -firefox } или войдите
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Делитесь файлами до { $size }
@@ -154,3 +154,11 @@ noStreamsWarning = Этот браузер может не иметь возмо
 noStreamsOptionCopy = Скопируйте ссылку, чтобы открыть в другом браузере
 noStreamsOptionFirefox = Попробуйте наш любимый браузер
 noStreamsOptionDownload = Продолжить в этом браузере
+downloadFirefoxPromo = { -send-short-brand } доступен вам в полностью новом { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Поделитесь ссылкой на ваш файл:
+shareLinkButton = Поделиться ссылкой
+# $name is the name of the file
+shareMessage = Загрузите «{ $name }» с { -send-brand }: простой и безопасный обмен файлами
+trailheadPromo = Существует способ защитить вашу приватность. Присоединяйтесь к Firefox.
+learnMore = Подробнее.
