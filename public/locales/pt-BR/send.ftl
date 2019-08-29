@@ -54,7 +54,7 @@ passwordSetError = Essa senha não pôde ser definida
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Compartilhamento de arquivos fácil e privativo
-introDescription = O { -send-brand } permite compartilhar arquivos com criptografia ponto a ponto e um link que expira automaticamente. Assim você pode manter o que compartilha privativo e ter certeza que suas coisas não ficarão online para sempre.
+introDescription = O { -send-brand } permite compartilhar arquivos com criptografia de ponta a ponta e um link que expira automaticamente. Assim você pode manter o que compartilha privativo e ter certeza que suas coisas não ficarão online para sempre.
 notifyUploadEncryptDone = Seu arquivo foi criptografado e está pronto para ser enviado
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Expirar após { $downloadCount } ou { $timespan }
@@ -94,7 +94,7 @@ totalSize = Tamanho total: { $size }
 copyLinkDescription = Copie o link para compartilhar seu arquivo:
 copyLinkButton = Copiar link
 downloadTitle = Baixar arquivos
-downloadDescription = Este arquivo foi compartilhado via { -send-brand } com criptografia ponto a ponto e um link que expira automaticamente.
+downloadDescription = Este arquivo foi compartilhado via { -send-brand } com criptografia de ponta a ponta e um link que expira automaticamente.
 trySendDescription = Experimente o { -send-brand } para compartilhamento de arquivos simples e seguro.
 # count will always be > 10
 tooManyFiles =
