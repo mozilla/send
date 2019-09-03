@@ -123,7 +123,7 @@ dragAndDropFiles = Traher e deponer files
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = o cliccar pro inviar usque { $size }
 addPassword = Proteger per contrasigno
-emailPlaceholder = Insere tu adresse email
+emailPlaceholder = Insere tu adresse de e-mail
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Accede pro inviar usque { $size }
 signInOnlyButton = Authentica te
