@@ -35,7 +35,8 @@
     "hooks": {
       "pre-commit": "lint-staged",
       "pre-push": "npm test",
-      "post-merge": "npm install"
+      "post-merge": "scripts/sync-npm-dependencies.sh",
+      "post-checkout": "scripts/sync-npm-dependencies.sh"
     }
   },
   "lint-staged": {
