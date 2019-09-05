@@ -67,7 +67,10 @@ module.exports = function(app) {
   }
   app.use(function(req, res, next) {
     res.set('Pragma', 'no-cache');
-    res.set('Cache-Control', 'no-cache');
+    res.set(
+      'Cache-Control',
+      'private, no-cache, no-store, must-revalidate, max-age=0'
+    );
     next();
   });
   app.use(bodyParser.json());
