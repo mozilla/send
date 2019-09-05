@@ -11,6 +11,7 @@ const map = new Map();
 const IMAGES = /.*\.(png|svg|jpg)$/;
 const VERSIONED_ASSET = /\.[A-Fa-f0-9]{8}\.(js|css|png|svg|jpg)$/;
 const DOWNLOAD_URL = /\/api\/download\/([A-Fa-f0-9]{4,})/;
+const FONT = /\.woff2?$/;
 
 self.addEventListener('install', event => {
   event.waitUntil(precache());
@@ -98,6 +99,10 @@ async function cleanCache() {
   }
 }
 
+function cacheable(url) {
+  return VERSIONED_ASSET.test(url) || FONT.test(url);
+}
+
 async function cachedOrFetched(req) {
   const cache = await caches.open(version);
   const cached = await cache.match(req);
@@ -105,7 +110,7 @@ async function cachedOrFetched(req) {
     return cached;
   }
   const fetched = await fetch(req);
-  if (fetched.ok && VERSIONED_ASSET.test(req.url)) {
+  if (fetched.ok && cacheable(req.url)) {
     cache.put(req, fetched.clone());
   }
   return fetched;
@@ -118,7 +123,7 @@ self.onfetch = event => {
   const dlmatch = DOWNLOAD_URL.exec(url.pathname);
   if (dlmatch) {
     event.respondWith(decryptStream(dlmatch[1]));
-  } else if (VERSIONED_ASSET.test(url.pathname)) {
+  } else if (cacheable(url.pathname)) {
     event.respondWith(cachedOrFetched(req));
   }
 };
