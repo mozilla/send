@@ -17,7 +17,7 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(self.clients.claim().then(cleanCache));
 });
 
 async function decryptStream(id) {
@@ -83,16 +83,19 @@ async function decryptStream(id) {
 }
 
 async function precache() {
+  const cache = await caches.open(version);
+  const images = assets.match(IMAGES);
+  await cache.addAll(images);
+  return self.skipWaiting();
+}
+
+async function cleanCache() {
   const oldCaches = await caches.keys();
   for (const c of oldCaches) {
     if (c !== version) {
       await caches.delete(c);
     }
   }
-  const cache = await caches.open(version);
-  const images = assets.match(IMAGES);
-  await cache.addAll(images);
-  return self.skipWaiting();
 }
 
 async function cachedOrFetched(req) {
