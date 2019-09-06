@@ -53,6 +53,7 @@ passwordSetError = امکان ثبت این گذواژه نیست
 -send-short-brand = ارسال
 -firefox = فایرفاکس
 -mozilla = موزیلا
+introTitle = اشتراک‌گذاری ساده و خصوصیِ پرونده‌ها
 # byte abbreviation
 bytes = B
 # kibibyte abbreviation
