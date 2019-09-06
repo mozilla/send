@@ -13,12 +13,12 @@ const VERSIONED_ASSET = /\.[A-Fa-f0-9]{8}\.(js|css|png|svg|jpg)$/;
 const DOWNLOAD_URL = /\/api\/download\/([A-Fa-f0-9]{4,})/;
 const FONT = /\.woff2?$/;
 
-self.addEventListener('install', event => {
-  event.waitUntil(precache());
+self.addEventListener('install', () => {
+  self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim().then(cleanCache));
+  event.waitUntil(self.clients.claim().then(precache));
 });
 
 async function decryptStream(id) {
@@ -84,10 +84,15 @@ async function decryptStream(id) {
 }
 
 async function precache() {
-  const cache = await caches.open(version);
-  const images = assets.match(IMAGES);
-  await cache.addAll(images);
-  return self.skipWaiting();
+  try {
+    await cleanCache();
+    const cache = await caches.open(version);
+    const images = assets.match(IMAGES);
+    await cache.addAll(images);
+  } catch (e) {
+    console.error(e);
+    // cache will get populated on demand
+  }
 }
 
 async function cleanCache() {
