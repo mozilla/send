@@ -1,10 +1,8 @@
-node_modules
-.git
-.tox
-.DS_Store
-firefox
-assets
-docs
-test
-coverage
+.circleci
 .nyc_output
+.vscode
+.DS_Store
+coverage
+docs
+firefox
+node_modules

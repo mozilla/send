@@ -1,13 +1,6 @@
 ## Setup
 
-Before building the Docker image, you must build the production assets:
-
-```sh
-npm run build
-```
-
-Then you can run either `docker build` or `docker-compose up`.
-
+Run `docker build -t send:latest .` to create an image or `docker-compose up` to run a full testable stack. *We don't recommend using docker-compose for production.*
 
 ## Environment variables:
 

@@ -1,4 +1,4 @@
-const genmap = require('../build/generate_asset_map');
+const genmap = require('./generate_asset_map');
 const isServer = typeof genmap === 'function';
 let prefix = '';
 let manifest = {};

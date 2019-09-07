@@ -1,8 +1,8 @@
 # Custom Loaders
 
-## Generate Asset Map
+## Android Index Plugin
 
-This loader enumerates all the files in `assets/` so that `common/assets.js` can provide mappings from the source filename to the hashed filename used on the site.
+Generates the `index.html` page for the native android client
 
 ## Version Plugin
 

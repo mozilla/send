@@ -67,7 +67,7 @@ const serviceWorker = {
       },
       {
         // loads all assets from assets/ for use by common/assets.js
-        test: require.resolve('./build/generate_asset_map.js'),
+        test: require.resolve('./common/generate_asset_map.js'),
         use: ['babel-loader', 'val-loader']
       }
     ]
@@ -176,7 +176,7 @@ const web = {
       },
       {
         // loads all assets from assets/ for use by common/assets.js
-        test: require.resolve('./build/generate_asset_map.js'),
+        test: require.resolve('./common/generate_asset_map.js'),
         use: ['babel-loader', 'val-loader']
       }
     ]
