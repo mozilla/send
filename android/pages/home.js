@@ -25,7 +25,7 @@ module.exports = function(state, emit) {
   let content = '';
   let button = html`
     <div
-      class="bg-blue rounded-full m-4 flex items-center justify-center shadow-lg"
+      class="bg-blue-50 rounded-full m-4 flex items-center justify-center shadow-lg"
       style="width: 56px; height: 56px"
       onclick="${onclick}"
     >

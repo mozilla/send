@@ -142,6 +142,7 @@ const web = {
             loader: 'svgo-loader',
             options: {
               plugins: [
+                { cleanupIDs: false },
                 { removeViewBox: false }, // true causes stretched images
                 { convertStyleToAttrs: true }, // for CSP, no unsafe-eval
                 { removeTitle: true } // for smallness

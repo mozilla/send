@@ -39,7 +39,7 @@ body {
 }
 
 .btn {
-  @apply bg-blue-dark;
+  @apply bg-blue-60;
   @apply text-white;
   @apply cursor-pointer;
   @apply py-4;
@@ -48,11 +48,11 @@ body {
 }
 
 .btn:hover {
-  @apply bg-blue-darker;
+  @apply bg-blue-70;
 }
 
 .btn:focus {
-  @apply bg-blue-darker;
+  @apply bg-blue-70;
 }
 
 .checkbox {
@@ -70,7 +70,7 @@ body {
 }
 
 .checkbox > label::before {
-  /* @apply bg-grey-lightest; */
+  /* @apply bg-grey-10; */
   @apply border;
   @apply rounded-sm;
 
@@ -82,16 +82,16 @@ body {
 }
 
 .checkbox > label:hover::before {
-  @apply border-blue-dark;
+  @apply border-blue-50;
 }
 
 .checkbox > input:focus + label::before {
-  @apply border-blue-dark;
+  @apply border-blue-50;
 }
 
 .checkbox > input:checked + label::before {
-  @apply bg-blue-dark;
-  @apply border-blue-dark;
+  @apply bg-blue-50;
+  @apply border-blue-50;
 
   background-image: url('../assets/lock.svg');
   background-position: center;
@@ -104,8 +104,8 @@ body {
 }
 
 .checkbox > input:disabled + label::before {
-  @apply bg-blue-dark;
-  @apply border-blue-dark;
+  @apply bg-blue-50;
+  @apply border-blue-50;
 
   background-image: url('../assets/lock.svg');
   background-position: center;
@@ -153,9 +153,21 @@ footer li:hover {
   white-space: nowrap;
 }
 
+.link-blue {
+  @apply text-blue-60;
+}
+
+.link-blue:hover {
+  @apply text-blue-70;
+}
+
+.link-blue:focus {
+  @apply text-blue-70;
+}
+
 .main-header img {
   height: 32px;
-  width: 170px;
+  width: auto;
 }
 
 .intro {
@@ -193,14 +205,14 @@ footer li:hover {
 }
 
 progress {
-  @apply bg-grey-light;
+  @apply bg-grey-30;
   @apply rounded-sm;
   @apply w-full;
   @apply h-1;
 }
 
 progress::-webkit-progress-bar {
-  @apply bg-grey-light;
+  @apply bg-grey-30;
   @apply rounded-sm;
   @apply w-full;
   @apply h-1;
@@ -290,6 +302,55 @@ select {
   }
 }
 
+@screen dark {
+  body {
+    @apply text-grey-10;
+
+    background-image: unset;
+  }
+
+  .btn {
+    @apply bg-blue-40;
+    @apply text-white;
+  }
+
+  .btn:hover {
+    @apply bg-blue-50;
+  }
+
+  .btn:focus {
+    @apply bg-blue-50;
+  }
+
+  .link-blue {
+    @apply text-blue-40;
+  }
+
+  .link-blue:hover {
+    @apply text-blue-50;
+  }
+
+  .link-blue:focus {
+    @apply text-blue-50;
+  }
+
+  .main > section {
+    @apply bg-grey-90;
+  }
+
+  .mozilla-logo {
+    background-color: white;
+    border: 1px solid white;
+  }
+
+  @screen md {
+    .main > section {
+      @apply border;
+      @apply border-grey-80;
+    }
+  }
+}
+
 @tailwind utilities;
 
 @responsive {
@@ -325,8 +386,6 @@ select {
 
 .signin:hover,
 .signin:focus {
-  @apply shadow-btn;
-
   transform: scale(1.0625);
 }
 
@@ -337,19 +396,19 @@ select {
 /* begin signin button color experiment */
 
 .white-blue {
-  @apply border-blue-dark;
+  @apply border-blue-60;
   @apply border-2;
-  @apply text-blue-dark;
+  @apply text-blue-60;
 }
 
 .white-blue:hover,
 .white-blue:focus {
-  @apply bg-blue-dark;
+  @apply bg-blue-60;
   @apply text-white;
 }
 
 .blue {
-  @apply bg-blue-dark;
+  @apply bg-blue-60;
   @apply text-white;
 }
 

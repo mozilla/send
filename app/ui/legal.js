@@ -6,7 +6,7 @@ module.exports = function(state, emit) {
     <main class="main">
       ${state.modal && modal(state, emit)}
       <div
-        class="flex flex-col items-center bg-white m-4 px-6 py-8 border border-grey-light md:border-none md:px-12 md:py-16 shadow w-full md:h-full"
+        class="flex flex-col items-center bg-white m-4 px-6 py-8 border border-grey-30 md:border-none md:px-12 md:py-16 shadow w-full md:h-full dark:bg-grey-90"
       >
         <h1 class="text-center text-3xl font-bold">
           ${state.translate('legalTitle')}
@@ -19,7 +19,7 @@ module.exports = function(state, emit) {
               href="https://www.mozilla.org/privacy/"
               target="__blank"
               rel="noopener noreferrer"
-              class="text-blue-dark hover:underline"
+              class="link-blue hover:underline"
               >Mozilla Privacy Policy</a
             >
             <span
@@ -31,7 +31,7 @@ module.exports = function(state, emit) {
               href="https://github.com/mozilla/send/blob/master/docs/metrics.md"
               target="__blank"
               rel="noopener noreferrer"
-              class="text-blue-dark hover:underline"
+              class="link-blue hover:underline"
               >here</a
             >.
           </p>

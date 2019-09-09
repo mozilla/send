@@ -19,12 +19,9 @@ class Footer extends Component {
     const feedbackUrl = `https://qsurvey.mozilla.com/s3/Firefox-Send-Product-Feedback?ver=${version}&browser=${browser}`;
     return html`
       <footer
-        class="flex flex-col md:flex-row items-start w-full flex-none self-start p-6 md:p-8 font-medium text-xs text-grey-dark md:items-center justify-between"
+        class="flex flex-col md:flex-row items-start w-full flex-none self-start p-6 md:p-8 font-medium text-xs text-grey-60 dark:text-grey-40 md:items-center justify-between"
       >
-        <a
-          class="mozilla-logo pb-10 md:pb-0 m-2"
-          href="https://www.mozilla.org/"
-        >
+        <a class="mozilla-logo m-2" href="https://www.mozilla.org/">
           Mozilla
         </a>
         <ul

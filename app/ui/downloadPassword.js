@@ -6,12 +6,14 @@ module.exports = function(state, emit) {
 
   const div = html`
     <div
-      class="h-full w-full flex flex-col items-center justify-center bg-white py-8 max-w-md mx-auto"
+      class="h-full w-full flex flex-col items-center justify-center bg-white py-8 max-w-md mx-auto dark:bg-grey-90"
     >
       <h1 class="text-3xl font-bold mb-4">
         ${state.translate('downloadTitle')}
       </h1>
-      <p class="w-full mb-4 text-center text-grey-darkest leading-normal">
+      <p
+        class="w-full mb-4 text-center text-grey-80 dark:text-grey-40 leading-normal"
+      >
         ${state.translate('downloadDescription')}
       </p>
       <form
@@ -22,8 +24,8 @@ module.exports = function(state, emit) {
         <input
           id="password-input"
           class="w-full border-l border-t border-b rounded-l-lg rounded-r-none ${invalid
-            ? 'border-red'
-            : 'border-grey'} leading-loose px-2 py-1"
+            ? 'border-red dark:border-red-40'
+            : 'border-grey'} leading-loose px-2 py-1 dark:bg-grey-80"
           maxlength="32"
           autocomplete="off"
           placeholder="${state.translate('unlockInputPlaceholder')}"
@@ -34,7 +36,7 @@ module.exports = function(state, emit) {
           type="submit"
           id="password-btn"
           class="btn rounded-r-lg rounded-l-none ${invalid
-            ? 'bg-red hover:bg-red focus:bg-red'
+            ? 'bg-red hover:bg-red focus:bg-red dark:bg-red-40'
             : ''}"
           value="${state.translate('unlockButtonLabel')}"
           title="${state.translate('unlockButtonLabel')}"
@@ -42,7 +44,7 @@ module.exports = function(state, emit) {
       </form>
       <label
         id="password-error"
-        class="${invalid ? '' : 'invisible'} text-red my-4"
+        class="${invalid ? '' : 'invisible'} text-red dark:text-red-40 my-4"
         for="password-input"
       >
         ${state.translate('passwordTryAgain')}
