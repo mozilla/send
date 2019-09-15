@@ -127,17 +127,17 @@ emailPlaceholder = Informe seu e-mail
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Entre na sua conta para enviar até { $size }
 signInOnlyButton = Entrar
-accountBenefitTitle = Crie uma Conta { -firefox } ou entre na sua conta
+accountBenefitTitle = Crie uma Conta { -firefox } ou entre se já tiver
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-accountBenefitLargeFiles = Compartilhe arquivos até { $size }
-accountBenefitDownloadCount = Compartilhe arquivos com mais pessoas
+accountBenefitLargeFiles = Compartilhe arquivos até { $size }.
+accountBenefitDownloadCount = Compartilhe arquivos com mais pessoas.
 accountBenefitTimeLimit =
     { $count ->
-        [one] Mantenha links ativos por até 1 dia
-       *[other] Mantenha links ativos por até { $count } dias
+        [one] Mantenha links ativos por até 1 dia.
+       *[other] Mantenha links ativos por até { $count } dias.
     }
-accountBenefitSync = Gerencie arquivos compartilhados a partir de qualquer dispositivo
-accountBenefitMoz = Conheça outros serviços da { -mozilla }
+accountBenefitSync = Gerencie arquivos compartilhados a partir de qualquer dispositivo.
+accountBenefitMoz = Conheça outros serviços da { -mozilla }.
 signOut = Sair
 okButton = OK
 downloadingTitle = Baixando
