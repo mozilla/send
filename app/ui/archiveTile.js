@@ -42,19 +42,37 @@ function password(state) {
           ${state.translate('addPassword')}
         </label>
       </div>
-      <input
-        id="password-input"
-        class="${state.archive.password
-          ? ''
-          : 'invisible'} border rounded focus:border-blue-dark leading-normal my-1 py-1 px-2 h-8"
-        autocomplete="off"
-        maxlength="${MAX_LENGTH}"
-        type="password"
-        oninput="${inputChanged}"
-        onfocus="${focused}"
-        placeholder="${state.translate('unlockInputPlaceholder')}"
-        value="${state.archive.password || ''}"
-      />
+      <div class="relative inline-block">
+        <input
+          id="password-input"
+          class="${state.archive.password
+            ? ''
+            : 'invisible'} border rounded focus:border-blue-dark leading-normal my-1 py-1 px-2 h-8"
+          autocomplete="off"
+          maxlength="${MAX_LENGTH}"
+          type="password"
+          oninput="${inputChanged}"
+          onfocus="${focused}"
+          placeholder="${state.translate('unlockInputPlaceholder')}"
+          value="${state.archive.password || ''}"
+        />
+        <button
+          id="password-preview-button"
+          type="button"
+          class="${state.archive.password
+            ? ''
+            : 'invisible'} absolute top-0 right-0 p-2"
+          onclick="${onPasswordPreviewButtonclicked}"
+        >
+          <img src="assets/eye.svg" width="22" height="22" />
+          <img
+            src="assets/eye-off.svg"
+            width="22"
+            height="22"
+            class="${state.archive.password ? '' : 'hidden'}"
+          />
+        </button>
+      </div>
       <label
         id="password-msg"
         for="password-input"
@@ -63,15 +81,40 @@ function password(state) {
     </div>
   `;
 
+  function onPasswordPreviewButtonclicked(event) {
+    event.preventDefault();
+    const target = event.currentTarget;
+    const input = document.getElementById('password-input');
+    const eyeOn = target.querySelector('img:first-child');
+    const eyeOff = target.querySelector('img:last-child');
+
+    if (input.type === 'password') {
+      input.type = 'text';
+      eyeOn.classList.add('hidden');
+      eyeOff.classList.remove('hidden');
+    } else {
+      input.type = 'password';
+      eyeOn.classList.remove('hidden');
+      eyeOff.classList.add('hidden');
+    }
+
+    input.focus();
+  }
+
   function togglePasswordInput(event) {
     event.stopPropagation();
     const checked = event.target.checked;
     const input = document.getElementById('password-input');
+    const passwordPreviewButton = document.getElementById(
+      'password-preview-button'
+    );
     if (checked) {
       input.classList.remove('invisible');
+      passwordPreviewButton.classList.remove('invisible');
       input.focus();
     } else {
       input.classList.add('invisible');
+      passwordPreviewButton.classList.add('invisible');
       input.value = '';
       document.getElementById('password-msg').textContent = '';
       state.archive.password = null;
