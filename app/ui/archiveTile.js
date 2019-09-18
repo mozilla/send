@@ -42,12 +42,12 @@ function password(state) {
           ${state.translate('addPassword')}
         </label>
       </div>
-      <div class="relative inline-block">
+      <div class="relative inline-block my-1">
         <input
           id="password-input"
           class="${state.archive.password
             ? ''
-            : 'invisible'} border rounded focus:border-blue-dark leading-normal my-1 py-1 px-2 h-8"
+            : 'invisible'} border rounded focus:border-blue-dark leading-normal py-1 pl-2 pr-8 h-8"
           autocomplete="off"
           maxlength="${MAX_LENGTH}"
           type="password"
@@ -61,15 +61,14 @@ function password(state) {
           type="button"
           class="${state.archive.password
             ? ''
-            : 'invisible'} absolute top-0 right-0 p-2"
+            : 'invisible'} absolute top-0 right-0 w-8 h-8"
           onclick="${onPasswordPreviewButtonclicked}"
         >
-          <img src="assets/eye.svg" width="22" height="22" />
           <img
-            src="assets/eye-off.svg"
+            src="${assets.get('eye.svg')}"
             width="22"
             height="22"
-            class="${state.archive.password ? '' : 'hidden'}"
+            class="m-auto"
           />
         </button>
       </div>
@@ -83,19 +82,15 @@ function password(state) {
 
   function onPasswordPreviewButtonclicked(event) {
     event.preventDefault();
-    const target = event.currentTarget;
     const input = document.getElementById('password-input');
-    const eyeOn = target.querySelector('img:first-child');
-    const eyeOff = target.querySelector('img:last-child');
+    const eyeIcon = event.currentTarget.querySelector('img');
 
     if (input.type === 'password') {
       input.type = 'text';
-      eyeOn.classList.add('hidden');
-      eyeOff.classList.remove('hidden');
+      eyeIcon.src = assets.get('eye-off.svg');
     } else {
       input.type = 'password';
-      eyeOn.classList.remove('hidden');
-      eyeOff.classList.add('hidden');
+      eyeIcon.src = assets.get('eye.svg');
     }
 
     input.focus();
