@@ -151,3 +151,5 @@ shareLinkDescription = Compartiu l'enllaç al vostre fitxer:
 shareLinkButton = Comparteix l'enllaç
 # $name is the name of the file
 shareMessage = Baixeu «{ $name }» amb el { -send-brand }: compartició de fitxers senzilla i segura
+trailheadPromo = Hi ha una manera de protegir la vostra privadesa. Uniu-vos al Firefox.
+learnMore = Més informació.
