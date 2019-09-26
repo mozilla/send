@@ -151,3 +151,5 @@ shareLinkDescription = Nakomonij ri ximonel rik'in ri awokisab'al:
 shareLinkButton = Tikomonïx ximonel
 # $name is the name of the file
 shareMessage = Tiqasäx "{ $name }" rik'in { -send-brand }: man k'ayew ta chuqa' ütz kikomonik ri yakb'äl
+trailheadPromo = K'o jun rub'anikil richin nachajij ri awichinanem. Tatunu' awi' rik'in ri Firefox.
+learnMore = Tetamäx ch'aqa' chik.
