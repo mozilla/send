@@ -54,7 +54,7 @@ passwordSetError = Awal-agi uffir ur izmir ara ad ittwabaded
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Afessas, beṭṭu n ifuyla s wudem uslig
-introDescription = { -send-brand } ad k(yeǧǧ ad tebḍuḍ ifuyla iwgelhanensi ṭṭerf ɣer ṭṭerf akked useɣwen ara yemmten s wudem awurman. Daɣen, ad tizmireḍ ad tḥ€rzeḍ ayen i tbeṭṭuḍ s wudem uslig daɣen ad temneḍ imi agbur-ik ur yettɣimi ara srid i lebda.
+introDescription = { -send-brand } ad k(kem)-yeǧǧ ad tebḍuḍ ifuyla iwgelhanensi ṭṭerf ɣer ṭṭerf akked useɣwen ara yemmten s wudem awurman. Daɣen, ad tizmireḍ ad tḥ€rzeḍ ayen i tbeṭṭuḍ s wudem uslig daɣen ad temneḍ imi agbur-ik ur yettɣimi ara srid i lebda.
 notifyUploadEncryptDone = Afaylu-ik yewgelhen daɣen ihegga i tuzna
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Ad yemmet deffir { $downloadCount } neɣ { $timespan }
