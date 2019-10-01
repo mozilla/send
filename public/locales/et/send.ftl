@@ -151,3 +151,5 @@ shareLinkDescription = Jaga linki failile:
 shareLinkButton = Jaga linki
 # $name is the name of the file
 shareMessage = Laadi “{ $name }” alla teenusega { -send-brand }, mis pakub lihtsat ja turvalist failijagamist
+trailheadPromo = Oma privaatsust on võimalik kaitsta. Liitu Firefoxiga.
+learnMore = Rohkem teavet.
