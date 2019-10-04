@@ -19,6 +19,7 @@ rules:
   node/no-unsupported-features/es-syntax: off
   node/no-unsupported-features/node-builtins: off
   node/no-unpublished-require: off
+  node/no-unpublished-import: off
 
   security/detect-non-literal-fs-filename: off
   security/detect-object-injection: off
