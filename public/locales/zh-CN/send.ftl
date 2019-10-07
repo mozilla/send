@@ -53,7 +53,7 @@ passwordSetError = 未能设置此密码
 -mozilla = Mozilla
 introTitle = 简单、私密的文件分享服务
 introDescription = 使用 { -send-brand } 端到端加密分享文件，链接到期即焚。分享更私密，文件到期真正无痕迹。
-notifyUploadEncryptDone = 您的文件已加密并可以发送
+notifyUploadEncryptDone = 您的文件已加密，现在可以发送
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = { $downloadCount }或 { $timespan }后过期
 timespanMinutes =
@@ -109,7 +109,7 @@ expiredTitle = 此链接已过期。
 notSupportedDescription = { -send-brand } 无法在此浏览器上正常工作。{ -send-short-brand } 与最新版本 { -firefox } 配合使用体验最佳，也适用于目前的大多数浏览器。
 downloadFirefox = 下载 { -firefox }
 legalTitle = { -send-short-brand } 隐私声明
-legalDateStamp = 版本 1.0，日期 2019年3月12日
+legalDateStamp = 版本 1.0，于 2019年3月12日
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } 天 { $hours } 小时 { $minutes } 分钟
 addFilesButton = 选择要上传的文件
@@ -127,7 +127,7 @@ signInOnlyButton = 登录
 accountBenefitTitle = 创建一个 { -firefox } 账户或登录
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = 分享最大 { $size } 文件
-accountBenefitDownloadCount = 与更多人分享文件
+accountBenefitDownloadCount = 可以与更多人分享
 accountBenefitTimeLimit =
     { $count ->
         [one] 链接有效期延至 1 天
@@ -140,7 +140,7 @@ okButton = 确定
 downloadingTitle = 正在下载
 noStreamsWarning = 此浏览器可能无法解密这么大的文件。
 noStreamsOptionCopy = 复制链接以在其他浏览器中打开
-noStreamsOptionFirefox = 试试大家最喜爱的浏览器
+noStreamsOptionFirefox = 试试大家最爱的浏览器
 noStreamsOptionDownload = 使用此浏览器继续
 downloadFirefoxPromo = { -send-short-brand } 由焕然一新的 { -firefox } 为您奉上。
 # the next line after the colon contains a file name
