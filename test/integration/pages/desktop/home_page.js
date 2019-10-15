@@ -10,6 +10,9 @@ class HomePage extends Page {
     this.progress = 'progress';
     this.shareUrl = '#share-url';
     this.downloadCountSelect = '#expire-after-dl-count-select';
+    this.addPassword = '#add-password';
+    this.passwordInput = '#password-input';
+    this.passwordButton = '#password-btn';
   }
 
   waitForPageToLoad() {
