@@ -95,7 +95,7 @@ copyLinkDescription = Copie o link para compartilhar seu arquivo:
 copyLinkButton = Copiar link
 downloadTitle = Baixar arquivos
 downloadDescription = Este arquivo foi compartilhado via { -send-brand } com criptografia de ponta a ponta e um link que expira automaticamente.
-trySendDescription = Experimente o { -send-brand } para compartilhamento de arquivos simples e seguro.
+trySendDescription = Experimente o { -send-brand } para compartilhar arquivos com simplicidade e segurança.
 # count will always be > 10
 tooManyFiles =
     { $count ->
