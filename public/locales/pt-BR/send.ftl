@@ -36,11 +36,11 @@ footerLinkCookies = Cookies
 passwordTryAgain = Senha incorreta. Tente novamente.
 javascriptRequired = O Firefox Send requer JavaScript
 whyJavascript = Por que o Firefox Send precisa do JavaScript?
-enableJavascript = Habilite o JavaScript e tente novamente.
+enableJavascript = Ative o JavaScript e tente novamente.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
-expiresHoursMinutes = { $hours }h { $minutes }m
+expiresHoursMinutes = { $hours }h { $minutes }min
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
-expiresMinutes = { $minutes }m
+expiresMinutes = { $minutes }min
 # A short status message shown when the user enters a long password
 maxPasswordLength = Tamanho máximo da senha: { $length }
 # A short status message shown when there was an error setting the password
