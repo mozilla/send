@@ -188,6 +188,10 @@ footer li:hover {
   flex-shrink: 0;
 }
 
+.firefox-signup-logo {
+  margin-bottom: 130px;
+}
+
 #password-msg::after {
   content: '\200b';
 }
