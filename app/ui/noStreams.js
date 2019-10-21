@@ -12,7 +12,7 @@ module.exports = function(state, emit) {
         'downloadTitle'
       )}</h1>
       <p
-        class="w-full p-2 border border-yellow-light rounded md:w-4/5 text-orange-dark bg-yellow-lighter text-center leading-normal"
+        class="w-full p-2 border border-yellow-50 rounded md:w-4/5 text-orange-60 bg-yellow-40 text-center leading-normal"
       >
         ⚠️ ${state.translate('noStreamsWarning')} ⚠️
       </p>

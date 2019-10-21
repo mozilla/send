@@ -20,7 +20,7 @@ module.exports = function(trigger) {
             ${state.translate('accountBenefitTitle')}
           </h1>
           <ul
-            class="leading-normal text-grey-darkest my-2 mt-4 pl-4 md:self-center"
+            class="leading-normal list-disc text-grey-80 my-2 mt-4 pl-4 md:self-center dark:text-grey-40"
           >
             <li>
               ${state.translate('accountBenefitLargeFiles', {
@@ -42,7 +42,7 @@ module.exports = function(trigger) {
             <input
               id="email-input"
               type="email"
-              class="${hidden} border rounded-lg w-full px-2 py-1 h-12 mb-3 text-lg text-grey-darker leading-loose"
+              class="${hidden} border rounded-lg w-full px-2 py-1 h-12 mb-3 text-lg text-grey-70 leading-loose dark:bg-grey-80 dark:text-white"
               placeholder=${state.translate('emailPlaceholder')}
             />
             <input
@@ -54,7 +54,7 @@ module.exports = function(trigger) {
             />
           </form>
           <button
-            class="my-3 text-blue-dark hover:text-blue-darker focus:text-blue-darker font-medium"
+            class="my-3 link-blue font-medium"
             title="${state.translate('deletePopupCancel')}"
             onclick=${cancel}
           >

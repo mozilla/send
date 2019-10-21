@@ -46,7 +46,7 @@ function password(state) {
         id="password-input"
         class="${state.archive.password
           ? ''
-          : 'invisible'} border rounded focus:border-blue-dark leading-normal my-1 py-1 px-2 h-8"
+          : 'invisible'} border rounded focus:border-blue-60 leading-normal my-1 py-1 px-2 h-8 dark:bg-grey-80"
         autocomplete="off"
         maxlength="${MAX_LENGTH}"
         type="password"
@@ -58,7 +58,7 @@ function password(state) {
       <label
         id="password-msg"
         for="password-input"
-        class="block text-xs text-grey-darker"
+        class="block text-xs text-grey-70"
       ></label>
     </div>
   `;
@@ -106,7 +106,9 @@ function password(state) {
 function fileInfo(file, action) {
   return html`
     <send-file class="flex flex-row items-center p-3 w-full">
-      <img class="h-8" src="${assets.get('blue_file.svg')}"/>
+      <svg class="h-8 w-8 text-white dark:text-grey-90">
+        <use xlink:href="${assets.get('blue_file.svg')}#icon"/>
+      </svg>
       <p class="ml-4 w-full">
         <h1 class="text-base font-medium word-break-all">${file.name}</h1>
         <div class="text-sm font-normal opacity-75 pt-1">${bytes(
@@ -120,7 +122,9 @@ function fileInfo(file, action) {
 function archiveInfo(archive, action) {
   return html`
     <p class="w-full flex items-center">
-      <img class="mr-3 flex-shrink-0" src="${assets.get('blue_file.svg')}"/>
+      <svg class="h-8 w-6 mr-3 flex-shrink-0 text-white dark:text-grey-90">
+        <use xlink:href="${assets.get('blue_file.svg')}#icon"/>
+      </svg>
       <p class="flex-grow">
         <h1 class="text-base font-medium word-break-all">${archive.name}</h1>
         <div class="text-sm font-normal opacity-75 pt-1">${bytes(
@@ -140,7 +144,7 @@ function archiveDetails(translate, archive) {
         ontoggle="${toggled}"
       >
         <summary
-          class="flex items-center text-blue-dark text-sm cursor-pointer outline-none"
+          class="flex items-center link-blue text-sm cursor-pointer outline-none"
         >
           <svg
             class="fill-current w-4 h-4 mr-1"
@@ -170,20 +174,25 @@ module.exports = function(state, emit, archive) {
     state.capabilities.share || platform() === 'android'
       ? html`
           <button
-            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end flex items-end"
+            class="link-blue self-end flex items-start"
             onclick=${share}
             title="Share link"
           >
-            <img src="${assets.get('share-24.svg')}" class="mr-2" />Share link
+            <svg class="h-4 w-4 mr-2">
+              <use xlink:href="${assets.get('share-24.svg')}#icon" />
+            </svg>
+            Share link
           </button>
         `
       : html`
           <button
-            class="text-blue-dark hover:text-blue-darker focus:text-blue-darker focus:outline self-end flex items-center"
+            class="link-blue focus:outline self-end flex items-center"
             onclick=${copy}
             title="${state.translate('copyLinkButton')}"
           >
-            <img src="${assets.get('copy-16.svg')}" class="mr-2" />
+            <svg class="h-4 w-4 mr-2">
+              <use xlink:href="${assets.get('copy-16.svg')}#icon" />
+            </svg>
             ${state.translate('copyLinkButton')}
           </button>
         `;
@@ -191,12 +200,14 @@ module.exports = function(state, emit, archive) {
     platform() === 'web'
       ? html`
           <a
-            class="flex items-baseline text-blue-dark hover:text-blue-darker focus:text-blue-darker"
+            class="flex items-baseline link-blue"
             href="${archive.url}"
             title="${state.translate('downloadButtonLabel')}"
             tabindex="0"
           >
-            <img src="${assets.get('dl.svg')}" class="mr-2" />
+            <svg class="h-4 w-3 mr-2">
+              <use xlink:href="${assets.get('dl.svg')}#icon" />
+            </svg>
             ${state.translate('downloadButtonLabel')}
           </a>
         `
@@ -206,7 +217,7 @@ module.exports = function(state, emit, archive) {
   return html`
     <send-archive
       id="archive-${archive.id}"
-      class="flex flex-col items-start rounded shadow-light bg-white p-4 w-full"
+      class="flex flex-col items-start rounded shadow-light bg-white p-4 w-full dark:bg-grey-90 dark:border dark:border-grey-70"
     >
       ${archiveInfo(
         archive,
@@ -225,7 +236,7 @@ module.exports = function(state, emit, archive) {
         ${expiryInfo(state.translate, archive)}
       </div>
       ${archiveDetails(state.translate, archive)}
-      <hr class="w-full border-t my-4" />
+      <hr class="w-full border-t my-4 dark:border-grey-70" />
       <div class="flex justify-between w-full">
         ${dl} ${copyOrShare}
       </div>
@@ -269,18 +280,21 @@ module.exports = function(state, emit, archive) {
 
 module.exports.wip = function(state, emit) {
   return html`
-    <send-upload-area class="flex flex-col bg-white h-full w-full" id="wip">
+    <send-upload-area
+      class="flex flex-col bg-white h-full w-full dark:bg-grey-90"
+      id="wip"
+    >
       ${list(
         Array.from(state.archive.files)
           .reverse()
           .map(f =>
             fileInfo(f, remove(f, state.translate('deleteButtonHover')))
           ),
-        'flex-shrink bg-grey-lightest rounded-t overflow-y-auto px-6 py-4 md:h-full md:max-h-half-screen',
-        'bg-white px-2 my-2 shadow-light rounded'
+        'flex-shrink bg-grey-10 rounded-t overflow-y-auto px-6 py-4 md:h-full md:max-h-half-screen dark:bg-black',
+        'bg-white px-2 my-2 shadow-light rounded dark:bg-grey-90 dark:border dark:border-grey-80'
       )}
       <div
-        class="flex-shrink-0 flex-grow flex items-end p-4 bg-grey-lightest rounded-b mb-1 font-medium"
+        class="flex-shrink-0 flex-grow flex items-end p-4 bg-grey-10 rounded-b mb-1 font-medium dark:bg-grey-90"
       >
         <input
           id="file-upload"
@@ -300,10 +314,12 @@ module.exports.wip = function(state, emit) {
             class="flex items-center cursor-pointer"
             title="${state.translate('addFilesButton')}"
           >
-            <img src="${assets.get('addfiles.svg')}" class="w-6 h-6 mr-2" />
+            <svg class="w-6 h-6 mr-2 link-blue">
+              <use xlink:href="${assets.get('addfiles.svg')}#plus" />
+            </svg>
             ${state.translate('addFilesButton')}
           </label>
-          <div class="font-normal text-sm text-grey-darker">
+          <div class="font-normal text-sm text-grey-70 dark:text-grey-40">
             ${state.translate('totalSize', {
               size: bytes(state.archive.size)
             })}
@@ -378,22 +394,22 @@ module.exports.uploading = function(state, emit) {
   return html`
     <send-upload-area
       id="${archive.id}"
-      class="flex flex-col items-start rounded shadow-light bg-white p-4 w-full"
+      class="flex flex-col items-start rounded shadow-light bg-white p-4 w-full dark:bg-grey-90"
     >
       ${archiveInfo(archive)}
-      <div class="text-xs text-grey-dark w-full mt-2 mb-2">
+      <div class="text-xs opacity-75 w-full mt-2 mb-2">
         ${expiryInfo(state.translate, {
           dlimit: state.archive.dlimit,
           dtotal: 0,
           expiresAt: Date.now() + 500 + state.archive.timeLimit * 1000
         })}
       </div>
-      <div class="text-blue-dark text-sm font-medium mt-2">
+      <div class="link-blue text-sm font-medium mt-2">
         ${progressPercent}
       </div>
       <progress class="my-3" value="${progress}">${progressPercent}</progress>
       <button
-        class="text-blue-dark hover:text-blue-darker focus:text-blue-darker self-end font-medium"
+        class="link-blue self-end font-medium"
         onclick=${cancel}
         title="${state.translate('deletePopupCancel')}"
       >
@@ -415,7 +431,7 @@ module.exports.empty = function(state, emit) {
       ? ''
       : html`
           <button
-            class="center font-medium text-sm text-blue-dark hover:text-blue-darker focus:text-blue-darker mt-4 mb-2"
+            class="center font-medium text-sm link-blue mt-4 mb-2"
             onclick="${event => {
               event.stopPropagation();
               emit('signup-cta', 'drop');
@@ -428,14 +444,16 @@ module.exports.empty = function(state, emit) {
         `;
   return html`
     <send-upload-area
-      class="flex flex-col items-center justify-center border-2 border-dashed border-grey-transparent rounded px-6 py-16 h-full w-full"
+      class="flex flex-col items-center justify-center border-2 border-dashed border-grey-transparent rounded px-6 py-16 h-full w-full dark:border-grey-60"
       onclick="${e => {
         if (e.target.tagName !== 'LABEL') {
           document.getElementById('file-upload').click();
         }
       }}"
     >
-      <img src="${assets.get('addfiles.svg')}" width="48" height="48" />
+      <svg class="w-10 h-10 link-blue">
+        <use xlink:href="/${assets.get('addfiles.svg')}#plus" />
+      </svg>
       <div class="pt-6 pb-2 text-center text-lg font-bold tracking-wide">
         ${state.translate('dragAndDropFiles')}
       </div>
@@ -469,14 +487,11 @@ module.exports.empty = function(state, emit) {
   `;
 
   function focus(event) {
-    event.target.nextElementSibling.classList.add('bg-blue-darker', 'outline');
+    event.target.nextElementSibling.classList.add('bg-blue-70', 'outline');
   }
 
   function blur(event) {
-    event.target.nextElementSibling.classList.remove(
-      'bg-blue-darker',
-      'outline'
-    );
+    event.target.nextElementSibling.classList.remove('bg-blue-70', 'outline');
   }
 
   function add(event) {
@@ -501,8 +516,10 @@ module.exports.preview = function(state, emit) {
         </div>
       `;
   return html`
-    <send-archive class="flex flex-col max-h-full bg-white p-4 w-full md:w-128">
-      <div class="border rounded py-3 px-6">
+    <send-archive
+      class="flex flex-col max-h-full bg-white p-4 w-full md:w-128 dark:bg-grey-90"
+    >
+      <div class="border rounded py-3 px-6 dark:border-grey-70">
         ${archiveInfo(archive)} ${details}
       </div>
       <button
@@ -529,10 +546,10 @@ module.exports.downloading = function(state) {
   const progressPercent = percent(progress);
   return html`
     <send-archive
-      class="flex flex-col bg-white rounded shadow-light p-4 w-full max-w-sm md:w-128"
+      class="flex flex-col bg-white rounded shadow-light p-4 w-full max-w-sm md:w-128 dark:bg-grey-90"
     >
       ${archiveInfo(archive)}
-      <div class="text-blue-dark text-sm font-medium mt-2">
+      <div class="link-blue text-sm font-medium mt-2">
         ${progressPercent}
       </div>
       <progress class="my-3" value="${progress}">${progressPercent}</progress>
