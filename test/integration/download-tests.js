@@ -82,4 +82,29 @@ describe('Firefox Send', function() {
     // check if upload and download file sizes are equal
     assert.equal(uploadSize, downloadSize);
   });
+
+  it(`should upload and download file with added tracking parameter`, function() {
+    const trackingUrl =
+      '?fbclid=IaMFak3Tr4ck1ng1d_SDlP0shBk8SM2EN3cCLFKpHVl-k-Pvv0sf9Zy0tnTu9srqVY';
+    const password = 'strongpassword';
+
+    browser.chooseFile(
+      homePage.uploadInput,
+      `${testFilesPath}/${testFiles[0]}`
+    );
+    browser.waitForExist(homePage.addPassword);
+    browser.click(homePage.addPassword);
+    browser.waitForExist(homePage.passwordInput);
+    browser.setValue(homePage.passwordInput, password);
+    browser.click(homePage.uploadButton);
+    browser.waitForExist(homePage.shareUrl);
+    const shareUrl = browser.getValue(homePage.shareUrl);
+    const downloadPage = new DownloadPage(
+      shareUrl.replace('#', `${trackingUrl}#`)
+    );
+    downloadPage.open();
+    downloadPage.downloadUsingPassword(password);
+    browser.waitForExist(downloadPage.downloadComplete);
+    assert.ok(fs.existsSync(path.join(downloadDir, testFiles[0])));
+  });
 });
