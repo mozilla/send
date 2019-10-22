@@ -136,7 +136,7 @@ accountBenefitTimeLimit =
         [one] Retene active le ligamine pro 1 die
        *[other] Retene active le ligamine pro { $count } dies
     }
-accountBenefitSync = Gere files compartite ab ulle apparato
+accountBenefitSync = Gere files compartite ab non importa qual dispositivo
 accountBenefitMoz = Discoperi altere servicios de { -mozilla }
 signOut = Disconnecter
 okButton = OK
