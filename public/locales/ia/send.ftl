@@ -44,7 +44,7 @@ expiresMinutes = { $minutes }m
 # A short status message shown when the user enters a long password
 maxPasswordLength = Maxime longor del contrasigno: { $length }
 # A short status message shown when there was an error setting the password
-passwordSetError = Iste contrasigno non pote ser definite
+passwordSetError = Iste contrasigno non ha potite esser establite
 
 ## Send version 2 strings
 
@@ -125,8 +125,8 @@ orClickWithSize = o cliccar pro inviar usque { $size }
 addPassword = Proteger per contrasigno
 emailPlaceholder = Insere tu adresse de e-mail
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-signInSizeBump = Accede pro inviar usque { $size }
-signInOnlyButton = Authentica te
+signInSizeBump = Aperi session pro inviar usque a { $size }
+signInOnlyButton = Aperir session
 accountBenefitTitle = Crea un conto { -firefox } o registra te
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Comparti files usque { $size }
@@ -138,7 +138,7 @@ accountBenefitTimeLimit =
     }
 accountBenefitSync = Gere files compartite ab non importa qual dispositivo
 accountBenefitMoz = Discoperi altere servicios de { -mozilla }
-signOut = Disconnecter
+signOut = Clauder session
 okButton = OK
 downloadingTitle = Discargamento
 noStreamsWarning = Iste navigator pote non pote decifrar un file assi grande.
