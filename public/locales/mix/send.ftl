@@ -24,3 +24,9 @@ downloadFirefox = Snuú { -firefox }
 legalDateStamp = Versión 1.0 del 12 de marzo de 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = Katsi tutu ku skau
+uploadButton = Skaa
+signInOnlyButton = Kitsaa
+accountBenefitTitle = Saa iin kuenta ña { -firefox } a kitsa
+okButton = Vaá
+downloadingTitle = Snuì
