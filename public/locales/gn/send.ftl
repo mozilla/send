@@ -30,12 +30,15 @@ deleteButtonHover = Mboguete
 footerLinkLegal = Añetegua
 footerLinkPrivacy = Ñemigua
 footerLinkCookies = Kookie
+passwordTryAgain = Ñe'ẽñemi ndoikóiva. Eha'ãjey.
 javascriptRequired = Firefox Send oikotevẽ JavaScript
 whyJavascript = Mba'ére Firefox Send oikotevẽ JavaScript?
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours } h { $minutes } m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes } m
+# A short status message shown when there was an error setting the password
+passwordSetError = Ndaikatúi oikóvo ko ñe'ẽñemi
 
 ## Send version 2 strings
 
@@ -44,6 +47,10 @@ expiresMinutes = { $minutes } m
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Marandurenda ñemoambue hasy'ỹ ha ñemiguáva
+notifyUploadEncryptDone = Ne marandurenda oñemo'ã ha ikatúma emondo
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Opáta { $downloadCount } rire térã { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 aravo'i
@@ -78,6 +85,8 @@ fileSize = { $num }{ $units }
 totalSize = Tuichakue: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Emonguatia juajuha ha emoherakuã ne marandurenda:
+copyLinkButton = Emonguatia juajuha
+downloadTitle = Emboguejy marandurenda
 signInOnlyButton = Eñepyrũ tembiapo
 signOut = Emboty tembiapo
 okButton = OK
