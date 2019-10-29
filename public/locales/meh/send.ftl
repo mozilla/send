@@ -6,6 +6,7 @@ downloadFinish = Nnɨ´ɨ xinuu
 fileSizeProgress = ({ $partialSize } de { $totalSize })
 deletePopupCancel = Nkuvi-ka
 deleteButtonHover = Xita
+footerLinkPrivacy = Tu´un xitu a kumiji noo´o
 footerLinkCookies = Cookies
 
 ## Send version 2 strings
