@@ -2,6 +2,13 @@
 title = Firefox Send
 siteFeedback = Aq'a yol sti'
 importingFile = Eq'otzan
+encryptingFile = La muj isik'lele
+decryptingFile = Ni jaj ve't isik'lele'
+downloadCount =
+    { $num ->
+        [one] Eq'omal ku'tzan
+       *[other] { $num } Eq'omalaj ku'tzan
+    }
 
 ## Send version 2 strings
 
