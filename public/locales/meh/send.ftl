@@ -45,4 +45,9 @@ downloadFirefox = Xinuun { -firefox }
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 uploadButton = Ska
+okButton = Kuvi
+downloadingTitle = Xinuu
+shareLinkButton = Kua´a link
+# $name is the name of the file
+shareMessage = Xinuu “{ $name }” jii { -send-brand }: ntu viji
 learnMore = Ka´vi kue´eka
