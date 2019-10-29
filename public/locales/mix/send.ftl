@@ -30,6 +30,8 @@ deleteButtonHover = Stoò
 footerLinkLegal = Aviso legal
 footerLinkPrivacy = Ña meu
 footerLinkCookies = Cookies
+javascriptRequired = Firefox Send tsiniñui JavaScript
+whyJavascript = ¿Chanu Firefox Send tsiniñui JavaScript?
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
@@ -43,6 +45,8 @@ expiresMinutes = { $minutes }m
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Stucha kue tutu ku
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Ku kunkai mancha { $downloadCount } a { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 minuto
@@ -93,8 +97,16 @@ legalDateStamp = Versión 1.0 del 12 de marzo de 2019
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Katsi tutu ku skau
 uploadButton = Skaa
+emailPlaceholder = Chaa korreo ku
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = kitsa takua kuachu'una mancha { $size }
 signInOnlyButton = Kitsaa
 accountBenefitTitle = Saa iin kuenta ña { -firefox } a kitsa
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Stucha tutu mancha { $size }
+accountBenefitDownloadCount = Stucha tutu tsi kuaka nivi
+signOut = Kee
 okButton = Vaá
 downloadingTitle = Snuì
+shareLinkButton = Stucha Enlace
 learnMore = Skua'a kuakaa.
