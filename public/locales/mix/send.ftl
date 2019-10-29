@@ -105,8 +105,12 @@ accountBenefitTitle = Saa iin kuenta ña { -firefox } a kitsa
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Stucha tutu mancha { $size }
 accountBenefitDownloadCount = Stucha tutu tsi kuaka nivi
+accountBenefitSync = Stucha tutu tsi nchi kaa ndusu niku
 signOut = Kee
 okButton = Vaá
 downloadingTitle = Snuì
+noStreamsOptionCopy = Ndatava enlace takua kunu tsi inka navegador
+# the next line after the colon contains a file name
+shareLinkDescription = Stucha enlace tutu ku:
 shareLinkButton = Stucha Enlace
 learnMore = Skua'a kuakaa.
