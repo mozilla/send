@@ -98,6 +98,7 @@ emailPlaceholder = Chu´un email noo´o
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Kajie´e sesión saa chu´un íchi nee { $size }
 signInOnlyButton = Kajie´e sesión
+accountBenefitTitle = Sá´á iin cuenta { -firefox } a xiin kajie´e sesión
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Kua´a archivo ka´nu { $size }
 accountBenefitDownloadCount = Kua´a archivos jii inka ñivɨ
@@ -105,6 +106,8 @@ accountBenefitMoz = Ka´vi kue´eka jiee inka tiñu { -mozilla }
 signOut = Kasɨ sesión
 okButton = Kuvi
 downloadingTitle = Xinuu
+noStreamsOptionCopy = Tɨɨn enlace jee síne nuu inka ka̱a̱ nánuku
+noStreamsOptionDownload = Kaka jii ka̱a̱ nánuku ya´a
 downloadFirefoxPromo = { -send-short-brand } taji jíía { -firefox }.
 # the next line after the colon contains a file name
 shareLinkDescription = Kua´a enlace archivo noo´o
