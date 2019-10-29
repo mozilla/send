@@ -53,3 +53,4 @@ passwordSetError = Man kkowimb'ex ta ujeqeb'axik le retokib'al
 -send-short-brand = Utaqik
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Man k'ax taj, ukomonexik taq kemk'olib'al pa echeb'alil
