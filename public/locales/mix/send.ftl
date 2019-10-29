@@ -1,9 +1,11 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 unlockInputPlaceholder = Tu'un seè
+unlockButtonLabel = Kuna
 downloadButtonLabel = Snuù
 downloadFinish = Ntsinu snui
 fileSizeProgress = ({ $partialSize } ña { $totalSize })
+sendYourFilesLink = Kuachu'un Firefox Send
 
 ## Send version 2 strings
 
