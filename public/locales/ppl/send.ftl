@@ -16,7 +16,12 @@ timespanHours =
     }
 copiedUrl = Muishkupintuk!
 unlockInputPlaceholder = Taketzalis ichtaka
-unlockButtonLabel = Shikchululti
+unlockButtonLabel = Shikishtapu
+downloadButtonLabel = Shiktemulti
+downloadFinish = Shiktemulti muchi
+fileSizeProgress = ({ $partialSize } pak { $totalSize })
+sendYourFilesLink = Shikwi Firefox Send
+errorPageHeader = Te yajki yek!
 
 ## Send version 2 strings
 
