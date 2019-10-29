@@ -22,6 +22,7 @@ fileSizeProgress = ({ $partialSize } ña { $totalSize })
 sendYourFilesLink = Kuachu'un Firefox Send
 errorPageHeader = ¡Yee ña va'a!
 fileTooBig = Kanu tutu yo. Tsini ñu'u koi tana { $size }.
+linkExpiredAlt = Ntoo enlace
 notSupportedLink = ¿Chanu kue ku kuncheuña?
 notSupportedOutdatedDetail = Firefox kue ku kuni página web takua kuachu'un Firefox Send. tsiniñu'u ndu tsa'a navegador.
 updateFirefox = Ndu tsa'a Firefox
@@ -45,6 +46,8 @@ expiresMinutes = { $minutes }m
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Stucha kue tutu ku
+introDescription = { -send-brand }ku stuchaku tutu seé tsi inkana tsi iin enlace ña ntóo mituin. Sa'an ku kunka va'a ña stuchaku cha ma ku kunchee na kue tutu ku.
+notifyUploadEncryptDone = Tsa inka va'a tutu ku tsa ku stuchaku ña
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Ku kunkai mancha { $downloadCount } a { $timespan }
 timespanMinutes =
@@ -77,6 +80,7 @@ mb = MB
 gb = GB
 # localized number and byte abbreviation. example "2.5MB"
 fileSize = { $num }{ $units }
+copyLinkButton = Ndatava enlace
 downloadTitle = Snuú tutu
 trySendDescription = Kuachu'un { -send-brand } takua stuchaku nchi tutu niku
 # count will always be > 10
@@ -97,6 +101,12 @@ legalDateStamp = Versión 1.0 del 12 de marzo de 2019
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Katsi tutu ku skau
 uploadButton = Skaa
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Xita cha sia kue tutu
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = katavi takua stuchaku ña mancha { $size }
+addPassword = Inka vai tsi tu'un seé
 emailPlaceholder = Chaa korreo ku
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = kitsa takua kuachu'una mancha { $size }
@@ -105,6 +115,11 @@ accountBenefitTitle = Saa iin kuenta ña { -firefox } a kitsa
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Stucha tutu mancha { $size }
 accountBenefitDownloadCount = Stucha tutu tsi kuaka nivi
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Ku kunka tutu ku mancha 1 kii
+       *[other] Ku kunka tutu ku mancha { $count } kii
+    }
 accountBenefitSync = Stucha tutu tsi nchi kaa ndusu niku
 signOut = Kee
 okButton = Vaá
