@@ -54,3 +54,44 @@ passwordSetError = Man kkowimb'ex ta ujeqeb'axik le retokib'al
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Man k'ax taj, ukomonexik taq kemk'olib'al pa echeb'alil
+introDescription = { -send-brand } kuya' bé chi awech kakomonej taq kemk'olib'al ruk' wiqitajem chi'l jun kemwiqb'al le kq'ax uq'ijol pa utukelam. Are chi man katzaq ta le kakomone'j pa echeb'alil chi'l chasuk'ub'a' rilik chi le taq ajastaq man kk'oji' ta pa nimk'atz pa junelik.
+notifyUploadEncryptDone = Le akemk'olib'al wiqitalik chi'l utz chi kataqo
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Kq'ax uq'ijol chi rij { $downloadCount } on { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 kajb'al
+       *[other] { $num } taq kajb'al
+    }
+timespanDays =
+    { $num ->
+        [one] 1 q'ij
+       *[other] { $num } taq q'ij
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 wuqq'ij
+       *[other] { $num } taq wuqq'ij
+    }
+fileCount =
+    { $num ->
+        [one] 1 kemk'olib'al
+       *[other] { $num } taq kemk'olib'al
+    }
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = Ronojel unimal: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Chawinaqirisaj uwach le kemwiqb'al chech ukomone'xik le akemk'olib'al:
+copyLinkButton = Relesaxik uwach kemwiqb'al
+downloadTitle = Uqasaxik taq kemwiqb'al
+downloadDescription = We kemk'olib'al xkomone'x pa { -send-brand } ruk' wiqitajem pa xkut chi xkut chi'l jun kemwiqb'al le kq'ax uq'ijol pa utukelam.
