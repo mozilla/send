@@ -88,7 +88,15 @@ legalDateStamp = Versión 1.0 del 12 de marzo de 2019
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Kaji archivos ska
 uploadButton = Ska
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Staka jee sía  daa archivo
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = a xiin kuaxin saa chu´un íchi nee { $size }
+addPassword = Iyo yu´u jii contraseña
 emailPlaceholder = Chu´un email noo´o
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Kajie´e sesión saa chu´un íchi nee { $size }
 signInOnlyButton = Kajie´e sesión
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Kua´a archivo ka´nu { $size }
