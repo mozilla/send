@@ -1,5 +1,6 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
+siteFeedback = Tu'un meu
 encryptingFile = Ndasami tu'un…
 decryptingFile = Nchiko tu'un…
 downloadCount =
@@ -21,6 +22,9 @@ fileSizeProgress = ({ $partialSize } ña { $totalSize })
 sendYourFilesLink = Kuachu'un Firefox Send
 errorPageHeader = ¡Yee ña va'a!
 fileTooBig = Kanu tutu yo. Tsini ñu'u koi tana { $size }.
+notSupportedLink = ¿Chanu kue ku kuncheuña?
+notSupportedOutdatedDetail = Firefox kue ku kuni página web takua kuachu'un Firefox Send. tsiniñu'u ndu tsa'a navegador.
+updateFirefox = Ndu tsa'a Firefox
 deletePopupCancel = Kunchatu
 deleteButtonHover = Stoò
 footerLinkLegal = Aviso legal
@@ -93,3 +97,4 @@ signInOnlyButton = Kitsaa
 accountBenefitTitle = Saa iin kuenta ña { -firefox } a kitsa
 okButton = Vaá
 downloadingTitle = Snuì
+learnMore = Skua'a kuakaa.
