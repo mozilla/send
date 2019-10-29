@@ -110,6 +110,7 @@ signOut = Kee
 okButton = Vaá
 downloadingTitle = Snuì
 noStreamsOptionCopy = Ndatava enlace takua kunu tsi inka navegador
+noStreamsOptionDownload = Kunka tsi navegador yo
 # the next line after the colon contains a file name
 shareLinkDescription = Stucha enlace tutu ku:
 shareLinkButton = Stucha Enlace
