@@ -24,11 +24,18 @@ sendYourFilesLink = Eipuru Firefox Send
 errorPageHeader = ¡Oiko jejavy!
 linkExpiredAlt = Juajuha ndoikóiva
 notSupportedHeader = Ne kundaha ndorekói pytyvõ.
+updateFirefox = Firefox mbohekopyahu
 deletePopupCancel = Heja
 deleteButtonHover = Mboguete
 footerLinkLegal = Añetegua
 footerLinkPrivacy = Ñemigua
 footerLinkCookies = Kookie
+javascriptRequired = Firefox Send oikotevẽ JavaScript
+whyJavascript = Mba'ére Firefox Send oikotevẽ JavaScript?
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours } h { $minutes } m
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes } m
 
 ## Send version 2 strings
 
@@ -53,3 +60,4 @@ signInOnlyButton = Eñepyrũ tembiapo
 signOut = Emboty tembiapo
 okButton = OK
 downloadingTitle = Oñemboguejyhína
+learnMore = Kuaave.
