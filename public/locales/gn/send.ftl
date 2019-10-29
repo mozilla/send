@@ -44,6 +44,26 @@ expiresMinutes = { $minutes } m
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+timespanMinutes =
+    { $num ->
+        [one] 1 aravo'i
+       *[other] { $num } aravo'i
+    }
+timespanDays =
+    { $num ->
+        [one] 1 ára
+       *[other] { $num } ára
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 arapokõindy
+       *[other] { $num } arapokõindy
+    }
+fileCount =
+    { $num ->
+        [one] 1 marandurenda
+       *[other] { $num } marandurenda
+    }
 # byte abbreviation
 bytes = B
 # kibibyte abbreviation
@@ -56,6 +76,8 @@ gb = GB
 fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Tuichakue: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Emonguatia juajuha ha emoherakuã ne marandurenda:
 signInOnlyButton = Eñepyrũ tembiapo
 signOut = Emboty tembiapo
 okButton = OK
