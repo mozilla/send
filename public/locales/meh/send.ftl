@@ -1,16 +1,34 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
+copiedUrl = Ntɨɨn
 unlockInputPlaceholder = Contraseña
 downloadButtonLabel = Xinuu
 downloadFinish = Nnɨ´ɨ xinuu
 fileSizeProgress = ({ $partialSize } de { $totalSize })
+updateFirefox = Naxi´ñá Firefox
 deletePopupCancel = Nkuvi-ka
 deleteButtonHover = Xita
 footerLinkPrivacy = Tu´un xitu a kumiji noo´o
 footerLinkCookies = Cookies
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes = { $hours }h { $minutes }m
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }m
 
 ## Send version 2 strings
 
+-firefox = Firefox
+-mozilla = Mozilla
+timespanMinutes =
+    { $num ->
+        [one] 1 minuto
+       *[other] { $num } minutos
+    }
+timespanDays =
+    { $num ->
+        [one] 1 día
+       *[other] { $num } días
+    }
 # byte abbreviation
 bytes = B
 # kibibyte abbreviation
