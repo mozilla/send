@@ -1,10 +1,25 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
+siteFeedback = Tu'un jianininu
+encryptingFile = Encriptando...
+downloadCount =
+    { $num ->
+       *[other] { $num } nxinuun
+    }
+timespanHours =
+    { $num ->
+        [one] 1 hora
+       *[other] { $num } horas
+    }
 copiedUrl = Ntɨɨn
 unlockInputPlaceholder = Contraseña
 downloadButtonLabel = Xinuu
 downloadFinish = Nnɨ´ɨ xinuu
 fileSizeProgress = ({ $partialSize } de { $totalSize })
+sendYourFilesLink = Ni´i Firefox Send
+errorPageHeader = ¡Iyo iin ntu nkene va´a!
+fileTooBig = Archivo ya´a ka´nu. Nejia chunku´va { $size }
+linkExpiredAlt = Nnɨ´ɨ enlace
 updateFirefox = Naxi´ñá Firefox
 deletePopupCancel = Nkuvi-ka
 deleteButtonHover = Xita
