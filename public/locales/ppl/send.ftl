@@ -49,3 +49,4 @@ expiresMinutes = { $minutes }m
 -send-short-brand = Shiktitani
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Te uij wan ichtaka tikmajmaka se amat.
