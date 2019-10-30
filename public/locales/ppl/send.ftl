@@ -55,7 +55,7 @@ passwordSetError = Te welit tiktaliat ini taketzalis ichtaka.
 -mozilla = Mozilla
 introTitle = Te uij wan ichtaka tikmajmaka se tajkwilul.
 introDescription = { -send-brand } metzpalewia tikmajmaka se tajkwilul iwan ichtaka tajkwilulis wan se ilpika ka puliwi nemanha. Ijkiuni tikchiwa ka ichtaka tay tikmajmaka wan ka tesu naka senpa tay mupal tik matapan.
-notifyUploadEncryptDone = Ne muamaw ichtaka tajkwilujtuk wan weli tiktuktia
+notifyUploadEncryptDone = Ne mutajkwilul nemi ichtaka tajkwilujtuk wan weli tiktitania
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Puliwi kwak tikajsi { $downloadCount } ush { $timespan }
 timespanMinutes =
@@ -127,3 +127,5 @@ emailPlaceholder = Shiktali mucorreoj
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Shiktali mutukay pal tiktitania ashta { $size }
 signInOnlyButton = Shiktali mutukay
+# the next line after the colon contains a file name
+shareLinkDescription = Shiktakulia ne ilpika ipal ne mutajkwilul:
