@@ -122,4 +122,8 @@ dragAndDropFiles = Shikishtilana wan shiktamuta ne archivoj
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = u shikpachu pal tiktitania ashta { $size }
-learnMore = Shimumachti ukchiupi.
+addPassword = Shimupalewi iwan se taketzalis ichtaka
+emailPlaceholder = Shiktali mucorreoj
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Shiktali mutukay pal tiktitania ashta { $size }
+signInOnlyButton = Shiktali mutukay
