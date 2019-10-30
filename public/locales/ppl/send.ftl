@@ -49,8 +49,8 @@ expiresMinutes = { $minutes }m
 -send-short-brand = Shiktitani
 -firefox = Firefox
 -mozilla = Mozilla
-introTitle = Te uij wan ichtaka tikmajmaka se amat.
-introDescription = { -send-brand } metzpalewia tikmajmaka se amat iwan ichtaka tajkwilulis wan se ilpika ka puliwi nemanha. Ijkiuni tikchiwa ka ichtaka tay tikmajmaka wan ka tesu naka senpa tay mupal tik matapan.
+introTitle = Te uij wan ichtaka tikmajmaka se tajkwilul.
+introDescription = { -send-brand } metzpalewia tikmajmaka se tajkwilul iwan ichtaka tajkwilulis wan se ilpika ka puliwi nemanha. Ijkiuni tikchiwa ka ichtaka tay tikmajmaka wan ka tesu naka senpa tay mupal tik matapan.
 notifyUploadEncryptDone = Ne muamaw ichtaka tajkwilujtuk wan weli tiktuktia
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Puliwi kwak tikajsi { $downloadCount } ush { $timespan }
@@ -71,8 +71,8 @@ timespanWeeks =
     }
 fileCount =
     { $num ->
-        [one] amat
-       *[other] ajamat
+        [one] tajkwilul
+       *[other] tajtajkwilul
     }
 # localized number and byte abbreviation. example "2.5MB"
 fileSize = { $num }{ $units }
@@ -81,7 +81,7 @@ totalSize = Keski itamachiwka: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Shikupina ne ilpika pal tikmajmaka muamaw:
 copyLinkButton = Shikupina ne ilpika
-downloadTitle = Shiktemulti ajamat
+downloadTitle = Shiktemulti tajkwilul
 downloadDescription = Ini amat kimajmakket iwan { -send-brand } iwan ichtaka tajkwilulis wan se ilpika ka puliwi nemanha.
 trySendDescription = Shikejeku { -send-brand } pal tikmajmaka te uij wan ichtaka.
 # count will always be > 10
