@@ -111,8 +111,15 @@ tooManyArchives =
 expiredTitle = Ne ilpika pulijtuk.
 notSupportedDescription = { -send-brand } tesu yawi tekiti iwan ne tay titajtachia. { -send-short-brand } tekiti sujsul yek iwan ne tipan versión ipal { -firefox }, wan tesu yawi tekiti iwan ne versión an kipiat achka muchi ne taiwan titajtachia.
 downloadFirefox = Shiktemulti { -firefox }
+legalTitle = { -send-short-brand } Tanawatilis ipal mupal ichtaka
+legalDateStamp = Versión 1.0, tik marzoj 12, 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } t { $hours } h { $minutes } m
 addFilesButton = Shikpejpena ne tajkwilul ka tiktejkultia
 uploadButton = Shiktejkulti
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Shikishtilana wan shiktamuta ne archivoj
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = u shikpachu pal tiktitania ashta { $size }
 learnMore = Shimumachti ukchiupi.
