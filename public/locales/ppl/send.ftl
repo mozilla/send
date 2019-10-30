@@ -129,3 +129,4 @@ signInSizeBump = Shiktali mutukay pal tiktitania ashta { $size }
 signInOnlyButton = Shiktali mutukay
 # the next line after the colon contains a file name
 shareLinkDescription = Shiktakulia ne ilpika ipal ne mutajkwilul:
+shareLinkButton = Shiktakuli ne ilpika
