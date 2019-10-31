@@ -41,6 +41,7 @@ spec:
                 }
             }
         }
+    }
     post {
         success {
             notifySuccess()
@@ -56,7 +57,7 @@ spec:
 
 def notifyBuild(String buildStatus = 'RUNNING BUILD', String colorCode = '#5492f7', String notify = '') {
   def channel = "sysops-build-alerts"
-  def base = "https://github.com/Factual/sysops-sendpass/commits/"
+  def base = "https://github.com/Factual/send/commits/"
   def commit = sh(returnStdout: true, script: 'git log -n 1 --format="%H"').trim()
   def link = "${base}${commit}"
   def shortCommit = commit.take(6)
