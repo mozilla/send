@@ -137,6 +137,8 @@ signOut = Shikisa
 okButton = Yek
 downloadingTitle = Kitemultia nemi
 noStreamsWarning = Ne taiwan titachia te weli kineshtia ini tajkwilul wey
+noStreamsOptionFirefox = Shikejeku ne taiwan tachia tikishwelitat
+noStreamsOptionDownload = Ma ninemi senpa iwan ini taiwan nitachia
 # the next line after the colon contains a file name
 shareLinkDescription = Shiktakulia ne ilpika ipal ne mutajkwilul:
 shareLinkButton = Shiktakuli ne ilpika
