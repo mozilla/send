@@ -139,3 +139,12 @@ accountBenefitTimeLimit =
 accountBenefitSync = Chawilawachij komone'tal taq kemk'olib'al pa apachike wiqkemchakub'al
 accountBenefitMoz = Chaweta'maj chi rij jun chi { -mozilla } taq patanib'al
 signOut = Chatz'apij kemchak
+okButton = Ja'e
+downloadingTitle = Ktajin uqasaxik
+noStreamsWarning = We nik'onel wene man kkowin taj kusol jun jewa' unimal kemk'olib'al
+noStreamsOptionCopy = Chawelesaj uwach le kemwiqb'al chech ujaqik jun chi nik'onel
+noStreamsOptionFirefox = Chak'amb'ejaj le ajawatal nik'onel
+noStreamsOptionDownload = Chab'ana' na ruk' we nik'onel
+downloadFirefoxPromo = { -send-short-brand } k'amom la chi awech rumal le k'ak' { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Chakomone'j le kemwiqb'al chech le akemk'olib'al:
