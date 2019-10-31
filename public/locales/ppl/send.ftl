@@ -124,6 +124,19 @@ emailPlaceholder = Shiktali mucorreoj
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Shiktali mutukay pal tiktitania ashta { $size }
 signInOnlyButton = Shiktali mutukay
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Shiktakuli tajtajkwilul ka { $size }
+accountBenefitDownloadCount = Shiktakuli ne tajkwilul iwan seki
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Shikpia ne ilpika tatatuk 1 tunal
+       *[other] Shikpia ne ilpika tatatuk { $count } tunal
+    }
+accountBenefitMoz = Shikmati ipanpa seuk itakil { -mozilla }
+signOut = Shikisa
+okButton = Yek
+downloadingTitle = Kitemultia nemi
+noStreamsWarning = Ne taiwan titachia te weli kineshtia ini tajkwilul wey
 # the next line after the colon contains a file name
 shareLinkDescription = Shiktakulia ne ilpika ipal ne mutajkwilul:
 shareLinkButton = Shiktakuli ne ilpika
