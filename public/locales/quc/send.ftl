@@ -95,3 +95,21 @@ copyLinkDescription = Chawinaqirisaj uwach le kemwiqb'al chech ukomone'xik le ak
 copyLinkButton = Relesaxik uwach kemwiqb'al
 downloadTitle = Uqasaxik taq kemwiqb'al
 downloadDescription = We kemk'olib'al xkomone'x pa { -send-brand } ruk' wiqitajem pa xkut chi xkut chi'l jun kemwiqb'al le kq'ax uq'ijol pa utukelam.
+trySendDescription = Chak'amb'ejaj { -send-brand } chech man k'ax taj, ukomonexik kemk'olib'al pa chajib'al.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Xa 1 kemk'olib'al kkowinb'ex upaqab'isaxik pa jun uq'ijol
+       *[other] Xew { $count } taq kemk'olib'al kkowinb'ex upaqab'isaxik pa jun uq'ijol
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Xew 1 kemk'olib'al ya'om b'e chech.
+       *[other] Xew { $count } taq kemk'olib'al ya'om b'e chech
+    }
+expiredTitle = Xq'ax uq'ijol we kemwiqb'al
+notSupportedDescription = { -send-brand } man kchakun ta ruk' we nik'onel. { -send-short-brand } are qas utz uchakunem ruk' le maja naj okib'al rech { -firefox }, xuquje' kchakun ruk' le okib'al rech chanim rech nima ronojel taq nik'onelab'.
+downloadFirefox = Uqasaxik { -firefox }
+legalTitle = { -send-short-brand } ub'ixikil rech echeb'alil
+legalDateStamp = Okib'al 1.0, uq'ijol rech urox ik' 12, 2019
