@@ -21,12 +21,12 @@ class Header extends Component {
       platform() === 'android'
         ? html`
             <a class="flex flex-row items-center">
-              <img src="${assets.get('FactualLogo_orangeback.png')}#logo " style="padding-top:30%;width:500px;height:600px;"/>
+              <img src="${assets.get('FactualLogo_orangeback.png')}#logo " style="padding-top:30%;width:300px;height:400px;"/>
             </a>
           `
         : html`
             <a class="flex flex-row items-center" href="/">
-              <img src="${assets.get('FactualLogo_orangeback.png')}#logo" style="padding-top:30%;width:500px;height:600px;"/>
+              <img src="${assets.get('FactualLogo_orangeback.png')}#logo" style="padding-top:30%;width:300px;height:400px;"/>
             </a>
           `;
     return html`
