@@ -2,8 +2,8 @@
 title = Firefox Send
 siteFeedback = Utzijoxik
 importingFile = Ujek'ik…
-encryptingFile = Uwiqik
-decryptingFile = Usolik
+encryptingFile = Uwiqik…
+decryptingFile = Usolik…
 downloadCount =
     { $num ->
         [one] 1 uqasaxik
@@ -99,8 +99,8 @@ trySendDescription = Chak'amb'ejaj { -send-brand } chech man k'ax taj, ukomonexi
 # count will always be > 10
 tooManyFiles =
     { $count ->
-        [one] Xa 1 kemk'olib'al kkowinb'ex upaqab'isaxik pa jun uq'ijol
-       *[other] Xew { $count } taq kemk'olib'al kkowinb'ex upaqab'isaxik pa jun uq'ijol
+        [one] Xa 1 kemk'olib'al kkowinb'ex upaqab'isaxik pa jun uq'ijol.
+       *[other] Xew { $count } taq kemk'olib'al kkowinb'ex upaqab'isaxik pa jun uq'ijol.
     }
 # count will always be > 10
 tooManyArchives =
@@ -148,3 +148,8 @@ noStreamsOptionDownload = Chab'ana' na ruk' we nik'onel
 downloadFirefoxPromo = { -send-short-brand } k'amom la chi awech rumal le k'ak' { -firefox }.
 # the next line after the colon contains a file name
 shareLinkDescription = Chakomone'j le kemwiqb'al chech le akemk'olib'al:
+shareLinkButton = Chakomone'j kemwiqb'al
+# $name is the name of the file
+shareMessage = Chaqasaj “{ $name }” ruk' { -send-brand }: man k'ax ta ub'anik, ukomone'xik kemk'olib'al pa chajib'al
+trailheadPromo = K'o jun ub'e'al chech uchajixik le a'echeb'alil. Chat'iqa' awib' pa. Firefox.
+learnMore = Chaweta'maj nik'aj chik
