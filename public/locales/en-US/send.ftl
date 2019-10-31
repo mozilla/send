@@ -1,5 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+title = Factual SendPass
 siteFeedback = Feedback
 importingFile = Importing…
 encryptingFile = Encrypting…
@@ -18,7 +18,7 @@ unlockButtonLabel = Unlock
 downloadButtonLabel = Download
 downloadFinish = Download complete
 fileSizeProgress = ({ $partialSize } of { $totalSize })
-sendYourFilesLink = Try Firefox Send
+sendYourFilesLink = Try Factual SendPass
 errorPageHeader = Something went wrong!
 fileTooBig = That file is too big to upload. It should be less than { $size }
 linkExpiredAlt = Link expired
@@ -32,8 +32,8 @@ footerLinkLegal = Legal
 footerLinkPrivacy = Privacy
 footerLinkCookies = Cookies
 passwordTryAgain = Incorrect password. Try again.
-javascriptRequired = Firefox Send requires JavaScript
-whyJavascript = Why does Firefox Send require JavaScript?
+javascriptRequired = Factual SendPass requires JavaScript
+whyJavascript = Why does Factual SendPass require JavaScript?
 enableJavascript = Please enable JavaScript and try again.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
@@ -47,13 +47,13 @@ passwordSetError = This password could not be set
 ## Send version 2 strings
 
 # Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
--send-short-brand = Send
+-send-brand = Factual SendPass
+-send-short-brand = SendPass
 -firefox = Firefox
 -mozilla = Mozilla
 
 introTitle = Simple, private file sharing
-introDescription = { -send-brand } lets you share files with end-to-end encryption and a link that automatically expires. So you can keep what you share private and make sure your stuff doesn’t stay online forever.
+introDescription = { -send-brand } lets you share files with end-to-end encryption and a link that automatically expires. So you can keep what you share private and make sure your stuff doesn’t stay online forever. You can also copy and paste the secret text here!
 notifyUploadEncryptDone = Your file is encrypted and ready to send
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Expires after { $downloadCount } or { $timespan }
@@ -143,5 +143,5 @@ shareLinkDescription = Share the link to your file:
 shareLinkButton = Share link
 # $name is the name of the file
 shareMessage = Download “{ $name }” with { -send-brand }: simple, safe file sharing
-trailheadPromo = There is a way to protect your privacy. Join Firefox.
-learnMore = Learn more.
+trailheadPromo = 
+learnMore = 

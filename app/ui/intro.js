@@ -13,7 +13,7 @@ module.exports = function intro(state) {
         <p class="max-w-sm leading-loose mt-6 md:mt-2 md:pr-14">
           ${state.translate('introDescription')}
         </p>
-        <img class="intro" src="${assets.get('intro.svg')}" />
+        <img src="https://imgur.com/H9d2NWZ.gif"/>
       </div>
     </send-intro>
   `;
