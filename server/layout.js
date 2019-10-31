@@ -7,7 +7,7 @@ module.exports = function(state, body = '') {
     <!DOCTYPE html>
     <html lang="${state.locale}">
       <head>
-        <title>${state.title}</title>
+        <title>Factual SendPass</title>
         <base href="/" />
         <meta name="robots" content="${state.robots},noarchive" />
         <meta name="google" content="nositelinkssearchbox" />
@@ -15,19 +15,19 @@ module.exports = function(state, body = '') {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta property="og:title" content="${state.title}" />
-        <meta name="twitter:title" content="${state.title}" />
-        <meta name="description" content="${state.description}" />
-        <meta property="og:description" content="${state.description}" />
-        <meta name="twitter:description" content="${state.description}" />
+        <meta property="og:title" content="Factual SendPass" />
+        <meta name="twitter:title" content="Factual SendPass" />
+        <meta name="description" content="Factual Re-branded of Firefox Send" />
+        <meta property="og:description" content="Factual Re-branded of Firefox Send" />
+        <meta name="twitter:description" content="Factual Re-branded of Firefox Send" />
         <meta name="twitter:card" content="summary" />
         <meta
           property="og:image"
-          content="${state.baseUrl}/${assets.get('send-fb.jpg')}"
+          content="https://www.factual.com/wp-content/uploads/2018/01/FB_metadata_image.png"
         />
         <meta
           name="twitter:image"
-          content="${state.baseUrl}/${assets.get('send-twitter.jpg')}"
+          content="http://factualinc.wpengine.com/wp-content/uploads/2017/09/twitter_metadata_image.png"
         />
         <meta property="og:url" content="${state.baseUrl}" />
         <meta name="theme-color" content="#220033" />
@@ -45,23 +45,7 @@ module.exports = function(state, body = '') {
           sizes="180x180"
           href="${assets.get('apple-touch-icon.png')}"
         />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="${assets.get('favicon-32x32.png')}"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="${assets.get('favicon-16x16.png')}"
-        />
-        <link
-          rel="mask-icon"
-          href="${assets.get('safari-pinned-tab.svg')}"
-          color="#838383"
-        />
+        <link rel="icon" href="https://www.factual.com/wp-content/themes/factualinc/assets/images/favicon.ico">
         <script defer src="${assets.get('app.js')}"></script>
       </head>
       <noscript>
