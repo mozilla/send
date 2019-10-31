@@ -118,11 +118,8 @@ expiresDaysHoursMinutes = { $days } t { $hours } h { $minutes } m
 addFilesButton = Shikpejpena ne tajkwilul ka tiktejkultia
 uploadButton = Shiktejkulti
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
-dragAndDropFiles = Shikishtilana wan shiktamuta ne archivoj
-# the second part of the string 'Drag and drop files or click to send up to 1GB'
-# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-orClickWithSize = u shikpachu pal tiktitania ashta { $size }
-addPassword = Shimupalewi iwan se taketzalis ichtaka
+dragAndDropFiles = Shiktilana wan shiktamima ne tajkwilul
+addPassword = Shiktajpia iwan se taketzalis ichtaka
 emailPlaceholder = Shiktali mucorreoj
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Shiktali mutukay pal tiktitania ashta { $size }
