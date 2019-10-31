@@ -21,7 +21,7 @@ downloadButtonLabel = Shiktemulti
 downloadFinish = Shiktemulti muchi
 fileSizeProgress = ({ $partialSize } ipal { $totalSize })
 sendYourFilesLink = Shikwi Firefox Send
-errorPageHeader = Te yajki yek!
+errorPageHeader = Se teyek panuk!
 fileTooBig = Ne tajkwilul sea wey pal tiktejkultia. Shiktemulti { $size } ush chupiuk chikitik.
 linkExpiredAlt = Ilpika teuk yek
 notSupportedHeader = Te tikishmatit ne taiwan titajtachia.
@@ -137,8 +137,14 @@ signOut = Shikisa
 okButton = Yek
 downloadingTitle = Kitemultia nemi
 noStreamsWarning = Ne taiwan titachia te weli kineshtia ini tajkwilul wey
+noStreamsOptionCopy = Shikishkupina ne ilpika pal tiktapua tik ukse taiwan titajtachia
 noStreamsOptionFirefox = Shikejeku ne taiwan tachia tikishwelitat
 noStreamsOptionDownload = Ma ninemi senpa iwan ini taiwan nitachia
+downloadFirefoxPromo = ne sujsul yankwik  { -firefox } metzwikilia { -send-short-brand }.
 # the next line after the colon contains a file name
 shareLinkDescription = Shiktakulia ne ilpika ipal ne mutajkwilul:
 shareLinkButton = Shiktakuli ne ilpika
+# $name is the name of the file
+shareMessage = Shiktemulti “{ $name }” iwan{ -send-brand }: tiktakulia archivoj te uij
+trailheadPromo = Nemi ken tikpalewia ne mupal ichtaka. Shimusentali iwan Firefox.
+learnMore = Shimumachti ukchupi.
