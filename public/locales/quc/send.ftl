@@ -113,3 +113,29 @@ notSupportedDescription = { -send-brand } man kchakun ta ruk' we nik'onel. { -se
 downloadFirefox = Uqasaxik { -firefox }
 legalTitle = { -send-short-brand } ub'ixikil rech echeb'alil
 legalDateStamp = Okib'al 1.0, uq'ijol rech urox ik' 12, 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = Ucha'ik taq kemk'olib'al chech upaqab'isaxik
+uploadButton = Upaqab'isaxik
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Uchararexik chi'l utzoqopixik taq kemk'olib'al
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = on chapitz'a' chech utaqik chech { $size }
+addPassword = Chajital rumal retokib'al
+emailPlaceholder = Chach'apa' le ataqoqxa'nib'al
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Chamajij kemchak chech utaqik chech { $size }
+signInOnlyButton = Chamajij kemchak
+accountBenefitTitle = Chawinaqirisaj jun { -firefox } kemb'i'aj on chamajij kemchak
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Chakomone'j taq kemk'olib'al kq'ax pa uwi' { $size }
+accountBenefitDownloadCount = Chakomone'j taq kemk'olib'al kuk' nik'aj chi winaq
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Chatzija' taq kemwiqb'al are chi kq'ax pa uwi' 1 q'ij
+       *[other] Chatzija' taq kemwiqb'al are chi kq'ax pa uwi' { $count } taq q'ij
+    }
+accountBenefitSync = Chawilawachij komone'tal taq kemk'olib'al pa apachike wiqkemchakub'al
+accountBenefitMoz = Chaweta'maj chi rij jun chi { -mozilla } taq patanib'al
+signOut = Chatz'apij kemchak
