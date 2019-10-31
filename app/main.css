@@ -171,8 +171,7 @@ footer li:hover {
 }
 
 .intro {
-  max-width: 100%;
-  height: unset;
+  padding-top:10%
 }
 
 .main {
