@@ -76,7 +76,7 @@ timespanWeeks =
 fileCount =
     { $num ->
         [one] tajkwilul
-       *[other] tajtajkwilul
+       *[other] tajkwilul
     }
 # byte abbreviation
 bytes = B
