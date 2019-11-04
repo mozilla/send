@@ -53,6 +53,7 @@ passwordSetError = Ntu nkuvi sá´á contraseña
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Kua´a daa archivo ñama jee yu´u
+introDescription = { -send-brand } taji jia´anu archivos jii cifrado uvi nuu jee iin enlace nɨ´ɨ. Sukuan kuvi kumi yu´unu daa archivo jia´anu jee kuninu nkino daa ya´a kue´e kuiya íchi nuu.
 notifyUploadEncryptDone = Archivo noo´o íyo cifrado jee kuvi chu´un íchi
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Nɨ'ɨ dee nña´a { $downloadCount } a xiin { $timespan }
@@ -107,6 +108,7 @@ tooManyArchives =
        *[other] Ntu xini { $count } archivos íyo
     }
 expiredTitle = Nnɨ'ɨ link ya´a.
+notSupportedDescription = { -send-brand } nsatiñu jii ka̱a̱ nánuku ya´a. { -send-short-brand } satiñu va´a jii tuni íchi yata { -firefox }, jee satiñu va´a jii tuni íyo ntañu´u kuaiyo daa ka̱a̱ nánuku.
 downloadFirefox = Xinuun { -firefox }
 legalTitle = Tu´un xitu a kumiji noo´o { -send-short-brand }
 legalDateStamp = Versión 1.0 del 12 de marzo de 2019
