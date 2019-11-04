@@ -27,10 +27,18 @@ deletePopupCancel = Nkuvi-ka
 deleteButtonHover = Xita
 footerLinkPrivacy = Tu´un xitu a kumiji noo´o
 footerLinkCookies = Cookies
+passwordTryAgain = Contraseña ntu vatu. Nachu´un tuku.
+javascriptRequired = Firefox Send ni´i JavaScript
+whyJavascript = ¿Navi Firefox Send ni´i JavaScript?
+enableJavascript = Kua´a jia´a JavaScript jee nachu´un tuku.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when the user enters a long password
+maxPasswordLength = Naja ka´nu koo contraseña: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Ntu nkuvi sá´á contraseña
 
 ## Send version 2 strings
 
@@ -40,6 +48,8 @@ expiresMinutes = { $minutes }m
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Kua´a daa archivo ñama jee yu´u
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Nɨ'ɨ dee nña´a { $downloadCount } a xiin { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 minuto
@@ -77,12 +87,19 @@ copyLinkDescription = Tɨɨn enlace jee kua´a archivo:
 copyLinkButton = Tɨɨn enlacae
 downloadTitle = Xinuu archivo
 # count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Ntuxini 1 archivo kuvi ska.
+       *[other] Ntuxini { $count } archivos kuvi ska.
+    }
+# count will always be > 10
 tooManyArchives =
     { $count ->
         [one] Ntu xini 1 archivo íyo
        *[other] Ntu xini { $count } archivos íyo
     }
 downloadFirefox = Xinuun { -firefox }
+legalTitle = Tu´un xitu a kumiji noo´o { -send-short-brand }
 legalDateStamp = Versión 1.0 del 12 de marzo de 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
@@ -106,6 +123,7 @@ accountBenefitMoz = Ka´vi kue´eka jiee inka tiñu { -mozilla }
 signOut = Kasɨ sesión
 okButton = Kuvi
 downloadingTitle = Xinuu
+noStreamsWarning = Kuvi ka̱a̱ nánaku ya´a nxituvi a vaji nuu iin archivo ka´nu.
 noStreamsOptionCopy = Tɨɨn enlace jee síne nuu inka ka̱a̱ nánuku
 noStreamsOptionFirefox = Ni´i ka̱a̱ nánuku va´a
 noStreamsOptionDownload = Kaka jii ka̱a̱ nánuku ya´a
