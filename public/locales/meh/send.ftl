@@ -3,6 +3,7 @@ title = Firefox Send
 siteFeedback = Tu'un jianininu
 importingFile = Nasia´a…
 encryptingFile = Encriptando...
+decryptingFile = Desencriptando…
 downloadCount =
     { $num ->
        *[other] { $num } nxinuun
@@ -14,6 +15,7 @@ timespanHours =
     }
 copiedUrl = Ntɨɨn
 unlockInputPlaceholder = Contraseña
+unlockButtonLabel = Nkasɨ
 downloadButtonLabel = Xinuu
 downloadFinish = Nnɨ´ɨ xinuu
 fileSizeProgress = ({ $partialSize } de { $totalSize })
@@ -23,9 +25,11 @@ fileTooBig = Archivo ya´a ka´nu. Nejia chunku´va { $size }
 linkExpiredAlt = Nnɨ´ɨ enlace
 notSupportedHeader = Ntu íyo tiñu nuu ka̱a̱ nánuku ya´a.
 notSupportedLink = ¿Navi ntu satiñu nuu ka̱a̱ nánuku ya´a?
+notSupportedOutdatedDetail = Tuni Firefox ya´a ntu satiñu vii jii Firefox Send. Nejika xinunu a jíía ka̱a̱ nánuku.
 updateFirefox = Naxi´ñá Firefox
 deletePopupCancel = Nkuvi-ka
 deleteButtonHover = Xita
+footerLinkLegal = Tu´un nichi
 footerLinkPrivacy = Tu´un xitu a kumiji noo´o
 footerLinkCookies = Cookies
 passwordTryAgain = Contraseña ntu vatu. Nachu´un tuku.
@@ -88,6 +92,7 @@ totalSize = Ka´nu: { $size }
 copyLinkDescription = Tɨɨn enlace jee kua´a archivo:
 copyLinkButton = Tɨɨn enlacae
 downloadTitle = Xinuu archivo
+downloadDescription = Archivo ya´a nsajia { -send-brand } jíí cifrado punto a punto jee iin enlace naa.
 trySendDescription = Nasá´á jii { -send-brand } kua´a ñama jee vatu.
 # count will always be > 10
 tooManyFiles =
