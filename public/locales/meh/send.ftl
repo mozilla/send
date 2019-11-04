@@ -107,6 +107,7 @@ signOut = Kasɨ sesión
 okButton = Kuvi
 downloadingTitle = Xinuu
 noStreamsOptionCopy = Tɨɨn enlace jee síne nuu inka ka̱a̱ nánuku
+noStreamsOptionFirefox = Ni´i ka̱a̱ nánuku va´a
 noStreamsOptionDownload = Kaka jii ka̱a̱ nánuku ya´a
 downloadFirefoxPromo = { -send-short-brand } taji jíía { -firefox }.
 # the next line after the colon contains a file name
@@ -114,4 +115,5 @@ shareLinkDescription = Kua´a enlace archivo noo´o
 shareLinkButton = Kua´a link
 # $name is the name of the file
 shareMessage = Xinuu “{ $name }” jii { -send-brand }: ntu viji
+trailheadPromo = Iyo iin kuvi kumi privacidad noo´o. Nayonika Firefox.
 learnMore = Ka´vi kue´eka
