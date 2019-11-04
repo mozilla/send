@@ -1,6 +1,7 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteFeedback = Tu'un jianininu
+importingFile = Nasia´a…
 encryptingFile = Encriptando...
 downloadCount =
     { $num ->
@@ -48,6 +49,7 @@ passwordSetError = Ntu nkuvi sá´á contraseña
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Kua´a daa archivo ñama jee yu´u
+notifyUploadEncryptDone = Archivo noo´o íyo cifrado jee kuvi chu´un íchi
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Nɨ'ɨ dee nña´a { $downloadCount } a xiin { $timespan }
 timespanMinutes =
@@ -98,6 +100,7 @@ tooManyArchives =
         [one] Ntu xini 1 archivo íyo
        *[other] Ntu xini { $count } archivos íyo
     }
+expiredTitle = Nnɨ'ɨ link ya´a.
 downloadFirefox = Xinuun { -firefox }
 legalTitle = Tu´un xitu a kumiji noo´o { -send-short-brand }
 legalDateStamp = Versión 1.0 del 12 de marzo de 2019
