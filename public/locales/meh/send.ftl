@@ -88,6 +88,7 @@ totalSize = Ka´nu: { $size }
 copyLinkDescription = Tɨɨn enlace jee kua´a archivo:
 copyLinkButton = Tɨɨn enlacae
 downloadTitle = Xinuu archivo
+trySendDescription = Nasá´á jii { -send-brand } kua´a ñama jee vatu.
 # count will always be > 10
 tooManyFiles =
     { $count ->
@@ -122,6 +123,12 @@ accountBenefitTitle = Sá´á iin cuenta { -firefox } a xiin kajie´e sesión
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Kua´a archivo ka´nu { $size }
 accountBenefitDownloadCount = Kua´a archivos jii inka ñivɨ
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Kuteku enlaces 1 kivɨ
+       *[other] Kuteku daa enlaces { $count } kivɨ
+    }
+accountBenefitSync = Tetiñu archivos jia´anu ntaka ka̱a̱
 accountBenefitMoz = Ka´vi kue´eka jiee inka tiñu { -mozilla }
 signOut = Kasɨ sesión
 okButton = Kuvi
