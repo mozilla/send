@@ -32,7 +32,7 @@ footerLinkPrivacy = Ñemigua
 footerLinkCookies = Kookie
 passwordTryAgain = Ñe'ẽñemi ndoikóiva. Eha'ãjey.
 javascriptRequired = Firefox Send oikotevẽ JavaScript
-whyJavascript = Mba'ére Firefox Send oikotevẽ JavaScript?
+whyJavascript = ¿Mba’ére Firefox Send oikotevẽ JavaScript?
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours } h { $minutes } m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
