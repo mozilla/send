@@ -88,7 +88,14 @@ copyLinkDescription = Emonguatia juajuha ha emoherakuã ne marandurenda:
 copyLinkButton = Emonguatia juajuha
 downloadTitle = Emboguejy marandurenda
 downloadFirefox = Emboguejy { -firefox }
+legalTitle = { -send-short-brand } Marandu ñemigua
+legalDateStamp = Mba’epyahu 1.0, 12 jasyapy 2019 peguare
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+addFilesButton = Eiporavo marandurenda ehupi hag̃ua
 uploadButton = Hupi
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Embosyryry ha epoi marandurenda
 signInOnlyButton = Eñepyrũ tembiapo
 signOut = Emboty tembiapo
 okButton = OK
