@@ -109,7 +109,7 @@ tooManyArchives =
        *[other] Semaya { $count } ajamapial welit nemit.
     }
 expiredTitle = Ne ilpika pulijtuk.
-notSupportedDescription = { -send-brand } tesu yawi tekiti iwan ne tay titajtachia. { -send-short-brand } tekiti sujsul yek iwan ne tipan versión ipal { -firefox }, wan tesu yawi tekiti iwan ne versión an kipiat achka muchi ne taiwan titajtachia.
+notSupportedDescription = { -send-brand } tesu yawi tekiti iwan ne tay titajtachia. { -send-short-brand } tekiti sujsul yek iwan ne tipan versión ipal { -firefox }, wan nusan yawi tekiti iwan ne tipan versión ipal achka muchi ne taiwan titajtachia.
 downloadFirefox = Shiktemulti { -firefox }
 legalTitle = { -send-short-brand } Tanawatilis ipal mupal ichtaka
 legalDateStamp = Versión 1.0, tik marzoj 12, 2019
