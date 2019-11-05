@@ -53,6 +53,8 @@ passwordSetError = Na'ue gārayinaj da'nga huìi
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Hìo nī huì ga’ue duyingâ’t archîbo
+introDescription = { -send-brand } a’nïn duyingâ’t archîbo ngà ‘ngō da’nga’rán hia nī ngà ‘ngō lînk nare’ man‘an. Dànanj nī ‘ngō rïnt ni’in sa duyingâ’t nī si lînk si ginu yitïn riña lînia.
 # byte abbreviation
 bytes = B
 # kibibyte abbreviation
