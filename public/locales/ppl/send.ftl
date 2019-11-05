@@ -15,7 +15,7 @@ timespanHours =
        *[other] { $num } oraj
     }
 copiedUrl = Muishkupintuk!
-unlockInputPlaceholder = Taketzalis-ichtaka
+unlockInputPlaceholder = Taketzalis ichtaka
 unlockButtonLabel = Shikishtapu
 downloadButtonLabel = Shiktemulti
 downloadFinish = Shiktemulti muchi
@@ -141,15 +141,15 @@ accountBenefitMoz = Shikmati ipanpa seuk itakil { -mozilla }
 signOut = Shikisa
 okButton = Yek
 downloadingTitle = Kitemultia nemi
-noStreamsWarning = Ne taiwan titachia te weli kineshtia ini tajkwilul wey
+noStreamsWarning = Ne taiwan titachia te weli kineshtia ini wey tajkwilul
 noStreamsOptionCopy = Shikishkupina ne ilpika pal tiktapua tik ukse taiwan titajtachia
 noStreamsOptionFirefox = Shikejeku ne taiwan tachia tikishwelitat
 noStreamsOptionDownload = Ma ninemi senpa iwan ini taiwan nitachia
-downloadFirefoxPromo = ne sujsul yankwik  { -firefox } metzwikilia { -send-short-brand }.
+downloadFirefoxPromo = ne yankwik { -firefox } metzwikilia { -send-short-brand }.
 # the next line after the colon contains a file name
-shareLinkDescription = Shiktakulia ne ilpika ipal ne mutajkwilul:
+shareLinkDescription = Shiktakuli ne ilpika ipal ne mutajkwilul:
 shareLinkButton = Shiktakuli ne ilpika
 # $name is the name of the file
-shareMessage = Shiktemulti “{ $name }” iwan{ -send-brand }: tiktakulia archivoj te uij
+shareMessage = Shiktemulti “{ $name }” iwan { -send-brand }: tiktakulia archivoj te uij
 trailheadPromo = Nemi ken tikpalewia ne mupal ichtaka. Shimusentali iwan Firefox.
 learnMore = Shimumachti ukchupi.
