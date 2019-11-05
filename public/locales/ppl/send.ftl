@@ -2,7 +2,7 @@
 title = Firefox Send
 siteFeedback = Tay tina ipanpa?
 importingFile = Mukalaktia nemi…
-encryptingFile = Kisenhinaya nemi…
+encryptingFile = Tiksenihnayat tiknemit…
 decryptingFile = Kiajsimati nemi…
 downloadCount =
     { $num ->
@@ -15,7 +15,7 @@ timespanHours =
        *[other] { $num } oraj
     }
 copiedUrl = Muishkupintuk!
-unlockInputPlaceholder = Taketzalis ichtaka
+unlockInputPlaceholder = Taketzalis-ichtaka
 unlockButtonLabel = Shikishtapu
 downloadButtonLabel = Shiktemulti
 downloadFinish = Shiktemulti muchi
@@ -25,8 +25,8 @@ errorPageHeader = Se teyek panuk!
 fileTooBig = Ne tajkwilul sea wey pal tiktejkultia. Shiktemulti { $size } ush chupiuk chikitik.
 linkExpiredAlt = Ilpika teuk yek
 notSupportedHeader = Te tikishmatit ne taiwan titajtachia.
-notSupportedLink = Taika te kishmatit ne taiwan nitajtachia?
-notSupportedOutdatedDetail = Ini versión ipal Firefox tesu kipalewia ne tecnologíaj web kiyulitia Firefox Send. Nemi pal tikyanwkilia ne taiwan titajtachia.
+notSupportedLink = Taika te ankishmatit ne taiwan nitajtachia?
+notSupportedOutdatedDetail = Ini versión ipal Firefox tesu kipalewia ne tecnologíaj web kiyulitia Firefox Send. Nemi pal tikyankwilia ne taiwan titajtachia.
 updateFirefox = Shikyankwili Firefox
 deletePopupCancel = Shilwi tesu
 deleteButtonHover = Shikpulu
@@ -42,7 +42,7 @@ expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
 # A short status message shown when the user enters a long password
-maxPasswordLength = Keski weyak ne taketzalis ichtaka: { $length }
+maxPasswordLength = Keski weyak ne taketzalis-ichtaka: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Te welit tiktaliat ini taketzalis ichtaka.
 
