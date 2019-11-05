@@ -55,6 +55,29 @@ passwordSetError = Na'ue gārayinaj da'nga huìi
 -mozilla = Mozilla
 introTitle = Hìo nī huì ga’ue duyingâ’t archîbo
 introDescription = { -send-brand } a’nïn duyingâ’t archîbo ngà ‘ngō da’nga’rán hia nī ngà ‘ngō lînk nare’ man‘an. Dànanj nī ‘ngō rïnt ni’in sa duyingâ’t nī si lînk si ginu yitïn riña lînia.
+notifyUploadEncryptDone = Ngà huā ran si archibôt nī ngà huā yugui da’ ga’nïnjt gan’an
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Narè’ man ne’ rukù { $downloadCount } asi { $timespan }
+timespanMinutes =
+    { $num ->
+        [one] 1 minûtu
+       *[other] { $num } minûtu
+    }
+timespanDays =
+    { $num ->
+        [one] 1 gui
+       *[other] { $num } gui
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 semâna
+       *[other] { $num } semâna
+    }
+fileCount =
+    { $num ->
+        [one] 1 archîbo
+       *[other] { $num } archîbo
+    }
 # byte abbreviation
 bytes = B
 # kibibyte abbreviation
