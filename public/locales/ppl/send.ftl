@@ -16,7 +16,7 @@ timespanHours =
     }
 copiedUrl = Muishkupintuk!
 unlockInputPlaceholder = Taketzalis ichtaka
-unlockButtonLabel = Shikishtapu
+unlockButtonLabel = Shikchululti
 downloadButtonLabel = Shiktemulti
 downloadFinish = Shiktemulti muchi
 fileSizeProgress = ({ $partialSize } ipal { $totalSize })
