@@ -115,7 +115,7 @@ legalTitle = { -send-short-brand } Tanawatilis ipal mupal ichtaka
 legalDateStamp = Versión 1.0, tik marzoj 12, 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } t { $hours } h { $minutes } m
-addFilesButton = Shikpejpena ne tajkwilul ka tiktejkultia
+addFilesButton = Shikpejpena ne tajkwilul ne tiktejkultia
 uploadButton = Shiktejkulti
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Shiktilana wan shiktamima ne tajkwilul
