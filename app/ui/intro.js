@@ -13,7 +13,11 @@ module.exports = function intro(state) {
         <p class="max-w-sm leading-loose mt-6 md:mt-2 md:pr-14">
           ${state.translate('introDescription')}
         </p>
-        <img class="intro" src="https://imgur.com/pz95RLC.gif" style="width:450px;height:300px;"/>
+        <ol type="a">
+        <li>1. Upload the secret file.</li>
+        <li>2. Copy and Paste your secret text anywhere on the page beside the upload box.</li>
+        </ol>
+        <img class="intro" src="https://imgur.com/o3Zi7pz.gif" style="width:450px;height:300px;"/>
       </div>
     </send-intro>
   `;
