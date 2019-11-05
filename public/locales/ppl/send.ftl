@@ -89,13 +89,13 @@ gb = GB
 # localized number and byte abbreviation. example "2.5MB"
 fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-totalSize = Keski itamachiwka: { $size }
+totalSize = Keski sentamachiwa: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Shikupina ne ilpika pal tiktakulia mutajkwilul:
 copyLinkButton = Shikupina ne ilpika
 downloadTitle = Shiktemulti tajkwilul
 downloadDescription = Ini tajkwilul kimajmakket tik { -send-brand } iwan ichtaka tajkwilulis wan se ilpika ka puliwi nemanha.
-trySendDescription = Shikejeku { -send-brand } pal tikmajmaka te uij wan ichtaka.
+trySendDescription = Shikejeku { -send-brand } wan shikmajmaka ichtaka wan te uij.
 # count will always be > 10
 tooManyFiles =
     { $count ->
