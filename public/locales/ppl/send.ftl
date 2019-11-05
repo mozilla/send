@@ -1,6 +1,6 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Tay tina ipanpa
+siteFeedback = Tay tina ipanpa?
 importingFile = Mukalaktia nemi…
 encryptingFile = Kisenhinaya nemi…
 decryptingFile = Kiajsimati nemi…
@@ -119,11 +119,15 @@ addFilesButton = Shikpejpena ne tajkwilul ka tiktejkultia
 uploadButton = Shiktejkulti
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Shiktilana wan shiktamima ne tajkwilul
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = u shikpachu pal tiktitania ashta { $size }
 addPassword = Shiktajpia iwan se taketzalis ichtaka
 emailPlaceholder = Shiktali mucorreoj
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Shiktali mutukay pal tiktitania ashta { $size }
 signInOnlyButton = Shiktali mutukay
+accountBenefitTitle = Shikchiwa se cuentaj { -firefox } ush shiktali mutukay
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Shiktakuli tajtajkwilul ka { $size }
 accountBenefitDownloadCount = Shiktakuli ne tajkwilul iwan seki
