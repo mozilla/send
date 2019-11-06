@@ -89,6 +89,7 @@ workflows:
             tags:
               only: /^v.*/
       - deploy_stage:
+          requires:
             - test
             - integration_tests
           filters:
