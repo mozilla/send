@@ -1,5 +1,10 @@
 /* global Android */
-const html = require('choo/html');
+let html;
+try {
+  html = require('choo/html');
+} catch (e) {
+  // running in the service worker
+}
 const b64 = require('base64-js');
 
 function arrayToB64(array) {
