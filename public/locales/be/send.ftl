@@ -151,9 +151,14 @@ signOut = Выйсці
 okButton = ОК
 downloadingTitle = Сцягваецца
 noStreamsWarning = Гэты браўзер не мае магчымасці расшыфраваць такі вялікі файл.
+noStreamsOptionCopy = Скапіруйце спасылку, каб адкрыць у іншым браўзеры
 noStreamsOptionFirefox = Паспрабуйце наш любімы браўзер
 noStreamsOptionDownload = Працягнуць з гэтым браўзерам
 downloadFirefoxPromo = { -send-short-brand } прыйшоў да вас з цалкам новага { -firefox }.
 # the next line after the colon contains a file name
 shareLinkDescription = Падзяліцеся спасылкай на свой файл:
 shareLinkButton = Падзяліцца спасылкай
+# $name is the name of the file
+shareMessage = Сцягніце «{ $name }» з { -send-brand }: простага і бяспечнага файлаабменніка
+trailheadPromo = Ёсць спосаб абараніць вашу прыватнасць. Далучайцеся да Firefox.
+learnMore = Падрабязней.
