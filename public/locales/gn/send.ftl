@@ -87,6 +87,20 @@ totalSize = Tuichakue: { $size }
 copyLinkDescription = Emonguatia juajuha ha emoherakuã ne marandurenda:
 copyLinkButton = Emonguatia juajuha
 downloadTitle = Emboguejy marandurenda
+trySendDescription = Eipuru { -send-brand } emoherakuã hag̃ua marandurenda tasy’ỹ ha tekorosãme.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Ikatu ehupi 1 marandurenda oñondive
+       *[other] Ikatu ehupi { $count } marandurenda oñondive
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Oñemoneĩ 1 marandurenda añoite
+       *[other] Oñemoneĩ { $count } marandurenda añoite
+    }
+expiredTitle = Ko juajuha ndoikovéima.
 downloadFirefox = Emboguejy { -firefox }
 legalTitle = { -send-short-brand } Marandu ñemigua
 legalDateStamp = Mba’epyahu 1.0, 12 jasyapy 2019 peguare
@@ -96,7 +110,17 @@ addFilesButton = Eiporavo marandurenda ehupi hag̃ua
 uploadButton = Hupi
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Embosyryry ha epoi marandurenda
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = térã eikutu emondo hag̃ua { $size } peve
+addPassword = Ñe’ẽñemíme mo’ãmbyre
+emailPlaceholder = Emoinge ne ñanduti veve
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Eñepyrũ tembiapo emondo hag̃ua { $size } peve
 signInOnlyButton = Eñepyrũ tembiapo
+accountBenefitTitle = Emoheñói { -firefox } mba’ete térã eñepyrũ tembiapo
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Emoherakuã marandurenda { $size } peve
 signOut = Emboty tembiapo
 okButton = OK
 downloadingTitle = Oñemboguejyhína
