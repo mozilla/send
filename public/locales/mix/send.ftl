@@ -46,7 +46,7 @@ expiresMinutes = { $minutes }m
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Stucha kue tutu ku
-introDescription = { -send-brand }ku stuchaku tutu seé tsi inkana tsi iin enlace ña ntóo mituin. Sa'an ku kunka va'a ña stuchaku cha ma ku kunchee na kue tutu ku.
+introDescription = { -send-brand } ku stuchaku tutu seé tsi inkana tsi iin enlace ña ntóo mituin. Sa'an ku kunka va'a ña stuchaku cha ma ku kunchee na kue tutu ku.
 notifyUploadEncryptDone = Tsa inka va'a tutu ku tsa ku stuchaku ña
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Ku kunkai mancha { $downloadCount } a { $timespan }
