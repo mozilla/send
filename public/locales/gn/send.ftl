@@ -121,7 +121,13 @@ signInOnlyButton = Eñepyrũ tembiapo
 accountBenefitTitle = Emoheñói { -firefox } mba’ete térã eñepyrũ tembiapo
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Emoherakuã marandurenda { $size } peve
+accountBenefitDownloadCount = Emoherakuã marandurenda hetave tapicha ndive
+accountBenefitSync = Eñangareko marandurenda moherakuãmbyrére oimeraẽ mba’e’oka guive.
+accountBenefitMoz = Eikuaa ambue { -mozilla } mba'epytyvõrã
 signOut = Emboty tembiapo
 okButton = OK
 downloadingTitle = Oñemboguejyhína
+# the next line after the colon contains a file name
+shareLinkDescription = Emoherakuã juajuha ne mba’e’oka ndive:
+shareLinkButton = Emoherakuã juajuha
 learnMore = Kuaave.
