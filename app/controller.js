@@ -98,7 +98,7 @@ export default function(state, emitter) {
       );
     } catch (e) {
       if (e.message === 'fileTooBig' && maxSize < state.LIMITS.MAX_FILE_SIZE) {
-        return emitter.emit('signup-cta', 'size');
+        emitter.emit('pushState', '/error');
       }
       state.modal = okDialog(
         state.translate(e.message, {
@@ -110,18 +110,18 @@ export default function(state, emitter) {
     render();
   });
 
-  emitter.on('signup-cta', source => {
-    const query = state.query;
-    state.user.startAuthFlow(source, {
-      campaign: query.utm_campaign,
-      content: query.utm_content,
-      medium: query.utm_medium,
-      source: query.utm_source,
-      term: query.utm_term
-    });
-    state.modal = signupDialog(source);
-    render();
-  });
+  // emitter.on('signup-cta', source => {
+  //   const query = state.query;
+  //   state.user.startAuthFlow(source, {
+  //     campaign: query.utm_campaign,
+  //     content: query.utm_content,
+  //     medium: query.utm_medium,
+  //     source: query.utm_source,
+  //     term: query.utm_term
+  //   });
+  //   state.modal = signupDialog(source);
+  //   render();
+  // });
 
   emitter.on('authenticate', async (code, oauthState) => {
     try {

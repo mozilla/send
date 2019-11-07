@@ -34,7 +34,7 @@ module.exports = function(state, emit) {
         const max = state.user.maxDownloads;
         state.archive.dlimit = Math.min(value, max);
         if (value > max) {
-          emit('signup-cta', 'count');
+          emitter.emit('pushState', '/error');
         } else {
           emit('render');
         }
@@ -61,7 +61,7 @@ module.exports = function(state, emit) {
         const max = state.user.maxExpireSeconds;
         state.archive.timeLimit = Math.min(value, max);
         if (value > max) {
-          emit('signup-cta', 'time');
+          emitter.emit('pushState', '/error');
         } else {
           emit('render');
         }
