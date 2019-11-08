@@ -22,6 +22,9 @@ const s3Stub = {
 };
 
 const awsStub = {
+  config: {
+    update: sinon.stub()
+  },
   S3: function() {
     return s3Stub;
   }
