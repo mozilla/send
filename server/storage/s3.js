@@ -1,33 +1,31 @@
 const AWS = require('aws-sdk');
-const config = {};
-if (typeof process.env.AWS_S3_ENDPOINT !== 'undefined') {
-  config['endpoint'] = process.env.AWS_S3_ENDPOINT;
-}
-if (typeof process.env.AWS_S3_USE_PATH_STYLE_ENDPOINT !== 'undefined') {
-  config['s3ForcePathStyle'] = process.env.AWS_S3_USE_PATH_STYLE_ENDPOINT == 'true' ? true : false;
-}
-AWS.config.update(config);
-const s3 = new AWS.S3();
 
 class S3Storage {
   constructor(config, log) {
     this.bucket = config.s3_bucket;
     this.log = log;
+    const cfg = {};
+    if (config.s3_endpoint != '') {
+        cfg['endpoint'] = config.s3_endpoint;
+    }
+    cfg['s3ForcePathStyle'] = config.s3_use_path_style_endpoint
+    AWS.config.update(cfg);
+    this.s3 = new AWS.S3();
   }
 
   async length(id) {
-    const result = await s3
+    const result = await this.s3
       .headObject({ Bucket: this.bucket, Key: id })
       .promise();
     return result.ContentLength;
   }
 
   getStream(id) {
-    return s3.getObject({ Bucket: this.bucket, Key: id }).createReadStream();
+    return this.s3.getObject({ Bucket: this.bucket, Key: id }).createReadStream();
   }
 
   set(id, file) {
-    const upload = s3.upload({
+    const upload = this.s3.upload({
       Bucket: this.bucket,
       Key: id,
       Body: file
@@ -37,11 +35,11 @@ class S3Storage {
   }
 
   del(id) {
-    return s3.deleteObject({ Bucket: this.bucket, Key: id }).promise();
+    return this.s3.deleteObject({ Bucket: this.bucket, Key: id }).promise();
   }
 
   ping() {
-    return s3.headBucket({ Bucket: this.bucket }).promise();
+    return this.s3.headBucket({ Bucket: this.bucket }).promise();
   }
 }
 
