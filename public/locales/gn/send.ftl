@@ -22,6 +22,7 @@ downloadFinish = Oguejypáma
 fileSizeProgress = ({ $partialSize } rehe { $totalSize })
 sendYourFilesLink = Eipuru Firefox Send
 errorPageHeader = ¡Oiko jejavy!
+fileTooBig = Marandurenda tuichaiterei ehupi hag̃ua. Michĩveva’erã { $size } gui.
 linkExpiredAlt = Juajuha ndoikóiva
 notSupportedHeader = Ne kundaha ndorekói pytyvõ.
 updateFirefox = Firefox mbohekopyahu
@@ -122,12 +123,25 @@ accountBenefitTitle = Emoheñói { -firefox } mba’ete térã eñepyrũ tembiap
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Emoherakuã marandurenda { $size } peve
 accountBenefitDownloadCount = Emoherakuã marandurenda hetave tapicha ndive
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Eguereko juajuha hendyhápe 1 ára
+       *[other] Eguereko juajuha hendyhápe { $count } ára
+    }
 accountBenefitSync = Eñangareko marandurenda moherakuãmbyrére oimeraẽ mba’e’oka guive.
 accountBenefitMoz = Eikuaa ambue { -mozilla } mba'epytyvõrã
 signOut = Emboty tembiapo
 okButton = OK
 downloadingTitle = Oñemboguejyhína
+noStreamsWarning = Ikatu ko kundahára ndoikuaái marandurenda tuichaitereíva.
+noStreamsOptionCopy = Embokuatia juajuha embojuruja hag̃ua ambue kundahárape.
+noStreamsOptionFirefox = Eipuru ore kundahára rohayhuvéva
+noStreamsOptionDownload = Eku’ejey ko kundahára ndive
+downloadFirefoxPromo = Ipyahúva { -firefox } ome’ẽse ndéve { -send-short-brand }.
 # the next line after the colon contains a file name
 shareLinkDescription = Emoherakuã juajuha ne mba’e’oka ndive:
 shareLinkButton = Emoherakuã juajuha
+# $name is the name of the file
+shareMessage = Emboguejy “{ $name }” { -send-brand } ndive: emoherakuã marandurenda tasy'ỹ ha tekorosãme
+trailheadPromo = Mba’éichapa emo’ãta ne ñemigua. Eipuru Firefox.
 learnMore = Kuaave.
