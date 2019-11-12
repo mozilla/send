@@ -121,7 +121,7 @@ uploadButton = Shiktejkulti
 dragAndDropFiles = Shiktilana wan shiktamima ne tajkwilul
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-orClickWithSize = u shikpachu pal tiktitania ashta { $size }
+orClickWithSize = u shikpachu pal tiktitania { $size }
 addPassword = Shiktajpia iwan se taketzalis ichtaka
 emailPlaceholder = Shiktali mucorreoj
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
