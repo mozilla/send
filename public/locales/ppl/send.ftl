@@ -54,7 +54,7 @@ passwordSetError = Te welit tiktaliat ini taketzalis ichtaka.
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Te uij wan ichtaka tikmajmaka se tajkwilul.
-introDescription = { -send-brand } metzpalewia tikmajmaka se tajkwilul iwan ichtakatajkwilulis wan se ilpika ka puliwi nemanha. Ijkiuni nemi ichtaka tay tikmajmaka wan tesu naka senpa tik matapan tay mupal.
+introDescription = { -send-brand } metzpalewia tiktakulia se tajkwilul iwan ichtakatajkwilulis wan se ilpika ka puliwi nemanha. Ijkiuni nemi ichtaka tay tikmajmaka wan tesu naka senpa tik matapan tay mupal.
 notifyUploadEncryptDone = Ne mutajkwilul nemi ichtakatajkwilujtuk wan weli tiktitania
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Puliwi kwak tikajsi { $downloadCount } ush { $timespan }
@@ -94,8 +94,8 @@ totalSize = Keski itamachiwka: { $size }
 copyLinkDescription = Shikupina ne ilpika pal tiktakulia mutajkwilul:
 copyLinkButton = Shikupina ne ilpika
 downloadTitle = Shiktemulti tajtajkwilul
-downloadDescription = Ini tajkwilul kimajmakket tik { -send-brand } iwan ichtaka tajkwilulis wan se ilpika ka puliwi nemanha.
-trySendDescription = Shikejeku { -send-brand } wan shikmajmaka ichtaka wan te uij.
+downloadDescription = Ini tajkwilul kitakulijket iwan { -send-brand } iwan ichtakatajkwilulis wan se ilpika ka puliwi nemanha.
+trySendDescription = Shikejeku { -send-brand } wan shiktakuli ichtaka wan te uij.
 # count will always be > 10
 tooManyFiles =
     { $count ->
@@ -123,7 +123,7 @@ dragAndDropFiles = Shiktilana wan shikmaka ne tajkwilul
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = u shikpachu pal tiktitania { $size }
 addPassword = Shiktajpia iwan se taketzalis ichtaka
-emailPlaceholder = Shiktali mucorreoj
+emailPlaceholder = Shiktali mutepusamaw
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Shiktali mutukay pal tiktitania { $size }
 signInOnlyButton = Shiktali mutukay
@@ -136,7 +136,7 @@ accountBenefitTimeLimit =
         [one] Shikpia ne ilpika tatatuk 1 tunal
        *[other] Shikpia ne ilpika tatatuk { $count } tunal
     }
-accountBenefitSync = Shikektali tajtajkwilul ka tiktakulijtuk tik se taiwan
+accountBenefitSync = Shiktajpia ne tajtajkwilul ka tiktakulijtuk
 accountBenefitMoz = Shikmati ipanpa seuk itakil { -mozilla }
 signOut = Shikisa
 okButton = Yek
@@ -145,11 +145,11 @@ noStreamsWarning = Ne taiwan titachia te weli kineshtia ini wey tajkwilul
 noStreamsOptionCopy = Shikishkupina ne ilpika pal tiktapua tik ukse taiwan titajtachia
 noStreamsOptionFirefox = Shikejeku ne taiwan tachia tikishwelitat
 noStreamsOptionDownload = Ma ninemi senpa iwan ini taiwan nitachia
-downloadFirefoxPromo = ne yankwik { -firefox } metzwikilia { -send-short-brand }.
+downloadFirefoxPromo = Ne yankwik { -firefox } metzwikilia { -send-short-brand }.
 # the next line after the colon contains a file name
 shareLinkDescription = Shiktakuli ne ilpika ipal ne mutajkwilul:
 shareLinkButton = Shiktakuli ne ilpika
 # $name is the name of the file
-shareMessage = Shiktemulti “{ $name }” iwan { -send-brand }: tiktakulia archivoj te uij
-trailheadPromo = Nemi ken tikpalewia ne mupal ichtaka. Shimusentali iwan Firefox.
+shareMessage = Shiktemulti “{ $name }” iwan { -send-brand }: ichtaka wan te uij
+trailheadPromo = Nemi ken tiktajpia ne tay mupal. Shimusentali iwan Firefox.
 learnMore = Shimumachti ukchupi.
