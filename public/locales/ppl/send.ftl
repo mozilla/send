@@ -55,7 +55,7 @@ passwordSetError = Te welit tiktaliat ini taketzalis ichtaka.
 -mozilla = Mozilla
 introTitle = Te uij wan ichtaka tikmajmaka se tajkwilul.
 introDescription = { -send-brand } metzpalewia tikmajmaka se tajkwilul iwan ichtakatajkwilulis wan se ilpika ka puliwi nemanha. Ijkiuni nemi ichtaka tay tikmajmaka wan tesu naka senpa tik matapan tay mupal.
-notifyUploadEncryptDone = Ne mutajkwilul nemi ichtaka tajkwilujtuk wan weli tiktitania
+notifyUploadEncryptDone = Ne mutajkwilul nemi ichtakatajkwilujtuk wan weli tiktitania
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Puliwi kwak tikajsi { $downloadCount } ush { $timespan }
 timespanMinutes =
@@ -89,11 +89,11 @@ gb = GB
 # localized number and byte abbreviation. example "2.5MB"
 fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-totalSize = Keski sentamachiwa: { $size }
+totalSize = Keski itamachiwka: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Shikupina ne ilpika pal tiktakulia mutajkwilul:
 copyLinkButton = Shikupina ne ilpika
-downloadTitle = Shiktemulti tajkwilul
+downloadTitle = Shiktemulti tajtajkwilul
 downloadDescription = Ini tajkwilul kimajmakket tik { -send-brand } iwan ichtaka tajkwilulis wan se ilpika ka puliwi nemanha.
 trySendDescription = Shikejeku { -send-brand } wan shikmajmaka ichtaka wan te uij.
 # count will always be > 10
@@ -115,19 +115,19 @@ legalTitle = { -send-short-brand } Tanawatilis ipal mupal ichtaka
 legalDateStamp = Versión 1.0, tik marzoj 12, 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } t { $hours } h { $minutes } m
-addFilesButton = Shikpejpena ne tajkwilul ne tiktejkultia
+addFilesButton = Shikpejpena ne tajkwilul pal tiktejkultia
 uploadButton = Shiktejkulti
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
-dragAndDropFiles = Shiktilana wan shiktamima ne tajkwilul
+dragAndDropFiles = Shiktilana wan shikmaka ne tajkwilul
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = u shikpachu pal tiktitania { $size }
 addPassword = Shiktajpia iwan se taketzalis ichtaka
 emailPlaceholder = Shiktali mucorreoj
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-signInSizeBump = Shiktali mutukay pal tiktitania ashta { $size }
+signInSizeBump = Shiktali mutukay pal tiktitania { $size }
 signInOnlyButton = Shiktali mutukay
-accountBenefitTitle = Shikchiwa se cuentaj { -firefox } ush shiktali mutukay
+accountBenefitTitle = Shikchiwa se mutapujka tik { -firefox } ush shiktali mutukay
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Shiktakuli tajtajkwilul ka { $size }
 accountBenefitDownloadCount = Shiktakuli ne tajkwilul iwan seki
