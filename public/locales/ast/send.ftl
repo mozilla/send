@@ -21,12 +21,12 @@ downloadButtonLabel = Baxar
 downloadFinish = Completóse la descarga
 fileSizeProgress = ({ $partialSize } de { $totalSize })
 sendYourFilesLink = Probar Firefox Send
-errorPageHeader = ¡Daqué foi mal!
+errorPageHeader = ¡Asocedió daqué malo!
 fileTooBig = Esti ficheru ye mui grande como pa xubilu. Debería tener menos de { $size }.
-linkExpiredAlt = Caducó l'enllaz
+linkExpiredAlt = L'enllaz caducó
 notSupportedHeader = El to restolador nun ta sofitáu.
 notSupportedLink = ¿Por qué'l mio restolador nun ta sofitáu?
-notSupportedOutdatedDetail = Desafortunadamente esta versión de Firefox nun sofita la teunoloxía web qu'usa Firefox Send. Vas precisar anovar Firefox.
+notSupportedOutdatedDetail = Desafortunadamente esta versión de Firefox nun sofita la teunoloxía web qu'usa Firefox Send. Vas precisar anovar el restolador.
 updateFirefox = Anovar Firefox
 deletePopupCancel = Encaboxar
 deleteButtonHover = Desaniciar
@@ -123,7 +123,6 @@ addPassword = Protexer con una contraseña
 emailPlaceholder = Introduz el to corréu
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Anicia sesión pa unviar hasta { $size }
-signInButton = Rexistrase/aniciar sesión
 accountBenefitTitle = Creación d'una cuenta { -firefox } o aniciu de sesión nella
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Comparti ficheros d'hasta { $size }
