@@ -26,6 +26,7 @@ fileTooBig = Marandurenda tuichaiterei ehupi hag̃ua. Michĩveva’erã { $size 
 linkExpiredAlt = Juajuha ndoikóiva
 notSupportedHeader = Ne kundaha ndorekói pytyvõ.
 notSupportedLink = ¿Mba’ére che kundahára ndorekói ñepytyvõ?
+notSupportedOutdatedDetail = Ko Firefox rembiapo ndaipu’akái ñanduti rembipurupyahu oikotevẽva Firefox Send. Embohekopyahúke ne kundahára.
 updateFirefox = Firefox mbohekopyahu
 deletePopupCancel = Heja
 deleteButtonHover = Mboguete
