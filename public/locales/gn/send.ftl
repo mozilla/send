@@ -54,6 +54,7 @@ passwordSetError = Ndaikatúi oikóvo ko ñe'ẽñemi
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Marandurenda ñemoambue hasy'ỹ ha ñemiguáva
+introDescription = { -send-brand } omoherakuãkuaa marandurenda papapýpe ñepyrũ guive opa peve ha juajuha opareíva ijehegui. Ikatu oreko ñemihápe emoherakuãva ha ehecháta mba’éicha ne mba’ekuéra noĩri ñandutípe opa ára.
 notifyUploadEncryptDone = Ne marandurenda oñemo'ã ha ikatúma emondo
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Opáta { $downloadCount } rire térã { $timespan }
@@ -93,6 +94,7 @@ totalSize = Tuichakue: { $size }
 copyLinkDescription = Emonguatia juajuha ha emoherakuã ne marandurenda:
 copyLinkButton = Emonguatia juajuha
 downloadTitle = Emboguejy marandurenda
+downloadDescription = Ko marandurenda omoherakuã { -send-brand } rupive papapýpe ñepyrũ guive opa peve ha juajuha opáva ijehegui reheve.
 trySendDescription = Eipuru { -send-brand } emoherakuã hag̃ua marandurenda tasy’ỹ ha tekorosãme.
 # count will always be > 10
 tooManyFiles =
@@ -107,6 +109,7 @@ tooManyArchives =
        *[other] Oñemoneĩ { $count } marandurenda añoite
     }
 expiredTitle = Ko juajuha ndoikovéima.
+notSupportedDescription = { -send-brand } ndoikomo’ãi ko kundahára ndive. { -send-short-brand } oikoporãvéta { -firefox } rembiapokue ipyahuvéva ndive, ha oikóta opavavete kundahára ndive.
 downloadFirefox = Emboguejy { -firefox }
 legalTitle = { -send-short-brand } Marandu ñemigua
 legalDateStamp = Mba’epyahu 1.0, 12 jasyapy 2019 peguare
