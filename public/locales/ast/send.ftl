@@ -54,9 +54,10 @@ passwordSetError = Nun pudo afitase esta contraseña
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Compartición de ficheros privada y cenciella
+introDescription = { -send-brand } déxate compartir ficheros con cifráu puntu a puntu y un enllaz que caduca automáticamente. D'esti mou, asegúreste de que lo que compartes ye privao y nun va tar siempres en llinia.
 notifyUploadEncryptDone = El ficheru ta cifráu y preparáu pa unviase
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
-archiveExpiryInfo = Caduca tres { $downloadCount } ó { $timespan }
+archiveExpiryInfo = Caduca dempués de { $downloadCount } ó { $timespan }
 timespanMinutes =
     { $num ->
         [one] 1 minutu
@@ -109,7 +110,9 @@ tooManyArchives =
     }
 expiredTitle = Esti enllaz caducó.
 notSupportedDescription = { -send-brand } nun va funcionar con esti restolador. { -send-short-brand } funciona meyor cola versión última de { -firefox } y cola versión actual de la mayoría de restoladores.
-legalTitle = Noticia de privacidá de { -send-short-brand }
+downloadFirefox = Baxar { -firefox }
+legalTitle = Avisu de privacidá de { -send-short-brand }
+legalDateStamp = Versión 1.0, con data del 12 de marzu de 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Esbillar los ficheros a unviar
@@ -123,7 +126,8 @@ addPassword = Protexer con una contraseña
 emailPlaceholder = Introduz el to corréu
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Anicia sesión pa unviar hasta { $size }
-accountBenefitTitle = Creación d'una cuenta { -firefox } o aniciu de sesión nella
+signInOnlyButton = Aniciar sesión
+accountBenefitTitle = Creación d'una cuenta de { -firefox } o aniciu de sesión nella
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Comparti ficheros d'hasta { $size }
 accountBenefitDownloadCount = Comparti ficheros con más xente
@@ -138,3 +142,5 @@ signOut = Zarrar sesión
 okButton = Aceutar
 downloadingTitle = Baxando
 noStreamsWarning = Esti restolador quiciabes nun seya a descifrar un ficheru d'esti tamañu.
+trailheadPromo = Hai un mou de protexer la to privacidá. Xúnite a Firefox.
+learnMore = Deprender más.
