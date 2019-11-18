@@ -24,6 +24,7 @@ sendYourFilesLink = Kuachu'un Firefox Send
 errorPageHeader = ¡Yee ña va'a!
 fileTooBig = Kanu tutu yo. Tsini ñu'u koi tana { $size }.
 linkExpiredAlt = Ntoo enlace
+notSupportedHeader = Kue ku kuni página.
 notSupportedLink = ¿Chanu kue ku kuncheuña?
 notSupportedOutdatedDetail = Firefox kue ku kuni página web takua kuachu'un Firefox Send. tsiniñu'u ndu tsa'a navegador.
 updateFirefox = Ndu tsa'a Firefox
@@ -32,6 +33,7 @@ deleteButtonHover = Stoò
 footerLinkLegal = Aviso legal
 footerLinkPrivacy = Ña meu
 footerLinkCookies = Cookies
+passwordTryAgain = Kue vaa ni chau sivi siki. Chai tuku.
 javascriptRequired = Firefox Send tsiniñui JavaScript
 whyJavascript = ¿Chanu Firefox Send tsiniñui JavaScript?
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
