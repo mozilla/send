@@ -105,8 +105,8 @@ tooManyFiles =
 # count will always be > 10
 tooManyArchives =
     { $count ->
-        [one] Solo 1 archivo es consentite.
-       *[other] Solo { $count } archivos es consentite.
+        [one] Solo 1 archivo es permittite.
+       *[other] Solo { $count } archivos es permitter.
     }
 expiredTitle = Iste ligamine ha expirate.
 notSupportedDescription = { -send-brand } non functionara con iste navigator. { -send-short-brand } functiona melio con le ultime version de { -firefox }, e functionara con le version actual de plure navigatores.
