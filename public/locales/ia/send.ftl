@@ -111,7 +111,7 @@ tooManyArchives =
 expiredTitle = Iste ligamine ha expirate.
 notSupportedDescription = { -send-brand } non functionara con iste navigator. { -send-short-brand } functiona melio con le ultime version de { -firefox }, e functionara con le version actual de plure navigatores.
 downloadFirefox = Discargar { -firefox }
-legalTitle = Politica de confidentialitate de { -send-short-brand }
+legalTitle = Aviso de confidentialitate de { -send-short-brand }
 legalDateStamp = Version 1.0 del 12 martio 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
