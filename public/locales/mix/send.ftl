@@ -36,10 +36,15 @@ footerLinkCookies = Cookies
 passwordTryAgain = Kue vaa ni chau sivi siki. Chai tuku.
 javascriptRequired = Firefox Send tsiniñui JavaScript
 whyJavascript = ¿Chanu Firefox Send tsiniñui JavaScript?
+enableJavascript = Saá ña mani katsi JavaScript chá kitsa tuku.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when the user enters a long password
+maxPasswordLength = Kua tu'un see: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Ma ku ntanii tu'un see
 
 ## Send version 2 strings
 
