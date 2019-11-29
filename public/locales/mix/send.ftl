@@ -88,8 +88,13 @@ mb = MB
 gb = GB
 # localized number and byte abbreviation. example "2.5MB"
 fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = Kua: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Ndatava enlace takua stuchaku tutú.
 copyLinkButton = Ndatava enlace
 downloadTitle = Snuú tutu
+downloadDescription = Tutu yo stuchaku ña tsi { -send-brand } inka si'i chá ku nto'o mituin.
 trySendDescription = Kuachu'un { -send-brand } takua stuchaku nchi tutu niku
 # count will always be > 10
 tooManyFiles =
