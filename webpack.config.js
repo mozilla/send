@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const VersionPlugin = require('./build/version_plugin');
+//const VersionPlugin = require('./build/version_plugin');
 const AndroidIndexPlugin = require('./build/android_index_plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -194,7 +194,7 @@ const web = {
     new ExtractTextPlugin({
       filename: '[name].[md5:contenthash:8].css'
     }),
-    new VersionPlugin(), // used for the /__version__ route
+//  new VersionPlugin(), // used for the /__version__ route
     new AndroidIndexPlugin(),
     new ManifestPlugin() // used by server side to resolve hashed assets
   ],
