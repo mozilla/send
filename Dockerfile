@@ -4,7 +4,6 @@
 # License https://github.com/mozilla/send/blob/master/LICENSE
 ##
 
-
 # Build project
 FROM node:10 AS builder
 RUN set -x \
@@ -25,7 +24,6 @@ RUN set -x \
     # Build
     && npm ci \
     && npm run build
-
 
 # Main image
 FROM node:10-slim
@@ -48,7 +46,6 @@ COPY --chown=app:app app app
 COPY --chown=app:app common common
 COPY --chown=app:app public/locales public/locales
 COPY --chown=app:app server server
-COPY --chown=app:app --from=builder /app/dist dist
 
 RUN npm ci --production && npm cache clean --force
 RUN mkdir -p /app/.config/configstore
