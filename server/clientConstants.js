@@ -12,7 +12,8 @@ module.exports = {
     MAX_EXPIRE_SECONDS: config.max_expire_seconds,
     MAX_FILES_PER_ARCHIVE: config.max_files_per_archive,
     MAX_ARCHIVES_PER_USER: config.max_archives_per_user,
-    PASSWORD_REQUIRED: config.password_required
+    PASSWORD_REQUIRED: config.password_required,
+    PASSWORD_REQUIREMENTS_LIST: config.password_requirements_list
   },
   DEFAULTS: {
     DOWNLOAD_COUNTS: config.download_counts,

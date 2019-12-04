@@ -4,6 +4,11 @@ const path = require('path');
 const { randomBytes } = require('crypto');
 
 const conf = convict({
+  password_requirements_list: {
+    format: Array,
+    default: ['length_32'],
+    env: 'PASSWORD_REQUIREMENTS_LIST'
+  },
   password_required: {
     format: Boolean,
     default: false,

@@ -47,6 +47,10 @@ body {
   @apply font-semibold;
 }
 
+.btn-inactive {
+  @apply bg-blue-20;
+}
+
 .btn:hover {
   @apply bg-blue-70;
 }
@@ -312,6 +316,10 @@ select {
   .btn {
     @apply bg-blue-40;
     @apply text-white;
+  }
+
+  .btn-inactive {
+    @apply bg-blue-20;
   }
 
   .btn:hover {
