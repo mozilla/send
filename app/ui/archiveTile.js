@@ -355,9 +355,12 @@ module.exports.wip = function(state, emit) {
       ${expiryOptions(state, emit)} ${password(state, emit)}
       <button
         id="upload-btn"
-        class="btn rounded-lg flex-shrink-0 focus:outline"
+        class="btn rounded-lg flex-shrink-0 focus:outline
+        ${state.LIMITS.PASSWORD_REQUIRED ? 'btn-inactive' : ''}"
         title="${state.translate('uploadButton')}"
-        onclick="${clickUpload(state, emit)}"
+        onclick="${state.LIMITS.PASSWORD_REQUIRED
+          ? ''
+          : clickUpload(state, emit)}"
       >
         ${state.translate('uploadButton')}
       </button>

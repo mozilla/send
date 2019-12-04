@@ -58,7 +58,7 @@ function containsCharacterClass(regex, count, classDescription) {
 let validationRules = {
   length_32: maxLengthValidate(32),
   min_24: minLengthValidate(24),
-  number_1: containsCharacterClass(/[0-9]/g, 1, 'number'),
+  number_1: containsCharacterClass(/[0-9]/g, 1, 'numbers'),
   special_1: containsCharacterClass(/[@$!%*#?&]/g, 1, 'special characters')
 };
 

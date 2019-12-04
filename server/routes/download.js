@@ -10,7 +10,10 @@ module.exports = async function(req, res) {
     const meta = req.meta;
 
     const fileMetadata = await storage.metadata(id);
-    if (config.password_required && !(fileMetadata && fileMetadata.pwd)) {
+    if (
+      config.password_required &&
+      !(fileMetadata && fileMetadata.pwd && fileMetadata.pwd != '')
+    ) {
       res.status(400).sendStatus('File does not have a password set');
     }
 
