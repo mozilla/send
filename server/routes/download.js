@@ -1,12 +1,19 @@
 const storage = require('../storage');
 const mozlog = require('../log');
 const log = mozlog('send.download');
+const config = require('../config');
 const { statDownloadEvent } = require('../amplitude');
 
 module.exports = async function(req, res) {
   const id = req.params.id;
   try {
     const meta = req.meta;
+
+    const fileMetadata = await storage.metadata(id);
+    if (config.password_required && !(fileMetadata && fileMetadata.pwd)) {
+      res.status(400).sendStatus('File does not have a password set');
+    }
+
     const fileStream = await storage.get(id);
     let cancelled = false;
 

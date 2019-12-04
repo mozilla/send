@@ -25,41 +25,19 @@ function expiryInfo(translate, archive) {
   );
 }
 
-function password(state) {
-  const MAX_LENGTH = 32;
-
+function passwordToggle(state) {
   return html`
-    <div class="mb-2 px-1">
-      <div class="checkbox inline-block mr-3">
-        <input
-          id="add-password"
-          type="checkbox"
-          ${state.archive.password ? 'checked' : ''}
-          autocomplete="off"
-          onchange="${togglePasswordInput}"
-        />
-        <label for="add-password">
-          ${state.translate('addPassword')}
-        </label>
-      </div>
+    <div class="checkbox inline-block mr-3">
       <input
-        id="password-input"
-        class="${state.archive.password
-          ? ''
-          : 'invisible'} border rounded focus:border-blue-60 leading-normal my-1 py-1 px-2 h-8 dark:bg-grey-80"
+        id="add-password"
+        type="checkbox"
+        ${state.archive.password ? 'checked' : ''}
         autocomplete="off"
-        maxlength="${MAX_LENGTH}"
-        type="password"
-        oninput="${inputChanged}"
-        onfocus="${focused}"
-        placeholder="${state.translate('unlockInputPlaceholder')}"
-        value="${state.archive.password || ''}"
+        onchange="${togglePasswordInput}"
       />
-      <label
-        id="password-msg"
-        for="password-input"
-        class="block text-xs text-grey-70"
-      ></label>
+      <label for="add-password">
+        ${state.translate('addPassword')}
+      </label>
     </div>
   `;
 
@@ -77,6 +55,34 @@ function password(state) {
       state.archive.password = null;
     }
   }
+}
+
+function password(state) {
+  const MAX_LENGTH = 32;
+
+  return html`
+    <div class="mb-2 px-1">
+      ${state.LIMITS.PASSWORD_REQUIRED ? '' : passwordToggle(state)}
+      <input
+        id="password-input"
+        class="${state.LIMITS.PASSWORD_REQUIRED || state.archive.password
+          ? ''
+          : 'invisible'} border rounded focus:border-blue-60 leading-normal my-1 py-1 px-2 h-8 dark:bg-grey-80"
+        autocomplete="off"
+        maxlength="${MAX_LENGTH}"
+        type="password"
+        oninput="${inputChanged}"
+        onfocus="${focused}"
+        placeholder="${state.translate('unlockInputPlaceholder')}"
+        value="${state.archive.password || ''}"
+      />
+      <label
+        id="password-msg"
+        for="password-input"
+        class="block text-xs text-grey-70"
+      ></label>
+    </div>
+  `;
 
   function inputChanged() {
     const passwordInput = document.getElementById('password-input');

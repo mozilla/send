@@ -4,6 +4,11 @@ const path = require('path');
 const { randomBytes } = require('crypto');
 
 const conf = convict({
+  password_required: {
+    format: Boolean,
+    default: false,
+    env: 'PASSWORD_REQUIRED'
+  },
   s3_bucket: {
     format: String,
     default: '',
