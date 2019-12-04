@@ -1,6 +1,5 @@
 node_modules
 coverage
-dist
 .idea
 .DS_Store
 .nyc_output
