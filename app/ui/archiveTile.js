@@ -57,10 +57,22 @@ function passwordToggle(state) {
   }
 }
 
+function passwordLabel(state) {
+  return html`
+    <div class="inline-block mr-3">
+      <label for="password-input">
+        ${state.translate('addPassword')}
+      </label>
+    </div>
+  `;
+}
+
 function password(state, emit) {
   return html`
     <div class="mb-2 px-1">
-      ${state.LIMITS.PASSWORD_REQUIRED ? '' : passwordToggle(state)}
+      ${state.LIMITS.PASSWORD_REQUIRED
+        ? passwordLabel(state)
+        : passwordToggle(state)}
       <input
         id="password-input"
         class="${state.LIMITS.PASSWORD_REQUIRED || state.archive.password
