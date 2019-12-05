@@ -18,6 +18,7 @@ RUN set -x \
         app
 RUN npm i -g npm
 COPY --chown=app:app . /app
+COPY --chown=app:app .git /app/.git
 USER app
 WORKDIR /app
 RUN set -x \
