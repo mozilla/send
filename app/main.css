@@ -154,7 +154,7 @@ footer li:hover {
 }
 
 .link-blue {
-  @apply text-blue-60;
+  @apply text-blue;
 }
 
 .link-blue:hover {
@@ -302,7 +302,7 @@ select {
   }
 }
 
-@screen dark {
+@screen light {
   body {
     @apply text-grey-10;
 
@@ -310,7 +310,7 @@ select {
   }
 
   .btn {
-    @apply bg-blue-40;
+    @apply bg-blue;
     @apply text-white;
   }
 
@@ -323,7 +323,7 @@ select {
   }
 
   .link-blue {
-    @apply text-blue-40;
+    @apply text-blue;
   }
 
   .link-blue:hover {
@@ -439,4 +439,4 @@ select {
 /* end signin button color experiment */
 
 /* include optional override css */
-@import './override.css'
+@import './override.css';

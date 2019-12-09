@@ -49,8 +49,8 @@ passwordSetError = This password could not be set
 ## Send version 2 strings
 
 # Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
--send-short-brand = Send
+-send-brand = Sendr
+-send-short-brand = Sendr
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Simple, private file sharing
@@ -127,6 +127,7 @@ emailPlaceholder = Enter your email
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Sign in to send up to { $size }
 signInOnlyButton = Sign in
+signIn = Sign In
 accountBenefitTitle = Create a { -firefox } Account or sign in
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Share files up to { $size }

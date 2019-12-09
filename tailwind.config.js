@@ -65,7 +65,7 @@ const colors = {
   'blue-70': '#003eaa',
   'blue-60': '#0060df',
   'blue-50': '#0a84ff',
-  blue: '#0a84ff',
+  blue: '#3c79bb',
   'blue-40': '#45a1ff',
   'blue-30': '#99ccff',
   'blue-20': '#cce6ff',
@@ -110,7 +110,7 @@ module.exports = {
       md: '768px',
       lg: '992px',
       xl: '1200px',
-      dark: { raw: '(prefers-color-scheme: dark)' }
+      light: { raw: '(prefers-color-scheme: light)' }
     },
     fontFamily: {
       sans: [
@@ -129,6 +129,7 @@ module.exports = {
         'sans-serif'
       ],
       serif: [
+        'PT Serif',
         'Constantia',
         'Lucida Bright',
         'Lucidabright',

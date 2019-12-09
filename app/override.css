@@ -1,34 +1,30 @@
 body {
-    background-color: #ffffff;
+  background-color: #fff;
 }
 
 send-promo {
-    display: none !important;
+  display: none !important;
 }
 
 .main-header {
-    background-color: #3c79bb;
-    height: 50px;
-    padding-left: 10px;
-}
-
-.main-header a:first-child {
-    content: url('../assets/checkr_logo_white.png');
-    width: 136px;
+  background-color: #3c79bb;
+  height: 50px;
+  padding-left: 10px;
 }
 
 send-intro h1 {
-    display: none;
+  display: none;
 }
 
 send-intro p {
-    content: 'Share files with password protection, end-to-end encryption and a link that automatically expires.';
+  content: 'Share files with password protection, end-to-end encryption and a link that automatically expires.';
 }
 
 .btn {
-    background-color: #3c79bb;
+  background-color: #3c79bb;
 }
 
 footer {
-    display: none !important;
+  text-align: center;
+  /* display: none !important; */
 }
