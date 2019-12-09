@@ -1,0 +1,20 @@
+{
+  "password_requirements_list": [
+    {
+      "type": "maxLength", 
+      "length": 32
+    },
+    {
+      "type": "minLength", 
+      "length": 24
+    },
+    {
+      "type": "containsNumber", 
+      "count": 1
+    },
+    {
+      "type": "containsSpecials", 
+      "count": 1
+    }
+  ]
+}

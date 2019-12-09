@@ -1,7 +1,8 @@
 function validate(password, ruleList) {
   let errors = [];
-  ruleList.forEach(function(ruleName) {
-    let validationRule = validationRules[ruleName];
+  ruleList.forEach(function(ruleStruct) {
+    let constructor = validationRules[ruleStruct.type];
+    let validationRule = constructor(ruleStruct);
     if (validationRule != null) {
       let error = validationRule(password);
       if (error != null) {
@@ -56,10 +57,22 @@ function containsCharacterClass(regex, count, classDescription) {
 }
 
 let validationRules = {
-  length_32: maxLengthValidate(32),
-  min_24: minLengthValidate(24),
-  number_1: containsCharacterClass(/[0-9]/g, 1, 'numbers'),
-  special_1: containsCharacterClass(/[@$!%*#?&]/g, 1, 'special characters')
+  maxLength: function(args) {
+    return maxLengthValidate(args.length);
+  },
+  minLength: function(args) {
+    return minLengthValidate(args.length);
+  },
+  containsNumber: function(args) {
+    return containsCharacterClass(/[0-9]/g, args.count, 'numbers');
+  },
+  containsSpecials: function(args) {
+    return containsCharacterClass(
+      /[@$!%*#?&]/g,
+      args.count,
+      'special characters'
+    );
+  }
 };
 
 module.exports = {
