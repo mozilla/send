@@ -14,6 +14,7 @@ import metrics from './metrics';
 import experiments from './experiments';
 import * as Sentry from '@sentry/browser';
 import './main.css';
+import './override.css';
 import User from './user';
 import { getTranslator } from './locale';
 import Archive from './archive';
