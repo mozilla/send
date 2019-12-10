@@ -1,5 +1,13 @@
-const commit = require('git-rev-sync').short();
+const gitRevSync = require('git-rev-sync');
 const pkg = require('../package.json');
+
+let commit = 'unknown';
+
+try {
+  commit = gitRevSync.short();
+} catch (e) {
+  console.warn('Error fetching current git commit: ' + e);
+}
 
 const version = JSON.stringify({
   commit,
