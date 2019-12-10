@@ -20,13 +20,17 @@ class Footer extends Component {
           class="flex flex-col md:flex-row items-start md:items-center md:justify-end"
         >
           <li class="m-2">
-            <a href="https://send.firefox.com">Powered by Firefox Send</a>
+            <a href="https://send.firefox.com" target="_blank"
+              >Powered by Firefox Send</a
+            >
           </li>
           <li class="m-2">
-            <a href="https://checkr.com/privacy-policy"> Privacy Policy </a>
+            <a href="https://checkr.com/privacy-policy" target="_blank">
+              Privacy Policy
+            </a>
           </li>
           <li class="m-2">
-            <a href="https://checkr.com/terms-of-service">
+            <a href="https://checkr.com/terms-of-service" target="_blank">
               Terms of Service
             </a>
           </li>

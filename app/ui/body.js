@@ -19,7 +19,7 @@ module.exports = function body(main) {
   return function(state, emit) {
     const b = html`
       <body
-        class="flex flex-col items-center font-serif md:h-screen light:bg-white"
+        class="flex flex-col items-center font-sans md:h-screen light:bg-white"
       >
         ${banner(state, emit)} ${state.cache(Header, 'header').render()}
         ${main(state, emit)} ${state.cache(Footer, 'footer').render()}

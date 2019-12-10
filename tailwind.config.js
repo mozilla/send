@@ -129,7 +129,6 @@ module.exports = {
         'sans-serif'
       ],
       serif: [
-        'PT Serif',
         'Constantia',
         'Lucida Bright',
         'Lucidabright',

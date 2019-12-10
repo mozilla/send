@@ -36,11 +36,6 @@ module.exports = function(state, body = '') {
         <link rel="manifest" href="/app.webmanifest" />
         <link rel="stylesheet" type="text/css" href="/inter.css" />
         <link
-          href="http://fonts.googleapis.com/css?family=PT+Serif"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <link
           rel="stylesheet"
           type="text/css"
           href="${assets.get('app.css')}"

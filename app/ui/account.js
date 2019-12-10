@@ -64,7 +64,7 @@ class Account extends Component {
       return html`
         <send-account>
           <a
-            class="text-white"
+            class="text-white px-4"
             href="https://checkr.com/contact"
             target="_blank"
             >Contact Us</a
