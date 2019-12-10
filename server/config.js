@@ -19,7 +19,7 @@ const passwordConvict = convict({
       format: ['minLength']
     },
     length: {
-      doc: 'the maximum length allowed for passwords',
+      doc: 'the minimum length allowed for passwords',
       format: Number,
       default: 32
     }
