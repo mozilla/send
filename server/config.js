@@ -3,7 +3,73 @@ const { tmpdir } = require('os');
 const path = require('path');
 const { randomBytes } = require('crypto');
 
+const passwordConvict = convict({
+  maxLength: {
+    type: {
+      format: ['maxLength']
+    },
+    length: {
+      doc: 'the maximum length allowed for passwords',
+      format: Number,
+      default: 32
+    }
+  },
+  minLength: {
+    type: {
+      format: ['minLength']
+    },
+    length: {
+      doc: 'the maximum length allowed for passwords',
+      format: Number,
+      default: 32
+    }
+  },
+  containsNumbers: {
+    type: {
+      format: ['containsNumbers']
+    },
+    count: {
+      doc: 'how many numbers must be present in the password',
+      format: Number,
+      default: 1
+    }
+  },
+  containsSpecials: {
+    type: {
+      format: ['containsSpecials']
+    },
+    count: {
+      doc: 'how many special characters must be present',
+      format: Number,
+      default: 1
+    }
+  }
+});
+
+convict.addFormat({
+  name: 'password-requirements-array',
+  validate: function(requirements, _) {
+    if (!Array.isArray(requirements)) {
+      throw new Error('must be of type Array');
+    }
+
+    for (var requirement of requirements) {
+      passwordConvict.load(requirement).validate();
+    }
+  }
+});
+
 const conf = convict({
+  password_requirements_list: {
+    format: 'password-requirements-array',
+    doc: 'list of requirements for valid passwords',
+    default: []
+  },
+  password_required: {
+    format: Boolean,
+    default: false,
+    env: 'PASSWORD_REQUIRED'
+  },
   s3_bucket: {
     format: String,
     default: '',
@@ -153,6 +219,7 @@ const conf = convict({
 });
 
 // Perform validation
+conf.loadFile(path.resolve(__dirname, 'config.json'));
 conf.validate({ allowed: 'strict' });
 
 const props = conf.getProperties();

@@ -1,5 +1,4 @@
 /* global Android */
-
 const html = require('choo/html');
 const raw = require('choo/html/raw');
 const assets = require('../../common/assets');
@@ -12,6 +11,7 @@ const {
   timeLeft
 } = require('../utils');
 const expiryOptions = require('./expiryOptions');
+const { passwordValidate } = require('../passwordValidator');
 
 function expiryInfo(translate, archive) {
   const l10n = timeLeft(archive.expiresAt - Date.now());
@@ -25,41 +25,19 @@ function expiryInfo(translate, archive) {
   );
 }
 
-function password(state) {
-  const MAX_LENGTH = 32;
-
+function passwordToggle(state) {
   return html`
-    <div class="mb-2 px-1">
-      <div class="checkbox inline-block mr-3">
-        <input
-          id="add-password"
-          type="checkbox"
-          ${state.archive.password ? 'checked' : ''}
-          autocomplete="off"
-          onchange="${togglePasswordInput}"
-        />
-        <label for="add-password">
-          ${state.translate('addPassword')}
-        </label>
-      </div>
+    <div class="checkbox inline-block mr-3">
       <input
-        id="password-input"
-        class="${state.archive.password
-          ? ''
-          : 'invisible'} border rounded focus:border-blue-60 leading-normal my-1 py-1 px-2 h-8 dark:bg-grey-80"
+        id="add-password"
+        type="checkbox"
+        ${state.archive.password ? 'checked' : ''}
         autocomplete="off"
-        maxlength="${MAX_LENGTH}"
-        type="password"
-        oninput="${inputChanged}"
-        onfocus="${focused}"
-        placeholder="${state.translate('unlockInputPlaceholder')}"
-        value="${state.archive.password || ''}"
+        onchange="${togglePasswordInput}"
       />
-      <label
-        id="password-msg"
-        for="password-input"
-        class="block text-xs text-grey-70"
-      ></label>
+      <label for="add-password">
+        ${state.translate('addPassword')}
+      </label>
     </div>
   `;
 
@@ -77,20 +55,69 @@ function password(state) {
       state.archive.password = null;
     }
   }
+}
+
+function passwordLabel(state) {
+  return html`
+    <div class="inline-block mr-3">
+      <label for="password-input">
+        ${state.translate('addPassword')}
+      </label>
+    </div>
+  `;
+}
+
+function password(state, emit) {
+  return html`
+    <div class="mb-2 px-1">
+      ${state.LIMITS.PASSWORD_REQUIRED
+        ? passwordLabel(state)
+        : passwordToggle(state)}
+      <input
+        id="password-input"
+        class="${state.LIMITS.PASSWORD_REQUIRED || state.archive.password
+          ? ''
+          : 'invisible'} border rounded focus:border-blue-60 leading-normal my-1 py-1 px-2 h-8 dark:bg-grey-80"
+        autocomplete="off"
+        maxlength="32"
+        type="password"
+        oninput="${inputChanged}"
+        onfocus="${focused}"
+        placeholder="${state.translate('unlockInputPlaceholder')}"
+        value="${state.archive.password || ''}"
+      />
+      <label
+        id="password-msg"
+        for="password-input"
+        class="block text-xs text-grey-70"
+        style="white-space: pre"
+      ></label>
+    </div>
+  `;
 
   function inputChanged() {
     const passwordInput = document.getElementById('password-input');
     const pwdmsg = document.getElementById('password-msg');
+    const uploadBtn = document.getElementById('upload-btn');
     const password = passwordInput.value;
-    const length = password.length;
 
-    if (length === MAX_LENGTH) {
-      pwdmsg.textContent = state.translate('maxPasswordLength', {
-        length: MAX_LENGTH
-      });
+    const errors = passwordValidate(
+      password,
+      state.LIMITS.PASSWORD_REQUIREMENTS_LIST
+    );
+    const errorMsg = errors
+      .map(error => state.translate(error.translationKey, error.args))
+      .reduce((current, next) => current + '\r\n' + next, '');
+    if (errorMsg != '') {
+      pwdmsg.textContent = errorMsg;
+      uploadBtn.classList.add('btn-inactive');
+      uploadBtn.onclick = null;
     } else {
       pwdmsg.textContent = '';
+      uploadBtn.classList.remove('btn-inactive');
+      uploadBtn.onclick = clickUpload(state, emit);
     }
+
     state.archive.password = password;
   }
 
@@ -278,6 +305,17 @@ module.exports = function(state, emit, archive) {
   }
 };
 
+function clickUpload(state, emit) {
+  return function(event) {
+    window.scrollTo(0, 0);
+    event.preventDefault();
+    event.target.disabled = true;
+    if (!state.uploading) {
+      emit('upload');
+    }
+  };
+}
+
 module.exports.wip = function(state, emit) {
   return html`
     <send-upload-area
@@ -329,9 +367,12 @@ module.exports.wip = function(state, emit) {
       ${expiryOptions(state, emit)} ${password(state, emit)}
       <button
         id="upload-btn"
-        class="btn rounded-lg flex-shrink-0 focus:outline"
+        class="btn rounded-lg flex-shrink-0 focus:outline
+        ${state.LIMITS.PASSWORD_REQUIRED ? 'btn-inactive' : ''}"
         title="${state.translate('uploadButton')}"
-        onclick="${upload}"
+        onclick="${state.LIMITS.PASSWORD_REQUIRED
+          ? ''
+          : clickUpload(state, emit)}"
       >
         ${state.translate('uploadButton')}
       </button>
@@ -346,15 +387,6 @@ module.exports.wip = function(state, emit) {
     event.target.nextElementSibling.firstElementChild.classList.remove(
       'outline'
     );
-  }
-
-  function upload(event) {
-    window.scrollTo(0, 0);
-    event.preventDefault();
-    event.target.disabled = true;
-    if (!state.uploading) {
-      emit('upload');
-    }
   }
 
   function add(event) {

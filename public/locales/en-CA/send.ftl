@@ -43,6 +43,10 @@ expiresHoursMinutes = { $hours }h { $minutes }m
 expiresMinutes = { $minutes }m
 # A short status message shown when the user enters a long password
 maxPasswordLength = Maximum password length: { $length }
+# A short status message shown when the user enters a short password
+minPasswordLength = Minimum password length: { $length }
+# A short status message shown when the user enters a password that doesn't contain special characters
+characterClass = Must contain at least { $count } { $classDescription }
 # A short status message shown when there was an error setting the password
 passwordSetError = This password could not be set
 
