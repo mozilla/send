@@ -1,5 +1,5 @@
 const html = require('choo/html');
-const Promo = require('./promo');
+// const Promo = require('./promo');
 const Header = require('./header');
 const Footer = require('./footer');
 
@@ -10,7 +10,8 @@ function banner(state) {
   const show =
     !state.capabilities.standalone && !state.route.startsWith('/unsupported/');
   if (show) {
-    return state.cache(Promo, 'promo').render();
+    // Don't show promo -- maybe use later on
+    // return state.cache(Promo, 'promo').render();
   }
 }
 
