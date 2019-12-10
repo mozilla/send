@@ -108,6 +108,7 @@ tooManyArchives =
         [one] 1 tutu ni ku.
        *[other] Mitu'un { $count } tutu ni ku.
     }
+expiredTitle = Koo enlace inka
 downloadFirefox = Snuú { -firefox }
 legalDateStamp = Versión 1.0 del 12 de marzo de 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
