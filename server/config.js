@@ -215,6 +215,21 @@ const conf = convict({
     format: String,
     default: '',
     env: 'SURVEY_URL'
+  },
+  statsd_host: {
+    format: String,
+    default: 'localhost',
+    env: 'STATSD_HOST'
+  },
+  statsd_port: {
+    format: 'port',
+    default: 8125,
+    env: 'STATSD_PORT'
+  },
+  statsd_prefix: {
+    format: String,
+    default: 'sendr',
+    env: 'STATSD_PREFIX'
   }
 });
 

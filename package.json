@@ -157,6 +157,7 @@
     "node-fetch": "^2.6.0",
     "redis": "^2.8.0",
     "selenium-standalone": "^6.15.6",
+    "statsd-client": "^0.4.4",
     "ua-parser-js": "^0.7.20"
   },
   "availableLanguages": [
