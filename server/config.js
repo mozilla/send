@@ -216,6 +216,11 @@ const conf = convict({
     default: '',
     env: 'SURVEY_URL'
   },
+  log_format: {
+    format: String,
+    default: 'common',
+    env: 'LOG_FORMAT'
+  },
   statsd_host: {
     format: String,
     default: 'localhost',

@@ -5,6 +5,7 @@ const config = require('../config');
 const routes = require('../routes');
 const pages = require('../routes/pages');
 const expressWs = require('@dannycoates/express-ws');
+const morgan = require('morgan');
 
 if (config.sentry_dsn) {
   Sentry.init({ dsn: config.sentry_dsn });
@@ -15,6 +16,8 @@ const app = express();
 expressWs(app, null, { perMessageDeflate: false });
 routes(app);
 app.ws('/api/ws', require('../routes/ws'));
+
+app.use(morgan(config.log_format));
 
 app.use(
   express.static(path.resolve(__dirname, '../../dist/'), {
