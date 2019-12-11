@@ -49,13 +49,13 @@ module.exports = function(state, body = '') {
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="${assets.get('favicon-32x32.png')}"
+          href="${assets.get('checkr-favicon-150x150.png')}"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="${assets.get('favicon-16x16.png')}"
+          href="${assets.get('checkr-favicon-150x150.png')}"
         />
         <link
           rel="mask-icon"

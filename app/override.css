@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+
+.main-header {
+  @apply bg-blue;
+  @apply h-12;
+  @apply p-4;
+}
+
+.btn {
+  @apply bg-blue;
+}
