@@ -25,20 +25,20 @@ uploadingFileNotification = Obavijesti me kada otpremanje bude gotovo.
 uploadSuccessConfirmHeader = Spremno za slanje
 uploadSvgAlt = Otpremi
 uploadSuccessTimingHeader = Veza prema vašoj datoteci će isteći nakon prvog preuzimanja ili za 24 sata.
-expireInfo = Link za vašu datoteku će isteći nakon { $downloadCount } ili { $timespan }.
+expireInfo = Link za vašu datoteku će isteći nakon { $downloadCount } ili nakon { $timespan }.
 downloadCount =
     { $num ->
-        [one] 1 preuzimanja
+        [one] jednog preuzimanja
         [few] { $num } preuzimanja
        *[other] { $num } preuzimanja
     }
 timespanHours =
     { $num ->
-        [one] 1 sat
+        [one] jednog sata
         [few] { $num } sata
        *[other] { $num } sati
     }
-copyUrlFormLabelWithName = Iskopirajte i podijelite vezu da biste poslali datoteku: { $filename }
+copyUrlFormLabelWithName = Kopirajte i podijelite vezu da biste poslali datoteku: { $filename }
 copyUrlFormButton = Kopiraj u međuspremnik
 copiedUrl = Kopirano!
 deleteFileButton = Izbriši datoteku
@@ -103,13 +103,13 @@ footerLinkAbout = O Test Pilotu
 footerLinkPrivacy = Privatnost
 footerLinkTerms = Uslovi
 footerLinkCookies = Kolačići
-requirePasswordCheckbox = Zahtjevaj lozinku za preuzimanje ove datoteke
+requirePasswordCheckbox = Zahtijevaj lozinku za preuzimanje ove datoteke
 addPasswordButton = Dodaj lozinku
 changePasswordButton = Promijeni
 passwordTryAgain = Netačna lozinka. Pokušajte ponovo.
 reportIPInfringement = Prijavite IP prekršaj
-javascriptRequired = Firefox Send zahtjeva JavaScript
-whyJavascript = Zašto Firefox Send zahtjeva JavaScript?
+javascriptRequired = Firefox Send zahtijeva JavaScript
+whyJavascript = Zašto Firefox Send zahtijeva JavaScript?
 enableJavascript = Molimo omogućite JavaScript i pokušajte ponovo.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
