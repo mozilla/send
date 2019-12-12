@@ -144,8 +144,11 @@ noStreamsWarning = Ku ña navegador yo ma ku mini iin tutú kanu.
 noStreamsOptionCopy = Ndatava enlace takua kunu tsi inka navegador
 noStreamsOptionFirefox = Kuachu'un navegador ña va'a nu ntia
 noStreamsOptionDownload = Kunka tsi navegador yo
+downloadFirefoxPromo = { -send-short-brand } snai ña tsaa { -firefox }.
 # the next line after the colon contains a file name
 shareLinkDescription = Stucha enlace tutu ku:
 shareLinkButton = Stucha Enlace
+# $name is the name of the file
+shareMessage = Snuu «{ $name }» tsi { -send-brand }: kue nchichi
 trailheadPromo = Ku china vau ña chau. Kita'an tsi Firefox.
 learnMore = Skua'a kuakaa.
