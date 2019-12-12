@@ -109,6 +109,7 @@ tooManyArchives =
        *[other] Mitu'un { $count } tutu ni ku.
     }
 expiredTitle = Koo enlace inka
+notSupportedDescription = { -send-brand } ma ku Kuachu'un navegador yo. { -send-short-brand } Sachu'in va'a la  versión da ntii { -firefox }, sachu'un tsi  versión tsa'a su inka kue navegador.
 downloadFirefox = Snuú { -firefox }
 legalTitle = Tu'un privacidad { -send-short-brand }
 legalDateStamp = Versión 1.0 del 12 de marzo de 2019
