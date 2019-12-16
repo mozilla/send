@@ -92,6 +92,7 @@ totalSize = Kabuuang sukat: { $size }
 copyLinkDescription = Kopyahin ang link upang ibahagi ang iyong file:
 copyLinkButton = Kopyahin ang link
 downloadTitle = I-download ang mga file
+expiredTitle = Ang link na ito ay nag-expire.
 downloadFirefox = I-download { -firefox }
 legalTitle = { -send-short-brand } Abiso sa Privacy
 legalDateStamp = Bersyon 1.0, petsa ng Marso 12, 2019
