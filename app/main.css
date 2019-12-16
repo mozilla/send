@@ -306,7 +306,7 @@ select {
   }
 }
 
-@screen light {
+@screen dark {
   body {
     @apply text-grey-10;
 
@@ -331,7 +331,7 @@ select {
   }
 
   .link-blue {
-    @apply text-blue;
+    @apply text-blue-40;
   }
 
   .link-blue:hover {

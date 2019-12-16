@@ -10,3 +10,7 @@
 .btn {
   @apply bg-blue;
 }
+
+.btn-inactive {
+  @apply bg-blue-20;
+}
