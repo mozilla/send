@@ -17,6 +17,12 @@ expressWs(app, null, { perMessageDeflate: false });
 routes(app);
 app.ws('/api/ws', require('../routes/ws'));
 
+if (config.sentry_dsn) {
+  // The error handler must be before any other error middleware
+  // and after all controllers
+  app.use(Sentry.Handlers.errorHandler());
+}
+
 app.use(morgan(config.log_format));
 
 app.use(
