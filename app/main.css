@@ -306,59 +306,6 @@ select {
   }
 }
 
-@screen dark {
-  body {
-    @apply text-grey-10;
-
-    background-image: unset;
-  }
-
-  .btn {
-    @apply bg-blue;
-    @apply text-white;
-  }
-
-  .btn-inactive {
-    @apply bg-blue-20;
-  }
-
-  .btn:hover {
-    @apply bg-blue-50;
-  }
-
-  .btn:focus {
-    @apply bg-blue-50;
-  }
-
-  .link-blue {
-    @apply text-blue-40;
-  }
-
-  .link-blue:hover {
-    @apply text-blue-50;
-  }
-
-  .link-blue:focus {
-    @apply text-blue-50;
-  }
-
-  .main > section {
-    @apply bg-grey-90;
-  }
-
-  .mozilla-logo {
-    background-color: white;
-    border: 1px solid white;
-  }
-
-  @screen md {
-    .main > section {
-      @apply border;
-      @apply border-grey-80;
-    }
-  }
-}
-
 @tailwind utilities;
 
 @responsive {
