@@ -33,7 +33,11 @@ module.exports = function(state, emit) {
       value => {
         const max = state.user.maxDownloads;
         state.archive.dlimit = Math.min(value, max);
-        emit('render');
+        if (value > max) {
+          emit('signup-cta', 'count');
+        } else {
+          emit('render');
+        }
       },
       'expire-after-dl-count-select'
     ),
@@ -56,7 +60,11 @@ module.exports = function(state, emit) {
       value => {
         const max = state.user.maxExpireSeconds;
         state.archive.timeLimit = Math.min(value, max);
-        emit('render');
+        if (value > max) {
+          emit('signup-cta', 'time');
+        } else {
+          emit('render');
+        }
       },
       'expire-after-time-select'
     ),
