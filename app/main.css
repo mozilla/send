@@ -178,6 +178,7 @@ footer li:hover {
 .intro {
   max-width: 100%;
   height: unset;
+  overflow: hidden;
 }
 
 .main {
@@ -295,7 +296,6 @@ select {
     max-width: 100%;
     height: unset;
     margin-bottom: -0.5rem;
-    margin-right: -7rem;
   }
 
   .main {
