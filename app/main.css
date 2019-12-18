@@ -294,7 +294,7 @@ select {
   .intro {
     max-width: 100%;
     height: unset;
-    margin-bottom: -3rem;
+    margin-bottom: -0.5rem;
     margin-right: -7rem;
   }
 
