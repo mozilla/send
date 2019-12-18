@@ -9,19 +9,21 @@ module.exports = function(state, emit) {
     .filter(archive => !archive.expired)
     .map(archive => archiveTile(state, emit, archive));
   let left = '';
+  let right = '';
   if (state.uploading) {
     left = archiveTile.uploading(state, emit);
+    right = intro.upload(state);
   } else if (state.archive.numFiles > 0) {
     left = archiveTile.wip(state, emit);
+    right = intro.upload(state);
   } else {
     left = archiveTile.empty(state, emit);
+    right = intro.empty(state);
   }
   archives.reverse();
-  const right =
-    archives.length === 0
-      ? intro(state)
-      : list(archives, 'p-2 h-full overflow-y-auto w-full', 'mb-4 w-full');
-
+  if (archives.length !== 0) {
+    right = list(archives, 'p-2 h-full overflow-y-auto w-full', 'mb-4 w-full');
+  }
   return html`
     <main class="main">
       ${state.modal && modal(state, emit)}

@@ -12,7 +12,7 @@ module.exports = function(state, emit) {
         <h1 class="text-center text-3xl font-bold my-2">
           ${state.translate('expiredTitle')}
         </h1>
-        <img src="${assets.get('notFound.svg')}" class="my-12" />
+        <img src="${assets.get('checkr-not-found.png')}" class="my-12 h-48" />
         <p class="max-w-md text-center text-grey-80 leading-normal">
           ${state.translate('trySendDescription')}
         </p>

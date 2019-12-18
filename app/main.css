@@ -292,7 +292,7 @@ select {
   }
 
   .intro {
-    max-width: unset;
+    max-width: 100%;
     height: unset;
     margin-bottom: -3rem;
     margin-right: -7rem;
