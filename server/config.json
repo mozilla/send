@@ -17,5 +17,7 @@
       "count": 1
     }
   ],
-  "anon_max_downloads": 100
+  "anon_max_downloads": 100,
+  "download_counts": [1, 2, 3, 4, 5, 20],
+  "expire_times_seconds": [86400, 604800]
 }
