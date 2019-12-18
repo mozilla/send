@@ -13,15 +13,6 @@ module.exports = function(state, emit) {
           ${state.translate('expiredTitle')}
         </h1>
         <img src="${assets.get('checkr-not-found.png')}" class="my-12 h-48" />
-        <p class="max-w-md text-center text-grey-80 leading-normal">
-          ${state.translate('trySendDescription')}
-        </p>
-        <p class="my-5">
-          <a href="/" class="btn rounded-lg flex items-center" role="button"
-            >${state.translate('sendYourFilesLink')}</a
-          >
-        </p>
-      </section>
     </main>
   `;
 };
