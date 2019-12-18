@@ -94,15 +94,34 @@ totalSize = Mida total: { $size }
 copyLinkDescription = Copiar lo vinclo que quiers compartir
 copyLinkButton = Copiar lo vinclo
 downloadTitle = Descargar los fichers
+downloadDescription = Este fichero s'ha compartiu per medio de { -send-brand } con cifrau de cabo a cabo y un vinclo que caduca automaticament.
 expiredTitle = Este vinclo ye caducau.
 downloadFirefox = Descargar { -firefox }
 legalTitle = Aviso de privacidat de { -send-short-brand }
 legalDateStamp = Versió 1.0, con data d'o 12 de marzo de 2019
+addFilesButton = Triar los fichers a cargar
+uploadButton = Cargar
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Arrociega y suelta los fichers
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = u fes clic aquí pa ninviar dica { $size }
+addPassword = Protecher con una clau
+emailPlaceholder = Escribe la tuya adreza de correu
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Inicia una sesión pa ninviar dica { $size }
 signInOnlyButton = Iniciar la sesión
 accountBenefitTitle = Crea una cuenta de { -firefox } u dentra-ie
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Compartir fichers dica { $size }
 accountBenefitDownloadCount = Compartir fichers con mas chent
+accountBenefitTimeLimit =
+    { $count ->
+        [one] Mantiene los vinclos activos dica 1 dia
+       *[other] Mantiene los vinclos activos dica { $count } días
+    }
+accountBenefitSync = Chestiona los fichers compartius dende qualsequier dispositivo
+accountBenefitMoz = Descubre mas cosas sobre los atros servicios de { -mozilla }
 signOut = Zarrar la sesión
 okButton = Vale
 downloadingTitle = Se ye descargando
@@ -110,4 +129,11 @@ noStreamsWarning = Este navegador talment no pueda descifrar un fichero tant gra
 noStreamsOptionCopy = Copia lo vinclo pa ubrir-lo en belatro navegador
 noStreamsOptionFirefox = Preba lo nuestro navegador favorito
 noStreamsOptionDownload = Continar con este navegador
+downloadFirefoxPromo = Lo nuevo { -firefox } t'ofreix { -send-short-brand }.
+# the next line after the colon contains a file name
+shareLinkDescription = Comparte lo vinclo enta lo tuyo fichero:
 shareLinkButton = Compartir lo vinclo
+# $name is the name of the file
+shareMessage = Baixa-te «{ $name }» con { -send-brand }: compartición de fiches simpla y segura
+trailheadPromo = I hai una manera de protecher la tuya privacidat. Une-te a Firefox.
+learnMore = Mas información
