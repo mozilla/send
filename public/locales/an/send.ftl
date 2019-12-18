@@ -95,10 +95,26 @@ copyLinkDescription = Copiar lo vinclo que quiers compartir
 copyLinkButton = Copiar lo vinclo
 downloadTitle = Descargar los fichers
 downloadDescription = Este fichero s'ha compartiu per medio de { -send-brand } con cifrau de cabo a cabo y un vinclo que caduca automaticament.
+trySendDescription = Preba { -send-brand } pa una compartición de fichers simpla y segura.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+        [one] Nomás se puet puyar 1 fitxer de vez.
+       *[other] Nomás se pueden puyar  { $count } fichers de vez.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] Nomás se permite 1 ficher.
+       *[other] Nomás se permiten { $count } fichers.
+    }
 expiredTitle = Este vinclo ye caducau.
+notSupportedDescription = { -send-brand } no funcionará con este navegador. { -send-short-brand } funciona millor con a zaguera versión de { -firefox } y funcionará con a versión mas recient d'a mayor parte de navegadors.
 downloadFirefox = Descargar { -firefox }
 legalTitle = Aviso de privacidat de { -send-short-brand }
 legalDateStamp = Versió 1.0, con data d'o 12 de marzo de 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } d { $hours } h { $minutes } min
 addFilesButton = Triar los fichers a cargar
 uploadButton = Cargar
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
