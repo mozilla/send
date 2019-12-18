@@ -90,7 +90,6 @@ function password(state, emit) {
         id="password-msg"
         for="password-input"
         class="block text-xs text-grey-70"
-        style="white-space: break-spaces"
       ></label>
     </div>
   `;

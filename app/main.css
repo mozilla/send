@@ -47,16 +47,17 @@ body {
   @apply font-semibold;
 }
 
-.btn-inactive {
-  @apply bg-blue-20;
-}
-
 .btn:hover {
   @apply bg-blue-70;
 }
 
 .btn:focus {
   @apply bg-blue-70;
+}
+
+.btn-inactive,
+.btn-inactive:hover {
+  @apply bg-blue-20;
 }
 
 .checkbox {
@@ -202,6 +203,10 @@ footer li:hover {
   height: 32px;
   width: 100px;
   flex-shrink: 0;
+}
+
+#password-msg {
+  white-space: break-spaces;
 }
 
 #password-msg::after {
