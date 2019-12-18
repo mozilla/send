@@ -18,7 +18,7 @@ copiedUrl = Copied!
 unlockInputPlaceholder = Password
 unlockButtonLabel = Unlock
 downloadButtonLabel = Download
-downloadFinish = Download Complete
+downloadFinish = Download Complete.
 fileSizeProgress = ({ $partialSize } of { $totalSize })
 sendYourFilesLink = Try Sendr
 errorPageHeader = Something went wrong!
@@ -60,7 +60,7 @@ passwordSetError = This password could not be set
 
 introTitle = Private, simple, and secure.
 introDescription = Share files securely with end-to-end encryption and links that automatically expire to limit your risk and protect your privacy.
-notifyUploadEncryptDone = Your file is encrypted and ready to send
+notifyUploadEncryptDone = Your file is encrypted and ready to send.
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Expires after { $downloadCount } or { $timespan }
 timespanMinutes =
@@ -98,7 +98,7 @@ totalSize = Total size: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Copy the link to share your file:
 copyLinkButton = Copy link
-downloadTitle = Download files
+downloadTitle = Download files.
 downloadDescription = This file was shared via { -send-brand } with end-to-end encryption and a link that automatically expires.
 trySendDescription = Try { -send-brand } for simple, safe file sharing.
 # count will always be > 10
