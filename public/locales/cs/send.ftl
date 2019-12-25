@@ -22,7 +22,7 @@ unlockButtonLabel = Odemknout
 downloadButtonLabel = Stáhnout
 downloadFinish = Stahování dokončeno
 fileSizeProgress = ({ $partialSize } z { $totalSize })
-sendYourFilesLink = Vyzkoušejte Firefox Send
+sendYourFilesLink = Vyzkoušet Firefox Send
 errorPageHeader = Nastala chyba!
 fileTooBig = Tento soubor je příliš veliký. Velikost nahrávaných souborů by neměla překročit { $size }.
 linkExpiredAlt = Platnost odkazu vypršela
@@ -137,7 +137,7 @@ copyLinkDescription = Soubor můžete sdílet tímto odkazem:
 copyLinkButton = Zkopírovat odkaz
 downloadTitle = Stáhnout soubory
 downloadDescription = Tento soubor byl sdílen přes { -send-brand(case: "acc") } s end-to-end šifrováním a odkazem s omezenou platností.
-trySendDescription = Zkuste { -send-brand(case: "acc") } pro jednoduché a bezpečné sdílení souborů
+trySendDescription = Vyzkoušejte jednoduché a bezpečné sdílení souborů s { -send-brand(case: "ins") }
 # count will always be > 10
 tooManyFiles =
     { $count ->
