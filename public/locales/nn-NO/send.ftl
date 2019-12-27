@@ -94,7 +94,7 @@ totalSize = Total storleik: { $size }
 copyLinkDescription = Kopier lenka for å dele fila di:
 copyLinkButton = Kopier lenke
 downloadTitle = Last ned filer
-downloadDescription = Denne fila vart delt via { -send-brand } med ende-til-ende-kryptering og ei lenke som automatisk går ut.
+downloadDescription = Denne fila vart delt via { -send-brand }, med ende-til-ende-kryptering, og ei lenke som automatisk går ut.
 trySendDescription = Prøv { -send-brand } for enkel og sikker fildeling.
 # count will always be > 10
 tooManyFiles =
