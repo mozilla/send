@@ -96,3 +96,6 @@ copyLinkButton = Guxûn lînk
 downloadTitle = Nadunïnj nej archîbo
 downloadFirefox = Nadunïnj { -firefox }
 legalTitle = Nuguan huì nikāj { -send-short-brand }
+signOut = Narun' sesiôn
+okButton = Ga'ue
+shareLinkButton = Duguachîn enlâse
