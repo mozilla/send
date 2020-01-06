@@ -1,5 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
-title = Firefox Ipadala
+title = Firefox Send
 siteFeedback = Feedback
 importingFile = Importing…
 encryptingFile = Encrypting…
@@ -33,8 +33,8 @@ footerLinkLegal = Legal
 footerLinkPrivacy = Privacy
 footerLinkCookies = Mga cookie
 passwordTryAgain = Maling password. Subukan muli.
-javascriptRequired = Nangangailangan ang JavaScript sa JavaScript
-whyJavascript = Bakit ang JavaScript ay nangangailangan ng JavaScript?
+javascriptRequired = Nangangailangan ang Firefox Send ng JavaScript
+whyJavascript = Bakit ang Firefox Send ay nangangailangan ng JavaScript?
 enableJavascript = Mangyaring paganahin ang JavaScript at subukan muli.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
