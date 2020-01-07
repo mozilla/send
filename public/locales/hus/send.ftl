@@ -25,6 +25,9 @@ linkExpiredAlt = Yabats u awil ki ela'
 notSupportedHeader = Yab u awil ka japiyat k'al axi NAVEGADOR
 notSupportedLink = ¿Jale' ti u NAVEGADOR yab in japiyal?
 notSupportedOutdatedDetail = Yab u awil ka eyendha' Firefox Send kom an NAVEGADOR Firefox biyalits. Ka Pa'ba' axi it.
+updateFirefox = Ka itmedha' Firefox
+deletePopupCancel = Ka kuba'
+deleteButtonHover = Ka pakuw
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
