@@ -52,6 +52,7 @@ passwordSetError = Axi tsinat japixtaláb yab u awil ka eyendha'
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Yab k'ibat, a tsinat t'ojlabil u awil ka buk'uw
+introDescription = { -send-brand } in t'ajál abal ka buk'uw a t'ojlabil po axé' tsinat abal an atikláb axi tat yab a le' kin tsu'uw yab kin ejtow, aniyej an enlace abal ka pa'ba' an t'ojláb u talél kwetém. Antsan patal axi ka abna' u awil ka buk'uw tsinat ani antsan jayej axi ka buk'uw yab u jilk'onal ets'ey ti ébtsolom (internet).
 notifyUploadEncryptDone = A t'ojlabil xo' tsinadhits ani u awilits ka abna'
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Ne'ets ka taliy ti { $downloadCount } o ti { $timespan }
@@ -83,3 +84,26 @@ gb = GB
 fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = In puwél an t'ojláb: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Ka k'ot'biy an enlace abal ka ejtow ka buk'uw a t'ojlabil:
+copyLinkButton = ka k'ot'biy an enlace
+downloadTitle = Ka pa'ba' an t'ojláb
+downloadDescription = Axi t'ojláb aban k'al in tolmixtal an { -send-brand } ani tsinat, aniyej in tsap an enlace u talél kwetém.
+trySendDescription = Ka eyendha' { -send-brand } abal ka abna' a t'ojlabil, yab k'ibat ani k'anidh.
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+       *[other]
+            Expidh u awil ka k'adhba' 1 i t'ojláb 
+            Expidh u awil ka k'adhba' { $count } i t'ojláb.
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+       *[other]
+            Expidh u awil 1 i t'ojláb.
+            Expidh u awil { $count } i t'ojláb.
+    }
+expiredTitle = An enlace talíts in tsap.
+notSupportedDescription = { -send-brand } yab u t'ojnal al axi navegador. { -send-short-brand } u t'ojnal alwa' k'al an { -firefox } axi it, ani ne'ets ka t'ojon alwa' k'al an it navegadorchik.
+downloadFirefox = Ka pa'ba' { -firefox }
