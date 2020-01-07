@@ -119,3 +119,24 @@ dragAndDropFiles = Ka kina' a t'ojlabil ani ka walka' te'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = o ka t'aja' an clic abal ka abna' ma { $size }
 addPassword = Ka k'aniy k'al jún i tsinat japixtaláb
+emailPlaceholder = Ka punuw a abnax dhuchlab Correo Electrónico.
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Kit otsits abal ka ejtow ka abna' ma { $size }
+signInOnlyButton = Kit otsits
+accountBenefitTitle = Ka ts'ejka' jún a it k'al (cuenta) { -firefox } o kit otsits max a kwa'alits jún.
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Ka buk'uw a t'ojlabil, ma { $size }
+accountBenefitDownloadCount = Ka buk'uw a t'ojlabil k'al pil i atiklabchik
+accountBenefitTimeLimit =
+    { $count ->
+       *[other]
+            Ka ko'oy an enlace ma 1 a k'icháj
+            Ka ko'oy an enlacechik ma { $count } a k'icháhchik
+    }
+accountBenefitSync = Ka ejtow tit t'ojnal k'al t'ojlabil al jawakitsk'ij tum eyendhabnél
+accountBenefitMoz = Ka exla' jant'oj ti pidhál { -mozilla }
+signOut = Kit kalej
+okButton = Ka bats'uw
+downloadingTitle = K'wajat ti pa'íl
+noStreamsWarning = Walám axi navegador yab ne'ets kin ejtow kin japiy jún i t'ojláb tekedh pulik.
+noStreamsOptionCopy = Ka k'ot'biy an enlace abal ka japiy al pil i navegador
