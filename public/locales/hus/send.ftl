@@ -140,3 +140,13 @@ okButton = Ka bats'uw
 downloadingTitle = K'wajat ti pa'íl
 noStreamsWarning = Walám axi navegador yab ne'ets kin ejtow kin japiy jún i t'ojláb tekedh pulik.
 noStreamsOptionCopy = Ka k'ot'biy an enlace abal ka japiy al pil i navegador
+noStreamsOptionFirefox = Ka eyendha' i navegador
+noStreamsOptionDownload = yab kit kalej al axi navegador
+downloadFirefoxPromo = An it { -firefox } ti pidhál { -send-short-brand }
+# the next line after the colon contains a file name
+shareLinkDescription = Ka abna' an enlace al an eyendhanél:
+shareLinkButton = Ka abna' an enlace
+# $name is the name of the file
+shareMessage = Ka pa'ba' “{ $name }” k'al { -send-brand }: ka abna' a t'ojlabil, yab k'ibat ani k'anidh
+trailheadPromo = U awil ka k'aniy axi tat a k'al. Kit tamkun k'al Firefox.
+learnMore = Ka ajiy más.
