@@ -149,6 +149,11 @@ const conf = convict({
     format: String,
     default: '',
     env: 'SURVEY_URL'
+  },
+  ip_db: {
+    format: String,
+    default: '',
+    env: 'IP_DB'
   }
 });
 

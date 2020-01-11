@@ -1,8 +1,11 @@
 const crypto = require('crypto');
-const geoip = require('fxa-geodb')();
 const fetch = require('node-fetch');
 const config = require('./config');
 const pkg = require('../package.json');
+
+const geoip = config.ip_db
+  ? require('fxa-geodb')({ dbPath: config.ip_db })
+  : () => ({});
 
 const HOUR = 1000 * 60 * 60;
 
