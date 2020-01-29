@@ -56,8 +56,8 @@ passwordSetError = Lozinku nije moguće postaviti
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Jednostavno i privatno dijeljenje datoteka
-introDescription = { -send-brand } vam omogućava dijeljenje datoteka s kriptiranjem i poveznicu koja automatski ističe. Ovim putem stvari koje dijelite ostaju privatne i osiguravate se da ne ostaju zauvijek dostupne na Internetu.
-notifyUploadEncryptDone = Vaša datoteka je kriptirana i spremna za slanje.
+introDescription = { -send-brand } omogućava dijeljenje datoteka s šifriranjem i poveznicu koja automatski ističe. Ovim putem stvari koje dijelite ostaju privatne i osiguravate se da ne ostaju zauvijek dostupne na Internetu.
+notifyUploadEncryptDone = Vaša datoteka je šifrirana i spremna za slanje.
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Istječe nakon { $downloadCount } ili { $timespan }
 timespanMinutes =
@@ -97,10 +97,10 @@ fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Ukupna veličina: { $size }
 # the next line after the colon contains a file name
-copyLinkDescription = Kopirajte poveznicu da biste podijelili svoju datoteku:
+copyLinkDescription = Kopiraj poveznicu za dijeljenje svoje datoteke:
 copyLinkButton = Kopiraj poveznicu
 downloadTitle = Preuzmite datoteke
-downloadDescription = Ova datoteka je podjeljena putem { -send-brand } s kriptiranjem i poveznicom koja automatski istječe.
+downloadDescription = Ova datoteka je podjeljena putem { -send-brand } s šifriranjem i poveznicom koja automatski istječe.
 trySendDescription = Probajte { -send-brand } za jednostavno i sigurno dijeljenje datoteka.
 # count will always be > 10
 tooManyFiles =
