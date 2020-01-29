@@ -2,8 +2,8 @@
 title = Firefox Send
 siteFeedback = Povratne informacije
 importingFile = Uvoz…
-encryptingFile = Kriptiranje…
-decryptingFile = Dekriptiranje…
+encryptingFile = Šifriranje …
+decryptingFile = Dešifriranje …
 downloadCount =
     { $num ->
         [one] { $num } preuzimanje
@@ -23,7 +23,7 @@ downloadButtonLabel = Preuzmi
 downloadFinish = Preuzimanje je završeno.
 fileSizeProgress = ({ $partialSize } od { $totalSize })
 sendYourFilesLink = Isprobajte Firefox Send
-errorPageHeader = Nešto je pošlo naopako!
+errorPageHeader = Dogodila se neka greška!
 fileTooBig = Datoteka je prevelika za prijenos. Treba biti manja od { $size }.
 linkExpiredAlt = Poveznica je istekla
 notSupportedHeader = Vaš preglednik nije podržan.
@@ -42,7 +42,7 @@ enableJavascript = Omogućite JavaScript i pokušajte ponovo.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }s { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
-expiresMinutes = { $minutes }m
+expiresMinutes = { $minutes }min
 # A short status message shown when the user enters a long password
 maxPasswordLength = Najveća dužina lozinke: { $length }
 # A short status message shown when there was an error setting the password
