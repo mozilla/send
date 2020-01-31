@@ -96,12 +96,12 @@ tooManyArchives =
     }
 expiredTitle = 이 링크는 만료되었습니다.
 notSupportedDescription = { -send-brand }는 이 브라우저와 작동하지 않습니다. { -send-short-brand }는 최신 { -firefox }와 가장 잘 작동하며, 대부분의 최신 웹 브라우저와도 잘 작동합니다.
-downloadFirefox = 다운로드 { -firefox }
+downloadFirefox = { -firefox } 다운로드
 legalTitle = { -send-short-brand } 개인정보 보호 공지
-legalDateStamp = 버전 1.0, 2019년 3월 12일 출시됨
+legalDateStamp = 버전 1.0, 2019년 3월 12일자
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }일 { $hours }시간 { $minutes }분
-addFilesButton = 업로드할 파일을 선택하세요
+addFilesButton = 업로드할 파일들을 선택하세요
 uploadButton = 업로드
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = 파일들을 여기에 끌어서 놓으세요
@@ -136,5 +136,5 @@ shareLinkDescription = 파일 링크 공유:
 shareLinkButton = 링크 공유
 # $name is the name of the file
 shareMessage = { -send-brand }으로 “{ $name }” 파일을 내려받으세요: 쉽고 안전한 파일 공유입니다.
-trailheadPromo = 개인 정보를 보호하는 방법이 있습니다. 파이어폭스와 함께 하세요.
-learnMore = 자세히 알아보기
+trailheadPromo = 개인 정보를 보호하는 방법이 있습니다. Firefox에 가입하세요.
+learnMore = 더 알아보기.
