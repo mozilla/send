@@ -26,9 +26,9 @@ footerLinkLegal = 법적 정보
 footerLinkPrivacy = 개인정보 보호
 footerLinkCookies = 쿠키
 passwordTryAgain = 비밀번호가 맞지 않습니다. 다시 시도해 주세요.
-javascriptRequired = Firefox Send는 자바스크립트를 필요로 합니다
-whyJavascript = 왜 Firefox Send에 자바스크립트가 필요하죠?
-enableJavascript = 자바스크립트를 활성화하고 다시 시도해 주세요.
+javascriptRequired = Firefox Send는 JavaScript를 필요로 합니다
+whyJavascript = 왜 Firefox Send에 JavaScript가 필요하죠?
+enableJavascript = JavaScript를 활성화하고 다시 시도해 주세요.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }시간 { $minutes }분
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
@@ -104,7 +104,7 @@ expiresDaysHoursMinutes = { $days }일 { $hours }시간 { $minutes }분
 addFilesButton = 업로드할 파일을 선택하세요
 uploadButton = 업로드
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
-dragAndDropFiles = 파일을 이곳에 드래그 엔 드롭하세요.
+dragAndDropFiles = 파일들을 여기에 끌어서 놓으세요
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = 또는 여기를 클릭하여 { $size }까지의 파일을 공유하세요.
