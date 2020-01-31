@@ -113,7 +113,7 @@ emailPlaceholder = 이메일 입력
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = { $size }까지 파일을 보낼 수 있게 로그인
 signInOnlyButton = 로그인
-accountBenefitTitle = { -firefox } 계정을 하나 만들거나, 로그인
+accountBenefitTitle = { -firefox } 계정 생성 또는 로그인
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = { $size }까지의 파일 공유
 accountBenefitDownloadCount = 더 많은 사람들과 함께 파일 공유
@@ -122,7 +122,7 @@ accountBenefitTimeLimit =
        *[other] 최대 { $count }일까지 링크 유지
     }
 accountBenefitSync = 어떤 기기에서든지 공유된 링크 관리
-accountBenefitMoz = 더 많은 { -mozilla } 서비스에 대해 알아보기
+accountBenefitMoz = 다른 { -mozilla } 서비스에 대해 알아보기
 signOut = 로그아웃
 okButton = 확인
 downloadingTitle = 다운로드 중
