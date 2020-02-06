@@ -17,9 +17,9 @@ module.exports = function(state, body = '') {
 
         <meta property="og:title" content="Factual SendPass" />
         <meta name="twitter:title" content="Factual SendPass" />
-        <meta name="description" content="Factual Re-branded of Firefox Send" />
-        <meta property="og:description" content="Factual Re-branded of Firefox Send" />
-        <meta name="twitter:description" content="Factual Re-branded of Firefox Send" />
+        <meta name="description" content="Encrypt and send files with a link that automatically expires to ensure your important documents don’t stay online forever." />
+        <meta property="og:description" content="Encrypt and send files with a link that automatically expires to ensure your important documents don’t stay online forever." />
+        <meta name="twitter:description" content="Encrypt and send files with a link that automatically expires to ensure your important documents don’t stay online forever." />
         <meta name="twitter:card" content="summary" />
         <meta
           property="og:image"
