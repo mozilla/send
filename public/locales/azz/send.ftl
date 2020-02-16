@@ -18,6 +18,8 @@ downloadButtonLabel = Xiktemoui
 downloadFinish = Nochi motemouij ya
 fileSizeProgress = ({ $partialSize } itech { $totalSize })
 sendYourFilesLink = Xikejeko Firefox Send
+errorPageHeader = ¡Tensa amo kuali kisak!
+fileTooBig = Nejin tajkuilol semi ueyi. Moneki amo panos { $size }
 
 ## Send version 2 strings
 
