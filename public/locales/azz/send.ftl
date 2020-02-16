@@ -38,6 +38,15 @@ enableJavascript = Se kualtakayot, xikaua maj peua tekiti JavaScript uan oksepa 
 expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
+# A short status message shown when the user enters a long password
+maxPasswordLength = Keniuj ueyak ichtakatajtol, maj amo pano: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError = Nejin ichtakatajtol amo uel kiixtaliani
 
 ## Send version 2 strings
 
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand = Xiktitani
+-firefox = Firefox
+-mozilla = Mozilla
