@@ -30,6 +30,7 @@ deleteButtonHover = Maj majchiua
 footerLinkLegal = Keniuj motekitiltis
 footerLinkPrivacy = Keniuj tikyekpiaj tein tikseliaj
 footerLinkCookies = Cookies
+passwordTryAgain = Amo yektik ichtakatajtol. Oksepa xikijkuilo.
 
 ## Send version 2 strings
 
