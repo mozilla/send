@@ -26,6 +26,7 @@ notSupportedLink = ¿Keyej nonavegador amo kualtia?
 notSupportedOutdatedDetail = Tetayokoltij, Firefox tein tikuitok amo kiselia tepostekitilis tecnología web tein ika tekiti Firefox Send. Moneki tikyankuilis monavegador.
 updateFirefox = Maj Firefox  moyankuili
 deletePopupCancel = Maj motsakuili uan amo tami tein kichiujtok
+deleteButtonHover = Maj majchiua
 
 ## Send version 2 strings
 
