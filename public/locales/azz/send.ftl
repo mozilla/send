@@ -27,6 +27,9 @@ notSupportedOutdatedDetail = Tetayokoltij, Firefox tein tikuitok amo kiselia tep
 updateFirefox = Maj Firefox  moyankuili
 deletePopupCancel = Maj motsakuili uan amo tami tein kichiujtok
 deleteButtonHover = Maj majchiua
+footerLinkLegal = Keniuj motekitiltis
+footerLinkPrivacy = Keniuj tikyekpiaj tein tikseliaj
+footerLinkCookies = Cookies
 
 ## Send version 2 strings
 
