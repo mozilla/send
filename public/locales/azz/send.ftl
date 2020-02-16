@@ -23,6 +23,7 @@ fileTooBig = Nejin tajkuilol semi ueyi. Moneki amo panos { $size }
 linkExpiredAlt = Nejin tein tikpatskilij amo tekititok ya
 notSupportedHeader = Monavegador amo kualtia.
 notSupportedLink = ¿Keyej nonavegador amo kualtia?
+notSupportedOutdatedDetail = Tetayokoltij, nejin Firefox tein tikuitok amo kiselia tecnologia itech web
 
 ## Send version 2 strings
 
