@@ -21,6 +21,8 @@ sendYourFilesLink = Xikejeko Firefox Send
 errorPageHeader = ¡Tensa amo kuali kisak!
 fileTooBig = Nejin tajkuilol semi ueyi. Moneki amo panos { $size }
 linkExpiredAlt = Nejin tein tikpatskilij amo tekititok ya
+notSupportedHeader = Monavegador amo kualtia.
+notSupportedLink = ¿Keyej nonavegador amo kualtia?
 
 ## Send version 2 strings
 
