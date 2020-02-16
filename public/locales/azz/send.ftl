@@ -14,6 +14,10 @@ timespanHours =
     }
 copiedUrl = Moixkopinak!
 unlockInputPlaceholder = Ichtakatajtol
+downloadButtonLabel = Xiktemoui
+downloadFinish = Nochi motemouij ya
+fileSizeProgress = ({ $partialSize } itech { $totalSize })
+sendYourFilesLink = Xikejeko Firefox Send
 
 ## Send version 2 strings
 
