@@ -50,3 +50,4 @@ passwordSetError = Nejin ichtakatajtol amo uel kiixtaliani
 -send-short-brand = Xiktitani
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle = Amo ouij uan ichtaka xikinpanoltili oksekin motajkuiloluan archivos
