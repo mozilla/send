@@ -31,6 +31,8 @@ footerLinkLegal = Keniuj motekitiltis
 footerLinkPrivacy = Keniuj tikyekpiaj tein tikseliaj
 footerLinkCookies = Cookies
 passwordTryAgain = Amo yektik ichtakatajtol. Oksepa xikijkuilo.
+javascriptRequired = Firefox Send kineki maj moajsi JavaScript
+whyJavascript = ¿Keyej Firefox Send kineki maj moajsi JavaScript?
 
 ## Send version 2 strings
 
