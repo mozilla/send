@@ -20,6 +20,7 @@ fileSizeProgress = ({ $partialSize } itech { $totalSize })
 sendYourFilesLink = Xikejeko Firefox Send
 errorPageHeader = ¡Tensa amo kuali kisak!
 fileTooBig = Nejin tajkuilol semi ueyi. Moneki amo panos { $size }
+linkExpiredAlt = Nejin tein tikpatskilij amo tekititok ya
 
 ## Send version 2 strings
 
