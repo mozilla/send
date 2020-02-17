@@ -53,3 +53,17 @@ passwordSetError = Nejin ichtakatajtol amo uel kiixtaliani
 introTitle = Amo ouij uan ichtaka xikinpanoltili oksekin motajkuiloluan archivos
 introDescription = { -send-brand } mitspaleuia uan ijkon tikinpanoltilis oksekin motajkuiloluan archivos ika tapoualmej tein amo aksa uelis kiajsikamatis, uan no kitemaka kampa se kipatskilis tein niman ixpoliui. Ijkuin uelis tikichtakaeuas tein tikintitanilis oksekin uan tikyekmatis tein moaxka amo nochipaya mokauas itech Internet.
 notifyUploadEncryptDone = Moarchivo moijkuiloj ya kemej amo akin uelis kiixtajtoltis uan se uelis kititanis ya
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = Poliui ijkuak tiajsis { $downloadCount } oso { $timespan }
+timespanMinutes =
+    { $num ->
+       *[undefined] minuto / minuto
+    }
+timespanDays =
+    { $num ->
+       *[undefined] tonal / tonalmej
+    }
+timespanWeeks =
+    { $num ->
+       *[undefined] semana
+    }
