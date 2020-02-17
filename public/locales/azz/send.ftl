@@ -65,7 +65,7 @@ timespanDays =
     }
 timespanWeeks =
     { $num ->
-       *[undefined] semana / semana
+       *[undefined] semana
     }
 fileCount =
     { $num ->
