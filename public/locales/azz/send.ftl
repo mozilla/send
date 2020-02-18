@@ -84,3 +84,6 @@ gb = GB
 fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Nochi tamachiua: { $size }
+# the next line after the colon contains a file name
+copyLinkDescription = Xikixkopina tein se kipatskilis uan xikinpanoltili oksekin moarchivo:
+copyLinkButton = Xikixkopina tein se kipatskilis
