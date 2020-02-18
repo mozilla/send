@@ -88,4 +88,5 @@ totalSize = Nochi tamachiua: { $size }
 copyLinkDescription = Xikixkopina tein se kipatskilis uan xikinpanoltili oksekin moarchivo:
 copyLinkButton = Xikixkopina tein se kipatskilis
 downloadTitle = Xiktemoui tajkuilolmej archivos
+downloadDescription = Nejin archivo mopanoltij itechkopa { -send-brand } ika tapoualmej tein amo aksa uelis kiajsikamatis, uan no tein ika se kipatskilis tein niman ixpoliui.
 learnMore = Xiktemoui tajkuilolmej archivos
