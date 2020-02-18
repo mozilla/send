@@ -90,4 +90,15 @@ copyLinkButton = Xikixkopina tein se kipatskilis
 downloadTitle = Xiktemoui tajkuilolmej archivos
 downloadDescription = Nejin archivo mopanoltij itechkopa { -send-brand } ika tapoualmej tein amo aksa uelis kiajsikamatis, uan no tein ika se kipatskilis tein niman ixpoliui.
 trySendDescription = Xikejeko { -send-brand } ijkon amo ouij uelis tikinpanoltilis oksekin motajkuiloluan archivos uan tikyekmatis ke amo tej kipanos
+# count will always be > 10
+tooManyFiles =
+    { $count ->
+       *[undefined] Sayoj { 1 } tajkuilol archivo uelis tiktejkoltis saj / Sayoj { $count } tajkuilolmej archivos uelis tikolochtejkoltis saj
+    }
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+       *[undefined] Sayoj { 1 } tajkuilol archivo uelis moajsis saj / Sayoj { $count } tajkuilolmej archivos uelis moajsiskej saj
+    }
+expiredTitle = Nejin tein tikpatskilij amo tekititos ok
 learnMore = Xiktemoui tajkuilolmej archivos
