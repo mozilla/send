@@ -101,4 +101,6 @@ tooManyArchives =
        *[undefined] Sayoj { 1 } tajkuilol archivo uelis moajsis saj / Sayoj { $count } tajkuilolmej archivos uelis moajsiskej saj
     }
 expiredTitle = Nejin tein tikpatskilij amo tekititos ok
+notSupportedDescription = { -send-brand } amo tekiti ika nejin navegador. { -send-short-brand } okachi kuali tekiti tein ika okachi yankuik { -firefox }, uan no tekitis tein ika okachi yankuikej tel miak navegadores.
+downloadFirefox = Xiktemoui { -firefox }
 learnMore = Xiktemoui tajkuilolmej archivos
