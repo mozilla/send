@@ -103,4 +103,8 @@ tooManyArchives =
 expiredTitle = Nejin tein tikpatskilij amo tekititos ok
 notSupportedDescription = { -send-brand } amo tekiti ika nejin navegador. { -send-short-brand } okachi kuali tekiti tein ika okachi yankuik { -firefox }, uan no tekitis tein ika okachi yankuikej tel miak navegadores.
 downloadFirefox = Xiktemoui { -firefox }
+legalTitle = { -send-short-brand } tanauatia ika yekpialis tein moaxka itech tepos
+legalDateStamp = Versión 1.0 tein kikixtijkej 12 tonal metsti marzo 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }t { $hours }h { $minutes }m
 learnMore = Xiktemoui tajkuilolmej archivos
