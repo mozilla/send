@@ -89,4 +89,5 @@ copyLinkDescription = Xikixkopina tein se kipatskilis uan xikinpanoltili oksekin
 copyLinkButton = Xikixkopina tein se kipatskilis
 downloadTitle = Xiktemoui tajkuilolmej archivos
 downloadDescription = Nejin archivo mopanoltij itechkopa { -send-brand } ika tapoualmej tein amo aksa uelis kiajsikamatis, uan no tein ika se kipatskilis tein niman ixpoliui.
+trySendDescription = Xikejeko { -send-brand } ijkon amo ouij uelis tikinpanoltilis oksekin motajkuiloluan archivos uan tikyekmatis ke amo tej kipanos
 learnMore = Xiktemoui tajkuilolmej archivos
