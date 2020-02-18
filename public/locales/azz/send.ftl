@@ -14,6 +14,7 @@ timespanHours =
     }
 copiedUrl = Moixkopinak!
 unlockInputPlaceholder = Ichtakatajtol
+unlockButtonLabel = Xikajchiua tein amo kikaua maj tekiti
 downloadButtonLabel = Xiktemoui
 downloadFinish = Nochi motemouij ya
 fileSizeProgress = ({ $partialSize } itech { $totalSize })
@@ -79,3 +80,7 @@ kb = KB
 mb = MB
 # gibibyte abbreviation
 gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $num }{ $units }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = Nochi tamachiua: { $size }
