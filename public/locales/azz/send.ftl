@@ -87,3 +87,5 @@ totalSize = Nochi tamachiua: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Xikixkopina tein se kipatskilis uan xikinpanoltili oksekin moarchivo:
 copyLinkButton = Xikixkopina tein se kipatskilis
+downloadTitle = Xiktemoui tajkuilolmej archivos
+learnMore = Xiktemoui tajkuilolmej archivos
