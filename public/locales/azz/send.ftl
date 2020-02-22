@@ -116,4 +116,7 @@ dragAndDropFiles = Xikintilana uan xikinkajkaua tajkuilolmej archivos
 orClickWithSize = oso xikpatskili uan tiktitanis, sayoj tein amo panoua  { $size }
 addPassword = Xikyekpia ika se ichtakatajtol
 emailPlaceholder = Xikijkuilo mocorreo itech tepos
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Xikalakteua uan uelis tiktitanis tein amo panos { $size }
+signInOnlyButton = Kampa se kalakteua
 learnMore = Xiktemoui tajkuilolmej archivos
