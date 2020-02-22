@@ -148,5 +148,5 @@ shareLinkDescription = 您的文件链接：
 shareLinkButton = 分享链接
 # $name is the name of the file
 shareMessage = 使用 { -send-brand } 下载“{ $name }”：简单、安全的文件分享服务
-trailheadPromo = 有种方法可以保护您的隐私，加入 Firefox。
+trailheadPromo = 捍卫隐私不是幻想。加入 Firefox 一同抗争。
 learnMore = 详细了解。
