@@ -137,4 +137,10 @@ noStreamsOptionCopy = Xikixkopina tein se kipatskilis uan ijkon se uelis kitatap
 noStreamsOptionFirefox = Xikejeko navegador tein semi techuelita
 noStreamsOptionDownload = Maj niksentoka niktatekiujti nejin navegador
 downloadFirefoxPromo = Yankuik { -firefox } mitsixpantilia { -send-short-brand }.
+# the next line after the colon contains a file name
+shareLinkDescription = Xikinpanoltili oksekin tein se kipatskilis uan teuika motajkuilol archivo:
+shareLinkButton = Kampa se kipatskilis tein uelis tikinpanoltilis oksekin
+# $name is the name of the file
+shareMessage = Xiktemoui “{ $name }” ika { -send-brand }: amo ouij uelis tikinpanoltilis oksekin motajkuiloluan archivos uan tikyekmatis ke amo tej kipanos
+trailheadPromo = Kemaj, uelis tikyekpias tein moaxka itech tepos. Xipoui Firefox.
 learnMore = Xiktemoui tajkuilolmej archivos
