@@ -128,4 +128,8 @@ accountBenefitTimeLimit =
        *[undefined] Kampa se kipatskilis maj kisentokakan kualtiakan se tonal ok / { $count } tonalmej ok
     }
 accountBenefitSync = Itech tein yeski tepos xikixyekana motajkuiloluan archivos tein tikinpanoltilij oksekin
+accountBenefitMoz = Okachi tikmatis okseki tapaleuilmej tein kitemaka { -mozilla }
+signOut = Kampa se kisa
+okButton = Kuali yetok
+downloadingTitle = Kitemouijtok
 learnMore = Xiktemoui tajkuilolmej archivos
