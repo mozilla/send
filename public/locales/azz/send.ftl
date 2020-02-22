@@ -123,4 +123,9 @@ accountBenefitTitle = Ximochiuili se cuenta itech { -firefox } oso xikalakteua
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Xikintitani tajkuilolmej archivos tein amo panouaj  { $size }
 accountBenefitDownloadCount = Xikintitanili tajkuilolmej archivos oksekin
+accountBenefitTimeLimit =
+    { $count ->
+       *[undefined] Kampa se kipatskilis maj kisentokakan kualtiakan se tonal ok / { $count } tonalmej ok
+    }
+accountBenefitSync = Itech tein yeski tepos xikixyekana motajkuiloluan archivos tein tikinpanoltilij oksekin
 learnMore = Xiktemoui tajkuilolmej archivos
