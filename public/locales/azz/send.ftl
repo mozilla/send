@@ -107,4 +107,8 @@ legalTitle = { -send-short-brand } tanauatia ika yekpialis tein moaxka itech tep
 legalDateStamp = Versión 1.0 tein kikixtijkej 12 tonal metsti marzo 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }t { $hours }h { $minutes }m
+addFilesButton = Xikinixpejpena tajkuilolmej archivos tein  tikintejkoltis
+uploadButton = Xiktejkolti
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = Xikintilana uan xikinkajkaua tajkuilolmej archivos
 learnMore = Xiktemoui tajkuilolmej archivos
