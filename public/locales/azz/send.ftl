@@ -119,4 +119,8 @@ emailPlaceholder = Xikijkuilo mocorreo itech tepos
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Xikalakteua uan uelis tiktitanis tein amo panos { $size }
 signInOnlyButton = Kampa se kalakteua
+accountBenefitTitle = Ximochiuili se cuenta itech { -firefox } oso xikalakteua
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Xikintitani tajkuilolmej archivos tein amo panouaj  { $size }
+accountBenefitDownloadCount = Xikintitanili tajkuilolmej archivos oksekin
 learnMore = Xiktemoui tajkuilolmej archivos
