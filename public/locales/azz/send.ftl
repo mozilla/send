@@ -132,4 +132,5 @@ accountBenefitMoz = Okachi tikmatis okseki tapaleuilmej tein kitemaka { -mozilla
 signOut = Kampa se kisa
 okButton = Kuali yetok
 downloadingTitle = Kitemouijtok
+noStreamsWarning = Xa navegador amo uelis kitalij nejin tajkuilol archivo tein tel ueyi kemej se uelis kiyekixtajtoltis ya
 learnMore = Xiktemoui tajkuilolmej archivos
