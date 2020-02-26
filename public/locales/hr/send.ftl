@@ -121,8 +121,6 @@ notSupportedDescription = { -send-brand } neće raditi s ovim preglednikom. { -s
 downloadFirefox = Preuzmite { -firefox }
 legalTitle = { -send-short-brand } politika privatnosti
 legalDateStamp = Inačica 1.0, od 12. ožujka 2019. godine
-# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
-expiresDaysHoursMinutes = { $days }d { $hours }s { $minutes }m
 addFilesButton = Odaberite datoteke za prijenos
 uploadButton = Prijenos
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
