@@ -121,6 +121,8 @@ notSupportedDescription = { -send-brand } neće raditi s ovim preglednikom. { -s
 downloadFirefox = Preuzmite { -firefox }
 legalTitle = { -send-short-brand } politika privatnosti
 legalDateStamp = Inačica 1.0, od 12. ožujka 2019. godine
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days }d { $hours }s { $minutes }m
 addFilesButton = Odaberite datoteke za prijenos
 uploadButton = Prijenos
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
@@ -139,22 +141,22 @@ accountBenefitLargeFiles = Dijelite datoteke do { $size }
 accountBenefitDownloadCount = Dijelite datoteke s više osoba
 accountBenefitTimeLimit =
     { $count ->
-        [one] Neka poveznice budu aktivne { $count } dan
-        [few] Neka poveznice budu aktivne { $count } dana
-       *[other] Neka poveznice budu aktivne { $count } dana
+        [one] Ostavi poveznice aktivnima { $count } dan
+        [few] Ostavi poveznice aktivnima { $count } dana
+       *[other] Ostavi poveznice aktivnima { $count } dana
     }
 accountBenefitSync = Upravljanje dijeljenim datotekama s bilo kojeg uređaja
-accountBenefitMoz = Saznajte više o drugim { -mozilla } uslugama
+accountBenefitMoz = Saznaj više o drugim { -mozilla } uslugama
 signOut = Odjavi se
 okButton = U redu
 downloadingTitle = Preuzimanje
-noStreamsWarning = Ovaj preglednik možda neće moći dekriptirati datoteku ove veličine.
+noStreamsWarning = Ovaj preglednik možda neće moći dešifrirati datoteku ove veličine.
 noStreamsOptionCopy = Kopirajte poveznicu kako biste je otvorili u drugom pregledniku
-noStreamsOptionFirefox = Isprobajte naš omiljeni preglednik
-noStreamsOptionDownload = Nastavite s ovim preglednikom
-downloadFirefoxPromo = Potpuno novi { -firefox } vam donosi { -send-short-brand }.
+noStreamsOptionFirefox = Isprobaj naš omiljeni preglednik
+noStreamsOptionDownload = Nastavi s ovim preglednikom
+downloadFirefoxPromo = Potpuno novi { -firefox } donosi { -send-short-brand }.
 # the next line after the colon contains a file name
-shareLinkDescription = Dijelite poveznicu na svoju datoteku:
+shareLinkDescription = Dijeli poveznicu na tvoju datoteku:
 shareLinkButton = Dijeli poveznicu
 # $name is the name of the file
 shareMessage = Preuzmite “{ $name }” sa { -send-brand }: jednostavno i sigurno dijeljenje datoteka
