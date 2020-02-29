@@ -103,7 +103,7 @@ tooManyFiles =
 # count will always be > 10
 tooManyArchives =
     { $count ->
-       *[other] 只可上传 { $count } 个档案。
+       *[other] 只可上传 { $count } 个压缩文件。
     }
 expiredTitle = 此链接已过期。
 notSupportedDescription = { -send-brand } 无法在此浏览器上正常工作。{ -send-short-brand } 与最新版本 { -firefox } 配合使用体验最佳，也适用于目前的大多数浏览器。
