@@ -10,9 +10,9 @@ downloadCount =
     }
 timespanHours =
     { $num ->
-       *[undefined] hora
+       *[undefined] 1 hora / { $num } hora
     }
-copiedUrl = Moixkopinak!
+copiedUrl = ¡Moixkopinak!
 unlockInputPlaceholder = Ichtakatajtol
 unlockButtonLabel = Xikajchiua tein amo kikaua maj tekiti
 downloadButtonLabel = Xiktemoui
@@ -58,19 +58,19 @@ notifyUploadEncryptDone = Moarchivo moijkuiloj ya kemej amo akin uelis kiixtajto
 archiveExpiryInfo = Poliui ijkuak tiajsis { $downloadCount } oso { $timespan }
 timespanMinutes =
     { $num ->
-       *[undefined] minuto / minuto
+       *[undefined] 1 minuto / { $num } minuto
     }
 timespanDays =
     { $num ->
-       *[undefined] tonal / tonalmej
+       *[undefined] 1 tonal / { $num } tonalmej
     }
 timespanWeeks =
     { $num ->
-       *[undefined] semana
+       *[undefined] 1 semana / { $num } semana
     }
 fileCount =
     { $num ->
-       *[undefined] archivo / archivo
+       *[undefined] 1 archivo / { $num } archivos
     }
 # byte abbreviation
 bytes = B
