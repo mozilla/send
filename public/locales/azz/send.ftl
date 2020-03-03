@@ -1,12 +1,12 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
 siteFeedback = Nikan uelis tikijkuilos tein tiknemilijtos
-importingFile = Mokalakijtok...
-encryptingFile = Motatijtok...
-decryptingFile = Kichiujtok se uelis kiixtajtoltis ya...
+importingFile = Mokalakijtok…
+encryptingFile = Motatijtok…
+decryptingFile = Kichiujtok se uelis kiixtajtoltis ya…
 downloadCount =
     { $num ->
-       *[undefined] kitemouijtok
+       *[undefined] 1 kitemouijtok / { $num } kintemouijtok
     }
 timespanHours =
     { $num ->
@@ -89,18 +89,18 @@ copyLinkDescription = Xikixkopina tein se kipatskilis uan xikinpanoltili oksekin
 copyLinkButton = Xikixkopina tein se kipatskilis
 downloadTitle = Xiktemoui tajkuilolmej archivos
 downloadDescription = Nejin archivo mopanoltij itechkopa { -send-brand } ika tapoualmej tein amo aksa uelis kiajsikamatis, uan no tein ika se kipatskilis tein niman ixpoliui.
-trySendDescription = Xikejeko { -send-brand } ijkon amo ouij uelis tikinpanoltilis oksekin motajkuiloluan archivos uan tikyekmatis ke amo tej kipanos
+trySendDescription = Xikejeko { -send-brand } ijkon amo ouij uelis tikinpanoltilis oksekin motajkuiloluan archivos uan tikyekmatis ke amo tej kipanos.
 # count will always be > 10
 tooManyFiles =
     { $count ->
-       *[undefined] Sayoj { 1 } tajkuilol archivo uelis tiktejkoltis saj / Sayoj { $count } tajkuilolmej archivos uelis tikolochtejkoltis saj
+       *[undefined] Sayoj { 1 } tajkuilol archivo uelis tiktejkoltis saj. / Sayoj { $count } tajkuilolmej archivos uelis tikolochtejkoltis saj.
     }
 # count will always be > 10
 tooManyArchives =
     { $count ->
-       *[undefined] Sayoj { 1 } tajkuilol archivo uelis moajsis saj / Sayoj { $count } tajkuilolmej archivos uelis moajsiskej saj
+       *[undefined] Sayoj { 1 } tajkuilol archivo uelis moajsis saj. / Sayoj { $count } tajkuilolmej archivos uelis moajsiskej saj.
     }
-expiredTitle = Nejin tein tikpatskilij amo tekititos ok
+expiredTitle = Nejin tein tikpatskilij amo tekititos ok.
 notSupportedDescription = { -send-brand } amo tekiti ika nejin navegador. { -send-short-brand } okachi kuali tekiti tein ika okachi yankuik { -firefox }, uan no tekitis tein ika okachi yankuikej tel miak navegadores.
 downloadFirefox = Xiktemoui { -firefox }
 legalTitle = { -send-short-brand } tanauatia ika yekpialis tein moaxka itech tepos
@@ -132,7 +132,7 @@ accountBenefitMoz = Okachi tikmatis okseki tapaleuilmej tein kitemaka { -mozilla
 signOut = Kampa se kisa
 okButton = Kuali yetok
 downloadingTitle = Kitemouijtok
-noStreamsWarning = Xa navegador amo uelis kitalij nejin tajkuilol archivo tein tel ueyi kemej se uelis kiyekixtajtoltis ya
+noStreamsWarning = Xa navegador amo uelis kitalij nejin tajkuilol archivo tein tel ueyi kemej se uelis kiyekixtajtoltis ya.
 noStreamsOptionCopy = Xikixkopina tein se kipatskilis uan ijkon se uelis kitatapos itech okse navegador
 noStreamsOptionFirefox = Xikejeko navegador tein semi techuelita
 noStreamsOptionDownload = Maj niksentoka niktatekiujti nejin navegador
@@ -143,4 +143,4 @@ shareLinkButton = Kampa se kipatskilis tein uelis tikinpanoltilis oksekin
 # $name is the name of the file
 shareMessage = Xiktemoui “{ $name }” ika { -send-brand }: amo ouij uelis tikinpanoltilis oksekin motajkuiloluan archivos uan tikyekmatis ke amo tej kipanos
 trailheadPromo = Kemaj, uelis tikyekpias tein moaxka itech tepos. Xipoui Firefox.
-learnMore = Xiktemoui tajkuilolmej archivos
+learnMore = Xiktemoui tajkuilolmej archivos.
