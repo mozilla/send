@@ -136,13 +136,13 @@ accountBenefitTimeLimit =
         [one] Ku kunka tutu ku mancha 1 kii
        *[other] Ku kunka tutu ku mancha { $count } kii
     }
-accountBenefitSync = Stucha tutu tsi nchi kaa ndusu niku
+accountBenefitSync = Stucha tutu tsí nchi kaa ndusu niku
 accountBenefitMoz = Kavi tutú tsa { -mozilla }
 signOut = Kee
 okButton = Vaá
 downloadingTitle = Snuì
 noStreamsWarning = Ku ña navegador yo ma ku mini iin tutú kanu.
-noStreamsOptionCopy = Ndatava enlace takua kunu tsi inka navegador
+noStreamsOptionCopy = Ndatava enlace takua kunu tsí inka navegador
 noStreamsOptionFirefox = Kuachu'un navegador ña va'a nu ntia
 noStreamsOptionDownload = Kunka tsi navegador yo
 downloadFirefoxPromo = { -send-short-brand } snai ña tsaa { -firefox }.
