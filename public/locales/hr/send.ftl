@@ -130,28 +130,28 @@ dragAndDropFiles = Povuci i ispusti datoteke
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = ili pritisni gumb, za slanje do { $size }
-addPassword = Zaštitite lozinkom
-emailPlaceholder = Unesite svoju adresu e-pošte
+addPassword = Zaštiti s lozinkom
+emailPlaceholder = Upiši svoju e-adresu
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-signInSizeBump = Prijavite se za slanje do { $size }
+signInSizeBump = Prijavi se, za slanje do { $size }
 signInOnlyButton = Prijavi se
-accountBenefitTitle = Stvorite { -firefox } račun ili se prijavite
+accountBenefitTitle = Otvori { -firefox } račun ili se prijavi
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-accountBenefitLargeFiles = Dijelite datoteke do { $size }
-accountBenefitDownloadCount = Dijelite datoteke s više osoba
+accountBenefitLargeFiles = Dijeli datoteke do { $size }
+accountBenefitDownloadCount = Dijeli datoteke s više osoba
 accountBenefitTimeLimit =
     { $count ->
         [one] Ostavi poveznice aktivnima { $count } dan
         [few] Ostavi poveznice aktivnima { $count } dana
        *[other] Ostavi poveznice aktivnima { $count } dana
     }
-accountBenefitSync = Upravljanje dijeljenim datotekama s bilo kojeg uređaja
+accountBenefitSync = Upravljaj dijeljenim datotekama s bilo kojeg uređaja
 accountBenefitMoz = Saznaj više o drugim { -mozilla } uslugama
 signOut = Odjavi se
 okButton = U redu
 downloadingTitle = Preuzimanje
 noStreamsWarning = Ovaj preglednik možda neće moći dešifrirati datoteku ove veličine.
-noStreamsOptionCopy = Kopirajte poveznicu kako biste je otvorili u drugom pregledniku
+noStreamsOptionCopy = Kopiraj poveznicu, kako bi je otvorio/la u drugom pregledniku
 noStreamsOptionFirefox = Isprobaj naš omiljeni preglednik
 noStreamsOptionDownload = Nastavi s ovim preglednikom
 downloadFirefoxPromo = Potpuno novi { -firefox } donosi { -send-short-brand }.
