@@ -57,9 +57,9 @@ passwordSetError = Lozinku nije moguće postaviti
 -mozilla = Mozilla
 introTitle = Jednostavno i privatno dijeljenje datoteka
 introDescription = { -send-brand } omogućava dijeljenje datoteka sa šifriranjem i poveznicom koja će automatski isteći. Ovim putem, stvari koje dijeliš ostaju privatne i osiguravaš se da ne ostaju zauvijek dostupne na internetu.
-notifyUploadEncryptDone = Vaša datoteka je šifrirana i spremna za slanje.
+notifyUploadEncryptDone = Tvoja je datoteka šifrirana i spremna za slanje.
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
-archiveExpiryInfo = Istječe nakon { $downloadCount } ili { $timespan }
+archiveExpiryInfo = Isteći će nakon { $downloadCount } ili { $timespan }
 timespanMinutes =
     { $num ->
         [one] { $num } minuta
@@ -99,9 +99,9 @@ totalSize = Ukupna veličina: { $size }
 # the next line after the colon contains a file name
 copyLinkDescription = Kopiraj poveznicu za dijeljenje svoje datoteke:
 copyLinkButton = Kopiraj poveznicu
-downloadTitle = Preuzmite datoteke
-downloadDescription = Ova datoteka je podjeljena putem { -send-brand } s šifriranjem i poveznicom koja automatski istječe.
-trySendDescription = Probajte { -send-brand } za jednostavno i sigurno dijeljenje datoteka.
+downloadTitle = Preuzmi datoteke
+downloadDescription = Ova se datoteka dijelila putem usluge { -send-brand } sa šifriranjem i poveznicom koja će automatski isteći.
+trySendDescription = Probaj { -send-brand } za jednostavno i sigurno dijeljenje datoteka.
 # count will always be > 10
 tooManyFiles =
     { $count ->
@@ -117,19 +117,19 @@ tooManyArchives =
        *[other] Dozvoljeno je samo { $count } arhiva.
     }
 expiredTitle = Poveznica je istekla.
-notSupportedDescription = { -send-brand } neće raditi s ovim preglednikom. { -send-short-brand } radi najbolje s zadnjom { -firefox } inačicom i radit će s trenutnom inačicom većine preglednika.
-downloadFirefox = Preuzmite { -firefox }
+notSupportedDescription = { -send-brand } neće raditi s ovim preglednikom. { -send-short-brand } najbolje radi sa zadnjom { -firefox } verzijom i radit će s aktualnim verzijama većine preglednika.
+downloadFirefox = Preuzmi { -firefox }
 legalTitle = { -send-short-brand } politika privatnosti
-legalDateStamp = Inačica 1.0, od 12. ožujka 2019. godine
+legalDateStamp = Verzija 1.0, od 12. ožujka 2019. godine
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }s { $minutes }m
-addFilesButton = Odaberite datoteke za prijenos
+addFilesButton = Odaberi datoteke za prijenos
 uploadButton = Prijenos
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
-dragAndDropFiles = Povucite i ispustite datoteke
+dragAndDropFiles = Povuci i ispusti datoteke
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-orClickWithSize = ili kliknite za slanje do { $size }
+orClickWithSize = ili pritisni gumb, za slanje do { $size }
 addPassword = Zaštitite lozinkom
 emailPlaceholder = Unesite svoju adresu e-pošte
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
