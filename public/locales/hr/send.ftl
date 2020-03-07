@@ -159,6 +159,6 @@ downloadFirefoxPromo = Potpuno novi { -firefox } donosi { -send-short-brand }.
 shareLinkDescription = Dijeli poveznicu na tvoju datoteku:
 shareLinkButton = Dijeli poveznicu
 # $name is the name of the file
-shareMessage = Preuzmite “{ $name }” sa { -send-brand }: jednostavno i sigurno dijeljenje datoteka
-trailheadPromo = Postoji način da zaštitite svoju privatnost. Pridružite se Firefoxu.
-learnMore = Saznajte više.
+shareMessage = Preuzmi „{ $name }” pomoću { -send-brand }: jednostavno i sigurno dijeljenje datoteka
+trailheadPromo = Postoji način, kako zaštititi vlastitu privatnost. Pridruži se Firefoxu.
+learnMore = Saznaj više.
