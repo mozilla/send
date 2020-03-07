@@ -38,13 +38,13 @@ footerLinkCookies = Kolačići
 passwordTryAgain = Netočna lozinka. Pokušaj ponovo.
 javascriptRequired = Za Firefox Send potreban je JavaScript
 whyJavascript = Zašto je za Firefox Send potreban JavaScript?
-enableJavascript = Omogućite JavaScript i pokušajte ponovo.
+enableJavascript = Aktiviraj JavaScript i pokušaj ponovo.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }s { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }min
 # A short status message shown when the user enters a long password
-maxPasswordLength = Najveća dužina lozinke: { $length }
+maxPasswordLength = Maksimalna duljina lozinke: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Lozinku nije moguće postaviti
 
