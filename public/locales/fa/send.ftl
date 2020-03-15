@@ -84,4 +84,24 @@ mb = MB
 gb = GB
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = حجم کل: { $size }
+copyLinkButton = رونوشت از پیوند
+# count will always be > 10
+tooManyArchives =
+    { $count ->
+        [one] تنها 1 بایگانی مجاز است.
+       *[other] تنها { $count } بایگانی مجاز است.
+    }
+expiredTitle = این پیوند منقضی شده است.
+legalTitle = { -send-short-brand } نکات حفظ حریم خصوصی
+addFilesButton = پرونده‌ها را برای بارگذاری انتخاب کنید
+uploadButton = بارگذاری
+signOut = خروج
+okButton = تأیید
+downloadingTitle = در حال بارگیری
+noStreamsOptionFirefox = مرورگر مورد علاقه ما را امتحان کنید
+noStreamsOptionDownload = با این مرورگر ادامه دهید
+# the next line after the colon contains a file name
+shareLinkDescription = پیوند مربوط به پرونده خود را به اشتراک بگذارید:
+shareLinkButton = اشتراک‌گذاری پیوند
+trailheadPromo = راهی برای محافظت از حریم خصوصی شما وجود دارد. به Firefox بپیوندید.
 learnMore = بیشتر بدانید.
