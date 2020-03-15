@@ -54,6 +54,21 @@ passwordSetError = امکان ثبت این گذواژه نیست
 -firefox = فایرفاکس
 -mozilla = موزیلا
 introTitle = اشتراک‌گذاری ساده و خصوصیِ پرونده‌ها
+timespanMinutes =
+    { $num ->
+        [one] 1 دقیقه
+       *[other] { $num } دقیقه
+    }
+timespanDays =
+    { $num ->
+        [one] 1 روز
+       *[other] { $num } روز
+    }
+timespanWeeks =
+    { $num ->
+        [one] 1 هفته
+       *[other] { $num } هفته
+    }
 # byte abbreviation
 bytes = B
 # kibibyte abbreviation
@@ -64,3 +79,4 @@ mb = MB
 gb = GB
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = حجم کل: { $size }
+learnMore = بیشتر بدانید.
