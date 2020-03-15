@@ -69,6 +69,11 @@ timespanWeeks =
         [one] 1 هفته
        *[other] { $num } هفته
     }
+fileCount =
+    { $num ->
+        [one] 1 پرونده
+       *[other] { $num } پرونده
+    }
 # byte abbreviation
 bytes = B
 # kibibyte abbreviation
