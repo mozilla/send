@@ -6,7 +6,7 @@
 
 
 # Build project
-FROM node:10 AS builder
+FROM node:12 AS builder
 RUN set -x \
     # Add user
     && addgroup --gid 10001 app \
@@ -16,7 +16,6 @@ RUN set -x \
         --home /app \
         --uid 10001 \
         app
-RUN npm i -g npm
 COPY --chown=app:app . /app
 USER app
 WORKDIR /app
@@ -27,7 +26,7 @@ RUN set -x \
 
 
 # Main image
-FROM node:10-slim
+FROM node:12-slim
 RUN set -x \
     # Add user
     && addgroup --gid 10001 app \
