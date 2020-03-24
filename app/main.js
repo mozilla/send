@@ -59,7 +59,8 @@ if (process.env.NODE_ENV === 'production') {
     sentry: Sentry,
     user: new User(storage, LIMITS, window.AUTH_CONFIG),
     transfer: null,
-    fileInfo: null
+    fileInfo: null,
+    locale: locale()
   };
 
   const app = routes(choo({ hash: true }));
