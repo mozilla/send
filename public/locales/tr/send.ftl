@@ -105,7 +105,7 @@ tooManyArchives =
        *[other] En fazla { $count } arşive izin veriliyor.
     }
 expiredTitle = Bu bağlantının süresi doldu.
-notSupportedDescription = { -send-brand } bu tarayıcıyı desteklemiyor. { -send-short-brand } en iyi şekilde { -firefox }’un son sürümüyle ve çoğu tarayıcının güncel sürümüyla çalışır.
+notSupportedDescription = { -send-brand } bu tarayıcıyı desteklemiyor. { -send-short-brand } en iyi şekilde { -firefox }’un son sürümüyle ve çoğu tarayıcının güncel sürümüyle çalışır.
 downloadFirefox = { -firefox }’u indir
 legalTitle = { -send-short-brand } Gizlilik Bildirimi
 legalDateStamp = Sürüm 1.0, 12 Mart 2019
