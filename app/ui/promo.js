@@ -24,11 +24,11 @@ class Promo extends Component {
             alt="Firefox"
           />
           <span class="ml-2 sm:ml-4 text-xs sm:text-base">
-            ${this.state.translate('trailheadPromo')}${' '}
+            ${`Like Firefox Send? You'll love our new full-device VPN. `}
             <a
               class="underline link-blue"
-              href="http://www.mozilla.org/firefox/accounts/?utm_source=send.firefox.com&utm_medium=banner&utm_campaign=trailhead&utm_content=protect-your-privacy"
-              >${this.state.translate('learnMore')}</a
+              href="https://fpn.firefox.com/?utm_source=send.firefox.com&utm_medium=referral&utm_content=Try+Firefox+Private+Network&utm_campaign=top-bar"
+              >${`Get it today`}</a
             >
           </span>
         </div>
