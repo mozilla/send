@@ -1,17 +1,18 @@
 const html = require('choo/html');
 const modal = require('./modal');
 
-module.exports = function(state, emit) {
+module.exports = function(state, emit, close) {
   return html`
     <main class="main">
-      ${state.modal && modal(state, emit)}
+      ${state.modal && modal(state, emit, close)}
       <div
-        class="flex flex-col items-center bg-white m-4 px-6 py-8 border border-grey-30 md:border-none md:px-12 md:py-16 shadow w-full md:h-full dark:bg-grey-90"
+        class="flex flex-col items-center bg-white m-4 px-6 py-8 border border-grey-30 md:border-none md:px-12 md:py-16 shadow w-full md:h-full dark:bg-grey-90" style="padding-top: 35px;"
       >
+      <div style="margin-left: auto; background-color: #3333334f; padding: 10px 20px; border-radius: 6px; margin-bottom: 15px;"><a href="/">Close ✕</a></div>
         <h1 class="text-center text-3xl font-bold">
           ${state.translate('legalTitle')}
         </h1>
-        <p class="mt-2">${state.translate('legalDateStamp')}</p>
+        <p class="mt-2" style="margin-bottom: 30px;">${state.translate('legalDateStamp')}</p>
         <div class="overflow-y-scroll py-8 px-12">
           <p class="leading-normal">
             <span>When Mozilla receives information from you, our</span>
