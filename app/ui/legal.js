@@ -1,10 +1,10 @@
 const html = require('choo/html');
 const modal = require('./modal');
 
-module.exports = function(state, emit, close) {
+module.exports = function(state, emit) {
   return html`
     <main class="main">
-      ${state.modal && modal(state, emit, close)}
+      ${state.modal && modal(state, emit)}
       <div
         class="flex flex-col items-center bg-white m-4 px-6 py-8 border border-grey-30 md:border-none md:px-12 md:py-16 shadow w-full md:h-full dark:bg-grey-90" style="padding-top: 35px;"
       >
