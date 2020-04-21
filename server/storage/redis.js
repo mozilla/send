@@ -11,12 +11,12 @@ module.exports = function(config) {
   const client = redis.createClient({
     host: config.redis_host,
     retry_strategy: options => {
-      if (options.total_retry_time > 10000) {
+      if (options.total_retry_time > config.redis_retry_time) {
         client.emit('error', 'Retry time exhausted');
         return new Error('Retry time exhausted');
       }
 
-      return 500;
+      return config.redis_retry_delay;
     }
   });
 

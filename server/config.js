@@ -69,6 +69,16 @@ const conf = convict({
     default: false,
     env: 'REDIS_EVENT_EXPIRE'
   },
+  redis_retry_time: {
+    format: Number,
+    default: 10000,
+    env: 'REDIS_RETRY_TIME'
+  },
+  redis_retry_delay: {
+    format: Number,
+    default: 500,
+    env: 'REDIS_RETRY_DELAY'
+  },
   listen_address: {
     format: 'ipaddress',
     default: '0.0.0.0',
