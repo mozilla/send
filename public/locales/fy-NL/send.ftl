@@ -12,7 +12,7 @@ downloadCount =
 timespanHours =
     { $num ->
         [one] 1 oer
-       *[other] { $num } oeren
+       *[other] { $num } oer
     }
 copiedUrl = Kopiearre!
 unlockInputPlaceholder = Wachtwurd
