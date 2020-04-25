@@ -118,7 +118,7 @@ expiresDaysHoursMinutes = { $days } j { $hours } h { $minutes } min
 addFilesButton = Seleccionatz los fichièrs de mandar
 uploadButton = Enviar
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
-dragAndDropFiles = Lissatz-depausatz de fichièrs
+dragAndDropFiles = Lisatz-depausatz de fichièrs
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = o clicatz per enviar fins a { $size }
