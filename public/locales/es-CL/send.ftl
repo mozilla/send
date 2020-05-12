@@ -53,7 +53,7 @@ passwordSetError = Esta contraseña no pudo ser establecida
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
-introTitle = Intercambio de archivos sencillo y privado
+introTitle = Intercambio de archivos simple y privado
 introDescription = { -send-brand } te permite compartir archivos con cifrado de extremo a extremo y un enlace que expira automáticamente. Así puedes mantener lo que compartes en privado y asegurarte de que tus cosas no permanezcan en línea para siempre.
 notifyUploadEncryptDone = Tu archivo está cifrado y listo para enviar
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
@@ -95,7 +95,7 @@ copyLinkDescription = Copiar el enlace para compartir el archivo:
 copyLinkButton = Copiar enlace
 downloadTitle = Bajando archivos
 downloadDescription = Este archivo fue compartido a través de { -send-brand } con cifrado de punto a punto y un enlace que expira automáticamente.
-trySendDescription = Prueba { -send-brand } para compartir archivos de forma sencilla y segura.
+trySendDescription = Prueba { -send-brand } para compartir archivos de forma simple y segura.
 # count will always be > 10
 tooManyFiles =
     { $count ->
