@@ -83,7 +83,7 @@ bytes = B
 # kibibyte abbreviation
 kb = KB
 # mebibyte abbreviation
-mb = MB
+mb = مگابایت
 # gibibyte abbreviation
 gb = GB
 # localized number and byte abbreviation. example "2.5MB"
