@@ -134,6 +134,7 @@ okButton = OK
 downloadingTitle = ダウンロード中
 noStreamsWarning = このブラウザーは、この大きさのファイルを復号化できません。
 noStreamsOptionCopy = リンクをコピーして他のブラウザーで開いてください
+noStreamsOptionFirefox = Firefox を試してみる
 noStreamsOptionDownload = このブラウザーで続ける
 downloadFirefoxPromo = { -send-short-brand } はすべてが新しくなった { -firefox } により提供されています。
 # the next line after the colon contains a file name
