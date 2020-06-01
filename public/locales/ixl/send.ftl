@@ -53,3 +53,6 @@ gb = GB
 fileSize = { $num }{ $units }
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
+emailPlaceholder = Aq'ku' a correo
+shareLinkButton = La jatxb'en u vaa'
+learnMore = Ootzi ka'te.
