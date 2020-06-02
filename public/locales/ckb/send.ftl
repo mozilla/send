@@ -1,5 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
-title = Firefox ناردن
+title = Firefox Send
 siteFeedback = ڕەخنەوپێشنیار
 importingFile = هـێنانەوە...
 encryptingFile = بەهێماکرد...
@@ -93,6 +93,7 @@ totalSize = قەبارەی گشتی: { $size }
 copyLinkDescription = بەستەر لەبەربگرەوە بۆ بڵاوکردنەوەی پەڕگە:
 copyLinkButton = بەستەر لەبەربگرەوە
 downloadTitle = پەڕگەکان دابگرە
+downloadDescription = ئەم پەڕگەیە لە لایەن { -send-brand } بلاوکراوەتەوە کە بەهێماکراوە بە شێوەی کۆتا-بۆ-کۆتا بە بەستەرێک کە خۆکارانە بەسەردەچێت.
 trySendDescription = { -send-brand } تاقیبکەرەوە بۆ سانایی، پارێزراو لە بڵاوکردنەوەی پەڕگە.
 # count will always be > 10
 tooManyFiles =
@@ -107,3 +108,47 @@ tooManyArchives =
        *[other] تەنها { $count } ئەرشیف ڕێپێدراوە.
     }
 expiredTitle = بەستەر بەسەرچووە.
+notSupportedDescription = { -send-brand } کارنکات لەگەڵ ئەم وێبگەڕە. { -send-short-brand } باش کاردەکات لەگەڵ کۆتا وەشانی { -firefox }، وکاردەکات لەگەڵ زۆربەی وەشانی ئێستای وێبگەڕەکان.
+downloadFirefox = { -firefox } دابگرە
+legalTitle = تێبینی تایبەتیی { -send-short-brand }
+legalDateStamp = وەشان 1.0، بەروار کراو لە 12 ئازار، 2019
+# A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
+expiresDaysHoursMinutes = { $days } ڕ { $hours } ک{ $minutes } خ
+addFilesButton = پەڕگەکان هەڵبژێرە بۆ بارکردن
+uploadButton = بارکردن
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = ڕاکێشان و دانانی پەڕگەکان
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = یان کرتە بکە بۆ ناردنی قەبارەی تاوەکوو { $size }
+addPassword = بپارێزە لەگەڵ وشەی تێپەڕ
+emailPlaceholder = پۆستی ئەلکترۆنی بنووسە
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = بچۆژوورەوە بۆ ناردنی قەبارەی تاوەکوو { $size }
+signInOnlyButton = بچۆژوورەوە
+accountBenefitTitle = هەژماری { -firefox } درووست بکە یان بچۆژوورەوە
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = پەڕگە بڵاوبکەرەوە تاوەکوو قەبارەی { $size }
+accountBenefitDownloadCount = پەڕگەکان لەگەڵ خەڵکی زیاتر بڵاوبکەرەوە
+accountBenefitTimeLimit =
+    { $count ->
+        [one] بەستەرەکان بەکارایی بهێڵەوە تا 1 ڕۆژ
+       *[other] بەستەرەکان بەکارایی بهێڵەوە تا { $count } ڕۆژ
+    }
+accountBenefitSync = پەڕگە بڵآوکراوەکان بەڕێوەبەرە لەهەر ئامێرێکەوە
+accountBenefitMoz = زیاتر بزانە دەربارەی خزمەتگوزارییەکانی تری { -mozilla }
+signOut = بچۆ دەرەوە
+okButton = باشە
+downloadingTitle = دادەگیرێت...
+noStreamsWarning = لەوانەیە ئەم وێبگەڕە نەتوانێت پەڕگەی وا گەورە بە هێما بکات.
+noStreamsOptionCopy = بەستەر لەبەربگرەوە بۆ کردنەوەی لە وێبگەڕێکی تر
+noStreamsOptionFirefox = وێبگەڕی دڵخوازی ئێمە تاقیبکەرەوە
+noStreamsOptionDownload = بەردەوام بە لەگەڵ ئەم وێبگەڕە
+downloadFirefoxPromo = { -send-short-brand } پیشکەش کراوە بە تۆ لە لایەن { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = بەستەر بڵاوبکەرەوە بۆ پەڕگەکەت:
+shareLinkButton = بەستەر بڵاوبکەرەوە
+# $name is the name of the file
+shareMessage = “{ $name }” دابگرە لەگەڵ { -send-brand }: سانا، پاریزراو لە بڵاوکردنەوەی پەڕگە
+trailheadPromo = ڕێگەیەک هەیە بۆ پارێزگاریکردنی تایبەتێتی خۆت. بەشدار بە لە فایەرفۆکس.
+learnMore = زیاتر بزانە
