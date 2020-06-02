@@ -14,3 +14,4 @@ timespanWeeks =
         [one] 1 izu
        *[other] izu { $num }
     }
+okButton = O
