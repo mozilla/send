@@ -1,8 +1,8 @@
 # Firefox Send is a brand name and should not be localized.
-title = Firefox Zi
+title = Firefox Zipu
 siteFeedback = Nzaghachi
 importingFile = Mbubata…
-encryptingFile = Ihe ezoro ezo...
+encryptingFile = ezoro ezo...
 decryptingFile = Kpebie
 downloadCount =
     { $num ->
