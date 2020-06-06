@@ -5,9 +5,15 @@ importingFile = akowọle…
 encryptingFile = Fifi ọrọ ṣiṣẹ…
 decryptingFile = Ti nkọ nkan…
 copiedUrl = dakọ
-unlockButtonLabel = Isi sílẹ̀
-downloadButtonLabel = igbasilẹ
-downloadFinish = igbasilẹ pari
+unlockInputPlaceholder =
+    aṣínà
+    ọ̀rọ̀-aṣínà
+    ọ̀rọ̀-agbaniwọlé
+unlockButtonLabel = ṣí
+downloadButtonLabel = Ìgbasílẹ̀
+downloadFinish =
+    Ìsíwá parí
+    Ìgbasílẹ̀ parí
 sendYourFilesLink = E gbiyanju lo Firefox Send
 errorPageHeader = Nnkan o lo daadaa!
 linkExpiredAlt = Ona asopo ti pari
