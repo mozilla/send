@@ -14,7 +14,10 @@ downloadButtonLabel = Ìgbasílẹ̀
 downloadFinish =
     Ìsíwá parí
     Ìgbasílẹ̀ parí
-sendYourFilesLink = E gbiyanju lo Firefox Send
+sendYourFilesLink =
+    Gbìyànjúu Firefox Send
+    Gbìyànjú lo Firefox Send
+    Dán Firefox Send wò
 errorPageHeader = Nnkan o lo daadaa!
 linkExpiredAlt = Ona asopo ti pari
 notSupportedLink = Kini idi ti ero asawarimi ose ni atileyin?
