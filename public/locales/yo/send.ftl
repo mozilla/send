@@ -30,7 +30,11 @@ linkExpiredAlt =
 notSupportedHeader =
     Èrọ-ìfarakọ́ra rẹ ò ní ìbátan
     Ojú-òpó ìfarakọ́ra rẹ ò ní ìbátan
-notSupportedLink = Kini idi ti ero asawarimi ose ni atileyin?
+notSupportedLink =
+    Kí ló ṣe tí ẹ̀rọ-ìfarakọ́ra mi ò ní ìbátan?
+    Kí ló ṣe tí ẹ̀rọ-aṣàwárí mi ò ní ìbátan?
+    Kí nìdí tí ẹ̀rọ-ìfarakọ́ra mi ò ní ìbátan?
+    Kí nìdí tí ẹ̀rọ-aṣàwárí mi ò ní ìbátan?
 
 ## Send version 2 strings
 
