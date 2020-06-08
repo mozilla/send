@@ -36,6 +36,19 @@ notSupportedLink =
     Kí nìdí tí ẹ̀rọ-ìfarakọ́ra mi ò ní ìbátan?
     Kí nìdí tí ẹ̀rọ-aṣàwárí mi ò ní ìbátan?
 notSupportedOutdatedDetail = Ó ṣe, wípé ẹ̀dà Firefox yí ò ní àtìlẹyìn ẹ̀rọ-alátagbà tí ó ń mú Firefox Send ṣiṣẹ́. O ní láti ṣe àgbéga èdà ẹ̀rọ-aṣàwárí rẹ kó bágbàmu.
+updateFirefox = Mú Firefox bágbàmu
+deletePopupCancel =
+    Nù kúrò
+    Parẹ́
+deleteButtonHover =
+    Mú kúrò
+    Parẹ́
+footerLinkLegal =
+    b’ófin mu
+    n’ílànà òfin
+footerLinkPrivacy =
+    Ibi ìkọ̀kọ̀
+    Ibi ìpamọ́
 
 ## Send version 2 strings
 
