@@ -27,6 +27,9 @@ linkExpiredAlt =
     Ojú-òpó ti pajújé 
     Ọ̀nà-òpó ti kásẹ̀ 
     Ọ̀nà-òpó ti pajújé
+notSupportedHeader =
+    Èrọ-ìfarakọ́ra rẹ ò ní ìbátan
+    Ojú-òpó ìfarakọ́ra rẹ ò ní ìbátan
 notSupportedLink = Kini idi ti ero asawarimi ose ni atileyin?
 
 ## Send version 2 strings
