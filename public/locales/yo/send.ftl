@@ -19,7 +19,14 @@ sendYourFilesLink =
     Gbìyànjú lo Firefox Send
     Dán Firefox Send wò
 errorPageHeader = Nnkan o lo daadaa!
-linkExpiredAlt = Ona asopo ti pari
+fileTooBig =
+    Fáìlì yìí tóbijù láti gbà sókè. Ó ní láti kéré sí { $size }
+    Fáìlì yìí tóbijù láti gbà sókè. Ó ní láti kéré ju { $size } lọ
+linkExpiredAlt =
+    Ojú-òpó ti kásẹ̀ 
+    Ojú-òpó ti pajújé 
+    Ọ̀nà-òpó ti kásẹ̀ 
+    Ọ̀nà-òpó ti pajújé
 notSupportedLink = Kini idi ti ero asawarimi ose ni atileyin?
 
 ## Send version 2 strings
