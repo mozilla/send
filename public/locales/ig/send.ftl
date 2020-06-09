@@ -14,11 +14,12 @@ timespanHours =
         [one] otu
        *[other] abụọ
     }
-copiedUrl = Ndepụtaghachi
-unlockInputPlaceholder = Okwuntughe
-downloadButtonLabel = bụdata
-downloadFinish = Mbụdata zuru ezu
-fileSizeProgress = ({ $partialSize } nke { $totalSize })
+copiedUrl = edepụtachaghiri
+unlockInputPlaceholder = okwuntughe
+unlockButtonLabel = imeghe
+downloadButtonLabel = budata
+downloadFinish = Mbudata zuru ezu
+fileSizeProgress = ({ $partSize } nke { $totalSize })
 sendYourFilesLink = Firefox zipu
 errorPageHeader = Onwere ihe na-adighi mma
 fileTooBig = File a ebuka to upload. Ọ kwẹsịrọ ịkalị { $size }
