@@ -16,12 +16,12 @@ timespanHours =
     }
 copiedUrl = Muishkupintuk!
 unlockInputPlaceholder = Taketzalis ichtaka
-unlockButtonLabel = Shikchululti
+unlockButtonLabel = Shiktapua
 downloadButtonLabel = Shiktemulti
-downloadFinish = Shiktemulti muchi
+downloadFinish = Senkiska mutemultij
 fileSizeProgress = ({ $partialSize } ipal { $totalSize })
-sendYourFilesLink = Shikwi Firefox Send
-errorPageHeader = Se teyek panuk!
+sendYourFilesLink = Shikejeku Firefox Send
+errorPageHeader = IJtakawtuk!
 fileTooBig = Ne tajkwilul sea wey pal tiktejkultia. Shiktemulti { $size } ush chupiuk chikitik.
 linkExpiredAlt = Ilpika teuk yek
 notSupportedHeader = Te tikishmatit ne taiwan titajtachia.
