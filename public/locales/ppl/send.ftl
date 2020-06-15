@@ -133,8 +133,8 @@ accountBenefitLargeFiles = Shiktakuli tajtajkwilul ka { $size }
 accountBenefitDownloadCount = Shiktakuli ne tajkwilul iwan seki
 accountBenefitTimeLimit =
     { $count ->
-        [one] Shikpia ne ilpika tatatuk 1 tunal
-       *[other] Shikpia ne ilpika tatatuk { $count } tunal
+        [one] Shikpia ne ilpika tapujtuk 1 tunal
+       *[other] Shikpia ne ilpika tapujtuk { $count } tunal
     }
 accountBenefitSync = Shiktajpia ne tajtajkwilul ka tiktakulijtuk
 accountBenefitMoz = Shikmati ipanpa seuk itakil { -mozilla }
