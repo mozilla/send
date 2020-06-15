@@ -1,6 +1,6 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Tay tina ipanpa?
+siteFeedback = Shitechnawati
 importingFile = Mukalaktia nemi…
 encryptingFile = Tikichtakawiat tinemit…
 decryptingFile = Tikichtakapuat tinemit…
@@ -148,7 +148,8 @@ noStreamsOptionDownload = Ma ninemi senpa iwan ini tachialuni
 downloadFirefoxPromo = Ne yankwik { -firefox } metzwikilia { -send-short-brand }.
 # the next line after the colon contains a file name
 shareLinkDescription = Shiktakuli ne ilpika ipal mutajkwilul:
+shareLinkButton = Shiktakuli ne ilpika
 # $name is the name of the file
 shareMessage = Shiktemulti “{ $name }” iwan { -send-brand }: ichtaka wan te uij
-trailheadPromo = Nemi ken tiktajpia ne tay mupal. Shimusentali iwan Firefox.
+trailheadPromo = Nemi ken pal tiktajpia ne muichtakayu. Shimuishtuka iwan Firefox.
 learnMore = Shimumachti ukchupi.
