@@ -84,3 +84,6 @@ passwordSetError =
     Firánṣẹ́
 -firefox = Firefox
 -mozilla = Mozilla
+introTitle =
+    Fáìlì pípín níkọ̀kọ̀ tó dẹrùn
+    Fáìlì pípín níkọ̀kọ̀ onírọ̀rùn
