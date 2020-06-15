@@ -15,7 +15,7 @@ timespanHours =
        *[other] { $num } oraj
     }
 copiedUrl = Muishkupintuk!
-unlockInputPlaceholder = Taketzalis ichtaka
+unlockInputPlaceholder = Ichtakatajkwilul
 unlockButtonLabel = Shiktapua
 downloadButtonLabel = Shiktemulti
 downloadFinish = Senkiska mutemultij
@@ -28,7 +28,7 @@ notSupportedHeader = Te tikishmatit ne mutachialuni.
 notSupportedLink = Taika te ankishmatit nutachialuni?
 notSupportedOutdatedDetail = Ini tamakalis ipal Firefox tesu kimati ne tzawaltekitilis ne kiyulitia Firefox Send. Nemi pal tikyankwilia ne mutachialuni.
 updateFirefox = Shikyankwili Firefox
-deletePopupCancel = Shilwi tesu
+deletePopupCancel = Shikilwi tesu
 deleteButtonHover = Shikpulu
 footerLinkLegal = Ipanpa ne tajtuli
 footerLinkPrivacy = Tay ichtaka nemi
