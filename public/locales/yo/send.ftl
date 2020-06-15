@@ -49,6 +49,9 @@ footerLinkLegal =
 footerLinkPrivacy =
     Ibi ìkọ̀kọ̀
     Ibi ìpamọ́
+footerLinkCookies =
+    Cookie
+    Àmì-ẹ̀rọ aránṣẹ́-jíṣẹ́
 
 ## Send version 2 strings
 
