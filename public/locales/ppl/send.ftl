@@ -111,18 +111,18 @@ tooManyArchives =
 expiredTitle = Ne ilpika pulijtuk.
 notSupportedDescription = { -send-brand } tesu yawi tekiti iwan ini tachialuni. { -send-short-brand } tekiti sujsul yek iwan ne tipan tamakalis ipal { -firefox }, wan nusan iwan ne tipan tamakalis ipal miak tachialuni.
 downloadFirefox = Shiktemulti { -firefox }
-legalTitle = { -send-short-brand } Tanawatilis ipal mupal ichtaka
-legalDateStamp = Versión 1.0, tik marzoj 12, 2019
+legalTitle = { -send-short-brand } Tanawatilis ipanpa teichtakayu
+legalDateStamp = Tamakalis 1.0, tik marzoj 12, 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } t { $hours } h { $minutes } m
 addFilesButton = Shikpejpena ne tajkwilul pal tiktejkultia
 uploadButton = Shiktejkulti
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
-dragAndDropFiles = Shiktilana wan shikmaka ne tajkwilul
+dragAndDropFiles = Shiktilana wan shikmayawi ne tajkwilul
 # the second part of the string 'Drag and drop files or click to send up to 1GB'
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 orClickWithSize = u shikpachu pal tiktitania { $size }
-addPassword = Shiktajpia iwan se taketzalis ichtaka
+addPassword = Shiktajpia iwan ichtakatajkwilul
 emailPlaceholder = Shiktali mutepusamaw
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Shiktali mutukay pal tiktitania { $size }
