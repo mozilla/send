@@ -59,6 +59,15 @@ javascriptRequired = Firefox Send nílòo JavaScript
 whyJavascript =
     Kí nìdí tí Firefox fi nílòo JavaScript?
     Kí nìdí tí Firefox ṣe nílòo JavaScript?
+enableJavascript =
+    Jọ̀wọ́ tán JavaScript sílẹ̀ kí o sì gbìyànjú si.
+    Jọ̀wọ́ ṣí JavaScript sílẹ̀ kí o sì gbìyànjú si.
+# A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
+expiresHoursMinutes =
+    { $hours }w { $minutes }i
+    { $hours }wákàtí { $minutes }iṣẹ́jú
+# A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
+expiresMinutes = { $minutes }i
 
 ## Send version 2 strings
 
