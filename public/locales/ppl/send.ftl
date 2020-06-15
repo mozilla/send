@@ -105,10 +105,10 @@ tooManyFiles =
 # count will always be > 10
 tooManyArchives =
     { $count ->
-        [one] Semaya se amapial weli nemi.
-       *[other] Semaya { $count } ajamapial welit nemit.
+        [one] Semaya se amapial weli mutitania.
+       *[other] Semaya { $count } amapial weli mutitania.
     }
-expiredTitle = Ne ilpika pulijtuk.
+expiredTitle = Ne ilpika puliwik.
 notSupportedDescription = { -send-brand } tesu yawi tekiti iwan ini tachialuni. { -send-short-brand } tekiti sujsul yek iwan ne tipan tamakalis ipal { -firefox }, wan nusan iwan ne tipan tamakalis ipal miak tachialuni.
 downloadFirefox = Shiktemulti { -firefox }
 legalTitle = { -send-short-brand } Tanawatilis ipanpa teichtakayu
