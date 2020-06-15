@@ -68,6 +68,19 @@ expiresHoursMinutes =
     { $hours }wákàtí { $minutes }iṣẹ́jú
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }i
+# A short status message shown when the user enters a long password
+maxPasswordLength = Ìdíwọ̀n ọ̀rọ̀-aṣínà: { $length }
+# A short status message shown when there was an error setting the password
+passwordSetError =
+    Ọ̀rọ̀-aṣínà yí kò ṣeé gbé kalẹ̀
+    Ọ̀rọ̀-aṣínà yí kò leè fẹsẹ̀ múlẹ̀
 
 ## Send version 2 strings
 
+# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Firefox Send
+-send-short-brand =
+    Fi ránṣẹ́
+    Firánṣẹ́
+-firefox = Firefox
+-mozilla = Mozilla
