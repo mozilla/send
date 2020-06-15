@@ -94,7 +94,7 @@ totalSize = Itamachiwka: { $size }
 copyLinkDescription = Shikupina ne ilpika pal tiktakulia mutajkwilul:
 copyLinkButton = Shikupina ne ilpika
 downloadTitle = Shiktemulti tajtajkwilul
-downloadDescription = Ini tajkwilul kitakulijket iwan { -send-brand } iwan taichtakawilis wan se ilpika ka puliwi nemanha.
+downloadDescription = Ini tajkwilul kiski itech { -send-brand } iwan taichtakawilis wan se ilpika ka puliwi nemanha.
 trySendDescription = Shikejeku { -send-brand } wan shiktakuli ichtaka wan te uij.
 # count will always be > 10
 tooManyFiles =
