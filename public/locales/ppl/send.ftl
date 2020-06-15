@@ -136,7 +136,7 @@ accountBenefitTimeLimit =
         [one] Shikpia ne ilpika tapujtuk 1 tunal
        *[other] Shikpia ne ilpika tapujtuk { $count } tunal
     }
-accountBenefitSync = Shiktajpia ne tajtajkwilul ka tiktakulijtuk
+accountBenefitSync = Shiktajpia ne tajkwilul takulijtuk ka kanaj
 accountBenefitMoz = Shikmati ipanpa seuk itakil { -mozilla }
 signOut = Shikisa
 okButton = Yek
