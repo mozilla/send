@@ -31,18 +31,18 @@ updateFirefox = Shikyankwili Firefox
 deletePopupCancel = Shikilwi tesu
 deleteButtonHover = Shikpulu
 footerLinkLegal = Ipanpa ne tajtuli
-footerLinkPrivacy = Tay ichtaka nemi
+footerLinkPrivacy = Teichtakayu
 footerLinkCookies = Cookies
-passwordTryAgain = Ne taketzalis ichtaka tesu yek. Shikejeku uksenpa.
+passwordTryAgain = Ne ichtakatajkwilul tesu yek. Shikejeku uksenpa.
 javascriptRequired = Firefox Send kineki JavaScript
-whyJavascript = Taika Firefox kineki JavaScript?
+whyJavascript = Taika Firefox Send kineki JavaScript?
 enableJavascript = Shichiwa ma JavaScript tekiti wan shikejeku uksenpa.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
 # A short status message shown when the user enters a long password
-maxPasswordLength = Keski weyak ne taketzalis-ichtaka: { $length }
+maxPasswordLength = Keski iweyaka ne ichtakatajkwilul: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Te welit tiktaliat ini taketzalis ichtaka.
 
