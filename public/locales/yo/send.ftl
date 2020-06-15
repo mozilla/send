@@ -52,6 +52,13 @@ footerLinkPrivacy =
 footerLinkCookies =
     Cookie
     Àmì-ẹ̀rọ aránṣẹ́-jíṣẹ́
+passwordTryAgain =
+    Ọ̀rọ̀-aṣínà kò tọ́. Gbìyànjú síi
+    Ọ̀rọ̀-aṣíde kò tọ́. Gbìyànjú síi
+javascriptRequired = Firefox Send nílòo JavaScript
+whyJavascript =
+    Kí nìdí tí Firefox fi nílòo JavaScript?
+    Kí nìdí tí Firefox ṣe nílòo JavaScript?
 
 ## Send version 2 strings
 
