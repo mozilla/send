@@ -23,7 +23,7 @@ fileSizeProgress = ({ $partialSize } ipal { $totalSize })
 sendYourFilesLink = Shikejeku Firefox Send
 errorPageHeader = IJtakawtuk!
 fileTooBig = Ini tajkwilul sujsul etek pal tiktejkultia. Ma nemi san { $size }.
-linkExpiredAlt = Ne ilpika tzuntamik
+linkExpiredAlt = Ne ilpika pulijtuk
 notSupportedHeader = Te tikishmatit ne mutachialuni.
 notSupportedLink = Taika te ankishmatit nutachialuni?
 notSupportedOutdatedDetail = Ini tamakalis ipal Firefox tesu kimati ne tzawaltekitilis ne kiyulitia Firefox Send. Nemi pal tikyankwilia ne mutachialuni.
@@ -42,9 +42,9 @@ expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
 # A short status message shown when the user enters a long password
-maxPasswordLength = Keski iweyaka ne ichtakatajkwilul: { $length }
+maxPasswordLength = Ne iweyaka ne ichtakatajkwilul muneki: { $length }
 # A short status message shown when there was an error setting the password
-passwordSetError = Te welit tiktaliat ini taketzalis ichtaka.
+passwordSetError = Te tiweliket tiktaliat ini ichtakatajkwilul
 
 ## Send version 2 strings
 
@@ -53,8 +53,8 @@ passwordSetError = Te welit tiktaliat ini taketzalis ichtaka.
 -send-short-brand = Shiktitani
 -firefox = Firefox
 -mozilla = Mozilla
-introTitle = Te uij wan ichtaka tikmajmaka se tajkwilul.
-introDescription = { -send-brand } metzpalewia tiktakulia se tajkwilul iwan ichtakatajkwilulis wan se ilpika ka puliwi nemanha. Ijkiuni nemi ichtaka tay tikmajmaka wan tesu naka senpa tik matapan tay mupal.
+introTitle = Te uij wan ichtaka shiktakuli se tajkwilul
+introDescription = { -send-brand } metzpalewia tiktakulia se tajkwilul iwan ichtakatajkwilulis wan se ilpika ka puliwi yawi. Yajika tikpia ichtaka tay tiktakulia wan tesu naka senpa tik matapan.
 notifyUploadEncryptDone = Ne mutajkwilul nemi ichtakatajkwilujtuk wan weli tiktitania
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Puliwi kwak tikajsi { $downloadCount } ush { $timespan }
