@@ -137,18 +137,17 @@ accountBenefitTimeLimit =
        *[other] Shikpia ne ilpika tapujtuk { $count } tunal
     }
 accountBenefitSync = Shiktajpia ne tajkwilul takulijtuk ka kanaj
-accountBenefitMoz = Shikmati ipanpa seuk itakil { -mozilla }
+accountBenefitMoz = Shikmati ipanpa ukse { -mozilla } tayekultilis
 signOut = Shikisa
 okButton = Yek
 downloadingTitle = Kitemultia nemi
-noStreamsWarning = Ne taiwan titachia te weli kichtakapua ini wey tajkwilul
-noStreamsOptionCopy = Shikishkupina ne ilpika pal tiktapua tik ukse taiwan titajtachia
-noStreamsOptionFirefox = Shikejeku ne taiwan tachia tikishwelitat
-noStreamsOptionDownload = Ma ninemi senpa iwan ini taiwan nitachia
+noStreamsWarning = Ini tachialuni anka te weli kichtakapua ini tajkwilul wey.
+noStreamsOptionCopy = Shikishkupina ne ilpika pal tiktapua tik ukse tachialuni
+noStreamsOptionFirefox = Shikejeku ne tachialuni tikishwelitat
+noStreamsOptionDownload = Ma ninemi senpa iwan ini tachialuni
 downloadFirefoxPromo = Ne yankwik { -firefox } metzwikilia { -send-short-brand }.
 # the next line after the colon contains a file name
-shareLinkDescription = Shiktakuli ne ilpika ipal ne mutajkwilul:
-shareLinkButton = Shiktakuli ne ilpika
+shareLinkDescription = Shiktakuli ne ilpika ipal mutajkwilul:
 # $name is the name of the file
 shareMessage = Shiktemulti “{ $name }” iwan { -send-brand }: ichtaka wan te uij
 trailheadPromo = Nemi ken tiktajpia ne tay mupal. Shimusentali iwan Firefox.
