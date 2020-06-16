@@ -130,7 +130,7 @@ signInOnlyButton = Shiktali mutukay
 accountBenefitTitle = Shikchiwa se mutapujka tik { -firefox } ush shiktali mutukay
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = Shiktakuli tajtajkwilul ka { $size }
-accountBenefitDownloadCount = Shiktakuli ne tajkwilul iwan seki
+accountBenefitDownloadCount = Shiktakuli tajtajkwilul iwan seuk
 accountBenefitTimeLimit =
     { $count ->
         [one] Shikpia ne ilpika tapujtuk 1 tunal
