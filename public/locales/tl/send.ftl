@@ -104,7 +104,11 @@ uploadButton = I-upload
 dragAndDropFiles = I-drag at i-drop ang mga file
 addPassword = Protektahan gamit ang password
 emailPlaceholder = Ipasok ang iyong email
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+signInSizeBump = Mag-sign in upang magpadala ng hanggang sa { $size }
 signInOnlyButton = Mag sign-in
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+accountBenefitLargeFiles = Ibahagi ang mga file hanggang sa { $size }
 accountBenefitDownloadCount = Ibahagi ang mga file sa ibang tao
 accountBenefitMoz = Alamin ang tungkol sa iba pang mga serbisyo ng { -mozilla }
 signOut = Mag sign-out
@@ -112,3 +116,7 @@ okButton = OK
 downloadingTitle = Pag-download
 noStreamsWarning = Maaaring hindi mai-decrypt ng browser na ito ang isang file na malaki.
 noStreamsOptionCopy = Kopyahin ang link upang buksan sa isa pang browser
+noStreamsOptionFirefox = Subukan ang aming paboritong browser
+noStreamsOptionDownload = Magpatuloy sa browser na ito
+shareLinkButton = Ibahagi ang link
+learnMore = Matuto ng higit pa.
