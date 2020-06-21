@@ -44,7 +44,7 @@ expiresMinutes = { $minutes }m
 # A short status message shown when the user enters a long password
 maxPasswordLength = Ne iweyaka ne ichtakatajkwilul muneki: { $length }
 # A short status message shown when there was an error setting the password
-passwordSetError = Te tiweliket tiktaliat ini ichtakatajkwilul
+passwordSetError = Te tiweliket tiktaliat ini ichtakataketzalis
 
 ## Send version 2 strings
 
@@ -53,7 +53,7 @@ passwordSetError = Te tiweliket tiktaliat ini ichtakatajkwilul
 -send-short-brand = Shiktitani
 -firefox = Firefox
 -mozilla = Mozilla
-introTitle = Te uij wan ichtaka shiktakuli se tajkwilul
+introTitle = Shikmajmaka se tajkwilul, te uij wan ichtaka
 introDescription = { -send-brand } metzpalewia tiktakulia se tajkwilul iwan taichtakawilis wan se ilpika ka puliwi yawi. Yajika tikpia ichtaka tay tiktakulia wan tesu naka senpa tik matapan.
 notifyUploadEncryptDone = Ne archivoj nemi ichtakawijtuk wan weli tiktitania
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
