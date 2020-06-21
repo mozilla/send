@@ -34,8 +34,8 @@ footerLinkLegal = Ipanpa ne tajtuli
 footerLinkPrivacy = Teichtakayu
 footerLinkCookies = Cookies
 passwordTryAgain = Ne ichtakatajkwilul tesu yek. Shikejeku uksenpa.
-javascriptRequired = Firefox Send kineki JavaScript
-whyJavascript = Taika Firefox Send kineki JavaScript?
+javascriptRequired = Firefox Send muneki JavaScript
+whyJavascript = Taika Firefox Send muneki JavaScript?
 enableJavascript = Shichiwa ma JavaScript tekiti wan shikejeku uksenpa.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
