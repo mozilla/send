@@ -91,9 +91,9 @@ fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 totalSize = Itamachiwka: { $size }
 # the next line after the colon contains a file name
-copyLinkDescription = Shikishkupina ne ilpika pal tiktakulia mutajkwilul:
-copyLinkButton = Shikupina ne ilpika
-downloadTitle = Shiktemulti tajtajkwilul
+copyLinkDescription = Shikishkupina ne ilpika pal tikmajmaka mutajkwilul:
+copyLinkButton = Shikishkupina ne ilpika
+downloadTitle = Shiktemulti tajkwilul
 downloadDescription = Ini tajkwilul kiski itech { -send-brand } iwan taichtakawilis wan se ilpika ka puliwi nemanha.
 trySendDescription = Shikejeku { -send-brand } wan shiktakuli ichtaka wan te uij.
 # count will always be > 10
