@@ -21,11 +21,11 @@ downloadButtonLabel = بارگیری
 downloadFinish = بارگیری کامل شد
 fileSizeProgress = ({ $partialSize } از { $totalSize })
 sendYourFilesLink = Firefox Send را امتحان کنید
-errorPageHeader = چیزی دچار اشکال شده است!
+errorPageHeader = خطایی رخ داد!
 fileTooBig = این پرونده بسیار حجیم است. حجم آن می‌بایستی کم تر { $size } باشد.
 linkExpiredAlt = پیوند منقضی شده است
-notSupportedHeader = مرورگر شما پشتیبانی نمی‌کند.
-notSupportedLink = چرا مرورگر من پشتیبانی نمی‌کند؟
+notSupportedHeader = مرورگر شما پشتیبانی نمی‌شود.
+notSupportedLink = چرا از مرورگر من پشتیبانی نمی‌شود؟
 notSupportedOutdatedDetail = متاسفانه این نسخه از فایرفاکس این تکنولوژی وب که به Firefox Send قدرت می‌بخشد را پشتیبانی نمی‌کند. شما نیاز دارید تا مرورگر خود را بروز کنید.
 updateFirefox = بروزرسانی فایرفاکس
 deletePopupCancel = انصراف
@@ -79,13 +79,13 @@ fileCount =
        *[other] { $num } پرونده
     }
 # byte abbreviation
-bytes = B
+bytes = بایت
 # kibibyte abbreviation
-kb = KB
+kb = کیلوبایت
 # mebibyte abbreviation
 mb = مگابایت
 # gibibyte abbreviation
-gb = GB
+gb = گیگابایت
 # localized number and byte abbreviation. example "2.5MB"
 fileSize = { $num }{ $units }
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
