@@ -6,8 +6,8 @@ encryptingFile = Criptografando…
 decryptingFile = Descriptografando…
 downloadCount =
     { $num ->
-        [one] 1 download
-       *[other] { $num } downloads
+        [one] baixar 1 vez
+       *[other] baixar { $num } vezes
     }
 timespanHours =
     { $num ->
