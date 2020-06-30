@@ -15,7 +15,7 @@ timespanHours =
        *[other] { $num } aravo
     }
 copiedUrl = Monguatiapyre!
-unlockInputPlaceholder = Ñe'ẽñemi
+unlockInputPlaceholder = Ñe’ẽñemi
 unlockButtonLabel = Mbojera
 downloadButtonLabel = Mboguejy
 downloadFinish = Oguejypáma
@@ -33,7 +33,7 @@ deleteButtonHover = Mboguete
 footerLinkLegal = Añetegua
 footerLinkPrivacy = Ñemigua
 footerLinkCookies = Kookie
-passwordTryAgain = Ñe'ẽñemi ndoikóiva. Eha'ãjey.
+passwordTryAgain = Ñe’ẽñemi ndoikóiva. Eha’ãjey.
 javascriptRequired = Firefox Send oikotevẽ JavaScript
 whyJavascript = ¿Mba’ére Firefox Send oikotevẽ JavaScript?
 enableJavascript = Ikatúpa embojuruja JavaScript ha eha’ãjey uperire.
@@ -44,7 +44,7 @@ expiresMinutes = { $minutes } m
 # A short status message shown when the user enters a long password
 maxPasswordLength = Ñe’ẽñemi pukukue: { $length }
 # A short status message shown when there was an error setting the password
-passwordSetError = Ndaikatúi oikóvo ko ñe'ẽñemi
+passwordSetError = Ndaikatúi oikóvo ko ñe’ẽñemi
 
 ## Send version 2 strings
 
