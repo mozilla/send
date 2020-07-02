@@ -89,7 +89,8 @@ totalSize = Total size: { $size }
 copyLinkDescription = Copy the link to share your file:
 copyLinkButton = Copy link
 downloadTitle = Download files
-downloadDescription = This file was shared via { -send-brand } with end-to-end encryption and a link that automatically expires.
+downloadDescription = This file was shared via { -send-brand } with end-to-end encryption and a link that automatically expires.  
+downloadWarning = WARNING: Make sure you trust the individual who provided this link before downloading this file.
 trySendDescription = Try { -send-brand } for simple, safe file sharing.
 # count will always be > 10
 tooManyFiles = { $count ->

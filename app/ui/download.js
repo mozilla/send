@@ -46,7 +46,13 @@ function preview(state, emit) {
       >
         ${state.translate('downloadDescription')}
       </p>
+
       ${archiveTile.preview(state, emit)}
+      <p
+        class="w-full text-grey-80 text-center leading-normal dark:text-red-50"
+      >
+        ${state.translate('downloadWarning')}
+      </p>
     </div>
   `;
 }
