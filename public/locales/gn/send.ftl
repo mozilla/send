@@ -60,8 +60,8 @@ notifyUploadEncryptDone = Ne marandurenda oñemo'ã ha ikatúma emondo
 archiveExpiryInfo = Opáta { $downloadCount } rire térã { $timespan }
 timespanMinutes =
     { $num ->
-        [one] 1 aravo'i
-       *[other] { $num } aravo'i
+        [one] 1 aravo’i
+       *[other] { $num } aravo’i
     }
 timespanDays =
     { $num ->
