@@ -11,15 +11,15 @@ downloadCount =
     }
 timespanHours =
     { $num ->
-        [one] otu
-       *[other] abụọ
+        [one] { $num } otu
+       *[other] { $num } abụọ
     }
 copiedUrl = edepụtachaghiri
 unlockInputPlaceholder = okwuntughe
 unlockButtonLabel = imeghe
 downloadButtonLabel = budata
 downloadFinish = Mbudata zuru ezu
-fileSizeProgress = ({ $partSize } nke { $totalSize })
+fileSizeProgress = ({ $partialSize } nke { $totalSize })
 sendYourFilesLink = Firefox Zipu
 errorPageHeader = Onwere ihe na-adighi mma
 fileTooBig = Failu a ebuka ibulite. Ọ kwẹsịghi ịkalị { $size }
@@ -33,7 +33,7 @@ deleteButtonHover = Hichapụ
 whyJavascript = Kedu ihe kpatara Firefox Send jiri chọ JavaScript?
 enableJavascript = Biko họrọ JavaScript ma nwaa ọzọ
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
-expiresHoursMinutes = { $awa } h { $nkeji } m
+expiresHoursMinutes = { $hours }h { $minutes }m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
 # A short status message shown when the user enters a long password
