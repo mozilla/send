@@ -9,10 +9,6 @@ downloadCount =
         [one] 1 pag-download
        *[other] { $num } na mga pag-download
     }
-timespanHours =
-    { $num ->
-       *[one] { $num } oras
-    }
 copiedUrl = Naikopya!
 unlockInputPlaceholder = Password
 unlockButtonLabel = I-unlock
