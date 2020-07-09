@@ -60,23 +60,23 @@ notifyUploadEncryptDone = Ne archivoj nemi ichtakawijtuk wan weli tiktitania
 archiveExpiryInfo = Puliwi kwak ajsi { $downloadCount } ush { $timespan }
 timespanMinutes =
     { $num ->
-        [one] minutoj
-       *[other] minutoj
+        [one] { $num } minutoj
+       *[other] { $num } minutoj
     }
 timespanDays =
     { $num ->
-        [one] tunal
-       *[other] tunal
+        [one] { $num } tunal
+       *[other] { $num } tunal
     }
 timespanWeeks =
     { $num ->
-        [one] semanaj
-       *[other] semanaj
+        [one] { $num } semanaj
+       *[other] { $num } semanaj
     }
 fileCount =
     { $num ->
-        [one] tajkwilul
-       *[other] tajkwilul
+        [one] { $num } tajkwilul
+       *[other] { $num } tajkwilul
     }
 # byte abbreviation
 bytes = B
