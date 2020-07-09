@@ -12,7 +12,7 @@ downloadCount =
 timespanHours =
     { $num ->
         [one] hora
-       *[other] horas
+       *[other] { $num } horas
     }
 copiedUrl = Copiau!
 unlockInputPlaceholder = Clau
