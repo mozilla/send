@@ -9,7 +9,11 @@ downloadCount =
         [one] 1 transferência
        *[other] { $num } transferências
     }
-timespanHours = 1 hora
+timespanHours =
+    { $num ->
+        [one] 1 hora
+       *[other] { $num } horas
+    }
 copiedUrl = Copiado!
 unlockInputPlaceholder = Palavra-passe
 unlockButtonLabel = Desbloquear
