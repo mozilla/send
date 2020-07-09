@@ -134,7 +134,7 @@ accountBenefitDownloadCount = Comparti ficheros con más xente
 accountBenefitTimeLimit =
     { $count ->
         [one] Caltén activos los enllaces demientres 1 día
-       *[other] Caltén activos los enllaces demientres 1 díes
+       *[other] Caltén activos los enllaces demientres { $count } díes
     }
 accountBenefitSync = Xestiona los ficheros compartíos dende cualesquier preséu
 accountBenefitMoz = Deprendi más tocante a otros servicios de { -mozilla }
