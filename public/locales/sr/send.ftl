@@ -6,15 +6,15 @@ encryptingFile = Шифрујем…
 decryptingFile = Дешифрујем…
 downloadCount =
     { $num ->
-        [one] преузимања
-        [few] преузимања
-       *[other] преузимања
+        [one] { $num } преузимања
+        [few] { $num } преузимања
+       *[other] { $num } преузимања
     }
 timespanHours =
     { $num ->
-        [one] сата
-        [few] сата
-       *[other] сати
+        [one] { $num } сата
+        [few] { $num } сата
+       *[other] { $num } сати
     }
 copiedUrl = Ископирано!
 unlockInputPlaceholder = Лозинка
