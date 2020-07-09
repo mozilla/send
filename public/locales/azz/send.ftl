@@ -93,12 +93,12 @@ trySendDescription = Xikejeko { -send-brand } ijkon amo ouij uelis tikinpanoltil
 # count will always be > 10
 tooManyFiles =
     { $count ->
-       *[undefined] Sayoj { 1 } tajkuilol archivo uelis tiktejkoltis saj. / Sayoj { $count } tajkuilolmej archivos uelis tikolochtejkoltis saj.
+       *[other] Sayoj { $count } tajkuilolmej archivos uelis tikolochtejkoltis saj.
     }
 # count will always be > 10
 tooManyArchives =
     { $count ->
-       *[undefined] Sayoj { 1 } tajkuilol archivo uelis moajsis saj. / Sayoj { $count } tajkuilolmej archivos uelis moajsiskej saj.
+       *[other] Sayoj { $count } tajkuilolmej archivos uelis moajsiskej saj.
     }
 expiredTitle = Nejin tein tikpatskilij amo tekititos ok.
 notSupportedDescription = { -send-brand } amo tekiti ika nejin navegador. { -send-short-brand } okachi kuali tekiti tein ika okachi yankuik { -firefox }, uan no tekitis tein ika okachi yankuikej tel miak navegadores.
