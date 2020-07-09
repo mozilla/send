@@ -35,9 +35,9 @@ enableJavascript = Biko họrọ JavaScript ma nwaa ọzọ
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $awa } h { $nkeji } m
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
-expiresMinutes = { $nkeji } m
+expiresMinutes = { $minutes }m
 # A short status message shown when the user enters a long password
-maxPasswordLength = Oke okwuntughe kachasị: { $ogologo }
+maxPasswordLength = Oke okwuntughe kachasị: { $length }
 # A short status message shown when there was an error setting the password
 passwordSetError = Enweghị ike ịtọ paswọọdụ a
 
@@ -51,7 +51,7 @@ passwordSetError = Enweghị ike ịtọ paswọọdụ a
 introTitle = Mfe, nkekọrịta faịlụ nkeonwe
 notifyUploadEncryptDone = Failu gi zoro ezo ma di njikere iziga
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
-archiveExpiryInfo = Ọ ga-agwu mgbe { $downloadCorder } ma ọ bụ { $timespan } gasịrị
+archiveExpiryInfo = Ọ ga-agwu mgbe { $downloadCount } ma ọ bụ { $timespan } gasịrị
 timespanDays =
     { $num ->
         [one] 1 ụbọchị
