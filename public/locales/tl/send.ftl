@@ -11,7 +11,7 @@ downloadCount =
     }
 timespanHours =
     { $num ->
-       *[one] 1 oras
+       *[one] { $num } oras
     }
 copiedUrl = Naikopya!
 unlockInputPlaceholder = Password
