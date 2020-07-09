@@ -6,13 +6,13 @@ encryptingFile = Cryptation...
 decryptingFile = Decryptation…
 downloadCount =
     { $num ->
-        [one] discargamento
-       *[other] discargamentos
+        [one] { $num } discargamento
+       *[other] { $num } discargamentos
     }
 timespanHours =
     { $num ->
-        [one] hora
-       *[other] horas
+        [one] { $num } hora
+       *[other] { $num } horas
     }
 copiedUrl = Copiate!
 unlockInputPlaceholder = Contrasigno
