@@ -38,7 +38,7 @@ module.exports = function(app) {
             "'self'",
             'wss://*.dev.lcip.org',
             'wss://*.send.nonprod.cloudops.mozgcp.net',
-            'wss://send.firefox.com',
+            config.base_url.replace(/^https:\/\//, 'wss://'),
             'https://*.dev.lcip.org',
             'https://accounts.firefox.com',
             'https://*.accounts.firefox.com',
