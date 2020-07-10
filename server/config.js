@@ -9,6 +9,16 @@ const conf = convict({
     default: '',
     env: 'S3_BUCKET'
   },
+  s3_endpoint: {
+    format: String,
+    default: '',
+    env: 'S3_ENDPOINT'
+  },
+  s3_use_path_style_endpoint: {
+    format: Boolean,
+    default: false,
+    env: 'S3_USE_PATH_STYLE_ENDPOINT'
+  },
   gcs_bucket: {
     format: String,
     default: '',
