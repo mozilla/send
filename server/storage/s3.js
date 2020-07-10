@@ -17,7 +17,7 @@ class S3Storage {
     const result = await this.s3
       .headObject({ Bucket: this.bucket, Key: id })
       .promise();
-    return result.ContentLength;
+    return Number(result.ContentLength);
   }
 
   getStream(id) {
