@@ -155,6 +155,26 @@ const conf = convict({
     default: 'https://identity.mozilla.com/apps/send',
     env: 'FXA_KEY_SCOPE'
   },
+  fxa_csp_oauth_url: {
+    format: String,
+    default: '',
+    env: 'FXA_CSP_OAUTH_URL'
+  },
+  fxa_csp_content_url: {
+    format: String,
+    default: '',
+    env: 'FXA_CSP_CONTENT_URL'
+  },
+  fxa_csp_profile_url: {
+    format: String,
+    default: '',
+    env: 'FXA_CSP_PROFILE_URL'
+  },
+  fxa_csp_profileimage_url: {
+    format: String,
+    default: '',
+    env: 'FXA_CSP_PROFILEIMAGE_URL'
+  },
   survey_url: {
     format: String,
     default: '',
