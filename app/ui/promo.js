@@ -27,7 +27,7 @@ class Promo extends Component {
             ${`Like Firefox Send? You'll love our new full-device VPN. `}
             <a
               class="underline link-blue"
-              href="https://fpn.firefox.com/?utm_source=send.firefox.com&utm_medium=referral&utm_content=Try+Firefox+Private+Network&utm_campaign=top-bar"
+              href="https://vpn.mozilla.org/?utm_source=send.firefox.com&utm_medium=referral&utm_content=Try+Firefox+Private+Network&utm_campaign=top-bar"
               >${`Get it today`}</a
             >
           </span>
