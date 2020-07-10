@@ -32,20 +32,20 @@ A file sharing experiment which allows you to send encrypted files to other user
 
 - [Node.js 10.x](https://nodejs.org/)
 - [Redis server](https://redis.io/) (optional for development)
-- [AWS S3](https://aws.amazon.com/s3/) or compatible service. (optional)
+- [AWS S3](https://aws.amazon.com/s3/) or compatible service (optional)
 
 ---
 
 ## Development
 
-To start an ephemeral development server run:
+To start an ephemeral development server, run:
 
 ```sh
 npm install
 npm start
 ```
 
-Then browse to http://localhost:8080
+Then, browse to http://localhost:8080
 
 ---
 
