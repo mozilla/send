@@ -7,6 +7,9 @@ class Metadata {
     this.metadata = obj.metadata;
     this.auth = obj.auth;
     this.nonce = obj.nonce;
+    this.flagged = !!obj.flagged;
+    this.dead = !!obj.dead;
+    this.key = obj.key;
   }
 }
 

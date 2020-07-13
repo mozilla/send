@@ -120,6 +120,11 @@ const conf = convict({
     default: '',
     env: 'SENTRY_DSN'
   },
+  sentry_host: {
+    format: String,
+    default: 'https://sentry.prod.mozaws.net',
+    env: 'SENTRY_HOST'
+  },
   env: {
     format: ['production', 'development', 'test'],
     default: 'development',
@@ -152,7 +157,7 @@ const conf = convict({
   },
   fxa_url: {
     format: 'url',
-    default: 'https://send-fxa.dev.lcip.org',
+    default: 'http://localhost:3030',
     env: 'FXA_URL'
   },
   fxa_client_id: {

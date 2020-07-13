@@ -47,9 +47,9 @@ export default class FileReceiver extends Nanobus {
     const meta = await metadata(this.fileInfo.id, this.keychain);
     this.fileInfo.name = meta.name;
     this.fileInfo.type = meta.type;
-    this.fileInfo.iv = meta.iv;
     this.fileInfo.size = +meta.size;
     this.fileInfo.manifest = meta.manifest;
+    this.fileInfo.flagged = meta.flagged;
     this.state = 'ready';
   }
 

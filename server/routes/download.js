@@ -7,6 +7,9 @@ module.exports = async function(req, res) {
   const id = req.params.id;
   try {
     const meta = req.meta;
+    if (meta.dead || meta.flagged) {
+      return res.sendStatus(404);
+    }
     const fileStream = await storage.get(id);
     let cancelled = false;
 
@@ -33,7 +36,7 @@ module.exports = async function(req, res) {
       });
       try {
         if (dl >= dlimit) {
-          await storage.del(id);
+          await storage.kill(id);
         } else {
           await storage.incrementField(id, 'dl');
         }

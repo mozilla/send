@@ -55,6 +55,12 @@ body {
   @apply bg-blue-70;
 }
 
+.btn:disabled {
+  @apply bg-grey-transparent;
+
+  cursor: not-allowed;
+}
+
 .checkbox {
   @apply leading-normal;
   @apply select-none;
@@ -138,21 +144,6 @@ footer li:hover {
   text-decoration: underline;
 }
 
-.feedback-link {
-  background-color: #000;
-  background-image: url('../assets/feedback.svg');
-  background-position: 0.125rem 0.25rem;
-  background-repeat: no-repeat;
-  background-size: 1.125rem;
-  color: #fff;
-  display: block;
-  font-size: 0.75rem;
-  line-height: 0.75rem;
-  padding: 0.375rem 0.375rem 0.375rem 1.25rem;
-  text-indent: 0.125rem;
-  white-space: nowrap;
-}
-
 .link-blue {
   @apply text-blue-60;
 }
@@ -173,6 +164,10 @@ footer li:hover {
 .intro {
   max-width: 100%;
   height: unset;
+}
+
+.dl-bg {
+  filter: grayscale(1) opacity(0.15);
 }
 
 .main {
@@ -322,6 +317,10 @@ select {
     @apply bg-blue-50;
   }
 
+  .btn:disabled {
+    @apply bg-grey-80;
+  }
+
   .link-blue {
     @apply text-blue-40;
   }
@@ -392,48 +391,3 @@ select {
 .signin:hover:active {
   transform: scale(0.9375);
 }
-
-/* begin signin button color experiment */
-
-.white-blue {
-  @apply border-blue-60;
-  @apply border-2;
-  @apply text-blue-60;
-}
-
-.white-blue:hover,
-.white-blue:focus {
-  @apply bg-blue-60;
-  @apply text-white;
-}
-
-.blue {
-  @apply bg-blue-60;
-  @apply text-white;
-}
-
-.white-violet {
-  @apply border-violet;
-  @apply border-2;
-  @apply text-violet;
-}
-
-.white-violet:hover,
-.white-violet:focus {
-  @apply bg-violet;
-  @apply text-white;
-
-  background-image: var(--violet-gradient);
-}
-
-.violet {
-  @apply bg-violet;
-  @apply text-white;
-}
-
-.violet:hover,
-.violet:focus {
-  background-image: var(--violet-gradient);
-}
-
-/* end signin button color experiment */

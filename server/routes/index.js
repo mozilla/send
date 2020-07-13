@@ -32,55 +32,57 @@ module.exports = function(app) {
   });
   if (!IS_DEV) {
     let csp = {
-        directives: {
-          defaultSrc: ["'self'"],
-          connectSrc: [
-            "'self'",
-            'wss://*.dev.lcip.org',
-            'wss://*.send.nonprod.cloudops.mozgcp.net',
-            config.base_url.replace(/^https:\/\//, 'wss://'),
-            'https://*.dev.lcip.org',
-            'https://accounts.firefox.com',
-            'https://*.accounts.firefox.com',
-            'https://sentry.prod.mozaws.net'
-          ],
-          imgSrc: [
-            "'self'",
-            'https://*.dev.lcip.org',
-            'https://firefoxusercontent.com',
-            'https://secure.gravatar.com'
-          ],
-          scriptSrc: [
-            "'self'",
-            function(req) {
-              return `'nonce-${req.cspNonce}'`;
-            }
-          ],
-          formAction: ["'none'"],
-          frameAncestors: ["'none'"],
-          objectSrc: ["'none'"],
-          reportUri: '/__cspreport__'
-        }
+      directives: {
+        defaultSrc: ["'self'"],
+        connectSrc: [
+          "'self'",
+          config.base_url.replace(/^https:\/\//, 'wss://')
+        ],
+        imgSrc: ["'self'"],
+        scriptSrc: [
+          "'self'",
+          function(req) {
+            return `'nonce-${req.cspNonce}'`;
+          }
+        ],
+        formAction: ["'none'"],
+        frameAncestors: ["'none'"],
+        objectSrc: ["'none'"],
+        reportUri: '/__cspreport__'
       }
+    };
+    if (config.fxa_client_id) {
+      csp.directives.connectSrc.push('https://accounts.firefox.com');
+      csp.directives.connectSrc.push('https://*.accounts.firefox.com');
+      csp.directives.imgSrc.push('https://firefoxusercontent.com');
+      csp.directives.imgSrc.push('https://secure.gravatar.com');
+    }
+    if (config.sentry_id) {
+      csp.directives.connectSrc.push(config.sentry_host);
+    }
+    if (
+      config.base_url.test(/^https:\/\/.*\.dev\.lcip\.org$/) ||
+      config.base_url.test(
+        /^https:\/\/.*\.send\.nonprod\.cloudops\.mozgcp\.net$/
+      )
+    ) {
+      csp.directives.connectSrc.push('https://*.dev.lcip.org');
+      csp.directives.imgSrc.push('https://*.dev.lcip.org');
+    }
+    if (config.fxa_csp_oauth_url != '') {
+      csp.directives.connectSrc.push(config.fxa_csp_oauth_url);
+    }
+    if (config.fxa_csp_content_url != '') {
+      csp.directives.connectSrc.push(config.fxa_csp_content_url);
+    }
+    if (config.fxa_csp_profile_url != '') {
+      csp.directives.connectSrc.push(config.fxa_csp_profile_url);
+    }
+    if (config.fxa_csp_profileimage_url != '') {
+      csp.directives.imgSrc.push(config.fxa_csp_profileimage_url);
+    }
 
-    csp.directives.connectSrc.push(config.base_url.replace(/^https:\/\//,'wss://'))
-    if(config.fxa_csp_oauth_url != ""){
-      csp.directives.connectSrc.push(config.fxa_csp_oauth_url)
-    }
-    if(config.fxa_csp_content_url != "" ){
-      csp.directives.connectSrc.push(config.fxa_csp_content_url)
-    }
-    if(config.fxa_csp_profile_url != "" ){
-      csp.directives.connectSrc.push(config.fxa_csp_profile_url)
-    }
-    if(config.fxa_csp_profileimage_url != ""){
-      csp.directives.imgSrc.push(config.fxa_csp_profileimage_url)
-    }
-
-
-    app.use(
-      helmet.contentSecurityPolicy(csp)
-    );
+    app.use(helmet.contentSecurityPolicy(csp));
   }
 
   app.use(function(req, res, next) {
@@ -101,6 +103,7 @@ module.exports = function(app) {
   app.get('/oauth', language, pages.blank);
   app.get('/legal', language, pages.legal);
   app.get('/login', language, pages.index);
+  app.get('/report', language, pages.blank);
   app.get('/app.webmanifest', language, require('./webmanifest'));
   app.get(`/download/:id${ID_REGEX}`, language, pages.download);
   app.get('/unsupported/:reason', language, pages.unsupported);
@@ -124,6 +127,7 @@ module.exports = function(app) {
     require('./params')
   );
   app.post(`/api/info/:id${ID_REGEX}`, auth.owner, require('./info'));
+  app.post(`/api/report/:id${ID_REGEX}`, require('./report'));
   app.post('/api/metrics', require('./metrics'));
   app.get('/__version__', function(req, res) {
     // eslint-disable-next-line node/no-missing-require

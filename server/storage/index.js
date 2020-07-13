@@ -33,7 +33,15 @@ class DB {
   }
 
   async getPrefixedId(id) {
-    const prefix = await this.redis.hgetAsync(id, 'prefix');
+    const [prefix, dead, flagged] = await this.redis.hmgetAsync(
+      id,
+      'prefix',
+      'dead',
+      'flagged'
+    );
+    if (dead || flagged) {
+      throw new Error('id not available');
+    }
     return `${prefix}-${id}`;
   }
 
@@ -51,9 +59,10 @@ class DB {
     const prefix = getPrefix(expireSeconds);
     const filePath = `${prefix}-${id}`;
     await this.storage.set(filePath, file);
-    this.redis.hset(id, 'prefix', prefix);
     if (meta) {
-      this.redis.hmset(id, meta);
+      this.redis.hmset(id, { prefix, ...meta });
+    } else {
+      this.redis.hset(id, 'prefix', prefix);
     }
     this.redis.expire(id, expireSeconds);
   }
@@ -64,6 +73,16 @@ class DB {
 
   incrementField(id, key, increment = 1) {
     this.redis.hincrby(id, key, increment);
+  }
+
+  kill(id) {
+    this.redis.hset(id, 'dead', 1);
+  }
+
+  async flag(id, key) {
+    // this.redis.persist(id);
+    this.redis.hmset(id, { flagged: 1, key });
+    this.redis.sadd('flagged', id);
   }
 
   async del(id) {

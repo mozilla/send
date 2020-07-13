@@ -133,7 +133,12 @@ describe('Storage', function() {
       };
       await storage.set('x', null, m);
       const meta = await storage.metadata('x');
-      assert.deepEqual(meta, m);
+      assert.deepEqual(meta, {
+        ...m,
+        dead: false,
+        flagged: false,
+        key: undefined
+      });
     });
   });
 });

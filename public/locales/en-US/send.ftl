@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Feedback
 importingFile = Importing…
 encryptingFile = Encrypting…
 decryptingFile = Decrypting…
@@ -109,6 +108,7 @@ legalDateStamp = Version 1.0, dated March 12, 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Select files to upload
+trustWarningMessage = Make sure you trust your recipient when sharing sensitive data.
 uploadButton = Upload
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Drag and drop files
@@ -145,3 +145,33 @@ shareLinkButton = Share link
 shareMessage = Download “{ $name }” with { -send-brand }: simple, safe file sharing
 trailheadPromo = There is a way to protect your privacy. Join Firefox.
 learnMore = Learn more.
+downloadFlagged = This link has been disabled for violating the terms of service.
+downloadConfirmTitle = One more thing
+downloadConfirmDescription = Make sure you trust the person who sent you this file because we can’t verify that it will not harm your device.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] I trust the person who sent this file
+       *[other] I trust the person who sent these files
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Report this file as suspicious
+       *[other] Report these files as suspicious
+    }
+reportDescription = Help us understand what’s going on. What do you think is wrong with these files?
+reportUnknownDescription = Please go to the url of the link you wish to report and click “{ reportFile }”.
+reportButton = Report
+reportReasonMalware = These files contain malware or are part of a phishing attack.
+reportReasonPii = These files contain personally identifiable information about me.
+reportReasonAbuse = These files contain illegal or abusive content.
+reportReasonCopyright = To report copyright or trademark infringement, use the process described at <a>this page</a>.
+reportedTitle = Files Reported
+reportedDescription = Thank you. We have received your report on these files.

@@ -14,7 +14,7 @@ module.exports = function(app, devServer) {
   expressWs(wsapp, null, { perMessageDeflate: false });
   routes(wsapp);
   wsapp.ws('/api/ws', require('../routes/ws'));
-  wsapp.listen(8081, config.listen_address);
+  wsapp.listen(1338, config.listen_address);
 
   assets.setMiddleware(devServer.middleware);
   app.use(morgan('dev', { stream: process.stderr }));

@@ -1,5 +1,6 @@
 /* global downloadMetadata */
 const html = require('choo/html');
+const assets = require('../../common/assets');
 const archiveTile = require('./archiveTile');
 const modal = require('./modal');
 const noStreams = require('./noStreams');
@@ -31,22 +32,53 @@ function downloading(state, emit) {
 }
 
 function preview(state, emit) {
+  if (state.fileInfo.flagged) {
+    return html`
+      <div
+        class="flex flex-col w-full max-w-md h-full mx-auto items-center justify-center"
+      >
+        <h1 class="text-xl font-bold">${state.translate('downloadFlagged')}</h1>
+      </div>
+    `;
+  }
   if (!state.capabilities.streamDownload && state.fileInfo.size > BIG_SIZE) {
     return noStreams(state, emit);
   }
   return html`
     <div
-      class="flex flex-col w-full max-w-md h-full mx-auto items-center justify-center"
+      class="w-full overflow-hidden md:flex md:flex-row items-stretch md:flex-1"
     >
-      <h1 class="text-3xl font-bold mb-4">
-        ${state.translate('downloadTitle')}
-      </h1>
-      <p
-        class="w-full text-grey-80 text-center leading-normal dark:text-grey-40"
+      <div
+        class="px-2 w-full md:px-0 flex-half md:flex md:flex-col mt-12 md:pr-8 pb-4"
       >
-        ${state.translate('downloadDescription')}
-      </p>
-      ${archiveTile.preview(state, emit)}
+        <h1 class="text-3xl font-bold mb-4 text-center md:text-left">
+          ${state.translate('downloadTitle')}
+        </h1>
+        <p
+          class="text-grey-80 leading-normal dark:text-grey-40 mb-4 text-center md:text-left"
+        >
+          ${state.translate('downloadDescription')}
+        </p>
+        <p
+          class="text-grey-80 leading-normal dark:text-grey-40 font-semibold text-center md:mb-8 md:text-left"
+        >
+          ${state.translate('downloadConfirmDescription')}
+        </p>
+        <img
+          class="hidden md:block dl-bg w-full"
+          src="${assets.get('intro.svg')}"
+        />
+      </div>
+      <div
+        class="w-full flex-half flex-half md:flex md:flex-col md:justify-center"
+      >
+        ${archiveTile.preview(state, emit)}
+        <a href="/report" class="link-blue mt-4 text-center block"
+          >${state.translate('reportFile', {
+            count: state.fileInfo.manifest.files.length
+          })}</a
+        >
+      </div>
     </div>
   `;
 }
@@ -83,7 +115,7 @@ module.exports = function(state, emit) {
     <main class="main">
       ${state.modal && modal(state, emit)}
       <section
-        class="relative h-full w-full p-6 md:p-8 md:rounded-xl md:shadow-big"
+        class="relative h-full w-full p-6 md:p-8 md:rounded-xl md:shadow-big md:flex md:flex-col"
       >
         ${content}
       </section>

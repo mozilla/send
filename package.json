@@ -27,7 +27,7 @@
     "test:report": "nyc report --reporter=html",
     "test-integration": "cross-env NODE_ENV=development wdio test/wdio.docker.conf.js",
     "circleci-test-integration": "echo 'webdriverio tests need to be updated to node 12'",
-    "start": "npm run clean && cross-env NODE_ENV=development L10N_DEV=true FXA_CLIENT_ID=fced6b5e3f4c66b9 BASE_URL=http://localhost:8080 webpack-dev-server --mode=development",
+    "start": "npm run clean && cross-env NODE_ENV=development L10N_DEV=true FXA_CLIENT_ID=fced6b5e3f4c66b9 BASE_URL=http://localhost:1337 webpack-dev-server --port=1337 --mode=development",
     "android": "cross-env ANDROID=1 npm start",
     "prod": "node server/bin/prod.js"
   },
@@ -134,6 +134,7 @@
     "@fluent/bundle": "^0.13.0",
     "@fluent/langneg": "^0.3.0",
     "@google-cloud/storage": "^4.1.1",
+    "@peculiar/webcrypto": "^1.1.1",
     "@sentry/node": "^5.8.0",
     "aws-sdk": "^2.568.0",
     "body-parser": "^1.19.0",
@@ -147,7 +148,7 @@
     "mkdirp": "^0.5.1",
     "mozlog": "^2.2.0",
     "node-fetch": "^2.6.0",
-    "redis": "^2.8.0",
+    "redis": "^3.0.2",
     "selenium-standalone": "^6.15.6",
     "ua-parser-js": "^0.7.20"
   },
