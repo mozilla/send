@@ -2,8 +2,8 @@
 title = Firefox Send
 siteFeedback = Je’ejey
 importingFile = Ojegueruhína…
-encryptingFile = Mo'ãmby…
-decryptingFile = Ñemo'ã'o…
+encryptingFile = Mo’ãmby…
+decryptingFile = Ñemo’ã’o…
 downloadCount =
     { $num ->
         [one] 1 mboguejy
@@ -55,7 +55,7 @@ passwordSetError = Ndaikatúi oikóvo ko ñe’ẽñemi
 -mozilla = Mozilla
 introTitle = Marandurenda ñemoambue hasy'ỹ ha ñemiguáva
 introDescription = { -send-brand } omoherakuãkuaa marandurenda papapýpe ñepyrũ guive opa peve ha juajuha opareíva ijehegui. Ikatu oreko ñemihápe emoherakuãva ha ehecháta mba’éicha ne mba’ekuéra noĩri ñandutípe opa ára.
-notifyUploadEncryptDone = Ne marandurenda oñemo'ã ha ikatúma emondo
+notifyUploadEncryptDone = Ne marandurenda oñemo’ã ha ikatúma emondo
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Opáta { $downloadCount } rire térã { $timespan }
 timespanMinutes =
