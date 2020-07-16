@@ -44,7 +44,7 @@ module.exports = function(name, url) {
       event.stopPropagation();
       copyToClipboard(url);
       event.target.textContent = state.translate('copiedUrl');
-      setTimeout(close, 1000);
+      emit('displayQRCode', url);
     }
   };
   dialog.type = 'copy';

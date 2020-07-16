@@ -248,6 +248,7 @@ module.exports = function(state, emit, archive) {
     copyToClipboard(archive.url);
     const text = event.target.lastChild;
     text.textContent = state.translate('copiedUrl');
+    emit('displayQRCode', archive.url);
     setTimeout(
       () => (text.textContent = state.translate('copyLinkButton')),
       1000
