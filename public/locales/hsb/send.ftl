@@ -192,4 +192,6 @@ reportFile =
         [few] Tute dataje jako podhladne zdźělić
        *[other] Tute dataje jako podhladne zdźělić
     }
+reportDescription = Pomhajće nam rozumić, što so stawa. Što po wašim zdaću z tutymi datajemi w porjadku njeje?
+reportUnknownDescription = Dźiće prošu k URL wotkaza, kotryž chceće zdźělić a klikńće na „{ reportFile }“.
 reportButton = Zdźělić
