@@ -207,7 +207,7 @@ const web = {
     host: '0.0.0.0',
     proxy: {
       '/api/ws': {
-        target: 'ws://localhost:8081',
+        target: 'ws://localhost:1338',
         ws: true,
         secure: false
       }

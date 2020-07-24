@@ -96,6 +96,28 @@ function statDeleteEvent(data) {
   return sendBatch([event]);
 }
 
+function statReportEvent(data) {
+  const loc = location(data.ip);
+  const event = {
+    session_id: -1,
+    country: loc.country,
+    region: loc.state,
+    user_id: userId(data.id, data.owner),
+    app_version: pkg.version,
+    time: truncateToHour(Date.now()),
+    event_type: 'server_report',
+    event_properties: {
+      reason: data.reason,
+      agent: data.agent,
+      download_limit: data.dlimit,
+      download_count: data.download_count,
+      ttl: data.ttl
+    },
+    event_id: data.download_count + 1
+  };
+  return sendBatch([event]);
+}
+
 function clientEvent(event, ua, language, session_id, deltaT, platform, ip) {
   const loc = location(ip);
   const ep = event.event_properties || {};
@@ -173,6 +195,7 @@ module.exports = {
   statUploadEvent,
   statDownloadEvent,
   statDeleteEvent,
+  statReportEvent,
   clientEvent,
   sendBatch
 };

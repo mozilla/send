@@ -23,14 +23,17 @@ module.exports = {
     const id = req.params.id;
     const appState = await state(req);
     try {
-      const { nonce, pwd } = await storage.metadata(id);
+      const { nonce, pwd, dead, flagged } = await storage.metadata(id);
+      if (dead && !flagged) {
+        return next();
+      }
       res.set('WWW-Authenticate', `send-v1 ${nonce}`);
       res.send(
         stripEvents(
           routes().toString(
             `/download/${id}`,
             Object.assign(appState, {
-              downloadMetadata: { nonce, pwd }
+              downloadMetadata: { nonce, pwd, flagged }
             })
           )
         )

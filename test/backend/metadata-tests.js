@@ -6,7 +6,7 @@ const storage = {
   length: sinon.stub()
 };
 
-function request(id, meta) {
+function request(id, meta = {}) {
   return {
     params: { id },
     meta

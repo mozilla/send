@@ -10,7 +10,7 @@ module.exports = function(state) {
       <h1 class="text-center text-3xl font-bold my-2">
         ${state.translate('downloadFinish')}
       </h1>
-      <img src="${assets.get('completed.svg')}" class="my-12 h-48" />
+      <img src="${assets.get('completed.svg')}" class="my-8 h-48" />
       <p class="text-grey-80 leading-normal dark:text-grey-40">
         ${state.translate('trySendDescription')}
       </p>
@@ -18,6 +18,9 @@ module.exports = function(state) {
         <a href="/" class="btn rounded-lg flex items-center mt-4" role="button"
           >${state.translate('sendYourFilesLink')}</a
         >
+      </p>
+      <p class="">
+        <a href="/report" class="link-blue">${state.translate('reportFile')}</a>
       </p>
     </div>
   `;

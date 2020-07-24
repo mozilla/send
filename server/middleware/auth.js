@@ -46,7 +46,7 @@ module.exports = {
     if (id && ownerToken) {
       try {
         req.meta = await storage.metadata(id);
-        if (!req.meta) {
+        if (!req.meta || req.meta.dead) {
           return res.sendStatus(404);
         }
         const metaOwner = Buffer.from(req.meta.owner, 'utf8');

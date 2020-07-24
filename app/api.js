@@ -127,10 +127,10 @@ export async function metadata(id, keychain) {
     return {
       size: meta.size,
       ttl: data.ttl,
-      iv: meta.iv,
       name: meta.name,
       type: meta.type,
-      manifest: meta.manifest
+      manifest: meta.manifest,
+      flagged: data.flagged
     };
   }
   throw new Error(result.response.status);
@@ -434,6 +434,19 @@ export async function getConstants() {
   if (response.ok) {
     const obj = await response.json();
     return obj;
+  }
+
+  throw new Error(response.status);
+}
+
+export async function reportLink(id, key, reason) {
+  const response = await fetch(
+    getApiUrl(`/api/report/${id}`),
+    post({ key, reason })
+  );
+
+  if (response.ok) {
+    return;
   }
 
   throw new Error(response.status);

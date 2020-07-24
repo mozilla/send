@@ -14,6 +14,7 @@ module.exports = function(app = choo({ hash: true })) {
     emit('authenticate', state.query.code, state.query.state);
   });
   app.route('/login', body(require('./ui/home')));
+  app.route('/report', body(require('./ui/report')));
   app.route('*', body(require('./ui/notFound')));
   return app;
 };
