@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Återkoppling
 importingFile = Importerar…
 encryptingFile = Krypterar…
 decryptingFile = Avkodar…
@@ -153,3 +152,22 @@ shareLinkButton = Dela länk
 shareMessage = Ladda ner "{ $name }" med { -send-brand }: enkel, säker fildelning
 trailheadPromo = Det finns ett sätt att skydda din integritet. Gå med i Firefox.
 learnMore = Läs mer.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Jag litar på personen som skickade denna filen
+       *[other] Jag litar på personen som skickade dessa filer
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Rapportera denna filen som misstänkt
+       *[other] Rapportera dessa filer som misstänkta
+    }
+reportButton = Rapportera
