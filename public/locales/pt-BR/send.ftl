@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Opinião
 importingFile = Importando…
 encryptingFile = Criptografando…
 decryptingFile = Descriptografando…
@@ -116,6 +115,7 @@ legalDateStamp = Versão 1.0, de 12 de março de 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Selecionar arquivos para enviar
+trustWarningMessage = Certifique-se de que confia no destinatário ao compartilhar dados sensíveis.
 uploadButton = Enviar
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Arraste e solte arquivos aqui
@@ -153,3 +153,5 @@ shareLinkButton = Compartilhar link
 shareMessage = Baixe "{ $name }" com o { -send-brand }: compartilhamento de arquivos simples e seguro
 trailheadPromo = Existe um meio de proteger sua privacidade. Use o Firefox.
 learnMore = Saiba mais.
+downloadFlagged = Este link foi desativado por violar os termos do serviço.
+downloadConfirmTitle = Mais uma coisa
