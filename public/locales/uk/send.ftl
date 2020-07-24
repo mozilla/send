@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Відгуки
 importingFile = Імпортуємо...
 encryptingFile = Шифруємо...
 decryptingFile = Розшифровуємо...
@@ -124,6 +123,7 @@ legalDateStamp = Версія 1.0 від 12 березня 2019 року
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }д { $hours }г { $minutes }хв
 addFilesButton = Оберіть файли для вивантаження
+trustWarningMessage = Переконайтеся, що довіряєте одержувачу коли ділитеся вразливими даними.
 uploadButton = Вивантажити
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Перетягуйте файли
@@ -162,3 +162,35 @@ shareLinkButton = Поділитись посиланням
 shareMessage = Завантажте “{ $name }” з { -send-brand }: простий та безпечний обмін файлами
 trailheadPromo = Існує спосіб захистити вашу приватність. Приєднуйтесь до Firefox.
 learnMore = Докладніше.
+downloadFlagged = Це посилання вимкнено через порушення умов надання послуг.
+downloadConfirmTitle = Ще порада
+downloadConfirmDescription = Переконайтеся, що довіряєте відправнику цього файлу, оскільки ми не можемо перевірити, чи він не зашкодить вашому пристрою.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Я довіряю відправнику цього файлу
+        [few] Я довіряю відправнику цих файлів
+       *[many] Я довіряю відправнику цих файлів
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Повідомити, що цей файл є підозрілим
+        [few] Повідомити, що ці файли є підозрілими
+       *[many] Повідомити, що ці файли є підозрілими
+    }
+reportDescription = Допоможіть нам зрозуміти, що відбувається. Що, на вашу думку, з цими файлами не так?
+reportUnknownDescription = Перейдіть до url-адреси посилання, про яке хочете надіслати звіт, та натисніть “{ reportFile }”.
+reportButton = Надіслати звіт
+reportReasonMalware = Ці файли містять зловмисне програмне забезпечення або є частиною фішинг-атаки.
+reportReasonPii = Ці файли містять мої особисті дані.
+reportReasonAbuse = Ці файли містять незаконний або образливий вміст.
+reportReasonCopyright = Щоб повідомити про порушення авторських прав або торговельних марок, скористайтеся настановами з <a>цієї сторінки</a>.
+reportedTitle = Звіт про файли надіслано
+reportedDescription = Дякуємо. Ми отримали ваш звіт про ці файли.
