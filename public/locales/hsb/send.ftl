@@ -195,3 +195,5 @@ reportFile =
 reportDescription = Pomhajće nam rozumić, što so stawa. Što po wašim zdaću z tutymi datajemi w porjadku njeje?
 reportUnknownDescription = Dźiće prošu k URL wotkaza, kotryž chceće zdźělić a klikńće na „{ reportFile }“.
 reportButton = Zdźělić
+reportReasonAbuse = Tute dataje njedowoleny abo ranjacy wobsah wobsahuja.
+reportedDescription = Wulki dźak. Smy wašu rozprawu wo tutych datajach dóstali.
