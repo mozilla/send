@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Visszajelzés
 importingFile = Importálás…
 encryptingFile = Titkosítás…
 decryptingFile = Visszafejtés…
@@ -116,6 +115,7 @@ legalDateStamp = 1.0-s verzió, kelt 2019. március 12-én
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }n { $hours }ó { $minutes }p
 addFilesButton = Válassza ki a feltöltendő fájlokat
+trustWarningMessage = Érzékeny adatok megosztásakor győződjön meg róla, hogy megbízik-e a címzettben.
 uploadButton = Feltöltés
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Húzza ide a fájlokat
@@ -153,3 +153,33 @@ shareLinkButton = Hivatkozás megosztása
 shareMessage = „{ $name }” letöltése a { -send-brand } segítségével: egyszerű, biztonságos fájlmegosztás
 trailheadPromo = Védje meg a magánszféráját. Csatlakozzon a Firefoxhoz.
 learnMore = További tudnivalók.
+downloadFlagged = Ezt a hivatkozást a szolgáltatási feltételek megsértése miatt letiltottuk.
+downloadConfirmTitle = Még egy dolog
+downloadConfirmDescription = Győződjön meg arról, hogy megbízik-e abban, aki küldte a fájlt, mert nem tudjuk ellenőrizni, hogy nem okoz-e kárt az eszközén.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Megbízom abban a személyben, aki elküldte ezt a fájlt
+       *[other] Megbízom abban a személyben, aki elküldte ezeket a fájlokat
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Fájl jelentése gyanúsként
+       *[other] Fájlok jelentése gyanúsként
+    }
+reportDescription = Segítsen megérteni, hogy mi a helyzet. Ön szerint mi a baj ezekkel a fájlokkal?
+reportUnknownDescription = Ugorjon a jelentendő hivatkozás URL-jéhez, és kattintson a „{ reportFile }” gombra.
+reportButton = Jelentés
+reportReasonMalware = Ezek a fájlok rosszindulatú programokat tartalmaznak, vagy adathalász támadás részét képezik.
+reportReasonPii = Ezek a fájlok személyesen azonosítható információkat tartalmaznak rólam.
+reportReasonAbuse = Ezek a fájlok illegális vagy visszaélésszerű tartalmúak.
+reportReasonCopyright = A szerzői jogok vagy védjegyek megsértésének jelentéséhez használja az <a>ezen az oldalon</a> írt folyamatot.
+reportedTitle = Fájlok jelentve
+reportedDescription = Köszönjük. Megkaptuk a jelentését ezekről a fájlokról.
