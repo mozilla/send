@@ -155,6 +155,11 @@ const conf = convict({
     default: `${tmpdir()}${path.sep}send-${randomBytes(4).toString('hex')}`,
     env: 'FILE_DIR'
   },
+  fxa_required: {
+    format: Boolean,
+    default: true,
+    env: 'FXA_REQUIRED'
+  },
   fxa_url: {
     format: 'url',
     default: 'http://localhost:3030',

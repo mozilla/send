@@ -15,7 +15,11 @@ module.exports = async function(req) {
     try {
       authConfig = await getFxaConfig();
       authConfig.client_id = config.fxa_client_id;
+      authConfig.fxa_required = config.fxa_required;
     } catch (e) {
+      if (config.auth_required) {
+        throw new Error('fxa_required is set but no config was found');
+      }
       // continue without accounts
     }
   }

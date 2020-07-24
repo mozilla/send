@@ -117,7 +117,7 @@ module.exports = function(app) {
   app.get(`/api/metadata/:id${ID_REGEX}`, auth.hmac, require('./metadata'));
   app.get('/api/filelist/:id([\\w-]{16})', auth.fxa, filelist.get);
   app.post('/api/filelist/:id([\\w-]{16})', auth.fxa, filelist.post);
-  app.post('/api/upload', auth.fxa, require('./upload'));
+  // app.post('/api/upload', auth.fxa, require('./upload'));
   app.post(`/api/delete/:id${ID_REGEX}`, auth.owner, require('./delete'));
   app.post(`/api/password/:id${ID_REGEX}`, auth.owner, require('./password'));
   app.post(

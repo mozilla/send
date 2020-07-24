@@ -5,6 +5,9 @@ const modal = require('./modal');
 const intro = require('./intro');
 
 module.exports = function(state, emit) {
+  if (state.user.loginRequired && !state.user.loggedIn) {
+    emit('signup-cta', 'required');
+  }
   const archives = state.storage.files
     .filter(archive => !archive.expired)
     .map(archive => archiveTile(state, emit, archive));

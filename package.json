@@ -23,7 +23,7 @@
     "release": "npm-run-all contributors changelog",
     "test": "npm-run-all test:*",
     "test:backend": "nyc --reporter=lcovonly mocha --reporter=min test/backend",
-    "test:frontend": "cross-env NODE_ENV=development node test/frontend/runner.js",
+    "test:frontend": "cross-env NODE_ENV=development FXA_REQUIRED=false node test/frontend/runner.js",
     "test:report": "nyc report --reporter=html",
     "test-integration": "cross-env NODE_ENV=development wdio test/wdio.docker.conf.js",
     "circleci-test-integration": "echo 'webdriverio tests need to be updated to node 12'",
