@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Водгук
 importingFile = Імпартаванне...
 encryptingFile = Зашыфроўка...
 decryptingFile = Расшыфроўка...
@@ -162,3 +161,6 @@ shareLinkButton = Падзяліцца спасылкай
 shareMessage = Сцягніце «{ $name }» з { -send-brand }: простага і бяспечнага файлаабменніка
 trailheadPromo = Ёсць спосаб абараніць вашу прыватнасць. Далучайцеся да Firefox.
 learnMore = Падрабязней.
+downloadFlagged = Гэта спасылка адключана за парушэнне ўмоў прадастаўлення паслуг.
+downloadConfirmTitle = Яшчэ адна рэч
+reportButton = Паведаміць
