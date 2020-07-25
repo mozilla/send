@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Feedback
 importingFile = A importar...
 encryptingFile = A encriptar...
 decryptingFile = A desencriptar...
@@ -116,6 +115,7 @@ legalDateStamp = Versão 1.0, de 12 de março de 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Selecionar ficheiros para carregar
+trustWarningMessage = Tenha a certeza que confia no destinatário ao partilhar dados sensíveis.
 uploadButton = Carregar
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Arraste e largue ficheiros
@@ -153,3 +153,33 @@ shareLinkButton = Partilhar ligação
 shareMessage = Transferir “{ $name }“ com o { -send-brand }: partilha de ficheiros simples e segura
 trailheadPromo = Existe um modo para proteger a sua privacidade. Adira ao Firefox.
 learnMore = Saiba mais.
+downloadFlagged = Esta ligação foi desativada por violar os termos do serviço.
+downloadConfirmTitle = Mais uma coisa
+downloadConfirmDescription = Tenha a certeza que confia na pessoa que lhe enviou este ficheiro, pois não podemos garantir que o mesmo não irá danificar o seu dispositivo.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Eu confio na pessoa que enviou este ficheiro
+       *[other] Eu confio na pessoa que enviou estes ficheiros
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Denunciar este ficheiro como suspeito
+       *[other] Denunciar estes ficheiros como suspeitos
+    }
+reportDescription = Ajude-nos a compreender o que está a acontecer. O que acha que está errado com estes ficheiros?
+reportUnknownDescription = Por favor, aceda ao endereço da ligação que pretende denunciar e clique em “{ reportFile }”.
+reportButton = Denunciar
+reportReasonMalware = Estes ficheiros contêm software malicioso ou fazem parte de um ataque de phishing.
+reportReasonPii = Estes ficheiros contêm dados pessoais sobre mim.
+reportReasonAbuse = Estes ficheiros contêm conteúdo ilegal ou abusivo.
+reportReasonCopyright = Para denunciar violação de direitos de autor ou de marca comercial, utilize o procedimento descrito <a>nesta página</a>.
+reportedTitle = Ficheiros denunciados
+reportedDescription = Obrigado. Recebemos a sua denúncia sobre estes ficheiros.
