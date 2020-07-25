@@ -161,4 +161,19 @@ downloadTrustCheckbox =
         [one] 我信任发送此文件的人
        *[other] 我信任发送这些文件的人
     }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] 举报此可疑文件
+       *[other] 举报这些可疑文件
+    }
+reportDescription = 帮助我们了解发生了什么。您认为这些文件存在什么问题？
+reportButton = 举报
+reportReasonMalware = 这些文件包含恶意软件或是网络钓鱼攻击的一环。
 reportReasonPii = 这些文件包含我的个人身份信息。
+reportReasonAbuse = 这些文件包含非法或滥用内容。
+reportReasonCopyright = 要举报版权或商标侵权，请按照<a>此页面</a>中所述步骤。
+reportedDescription = 感谢，我们已收到您关于这些文件的举报。
