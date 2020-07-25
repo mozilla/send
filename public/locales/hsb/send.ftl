@@ -172,6 +172,8 @@ shareMessage = Sćehńće „{ $name }“ z { -send-brand }: jednore, wěste dź
 trailheadPromo = Je móžnosć, wašu priwatnosć škitać. Přińdźće k Firefox.
 learnMore = Dalše informacije.
 downloadFlagged = Tutón wotkaz je so přestupjenja wužiwanskich wuměnjenjow dla znjemóžnił.
+downloadConfirmTitle = Jedna wěc hišće
+downloadConfirmDescription = Wy měł wotpósłarjej tuteje dataje dowěrić, dokelž njemóžemy přepruwować, hač to wašemu gratej wadźi.
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
 # standard CLDR forms, or only use the form for [other] if both strings should
@@ -197,5 +199,8 @@ reportFile =
 reportDescription = Pomhajće nam rozumić, što so stawa. Što po wašim zdaću z tutymi datajemi w porjadku njeje?
 reportUnknownDescription = Dźiće prošu k URL wotkaza, kotryž chceće zdźělić a klikńće na „{ reportFile }“.
 reportButton = Zdźělić
+reportReasonMalware = Tute dataje škódnu softwaru wobsahuja abo su dźěl nadpada kradnjenja datow.
+reportReasonPii = Tute dataje wosobinske informacije wo mni, kotrež móža mje identifikować.
 reportReasonAbuse = Tute dataje njedowoleny abo ranjacy wobsah wobsahuja.
+reportedTitle = Dataje su zdźělene
 reportedDescription = Wulki dźak. Smy wašu rozprawu wo tutych datajach dóstali.
