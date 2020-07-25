@@ -146,6 +146,32 @@ shareMessage = Scarica “{ $name }” con { -send-brand }: condivisione di file
 trailheadPromo = C’è un modo per proteggere la tua privacy. Entra in Firefox.
 learnMore = Ulteriori informazioni.
 downloadFlagged = Questo link è stato disattivato perché vìola i termini di servizio.
+downloadConfirmTitle = Un’ultima cosa
 downloadConfirmDescription = Assicurati che la persona che ti ha inviato questo file sia affidabile perché non possiamo garantire che non sia in grado di danneggiare il tuo dispositivo.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Considero affidabile la persona che ha inviato questo file
+       *[other] Considero affidabile la persona che ha inviato questi file
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Segnala questo file come sospetto
+       *[other] Segnala questi file come sospetti
+    }
+reportDescription = Aiutaci a capire che cosa è successo. Qual è il problema con questi file?
+reportUnknownDescription = Vai all’indirizzo del link che vuoi segnalare e fai clic su “{ reportFile }”.
+reportButton = Segnala
+reportReasonMalware = Questi file contengono malware o fanno parte di un attacco phishing.
 reportReasonPii = Questi file contengono informazioni personali identificabili che mi riguardano.
+reportReasonAbuse = Questi file contengono contenuti illegali o offensivi.
+reportReasonCopyright = Per segnalare violazioni del copyright o abusi di marchi registrati, utilizzare la procedura descritta in <a>questa pagina</a>.
+reportedTitle = File segnalati
 reportedDescription = Grazie, abbiamo ricevuto la tua segnalazione relativa a questi file.
