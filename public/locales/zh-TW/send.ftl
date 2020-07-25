@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = 意見回饋
 importingFile = 匯入中…
 encryptingFile = 加密中…
 decryptingFile = 解密中…
@@ -144,3 +143,11 @@ shareLinkButton = 分享鏈結
 shareMessage = 使用 { -send-brand } 下載「{ $name }」: 簡單安全的檔案分享機制
 trailheadPromo = 有種方法可以保護您的隱私，加入 Firefox。
 learnMore = 了解更多。
+downloadConfirmTitle = 還有一件事
+reportButton = 回報
+reportReasonMalware = 這些檔案包含惡意軟體，或是釣魚攻擊的一部分。
+reportReasonPii = 這些檔案包含我的個人資訊。
+reportReasonAbuse = 這些檔案包含非法或濫用內容。
+reportReasonCopyright = 若檔案內容侵犯了著作權或商標，請根據<a>此頁面</a>當中描述的方式進行回報。
+reportedTitle = 已回報檔案問題
+reportedDescription = 感謝您。我們已經收到您對這些檔案的問題回報。
