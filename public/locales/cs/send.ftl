@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Zpětná vazba
 importingFile = Probíhá import…
 encryptingFile = Probíhá šifrování…
 decryptingFile = Probíhá dešifrování…
@@ -160,6 +159,7 @@ legalDateStamp = Verze 1.0, 12. března 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Vyberte soubory k nahrání
+trustWarningMessage = Ujistěte se, že adresátovi důvěřujete pro sdílení vašich důvěrných dat.
 uploadButton = Nahrát
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Přetažením myší nebo kliknutím sem
@@ -198,3 +198,35 @@ shareLinkButton = Sdílet odkaz
 shareMessage = Stáhněte si soubor „{ $name }“ s { -send-brand(case: "ins") } - jednoduché a bezpečné sdílení souborů
 trailheadPromo = Existuje způsob, jak ochránit své soukromí. Používejte Firefox.
 learnMore = Zjistit více.
+downloadFlagged = Tento odkaz byl pro porušení podmínek používání služby deaktivován.
+downloadConfirmTitle = Ještě jedna věc
+downloadConfirmDescription = Ujistěte se, že opravdu důvěřujete odesílateli tohoto souboru, protože nemůžeme potvrdit bezpečnost jeho otevření na vašem zařízení.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Odesílateli tohoto souboru důvěřuji
+        [few] Odesílateli těchto souborů důvěřuji
+       *[other] Odesílateli těchto souborů důvěřuji
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Nahlásit tento soubor jako podezřelý
+        [few] Nahlásit tyto soubory jako podezřelé
+       *[other] Nahlásit tyto soubory jako podezřelé
+    }
+reportDescription = Pomozte nám. Co si myslíte, že je s těmito soubory špatně?
+reportUnknownDescription = Otevřete odkaz, který chcete nahlásit, a klepněte na „{ reportFile }“.
+reportButton = Nahlásit
+reportReasonMalware = Tyto soubory obsahují malware nebo jsou součástí phishingového útoku.
+reportReasonPii = Tyto soubory obsahují mé osobní údaje.
+reportReasonAbuse = Tyto soubory obsahují nelegální nebo urážlivý obsah.
+reportReasonCopyright = Chcete-li nahlásit porušení autorských práv nebo ochranných známek, použijte postup popsaný na <a>této stránce</a>.
+reportedTitle = Soubory byly nahlášeny
+reportedDescription = Děkujeme vám za zaslané hlášení ohledně těchto souborů.
