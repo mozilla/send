@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Phản hồi
 importingFile = Đang nhập...
 encryptingFile = Đang mã hóa...
 decryptingFile = Đang giải mã...
@@ -108,6 +107,7 @@ legalDateStamp = Phiên bản 1.0, ngày 12 tháng 3 năm 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } ngày { $hours } giờ { $minutes } phút
 addFilesButton = Chọn tập tin để tải lên
+trustWarningMessage = Hãy chắc chắn rằng bạn tin tưởng người nhận khi chia sẻ dữ liệu nhạy cảm.
 uploadButton = Tải lên
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Kéo và thả tập tin
@@ -144,3 +144,31 @@ shareLinkButton = Chia sẻ liên kết
 shareMessage = Tải xuống “{ $name }“ với { -send-brand }: chia sẻ tập tin đơn giản, an toàn
 trailheadPromo = Đây là một cách để bảo vệ sự riêng tư của bạn. Tham gia Firefox.
 learnMore = Tìm hiểu thêm.
+downloadFlagged = Liên kết này đã bị vô hiệu hóa do vi phạm các điều khoản dịch vụ.
+downloadConfirmTitle = Một điều nữa
+downloadConfirmDescription = Hãy chắc chắn rằng bạn tin tưởng người đã gửi cho bạn tập tin này vì chúng tôi không thể xác minh rằng nó sẽ không gây hại cho thiết bị của bạn.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+       *[other] Tôi tin tưởng người đã gửi những tập tin này
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+       *[other] Báo cáo các tập tin này là đáng ngờ
+    }
+reportDescription = Hãy giúp chúng tôi hiểu những gì đang diễn ra. Bạn nghĩ gì có gì không đúng với những tập tin này?
+reportUnknownDescription = Vui lòng truy cập url của liên kết bạn muốn báo cáo và nhấp vào “{ reportFile }”.
+reportButton = Báo cáo
+reportReasonMalware = Những tập tin này chứa phần mềm độc hại hoặc là một phần của cuộc tấn công lừa đảo.
+reportReasonPii = Những tập tin này chứa thông tin cá nhân về tôi.
+reportReasonAbuse = Những tập tin này chứa nội dung bất hợp pháp hoặc lạm dụng.
+reportReasonCopyright = Để báo cáo vi phạm bản quyền hoặc nhãn hiệu, hãy sử dụng quy trình được mô tả tại <a>trang này</a>.
+reportedTitle = Đã báo cáo tập tin
+reportedDescription = Cảm ơn bạn. Chúng tôi đã nhận được báo cáo của bạn về các tập tin này.
