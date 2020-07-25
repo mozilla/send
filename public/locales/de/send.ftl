@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Feedback
 importingFile = Wird importiert…
 encryptingFile = Wird verschlüsselt…
 decryptingFile = Wird entschlüsselt…
@@ -116,6 +115,7 @@ legalDateStamp = Version 1.0, Stand 12. März 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Dateien zum Hochladen auswählen
+trustWarningMessage = Sie sollten dem Empfänger vertrauen, wenn Sie vertrauliche Daten weitergeben.
 uploadButton = Hochladen
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Dateien per Drag & Drop einfügen
@@ -153,3 +153,33 @@ shareLinkButton = Link teilen
 shareMessage = Laden Sie „{ $name }“ mit { -send-brand } herunter: einfaches, sicheres Teilen von Dateien
 trailheadPromo = Es gibt einen Weg, deine Privatsphäre zu schützen. Komm zu Firefox.
 learnMore = Mehr erfahren.
+downloadFlagged = Dieser Link wurde wegen Verstoßes gegen die Nutzungsbedingungen deaktiviert.
+downloadConfirmTitle = Eine Sache noch
+downloadConfirmDescription = Sie sollten dem Absender dieser Datei vertrauen, da wir nicht überprüfen können, ob Ihr Gerät dadurch beschädigt wird.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Ich vertraue der Person, die diese Datei gesendet hat
+       *[other] Ich vertraue der Person, die diese Dateien gesendet hat
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Diese Datei als verdächtig melden
+       *[other] Diese Dateien als verdächtig melden
+    }
+reportDescription = Helfen Sie uns mit weiteren Informationen. Wo liegt das Problem bei diesen Dateien?
+reportUnknownDescription = Bitte besuchen Sie die Adresse des Links, den Sie melden möchten, und klicken Sie auf „{ reportFile }“.
+reportButton = Melden
+reportReasonMalware = Diese Dateien enthalten Malware oder sind Teil eines Phishing-Angriffs.
+reportReasonPii = Diese Dateien enthalten personenbezogene Daten über mich.
+reportReasonAbuse = Diese Dateien enthalten illegale oder missbräuchliche Inhalte.
+reportReasonCopyright = Um Urheber- oder Markenrechtsverletzungen zu melden, nutzen Sie bitte das auf <a>dieser Seite</a> beschriebene Verfahren.
+reportedTitle = Dateien gemeldet
+reportedDescription = Vielen Dank. Wir haben Ihren Bericht über diese Dateien erhalten.
