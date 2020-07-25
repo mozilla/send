@@ -171,9 +171,15 @@ downloadTrustCheckbox =
 # be identical.
 reportFile =
     { $count ->
-        [one] Informar este archivo como sospechoso
-       *[other] Informar estos archivos como sospechosos
+        [one] Denunciar este archivo como sospechoso
+       *[other] Denunciar estos archivos como sospechosos
     }
 reportDescription = Ayudanos a entender lo que está pasando. ¿Qué creés que está mal con estos archivos?
-reportUnknownDescription = Navegá a la url del enlace que querés informar y hacé clic en "{ reportFile }".
-reportButton = Informar
+reportUnknownDescription = Navegá a la url del enlace que querés denunciar y hacé clic en "{ reportFile }".
+reportButton = Denunciar
+reportReasonMalware = Estos archivos contienen programas dañinos o son parte de un fraude electrónico.
+reportReasonPii = Estos archivos contienen información personal que me puede identificar.
+reportReasonAbuse = Estos archivos contienen contenido ilegal o abusivo.
+reportReasonCopyright = Para denunciar una infracción de derechos de autor o de marca registrada, seguí el proceso descrito en <a>esta página</a>.
+reportedTitle = Archivos denunciados
+reportedDescription = Gracias. Recibimos tu denuncia sobre estos archivos.
