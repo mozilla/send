@@ -146,6 +146,7 @@ trailheadPromo = มีวิธีปกป้องความเป็นส
 learnMore = เรียนรู้เพิ่มเติม
 downloadFlagged = ลิงก์นี้ถูกปิดการใช้งานเนื่องจากละเมิดข้อกำหนดในการให้บริการ
 downloadConfirmTitle = อีกหนึ่งอย่าง
+downloadConfirmDescription = ตรวจสอบให้แน่ใจว่าคุณเชื่อถือคนที่ส่งไฟล์นี้ให้คุณ เพราะเราไม่สามารถยืนยันได้ว่าไฟล์นี้จะไม่เป็นอันตรายต่ออุปกรณ์ของคุณ
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
 # standard CLDR forms, or only use the form for [other] if both strings should
@@ -163,6 +164,11 @@ reportFile =
        *[other] รายงานไฟล์เหล่านี้ว่าน่าสงสัย
     }
 reportDescription = ช่วยให้เราเข้าใจสิ่งที่เกิดขึ้น คุณคิดอย่างไรว่าไฟล์เหล่านี้ผิดปกติ?
+reportUnknownDescription = โปรดไปที่ URL ของลิงก์ที่คุณต้องการรายงานและคลิก “{ reportFile }”
 reportButton = รายงาน
+reportReasonMalware = ไฟล์เหล่านี้มีมัลแวร์หรือเป็นส่วนหนึ่งของการโจมตีแบบฟิชชิ่ง
+reportReasonPii = ไฟล์เหล่านี้มีข้อมูลที่สามารถระบุตัวบุคคลได้เกี่ยวกับฉัน
+reportReasonAbuse = ไฟล์เหล่านี้มีเนื้อหาที่ผิดกฎหมายหรือไม่เหมาะสม
+reportReasonCopyright = หากต้องการรายงานการละเมิดลิขสิทธิ์หรือเครื่องหมายการค้าให้ใช้กระบวนการที่อธิบายไว้ใน <a> หน้านี้ </a>
 reportedTitle = ไฟล์ถูกรายงานแล้ว
 reportedDescription = ขอบคุณ เราได้รับรายงานของคุณเกี่ยวกับไฟล์เหล่านี้แล้ว
