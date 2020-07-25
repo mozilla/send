@@ -30,6 +30,12 @@ function password(state) {
 
   return html`
     <div class="mb-2 px-1">
+      <input
+        id="autocomplete-decoy"
+        class="hidden"
+        type="password"
+        value="lol"
+      />
       <div class="checkbox inline-block mr-3">
         <input
           id="add-password"

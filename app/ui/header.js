@@ -33,7 +33,7 @@ class Header extends Component {
                 alt="${this.state.translate('title')}"
                 src="${assets.get('icon.svg')}"
               />
-              <svg class="w-48 md:w-64">
+              <svg viewBox="66 0 340 64" class="w-48 md:w-64">
                 <use xlink:href="${assets.get('wordmark.svg')}#logo" />
               </svg>
             </a>

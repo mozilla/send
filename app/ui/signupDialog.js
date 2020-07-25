@@ -9,13 +9,11 @@ module.exports = function(trigger) {
     let submitting = false;
     return html`
       <send-signup-dialog
-        class="flex flex-col lg:flex-row justify-center my-16 md:my-0 px-8 md:px-24 w-full h-full"
+        class="flex flex-col justify-center my-16 md:my-0 px-8 md:px-24 w-full h-full"
       >
         <img src="${assets.get('master-logo.svg')}" class="h-16 mt-1 mb-4" />
-        <section
-          class="flex flex-col flex-shrink-0 self-center lg:mx-6 lg:max-w-xs"
-        >
-          <h1 class="text-3xl font-bold text-center lg:text-left">
+        <section class="flex flex-col flex-shrink-0 self-center">
+          <h1 class="text-3xl font-bold text-center">
             ${state.translate('accountBenefitTitle')}
           </h1>
           <ul
@@ -33,14 +31,12 @@ module.exports = function(trigger) {
             <li>${state.translate('accountBenefitSync')}</li>
           </ul>
         </section>
-        <section
-          class="flex flex-col flex-grow m-4 md:self-center md:w-128 lg:max-w-xs"
-        >
+        <section class="flex flex-col flex-grow m-4 md:self-center md:w-128">
           <form onsubmit=${submitEmail} data-no-csrf>
             <input
               id="email-input"
               type="email"
-              class="hidden lg:block border rounded-lg w-full px-2 py-1 h-12 mb-3 text-lg text-grey-70 leading-loose dark:bg-grey-80 dark:text-white"
+              class="hidden border rounded-lg w-full px-2 py-1 h-12 mb-3 text-lg text-grey-70 leading-loose dark:bg-grey-80 dark:text-white"
               placeholder=${state.translate('emailPlaceholder')}
             />
             <input

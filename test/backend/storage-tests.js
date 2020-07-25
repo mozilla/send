@@ -70,17 +70,17 @@ describe('Storage', function() {
 
     it('adds right prefix based on expire time', async function() {
       await storage.set('x', null, { foo: 'bar' }, 300);
-      const path_x = await storage.getPrefixedId('x');
+      const { filePath: path_x } = await storage.getPrefixedInfo('x');
       assert.equal(path_x, '1-x');
       await storage.del('x');
 
       await storage.set('y', null, { foo: 'bar' }, 86400);
-      const path_y = await storage.getPrefixedId('y');
+      const { filePath: path_y } = await storage.getPrefixedInfo('y');
       assert.equal(path_y, '1-y');
       await storage.del('y');
 
       await storage.set('z', null, { foo: 'bar' }, 86400 * 7);
-      const path_z = await storage.getPrefixedId('z');
+      const { filePath: path_z } = await storage.getPrefixedInfo('z');
       assert.equal(path_z, '7-z');
       await storage.del('z');
     });
