@@ -61,7 +61,10 @@ async function fetchWithAuth(url, params, keychain) {
   const result = {};
   params = params || {};
   const h = await keychain.authHeader();
-  params.headers = new Headers({ Authorization: h });
+  params.headers = new Headers({
+    Authorization: h,
+    'Content-Type': 'application/json'
+  });
   const response = await fetch(url, params);
   result.response = response;
   result.ok = response.ok;
@@ -439,15 +442,19 @@ export async function getConstants() {
   throw new Error(response.status);
 }
 
-export async function reportLink(id, key, reason) {
-  const response = await fetch(
+export async function reportLink(id, keychain, reason) {
+  const result = await fetchWithAuthAndRetry(
     getApiUrl(`/api/report/${id}`),
-    post({ key, reason })
+    {
+      method: 'POST',
+      body: JSON.stringify({ reason })
+    },
+    keychain
   );
 
-  if (response.ok) {
+  if (result.ok) {
     return;
   }
 
-  throw new Error(response.status);
+  throw new Error(result.response.status);
 }

@@ -127,7 +127,7 @@ module.exports = function(app) {
     require('./params')
   );
   app.post(`/api/info/:id${ID_REGEX}`, auth.owner, require('./info'));
-  app.post(`/api/report/:id${ID_REGEX}`, require('./report'));
+  app.post(`/api/report/:id${ID_REGEX}`, auth.hmac, require('./report'));
   app.post('/api/metrics', require('./metrics'));
   app.get('/__version__', function(req, res) {
     // eslint-disable-next-line node/no-missing-require

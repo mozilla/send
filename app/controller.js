@@ -1,6 +1,5 @@
 import FileSender from './fileSender';
 import FileReceiver from './fileReceiver';
-import { reportLink } from './api';
 import { copyToClipboard, delay, openLinksInNewTab, percent } from './utils';
 import * as metrics from './metrics';
 import { bytes, locale } from './utils';
@@ -315,13 +314,7 @@ export default function(state, emitter) {
 
   emitter.on('report', async ({ reason }) => {
     try {
-      const file = state.fileInfo;
-      if (!file) {
-        // TODO
-        emitter.emit('pushState', '/error');
-        return render();
-      }
-      await reportLink(file.id, file.secretKey, reason);
+      await state.transfer.reportLink(reason);
       render();
     } catch (err) {
       console.error(err);

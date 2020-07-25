@@ -80,14 +80,16 @@ class DB {
   }
 
   async kill(id) {
-    const { filePath } = await this.getPrefixedInfo(id);
-    this.storage.del(filePath);
-    this.redis.hset(id, 'dead', 1);
+    const { filePath, dead } = await this.getPrefixedInfo(id);
+    if (!dead) {
+      this.storage.del(filePath);
+      this.redis.hset(id, 'dead', 1);
+    }
   }
 
-  async flag(id, key) {
+  async flag(id) {
     await this.kill(id);
-    this.redis.hmset(id, { flagged: 1, key });
+    this.redis.hset(id, 'flagged', 1);
   }
 
   async del(id) {

@@ -9,7 +9,7 @@ import contentDisposition from 'content-disposition';
 let noSave = false;
 const map = new Map();
 const IMAGES = /.*\.(png|svg|jpg)$/;
-const VERSIONED_ASSET = /\.[A-Fa-f0-9]{8}\.(js|css|png|svg|jpg)$/;
+const VERSIONED_ASSET = /\.[A-Fa-f0-9]{8}\.(js|css|png|svg|jpg)(#\w+)?$/;
 const DOWNLOAD_URL = /\/api\/download\/([A-Fa-f0-9]{4,})/;
 const FONT = /\.woff2?$/;
 
