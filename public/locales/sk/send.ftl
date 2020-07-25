@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Spätná väzba
 importingFile = Importuje sa…
 encryptingFile = Šifruje sa…
 decryptingFile = Dešifruje sa…
@@ -124,6 +123,7 @@ legalDateStamp = Verzia 1.0, z 12. marca 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } d { $hours } h { $minutes } min
 addFilesButton = Vyberte súbory pre nahratie
+trustWarningMessage = Uistite sa, že pri zdieľaní citlivých údajov dôverujete adresátovi.
 uploadButton = Nahrať
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Pretiahnutím súboru alebo kliknutím sem
@@ -162,3 +162,35 @@ shareLinkButton = Zdieľať odkaz
 shareMessage = Prevezmite si súbor „{ $name }“ so službou { -send-brand } - jednoduché a bezpečné zdieľanie súborov
 trailheadPromo = Existuje spôsob, ako chrániť vaše súkromie. Prihláste sa do Firefoxu.
 learnMore = Ďalšie informácie.
+downloadFlagged = Tento odkaz bol pre porušenie podmienok používania služby deaktivovaný.
+downloadConfirmTitle = Ešte jedna vec
+downloadConfirmDescription = Uistite sa, že naozaj dôverujete odosielateľovi tohto súboru, pretože nemôžeme overiť jeho bezpečnosť.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Dôverujem odosielateľovi tohto súboru
+        [few] Dôverujem odosielateľovi týchto súborov
+       *[other] Dôverujem odosielateľovi týchto súborov
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Nahlásiť tento súbor ako podozrivý
+        [few] Nahlásiť tieto súbory ako podozrivé
+       *[other] Nahlásiť tieto súbory ako podozrivé
+    }
+reportDescription = Pomôžte nám pochopiť, čo sa deje. Čo si myslíte, že s týmito súbormi nie je v poriadku?
+reportUnknownDescription = Otvorte odkaz, ktorý chcete nahlásiť, a kliknite na „{ reportFile }“.
+reportButton = Nahlásiť
+reportReasonMalware = Tieto súbory obsahujú malvér alebo sú súčasťou pshishingového útoku.
+reportReasonPii = Tieto súbory obsahujú moje osobné údaje.
+reportReasonAbuse = Tieto súbory obsahujú nelegálny alebo urážlivý obsah.
+reportReasonCopyright = Ak chcete nahlásiť porušenie autorských práv alebo zneužitie ochranných známok, použite postup popísaný na <a>tejto stránke</a>.
+reportedTitle = Súbory boli nahlásené
+reportedDescription = Ďakujeme vám za nahlásenie týchto súborov.
