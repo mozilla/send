@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Adborth
 importingFile = Mewnforio…
 encryptingFile = Wrthi'n amgryptio…
 decryptingFile = Wrthi'n dadgryptio…
@@ -148,6 +147,7 @@ legalDateStamp = Fersiwn 1.0, dyddiedig Mawrth 12, 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } d { $hours } a { $minutes } m
 addFilesButton = Dewis ffeiliau i'w llwytho i fyny
+trustWarningMessage = Gwnewch yn siŵr eich bod yn ymddiried yn eich derbynnydd pan yn rhannu data sensitif.
 uploadButton = Llwytho i fyny
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Llusgo a gollwng ffeiliau
@@ -189,3 +189,6 @@ shareLinkButton = Rhannu'r ddolen
 shareMessage = Llwytho i lawr “{ $name }” gyda { -send-brand }: rhannu ffeiliau syml a diogel
 trailheadPromo = Mae ffordd o ddiogelu eich preifatrwydd. Ymunwch â Firefox.
 learnMore = Dysgu rhagor.
+downloadFlagged = Mae'r ddolen wedi'i analluogi am fynd yn groes i'r telerau gwasanaeth.
+downloadConfirmTitle = Un peth arall
+downloadConfirmDescription = Gwnewch yn siŵr eich bod yn ymddiried yn y person a anfonodd y ffeil hon atoch oherwydd nid ydym yn gallu gwirio na fydd yn niweidio'ch dyfais.
