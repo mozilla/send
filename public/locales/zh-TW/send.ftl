@@ -146,6 +146,7 @@ trailheadPromo = 有種方法可以保護您的隱私，加入 Firefox。
 learnMore = 了解更多。
 downloadFlagged = 由於違反了服務條款，已停用此鏈結。
 downloadConfirmTitle = 還有一件事
+downloadConfirmDescription = 因為我們無法檢查此檔案是否會傷害您的裝置，請務必確認發送者是否可受信任。
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
 # standard CLDR forms, or only use the form for [other] if both strings should
