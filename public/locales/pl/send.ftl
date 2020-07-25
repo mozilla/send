@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Wyślij opinię
 importingFile = Importowanie…
 encryptingFile = Szyfrowanie…
 decryptingFile = Odszyfrowywanie…
@@ -124,6 +123,7 @@ legalDateStamp = Wersja 1.0 z 12 marca 2019 r.
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } d. { $hours } godz. { $minutes } min
 addFilesButton = Wybierz pliki do wysłania
+trustWarningMessage = Upewnij się, że ufasz odbiorcy, kiedy udostępniasz prywatne dane.
 uploadButton = Wyślij
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Przeciągnij pliki
@@ -162,3 +162,35 @@ shareLinkButton = Udostępnij odnośnik
 shareMessage = Pobierz „{ $name }” za pomocą { -send-brand }: prostego i bezpiecznego udostępniania plików
 trailheadPromo = Jest sposób na ochronę swojej prywatności. Dołącz do Firefoksa.
 learnMore = Więcej informacji.
+downloadFlagged = Ten odnośnik został wyłączony z powodu naruszenia warunków korzystania z usługi.
+downloadConfirmTitle = Jeszcze jedna rzecz
+downloadConfirmDescription = Upewnij się, że ufasz osobie, która wysłała Ci ten plik, ponieważ nie możemy zweryfikować, czy nie spowoduje on uszkodzenia Twojego urządzenia.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Ufam osobie, która wysłała ten plik
+        [few] Ufam osobie, która wysłała te pliki
+       *[many] Ufam osobie, która wysłała te pliki
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Zgłoś ten plik jako podejrzany
+        [few] Zgłoś te pliki jako podejrzane
+       *[many] Zgłoś te pliki jako podejrzane
+    }
+reportDescription = Pomóż nam zrozumieć, co się stało. Co według Ciebie jest nie tak z tymi plikami?
+reportUnknownDescription = Przejdź do adresu odnośnika, który chcesz zgłosić, i kliknij „{ reportFile }”.
+reportButton = Zgłoś
+reportReasonMalware = Te pliki zawierają złośliwe oprogramowanie lub są częścią próby oszustwa.
+reportReasonPii = Te pliki zawierają informacje umożliwiające identyfikację mojej osoby.
+reportReasonAbuse = Te pliki zawierają nielegalne lub obraźliwe treści.
+reportReasonCopyright = Aby zgłosić naruszenie praw autorskich lub znaków towarowych, skorzystaj z procedury opisanej na <a>ten stronie</a>.
+reportedTitle = Pliki zostały zgłoszone
+reportedDescription = Dziękujemy. Otrzymaliśmy Twoje zgłoszenie dotyczące tych plików.
