@@ -192,3 +192,36 @@ learnMore = Dysgu rhagor.
 downloadFlagged = Mae'r ddolen wedi'i analluogi am fynd yn groes i'r telerau gwasanaeth.
 downloadConfirmTitle = Un peth arall
 downloadConfirmDescription = Gwnewch yn siŵr eich bod yn ymddiried yn y person a anfonodd y ffeil hon atoch oherwydd nid ydym yn gallu gwirio na fydd yn niweidio'ch dyfais.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [zero] Rwy'n ymddiried yn y person anfonodd yr { $count } ffeil yma
+        [one] Rwy'n ymddiried yn y person anfonodd yr { $count } ffeil yma
+        [two] Rwy'n ymddiried yn y person anfonodd yr { $count } ffeil yma
+        [few] Rwy'n ymddiried yn y person anfonodd yr { $count } ffeil yma
+        [many] Rwy'n ymddiried yn y person anfonodd yr { $count } ffeil yma
+       *[other] Rwy'n ymddiried yn y person anfonodd yr { $count } ffeil yma
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [zero] Adrodd y { $count } ffeil yma fel rhai amheus
+        [one] Adrodd y { $count } ffeil yma fel un amheus
+        [two] Adrodd y { $count } ffeil yma fel rhai amheus
+        [few] Adrodd y { $count } ffeil yma fel rhai amheus
+        [many] Adrodd y { $count } ffeil yma fel rhai amheus
+       *[other] Adrodd y { $count } ffeil yma fel rhai amheus
+    }
+reportDescription = Helpwch ni i ddeall beth sy'n digwydd. Beth ydych chi'n meddwl sy'n anghywir gyda'r ffeiliau hyn?
+reportUnknownDescription = Ewch i url y ddolen rydych am adrodd amdani a chlicio “{ reportFile }”.
+reportButton = Adrodd
+reportReasonMalware = Mae'r ffeiliau hyn yn cynnwys meddalwedd maleisus neu'n rhan o ymosodiad gwe-rwydo.
+reportReasonPii = Mae'r ffeiliau hyn yn cynnwys gwybodaeth bersonol adnabyddadwy amdanaf i.
+reportReasonAbuse = Mae'r ffeiliau hyn yn cynnwys cynnwys anghyfreithlon neu ymosodol.
+reportReasonCopyright = I adrodd ar dorri hawlfraint neu nod masnach, defnyddiwch y broses sy'n cael ei ddisgrifio yn y <a>dudalen hon</a>.
