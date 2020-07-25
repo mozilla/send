@@ -108,7 +108,7 @@ tooManyArchives =
        *[other] Namás se permiten { $count } archivos
     }
 expiredTitle = Esti enllaz caducó.
-notSupportedDescription = { -send-brand } nun va funcionar con esti restolador. { -send-short-brand } funciona meyor cola versión última de { -firefox } y cola versión actual de la mayoría de restoladores.
+notSupportedDescription = { -send-brand } nun va funcionar con esti restolador. { -send-short-brand } funciona meyor cola última versión de { -firefox } y l'actual de la mayoría de restoladores.
 downloadFirefox = Baxar { -firefox }
 legalTitle = Avisu de privacidá de { -send-short-brand }
 legalDateStamp = Versión 1.0, con data del 12 de marzu de 2019
