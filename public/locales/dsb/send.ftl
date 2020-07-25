@@ -202,5 +202,6 @@ reportButton = K wěsći daś
 reportReasonMalware = Toś te dataje škódnu softwaru wopśimuju abo su źěl napada kšadnjenja datow.
 reportReasonPii = Toś te dataje wósobinske informacije wó mnje, kótarež mógu mě identificěrowaś.
 reportReasonAbuse = Toś te dataje njedowólone abo ranjece wopśimjeśe wopśimuju.
+reportReasonCopyright = Aby pśestupjenje awtorskego pšawa abo pšawa wikowwych markow k wěsći dał, wužywajśo póstupowanje, kótarež se na <a>toś tom boku</a> wopisujo.
 reportedTitle = Dataje k wěsći dane
 reportedDescription = Wjeliki źěk. Smy dostali wašu rozpšawu wó toś tych datajach.
