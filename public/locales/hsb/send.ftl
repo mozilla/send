@@ -131,6 +131,7 @@ legalDateStamp = Wersija 1.0 wot 12. měrca 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Dataje za nahrawanje wubrać
+trustWarningMessage = Wy měł přijimarjej dowěrić, hdyž sensibelne daty dźěliće.
 uploadButton = Nahrać
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Ćehńće a wotkładźće dataje
@@ -170,6 +171,7 @@ shareLinkButton = Wotkaz dźělić
 shareMessage = Sćehńće „{ $name }“ z { -send-brand }: jednore, wěste dźělenje datajow
 trailheadPromo = Je móžnosć, wašu priwatnosć škitać. Přińdźće k Firefox.
 learnMore = Dalše informacije.
+downloadFlagged = Tutón wotkaz je so přestupjenja wužiwanskich wuměnjenjow dla znjemóžnił.
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
 # standard CLDR forms, or only use the form for [other] if both strings should
