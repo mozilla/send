@@ -179,6 +179,7 @@ reportUnknownDescription = Gå til adressen på det link, du vil rapportere, og 
 reportButton = Rapportér
 reportReasonMalware = Disse filer indeholder malware eller er en del af et phishing-angreb.
 reportReasonPii = Disse filer indeholder oplysninger om mig, der er personligt identificerbare.
+reportReasonAbuse = Disse filer indeholder ulovligt eller voldeligt indhold.
 reportReasonCopyright = Hvis du vil rapportere overtrædelse af ophavsrettigheder eller varemærker, skal du bruge processen, som er beskrevet på <a>denne side</a>.
 reportedTitle = Rapporterede filer
 reportedDescription = Tak. Vi har modtaget din rapport om disse filer.
