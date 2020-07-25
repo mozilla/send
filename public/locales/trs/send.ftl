@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Nuguan' tàj doj
 importingFile = Hìaj a'nïn huan'ānj…
 encryptingFile = Nagi'iaj hùij…
 decryptingFile = Hìaj nâ'nïn…
@@ -96,6 +95,12 @@ copyLinkButton = Guxûn lînk
 downloadTitle = Nadunïnj nej archîbo
 downloadFirefox = Nadunïnj { -firefox }
 legalTitle = Nuguan huì nikāj { -send-short-brand }
+uploadButton = Nādusîj
+addPassword = Dugumî da’nga’ huìi man
+emailPlaceholder = Gāchrūn si korreot
+signInOnlyButton = Gāyi'ì sēsiûn
 signOut = Narun' sesiôn
 okButton = Ga'ue
+downloadingTitle = Hìaj nadunīnj man
 shareLinkButton = Duguachîn enlâse
+learnMore = Gāhuin chrūn doj.
