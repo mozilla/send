@@ -223,12 +223,17 @@ export default class User {
           refresh_token: this.refreshToken
         })
       });
-      const auth = await tokenResponse.json();
-      this.info.access_token = auth.access_token;
-      return true;
+      if (tokenResponse.ok) {
+        const auth = await tokenResponse.json();
+        const info = { ...this.info, access_token: auth.access_token };
+        this.info = info;
+        return true;
+      }
     } catch (e) {
-      return false;
+      console.error(e);
     }
+    await this.logout();
+    return false;
   }
 
   async logout() {
@@ -272,29 +277,24 @@ export default class User {
     const key = b64ToArray(this.info.fileListKey);
     const sha = await crypto.subtle.digest('SHA-256', key);
     const kid = arrayToB64(new Uint8Array(sha)).substring(0, 16);
-    async function retry(e) {
-      if (e.message === '401') {
-        const refreshed = await this.refresh();
-        if (refreshed) {
-          return await this.syncFileList();
-        } else {
-          await this.logout();
-          return { incoming: true };
-        }
+    const retry = async () => {
+      const refreshed = await this.refresh();
+      if (refreshed) {
+        return await this.syncFileList();
+      } else {
+        return { incoming: true };
       }
-    }
+    };
     try {
-      const encrypted = await getFileList(
-        this.bearerToken,
-        this.refreshToken,
-        kid
-      );
+      const encrypted = await getFileList(this.bearerToken, kid);
       const decrypted = await streamToArrayBuffer(
         decryptStream(blobStream(encrypted), key)
       );
       list = JSON.parse(textDecoder.decode(decrypted));
     } catch (e) {
-      return retry(e);
+      if (e.message === '401') {
+        return retry(e);
+      }
     }
     changes = await this.storage.merge(list);
     if (!changes.outgoing) {
@@ -307,9 +307,11 @@ export default class User {
       const encrypted = await streamToArrayBuffer(
         encryptStream(blobStream(blob), key)
       );
-      await setFileList(this.bearerToken, this.refreshToken, kid, encrypted);
+      await setFileList(this.bearerToken, kid, encrypted);
     } catch (e) {
-      return retry(e);
+      if (e.message === '401') {
+        return retry(e);
+      }
     }
     return changes;
   }

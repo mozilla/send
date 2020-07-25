@@ -6,7 +6,7 @@ module.exports = function(state, emit) {
       class="absolute inset-0 flex items-center justify-center overflow-hidden z-40 bg-white md:rounded-xl md:my-8 dark:bg-grey-90"
     >
       <div
-        class="h-full w-full max-h-screen absolute top-0 flex items-center justify-center"
+        class="h-full w-full max-h-screen absolute top-0 flex justify-center md:items-center"
       >
         <div class="w-full">
           ${state.modal(state, emit, close)}
