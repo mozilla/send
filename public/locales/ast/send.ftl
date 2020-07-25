@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Comentarios
 importingFile = Importando...
 encryptingFile = Cifrando...
 decryptingFile = Descifrando...
@@ -99,14 +98,14 @@ trySendDescription = Prueba { -send-brand } pa una compartición de ficheros cen
 # count will always be > 10
 tooManyFiles =
     { $count ->
-        [one] Namái pue xubise 1 ficheru al empar.
-       *[other] Namái puen xubise { $count } ficheros al empar.
+        [one] Namás pue xubise 1 ficheru al empar.
+       *[other] Namás puen xubise { $count } ficheros al empar.
     }
 # count will always be > 10
 tooManyArchives =
     { $count ->
-        [one] Namái se permite 1 archivu
-       *[other] Namái se permiten { $count } archivos
+        [one] Namás se permite 1 archivu
+       *[other] Namás se permiten { $count } archivos
     }
 expiredTitle = Esti enllaz caducó.
 notSupportedDescription = { -send-brand } nun va funcionar con esti restolador. { -send-short-brand } funciona meyor cola versión última de { -firefox } y cola versión actual de la mayoría de restoladores.
@@ -144,3 +143,5 @@ downloadingTitle = Baxando
 noStreamsWarning = Esti restolador quiciabes nun seya a descifrar un ficheru d'esti tamañu.
 trailheadPromo = Hai un mou de protexer la to privacidá. Xúnite a Firefox.
 learnMore = Deprender más.
+downloadConfirmTitle = Una cosa más
+reportedDescription = Gracies. Recibiemos l'informe tocante a estos ficheros.
