@@ -182,3 +182,4 @@ reportReasonPii = Estes arquivos contêm informações de identificação pessoa
 reportReasonAbuse = Estes arquivos contêm conteúdo ilegal ou abusivo.
 reportReasonCopyright = Para denunciar violação de direitos autorais ou de marca, siga o procedimento descrito <a>nesta página</a>.
 reportedTitle = Arquivos denunciados
+reportedDescription = Obrigado. Recebemos sua denúncia sobre estes arquivos.
