@@ -156,3 +156,6 @@ shareMessage = הורדת ״{ $name }״ עם { -send-brand }: שיתוף קבצ�
 trailheadPromo = ישנן דרכים נוספות להגן על הפרטיות שלכם. הצטרפו אל Firefox.
 learnMore = מידע נוסף.
 downloadFlagged = קישור זה הושבת מכיוון שהפר את תנאי השירות.
+reportButton = דיווח
+reportReasonCopyright = כדי לדווח על הפרה של זכויות יוצרים או סימני מסחר, יש להשתמש בתהליך המתואר ב<a>דף זה</a>.
+reportedDescription = תודה. קיבלנו את הדיווח שלך על קבצים אלה.
