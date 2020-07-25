@@ -202,5 +202,6 @@ reportButton = Zdźělić
 reportReasonMalware = Tute dataje škódnu softwaru wobsahuja abo su dźěl nadpada kradnjenja datow.
 reportReasonPii = Tute dataje wosobinske informacije wo mni, kotrež móža mje identifikować.
 reportReasonAbuse = Tute dataje njedowoleny abo ranjacy wobsah wobsahuja.
+reportReasonCopyright = Zo byšće zranjenje awtorskeho prawa abo prawa wikowanskich znamjenjow zdźělił, wužiwajće postupowanje, kotrež so na <a>tutej stronje</a> wopisuje.
 reportedTitle = Dataje su zdźělene
 reportedDescription = Wulki dźak. Smy wašu rozprawu wo tutych datajach dóstali.
