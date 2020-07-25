@@ -218,10 +218,12 @@ reportFile =
         [many] Adrodd y { $count } ffeil yma fel rhai amheus
        *[other] Adrodd y { $count } ffeil yma fel rhai amheus
     }
-reportDescription = Helpwch ni i ddeall beth sy'n digwydd. Beth ydych chi'n meddwl sy'n anghywir gyda'r ffeiliau hyn?
+reportDescription = Helpwch ni i ddeall beth sy'n digwydd. Beth ydych chi'n meddwl sydd o'i le gyda'r ffeiliau hyn?
 reportUnknownDescription = Ewch i url y ddolen rydych am adrodd amdani a chlicio “{ reportFile }”.
 reportButton = Adrodd
 reportReasonMalware = Mae'r ffeiliau hyn yn cynnwys meddalwedd maleisus neu'n rhan o ymosodiad gwe-rwydo.
 reportReasonPii = Mae'r ffeiliau hyn yn cynnwys gwybodaeth bersonol adnabyddadwy amdanaf i.
-reportReasonAbuse = Mae'r ffeiliau hyn yn cynnwys cynnwys anghyfreithlon neu ymosodol.
+reportReasonAbuse = Mae'r ffeiliau hyn yn cynnwys deunydd anghyfreithlon neu ymosodol.
 reportReasonCopyright = I adrodd ar dorri hawlfraint neu nod masnach, defnyddiwch y broses sy'n cael ei ddisgrifio yn y <a>dudalen hon</a>.
+reportedTitle = Ffeiliau Adroddwyd Amdanynt
+reportedDescription = Diolch. Rydym wedi derbyn eich adroddiad ar y ffeiliau hyn.
