@@ -50,8 +50,8 @@ export default function(state, emitter) {
     state.user.login(email);
   });
 
-  emitter.on('logout', () => {
-    state.user.logout();
+  emitter.on('logout', async () => {
+    await state.user.logout();
     metrics.loggedOut({ trigger: 'button' });
     emitter.emit('pushState', '/');
   });
@@ -179,6 +179,12 @@ export default function(state, emitter) {
         //cancelled. do nothing
         metrics.cancelledUpload(archive, err.duration);
         render();
+      } else if (err.message === '401') {
+        const refreshed = await state.user.refresh();
+        if (refreshed) {
+          return emitter.emit('upload');
+        }
+        emitter.emit('pushState', '/error');
       } else {
         // eslint-disable-next-line no-console
         console.error(err);

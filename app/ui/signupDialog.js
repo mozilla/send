@@ -53,13 +53,17 @@ module.exports = function(trigger) {
               type="submit"
             />
           </form>
-          <button
-            class="my-3 link-blue font-medium"
-            title="${state.translate('deletePopupCancel')}"
-            onclick=${cancel}
-          >
-            ${state.translate('deletePopupCancel')}
-          </button>
+          ${state.user.loginRequired
+            ? ''
+            : html`
+                <button
+                  class="my-3 link-blue font-medium"
+                  title="${state.translate('deletePopupCancel')}"
+                  onclick=${cancel}
+                >
+                  ${state.translate('deletePopupCancel')}
+                </button>
+              `}
         </section>
       </send-signup-dialog>
     `;

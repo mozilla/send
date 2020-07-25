@@ -54,12 +54,17 @@ class Account extends Component {
   createElement() {
     if (!this.enabled) {
       return html`
-        <div></div>
+        <send-account></send-account>
       `;
     }
     const user = this.state.user;
     const translate = this.state.translate;
     this.setLocal();
+    if (user.loginRequired && !this.local.loggedIn) {
+      return html`
+        <send-account></send-account>
+      `;
+    }
     if (!this.local.loggedIn) {
       return html`
         <send-account>

@@ -13,9 +13,6 @@ function id(user, kid) {
 
 module.exports = {
   async get(req, res) {
-    if (!req.user) {
-      return res.sendStatus(401);
-    }
     const kid = req.params.id;
     try {
       const fileId = id(req.user, kid);
@@ -32,9 +29,6 @@ module.exports = {
   },
 
   async post(req, res) {
-    if (!req.user) {
-      return res.sendStatus(401);
-    }
     const kid = req.params.id;
     try {
       const limiter = new Limiter(1024 * 1024 * 10);

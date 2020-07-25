@@ -45,9 +45,7 @@ function preview(state, emit) {
     return noStreams(state, emit);
   }
   return html`
-    <div
-      class="w-full overflow-hidden md:flex md:flex-row items-stretch md:flex-1"
-    >
+    <div class="w-full md:flex md:flex-row items-stretch md:flex-1">
       <div
         class="px-2 w-full md:px-0 flex-half md:flex md:flex-col mt-12 md:pr-8 pb-4"
       >

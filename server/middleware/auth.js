@@ -70,6 +70,10 @@ module.exports = {
       const token = authHeader.split(' ')[1];
       req.user = await fxa.verify(token);
     }
-    return next();
+    if (req.user) {
+      next();
+    } else {
+      res.sendStatus(401);
+    }
   }
 };

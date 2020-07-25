@@ -181,14 +181,15 @@ describe('Upload / Download flow', function() {
 
   it('can allow multiple downloads', async function() {
     const fs = new FileSender();
-    const file = await fs.upload(archive);
+    const a = new Archive([blob]);
+    a.dlimit = 2;
+    const file = await fs.upload(a);
     const fr = new FileReceiver({
       secretKey: file.toJSON().secretKey,
       id: file.id,
       nonce: file.keychain.nonce,
       requiresPassword: false
     });
-    await file.changeLimit(2);
     await fr.getMetadata();
     await fr.download(options);
     await file.updateDownloadCount();

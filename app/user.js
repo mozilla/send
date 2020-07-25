@@ -76,6 +76,10 @@ export default class User {
     return this.info.access_token;
   }
 
+  get refreshToken() {
+    return this.info.refresh_token;
+  }
+
   get maxSize() {
     return this.loggedIn
       ? this.limits.MAX_FILE_SIZE
@@ -139,6 +143,7 @@ export default class User {
     const code_challenge = await preparePkce(this.storage);
     const options = {
       action: 'email',
+      access_type: 'offline',
       client_id: this.authConfig.client_id,
       code_challenge,
       code_challenge_method: 'S256',
@@ -196,12 +201,64 @@ export default class User {
     });
     const userInfo = await infoResponse.json();
     userInfo.access_token = auth.access_token;
+    userInfo.refresh_token = auth.refresh_token;
     userInfo.fileListKey = await getFileListKey(this.storage, auth.keys_jwe);
     this.info = userInfo;
     this.storage.remove('pkceVerifier');
   }
 
-  logout() {
+  async refresh() {
+    if (!this.refreshToken) {
+      return false;
+    }
+    try {
+      const tokenResponse = await fetch(this.authConfig.token_endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          client_id: this.authConfig.client_id,
+          grant_type: 'refresh_token',
+          refresh_token: this.refreshToken
+        })
+      });
+      const auth = await tokenResponse.json();
+      this.info.access_token = auth.access_token;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  async logout() {
+    try {
+      if (this.refreshToken) {
+        await fetch(this.authConfig.revocation_endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            refresh_token: this.refreshToken
+          })
+        });
+      }
+      if (this.bearerToken) {
+        await fetch(this.authConfig.revocation_endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            token: this.bearerToken
+          })
+        });
+      }
+    } catch (e) {
+      console.error(e);
+      // oh well, we tried
+    }
     this.storage.clearLocalFiles();
     this.info = {};
   }
@@ -215,17 +272,29 @@ export default class User {
     const key = b64ToArray(this.info.fileListKey);
     const sha = await crypto.subtle.digest('SHA-256', key);
     const kid = arrayToB64(new Uint8Array(sha)).substring(0, 16);
+    async function retry(e) {
+      if (e.message === '401') {
+        const refreshed = await this.refresh();
+        if (refreshed) {
+          return await this.syncFileList();
+        } else {
+          await this.logout();
+          return { incoming: true };
+        }
+      }
+    }
     try {
-      const encrypted = await getFileList(this.bearerToken, kid);
+      const encrypted = await getFileList(
+        this.bearerToken,
+        this.refreshToken,
+        kid
+      );
       const decrypted = await streamToArrayBuffer(
         decryptStream(blobStream(encrypted), key)
       );
       list = JSON.parse(textDecoder.decode(decrypted));
     } catch (e) {
-      if (e.message === '401') {
-        this.logout();
-        return { incoming: true };
-      }
+      return retry(e);
     }
     changes = await this.storage.merge(list);
     if (!changes.outgoing) {
@@ -238,9 +307,9 @@ export default class User {
       const encrypted = await streamToArrayBuffer(
         encryptStream(blobStream(blob), key)
       );
-      await setFileList(this.bearerToken, kid, encrypted);
+      await setFileList(this.bearerToken, this.refreshToken, kid, encrypted);
     } catch (e) {
-      //
+      return retry(e);
     }
     return changes;
   }
