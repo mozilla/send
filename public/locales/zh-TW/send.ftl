@@ -107,6 +107,7 @@ legalDateStamp = 1.0 版，2019 年 3 月 12 日生效
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } 天 { $hours } 小時 { $minutes } 分鐘
 addFilesButton = 選擇要上傳的檔案
+trustWarningMessage = 分享敏感資料時，請務必確認收件者是可信任的人。
 uploadButton = 上傳
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = 拖放檔案到此處
@@ -143,7 +144,26 @@ shareLinkButton = 分享鏈結
 shareMessage = 使用 { -send-brand } 下載「{ $name }」: 簡單安全的檔案分享機制
 trailheadPromo = 有種方法可以保護您的隱私，加入 Firefox。
 learnMore = 了解更多。
+downloadFlagged = 由於違反了服務條款，已停用此鏈結。
 downloadConfirmTitle = 還有一件事
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+       *[other] 我信任傳送檔案給我的人
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+       *[other] 回報檔案為可疑檔案
+    }
+reportDescription = 請幫助我們釐清發生了什麼事。您覺得這些檔案有什麼問題？
+reportUnknownDescription = 請到想要回報的鏈結網址點擊「{ reportFile }」。
 reportButton = 回報
 reportReasonMalware = 這些檔案包含惡意軟體，或是釣魚攻擊的一部分。
 reportReasonPii = 這些檔案包含我的個人資訊。
