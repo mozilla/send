@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Tikti
 importingFile = Akter...
 encryptingFile = Awgelhen...
 decryptingFile = Azmek...
@@ -116,6 +115,7 @@ legalDateStamp = Lqem  1.0, azemz n 12 Meɣres 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } ass { $hours } srg { $minutes } tsd
 addFilesButton = Fren ifuyla ad tessaliḍ
+trustWarningMessage = Ḍmen d akken tumneḍ anermis ticki tebḍiḍ isefka n tbadnit.
 uploadButton = Sali
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Ẓuɣer sakin sers ifuyla
@@ -153,3 +153,24 @@ shareLinkButton = Bḍu aseɣwen
 shareMessage = Sider "{ $name }" s { -send-brand }: d fessas, d aɣelsan i beṭṭu n yifuyla.
 trailheadPromo = Yella wallal n ummesten n tudert-ik tusligt. Ddu ɣer Firefox.
 learnMore = Issin ugar.
+downloadFlagged = Aseɣwen-a yensa acku ur iquder ara tiwtilin n useqdec.
+downloadConfirmTitle = Taɣawsa-nniḍen
+downloadConfirmDescription = Ḍmen d akken tumneḍ amdan i ak-d-yuznen afaylu-a acku ur nezmir ara ad nwali ma yella ur iṭuṛṛu ara ibenk-ik.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Umneɣ amdan i yi-d-yuznen afaylu-a.
+       *[other] Umneɣ amdan i yi-d-yuznen ifuyla-a.
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Mmel-d afaylu-a ma tkukraḍ
+       *[other] Mmel-d ifuyla-a ma tkukraḍ
+    }
