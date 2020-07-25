@@ -151,6 +151,7 @@ shareMessage = 使用 { -send-brand } 下载“{ $name }”：简单、安全的
 trailheadPromo = 捍卫隐私不是幻想。加入 Firefox 一同抗争。
 learnMore = 详细了解。
 downloadFlagged = 由于违反服务条款，此链接已被禁用。
+downloadConfirmTitle = 除此之外
 downloadConfirmDescription = 请确保您信任发送此文件的人，因为我们无法验证该文件是否会损坏您的设备。
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
@@ -171,9 +172,11 @@ reportFile =
        *[other] 举报这些可疑文件
     }
 reportDescription = 帮助我们了解发生了什么。您认为这些文件存在什么问题？
+reportUnknownDescription = 请转至您要举报的链接 URL，然后点击 “{ reportFile }”。
 reportButton = 举报
 reportReasonMalware = 这些文件包含恶意软件或是网络钓鱼攻击的一环。
 reportReasonPii = 这些文件包含我的个人身份信息。
 reportReasonAbuse = 这些文件包含非法或滥用内容。
 reportReasonCopyright = 要举报版权或商标侵权，请按照<a>此页面</a>中所述步骤。
+reportedTitle = 文件已举报
 reportedDescription = 感谢，我们已收到您关于这些文件的举报。
