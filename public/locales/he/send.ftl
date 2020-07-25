@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = משוב
 importingFile = מתבצע ייבוא…
 encryptingFile = מתבצעת הצפנה...
 decryptingFile = מתבצע פענוח...
@@ -156,3 +155,4 @@ shareLinkButton = שיתוף קישור
 shareMessage = הורדת ״{ $name }״ עם { -send-brand }: שיתוף קבצים פשוט ובטוח
 trailheadPromo = ישנן דרכים נוספות להגן על הפרטיות שלכם. הצטרפו אל Firefox.
 learnMore = מידע נוסף.
+downloadFlagged = קישור זה הושבת מכיוון שהפר את תנאי השירות.
