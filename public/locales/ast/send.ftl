@@ -115,6 +115,7 @@ legalDateStamp = Versión 1.0, con data del 12 de marzu de 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Esbillar los ficheros a unviar
+trustWarningMessage = Asegúrate de que t'enfotes nel destinatariu al compartir datos sensibles.
 uploadButton = Xubir
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Arrastra y suelta ficheros
