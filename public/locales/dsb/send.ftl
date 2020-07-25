@@ -173,6 +173,7 @@ trailheadPromo = Jo móžnosć, wašu priwatnosć šćitaś. Pśiźćo k Firefox
 learnMore = Dalšne informacije.
 downloadFlagged = Toś ten wótkaz jo se znjemóžnił pśestupjenja wužywańskich wuměnjenjow dla.
 downloadConfirmTitle = Jadna wěc hyšći
+downloadConfirmDescription = Wy měł wótpósłarjeju toś teje dataje dowěriś, dokulaž njamóžomy pśeglědaś, lěc to waš rěd kazy.
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
 # standard CLDR forms, or only use the form for [other] if both strings should
@@ -198,6 +199,8 @@ reportFile =
 reportDescription = Pomagajśo nam rozumić, co se stawa. Co pó wašom měnjenju njejo w pórědku z toś tymi datajami?
 reportUnknownDescription = Źiśo pšosym k URL wótkaza, kótaryž cośo k wěsći daś a klikniśo na „{ reportFile }“.
 reportButton = K wěsći daś
+reportReasonMalware = Toś te dataje škódnu softwaru wopśimuju abo su źěl napada kšadnjenja datow.
+reportReasonPii = Toś te dataje wósobinske informacije wó mnje, kótarež mógu mě identificěrowaś.
 reportReasonAbuse = Toś te dataje njedowólone abo ranjece wopśimjeśe wopśimuju.
 reportedTitle = Dataje k wěsći dane
 reportedDescription = Wjeliki źěk. Smy dostali wašu rozpšawu wó toś tych datajach.
