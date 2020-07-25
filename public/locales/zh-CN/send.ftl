@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = 反馈
 importingFile = 正在导入…
 encryptingFile = 正在加密…
 decryptingFile = 正在解密…
@@ -113,6 +112,7 @@ legalDateStamp = 版本 1.0，于 2019年3月12日
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } 天 { $hours } 小时 { $minutes } 分钟
 addFilesButton = 选择要上传的文件
+trustWarningMessage = 分享敏感数据时，请确保您信任接收人。
 uploadButton = 上传
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = 拖放文件
@@ -150,3 +150,15 @@ shareLinkButton = 分享链接
 shareMessage = 使用 { -send-brand } 下载“{ $name }”：简单、安全的文件分享服务
 trailheadPromo = 捍卫隐私不是幻想。加入 Firefox 一同抗争。
 learnMore = 详细了解。
+downloadFlagged = 由于违反服务条款，此链接已被禁用。
+downloadConfirmDescription = 请确保您信任发送此文件的人，因为我们无法验证该文件是否会损坏您的设备。
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] 我信任发送此文件的人
+       *[other] 我信任发送这些文件的人
+    }
+reportReasonPii = 这些文件包含我的个人身份信息。
