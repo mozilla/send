@@ -161,4 +161,16 @@ downloadTrustCheckbox =
         [one] Bu dosyayı gönderen kişiye güveniyorum
        *[other] Bu dosyaları gönderen kişiye güveniyorum
     }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Bu dosyanın şüpheli olduğunu bildir
+       *[other] Bu dosyaların şüpheli olduğunu bildir
+    }
+reportDescription = Meseleyi anlamamıza yardımcı olun. Bu dosyalardaki sorun nedir?
+reportUnknownDescription = Lütfen rapor etmek istediğiniz bağlantının adresine girip “{ reportFile }” bağlantısına tıklayın.
+reportButton = Şikâyet et
 reportedDescription = Teşekkür ederiz. Bu dosyalarla ilgili şikâyetinizi aldık.
