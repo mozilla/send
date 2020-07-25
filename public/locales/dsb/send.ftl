@@ -131,6 +131,7 @@ legalDateStamp = Wersija 1.0 wót 12. měrca 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }ź { $hours }g { $minutes }m
 addFilesButton = Dataje za nagrawanje wubraś
+trustWarningMessage = Wy měł dostawarjeju dowěriś, gaž sensibelne daty źěliśo.
 uploadButton = Nagraś
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Śěgniśo a wótpołožćo dataje
@@ -170,6 +171,7 @@ shareLinkButton = Wótkaz źěliś
 shareMessage = Ześěgniśo „{ $name }“ z { -send-brand }: jadnore, wěste źělenje datajow
 trailheadPromo = Jo móžnosć, wašu priwatnosć šćitaś. Pśiźćo k Firefox.
 learnMore = Dalšne informacije.
+downloadFlagged = Toś ten wótkaz jo se znjemóžnił pśestupjenja wužywańskich wuměnjenjow dla.
 downloadConfirmTitle = Jadna wěc hyšći
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
@@ -182,8 +184,20 @@ downloadTrustCheckbox =
         [few] Dowěrim wósobje, kótaraž jo pósłała toś te dataje
        *[other] Dowěrim wósobje, kótaraž jo pósłała toś te dataje
     }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Toś tu dataju ako suspektnu k wěsći daś
+        [two] Toś tej dataji ako suspektnej k wěsći daś
+        [few] Toś te dataje ako suspektne k wěsći daś
+       *[other] Toś te dataje ako suspektne k wěsći daś
+    }
 reportDescription = Pomagajśo nam rozumić, co se stawa. Co pó wašom měnjenju njejo w pórědku z toś tymi datajami?
 reportUnknownDescription = Źiśo pšosym k URL wótkaza, kótaryž cośo k wěsći daś a klikniśo na „{ reportFile }“.
 reportButton = K wěsći daś
+reportReasonAbuse = Toś te dataje njedowólone abo ranjece wopśimjeśe wopśimuju.
 reportedTitle = Dataje k wěsći dane
 reportedDescription = Wjeliki źěk. Smy dostali wašu rozpšawu wó toś tych datajach.
