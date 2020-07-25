@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Komentar
 importingFile = Importěrujo se...
 encryptingFile = Koděrujo se...
 decryptingFile = Dešifrěrujo se...
@@ -171,3 +170,20 @@ shareLinkButton = Wótkaz źěliś
 shareMessage = Ześěgniśo „{ $name }“ z { -send-brand }: jadnore, wěste źělenje datajow
 trailheadPromo = Jo móžnosć, wašu priwatnosć šćitaś. Pśiźćo k Firefox.
 learnMore = Dalšne informacije.
+downloadConfirmTitle = Jadna wěc hyšći
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Dowěrim wósobje, kótaraž jo pósłała toś tu dataju
+        [two] Dowěrim wósobje, kótaraž jo pósłała toś tej dataji
+        [few] Dowěrim wósobje, kótaraž jo pósłała toś te dataje
+       *[other] Dowěrim wósobje, kótaraž jo pósłała toś te dataje
+    }
+reportDescription = Pomagajśo nam rozumić, co se stawa. Co pó wašom měnjenju njejo w pórědku z toś tymi datajami?
+reportUnknownDescription = Źiśo pšosym k URL wótkaza, kótaryž cośo k wěsći daś a klikniśo na „{ reportFile }“.
+reportButton = K wěsći daś
+reportedTitle = Dataje k wěsći dane
+reportedDescription = Wjeliki źěk. Smy dostali wašu rozpšawu wó toś tych datajach.
