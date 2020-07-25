@@ -155,3 +155,25 @@ trailheadPromo = Existe um meio de proteger sua privacidade. Use o Firefox.
 learnMore = Saiba mais.
 downloadFlagged = Este link foi desativado por violar os termos do serviço.
 downloadConfirmTitle = Mais uma coisa
+downloadConfirmDescription = Certifique-se de que confia na pessoa que enviou este arquivo, pois não podemos conferir se não prejudicará seu dispositivo.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Eu confio na pessoa que enviou este arquivo
+       *[other] Eu confio na pessoa que enviou estes arquivos
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Denunciar este arquivo como suspeito
+       *[other] Denunciar estes arquivos como suspeitos
+    }
+reportDescription = Ajude-nos a entender o que está acontecendo. O que você acha que há de errado com estes arquivos?
+reportUnknownDescription = Acesse o endereço do link que deseja denunciar e clique em “{ reportFile }”.
+reportButton = Denunciar
