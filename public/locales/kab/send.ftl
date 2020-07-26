@@ -181,5 +181,5 @@ reportReasonMalware = Ifuyla-a deg-sen yir iseɣzanen neɣ d aḥric seg uẓdam
 reportReasonPii = Ifuyla-a deg-sen talɣut tudmawant yettwassnen i yi-yeɛnan.
 reportReasonAbuse = Ifuyla-a deg-sen agbur arusḍif neɣ anaffal.
 reportReasonCopyright = I ucegger n tkerḍa n yizerfan n umeskar neɣ n tecraḍ, seqdec asesfer i d-yettwagelmen ɣef <a>usebter-a</a>.
-reportedTitle = Ifuyla i d-yettwagebren
+reportedTitle = Aneqqis ɣef ifuyla ittwazen
 reportedDescription = Tanemmirt. Nermes-d aneqqis-ik·im ɣef yifuyla-a.
