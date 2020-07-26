@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Comentaris
 importingFile = Importacion…
 encryptingFile = Chiframent…
 decryptingFile = Deschiframent…
@@ -116,6 +115,7 @@ legalDateStamp = Version 1.0 del 12 de març de 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } j { $hours } h { $minutes } min
 addFilesButton = Seleccionatz los fichièrs de mandar
+trustWarningMessage = Asseguratz-vos que vos fisatz del destinari quand partejatz de donadas confidencialas.
 uploadButton = Enviar
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Lisatz-depausatz de fichièrs
@@ -153,3 +153,27 @@ shareLinkButton = Partejar lo ligam
 shareMessage = Telecargar « { $name } » amb { -send-brand } : un biais simple e segur de partejar de fichièrs.
 trailheadPromo = Existís un biais de protegir vòstra vida privada. Rejonhètz Firefox.
 learnMore = Ne saber mai.
+downloadFlagged = Aqueste ligam foguèt desactivat a causa d’una infraccions a las condicions d’utilizacion.
+downloadConfirmTitle = Un quicomet mai
+downloadConfirmDescription = Asseguratz-vos que la persona que vos mandèt aqueste fichièr perque podèm pas verificar qu’es pas malfasent per vòstre periferic
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Me fisi de la persona que me mandèt lo fichièr
+       *[other] Me fisi de la persona que me mandèt los fichièrs
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Senhalar aqueste fichièr coma suspècte
+       *[other] Senhalar aquestes fichièrs coma suspèctes
+    }
+reportDescription = Ajudatz-nos a comprendre qué passa. Qué vos fa pensar que quicòm truca amb aquestes fichièrs ?
+reportButton = Senhalar
+reportedTitle = Fichièrs senhalats
