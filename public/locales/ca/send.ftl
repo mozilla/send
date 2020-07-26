@@ -153,3 +153,27 @@ shareLinkButton = Comparteix l'enllaç
 shareMessage = Baixeu «{ $name }» amb el { -send-brand }: compartició de fitxers senzilla i segura
 trailheadPromo = Hi ha una manera de protegir la vostra privadesa. Uniu-vos al Firefox.
 learnMore = Més informació.
+downloadFlagged = Aquest enllaç s'ha desactivat per infringir les condicions del servei.
+downloadConfirmTitle = Una cosa més
+downloadConfirmDescription = Assegureu-vos que confieu en la persona que us ha enviat aquest fitxer, perquè nosaltres no podem verificar que no malmeti el vostre dispositiu.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Confio en la persona que ha enviat aquest fitxer
+       *[other] Confio en la persona que ha enviat aquests fitxers
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Informa que aquest fitxer és sospitós
+       *[other] Informa que aquests fitxers són sospitos
+    }
+reportDescription = Ajudeu-nos a entendre què passa. Quin problema creieu que tenen aquests fitxers?
+reportUnknownDescription = Aneu a l'URL de l'enllaç sobre el qual voleu informar i feu clic a «{ reportFile }».
+reportButton = Informa
