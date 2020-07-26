@@ -115,6 +115,7 @@ legalDateStamp = Version 1.0, daterad den 12 mars 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }t { $minutes }m
 addFilesButton = Välj filer som ska laddas upp
+trustWarningMessage = Se till att du litar på din mottagare när du delar känslig information.
 uploadButton = Ladda upp
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Dra och släpp filer
@@ -152,6 +153,9 @@ shareLinkButton = Dela länk
 shareMessage = Ladda ner "{ $name }" med { -send-brand }: enkel, säker fildelning
 trailheadPromo = Det finns ett sätt att skydda din integritet. Gå med i Firefox.
 learnMore = Läs mer.
+downloadFlagged = Den här länken har inaktiverats pga brott mot användarvillkoren.
+downloadConfirmTitle = En sak till
+downloadConfirmDescription = Se till att du litar på personen som skickade dig den här filen eftersom vi inte kan verifiera att den inte skadar din enhet.
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
 # standard CLDR forms, or only use the form for [other] if both strings should
