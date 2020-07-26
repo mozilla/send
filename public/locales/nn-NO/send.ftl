@@ -155,6 +155,27 @@ trailheadPromo = Det finst ein måte å ta vare på personvernet ditt. Ver med F
 learnMore = Les meir.
 downloadFlagged = Denne koplinga er deaktivert på grunn av brot på vilkåra for tenesta.
 downloadConfirmTitle = Ein ting til
+downloadConfirmDescription = Forsikre deg om at du stolar på personen som sende deg denne fila fordi, vi ikkje kan stadfeste at ho ikkje vil skade eininga di.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Eg stolar på personen som sende denne fila
+       *[other] Eg stolar på personen som sende desse filene
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Rapporter denne fila som mistenkjeleg
+       *[other] Rapporter desse filene som mistenkjelege
+    }
+reportDescription = Hjelp oss å forstå kva som skjer. Kva trur du er gale med desse filene?
+reportUnknownDescription = Gå til lenkeadressa du ønskjer å rapportere, og klikk «{ reportFile }».
 reportButton = Rapporter
 reportReasonMalware = Desse filene inneheld skadeleg programvare eller er del av eit nettfiskingsangrep (phishing-angrep).
 reportReasonPii = Desse filene inneheld personleg identifiserbar informasjon om meg.
