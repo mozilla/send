@@ -175,5 +175,7 @@ reportFile =
        *[other] Senhalar aquestes fichièrs coma suspèctes
     }
 reportDescription = Ajudatz-nos a comprendre qué passa. Qué vos fa pensar que quicòm truca amb aquestes fichièrs ?
+reportUnknownDescription = Anatz a l’URL del ligam que volètz senhalar e clicatz « { reportFile } ».
 reportButton = Senhalar
 reportedTitle = Fichièrs senhalats
+reportedDescription = Mercés. Avèm recebut vòstre senhalament d’aquestes fichièrs.
