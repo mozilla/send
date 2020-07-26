@@ -174,3 +174,4 @@ reportFile =
         [one] Mmel-d afaylu-a ma tkukraḍ
        *[other] Mmel-d ifuyla-a ma tkukraḍ
     }
+reportButton = Aneqqis
