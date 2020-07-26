@@ -178,6 +178,7 @@ reportDescription = Mudd-aɣ-d afus n tallalt akken ad negzu acu i la iḍerrun.
 reportUnknownDescription = Ttxil-k·m rzu ɣer url n useɣwen i tebɣiḍ ad t-tceggreḍ syen sit ɣef “{ reportFile }”.
 reportButton = Aneqqis
 reportReasonMalware = Ifuyla-a deg-sen yir iseɣzanen neɣ d aḥric seg uẓdam n ṣṣyada.
+reportReasonPii = Ifuyla-a deg-sen talɣut tudmawant yettwassnen i yi-yeɛnan.
 reportReasonAbuse = Ifuyla-a deg-sen agbur arusḍif neɣ anaffal.
 reportReasonCopyright = I ucegger n tkerḍa n yizerfan n umeskar neɣ n tecraḍ, seqdec asesfer i d-yettwagelmen ɣef <a>usebter-a</a>.
 reportedTitle = Ifuyla i d-yettwagebren
