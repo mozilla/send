@@ -174,6 +174,10 @@ reportFile =
         [one] Rapportera denna filen som misstänkt
        *[other] Rapportera dessa filer som misstänkta
     }
+reportDescription = Hjälp oss att förstå vad som händer. Vad tycker du är fel med dessa filer?
 reportButton = Rapportera
+reportReasonMalware = Dessa filer innehåller skadlig programvara eller är del av en phishing-attack.
 reportReasonPii = Dessa filer innehåller personlig identifierbar information om mig.
+reportReasonAbuse = Dessa filer innehåller olagligt eller våldsamt innehåll.
 reportedTitle = Rapporterade filer
+reportedDescription = Tack. Vi har fått din rapport om dessa filer.
