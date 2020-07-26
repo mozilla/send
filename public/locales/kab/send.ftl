@@ -175,3 +175,5 @@ reportFile =
        *[other] Mmel-d ifuyla-a ma tkukraḍ
     }
 reportButton = Aneqqis
+reportReasonCopyright = I ucegger n tkerḍa n yizerfan n umeskar neɣ n tecraḍ, seqdec asesfer i d-yettwagelmen ɣef <a>usebter-a</a>.
+reportedTitle = Ifuyla i d-yettwagebren
