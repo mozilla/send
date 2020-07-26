@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Tilbakemelding
 importingFile = Importerer…
 encryptingFile = Krypterer…
 decryptingFile = Dekrypterer...
@@ -116,6 +115,7 @@ legalDateStamp = Versjon 1.0, datert den 12 mars 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }t { $minutes }m
 addFilesButton = Vel filer som skal lastast opp
+trustWarningMessage = Forsikre deg om at du stolar på mottakaren din når du deler sensitive data.
 uploadButton = Last opp
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Dra og slepp filer
@@ -153,3 +153,5 @@ shareLinkButton = Del lenke
 shareMessage = Last ned "{ $name }" med { -send-brand }: enkel, trygg fildelning
 trailheadPromo = Det finst ein måte å ta vare på personvernet ditt. Ver med Firefox på ferda.
 learnMore = Les meir.
+downloadFlagged = Denne koplinga er deaktivert på grunn av brot på vilkåra for tenesta.
+reportedTitle = Filer rapportert
