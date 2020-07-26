@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = フィードバック
 importingFile = インポート中...
 encryptingFile = 暗号化中...
 decryptingFile = 復号化中...
@@ -108,6 +107,7 @@ legalDateStamp = バージョン 1.0, 2019年3月12日時点
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } 日 { $hours } 時 { $minutes } 分
 addFilesButton = アップロードするファイルを選択
+trustWarningMessage = 機密データを共有する場合は、受信者が信頼できる相手であることを確認してください。
 uploadButton = アップロード
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = ファイルをドラッグ＆ドロップ
@@ -144,3 +144,4 @@ shareLinkButton = リンクを共有
 shareMessage = { -send-brand } で "{ $name }" をダウンロード: シンプルで安全なファイル共有
 trailheadPromo = プライバシーを保護する方法があります。Firefox を試してください。
 learnMore = 詳細情報
+downloadFlagged = サービス利用規約に違反しているため、このリンクは無効になっています。
