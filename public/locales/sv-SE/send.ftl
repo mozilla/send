@@ -175,9 +175,11 @@ reportFile =
        *[other] Rapportera dessa filer som misstänkta
     }
 reportDescription = Hjälp oss att förstå vad som händer. Vad tycker du är fel med dessa filer?
+reportUnknownDescription = Gå till den url till länken du vill rapportera och klicka på "{ reportFile }".
 reportButton = Rapportera
-reportReasonMalware = Dessa filer innehåller skadlig programvara eller är del av en phishing-attack.
+reportReasonMalware = Dessa filer innehåller skadlig kod eller är en del av en nätfiskeattack.
 reportReasonPii = Dessa filer innehåller personlig identifierbar information om mig.
 reportReasonAbuse = Dessa filer innehåller olagligt eller våldsamt innehåll.
+reportReasonCopyright = För att rapportera intrång i upphovsrätt eller varumärke, använd processen som beskrivs på <a>den här sidan</a>.
 reportedTitle = Rapporterade filer
 reportedDescription = Tack. Vi har fått din rapport om dessa filer.
