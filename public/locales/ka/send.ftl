@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = გამოხმაურება
 importingFile = გადმოტანა...
 encryptingFile = დაშიფვრა...
 decryptingFile = გაშიფვრა...
@@ -116,6 +115,7 @@ legalDateStamp = ვერსია 1.0, დათარიღებული 12
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } დღე { $hours } სთ { $minutes } წთ
 addFilesButton = ფაილების შერჩევა ასატვირთად
+trustWarningMessage = დარწმუნდით, რომ ენდობით მიმღებს, სანამ მნიშვნელოვან მონაცემებს გაუზიარებთ.
 uploadButton = ატვირთვა
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = გადმოიტანეთ და მოათავსეთ ფაილები
@@ -153,3 +153,5 @@ shareLinkButton = ბმულის გაზიარება
 shareMessage = ჩამოტვირთეთ „{ $name }“ { -send-brand }-ით: ფაილების გაზიარება მარტივად, უსაფრთხოდ
 trailheadPromo = გზა, თქვენი პირადულობის დასაცავად. შემოუერთდით Firefox-ს.
 learnMore = იხილეთ ვრცლად.
+downloadFlagged = ბმული გაუქმებულია, მომსახურების პირობების დარღვევის გამო.
+downloadConfirmTitle = კიდევ ერთი რამ
