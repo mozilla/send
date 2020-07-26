@@ -177,6 +177,7 @@ reportFile =
 reportDescription = Mudd-aɣ-d afus n tallalt akken ad negzu acu i la iḍerrun. Acu twalaḍ cwiya-t kan deg yifuyla-a?
 reportUnknownDescription = Ttxil-k·m rzu ɣer url n useɣwen i tebɣiḍ ad t-tceggreḍ syen sit ɣef “{ reportFile }”.
 reportButton = Aneqqis
+reportReasonMalware = Ifuyla-a deg-sen yir iseɣzanen neɣ d aḥric seg uẓdam n ṣṣyada.
 reportReasonCopyright = I ucegger n tkerḍa n yizerfan n umeskar neɣ n tecraḍ, seqdec asesfer i d-yettwagelmen ɣef <a>usebter-a</a>.
 reportedTitle = Ifuyla i d-yettwagebren
 reportedDescription = Tanemmirt. Nermes-d aneqqis-ik·im ɣef yifuyla-a.
