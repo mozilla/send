@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Comentaris
 importingFile = S'està important…
 encryptingFile = S'està xifrant…
 decryptingFile = S'està desxifrant…
@@ -116,6 +115,7 @@ legalDateStamp = Versió 1.0, amb data del 12 de març de 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } d { $hours } h { $minutes } min
 addFilesButton = Seleccioneu els fitxers que voleu pujar
+trustWarningMessage = Assegureu-vos que confieu en el destinatari quan compartiu dades confidencials.
 uploadButton = Puja
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Arrossegueu i deixeu anar els fitxers
