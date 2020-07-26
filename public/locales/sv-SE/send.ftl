@@ -171,3 +171,5 @@ reportFile =
        *[other] Rapportera dessa filer som misstänkta
     }
 reportButton = Rapportera
+reportReasonPii = Dessa filer innehåller personlig identifierbar information om mig.
+reportedTitle = Rapporterade filer
