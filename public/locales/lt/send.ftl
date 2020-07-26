@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Pateikti atsiliepimą
 importingFile = Importuojama…
 encryptingFile = Šifruojama…
 decryptingFile = Iššifruojama…
@@ -132,6 +131,7 @@ legalDateStamp = 1.0 versija, 2019 m. kovo 12 d
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } d. { $hours } val. { $minutes } min.
 addFilesButton = Rinktis failus įkėlimui
+trustWarningMessage = Dalindamiesi svarbiais duomenimis įsitikinkite, kad pasitikite gavėju.
 uploadButton = Įkelti
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Užtempkite ir numeskite failus čia
@@ -170,3 +170,5 @@ shareLinkButton = Dalintis saitu
 shareMessage = Atsisiųskite „{ $name }“ su „{ -send-brand }“: paprastas, saugus dalinimasis failais
 trailheadPromo = Yra būdas apsaugoti jūsų privatumą. Naudokite „Firefox“.
 learnMore = Sužinoti daugiau.
+downloadFlagged = Šis saitas panaikintas dėl paslaugos teikimo nuostatų pažeidimo.
+downloadConfirmTitle = Dar vienas dalykas
