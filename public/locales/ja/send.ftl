@@ -145,3 +145,22 @@ shareMessage = { -send-brand } で "{ $name }" をダウンロード: シンプ�
 trailheadPromo = プライバシーを保護する方法があります。Firefox を試してください。
 learnMore = 詳細情報
 downloadFlagged = サービス利用規約に違反しているため、このリンクは無効になっています。
+downloadConfirmDescription = このファイルが端末に悪影響を及ぼさないことを確かめられないため、送信者が信頼できる相手であることを確認してください。
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+       *[other] ファイルの送信者を信頼します
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+       *[other] 疑わしいファイルとして報告する
+    }
+reportDescription = 詳しく調べるためにお知らせください。これらのファイルの何が問題だと思われますか？
+reportUnknownDescription = 報告リンクの URL にアクセスし、“{ reportFile }” wo
