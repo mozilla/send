@@ -155,3 +155,30 @@ trailheadPromo = გზა, თქვენი პირადულობის
 learnMore = იხილეთ ვრცლად.
 downloadFlagged = ბმული გაუქმებულია, მომსახურების პირობების დარღვევის გამო.
 downloadConfirmTitle = კიდევ ერთი რამ
+downloadConfirmDescription = დარწმუნდით, რომ სანდოა პირი, ვინც ეს ფაილი გამოგიგზავნათ, რადგან ჩვენ ვერ დაგპირდებით, რომ არ დააზიანებს თქვენს მოწყობილობას.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] ვენდობი პირს, რომელმაც ეს ფაილი გამომიგზავნა
+       *[other] ვენდობი პირს, რომელმაც ეს ფაილები გამომიგზავნა
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] მოხსენება, საეჭვო ფაილზე
+       *[other] მოხსენება, საეჭვო ფაილებზე
+    }
+reportDescription = დაგვეხმარეთ გარკვევაში. თქვენი აზრით, რა ფაილებია?
+reportUnknownDescription = გთხოვთ გადახვიდეთ ბმულზე, რომლზეც გსურთ გვაცნობოთ და დაწკაპეთ „{ reportFile }“.
+reportButton = მოხსენება
+reportReasonMalware = ეს ფაილები შეიცავს მავნე კოდს ან თაღლითური შეტევის ნაწილია.
+reportReasonPii = ეს ფაილები შეიცავს ვინაობის ამსახველ მასალას ჩემზე.
+reportReasonAbuse = ეს ფაილები შეიცავს უკანონო ან შეურაცხმყოფელ მასალას.
+reportedTitle = ფაილებზე მოხსენება გაგზავნილია
+reportedDescription = გმადლობთ. მივიღეთ თქვენი მოხსენება, ამ ფაილებზე.
