@@ -123,6 +123,7 @@ legalDateStamp = Versiunea 1.0 din data de 12 martie 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }z { $hours }h { $minutes }m
 addFilesButton = Selectează fișierele pentru încărcare
+trustWarningMessage = Asigură-te că destinatarul este de încredere când partajezi date sensibile.
 uploadButton = Încarcă
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Trage și plasează fișierele
@@ -161,3 +162,35 @@ shareLinkButton = Partajează linkul
 shareMessage = Descarcă „{ $name }” cu { -send-brand }: partajare simplă și sigură a fișierelor
 trailheadPromo = Există o modalitate de a-ți proteja viața privată. Alătură-te Firefox.
 learnMore = Află mai multe.
+downloadFlagged = Acest link a fost dezactivat pentru că încalcă termenii de utilizare a serviciului.
+downloadConfirmTitle = Încă ceva
+downloadConfirmDescription = Asigură-te că persoana care ți-a trimis acest fișier este de încredere pentru că noi nu putem verifica dacă nu cumva îți va afecta dispozitivul.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Am încredere în persoana care a trimis acest fișier
+        [few] Am încredere în persoana care a trimis aceste fișiere
+       *[other] Am încredere în persoana care a trimis aceste fișiere
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Raportează acest fișier ca suspect
+        [few] Raportează aceste fișiere ca suspecte
+       *[other] Raportează aceste fișiere ca suspecte
+    }
+reportDescription = Ajută-ne să înțelegem ce se întâmplă. Ce crezi că e în neregulă cu aceste fișiere?
+reportUnknownDescription = Intră pe URL-ul linkului pe care vrei să îl raportezi și dă clic pe „{ reportFile }”.
+reportButton = Raportează
+reportReasonMalware = Aceste fișiere conțin cod rău-intenționat sau fac parte dintr-un atac de înșelăciune.
+reportReasonPii = Aceste fișiere conțin date cu caracter personal identificabile despre mine.
+reportReasonAbuse = Aceste fișiere au un conținut ilegal sau ofensator.
+reportReasonCopyright = Pentru a raporta o încălcare a drepturilor de reproducere sau a mărcilor comerciale, folosește procedura descrisă pe <a>această pagină</a>.
+reportedTitle = Fișiere raportate
+reportedDescription = Îți mulțumim. Am primit raportarea ta despre aceste fișiere.
