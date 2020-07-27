@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Feedback
 importingFile = Importeren…
 encryptingFile = Versleutelen…
 decryptingFile = Ontcijferen…
@@ -116,6 +115,7 @@ legalDateStamp = Versie 1.0 d.d. 12 maart 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }u { $minutes }m
 addFilesButton = Selecteer te uploaden bestanden
+trustWarningMessage = Zorg ervoor dat u uw ontvanger vertrouwt wanneer u gevoelige gegevens deelt.
 uploadButton = Uploaden
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Versleep bestanden
@@ -153,3 +153,33 @@ shareLinkButton = Koppeling delen
 shareMessage = Download ‘{ $name }’ met { -send-brand }: eenvoudig, veilig bestanden delen
 trailheadPromo = Er is een manier om uw privacy te beschermen. Doe mee met Firefox.
 learnMore = Meer info.
+downloadFlagged = Deze koppeling is uitgeschakeld wegens schending van de servicevoorwaarden.
+downloadConfirmTitle = Nog een ding
+downloadConfirmDescription = Zorg ervoor dat u de persoon vertrouwt die u dit bestand heeft gestuurd, omdat we niet kunnen verifiëren dat het uw apparaat niet zal schaden.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Ik vertrouw de persoon die dit bestand heeft verzonden
+       *[other] Ik vertrouw de persoon die deze bestanden heeft verzonden
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Dit bestand als verdacht rapporteren
+       *[other] Deze bestanden als verdacht rapporteren
+    }
+reportDescription = Help ons te begrijpen wat er aan de hand is. Wat is er volgens u mis met deze bestanden?
+reportUnknownDescription = Ga naar de URL van de koppeling die u wilt melden en klik op ‘{ reportFile }’.
+reportButton = Rapporteren
+reportReasonMalware = Deze bestanden bevatten malware of zijn onderdeel van een phishingaanval.
+reportReasonPii = Deze bestanden bevatten persoonlijk identificeerbare informatie over mij.
+reportReasonAbuse = Deze bestanden bevatten illegale of beledigende inhoud.
+reportReasonCopyright = Gebruik de procedure op <a>deze pagina</a> om inbreuk op auteursrechten of handelsmerken te melden.
+reportedTitle = Bestanden gerapporteerd
+reportedDescription = Dank u. We hebben uw rapport over deze bestanden ontvangen.
