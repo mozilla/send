@@ -153,4 +153,14 @@ shareMessage = Discarga “{ $name }” con { -send-brand }: condivide files in 
 trailheadPromo = Il ha un via pro proteger tu confidentialitate. Junge te a Firefox!
 learnMore = Saper plus.
 downloadConfirmTitle = Un altere cosa
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] reportar iste file como suspecte
+       *[other] reportar iste files como suspecte
+    }
 reportButton = Reportar
+reportedTitle = Files reportate
