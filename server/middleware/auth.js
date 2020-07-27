@@ -75,5 +75,22 @@ module.exports = {
     } else {
       res.sendStatus(401);
     }
+  },
+  dlToken: async function(req, res, next) {
+    const authHeader = req.header('Authorization');
+    if (authHeader && /^Bearer\s/i.test(authHeader)) {
+      const token = authHeader.split(' ')[1];
+      const id = req.params.id;
+      req.meta = await storage.metadata(id);
+      if (!req.meta || req.meta.dead) {
+        return res.sendStatus(404);
+      }
+      req.authorized = await req.meta.verifyDownloadToken(token);
+    }
+    if (req.authorized) {
+      next();
+    } else {
+      res.sendStatus(401);
+    }
   }
 };

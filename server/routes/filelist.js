@@ -16,13 +16,12 @@ module.exports = {
     const kid = req.params.id;
     try {
       const fileId = id(req.user, kid);
-      const contentLength = await storage.length(fileId);
-      const fileStream = await storage.get(fileId);
+      const { length, stream } = await storage.get(fileId);
       res.writeHead(200, {
         'Content-Type': 'application/octet-stream',
-        'Content-Length': contentLength
+        'Content-Length': length
       });
-      fileStream.pipe(res);
+      stream.pipe(res);
     } catch (e) {
       res.sendStatus(404);
     }

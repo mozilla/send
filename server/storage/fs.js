@@ -1,9 +1,7 @@
-const fs = require('fs');
+const fss = require('fs');
+const fs = fss.promises;
 const path = require('path');
-const promisify = require('util').promisify;
 const mkdirp = require('mkdirp');
-
-const stat = promisify(fs.stat);
 
 class FSStorage {
   constructor(config, log) {
@@ -13,32 +11,36 @@ class FSStorage {
   }
 
   async length(id) {
-    const result = await stat(path.join(this.dir, id));
+    const result = await fs.stat(path.join(this.dir, id));
     return result.size;
   }
 
   getStream(id) {
-    return fs.createReadStream(path.join(this.dir, id));
+    return fss.createReadStream(path.join(this.dir, id));
   }
 
   set(id, file) {
     return new Promise((resolve, reject) => {
       const filepath = path.join(this.dir, id);
-      const fstream = fs.createWriteStream(filepath);
+      const fstream = fss.createWriteStream(filepath);
       file.pipe(fstream);
       file.on('error', err => {
         fstream.destroy(err);
       });
       fstream.on('error', err => {
-        fs.unlinkSync(filepath);
+        this.del(id);
         reject(err);
       });
       fstream.on('finish', resolve);
     });
   }
 
-  del(id) {
-    return Promise.resolve(fs.unlinkSync(path.join(this.dir, id)));
+  async del(id) {
+    try {
+      await fs.unlink(path.join(this.dir, id));
+    } catch (e) {
+      // ignore local fs issues
+    }
   }
 
   ping() {

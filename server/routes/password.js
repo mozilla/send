@@ -9,7 +9,7 @@ module.exports = function(req, res) {
 
   try {
     storage.setField(id, 'auth', auth);
-    storage.setField(id, 'pwd', true);
+    storage.setField(id, 'pwd', 1);
     res.sendStatus(200);
   } catch (e) {
     return res.sendStatus(404);

@@ -11,7 +11,7 @@ module.exports = async function(req, res) {
     res.send({
       metadata: meta.metadata,
       flagged: !!meta.flagged,
-      finalDownload: meta.dl + 1 === meta.dlimit,
+      finalDownload: meta.dlToken + 1 === meta.dlimit,
       ttl
     });
   } catch (e) {

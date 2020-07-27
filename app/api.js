@@ -292,19 +292,12 @@ export function uploadWs(
 
 ////////////////////////
 
-async function downloadS(id, keychain, signal) {
-  const auth = await keychain.authHeader();
-
+async function _downloadStream(id, dlToken, signal) {
   const response = await fetch(getApiUrl(`/api/download/${id}`), {
     signal: signal,
     method: 'GET',
-    headers: { Authorization: auth }
+    headers: { Authorization: `Bearer ${dlToken}` }
   });
-
-  const authHeader = response.headers.get('WWW-Authenticate');
-  if (authHeader) {
-    keychain.nonce = parseNonce(authHeader);
-  }
 
   if (response.status !== 200) {
     throw new Error(response.status);
@@ -313,13 +306,13 @@ async function downloadS(id, keychain, signal) {
   return response.body;
 }
 
-async function tryDownloadStream(id, keychain, signal, tries = 2) {
+async function tryDownloadStream(id, dlToken, signal, tries = 2) {
   try {
-    const result = await downloadS(id, keychain, signal);
+    const result = await _downloadStream(id, dlToken, signal);
     return result;
   } catch (e) {
     if (e.message === '401' && --tries > 0) {
-      return tryDownloadStream(id, keychain, signal, tries);
+      return tryDownloadStream(id, dlToken, signal, tries);
     }
     if (e.name === 'AbortError') {
       throw new Error('0');
@@ -328,21 +321,20 @@ async function tryDownloadStream(id, keychain, signal, tries = 2) {
   }
 }
 
-export function downloadStream(id, keychain) {
+export function downloadStream(id, dlToken) {
   const controller = new AbortController();
   function cancel() {
     controller.abort();
   }
   return {
     cancel,
-    result: tryDownloadStream(id, keychain, controller.signal)
+    result: tryDownloadStream(id, dlToken, controller.signal)
   };
 }
 
 //////////////////
 
-async function download(id, keychain, onprogress, canceller) {
-  const auth = await keychain.authHeader();
+async function download(id, dlToken, onprogress, canceller) {
   const xhr = new XMLHttpRequest();
   canceller.oncancel = function() {
     xhr.abort();
@@ -350,10 +342,6 @@ async function download(id, keychain, onprogress, canceller) {
   return new Promise(function(resolve, reject) {
     xhr.addEventListener('loadend', function() {
       canceller.oncancel = function() {};
-      const authHeader = xhr.getResponseHeader('WWW-Authenticate');
-      if (authHeader) {
-        keychain.nonce = parseNonce(authHeader);
-      }
       if (xhr.status !== 200) {
         return reject(new Error(xhr.status));
       }
@@ -368,26 +356,26 @@ async function download(id, keychain, onprogress, canceller) {
       }
     });
     xhr.open('get', getApiUrl(`/api/download/blob/${id}`));
-    xhr.setRequestHeader('Authorization', auth);
+    xhr.setRequestHeader('Authorization', `Bearer ${dlToken}`);
     xhr.responseType = 'blob';
     xhr.send();
     onprogress(0);
   });
 }
 
-async function tryDownload(id, keychain, onprogress, canceller, tries = 2) {
+async function tryDownload(id, dlToken, onprogress, canceller, tries = 2) {
   try {
-    const result = await download(id, keychain, onprogress, canceller);
+    const result = await download(id, dlToken, onprogress, canceller);
     return result;
   } catch (e) {
     if (e.message === '401' && --tries > 0) {
-      return tryDownload(id, keychain, onprogress, canceller, tries);
+      return tryDownload(id, dlToken, onprogress, canceller, tries);
     }
     throw e;
   }
 }
 
-export function downloadFile(id, keychain, onprogress) {
+export function downloadFile(id, dlToken, onprogress) {
   const canceller = {
     oncancel: function() {} // download() sets this
   };
@@ -396,7 +384,7 @@ export function downloadFile(id, keychain, onprogress) {
   }
   return {
     cancel,
-    result: tryDownload(id, keychain, onprogress, canceller)
+    result: tryDownload(id, dlToken, onprogress, canceller)
   };
 }
 
@@ -457,4 +445,28 @@ export async function reportLink(id, keychain, reason) {
   }
 
   throw new Error(result.response.status);
+}
+
+export async function getDownloadToken(id, keychain) {
+  const result = await fetchWithAuthAndRetry(
+    getApiUrl(`/api/download/token/${id}`),
+    {
+      method: 'GET'
+    },
+    keychain
+  );
+
+  if (result.ok) {
+    return (await result.response.json()).token;
+  }
+  throw new Error(result.response.status);
+}
+
+export async function downloadDone(id, dlToken) {
+  const headers = new Headers({ Authorization: `Bearer ${dlToken}` });
+  const response = await fetch(getApiUrl(`/api/download/done/${id}`), {
+    headers,
+    method: 'POST'
+  });
+  return response.ok;
 }

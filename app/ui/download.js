@@ -113,7 +113,7 @@ module.exports = function(state, emit) {
     <main class="main">
       ${state.modal && modal(state, emit)}
       <section
-        class="relative h-full w-full p-6 md:p-8 md:rounded-xl md:shadow-big md:flex md:flex-col"
+        class="relative overflow-hidden h-full w-full p-6 md:p-8 md:rounded-xl md:shadow-big md:flex md:flex-col"
       >
         ${content}
       </section>

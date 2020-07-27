@@ -56,7 +56,8 @@ class DB {
     if (info.dead || info.flagged) {
       throw new Error(info.flagged ? 'flagged' : 'dead');
     }
-    return this.storage.getStream(info.filePath);
+    const length = await this.storage.length(info.filePath);
+    return { length, stream: this.storage.getStream(info.filePath) };
   }
 
   async set(id, file, meta, expireSeconds = config.default_expire_seconds) {
@@ -75,15 +76,15 @@ class DB {
     this.redis.hset(id, key, value);
   }
 
-  incrementField(id, key, increment = 1) {
-    this.redis.hincrby(id, key, increment);
+  async incrementField(id, key, increment = 1) {
+    return await this.redis.hincrbyAsync(id, key, increment);
   }
 
   async kill(id) {
     const { filePath, dead } = await this.getPrefixedInfo(id);
     if (!dead) {
-      this.storage.del(filePath);
       this.redis.hset(id, 'dead', 1);
+      this.storage.del(filePath);
     }
   }
 
@@ -94,8 +95,8 @@ class DB {
 
   async del(id) {
     const { filePath } = await this.getPrefixedInfo(id);
-    this.storage.del(filePath);
     this.redis.del(id);
+    this.storage.del(filePath);
   }
 
   async ping() {
@@ -105,7 +106,7 @@ class DB {
 
   async metadata(id) {
     const result = await this.redis.hgetallAsync(id);
-    return result && new Metadata(result);
+    return result && new Metadata({ id, ...result }, this);
   }
 }
 

@@ -35,6 +35,7 @@ class Storage {
       this.engine = new Mem();
     }
     this._files = this.loadFiles();
+    this.pruneTokens();
   }
 
   loadFiles() {
@@ -179,6 +180,48 @@ class Storage {
       outgoing,
       downloadCount
     };
+  }
+
+  setDownloadToken(id, token) {
+    let otherTokens = {};
+    try {
+      otherTokens = JSON.parse(this.get('dlTokens'));
+    } catch (e) {
+      //
+    }
+    if (token) {
+      const record = { token, ts: Date.now() };
+      this.set('dlTokens', JSON.stringify({ ...otherTokens, [id]: record }));
+    } else {
+      this.set('dlTokens', JSON.stringify({ ...otherTokens, [id]: undefined }));
+    }
+  }
+
+  getDownloadToken(id) {
+    try {
+      return JSON.parse(this.get('dlTokens'))[id].token;
+    } catch (e) {
+      return undefined;
+    }
+  }
+
+  pruneTokens() {
+    try {
+      const now = Date.now();
+      const tokens = JSON.parse(this.get('dlTokens'));
+      const keep = {};
+      for (const id of Object.keys(tokens)) {
+        const t = tokens[id];
+        if (t.ts > now - 7 * 86400 * 1000) {
+          keep[id] = t;
+        }
+      }
+      if (Object.keys(keep).length < Object.keys(tokens).length) {
+        this.set('dlTokens', JSON.stringify(keep));
+      }
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
 

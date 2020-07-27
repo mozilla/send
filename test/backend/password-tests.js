@@ -32,7 +32,7 @@ describe('/api/password', function() {
     const res = response();
     passwordRoute(req, res);
     sinon.assert.calledWith(storage.setField, 'x', 'auth', 'z');
-    sinon.assert.calledWith(storage.setField, 'x', 'pwd', true);
+    sinon.assert.calledWith(storage.setField, 'x', 'pwd', 1);
     sinon.assert.calledWith(res.sendStatus, 200);
   });
 

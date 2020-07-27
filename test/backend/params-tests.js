@@ -8,6 +8,7 @@ const storage = {
 function request(id) {
   return {
     params: { id },
+    meta: { fxa: false },
     body: {}
   };
 }

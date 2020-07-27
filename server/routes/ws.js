@@ -66,6 +66,7 @@ module.exports = function(ws, req) {
 
       const meta = {
         owner,
+        fxa: user ? 1 : 0,
         metadata,
         dlimit,
         auth: auth.split(' ')[1],

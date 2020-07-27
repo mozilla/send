@@ -2,7 +2,7 @@ const promisify = require('util').promisify;
 
 module.exports = function(config) {
   const redis_lib =
-    config.env === 'development' && config.redis_host === 'localhost'
+    config.env === 'development' && config.redis_host === 'mock'
       ? 'redis-mock'
       : 'redis';
 
@@ -23,6 +23,7 @@ module.exports = function(config) {
   client.ttlAsync = promisify(client.ttl);
   client.hgetallAsync = promisify(client.hgetall);
   client.hgetAsync = promisify(client.hget);
+  client.hincrbyAsync = promisify(client.hincrby);
   client.hmgetAsync = promisify(client.hmget);
   client.pingAsync = promisify(client.ping);
   client.existsAsync = promisify(client.exists);

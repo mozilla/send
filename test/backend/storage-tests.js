@@ -25,7 +25,7 @@ const config = {
   default_expire_seconds: 20,
   expire_times_seconds: [10, 20, 30],
   env: 'development',
-  redis_host: 'localhost'
+  redis_host: 'mock'
 };
 
 const storage = proxyquire('../../server/storage', {
@@ -54,7 +54,7 @@ describe('Storage', function() {
 
   describe('get', function() {
     it('returns a stream', async function() {
-      const s = await storage.get('x');
+      const { stream: s } = await storage.get('x');
       assert.equal(s, stream);
     });
   });
@@ -123,9 +123,11 @@ describe('Storage', function() {
   describe('metadata', function() {
     it('returns all metadata fields', async function() {
       const m = {
-        pwd: true,
+        id: 'a1',
+        pwd: 0,
         dl: 1,
         dlimit: 1,
+        fxa: 1,
         auth: 'foo',
         metadata: 'bar',
         nonce: 'baz',
@@ -133,12 +135,18 @@ describe('Storage', function() {
       };
       await storage.set('x', null, m);
       const meta = await storage.metadata('x');
-      assert.deepEqual(meta, {
-        ...m,
-        dead: false,
-        flagged: false,
-        key: undefined
-      });
+      assert.deepEqual(
+        { ...meta, storage: 'excluded' },
+        {
+          ...m,
+          dead: false,
+          flagged: false,
+          dlToken: 0,
+          fxa: true,
+          pwd: false,
+          storage: 'excluded'
+        }
+      );
     });
   });
 });

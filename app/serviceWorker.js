@@ -34,7 +34,7 @@ async function decryptStream(id) {
       keychain.setPassword(file.password, file.url);
     }
 
-    file.download = downloadStream(id, keychain);
+    file.download = downloadStream(id, file.dlToken);
 
     const body = await file.download.result;
 
@@ -146,6 +146,7 @@ self.onmessage = event => {
       type: event.data.type,
       manifest: event.data.manifest,
       size: event.data.size,
+      dlToken: event.data.dlToken,
       progress: 0
     };
     map.set(event.data.id, info);
