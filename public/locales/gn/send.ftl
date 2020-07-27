@@ -52,7 +52,7 @@ passwordSetError = Ndaikatúi oikóvo ko ñe’ẽñemi
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
-introTitle = Marandurenda ñemoambue hasy'ỹ ha ñemiguáva
+introTitle = Marandurenda ñemoambue hasy’ỹ ha ñemiguáva
 introDescription = { -send-brand } omoherakuãkuaa marandurenda papapýpe ñepyrũ guive opa peve ha juajuha opareíva ijehegui. Ikatu oreko ñemihápe emoherakuãva ha ehecháta mba’éicha ne mba’ekuéra noĩri ñandutípe opa ára.
 notifyUploadEncryptDone = Ne marandurenda oñemo’ã ha ikatúma emondo
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
@@ -150,7 +150,7 @@ downloadFirefoxPromo = Ipyahúva { -firefox } ome’ẽse ndéve { -send-short-b
 shareLinkDescription = Emoherakuã juajuha ne mba’e’oka ndive:
 shareLinkButton = Emoherakuã juajuha
 # $name is the name of the file
-shareMessage = Emboguejy “{ $name }” { -send-brand } ndive: emoherakuã marandurenda tasy'ỹ ha tekorosãme
+shareMessage = Emboguejy “{ $name }” { -send-brand } ndive: emoherakuã marandurenda tasy’ỹ ha tekorosãme
 trailheadPromo = Mba’éichapa emo’ãta ne ñemigua. Eipuru Firefox.
 learnMore = Kuaave.
 downloadFlagged = Ko juajuha ojepe’áma ombyai rupi mba’epytyvõrã ñemboguata.
