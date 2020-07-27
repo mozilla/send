@@ -175,3 +175,5 @@ reportFile =
        *[other] Ehechauka ko’ã marandurenda imarãkuaávarõ
     }
 reportButton = Ekorói
+reportReasonMalware = Ko’ã marandurenda oreko tembiaporape imarãva térã oñembyaikuaáva.
+reportedTitle = Marandurenda jekoroihague
