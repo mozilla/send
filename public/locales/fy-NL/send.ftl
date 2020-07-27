@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Kommentaar
 importingFile = Ymportearje…
 encryptingFile = Fersiferje…
 decryptingFile = Untsiferje…
@@ -116,6 +115,7 @@ legalDateStamp = Ferzje 1.0, datearre 12 maart 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }o { $minutes }m
 addFilesButton = Bestannen selektearje om op te laden
+trustWarningMessage = Soargje derfoar dat jo jo ûntfanger fertrouwe wannear't jo gefoelige gegevens diele.
 uploadButton = Oplade
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Sleep en pleats bestannen
@@ -153,3 +153,24 @@ shareLinkButton = Keppeling diele
 shareMessage = Download ‘{ $name }’ mei { -send-brand }: ienfâldich, feilich bestannen diele
 trailheadPromo = Der is in manier om jo privacy te beskermjen. Doch mei mei Firefox.
 learnMore = Mear ynfo.
+downloadFlagged = Dizze keppeling is útskeakele fanwegen skeining fan de servicebetingsten.
+downloadConfirmTitle = Noch ien ding
+downloadConfirmDescription = Soargje derfoar dat jo de persoan fertrouwe dy't jo dit bestân stjoerd hat, omdat wy net ferifiearje kinne dat it jo apparaat net skansearje sil.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Ik fertrou de persoan dy't dit bestân stjoerd hat
+       *[other] Ik fertrou de persoan dy't dizze bestannen stjoerd hat
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Dit bestân as fertocht rapportearje
+       *[other] Dizze bestannen as fertocht rapportearje
+    }
