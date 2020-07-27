@@ -174,3 +174,12 @@ reportFile =
         [one] Dit bestân as fertocht rapportearje
        *[other] Dizze bestannen as fertocht rapportearje
     }
+reportDescription = Help ús te begripen wat der oan de hân is. Wat is der neffens jo mis mei dizze bestannen?
+reportUnknownDescription = Gean nei de URL fan de keppeling dy't jo melde wolle en klik op ‘{ reportFile }’.
+reportButton = Rapportearje
+reportReasonMalware = Dizze bestannen befetsje malware of binne part fan in phishingoanfal.
+reportReasonPii = Dizze bestannen befetsje persoanlik identifisearjende ynformaasje oer my.
+reportReasonAbuse = Dizze bestannen befetsje yllegale of beledigjende ynhâld.
+reportReasonCopyright = Brûk de proseduere op <a>dizze side</a> om ynbreuk op auteursrjochten of hannelsmerken te melden.
+reportedTitle = Bestannen rapportearre
+reportedDescription = Tank. Wy hawwe jo rapport oer dizze bestannen ûntfongen.
