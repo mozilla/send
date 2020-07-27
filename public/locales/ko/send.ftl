@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = 사용자 의견
 importingFile = 가져오는 중…
 encryptingFile = 암호화 중…
 decryptingFile = 복호화 중…
@@ -102,6 +101,7 @@ legalDateStamp = 버전 1.0, 2019년 3월 12일자
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }일 { $hours }시간 { $minutes }분
 addFilesButton = 업로드할 파일들을 선택하세요
+trustWarningMessage = 중요한 정보를 공유할 때는 수신자들이 모두 믿을 만한 사람들인지를 꼭 확인하세요.
 uploadButton = 업로드
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = 파일들을 여기에 끌어서 놓으세요
@@ -138,3 +138,25 @@ shareLinkButton = 링크 공유
 shareMessage = { -send-brand }으로 “{ $name }” 파일을 내려받으세요: 쉽고 안전한 파일 공유입니다.
 trailheadPromo = 개인 정보를 보호하는 방법이 있습니다. Firefox에 가입하세요.
 learnMore = 더 알아보기.
+downloadFlagged = 서비스 약관 위반으로 인해 비활성화된 링크입니다.
+downloadConfirmTitle = 한 가지 더
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+       *[other] 이 파일을 보낸 사람을 신뢰함
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+       *[other] 이 파일을 의심스러운 것으로 신고
+    }
+reportDescription = 어떤 일이 발생했는지 알려 주세요. 이 파일의 어느 부분이 문제인 것 같나요?
+reportButton = 신고
+reportedTitle = 파일 신고됨
+reportedDescription = 파일에 대한 신고를 접수했습니다. 감사합니다.
