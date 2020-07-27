@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Je’ejey
 importingFile = Ojegueruhína…
 encryptingFile = Mo’ãmby…
 decryptingFile = Ñemo’ã’o…
@@ -116,6 +115,7 @@ legalDateStamp = Mba’epyahu 1.0, 12 jasyapy 2019 peguare
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Eiporavo marandurenda ehupi hag̃ua
+trustWarningMessage = Ejerovia añetépa emondotaháre emoherakuãvo mba’ekuaarã kañyguáva.
 uploadButton = Hupi
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Embosyryry ha epoi marandurenda
