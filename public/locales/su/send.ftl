@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Pangdeudeul
 importingFile = Ngimpor...
 encryptingFile = Ngénkripsi...
 decryptingFile = Ngadékripsi...
@@ -114,6 +113,7 @@ legalDateStamp = Versi 1.0, kaping 12 Maret 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }p { $hours }j { $minutes }m
 addFilesButton = Pilih koropak unjalkeuneun
+trustWarningMessage = Sing yakin yén anjeun percaya nalika ngabagi data sénsitip ka nu nampa.
 uploadButton = Unjal
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Ésérkeun sarta ésotkeun koropak
