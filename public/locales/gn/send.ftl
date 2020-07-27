@@ -153,3 +153,15 @@ shareLinkButton = Emoherakuã juajuha
 shareMessage = Emboguejy “{ $name }” { -send-brand } ndive: emoherakuã marandurenda tasy'ỹ ha tekorosãme
 trailheadPromo = Mba’éichapa emo’ãta ne ñemigua. Eipuru Firefox.
 learnMore = Kuaave.
+downloadFlagged = Ko juajuha ojepe’áma ombyai rupi mba’epytyvõrã ñemboguata.
+downloadConfirmTitle = Peteĩ mba’eve
+downloadConfirmDescription = Ejerovia añetépa pe tapicha oguerukáva ndéve ko marandurenda ndaikatúire rohechajey ne mba’e’oka.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Ajerovia tapicháre orukáva ko marandurenda
+       *[other] Ajerovia umi tapicha orukáva ko’ã marandurenda
+    }
