@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Votre avis
 importingFile = Importation…
 encryptingFile = Chiffrement…
 decryptingFile = Déchiffrement…
@@ -116,6 +115,7 @@ legalDateStamp = Version 1.0 du 12 mars 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } j { $hours } h { $minutes } min
 addFilesButton = Sélectionnez des fichiers à envoyer
+trustWarningMessage = Assurez-vous de faire confiance au destinataire lorsque vous partagez des données sensibles.
 uploadButton = Envoyer
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Glissez-déposez des fichiers
@@ -153,3 +153,32 @@ shareLinkButton = Partager le lien
 shareMessage = Télécharger « { $name } » avec { -send-brand } : un moyen simple et sûr de partager des fichiers
 trailheadPromo = Il existe un moyen de protéger votre vie privée. Rejoignez Firefox.
 learnMore = En savoir plus.
+downloadFlagged = Ce lien a été désactivé en raison d’une violation des conditions d’utilisation.
+downloadConfirmTitle = Une dernière chose
+downloadConfirmDescription = Assurez-vous de faire confiance à la personne qui vous a envoyé ce fichier, car nous ne pouvons pas vérifier qu’il n’endommagera pas votre appareil.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Je fais confiance à la personne qui a envoyé ce fichier
+       *[other] Je fais confiance à la personne qui a envoyé ces fichiers
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Signaler ce fichier comme suspect
+       *[other] Signaler ces fichiers comme suspects
+    }
+reportDescription = Aidez-nous à comprendre ce qui se passe. Selon vous, quel est le problème avec ces fichiers ?
+reportUnknownDescription = Accédez à l’adresse du lien que vous souhaitez signaler et cliquez sur « { reportFile } ».
+reportButton = Signaler
+reportReasonPii = Ces fichiers contiennent des informations personnelles qui me concernent.
+reportReasonAbuse = Ces fichiers contiennent du contenu illégal ou abusif.
+reportReasonCopyright = Pour signaler une violation de droit d’auteur ou de marque, suivez la procédure décrite sur <a>cette page</a>.
+reportedTitle = Fichiers signalés
+reportedDescription = Merci, nous avons reçu votre signalement relatif à ces fichiers.
