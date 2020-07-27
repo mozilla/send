@@ -177,6 +177,7 @@ reportFile =
 reportDescription = Aidez-nous à comprendre ce qui se passe. Selon vous, quel est le problème avec ces fichiers ?
 reportUnknownDescription = Accédez à l’adresse du lien que vous souhaitez signaler et cliquez sur « { reportFile } ».
 reportButton = Signaler
+reportReasonMalware = Ces fichiers contiennent des logiciels malveillants ou contribuent à une attaque de hameçonnage.
 reportReasonPii = Ces fichiers contiennent des informations personnelles qui me concernent.
 reportReasonAbuse = Ces fichiers contiennent du contenu illégal ou abusif.
 reportReasonCopyright = Pour signaler une violation de droit d’auteur ou de marque, suivez la procédure décrite sur <a>cette page</a>.
