@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Povratne informacije
 importingFile = Uvoz…
 encryptingFile = Šifriranje …
 decryptingFile = Dešifriranje …
@@ -124,6 +123,7 @@ legalDateStamp = Verzija 1.0, od 12. ožujka 2019. godine
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }s { $minutes }m
 addFilesButton = Odaberi datoteke za prijenos
+trustWarningMessage = Budite sigurni da vjerujete primatelju prije dijeljenja osjetljivih podataka.
 uploadButton = Prijenos
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Povuci i ispusti datoteke
@@ -162,3 +162,29 @@ shareLinkButton = Dijeli poveznicu
 shareMessage = Preuzmi „{ $name }” pomoću { -send-brand }: jednostavno i sigurno dijeljenje datoteka
 trailheadPromo = Postoji način, kako zaštititi vlastitu privatnost. Pridruži se Firefoxu.
 learnMore = Saznaj više.
+downloadFlagged = Poveznica je onemogućena zbog kršenja uvjeta pružanja usluge.
+downloadConfirmTitle = Još jedna stvar
+downloadConfirmDescription = Budite sigurni da vjerujete osobi koja vam je poslala ovu datoteku, zato što mi ne možemo provjeriti da li će ova datoteka naštetiti vašem uređaju.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Vjerujem osobi koja je poslala ove datoteke
+        [few] Vjerujem osobi koja je poslala ove datoteke
+       *[other] Vjerujem osobi koja je poslala ove datoteke
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Prijavi ove datoteke kao sumnjive
+        [few] Prijavi ove datoteke kao sumnjive
+       *[other] Prijavi ove datoteke kao sumnjive
+    }
+reportDescription = Pomozite nam da shvatimo što se dešava. Zašto mislite da nešto nije u redu s ovim datotekama?
+reportUnknownDescription = Idite na poveznicu koju želite prijaviti i kliknite  “{ reportFile }”.
+reportButton = Prijavi datoteku
