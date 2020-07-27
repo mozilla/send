@@ -140,6 +140,7 @@ trailheadPromo = 개인 정보를 보호하는 방법이 있습니다. Firefox�
 learnMore = 더 알아보기.
 downloadFlagged = 서비스 약관 위반으로 인해 비활성화된 링크입니다.
 downloadConfirmTitle = 한 가지 더
+downloadConfirmDescription = 이 파일이 기기에 해를 끼치지 않는 다는 점을 확인하지 못했기 때문에 이 파일을 보낸 사람을 신뢰할 수 있는지 확인하세요.
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
 # standard CLDR forms, or only use the form for [other] if both strings should
@@ -157,6 +158,11 @@ reportFile =
        *[other] 이 파일을 의심스러운 것으로 신고
     }
 reportDescription = 어떤 일이 발생했는지 알려 주세요. 이 파일의 어느 부분이 문제인 것 같나요?
+reportUnknownDescription = 신고하려는 링크의 URL로 가서 “{ reportFile }”를 클릭하세요.
 reportButton = 신고
+reportReasonMalware = 이 파일은 악성 코드를 포함하고 있거나 피싱 공격의 일부입니다.
+reportReasonPii = 이 파일에는 본인에 대한 개인 식별 정보가 포함되어 있습니다.
+reportReasonAbuse = 이 파일에는 불법적이거나 모욕적인 내용이 들어 있습니다.
+reportReasonCopyright = 저작권 또는 상표권 침해를 신고하려면 <a>이 페이지</a>에 설명된 절차를 따르십시오.
 reportedTitle = 파일 신고됨
 reportedDescription = 파일에 대한 신고를 접수했습니다. 감사합니다.
