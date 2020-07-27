@@ -151,3 +151,31 @@ shareLinkButton = Bagikeun tutumbu
 shareMessage = Undeur "{ $name }" ku { -send-brand }: simpel, babagi koropak aman
 trailheadPromo = Aya cara pikeun ngamankeun privasi anjeun.  Jabung jeung Firefox.
 learnMore = Lenyepan.
+downloadFlagged = Ieu tutumbu ditumpurkeun alatan ngarumpak katangtuan layanan.
+downloadConfirmTitle = Hiji deui
+downloadConfirmDescription = Sing yakin yén anjeun percaya ka jalma nu ngirim ieu berkas kusabab kami teu bisa mariksa kaamanan ieu berkas.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+       *[other] Kami percaya ka jalma nu ngirim ieu berkas
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+       *[other] Laporkeun ieu berkas salaku picurigaeun
+    }
+reportDescription = Béjakeun ka kami masalahna. Naon anu sakirana salah dina ieu berkas?
+reportUnknownDescription = Mangga buka url tutumbu anu rék dilaporkeun sarta klik “{ reportFile }”.
+reportButton = Laporkeun
+reportReasonMalware = Ieu berkas ngandung malwér atawa bagian ti tarajang pising.
+reportReasonPii = Ieu berkas ngandung émbaran pribadi kami.
+reportReasonAbuse = Ieu berkas ngandung kontén ilégal atawa panyalahgunaan.
+reportReasonCopyright = Pikeun ngalaporkeun rumpakan hak cipta atawa mérk dagang, paké prosés anu diécéskeun <a>di dieu</a>.
+reportedTitle = Berkas Dilaporkeun
+reportedDescription = Nuhun. Laporan anjeun ngeunaan ieu berkas geus katampa.
