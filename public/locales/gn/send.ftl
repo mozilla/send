@@ -177,3 +177,4 @@ reportFile =
 reportButton = Ekorói
 reportReasonMalware = Ko’ã marandurenda oreko tembiaporape imarãva térã oñembyaikuaáva.
 reportedTitle = Marandurenda jekoroihague
+reportedDescription = Aguyje. Og̃uahẽ nde jekorói ko’ã marandurenda rehegua.
