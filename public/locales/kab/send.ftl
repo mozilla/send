@@ -75,7 +75,7 @@ timespanWeeks =
 fileCount =
     { $num ->
         [one] 1 n ufaylu
-       *[other] { $num } n ifuyla
+       *[other] { $num } n yifuyla
     }
 # byte abbreviation
 bytes = B
@@ -181,5 +181,5 @@ reportReasonMalware = Ifuyla-a deg-sen yir iseɣzanen neɣ d aḥric seg uẓdam
 reportReasonPii = Ifuyla-a deg-sen talɣut tudmawant yettwassnen i yi-yeɛnan.
 reportReasonAbuse = Ifuyla-a deg-sen agbur arusḍif neɣ anaffal.
 reportReasonCopyright = I ucegger n tkerḍa n yizerfan n umeskar neɣ n tecraḍ, seqdec asesfer i d-yettwagelmen ɣef <a>usebter-a</a>.
-reportedTitle = Aneqqis ɣef ifuyla ittwazen
+reportedTitle = Ifuyla i d-yettwaceqqren
 reportedDescription = Tanemmirt. Nermes-d aneqqis-ik·im ɣef yifuyla-a.
