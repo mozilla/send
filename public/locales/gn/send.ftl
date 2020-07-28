@@ -174,7 +174,11 @@ reportFile =
         [one] Ehechauka ko marandurenda imarãkuaávarõ
        *[other] Ehechauka ko’ã marandurenda imarãkuaávarõ
     }
+reportDescription = Orepytyvõ roikumbývo mba’épa oiko. ¿Mba’épa ere oĩvaiha ko’ã marandurenda ndive?
+reportUnknownDescription = Eikundaha pe url juajuha ekoroiseha ndive ha eikutu “{ reportFile }”.
 reportButton = Ekorói
 reportReasonMalware = Ko’ã marandurenda oreko tembiaporape imarãva térã oñembyaikuaáva.
+reportReasonPii = Ko’ã marandurenda oreko marandu nemba’etéva che kuaaukakuaáva.
+reportReasonAbuse = Ko’ã marandurenda oreko tetepy ivai térã imbaretéva.
 reportedTitle = Marandurenda jekoroihague
 reportedDescription = Aguyje. Og̃uahẽ nde jekorói ko’ã marandurenda rehegua.
