@@ -22,6 +22,12 @@ module.exports = function(state, emit) {
         data-no-csrf
       >
         <input
+          id="autocomplete-decoy"
+          class="hidden"
+          type="password"
+          value="lol"
+        />
+        <input
           id="password-input"
           class="w-full border-l border-t border-b rounded-l-lg rounded-r-none ${invalid
             ? 'border-red dark:border-red-40'
