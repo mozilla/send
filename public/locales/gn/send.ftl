@@ -180,5 +180,6 @@ reportButton = Ekorói
 reportReasonMalware = Ko’ã marandurenda oreko tembiaporape imarãva térã oñembyaikuaáva.
 reportReasonPii = Ko’ã marandurenda oreko marandu nemba’etéva che kuaaukakuaáva.
 reportReasonAbuse = Ko’ã marandurenda oreko tetepy ivai térã imbaretéva.
+reportReasonCopyright = Ekoróitarõ derécho ñembyaíre térã marca registrada, ehecha jehaipyre <a>ko kuatiaroguépe</a>.
 reportedTitle = Marandurenda jekoroihague
 reportedDescription = Aguyje. Og̃uahẽ nde jekorói ko’ã marandurenda rehegua.
