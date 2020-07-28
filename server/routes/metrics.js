@@ -12,7 +12,8 @@ module.exports = async function(req, res) {
         data.session_id + deltaT,
         deltaT,
         data.platform,
-        req.ip
+        req.geo.country,
+        req.geo.state
       )
     );
     const status = await sendBatch(events);

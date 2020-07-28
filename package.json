@@ -142,7 +142,6 @@
     "configstore": "github:dannycoates/configstore#master",
     "convict": "^5.2.0",
     "express": "^4.17.1",
-    "fxa-geodb": "^1.0.4",
     "helmet": "^3.21.2",
     "mkdirp": "^0.5.1",
     "mozlog": "^2.2.0",

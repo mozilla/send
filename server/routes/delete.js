@@ -11,6 +11,8 @@ module.exports = async function(req, res) {
     statDeleteEvent({
       id,
       ip: req.ip,
+      country: req.geo.country,
+      state: req.geo.state,
       owner: meta.owner,
       download_count: meta.dl,
       ttl,

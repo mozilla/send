@@ -111,6 +111,8 @@ module.exports = function(ws, req) {
         statUploadEvent({
           id: newId,
           ip: req.ip,
+          country: req.geo.country,
+          state: req.geo.state,
           owner,
           dlimit,
           timeLimit,

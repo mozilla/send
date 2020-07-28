@@ -93,6 +93,19 @@ module.exports = function(app) {
     );
     next();
   });
+  app.use(function(req, res, next) {
+    try {
+      // set by the load balancer
+      const [country, state] = req.header('X-Client-Geo-Location').split(',');
+      req.geo = {
+        country,
+        state
+      };
+    } catch (e) {
+      req.geo = {};
+    }
+    next();
+  });
   app.use(bodyParser.json());
   app.use(bodyParser.text());
   app.get('/', language, pages.index);

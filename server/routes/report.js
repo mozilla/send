@@ -9,6 +9,8 @@ module.exports = async function(req, res) {
     statReportEvent({
       id,
       ip: req.ip,
+      country: req.geo.country,
+      state: req.geo.state,
       owner: meta.owner,
       reason: req.body.reason,
       download_limit: meta.dlimit,
