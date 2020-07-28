@@ -1,4 +1,4 @@
-const LOOKUP = [
+const LOOKUP = Int32Array.from([
   0x00000000,
   0x77073096,
   0xee0e612c,
@@ -255,7 +255,7 @@ const LOOKUP = [
   0xc30c8ea1,
   0x5a05df1b,
   0x2d02ef8d
-];
+]);
 
 module.exports = function crc32(uint8Array, previous) {
   let crc = previous === 0 ? 0 : ~~previous ^ -1;
