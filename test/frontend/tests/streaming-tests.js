@@ -1,12 +1,11 @@
 const ece = require('http_ece');
-require('buffer');
 
 import assert from 'assert';
 import Archive from '../../../app/archive';
 import { b64ToArray } from '../../../app/utils';
 import { blobStream, concatStream } from '../../../app/streams';
 import { decryptStream, encryptStream } from '../../../app/ece.js';
-import { encryptedSize } from '../../../app/utils';
+import { encryptedSize, concat } from '../../../app/utils';
 
 const rs = 36;
 
@@ -75,15 +74,15 @@ describe('Streaming', function() {
       const encStream = encryptStream(stream, key, rs, salt);
       const reader = encStream.getReader();
 
-      let result = Buffer.from([]);
+      let result = new Uint8Array(0);
 
       let state = await reader.read();
       while (!state.done) {
-        result = Buffer.concat([result, state.value]);
+        result = concat(result, state.value);
         state = await reader.read();
       }
 
-      assert.deepEqual(result, encrypted);
+      assert.deepEqual(result, new Uint8Array(encrypted));
     });
 
     it('can decrypt', async function() {
@@ -91,15 +90,14 @@ describe('Streaming', function() {
       const decStream = decryptStream(stream, key, rs);
 
       const reader = decStream.getReader();
-      let result = Buffer.from([]);
+      let result = new Uint8Array(0);
 
       let state = await reader.read();
       while (!state.done) {
-        result = Buffer.concat([result, state.value]);
+        result = concat(result, state.value);
         state = await reader.read();
       }
-
-      assert.deepEqual(result, decrypted);
+      assert.deepEqual(result, new Uint8Array(decrypted));
     });
   });
 

@@ -1,5 +1,5 @@
 /* global AUTH_CONFIG */
-import { arrayToB64, b64ToArray } from './utils';
+import { arrayToB64, b64ToArray, concat } from './utils';
 
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
@@ -20,13 +20,6 @@ function getOtherInfo(enc) {
   dv.setUint32(i, 0);
   i += 4;
   dv.setUint32(i, length);
-  return result;
-}
-
-function concat(b1, b2) {
-  const result = new Uint8Array(b1.length + b2.length);
-  result.set(b1, 0);
-  result.set(b2, b1.length);
   return result;
 }
 

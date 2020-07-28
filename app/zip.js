@@ -1,4 +1,4 @@
-import crc32 from 'crc/crc32';
+import crc32 from './crc32';
 
 const encoder = new TextEncoder();
 

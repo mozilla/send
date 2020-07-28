@@ -1,5 +1,5 @@
-import 'buffer';
 import { transformStream } from './streams';
+import { concat } from './utils';
 
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
@@ -81,19 +81,18 @@ class ECETransformer {
       )
     );
 
-    return Buffer.from(base.slice(0, NONCE_LENGTH));
+    return base.slice(0, NONCE_LENGTH);
   }
 
   generateNonce(seq) {
     if (seq > 0xffffffff) {
       throw new Error('record sequence number exceeds limit');
     }
-    const nonce = Buffer.from(this.nonceBase);
-    const m = nonce.readUIntBE(nonce.length - 4, 4);
+    const nonce = new DataView(this.nonceBase.slice());
+    const m = nonce.getUint32(nonce.byteLength - 4);
     const xor = (m ^ seq) >>> 0; //forces unsigned int xor
-    nonce.writeUIntBE(xor, nonce.length - 4, 4);
-
-    return nonce;
+    nonce.setUint32(nonce.byteLength - 4, xor);
+    return new Uint8Array(nonce.buffer);
   }
 
   pad(data, isLast) {
@@ -103,14 +102,11 @@ class ECETransformer {
     }
 
     if (isLast) {
-      const padding = Buffer.alloc(1);
-      padding.writeUInt8(2, 0);
-      return Buffer.concat([data, padding]);
+      return concat(data, Uint8Array.of(2));
     } else {
-      const padding = Buffer.alloc(this.rs - len - TAG_LENGTH);
-      padding.fill(0);
-      padding.writeUInt8(1, 0);
-      return Buffer.concat([data, padding]);
+      const padding = new Uint8Array(this.rs - len - TAG_LENGTH);
+      padding[0] = 1;
+      return concat(data, padding);
     }
   }
 
@@ -133,10 +129,9 @@ class ECETransformer {
   }
 
   createHeader() {
-    const nums = Buffer.alloc(5);
-    nums.writeUIntBE(this.rs, 0, 4);
-    nums.writeUIntBE(0, 4, 1);
-    return Buffer.concat([Buffer.from(this.salt), nums]);
+    const nums = new DataView(new ArrayBuffer(5));
+    nums.setUint32(0, this.rs);
+    return concat(new Uint8Array(this.salt), new Uint8Array(nums.buffer));
   }
 
   readHeader(buffer) {
@@ -144,9 +139,10 @@ class ECETransformer {
       throw new Error('chunk too small for reading header');
     }
     const header = {};
-    header.salt = buffer.buffer.slice(0, KEY_LENGTH);
-    header.rs = buffer.readUIntBE(KEY_LENGTH, 4);
-    const idlen = buffer.readUInt8(KEY_LENGTH + 4);
+    const dv = new DataView(buffer.buffer);
+    header.salt = buffer.slice(0, KEY_LENGTH);
+    header.rs = dv.getUint32(KEY_LENGTH);
+    const idlen = dv.getUint8(KEY_LENGTH + 4);
     header.length = idlen + KEY_LENGTH + 5;
     return header;
   }
@@ -158,7 +154,7 @@ class ECETransformer {
       this.key,
       this.pad(buffer, isLast)
     );
-    return Buffer.from(encrypted);
+    return new Uint8Array(encrypted);
   }
 
   async decryptRecord(buffer, seq, isLast) {
@@ -173,7 +169,7 @@ class ECETransformer {
       buffer
     );
 
-    return this.unpad(Buffer.from(data), isLast);
+    return this.unpad(new Uint8Array(data), isLast);
   }
 
   async start(controller) {
@@ -214,7 +210,7 @@ class ECETransformer {
       await this.transformPrevChunk(false, controller);
     }
     this.firstchunk = false;
-    this.prevChunk = Buffer.from(chunk.buffer);
+    this.prevChunk = new Uint8Array(chunk.buffer);
   }
 
   async flush(controller) {

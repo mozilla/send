@@ -76,7 +76,6 @@
     "content-disposition": "^0.5.3",
     "copy-webpack-plugin": "^5.0.5",
     "core-js": "^3.4.0",
-    "crc": "^3.8.0",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "css-mqpacker": "^7.0.0",
@@ -150,7 +149,7 @@
     "node-fetch": "^2.6.0",
     "redis": "^3.0.2",
     "selenium-standalone": "^6.15.6",
-    "ua-parser-js": "^0.7.20"
+    "ua-parser-js": "^0.7.21"
   },
   "availableLanguages": [
     "en-US",

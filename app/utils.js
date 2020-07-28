@@ -272,7 +272,15 @@ function setTranslate(t) {
   translate = t;
 }
 
+function concat(b1, b2) {
+  const result = new Uint8Array(b1.length + b2.length);
+  result.set(b1, 0);
+  result.set(b2, b1.length);
+  return result;
+}
+
 module.exports = {
+  concat,
   locale,
   fadeOut,
   delay,
