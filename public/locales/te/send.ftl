@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = అభిప్రాయం
 importingFile = దిగుమతవుతోంది...
 encryptingFile = గుప్తీకరిస్తోంది...
 decryptingFile = వ్యక్తపరుస్తోంది...
@@ -124,4 +123,5 @@ downloadFirefoxPromo = { -send-short-brand } క్రొత్త { -firefox } 
 # the next line after the colon contains a file name
 shareLinkDescription = మీ ఫైలుకు లంకెను పంచుకోండి:
 shareLinkButton = లంకెను పంచుకోండి
+trailheadPromo = మీ అంతరంగికతను కాపాడుకోడానికి ఓ మార్గం ఉంది. Firefoxతో చేరండి.
 learnMore = ఇంకా తెలుసుకోండి.
