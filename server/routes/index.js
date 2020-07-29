@@ -61,9 +61,9 @@ module.exports = function(app) {
       csp.directives.connectSrc.push(config.sentry_host);
     }
     if (
-      config.base_url.test(/^https:\/\/.*\.dev\.lcip\.org$/) ||
-      config.base_url.test(
-        /^https:\/\/.*\.send\.nonprod\.cloudops\.mozgcp\.net$/
+      /^https:\/\/.*\.dev\.lcip\.org$/.test(config.base_url) ||
+      /^https:\/\/.*\.send\.nonprod\.cloudops\.mozgcp\.net$/.test(
+        config.base_url
       )
     ) {
       csp.directives.connectSrc.push('https://*.dev.lcip.org');
