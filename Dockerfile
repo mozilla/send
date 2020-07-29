@@ -16,13 +16,12 @@ RUN set -x \
         --home /app \
         --uid 10001 \
         app
-RUN npm i -g npm
 COPY --chown=app:app . /app
 USER app
 WORKDIR /app
 RUN set -x \
     # Build
-    && npm ci \
+    && PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm ci \
     && npm run build
 
 
