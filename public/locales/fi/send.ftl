@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Palaute
 importingFile = Tuodaan…
 encryptingFile = Salataan...
 decryptingFile = Puretaan salausta...
@@ -116,6 +115,7 @@ legalDateStamp = Versio 1.0, päivätty 13. maaliskuuta 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } pv { $hours } t { $minutes } min
 addFilesButton = Valitse lähetettävät tiedostot
+trustWarningMessage = Varmista, että luotat vastaanottajaan jakaessasi arkaluontoisia tietoja.
 uploadButton = Lähetä
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Vedä ja pudota tiedostot
@@ -153,3 +153,33 @@ shareLinkButton = Jaa linkki
 shareMessage = Lataa tiedosto ”{ $name }” { -send-brand } -palvelusta: yksinkertaista ja turvallista tiedostonjakoa
 trailheadPromo = On tapa suojata yksityisyyttään. Liity Firefoxiin.
 learnMore = Lue lisää.
+downloadFlagged = Tämä linkki on poistettu käytöstä palvelun käyttöehtojen rikkomisen vuoksi.
+downloadConfirmTitle = Vielä yksi asia
+downloadConfirmDescription = Varmista, että luotat sinulle tämän tiedoston lähettäneeseen henkilöön, koska emme voi vahvistaa, ettei kyseinen tiedosto vahingoita laitettasi.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Luotan henkilöön, joka lähetti tämän tiedoston
+       *[other] Luotan henkilöön, joka lähetti nämä tiedostot
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Ilmoita tämä tiedosto epäilyttävänä
+       *[other] Ilmoita nämä tiedostot epäilyttävinä
+    }
+reportDescription = Auta meitä ymmärtämään mitä tapahtuu. Mikä on mielestäsi vialla näissä tiedostoissa?
+reportUnknownDescription = Siirry sen linkin osoitteeseen, josta haluat tehdä ilmoituksen, ja napsauta “{ reportFile }”.
+reportButton = Ilmoita
+reportReasonMalware = Nämä tiedostot sisältävät haittaohjelmia tai ovat osa tietojenkalasteluhyökkäystä.
+reportReasonPii = Nämä tiedostot sisältävät henkilökohtaisia tietoja minusta.
+reportReasonAbuse = Nämä tiedostot sisältävät laitonta tai loukkaavaa sisältöä.
+reportReasonCopyright = Ilmoita tekijänoikeuksien tai tavaramerkkien loukkauksista <a>tällä sivulla</a> kuvatun prosessin mukaisesti.
+reportedTitle = Tiedostot ilmoitettu
+reportedDescription = Kiitos. Olemme vastaanottaneet raporttisi näistä tiedostoista.
