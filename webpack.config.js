@@ -12,6 +12,7 @@ const webJsOptions = {
     [
       '@babel/preset-env',
       {
+        bugfixes: true,
         useBuiltIns: 'entry',
         corejs: 3
       }
@@ -78,9 +79,9 @@ const serviceWorker = {
 const web = {
   target: 'web',
   entry: {
-    app: ['./app/main.js'],
-    android: ['./android/android.js'],
-    ios: ['./ios/ios.js']
+    app: ['./app/main.js']
+    // android: ['./android/android.js'],
+    // ios: ['./ios/ios.js']
   },
   output: {
     chunkFilename: '[name].[contenthash:8].js',
