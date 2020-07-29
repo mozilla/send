@@ -19,9 +19,9 @@ module.exports = function(state, emit) {
       <form class="md:w-128" onsubmit=${submit}>
         <fieldset class="border rounded p-4 my-4" onchange=${optionChanged}>
           <div class="flex items-center mb-2">
-            <img class="mr-3 flex-shrink-0" src="${assets.get(
-              'blue_file.svg'
-            )}"/>
+            <svg class="h-8 w-6 mr-3 flex-shrink-0 text-white dark:text-grey-90">
+              <use xlink:href="${assets.get('blue_file.svg')}#icon"/>
+            </svg>
             <p class="flex-grow">
               <h1 class="text-base font-medium word-break-all">${
                 archive.name
@@ -55,6 +55,11 @@ module.exports = function(state, emit) {
             value="${state.translate('copyLinkButton')}"
             title="${state.translate('copyLinkButton')}"
             type="submit" />
+            <p
+          class="text-grey-80 leading-normal dark:text-grey-40 font-semibold text-center md:my-8 md:text-left"
+        >
+          ${state.translate('downloadConfirmDescription')}
+        </p>
       </form>
     </div>
   `;
@@ -64,6 +69,7 @@ module.exports = function(state, emit) {
     const choice = event.target.value;
     const button = event.currentTarget.nextElementSibling;
     let title = button.title;
+    console.error(choice, title);
     switch (choice) {
       case 'copy':
         title = state.translate('copyLinkButton');
