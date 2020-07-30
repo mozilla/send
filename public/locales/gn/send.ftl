@@ -137,7 +137,7 @@ accountBenefitTimeLimit =
        *[other] Eguereko juajuha hendyhápe { $count } ára
     }
 accountBenefitSync = Eñangareko marandurenda moherakuãmbyrére oimeraẽ mba’e’oka guive.
-accountBenefitMoz = Eikuaa ambue { -mozilla } mba'epytyvõrã
+accountBenefitMoz = Eikuaa ambue { -mozilla } mba’epytyvõrã
 signOut = Emboty tembiapo
 okButton = OK
 downloadingTitle = Oñemboguejyhína
