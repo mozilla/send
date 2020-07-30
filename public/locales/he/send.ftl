@@ -118,6 +118,7 @@ legalDateStamp = גרסה 1.0, בתאריך 12 במרץ 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } ימים { $hours } שעות { $minutes } דקות
 addFilesButton = בחירת קבצים להעלאה
+trustWarningMessage = עליך לוודא שבעת שיתוף מידע רגיש הנמענים שלך הם מהימנים.
 uploadButton = העלאה
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = גרירה והשלכת קבצים
@@ -156,6 +157,30 @@ shareMessage = הורדת ״{ $name }״ עם { -send-brand }: שיתוף קבצ�
 trailheadPromo = ישנן דרכים נוספות להגן על הפרטיות שלכם. הצטרפו אל Firefox.
 learnMore = מידע נוסף.
 downloadFlagged = קישור זה הושבת מכיוון שהפר את תנאי השירות.
+downloadConfirmTitle = דבר אחד אחרון
+downloadConfirmDescription = נא לוודא שמי ששלח לך את הקובץ הזה מהימן כיוון שאין לנו אפשרות לוודא שהוא לא יפגע במכשיר שלך.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] שולח הקובץ הזה מהימן
+       *[other] שולח הקבצים האלו מהימן
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] דיווח על קובץ זה כחשוד
+       *[other] דיווח על קבצים אלו כחשודים
+    }
+reportUnknownDescription = נא לגשת אל כתובת הקישור עליו ברצונך לדווח וללחוץ על ״{ reportFile }״.
 reportButton = דיווח
+reportReasonMalware = קבצים אלה מכילים תוכנה זדונית או שהינם חלק מהתקפת דיוג.
+reportReasonAbuse = קבצים אלה מכילים תוכן בלתי חוקי או פוגע.
 reportReasonCopyright = כדי לדווח על הפרה של זכויות יוצרים או סימני מסחר, יש להשתמש בתהליך המתואר ב<a>דף זה</a>.
+reportedTitle = קבצים שדווחו
 reportedDescription = תודה. קיבלנו את הדיווח שלך על קבצים אלה.
