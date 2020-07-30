@@ -3,6 +3,7 @@ const assets = require('../../common/assets');
 const modal = require('./modal');
 
 module.exports = function(state, emit) {
+  const btnText = state.user.loggedIn ? 'okButton' : 'sendYourFilesLink';
   return html`
     <main class="main">
       ${state.modal && modal(state, emit)}
@@ -13,12 +14,17 @@ module.exports = function(state, emit) {
           ${state.translate('errorPageHeader')}
         </h1>
         <img class="my-12 h-48" src="${assets.get('error.svg')}" />
-        <p class="max-w-md text-center text-grey-80 leading-normal">
+        <p
+          class="max-w-md text-center text-grey-80 leading-normal dark:text-grey-40 ${state
+            .user.loggedIn
+            ? 'hidden'
+            : ''}"
+        >
           ${state.translate('trySendDescription')}
         </p>
         <p class="my-5">
           <a href="/" class="btn rounded-lg flex items-center" role="button"
-            >${state.translate('sendYourFilesLink')}</a
+            >${state.translate(btnText)}</a
           >
         </p>
       </section>
