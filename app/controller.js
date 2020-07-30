@@ -232,9 +232,7 @@ export default function(state, emitter) {
     } catch (e) {
       if (e.message === '401' || e.message === '404') {
         file.password = null;
-        if (!file.requiresPassword) {
-          return emitter.emit('pushState', '/404');
-        }
+        file.dead = e.message === '404';
       } else {
         console.error(e);
         return emitter.emit('pushState', '/error');
@@ -320,7 +318,8 @@ export default function(state, emitter) {
 
   emitter.on('report', async ({ reason }) => {
     try {
-      await state.transfer.reportLink(reason);
+      const receiver = state.transfer || new FileReceiver(state.fileInfo);
+      await receiver.reportLink(reason);
       render();
     } catch (err) {
       console.error(err);

@@ -90,6 +90,10 @@ module.exports = function(state, emit) {
     }
   }
 
+  if (state.fileInfo.dead) {
+    return notFound(state);
+  }
+
   if (!state.transfer && !state.fileInfo.requiresPassword) {
     emit('getMetadata');
   }
