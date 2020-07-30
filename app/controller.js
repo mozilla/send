@@ -235,6 +235,9 @@ export default function(state, emitter) {
         if (!file.requiresPassword) {
           return emitter.emit('pushState', '/404');
         }
+      } else {
+        console.error(e);
+        return emitter.emit('pushState', '/error');
       }
     }
 
