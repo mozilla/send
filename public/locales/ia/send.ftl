@@ -155,6 +155,16 @@ trailheadPromo = Il ha un via pro proteger tu confidentialitate. Junge te a Fire
 learnMore = Saper plus.
 downloadFlagged = Iste ligamine ha essite disactivate per violation del terminos de servicio.
 downloadConfirmTitle = Un altere cosa
+downloadConfirmDescription = Verifica que tu te fide al persona qui te inviava iste file, perque nos non pote verificar que illo non violara tu apparato.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Io me fide al persona qui inviava iste file
+       *[other] Io me fide al persona qui inviava iste files
+    }
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
 # standard CLDR forms, or only use the form for [other] if both strings should
@@ -164,5 +174,7 @@ reportFile =
         [one] reportar iste file como suspecte
        *[other] reportar iste files como suspecte
     }
+reportDescription = Adjuta nos a comprender lo que eveni. Que pensa tu es problematic con iste files?
+reportUnknownDescription = Va al URL del ligamine que tu desira signalar e clicca “{ reportFile }”.
 reportButton = Reportar
 reportedTitle = Files reportate
