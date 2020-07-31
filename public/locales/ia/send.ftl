@@ -115,6 +115,7 @@ legalDateStamp = Version 1.0 del 12 martio 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Selige le files a incargar
+trustWarningMessage = Verifica que tu te fide a tu destinatario quando tu comparti datos sensibile.
 uploadButton = Incargar
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Traher e deponer files
@@ -152,6 +153,7 @@ shareLinkButton = Condivide ligamine
 shareMessage = Discarga “{ $name }” con { -send-brand }: condivide files in modo simple e secur
 trailheadPromo = Il ha un via pro proteger tu confidentialitate. Junge te a Firefox!
 learnMore = Saper plus.
+downloadFlagged = Iste ligamine ha essite disactivate per violation del terminos de servicio.
 downloadConfirmTitle = Un altere cosa
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
