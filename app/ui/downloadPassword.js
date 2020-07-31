@@ -69,8 +69,13 @@ module.exports = function(state, emit) {
     const input = document.getElementById('password-input');
     const btn = document.getElementById('password-btn');
     label.classList.add('invisible');
-    input.classList.remove('border-red');
-    btn.classList.remove('bg-red', 'hover:bg-red', 'focus:bg-red');
+    input.classList.remove('border-red', 'dark:border-red-40');
+    btn.classList.remove(
+      'bg-red',
+      'hover:bg-red',
+      'focus:bg-red',
+      'dark:bg-red-40'
+    );
   }
 
   function checkPassword(event) {
