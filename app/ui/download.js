@@ -85,8 +85,12 @@ module.exports = function(state, emit) {
   let content = '';
   if (!state.fileInfo) {
     state.fileInfo = createFileInfo(state);
-    if (!state.fileInfo.nonce) {
+    if (downloadMetadata.status === 404) {
       return notFound(state);
+    }
+    if (!state.fileInfo.nonce) {
+      // coming from something like the browser back button
+      return location.reload();
     }
   }
 

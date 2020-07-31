@@ -59,6 +59,15 @@ module.exports = {
 
   notfound: async function(req, res) {
     const appState = await state(req);
-    res.status(404).send(stripEvents(routes().toString('/404', appState)));
+    res
+      .status(404)
+      .send(
+        stripEvents(
+          routes().toString(
+            '/404',
+            Object.assign(appState, { downloadMetadata: { status: 404 } })
+          )
+        )
+      );
   }
 };
