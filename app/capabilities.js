@@ -77,6 +77,7 @@ async function polyfillStreams() {
 
 export default async function getCapabilities() {
   const browser = browserName();
+  const isMobile = /mobi|android/i.test(navigator.userAgent);
   const serviceWorker = 'serviceWorker' in navigator && browser !== 'edge';
   let crypto = await checkCrypto();
   const nativeStreams = checkStreams();
@@ -91,14 +92,15 @@ export default async function getCapabilities() {
     account = false;
   }
   const share =
-    typeof navigator.share === 'function' && locale().startsWith('en'); // en until strings merge
+    isMobile &&
+    typeof navigator.share === 'function' &&
+    locale().startsWith('en'); // en until strings merge
 
   const standalone =
     window.matchMedia('(display-mode: standalone)').matches ||
     navigator.standalone;
 
-  const mobileFirefox =
-    browser === 'firefox' && /mobile/i.test(navigator.userAgent);
+  const mobileFirefox = browser === 'firefox' && isMobile;
 
   return {
     account,

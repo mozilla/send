@@ -142,11 +142,15 @@ function openLinksInNewTab(links, should = true) {
 
 function browserName() {
   try {
+    // order of these matters
     if (/firefox/i.test(navigator.userAgent)) {
       return 'firefox';
     }
     if (/edge/i.test(navigator.userAgent)) {
       return 'edge';
+    }
+    if (/edg/i.test(navigator.userAgent)) {
+      return 'edgium';
     }
     if (/trident/i.test(navigator.userAgent)) {
       return 'ie';
