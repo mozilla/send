@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = ਸੁਝਾਅ
 importingFile = ...ਦਰਾਮਦ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ
 encryptingFile = ...ਇੰਕ੍ਰਿਪਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ
 decryptingFile = ...ਡਿਕ੍ਰਿਪਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ
@@ -153,3 +152,4 @@ shareLinkButton = ਲਿੰਕ ਸਾਂਝਾ ਕਰੋ
 shareMessage = { -send-brand } ਨਾਲ "{ $name }" ਡਾਊਨਲੋਡ ਕਰੋ: ਸੌਖਾ, ਸੁਰੱਖਿਅਤ ਫਾਇਲ ਸਾਂਝਾ ਕਰਨਾ
 trailheadPromo = ਤੁਹਾਡੀ ਪਰਦੇਦਾਰੀ ਦੀ ਸੁਰੱਖਿਆ ਦਾ ਢੰਗ ਹੈ। ਫਾਇਰਫਾਕਸ ਨਾਲ ਜੁੜੋ।
 learnMore = ਹੋਰ ਸਿੱਖੋ
+downloadConfirmTitle = ਇੱਕ ਗੱਲ ਹੋਰ
