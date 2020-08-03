@@ -2,6 +2,7 @@ const html = require('choo/html');
 const modal = require('./modal');
 
 module.exports = function(state, emit) {
+  state.modal = null;
   return html`
     <main class="main">
       ${state.modal && modal(state, emit)}
