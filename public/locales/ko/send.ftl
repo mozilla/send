@@ -96,7 +96,7 @@ tooManyArchives =
 expiredTitle = 이 링크는 만료되었습니다.
 notSupportedDescription = { -send-brand }는 이 브라우저와 작동하지 않습니다. { -send-short-brand }는 최신 { -firefox }와 가장 잘 작동하며, 대부분의 최신 웹 브라우저와도 잘 작동합니다.
 downloadFirefox = { -firefox } 다운로드
-legalTitle = { -send-short-brand } 개인정보 보호 공지
+legalTitle = { -send-short-brand } 개인정보처리방침
 legalDateStamp = 버전 1.0, 2019년 3월 12일자
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }일 { $hours }시간 { $minutes }분
