@@ -81,7 +81,7 @@ module.exports = function(state, emit) {
                             name="reason"
                             id="${reportable.toLowerCase()}"
                             value="${reportable.toLowerCase()}"
-                            class="mr-2 my-2 w-4 h-4"
+                            class="mr-2 my-2 w-4 h-4 flex-none"
                           />
                           ${state.translate(`reportReason${reportable}`)}
                         </label>
