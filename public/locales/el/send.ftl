@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Σχόλια
 importingFile = Εισαγωγή…
 encryptingFile = Κρυπτογράφηση…
 decryptingFile = Αποκρυπτογράφηση…
@@ -153,3 +152,5 @@ shareLinkButton = Κοινή χρήση συνδέσμου
 shareMessage = Λήψη του “{ $name }” με το { -send-brand }: απλός και ασφαλής διαμοιρασμός αρχείων
 trailheadPromo = Υπάρχει τρόπος να προστατέψετε το απόρρητό σας. Γίνετε μέλος του Firefox.
 learnMore = Μάθετε περισσότερα.
+downloadConfirmTitle = Κάτι ακόμα
+reportButton = Αναφορά
