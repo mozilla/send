@@ -164,3 +164,33 @@ trailheadPromo = Постоји начин да заштитите вашу пр
 learnMore = Сазнајте више.
 downloadFlagged = Ова веза је онемогућена због кршења услова услуге.
 downloadConfirmTitle = Још једна ствар
+downloadConfirmDescription = Будите сигурни да верујете особи која вам је послала ову датотеку, јер не можемо обећати да неће оштетити ваш уређа.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Верујем особи која је послала ову датотеку
+        [few] Верујем особи која је послала ове датотеке
+       *[other] Верујем особама које су послале ове датотеке
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Пријави ову датотеку као сумњиву
+        [few] Пријави ове датотеке као сумњиве
+       *[other] Пријави ове датотеке као сумњиве
+    }
+reportDescription = Помозите нам да схватимо шта се дешава. Шта мислите да није у реду са овим датотекама?
+reportUnknownDescription = Идите на адресу везе коју желите да пријавите и изаберите “{ reportFile }”.
+reportButton = Пријави
+reportReasonMalware = Ове датотеке садрже злонамеран софтвер или су део напада за крађу идентитета.
+reportReasonPii = Ове датотеке садрже моје личне податке.
+reportReasonAbuse = Ове датотеке садрже илегални или насилни садржај.
+reportReasonCopyright = Да бисте пријавили кршење ауторских права или заштитног знака, следите кораке на <a>овој страници</a>.
+reportedTitle = Датотеке су пријављене
+reportedDescription = Хвала вам. Примили смо вашу пријаву ових датотека.
