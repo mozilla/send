@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Повратне информације
 importingFile = Увозим…
 encryptingFile = Шифрујем…
 decryptingFile = Дешифрујем…
@@ -124,6 +123,7 @@ legalDateStamp = Издање 1.0, датум објављивања 12. мар�
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }д { $hours }ч { $minutes }м
 addFilesButton = Изаберите датотеке за отпремање
+trustWarningMessage = Будите сигурни да верујете примаоцу пре дељења осетљивих података.
 uploadButton = Отпреми
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Превуците и пустите датотеке
@@ -162,3 +162,5 @@ shareLinkButton = Поделите везу
 shareMessage = Преузмите „{ $name }“ помоћу програма { -send-brand }:  једноставно и безбедно дељење датотека
 trailheadPromo = Постоји начин да заштитите вашу приватност. Придружите се Firefox-у.
 learnMore = Сазнајте више.
+downloadFlagged = Ова веза је онемогућена због кршења услова услуге.
+downloadConfirmTitle = Још једна ствар
