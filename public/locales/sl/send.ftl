@@ -200,3 +200,14 @@ downloadTrustCheckbox =
         [few] Zaupam pošiljatelju teh datotek
        *[other] Zaupam pošiljatelju teh datotek
     }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Prijavi sumljivo datoteko
+        [two] Prijavi sumljivi datoteki
+        [few] Prijavi sumljive datoteke
+       *[other] Prijavi sumljive datoteke
+    }
