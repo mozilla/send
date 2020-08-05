@@ -188,6 +188,7 @@ shareMessage = Prenesite "{ $name }" s { -send-brand }om: enostavno in varno del
 trailheadPromo = Vašo zasebnost lahko zaščitite. Pridružite se Firefoxu.
 learnMore = Več o tem.
 downloadFlagged = Ta povezava je bila onemogočena, ker je kršila pogoje storitve.
+downloadConfirmTitle = Še to
 downloadConfirmDescription = Bodite prepričani, da zaupate osebi, ki vam je poslala to datoteko, ker ne moremo preveriti, da ne bo škodovala vaši napravi.
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
@@ -211,3 +212,12 @@ reportFile =
         [few] Prijavi sumljive datoteke
        *[other] Prijavi sumljive datoteke
     }
+reportDescription = Pomagajte nam razumeti, kaj se dogaja. Kaj mislite, da je s temi datotekami narobe?
+reportUnknownDescription = Obiščite naslov povezave, ki jo želite prijaviti, in kliknite »{ reportFile }«.
+reportButton = Prijavi
+reportReasonMalware = Te datoteke vsebujejo zlonamerno programsko opremo ali so del napada lažnega predstavljanja.
+reportReasonPii = Te datoteke vsebujejo osebne podatke o meni.
+reportReasonAbuse = Te datoteke vsebujejo nezakonito ali nasilno vsebino.
+reportReasonCopyright = Za prijavo kršitve avtorskih pravic ali blagovne znamke sledite postopku, opisanem na <a>tej strani</a>.
+reportedTitle = Datoteke prijavljene
+reportedDescription = Hvala. Prejeli smo vašo prijavo teh datotek.
