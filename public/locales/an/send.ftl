@@ -176,3 +176,10 @@ reportFile =
     }
 reportDescription = Aduya-nos a comprender qué ha pasau. Quál creyes que ye lo problema con estes fichers?
 reportUnknownDescription = Vest ta la URL d'o vinclo que quiers sinyalar y fe clic en « { reportFile } ».
+reportButton = Informar
+reportReasonMalware = Estes fichers contienen malware u fan parte d'un ataque de phishing.
+reportReasonPii = Estes fichers contienen información personal identificable sobre yo.
+reportReasonAbuse = Estes fichers contienen conteniu ilegal u abusivo.
+reportReasonCopyright = Pa informar sobre una violación de dreitos d'autor u de marca, sigue lo procedimiento descrito en <a>esta pachina</a>.
+reportedTitle = Fichers sinyalaus
+reportedDescription = Gracias. Hemos recibiu lo tuyo informe sobre estes fichers.
