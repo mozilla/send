@@ -155,3 +155,24 @@ trailheadPromo = I hai una manera de protecher la tuya privacidat. Une-te a Fire
 learnMore = Mas información
 downloadFlagged = Este vinclo s'ha desactivau per violar las condiciones d'uso.
 downloadConfirmTitle = Una coseta mas
+downloadConfirmDescription = Asegura-te de que confías en a persona que t'ha ninviau este fichero, perque no podemos verificar que no danyará lo tuyo dispositivo.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] Confío en a persona que ha ninviau este fichero
+       *[other] Confío en a persona que ha ninviau estes fichers
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Sinyalar este fichero como sospeitoso
+       *[other] Sinyalar estes fichers como sospeitoso
+    }
+reportDescription = Aduya-nos a comprender qué ha pasau. Quál creyes que ye lo problema con estes fichers?
+reportUnknownDescription = Vest ta la URL d'o vinclo que quiers sinyalar y fe clic en « { reportFile } ».
