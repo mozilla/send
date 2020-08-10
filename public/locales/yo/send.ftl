@@ -1,9 +1,18 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send je oruko ile-ise kan, kò sì ye ki a so di ibile.
-siteFeedback = abo
 importingFile = akowọle…
 encryptingFile = Fifi ọrọ ṣiṣẹ…
 decryptingFile = Ti nkọ nkan…
+downloadCount =
+    { $num ->
+        [one] ìsíwá kan…
+       *[other] ọ̀pọ̀ ìsíwá…
+    }
+timespanHours =
+    { $num ->
+        [one] Wákàtí kan
+       *[other] Ọ̀pọ wákàtí
+    }
 copiedUrl = dakọ
 unlockInputPlaceholder =
     aṣínà
@@ -87,3 +96,23 @@ passwordSetError =
 introTitle =
     Fáìlì pípín níkọ̀kọ̀ tó dẹrùn
     Fáìlì pípín níkọ̀kọ̀ onírọ̀rùn
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = Kilobaiti
+# mebibyte abbreviation
+mb = Megabaiti
+# gibibyte abbreviation
+gb = Gigabaiti
+downloadTitle = Se igabisile faili
+addFilesButton = E yan awon faili lati gbasoke
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = E mu awon faili ki ede ju si bi
+emailPlaceholder = E fi imeli si
+accountBenefitDownloadCount = E pin faili pelu awon eyan si
+okButton = O DA
+downloadingTitle = N se igabsile
+noStreamsOptionFirefox = E gbiyanju asawakiri to je ayanfe wa
+noStreamsOptionDownload = Tesiwaju pelu aṣàwákiri yi
+trailheadPromo = Ona wa lati dabobo ipamo re. Darapo mo Firefox
+learnMore = Keeko si
