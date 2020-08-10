@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Zipu
-siteFeedback = Nzaghachi
 importingFile = Mbubata…
 encryptingFile = ezoro ezo...
 decryptingFile = Kpebie
@@ -30,6 +29,11 @@ notSupportedOutdatedDetail = Ọ dị nwute na ụdị Firefox a anaghị akwado
 updateFirefox = Melite Firefox
 deletePopupCancel = Kagbuo
 deleteButtonHover = Hichapụ
+footerLinkLegal = n'Iwu
+footerLinkPrivacy = nzuzo
+footerLinkCookies = Kuki ga
+passwordTryAgain = okwuntughe ezighi ezi.Nwaa ọzọ
+javascriptRequired = Firefox Zipu chọrọ
 whyJavascript = Kedu ihe kpatara Firefox Send jiri chọ JavaScript?
 enableJavascript = Biko họrọ JavaScript ma nwaa ọzọ
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
@@ -49,6 +53,7 @@ passwordSetError = Enweghị ike ịtọ paswọọdụ a
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Mfe, nkekọrịta faịlụ nkeonwe
+introDescription = na-ahapu gị  ịkekọrịta faịlụ na izo ya na njedebe na njedebe na-akwụsị na akpaghị aka. Yabụ ị nwere ike idobe ihe ị na -eche ma hụ na ngwongwo gị agaghị adị n'ịntanetị ruo mgbe ebighi ebi.
 notifyUploadEncryptDone = Failu gi zoro ezo ma di njikere iziga
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Ọ ga-agwu mgbe { $downloadCount } ma ọ bụ { $timespan } gasịrị
@@ -62,4 +67,27 @@ timespanWeeks =
         [one] 1 izu
        *[other] izu { $num }
     }
+# byte abbreviation
+bytes = B
+# kibibyte abbreviation
+kb = KB
+# mebibyte abbreviation
+mb = MB
+# gibibyte abbreviation
+gb = GB
+# localized number and byte abbreviation. example "2.5MB"
+fileSize = { $Number } { $nkeji }
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+totalSize = { $nha }
+# the next line after the colon contains a file name
+copyLinkDescription = Detuo njikọ ahụ iji kee faịlụ gị
+copyLinkButton = Detuo njikọ
+downloadTitle = Budata faịlụ gasi
+downloadDescription = Nkekọrịta faịlụ a site na site na iji zoo njedebe na-njedebe yana otu njikọ na-akwụsị na-akpaghị aka.
+trySendDescription = Gbalịa maka nyefe faịlụ dị mfe.
+expiredTitle = Njikọ a emebiela.
+notSupportedDescription = agaghị eji ihe nchọgharị a rụọ ọrụ. na arụ ọrụ kacha mma na ụdị nke , ọ ga-arụkwa ụdị nke ihe nchọgharị ka ugbu a.
+downloadFirefox = Budata
+legalTitle = Nkwupụta Nzuzo
+legalDateStamp = 1.dị 1.0, akara ụbọchị Maachi 12, 2019
 okButton = O
