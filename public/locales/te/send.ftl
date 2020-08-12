@@ -128,5 +128,7 @@ downloadFirefoxPromo = { -send-short-brand } క్రొత్త { -firefox } 
 # the next line after the colon contains a file name
 shareLinkDescription = మీ ఫైలుకు లంకెను పంచుకోండి:
 shareLinkButton = లంకెను పంచుకోండి
+# $name is the name of the file
+shareMessage = “{ $name }”‌ని { -send-brand }తో దించుకోండి: తేలికైన, సురక్షితమైన ఫైలు పంచుకోలు సేవ
 trailheadPromo = మీ అంతరంగికతను కాపాడుకోడానికి ఓ మార్గం ఉంది. Firefoxతో చేరండి.
 learnMore = ఇంకా తెలుసుకోండి.
