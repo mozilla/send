@@ -153,3 +153,5 @@ shareLinkButton = Stucha Enlace
 shareMessage = Snuu «{ $name }» tsi { -send-brand }: kue nchichi
 trailheadPromo = Ku china vau ña chau. Kita'an tsi Firefox.
 learnMore = Skua'a kuakaa.
+downloadFlagged = Va'á enlace yo.
+downloadConfirmTitle = Una cosa más
