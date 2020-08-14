@@ -164,8 +164,18 @@ downloadTrustCheckbox =
         [one] Va'a nivi ntachu'un tutu yo
        *[other] Va'a nivi ntachu'un tutu yo
     }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Katu'un ña va'á tutu yo
+       *[other] Katu'un ña va'á kue tutu yo
+    }
 reportUnknownDescription = Sa'a ña mani kuncheu,  url ña enlace ña va'á cha katavi “{ reportFile }”.
 reportButton = Ka tu'un
+reportReasonPii = Inka kue tu'un me nu kue tutu yo.
 reportReasonAbuse = Yee ña va'á nu kue tutu yo.
 reportedTitle = Ku ncheé tutu
 reportedDescription = Ti tsavu. tsa kumikue tu'un tsa'a tutuku.
