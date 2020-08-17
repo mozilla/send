@@ -175,3 +175,11 @@ reportFile =
        *[other] Raportojeni këto kartela si të dyshimta
     }
 reportDescription = Ndihmonani të kuptojmë ç’po ndodh. Çfarë mendoni se është gabim me këto kartela?
+reportUnknownDescription = Ju lutemi, shkoni te url-ja e lidhjes që doni të raportoni dhe klikoni mbi “{ reportFile }”.
+reportButton = Raportoje
+reportReasonMalware = Këto kartela përmbajnë <em>malware</em> ose janë pjesë e një sulmi karremëzimi.
+reportReasonPii = Këto kartela përmbajnë të dhëna personalisht të identifikueshme rreth meje.
+reportReasonAbuse = Këto kartela përmbajnë lëndë të paligjshme ose abuzive.
+reportReasonCopyright = Për të raportuar cenim të drejtash kopjimi ose shenjash tregtare, përdorni procesin e përshkruar në <a>këtë faqe</a>.
+reportedTitle = Kartela të Raportuara
+reportedDescription = Faleminderit. E kemimarrë raportin tuaj rreth këtyre kartelave.
