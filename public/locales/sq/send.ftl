@@ -1,6 +1,5 @@
 # Firefox Send is a brand name and should not be localized.
 title = Firefox Send
-siteFeedback = Përshtypje
 importingFile = Po importohet…
 encryptingFile = Po fshehtëzohet…
 decryptingFile = Po shfshehtëzohet…
@@ -116,6 +115,7 @@ legalDateStamp = Version 1.0, daton 12 mars, 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }d { $hours }h { $minutes }m
 addFilesButton = Përzgjidhni kartela për ngarkim
+trustWarningMessage = Sigurohuni se i besoni marrësit tuaj, kur ndani me të të dhëna rezervat.
 uploadButton = Ngarkoje
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Tërhiqni dhe lini kartela
@@ -153,3 +153,25 @@ shareLinkButton = Ndani me të tjerët lidhjen
 shareMessage = Shkarkojeni “{ $name }” me { -send-brand }: shkëmbim kartelash dhe thjesht dhe pa rrezik
 trailheadPromo = Ka një rrugë për të mbrojtur privatësinë tuaj. Bëhuni pjesë e Firefox-it.
 learnMore = Mësoni më tepër.
+downloadFlagged = Kjo lidhje është çaktivizuar, ngaqë cenon kushtet e shërbimit.
+downloadConfirmTitle = Edhe një gjë të fundit
+downloadConfirmDescription = Sigurohuni se i besoni personit që ju dërgoi këtë kartelë, ngaqë s’mund të verifikojmë se nuk do të vërë në rrezik pajisjen tuaj.
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+downloadTrustCheckbox =
+    { $count ->
+        [one] I besoj personit që dërgoi këtë kartelë
+       *[other] I besoj personit që dërgoi këto kartela
+    }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Raportojeni këtë kartelë si të dyshimtë
+       *[other] Raportojeni këto kartela si të dyshimta
+    }
+reportDescription = Ndihmonani të kuptojmë ç’po ndodh. Çfarë mendoni se është gabim me këto kartela?
