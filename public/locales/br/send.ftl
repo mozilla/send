@@ -180,3 +180,4 @@ shareLinkButton = Rannañ an ere
 shareMessage = Pellgargañ "{ $name }" gant { -send-brand }: rannañ restroù en un doare eeun ha prevez
 trailheadPromo = Un doare a zo da wareziñ ho puhez prevez. Tremenit da Firefox.
 learnMore = Gouzout hiroc'h.
+downloadFlagged = Diweredekaet eo bet an ere-se dre ma ne zouje ket ouzh an divizoù arver.
