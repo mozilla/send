@@ -181,3 +181,5 @@ shareMessage = Pellgargañ "{ $name }" gant { -send-brand }: rannañ restroù en
 trailheadPromo = Un doare a zo da wareziñ ho puhez prevez. Tremenit da Firefox.
 learnMore = Gouzout hiroc'h.
 downloadFlagged = Diweredekaet eo bet an ere-se dre ma ne zouje ket ouzh an divizoù arver.
+downloadConfirmTitle = Un draig ouzhpenn
+downloadConfirmDescription = Bezit sur ho peus fiziañs en deus en deus kaset ar restr-mañ dre ma n'haller ket gwiriañ ne freuzo ket ho trevnad.
