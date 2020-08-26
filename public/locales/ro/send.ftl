@@ -191,6 +191,6 @@ reportButton = Raportează
 reportReasonMalware = Aceste fișiere conțin cod rău-intenționat sau fac parte dintr-un atac de înșelăciune.
 reportReasonPii = Aceste fișiere conțin date cu caracter personal identificabile despre mine.
 reportReasonAbuse = Aceste fișiere au un conținut ilegal sau ofensator.
-reportReasonCopyright = Pentru a raporta o încălcare a drepturilor de reproducere sau a mărcilor comerciale, folosește procedura descrisă pe <a>această pagină</a>.
+reportReasonCopyright = Pentru a raporta o încălcare a drepturilor de reproducere sau a mărcilor comerciale, folosește procedura descrisă <a>aici</a>.
 reportedTitle = Fișiere raportate
 reportedDescription = Îți mulțumim. Am primit raportarea ta despre aceste fișiere.
