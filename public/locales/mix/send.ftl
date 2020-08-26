@@ -155,6 +155,7 @@ trailheadPromo = Ku china vau ña chau. Kita'an tsi Firefox.
 learnMore = Skua'a kuakaa.
 downloadFlagged = Va'á enlace yo.
 downloadConfirmTitle = Una cosa más
+downloadConfirmDescription = A tsinu nivo tachu'un tutu yo takua ma stivia kàa ndusu ku.
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
 # standard CLDR forms, or only use the form for [other] if both strings should
@@ -173,9 +174,12 @@ reportFile =
         [one] Katu'un ña va'á tutu yo
        *[other] Katu'un ña va'á kue tutu yo
     }
+reportDescription = Chinche kue yu na kunikue ña yee. ¿A va'á kue tutu yo?
 reportUnknownDescription = Sa'a ña mani kuncheu,  url ña enlace ña va'á cha katavi “{ reportFile }”.
 reportButton = Ka tu'un
+reportReasonMalware = Inka ña va'á nu kue tutu yo.
 reportReasonPii = Inka kue tu'un me nu kue tutu yo.
 reportReasonAbuse = Yee ña va'á nu kue tutu yo.
+reportReasonCopyright = Tatu ye ña va'á nu derechos de autor a marca registrada, kavi tutu yo <a>esta página</a>.
 reportedTitle = Ku ncheé tutu
 reportedDescription = Ti tsavu. tsa kumikue tu'un tsa'a tutuku.
