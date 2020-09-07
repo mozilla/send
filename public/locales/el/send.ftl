@@ -115,6 +115,7 @@ legalDateStamp = Έκδοση 1.0, από 12 Μαρτίου 2019
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }η { $hours }ώ { $minutes }λ
 addFilesButton = Επιλέξτε αρχεία για μεταφόρτωση
+trustWarningMessage = Βεβαιωθείτε ότι ο παραλήπτης είναι έμπιστος πριν μοιραστείτε ευαίσθητα δεδομένα.
 uploadButton = Μεταφόρτωση
 # the first part of the string 'Drag and drop files or click to send up to 1GB'
 dragAndDropFiles = Σύρετε και εναποθέστε αρχεία
@@ -152,7 +153,9 @@ shareLinkButton = Κοινή χρήση συνδέσμου
 shareMessage = Λήψη του “{ $name }” με το { -send-brand }: απλός και ασφαλής διαμοιρασμός αρχείων
 trailheadPromo = Υπάρχει τρόπος να προστατέψετε το απόρρητό σας. Γίνετε μέλος του Firefox.
 learnMore = Μάθετε περισσότερα.
+downloadFlagged = Αυτός ο σύνδεσμος έχει απενεργοποιηθεί λόγω παραβίασης των όρων υπηρεσίας.
 downloadConfirmTitle = Κάτι ακόμα
+downloadConfirmDescription = Βεβαιωθείτε ότι το αρχείο προέρχεται από έμπιστο άτομο, καθώς δεν μπορούμε να επαληθεύσουμε ότι δεν θα βλάψει τη συσκευή σας.
 # This string has a special case for '1' and [other] (default). If necessary for
 # your language, you can add {$count} to your translations and use the
 # standard CLDR forms, or only use the form for [other] if both strings should
@@ -162,6 +165,21 @@ downloadTrustCheckbox =
         [one] Εμπιστεύομαι το άτομο που έστειλε το αρχείο
        *[other] Εμπιστεύομαι το άτομο που έστειλε τα αρχεία
     }
+# This string has a special case for '1' and [other] (default). If necessary for
+# your language, you can add {$count} to your translations and use the
+# standard CLDR forms, or only use the form for [other] if both strings should
+# be identical.
+reportFile =
+    { $count ->
+        [one] Αναφορά ύποπτου αρχείου
+       *[other] Αναφορά ύποπτων αρχείων
+    }
 reportDescription = Βοηθήστε μας να καταλάβουμε τι συμβαίνει. Τι νομίζετε ότι δεν πάει καλά με αυτά τα αρχεία;
+reportUnknownDescription = Παρακαλούμε μεταβείτε στο URL του συνδέσμου που θέλετε να αναφέρετε και κάντε κλικ στο "{ reportFile }".
 reportButton = Αναφορά
+reportReasonMalware = Αυτά τα αρχεία περιέχουν κακόβουλο λογισμικό ή αποτελούν μέρος μιας επίθεσης ηλεκτρονικού ψαρέματος.
+reportReasonPii = Αυτά τα αρχεία περιέχουν προσωπικές μου πληροφορίες ταυτοποίησης.
+reportReasonAbuse = Αυτά τα αρχεία περιέχουν παράνομο ή καταχρηστικό περιεχόμενο.
+reportReasonCopyright = Για να αναφέρετε παραβίαση πνευματικών δικαιωμάτων ή εμπορικών σημάτων, χρησιμοποιήστε τη διαδικασία που περιγράφεται σε <a>αυτή τη σελίδα</a>.
+reportedTitle = Έγινε αναφορά των αρχείων
 reportedDescription = Σας ευχαριστούμε. Λάβαμε την αναφορά σας για τα αρχεία.
