@@ -53,6 +53,8 @@ passwordSetError = ఈ సంకేతపదం పెట్టలేకపో�
 -firefox = Firefox
 -mozilla = Mozilla
 notifyUploadEncryptDone = మీ ఫైలు గుప్తీకరించబడింది, పంపడానికి సిద్ధంగా ఉంది
+# downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
+archiveExpiryInfo = { $downloadCount } లేదా { $timespan } తర్వాత కాలంచెల్లుతుంది
 timespanMinutes =
     { $num ->
         [one] 1 నిమిషం
