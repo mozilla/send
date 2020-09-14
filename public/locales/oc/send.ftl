@@ -180,5 +180,6 @@ reportButton = Senhalar
 reportReasonMalware = Aquestes fichièrs contenon de logicials malvolents o forman part d’un atac de pesca electronica.
 reportReasonPii = Aquestes fichièrs contenon d’informacions d’identificacion personala que me concernisson.
 reportReasonAbuse = Aquestes fichièrs contenon de contengut illegal o abusiu.
+reportReasonCopyright = Per senhalar una violacion de drech d’autor o de marca, seguissètz la procedura descricha sus <a>aquesta pagina</a>.
 reportedTitle = Fichièrs senhalats
 reportedDescription = Mercés. Avèm recebut vòstre senhalament d’aquestes fichièrs.
