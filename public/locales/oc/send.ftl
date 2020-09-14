@@ -178,6 +178,7 @@ reportDescription = Ajudatz-nos a comprendre qué passa. Qué vos fa pensar que 
 reportUnknownDescription = Anatz a l’URL del ligam que volètz senhalar e clicatz « { reportFile } ».
 reportButton = Senhalar
 reportReasonMalware = Aquestes fichièrs contenon de logicials malvolents o forman part d’un atac de pesca electronica.
+reportReasonPii = Aquestes fichièrs contenon d’informacions d’identificacion personala que me concernisson.
 reportReasonAbuse = Aquestes fichièrs contenon de contengut illegal o abusiu.
 reportedTitle = Fichièrs senhalats
 reportedDescription = Mercés. Avèm recebut vòstre senhalament d’aquestes fichièrs.
