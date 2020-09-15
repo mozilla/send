@@ -118,7 +118,7 @@ tooManyArchives =
 expiredTitle = Срок действия этой ссылки истёк.
 notSupportedDescription = { -send-brand } не будет работать в этом браузере. { -send-short-brand } лучше всего работает с последней версией { -firefox }, и будет работать с последними версиями популярных браузеров.
 downloadFirefox = Загрузить { -firefox }
-legalTitle = Политика приватности { -send-short-brand }
+legalTitle = Уведомление о конфиденциальности { -send-short-brand }
 legalDateStamp = Версия 1.0, от 12 марта 2019 года
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days } дн. { $hours } ч. { $minutes } мин.
