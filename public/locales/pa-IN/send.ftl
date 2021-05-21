@@ -1,5 +1,5 @@
-# Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+# Send is a brand name and should not be localized.
+title = Send
 importingFile = ...ਦਰਾਮਦ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ
 encryptingFile = ...ਇੰਕ੍ਰਿਪਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ
 decryptingFile = ...ਡਿਕ੍ਰਿਪਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ
@@ -19,13 +19,13 @@ unlockButtonLabel = ਅਣ-ਲਾਕ ਕਰੋ
 downloadButtonLabel = ਡਾਊਨਲੋਡ ਕਰੋ
 downloadFinish = ਡਾਊਨਲੋਡ ਪੂਰਾ ਹੋਇਆ
 fileSizeProgress = ({ $totalSize } ਵਿੱਚੋਂ { $partialSize })
-sendYourFilesLink = Firefox Send ਵਰਤੋ
+sendYourFilesLink = Send ਵਰਤੋ
 errorPageHeader = ਕੁਝ ਗਲਤ ਵਾਪਰਿਆ!
 fileTooBig = ਇਹ ਫਾਇਲ ਅੱਪਲੋਡ ਕਰਨ ਲਈ ਬਹੁਤ ਵੱਡੀ ਹੈ। ਇਸ { $size } ਤੋਂ ਘੱਟ ਚਾਹੀਦੀ ਹੈ
 linkExpiredAlt = ਲਿੰਕ ਦੀ ਮਿਆਦ ਪੁੱਗੀ
 notSupportedHeader = ਤੁਹਾਡਾ ਬਰਾਊਜ਼ਰ ਸਹਾਇਕ ਨਹੀਂ ਹੈ।
 notSupportedLink = ਮੇਰਾ ਬਰਾਊਜ਼ਰ ਸਹਾਇਕ ਕਿਉ ਨਹੀਂ ਹੈ?
-notSupportedOutdatedDetail = ਅਫ਼ਸੋਸ ਹੈ ਕਿ ਫਾਇਰਫਾਕਸ ਦਾ ਇਹ ਵਰਜ਼ਨ ਵੈੱਬ ਤਕਨਾਲੋਜੀ ਲਈ ਸਹਾਇਕ ਨਹੀਂ ਹੈ, ਜੋ ਕਿ Firefox Send ਨੂੰ ਬਣਾਉਂਦੀਆਂ ਹਨ। ਤੁਹਾਨੂੰ ਆਪਣੇ ਬਰਾਊਜ਼ਰ ਨੂੰ ਅੱਪਡੇਟ ਕਰਨ ਦੀ ਲੋੜ ਹੋਵੇਗੀ।
+notSupportedOutdatedDetail = ਅਫ਼ਸੋਸ ਹੈ ਕਿ ਫਾਇਰਫਾਕਸ ਦਾ ਇਹ ਵਰਜ਼ਨ ਵੈੱਬ ਤਕਨਾਲੋਜੀ ਲਈ ਸਹਾਇਕ ਨਹੀਂ ਹੈ, ਜੋ ਕਿ Send ਨੂੰ ਬਣਾਉਂਦੀਆਂ ਹਨ। ਤੁਹਾਨੂੰ ਆਪਣੇ ਬਰਾਊਜ਼ਰ ਨੂੰ ਅੱਪਡੇਟ ਕਰਨ ਦੀ ਲੋੜ ਹੋਵੇਗੀ।
 updateFirefox = ਫਾਇਰਫਾਕਸ ਅੱਪਡੇਟ ਕਰੋ
 deletePopupCancel = ਰੱਦ ਕਰੋ
 deleteButtonHover = ਹਟਾਓ
@@ -33,8 +33,8 @@ footerLinkLegal = ਕਨੂੰਨ
 footerLinkPrivacy = ਪਰਦੇਦਾਰੀ
 footerLinkCookies = ਕੂਕੀਜ਼
 passwordTryAgain = ਗਲਤ ਪਾਸਵਰਡ ਹੈ। ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।
-javascriptRequired = Firefox Send ਲਈ ਜਾਵਾ-ਸਕ੍ਰਿਪਟ ਚਾਹੀਦੀ ਹੈ
-whyJavascript = Firefox Send ਨੂੰ ਜਾਵਾ-ਸਕ੍ਰਿਪਟ ਦੀ ਲੋੜ ਕਿਓ ਹੈ?
+javascriptRequired = Send ਲਈ ਜਾਵਾ-ਸਕ੍ਰਿਪਟ ਚਾਹੀਦੀ ਹੈ
+whyJavascript = Send ਨੂੰ ਜਾਵਾ-ਸਕ੍ਰਿਪਟ ਦੀ ਲੋੜ ਕਿਓ ਹੈ?
 enableJavascript = ਜਾਵਾ-ਸਕ੍ਰਿਪਟ ਸਮਰੱਥ ਕਰੋ ਤੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }ਘੰ { $minutes }ਮਿੰ
@@ -47,8 +47,8 @@ passwordSetError = ਇਹ ਪਾਸਵਰਡ ਸੈੱਟ ਨਹੀਂ ਕੀਤ
 
 ## Send version 2 strings
 
-# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
+# Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Send
 -send-short-brand = ਭੇਜੋ
 -firefox = ਫਾਇਰਫਾਕਸ
 -mozilla = ਮੋਜ਼ੀਲਾ

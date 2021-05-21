@@ -1,6 +1,14 @@
-# [![Firefox Send](./assets/icon.svg)](https://send.firefox.com/) Firefox Send
+# Firefox Send
 
 [![CircleCI](https://img.shields.io/circleci/project/github/mozilla/send.svg)](https://circleci.com/gh/mozilla/send)
+
+## NOTICE - May 2021
+
+Mozilla discontinued the Firefox Send service in September 2021. For more information about this, please see the [Mozilla Blog](https://blog.mozilla.org/blog/2020/09/17/update-on-firefox-send-and-firefox-notes/).
+
+Please note that the [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/2.0/) does not "grant any rights in the trademarks, service marks, or logos of any Contributor." You may fork and modify the source code for Firefox Send pursuant to the Mozilla Public License, but you may not create a version of the service that uses Mozilla trademarks or logos.
+
+This repository is archived. In May 2021, Mozilla removed Mozilla trademarks from some of the files in this repository so that developers using this code are less likely to inadvertently infringe Mozilla's trademarks and confuse users. You are welcome to copy and modify this code under its open source license, but please ensure that all use complies with [Mozilla's trademark policy](https://www.mozilla.org/en-US/foundation/trademarks/policy/). In other words, if you create a new version of Firefox Send you must remove all "Mozilla" and "Firefox" branding to ensure that users are not confused about who is providing the service.
 
 **Docs:** [FAQ](docs/faq.md), [Encryption](docs/encryption.md), [Build](docs/build.md), [Docker](docs/docker.md), [Metrics](docs/metrics.md), [More](docs/)
 

@@ -52,11 +52,6 @@ module.exports = {
     );
   },
 
-  legal: async function(req, res) {
-    const appState = await state(req);
-    res.send(stripEvents(routes().toString('/legal', appState)));
-  },
-
   notfound: async function(req, res) {
     const appState = await state(req);
     res

@@ -1,4 +1,4 @@
-# Firefox Send is a brand name and should not be localized.
+# Send is a brand name and should not be localized.
 title = Firefox Molawo
 siteSubtitle = web yimontalo
 siteFeedback = Potunu
@@ -42,7 +42,7 @@ downloadNotification = U pilopohulimu ma yilapato.
 downloadFinish = Mopohuli Yilapato
 # This message is displayed when uploading or downloading a file, e.g. "(1,3 MB of 10 MB)".
 fileSizeProgress = ({ $partialSize } meyalo { $totalSize })
-# Firefox Send is a brand name and should not be localized.
+# Send is a brand name and should not be localized.
 sendYourFilesLink = Yimontali Firefox Molawo
 downloadingPageProgress = Modetohu { $filename } ({ $size })
 downloadFirefoxButtonSub = Pereyi Mopohuli

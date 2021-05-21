@@ -1,5 +1,4 @@
 const html = require('choo/html');
-const raw = require('choo/html/raw');
 const assets = require('../../common/assets');
 
 const REPORTABLES = ['Malware', 'Pii', 'Abuse'];
@@ -15,13 +14,6 @@ module.exports = function(state, emit) {
         >
           <p class="text-xl text-center mb-4 leading-normal">
             ${state.translate('reportUnknownDescription')}
-          </p>
-          <p class="text-center">
-            ${raw(
-              replaceLinks(state.translate('reportReasonCopyright'), [
-                'https://www.mozilla.org/about/legal/report-infringement/'
-              ])
-            )}
           </p>
         </section>
       </main>
@@ -88,13 +80,6 @@ module.exports = function(state, emit) {
                       </li>
                     `
                 )}
-                <li class="mt-4 mb-2 leading-normal">
-                  ${raw(
-                    replaceLinks(state.translate('reportReasonCopyright'), [
-                      'https://www.mozilla.org/about/legal/report-infringement/'
-                    ])
-                  )}
-                </li>
               </ul>
             </fieldset>
             <input
@@ -126,14 +111,5 @@ module.exports = function(state, emit) {
     state.fileInfo.reported = true;
     const form = event.target;
     emit('report', { reason: form.reason.value });
-  }
-
-  function replaceLinks(str, urls) {
-    let i = 0;
-    const s = str.replace(
-      /<a>([^<]+)<\/a>/g,
-      (m, v) => `<a class="text-blue" href="${urls[i++]}">${v}</a>`
-    );
-    return `<p>${s}</p>`;
   }
 };

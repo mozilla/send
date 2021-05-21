@@ -1,5 +1,5 @@
-# Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+# Send is a brand name and should not be localized.
+title = Send
 siteFeedback = Tu'un jianininu
 importingFile = Nasia´a…
 encryptingFile = Encriptando...
@@ -19,13 +19,13 @@ unlockButtonLabel = Nkasɨ
 downloadButtonLabel = Xinuu
 downloadFinish = Nnɨ´ɨ xinuu
 fileSizeProgress = ({ $partialSize } de { $totalSize })
-sendYourFilesLink = Ni´i Firefox Send
+sendYourFilesLink = Ni´i Send
 errorPageHeader = ¡Iyo iin ntu nkene va´a!
 fileTooBig = Archivo ya´a ka´nu. Nejia chunku´va { $size }
 linkExpiredAlt = Nnɨ´ɨ enlace
 notSupportedHeader = Ntu íyo tiñu nuu ka̱a̱ nánuku ya´a.
 notSupportedLink = ¿Navi ntu satiñu nuu ka̱a̱ nánuku ya´a?
-notSupportedOutdatedDetail = Tuni Firefox ya´a ntu satiñu vii jii Firefox Send. Nejika xinunu a jíía ka̱a̱ nánuku.
+notSupportedOutdatedDetail = Tuni Firefox ya´a ntu satiñu vii jii Send. Nejika xinunu a jíía ka̱a̱ nánuku.
 updateFirefox = Naxi´ñá Firefox
 deletePopupCancel = Nkuvi-ka
 deleteButtonHover = Xita
@@ -33,8 +33,8 @@ footerLinkLegal = Tu´un nichi
 footerLinkPrivacy = Tu´un xitu a kumiji noo´o
 footerLinkCookies = Cookies
 passwordTryAgain = Contraseña ntu vatu. Nachu´un tuku.
-javascriptRequired = Firefox Send ni´i JavaScript
-whyJavascript = ¿Navi Firefox Send ni´i JavaScript?
+javascriptRequired = Send ni´i JavaScript
+whyJavascript = ¿Navi Send ni´i JavaScript?
 enableJavascript = Kua´a jia´a JavaScript jee nachu´un tuku.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
@@ -47,8 +47,8 @@ passwordSetError = Ntu nkuvi sá´á contraseña
 
 ## Send version 2 strings
 
-# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
+# Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Send
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla

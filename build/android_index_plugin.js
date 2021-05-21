@@ -20,7 +20,7 @@ class AndroidIndexPlugin {
       const page = html`
         <html lang="en-US">
           <head>
-            <title>Firefox Send</title>
+            <title>Send</title>
             <meta charset="utf-8" />
             <meta
               name="viewport"

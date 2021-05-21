@@ -1,5 +1,5 @@
-# Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+# Send is a brand name and should not be localized.
+title = Send
 importingFile = กำลังนำเข้า…
 encryptingFile = กำลังเข้ารหัส…
 decryptingFile = กำลังถอดรหัส…
@@ -17,13 +17,13 @@ unlockButtonLabel = ปลดล็อก
 downloadButtonLabel = ดาวน์โหลด
 downloadFinish = การดาวน์โหลดเสร็จสมบูรณ์
 fileSizeProgress = ({ $partialSize } จาก { $totalSize })
-sendYourFilesLink = ลองใช้ Firefox Send
+sendYourFilesLink = ลองใช้ Send
 errorPageHeader = มีบางอย่างผิดพลาด!
 fileTooBig = ไฟล์นั้นใหญ่เกินกว่าจะอัปโหลดได้ ไฟล์ที่จะอัปโหลดควรมีขนาดน้อยกว่า { $size }
 linkExpiredAlt = ลิงก์หมดอายุแล้ว
 notSupportedHeader = ไม่รองรับเบราว์เซอร์ของคุณ
 notSupportedLink = ทำไมจึงไม่รองรับเบราว์เซอร์ของฉัน?
-notSupportedOutdatedDetail = น่าเสียดายที่ Firefox รุ่นนี้ไม่สนับสนุนเทคโนโลยีเว็บที่ขับเคลื่อน Firefox Send คุณจะต้องอัปเดตเบราว์เซอร์ของคุณ
+notSupportedOutdatedDetail = น่าเสียดายที่ Firefox รุ่นนี้ไม่สนับสนุนเทคโนโลยีเว็บที่ขับเคลื่อน Send คุณจะต้องอัปเดตเบราว์เซอร์ของคุณ
 updateFirefox = อัปเดต Firefox
 deletePopupCancel = ยกเลิก
 deleteButtonHover = ลบ
@@ -31,8 +31,8 @@ footerLinkLegal = ข้อกฎหมาย
 footerLinkPrivacy = ความเป็นส่วนตัว
 footerLinkCookies = คุกกี้
 passwordTryAgain = รหัสผ่านไม่ถูกต้อง ลองอีกครั้ง
-javascriptRequired = Firefox Send จำเป็นต้องใช้ JavaScript
-whyJavascript = ทำไม Firefox Send จึงจำเป็นต้องใช้ JavaScript?
+javascriptRequired = Send จำเป็นต้องใช้ JavaScript
+whyJavascript = ทำไม Send จึงจำเป็นต้องใช้ JavaScript?
 enableJavascript = โปรดเปิดใช้งาน JavaScript แล้วลองอีกครั้ง
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours } ชม. { $minutes } นาที
@@ -45,8 +45,8 @@ passwordSetError = ไม่สามารถตั้งรหัสผ่า�
 
 ## Send version 2 strings
 
-# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
+# Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Send
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla

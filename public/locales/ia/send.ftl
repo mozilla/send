@@ -1,5 +1,5 @@
-# Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+# Send is a brand name and should not be localized.
+title = Send
 importingFile = Importation…
 encryptingFile = Cryptation...
 decryptingFile = Decryptation…
@@ -19,13 +19,13 @@ unlockButtonLabel = Disblocar
 downloadButtonLabel = Discargar
 downloadFinish = Discargamento completate
 fileSizeProgress = ({ $partialSize } de { $totalSize })
-sendYourFilesLink = Proba Firefox Send
+sendYourFilesLink = Proba Send
 errorPageHeader = Un error occurreva!
 fileTooBig = Iste file es troppo grande pro incargar. Illo debe esser inferior a { $size }.
 linkExpiredAlt = Ligamine expirate
 notSupportedHeader = Tu navigator non es supportate
 notSupportedLink = Proque non es mi navigator supportate?
-notSupportedOutdatedDetail = Infelicemente iste version de Firefox non supporta le nove technologia web que actiona Firefox Send. Tu debe actualisar tu navigator.
+notSupportedOutdatedDetail = Infelicemente iste version de Firefox non supporta le nove technologia web que actiona Send. Tu debe actualisar tu navigator.
 updateFirefox = Actualisar Firefox
 deletePopupCancel = Cancellar
 deleteButtonHover = Deler
@@ -33,8 +33,8 @@ footerLinkLegal = Legal
 footerLinkPrivacy = Confidentialitate
 footerLinkCookies = Cookies
 passwordTryAgain = Contrasigno incorrecte. Retenta.
-javascriptRequired = Firefox Send require JavaScript
-whyJavascript = Proque Firefox Send require JavaScript?
+javascriptRequired = Send require JavaScript
+whyJavascript = Proque Send require JavaScript?
 enableJavascript = Por favor activa JavaScript e tenta novemente.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
@@ -47,8 +47,8 @@ passwordSetError = Iste contrasigno non ha potite esser establite
 
 ## Send version 2 strings
 
-# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
+# Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Send
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla

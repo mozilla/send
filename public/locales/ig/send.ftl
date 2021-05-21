@@ -1,4 +1,4 @@
-# Firefox Send is a brand name and should not be localized.
+# Send is a brand name and should not be localized.
 title = Firefox Zipu
 importingFile = Mbubata…
 encryptingFile = ezoro ezo...
@@ -34,7 +34,7 @@ footerLinkPrivacy = nzuzo
 footerLinkCookies = Kuki ga
 passwordTryAgain = okwuntughe ezighi ezi.Nwaa ọzọ
 javascriptRequired = Firefox Zipu chọrọ
-whyJavascript = Kedu ihe kpatara Firefox Send jiri chọ JavaScript?
+whyJavascript = Kedu ihe kpatara Send jiri chọ JavaScript?
 enableJavascript = Biko họrọ JavaScript ma nwaa ọzọ
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
@@ -47,8 +47,8 @@ passwordSetError = Enweghị ike ịtọ paswọọdụ a
 
 ## Send version 2 strings
 
-# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
+# Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Send
 -send-short-brand = Zipu, Ziga
 -firefox = Firefox
 -mozilla = Mozilla

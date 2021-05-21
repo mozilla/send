@@ -6,8 +6,6 @@ import { bytes, locale } from './utils';
 import okDialog from './ui/okDialog';
 import copyDialog from './ui/copyDialog';
 import shareDialog from './ui/shareDialog';
-import signupDialog from './ui/signupDialog';
-import surveyDialog from './ui/surveyDialog';
 
 export default function(state, emitter) {
   let lastRender = 0;
@@ -36,7 +34,7 @@ export default function(state, emitter) {
     document.addEventListener('blur', () => (updateTitle = true));
     document.addEventListener('focus', () => {
       updateTitle = false;
-      emitter.emit('DOMTitleChange', 'Firefox Send');
+      emitter.emit('DOMTitleChange', 'Send');
     });
     checkFiles();
   });
@@ -107,19 +105,6 @@ export default function(state, emitter) {
         })
       );
     }
-    render();
-  });
-
-  emitter.on('signup-cta', source => {
-    const query = state.query;
-    state.user.startAuthFlow(source, {
-      campaign: query.utm_campaign,
-      content: query.utm_content,
-      medium: query.utm_medium,
-      source: query.utm_source,
-      term: query.utm_term
-    });
-    state.modal = signupDialog(source);
     render();
   });
 
@@ -309,7 +294,7 @@ export default function(state, emitter) {
       !state.user.surveyed
     ) {
       state.user.surveyed = true;
-      state.modal = surveyDialog();
+      // state.modal = surveyDialog();
     } else {
       state.modal = null;
     }

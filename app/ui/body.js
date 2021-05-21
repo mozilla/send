@@ -1,20 +1,6 @@
 const html = require('choo/html');
-const Promo = require('./promo');
 const Header = require('./header');
 const Footer = require('./footer');
-
-function banner(state) {
-  if (state.layout) {
-    return; // server side
-  }
-  const show =
-    !state.capabilities.standalone &&
-    !state.route.startsWith('/unsupported/') &&
-    state.locale === 'en-US';
-  if (show) {
-    return state.cache(Promo, 'promo').render();
-  }
-}
 
 module.exports = function body(main) {
   return function(state, emit) {
@@ -22,8 +8,8 @@ module.exports = function body(main) {
       <body
         class="flex flex-col items-center font-sans md:h-screen md:bg-grey-10 dark:bg-black"
       >
-        ${banner(state, emit)} ${state.cache(Header, 'header').render()}
-        ${main(state, emit)} ${state.cache(Footer, 'footer').render()}
+        ${state.cache(Header, 'header').render()} ${main(state, emit)}
+        ${state.cache(Footer, 'footer').render()}
       </body>
     `;
     if (state.layout) {

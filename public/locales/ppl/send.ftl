@@ -1,5 +1,5 @@
-# Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+# Send is a brand name and should not be localized.
+title = Send
 siteFeedback = Shitechnawati
 importingFile = Mukalaktia nemi…
 encryptingFile = Tikichtakawiat tinemit…
@@ -20,13 +20,13 @@ unlockButtonLabel = Shiktapua
 downloadButtonLabel = Shiktemulti
 downloadFinish = Senkiska mutemultij
 fileSizeProgress = ({ $partialSize } ipal { $totalSize })
-sendYourFilesLink = Shikejeku Firefox Send
+sendYourFilesLink = Shikejeku Send
 errorPageHeader = IJtakawtuk!
 fileTooBig = Ini tajkwilul sujsul etek pal tiktejkultia. Ma nemi san { $size }.
 linkExpiredAlt = Ne ilpika pulijtuk
 notSupportedHeader = Te tikishmatit ne mutachialuni.
 notSupportedLink = Taika te ankishmatit nutachialuni?
-notSupportedOutdatedDetail = Ini tamakalis ipal Firefox tesu kimati ne tzawaltekitilis ne kiyulitia Firefox Send. Nemi pal tikyankwilia ne mutachialuni.
+notSupportedOutdatedDetail = Ini tamakalis ipal Firefox tesu kimati ne tzawaltekitilis ne kiyulitia Send. Nemi pal tikyankwilia ne mutachialuni.
 updateFirefox = Shikyankwili Firefox
 deletePopupCancel = Shikilwi tesu
 deleteButtonHover = Shikpulu
@@ -34,8 +34,8 @@ footerLinkLegal = Ipanpa ne tajtuli
 footerLinkPrivacy = Teichtakayu
 footerLinkCookies = Cookies
 passwordTryAgain = Ne ichtakatajkwilul tesu yek. Shikejeku uksenpa.
-javascriptRequired = Firefox Send muneki JavaScript
-whyJavascript = Taika Firefox Send muneki JavaScript?
+javascriptRequired = Send muneki JavaScript
+whyJavascript = Taika Send muneki JavaScript?
 enableJavascript = Shichiwa ma JavaScript tekiti wan shikejeku uksenpa.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }h { $minutes }m
@@ -48,8 +48,8 @@ passwordSetError = Te tiweliket tiktaliat ini ichtakataketzalis
 
 ## Send version 2 strings
 
-# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
+# Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Send
 -send-short-brand = Shiktitani
 -firefox = Firefox
 -mozilla = Mozilla

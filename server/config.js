@@ -157,7 +157,7 @@ const conf = convict({
   },
   fxa_required: {
     format: Boolean,
-    default: true,
+    default: false,
     env: 'FXA_REQUIRED'
   },
   fxa_url: {

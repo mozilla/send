@@ -1,5 +1,5 @@
-# Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+# Send is a brand name and should not be localized.
+title = Send
 importingFile = 가져오는 중…
 encryptingFile = 암호화 중…
 decryptingFile = 복호화 중…
@@ -11,13 +11,13 @@ unlockButtonLabel = 잠금 해제
 downloadButtonLabel = 다운로드
 downloadFinish = 다운로드 완료
 fileSizeProgress = ({ $partialSize } / { $totalSize })
-sendYourFilesLink = Firefox Send 써보기
+sendYourFilesLink = Send 써보기
 errorPageHeader = 오류가 발생했습니다!
 fileTooBig = 파일의 크기가 너무 큽니다. { $size } 보다 작아야 합니다.
 linkExpiredAlt = 링크가 만료됨
 notSupportedHeader = 이 브라우저는 지원되지 않습니다.
 notSupportedLink = 왜 이 브라우저는 지원이 되지 않나요?
-notSupportedOutdatedDetail = 안타깝게도 사용중인 Firefox 버전에서는 Firefox Send에 사용되는 웹 기술을 지원하지 않습니다. 브라우저 업데이트가 필요합니다.
+notSupportedOutdatedDetail = 안타깝게도 사용중인 Firefox 버전에서는 Send에 사용되는 웹 기술을 지원하지 않습니다. 브라우저 업데이트가 필요합니다.
 updateFirefox = Firefox 업데이트
 deletePopupCancel = 아니오
 deleteButtonHover = 삭제
@@ -25,8 +25,8 @@ footerLinkLegal = 법적 정보
 footerLinkPrivacy = 개인정보 보호
 footerLinkCookies = 쿠키
 passwordTryAgain = 비밀번호가 맞지 않습니다. 다시 시도해 주세요.
-javascriptRequired = Firefox Send는 JavaScript를 필요로 합니다
-whyJavascript = 왜 Firefox Send에 JavaScript가 필요하죠?
+javascriptRequired = Send는 JavaScript를 필요로 합니다
+whyJavascript = 왜 Send에 JavaScript가 필요하죠?
 enableJavascript = JavaScript를 활성화하고 다시 시도해 주세요.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours }시간 { $minutes }분
@@ -39,8 +39,8 @@ passwordSetError = 이 비밀번호를 설정할 수 없었습니다
 
 ## Send version 2 strings
 
-# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
+# Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Send
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla

@@ -1,5 +1,5 @@
-# Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+# Send is a brand name and should not be localized.
+title = Send
 importingFile = Importěrujo se...
 encryptingFile = Koděrujo se...
 decryptingFile = Dešifrěrujo se...
@@ -23,13 +23,13 @@ unlockButtonLabel = Wótwóriś
 downloadButtonLabel = Ześěgnuś
 downloadFinish = Ześěgnjenje dokóńcone
 fileSizeProgress = ({ $partialSize } z { $totalSize })
-sendYourFilesLink = Firefox Send wopytaś
+sendYourFilesLink = Send wopytaś
 errorPageHeader = Něco njejo se raźiło!
 fileTooBig = Toś ta dataja jo pśewjelika za nagraśe. Měła mjeńša ako { $size } byś.
 linkExpiredAlt = Wótkaz spadnjony
 notSupportedHeader = Waš wobglědowak se njepódpěra.
 notSupportedLink = Cogodla se mój wobglědowak njepódpěra?
-notSupportedOutdatedDetail = Bóžko toś ta wersija Firefox webtechnologiju njepódpěra, na kótarejž Firefox Send bazěrujo. Musyśo swój wobglědowak aktualizěrowaś.
+notSupportedOutdatedDetail = Bóžko toś ta wersija Firefox webtechnologiju njepódpěra, na kótarejž Send bazěrujo. Musyśo swój wobglědowak aktualizěrowaś.
 updateFirefox = Firefox aktualizěrowaś
 deletePopupCancel = Pśetergnuś
 deleteButtonHover = Wulašowaś
@@ -37,8 +37,8 @@ footerLinkLegal = Pšawniske
 footerLinkPrivacy = Priwatnosć
 footerLinkCookies = Cookieje
 passwordTryAgain = Wopacne gronidło. Wopytajśo hyšći raz.
-javascriptRequired = Firefox Send JavaScript trjeba
-whyJavascript = Cogodla Firefox Send JavaScript trjeba?
+javascriptRequired = Send JavaScript trjeba
+whyJavascript = Cogodla Send JavaScript trjeba?
 enableJavascript = Pšosym zmóžniśo JavaScript a wopytajśo hyšći raz.
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours } góź. { $minutes } min.
@@ -51,8 +51,8 @@ passwordSetError = Toś to gronidło njedajo se nastajiś
 
 ## Send version 2 strings
 
-# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
+# Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Send
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla

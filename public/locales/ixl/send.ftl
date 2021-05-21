@@ -1,5 +1,5 @@
-# Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+# Send is a brand name and should not be localized.
+title = Send
 siteFeedback = Aq'a yol sti'
 importingFile = Eq'otzan
 encryptingFile = La muj isik'lele
@@ -20,7 +20,7 @@ unlockButtonLabel = Eesa ikach'ub'al
 downloadButtonLabel = Eq'o ku'tzan
 downloadFinish = Eq'o ku'tzan kaajayil
 fileSizeProgress = ({ $partialSize }tetz{ $totalSize })
-sendYourFilesLink = B'anb'e ve't u Firefox Send
+sendYourFilesLink = B'anb'e ve't u Send
 errorPageHeader = At ma'l kam valexh kat eli!
 notSupportedHeader = U chukb'al aq'one' ye' ni toleb'e'.
 notSupportedLink = Kam q'ii uve' ye' kuxh ni toleb' u chukb'al vaq'one'?
@@ -36,8 +36,8 @@ expiresMinutes = { $minutes }m
 
 ## Send version 2 strings
 
-# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
+# Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Send
 -send-short-brand = Aq'b'en
 -firefox = Firefox
 -mozilla = Mozilla

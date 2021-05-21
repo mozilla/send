@@ -1,5 +1,5 @@
-# Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+# Send is a brand name and should not be localized.
+title = Send
 importingFile = 匯入中…
 encryptingFile = 加密中…
 decryptingFile = 解密中…
@@ -17,13 +17,13 @@ unlockButtonLabel = 解鎖
 downloadButtonLabel = 下載
 downloadFinish = 下載完成
 fileSizeProgress = （{ $partialSize }，共 { $totalSize }）
-sendYourFilesLink = 試用 Firefox Send
+sendYourFilesLink = 試用 Send
 errorPageHeader = 有些東西不對勁！
 fileTooBig = 檔案太大無法上傳。檔案大小限制為 { $size }。
 linkExpiredAlt = 鏈結已過期
 notSupportedHeader = 不支援您的瀏覽器。
 notSupportedLink = 為什麼我的瀏覽器不支援？
-notSupportedOutdatedDetail = 很可惜，此版本的 Firefox 不支援 Firefox Send 所需的 Web 技術。請更新瀏覽器後再使用。
+notSupportedOutdatedDetail = 很可惜，此版本的 Firefox 不支援 Send 所需的 Web 技術。請更新瀏覽器後再使用。
 updateFirefox = 更新 Firefox
 deletePopupCancel = 取消
 deleteButtonHover = 刪除
@@ -31,8 +31,8 @@ footerLinkLegal = 法律資訊
 footerLinkPrivacy = 隱私權
 footerLinkCookies = Cookie
 passwordTryAgain = 密碼不正確，請再試一次。
-javascriptRequired = Firefox Send 需要開啟 JavaScript 功能
-whyJavascript = 為什麼 Firefox Send 需要 JavaScript 才能使用？
+javascriptRequired = Send 需要開啟 JavaScript 功能
+whyJavascript = 為什麼 Send 需要 JavaScript 才能使用？
 enableJavascript = 請開啟 JavaScript 功能後再試一次。
 # A short representation of a countdown timer containing the number of hours and minutes remaining as digits, example "13h 47m"
 expiresHoursMinutes = { $hours } 時 { $minutes } 分
@@ -45,8 +45,8 @@ passwordSetError = 無法設定此密碼
 
 ## Send version 2 strings
 
-# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
+# Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Send
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla

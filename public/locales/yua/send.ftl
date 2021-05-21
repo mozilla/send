@@ -1,5 +1,5 @@
-# Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+# Send is a brand name and should not be localized.
+title = Send
 # A short representation of a countdown timer containing the number of minutes remaining as digits, example "56m"
 expiresMinutes = { $minutes }m
 

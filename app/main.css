@@ -31,10 +31,6 @@ a:focus {
 }
 
 body {
-  background-image: url('../assets/bg.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   overflow-x: hidden;
 }
 
@@ -182,19 +178,6 @@ footer li:hover {
   @apply bg-white;
 }
 
-.mozilla-logo {
-  background-image: url('../assets/mozilla-logo.svg');
-  background-repeat: no-repeat;
-  background-size: 100px, 48px;
-  overflow: hidden;
-  text-indent: 120%;
-  white-space: nowrap;
-  display: inline-block;
-  height: 32px;
-  width: 100px;
-  flex-shrink: 0;
-}
-
 #password-msg::after {
   content: '\200b';
 }
@@ -335,11 +318,6 @@ select {
 
   .main > section {
     @apply bg-grey-90;
-  }
-
-  .mozilla-logo {
-    background-color: white;
-    border: 1px solid white;
   }
 
   @screen md {

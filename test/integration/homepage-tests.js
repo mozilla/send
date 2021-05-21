@@ -6,7 +6,7 @@ describe('Firefox Send homepage', function() {
   this.retries(2);
   const homePage = new HomePage();
   const baseUrl = browser.options['baseUrl'];
-  const footerLinks = ['mozilla', 'legal', 'legal', 'cookies', 'github'];
+  const footerLinks = ['mozilla', 'cookies', 'github'];
 
   beforeEach(function() {
     homePage.open();

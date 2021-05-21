@@ -1,5 +1,5 @@
-# Firefox Send is a brand name and should not be localized.
-title = Firefox Send
+# Send is a brand name and should not be localized.
+title = Send
 siteFeedback = ڕەخنەوپێشنیار
 importingFile = هاوردەکردن...
 encryptingFile = بەهێماکردن...
@@ -26,7 +26,7 @@ fileTooBig = ئەم پەڕگەیە زۆر گەورەیە بۆ بارکردن. پ
 linkExpiredAlt = بەستەر بەسەرچووە
 notSupportedHeader = وێبگەڕەکەت پشتگیری ناکرێت
 notSupportedLink = بۆ وێبگەڕەکەم پشتگیری ناکرێت؟
-notSupportedOutdatedDetail = بەداخەوە ئەم وەشانەی Firefox پشتگیری ئەو جۆرە تەکنەلۆژییە ناکات کە پێویستە بۆ Firefox Send. پێویستە وێبگەڕەکەت نوێبکەیتەوە.
+notSupportedOutdatedDetail = بەداخەوە ئەم وەشانەی Firefox پشتگیری ئەو جۆرە تەکنەلۆژییە ناکات کە پێویستە بۆ Send. پێویستە وێبگەڕەکەت نوێبکەیتەوە.
 updateFirefox = فاەرفۆکس نوێبکەرەوە
 deletePopupCancel = پاشگەزبوونەوە
 deleteButtonHover = سڕینەوە
@@ -48,8 +48,8 @@ passwordSetError = ناتوانرێت وشەی تێپەڕ دابنرێت
 
 ## Send version 2 strings
 
-# Firefox Send, Send, Firefox, Mozilla are proper names and should not be localized
--send-brand = Firefox Send
+# Send, Send, Firefox, Mozilla are proper names and should not be localized
+-send-brand = Send
 -send-short-brand = Send
 -firefox = Firefox
 -mozilla = Mozilla
