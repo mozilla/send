@@ -115,5 +115,6 @@ The android implementation is contained in the `android` directory, and can be v
 ## License
 
 [Mozilla Public License Version 2.0](LICENSE)
+qrcode.js from https://github.com/kazuhikoarase/qrcode-generator licensed under MIT
 
 ---
